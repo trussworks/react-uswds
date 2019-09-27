@@ -1,3 +1,5 @@
 import { configure } from '@storybook/react'
 
-configure(require.context('../src', true, /\.stories\.js$/), module)
+import 'uswds/dist/css/uswds.css'
+
+configure(require.context('../src', true, /\.stories\.jsx?$/), module)

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/trussworks/truss-uswds-react#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "uswds": "^2.2.1"
