@@ -1,0 +1,30 @@
+{
+  "name": "truss-uswds-react",
+  "version": "1.0.0",
+  "description": "React USWDS implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "storybook": "start-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trussworks/truss-uswds-react.git"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/trussworks/truss-uswds-react/issues"
+  },
+  "homepage": "https://github.com/trussworks/truss-uswds-react#readme",
+  "dependencies": {
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0",
+    "uswds": "^2.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@storybook/react": "^5.2.1",
+    "babel-loader": "^8.0.6"
+  }
+}
