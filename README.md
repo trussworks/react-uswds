@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is a front end component library aiming to develop React component implementations of the patterns defined by the [United States Web Design System (USWDS)](https://designsystem.digital.gov/).
+This is a front end component library whose aim is to develop React component implementations of the design patterns defined by the [United States Web Design System (USWDS)](https://designsystem.digital.gov/).
 
 It is currently in active development.
 
@@ -22,10 +22,16 @@ It is currently in active development.
 - Provide thorough documentation (using a web interface such as Storybook) so that users can view the components as they render in the UI, the source code required to use them, and specifications such as how props are used, a11y support, and test coverage.
 - Consistent and transparent versioning so that multiple projects can rely on this package, and it can be maintained as React and USWDS release new versions while also providing backwards compatibility.
 
-If the above goals are substantively met, this project has a high potential to be open sourced, and provide value for other groups who want to use USWDS with React.
+Once the above goals are substantively met, this project has a high potential to be open sourced, and provide value for other groups who want to use USWDS with React.
 
-### Initial decisions to make
+## Non-Goals
+This is not meant to be a one-size-fits-all front end solution to every web project. We are starting off with the very opinionated decision to cater towards a project that wants to use (or at least branch off of) the USWDS, and is using React as a front end framework.
+
+In addition to working towards the above outcomes, we are hoping to gain learnings around how to best abstract out UI code from implementation; help demonstrate and standardize front end code practices for other Truss projects; and develop and distribute a shared JS library to other teams.
+
+## Initial decisions to make
 - Package manager (npm, yarn)
 - Bundler (webpack, rollup)
-- Versioning (semver)
+- Versioning method (semver)
 - Git flow, issues, branches, etc.
+- ADRs?
