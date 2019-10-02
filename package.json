@@ -4,10 +4,7 @@
   "description": "React USWDS 2.0 implementation",
   "main": "lib/truss-uswds-react.js",
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "lib"
   ],
   "scripts": {
     "test": "jest",

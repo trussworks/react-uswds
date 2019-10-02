@@ -23,3 +23,68 @@ Once the above goals are substantively met, this project has a high potential to
 This is not meant to be a one-size-fits-all front end solution to every Truss web project. We are starting off with the very opinionated decision to cater towards a project that wants to use (or at least branch off of) USWDS 2.0, and is using React as a front end framework.
 
 In addition to working towards the above outcomes, we are hoping to gain learnings around how to best abstract out UI code from implementation; help demonstrate and standardize front end code practices for other Truss projects; and develop and distribute a shared JS library to other teams.
+
+## Contributing
+
+### Environment Setup
+
+1. Clone this repo!
+
+1. Use [nvm](https://github.com/nvm-sh/nvm) to manage node versions on your local machine.
+    - Follow the [installation instructions](https://github.com/nvm-sh/nvm#install--update-script)
+    - Type `nvm use` while inside the project directory to switch to the required version of node (specified in `/.nvmrc`)
+    - As of this writing, we are using **v10** which is the [current LTS](https://nodejs.org/en/about/releases/) (long-term support)
+
+1. Use [yarn](https://yarnpkg.com) to manage JS packages.
+    - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
+    - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
+
+1. Make sure you can run all of the available commands listed below with no errors.
+
+### Available Commands
+
+These should all be run from within the project directory.
+
+- `yarn storybook`
+    - Starts Storybook server and watches for changed files
+    - This will most likely be what you use for active development of components
+- `yarn test`
+    - Starts Jest test runner
+    - `yarn test:watch` is also available
+    - Use `yarn test:coverage` to generate a coverage report
+- `yarn build`
+    - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
+    - `yarn build:watch` is also available
+
+## Usage
+
+To use this library in another project, add the following line to your `package.json` dependencies:
+
+```
+devDependencies: {
+  "@trussworks/react-uswds": "https://github.com/trussworks/react-uswds.git
+}
+```
+
+Install using `yarn` or `npm install` (whichever your project uses).
+
+You can then import modules using ES6 syntax:
+
+```
+import { Alert } from '@trussworks/react-uswds'
+```
+
+## Roadmap
+- [ ] Load and export USWDS CSS
+- [ ] Load and export USWDS fonts/svgs/other assets
+- [ ] Add lint configs and pre-commit hooks for contributing
+- [ ] Decide on and document git workflow for this project
+- [ ] Decide on and document release workflow for the package
+- [ ] Set up CI for running tests, formatting and linting
+- [ ] Add support for and convert existing component(s) to TypeScript?
+- [ ] Decide on and set up a React component test helper:
+  - https://airbnb.io/enzyme/
+  - https://testing-library.com/docs/react-testing-library/
+- [ ] Enable `pkg.module` entrypoint for better module and tree shaking:
+  - https://github.com/rollup/rollup/wiki/pkg.module
+  - https://stackoverflow.com/questions/41289200/output-an-es-module-using-webpack
