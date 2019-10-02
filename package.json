@@ -1,11 +1,22 @@
 {
   "name": "truss-uswds-react",
   "version": "1.0.0",
-  "description": "React USWDS implementation",
-  "main": "index.js",
+  "description": "React USWDS 2.0 implementation",
+  "main": "lib/truss-uswds-react.js",
+  "module": "src/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
   "scripts": {
-    "test": "test",
-    "storybook": "start-storybook"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "storybook": "start-storybook",
+    "build": "webpack",
+    "build:watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +28,9 @@
     "url": "https://github.com/trussworks/truss-uswds-react/issues"
   },
   "homepage": "https://github.com/trussworks/truss-uswds-react#readme",
+  "peerDependencies": {
+    "react": "16.x"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "react": "^16.10.0",
@@ -25,7 +39,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
     "@storybook/react": "^5.2.1",
-    "babel-loader": "^8.0.6"
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "jest": "^24.9.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
