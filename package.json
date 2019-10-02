@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "React USWDS 2.0 implementation",
   "main": "lib/truss-uswds-react.js",
-  "module": "src/index.js",
   "files": [
     "css",
     "es",
