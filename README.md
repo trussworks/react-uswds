@@ -30,10 +30,16 @@ In addition to working towards the above outcomes, we are hoping to gain learnin
 
 1. Clone this repo!
 
-1. Use [nvm](https://github.com/nvm-sh/nvm) to manage node versions on your local machine.
-    - Follow the [installation instructions](https://github.com/nvm-sh/nvm#install--update-script)
-    - Type `nvm use` while inside the project directory to switch to the required version of node (specified in `/.nvmrc`)
-    - As of this writing, we are using **v10** which is the [current LTS](https://nodejs.org/en/about/releases/) (long-term support)
+1. Install node 10 using homebrew. You may need to force link it, or add to your `$PATH` (see https://stackoverflow.com/a/41025729)
+
+    ```
+    ➜ brew install node@10
+    ```
+    Verify you are using the correct version:
+    ```
+    ➜ node -v
+    v10.16.3
+    ```
 
 1. Use [yarn](https://yarnpkg.com) to manage JS packages.
     - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
