@@ -1,4 +1,4 @@
-# @truss/react-uswds
+# @trussworks/react-uswds
 
 ## Purpose
 
