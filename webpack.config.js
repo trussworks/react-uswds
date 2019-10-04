@@ -5,8 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'truss-uswds-react.js',
-    library: 'TrussUSWDSReact',
+    filename: 'react-uswds.js',
+    library: 'ReactUSWDS',
     libraryTarget: 'umd',
   },
   externals: {

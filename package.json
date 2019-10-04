@@ -1,8 +1,8 @@
 {
-  "name": "truss-uswds-react",
+  "name": "react-uswds",
   "version": "1.0.0",
-  "description": "React USWDS 2.0 implementation",
-  "main": "lib/truss-uswds-react.js",
+  "description": "React USWDS 2.0 component library",
+  "main": "lib/react-uswds.js",
   "files": [
     "lib"
   ],
@@ -16,16 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trussworks/truss-uswds-react.git"
+    "url": "git+https://github.com/trussworks/react-uswds.git"
   },
   "author": "",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/trussworks/truss-uswds-react/issues"
+    "url": "https://github.com/trussworks/react-uswds/issues"
   },
-  "homepage": "https://github.com/trussworks/truss-uswds-react#readme",
+  "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
-    "react": "16.x"
+    "react": "^16.x",
+    "react-dom": "^16.x"
   },
   "dependencies": {
     "classnames": "^2.2.6",
