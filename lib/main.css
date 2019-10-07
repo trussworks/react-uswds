@@ -269,7 +269,7 @@ th{
   font-style:normal;
   font-weight:300;
   font-display:fallback;
-  src:url(db95b37ec6ef04cd349d098941e5f70b.woff2) format("woff2"), url(4f691391d5a34cc629a83e82091d5b3c.woff) format("woff"), url(287fb5bcd4d3a4b1f190761d9941c3c1.ttf) format("truetype");
+  src:url(assets/db95b37ec6ef04cd349d098941e5f70b.woff2) format("woff2"), url(assets/4f691391d5a34cc629a83e82091d5b3c.woff) format("woff"), url(assets/287fb5bcd4d3a4b1f190761d9941c3c1.ttf) format("truetype");
 }
 
 @font-face{
@@ -277,7 +277,7 @@ th{
   font-style:normal;
   font-weight:400;
   font-display:fallback;
-  src:url(e92cc0fb9e1a7debc138224fd02a462a.woff2) format("woff2"), url(1db1469bf7acbd08f97df4f18046a50f.woff) format("woff"), url(c03588a7704f2804f6c9be291068916d.ttf) format("truetype");
+  src:url(assets/e92cc0fb9e1a7debc138224fd02a462a.woff2) format("woff2"), url(assets/1db1469bf7acbd08f97df4f18046a50f.woff) format("woff"), url(assets/c03588a7704f2804f6c9be291068916d.ttf) format("truetype");
 }
 
 @font-face{
@@ -285,7 +285,7 @@ th{
   font-style:normal;
   font-weight:700;
   font-display:fallback;
-  src:url(4bc0bd04b8b2f6730b5997503fa4ce5a.woff2) format("woff2"), url(f61e5a8dfaad2adb9479f8013b9bb101.woff) format("woff"), url(0017dad2d31df8b5379fbc3baf58b429.ttf) format("truetype");
+  src:url(assets/4bc0bd04b8b2f6730b5997503fa4ce5a.woff2) format("woff2"), url(assets/f61e5a8dfaad2adb9479f8013b9bb101.woff) format("woff"), url(assets/0017dad2d31df8b5379fbc3baf58b429.ttf) format("truetype");
 }
 
 @font-face{
@@ -293,7 +293,7 @@ th{
   font-style:italic;
   font-weight:300;
   font-display:fallback;
-  src:url(18357ddaddc4d4f13c5f49985327a2db.woff2) format("woff2"), url(8debb2d5f4dfc8732c97f38e47904cb9.woff) format("woff"), url(c24ee49da25a6de64edb44da4dfb5546.ttf) format("truetype");
+  src:url(assets/18357ddaddc4d4f13c5f49985327a2db.woff2) format("woff2"), url(assets/8debb2d5f4dfc8732c97f38e47904cb9.woff) format("woff"), url(assets/c24ee49da25a6de64edb44da4dfb5546.ttf) format("truetype");
 }
 
 @font-face{
@@ -301,7 +301,7 @@ th{
   font-style:italic;
   font-weight:400;
   font-display:fallback;
-  src:url(55befc28b6c06f712a38e2f4153967e1.woff2) format("woff2"), url(5711b84f6506b02f585ba40860d4f1a0.woff) format("woff"), url(e3c56211c66b085bc429a216b2f543d5.ttf) format("truetype");
+  src:url(assets/55befc28b6c06f712a38e2f4153967e1.woff2) format("woff2"), url(assets/5711b84f6506b02f585ba40860d4f1a0.woff) format("woff"), url(assets/e3c56211c66b085bc429a216b2f543d5.ttf) format("truetype");
 }
 
 @font-face{
@@ -309,7 +309,7 @@ th{
   font-style:italic;
   font-weight:700;
   font-display:fallback;
-  src:url(5eca10b5e58c4e2a8164f89bef5dbd7e.woff2) format("woff2"), url(7324e30e83c2d31fddc3281766f07943.woff) format("woff"), url(27139953a35b7a15a4915075aee3c436.ttf) format("truetype");
+  src:url(assets/5eca10b5e58c4e2a8164f89bef5dbd7e.woff2) format("woff2"), url(assets/7324e30e83c2d31fddc3281766f07943.woff) format("woff"), url(assets/27139953a35b7a15a4915075aee3c436.ttf) format("truetype");
 }
 
 @font-face{
@@ -317,7 +317,7 @@ th{
   font-style:normal;
   font-weight:300;
   font-display:fallback;
-  src:url(4572c51ee35f958fd2d4f04211c2ddc8.woff2) format("woff2"), url(9cf8ece97d8d8b563a906b6257a5d006.woff) format("woff"), url(fb881861506046df09158f0220afe469.ttf) format("truetype");
+  src:url(assets/4572c51ee35f958fd2d4f04211c2ddc8.woff2) format("woff2"), url(assets/9cf8ece97d8d8b563a906b6257a5d006.woff) format("woff"), url(assets/fb881861506046df09158f0220afe469.ttf) format("truetype");
 }
 
 @font-face{
@@ -325,7 +325,7 @@ th{
   font-style:normal;
   font-weight:400;
   font-display:fallback;
-  src:url(d67b548b833d70dda3779916f5415e7e.woff2) format("woff2"), url(34197df8bd5aaeed8cfa0504a098e9a8.woff) format("woff"), url(998d95f86644dc5c0d266f922478fb4e.ttf) format("truetype");
+  src:url(assets/d67b548b833d70dda3779916f5415e7e.woff2) format("woff2"), url(assets/34197df8bd5aaeed8cfa0504a098e9a8.woff) format("woff"), url(assets/998d95f86644dc5c0d266f922478fb4e.ttf) format("truetype");
 }
 
 @font-face{
@@ -333,7 +333,7 @@ th{
   font-style:normal;
   font-weight:700;
   font-display:fallback;
-  src:url(f12f6a2f439c99a103193981f69c3353.woff2) format("woff2"), url(738b5fd59f27afa7b332f0d228ddd531.woff) format("woff"), url(ab04959e09b68599d50b42b26eea4987.ttf) format("truetype");
+  src:url(assets/f12f6a2f439c99a103193981f69c3353.woff2) format("woff2"), url(assets/738b5fd59f27afa7b332f0d228ddd531.woff) format("woff"), url(assets/ab04959e09b68599d50b42b26eea4987.ttf) format("truetype");
 }
 
 @font-face{
@@ -341,7 +341,7 @@ th{
   font-style:italic;
   font-weight:300;
   font-display:fallback;
-  src:url(ffb6369e594a83b16001ca58c1ee9039.woff2) format("woff2"), url(3fa6ebb831989f031e8bf92297a412bb.woff) format("woff"), url(03f9a24f4d7ae17e83d14b0884dbc7bc.ttf) format("truetype");
+  src:url(assets/ffb6369e594a83b16001ca58c1ee9039.woff2) format("woff2"), url(assets/3fa6ebb831989f031e8bf92297a412bb.woff) format("woff"), url(assets/03f9a24f4d7ae17e83d14b0884dbc7bc.ttf) format("truetype");
 }
 
 @font-face{
@@ -349,7 +349,7 @@ th{
   font-style:italic;
   font-weight:400;
   font-display:fallback;
-  src:url(8740838d2f0e9325e59b6e3c007a7130.woff2) format("woff2"), url(12c96d9d41277f807f1197332b75ce45.woff) format("woff"), url(bf26dc0f3adafe73cfa80857c42169aa.ttf) format("truetype");
+  src:url(assets/8740838d2f0e9325e59b6e3c007a7130.woff2) format("woff2"), url(assets/12c96d9d41277f807f1197332b75ce45.woff) format("woff"), url(assets/bf26dc0f3adafe73cfa80857c42169aa.ttf) format("truetype");
 }
 
 @font-face{
@@ -357,7 +357,7 @@ th{
   font-style:italic;
   font-weight:700;
   font-display:fallback;
-  src:url(dae8945d820658d0cb8f15764e441cc6.woff2) format("woff2"), url(60573f53e7e5ceb3a6d0983e118864ab.woff) format("woff"), url(00a1cd1301f427531cbe01649083cb4b.ttf) format("truetype");
+  src:url(assets/dae8945d820658d0cb8f15764e441cc6.woff2) format("woff2"), url(assets/60573f53e7e5ceb3a6d0983e118864ab.woff) format("woff"), url(assets/00a1cd1301f427531cbe01649083cb4b.ttf) format("truetype");
 }
 
 @font-face{
@@ -365,7 +365,7 @@ th{
   font-style:normal;
   font-weight:300;
   font-display:fallback;
-  src:url(4f0fb5042c21b257ae0707783ac29626.woff2) format("woff2"), url(ddae281a2be8f2bd6a322793a0c3cd56.woff) format("woff"), url(e6dc7e59592bb74431e5c053f561a373.ttf) format("truetype");
+  src:url(assets/4f0fb5042c21b257ae0707783ac29626.woff2) format("woff2"), url(assets/ddae281a2be8f2bd6a322793a0c3cd56.woff) format("woff"), url(assets/e6dc7e59592bb74431e5c053f561a373.ttf) format("truetype");
 }
 
 @font-face{
@@ -373,7 +373,7 @@ th{
   font-style:normal;
   font-weight:400;
   font-display:fallback;
-  src:url(fa9b615a25bdf9c42a7f6ffa223c1eb0.woff2) format("woff2"), url(73c28f4ec1aa47641399da34948db75c.woff) format("woff"), url(efc70b44fd5c0bb6a3d88302029d8afe.ttf) format("truetype");
+  src:url(assets/fa9b615a25bdf9c42a7f6ffa223c1eb0.woff2) format("woff2"), url(assets/73c28f4ec1aa47641399da34948db75c.woff) format("woff"), url(assets/efc70b44fd5c0bb6a3d88302029d8afe.ttf) format("truetype");
 }
 
 @font-face{
@@ -381,7 +381,7 @@ th{
   font-style:normal;
   font-weight:700;
   font-display:fallback;
-  src:url(115f5a1d96eaa67ffee687960dd770f3.woff2) format("woff2"), url(704b3917b84cea21ae1466ce46c61f69.woff) format("woff"), url(46eab1126b71f15cc3cc81c0bbd5ae70.ttf) format("truetype");
+  src:url(assets/115f5a1d96eaa67ffee687960dd770f3.woff2) format("woff2"), url(assets/704b3917b84cea21ae1466ce46c61f69.woff) format("woff"), url(assets/46eab1126b71f15cc3cc81c0bbd5ae70.ttf) format("truetype");
 }
 
 @font-face{
@@ -389,7 +389,7 @@ th{
   font-style:italic;
   font-weight:300;
   font-display:fallback;
-  src:url(08acae9c0b84b1ac1ea5cc76846bb3f4.woff2) format("woff2"), url(af8e7e14f7cdd26ea1024d2cf618b58e.woff) format("woff"), url(efbd9a2b93da8681679e52621acccf8a.ttf) format("truetype");
+  src:url(assets/08acae9c0b84b1ac1ea5cc76846bb3f4.woff2) format("woff2"), url(assets/af8e7e14f7cdd26ea1024d2cf618b58e.woff) format("woff"), url(assets/efbd9a2b93da8681679e52621acccf8a.ttf) format("truetype");
 }
 
 @font-face{
@@ -397,7 +397,7 @@ th{
   font-style:italic;
   font-weight:400;
   font-display:fallback;
-  src:url(2412c72a898d4ed8f67e1351f7360067.woff2) format("woff2"), url(b85b8ae5763647fddac32f6843fce5d0.woff) format("woff"), url(3ee014ee07a708619aa24604f7b29640.ttf) format("truetype");
+  src:url(assets/2412c72a898d4ed8f67e1351f7360067.woff2) format("woff2"), url(assets/b85b8ae5763647fddac32f6843fce5d0.woff) format("woff"), url(assets/3ee014ee07a708619aa24604f7b29640.ttf) format("truetype");
 }
 
 @font-face{
@@ -405,7 +405,7 @@ th{
   font-style:italic;
   font-weight:700;
   font-display:fallback;
-  src:url(2750a1e9d21f8b94f614bf36a3c53a0a.woff2) format("woff2"), url(69debb55ba07cd17f2730f71caf77339.woff) format("woff"), url(9bce15010c78236480445cbbee912f8b.ttf) format("truetype");
+  src:url(assets/2750a1e9d21f8b94f614bf36a3c53a0a.woff2) format("woff2"), url(assets/69debb55ba07cd17f2730f71caf77339.woff) format("woff"), url(assets/9bce15010c78236480445cbbee912f8b.ttf) format("truetype");
 }
 input:not([disabled]):focus,
 select:not([disabled]):focus,
@@ -2981,7 +2981,7 @@ img{
   line-height:1.5;
   padding-bottom:2rem;
   padding-top:2rem;
-  background-image:url(544cee01f2a29ef3fd128c78b8727f1f.png);
+  background-image:url(assets/544cee01f2a29ef3fd128c78b8727f1f.png);
   background-position:center;
   background-size:cover;
   color:white;
