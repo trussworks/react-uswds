@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "React USWDS 2.0 component library",
-  "main": "lib/react-uswds.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],

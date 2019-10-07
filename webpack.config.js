@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'react-uswds.js',
+    filename: 'index.js',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
   },

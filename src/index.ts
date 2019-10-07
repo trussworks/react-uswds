@@ -1,3 +1,1 @@
-import { Alert } from './Alert/Alert'
-
-export { Alert }
+export { Alert } from './Alert/Alert'
