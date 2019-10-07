@@ -11,6 +11,7 @@ The initial (1.0.0) release of this library is currently in active development, 
 The primary deliverable is a published npm package that can be included as a dependency in other projects that use USWDS with React. For now we can publish directly from this git repo, but we may want to look into publishing on the [official npm registry](https://www.npmjs.com/) or the upcoming [Github package registry](https://github.com/features/package-registry) in the future.
 
 In order for these components to be actually useful, they should follow best practices and baseline standards for accessible, semantic, markup; be well-tested across browsers and devices; and allow for an appropriate level of customization in implementation (such as via React `props`). Therefore we should adhere to these development guidelines as much as possible:
+
 - Encourage a strict separation of concerns, focusing on UI (rendered HTML and CSS) rather than any application logic.
 - Expose the necessary props for composability and extensibility, such as event handlers, custom CSS classes, etc.
 - Maintain a high standard of unit test coverage and cross-browser/device support, so that projects including this depedency can focus on integration and implementation.
@@ -20,6 +21,7 @@ In order for these components to be actually useful, they should follow best pra
 Once the above goals are substantively met, this project has a high potential to be open sourced, and provide value for people outside of Truss who want to use USWDS with React.
 
 ## Non-Goals
+
 This is not meant to be a one-size-fits-all front end solution to every Truss web project. We are starting off with the very opinionated decision to cater towards a project that wants to use (or at least branch off of) USWDS 2.0, and is using React as a front end framework.
 
 In addition to working towards the above outcomes, we are hoping to gain learnings around how to best abstract out UI code from implementation; help demonstrate and standardize front end code practices for other Truss projects; and develop and distribute a shared JS library to other teams.
@@ -32,18 +34,21 @@ In addition to working towards the above outcomes, we are hoping to gain learnin
 
 1. Install node 10 using homebrew. You may need to force link it, or add to your `$PATH` (see https://stackoverflow.com/a/41025729)
 
-    ```
-    ➜ brew install node@10
-    ```
-    Verify you are using the correct version:
-    ```
-    ➜ node -v
-    v10.16.3
-    ```
+   ```
+   ➜ brew install node@10
+   ```
+
+   Verify you are using the correct version:
+
+   ```
+   ➜ node -v
+   v10.16.3
+   ```
 
 1. Use [yarn](https://yarnpkg.com) to manage JS packages.
-    - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
-    - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
+
+   - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
+   - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
 
 1. Make sure you can run all of the available commands listed below with no errors.
 
@@ -52,15 +57,15 @@ In addition to working towards the above outcomes, we are hoping to gain learnin
 These should all be run from within the project directory.
 
 - `yarn storybook`
-    - Starts Storybook server and watches for changed files
-    - This will most likely be what you use for active development of components
+  - Starts Storybook server and watches for changed files
+  - This will most likely be what you use for active development of components
 - `yarn test`
-    - Starts Jest test runner
-    - `yarn test:watch` is also available
-    - Use `yarn test:coverage` to generate a coverage report
+  - Starts Jest test runner
+  - `yarn test:watch` is also available
+  - Use `yarn test:coverage` to generate a coverage report
 - `yarn build`
-    - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
-    - `yarn build:watch` is also available
+  - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
+  - `yarn build:watch` is also available
 
 ## Usage
 
@@ -81,13 +86,14 @@ import { Alert } from '@trussworks/react-uswds'
 ```
 
 ## Roadmap
+
+- [x] Add lint configs and pre-commit hooks for contributing
+- [x] Set up CI for running tests and linting
+- [x] Add support for and convert existing component(s) to TypeScript
 - [ ] Load and export USWDS CSS
 - [ ] Load and export USWDS fonts/svgs/other assets
-- [ ] Add lint configs and pre-commit hooks for contributing
 - [ ] Decide on and document git workflow for this project
 - [ ] Decide on and document release workflow for the package
-- [ ] Set up CI for running tests, formatting and linting
-- [ ] Add support for and convert existing component(s) to TypeScript?
 - [ ] Decide on and set up a React component test helper:
   - https://airbnb.io/enzyme/
   - https://testing-library.com/docs/react-testing-library/
