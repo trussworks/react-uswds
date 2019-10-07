@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
+        key:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
