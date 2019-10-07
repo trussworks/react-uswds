@@ -8,15 +8,15 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
+            - v1.0.0-dependencies-{{ checksum "package.json" }}
+            - v1.0.0-dependencies-
 
       - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
       - run: yarn eslint src
