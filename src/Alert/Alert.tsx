@@ -2,7 +2,15 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Alert = ({ type, heading, children }) => {
+interface AlertProps {
+  type?: 'success' | 'warning' | 'error' | 'info'
+  heading?: React.ReactNode
+  children?: React.ReactNode
+}
+
+export const Alert = (props: AlertProps) => {
+  const { type, heading, children } = props
+
   const classes = classnames('usa-alert', {
     'usa-alert--success': type === 'success',
     'usa-alert--warning': type === 'warning',

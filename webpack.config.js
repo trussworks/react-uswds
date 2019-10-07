@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   mode: 'production',
@@ -24,10 +24,22 @@ module.exports = {
     },
   },
   resolve: {
-    extensions: ['.jsx', 'js'],
+    extensions: ['.tsx', '.ts', '.jsx', 'js'],
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        include: path.resolve(__dirname, 'src'),
+        use: {
+          loader: 'awesome-typescript-loader',
+          options: {
+            useBabel: true,
+            useCache: true,
+            babelCore: '@babel/core',
+          },
+        },
+      },
       {
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
@@ -37,4 +49,4 @@ module.exports = {
       },
     ],
   },
-};
+}

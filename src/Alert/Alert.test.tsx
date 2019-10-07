@@ -4,7 +4,7 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import Alert from './Alert'
 
 describe('Alert component', () => {
-  let node
+  let node: HTMLElement
 
   beforeEach(() => {
     node = document.createElement('div')

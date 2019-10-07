@@ -1,7 +1,18 @@
 import React from 'react'
-import Alert from './Alert'
+import { addParameters } from '@storybook/react'
 
-export default { title: 'Alert' }
+import { Alert } from './Alert'
+
+export default {
+  title: 'Alert',
+  parameters: {
+    info: `
+USWDS 2.0 Alert component
+
+Source: https://designsystem.digital.gov/components/alert/
+`,
+  },
+}
 
 const testText = (
   <>
