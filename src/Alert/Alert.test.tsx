@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
-import Alert from './Alert'
+import { Alert } from './Alert'
 
 describe('Alert component', () => {
   let node: HTMLElement

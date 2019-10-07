@@ -1,6 +1,4 @@
 import React from 'react'
-import { addParameters } from '@storybook/react'
-
 import { Alert } from './Alert'
 
 export default {
@@ -21,25 +19,25 @@ const testText = (
   </>
 )
 
-export const success = () => (
+export const success = (): React.ReactElement => (
   <Alert type="success" heading="Success status">
     {testText}
   </Alert>
 )
 
-export const warning = () => (
+export const warning = (): React.ReactElement => (
   <Alert type="warning" heading="Warning status">
     {testText}
   </Alert>
 )
 
-export const error = () => (
+export const error = (): React.ReactElement => (
   <Alert type="error" heading="Error status">
     {testText}
   </Alert>
 )
 
-export const info = () => (
+export const info = (): React.ReactElement => (
   <Alert type="info" heading="Informative status">
     {testText}
   </Alert>

@@ -13,7 +13,8 @@
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook",
     "build": "webpack",
-    "build:watch": "webpack --watch"
+    "build:watch": "webpack --watch",
+    "lint": "eslint 'src/**'"
   },
   "repository": {
     "type": "git",

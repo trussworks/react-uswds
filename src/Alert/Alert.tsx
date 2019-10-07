@@ -8,7 +8,7 @@ interface AlertProps {
   children?: React.ReactNode
 }
 
-export const Alert = (props: AlertProps) => {
+export const Alert = (props: AlertProps): React.ReactElement => {
   const { type, heading, children } = props
 
   const classes = classnames('usa-alert', {

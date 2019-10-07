@@ -19,4 +19,4 @@ jobs:
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
-      - run: yarn eslint src
+      - run: yarn lint
