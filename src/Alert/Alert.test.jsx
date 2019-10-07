@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, unmountComponentAtNode} from 'react-dom'
+import { render, unmountComponentAtNode } from 'react-dom'
 
 import Alert from './Alert'
 
@@ -15,7 +15,7 @@ describe('Alert component', () => {
   })
 
   it('renders without errors', () => {
-    render(<Alert/>, node, () => {
+    render(<Alert />, node, () => {
       expect(node.innerHTML).toContain('usa-alert__body')
     })
   })

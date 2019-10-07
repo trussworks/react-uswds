@@ -1,9 +1,8 @@
+/* eslint react/prop-types: 0 */
 import React from 'react'
 import classnames from 'classnames'
 
-const Alert = ({
-  type, heading, children,
-}) => {
+const Alert = ({ type, heading, children }) => {
   const classes = classnames('usa-alert', {
     'usa-alert--success': type === 'success',
     'usa-alert--warning': type === 'warning',
