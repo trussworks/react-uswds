@@ -90,8 +90,8 @@ import { Alert } from '@trussworks/react-uswds'
 - [x] Add lint configs and pre-commit hooks for contributing
 - [x] Set up CI for running tests and linting
 - [x] Add support for and convert existing component(s) to TypeScript
-- [ ] Load and export USWDS CSS
-- [ ] Load and export USWDS fonts/svgs/other assets
+- [x] Load and export USWDS CSS
+- [x] Load and export USWDS fonts/svgs/other assets
 - [ ] Decide on and document git workflow for this project
 - [ ] Decide on and document release workflow for the package
 - [ ] Decide on and set up a React component test helper:
