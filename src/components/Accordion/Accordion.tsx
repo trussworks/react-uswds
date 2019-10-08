@@ -10,7 +10,7 @@ interface AccordionItem {
 }
 
 interface AccordionProps {
-  bordered: boolean
+  bordered?: boolean
   items: AccordionItem[]
 }
 
@@ -25,12 +25,14 @@ export const AccordionItem = (props: AccordionItem): React.ReactElement => {
           className="usa-accordion__button"
           aria-expanded={expanded}
           aria-controls={id}
+          data-testid={`accordionButton_${id}`}
           onClick={handleToggle}>
           {title}
         </button>
       </h2>
       <div
         id={id}
+        data-testid={`accordionItem_${id}`}
         className="usa-accordion__content usa-prose"
         hidden={!expanded}>
         {content}
@@ -49,7 +51,7 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
   })
 
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="accordion">
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
