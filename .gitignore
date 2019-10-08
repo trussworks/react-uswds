@@ -39,6 +39,8 @@ jspm_packages/
 # TypeScript v1 declaration files
 typings/
 
+.awcache
+
 # Optional npm cache directory
 .npm
 
@@ -59,3 +61,6 @@ typings/
 
 # next.js build output
 .next
+
+# editor config
+.vscode
