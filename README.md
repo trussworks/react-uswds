@@ -67,6 +67,33 @@ These should all be run from within the project directory.
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
 
+## Development & Release Workflow
+
+Because this project exports a library that will be used by other projects as a dependency, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with a description of changes. In order to ensure this, we use the following standards:
+
+### Development
+
+- Summary from [a successful git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
+  - **`master`**: Always reflects the current _production-ready_ version.
+    - Each commit to `master` represents a release. See Release branches below.
+  - **`develop`**: The latest delivered development changes for the next release, a.k.a. the "integration branch". This is configured to be the main branch in this repo, and all development branches branch off of `develop` by default.
+    - When the code on `develop` reaches a stable point and is ready to be released, it will be merged back into `master` via a release branch, and tagged with a version. This is described in more detail below.
+  - **Feature branches**: Branch off of `develop` and merge back into `develop`. Naming convention is your initials + brief description of the feature.
+    - Example: `sr-accordion-component`
+    - It is recommended that during development, each engineer updates their feature branches from `develop` regularly, so that merging back in does not result in conflicts.
+  - **Release (candidate) branches**: Branch off of `develop` and merge back into both `develop` and `master`. These are created in preparation of a new version. Release notes and any other meta-data can be updated on this branch, as well as any smoke tests. Performing this work on a release branch frees up the `develop` branch to continue work.
+    - Once a release branch has been created, any new work completed on `develop` will not be included until the next release.
+    - Release versions are determined at the creation of a new release branch.
+    - Once the release branch is ready for production, it is merged into `master` and tagged with the version, as well as merged back into `develop`.
+    - Naming convention is `release-` and the new version number. Example: `release-1.0.0`
+  - **Hotfix branches**: Branch off of `master` and merge back into both `develop` and `master`. When a bug makes its way into a release, sometimes an urgent fix is required immediately. Hotfix branches allow for small changes to be made to production releases, without having to pull in other work that has been ongoing in `develop`.
+    - Once the fix has been completed and tested, this branch is treated identically to a release branch. It is merged into `master`, tagged with the new version, and also merged back into `develop`.
+    - Naming convention is `fix-` and the new version number (usually a patch from the previous version number). Example: `fix-1.0.1`
+
+### Releasing
+
+TK automation!
+
 ## Usage
 
 To use this library in another project, add the following line to your `package.json` dependencies:
