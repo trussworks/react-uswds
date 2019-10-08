@@ -9,7 +9,7 @@ export const GovBanner = (): React.ReactElement => {
   const [isOpen, setOpenState] = useState(false)
 
   return (
-    <div className="usa-banner">
+    <div className="usa-banner" data-testid="govBanner">
       <div className="usa-accordion">
         <header className="usa-banner__header">
           <div className="usa-banner__inner">
