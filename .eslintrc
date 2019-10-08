@@ -5,7 +5,9 @@
     "@typescript-eslint",
     "jsx-a11y",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "no-only-tests",
+    "security"
   ],
   "env": {
     "browser": true,
@@ -52,6 +54,10 @@
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier"
-  ]
+    "prettier",
+    "plugin:security/recommended"
+  ],
+  "rules": {
+    "no-only-tests/no-only-tests": "error"
+  }
 }

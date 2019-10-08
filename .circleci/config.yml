@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.3
-    working_directory: ~/truss-uswds-react
+    working_directory: ~/react-uswds
     steps:
       - checkout
       - restore_cache:
