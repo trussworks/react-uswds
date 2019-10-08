@@ -94,6 +94,7 @@ import { Alert } from '@trussworks/react-uswds'
 - [ ] Load and export USWDS fonts/svgs/other assets
 - [ ] Decide on and document git workflow for this project
 - [ ] Decide on and document release workflow for the package
+- [ ] Document decision behind node version and upgrade plan
 - [ ] Decide on and set up a React component test helper:
   - https://airbnb.io/enzyme/
   - https://testing-library.com/docs/react-testing-library/
