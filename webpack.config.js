@@ -1,11 +1,12 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'react-uswds.js',
+    filename: 'index.js',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
   },
@@ -23,6 +24,12 @@ module.exports = {
       amd: 'react-dom',
     },
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', 'js'],
   },
@@ -45,6 +52,25 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            outputPath: 'assets',
+          },
         },
       },
     ],

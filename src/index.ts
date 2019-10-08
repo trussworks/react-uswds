@@ -1,3 +1,3 @@
-import { Alert } from './Alert/Alert'
+import 'uswds/dist/css/uswds.css'
 
-export { Alert }
+export { Alert } from './Alert/Alert'
