@@ -65,3 +65,5 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
     </div>
   )
 }
+
+export default Accordion
