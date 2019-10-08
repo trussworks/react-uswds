@@ -10,5 +10,5 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',
   },
-  setupFilesAfterEnv: ['./jest.setup.ts'],
+  setupFilesAfterEnv: ['./src/setupTests.ts'],
 }
