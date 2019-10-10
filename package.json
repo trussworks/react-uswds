@@ -74,6 +74,10 @@
     "prettier": "^1.18.2",
     "react-docgen-typescript-loader": "^3.3.0",
     "source-map-loader": "^0.2.4",
+    "stylelint": "^11.1.0",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-prettier": "^1.1.1",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3",
     "url-loader": "^2.2.0",
@@ -93,6 +97,7 @@
     ],
     "src/**/*.{css,scss}": [
       "prettier --write",
+      "stylelint",
       "git add"
     ]
   }
