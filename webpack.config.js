@@ -56,11 +56,29 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /\.module\.css$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
           'css-loader',
+        ],
+      },
+      {
+        test: /\.module\.css$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-modules-typescript-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+            },
+          },
         ],
       },
       {

@@ -18,7 +18,7 @@
     "storybook": "start-storybook",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "lint": "eslint 'src/**'"
+    "lint": "eslint --ext js,jsx,ts,tsx 'src/**'"
   },
   "repository": {
     "type": "git",
@@ -59,6 +59,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "css-modules-typescript-loader": "^3.0.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
@@ -85,9 +86,13 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
       "prettier --write",
       "eslint",
+      "git add"
+    ],
+    "src/**/*.{css,scss}": [
+      "prettier --write",
       "git add"
     ]
   }
