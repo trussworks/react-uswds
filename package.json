@@ -18,7 +18,7 @@
     "storybook": "start-storybook",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "lint": "eslint --ext js,jsx,ts,tsx 'src/**'"
+    "lint": "eslint --ext js,jsx,ts,tsx src"
   },
   "repository": {
     "type": "git",
