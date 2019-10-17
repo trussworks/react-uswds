@@ -148,8 +148,9 @@ import { Alert } from '@trussworks/react-uswds'
 - [x] Add support for and convert existing component(s) to TypeScript
 - [x] Decide on and document git workflow for this project
 - [x] Decide on and document release workflow for the package
-- [ ] Load and export USWDS CSS
-- [ ] Load and export USWDS fonts/svgs/other assets
+- [x] Load and export USWDS CSS
+- [x] Load and export USWDS fonts/svgs/other assets
+- [ ] Document decision behind node version and upgrade plan
 - [ ] Decide on and set up a React component test helper:
   - https://airbnb.io/enzyme/
   - https://testing-library.com/docs/react-testing-library/
