@@ -99,6 +99,16 @@ In order to be eligible for merging, all branches must pass testing and linting 
   - For an optimal developer experience, it's recommended that you configure your editor to run linting/formatting inline.
 - All tests must pass, and eslint is run on all files in CircleCI
 
+Additionally, because this package exports a library, it is crucial that the build files (located in `/lib`) are kept up-to-date and committed to the repo. For now, there is a _pre-push_ hook that will automatically rebuild `/lib` and commit it. That way, an engineer who is making changes to ReactUSWDS and simultaneously testing the implementation in another project doesn't have to worry about remembering to re-build the library before pushing updates.
+
+**_This is not an ideal workflow._** In the future, we will want to address:
+
+- Publishing the ReactUSWDS package to an actual registry (npm or Github)
+- and/or
+- Automatically building the lib in CI and deciding how/where to host artifacts
+
+In the interest of not blocking development, improving the workflow is deferred to the roadmap.
+
 ### Releasing
 
 Steps for a new release (these should be automated as much as possible):
@@ -136,13 +146,15 @@ import { Alert } from '@trussworks/react-uswds'
 - [x] Add lint configs and pre-commit hooks for contributing
 - [x] Set up CI for running tests and linting
 - [x] Add support for and convert existing component(s) to TypeScript
+- [x] Decide on and document git workflow for this project
+- [x] Decide on and document release workflow for the package
 - [ ] Load and export USWDS CSS
 - [ ] Load and export USWDS fonts/svgs/other assets
-- [ ] Decide on and document git workflow for this project
-- [ ] Decide on and document release workflow for the package
 - [ ] Decide on and set up a React component test helper:
   - https://airbnb.io/enzyme/
   - https://testing-library.com/docs/react-testing-library/
 - [ ] Enable `pkg.module` entrypoint for better module and tree shaking:
   - https://github.com/rollup/rollup/wiki/pkg.module
   - https://stackoverflow.com/questions/41289200/output-an-es-module-using-webpack
+- [ ] Add component scaffolding shortcut (for generating component, tests, stories files with template code)
+- [ ] Decide on long-term lib publishing/hosting solution
