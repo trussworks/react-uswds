@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
   },
@@ -29,8 +29,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].bundle.css',
-      chunkFilename: '[name].[id].bundle.css',
+      filename: '[name].css',
+      chunkFilename: '[name].[id].css',
     }),
   ],
   resolve: {
@@ -45,7 +45,6 @@ module.exports = {
           loader: 'awesome-typescript-loader',
           options: {
             useBabel: true,
-            useCache: true,
             babelCore: '@babel/core',
           },
         },
