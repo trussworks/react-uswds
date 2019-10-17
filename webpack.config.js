@@ -3,10 +3,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    uswds: './src/uswds.ts',
+  },
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'index.js',
+    filename: '[name].bundle.js',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
   },
@@ -26,8 +29,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: '[name].bundle.css',
+      chunkFilename: '[name].[id].bundle.css',
     }),
   ],
   resolve: {
