@@ -99,16 +99,6 @@ In order to be eligible for merging, all branches must pass testing and linting 
   - For an optimal developer experience, it's recommended that you configure your editor to run linting/formatting inline.
 - All tests must pass, and eslint is run on all files in CircleCI
 
-Additionally, because this package exports a library, it is crucial that the build files (located in `/lib`) are kept up-to-date and committed to the repo. For now, there is a _pre-push_ hook that will automatically rebuild `/lib` and commit it. That way, an engineer who is making changes to ReactUSWDS and simultaneously testing the implementation in another project doesn't have to worry about remembering to re-build the library before pushing updates.
-
-**_This is not an ideal workflow._** In the future, we will want to address:
-
-- Publishing the ReactUSWDS package to an actual registry (npm or Github)
-- and/or
-- Automatically building the lib in CI and deciding how/where to host artifacts
-
-In the interest of not blocking development, improving the workflow is deferred to the roadmap.
-
 ### Releasing
 
 Steps for a new release (these should be automated as much as possible):

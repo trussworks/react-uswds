@@ -19,7 +19,7 @@
     "build": "webpack",
     "build:watch": "webpack --watch",
     "lint": "eslint 'src/**'",
-    "push-build": "rm -rf lib/ && yarn build && git add lib/ && git commit -m 'Auto-commit new build'"
+    "prepare": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -82,8 +82,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn push-build"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
