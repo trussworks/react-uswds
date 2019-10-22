@@ -18,7 +18,8 @@
     "storybook": "start-storybook",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "lint": "eslint --ext js,jsx,ts,tsx src"
+    "lint": "eslint 'src/**'",
+    "prepare": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -64,8 +65,10 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-no-only-tests": "^2.3.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint-plugin-security": "^1.4.0",
     "file-loader": "^4.2.0",
     "husky": "^3.0.8",
     "jest": "^24.9.0",
