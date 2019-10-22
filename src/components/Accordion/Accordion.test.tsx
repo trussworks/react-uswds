@@ -142,4 +142,70 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
     })
   })
+
+  describe('with a custom className', () => {
+    it('passes the class onto the root Accordion element', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} className="myCustomAccordion" />
+      )
+      expect(getByTestId('accordion')).toHaveClass('myCustomAccordion')
+    })
+  })
+
+  describe('with custom classNames for Accordion Items', () => {
+    const customTestItems = [
+      {
+        title: 'First Amendment',
+        content: (
+          <p>
+            Congress shall make no law respecting an establishment of religion,
+            or prohibiting the free exercise thereof; or abridging the freedom
+            of speech, or of the press; or the right of the people peaceably to
+            assemble, and to petition the Government for a redress of
+            grievances.
+          </p>
+        ),
+        expanded: false,
+        id: '123',
+        className: 'myCustomAccordionItem',
+      },
+      {
+        title: 'Second Amendment',
+        content: (
+          <>
+            <p>
+              A well regulated Militia, being necessary to the security of a
+              free State, the right of the people to keep and bear Arms, shall
+              not be infringed.
+            </p>{' '}
+            <ul>
+              <li>This is a list item</li>
+              <li>Another list item</li>
+            </ul>
+          </>
+        ),
+        expanded: false,
+        id: 'abc',
+      },
+      {
+        title: 'Third Amendment',
+        content: (
+          <p>
+            No Soldier shall, in time of peace be quartered in any house,
+            without the consent of the Owner, nor in time of war, but in a
+            manner to be prescribed by law.
+          </p>
+        ),
+        expanded: false,
+        id: 'def',
+      },
+    ]
+
+    it('passes the class onto the given AccordionItem element', () => {
+      const { getByTestId } = render(<Accordion items={customTestItems} />)
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).toHaveClass(
+        'myCustomAccordionItem'
+      )
+    })
+  })
 })

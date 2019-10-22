@@ -6,20 +6,29 @@ interface AccordionItem {
   content: React.ReactNode
   expanded: boolean
   id: string
+  className?: string
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 interface AccordionProps {
   bordered?: boolean
   items: AccordionItem[]
+  className?: string
 }
 
 export const AccordionItem = (props: AccordionItem): React.ReactElement => {
-  const { title, id, content, expanded, handleToggle } = props
+  const { title, id, content, expanded, className, handleToggle } = props
+
+  const headingClasses = classnames('usa-accordion__heading', className)
+  const contentClasses = classnames(
+    'usa-accordion__content',
+    'usa-prose',
+    className
+  )
 
   return (
     <>
-      <h2 className="usa-accordion__heading">
+      <h2 className={headingClasses}>
         <button
           type="button"
           className="usa-accordion__button"
@@ -33,7 +42,7 @@ export const AccordionItem = (props: AccordionItem): React.ReactElement => {
       <div
         id={id}
         data-testid={`accordionItem_${id}`}
-        className="usa-accordion__content usa-prose"
+        className={contentClasses}
         hidden={!expanded}>
         {content}
       </div>
@@ -42,13 +51,17 @@ export const AccordionItem = (props: AccordionItem): React.ReactElement => {
 }
 
 export const Accordion = (props: AccordionProps): React.ReactElement => {
-  const { bordered, items } = props
+  const { bordered, items, className } = props
 
   const [openItem, setOpenState] = useState(items[0].id)
 
-  const classes = classnames('usa-accordion', {
-    'usa-accordion--bordered': bordered,
-  })
+  const classes = classnames(
+    'usa-accordion',
+    {
+      'usa-accordion--bordered': bordered,
+    },
+    className
+  )
 
   return (
     <div className={classes} data-testid="accordion">
