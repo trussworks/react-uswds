@@ -8,14 +8,16 @@ interface TableProps {
   caption?: React.ReactNode
   children: React.ReactNode
   fullWidth?: boolean
+  fixed?: boolean
 }
 
 export const Table = (props: TableProps): React.ReactElement => {
-  const { bordered, caption, children, fullWidth } = props
+  const { bordered, caption, children, fullWidth, fixed } = props
 
   const classes = classnames('usa-table', {
     'usa-table--borderless': !bordered,
     [`${styles.fullwidth}`]: fullWidth,
+    [`${styles.fixed}`]: fixed,
   })
 
   return (
