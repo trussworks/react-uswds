@@ -53,7 +53,9 @@ export const AccordionItem = (props: AccordionItem): React.ReactElement => {
 export const Accordion = (props: AccordionProps): React.ReactElement => {
   const { bordered, items, className } = props
 
-  const [openItem, setOpenState] = useState(items[0].id)
+  const [openItems, setOpenState] = useState(
+    items.filter(i => !!i.expanded).map(i => i.id)
+  )
 
   const classes = classnames(
     'usa-accordion',
@@ -63,15 +65,28 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
     className
   )
 
+  const toggleItem = (itemId: AccordionItem['id']): void => {
+    const newOpenItems = [...openItems]
+    const itemIndex = openItems.indexOf(itemId)
+
+    if (itemIndex > -1) {
+      newOpenItems.splice(itemIndex, 1)
+    } else {
+      newOpenItems.push(itemId)
+    }
+
+    setOpenState(newOpenItems)
+  }
+
   return (
     <div className={classes} data-testid="accordion">
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
           {...item}
-          expanded={openItem === item.id}
+          expanded={openItems.indexOf(item.id) > -1}
           handleToggle={(): void => {
-            setOpenState(item.id)
+            toggleItem(item.id)
           }}
         />
       ))}
