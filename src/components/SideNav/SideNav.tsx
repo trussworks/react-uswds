@@ -18,7 +18,9 @@ export const SideNav = ({
   return (
     <ul className={classes} data-testid="sidenav">
       {items.map((item, i) => (
-        <li key={`sidenav_item_${i}`}>{item}</li>
+        <li key={`sidenav_item_${i}`} className="usa-sidenav__item">
+          {item}
+        </li>
       ))}
     </ul>
   )
