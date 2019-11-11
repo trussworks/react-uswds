@@ -4,15 +4,18 @@ import classnames from 'classnames'
 import styles from './Alert.module.css'
 
 interface AlertProps {
-  type?: 'success' | 'warning' | 'error' | 'info'
+  type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
   children?: React.ReactNode
   cta?: React.ReactNode
 }
 
-export const Alert = (props: AlertProps): React.ReactElement => {
-  const { type, heading, cta, children } = props
-
+export const Alert = ({
+  type,
+  heading,
+  cta,
+  children,
+}: AlertProps): React.ReactElement => {
   const classes = classnames('usa-alert', {
     'usa-alert--success': type === 'success',
     'usa-alert--warning': type === 'warning',
