@@ -149,6 +149,6 @@ const customTestItems = [
   },
 ]
 
-export const saberCustom = (): React.ReactElement => (
+export const customTitles = (): React.ReactElement => (
   <Accordion bordered={true} items={customTestItems} />
 )

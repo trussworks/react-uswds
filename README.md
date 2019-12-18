@@ -115,11 +115,21 @@ Steps for a new release (these should be automated as much as possible):
 
 ## Usage
 
+### ReactUSWDS
+
 To use this library in another project, add the following line to your `package.json` dependencies:
 
 ```
 devDependencies: {
-  "@trussworks/react-uswds": "https://github.com/trussworks/react-uswds.git
+  "@trussworks/react-uswds": "git+ssh://git@github.com:trussworks/react-uswds.git"
+}
+```
+
+You can also point to a specific branch/tag:
+
+```
+devDependencies: {
+  "@trussworks/react-uswds": "git+ssh://git@github.com:trussworks/react-uswds.git#1.0.0"
 }
 ```
 
@@ -129,6 +139,83 @@ You can then import modules using ES6 syntax:
 
 ```
 import { Alert } from '@trussworks/react-uswds'
+```
+
+Also make sure to include the following in order to import the compiled CSS from this project:
+
+```
+@import '~@trussworks/react-uswds/lib/index.css';
+```
+
+### USWDS CSS & SCSS
+
+If you only want the compiled USWDS CSS, and you aren't going to use any of the USWDS SCSS, you can just include the following:
+
+```
+@import 'uswds';
+```
+
+If you want to use USWDS SCSS (mixins, functions, variables, etc.), you will need to define some required SCSS variables (even if you aren't going to use them):
+
+```
+// your-project/settings.scss
+
+$theme-image-path: '~uswds/src/img';
+$theme-font-path: '~uswds/src/fonts';
+$theme-hero-image: '~uswds/src/img/hero.png';
+```
+
+Then, import the following into your SCSS:
+
+```
+// your-project/index.scss
+
+@import '~uswds/src/stylesheets/theme/_uswds-theme-general.scss';
+@import '~uswds/src/stylesheets/theme/_uswds-theme-typography.scss';
+@import '~uswds/src/stylesheets/theme/_uswds-theme-spacing.scss';
+@import '~uswds/src/stylesheets/theme/_uswds-theme-color.scss';
+@import '~uswds/src/stylesheets/theme/_uswds-theme-utilities.scss';
+
+// Custom theme settings/USWDS overrides go here <-- the settings you defined above
+@import 'your-project/settings.scss';
+
+@import '~uswds/src/stylesheets/packages/_required.scss';
+
+@import 'uswds'; // <-- this goes at the end, contains USWDS CSS
+```
+
+After you've completed the above, you should be able to use USWDS SCSS in your own SCSS files:
+
+```
+// your-project/myProject.scss
+
+.myProjectElement {
+  @include u-bg('info-lighter');
+}
+```
+
+### Configuring USWDS SCSS variables
+
+You can also customize any of the variables used in USWDS SCSS in the `your-project/settings.scss` file. However, the order in which they are defined is very important and needs to match the same order as in `uswds/src/stylesheets/theme/styles.scss`. For example, the below file defines both the required variables mentioned above, as well as overwrites some other settings:
+
+```
+// your-project/settings.scss
+
+/* GENERAL */
+$theme-image-path: '~uswds/src/img';
+
+/* TYPOGRAPHY */
+$theme-respect-user-font-size: false;
+$theme-root-font-size: 14px;
+$theme-font-path: '~uswds/src/fonts';
+$theme-font-type-sans: 'public-sans';
+$theme-style-body-element: true;
+
+/* SPACING */
+$theme-grid-container-max-width: 'desktop-lg';
+
+/* COMPONENTS */
+$theme-hero-image: '~uswds/src/img/hero.png';
 ```
 
 ## Roadmap
@@ -141,11 +228,13 @@ import { Alert } from '@trussworks/react-uswds'
 - [x] Load and export USWDS CSS
 - [x] Load and export USWDS fonts/svgs/other assets
 - [ ] Document decision behind node version and upgrade plan
-- [ ] Decide on and set up a React component test helper:
+- [ ] ADR to decide on and set up a React component test helper:
   - https://airbnb.io/enzyme/
   - https://testing-library.com/docs/react-testing-library/
 - [ ] Enable `pkg.module` entrypoint for better module and tree shaking:
   - https://github.com/rollup/rollup/wiki/pkg.module
   - https://stackoverflow.com/questions/41289200/output-an-es-module-using-webpack
+- [ ] Add more documentation around how to contribute and write new components
 - [ ] Add component scaffolding shortcut (for generating component, tests, stories files with template code)
 - [ ] Decide on long-term lib publishing/hosting solution
+- [ ] Add testing coverage collection, CI status badge
