@@ -1,6 +1,8 @@
 import React from 'react'
 import { Alert } from './Alert'
 
+import { Button } from '../Button/Button'
+
 export default {
   title: 'Alert',
   parameters: {
@@ -39,6 +41,19 @@ export const error = (): React.ReactElement => (
 
 export const info = (): React.ReactElement => (
   <Alert type="info" heading="Informative status">
+    {testText}
+  </Alert>
+)
+
+export const withCTA = (): React.ReactElement => (
+  <Alert
+    type="warning"
+    heading="Warning status"
+    cta={
+      <Button type="button" outline>
+        Click here
+      </Button>
+    }>
     {testText}
   </Alert>
 )

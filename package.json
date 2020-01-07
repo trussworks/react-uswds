@@ -18,7 +18,7 @@
     "storybook": "start-storybook",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "lint": "eslint 'src/**'",
+    "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src",
     "prepare": "yarn build"
   },
   "repository": {
@@ -46,6 +46,8 @@
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-info": "^5.2.3",
     "@storybook/react": "^5.2.1",
+    "@testing-library/jest-dom": "^4.1.1",
+    "@testing-library/react": "^9.3.0",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.5",
@@ -58,6 +60,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "css-modules-typescript-loader": "^3.0.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
@@ -74,6 +77,10 @@
     "prettier": "^1.18.2",
     "react-docgen-typescript-loader": "^3.3.0",
     "source-map-loader": "^0.2.4",
+    "stylelint": "^11.1.0",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-prettier": "^1.1.1",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3",
     "url-loader": "^2.2.0",
@@ -82,13 +89,18 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "tsc --noEmit && lint-staged"
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
       "prettier --write",
       "eslint",
+      "git add"
+    ],
+    "src/**/*.{css,scss}": [
+      "prettier --write",
+      "stylelint",
       "git add"
     ]
   }

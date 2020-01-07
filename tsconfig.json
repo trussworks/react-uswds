@@ -17,6 +17,5 @@
     "declaration": true,
     "outDir": "./lib"
   },
-  "include": ["src/**/*"],
-  "files": ["custom.d.ts"]
+  "files": ["custom.d.ts", "src/index.ts"]
 }
