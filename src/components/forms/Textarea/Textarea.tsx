@@ -8,7 +8,12 @@ interface TextareaProps {
   error?: boolean
   success?: boolean
   children?: React.ReactNode
-  inputRef?: React.RefObject<HTMLTextAreaElement>
+  inputRef?:
+    | string
+    | ((instance: HTMLTextAreaElement | null) => void)
+    | React.RefObject<HTMLTextAreaElement>
+    | null
+    | undefined
 }
 
 export const Textarea = (

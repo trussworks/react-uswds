@@ -10,7 +10,12 @@ interface TextInputProps {
   success?: boolean
   small?: boolean
   medium?: boolean
-  inputRef?: React.RefObject<HTMLInputElement>
+  inputRef?:
+    | string
+    | ((instance: HTMLInputElement | null) => void)
+    | React.RefObject<HTMLInputElement>
+    | null
+    | undefined
 }
 
 export const TextInput = (

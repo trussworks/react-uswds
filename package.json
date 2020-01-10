@@ -1,5 +1,5 @@
 {
-  "name": "react-uswds",
+  "name": "@trussworks/react-uswds",
   "version": "1.0.0",
   "private": true,
   "description": "React USWDS 2.0 component library",
