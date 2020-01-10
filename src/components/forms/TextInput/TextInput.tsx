@@ -41,6 +41,7 @@ export const TextInput = (
     onBlur,
     onChange,
     onFocus,
+    ref,
     ...otherProps
   } = props
 
@@ -80,6 +81,7 @@ export const TextInput = (
       onBlur={onBlur}
       onChange={onChange}
       onFocus={onFocus}
+      ref={ref}
       {...otherProps}
     />
   )

@@ -35,6 +35,7 @@ export const Textarea = (
     onBlur,
     onChange,
     onFocus,
+    ref,
   } = props
 
   const classes = classnames(
@@ -67,7 +68,8 @@ export const Textarea = (
       autoCorrect={autoCorrect}
       onBlur={onBlur}
       onChange={onChange}
-      onFocus={onFocus}>
+      onFocus={onFocus}
+      ref={ref}>
       {children}
     </textarea>
   )
