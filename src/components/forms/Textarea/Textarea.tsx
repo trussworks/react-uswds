@@ -8,6 +8,7 @@ interface TextareaProps {
   error?: boolean
   success?: boolean
   children?: React.ReactNode
+  inputRef?: React.RefObject<HTMLTextAreaElement>
 }
 
 export const Textarea = (
@@ -35,7 +36,7 @@ export const Textarea = (
     onBlur,
     onChange,
     onFocus,
-    ref,
+    inputRef,
   } = props
 
   const classes = classnames(
@@ -69,7 +70,7 @@ export const Textarea = (
       onBlur={onBlur}
       onChange={onChange}
       onFocus={onFocus}
-      ref={ref}>
+      ref={inputRef}>
       {children}
     </textarea>
   )

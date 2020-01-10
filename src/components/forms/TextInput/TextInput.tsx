@@ -10,6 +10,7 @@ interface TextInputProps {
   success?: boolean
   small?: boolean
   medium?: boolean
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 export const TextInput = (
@@ -41,7 +42,7 @@ export const TextInput = (
     onBlur,
     onChange,
     onFocus,
-    ref,
+    inputRef,
     ...otherProps
   } = props
 
@@ -81,7 +82,7 @@ export const TextInput = (
       onBlur={onBlur}
       onChange={onChange}
       onFocus={onFocus}
-      ref={ref}
+      ref={inputRef}
       {...otherProps}
     />
   )
