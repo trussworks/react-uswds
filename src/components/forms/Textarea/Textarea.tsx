@@ -26,22 +26,8 @@ export const Textarea = (
     error,
     success,
     children,
-    cols,
-    rows,
-    autoComplete,
-    autoCapitalize,
-    autoCorrect,
-    disabled,
-    inputMode,
-    maxLength,
-    minLength,
-    placeholder,
-    readOnly,
-    required,
-    onBlur,
-    onChange,
-    onFocus,
     inputRef,
+    ...inputProps
   } = props
 
   const classes = classnames(
@@ -59,23 +45,8 @@ export const Textarea = (
       className={classes}
       id={id}
       name={name}
-      disabled={disabled}
-      readOnly={readOnly}
-      autoComplete={autoComplete}
-      inputMode={inputMode}
-      maxLength={maxLength}
-      minLength={minLength}
-      placeholder={placeholder}
-      required={required}
-      cols={cols}
-      rows={rows}
-      aria-required={required}
-      autoCapitalize={autoCapitalize}
-      autoCorrect={autoCorrect}
-      onBlur={onBlur}
-      onChange={onChange}
-      onFocus={onFocus}
-      ref={inputRef}>
+      ref={inputRef}
+      {...inputProps}>
       {children}
     </textarea>
   )

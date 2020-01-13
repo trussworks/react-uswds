@@ -30,25 +30,8 @@ export const TextInput = (
     success,
     small,
     medium,
-    autoComplete,
-    autoCapitalize,
-    autoCorrect,
-    disabled,
-    inputMode,
-    maxLength,
-    minLength,
-    pattern,
-    placeholder,
-    readOnly,
-    required,
-    size,
-    step,
-    value,
-    onBlur,
-    onChange,
-    onFocus,
     inputRef,
-    ...otherProps
+    ...inputProps
   } = props
 
   const classes = classnames(
@@ -69,26 +52,8 @@ export const TextInput = (
       id={id}
       name={name}
       type={type}
-      disabled={disabled}
-      readOnly={readOnly}
-      autoComplete={autoComplete}
-      inputMode={inputMode}
-      maxLength={maxLength}
-      minLength={minLength}
-      pattern={pattern}
-      placeholder={placeholder}
-      required={required}
-      size={size}
-      step={step}
-      value={value}
-      aria-required={required}
-      autoCapitalize={autoCapitalize}
-      autoCorrect={autoCorrect}
-      onBlur={onBlur}
-      onChange={onChange}
-      onFocus={onFocus}
       ref={inputRef}
-      {...otherProps}
+      {...inputProps}
     />
   )
 }
