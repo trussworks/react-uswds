@@ -3,6 +3,8 @@ import { Fieldset } from './Fieldset'
 
 import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
+import { Checkbox } from '../Checkbox/Checkbox'
+import { Radio } from '../Radio/Radio'
 
 export default {
   title: 'Fieldset',
@@ -29,5 +31,66 @@ export const nameFieldset = (): React.ReactElement => (
     <TextInput id="middle-name" name="middle-name" type="text" />
     <Label htmlFor="last-name">Last name</Label>
     <TextInput id="last-name" name="last-name" type="text" />
+  </Fieldset>
+)
+
+export const checkboxFieldset = (): React.ReactElement => (
+  <Fieldset legend="Historical figures 1" legendSrOnly>
+    <Checkbox
+      id="truth"
+      name="historical-figures-1"
+      value="truth"
+      defaultChecked
+      label="Sojourner Truth"
+    />
+    <Checkbox
+      id="douglass"
+      name="historical-figures-1"
+      value="douglass"
+      label="Frederick Douglass"
+    />
+    <Checkbox
+      id="washington"
+      name="historical-figures-1"
+      value="washington"
+      label="Booker T. Washington"
+    />
+    <Checkbox
+      id="carver"
+      name="historical-figures-1"
+      label="George Washington Carver"
+      disabled
+    />
+  </Fieldset>
+)
+
+export const radioFieldset = (): React.ReactElement => (
+  <Fieldset legend="Historical figures 2" legendSrOnly>
+    <Radio
+      id="stanton"
+      name="historical-figures-2"
+      defaultChecked
+      label="Elizabeth Cady Stanton"
+      value="stanton"
+    />
+    <Radio
+      id="anthony"
+      name="historical-figures-2"
+      label="Susan B. Anthony"
+      value="anthony"
+    />
+    <Radio
+      id="tubman"
+      name="historical-figures-2"
+      label="Harriet Tubman"
+      value="tubman"
+    />
+    <Radio
+      id="invalid"
+      name="historical-figures-2"
+      label="Invalid option"
+      value="invalid"
+      disabled
+    />
   </Fieldset>
 )

@@ -16,6 +16,18 @@ export const defaultTextarea = (): React.ReactElement => (
   <Textarea id="input-type-text" name="input-type-text" />
 )
 
+export const withDefaultValue = (): React.ReactElement => (
+  <Textarea id="input-value" name="input-value" defaultValue="Change me" />
+)
+
+export const withPlaceholder = (): React.ReactElement => (
+  <Textarea
+    id="input-type-text"
+    name="input-type-text"
+    placeholder="Enter value"
+  />
+)
+
 export const error = (): React.ReactElement => (
   <Textarea id="input-error" name="input-error" type="text" error />
 )
