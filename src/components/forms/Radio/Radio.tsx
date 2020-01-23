@@ -15,7 +15,7 @@ interface RadioProps {
 }
 
 export const Radio = (
-  props: RadioProps & React.HTMLProps<HTMLInputElement>
+  props: RadioProps & React.InputHTMLAttributes<HTMLInputElement>
 ): React.ReactElement => {
   const { id, name, className, label, inputRef, ...inputProps } = props
 

@@ -23,3 +23,11 @@ export const checked = (): React.ReactElement => (
 export const disabled = (): React.ReactElement => (
   <Checkbox id="checkbox" name="checkbox" label="My Checkbox" disabled />
 )
+
+export const withRichLabel = (): React.ReactElement => (
+  <Checkbox
+    id="checkbox"
+    name="checkbox"
+    label={<strong>My Checkbox</strong>}
+  />
+)

@@ -9,7 +9,7 @@ interface FormProps {
 }
 
 export const Form = (
-  props: FormProps & React.HTMLProps<HTMLFormElement>
+  props: FormProps & React.FormHTMLAttributes<HTMLFormElement>
 ): React.ReactElement => {
   const { onSubmit, children, className, large } = props
 

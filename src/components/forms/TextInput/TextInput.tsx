@@ -19,7 +19,7 @@ interface TextInputProps {
 }
 
 export const TextInput = (
-  props: TextInputProps & React.HTMLProps<HTMLInputElement>
+  props: TextInputProps & React.InputHTMLAttributes<HTMLInputElement>
 ): React.ReactElement => {
   const {
     id,

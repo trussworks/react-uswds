@@ -15,7 +15,7 @@ interface CheckboxProps {
 }
 
 export const Checkbox = (
-  props: CheckboxProps & React.HTMLProps<HTMLInputElement>
+  props: CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>
 ): React.ReactElement => {
   const { id, name, className, label, inputRef, ...inputProps } = props
 

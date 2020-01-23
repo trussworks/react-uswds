@@ -17,7 +17,7 @@ interface TextareaProps {
 }
 
 export const Textarea = (
-  props: TextareaProps & React.HTMLProps<HTMLTextAreaElement>
+  props: TextareaProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>
 ): React.ReactElement => {
   const {
     id,

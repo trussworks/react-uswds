@@ -15,7 +15,7 @@ interface DropdownProps {
 }
 
 export const Dropdown = (
-  props: DropdownProps & React.HTMLProps<HTMLSelectElement>
+  props: DropdownProps & React.SelectHTMLAttributes<HTMLSelectElement>
 ): React.ReactElement => {
   const { id, name, className, inputRef, children, ...inputProps } = props
 
