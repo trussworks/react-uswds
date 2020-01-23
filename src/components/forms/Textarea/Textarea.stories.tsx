@@ -29,7 +29,7 @@ export const withPlaceholder = (): React.ReactElement => (
 )
 
 export const error = (): React.ReactElement => (
-  <Textarea id="input-error" name="input-error" type="text" error />
+  <Textarea id="input-error" name="input-error" error />
 )
 
 export const success = (): React.ReactElement => (
