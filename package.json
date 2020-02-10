@@ -1,8 +1,16 @@
 {
-  "name": "react-uswds",
+  "name": "@trussworks/react-uswds",
   "version": "1.0.0",
-  "private": true,
   "description": "React USWDS 2.0 component library",
+  "keywords": [
+    "react",
+    "uswds",
+    "uswds 2.0",
+    "react component",
+    "us web design",
+    "design system",
+    "component library"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -23,10 +31,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trussworks/react-uswds.git"
+    "url": "github:trussworks/react-uswds"
   },
-  "author": "",
-  "license": "BSD-3-Clause",
+  "author": "Suzanne Rozier <suz@truss.works>",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/trussworks/react-uswds/issues"
   },
