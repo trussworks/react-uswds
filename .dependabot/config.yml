@@ -1,0 +1,9 @@
+version: 1
+update_configs:
+  # Keep go modules up to date, batching pull requests weekly
+  - package_manager: "javascript"
+    directory: "/"
+    update_schedule: "weekly"
+    # Apply dependencies label to PRs
+    default_labels:
+      - "dependencies"
