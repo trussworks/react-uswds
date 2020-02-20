@@ -11,7 +11,7 @@ interface FormProps {
 export const Form = (
   props: FormProps & React.FormHTMLAttributes<HTMLFormElement>
 ): React.ReactElement => {
-  const { onSubmit, children, className, large } = props
+  const { onSubmit, children, className, large, ...formProps } = props
 
   const classes = classnames(
     'usa-form',
@@ -20,7 +20,11 @@ export const Form = (
   )
 
   return (
-    <form data-testid="form" className={classes} onSubmit={onSubmit}>
+    <form
+      data-testid="form"
+      className={classes}
+      onSubmit={onSubmit}
+      {...formProps}>
       {children}
     </form>
   )
