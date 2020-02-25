@@ -25,5 +25,7 @@ export {
   Overlay,
   ModalContainer,
   connectModal,
+  ConnectedModalProps,
   useModal,
+  ModalHook,
 } from './components/Modal/Modal'

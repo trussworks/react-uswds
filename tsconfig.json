@@ -17,5 +17,11 @@
     "declaration": true,
     "outDir": "./lib"
   },
-  "files": ["custom.d.ts", "src/index.ts"]
+  "include": ["src/**/*", "custom.d.ts"],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.tsx"
+  ]
 }

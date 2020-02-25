@@ -43,12 +43,12 @@ export const ModalContainer = ({
 )
 
 /** connectModal and useModal package the logic & state of opening/closing a modal */
-export interface ModalContainerProps {
+export interface ConnectedModalProps {
   isOpen: boolean
   onClose: () => void
 }
 
-export const connectModal = function<P extends ModalContainerProps>(
+export const connectModal = function<P extends ConnectedModalProps>(
   Component: React.FunctionComponent<P> | React.ComponentType<P>
 ): React.FunctionComponent<P> {
   const ConnectedModal = ({
