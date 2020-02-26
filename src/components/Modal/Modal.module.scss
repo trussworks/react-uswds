@@ -19,8 +19,9 @@
   @include u-shadow(3);
   @include u-radius('sm');
 
-  // TODO what should this value be?
+  // TODO - adapt these for different screen sizes/modal sizes?
   max-width: 630px;
+  min-width: 400px;
 
   .title,
   .content,
