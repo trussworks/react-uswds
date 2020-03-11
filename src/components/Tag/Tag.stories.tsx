@@ -17,3 +17,7 @@ export const defaultTag = (): React.ReactElement => <Tag>My Tag</Tag>
 export const customBg = (): React.ReactElement => (
   <Tag background="#e44608">My Tag</Tag>
 )
+
+export const customClass = (): React.ReactElement => (
+  <Tag className="custom-class">My Tag</Tag>
+)
