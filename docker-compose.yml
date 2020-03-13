@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  react-uswds:
+    build: .
+    ports:
+      - 6006:6006
+    command: yarn storybook --ci --port 6006 --host 0.0.0.0

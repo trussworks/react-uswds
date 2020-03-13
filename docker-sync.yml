@@ -1,0 +1,8 @@
+version: "2"
+options:
+  compose-file-path: 'docker-compose.yml'
+  compose-dev-file-path: 'docker-compose-dev.yml'
+  verbose: true
+syncs:
+  code:
+    src: './src'
