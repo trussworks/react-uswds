@@ -12,11 +12,11 @@ interface ButtonProps {
   inverse?: boolean
   big?: boolean
   unstyled?: boolean
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  className?: string
 }
 
-export const Button = (props: ButtonProps): React.ReactElement => {
+export const Button = (
+  props: ButtonProps & React.HTMLAttributes<HTMLButtonElement>
+): React.ReactElement => {
   const {
     type,
     disabled,
