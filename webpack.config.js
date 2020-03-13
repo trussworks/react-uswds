@@ -34,7 +34,7 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', 'js'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
   module: {
     rules: [
@@ -57,21 +57,9 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        exclude: /\.module\.css$/i,
+        test: /\.module\.(sa|sc|c)ss$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader',
-        ],
-      },
-      {
-        test: /\.module\.css$/i,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          MiniCssExtractPlugin.loader,
           'css-modules-typescript-loader',
           {
             loader: 'css-loader',
@@ -81,7 +69,19 @@ module.exports = {
               },
             },
           },
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: ['./src/uswdsResources.scss'],
+            },
+          },
         ],
+      },
+      {
+        test: /\.(sa|sc|c)ss$/i,
+        exclude: /\.module\.(sa|sc|c)ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
