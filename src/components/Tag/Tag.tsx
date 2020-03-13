@@ -4,10 +4,11 @@ import classnames from 'classnames'
 interface TagProps {
   children: React.ReactNode
   background?: string
-  className?: string
 }
 
-export const Tag = (props: TagProps): React.ReactElement => {
+export const Tag = (
+  props: TagProps & React.HTMLAttributes<HTMLSpanElement>
+): React.ReactElement => {
   const { children, background, className } = props
 
   const style: React.CSSProperties = {}
