@@ -21,4 +21,12 @@ background: ${backgroundColor};
 `)
     })
   })
+
+  describe('with a className prop', () => {
+    it('applies the className', () => {
+      const customClass = 'custom-class'
+      const { getByTestId } = render(<Tag className={customClass}>My Tag</Tag>)
+      expect(getByTestId('tag')).toHaveClass(`${customClass}`)
+    })
+  })
 })
