@@ -11,6 +11,8 @@ interface ButtonProps {
   outline?: boolean
   inverse?: boolean
   big?: boolean
+  small?: boolean
+  icon?: boolean
   unstyled?: boolean
 }
 
@@ -27,6 +29,8 @@ export const Button = (
     outline,
     inverse,
     big,
+    small,
+    icon,
     unstyled,
     onClick,
     className,
@@ -41,6 +45,8 @@ export const Button = (
       'usa-button--outline': outline,
       'usa-button--inverse': inverse,
       'usa-button--big': big,
+      'usa-button--small': small,
+      'usa-button--icon': icon,
       'usa-button--unstyled': unstyled,
     },
     className
