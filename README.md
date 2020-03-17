@@ -76,3 +76,4 @@ Also make sure to include the following in order to import the compiled CSS from
 - [ ] Add testing coverage collection
 - [ ] Set up Storybook as public Github page
 - [ ] Add example application that uses the library to the repo
+- [ ] Setup https://danger.systems/js/ to check on contribution standards, possibly even checking yarn install for warnings
