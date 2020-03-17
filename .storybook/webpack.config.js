@@ -19,13 +19,13 @@ module.exports = ({ config }) => {
   })
 
   config.module.rules.push({
-    test: /\.css$/,
-    exclude: /\.module\.css$/i,
-    use: ['style-loader', 'css-loader'],
+    test: /\.(sa|sc|c)ss$/,
+    exclude: /\.module\.(sa|sc|c)ss$/i,
+    use: ['style-loader', 'css-loader', 'sass-loader'],
   })
 
   config.module.rules.push({
-    test: /\.module\.css$/i,
+    test: /\.module\.(sa|sc|c)ss$/i,
     include: path.resolve(__dirname, '../src'),
     use: [
       'style-loader',
@@ -36,6 +36,13 @@ module.exports = ({ config }) => {
           modules: {
             localIdentName: '[path][name]__[local]--[hash:base64:5]',
           },
+        },
+      },
+      'sass-loader',
+      {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: ['./src/uswdsResources.scss'],
         },
       },
     ],

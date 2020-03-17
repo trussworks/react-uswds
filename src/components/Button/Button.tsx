@@ -12,10 +12,11 @@ interface ButtonProps {
   inverse?: boolean
   big?: boolean
   unstyled?: boolean
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export const Button = (props: ButtonProps): React.ReactElement => {
+export const Button = (
+  props: ButtonProps & React.HTMLAttributes<HTMLButtonElement>
+): React.ReactElement => {
   const {
     type,
     disabled,
@@ -28,17 +29,22 @@ export const Button = (props: ButtonProps): React.ReactElement => {
     big,
     unstyled,
     onClick,
+    className,
   } = props
 
-  const classes = classnames('usa-button', {
-    'usa-button--secondary': secondary,
-    'usa-button--base': base,
-    'usa-button--accent-cool': accent,
-    'usa-button--outline': outline,
-    'usa-button--inverse': inverse,
-    'usa-button--big': big,
-    'usa-button--unstyled': unstyled,
-  })
+  const classes = classnames(
+    'usa-button',
+    {
+      'usa-button--secondary': secondary,
+      'usa-button--base': base,
+      'usa-button--accent-cool': accent,
+      'usa-button--outline': outline,
+      'usa-button--inverse': inverse,
+      'usa-button--big': big,
+      'usa-button--unstyled': unstyled,
+    },
+    className
+  )
 
   return (
     <button

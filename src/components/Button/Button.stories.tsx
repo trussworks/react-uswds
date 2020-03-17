@@ -57,3 +57,9 @@ export const unstyled = (): React.ReactElement => (
     Click Me
   </Button>
 )
+
+export const customClass = (): React.ReactElement => (
+  <Button type="button" className="custom-class">
+    Click Me
+  </Button>
+)
