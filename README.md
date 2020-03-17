@@ -75,3 +75,4 @@ Also make sure to include the following in order to import the compiled CSS from
 - [ ] Add component scaffolding shortcut (for generating component, tests, stories files with template code)
 - [ ] Add testing coverage collection
 - [ ] Set up Storybook as public Github page
+- [ ] Setup https://danger.systems/js/ to check on contribution standards, possibly even checking yarn install for warnings
