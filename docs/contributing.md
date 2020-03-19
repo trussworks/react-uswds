@@ -75,21 +75,48 @@ In order to be eligible for merging, all branches must pass testing and linting 
 
 Steps for a new release (these should be automated as much as possible):
 
-- Determine the new version number based on the scale of changes
+1. Determine the new version number based on the scale of changes following [Semantic Versioning](https://semver.org/):
 
-- Create the release candidate branch (naming `release-<version>`)
+> Given a version number MAJOR.MINOR.PATCH, increment the:
+>
+> - MAJOR version when you make incompatible API changes,
+> - MINOR version when you add functionality in a backwards compatible manner, and
+> - PATCH version when you make backwards compatible bug fixes.
 
-* Compare `develop` with the last version to see what commits have been made since: https://github.com/trussworks/react-uswds/compare/1.0.0...develop
+2. Create the release candidate branch (note that version numbers should _never_ be prefixed with `v`):
 
-* Update the [change log](../CHANGELOG.md)
+```
+git checkout -b release-<version>
+```
 
-- Bump version number, following [Semantic Versioning](https://semver.org/):
+For example:
 
-  > Given a version number MAJOR.MINOR.PATCH, increment the:
-  >
-  > - MAJOR version when you make incompatible API changes,
-  > - MINOR version when you add functionality in a backwards compatible manner, and
-  > - PATCH version when you make backwards compatible bug fixes.
+```
+git checkout -b release-1.1.0
+```
 
-* Create a production asset build (`yarn build`) and publish the assets somewhere
-  - This may need to be Github as long as we aren't publishing the package to an actual registry. The downside of this is it means committing assets into the repo.
+3. Make sure the [change log](../CHANGELOG.md) is up to date with all of the changes in the new version. It can be helpful to compare `develop` with the latest version to see what commits have been made since. For example: https://github.com/trussworks/react-uswds/compare/1.0.0...develop
+
+4. Update the package version number in [`package.json`](../package.json)
+
+5. Open a PR for the release branch against **`master`** (not `develop`, which is the default branch), and ask for approvals from stakeholders, perform testing on applications, etc. Any hot fixes from testing or PR feedback can be made to the release branch directly if appropriate. This is also a good time to check for any pending Dependabot PRs and merge those.
+
+![image](./release_PR.png)
+
+6. Once the release PR is approved, complete the release by merging into master, and creating a release on Github (https://github.com/trussworks/react-uswds/releases). The tag version should be the new version number (again, _not_ prefixed with `v`) and the changelog should be included in the description. Immediately merge master into develop so that develop is up to date with the new version.
+
+![image](./github_release.png)
+
+7. Finally, publish the new package to npm. You can do a dry run with:
+
+```
+npm publish --dry-run
+```
+
+This will output the resulting .tar package without actually publishing it to the npm registry. If everything looks good, you can then run:
+
+```
+npm publish
+```
+
+Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Slack.
