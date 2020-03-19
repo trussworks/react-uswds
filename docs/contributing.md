@@ -75,12 +75,21 @@ In order to be eligible for merging, all branches must pass testing and linting 
 
 Steps for a new release (these should be automated as much as possible):
 
+- Determine the new version number based on the scale of changes
+
+- Create the release candidate branch (naming `release-<version>`)
+
+* Compare `develop` with the last version to see what commits have been made since: https://github.com/trussworks/react-uswds/compare/1.0.0...develop
+
+* Update the [change log](../CHANGELOG.md)
+
 - Bump version number, following [Semantic Versioning](https://semver.org/):
+
   > Given a version number MAJOR.MINOR.PATCH, increment the:
   >
   > - MAJOR version when you make incompatible API changes,
   > - MINOR version when you add functionality in a backwards compatible manner, and
   > - PATCH version when you make backwards compatible bug fixes.
-- Update the [change log](../CHANGELOG.md)
-- Create a production asset build (`yarn build`) and publish the assets somewhere
+
+* Create a production asset build (`yarn build`) and publish the assets somewhere
   - This may need to be Github as long as we aren't publishing the package to an actual registry. The downside of this is it means committing assets into the repo.
