@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 
 import { Button } from './Button'
 
@@ -28,7 +27,7 @@ describe('Button component', () => {
       ['unstyled', 'usa-button--unstyled'],
     ]
 
-    optionalClasses.map(data => {
+    optionalClasses.map((data) => {
       it(`${data[1]}`, () => {
         const additionalProps: { [key: string]: boolean } = {}
         additionalProps[data[0]] = true
