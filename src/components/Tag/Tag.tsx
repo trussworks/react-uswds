@@ -1,20 +1,25 @@
 import React from 'react'
+import classnames from 'classnames'
 
 interface TagProps {
   children: React.ReactNode
   background?: string
 }
 
-export const Tag = (props: TagProps): React.ReactElement => {
-  const { children, background } = props
+export const Tag = (
+  props: TagProps & React.HTMLAttributes<HTMLSpanElement>
+): React.ReactElement => {
+  const { children, background, className } = props
 
   const style: React.CSSProperties = {}
   if (background) {
     style.background = background
   }
 
+  const tagClasses = classnames('usa-tag', className)
+
   return (
-    <span data-testid="tag" className="usa-tag" style={{ ...style }}>
+    <span data-testid="tag" className={tagClasses} style={{ ...style }}>
       {children}
     </span>
   )

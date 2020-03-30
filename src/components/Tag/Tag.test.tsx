@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 
 import { Tag } from './Tag'
 
@@ -19,6 +18,14 @@ describe('Tag component', () => {
       expect(getByTestId('tag')).toHaveStyle(`
 background: ${backgroundColor};
 `)
+    })
+  })
+
+  describe('with a className prop', () => {
+    it('applies the className', () => {
+      const customClass = 'custom-class'
+      const { getByTestId } = render(<Tag className={customClass}>My Tag</Tag>)
+      expect(getByTestId('tag')).toHaveClass(`${customClass}`)
     })
   })
 })

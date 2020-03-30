@@ -75,3 +75,8 @@ Also make sure to include the following in order to import the compiled CSS from
 - [ ] Add component scaffolding shortcut (for generating component, tests, stories files with template code)
 - [ ] Add testing coverage collection
 - [ ] Set up Storybook as public Github page
+- [ ] Add example application that uses the library to the repo
+- [ ] Setup https://danger.systems/js/ to check on contribution standards, possibly even checking yarn install for warnings
+- [ ] Add visual testing automation tool (i.e., Loki)
+- [ ] Enforce adding to CHANGELOG when merging a PR into develop
+- [ ] Make sure new components are added as package exports
