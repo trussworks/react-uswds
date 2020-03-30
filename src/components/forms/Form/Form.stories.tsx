@@ -20,7 +20,9 @@ Source: https://designsystem.digital.gov/components/form-templates/
   },
 }
 
-const mockSubmit = () => {}
+const mockSubmit = (): void => {
+  /* mock submit fn */
+}
 
 export const textInputForm = (): React.ReactElement => (
   <div style={{ marginLeft: '4rem' }}>
