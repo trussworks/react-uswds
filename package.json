@@ -34,6 +34,11 @@
     "url": "github:trussworks/react-uswds"
   },
   "author": "Suzanne Rozier <suz@truss.works>",
+  "contributors": [
+    "John Gedeon <john@truss.works>",
+    "Erin Stanfill <erin@truss.works>",
+    "Sara Bocciardi <sara@truss.works>"
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/trussworks/react-uswds/issues"
