@@ -64,6 +64,7 @@ Also make sure to include the following in order to import the compiled CSS from
 - [x] Load and export USWDS fonts/svgs/other assets
 - [x] Decide on long-term lib publishing/hosting solution
 - [x] Add CI status badge
+- [x] Setup https://danger.systems/js/ to check on contribution standards, possibly even checking yarn install for warnings
 - [ ] Document decision behind node version and upgrade plan
 - [ ] ADR to decide on and set up a React component test helper:
   - https://airbnb.io/enzyme/
@@ -76,7 +77,6 @@ Also make sure to include the following in order to import the compiled CSS from
 - [ ] Add testing coverage collection
 - [ ] Set up Storybook as public Github page
 - [ ] Add example application that uses the library to the repo
-- [ ] Setup https://danger.systems/js/ to check on contribution standards, possibly even checking yarn install for warnings
 - [ ] Add visual testing automation tool (i.e., Loki)
 - [ ] Enforce adding to CHANGELOG when merging a PR into develop
 - [ ] Make sure new components are added as package exports
