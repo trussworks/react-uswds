@@ -1,3 +1,6 @@
+// Global CSS
+import './styles/index.scss'
+
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'
