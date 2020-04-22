@@ -14,7 +14,6 @@ export const SecondaryNav = ({
 
   return (
     <>
-      {/* How to change button to show/not */}
       <button
         className="usa-accordion__button usa-nav__link"
         aria-expanded="true"
