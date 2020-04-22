@@ -1,3 +1,4 @@
+/*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Form } from './Form'
 
@@ -171,6 +172,48 @@ export const addressForm = (): React.ReactElement => (
         medium
         pattern="[\d]{5}(-[\d]{4})?"
       />
+    </Fieldset>
+  </Form>
+)
+
+export const signInForm = (): React.ReactElement => (
+  <Form onSubmit={mockSubmit} large>
+    <Fieldset legend="Sign In">
+      <span>
+        or <a href="javascript:void(0);">create an account</a>
+      </span>
+
+      <Label htmlFor="username">Username or email address</Label>
+      <TextInput id="username" name="username" type="text" />
+      <Label htmlFor="password-sign-in">Password</Label>
+      <TextInput
+        id="password-sign-in"
+        name="password-sign-in"
+        type="password"
+      />
+    </Fieldset>
+  </Form>
+)
+
+export const passwordResetForm = (): React.ReactElement => (
+  <Form onSubmit={mockSubmit} large>
+    <Fieldset legend="Reset password">
+      <span>Please enter your new password</span>
+
+      <Label htmlFor="newPassword">New Password</Label>
+      <TextInput id="newPassword" name="newPassword" type="password" />
+      <Label htmlFor="confirmPassword">Confirm Password</Label>
+      <TextInput id="confirmPassword" name="confirmPassword" type="password" />
+      <p>
+        <a href="javascript:void(0);" title="Forgot username">
+          Forgot username?
+        </a>
+      </p>
+      <p>
+        <a href="javascript:void(0);" title="Forgot password">
+          Forgot password?
+        </a>
+      </p>
     </Fieldset>
   </Form>
 )
