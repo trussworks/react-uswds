@@ -12,15 +12,15 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-const testItems = [
-  <a className="usa-nav__link" href="#linkOne" key="one">
-    <span>Simple link</span>
+const testBasicHeaderItems = [
+  <a className="usa-current" href="#linkOne" key="one">
+    <span>Current link</span>
   </a>,
-  <a className="usa-nav__link" href="#linkTwo" key="two">
+  <a href="#linkTwo" key="two">
     <span>Simple link Two</span>
   </a>,
 ]
 
 export const defaultPrimaryNav = (): React.ReactElement => (
-  <PrimaryNav items={testItems}></PrimaryNav>
+  <PrimaryNav items={testBasicHeaderItems}></PrimaryNav>
 )

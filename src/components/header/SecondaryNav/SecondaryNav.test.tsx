@@ -1,20 +1,23 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { PrimaryNav } from './PrimaryNav'
+import { SecondaryNav } from './SecondaryNav'
 
+const testLabel = 'Nav Label'
 const testItems = [
-  <a className="usa-current" href="#linkOne" key="one">
-    <span>Simple link</span>
+  <a href="#linkOne" key="one">
+    Simple link
   </a>,
   <a href="#linkTwo" key="two">
-    <span>Simple link Two</span>
+    Simple link Two
   </a>,
 ]
 
 describe('Title component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(<PrimaryNav items={testItems}></PrimaryNav>)
+    const { queryByText } = render(
+      <SecondaryNav label={testLabel} items={testItems}></SecondaryNav>
+    )
     expect(queryByText('Simple link')).toBeInTheDocument()
   })
 })

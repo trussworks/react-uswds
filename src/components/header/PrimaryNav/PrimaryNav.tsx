@@ -3,16 +3,19 @@ import classnames from 'classnames'
 
 type PrimaryNavProps = {
   items: React.ReactNode[]
+  children?: React.ReactNode
+  isSecondNav?: boolean
 }
 
-export const PrimaryNav = ({ items }: PrimaryNavProps): React.ReactElement => {
+export const PrimaryNav = ({
+  items,
+  children,
+  isSecondNav = false,
+}: PrimaryNavProps): React.ReactElement => {
   const classes = classnames('usa-nav')
 
   return (
     <nav className={classes}>
-      <button className="usa-nav__close">
-        <img src="/assets/img/close.svg" alt="close" />
-      </button>
       <ul className="usa-nav__primary usa-accordion">
         {items.map((item, i) => (
           <li key={`primarynav_item_${i}`} className="usa-nav__primary-item">
@@ -20,6 +23,7 @@ export const PrimaryNav = ({ items }: PrimaryNavProps): React.ReactElement => {
           </li>
         ))}
       </ul>
+      {children}
     </nav>
   )
 }
