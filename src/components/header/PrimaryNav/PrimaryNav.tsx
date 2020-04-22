@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-import { SearchInput } from '../SearchInput/SearchInput'
 
 type PrimaryNavProps = {
   items: React.ReactNode[]
@@ -21,7 +20,6 @@ export const PrimaryNav = ({ items }: PrimaryNavProps): React.ReactElement => {
           </li>
         ))}
       </ul>
-      <SearchInput></SearchInput>
     </nav>
   )
 }

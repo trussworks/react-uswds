@@ -1,15 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
-import Title from '../Title/Title'
-import PrimaryNav from '../PrimaryNav/PrimaryNav'
+import { Title } from '../../Title/Title'
+import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 interface HeaderProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
 }
 
 export const Header = (props: HeaderProps): React.ReactElement => {
-  const { children, className } = props
+  const { className } = props
 
   const classes = classnames('usa-header usa-header--basic', className)
 
@@ -22,6 +22,8 @@ export const Header = (props: HeaderProps): React.ReactElement => {
     </a>,
   ]
 
+  // TODO move search and title out of the header directory
+  // TODO build in nav props
   return (
     <header data-testid="header" className={classes}>
       <div className="usa-nav-container">
