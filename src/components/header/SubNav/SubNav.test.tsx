@@ -13,7 +13,7 @@ const testItems = [
   </a>,
 ]
 
-describe('Title component', () => {
+describe('SubNav component', () => {
   it('renders without errors', () => {
     const { queryByText } = render(
       <SubNav label={testLabel} items={testItems}></SubNav>
