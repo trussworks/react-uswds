@@ -4,7 +4,7 @@ import { Header } from './Header'
 import { Title } from '../../Title/Title'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 import { SearchInput } from '../../SearchInput/SearchInput'
-import { SecondaryNav } from '../SecondaryNav/SecondaryNav'
+import { SubNav } from '../SubNav/SubNav'
 
 export default {
   title: 'Header',
@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-const testSecondaryNavItems = [
+const testSubNavItems = [
   <a href="#linkOne" key="one">
     <span>Current link</span>
   </a>,
@@ -26,8 +26,8 @@ const testSecondaryNavItems = [
   </a>,
 ]
 
-const testItemsWithSecondaryNav = [
-  <SecondaryNav key="one" label="Label" items={testSecondaryNavItems} />,
+const testItemsSubNav = [
+  <SubNav key="one" label="Label" items={testSubNavItems} />,
   <a href="#two" key="two">
     Parent link
   </a>,
@@ -46,7 +46,7 @@ export const defaultBasicHeader = (): React.ReactElement => (
         <button className="usa-menu-btn">Menu</button>
       </div>
       {/* TODO Determine why clicking on the button doesn't open the nav */}
-      <PrimaryNav items={testItemsWithSecondaryNav}>
+      <PrimaryNav items={testItemsSubNav}>
         <SearchInput></SearchInput>
       </PrimaryNav>
     </div>

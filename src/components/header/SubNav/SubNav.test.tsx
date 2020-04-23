@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { SecondaryNav } from './SecondaryNav'
+import { SubNav } from './SubNav'
 
 const testLabel = 'Nav Label'
 const testItems = [
@@ -16,7 +16,7 @@ const testItems = [
 describe('Title component', () => {
   it('renders without errors', () => {
     const { queryByText } = render(
-      <SecondaryNav label={testLabel} items={testItems}></SecondaryNav>
+      <SubNav label={testLabel} items={testItems}></SubNav>
     )
     expect(queryByText('Simple link')).toBeInTheDocument()
   })

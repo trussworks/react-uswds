@@ -4,13 +4,11 @@ import classnames from 'classnames'
 type PrimaryNavProps = {
   items: React.ReactNode[]
   children?: React.ReactNode
-  isSecondNav?: boolean
 }
 
 export const PrimaryNav = ({
   items,
   children,
-  isSecondNav = false,
 }: PrimaryNavProps): React.ReactElement => {
   const classes = classnames('usa-nav')
 

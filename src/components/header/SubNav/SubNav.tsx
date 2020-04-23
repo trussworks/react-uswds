@@ -1,15 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type SecondaryNavProps = {
+type SubNavProps = {
   label: string
   items: React.ReactNode[]
 }
 
-export const SecondaryNav = ({
-  label,
-  items,
-}: SecondaryNavProps): React.ReactElement => {
+export const SubNav = ({ label, items }: SubNavProps): React.ReactElement => {
   const classes = classnames('usa-nav__submenu')
 
   return (
@@ -31,4 +28,4 @@ export const SecondaryNav = ({
   )
 }
 
-export default SecondaryNav
+export default SubNav

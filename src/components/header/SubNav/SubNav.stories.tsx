@@ -1,11 +1,11 @@
 import React from 'react'
-import { SecondaryNav } from './SecondaryNav'
+import { SubNav } from './SubNav'
 
 export default {
-  title: 'SecondaryNav',
+  title: 'SubNav',
   parameters: {
     info: `
-USWDS 2.0 SecondaryNav component
+USWDS 2.0 SubNav component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
@@ -22,6 +22,6 @@ const testItems = [
   </a>,
 ]
 
-export const defaultSecondaryNav = (): React.ReactElement => (
-  <SecondaryNav label={testLabel} items={testItems}></SecondaryNav>
+export const defaultSubNav = (): React.ReactElement => (
+  <SubNav label={testLabel} items={testItems}></SubNav>
 )
