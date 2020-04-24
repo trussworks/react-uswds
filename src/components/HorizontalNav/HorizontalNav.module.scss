@@ -1,0 +1,31 @@
+/* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+
+.HorizontalNav {
+  > ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      @include u-font-size('body', '2xs');
+
+      list-style: none;
+
+      > a {
+        @include u-text('bold');
+        @include u-text('base');
+
+        display: block;
+        line-height: 0.9;
+        padding: 1.5rem 2.5rem;
+        text-decoration: none;
+
+        &:global(.usa-current),
+        &:hover {
+          @include u-border('primary');
+          border-width: 0 0 3px;
+        }
+      }
+    }
+  }
+}
