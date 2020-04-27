@@ -6,7 +6,7 @@ if (danger.github && danger.github.pr.body.length < 10) {
   warn('Please include a description of your PR changes.');
 }
 
-// load all modified and new files
+// Load all modified and new files
 const allFiles = danger.git.modified_files.concat(danger.git.created_files);
 
 // Request changes to package source code to also include changes to tests.
@@ -32,7 +32,7 @@ if (packageChanged && !lockfileChanged) {
   warn(`${message} - <i>${idea}</i>`);
 }
 
-// ensure we have access to github for this check
+// Ensure we have access to github for this check
 let isTrivial = false;
 if (danger.github) {
   isTrivial = includes((danger.github.pr.body + danger.github.pr.title), "#trivial")
