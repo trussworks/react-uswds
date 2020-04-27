@@ -32,15 +32,29 @@ if (packageChanged && !lockfileChanged) {
   warn(`${message} - <i>${idea}</i>`);
 }
 
-// Ensure we have access to github for this check
+// Ensure we have access to github for these checks
 let isTrivial = false;
+let isYarnAuditMissing = false;
 if (danger.github) {
-  isTrivial = includes((danger.github.pr.body + danger.github.pr.title), "#trivial")
+  let prBody = danger.github.pr.body
+  isTrivial = includes((danger.github.pr.body + danger.github.pr.title), '#trivial')
+    
+  if (lockfileChanged) {
+    isYarnAuditMissing = !(includes(prBody, 'vulnerabilities found:') && includes(prBody, 'Packages audited:'));
+  }
 }
 
+
 // Add a CHANGELOG entry for app changes
-const hasChangelog = includes(danger.git.modified_files, "CHANGELOG.md")
+const hasChangelog = includes(danger.git.modified_files, 'CHANGELOG.md')
 
 if (!hasChangelog && !isTrivial) {
-  warn("Please add a changelog entry for your changes.")
+  warn('Please add a changelog entry for your changes.')
+}
+
+// Encourage adding `yarn audit` output on package change
+if (isYarnAuditMissing) {
+  const message = 'Changes were made to yarn.lock, but no plain text yarn audit output was found in PR description.'
+  const idea = 'Can you run `yarn audit` in your branch and paste the results inside a markdown code block?'
+  warn(`${ message } - <i>${idea}</i>`)
 }
