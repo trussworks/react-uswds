@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { SubNav } from './SubNav'
+import { DropDownLink } from './DropDownMenu'
 
 const testLabel = 'Nav Label'
 const testItems = [
@@ -13,10 +13,13 @@ const testItems = [
   </a>,
 ]
 
-describe('SubNav component', () => {
+describe('DropDownLink component', () => {
   it('renders without errors', () => {
     const { queryByText } = render(
-      <SubNav label={testLabel} items={testItems}></SubNav>
+      <DropDownLink
+        label={testLabel}
+        items={testItems}
+        id="testId"></DropDownLink>
     )
     expect(queryByText('Simple link')).toBeInTheDocument()
   })

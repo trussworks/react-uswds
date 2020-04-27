@@ -1,11 +1,11 @@
 import React from 'react'
-import { SubNav } from './SubNav'
+import { DropDownLink } from './DropDownMenu'
 
 export default {
-  title: 'SubNav',
+  title: 'DropDownLink',
   parameters: {
     info: `
-USWDS 2.0 SubNav component
+USWDS 2.0 DropDownLink component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
@@ -22,6 +22,8 @@ const testItems = [
   </a>,
 ]
 
-export const defaultSubNav = (): React.ReactElement => (
-  <SubNav label={testLabel} items={testItems}></SubNav>
+export const defaultDropDownLink = (): React.ReactElement => (
+  <div className="usa-nav__primary usa-accordion">
+    <DropDownLink label={testLabel} items={testItems} id="test"></DropDownLink>
+  </div>
 )

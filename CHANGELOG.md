@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [develop] - 2020-04-24
 
-- Add initial set of USWDS basic header components (Header, PrimaryNav, SubNav, SearchInput, Title)
+- Add initial set of USWDS basic header components (Header, PrimaryNav, DropDownLink, SearchInput, Title)
 
 ## [develop] - 2020-04-13
 
