@@ -6,13 +6,12 @@ interface FormProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   className?: string
   large?: boolean
-  role?: string
 }
 
 export const Form = (
   props: FormProps & React.FormHTMLAttributes<HTMLFormElement>
 ): React.ReactElement => {
-  const { onSubmit, children, className, large, role, ...formProps } = props
+  const { onSubmit, children, className, large, ...formProps } = props
 
   const classes = classnames(
     'usa-form',
@@ -25,7 +24,6 @@ export const Form = (
       data-testid="form"
       className={classes}
       onSubmit={onSubmit}
-      role={role}
       {...formProps}>
       {children}
     </form>
