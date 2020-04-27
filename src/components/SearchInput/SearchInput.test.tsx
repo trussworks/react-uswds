@@ -9,7 +9,7 @@ describe('SearchInput component', () => {
     const { queryByTestId } = render(
       <SearchInput onSubmit={mockSubmit}></SearchInput>
     )
-    expect(queryByTestId('searchInput')).toBeInTheDocument()
+    expect(queryByTestId('textInput')).toBeInTheDocument()
   })
 
   it('implements an onSubmit handler', () => {
@@ -18,7 +18,7 @@ describe('SearchInput component', () => {
       <SearchInput onSubmit={mockSubmit}></SearchInput>
     )
 
-    fireEvent.submit(getByTestId('searchInput'))
+    fireEvent.submit(getByTestId('textInput'))
     expect(mockSubmit).toHaveBeenCalledTimes(1)
   })
 })
