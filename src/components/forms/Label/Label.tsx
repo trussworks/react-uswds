@@ -7,14 +7,18 @@ interface LabelProps {
   className?: string
   error?: boolean
   hint?: React.ReactNode
+  search?: boolean
 }
 
 export const Label = (props: LabelProps): React.ReactElement => {
-  const { children, htmlFor, className, error, hint } = props
+  const { children, htmlFor, className, error, hint, search } = props
 
   const classes = classnames(
-    'usa-label',
-    { 'usa-label--error': error },
+    {
+      'usa-label': !search,
+      'usa-sr-only': search,
+      'usa-label--error': error,
+    },
     className
   )
 

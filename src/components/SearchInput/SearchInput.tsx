@@ -25,16 +25,11 @@ export const SearchInput = (props: SearchInputProps): React.ReactElement => {
   )
 
   return (
-    <Form onSubmit={onSubmit} className={classes} role="search">
-      <Label className="usa-sr-only" htmlFor="search-field">
+    <Form onSubmit={onSubmit} className={classes} role="search" search={true}>
+      <Label search={true} htmlFor="search-field">
         Search small
       </Label>
-      <TextInput
-        className="usa-input"
-        id="search-field"
-        type="search"
-        name="search"
-      />
+      <TextInput id="search-field" type="search" name="search" />
       <Button type="submit">
         <span className={small ? 'usa-sr-only' : 'usa-search__submit-text'}>
           Search
