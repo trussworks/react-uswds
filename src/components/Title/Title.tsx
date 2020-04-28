@@ -2,15 +2,21 @@ import React from 'react'
 import classnames from 'classnames'
 
 interface TitleProps {
-  title: React.ReactNode
+  children: React.ReactNode
+  logo?: boolean
+  text?: boolean
 }
 
-export const Title = ({ title }: TitleProps): React.ReactElement => {
-  const classes = classnames('usa-logo')
+export const Title = (props: TitleProps): React.ReactElement => {
+  const { children, logo, text } = props
+  const classes = classnames({
+    'usa-logo__logo': logo,
+    'usa-logo__text': text,
+  })
 
   return (
-    <div className={classes}>
-      <h1 className="usa-logo__text">{title}</h1>
+    <div className="usa-logo">
+      <em className={classes}>{children}</em>
     </div>
   )
 }
