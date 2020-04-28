@@ -45,6 +45,57 @@ export const info = (): React.ReactElement => (
   </Alert>
 )
 
+export const slim = (): React.ReactElement => (
+  <>
+    <Alert type="success" slim>
+      {testText}
+    </Alert>
+    <Alert type="warning" slim>
+      {testText}
+    </Alert>
+    <Alert type="error" slim>
+      {testText}
+    </Alert>
+    <Alert type="info" slim>
+      {testText}
+    </Alert>
+  </>
+)
+
+export const noIcon = (): React.ReactElement => (
+  <>
+    <Alert type="success" noIcon>
+      {testText}
+    </Alert>
+    <Alert type="warning" noIcon>
+      {testText}
+    </Alert>
+    <Alert type="error" noIcon>
+      {testText}
+    </Alert>
+    <Alert type="info" noIcon>
+      {testText}
+    </Alert>
+  </>
+)
+
+export const slimNoIcon = (): React.ReactElement => (
+  <>
+    <Alert type="success" slim noIcon>
+      {testText}
+    </Alert>
+    <Alert type="warning" slim noIcon>
+      {testText}
+    </Alert>
+    <Alert type="error" slim noIcon>
+      {testText}
+    </Alert>
+    <Alert type="info" slim noIcon>
+      {testText}
+    </Alert>
+  </>
+)
+
 export const withCTA = (): React.ReactElement => (
   <Alert
     type="warning"
