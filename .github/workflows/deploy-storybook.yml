@@ -1,0 +1,13 @@
+name: Deploy Storybook
+
+on: push
+
+jobs:
+  deploy-storybook:
+    runs-on: ubuntu-latest
+    name: Deploy Storybook
+    steps:
+      - name: Deploy Storybook to Github page
+        run: yarn storybook:deploy --ci
+        env:
+          GH_TOKEN: trussworks:${{ secrets.GITHUB_TOKEN }}
