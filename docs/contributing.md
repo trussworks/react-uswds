@@ -1,5 +1,7 @@
 # Contributing
 
+## Dev environment
+
 ### Environment Setup
 
 1. Clone this repo!
@@ -42,6 +44,15 @@ These should all be run from within the project directory.
 ## Development & Release Workflow
 
 Because this project exports a library that will be used by other projects, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with an accurate description of changes. In order to ensure this, we use the following standards:
+
+### Pull request standards
+
+We use dangerjs to enforce several pull request standards, including:
+
+- Changes to package source code should include changes to tests
+- New src/components files should include changes to storybook
+- App changes should include a CHANGELOG entry
+- Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
 
 ### Branching model
 
