@@ -1,5 +1,7 @@
 import React from 'react'
 import { DropDownLink } from './DropDownMenu'
+import { Header } from '../Header/Header'
+import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
   title: 'DropDownLink',
@@ -23,7 +25,17 @@ const testItems = [
 ]
 
 export const defaultDropDownLink = (): React.ReactElement => (
-  <div className="usa-nav__primary usa-accordion">
-    <DropDownLink label={testLabel} items={testItems} id="test"></DropDownLink>
-  </div>
+  <Header>
+    <div className="usa-nav-container">
+      <div className="usa-navbar"></div>
+      <PrimaryNav
+        items={[
+          <DropDownLink
+            key="testItemOne"
+            label={testLabel}
+            items={testItems}
+            id="test"></DropDownLink>,
+        ]}></PrimaryNav>
+    </div>
+  </Header>
 )

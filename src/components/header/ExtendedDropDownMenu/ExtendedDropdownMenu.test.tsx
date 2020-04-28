@@ -31,6 +31,6 @@ describe('ExtendedDropDownLink component', () => {
         items={testItems}
         id="testId"></ExtendedDropDownLink>
     )
-    expect(queryByText('Simple link')).toBeInTheDocument()
+    expect(queryByText('Nav Label')).toBeInTheDocument()
   })
 })

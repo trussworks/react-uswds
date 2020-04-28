@@ -1,5 +1,7 @@
 import React from 'react'
 import { ExtendedDropDownLink } from './ExtendedDropDownMenu'
+import { Header } from '../Header/Header'
+import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
   title: 'ExtendedDropDownLink',
@@ -32,11 +34,20 @@ const testItems = [
   ],
 ]
 
+// It REALLT bothers me that the css classes are SO dependent on one another.....
+// This is the only way I could get the drop down link to render correctly on its own
 export const defaultExtendedDropDownLink = (): React.ReactElement => (
-  <div className="usa-nav__primary usa-accordion">
-    <ExtendedDropDownLink
-      label={testLabel}
-      items={testItems}
-      id="test"></ExtendedDropDownLink>
-  </div>
+  <Header>
+    <div className="usa-nav-container">
+      <div className="usa-navbar"></div>
+      <PrimaryNav
+        items={[
+          <ExtendedDropDownLink
+            label={testLabel}
+            items={testItems}
+            id="test"
+            key="testItemOne"></ExtendedDropDownLink>,
+        ]}></PrimaryNav>
+    </div>
+  </Header>
 )
