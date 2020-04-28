@@ -36,7 +36,7 @@ const testItems = [
 
 // It REALLT bothers me that the css classes are SO dependent on one another.....
 // This is the only way I could get the drop down link to render correctly on its own
-export const defaultExtendedDropDownLink = (): React.ReactElement => (
+export const defaultExtendedDropDownMenu = (): React.ReactElement => (
   <Header>
     <div className="usa-nav-container">
       <div className="usa-navbar"></div>

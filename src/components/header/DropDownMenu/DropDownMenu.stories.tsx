@@ -24,7 +24,7 @@ const testItems = [
   </a>,
 ]
 
-export const defaultDropDownLink = (): React.ReactElement => (
+export const defaultDropDownMenu = (): React.ReactElement => (
   <Header>
     <div className="usa-nav-container">
       <div className="usa-navbar"></div>
