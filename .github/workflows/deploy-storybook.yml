@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
       - name: Install dependencies
         run: yarn install
       - name: Deploy Storybook to Github page
