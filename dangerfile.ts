@@ -37,7 +37,8 @@ let isTrivial = false;
 let isYarnAuditMissing = false;
 if (danger.github) {
   let prBody = danger.github.pr.body
-  isTrivial = includes((danger.github.pr.body + danger.github.pr.title), '#trivial')
+  
+  isTrivial = includes((prBody + danger.github.pr.title), '#trivial')
     
   if (lockfileChanged) {
     isYarnAuditMissing = !(includes(prBody, 'vulnerabilities found:') && includes(prBody, 'Packages audited:'));
