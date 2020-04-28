@@ -8,26 +8,37 @@ import { TextInput } from '../forms/TextInput/TextInput'
 
 interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  big?: boolean
+  small?: boolean
   className?: string
 }
 
 export const SearchInput = (props: SearchInputProps): React.ReactElement => {
-  const { onSubmit, className } = props
-  const classes = classnames('usa-search usa-search--small', className)
+  const { onSubmit, big, small, className } = props
+  const classes = classnames(
+    'usa-search',
+    {
+      'usa-search--small': small,
+      'usa-search--big': big,
+    },
+    className
+  )
 
   return (
     <Form onSubmit={onSubmit} className={classes} role="search">
-      <Label className="usa-sr-only" htmlFor="basic-search-field-small">
+      <Label className="usa-sr-only" htmlFor="search-field">
         Search small
       </Label>
       <TextInput
         className="usa-input"
-        id="basic-search-field-small"
+        id="search-field"
         type="search"
         name="search"
       />
       <Button type="submit">
-        <span className="usa-sr-only">Search</span>
+        <span className={small ? 'usa-sr-only' : 'usa-search__submit-text'}>
+          Search
+        </span>
       </Button>
     </Form>
   )
