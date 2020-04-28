@@ -18,6 +18,6 @@ jobs:
             - node_modules
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn test
+      - run: yarn test -w 1
       - run: yarn lint
       - run: yarn danger ci --failOnErrors

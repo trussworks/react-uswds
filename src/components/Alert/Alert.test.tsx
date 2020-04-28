@@ -9,6 +9,13 @@ describe('Alert component', () => {
     expect(queryByTestId('alert')).toBeInTheDocument()
   })
 
+  it('accepts className prop', () => {
+    const { queryByTestId } = render(
+      <Alert type="success" className="myClass" />
+    )
+    expect(queryByTestId('alert')).toHaveClass('myClass')
+  })
+
   describe('with a CTA', () => {
     it('renders the CTA', () => {
       const testCTA = <button type="button">Click Here</button>

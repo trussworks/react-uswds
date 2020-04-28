@@ -1,0 +1,91 @@
+.bg-info-lighter {
+  @include u-bg('info-lighter');
+}
+
+.bg-info-light {
+  @include u-bg('info-light');
+}
+
+.bg-info {
+  @include u-bg('info');
+}
+
+.bg-info-dark {
+  @include u-bg('info-dark');
+}
+
+.bg-info-darker {
+  @include u-bg('info-darker');
+}
+
+.bg-error-lighter {
+  @include u-bg('error-lighter');
+}
+
+.bg-error-light {
+  @include u-bg('error-light');
+}
+
+.bg-error {
+  @include u-bg('error');
+}
+
+.bg-error-dark {
+  @include u-bg('error-dark');
+}
+
+.bg-error-darker {
+  @include u-bg('error-darker');
+}
+
+.bg-warning-lighter {
+  @include u-bg('warning-lighter');
+}
+
+.bg-warning-light {
+  @include u-bg('warning-light');
+}
+
+.bg-warning {
+  @include u-bg('warning');
+}
+
+.bg-warning-dark {
+  @include u-bg('warning-dark');
+}
+
+.bg-warning-darker {
+  @include u-bg('warning-darker');
+}
+
+.bg-success-lighter {
+  @include u-bg('success-lighter');
+}
+
+.bg-success-light {
+  @include u-bg('success-light');
+}
+
+.bg-success {
+  @include u-bg('success');
+}
+
+.bg-success-dark {
+  @include u-bg('success-dark');
+}
+
+.bg-success-darker {
+  @include u-bg('success-darker');
+}
+
+.bg-disabled-light {
+  @include u-bg('disabled-light');
+}
+
+.bg-disabled {
+  @include u-bg('disabled');
+}
+
+.bg-disabled-dark {
+  @include u-bg('disabled-dark');
+}
