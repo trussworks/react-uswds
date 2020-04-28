@@ -26,11 +26,11 @@ export const ExtendedDropDownLink = (
         <span>{label}</span>
       </button>
 
-      <div className="usa-nav__submenu usa-megamenu">
+      <div className="usa-nav__submenu usa-megamenu" hidden={!expanded}>
         <div className="grid-row grid-gap-4">
           {items.map((item, i) => (
             <div className="usa-col" key={`subnav_col_${i}`}>
-              <ul className={classes} hidden={!expanded}>
+              <ul className={classes}>
                 {item.map((listItem, i) => (
                   <li
                     key={`subnav_item_${i}`}
