@@ -10,13 +10,17 @@ type GridContainerProps = {
 export const GridContainer = ({
   children,
   containerSize,
+  className,
   ...props
 }: GridContainerProps &
   React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
-  const classes = classnames({
-    'grid-container': !containerSize,
-    [`grid-container-${containerSize}`]: !!containerSize,
-  })
+  const classes = classnames(
+    {
+      'grid-container': !containerSize,
+      [`grid-container-${containerSize}`]: !!containerSize,
+    },
+    className
+  )
 
   return (
     <div className={classes} data-testid="gridContainer" {...props}>

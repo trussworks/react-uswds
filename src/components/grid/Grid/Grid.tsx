@@ -30,6 +30,7 @@ export const getGridClasses = (
 
 export const Grid = ({
   children,
+  className,
   ...props
 }: GridProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
   const {
@@ -60,6 +61,9 @@ export const Grid = ({
       classes = classnames(classes, getGridClasses(bpProps, bp))
     }
   })
+
+  // Pass in any custom classes
+  classes = classnames(classes, className)
 
   return (
     <div className={classes} data-testid="grid" {...otherProps}>
