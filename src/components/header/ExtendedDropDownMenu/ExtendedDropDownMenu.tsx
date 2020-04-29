@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import classnames from 'classnames'
+
+import { List } from '../List/List'
 
 type ExtendedDropDownLinkProps = {
   label: string
@@ -14,8 +15,6 @@ export const ExtendedDropDownLink = (
 
   const [expanded, setExpanded] = useState(false)
 
-  const classes = classnames('usa-nav__submenu-list')
-
   return (
     <>
       <button
@@ -28,17 +27,14 @@ export const ExtendedDropDownLink = (
 
       <div className="usa-nav__submenu usa-megamenu" hidden={!expanded}>
         <div className="grid-row grid-gap-4">
-          {items.map((item, i) => (
+          {items.map((listItems, i) => (
             <div className="usa-col" key={`subnav_col_${i}`}>
-              <ul className={classes}>
-                {item.map((listItem, i) => (
-                  <li
-                    key={`subnav_item_${i}`}
-                    className="usa-nav__submenu-item">
-                    {listItem}
-                  </li>
-                ))}
-              </ul>
+              <List
+                items={listItems}
+                keyPrefix="subnav_item"
+                ulClass="usa-nav__submenu-list"
+                liClass="usa-nav__submenu-item"
+                hidden={!expanded}></List>
             </div>
           ))}
         </div>

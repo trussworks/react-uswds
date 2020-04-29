@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import { NavButton } from '../NavButton/NavButton'
+import { List } from '../List/List'
 
 // assets
 import closeImg from 'uswds/src/img/close.svg'
@@ -27,17 +28,14 @@ export const PrimaryNav = (
   return (
     // When mobile nav is added, add is-visible class to nav element
     <nav className={classes}>
-      {/* Find image for the button..... */}
       <NavButton className="usa-nav__close" onClick={onClick}>
         <img src={closeImg} alt="close" />
       </NavButton>
-      <ul className="usa-nav__primary usa-accordion">
-        {items.map((item, i) => (
-          <li key={`primarynav_item_${i}`} className="usa-nav__primary-item">
-            {item}
-          </li>
-        ))}
-      </ul>
+      <List
+        items={items}
+        keyPrefix="primarynav_item"
+        ulClass="usa-nav__primary usa-accordion"
+        liClass="usa-nav__primary-item"></List>
       {children}
     </nav>
   )

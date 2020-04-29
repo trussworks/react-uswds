@@ -77,7 +77,7 @@ const testItemsExtendedDropDownLink = [
   </a>,
 ]
 
-export const defaultFullExampleBasicHeader = (): React.ReactElement => {
+export const BasicHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
   return (
@@ -103,16 +103,28 @@ export const defaultFullExampleBasicHeader = (): React.ReactElement => {
   )
 }
 
-export const defaultBasicHeaderWithExtendedMenu = (): React.ReactElement => (
-  <Header>
-    <div className="usa-nav-container">
-      <div className="usa-navbar">
-        <Title title="Project Title" link="#testlink"></Title>
-        <button className="usa-menu-btn">Menu</button>
-      </div>
-      <PrimaryNav items={testItemsExtendedDropDownLink}>
-        <SearchInput></SearchInput>
-      </PrimaryNav>
-    </div>
-  </Header>
-)
+export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
+  const [expanded, setExpanded] = useState(false)
+  const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
+  return (
+    <>
+      <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
+      <Header>
+        <div className="usa-nav-container">
+          <div className="usa-navbar">
+            <Title title="Project Title" link="#testlink"></Title>
+            <NavButton onClick={onClick} className="usa-menu-btn">
+              Menu
+            </NavButton>
+          </div>
+          <PrimaryNav
+            items={testItemsExtendedDropDownLink}
+            mobileExpanded={expanded}
+            onClick={onClick}>
+            <SearchInput></SearchInput>
+          </PrimaryNav>
+        </div>
+      </Header>
+    </>
+  )
+}
