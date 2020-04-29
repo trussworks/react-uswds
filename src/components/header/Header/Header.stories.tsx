@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Header } from './Header'
 
 import { Title } from '../../Title/Title'
@@ -6,6 +6,7 @@ import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 import { SearchInput } from '../../SearchInput/SearchInput'
 import { DropDownLink } from '../DropDownMenu/DropDownMenu'
 import { ExtendedDropDownLink } from '../ExtendedDropDownMenu/ExtendedDropDownMenu'
+import { NavButton } from '../NavButton/NavButton'
 
 export default {
   title: 'Header',
@@ -76,33 +77,39 @@ const testItemsExtendedDropDownLink = [
   </a>,
 ]
 
-export const defaultBasicHeader = (): React.ReactElement => (
-  <Header>
-    {/* Should the section below be within the primary nav? */}
-    <div className="usa-nav-container">
-      <div className="usa-navbar">
-        <Title title="Project Title" link="#testlink"></Title>
-        {/* ToDo implement menu button and mobile behavior */}
-        <button className="usa-menu-btn">Menu</button>
-      </div>
-      {/* TODO Determine why clicking on the button doesn't open the nav */}
-      <PrimaryNav items={testItemsDropDownLink}>
-        <SearchInput></SearchInput>
-      </PrimaryNav>
-    </div>
-  </Header>
-)
+export const defaultFullExampleBasicHeader = (): React.ReactElement => {
+  const [expanded, setExpanded] = useState(false)
+  const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
+  return (
+    <>
+      <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
+      <Header>
+        <div className="usa-nav-container">
+          <div className="usa-navbar">
+            <Title title="Project Title" link="#testlink"></Title>
+            <NavButton onClick={onClick} className="usa-menu-btn">
+              Menu
+            </NavButton>
+          </div>
+          <PrimaryNav
+            items={testItemsDropDownLink}
+            mobileExpanded={expanded}
+            onClick={onClick}>
+            <SearchInput></SearchInput>
+          </PrimaryNav>
+        </div>
+      </Header>
+    </>
+  )
+}
 
 export const defaultBasicHeaderWithExtendedMenu = (): React.ReactElement => (
   <Header>
-    {/* Should the section below be within the primary nav? */}
     <div className="usa-nav-container">
       <div className="usa-navbar">
         <Title title="Project Title" link="#testlink"></Title>
-        {/* ToDo implement menu button and mobile behavior */}
         <button className="usa-menu-btn">Menu</button>
       </div>
-      {/* TODO Determine why clicking on the button doesn't open the nav */}
       <PrimaryNav items={testItemsExtendedDropDownLink}>
         <SearchInput></SearchInput>
       </PrimaryNav>
