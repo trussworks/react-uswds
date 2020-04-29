@@ -26,7 +26,6 @@ export const PrimaryNav = (
   )
 
   return (
-    // When mobile nav is added, add is-visible class to nav element
     <nav className={classes}>
       <NavButton className="usa-nav__close" onClick={onClick}>
         <img src={closeImg} alt="close" />
