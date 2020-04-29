@@ -2,7 +2,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import { Address } from './Address/Address'
+import { Button } from '../Button/Button'
 import { Footer } from './Footer'
+import { Logo } from './Logo/Logo'
 
 export default {
   title: 'Footer',
@@ -20,23 +23,6 @@ type SizeProps = {
   medium?: boolean
   slim?: boolean
 }
-
-const Address = (): React.ReactElement => (
-  <address className="usa-footer__address">
-    <div className="grid-row grid-gap">
-      <div className="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
-        <div className="usa-footer__contact-info">
-          <a href="tel:1-800-555-5555"> (800) CALL-GOVT</a>
-        </div>
-      </div>
-      <div className="grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto">
-        <div className="usa-footer__contact-info">
-          <a href="mailto:info@agency.gov"> </a>info@agency.gov
-        </div>
-      </div>
-    </div>
-  </address>
-)
 
 // Placeholder until a dynamic Nav is built out and can be used
 const MockNav = ({ medium, slim }: SizeProps): React.ReactElement => {
@@ -68,37 +54,49 @@ const MockNav = ({ medium, slim }: SizeProps): React.ReactElement => {
   )
 }
 
-const Logo = ({ big, medium, slim }: SizeProps): React.ReactElement => {
-  const containerClasses = classnames('usa-footer__logo grid-row', {
-    'mobile-lg:grid-col-6 mobile-lg:grid-gap-2': big || medium,
-    'grid-gap-2': slim,
-  })
-
-  return (
-    <div className={containerClasses}>
-      <div className="grid-col-auto">
-        <img className="usa-footer__logo-img" src="#" alt="img alt text" />
-      </div>
-      <div className="grid-col-auto">
-        <h3 className="usa-footer__logo-heading">Name of Agency</h3>
-      </div>
-    </div>
-  )
-}
+const returnToTop = (
+  <div className="grid-container usa-footer__return-to-top">
+    <Button type="button" unstyled>
+      Return to top
+    </Button>
+  </div>
+)
 
 export const SlimFooter = (): React.ReactElement => (
   <Footer
     slim
+    returnToTop={returnToTop}
     primary={
       <div className="usa-footer__primary-container grid-row">
         <div className="mobile-lg:grid-col-8">
           <MockNav slim />
         </div>
         <div className="tablet:grid-col-4">
-          <Address />
+          <Address
+            items={[
+              <a key="telephone" href="tel:1-800-555-5555">
+                (800) CALL-GOVT
+              </a>,
+              <a key="email" href="mailto:info@agency.gov">
+                info@agency.gov
+              </a>,
+            ]}
+          />
         </div>
       </div>
     }
-    secondary={<Logo slim />}
+    secondary={
+      <Logo
+        slim
+        image={
+          <img
+            className="usa-footer__logo-img"
+            src="/logo-img.png"
+            alt="img alt text"
+          />
+        }
+        heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
+      />
+    }
   />
 )

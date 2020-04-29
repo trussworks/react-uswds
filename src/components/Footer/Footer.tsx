@@ -2,10 +2,13 @@ import React from 'react'
 import classnames from 'classnames'
 
 type FooterProps = {
-  className?: string
   big?: boolean
   medium?: boolean
   slim?: boolean
+  /**
+   * Component for "return to top" button/handling
+   */
+  returnToTop?: React.ReactNode
   /**
    * Content in upper footer section, e.g. navigation, searchbar, signup form
    */
@@ -20,7 +23,15 @@ type FooterProps = {
 export const Footer = (
   props: FooterProps & React.HTMLAttributes<HTMLElement>
 ): React.ReactElement => {
-  const { className, big, medium, slim, primary, secondary } = props
+  const {
+    big,
+    medium,
+    slim,
+    returnToTop,
+    primary,
+    secondary,
+    ...footerAttributes
+  } = props
 
   const classes = classnames(
     'usa-footer',
@@ -29,11 +40,12 @@ export const Footer = (
       'usa-footer--medium': medium,
       'usa-footer--slim': slim,
     },
-    className
+    footerAttributes.className
   )
 
   return (
     <footer className={classes}>
+      {returnToTop && returnToTop}
       <div className="usa-footer__primary-section">{primary}</div>
 
       <div className="usa-footer__secondary-section">

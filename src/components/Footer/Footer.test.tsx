@@ -19,6 +19,10 @@ const address = (
   </address>
 )
 
+const returnToTop = (
+  <div className="grid-container usa-footer__return-to-top">Return To Top</div>
+)
+
 describe('Footer component', () => {
   it('renders without errors', () => {
     const { container } = render(<Footer primary={nav} secondary={address} />)
@@ -33,5 +37,12 @@ describe('Footer component', () => {
   it('renders secondary content', () => {
     const { container } = render(<Footer primary={nav} secondary={address} />)
     expect(container.querySelector('address')).toBeInTheDocument()
+  })
+
+  it('renders return to top component', () => {
+    const { getByText } = render(
+      <Footer primary={nav} secondary={address} returnToTop={returnToTop} />
+    )
+    expect(getByText('Return To Top')).toBeInTheDocument()
   })
 })
