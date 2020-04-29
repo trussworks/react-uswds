@@ -6,18 +6,18 @@ interface FormProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   className?: string
   large?: boolean
-  search?: boolean
+  srOnly?: boolean
 }
 
 export const Form = (
   props: FormProps & React.FormHTMLAttributes<HTMLFormElement>
 ): React.ReactElement => {
-  const { onSubmit, children, className, large, search, ...formProps } = props
+  const { onSubmit, children, className, large, srOnly, ...formProps } = props
 
   const classes = classnames(
     {
-      'usa-form': !search,
-      'usa-search': search,
+      'usa-form': !srOnly,
+      'usa-search': srOnly,
       'usa-form--large': large,
     },
     className
