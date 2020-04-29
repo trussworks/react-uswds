@@ -1,42 +1,68 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { ColumnSizes, GapSizes, ColumnOffsets } from '../types'
+import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
 
-interface GridColProps {
-  row?: boolean
-  col?: ColumnSizes
-  gap?: GapSizes
-  offset?: ColumnOffsets
-}
+type GridProps = GridItemProps &
+  {
+    [P in BreakpointKeys]?: GridItemProps
+  }
 
-interface GridProps extends GridColProps {
-  // breakpoints
-  mobile?: GridColProps
-  mobileLg?: GridColProps
-  tablet?: GridColProps
-  // etc.
+export const getGridClasses = (
+  itemProps: GridItemProps,
+  breakpoint?: BreakpointKeys
+): string => {
+  // This should be fine bc TypeScript
+  // eslint-disable-next-line security/detect-object-injection
+  const prefix = breakpoint ? `${breakpoints[breakpoint]}:` : ''
+  const { row, col, gap, offset } = itemProps
+
+  // TODO - what happens if row/gap classes conflict?
+  return classnames({
+    [`${prefix}grid-row`]: row,
+    [`${prefix}grid-gap`]: gap === true,
+    [`${prefix}grid-gap-${gap}`]: gap !== true && !!gap,
+    [`${prefix}grid-col`]: col === true,
+    [`${prefix}grid-col-${col}`]: col !== true && !!col,
+    [`${prefix}grid-offset-${offset}`]: !!offset,
+  })
 }
 
 export const Grid = ({
-  row,
-  col,
-  gap,
-  offset,
   children,
   ...props
 }: GridProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
-  const classes = classnames({
-    'grid-row': row,
-    'grid-gap': gap === true,
-    [`grid-gap-${gap}`]: !!gap,
-    'grid-col': col === true,
-    [`grid-col-${col}`]: !!col,
-    [`grid-offset-${offset}`]: !!offset,
+  const {
+    // defaults
+    row,
+    col,
+    gap,
+    offset,
+    // breakpoint specific
+    mobile,
+    mobileLg,
+    tablet,
+    tabletLg,
+    desktop,
+    desktopLg,
+    widescreen,
+    // other
+    ...otherProps
+  } = props
+
+  let classes = getGridClasses(props)
+
+  Object.keys(breakpoints).forEach((b) => {
+    const bp = b as BreakpointKeys
+    if (Object.prototype.hasOwnProperty.call(props, bp)) {
+      console.log('grid has breakpoint props', bp)
+      const bpProps = props[bp] as GridItemProps
+      classes = classnames(classes, getGridClasses(bpProps, bp))
+    }
   })
 
   return (
-    <div className={classes} data-testid="grid" {...props}>
+    <div className={classes} data-testid="grid" {...otherProps}>
       {children}
     </div>
   )
