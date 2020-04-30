@@ -17,13 +17,13 @@ const mockSubmit = (): void => {
 }
 
 export const defaultSearchInput = (): React.ReactElement => (
-  <SearchInput onSubmit={mockSubmit}></SearchInput>
+  <SearchInput onSubmit={mockSubmit} />
 )
 
 export const bigSearchInput = (): React.ReactElement => (
-  <SearchInput big={true} onSubmit={mockSubmit}></SearchInput>
+  <SearchInput big onSubmit={mockSubmit} />
 )
 
 export const smallSearchInput = (): React.ReactElement => (
-  <SearchInput small={true} onSubmit={mockSubmit}></SearchInput>
+  <SearchInput small onSubmit={mockSubmit} />
 )

@@ -10,11 +10,12 @@ interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   big?: boolean
   small?: boolean
+  label?: React.ReactNode
   className?: string
 }
 
 export const SearchInput = (props: SearchInputProps): React.ReactElement => {
-  const { onSubmit, big, small, className } = props
+  const { onSubmit, big, small, label = 'Search', className } = props
   const classes = classnames(
     'usa-search',
     {
@@ -25,9 +26,9 @@ export const SearchInput = (props: SearchInputProps): React.ReactElement => {
   )
 
   return (
-    <Form onSubmit={onSubmit} className={classes} role="search" srOnly={true}>
+    <Form onSubmit={onSubmit} className={classes} role="search" search={true}>
       <Label srOnly={true} htmlFor="search-field">
-        Search small
+        {label}
       </Label>
       <TextInput id="search-field" type="search" name="search" />
       <Button type="submit">
