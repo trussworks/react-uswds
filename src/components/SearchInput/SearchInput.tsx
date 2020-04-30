@@ -14,8 +14,17 @@ interface SearchInputProps {
   className?: string
 }
 
-export const SearchInput = (props: SearchInputProps): React.ReactElement => {
-  const { onSubmit, big, small, label = 'Search', className } = props
+export const SearchInput = (
+  props: SearchInputProps & React.FormHTMLAttributes<HTMLFormElement>
+): React.ReactElement => {
+  const {
+    onSubmit,
+    big,
+    small,
+    label = 'Search',
+    className,
+    ...formProps
+  } = props
   const classes = classnames(
     'usa-search',
     {
@@ -26,7 +35,12 @@ export const SearchInput = (props: SearchInputProps): React.ReactElement => {
   )
 
   return (
-    <Form onSubmit={onSubmit} className={classes} role="search" search={true}>
+    <Form
+      onSubmit={onSubmit}
+      className={classes}
+      role="search"
+      search={true}
+      {...formProps}>
       <Label srOnly={true} htmlFor="search-field">
         {label}
       </Label>
