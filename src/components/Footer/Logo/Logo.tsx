@@ -25,13 +25,17 @@ export const Logo = ({
     },
     elementAttributes.className
   )
+  const columnClasses = classnames({
+    'mobile-lg:grid-col-auto': big || medium,
+    'grid-col-auto': slim,
+  })
 
   return (
     <div className={containerClasses} data-testid="footerLogo">
       {heading ? (
         <>
-          <div className="grid-col-auto">{image}</div>
-          <div className="grid-col-auto">{heading}</div>
+          <div className={columnClasses}>{image}</div>
+          <div className={columnClasses}>{heading}</div>
         </>
       ) : (
         <>{image}</>
