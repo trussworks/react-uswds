@@ -1,0 +1,91 @@
+.text-info-lighter {
+  @include u-text('info-lighter');
+}
+
+.text-info-light {
+  @include u-text('info-light');
+}
+
+.text-info {
+  @include u-text('info');
+}
+
+.text-info-dark {
+  @include u-text('info-dark');
+}
+
+.text-info-darker {
+  @include u-text('info-darker');
+}
+
+.text-error-lighter {
+  @include u-text('error-lighter');
+}
+
+.text-error-light {
+  @include u-text('error-light');
+}
+
+.text-error {
+  @include u-text('error');
+}
+
+.text-error-dark {
+  @include u-text('error-dark');
+}
+
+.text-error-darker {
+  @include u-text('error-darker');
+}
+
+.text-warning-lighter {
+  @include u-text('warning-lighter');
+}
+
+.text-warning-light {
+  @include u-text('warning-light');
+}
+
+.text-warning {
+  @include u-text('warning');
+}
+
+.text-warning-dark {
+  @include u-text('warning-dark');
+}
+
+.text-warning-darker {
+  @include u-text('warning-darker');
+}
+
+.text-success-lighter {
+  @include u-text('success-lighter');
+}
+
+.text-success-light {
+  @include u-text('success-light');
+}
+
+.text-success {
+  @include u-text('success');
+}
+
+.text-success-dark {
+  @include u-text('success-dark');
+}
+
+.text-success-darker {
+  @include u-text('success-darker');
+}
+
+.text-disabled-light {
+  @include u-text('disabled-light');
+}
+
+.text-disabled {
+  @include u-text('disabled');
+}
+
+.text-disabled-dark {
+  @include u-text('disabled-dark');
+}
