@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -34,11 +34,14 @@
     "type": "git",
     "url": "github:trussworks/react-uswds"
   },
-  "author": "Suzanne Rozier <suz@truss.works>",
   "contributors": [
+    "Suzanne Rozier <suz@truss.works>",
     "John Gedeon <john@truss.works>",
     "Erin Stanfill <erin@truss.works>",
-    "Sara Bocciardi <sara@truss.works>"
+    "Sara Bocciardi <sara@truss.works>",
+    "Jeri Sommers <sojeri@truss.works>",
+    "Emily Mahanna <emahanna@truss.works>",
+    "Hana Worku <hana@truss.works>"
   ],
   "license": "Apache-2.0",
   "bugs": {
