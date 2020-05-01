@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Header } from './Header'
 
-import { Title } from '../../Title/Title'
+import { Title } from '../Title/Title'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 import { SearchInput } from '../../SearchInput/SearchInput'
 import { DropDownLink } from '../DropDownMenu/DropDownMenu'
@@ -86,7 +86,7 @@ export const BasicHeader = (): React.ReactElement => {
       <Header>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Title title="Project Title" link="#testlink"></Title>
+            <Title>Project Title</Title>
             <NavButton onClick={onClick} className="usa-menu-btn">
               Menu
             </NavButton>
@@ -112,7 +112,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
       <Header>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Title title="Project Title" link="#testlink"></Title>
+            <Title>Project Title</Title>
             <NavButton onClick={onClick} className="usa-menu-btn">
               Menu
             </NavButton>
