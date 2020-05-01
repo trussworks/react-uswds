@@ -14,7 +14,7 @@ interface SearchInputProps {
   className?: string
 }
 
-export const SearchInput = (
+export const Search = (
   props: SearchInputProps & React.FormHTMLAttributes<HTMLFormElement>
 ): React.ReactElement => {
   const {
@@ -54,4 +54,4 @@ export const SearchInput = (
   )
 }
 
-export default SearchInput
+export default Search
