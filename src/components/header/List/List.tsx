@@ -11,10 +11,10 @@ interface ListProps {
 export const List = (
   props: ListProps & React.HTMLAttributes<HTMLUListElement>
 ): React.ReactElement => {
-  const { items, keyPrefix, ulClass, liClass, hidden } = props
+  const { items, keyPrefix, ulClass, liClass, ...ulProps } = props
 
   return (
-    <ul className={ulClass} hidden={hidden}>
+    <ul className={ulClass} {...ulProps}>
       {items.map((item, i) => (
         <li key={`${keyPrefix}_${i}`} className={liClass}>
           {item}
