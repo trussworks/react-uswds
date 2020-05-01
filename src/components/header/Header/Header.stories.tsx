@@ -3,7 +3,7 @@ import { Header } from './Header'
 
 import { Title } from '../Title/Title'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
-import { SearchInput } from '../../SearchInput/SearchInput'
+import { Search } from '../../Search/Search'
 import { DropDownLink } from '../DropDownMenu/DropDownMenu'
 import { ExtendedDropDownLink } from '../ExtendedDropDownMenu/ExtendedDropDownMenu'
 import { NavButton } from '../NavButton/NavButton'
@@ -77,6 +77,10 @@ const testItemsExtendedDropDownLink = [
   </a>,
 ]
 
+const mockSubmit = (): void => {
+  /* mock submit fn */
+}
+
 export const BasicHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
@@ -95,7 +99,7 @@ export const BasicHeader = (): React.ReactElement => {
             items={testItemsDropDownLink}
             mobileExpanded={expanded}
             onClick={onClick}>
-            <SearchInput></SearchInput>
+            <Search small onSubmit={mockSubmit} />
           </PrimaryNav>
         </div>
       </Header>
@@ -121,7 +125,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
             items={testItemsExtendedDropDownLink}
             mobileExpanded={expanded}
             onClick={onClick}>
-            <SearchInput></SearchInput>
+            <Search small onSubmit={mockSubmit} />
           </PrimaryNav>
         </div>
       </Header>
