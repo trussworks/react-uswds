@@ -12,9 +12,6 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-const testTitle = 'Test Title'
-const testLink = '#testLinkOne'
+const testTitle = <a href="#testlink">Project Title</a>
 
-export const defaultTitle = (): React.ReactElement => (
-  <Title title={testTitle} link={testLink}></Title>
-)
+export const defaultTitle = (): React.ReactElement => <Title>{testTitle}</Title>
