@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -24,6 +24,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook",
+    "storybook:deploy": "storybook-to-ghpages",
     "build": "webpack",
     "build:watch": "webpack --watch",
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src",
@@ -33,11 +34,14 @@
     "type": "git",
     "url": "github:trussworks/react-uswds"
   },
-  "author": "Suzanne Rozier <suz@truss.works>",
   "contributors": [
+    "Suzanne Rozier <suz@truss.works>",
     "John Gedeon <john@truss.works>",
     "Erin Stanfill <erin@truss.works>",
-    "Sara Bocciardi <sara@truss.works>"
+    "Sara Bocciardi <sara@truss.works>",
+    "Jeri Sommers <sojeri@truss.works>",
+    "Emily Mahanna <emahanna@truss.works>",
+    "Hana Worku <hana@truss.works>"
   ],
   "license": "Apache-2.0",
   "bugs": {
@@ -59,6 +63,7 @@
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-info": "^5.2.3",
     "@storybook/react": "^5.2.1",
+    "@storybook/storybook-deployer": "^2.8.5",
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^10.0.1",
     "@testing-library/react-hooks": "^3.2.1",
@@ -97,10 +102,12 @@
     "sass-resources-loader": "^2.0.1",
     "source-map-loader": "^0.2.4",
     "stylelint": "^13.3.0",
+    "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-prettier": "^1.1.1",
+    "stylelint-scss": "^3.17.1",
     "ts-jest": "^25.2.1",
     "typescript": "^3.6.3",
     "url-loader": "^4.0.0",

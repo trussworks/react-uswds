@@ -6,5 +6,6 @@
 
 // Custom theme settings/USWDS overrides go here
 // @import './styles/settings';
+$theme-show-notifications: false;
 
 @import '~uswds/src/stylesheets/packages/required';
