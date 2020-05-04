@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { List } from '../List/List'
 
@@ -6,26 +6,25 @@ type ExtendedDropDownLinkProps = {
   label: string
   items: React.ReactNode[][]
   id: string
+  isOpen: boolean
+  onToggle: () => void
 }
 
 export const ExtendedDropDownLink = (
   props: ExtendedDropDownLinkProps
 ): React.ReactElement => {
-  const { label, items, id } = props
-
-  const [expanded, setExpanded] = useState(false)
-
+  const { label, items, id, isOpen, onToggle } = props
   return (
     <>
       <button
         className="usa-accordion__button usa-nav__link"
-        aria-expanded={expanded}
+        aria-expanded={isOpen}
         aria-controls={id}
-        onClick={(): void => setExpanded((prvExpanded) => !prvExpanded)}>
+        onClick={(): void => onToggle()}>
         <span>{label}</span>
       </button>
 
-      <div className="usa-nav__submenu usa-megamenu" hidden={!expanded}>
+      <div className="usa-nav__submenu usa-megamenu" hidden={!isOpen}>
         <div className="grid-row grid-gap-4">
           {items.map((listItems, i) => (
             <div className="usa-col" key={`subnav_col_${i}`}>
@@ -34,7 +33,7 @@ export const ExtendedDropDownLink = (
                 keyPrefix="subnav_item"
                 ulClass="usa-nav__submenu-list"
                 liClass="usa-nav__submenu-item"
-                hidden={!expanded}></List>
+                hidden={!isOpen}></List>
             </div>
           ))}
         </div>

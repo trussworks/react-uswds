@@ -1,25 +1,23 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import { List } from '../List/List'
 
 type DropDownLinkProps = {
   label: string
   items: React.ReactNode[]
   id: string
+  isOpen: boolean
+  onToggle: () => void
 }
 
 export const DropDownLink = (props: DropDownLinkProps): React.ReactElement => {
-  const { label, items, id } = props
-
-  const [expanded, setExpanded] = useState(false)
-
+  const { label, items, id, isOpen, onToggle } = props
   return (
     <>
       <button
         className="usa-accordion__button usa-nav__link"
-        aria-expanded={expanded}
+        aria-expanded={isOpen}
         aria-controls={id}
-        onClick={(): void => setExpanded((prvExpanded) => !prvExpanded)}>
+        onClick={(): void => onToggle()}>
         <span>{label}</span>
       </button>
       <List
@@ -27,7 +25,7 @@ export const DropDownLink = (props: DropDownLinkProps): React.ReactElement => {
         keyPrefix="subnav_item"
         ulClass="usa-nav__submenu"
         liClass="usa-nav__submenu-item"
-        hidden={!expanded}></List>
+        hidden={!isOpen}></List>
     </>
   )
 }

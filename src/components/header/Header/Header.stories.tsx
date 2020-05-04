@@ -28,12 +28,18 @@ const testDropDownLinkItems = [
   </a>,
 ]
 
+const [isOpen, setIsOpen] = useState(false)
+
+const onToggle = (): void => setIsOpen((prvIsOpen) => !prvIsOpen)
+
 const testItemsDropDownLink = [
   <DropDownLink
     key="one"
     id="one"
     label="Label"
     items={testDropDownLinkItems}
+    isOpen={isOpen}
+    onToggle={onToggle}
   />,
   <a href="#two" key="two">
     Parent link
@@ -68,6 +74,8 @@ const testItemsExtendedDropDownLink = [
     id="one"
     label="Label"
     items={testItemsExtended}
+    isOpen={isOpen}
+    onToggle={onToggle}
   />,
   <a href="#two" key="two">
     Parent link

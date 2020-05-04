@@ -19,6 +19,10 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
+const [isOpen, setIsOpen] = useState(false)
+
+const onToggle = (): void => setIsOpen((prvIsOpen) => !prvIsOpen)
+
 const testDropDownLinkItems = [
   <a href="#linkOne" key="one">
     <span>Simple link</span>
@@ -34,6 +38,8 @@ const testItemsDropDownLink = [
     id="one"
     label="Label"
     items={testDropDownLinkItems}
+    isOpen={isOpen}
+    onToggle={onToggle}
   />,
   <a href="#two" key="two">
     Parent link
@@ -68,6 +74,8 @@ const testItemsExtendedDropDownLink = [
     id="one"
     label="Label"
     items={testItemsExtended}
+    isOpen={isOpen}
+    onToggle={onToggle}
   />,
   <a href="#two" key="two">
     Parent link

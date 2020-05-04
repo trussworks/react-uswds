@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ExtendedDropDownLink } from './ExtendedDropDownMenu'
 import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
@@ -33,9 +33,10 @@ const testItems = [
     </a>,
   ],
 ]
+const [isOpen, setIsOpen] = useState(false)
 
-// It REALLT bothers me that the css classes are SO dependent on one another.....
-// This is the only way I could get the drop down link to render correctly on its own
+const onToggle = (): void => setIsOpen((prvIsOpen) => !prvIsOpen)
+
 export const defaultExtendedDropDownMenu = (): React.ReactElement => (
   <Header>
     <div className="usa-nav-container">
@@ -46,7 +47,9 @@ export const defaultExtendedDropDownMenu = (): React.ReactElement => (
             label={testLabel}
             items={testItems}
             id="test"
-            key="testItemOne"></ExtendedDropDownLink>,
+            key="testItemOne"
+            isOpen={isOpen}
+            onToggle={onToggle}></ExtendedDropDownLink>,
         ]}></PrimaryNav>
     </div>
   </Header>

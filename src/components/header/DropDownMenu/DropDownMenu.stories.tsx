@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DropDownLink } from './DropDownMenu'
 import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
@@ -24,6 +24,10 @@ const testItems = [
   </a>,
 ]
 
+const [isOpen, setIsOpen] = useState(false)
+
+const onToggle = (): void => setIsOpen((prvIsOpen) => !prvIsOpen)
+
 export const defaultDropDownMenu = (): React.ReactElement => (
   <Header>
     <div className="usa-nav-container">
@@ -34,7 +38,9 @@ export const defaultDropDownMenu = (): React.ReactElement => (
             key="testItemOne"
             label={testLabel}
             items={testItems}
-            id="test"></DropDownLink>,
+            id="test"
+            isOpen={isOpen}
+            onToggle={onToggle}></DropDownLink>,
         ]}></PrimaryNav>
     </div>
   </Header>
