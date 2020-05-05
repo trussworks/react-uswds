@@ -27,8 +27,7 @@
     "storybook:deploy": "storybook-to-ghpages",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src",
-    "prepare": "yarn build"
+    "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src"
   },
   "repository": {
     "type": "git",
@@ -61,6 +60,8 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@storybook/addon-info": "^5.2.3",
     "@storybook/react": "^5.2.1",
     "@storybook/storybook-deployer": "^2.8.5",
@@ -121,6 +122,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "tsc --noEmit && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "yarn danger local --failOnErrors"
     }
   },
