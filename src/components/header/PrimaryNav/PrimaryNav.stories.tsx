@@ -22,5 +22,5 @@ const testBasicHeaderItems = [
 ]
 
 export const defaultPrimaryNav = (): React.ReactElement => (
-  <PrimaryNav items={testBasicHeaderItems}></PrimaryNav>
+  <PrimaryNav items={testBasicHeaderItems} />
 )

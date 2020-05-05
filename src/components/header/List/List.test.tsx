@@ -10,7 +10,7 @@ const keyPrefix = 'testItem'
 describe('List component', () => {
   it('renders without errors', () => {
     const { queryByText } = render(
-      <List items={testItems} keyPrefix={keyPrefix}></List>
+      <List items={testItems} keyPrefix={keyPrefix} />
     )
     expect(queryByText('item 1')).toBeInTheDocument()
   })

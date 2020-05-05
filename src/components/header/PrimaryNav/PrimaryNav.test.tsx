@@ -14,7 +14,7 @@ const testItems = [
 
 describe('Title component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(<PrimaryNav items={testItems}></PrimaryNav>)
+    const { queryByText } = render(<PrimaryNav items={testItems} />)
     expect(queryByText('Simple link')).toBeInTheDocument()
   })
 })

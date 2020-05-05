@@ -26,7 +26,8 @@ describe('Title component', () => {
     const { queryByText } = render(
       <ExtendedNav
         primaryItems={testPrimaryItems}
-        secondaryItems={testSecondaryItems}></ExtendedNav>
+        secondaryItems={testSecondaryItems}
+      />
     )
     expect(queryByText('Current Simple link')).toBeInTheDocument()
   })

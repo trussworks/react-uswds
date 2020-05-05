@@ -33,5 +33,6 @@ const testSecondaryItems = [
 export const defaultExtendedNav = (): React.ReactElement => (
   <ExtendedNav
     primaryItems={testPrimaryItems}
-    secondaryItems={testSecondaryItems}></ExtendedNav>
+    secondaryItems={testSecondaryItems}
+  />
 )

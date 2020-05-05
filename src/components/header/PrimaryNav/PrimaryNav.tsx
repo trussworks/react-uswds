@@ -34,7 +34,8 @@ export const PrimaryNav = (
         items={items}
         keyPrefix="primarynav_item"
         ulClass="usa-nav__primary usa-accordion"
-        liClass="usa-nav__primary-item"></List>
+        liClass="usa-nav__primary-item"
+      />
       {children}
     </nav>
   )

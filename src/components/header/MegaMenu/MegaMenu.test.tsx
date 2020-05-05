@@ -1,9 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { ExtendedDropDownLink } from './ExtendedDropDownMenu'
+import { MegaMenu } from './MegaMenu'
 
-const testLabel = 'Nav Label'
 const testItems = [
   [
     <a href="#linkOne" key="one">
@@ -23,14 +22,10 @@ const testItems = [
   ],
 ]
 
-describe('ExtendedDropDownLink component', () => {
+describe('MegaMenu component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(
-      <ExtendedDropDownLink
-        label={testLabel}
-        items={testItems}
-        id="testId"></ExtendedDropDownLink>
-    )
+    const { queryByText } = render(<MegaMenu items={testItems} isOpen={true} />)
+
     expect(queryByText('Nav Label')).toBeInTheDocument()
   })
 })

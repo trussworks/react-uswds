@@ -43,13 +43,15 @@ export const ExtendedNav = (
           items={primaryItems}
           keyPrefix="primarynav_item"
           ulClass="usa-nav__primary usa-accordion"
-          liClass="usa-nav__primary-item"></List>
+          liClass="usa-nav__primary-item"
+        />
         <div className="usa-nav__secondary">
           <List
             items={secondaryItems}
             keyPrefix="secondarynav_item"
             ulClass="usa-nav__secondary-links"
-            liClass="usa-nav__secondary-item"></List>
+            liClass="usa-nav__secondary-item"
+          />
           {children}
         </div>
       </div>

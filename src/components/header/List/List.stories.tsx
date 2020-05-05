@@ -27,5 +27,6 @@ export const BasicNavList = (): React.ReactElement => (
     items={testItems}
     keyPrefix={keyPrefix}
     ulClass="usa-nav__primary usa-accordion"
-    liClass="usa-nav__primary-item"></List>
+    liClass="usa-nav__primary-item"
+  />
 )
