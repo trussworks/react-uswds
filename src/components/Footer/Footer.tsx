@@ -44,7 +44,7 @@ export const Footer = (
   )
 
   return (
-    <footer className={classes}>
+    <footer {...footerAttributes} className={classes}>
       {returnToTop && returnToTop}
       <div className="usa-footer__primary-section">{primary}</div>
 

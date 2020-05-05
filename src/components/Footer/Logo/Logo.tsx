@@ -28,14 +28,10 @@ export const Logo = ({
 
   return (
     <div className={containerClasses} data-testid="footerLogo">
-      {heading ? (
-        <>
-          <div className="grid-col-auto">{image}</div>
-          <div className="grid-col-auto">{heading}</div>
-        </>
-      ) : (
-        <>{image}</>
-      )}
+      <>
+        <div className="grid-col-auto">{image}</div>
+        {heading && <div className="grid-col-auto">{heading}</div>}
+      </>
     </div>
   )
 }
