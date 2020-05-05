@@ -6,6 +6,7 @@ import { Button } from '../Button/Button'
 import { Footer } from './Footer'
 import { FooterNav } from './FooterNav/FooterNav'
 import { Logo } from './Logo/Logo'
+import { SignUpForm } from './SignUpForm/SignUpForm'
 import { SocialLinks } from './SocialLinks/SocialLinks'
 
 export default {
@@ -17,6 +18,10 @@ export default {
   Source: https://designsystem.digital.gov/components/form-controls/#footer
   `,
   },
+}
+
+const mockSubmit = (): void => {
+  /* mock submit fn */
 }
 
 const returnToTop = (
@@ -209,6 +214,13 @@ export const BigFooter = (): React.ReactElement => (
                   ),
                 ],
               ]}
+            />
+          </div>
+          <div className="tablet:grid-col-4">
+            <SignUpForm
+              heading="Sign up"
+              label="Your email address"
+              onSubmit={mockSubmit}
             />
           </div>
         </div>
