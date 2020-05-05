@@ -6,7 +6,7 @@ export default {
   title: 'Logo',
   parameters: {
     info: `
-    Used within USWDS 2.0 Footer component
+    Used in USWDS 2.0 Footer component
     
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,

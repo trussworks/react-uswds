@@ -2,6 +2,17 @@
 import React from 'react'
 import { SocialLinks } from './SocialLinks'
 
+export default {
+  title: 'SocialLinks',
+  parameters: {
+    info: `
+    Used in USWDS 2.0 Footer component
+  
+  Source: https://designsystem.digital.gov/components/form-controls/#footer
+  `,
+  },
+}
+
 const links = [
   <a
     key="facebook"
