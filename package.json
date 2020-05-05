@@ -20,6 +20,7 @@
     "node": "^12.16.2"
   },
   "scripts": {
+    "commit": "git-cz",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -79,8 +80,10 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "commitizen": "^4.1.2",
     "css-loader": "^3.2.0",
     "css-modules-typescript-loader": "^4.0.0",
+    "cz-conventional-changelog": "3.2.0",
     "danger": "^10.0.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.3.0",
@@ -135,5 +138,10 @@
       "prettier --write",
       "stylelint"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
