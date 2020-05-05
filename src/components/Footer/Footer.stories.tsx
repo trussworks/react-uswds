@@ -1,11 +1,12 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import classnames from 'classnames'
 
 import { Address } from './Address/Address'
 import { Button } from '../Button/Button'
 import { Footer } from './Footer'
+import { FooterNav } from './FooterNav/FooterNav'
 import { Logo } from './Logo/Logo'
+import { SocialLinks } from './SocialLinks/SocialLinks'
 
 export default {
   title: 'Footer',
@@ -16,42 +17,6 @@ export default {
   Source: https://designsystem.digital.gov/components/form-controls/#footer
   `,
   },
-}
-
-type SizeProps = {
-  big?: boolean
-  medium?: boolean
-  slim?: boolean
-}
-
-// Placeholder until a dynamic Nav is built out and can be used
-const MockNav = ({ medium, slim }: SizeProps): React.ReactElement => {
-  const itemClasses = classnames(
-    'desktop:grid-col-auto usa-footer__primary-content',
-    {
-      'mobile-lg:grid-col-4': medium,
-      'mobile-lg:grid-col-6': slim,
-    }
-  )
-
-  const items = Array(4).fill({
-    href: 'javascript:void(0);',
-    heading: 'Primary Link',
-  })
-
-  return (
-    <nav className="usa-footer__nav" aria-label="Footer navigation">
-      <ul className="grid-row grid-gap">
-        {items.map((item, i) => (
-          <li key={`navItem-${i}`} className={itemClasses}>
-            <a className="usa-footer__primary-link" href={item.href}>
-              {item.heading}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  )
 }
 
 const returnToTop = (
@@ -69,10 +34,18 @@ export const SlimFooter = (): React.ReactElement => (
     primary={
       <div className="usa-footer__primary-container grid-row">
         <div className="mobile-lg:grid-col-8">
-          <MockNav slim />
+          <FooterNav
+            slim
+            links={Array(4).fill(
+              <a className="usa-footer__primary-link" href="#">
+                Primary Link
+              </a>
+            )}
+          />
         </div>
         <div className="tablet:grid-col-4">
           <Address
+            slim
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -97,6 +70,80 @@ export const SlimFooter = (): React.ReactElement => (
         }
         heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
       />
+    }
+  />
+)
+
+export const MediumFooter = (): React.ReactElement => (
+  <Footer
+    medium
+    returnToTop={returnToTop}
+    primary={
+      <FooterNav
+        medium
+        links={Array(4).fill(
+          <a className="usa-footer__primary-link" href="#">
+            Primary Link
+          </a>
+        )}
+      />
+    }
+    secondary={
+      <div className="grid-row grid-gap">
+        <Logo
+          medium
+          image={
+            <img
+              className="usa-footer__logo-img"
+              src="/logo-img.png"
+              alt="img alt text"
+            />
+          }
+          heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
+        />
+        <div className="usa-footer__contact-links mobile-lg:grid-col-6">
+          <SocialLinks
+            links={[
+              <a
+                key="facebook"
+                className="usa-social-link usa-social-link--facebook"
+                href="#">
+                <span>Facebook</span>
+              </a>,
+              <a
+                key="twitter"
+                className="usa-social-link usa-social-link--twitter"
+                href="#">
+                <span>Twitter</span>
+              </a>,
+              <a
+                key="youtube"
+                className="usa-social-link usa-social-link--youtube"
+                href="#">
+                <span>YouTube</span>
+              </a>,
+              <a
+                key="rss"
+                className="usa-social-link usa-social-link--rss"
+                href="#">
+                <span>RSS</span>
+              </a>,
+            ]}
+          />
+          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
+          <Address
+            medium
+            items={[
+              <a key="telephone" href="tel:1-800-555-5555">
+                (800) CALL-GOVT
+              </a>,
+              <a key="email" href="mailto:info@agency.gov">
+                info@agency.gov
+              </a>,
+            ]}
+          />
+        </div>
+      </div>
     }
   />
 )
