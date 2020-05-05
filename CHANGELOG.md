@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+- Added yarn audit check to dangerfile (on package change)
 - Added search component
 
 ## [1.2.0] - 2020-04-30
