@@ -19,20 +19,15 @@ type FooterProps = {
   secondary: React.ReactNode
 }
 
-// TODO: Add in "Return to Top" handling
-export const Footer = (
-  props: FooterProps & React.HTMLAttributes<HTMLElement>
-): React.ReactElement => {
-  const {
-    big,
-    medium,
-    slim,
-    returnToTop,
-    primary,
-    secondary,
-    ...footerAttributes
-  } = props
-
+export const Footer = ({
+  big,
+  medium,
+  slim,
+  returnToTop,
+  primary,
+  secondary,
+  ...footerAttributes
+}: FooterProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
   const classes = classnames(
     'usa-footer',
     {
