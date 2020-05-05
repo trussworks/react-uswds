@@ -40,11 +40,10 @@ if (danger.github) {
   
   isTrivial = includes((prBody + danger.github.pr.title), '#trivial')
     
-  if (lockfileChanged) {
+  if (lockfileChanged && danger.github.pr.user.type == 'User') {
     isYarnAuditMissing = !(includes(prBody, 'vulnerabilities found:') && includes(prBody, 'Packages audited:'));
   }
 }
-
 
 // Add a CHANGELOG entry for app changes
 const hasChangelog = includes(danger.git.modified_files, 'CHANGELOG.md')
