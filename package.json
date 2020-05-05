@@ -26,9 +26,11 @@
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook",
     "storybook:deploy": "storybook-to-ghpages",
-    "build": "webpack",
+    "build": "webpack -p",
     "build:watch": "webpack --watch",
-    "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src"
+    "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src",
+    "release": "standard-version -t",
+    "prepublishOnly": "build"
   },
   "repository": {
     "type": "git",
@@ -105,6 +107,7 @@
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.1",
     "source-map-loader": "^0.2.4",
+    "standard-version": "^7.1.0",
     "stylelint": "^13.3.0",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^8.0.1",
