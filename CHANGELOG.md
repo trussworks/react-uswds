@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+- Added search component
+
+## [1.2.0] - 2020-04-30
+
+- Added new Alert styles (slim, no icon) and allow the Alert to accept `div` attributes as props
+- Added additional examples of Form templates (Sign In form, Reset Password form) to Storybook
+- Turn off USWDS SCSS notifications on compile
+- Updated CODEOWNERS and contributors
+- Fixed Jest running in CI
+- Auto-approve Dependabot PRs
+- Deploy Storybook static site on merge to master
 - Run `yarn upgrade` to update all out of date dependencies
 - Add [DangerJS](https://danger.systems/js/) to automate some checks for contribution standards
 - Add additional CSS utility classes for background colors and text colors

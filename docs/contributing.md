@@ -6,18 +6,7 @@
 
 1. Clone this repo!
 
-1. Install node 10 using homebrew. You may need to force link it, or add to your `$PATH` (see https://stackoverflow.com/a/41025729)
-
-   ```
-   ➜ brew install node@10
-   ```
-
-   Verify you are using the correct version:
-
-   ```
-   ➜ node -v
-   v10.16.3
-   ```
+1. Use the node environment manager of your choice, but make sure you have the required version specified in `.node-version`. We recommend using [nodenv](https://github.com/nodenv/nodenv) to manage your node versions, but you can also use [homebrew](https://brew.sh/). More info can be found here: [how to install Node.js](https://nodejs.dev/how-to-install-nodejs)
 
 1. Use [yarn](https://yarnpkg.com) to manage JS packages.
 
