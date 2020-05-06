@@ -9,11 +9,26 @@ const keyPrefix = 'testItem'
 
 describe('List component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(
-      <List items={testItems} keyPrefix={keyPrefix} />
+    const { container } = render(
+      <List
+        items={testItems}
+        keyPrefix={keyPrefix}
+        ulClass="usa-nav__primary usa-accordion"
+        liClass="usa-nav__primary-item"
+      />
     )
-    expect(queryByText('item 1')).toBeInTheDocument()
+    expect(container.querySelector('.usa-nav__primary')).toBeInTheDocument()
+    expect(
+      container.querySelector('.usa-nav__primary-item')
+    ).toBeInTheDocument()
   })
 
-  // ToDo determine how to test the keys are rendering properly
+  it('renders all test items', () => {
+    const { getByText } = render(
+      <List items={testItems} keyPrefix={keyPrefix} />
+    )
+    expect(getByText('item 1')).toBeInTheDocument()
+    expect(getByText('item 2')).toBeInTheDocument()
+    expect(getByText('item 3')).toBeInTheDocument()
+  })
 })

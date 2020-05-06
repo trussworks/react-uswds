@@ -24,8 +24,16 @@ const testItems = [
 
 describe('MegaMenu component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(<MegaMenu items={testItems} isOpen={true} />)
+    const { container } = render(<MegaMenu items={testItems} isOpen={true} />)
 
-    expect(queryByText('Simple link one')).toBeInTheDocument()
+    expect(container.querySelector('.usa-megamenu')).toBeInTheDocument()
+  })
+
+  it('renders all test items when open', () => {
+    const { getByText } = render(<MegaMenu items={testItems} isOpen={true} />)
+    expect(getByText('Simple link one')).toBeInTheDocument()
+    expect(getByText('Simple link two')).toBeInTheDocument()
+    expect(getByText('Simple link three')).toBeInTheDocument()
+    expect(getByText('Simple link four')).toBeInTheDocument()
   })
 })

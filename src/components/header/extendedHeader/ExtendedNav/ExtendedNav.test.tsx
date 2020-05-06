@@ -5,30 +5,62 @@ import { ExtendedNav } from './ExtendedNav'
 
 const testPrimaryItems = [
   <a className="usa-current" href="#linkOne" key="one">
-    <span>Current Simple link</span>
+    <span>Simple link one</span>
   </a>,
   <a href="#linkTwo" key="two">
-    <span>Simple link Two</span>
+    <span>Simple link two</span>
   </a>,
 ]
 
 const testSecondaryItems = [
-  <a className="usa-current" href="#linkOne" key="one">
-    <span>Simple link</span>
+  <a className="usa-current" href="#linkThree" key="three">
+    <span>Simple link three</span>
   </a>,
-  <a href="#linkTwo" key="two">
-    <span>Simple link Two</span>
+  <a href="#linkFour" key="four">
+    <span>Simple link four</span>
   </a>,
 ]
 
 describe('Title component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(
+    const { queryByRole } = render(
       <ExtendedNav
         primaryItems={testPrimaryItems}
         secondaryItems={testSecondaryItems}
       />
     )
-    expect(queryByText('Current Simple link')).toBeInTheDocument()
+    expect(queryByRole('navigation')).toBeInTheDocument()
+  })
+
+  it('renders primary items', () => {
+    const { getByText } = render(
+      <ExtendedNav
+        primaryItems={testPrimaryItems}
+        secondaryItems={testSecondaryItems}
+      />
+    )
+    expect(getByText('Simple link one')).toBeInTheDocument()
+    expect(getByText('Simple link two')).toBeInTheDocument()
+  })
+
+  it('renders secondary items', () => {
+    const { getByText } = render(
+      <ExtendedNav
+        primaryItems={testPrimaryItems}
+        secondaryItems={testSecondaryItems}
+      />
+    )
+    expect(getByText('Simple link three')).toBeInTheDocument()
+    expect(getByText('Simple link four')).toBeInTheDocument()
+  })
+
+  it('renders nav button', () => {
+    const { getByTestId } = render(
+      <ExtendedNav
+        primaryItems={testPrimaryItems}
+        secondaryItems={testSecondaryItems}
+      />
+    )
+    expect(getByTestId('navButton')).toBeInTheDocument()
   })
 })

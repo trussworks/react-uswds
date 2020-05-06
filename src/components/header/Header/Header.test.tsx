@@ -8,4 +8,9 @@ describe('Header component', () => {
     const { queryByTestId } = render(<Header>My Header</Header>)
     expect(queryByTestId('header')).toBeInTheDocument()
   })
+
+  it('renders children', () => {
+    const { getByText } = render(<Header>My Header</Header>)
+    expect(getByText('My Header')).toBeInTheDocument()
+  })
 })

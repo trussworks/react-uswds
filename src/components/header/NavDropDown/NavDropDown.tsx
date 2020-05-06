@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavButton } from '../NavButton/NavButton'
 
 type NavDropDownProps = {
   label: string
@@ -10,13 +11,13 @@ type NavDropDownProps = {
 export const NavDropDown = (props: NavDropDownProps): React.ReactElement => {
   const { label, id, isOpen, onToggle } = props
   return (
-    <button
+    <NavButton
       className="usa-accordion__button usa-nav__link"
       aria-expanded={isOpen}
       aria-controls={id}
       onClick={(): void => onToggle()}>
       <span>{label}</span>
-    </button>
+    </NavButton>
   )
 }
 
