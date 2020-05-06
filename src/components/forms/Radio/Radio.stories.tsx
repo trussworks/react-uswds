@@ -2,7 +2,7 @@ import React from 'react'
 import { Radio } from './Radio'
 
 export default {
-  title: 'Radio',
+  title: 'Forms/Radio',
   parameters: {
     info: `
 USWDS 2.0 Radio component

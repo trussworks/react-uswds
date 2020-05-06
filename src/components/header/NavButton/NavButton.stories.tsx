@@ -2,7 +2,7 @@ import React from 'react'
 import { NavButton } from './NavButton'
 
 export default {
-  title: 'NavButton',
+  title: 'Header/NavButton',
   parameters: {
     info: `
 USWDS 2.0 Header component

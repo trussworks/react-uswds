@@ -4,7 +4,7 @@ import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
-  title: 'MegaMenu',
+  title: 'Header/MegaMenu',
   parameters: {
     info: `
 USWDS 2.0 MegaMenu component

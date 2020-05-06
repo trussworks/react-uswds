@@ -2,7 +2,7 @@ import React from 'react'
 import { Label } from './Label'
 
 export default {
-  title: 'Label',
+  title: 'Forms/Label',
   parameters: {
     info: `
 USWDS 2.0 Label component

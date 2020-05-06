@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu } from './Menu'
 
 export default {
-  title: 'Menu',
+  title: 'Header/Menu',
   parameters: {
     info: `
 USWDS 2.0 Menu component

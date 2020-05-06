@@ -2,7 +2,7 @@ import React from 'react'
 import { ExtendedNav } from './ExtendedNav'
 
 export default {
-  title: 'ExtendedNav',
+  title: 'Header/ExtendedHeader/ExtendedNav',
   parameters: {
     info: `
 USWDS 2.0 ExtendedNav component

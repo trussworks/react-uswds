@@ -2,7 +2,7 @@ import React from 'react'
 import { List } from './List'
 
 export default {
-  title: 'List',
+  title: 'Header/List',
   parameters: {
     info: `
 USWDS 2.0 List component

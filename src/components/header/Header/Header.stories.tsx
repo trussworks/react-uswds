@@ -10,7 +10,7 @@ import { NavButton } from '../NavButton/NavButton'
 import { NavDropDown } from '../NavDropDown/NavDropDown'
 
 export default {
-  title: 'Header',
+  title: 'Header/Header',
   parameters: {
     info: `
 USWDS 2.0 Header component

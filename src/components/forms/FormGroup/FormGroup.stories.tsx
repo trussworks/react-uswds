@@ -6,7 +6,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 export default {
-  title: 'FormGroup',
+  title: 'Forms/FormGroup',
   parameters: {
     info: `
 USWDS 2.0 FormGroup component
