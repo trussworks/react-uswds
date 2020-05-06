@@ -76,7 +76,7 @@
     "@typescript-eslint/parser": "^2.3.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "danger": "^10.0.0",
