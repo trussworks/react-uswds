@@ -1,21 +1,12 @@
 # Contributing
 
+## Dev environment
+
 ### Environment Setup
 
 1. Clone this repo!
 
-1. Install node 10 using homebrew. You may need to force link it, or add to your `$PATH` (see https://stackoverflow.com/a/41025729)
-
-   ```
-   ➜ brew install node@10
-   ```
-
-   Verify you are using the correct version:
-
-   ```
-   ➜ node -v
-   v10.16.3
-   ```
+1. Use the node environment manager of your choice, but make sure you have the required version specified in `.node-version`. We recommend using [nodenv](https://github.com/nodenv/nodenv) to manage your node versions, but you can also use [homebrew](https://brew.sh/). More info can be found here: [how to install Node.js](https://nodejs.dev/how-to-install-nodejs)
 
 1. Use [yarn](https://yarnpkg.com) to manage JS packages.
 
@@ -42,6 +33,15 @@ These should all be run from within the project directory.
 ## Development & Release Workflow
 
 Because this project exports a library that will be used by other projects, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with an accurate description of changes. In order to ensure this, we use the following standards:
+
+### Pull request standards
+
+We use dangerjs to enforce several pull request standards, including:
+
+- Changes to package source code should include changes to tests
+- New src/components files should include changes to storybook
+- App changes should include a CHANGELOG entry
+- Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
 
 ### Branching model
 
