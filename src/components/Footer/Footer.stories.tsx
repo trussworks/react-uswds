@@ -10,7 +10,7 @@ import { SignUpForm } from './SignUpForm/SignUpForm'
 import { SocialLinks } from './SocialLinks/SocialLinks'
 
 export default {
-  title: 'Footer',
+  title: 'Footer/Footer',
   parameters: {
     info: `
   USWDS 2.0 Footer component

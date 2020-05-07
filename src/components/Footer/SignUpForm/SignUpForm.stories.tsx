@@ -2,10 +2,10 @@ import React from 'react'
 import { SignUpForm } from './SignUpForm'
 
 export default {
-  title: 'SignUpForm',
+  title: 'Footer/SignUpForm',
   parameters: {
     info: `
-      Used in USWDS 2.0 Footer component
+      Form with a single input and submit button. Used in USWDS 2.0 Footer component.
     
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,

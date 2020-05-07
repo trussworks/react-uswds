@@ -3,10 +3,10 @@ import React from 'react'
 import { Logo } from './Logo'
 
 export default {
-  title: 'Logo',
+  title: 'Footer/Logo',
   parameters: {
     info: `
-    Used in USWDS 2.0 Footer component
+    Display logo image with optional heading.  Used in USWDS 2.0 Footer component.
     
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,

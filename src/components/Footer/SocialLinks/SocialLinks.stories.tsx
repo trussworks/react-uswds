@@ -3,10 +3,10 @@ import React from 'react'
 import { SocialLinks } from './SocialLinks'
 
 export default {
-  title: 'SocialLinks',
+  title: 'Footer/SocialLinks',
   parameters: {
     info: `
-    Used in USWDS 2.0 Footer component
+    Displays social links in styled row. Used in USWDS 2.0 Footer component.
   
   Source: https://designsystem.digital.gov/components/form-controls/#footer
   `,

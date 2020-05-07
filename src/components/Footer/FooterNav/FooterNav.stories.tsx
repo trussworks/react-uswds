@@ -4,10 +4,10 @@ import React from 'react'
 import { FooterNav } from './FooterNav'
 
 export default {
-  title: 'FooterNav',
+  title: 'Footer/FooterNav',
   parameters: {
     info: `
-    Used in USWDS 2.0 Footer component
+    Nav used in USWDS 2.0 Footer component. Can display simple nav items in a basic nav, or grouped nav items in an extended nav.
     
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,
