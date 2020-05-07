@@ -31,11 +31,11 @@ const DateInputElement = (
 
   return (
     <div className="usa-form-group usa-form-group--month">
-      <Label htmlFor={`${id}_month`}>{label}</Label>
+      <Label htmlFor={id}>{label}</Label>
       <TextInput
         className="usa-input--inline"
-        id={`${id}_month`}
-        name={`${name}_month`}
+        id={id}
+        name={name}
         type="text"
         maxLength={maxLength}
         minLength={minLength}
@@ -70,15 +70,25 @@ export const DateInput = (
       </span>
       <div className={classes} {...divAttributes}>
         {month && (
-          <DateInputElement id={id} name={name} label="Month" maxLength={2} />
+          <DateInputElement
+            id={`${id}_month`}
+            name={`${name}_month`}
+            label="Month"
+            maxLength={2}
+          />
         )}
         {day && (
-          <DateInputElement id={id} name={name} label="Day" maxLength={2} />
+          <DateInputElement
+            id={`${id}_day`}
+            name={`${name}_day`}
+            label="Day"
+            maxLength={2}
+          />
         )}
         {year && (
           <DateInputElement
-            id={id}
-            name={name}
+            id={`${id}_year`}
+            name={`${name}_year`}
             label="Year"
             maxLength={4}
             minLength={4}
