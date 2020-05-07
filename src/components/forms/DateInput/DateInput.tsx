@@ -35,10 +35,10 @@ export const DateInput = (
 
   return (
     <Fieldset legend={legend}>
+      <span className="usa-hint" id={`${id}_hint`}>
+        {hint}
+      </span>
       <div className={classes} {...divAttributes}>
-        <span className="usa-hint" id={`${id}_hint`}>
-          {hint}
-        </span>
         {month && (
           <div className="usa-form-group usa-form-group--month">
             <Label htmlFor={`${id}_month`}>Month</Label>
