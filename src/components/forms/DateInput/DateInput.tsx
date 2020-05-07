@@ -5,6 +5,14 @@ import { TextInput } from '../TextInput/TextInput'
 import { Label } from '../Label/Label'
 import { Fieldset } from '../Fieldset/Fieldset'
 
+interface DateInputElementProps {
+  id: string
+  name: string
+  label: string
+  maxLength: number
+  minLength?: number
+}
+
 interface DateInputProps {
   id: string
   name: string
@@ -16,6 +24,28 @@ interface DateInputProps {
   className?: string
 }
 
+const DateInputElement = (
+  props: DateInputElementProps & React.HTMLAttributes<HTMLElement>
+): React.ReactElement => {
+  const { id, name, label, maxLength, minLength } = props
+
+  return (
+    <div className="usa-form-group usa-form-group--month">
+      <Label htmlFor={`${id}_month`}>{label}</Label>
+      <TextInput
+        className="usa-input--inline"
+        id={`${id}_month`}
+        name={`${name}_month`}
+        type="text"
+        maxLength={maxLength}
+        minLength={minLength}
+        pattern="[0-9]*"
+        inputMode="numeric"
+      />
+    </div>
+  )
+}
+
 export const DateInput = (
   props: DateInputProps & React.HTMLAttributes<HTMLElement>
 ): React.ReactElement => {
@@ -23,9 +53,9 @@ export const DateInput = (
     id,
     name,
     legend,
-    month,
-    day,
-    year,
+    month = true,
+    day = true,
+    year = true,
     hint,
     className,
     ...divAttributes
@@ -40,47 +70,19 @@ export const DateInput = (
       </span>
       <div className={classes} {...divAttributes}>
         {month && (
-          <div className="usa-form-group usa-form-group--month">
-            <Label htmlFor={`${id}_month`}>Month</Label>
-            <TextInput
-              className="usa-input--inline"
-              id={`${id}_month`}
-              name={`${name}_month`}
-              type="text"
-              maxLength={2}
-              pattern="[0-9]*"
-              inputMode="numeric"
-            />
-          </div>
+          <DateInputElement id={id} name={name} label="Month" maxLength={2} />
         )}
         {day && (
-          <div className="usa-form-group usa-form-group--day">
-            <Label htmlFor={`${id}_day`}>Day</Label>
-            <TextInput
-              className="usa-input--inline"
-              id={`${id}_day`}
-              name={`${name}_day`}
-              type="text"
-              maxLength={2}
-              pattern="[0-9]*"
-              inputMode="numeric"
-            />
-          </div>
+          <DateInputElement id={id} name={name} label="Day" maxLength={2} />
         )}
         {year && (
-          <div className="usa-form-group usa-form-group--year">
-            <Label htmlFor={`${id}_year`}>Year</Label>
-            <TextInput
-              className="usa-input--inline"
-              id={`${id}_year`}
-              name={`${name}_year`}
-              type="text"
-              minLength={4}
-              maxLength={4}
-              pattern="[0-9]*"
-              inputMode="numeric"
-            />
-          </div>
+          <DateInputElement
+            id={id}
+            name={name}
+            label="Year"
+            maxLength={4}
+            minLength={4}
+          />
         )}
       </div>
     </Fieldset>
