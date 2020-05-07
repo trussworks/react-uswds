@@ -1,14 +1,13 @@
 import React from 'react'
 import { DateInput } from './DateInput'
-import { Form } from '../Form/Form'
 
 export default {
-  title: 'DateInput',
+  title: 'Form/DateInput',
   parameters: {
     info: `
 USWDS 2.0 DateInput component
 
-Source: https://designsystem.digital.gov/components/form-controls/#text-input
+Source: https://designsystem.digital.gov/components/form-controls/#date-input
 `,
   },
 }

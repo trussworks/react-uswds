@@ -30,7 +30,7 @@ describe('DateInput component', () => {
     expect(getByText('Year')).toBeInTheDocument()
   })
 
-  it('renders does not render a dataInputElement when false', () => {
+  it('does not render a dataInputElement when false', () => {
     const { queryByText } = render(
       <DateInput
         id="testDateInput"
