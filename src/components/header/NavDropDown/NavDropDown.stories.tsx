@@ -20,9 +20,9 @@ export const defaultDropDownMenu = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState([false, false])
 
   const onToggle = (index: number): void => {
-    setIsOpen((prvIsOpen) => {
+    setIsOpen((prevIsOpen) => {
       const newIsOpen = [false, false]
-      newIsOpen[index] = !prvIsOpen[index]
+      newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen
     })
   }

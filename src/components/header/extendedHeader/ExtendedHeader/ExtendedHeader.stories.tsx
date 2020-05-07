@@ -27,6 +27,15 @@ const mockSubmit = (): void => {
 export const basicExtendedHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
+  const [isOpen, setIsOpen] = useState([false])
+
+  const onToggle = (index: number): void => {
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = Array(prevIsOpen.length).fill('false')
+      newIsOpen[index] = !prevIsOpen[index]
+      return newIsOpen
+    })
+  }
 
   const testMenuItems = [
     <a href="#linkOne" key="one">
@@ -36,16 +45,6 @@ export const basicExtendedHeader = (): React.ReactElement => {
       <span>Simple link two</span>
     </a>,
   ]
-
-  const [isOpen, setIsOpen] = useState([false, false])
-
-  const onToggle = (index: number): void => {
-    setIsOpen((prvIsOpen) => {
-      const newIsOpen = [false]
-      newIsOpen[index] = !prvIsOpen[index]
-      return newIsOpen
-    })
-  }
 
   const testItemsMenu = [
     <>
@@ -123,9 +122,9 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState([false, false])
 
   const onToggle = (index: number): void => {
-    setIsOpen((prvIsOpen) => {
-      const newIsOpen = [false]
-      newIsOpen[index] = !prvIsOpen[index]
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = Array(prevIsOpen.length).fill('false')
+      newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen
     })
   }
