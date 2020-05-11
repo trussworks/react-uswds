@@ -4,10 +4,10 @@ import React from 'react'
 import { FooterNav } from './FooterNav'
 
 export default {
-  title: 'FooterNav',
+  title: 'Footer/FooterNav',
   parameters: {
     info: `
-    Used in USWDS 2.0 Footer component
+     Display single list of nav items, or grouped nav items in an extended nav. Used in USWDS 2.0 Footer component.
     
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,
@@ -33,5 +33,46 @@ export const MediumFooterNav = (): React.ReactElement => (
         PrimaryLink
       </a>
     )}
+  />
+)
+
+export const BigFooterNav = (): React.ReactElement => (
+  <FooterNav
+    big
+    links={[
+      [
+        <h4 key="1" className="usa-footer__primary-link">
+          Topic
+        </h4>,
+        ...Array(3).fill(
+          <a className="usa-footer__secondary-link" href="#">
+            Secondary link
+          </a>
+        ),
+      ],
+      [
+        <h4 key="1" className="usa-footer__primary-link">
+          Topic
+        </h4>,
+        <a key="2" className="usa-footer__secondary-link" href="#">
+          Secondary link that is pretty long
+        </a>,
+        ...Array(2).fill(
+          <a className="usa-footer__secondary-link" href="#">
+            Secondary link
+          </a>
+        ),
+      ],
+      [
+        <h4 key="1" className="usa-footer__primary-link">
+          Topic
+        </h4>,
+        ...Array(3).fill(
+          <a className="usa-footer__secondary-link" href="#">
+            Secondary link
+          </a>
+        ),
+      ],
+    ]}
   />
 )

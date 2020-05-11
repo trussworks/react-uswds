@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface TextInputProps {
+export interface TextInputProps {
   id: string
   name: string
   type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
