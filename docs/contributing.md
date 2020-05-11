@@ -36,13 +36,18 @@ To start working on a new issue, make sure you've assigned yourself to the issue
 
 For example: `sr-accordion-component-112`
 
-When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass testing and linting standards. Additionally, this project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification in order to standardize contributions and streamline the release flow. More information about the tools we're using:
+Because this project exports a library that will be used by other projects, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with an accurate description of changes. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass testing and linting standards. Additionally, this project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification in order to standardize contributions and streamline the release flow.
 
 - [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - These checks will also be run on all files in CI, and must pass before the branch can be merged
 - [`commitlint`](https://github.com/conventional-changelog/commitlint) is run on your commit message, using the [conventional commits config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
-  - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages. You can use `yarn commit` instead of `git commit` to start the commitizen prompt
+  - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages.
+  - You can use `yarn commit` instead of `git commit` to start the commitizen prompt
+- We also use [dangerjs](https://github.com/danger/danger-js) to enforce several pull request standards, including:
+  - Changes to package source code should include changes to tests
+  - New src/components files should include changes to storybook
+  - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
 - All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
 - [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on commit messages
 

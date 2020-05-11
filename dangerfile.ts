@@ -6,7 +6,7 @@ if (danger.github && danger.github.pr.body.length < 10) {
   warn('Please include a description of your PR changes.')
 }
 
-// load all modified and new files
+// Load all modified and new files
 const allFiles = danger.git.modified_files.concat(danger.git.created_files)
 
 // Request changes to package source code to also include changes to tests.
@@ -35,5 +35,26 @@ const lockfileChanged = includes(allFiles, 'yarn.lock')
 if (packageChanged && !lockfileChanged) {
   const message = 'Changes were made to package.json, but not to yarn.lock'
   const idea = 'Perhaps you need to run `yarn install`?'
+  warn(`${message} - <i>${idea}</i>`)
+}
+
+// Ensure we have access to github for these checks
+let isYarnAuditMissing = false
+if (danger.github) {
+  const prBody = danger.github.pr.body
+  if (lockfileChanged && danger.github.pr.user.type == 'User') {
+    isYarnAuditMissing = !(
+      includes(prBody, 'vulnerabilities found:') &&
+      includes(prBody, 'Packages audited:')
+    )
+  }
+}
+
+// Encourage adding `yarn audit` output on package change
+if (isYarnAuditMissing) {
+  const message =
+    'Changes were made to yarn.lock, but no plain text yarn audit output was found in PR description.'
+  const idea =
+    'Can you run `yarn audit` in your branch and paste the results inside a markdown code block?'
   warn(`${message} - <i>${idea}</i>`)
 }
