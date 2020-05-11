@@ -146,5 +146,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "standard-version": {
+    "skip": {
+      "tag": true
+    }
   }
 }

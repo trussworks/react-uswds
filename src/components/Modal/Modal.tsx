@@ -48,7 +48,7 @@ export interface ConnectedModalProps {
   onClose: () => void
 }
 
-export const connectModal = function<P extends ConnectedModalProps>(
+export const connectModal = function <P extends ConnectedModalProps>(
   Component: React.FunctionComponent<P> | React.ComponentType<P>
 ): React.FunctionComponent<P> {
   const ConnectedModal = ({
