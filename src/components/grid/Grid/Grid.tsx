@@ -56,7 +56,6 @@ export const Grid = ({
   Object.keys(breakpoints).forEach((b) => {
     const bp = b as BreakpointKeys
     if (Object.prototype.hasOwnProperty.call(props, bp)) {
-      console.log('grid has breakpoint props', bp)
       const bpProps = props[bp] as GridItemProps
       classes = classnames(classes, getGridClasses(bpProps, bp))
     }

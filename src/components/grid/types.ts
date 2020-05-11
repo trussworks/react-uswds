@@ -8,20 +8,11 @@ export const breakpoints = {
   widescreen: 'widescreen',
 }
 
-export type Breakpoints =
-  | 'card'
-  | 'card-lg'
-  | 'mobile'
-  | 'mobile-lg'
-  | 'tablet'
-  | 'tablet-lg'
-  | 'desktop'
-  | 'desktop-lg'
-  | 'widescreen'
-
 export type BreakpointKeys = keyof typeof breakpoints
 
 export type ContainerSizes =
+  | 'card'
+  | 'card-lg'
   | 'mobile'
   | 'mobile-lg'
   | 'tablet'

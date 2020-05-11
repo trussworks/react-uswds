@@ -356,6 +356,14 @@ export const gutters = (): React.ReactElement => (
   </>
 )
 
+export const cardContainer = (): React.ReactElement => (
+  <GridContainer containerSize="card">{testContent}</GridContainer>
+)
+
+export const cardLgContainer = (): React.ReactElement => (
+  <GridContainer containerSize="card-lg">{testContent}</GridContainer>
+)
+
 export const mobileContainer = (): React.ReactElement => (
   <GridContainer containerSize="mobile">{testContent}</GridContainer>
 )
