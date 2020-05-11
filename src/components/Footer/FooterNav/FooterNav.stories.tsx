@@ -7,7 +7,7 @@ export default {
   title: 'Footer/FooterNav',
   parameters: {
     info: `
-    Nav used in USWDS 2.0 Footer component. Can display simple nav items in a basic nav, or grouped nav items in an extended nav.
+     Display single list of nav items, or grouped nav items in an extended nav. Used in USWDS 2.0 Footer component.
     
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,
