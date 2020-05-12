@@ -18,6 +18,17 @@ if (hasCodeChanges && !hasTestChanges) {
   )
 }
 
+// Make sure to export new components (src/components/*.[jt]sx)
+const hasNewComponents = danger.git.created_files.some(
+  (p) => !!p.match(/src\/components\/.*\.[jt]sx/)
+)
+const hasEntrypointChanges = includes(allFiles, 'src/index.ts')
+if (hasNewComponents && !hasEntrypointChanges) {
+  const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
+  const idea = `Did you forget to export new components from the library entrypoint?`
+  warn(`${message} - <em>${idea}</em>`)
+}
+
 // Require new src/components files to include changes to storybook
 const hasStorybookChanges = allFiles.some(
   (p) => !!p.match(/src\/.*\.stories\.[jt]sx?/)
@@ -44,7 +55,7 @@ if (danger.github) {
   const prBody = danger.github.pr.body
   if (lockfileChanged && danger.github.pr.user.type == 'User') {
     isYarnAuditMissing = !(
-      includes(prBody, 'vulnerabilities found:') &&
+      includes(prBody, 'vulnerabilities found') &&
       includes(prBody, 'Packages audited:')
     )
   }

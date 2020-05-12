@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. This file i
 
 - chore: Added yarn audit check to dangerfile (on package change)
 - feat: Added search component
+- feat: Added Grid, GridContainer components
 
 ## 1.2.0 (2020-04-30)
 

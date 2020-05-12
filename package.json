@@ -24,7 +24,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "storybook": "start-storybook",
+    "storybook": "start-storybook -p 9009",
     "storybook:deploy": "storybook-to-ghpages",
     "build": "webpack -p",
     "build:watch": "webpack --watch",
