@@ -177,7 +177,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
   return (
     <>
       <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
-      <Header basic={true}>
+      <Header basic={true} basicWithMegaMenu={true}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title>Project Title</Title>

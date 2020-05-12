@@ -43,19 +43,9 @@ export const ExtendedNav = (
         <NavButton className="usa-nav__close" onClick={onToggleMobileNav}>
           <img src={closeImg} alt="close" />
         </NavButton>
-        <NavList
-          items={primaryItems}
-          keyPrefix="primarynav_item"
-          ulClass="usa-nav__primary usa-accordion"
-          liClass="usa-nav__primary-item"
-        />
+        <NavList items={primaryItems} primary={true} />
         <div className="usa-nav__secondary">
-          <NavList
-            items={secondaryItems}
-            keyPrefix="secondarynav_item"
-            ulClass="usa-nav__secondary-links"
-            liClass="usa-nav__secondary-item"
-          />
+          <NavList items={secondaryItems} secondary={true} />
           {children}
         </div>
       </div>

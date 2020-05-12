@@ -1,22 +1,48 @@
 import React from 'react'
+import classnames from 'classnames'
 
 interface NavListProps {
   items: React.ReactNode[]
-  keyPrefix: string
-  ulClass?: string
-  liClass?: string
+  primary?: boolean
+  secondary?: boolean
+  subnav?: boolean
+  megamenu?: boolean
 }
 
 // Should the UL or LI html attributes be passed in?
 export const NavList = (
   props: NavListProps & React.HTMLAttributes<HTMLUListElement>
 ): React.ReactElement => {
-  const { items, keyPrefix, ulClass, liClass, ...ulProps } = props
+  const {
+    items,
+    primary,
+    secondary,
+    subnav,
+    megamenu,
+    className,
+    ...ulProps
+  } = props
+
+  const ulClasses = classnames(
+    {
+      'usa-nav__primary usa-accordion': primary,
+      'usa-nav__secondary-links': secondary,
+      'usa-nav__submenu': subnav,
+      'usa-nav__submenu-list': megamenu,
+    },
+    className
+  )
+
+  const liClasses = classnames({
+    'usa-nav__primary-item': primary,
+    'usa-nav__secondary-item': secondary,
+    'usa-nav__submenu-item': subnav || megamenu,
+  })
 
   return (
-    <ul className={ulClass} {...ulProps}>
+    <ul className={ulClasses} {...ulProps}>
       {items.map((item, i) => (
-        <li key={`${keyPrefix}_${i}`} className={liClass}>
+        <li key={`item_${i}`} className={liClasses}>
           {item}
         </li>
       ))}

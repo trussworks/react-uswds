@@ -20,13 +20,6 @@ const testItems = [
   </a>,
 ]
 
-const keyPrefix = 'testItem'
-
 export const BasicNavList = (): React.ReactElement => (
-  <NavList
-    items={testItems}
-    keyPrefix={keyPrefix}
-    ulClass="usa-nav__primary usa-accordion"
-    liClass="usa-nav__primary-item"
-  />
+  <NavList items={testItems} primary={true} />
 )

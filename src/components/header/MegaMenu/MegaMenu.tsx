@@ -17,13 +17,7 @@ export const MegaMenu = (props: MegaMenuProps): React.ReactElement => {
       <div className="grid-row grid-gap-4">
         {items.map((listItems, i) => (
           <div className="usa-col" key={`subnav_col_${i}`}>
-            <NavList
-              items={listItems}
-              keyPrefix="subnav_item"
-              ulClass="usa-nav__submenu-list"
-              liClass="usa-nav__submenu-item"
-              hidden={!isOpen}
-            />
+            <NavList items={listItems} megamenu={true} />
           </div>
         ))}
       </div>

@@ -40,12 +40,7 @@ export const PrimaryNav = (
       <NavButton className="usa-nav__close" onClick={onToggleMobileNav}>
         <img src={closeImg} alt="close" />
       </NavButton>
-      <NavList
-        items={items}
-        keyPrefix="primarynav_item"
-        ulClass="usa-nav__primary usa-accordion"
-        liClass="usa-nav__primary-item"
-      />
+      <NavList items={items} primary={true} />
       {children}
     </nav>
   )
