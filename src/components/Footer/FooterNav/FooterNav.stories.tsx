@@ -16,6 +16,7 @@ export default {
 
 export const SlimFooterNav = (): React.ReactElement => (
   <FooterNav
+    aria-label="Footer navigation"
     slim
     links={Array(4).fill(
       <a className="usa-footer__primary-link" href="#">
@@ -27,6 +28,7 @@ export const SlimFooterNav = (): React.ReactElement => (
 
 export const MediumFooterNav = (): React.ReactElement => (
   <FooterNav
+    aria-label="Footer navigation"
     medium
     links={Array(4).fill(
       <a className="usa-footer__primary-link" href="#">
@@ -38,6 +40,7 @@ export const MediumFooterNav = (): React.ReactElement => (
 
 export const BigFooterNav = (): React.ReactElement => (
   <FooterNav
+    aria-label="Footer navigation"
     big
     links={[
       [

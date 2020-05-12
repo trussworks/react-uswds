@@ -21,10 +21,15 @@ function isExtendedNavLinks(
   return (links as ExtendedNavLinks)[0].constructor === Array
 }
 
-export const FooterNav = (
-  props: FooterNavProps & React.HTMLAttributes<HTMLElement>
-): React.ReactElement => {
-  const { big, medium, slim, links, ...elementAttributes } = props
+export const FooterNav = ({
+  className,
+  big,
+  medium,
+  slim,
+  links,
+  ...elementAttributes
+}: FooterNavProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+  const navClasses = classnames('usa-footer__nav', className)
 
   const listItemClasses = classnames(
     'desktop:grid-col-auto usa-footer__primary-content',
@@ -35,10 +40,7 @@ export const FooterNav = (
   )
 
   return (
-    <nav
-      {...elementAttributes}
-      className="usa-footer__nav"
-      aria-label="Footer navigation">
+    <nav className={navClasses} {...elementAttributes}>
       {big && isExtendedNavLinks(links) && <ExtendedNav nestedLinks={links} />}
 
       {!isExtendedNavLinks(links) && (
