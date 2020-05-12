@@ -2,6 +2,9 @@ import React from 'react'
 
 import { Logo } from './Logo'
 
+// assets
+import logoImg from 'uswds/src/img/logo-img.png'
+
 export default {
   title: 'Footer/Logo',
   parameters: {
@@ -18,11 +21,7 @@ export const Slim = (): React.ReactElement => (
     <Logo
       slim
       image={
-        <img
-          className="usa-footer__logo-img"
-          src="/logo-img.png"
-          alt="Mock logo"
-        />
+        <img className="usa-footer__logo-img" src={logoImg} alt="Mock logo" />
       }
       heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
     />
@@ -33,11 +32,7 @@ export const NoHeading = (): React.ReactElement => (
   <div className="usa-footer__secondary-section">
     <Logo
       image={
-        <img
-          className="usa-footer__logo-img"
-          src="/logo-img.png"
-          alt="Mock logo"
-        />
+        <img className="usa-footer__logo-img" src={logoImg} alt="Mock logo" />
       }
     />
   </div>
