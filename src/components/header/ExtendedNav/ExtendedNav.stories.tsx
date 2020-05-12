@@ -17,20 +17,20 @@ const mockToggle = (): void => {
 }
 
 const testPrimaryItems = [
-  <a href="#linkOne" key="one">
+  <a href="#linkOne" key="one" className="usa-nav__link">
     <span>Simple link</span>
   </a>,
-  <a href="#linkTwo" key="two">
+  <a href="#linkTwo" key="two" className="usa-nav__link">
     <span>Simple link Two</span>
   </a>,
 ]
 
 const testSecondaryItems = [
   <a href="#linkOne" key="one">
-    <span>Simple link</span>
+    Simple link
   </a>,
   <a href="#linkTwo" key="two">
-    <span>Simple link Two</span>
+    Simple link Two
   </a>,
 ]
 

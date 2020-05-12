@@ -31,10 +31,10 @@ export const BasicHeader = (): React.ReactElement => {
 
   const testMenuItems = [
     <a href="#linkOne" key="one">
-      <span>Current link</span>
+      Current link
     </a>,
     <a href="#linkTwo" key="two">
-      <span>Simple link Two</span>
+      Simple link Two
     </a>,
   ]
 
@@ -60,11 +60,11 @@ export const BasicHeader = (): React.ReactElement => {
       />
       <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} />
     </>,
-    <a href="#two" key="two">
-      Parent link
+    <a href="#two" key="two" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
-    <a href="#three" key="three">
-      Parent link
+    <a href="#three" key="three" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
   ]
 
@@ -166,11 +166,11 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
       />
       <MegaMenu key="one" items={testItemsMegaTwo} isOpen={isOpen[1]} />
     </>,
-    <a href="#two" key="two">
-      Parent link
+    <a href="#two" key="two" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
-    <a href="#three" key="three">
-      Parent link
+    <a href="#three" key="three" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
   ]
 
@@ -213,10 +213,10 @@ export const extendedHeader = (): React.ReactElement => {
 
   const testMenuItems = [
     <a href="#linkOne" key="one">
-      <span>Simple link one</span>
+      Simple link one
     </a>,
     <a href="#linkTwo" key="two">
-      <span>Simple link two</span>
+      Simple link two
     </a>,
   ]
 
@@ -232,11 +232,11 @@ export const extendedHeader = (): React.ReactElement => {
       />
       <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} />
     </>,
-    <a href="#two" key="two">
-      Parent link
+    <a href="#two" key="two" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
-    <a href="#three" key="three">
-      Parent link
+    <a href="#three" key="three" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
   ]
   return (
@@ -267,10 +267,10 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
 
   const testMenuItems = [
     <a href="#linkOne" key="one">
-      <span>Simple link one</span>
+      Simple link one
     </a>,
     <a href="#linkTwo" key="two">
-      <span>Simple link two</span>
+      Simple link two
     </a>,
   ]
 
@@ -315,11 +315,11 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
       />
       <MegaMenu key="one" items={testItemsMegaOne} isOpen={isOpen[0]} />
     </>,
-    <a href="#two" key="two">
-      Parent link
+    <a href="#two" key="two" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
-    <a href="#three" key="three">
-      Parent link
+    <a href="#three" key="three" className="usa-nav__link">
+      <span>Parent link</span>
     </a>,
   ]
   return (

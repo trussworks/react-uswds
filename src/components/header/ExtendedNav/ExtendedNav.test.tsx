@@ -5,10 +5,10 @@ import { ExtendedNav } from './ExtendedNav'
 
 const testPrimaryItems = [
   <a className="usa-current" href="#linkOne" key="one">
-    <span>Simple link one</span>
+    Simple link one
   </a>,
   <a href="#linkTwo" key="two">
-    <span>Simple link two</span>
+    Simple link two
   </a>,
 ]
 
