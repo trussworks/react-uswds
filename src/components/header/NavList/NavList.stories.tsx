@@ -1,11 +1,11 @@
 import React from 'react'
-import { List } from './List'
+import { NavList } from './NavList'
 
 export default {
-  title: 'Header/List',
+  title: 'Header/NavList',
   parameters: {
     info: `
-USWDS 2.0 List component
+USWDS 2.0 NavList component
 
 `,
   },
@@ -23,7 +23,7 @@ const testItems = [
 const keyPrefix = 'testItem'
 
 export const BasicNavList = (): React.ReactElement => (
-  <List
+  <NavList
     items={testItems}
     keyPrefix={keyPrefix}
     ulClass="usa-nav__primary usa-accordion"

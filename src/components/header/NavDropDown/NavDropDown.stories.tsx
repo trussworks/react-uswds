@@ -16,6 +16,10 @@ Source: https://designsystem.digital.gov/components/header/
 
 const testLabel = 'Nav Label'
 
+const mockToggle = (): void => {
+  /* mock submit fn */
+}
+
 export const defaultDropDownMenu = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState([false, false])
 
@@ -52,6 +56,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
               }}
             />,
           ]}
+          onToggleMobileNav={mockToggle}
         />
       </div>
     </Header>

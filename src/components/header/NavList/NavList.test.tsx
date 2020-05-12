@@ -1,16 +1,16 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { List } from './List'
+import { NavList } from './NavList'
 
 const testItems = ['item 1', 'item 2', 'item 3']
 
 const keyPrefix = 'testItem'
 
-describe('List component', () => {
+describe('NavList component', () => {
   it('renders without errors', () => {
     const { container } = render(
-      <List
+      <NavList
         items={testItems}
         keyPrefix={keyPrefix}
         ulClass="usa-nav__primary usa-accordion"
@@ -25,7 +25,7 @@ describe('List component', () => {
 
   it('renders all test items', () => {
     const { getByText } = render(
-      <List items={testItems} keyPrefix={keyPrefix} />
+      <NavList items={testItems} keyPrefix={keyPrefix} />
     )
     expect(getByText('item 1')).toBeInTheDocument()
     expect(getByText('item 2')).toBeInTheDocument()

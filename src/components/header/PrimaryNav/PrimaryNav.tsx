@@ -2,20 +2,30 @@ import React from 'react'
 import classnames from 'classnames'
 
 import { NavButton } from '../NavButton/NavButton'
-import { List } from '../List/List'
+import { NavList } from '../NavList/NavList'
 
 // assets
 import closeImg from 'uswds/src/img/close.svg'
 
 type PrimaryNavProps = {
   items: React.ReactNode[]
+  onToggleMobileNav:
+    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
+    | undefined
   mobileExpanded?: boolean
 }
 
 export const PrimaryNav = (
-  props: PrimaryNavProps & React.HTMLAttributes<HTMLButtonElement>
+  props: PrimaryNavProps & React.HTMLAttributes<HTMLElement>
 ): React.ReactElement => {
-  const { items, mobileExpanded, children, className, onClick } = props
+  const {
+    items,
+    onToggleMobileNav,
+    mobileExpanded,
+    children,
+    className,
+    ...navProps
+  } = props
 
   const classes = classnames(
     'usa-nav',
@@ -26,11 +36,11 @@ export const PrimaryNav = (
   )
 
   return (
-    <nav className={classes}>
-      <NavButton className="usa-nav__close" onClick={onClick}>
+    <nav className={classes} {...navProps}>
+      <NavButton className="usa-nav__close" onClick={onToggleMobileNav}>
         <img src={closeImg} alt="close" />
       </NavButton>
-      <List
+      <NavList
         items={items}
         keyPrefix="primarynav_item"
         ulClass="usa-nav__primary usa-accordion"

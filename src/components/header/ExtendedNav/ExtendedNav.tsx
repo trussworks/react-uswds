@@ -1,8 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { NavButton } from '../../NavButton/NavButton'
-import { List } from '../../List/List'
+import { NavButton } from '../NavButton/NavButton'
+import { NavList } from '../NavList/NavList'
 
 // assets
 import closeImg from 'uswds/src/img/close.svg'
@@ -10,19 +10,23 @@ import closeImg from 'uswds/src/img/close.svg'
 type ExtendedNavProps = {
   primaryItems: React.ReactNode[]
   secondaryItems: React.ReactNode[]
+  onToggleMobileNav:
+    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
+    | undefined
   mobileExpanded?: boolean
 }
 
 export const ExtendedNav = (
-  props: ExtendedNavProps & React.HTMLAttributes<HTMLButtonElement>
+  props: ExtendedNavProps & React.HTMLAttributes<HTMLElement>
 ): React.ReactElement => {
   const {
     primaryItems,
     secondaryItems,
-    mobileExpanded,
+    mobileExpanded = false,
     children,
     className,
-    onClick,
+    onToggleMobileNav,
+    ...navProps
   } = props
 
   const classes = classnames(
@@ -34,19 +38,19 @@ export const ExtendedNav = (
   )
 
   return (
-    <nav className={classes}>
+    <nav className={classes} {...navProps}>
       <div className="usa-nav__inner">
-        <NavButton className="usa-nav__close" onClick={onClick}>
+        <NavButton className="usa-nav__close" onClick={onToggleMobileNav}>
           <img src={closeImg} alt="close" />
         </NavButton>
-        <List
+        <NavList
           items={primaryItems}
           keyPrefix="primarynav_item"
           ulClass="usa-nav__primary usa-accordion"
           liClass="usa-nav__primary-item"
         />
         <div className="usa-nav__secondary">
-          <List
+          <NavList
             items={secondaryItems}
             keyPrefix="secondarynav_item"
             ulClass="usa-nav__secondary-links"

@@ -2,7 +2,7 @@ import React from 'react'
 import { ExtendedNav } from './ExtendedNav'
 
 export default {
-  title: 'Header/ExtendedHeader/ExtendedNav',
+  title: 'Header/ExtendedNav',
   parameters: {
     info: `
 USWDS 2.0 ExtendedNav component
@@ -10,6 +10,10 @@ USWDS 2.0 ExtendedNav component
 Source: https://designsystem.digital.gov/components/header/
 `,
   },
+}
+
+const mockToggle = (): void => {
+  /* mock submit fn */
 }
 
 const testPrimaryItems = [
@@ -32,6 +36,7 @@ const testSecondaryItems = [
 
 export const defaultExtendedNav = (): React.ReactElement => (
   <ExtendedNav
+    onToggleMobileNav={mockToggle}
     primaryItems={testPrimaryItems}
     secondaryItems={testSecondaryItems}
   />

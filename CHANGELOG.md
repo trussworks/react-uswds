@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-- Added components for the header and extended header (Header, List, MegaMenu, Menu, NavButton, NavDropDown, PrimaryNav, Title, ExtendedHeader, ExtendedNav)
+- Added components for the header and extended header (Header, NavList, MegaMenu, Menu, NavButton, NavDropDown, PrimaryNav, Title, ExtendedHeader, ExtendedNav)
 - Added yarn audit check to dangerfile (on package change)
 - Added search component
 

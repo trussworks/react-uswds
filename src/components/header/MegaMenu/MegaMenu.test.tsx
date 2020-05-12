@@ -36,4 +36,12 @@ describe('MegaMenu component', () => {
     expect(getByText('Simple link three')).toBeInTheDocument()
     expect(getByText('Simple link four')).toBeInTheDocument()
   })
+
+  it('hides the submenu when the isOpen is false', () => {
+    const { queryByTestId } = render(
+      <MegaMenu items={testItems} isOpen={false} />
+    )
+
+    expect(queryByTestId('megamenu')).toHaveAttribute('hidden')
+  })
 })

@@ -11,6 +11,9 @@ Source: https://designsystem.digital.gov/components/header/
 `,
   },
 }
+const mockToggle = (): void => {
+  /* mock submit fn */
+}
 
 const testBasicHeaderItems = [
   <a className="usa-current" href="#linkOne" key="one">
@@ -22,5 +25,5 @@ const testBasicHeaderItems = [
 ]
 
 export const defaultPrimaryNav = (): React.ReactElement => (
-  <PrimaryNav items={testBasicHeaderItems} />
+  <PrimaryNav items={testBasicHeaderItems} onToggleMobileNav={mockToggle} />
 )

@@ -34,15 +34,5 @@ const testItems = [
 ]
 
 export const defaultMegaMenu = (): React.ReactElement => (
-  <Header>
-    <div className="usa-nav-container">
-      <div className="usa-navbar">
-        <PrimaryNav
-          items={[
-            <MegaMenu items={testItems} key="testItemOne" isOpen={true} />,
-          ]}
-        />
-      </div>
-    </div>
-  </Header>
+  <MegaMenu items={testItems} key="testItemOne" isOpen={true} />
 )

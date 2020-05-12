@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ListProps {
+interface NavListProps {
   items: React.ReactNode[]
   keyPrefix: string
   ulClass?: string
@@ -8,8 +8,8 @@ interface ListProps {
 }
 
 // Should the UL or LI html attributes be passed in?
-export const List = (
-  props: ListProps & React.HTMLAttributes<HTMLUListElement>
+export const NavList = (
+  props: NavListProps & React.HTMLAttributes<HTMLUListElement>
 ): React.ReactElement => {
   const { items, keyPrefix, ulClass, liClass, ...ulProps } = props
 

@@ -1,19 +1,16 @@
 import React from 'react'
-import classnames from 'classnames'
 
 export const NavButton = (
   props: React.HTMLAttributes<HTMLButtonElement>
 ): React.ReactElement => {
-  const { children, onClick, className, ...buttonProps } = props
-
-  const classes = classnames(className)
+  const { children, onClick, ...buttonProps } = props
 
   return (
     <button
-      className={classes}
       onClick={onClick}
       data-testid="navButton"
-      {...buttonProps}>
+      {...buttonProps}
+      type="button">
       {children}
     </button>
   )

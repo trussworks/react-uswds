@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from '../List/List'
+import { NavList } from '../NavList/NavList'
 
 type MenuProps = {
   items: React.ReactNode[]
@@ -9,7 +9,7 @@ type MenuProps = {
 export const Menu = (props: MenuProps): React.ReactElement => {
   const { items, isOpen } = props
   return (
-    <List
+    <NavList
       items={items}
       keyPrefix="subnav_item"
       ulClass="usa-nav__submenu"

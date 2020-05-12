@@ -35,4 +35,21 @@ describe('NavDropDown component', () => {
     fireEvent.click(getByText(testLabel))
     expect(onClickFn).toHaveBeenCalledTimes(1)
   })
+
+  it('renders when isOpen is false', () => {
+    const onClickFn = jest.fn()
+    const { getByTestId, debug } = render(
+      <NavDropDown
+        label={testLabel}
+        id="testOne"
+        isOpen={false}
+        onToggle={onClickFn}
+      />
+    )
+    debug()
+    expect(getByTestId('navButton')).toHaveAttribute(
+      'aria-expanded',
+      expect.stringContaining('false')
+    )
+  })
 })
