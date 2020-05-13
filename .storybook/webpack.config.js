@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = ({ config }) => {
   config.module.rules = config.module.rules.filter(
-    rule => rule.test.toString() !== '/\\.css$/'
+    (rule) => rule.test.toString() !== '/\\.css$/'
   )
 
   config.module.rules.push({
@@ -29,7 +29,6 @@ module.exports = ({ config }) => {
     include: path.resolve(__dirname, '../src'),
     use: [
       'style-loader',
-      'css-modules-typescript-loader',
       {
         loader: 'css-loader',
         options: {
