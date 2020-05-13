@@ -47,34 +47,22 @@ export const BigFooterNav = (): React.ReactElement => (
         <h4 key="1" className="usa-footer__primary-link">
           Topic
         </h4>,
-        ...Array(3).fill(
-          <a className="usa-footer__secondary-link" href="#">
-            Secondary link
-          </a>
-        ),
+        ...Array(3).fill(<a href="#">Secondary link</a>),
       ],
       [
         <h4 key="1" className="usa-footer__primary-link">
           Topic
         </h4>,
-        <a key="2" className="usa-footer__secondary-link" href="#">
+        <a key="2" href="#">
           Secondary link that is pretty long
         </a>,
-        ...Array(2).fill(
-          <a className="usa-footer__secondary-link" href="#">
-            Secondary link
-          </a>
-        ),
+        ...Array(2).fill(<a href="#">Secondary link</a>),
       ],
       [
         <h4 key="1" className="usa-footer__primary-link">
           Topic
         </h4>,
-        ...Array(3).fill(
-          <a className="usa-footer__secondary-link" href="#">
-            Secondary link
-          </a>
-        ),
+        ...Array(3).fill(<a href="#">Secondary link</a>),
       ],
     ]}
   />
