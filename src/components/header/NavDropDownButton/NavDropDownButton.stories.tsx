@@ -54,6 +54,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
               onToggle={(): void => {
                 onToggle(1)
               }}
+              isCurrent={true}
             />,
           ]}
           onToggleMobileNav={mockToggle}

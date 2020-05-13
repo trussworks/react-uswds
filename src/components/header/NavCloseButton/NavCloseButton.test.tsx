@@ -17,9 +17,4 @@ describe('NavCloseButton component', () => {
 
     expect(onClickFn).toHaveBeenCalledTimes(1)
   })
-
-  it('renders the correct class names', () => {
-    const { getByTestId } = render(<NavCloseButton />)
-    expect(getByTestId('navCloseButton')).toHaveClass('usa-nav__close')
-  })
 })

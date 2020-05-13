@@ -57,6 +57,7 @@ export const BasicHeader = (): React.ReactElement => {
         id="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
+        isCurrent={true}
       />
       <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} />
     </>,
@@ -150,6 +151,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
         id="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
+        isCurrent={true}
       />
       <MegaMenu key="one" items={testItemsMegaOne} isOpen={isOpen[0]} />
     </>,
@@ -225,6 +227,7 @@ export const extendedHeader = (): React.ReactElement => {
         id="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
+        isCurrent={true}
       />
       <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} />
     </>,
@@ -306,6 +309,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
         id="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
+        isCurrent={true}
       />
       <MegaMenu key="one" items={testItemsMegaOne} isOpen={isOpen[0]} />
     </>,

@@ -51,4 +51,18 @@ describe('NavDropDownButton component', () => {
       expect.stringContaining('false')
     )
   })
+
+  it('renders the usa-current class when isCurrent is true', () => {
+    const onClickFn = jest.fn()
+    const { getByTestId } = render(
+      <NavDropDownButton
+        label={testLabel}
+        id="testOne"
+        isOpen={false}
+        onToggle={onClickFn}
+        isCurrent={true}
+      />
+    )
+    expect(getByTestId('navDropDownButton')).toHaveClass('usa-current')
+  })
 })
