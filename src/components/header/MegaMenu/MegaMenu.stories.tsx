@@ -1,13 +1,11 @@
 import React from 'react'
 import { MegaMenu } from './MegaMenu'
-import { Header } from '../Header/Header'
-import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
   title: 'Header/MegaMenu',
   parameters: {
     info: `
-USWDS 2.0 MegaMenu component
+USWDS 2.0 MegaMenu component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,

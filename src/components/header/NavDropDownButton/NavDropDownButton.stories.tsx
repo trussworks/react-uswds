@@ -7,7 +7,7 @@ export default {
   title: 'Header/NavDropDownButton',
   parameters: {
     info: `
-USWDS 2.0 NavDropDownButton component used within the Header Component
+USWDS 2.0 NavDropDownButton component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,

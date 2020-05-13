@@ -5,7 +5,7 @@ export default {
   title: 'Header/PrimaryNav',
   parameters: {
     info: `
-USWDS 2.0 PrimaryNav component
+USWDS 2.0 PrimaryNav component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,

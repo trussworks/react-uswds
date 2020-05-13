@@ -5,7 +5,7 @@ export default {
   title: 'Header/Title',
   parameters: {
     info: `
-USWDS 2.0 Title component
+USWDS 2.0 Title component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,

@@ -5,7 +5,7 @@ export default {
   title: 'Header/NavList',
   parameters: {
     info: `
-USWDS 2.0 NavList component
+USWDS 2.0 NavList component used within the Header component
 
 `,
   },

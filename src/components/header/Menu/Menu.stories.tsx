@@ -5,7 +5,7 @@ export default {
   title: 'Header/Menu',
   parameters: {
     info: `
-USWDS 2.0 Menu component
+USWDS 2.0 Menu component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,

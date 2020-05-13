@@ -5,7 +5,7 @@ export default {
   title: 'Header/ExtendedNav',
   parameters: {
     info: `
-USWDS 2.0 ExtendedNav component
+USWDS 2.0 ExtendedNav component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
