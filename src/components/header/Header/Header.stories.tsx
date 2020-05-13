@@ -42,7 +42,7 @@ export const BasicHeader = (): React.ReactElement => {
 
   const onToggle = (index: number): void => {
     setIsOpen((prevIsOpen) => {
-      const newIsOpen = Array(prevIsOpen.length).fill('false')
+      const newIsOpen = Array(prevIsOpen.length).fill(false)
       newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen
     })
@@ -201,7 +201,7 @@ export const extendedHeader = (): React.ReactElement => {
 
   const onToggle = (index: number): void => {
     setIsOpen((prevIsOpen) => {
-      const newIsOpen = Array(prevIsOpen.length).fill('false')
+      const newIsOpen = Array(prevIsOpen.length).fill(false)
       newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen
     })
@@ -291,7 +291,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
 
   const onToggle = (index: number): void => {
     setIsOpen((prevIsOpen) => {
-      const newIsOpen = Array(prevIsOpen.length).fill('false')
+      const newIsOpen = Array(prevIsOpen.length).fill(false)
       newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen
     })
