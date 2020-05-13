@@ -183,9 +183,7 @@ export const BigFooter = (): React.ReactElement => (
               big
               links={[
                 [
-                  <h4 key="1" className="usa-footer__primary-link">
-                    Topic
-                  </h4>,
+                  'Topic',
                   ...Array(2).fill(<a href="#">Secondary link</a>),
                   <a key="4" href="#">
                     Secondary link that is a bit longer than most of the others
@@ -195,18 +193,14 @@ export const BigFooter = (): React.ReactElement => (
                   </a>,
                 ],
                 [
-                  <h4 key="1" className="usa-footer__primary-link">
-                    Topic
-                  </h4>,
+                  'Topic',
                   <a key="2" href="#">
                     Secondary link that is pretty long
                   </a>,
                   ...Array(3).fill(<a href="#">Secondary link</a>),
                 ],
                 [
-                  <h4 key="1" className="usa-footer__primary-link">
-                    Topic
-                  </h4>,
+                  'Topic',
                   ...Array(4).fill(
                     <a className="usa-footer__secondary-link" href="#">
                       Secondary link
@@ -214,9 +208,7 @@ export const BigFooter = (): React.ReactElement => (
                   ),
                 ],
                 [
-                  <h4 key="1" className="usa-footer__primary-link">
-                    Topic
-                  </h4>,
+                  'Topic',
                   ...Array(4).fill(
                     <a className="usa-footer__secondary-link" href="#">
                       Secondary link

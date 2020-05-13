@@ -43,27 +43,15 @@ export const BigFooterNav = (): React.ReactElement => (
     aria-label="Footer navigation"
     big
     links={[
+      ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
       [
-        <h4 key="1" className="usa-footer__primary-link">
-          Topic
-        </h4>,
-        ...Array(3).fill(<a href="#">Secondary link</a>),
-      ],
-      [
-        <h4 key="1" className="usa-footer__primary-link">
-          Topic
-        </h4>,
+        'Topic',
         <a key="2" href="#">
           Secondary link that is pretty long
         </a>,
         ...Array(2).fill(<a href="#">Secondary link</a>),
       ],
-      [
-        <h4 key="1" className="usa-footer__primary-link">
-          Topic
-        </h4>,
-        ...Array(3).fill(<a href="#">Secondary link</a>),
-      ],
+      ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
     ]}
   />
 )
