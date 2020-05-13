@@ -1,11 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { NavButton } from '../NavButton/NavButton'
+import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
 import { NavList } from '../NavList/NavList'
-
-// assets
-import closeImg from 'uswds/src/img/close.svg'
 
 type PrimaryNavProps = {
   items: React.ReactNode[]
@@ -37,9 +34,7 @@ export const PrimaryNav = (
 
   return (
     <nav className={classes} {...navProps}>
-      <NavButton className="usa-nav__close" onClick={onToggleMobileNav}>
-        <img src={closeImg} alt="close" />
-      </NavButton>
+      <NavCloseButton onClick={onToggleMobileNav} />
       <NavList items={items} primary={true} />
       {children}
     </nav>

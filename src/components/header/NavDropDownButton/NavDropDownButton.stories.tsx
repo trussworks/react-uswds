@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { NavDropDown } from './NavDropDown'
+import { NavDropDownButton } from './NavDropDownButton'
 import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
-  title: 'Header/NavDropDown',
+  title: 'Header/NavDropDownButton',
   parameters: {
     info: `
-USWDS 2.0 NavDropDown component
+USWDS 2.0 NavDropDownButton component used within the Header Component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
@@ -37,7 +37,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
         <div className="usa-navbar"></div>
         <PrimaryNav
           items={[
-            <NavDropDown
+            <NavDropDownButton
               key="testItemOne"
               label={testLabel}
               id="test"
@@ -46,7 +46,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
                 onToggle(0)
               }}
             />,
-            <NavDropDown
+            <NavDropDownButton
               key="testItemTwo"
               label={testLabel}
               id="testTwo"

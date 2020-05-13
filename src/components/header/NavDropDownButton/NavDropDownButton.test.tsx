@@ -1,30 +1,30 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import { NavDropDown } from './NavDropDown'
+import { NavDropDownButton } from './NavDropDownButton'
 
 const testLabel = 'Nav Label'
 
-describe('NavDropDown component', () => {
+describe('NavDropDownButton component', () => {
   it('renders without errors', () => {
     const onToggle = (): void => {
       /* mock toggle fn */
     }
-    const { container } = render(
-      <NavDropDown
+    const { getByTestId } = render(
+      <NavDropDownButton
         label={testLabel}
         id="testOne"
         isOpen={true}
         onToggle={onToggle}
       />
     )
-    expect(container.querySelector('.usa-nav__link')).toBeInTheDocument()
+    expect(getByTestId('navDropDownButton')).toBeInTheDocument()
   })
 
   it('implements an onClick handler', () => {
     const onClickFn = jest.fn()
     const { getByText } = render(
-      <NavDropDown
+      <NavDropDownButton
         label={testLabel}
         id="testOne"
         isOpen={true}
@@ -39,14 +39,14 @@ describe('NavDropDown component', () => {
   it('renders when isOpen is false', () => {
     const onClickFn = jest.fn()
     const { getByTestId } = render(
-      <NavDropDown
+      <NavDropDownButton
         label={testLabel}
         id="testOne"
         isOpen={false}
         onToggle={onClickFn}
       />
     )
-    expect(getByTestId('navButton')).toHaveAttribute(
+    expect(getByTestId('navDropDownButton')).toHaveAttribute(
       'aria-expanded',
       expect.stringContaining('false')
     )

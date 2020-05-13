@@ -69,7 +69,7 @@ describe('ExtendedNav component', () => {
         secondaryItems={testSecondaryItems}
       />
     )
-    expect(getByTestId('navButton')).toBeInTheDocument()
+    expect(getByTestId('navCloseButton')).toBeInTheDocument()
   })
 
   it('implements an onClick handler', () => {
@@ -82,7 +82,7 @@ describe('ExtendedNav component', () => {
       />
     )
 
-    fireEvent.click(getByTestId('navButton'))
+    fireEvent.click(getByTestId('navCloseButton'))
     expect(onToggleMobileNav).toHaveBeenCalledTimes(1)
   })
 

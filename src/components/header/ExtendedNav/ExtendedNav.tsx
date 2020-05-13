@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { NavButton } from '../NavButton/NavButton'
+import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
 import { NavList } from '../NavList/NavList'
 
 // assets
@@ -40,9 +40,7 @@ export const ExtendedNav = (
   return (
     <nav className={classes} {...navProps}>
       <div className="usa-nav__inner">
-        <NavButton className="usa-nav__close" onClick={onToggleMobileNav}>
-          <img src={closeImg} alt="close" />
-        </NavButton>
+        <NavCloseButton onClick={onToggleMobileNav} />
         <NavList items={primaryItems} primary={true} />
         <div className="usa-nav__secondary">
           <NavList items={secondaryItems} secondary={true} />

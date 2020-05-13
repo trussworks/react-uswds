@@ -6,8 +6,8 @@ import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 import { Search } from '../../Search/Search'
 import { Menu } from '../Menu/Menu'
 import { MegaMenu } from '../MegaMenu/MegaMenu'
-import { NavButton } from '../NavButton/NavButton'
-import { NavDropDown } from '../NavDropDown/NavDropDown'
+import { NavMenuButton } from '../NavMenuButton/NavMenuButton'
+import { NavDropDownButton } from '../NavDropDownButton/NavDropDownButton'
 import { ExtendedNav } from '../ExtendedNav/ExtendedNav'
 
 export default {
@@ -50,7 +50,7 @@ export const BasicHeader = (): React.ReactElement => {
 
   const testItemsMenu = [
     <>
-      <NavDropDown
+      <NavDropDownButton
         onToggle={(): void => {
           onToggle(0)
         }}
@@ -75,9 +75,7 @@ export const BasicHeader = (): React.ReactElement => {
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title>Project Title</Title>
-            <NavButton onClick={onClick} className="usa-menu-btn">
-              Menu
-            </NavButton>
+            <NavMenuButton onClick={onClick} label="Menu" />
           </div>
           <PrimaryNav
             items={testItemsMenu}
@@ -145,7 +143,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
 
   const testItemsMegaMenu = [
     <>
-      <NavDropDown
+      <NavDropDownButton
         onToggle={(): void => {
           onToggle(0)
         }}
@@ -156,7 +154,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
       <MegaMenu key="one" items={testItemsMegaOne} isOpen={isOpen[0]} />
     </>,
     <>
-      <NavDropDown
+      <NavDropDownButton
         onToggle={(): void => {
           onToggle(1)
         }}
@@ -181,9 +179,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title>Project Title</Title>
-            <NavButton onClick={onClick} className="usa-menu-btn">
-              Menu
-            </NavButton>
+            <NavMenuButton onClick={onClick} label="Menu" />
           </div>
           <PrimaryNav
             items={testItemsMegaMenu}
@@ -222,7 +218,7 @@ export const extendedHeader = (): React.ReactElement => {
 
   const testItemsMenu = [
     <>
-      <NavDropDown
+      <NavDropDownButton
         onToggle={(): void => {
           onToggle(0)
         }}
@@ -245,9 +241,7 @@ export const extendedHeader = (): React.ReactElement => {
       <Header extended={true}>
         <div className="usa-navbar">
           <Title>Project Title</Title>
-          <NavButton onClick={onClick} className="usa-menu-btn">
-            Menu
-          </NavButton>
+          <NavMenuButton onClick={onClick} label="Menu" />
         </div>
         <ExtendedNav
           primaryItems={testItemsMenu}
@@ -305,7 +299,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
 
   const testItemsMenu = [
     <>
-      <NavDropDown
+      <NavDropDownButton
         onToggle={(): void => {
           onToggle(0)
         }}
@@ -328,9 +322,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
       <Header extended={true}>
         <div className="usa-navbar">
           <Title>Project Title</Title>
-          <NavButton onClick={onClick} className="usa-menu-btn">
-            Menu
-          </NavButton>
+          <NavMenuButton onClick={onClick} label="Menu" />
         </div>
         <ExtendedNav
           primaryItems={testItemsMenu}

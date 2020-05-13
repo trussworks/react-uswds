@@ -33,20 +33,20 @@ describe('PrimaryNav component', () => {
     expect(getByText('Simple link two')).toBeInTheDocument()
   })
 
-  it('renders nav button', () => {
+  it('renders nav close button', () => {
     const { getByTestId } = render(
       <PrimaryNav items={testItems} onToggleMobileNav={onToggleMobileNav} />
     )
-    expect(getByTestId('navButton')).toBeInTheDocument()
+    expect(getByTestId('navCloseButton')).toBeInTheDocument()
   })
 
-  it('implements an onClick handler', () => {
+  it('implements an onClick handler for nav close button', () => {
     const onToggleMobileNav = jest.fn()
     const { getByTestId } = render(
       <PrimaryNav items={testItems} onToggleMobileNav={onToggleMobileNav} />
     )
 
-    fireEvent.click(getByTestId('navButton'))
+    fireEvent.click(getByTestId('navCloseButton'))
     expect(onToggleMobileNav).toHaveBeenCalledTimes(1)
   })
 
