@@ -19,6 +19,6 @@ jobs:
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test -w 1
-      - run: yarn loki test
+      - run: build-storybook && loki --requireReference --reactUri file:./storybook-static
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
