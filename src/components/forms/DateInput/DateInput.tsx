@@ -3,34 +3,42 @@ import classnames from 'classnames'
 
 import { TextInput } from '../TextInput/TextInput'
 import { Label } from '../Label/Label'
-import { Fieldset } from '../Fieldset/Fieldset'
+import { FormGroup } from '../FormGroup/FormGroup'
 
 interface DateInputElementProps {
   id: string
   name: string
   label: string
+  unit: 'month' | 'day' | 'year'
   maxLength: number
   minLength?: number
 }
 
-interface DateInputProps {
-  id: string
-  name: string
-  legend: React.ReactNode
-  month?: boolean
-  day?: boolean
-  year?: boolean
-  hint?: string
-  className?: string
-}
-
-const DateInputElement = (
+export const DateInput = (
   props: DateInputElementProps & React.HTMLAttributes<HTMLElement>
 ): React.ReactElement => {
-  const { id, name, label, maxLength, minLength } = props
+  const {
+    id,
+    name,
+    label,
+    unit,
+    maxLength,
+    minLength,
+    className,
+    ...divProps
+  } = props
+
+  const classes = classnames(
+    {
+      'usa-form-group--month': unit == 'month',
+      'usa-form-group--day': unit == 'day',
+      'usa-form-group--year': unit == 'year',
+    },
+    className
+  )
 
   return (
-    <div className="usa-form-group usa-form-group--month">
+    <FormGroup className={classes} {...divProps}>
       <Label htmlFor={id}>{label}</Label>
       <TextInput
         className="usa-input--inline"
@@ -42,60 +50,7 @@ const DateInputElement = (
         pattern="[0-9]*"
         inputMode="numeric"
       />
-    </div>
-  )
-}
-
-export const DateInput = (
-  props: DateInputProps & React.HTMLAttributes<HTMLElement>
-): React.ReactElement => {
-  const {
-    id,
-    name,
-    legend,
-    month = true,
-    day = true,
-    year = true,
-    hint,
-    className,
-    ...divAttributes
-  } = props
-
-  const classes = classnames('usa-memorable-date', className)
-
-  return (
-    <Fieldset legend={legend}>
-      <span className="usa-hint" id={`${id}_hint`}>
-        {hint}
-      </span>
-      <div className={classes} {...divAttributes}>
-        {month && (
-          <DateInputElement
-            id={`${id}_month`}
-            name={`${name}_month`}
-            label="Month"
-            maxLength={2}
-          />
-        )}
-        {day && (
-          <DateInputElement
-            id={`${id}_day`}
-            name={`${name}_day`}
-            label="Day"
-            maxLength={2}
-          />
-        )}
-        {year && (
-          <DateInputElement
-            id={`${id}_year`}
-            name={`${name}_year`}
-            label="Year"
-            maxLength={4}
-            minLength={4}
-          />
-        )}
-      </div>
-    </Fieldset>
+    </FormGroup>
   )
 }
 

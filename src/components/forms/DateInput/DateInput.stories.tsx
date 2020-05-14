@@ -1,5 +1,7 @@
 import React from 'react'
 import { DateInput } from './DateInput'
+import { DateInputGroup } from '../DateInputGroup/DateInputGroup'
+import { Fieldset } from '../Fieldset/Fieldset'
 
 export default {
   title: 'Form/DateInput',
@@ -16,17 +18,43 @@ export const defaultDateInput = (): React.ReactElement => (
   <DateInput
     id="testDateInput"
     name="testName"
-    legend="Date of Birth"
-    hint="For example: 4 08 1999"
+    label="Month"
+    unit="month"
+    maxLength={2}
+    minLength={2}
   />
 )
 
-export const partialDateInput = (): React.ReactElement => (
-  <DateInput
-    id="testDateInput"
-    name="testName"
-    day={false}
-    legend="Month and Year of Birth"
-    hint="For example: 08 1999"
-  />
+export const dateOfBirthExample = (): React.ReactElement => (
+  <Fieldset legend={'Date of birth'}>
+    <span className="usa-hint" id="dateOfBirthHint">
+      For example: 4 28 1986
+    </span>
+    <DateInputGroup>
+      <DateInput
+        id="testDateInput"
+        name="testName"
+        label="Month"
+        unit="month"
+        maxLength={2}
+        minLength={2}
+      />
+      <DateInput
+        id="testDateInput"
+        name="testName"
+        label="Day"
+        unit="day"
+        maxLength={2}
+        minLength={2}
+      />
+      <DateInput
+        id="testDateInput"
+        name="testName"
+        label="Year"
+        unit="year"
+        maxLength={4}
+        minLength={4}
+      />
+    </DateInputGroup>
+  </Fieldset>
 )

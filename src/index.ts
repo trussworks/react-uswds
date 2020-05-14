@@ -16,6 +16,7 @@ export { Grid } from './components/grid/Grid/Grid'
 
 /** Form components */
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
+export { DateInput } from './components/forms/DateInput/DateInput'
 export { Dropdown } from './components/forms/Dropdown/Dropdown'
 export { ErrorMessage } from './components/forms/ErrorMessage/ErrorMessage'
 export { Fieldset } from './components/forms/Fieldset/Fieldset'

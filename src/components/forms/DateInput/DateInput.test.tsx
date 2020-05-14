@@ -9,37 +9,60 @@ describe('DateInput component', () => {
       <DateInput
         id="testDateInput"
         name="testName"
-        legend="Date of Birth"
-        hint="For example: 4 08 1999"
+        label="Day"
+        unit="day"
+        maxLength={2}
+        minLength={2}
       />
     )
-    expect(getByText('Date of Birth')).toBeInTheDocument()
+    expect(getByText('Day')).toBeInTheDocument()
   })
 
   it('renders the month, day and year inputs', () => {
     const { getByText } = render(
-      <DateInput
-        id="testDateInput"
-        name="testName"
-        legend="Date of Birth"
-        hint="For example: 4 08 1999"
-      />
+      <>
+        <DateInput
+          id="testDateInput"
+          name="testName"
+          label="Day"
+          unit="day"
+          maxLength={2}
+          minLength={2}
+        />
+        <DateInput
+          id="testDateInput"
+          name="testName"
+          label="Month"
+          unit="month"
+          maxLength={2}
+          minLength={2}
+        />
+        <DateInput
+          id="testDateInput"
+          name="testName"
+          label="Year"
+          unit="year"
+          maxLength={4}
+          minLength={4}
+        />
+      </>
     )
     expect(getByText('Month')).toBeInTheDocument()
     expect(getByText('Day')).toBeInTheDocument()
     expect(getByText('Year')).toBeInTheDocument()
   })
 
-  it('does not render a dataInputElement when false', () => {
-    const { queryByText } = render(
+  it('renders the correct class based on unit', () => {
+    const { getByTestId } = render(
       <DateInput
         id="testDateInput"
         name="testName"
-        legend="Date of Birth"
-        hint="For example: 4 08 1999"
-        month={false}
+        label="Day"
+        unit="day"
+        maxLength={2}
+        minLength={2}
       />
     )
-    expect(queryByText('Month')).toEqual(null)
+    expect(getByTestId('formGroup')).toHaveClass('usa-form-group--day')
   })
 })
