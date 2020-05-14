@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-- Added form dateInput component
+- Added form dateInput and dateInputGroup components
 - Added yarn audit check to dangerfile (on package change)
 - Added search component
 - Added Grid, GridContainer components
