@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+- Add loki for visual regression testing for storybook
 - Added yarn audit check to dangerfile (on package change)
 - Added search component
 - Added Grid, GridContainer components

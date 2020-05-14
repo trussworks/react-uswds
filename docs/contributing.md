@@ -26,6 +26,10 @@ These should all be run from within the project directory.
   - Starts Jest test runner
   - `yarn test:watch` is also available
   - Use `yarn test:coverage` to generate a coverage report
+- `yarn loki test`
+  - Starts loki test
+- `yarn loki approve`
+  - Approves detected changes to the visual representation of stories
 - `yarn build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
