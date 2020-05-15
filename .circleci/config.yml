@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.16.2
+      - image: circleci/node:12.16.2-browsers
     working_directory: ~/react-uswds
     steps:
       - checkout
@@ -19,7 +19,6 @@ jobs:
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test -w 1
-      - run: yarn build-storybook
-      - run: yarn loki --requireReference --reactUri file:./storybook-static
+      - run: yarn build-storybook && yarn loki --requireReference --reactUri file:./storybook-static
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
