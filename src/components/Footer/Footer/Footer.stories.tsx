@@ -1,15 +1,15 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
-import { Address } from './Address/Address'
-import { Button } from '../Button/Button'
+import { Address } from '../Address/Address'
+import { Button } from '../../Button/Button'
 import { Footer } from './Footer'
-import { FooterNav } from './FooterNav/FooterNav'
-import { Form } from '../forms/Form/Form'
-import { Label } from '../forms/Label/Label'
-import { Logo } from './Logo/Logo'
-import { TextInput } from '../forms/TextInput/TextInput'
-import { SocialLinks } from './SocialLinks/SocialLinks'
+import { FooterNav } from '../FooterNav/FooterNav'
+import { Form } from '../../forms/Form/Form'
+import { Label } from '../../forms/Label/Label'
+import { Logo } from '../Logo/Logo'
+import { SocialLinks } from '../SocialLinks/SocialLinks'
+import { TextInput } from '../../forms/TextInput/TextInput'
 
 // assets
 import logoImg from 'uswds/src/img/logo-img.png'
