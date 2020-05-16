@@ -21,4 +21,14 @@ jobs:
       - run: yarn test -w 1
       - run: yarn build-storybook && yarn loki test --requireReference --reactUri file:./storybook-static
       - run: yarn lint
+      - store_artifacts:
+          path: .loki/current
+          destination: current
+      - store_artifacts:
+          path: .loki/difference
+          destination: difference
+      - store_artifacts:
+          path: .loki/reference
+          destination: reference
       - run: yarn danger ci --failOnErrors
+
