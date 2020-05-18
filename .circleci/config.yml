@@ -19,7 +19,7 @@ jobs:
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test -w 1
-      - run: yarn build-storybook && yarn loki test --requireReference --reactUri file:./storybook-static
+      - run: yarn build-storybook && yarn loki test --chromeConcurrency 1 --chromeRetries 5 --requireReference --reactUri file:./storybook-static
       - run: yarn lint
       - store_artifacts:
           path: .loki/current
