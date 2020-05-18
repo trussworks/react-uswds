@@ -15,7 +15,7 @@ interface DateInputElementProps {
 }
 
 export const DateInput = (
-  props: DateInputElementProps & React.HTMLAttributes<HTMLElement>
+  props: DateInputElementProps & React.InputHTMLAttributes<HTMLInputElement>
 ): React.ReactElement => {
   const {
     id,
@@ -25,23 +25,23 @@ export const DateInput = (
     maxLength,
     minLength,
     className,
-    ...divProps
+    ...inputProps
   } = props
 
-  const classes = classnames(
-    {
-      'usa-form-group--month': unit == 'month',
-      'usa-form-group--day': unit == 'day',
-      'usa-form-group--year': unit == 'year',
-    },
-    className
-  )
+  const formClasses = classnames({
+    'usa-form-group--month': unit == 'month',
+    'usa-form-group--day': unit == 'day',
+    'usa-form-group--year': unit == 'year',
+  })
+
+  const inputClasses = classnames('usa-input--inline', className)
 
   return (
-    <FormGroup className={classes} {...divProps}>
+    <FormGroup className={formClasses}>
       <Label htmlFor={id}>{label}</Label>
       <TextInput
-        className="usa-input--inline"
+        {...inputProps}
+        className={inputClasses}
         id={id}
         name={name}
         type="text"
