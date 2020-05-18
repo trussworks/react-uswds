@@ -13,7 +13,7 @@ describe('NavDropDownButton component', () => {
     const { getByTestId } = render(
       <NavDropDownButton
         label={testLabel}
-        id="testOne"
+        menuId="testOne"
         isOpen={true}
         onToggle={onToggle}
       />
@@ -26,7 +26,7 @@ describe('NavDropDownButton component', () => {
     const { getByText } = render(
       <NavDropDownButton
         label={testLabel}
-        id="testOne"
+        menuId="testOne"
         isOpen={true}
         onToggle={onClickFn}
       />
@@ -36,12 +36,12 @@ describe('NavDropDownButton component', () => {
     expect(onClickFn).toHaveBeenCalledTimes(1)
   })
 
-  it('renders when isOpen is false', () => {
+  it('renders when isOpen is set to false', () => {
     const onClickFn = jest.fn()
     const { getByTestId } = render(
       <NavDropDownButton
         label={testLabel}
-        id="testOne"
+        menuId="testOne"
         isOpen={false}
         onToggle={onClickFn}
       />
@@ -57,7 +57,7 @@ describe('NavDropDownButton component', () => {
     const { getByTestId } = render(
       <NavDropDownButton
         label={testLabel}
-        id="testOne"
+        menuId="testOne"
         isOpen={false}
         onToggle={onClickFn}
         isCurrent={true}

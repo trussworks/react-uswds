@@ -3,7 +3,10 @@ import classnames from 'classnames'
 
 type NavDropDownButtonProps = {
   label: string
-  id: string
+  /*
+    Element (i.e. menu) id already present in DOM that will be controlled by this button
+  */
+  menuId: string
   isOpen: boolean
   onToggle: () => void
   isCurrent?: boolean
@@ -14,7 +17,7 @@ export const NavDropDownButton = (
 ): React.ReactElement => {
   const {
     label,
-    id,
+    menuId,
     isOpen,
     onToggle,
     isCurrent,
@@ -36,7 +39,7 @@ export const NavDropDownButton = (
       data-testid="navDropDownButton"
       className={classes}
       aria-expanded={isOpen}
-      aria-controls={id}
+      aria-controls={menuId}
       onClick={(): void => onToggle()}
       {...buttonProps}
       type="button">

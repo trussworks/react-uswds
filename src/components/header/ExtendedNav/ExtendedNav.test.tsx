@@ -107,6 +107,6 @@ describe('ExtendedNav component', () => {
         mobileExpanded={false}
       />
     )
-    expect(container.querySelector('.is-visible')).toEqual(null)
+    expect(container.querySelector('.is-visible')).not.toBeInTheDocument()
   })
 })

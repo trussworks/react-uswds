@@ -51,10 +51,10 @@ export const BasicHeader = (): React.ReactElement => {
   const testItemsMenu = [
     <>
       <NavDropDownButton
+        menuId="testDropDownOne"
         onToggle={(): void => {
           onToggle(0)
         }}
-        id="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
         isCurrent={true}
@@ -148,7 +148,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
         onToggle={(): void => {
           onToggle(0)
         }}
-        id="testDropDownOne"
+        menuId="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
         isCurrent={true}
@@ -160,7 +160,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
         onToggle={(): void => {
           onToggle(1)
         }}
-        id="testDropDownOne"
+        menuId="testDropDownOne"
         isOpen={isOpen[1]}
         label="Nav Label"
       />
@@ -195,7 +195,6 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
   )
 }
 
-// TODO Add extended header stories
 export const extendedHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
@@ -224,7 +223,7 @@ export const extendedHeader = (): React.ReactElement => {
         onToggle={(): void => {
           onToggle(0)
         }}
-        id="testDropDownOne"
+        menuId="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
         isCurrent={true}
@@ -306,7 +305,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
         onToggle={(): void => {
           onToggle(0)
         }}
-        id="testDropDownOne"
+        menuId="testDropDownOne"
         isOpen={isOpen[0]}
         label="Nav Label"
         isCurrent={true}

@@ -9,7 +9,6 @@ interface NavListProps {
   megamenu?: boolean
 }
 
-// Should the UL or LI html attributes be passed in?
 export const NavList = (
   props: NavListProps & React.HTMLAttributes<HTMLUListElement>
 ): React.ReactElement => {

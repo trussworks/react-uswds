@@ -4,15 +4,12 @@ import classnames from 'classnames'
 import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
 import { NavList } from '../NavList/NavList'
 
-// assets
-import closeImg from 'uswds/src/img/close.svg'
-
 type ExtendedNavProps = {
   primaryItems: React.ReactNode[]
   secondaryItems: React.ReactNode[]
-  onToggleMobileNav:
-    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-    | undefined
+  onToggleMobileNav?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void
   mobileExpanded?: boolean
 }
 

@@ -6,9 +6,9 @@ import { NavList } from '../NavList/NavList'
 
 type PrimaryNavProps = {
   items: React.ReactNode[]
-  onToggleMobileNav:
-    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-    | undefined
+  onToggleMobileNav?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void
   mobileExpanded?: boolean
 }
 

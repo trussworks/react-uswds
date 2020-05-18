@@ -40,7 +40,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
             <NavDropDownButton
               key="testItemOne"
               label={testLabel}
-              id="test"
+              menuId="test"
               isOpen={isOpen[0]}
               onToggle={(): void => {
                 onToggle(0)
@@ -49,7 +49,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
             <NavDropDownButton
               key="testItemTwo"
               label={testLabel}
-              id="testTwo"
+              menuId="testTwo"
               isOpen={isOpen[1]}
               onToggle={(): void => {
                 onToggle(1)
