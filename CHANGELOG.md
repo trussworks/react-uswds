@@ -1,40 +1,35 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+All notable changes to this project will be documented in this file. This file is generated automatically based on commit messages. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## UNRELEASED
 
-- Added yarn audit check to dangerfile (on package change)
-- Added search component
-- Added Grid, GridContainer components
+- chore: Added yarn audit check to dangerfile (on package change)
+- feat: Added search component
+- feat: Added Grid, GridContainer components
 
-## [1.2.0] - 2020-04-30
+## 1.2.0 (2020-04-30)
 
-- Added new Alert styles (slim, no icon) and allow the Alert to accept `div` attributes as props
-- Added additional examples of Form templates (Sign In form, Reset Password form) to Storybook
-- Turn off USWDS SCSS notifications on compile
-- Updated CODEOWNERS and contributors
-- Fixed Jest running in CI
-- Auto-approve Dependabot PRs
-- Deploy Storybook static site on merge to master
-- Run `yarn upgrade` to update all out of date dependencies
-- Add [DangerJS](https://danger.systems/js/) to automate some checks for contribution standards
-- Add additional CSS utility classes for background colors and text colors
+- feat: Added new Alert styles (slim, no icon) and allow the Alert to accept `div` attributes as props
+- feat: Add additional CSS utility classes for background colors and text colors
+- docs: Added additional examples of Form templates (Sign In form, Reset Password form) to Storybook
+- chore: Turn off USWDS SCSS notifications on compile
+- chore: Updated CODEOWNERS and contributors
+- chore: Auto-approve Dependabot PRs
+- chore: Deploy Storybook static site on merge to master
+- chore: Run `yarn upgrade` to update all out of date dependencies
+- chore: Add [DangerJS](https://danger.systems/js/) to automate some checks for contribution standards
+- ci: Fixed Jest running in CI
 
-## [1.1.0] - 2020-03-19
+## 1.1.0 (2020-03-19)
 
-- Add initial set of USWDS form components (Checkbox, Dropdown, ErrorMessage, Fieldset, Form, FormGroup, Label, Radio, TextInput, Textarea)
-- Add native HTML attributes to existing Tag & Button components in order to support custom CSS classes
-- Added new Modal component (designed by Truss) and related Overlay and ModalContainer components
-- Configured use of SASS/SCSS and SASS/SCSS modules so that we can use USWDS SCSS
-- Configure Dependabot for automated dependency updates
+- feat: Add initial set of USWDS form components (Checkbox, Dropdown, ErrorMessage, Fieldset, Form, FormGroup, Label, Radio, TextInput, Textarea)
+- feat: Add native HTML attributes to existing Tag & Button components in order to support custom CSS classes
+- feat: Added new Modal component (designed by Truss) and related Overlay and ModalContainer components
+- chore: Configured use of SASS/SCSS and SASS/SCSS modules so that we can use USWDS SCSS
+- chore: Configure Dependabot for automated dependency updates
 
-## [1.0.0] - 2019-01-10
+## 1.0.0 (2019-01-10)
 
-### Added
-
-- Initial set of USWDS components (Accordion, Alert, Button, GovBanner, SideNav, Table, Tag)
-- Initial documentation and dev configuration for contributing & usage
+- feat!: Initial set of USWDS components (Accordion, Alert, Button, GovBanner, SideNav, Table, Tag)
+- feat!: Initial documentation and dev configuration for contributing & usage

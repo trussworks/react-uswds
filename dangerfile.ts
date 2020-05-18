@@ -50,26 +50,15 @@ if (packageChanged && !lockfileChanged) {
 }
 
 // Ensure we have access to github for these checks
-let isTrivial = false
 let isYarnAuditMissing = false
 if (danger.github) {
   const prBody = danger.github.pr.body
-
-  isTrivial = includes(prBody + danger.github.pr.title, '#trivial')
-
   if (lockfileChanged && danger.github.pr.user.type == 'User') {
     isYarnAuditMissing = !(
-      includes(prBody, 'vulnerabilities found:') &&
+      includes(prBody, 'vulnerabilities found') &&
       includes(prBody, 'Packages audited:')
     )
   }
-}
-
-// Add a CHANGELOG entry for app changes
-const hasChangelog = includes(danger.git.modified_files, 'CHANGELOG.md')
-
-if (!hasChangelog && !isTrivial) {
-  warn('Please add a changelog entry for your changes.')
 }
 
 // Encourage adding `yarn audit` output on package change
