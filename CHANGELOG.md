@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file. This file is generated automatically based on commit messages. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## UNRELEASED
+## [1.2.0] - 2020-04-30
 
+- feat: Added components for the header and extended header (Header, NavList, MegaMenu, Menu, NavMenuButton, NavCloseButton, NavDropDownButton, PrimaryNav, Title,  ExtendedNav)
 - chore: Added yarn audit check to dangerfile (on package change)
 - feat: Added search component
 - feat: Added Grid, GridContainer components
