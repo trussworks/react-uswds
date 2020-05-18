@@ -10,6 +10,10 @@ export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { SideNav } from './components/SideNav/SideNav'
 
+/** Grid components */
+export { GridContainer } from './components/grid/GridContainer/GridContainer'
+export { Grid } from './components/grid/Grid/Grid'
+
 /** Form components */
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
 export { Dropdown } from './components/forms/Dropdown/Dropdown'

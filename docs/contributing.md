@@ -1,8 +1,6 @@
 # Contributing
 
-## Dev environment
-
-### Environment Setup
+## Environment Setup
 
 1. Clone this repo!
 
@@ -30,93 +28,57 @@ These should all be run from within the project directory.
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
 
-## Development & Release Workflow
+## Development
 
-Because this project exports a library that will be used by other projects, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with an accurate description of changes. In order to ensure this, we use the following standards:
+To start working on a new issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress." Create a new branch off `develop` using the naming convention:
 
-### Pull request standards
+`{your initials or username}-{summary}-{issue #}`
 
-We use dangerjs to enforce several pull request standards, including:
+For example: `sr-accordion-component-112`
 
-- Changes to package source code should include changes to tests
-- New src/components files should include changes to storybook
-- App changes should include a CHANGELOG entry
-- Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
+Because this project exports a library that will be used by other projects, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with an accurate description of changes. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass testing and linting standards. Additionally, this project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification in order to standardize contributions and streamline the release flow.
 
-### Branching model
+- [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
+  - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
+  - These checks will also be run on all files in CI, and must pass before the branch can be merged
+- [`commitlint`](https://github.com/conventional-changelog/commitlint) is run on your commit message, using the [conventional commits config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
+  - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages.
+  - You can use `yarn commit` instead of `git commit` to start the commitizen prompt
+- We also use [dangerjs](https://github.com/danger/danger-js) to enforce several pull request standards, including:
+  - Changes to package source code should include changes to tests
+  - New src/components files should include changes to storybook
+  - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
+- All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
+- [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on commit messages
 
-Summary from [a successful git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
+When your branch is ready for review, open a PR into `develop` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you can squash & merge it into `develop`.
 
-- **`master`**: Always reflects the current _production-ready_ version.
-  - Each commit to `master` represents a release (see "Release branches" below).
-- **`develop`**: The latest delivered development changes for the next release, a.k.a. the "integration branch". This is configured to be the main branch in this repo, and all development branches branch off of `develop` by default.
-  - When the code on `develop` reaches a stable point and is ready to be released, it will be merged back into `master` via a release branch, and tagged with a version. This is described in more detail under "Release branches" below.
-- **Feature branches**: Branch off of `develop` and merge back into `develop`. Naming convention is your initials + brief description of the feature.
-  - Example: `sr-accordion-component`
-  - It is recommended that during development, each engineer updates their feature branches from `develop` regularly, so that merging back in does not result in conflicts.
-- **Release (candidate) branches**: Branch off of `develop` and merge back into both `develop` and `master`. These are created in preparation of a new version. Release notes, version number, and any other meta-data should be updated on this branch, smoke tests should be run, and any relevant bug fixes can be made. Performing this work on a release branch frees up the `develop` branch to continue work.
-  - Once a release branch has been created, any new work completed on `develop` will not be included until the next release.
-  - Release versions are determined at the creation of a new release branch (see more on [versioning below](#releasing)).
-  - Once the release branch is ready for production, it is merged into `master` and tagged with the version, as well as merged back into `develop`.
-  - Naming convention is `release-` and the new version number. Example: `release-1.0.0`
-- **Hotfix branches**: Branch off of `master` and merge back into both `develop` and `master`. When a bug makes its way into a release, sometimes an urgent fix is required immediately. Hotfix branches allow for small changes to be made to production releases, without having to pull in other work that has been ongoing in `develop`.
-  - Once the fix has been completed and tested, this branch is treated identically to a release branch. It is merged into `master`, tagged with the new version, and also merged back into `develop`.
-  - Naming convention is `fix-` and the new version number (usually a patch from the previous version number). Example: `fix-1.0.1`
+(TODO) Passing `develop` builds will automatically be published to the `next` tag on NPM. This allows users to easily test out the latest version in their applications, which may be unstable.
 
-### Passing Builds
+## Releasing
 
-In order to be eligible for merging, all branches must pass testing and linting standards. The following checks are in place:
+Steps for a new release (these are in the process of being automated):
 
-- Prettier (auto-formatting) and eslint are run on _staged files_ as a pre-commit hook
-  - For an optimal developer experience, it's recommended that you configure your editor to run linting/formatting inline.
-- All tests must pass, and eslint is run on all files in CircleCI
+1. Check out `develop` and make sure you have pulled down the latest changes.
 
-### Releasing
+1. Run `yarn release` which uses [`standard-version`](https://github.com/conventional-changelog/standard-version) to:
 
-Steps for a new release (these should be automated as much as possible):
+   - Determine the new version based on new commits.
+   - Generate a new entry in the changelog with the version, release notes, and today's date.
+   - Commit all of the above changes
+   - Note: Creating a new tag is **skipped** (this will happen as part of the publish flow)
 
-1. Determine the new version number based on the scale of changes following [Semantic Versioning](https://semver.org/):
+1. Push changes to a new branch following the naming pattern: `release-<version>`
 
-> Given a version number MAJOR.MINOR.PATCH, increment the:
->
-> - MAJOR version when you make incompatible API changes,
-> - MINOR version when you add functionality in a backwards compatible manner, and
-> - PATCH version when you make backwards compatible bug fixes.
+   - For example: `git checkout -b release-1.1.0`
 
-2. Create the release candidate branch (note that version numbers should _never_ be prefixed with `v`):
+1. Open a PR for the release branch against **`master`** (not `develop`, which is the default branch), with the new set of changes generated by the previous step included in the PR description. Ask for approvals from stakeholders, perform testing on applications, etc. Any hot fixes from testing or PR feedback can be made to the release branch directly if appropriate.
 
-```
-git checkout -b release-<version>
-```
+   ![image](./release_PR.png)
 
-For example:
-
-```
-git checkout -b release-1.1.0
-```
-
-3. Make sure the [change log](../CHANGELOG.md) is up to date with all of the changes in the new version. It can be helpful to compare `develop` with the latest version to see what commits have been made since. For example: https://github.com/trussworks/react-uswds/compare/1.0.0...develop
-
-4. Update the package version number in [`package.json`](../package.json)
-
-5. Open a PR for the release branch against **`master`** (not `develop`, which is the default branch), and ask for approvals from stakeholders, perform testing on applications, etc. Any hot fixes from testing or PR feedback can be made to the release branch directly if appropriate. This is also a good time to check for any pending Dependabot PRs and merge those.
-
-![image](./release_PR.png)
-
-6. Once the release PR is approved, complete the release by merging into master, and creating a release on Github (https://github.com/trussworks/react-uswds/releases). The tag version should be the new version number (again, _not_ prefixed with `v`) and the changelog should be included in the description. Immediately merge master into develop so that develop is up to date with the new version.
-
-![image](./github_release.png)
-
-7. Finally, publish the new package to npm. You can do a dry run with:
-
-```
-npm publish --dry-run
-```
-
-This will output the resulting .tar package without actually publishing it to the npm registry. If everything looks good, you can then run:
-
-```
-npm publish
-```
-
-Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Slack.
+1. Once the release PR is approved, complete the release and publish the new version (this should be automated by GH - TODO):
+   - Merge the PR into master
+   - Create a release tag on Github (https://github.com/trussworks/react-uswds/releases)
+   - Merge master into develop so that develop is up to date with the new version.
+   - Finally, publish the new package to npm: `npm publish`
+     - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack.
