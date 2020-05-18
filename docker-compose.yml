@@ -4,6 +4,6 @@ services:
   storybook:
     working_dir: /home/circleci/react-uswds
     image: circleci/node:12.16.2-browsers
-    command: yarn build-storybook && yarn loki test --requireReference --reactUri file:./storybook-static
+    command: bash -c "yarn build-storybook && yarn loki test --chromeConcurrency 1 --requireReference --reactUri file:./storybook-static"
     volumes:
         - .:/home/circleci/react-uswds
