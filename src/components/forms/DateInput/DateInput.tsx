@@ -28,7 +28,7 @@ export const DateInput = (
     ...inputProps
   } = props
 
-  const formClasses = classnames({
+  const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',
     'usa-form-group--year': unit == 'year',
@@ -37,7 +37,7 @@ export const DateInput = (
   const inputClasses = classnames('usa-input--inline', className)
 
   return (
-    <FormGroup className={formClasses}>
+    <FormGroup className={formGroupClasses}>
       <Label htmlFor={id}>{label}</Label>
       <TextInput
         {...inputProps}
