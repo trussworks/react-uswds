@@ -69,5 +69,4 @@ lib/
 # editor config
 .vscode
 
-# Ignore static storybook content
-storybook-static
+
