@@ -8,6 +8,8 @@ import { TextInput } from '../forms/TextInput/TextInput'
 
 interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  id?: string
+  name?: string
   big?: boolean
   small?: boolean
   label?: React.ReactNode
@@ -19,6 +21,8 @@ export const Search = (
 ): React.ReactElement => {
   const {
     onSubmit,
+    id = 'search-field',
+    name = 'search',
     big,
     small,
     label = 'Search',
@@ -41,10 +45,10 @@ export const Search = (
       role="search"
       search={true}
       {...formProps}>
-      <Label srOnly={true} htmlFor="search-field">
+      <Label srOnly={true} htmlFor={id}>
         {label}
       </Label>
-      <TextInput id="search-field" type="search" name="search" />
+      <TextInput id={id} type="search" name={name} />
       <Button type="submit">
         <span className={small ? 'usa-sr-only' : 'usa-search__submit-text'}>
           Search
