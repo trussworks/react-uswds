@@ -1,6 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. This file is generated automatically based on commit messages. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 1.3.0 (2020-05-19)
+
+
+### Features
+
+* add header component [#83](https://github.com/trussworks/react-uswds/issues/83) ([#102](https://github.com/trussworks/react-uswds/issues/102)) ([4281b11](https://github.com/trussworks/react-uswds/commit/4281b11fc5dac3579ac9bdea56e1327b08c9c738))
 
 ## [1.2.0] - 2020-04-30
 
