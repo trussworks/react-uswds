@@ -48,13 +48,20 @@ describe('FooterNav component', () => {
     expect(getAllByText('Primary Link').length).toBe(4)
   })
 
-  it('renders extended links with "big" prop', () => {
-    const { container, getAllByText } = render(
+  it('renders extended link sections with "big" prop', () => {
+    const { container } = render(<FooterNav links={extendedLinks} big />)
+
+    expect(container.querySelectorAll('a').length).toBe(5)
+    expect(container.querySelectorAll('section').length).toBe(2)
+  })
+
+  it('renders list headings with "big" prop', () => {
+    const { container, getByText } = render(
       <FooterNav links={extendedLinks} big />
     )
-    expect(container.querySelectorAll('a').length).toBe(5)
-    expect(getAllByText('Purple Rain').length).toBe(3)
-    expect(getAllByText('Cheetah').length).toBe(2)
+    expect(container.querySelectorAll('h4').length).toBe(2)
+    expect(getByText('Types of Cats')).toBeInTheDocument()
+    expect(getByText('Musical Gifts')).toBeInTheDocument()
   })
 
   it('does not render extended nav links without "big" prop', () => {
