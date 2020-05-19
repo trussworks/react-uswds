@@ -28,7 +28,6 @@ export { Radio } from './components/forms/Radio/Radio'
 export { Textarea } from './components/forms/Textarea/Textarea'
 export { TextInput } from './components/forms/TextInput/TextInput'
 
-<<<<<<< HEAD
 /** Header Components */
 export { ExtendedNav } from './components/header/ExtendedNav/ExtendedNav'
 export { Header } from './components/header/Header/Header'
@@ -39,14 +38,13 @@ export { NavList } from './components/header/NavList/NavList'
 export { NavMenuButton } from './components/header/NavMenuButton/NavMenuButton'
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
-=======
+
 /** Footer components */
 export { Address } from './components/Footer/Address/Address'
 export { Footer } from './components/Footer/Footer/Footer'
 export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
->>>>>>> fix: export components, conform file structure to other examples
 
 export { Search } from './components/Search/Search'
 
