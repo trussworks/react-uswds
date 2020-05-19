@@ -37,6 +37,8 @@ export { NavMenuButton } from './components/header/NavMenuButton/NavMenuButton'
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
+export { Search } from './components/Search/Search'
+
 /** Truss-designed components */
 export {
   Modal,
