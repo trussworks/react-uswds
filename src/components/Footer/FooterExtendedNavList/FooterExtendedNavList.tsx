@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
+import { NavList } from '../../header/NavList/NavList'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
@@ -84,13 +85,7 @@ const Section = ({
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <section className={classes} onClick={onToggle} onKeyPress={onToggle}>
       <h4 className="usa-footer__primary-link">{primaryLinkOrHeading}</h4>
-      <ul className="usa-list usa-list--unstyled">
-        {secondaryLinks.map((link, i) => (
-          <li key={`navLink-${i}`} className="usa-footer__secondary-link">
-            {link}
-          </li>
-        ))}
-      </ul>
+      <NavList footerSecondary items={secondaryLinks} />
     </section>
   )
 }
