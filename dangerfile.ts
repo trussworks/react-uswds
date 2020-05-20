@@ -1,46 +1,71 @@
-import { includes } from 'lodash';
-import { danger, warn, fail } from 'danger';
+import { includes } from 'lodash'
+import { danger, warn } from 'danger'
 
 // No PR is too small to include a description of why you made a change
 if (danger.github && danger.github.pr.body.length < 10) {
-  warn('Please include a description of your PR changes.');
+  warn('Please include a description of your PR changes.')
 }
 
-// load all modified and new files
-const allFiles = danger.git.modified_files.concat(danger.git.created_files);
+// Load all modified and new files
+const allFiles = danger.git.modified_files.concat(danger.git.created_files)
 
 // Request changes to package source code to also include changes to tests.
-const hasCodeChanges = allFiles.some(p => !!p.match(/src\/.*\.[jt]sx?/));
-const hasTestChanges = allFiles.some(p => !!p.match(/src\/.*\.test\.[jt]sx?/));
+const hasCodeChanges = allFiles.some((p) => !!p.match(/src\/.*\.[jt]sx?/))
+const hasTestChanges = allFiles.some((p) => !!p.match(/src\/.*\.test\.[jt]sx?/))
 if (hasCodeChanges && !hasTestChanges) {
-  warn('This PR does not include changes to tests, even though it affects source code.');
+  warn(
+    'This PR does not include changes to tests, even though it affects source code.'
+  )
+}
+
+// Make sure to export new components (src/components/*.[jt]sx)
+const hasNewComponents = danger.git.created_files.some(
+  (p) => !!p.match(/src\/components\/.*\.[jt]sx/)
+)
+const hasEntrypointChanges = includes(allFiles, 'src/index.ts')
+if (hasNewComponents && !hasEntrypointChanges) {
+  const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
+  const idea = `Did you forget to export new components from the library entrypoint?`
+  warn(`${message} - <em>${idea}</em>`)
 }
 
 // Require new src/components files to include changes to storybook
-const hasStorybookChanges = allFiles.some(p => !!p.match(/src\/.*\.stories\.[jt]sx?/));
+const hasStorybookChanges = allFiles.some(
+  (p) => !!p.match(/src\/.*\.stories\.[jt]sx?/)
+)
 
 if (hasCodeChanges && !hasStorybookChanges) {
-  warn('This PR does not include changes to storybook, even though it affects component code.');
+  warn(
+    'This PR does not include changes to storybook, even though it affects component code.'
+  )
 }
 
 // Request update of yarn.lock if package.json changed but yarn.lock isn't
-const packageChanged = includes(allFiles, 'package.json');
-const lockfileChanged = includes(allFiles, 'yarn.lock');
+const packageChanged = includes(allFiles, 'package.json')
+const lockfileChanged = includes(allFiles, 'yarn.lock')
 if (packageChanged && !lockfileChanged) {
-  const message = 'Changes were made to package.json, but not to yarn.lock';
-  const idea = 'Perhaps you need to run `yarn install`?';
-  warn(`${message} - <i>${idea}</i>`);
+  const message = 'Changes were made to package.json, but not to yarn.lock'
+  const idea = 'Perhaps you need to run `yarn install`?'
+  warn(`${message} - <i>${idea}</i>`)
 }
 
-// ensure we have access to github for this check
-let isTrivial = false;
+// Ensure we have access to github for these checks
+let isYarnAuditMissing = false
 if (danger.github) {
-  isTrivial = includes((danger.github.pr.body + danger.github.pr.title), "#trivial")
+  const prBody = danger.github.pr.body
+  if (lockfileChanged && danger.github.pr.user.type == 'User') {
+    isYarnAuditMissing = !(
+      includes(prBody, 'vulnerabilities found') &&
+      includes(prBody, 'Packages audited:')
+    )
+  }
 }
 
-// Add a CHANGELOG entry for app changes
-const hasChangelog = includes(danger.git.modified_files, "CHANGELOG.md")
-
-if (!hasChangelog && !isTrivial) {
-  warn("Please add a changelog entry for your changes.")
+// Encourage adding `yarn audit` output on package change
+if (isYarnAuditMissing) {
+  const message =
+    'Changes were made to yarn.lock, but no plain text yarn audit output was found in PR description.'
+  const idea =
+    'Can you run `yarn audit` in your branch and paste the results inside a markdown code block?'
+  warn(`${message} - <i>${idea}</i>`)
 }

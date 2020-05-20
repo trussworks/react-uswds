@@ -2,7 +2,7 @@ import React from 'react'
 import { Textarea } from './Textarea'
 
 export default {
-  title: 'Textarea',
+  title: 'Forms/Textarea',
   parameters: {
     info: `
 USWDS 2.0 Textarea component

@@ -2,7 +2,7 @@ import React from 'react'
 import { Checkbox } from './Checkbox'
 
 export default {
-  title: 'Checkbox',
+  title: 'Forms/Checkbox',
   parameters: {
     info: `
 USWDS 2.0 Checkbox component

@@ -2,16 +2,19 @@
 
 [![CircleCI](https://circleci.com/gh/trussworks/react-uswds.svg?style=svg&circle-token=a003f78b224f32fcab60155e3c0917a8040c5b96)](https://circleci.com/gh/trussworks/react-uswds)
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## Summary
 
 This is a front end component library whose aim is to develop [React](https://reactjs.org/) implementations of the design patterns defined by the [United States Web Design System (USWDS) 2.0](https://designsystem.digital.gov/). The primary goal of this library is to document and provide common UI components that can be included in other projects that adhere to or are based off of the USWDS, removing a significant amount of overhead UI development from such projects.
 
+Interested in contributing? See our [guidelines and dev setup here](./docs/contributing.md).
+
 ## Table of Contents
 
 1. [Goals](#goals)
-1. [Contributing](/docs/contributing.md)
 1. [Usage](#usage)
-1. [Using SCSS](/docs/scss.md)
+1. [Roadmap](#roadmap)
 
 ## Goals
 
