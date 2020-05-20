@@ -6,9 +6,11 @@ type MenuProps = {
   isOpen: boolean
 }
 
-export const Menu = (props: MenuProps): React.ReactElement => {
-  const { items, isOpen } = props
-  return <NavList items={items} subnav={true} hidden={!isOpen} />
+export const Menu = (
+  props: MenuProps & React.HTMLAttributes<HTMLUListElement>
+): React.ReactElement => {
+  const { items, isOpen, ...listProps } = props
+  return <NavList items={items} subnav={true} hidden={!isOpen} {...listProps} />
 }
 
 export default Menu
