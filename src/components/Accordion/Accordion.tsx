@@ -54,7 +54,7 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
   const { bordered, items, className } = props
 
   const [openItems, setOpenState] = useState(
-    items.filter(i => !!i.expanded).map(i => i.id)
+    items.filter((i) => !!i.expanded).map((i) => i.id)
   )
 
   const classes = classnames(

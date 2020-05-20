@@ -7,7 +7,7 @@ import { Checkbox } from '../Checkbox/Checkbox'
 import { Radio } from '../Radio/Radio'
 
 export default {
-  title: 'Fieldset',
+  title: 'Forms/Fieldset',
   parameters: {
     info: `
 USWDS 2.0 Fieldset component

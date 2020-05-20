@@ -28,6 +28,19 @@ export { Radio } from './components/forms/Radio/Radio'
 export { Textarea } from './components/forms/Textarea/Textarea'
 export { TextInput } from './components/forms/TextInput/TextInput'
 
+/** Header Components */
+export { ExtendedNav } from './components/header/ExtendedNav/ExtendedNav'
+export { Header } from './components/header/Header/Header'
+export { MegaMenu } from './components/header/MegaMenu/MegaMenu'
+export { Menu } from './components/header/Menu/Menu'
+export { NavCloseButton } from './components/header/NavCloseButton/NavCloseButton'
+export { NavList } from './components/header/NavList/NavList'
+export { NavMenuButton } from './components/header/NavMenuButton/NavMenuButton'
+export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
+export { Title } from './components/header/Title/Title'
+
+export { Search } from './components/Search/Search'
+
 /** Truss-designed components */
 export {
   Modal,

@@ -2,7 +2,7 @@ import React from 'react'
 import { ErrorMessage } from './ErrorMessage'
 
 export default {
-  title: 'ErrorMessage',
+  title: 'Forms/ErrorMessage',
   parameters: {
     info: `
 USWDS 2.0 ErrorMessage component

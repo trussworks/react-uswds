@@ -13,7 +13,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { Textarea } from '../Textarea/Textarea'
 
 export default {
-  title: 'Form',
+  title: 'Forms/Form',
   parameters: {
     info: `
 USWDS 2.0 Form component
