@@ -4,7 +4,7 @@ import { DateInputGroup } from '../DateInputGroup/DateInputGroup'
 import { Fieldset } from '../Fieldset/Fieldset'
 
 export default {
-  title: 'Form/DateInput',
+  title: 'Forms/DateInput',
   parameters: {
     info: `
 USWDS 2.0 DateInput component
@@ -14,7 +14,7 @@ Source: https://designsystem.digital.gov/components/form-controls/#date-input
   },
 }
 
-export const defaultDateInput = (): React.ReactElement => (
+export const monthDateInput = (): React.ReactElement => (
   <DateInput
     id="testDateInput"
     name="testName"
@@ -22,6 +22,28 @@ export const defaultDateInput = (): React.ReactElement => (
     unit="month"
     maxLength={2}
     minLength={2}
+  />
+)
+
+export const dayDateInput = (): React.ReactElement => (
+  <DateInput
+    id="testDateInput"
+    name="testName"
+    label="Day"
+    unit="day"
+    maxLength={2}
+    minLength={1}
+  />
+)
+
+export const yearDateInput = (): React.ReactElement => (
+  <DateInput
+    id="testDateInput"
+    name="testName"
+    label="Year"
+    unit="year"
+    maxLength={4}
+    minLength={4}
   />
 )
 
