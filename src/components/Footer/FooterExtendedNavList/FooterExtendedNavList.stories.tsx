@@ -31,3 +31,22 @@ export const Default = (): React.ReactElement => (
     />
   </div>
 )
+
+export const Mobile = (): React.ReactElement => (
+  <div className="usa-footer--big ">
+    <FooterExtendedNavList
+      isMobile
+      nestedLinks={[
+        ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+        [
+          'Topic',
+          <a key="2" href="#">
+            Secondary link that is pretty long
+          </a>,
+          ...Array(2).fill(<a href="#">Secondary link</a>),
+        ],
+        ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+      ]}
+    />
+  </div>
+)

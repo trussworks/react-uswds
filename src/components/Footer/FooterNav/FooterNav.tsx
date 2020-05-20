@@ -28,6 +28,7 @@ export const FooterNav = ({
   big,
   medium,
   slim,
+  isMobile = false,
   links,
   ...elementAttributes
 }: FooterNavProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
@@ -44,7 +45,7 @@ export const FooterNav = ({
   return (
     <nav className={navClasses} {...elementAttributes}>
       {big && isExtendedNavLinks(links) && (
-        <FooterExtendedNavList nestedLinks={links} />
+        <FooterExtendedNavList isMobile={isMobile} nestedLinks={links} />
       )}
 
       {!isExtendedNavLinks(links) && (

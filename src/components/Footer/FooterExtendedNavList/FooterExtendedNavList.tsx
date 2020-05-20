@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 import { NavList } from '../../header/NavList/NavList'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
 type FooterExtendedNavListProps = {
+  isMobile?: boolean
   /* 
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
@@ -13,30 +14,15 @@ type FooterExtendedNavListProps = {
 
 export const FooterExtendedNavList = ({
   className,
+  isMobile = false,
   nestedLinks,
 }: FooterExtendedNavListProps &
   React.HTMLAttributes<HTMLElement>): React.ReactElement => {
   const classes = classnames('grid-row grid-gap-4', className)
 
-  const [isMobile, setIsMobile] = React.useState(false)
   const [sectionsOpenState, setSectionsOpenState] = useState<boolean[]>(
     Array(nestedLinks.length).fill(false)
   )
-
-  useEffect(() => {
-    const isClient = window && typeof window === 'object'
-    if (!isClient) return
-
-    function handleResize(): void {
-      const isMobileWidth = window.innerWidth < 480
-      setIsMobile(isMobileWidth)
-    }
-
-    handleResize()
-
-    window.addEventListener('resize', handleResize)
-    return (): void => window.removeEventListener('resize', handleResize)
-  }, [])
 
   const onToggle = (index: number): void => {
     setSectionsOpenState((prevIsOpen) => {

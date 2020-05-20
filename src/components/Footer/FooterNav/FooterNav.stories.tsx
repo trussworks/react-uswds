@@ -62,3 +62,28 @@ export const BigFooterNav = (): React.ReactElement => (
     secondary={<></>}
   />
 )
+
+export const MobileBigFooterNav = (): React.ReactElement => (
+  <Footer
+    big
+    primary={
+      <FooterNav
+        aria-label="Footer navigation"
+        big
+        isMobile
+        links={[
+          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+          [
+            'Topic',
+            <a key="2" href="#">
+              Secondary link that is pretty long
+            </a>,
+            ...Array(2).fill(<a href="#">Secondary link</a>),
+          ],
+          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+        ]}
+      />
+    }
+    secondary={<></>}
+  />
+)

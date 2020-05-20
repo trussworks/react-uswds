@@ -1,7 +1,7 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
 
 import React from 'react'
-import { act, fireEvent, render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 
 import { FooterExtendedNavList } from './FooterExtendedNavList'
 
@@ -48,31 +48,47 @@ describe('FooterExtendedNavList component', () => {
     expect(getAllByText('Cheetah')).toHaveLength(2)
   })
 
-  describe('isMobile', () => {
-    it.todo(
-      'renders mobile view when client window width is less than threshold'
+  it('does not toggle section visiblity onClick in desktop view', () => {
+    const { getAllByText, getByText } = render(
+      <FooterExtendedNavList nestedLinks={links} />
     )
+
+    fireEvent.click(getByText('Types of Cats'))
+    expect(getAllByText('Purple Rain')).toHaveLength(3)
+    expect(getAllByText('Cheetah')).toHaveLength(2)
+  })
+
+  describe('isMobile', () => {
+    it('renders mobile classes on all sections on initial load', () => {
+      const { container } = render(
+        <FooterExtendedNavList isMobile nestedLinks={links} />
+      )
+
+      const sections = container.querySelectorAll('section')
+      const elementsWithHiddenClass = container.querySelectorAll('.hidden')
+      expect(sections.length).toEqual(elementsWithHiddenClass.length)
+    })
+
+    it('hides all secondary links on initial load', () => {
+      const { getAllByText } = render(
+        <FooterExtendedNavList isMobile nestedLinks={links} />
+      )
+      expect(getAllByText('Cheetah')).not.toBeInTheDocument
+      expect(getAllByText('Purple Rain')).not.toBeInTheDocument
+    })
 
     it('renders headings', () => {
       const { container, getByText } = render(
-        <FooterExtendedNavList nestedLinks={links} />
+        <FooterExtendedNavList isMobile nestedLinks={links} />
       )
       expect(container.querySelectorAll('h4')).toHaveLength(2)
       expect(getByText('Types of Cats')).toBeInTheDocument()
       expect(getByText('Musical Gifts')).toBeInTheDocument()
     })
 
-    it('renders link sections as collapsed on initial load', () => {
-      const { getAllByText } = render(
-        <FooterExtendedNavList nestedLinks={links} />
-      )
-      expect(getAllByText('Cheetah')).not.toBeInTheDocument
-      expect(getAllByText('Purple Rain')).not.toBeInTheDocument
-    })
-
     it('toggles section visibility onClick', () => {
       const { getByText, getAllByText } = render(
-        <FooterExtendedNavList nestedLinks={links} />
+        <FooterExtendedNavList isMobile nestedLinks={links} />
       )
 
       fireEvent.click(getByText('Types of Cats'))
@@ -81,9 +97,9 @@ describe('FooterExtendedNavList component', () => {
       expect(getAllByText('Purple Rain')).not.toBeInTheDocument
     })
 
-    it('only toggles one section expanded at a time', () => {
+    it('toggles one section expanded at a time onClick', () => {
       const { getAllByText, getByText } = render(
-        <FooterExtendedNavList nestedLinks={links} />
+        <FooterExtendedNavList isMobile nestedLinks={links} />
       )
 
       fireEvent.click(getByText('Types of Cats'))
