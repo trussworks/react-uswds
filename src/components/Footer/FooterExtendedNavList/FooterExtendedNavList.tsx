@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { NavList } from '../../header/NavList/NavList'
 
@@ -14,15 +14,37 @@ type FooterExtendedNavListProps = {
 
 export const FooterExtendedNavList = ({
   className,
-  isMobile = false,
+  isMobile,
   nestedLinks,
 }: FooterExtendedNavListProps &
   React.HTMLAttributes<HTMLElement>): React.ReactElement => {
   const classes = classnames('grid-row grid-gap-4', className)
+  const isClient = window && typeof window === 'object'
+  const isMobileWidth = isClient && window.innerWidth < 480
 
+  const [isMobileFallback, setIsMobileFallback] = React.useState<boolean>(
+    isMobileWidth
+  )
   const [sectionsOpenState, setSectionsOpenState] = useState<boolean[]>(
     Array(nestedLinks.length).fill(false)
   )
+
+  // Use isMobile prop, fallback to calculated state if undefined
+  const useMobile = isMobile || (isMobile === undefined && isMobileFallback)
+
+  useEffect(() => {
+    const isClient = window && typeof window === 'object'
+    if (!isClient) return
+
+    function handleResize(): void {
+      if (isMobileWidth !== isMobileFallback) {
+        setIsMobileFallback(isMobileWidth)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return (): void => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const onToggle = (index: number): void => {
     setSectionsOpenState((prevIsOpen) => {
@@ -40,9 +62,9 @@ export const FooterExtendedNavList = ({
           key={`linkSection-${i}`}
           className="mobile-lg:grid-col-6 desktop:grid-col-3">
           <Section
-            onToggle={isMobile ? (): void => onToggle(i) : undefined}
+            onToggle={useMobile ? (): void => onToggle(i) : undefined}
             // eslint-disable-next-line security/detect-object-injection
-            isOpen={isMobile ? sectionsOpenState[i] : true}
+            isOpen={useMobile ? sectionsOpenState[i] : true}
             links={links}
           />
         </div>
@@ -60,8 +82,7 @@ const Section = ({
   links: React.ReactNode[]
   onToggle?: () => void
 }): React.ReactElement => {
-  const primaryLinkOrHeading = links[0]
-  const secondaryLinks = links.slice(1)
+  const [primaryLinkOrHeading, ...secondaryLinks] = links
   const classes = classnames(
     'usa-footer__primary-content usa-footer__primary-content--collapsible',
     { hidden: !isOpen }
