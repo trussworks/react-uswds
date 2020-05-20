@@ -26,7 +26,7 @@ export const defaultDateInput = (): React.ReactElement => (
 )
 
 export const dateOfBirthExample = (): React.ReactElement => (
-  <Fieldset legend={'Date of birth'}>
+  <Fieldset legend="Date of birth">
     <span className="usa-hint" id="dateOfBirthHint">
       For example: 4 28 1986
     </span>
