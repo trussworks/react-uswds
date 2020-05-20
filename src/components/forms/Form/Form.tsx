@@ -17,7 +17,6 @@ export const Form = (
   const classes = classnames(
     {
       'usa-form': !search,
-      'usa-search': search,
       'usa-form--large': large,
     },
     className
