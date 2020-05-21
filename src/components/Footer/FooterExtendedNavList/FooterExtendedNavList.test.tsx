@@ -59,7 +59,7 @@ describe('FooterExtendedNavList component', () => {
   })
 
   describe('isMobile', () => {
-    it('renders mobile classes on all sections on initial load', () => {
+    it('renders mobile styles on all sections on initial load', () => {
       const { container } = render(
         <FooterExtendedNavList isMobile nestedLinks={links} />
       )
@@ -107,6 +107,29 @@ describe('FooterExtendedNavList component', () => {
 
       expect(getAllByText('Purple Rain')).toBeInTheDocument
       expect(getAllByText('Cheetah')).not.toBeInTheDocument
+    })
+
+    it('renders mobile styles when isMobile is undefined and client window width is less than threshold', () => {
+      //eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      //@ts-ignore
+      window.innerWidth = 479
+
+      const { container } = render(
+        <FooterExtendedNavList nestedLinks={links} />
+      )
+
+      const sections = container.querySelectorAll('section')
+      const elementsWithHiddenClass = container.querySelectorAll('.hidden')
+      expect(sections.length).toEqual(elementsWithHiddenClass.length)
+    })
+
+    it('does not render mobile styles when isMobile is false and client window width is less than threshold', () => {
+      const { container } = render(
+        <FooterExtendedNavList isMobile={false} nestedLinks={links} />
+      )
+
+      const elementsWithHiddenClass = container.querySelectorAll('.hidden')
+      expect(elementsWithHiddenClass.length).toEqual(0)
     })
   })
 })
