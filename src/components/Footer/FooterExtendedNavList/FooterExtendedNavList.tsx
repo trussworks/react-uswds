@@ -7,6 +7,9 @@ export type ExtendedNavLinksType = React.ReactNode[][]
 type FooterExtendedNavListProps = {
   isMobile?: boolean
   /* 
+    Turn on mobile styles via prop. If undefined, a fallback is used based on the client window width.
+  */
+  /* 
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType
@@ -20,10 +23,9 @@ export const FooterExtendedNavList = ({
   React.HTMLAttributes<HTMLElement>): React.ReactElement => {
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
-  const isMobileWidth = isClient && window.innerWidth < 480
 
   const [isMobileFallback, setIsMobileFallback] = React.useState<boolean>(
-    isMobileWidth
+    isClient && window.innerWidth < 480
   )
   const [sectionsOpenState, setSectionsOpenState] = useState<boolean[]>(
     Array(nestedLinks.length).fill(false)
@@ -36,8 +38,9 @@ export const FooterExtendedNavList = ({
     if (isMobile) return
 
     function handleResize(): void {
-      if (isMobileWidth !== isMobileFallback) {
-        setIsMobileFallback(isMobileWidth)
+      const updatedIsMobileFallback = isClient && window.innerWidth < 480
+      if (updatedIsMobileFallback !== isMobileFallback) {
+        setIsMobileFallback(updatedIsMobileFallback)
       }
     }
 
