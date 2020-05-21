@@ -33,7 +33,6 @@ export const FooterExtendedNavList = ({
   const useMobile = isMobile || (isMobile === undefined && isMobileFallback)
 
   useEffect(() => {
-    const isClient = window && typeof window === 'object'
     if (!isClient) return
 
     function handleResize(): void {
