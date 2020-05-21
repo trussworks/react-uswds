@@ -10,6 +10,8 @@ This is a front end component library whose aim is to develop [React](https://re
 
 Interested in contributing? See our [guidelines and dev setup here](./docs/contributing.md).
 
+Are you a Trussel and new to this project? Check out our [on & offboarding guide](./docs/for_trussels.md) made just for you!
+
 ## Table of Contents
 
 1. [Goals](#goals)
