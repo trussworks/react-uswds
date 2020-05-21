@@ -58,7 +58,7 @@ describe('FooterExtendedNavList component', () => {
     expect(getAllByText('Cheetah')).toHaveLength(2)
   })
 
-  describe('isMobile', () => {
+  describe('isMobile prop', () => {
     it('renders mobile styles on all sections on initial load', () => {
       const { container } = render(
         <FooterExtendedNavList isMobile nestedLinks={links} />
@@ -69,14 +69,6 @@ describe('FooterExtendedNavList component', () => {
       expect(sections.length).toEqual(elementsWithHiddenClass.length)
     })
 
-    it('hides all secondary links on initial load', () => {
-      const { getAllByText } = render(
-        <FooterExtendedNavList isMobile nestedLinks={links} />
-      )
-      expect(getAllByText('Cheetah')).not.toBeInTheDocument
-      expect(getAllByText('Purple Rain')).not.toBeInTheDocument
-    })
-
     it('renders headings', () => {
       const { container, getByText } = render(
         <FooterExtendedNavList isMobile nestedLinks={links} />
@@ -84,6 +76,14 @@ describe('FooterExtendedNavList component', () => {
       expect(container.querySelectorAll('h4')).toHaveLength(2)
       expect(getByText('Types of Cats')).toBeInTheDocument()
       expect(getByText('Musical Gifts')).toBeInTheDocument()
+    })
+
+    it('hides secondary links on initial load', () => {
+      const { getAllByText } = render(
+        <FooterExtendedNavList isMobile nestedLinks={links} />
+      )
+      expect(getAllByText('Cheetah')).not.toBeInTheDocument
+      expect(getAllByText('Purple Rain')).not.toBeInTheDocument
     })
 
     it('toggles section visibility onClick', () => {
@@ -109,27 +109,49 @@ describe('FooterExtendedNavList component', () => {
       expect(getAllByText('Cheetah')).not.toBeInTheDocument
     })
 
-    it('renders mobile styles when isMobile is undefined and client window width is less than threshold', () => {
-      //eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      //@ts-ignore
-      window.innerWidth = 479
-
+    it('does not render mobile styles when isMobile is undefined in desktop view', () => {
+      // JSDOM window.innerWidth default is 1024
       const { container } = render(
         <FooterExtendedNavList nestedLinks={links} />
       )
 
-      const sections = container.querySelectorAll('section')
-      const elementsWithHiddenClass = container.querySelectorAll('.hidden')
-      expect(sections.length).toEqual(elementsWithHiddenClass.length)
-    })
-
-    it('does not render mobile styles when isMobile is false and client window width is less than threshold', () => {
-      const { container } = render(
-        <FooterExtendedNavList isMobile={false} nestedLinks={links} />
-      )
-
       const elementsWithHiddenClass = container.querySelectorAll('.hidden')
       expect(elementsWithHiddenClass.length).toEqual(0)
+    })
+
+    describe('when client window width is less than mobile threshold', () => {
+      beforeEach(() => {
+        // Mobile width is less than 480
+        //eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        //@ts-ignore
+        window.innerWidth = 479
+      })
+
+      afterEach(() => {
+        // Return to JSDOM default
+        //eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        //@ts-ignore
+        window.innerWidth = 1024
+      })
+
+      it('renders mobile styles if isMobile is undefined', () => {
+        const { container } = render(
+          <FooterExtendedNavList nestedLinks={links} />
+        )
+
+        const sections = container.querySelectorAll('section')
+        const elementsWithHiddenClass = container.querySelectorAll('.hidden')
+        expect(sections.length).toEqual(elementsWithHiddenClass.length)
+      })
+
+      it('does not render mobile styles when isMobile is false', () => {
+        const { container } = render(
+          <FooterExtendedNavList isMobile={false} nestedLinks={links} />
+        )
+
+        const elementsWithHiddenClass = container.querySelectorAll('.hidden')
+        expect(elementsWithHiddenClass.length).toEqual(0)
+      })
     })
   })
 })
