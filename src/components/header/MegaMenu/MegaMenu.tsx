@@ -7,8 +7,10 @@ type MegaMenuProps = {
   isOpen: boolean
 }
 
-export const MegaMenu = (props: MegaMenuProps): React.ReactElement => {
-  const { items, isOpen } = props
+export const MegaMenu = (
+  props: MegaMenuProps & React.HTMLAttributes<HTMLUListElement>
+): React.ReactElement => {
+  const { items, isOpen, ...ulProps } = props
   return (
     <div
       className="usa-nav__submenu usa-megamenu"
@@ -17,7 +19,7 @@ export const MegaMenu = (props: MegaMenuProps): React.ReactElement => {
       <div className="grid-row grid-gap-4">
         {items.map((listItems, i) => (
           <div className="usa-col" key={`subnav_col_${i}`}>
-            <NavList items={listItems} megamenu={true} />
+            <NavList items={listItems} megamenu={true} {...ulProps} />
           </div>
         ))}
       </div>
