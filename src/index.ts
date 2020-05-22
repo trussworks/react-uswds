@@ -25,6 +25,7 @@ export { Form } from './components/forms/Form/Form'
 export { FormGroup } from './components/forms/FormGroup/FormGroup'
 export { Label } from './components/forms/Label/Label'
 export { Radio } from './components/forms/Radio/Radio'
+export { RangeInput } from './components/forms/RangeInput/RangeInput'
 export { Textarea } from './components/forms/Textarea/Textarea'
 export { TextInput } from './components/forms/TextInput/TextInput'
 
