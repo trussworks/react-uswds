@@ -70,6 +70,7 @@ Also make sure to include the following in order to import the compiled CSS from
 ## Maintainers
 
 - [@suzubara](https://github.com/suzubara)
+- [@haworku](https://github.com/haworku)
 
 ## Contributing
 
