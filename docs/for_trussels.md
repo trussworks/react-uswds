@@ -22,10 +22,14 @@ Regardless of whether you are on client work or Reserve, it is _up to each indiv
 - Attend and help facilitate the ReactUSDS check-in meetings regularly
 - Pay attention to [USWDS](https://github.com/uswds/uswds) updates, and create new issues needed to help this project stay up-to-date with them
 - Participate actively in PR reviews, issue discussion, and project roadmap planning
-- Keep an eye on any security alerts that come up, and make sure they are addressed promptly
+- Keep an eye on any security alerts that come up, and make sure they are addressed promptly (see below)
 - Assist with shepherding library releases forward, and publishing to npm
 - Prevent PRs and issues from becoming stale, and clean up the ones that do
 - Moderate this repo and help keep it aligned with Truss project values
+
+### Addressing Security Alerts
+
+Typically any security alerts we receive will be related to third-party dependencies. This repo is currently configured so that Dependabot will automatically open PRs that fix dependency vulnurabilities, so ideally most of the time manual intervention is not needed. There may also be periods of time during which an alert is issued, but the related dependencies have not yet updated -- in this case, we usually choose to accept the risk of waiting until the updates have been released. However, if an exceptional case comes up -- such as a high severity vulnurability or even a vulnurability within this library -- and you aren't sure how to handle it, you can ask for help in one of the following Truss Slack channels (in order of relevance): #react-uswds, #g-frontend, #infrasec, #engineering
 
 ## Onboarding
 
@@ -47,6 +51,7 @@ If you've completed all of the above and are wondering what to do next, here are
     - especially any that are labeled `good first issue` if this is your first time contributing to ReactUSWDS
   - Issues in the **Needs requirements** column are undergoing active discussion and would probably benefit from your point of view!
 - Browse [open issues](https://github.com/trussworks/react-uswds/issues) to see if there are any new issues that need to be labeled or prioritized
+- Check in with any other active maintainers about what areas are in need of help
 
 ## Offboarding
 
