@@ -13618,10 +13618,10 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-uswds@^2.2.1:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.6.0.tgz#69aa3d80cb81f1ca99ccf59fae6a76b1c5c2ce8a"
-  integrity sha512-5Q8ijTMBJdJSoiU01RTTk/eGVkjeKBsIOTiY1l5xq8M0wURKWeHzfh0a/Lj4vozwbh1h0onrvPJkyaklHKtFOQ==
+uswds@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.7.0.tgz#83af2f8d097b1f3d313d8b43f004558d0d40fc18"
+  integrity sha512-1NJJFg5PzPHWt/s7lHGzU1ox4xEA4+Njs/2h2xWHDscA3THvm+vMCvpnrKP1M9yzdXNd3Rb/G5se0w+2n69XkQ==
   dependencies:
     "@types/node" "^13.9.1"
     classlist-polyfill "^1.0.3"
