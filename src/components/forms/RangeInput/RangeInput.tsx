@@ -5,14 +5,9 @@ import { Label } from '../Label/Label'
 
 interface RangeInputProps {
   id?: string
-  name?: string
   className?: string
   label?: React.ReactNode
   hint?: React.ReactNode
-  min?: number
-  max?: number
-  step?: number | 'any'
-  list?: string
   inputRef?:
     | string
     | ((instance: HTMLInputElement | null) => void)
@@ -24,7 +19,7 @@ interface RangeInputProps {
 export const RangeInput = (
   props: RangeInputProps & React.InputHTMLAttributes<HTMLInputElement>
 ): React.ReactElement => {
-  // Range defaults to min = 0, max = 10, step = 1, and value = (max/2) if not specified.
+  // Range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const {
     id = 'range-slider',
     name = 'range',
