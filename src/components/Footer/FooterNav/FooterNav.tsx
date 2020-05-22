@@ -1,24 +1,26 @@
 import React from 'react'
+import {
+  FooterExtendedNavList,
+  ExtendedNavLinksType,
+} from '../FooterExtendedNavList/FooterExtendedNavList'
 import classnames from 'classnames'
 
-type ExtendedNavLinks = [React.ReactNode[]]
+function isExtendedNavLinks(
+  links: React.ReactNode[] | ExtendedNavLinksType
+): links is ExtendedNavLinksType {
+  return (links as ExtendedNavLinksType)[0].constructor === Array
+}
 
 type FooterNavProps = {
   big?: boolean
   medium?: boolean
   slim?: boolean
+  isMobile?: boolean
   /* 
-    Union type. Array of navigation links or multidimensional array of ExtendedNavLinks.
-    ExtendedNavLinks are ordered sub arrays that will be displayed as columns, with the first element used as the section heading.
-    ExtendedNavLinks can only be used with "big" prop size
+    Array of navigation links. Displays in simple list or an extended list with columns.
+    FooterExtendedNavList can only be used with multidimensional array (ExtendedNavLinksType) and "big" prop size.
   */
-  links: React.ReactNode[] | ExtendedNavLinks
-}
-
-function isExtendedNavLinks(
-  links: React.ReactNode[] | ExtendedNavLinks
-): links is ExtendedNavLinks {
-  return (links as ExtendedNavLinks)[0].constructor === Array
+  links: React.ReactNode[] | ExtendedNavLinksType
 }
 
 export const FooterNav = ({
@@ -26,6 +28,7 @@ export const FooterNav = ({
   big,
   medium,
   slim,
+  isMobile,
   links,
   ...elementAttributes
 }: FooterNavProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
@@ -41,7 +44,9 @@ export const FooterNav = ({
 
   return (
     <nav className={navClasses} {...elementAttributes}>
-      {big && isExtendedNavLinks(links) && <ExtendedNav nestedLinks={links} />}
+      {big && isExtendedNavLinks(links) && (
+        <FooterExtendedNavList isMobile={isMobile} nestedLinks={links} />
+      )}
 
       {!isExtendedNavLinks(links) && (
         <ul className="grid-row grid-gap">
@@ -53,45 +58,5 @@ export const FooterNav = ({
         </ul>
       )}
     </nav>
-  )
-}
-
-const Section = ({
-  links,
-}: {
-  links: React.ReactNode[]
-}): React.ReactElement => {
-  const primaryLinkOrHeading = links[0]
-  const secondaryLinks = links.slice(1)
-
-  return (
-    <section className="usa-footer__primary-content usa-footer__primary-content--collapsible">
-      <h4 className="usa-footer__primary-link">{primaryLinkOrHeading}</h4>
-      <ul className="usa-list usa-list--unstyled">
-        {secondaryLinks.map((link, i) => (
-          <li key={`navLink-${i}`} className="usa-footer__secondary-link">
-            {link}
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
-}
-
-const ExtendedNav = ({
-  nestedLinks,
-}: {
-  nestedLinks: ExtendedNavLinks
-}): React.ReactElement => {
-  return (
-    <div className="grid-row grid-gap-4">
-      {nestedLinks.map((links, i) => (
-        <div
-          key={`linkSection-${i}`}
-          className="mobile-lg:grid-col-6 desktop:grid-col-3">
-          <Section links={links} />
-        </div>
-      ))}
-    </div>
   )
 }

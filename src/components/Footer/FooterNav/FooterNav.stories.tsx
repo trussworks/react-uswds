@@ -1,6 +1,7 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
+import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'
 
 export default {
@@ -39,19 +40,50 @@ export const MediumFooterNav = (): React.ReactElement => (
 )
 
 export const BigFooterNav = (): React.ReactElement => (
-  <FooterNav
-    aria-label="Footer navigation"
+  <Footer
     big
-    links={[
-      ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-      [
-        'Topic',
-        <a key="2" href="#">
-          Secondary link that is pretty long
-        </a>,
-        ...Array(2).fill(<a href="#">Secondary link</a>),
-      ],
-      ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-    ]}
+    primary={
+      <FooterNav
+        aria-label="Footer navigation"
+        big
+        links={[
+          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+          [
+            'Topic',
+            <a key="2" href="#">
+              Secondary link that is pretty long
+            </a>,
+            ...Array(2).fill(<a href="#">Secondary link</a>),
+          ],
+          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+        ]}
+      />
+    }
+    secondary={<></>}
+  />
+)
+
+export const MobileBigFooterNav = (): React.ReactElement => (
+  <Footer
+    big
+    primary={
+      <FooterNav
+        aria-label="Footer navigation"
+        big
+        isMobile
+        links={[
+          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+          [
+            'Topic',
+            <a key="2" href="#">
+              Secondary link that is pretty long
+            </a>,
+            ...Array(2).fill(<a href="#">Secondary link</a>),
+          ],
+          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+        ]}
+      />
+    }
+    secondary={<></>}
   />
 )
