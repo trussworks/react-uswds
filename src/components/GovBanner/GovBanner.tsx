@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
+import classnames from 'classnames'
 
 // assets
 import flagImg from 'uswds/src/img/us_flag_small.png'
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
 
-export const GovBanner = (): React.ReactElement => {
+export const GovBanner = (
+  props: React.HTMLAttributes<HTMLElement>
+): React.ReactElement => {
+  const { className, ...sectionProps } = props
   const [isOpen, setOpenState] = useState(false)
 
+  const classes = classnames('usa-banner', className)
+
   return (
-    <div className="usa-banner" data-testid="govBanner">
+    <section className={classes} data-testid="govBanner" {...sectionProps}>
       <div className="usa-accordion">
         <header className="usa-banner__header">
           <div className="usa-banner__inner">
@@ -82,7 +88,7 @@ export const GovBanner = (): React.ReactElement => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
