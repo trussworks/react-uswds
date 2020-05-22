@@ -39,6 +39,14 @@ export { NavMenuButton } from './components/header/NavMenuButton/NavMenuButton'
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
+/** Footer components */
+export { Address } from './components/Footer/Address/Address'
+export { Footer } from './components/Footer/Footer/Footer'
+export { FooterExtendedNavList } from './components/Footer/FooterExtendedNavList/FooterExtendedNavList'
+export { FooterNav } from './components/Footer/FooterNav/FooterNav'
+export { Logo } from './components/Footer/Logo/Logo'
+export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
+
 export { Search } from './components/Search/Search'
 
 /** Truss-designed components */

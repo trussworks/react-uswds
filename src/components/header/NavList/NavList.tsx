@@ -7,6 +7,7 @@ interface NavListProps {
   secondary?: boolean
   subnav?: boolean
   megamenu?: boolean
+  footerSecondary?: boolean
 }
 
 export const NavList = (
@@ -18,6 +19,7 @@ export const NavList = (
     secondary,
     subnav,
     megamenu,
+    footerSecondary,
     className,
     ...ulProps
   } = props
@@ -28,6 +30,7 @@ export const NavList = (
       'usa-nav__secondary-links': secondary,
       'usa-nav__submenu': subnav,
       'usa-nav__submenu-list': megamenu,
+      'usa-list usa-list--unstyled': footerSecondary,
     },
     className
   )
@@ -36,6 +39,7 @@ export const NavList = (
     'usa-nav__primary-item': primary,
     'usa-nav__secondary-item': secondary,
     'usa-nav__submenu-item': subnav || megamenu,
+    'usa-footer__secondary-link': footerSecondary,
   })
 
   return (
