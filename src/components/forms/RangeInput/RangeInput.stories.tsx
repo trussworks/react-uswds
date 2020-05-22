@@ -1,6 +1,5 @@
 import React from 'react'
 import { RangeInput } from './RangeInput'
-import Label from '../Label/Label'
 
 export default {
   title: 'Forms/RangeInput',
@@ -27,7 +26,7 @@ const labelChildren = (
 const labelHint = <>(Some hint)</>
 
 export const defaultRange = (): React.ReactElement => (
-  <RangeInput label="Range slider" />
+  <RangeInput id="range-slider" name="range" />
 )
 
 export const customRange = (): React.ReactElement => (
@@ -35,7 +34,6 @@ export const customRange = (): React.ReactElement => (
     id="custom-range-slider"
     name="rangeValue"
     className="dark-theme"
-    label="Range slider"
     min={1}
     max={11}
     step={2}
@@ -43,15 +41,12 @@ export const customRange = (): React.ReactElement => (
   />
 )
 
-export const richLabelRange = (): React.ReactElement => (
-  <RangeInput label={labelChildren} hint={labelHint} />
-)
-
 // Only tick marks are shown in Chrome but not with usa-range class currently because the appearance property is set to none
 export const dataListRange = (): React.ReactElement => (
   <>
     <RangeInput
-      label="Range from datalist"
+      id="range-slider"
+      name="range"
       min={0}
       max={4}
       defaultValue={2}
