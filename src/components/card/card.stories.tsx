@@ -68,6 +68,42 @@ const cardWithMedia = (
   </Card>
 )
 
+const mediaWithSetAspectRatio = (
+  <Card
+    standardLayout="default"
+    header={
+      <header className="usa-card__header">
+        <h2 className="usa-card__heading">Media with Set Aspect Ratio</h2>
+      </header>
+    }
+    footer={
+      <div className="usa-card__footer">
+        <Button type="button" className="usa-button">
+          Example Button
+        </Button>
+      </div>
+    }
+    media={
+      <div className="usa-card__media usa-card__media--set-aspect.add-aspect-1x1">
+        <div className="usa-card__img">
+          {/* Are we allowed to use this image? */}
+          <img
+            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            alt="A placeholder"
+          />
+        </div>
+      </div>
+    }>
+    <div className="usa-card__body">
+      <p>
+        {' '}
+        This is a standard card with media at a set aspect ratio of 1X1 and a
+        button in the footer.{' '}
+      </p>
+    </div>
+  </Card>
+)
+
 const mediaAndHeaderFirst = (
   <Card
     standardLayout="headerFirst"
@@ -169,7 +205,42 @@ const exdentMedia = (
     <div className="usa-card__body">
       <p>
         This is a standard card with the header and media first, exdent media,
-        and a button in the footer.{' '}
+        and a button in the footer.
+      </p>
+    </div>
+  </Card>
+)
+
+const exdentCard = (
+  <Card
+    standardLayout="headerFirst"
+    header={
+      <header className="usa-card__header">
+        <h2 className="usa-card__heading">Exdent Card</h2>
+      </header>
+    }
+    footer={
+      <div className="usa-card__footer usa-card__footer--exdent">
+        <Button type="button" className="usa-button">
+          Example Button
+        </Button>
+      </div>
+    }
+    media={
+      <div className="usa-card__media usa-card__media--exdent">
+        <div className="usa-card__img">
+          {/* Are we allowed to use this image? */}
+          <img
+            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            alt="A placeholder"
+          />
+        </div>
+      </div>
+    }>
+    <div className="usa-card__body usa-card__body--exdent">
+      <p>
+        This is a standard card with the header and media first, media, and a
+        button in the footer. All of which are exdent style.
       </p>
     </div>
   </Card>
@@ -235,8 +306,7 @@ const flagMediaOnRight = (
     }>
     <div className="usa-card__body">
       <p>
-        {' '}
-        This is a flag card with media on the right and a button in the footer.{' '}
+        This is a flag card with media on the right and a button in the footer.
       </p>
     </div>
   </Card>
@@ -245,7 +315,15 @@ const flagMediaOnRight = (
 export const cardExamples = (): React.ReactElement => (
   <>
     <CardGroup>
-      {[card, cardWithMedia, mediaAndHeaderFirst, insetMedia, exdentMedia]}
+      {[
+        card,
+        cardWithMedia,
+        mediaWithSetAspectRatio,
+        mediaAndHeaderFirst,
+        insetMedia,
+        exdentMedia,
+        exdentCard,
+      ]}
     </CardGroup>
     <CardGroup>{[flagDefault, flagMediaOnRight]}</CardGroup>
   </>
