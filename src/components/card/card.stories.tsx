@@ -17,6 +17,7 @@ Source: https://designsystem.digital.gov/components/card/
 
 const card = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="default"
     header={
       <header className="usa-card__header">
@@ -38,6 +39,7 @@ const card = (
 
 const cardWithMedia = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="default"
     header={
       <header className="usa-card__header">
@@ -70,6 +72,7 @@ const cardWithMedia = (
 
 const mediaWithSetAspectRatio = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="default"
     header={
       <header className="usa-card__header">
@@ -106,6 +109,7 @@ const mediaWithSetAspectRatio = (
 
 const mediaAndHeaderFirst = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="headerFirst"
     header={
       <header className="usa-card__header">
@@ -142,6 +146,7 @@ const mediaAndHeaderFirst = (
 
 const insetMedia = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="headerFirst"
     header={
       <header className="usa-card__header">
@@ -178,6 +183,7 @@ const insetMedia = (
 
 const exdentMedia = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="headerFirst"
     header={
       <header className="usa-card__header">
@@ -213,6 +219,7 @@ const exdentMedia = (
 
 const exdentCard = (
   <Card
+    className="tablet:grid-col-4"
     standardLayout="headerFirst"
     header={
       <header className="usa-card__header">
@@ -248,6 +255,7 @@ const exdentCard = (
 
 const flagDefault = (
   <Card
+    className="tablet:grid-col-4"
     flagLayout="default"
     header={
       <header className="usa-card__header">
@@ -280,6 +288,7 @@ const flagDefault = (
 
 const flagMediaOnRight = (
   <Card
+    className="tablet:grid-col-4"
     flagLayout="mediaOnRight"
     header={
       <header className="usa-card__header">

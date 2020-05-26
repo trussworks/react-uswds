@@ -26,7 +26,6 @@ export const Card = (
   // TODO determine how to implement the tablet:grid-col-4 class properly, should this be li class?
   const classes = classnames(
     'usa-card',
-    'tablet:grid-col-4',
     {
       'usa-card--header-first': standardLayout == 'headerFirst',
       'usa-card--flag': flagLayout != null,
