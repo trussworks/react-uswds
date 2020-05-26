@@ -1,5 +1,6 @@
 import React from 'react'
 import { RangeInput } from './RangeInput'
+import { Label } from '../Label/Label'
 
 export default {
   title: 'Forms/RangeInput',
@@ -18,15 +19,20 @@ const labelChildren = (
       <span>Start:</span> <span>0</span>
     </div>
     <div>
-      <span>End:</span> <span>10</span>
+      <span>End:</span> <span>100</span>
     </div>
   </>
 )
 
-const labelHint = <>(Some hint)</>
+const labelHint = <>(drag to adjust or use arrow keys)</>
 
 export const defaultRange = (): React.ReactElement => (
-  <RangeInput id="range-slider" name="range" />
+  <>
+    <Label htmlFor="range-slider" hint={labelHint}>
+      {labelChildren}
+    </Label>
+    <RangeInput id="range-slider" name="range" />
+  </>
 )
 
 export const customRange = (): React.ReactElement => (

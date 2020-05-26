@@ -1,8 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { Label } from '../Label/Label'
-
 interface RangeInputProps {
   id: string
   name: string
