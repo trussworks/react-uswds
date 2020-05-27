@@ -60,6 +60,7 @@ export const LandingPage = (): React.ReactElement => {
         onToggle={(): void => {
           handleToggleNavDropdown(0)
         }}
+        isCurrent
       />
       <Menu
         id="extended-nav-section-one"

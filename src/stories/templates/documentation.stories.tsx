@@ -60,6 +60,7 @@ export const DocumentationPage = (): React.ReactElement => {
         onToggle={(): void => {
           handleToggleNavDropdown(0)
         }}
+        isCurrent
       />
       <Menu
         id="extended-nav-section-one"
@@ -84,15 +85,6 @@ export const DocumentationPage = (): React.ReactElement => {
     </React.Fragment>,
     <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
       <span>Simple link</span>
-    </a>,
-  ]
-
-  const secondaryNavItems = [
-    <a key="secondaryNav_0" href="">
-      Secondary link
-    </a>,
-    <a key="secondaryNav_1" href="">
-      Another secondary link
     </a>,
   ]
 
