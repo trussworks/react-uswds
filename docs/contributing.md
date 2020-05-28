@@ -41,7 +41,8 @@ Because this project exports a library that will be used by other projects, it i
 - [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - These checks will also be run on all files in CI, and must pass before the branch can be merged
-- [`commitlint`](https://github.com/conventional-changelog/commitlint) is run on your commit message, using the [conventional commits config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
+- All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). This generates an automated changelog entry and is required to merge. The [WIP] prefix can also be used to indicate a pull request is still work in progress. In this case,  the PR title is not validated and the pull request lint check remains pending. 
+- The project is configured to only allow [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits.
   - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages.
   - You can use `yarn commit` instead of `git commit` to start the commitizen prompt
 - We also use [dangerjs](https://github.com/danger/danger-js) to enforce several pull request standards, including:
