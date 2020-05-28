@@ -59,7 +59,12 @@ export const BasicHeader = (): React.ReactElement => {
         label="Nav Label"
         isCurrent={true}
       />
-      <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} />
+      <Menu
+        key="one"
+        items={testMenuItems}
+        isOpen={isOpen[0]}
+        id="testDropDownOne"
+      />
     </>,
     <a href="#two" key="two" className="usa-nav__link">
       <span>Parent link</span>
@@ -153,18 +158,28 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
         label="Nav Label"
         isCurrent={true}
       />
-      <MegaMenu key="one" items={testItemsMegaOne} isOpen={isOpen[0]} />
+      <MegaMenu
+        key="one"
+        items={testItemsMegaOne}
+        isOpen={isOpen[0]}
+        id="testDropDownOne"
+      />
     </>,
     <>
       <NavDropDownButton
         onToggle={(): void => {
           onToggle(1)
         }}
-        menuId="testDropDownOne"
+        menuId="testDropDownTwo"
         isOpen={isOpen[1]}
         label="Nav Label"
       />
-      <MegaMenu key="one" items={testItemsMegaTwo} isOpen={isOpen[1]} />
+      <MegaMenu
+        key="one"
+        items={testItemsMegaTwo}
+        isOpen={isOpen[1]}
+        id="testDropDownTwo"
+      />
     </>,
     <a href="#two" key="two" className="usa-nav__link">
       <span>Parent link</span>
@@ -228,7 +243,12 @@ export const extendedHeader = (): React.ReactElement => {
         label="Nav Label"
         isCurrent={true}
       />
-      <Menu key="one" items={testMenuItems} isOpen={isOpen[0]} />
+      <Menu
+        key="one"
+        items={testMenuItems}
+        isOpen={isOpen[0]}
+        id="testDropDownOne"
+      />
     </>,
     <a href="#two" key="two" className="usa-nav__link">
       <span>Parent link</span>
@@ -310,7 +330,12 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
         label="Nav Label"
         isCurrent={true}
       />
-      <MegaMenu key="one" items={testItemsMegaOne} isOpen={isOpen[0]} />
+      <MegaMenu
+        key="one"
+        items={testItemsMegaOne}
+        isOpen={isOpen[0]}
+        id="testDropDownOne"
+      />
     </>,
     <a href="#two" key="two" className="usa-nav__link">
       <span>Parent link</span>

@@ -7,7 +7,7 @@ export default {
     info: `
 USWDS 2.0 Search component
 
-Source: https://designsystem.digital.gov/components/header/
+Source: https://designsystem.digital.gov/components/search/
 `,
   },
 }
