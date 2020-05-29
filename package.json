@@ -30,7 +30,8 @@
     "build:watch": "webpack --watch",
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "happo": "happo"
   },
   "repository": {
     "type": "git",
@@ -57,6 +58,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "dotenv": "^8.2.0",
+    "happo-plugin-storybook": "^2.5.3",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "uswds": "^2.7.0"
@@ -94,6 +97,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
     "file-loader": "^6.0.0",
+    "happo.io": "^5.4.0",
     "husky": "^4.2.3",
     "jest": "^25.2.3",
     "lint-staged": "^10.0.9",
