@@ -80,7 +80,6 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
 
   return (
     <div className={classes} data-testid="accordion">
-      TEST TEXTTTTT
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
