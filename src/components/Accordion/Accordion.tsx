@@ -58,7 +58,6 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
   )
 
   const classes = classnames(
-    'usa-accordion',
     {
       'usa-accordion--bordered': bordered,
     },
