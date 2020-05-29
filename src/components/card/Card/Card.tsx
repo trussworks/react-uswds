@@ -2,11 +2,10 @@ import React from 'react'
 import classnames from 'classnames'
 
 interface CardProps {
-  header?: React.ReactNode
+  header: React.ReactNode
   media?: React.ReactNode
-  footer?: React.ReactNode
-  standardLayout?: 'default' | 'headerFirst'
-  flagLayout?: 'default' | 'mediaOnRight'
+  footer: React.ReactNode
+  layout: 'standardDefault' | 'headerFirst' | 'flagDefault' | 'flagMediaRight'
 }
 
 export const Card = (
@@ -16,8 +15,7 @@ export const Card = (
     header,
     media,
     footer,
-    standardLayout,
-    flagLayout,
+    layout,
     children,
     className,
     ...divProps
@@ -27,9 +25,9 @@ export const Card = (
   const classes = classnames(
     'usa-card',
     {
-      'usa-card--header-first': standardLayout == 'headerFirst',
-      'usa-card--flag': flagLayout != null,
-      'usa-card--media-right': flagLayout == 'mediaOnRight',
+      'usa-card--header-first': layout === 'headerFirst',
+      'usa-card--flag': layout === 'flagDefault' || layout === 'flagMediaRight',
+      'usa-card--media-right': layout === 'flagMediaRight',
     },
     className
   )

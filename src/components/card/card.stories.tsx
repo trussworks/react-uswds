@@ -2,6 +2,8 @@ import React from 'react'
 
 import { CardGroup } from './CardGroup/CardGroup'
 import { Card } from './Card/Card'
+import { CardHeader } from './CardHeader/CardHeader'
+import { CardFooter } from './CardFooter/CardFooter'
 import { Button } from '../Button/Button'
 
 export default {
@@ -18,18 +20,18 @@ Source: https://designsystem.digital.gov/components/card/
 const card = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="default"
+    layout="standardDefault"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Card</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }>
     <div className="usa-card__body">
       <p> This is a standard card with a button in the footer. </p>
@@ -40,18 +42,18 @@ const card = (
 const cardWithMedia = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="default"
+    layout="standardDefault"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Card With Media</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media">
@@ -73,18 +75,18 @@ const cardWithMedia = (
 const mediaWithSetAspectRatio = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="default"
+    layout="standardDefault"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Media with Set Aspect Ratio</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media usa-card__media--set-aspect.add-aspect-1x1">
@@ -110,18 +112,18 @@ const mediaWithSetAspectRatio = (
 const mediaAndHeaderFirst = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="headerFirst"
+    layout="headerFirst"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Media and Header First</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media">
@@ -147,18 +149,18 @@ const mediaAndHeaderFirst = (
 const insetMedia = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="headerFirst"
+    layout="headerFirst"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Inset Media</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media usa-card__media--inset">
@@ -184,18 +186,18 @@ const insetMedia = (
 const exdentMedia = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="headerFirst"
+    layout="headerFirst"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Exdent Media</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media usa-card__media--exdent">
@@ -220,18 +222,18 @@ const exdentMedia = (
 const exdentCard = (
   <Card
     className="tablet:grid-col-4"
-    standardLayout="headerFirst"
+    layout="headerFirst"
     header={
-      <header className="usa-card__header">
+      <CardHeader className="usa-card__header--exdent">
         <h2 className="usa-card__heading">Exdent Card</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer usa-card__footer--exdent">
+      <CardFooter className="usa-card__footer--exdent">
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media usa-card__media--exdent">
@@ -256,18 +258,18 @@ const exdentCard = (
 const flagDefault = (
   <Card
     className="tablet:grid-col-4"
-    flagLayout="default"
+    layout="standardDefault"
     header={
-      <header className="usa-card__header">
-        <h2 className="usa-card__heading">Flag Default</h2>
-      </header>
+      <CardHeader>
+        <h2 className="usa-card__heading">Flag standardDefault</h2>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media usa-card__media--exdent">
@@ -289,18 +291,18 @@ const flagDefault = (
 const flagMediaOnRight = (
   <Card
     className="tablet:grid-col-4"
-    flagLayout="mediaOnRight"
+    layout="flagMediaRight"
     header={
-      <header className="usa-card__header">
+      <CardHeader>
         <h2 className="usa-card__heading">Flag Media on Right</h2>
-      </header>
+      </CardHeader>
     }
     footer={
-      <div className="usa-card__footer">
+      <CardFooter>
         <Button type="button" className="usa-button">
           Example Button
         </Button>
-      </div>
+      </CardFooter>
     }
     media={
       <div className="usa-card__media usa-card__media--exdent">
