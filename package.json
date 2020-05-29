@@ -17,7 +17,7 @@
     "lib"
   ],
   "engines": {
-    "node": "^12.16.2"
+    "node": "10.x - 12.x"
   },
   "scripts": {
     "commit": "git-cz",
