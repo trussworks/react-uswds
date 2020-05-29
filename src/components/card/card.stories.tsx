@@ -58,7 +58,6 @@ const cardWithMedia = (
     media={
       <div className="usa-card__media">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -89,9 +88,8 @@ const mediaWithSetAspectRatio = (
       </CardFooter>
     }
     media={
-      <div className="usa-card__media usa-card__media--set-aspect.add-aspect-1x1">
-        <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
+      <div className="usa-card__media">
+        <div className="usa-card__img add-aspect-3x1">
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -102,7 +100,7 @@ const mediaWithSetAspectRatio = (
     <div className="usa-card__body">
       <p>
         {' '}
-        This is a standard card with media at a set aspect ratio of 1X1 and a
+        This is a standard card with media at a set aspect ratio of 3X1 and a
         button in the footer.{' '}
       </p>
     </div>
@@ -128,7 +126,6 @@ const mediaAndHeaderFirst = (
     media={
       <div className="usa-card__media">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -165,7 +162,6 @@ const insetMedia = (
     media={
       <div className="usa-card__media usa-card__media--inset">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -202,7 +198,6 @@ const exdentMedia = (
     media={
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -238,7 +233,6 @@ const exdentCard = (
     media={
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -274,7 +268,6 @@ const flagDefault = (
     media={
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
@@ -307,7 +300,6 @@ const flagMediaOnRight = (
     media={
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
-          {/* Are we allowed to use this image? */}
           <img
             src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             alt="A placeholder"
