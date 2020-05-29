@@ -31,7 +31,8 @@
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t",
     "prepublishOnly": "yarn build",
-    "happo": "happo"
+    "happo": "happo",
+    "happo-ci": "happo-ci-circleci"
   },
   "repository": {
     "type": "git",
