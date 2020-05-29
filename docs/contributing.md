@@ -28,7 +28,7 @@ These should all be run from within the project directory.
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
 - `yarn happo run`
-  - Starts Happo visual regression testing. Once the tests have finished running, a url will be provided to view the report. ** Note: Anyone can view the reports. To access happo to do anything beyond reading, you need to request access to the account or login with a `truss.works` domain email. **
+  - Starts Happo visual regression testing. Once the tests have finished running, a url will be provided to view the report. ** Note: Anyone can view the reports. To access happo to do anything beyond reading, you need to request access to the account or login to happo with a `truss.works` domain email.
 
 ## Development
 
