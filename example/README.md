@@ -2,6 +2,8 @@
 
 This app is meant to demonstrate some of the features and components that make up the @trussworks/react-uswds library. It is just an example, and is currently not deployed or used anywhere other than for local development and testing.
 
+_Note:_ Currently the `start, test, build` scripts are prepended with `SKIP_PREFLIGHT_CHECK=true` in `package.json`. This is to get around the issue that Create React App requires specific versions of certain libraries to run, and the ReactUSWDS library is using newer versions of those libraries (notably `babel-jest`). This was the fastest/easiest workaround for now. Relevant discussion at https://github.com/facebook/create-react-app/issues/6756.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
