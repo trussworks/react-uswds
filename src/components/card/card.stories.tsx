@@ -59,7 +59,7 @@ const cardWithMedia = (
       <div className="usa-card__media">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -91,7 +91,7 @@ const mediaWithSetAspectRatio = (
       <div className="usa-card__media">
         <div className="usa-card__img add-aspect-3x1">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -127,7 +127,7 @@ const mediaAndHeaderFirst = (
       <div className="usa-card__media">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -163,7 +163,7 @@ const insetMedia = (
       <div className="usa-card__media usa-card__media--inset">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -199,7 +199,7 @@ const exdentMedia = (
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -234,7 +234,7 @@ const exdentCard = (
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -269,7 +269,7 @@ const flagDefault = (
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
@@ -301,7 +301,7 @@ const flagMediaOnRight = (
       <div className="usa-card__media usa-card__media--exdent">
         <div className="usa-card__img">
           <img
-            src="https://images.unsplash.com/photo-1579800070193-abe62433f737?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=610&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+            src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
             alt="A placeholder"
           />
         </div>
