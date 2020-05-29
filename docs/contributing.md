@@ -27,6 +27,8 @@ These should all be run from within the project directory.
 - `yarn build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
+- `yarn happo run`
+  - Starts Happo visual regression testing. Once the tests have finished running, a url will be provided to view the report. ** Note: Anyone can view the reports. To access happo to do anything beyond reading, you need to request access to the account or login with a `truss.works` domain email. **
 
 ## Development
 
@@ -41,7 +43,7 @@ Because this project exports a library that will be used by other projects, it i
 - [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - These checks will also be run on all files in CI, and must pass before the branch can be merged
-- All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). This generates an automated changelog entry and is required to merge. The [WIP] prefix can also be used to indicate a pull request is still work in progress. In this case,  the PR title is not validated and the pull request lint check remains pending. 
+- All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). This generates an automated changelog entry and is required to merge. The [WIP] prefix can also be used to indicate a pull request is still work in progress. In this case,  the PR title is not validated and the pull request lint check remains pending.
 - The project is configured to only allow [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits.
   - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages.
   - You can use `yarn commit` instead of `git commit` to start the commitizen prompt
@@ -50,6 +52,7 @@ Because this project exports a library that will be used by other projects, it i
   - New src/components files should include changes to storybook
   - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
 - All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
+- [Happo tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Navigate to the happo link for instructions on how to review and approve diffs.
 - [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on commit messages
 
 When your branch is ready for review, open a PR into `develop` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you can squash & merge it into `develop`.
