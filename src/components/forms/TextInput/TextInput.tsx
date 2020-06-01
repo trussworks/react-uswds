@@ -1,6 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
+export type TextInputRef =
+  | string
+  | ((instance: HTMLInputElement | null) => void)
+  | React.RefObject<HTMLInputElement>
+  | null
+  | undefined
+
 interface TextInputProps {
   id: string
   name: string
@@ -10,12 +17,7 @@ interface TextInputProps {
   success?: boolean
   small?: boolean
   medium?: boolean
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined
+  inputRef?: TextInputRef
 }
 
 export const TextInput = (
