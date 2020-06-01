@@ -26,6 +26,7 @@ Regardless of whether you are on client work or Reserve, it is _up to each indiv
 - Assist with shepherding library releases forward, and publishing to npm
 - Prevent PRs and issues from becoming stale, and clean up the ones that do
 - Moderate this repo and help keep it aligned with Truss project values
+- Maintain admin responsibilities for the repo's [Happo Account](https://happo.io/)
 
 ### Addressing Security Alerts
 
@@ -39,6 +40,7 @@ First of all, we’re so excited you want to be an active maintainer on this pro
 - [ ] Add yourself to the ReactUSWDS weekly check-in (this can be found on the Truss Events calendar)
 - [ ] If you haven't already, be sure to familiarize yourself with this repo, especially the docs on [contributing](./contributing.md) and [recent releases](https://github.com/trussworks/react-uswds/releases)
 - [ ] Open a new PR that adds yourself to the Active Maintainers list in the [readme](../README.md).
+  - [ ] _Optional:_ Speak with another active maintainer and request admin privlages to the [Happo Account](https://happo.io/)
   - [ ] If you aren't already, you can also add yourself to the `contributors` list in the [package.json](../package.json),
   - [ ] and to [CODEOWNERS](../CODEOWNERS) if you'd like to automatically be requested to review PRs _(this is optional)_.
 - [ ] _Optional:_ If you want access to the npm org so you can publish new releases, ping `@npm-admins` in Slack
@@ -67,5 +69,6 @@ We’re equally excited that you’ll be taking something off your plate and mov
   - You can also remove yourself from [CODEOWNERS](../CODEOWNERS) so you don't get PR requests that you won't have time to review.
   - **_Don't_** remove yourself from `package.json` contributors! You did good work on this project and that should be recognized.
 - [ ] _Optional:_ You don’t need to have npm access revoked, but you can if you want.
+- [ ] _Optional:_ You don’t need to have Happo admin access revoked, but you can if you want.
 - [ ] _Optional:_ Give yourself some time back and remove yourself from the weekly check-in events
 - [ ] _Optional: If you want to,_ feel free to leave the #react-uswds Slack channels
