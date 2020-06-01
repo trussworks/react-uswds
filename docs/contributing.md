@@ -52,7 +52,7 @@ Because this project exports a library that will be used by other projects, it i
   - New src/components files should include changes to storybook
   - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
 - All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
-- [Happo tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Navigate to the happo link for instructions on how to review and approve diffs.
+- [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Developers must have access to the Happo.io account to approve/reject diffs. If you work at Truss, log into Happo.io with your gmail and you will be able to approve/reject changes. Navigate to the happo link for instructions on how to review and approve diffs.
 - [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on commit messages
 
 When your branch is ready for review, open a PR into `develop` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you can squash & merge it into `develop`.
