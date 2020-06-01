@@ -33,12 +33,15 @@ export const CharacterCount = (
     className,
     label,
     maxLength,
+    defaultValue,
     isTextArea,
     textRef,
     type, // Conflicts with type attribute already set on TextInput component
     ...inputProps
   } = props
 
+  const defaultLength =
+    defaultValue === undefined ? 0 : defaultValue.toString().length
   const maxNum = maxLength === undefined ? 0 : maxLength
 
   /* Ideally defined as i18n translation strings */
@@ -70,9 +73,9 @@ export const CharacterCount = (
   }
 
   const [state, setState] = useState({
-    characterLength: 0,
-    limitMessage: emptyMessageFormat,
-    invalidMessage: false,
+    characterLength: defaultLength,
+    limitMessage: limitMessage(defaultLength),
+    invalidMessage: defaultLength > maxNum,
   })
 
   const classes = classnames('usa-character-count__field', className)
@@ -116,11 +119,13 @@ export const CharacterCount = (
         data-testid="characterCountInput"
         name={name}
         className={classes}
+        defaultValue={defaultValue}
         onChange={handleChange}
         onBlur={handleBlur}
         aria-describedby={messageId}
         inputRef={ref}
-        {...inputProps}></Textarea>
+        {...inputProps}
+      />
     )
   } else {
     const ref = textRef as TextInputRef
@@ -131,8 +136,10 @@ export const CharacterCount = (
         name={name}
         type="text"
         className={classes}
+        defaultValue={defaultValue}
         onChange={handleChange}
         onBlur={handleBlur}
+        aria-describedby={messageId}
         inputRef={ref}
         {...inputProps}
       />

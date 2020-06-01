@@ -23,6 +23,17 @@ export const textInputCharacterCount = (): React.ReactElement => (
     }></CharacterCount>
 )
 
+export const textInputWithDefault = (): React.ReactElement => (
+  <CharacterCount
+    id="character-count-id"
+    name="characterCount"
+    defaultValue="Over the maximum"
+    maxLength={10}
+    label={
+      <Label htmlFor="character-count-id">Text Input</Label>
+    }></CharacterCount>
+)
+
 export const textareaCharacterCount = (): React.ReactElement => (
   <CharacterCount
     id="character-count-id"
