@@ -42,7 +42,6 @@ export const CharacterCount = (
   const maxNum = maxLength === undefined ? 0 : maxLength
 
   /* Ideally defined as i18n translation strings */
-  const messageContent = `You can enter up to ${maxLength} characters`
   const emptyMessageFormat = `${maxLength} characters allowed`
   const remainingPluralFormat = '$0 characters left'
   const remainingSingularFormat = '$0 character left'
@@ -148,7 +147,6 @@ export const CharacterCount = (
           {label}
           {inputComponent}
         </FormGroup>
-        <noscript>{messageContent}</noscript>
         <span id={messageId} className={messageClasses} aria-live="polite">
           {state.limitMessage}
         </span>
