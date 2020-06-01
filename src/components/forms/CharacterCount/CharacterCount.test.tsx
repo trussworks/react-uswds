@@ -121,6 +121,8 @@ describe('CharacterCount component', () => {
       target: { value: 'abcde' },
     })
 
+    fireEvent.blur(getByTestId('characterCountInput'))
+
     expect(getByTestId('characterCountInput')).toBeValid()
   })
 })
