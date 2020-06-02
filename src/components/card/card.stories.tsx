@@ -19,7 +19,7 @@ Source: https://designsystem.digital.gov/components/card/
 
 const card = (
   <Card
-    className="tablet:grid-col-4"
+    gridLayout={{ tablet: { col: 6 } }}
     layout="standardDefault"
     header={
       <CardHeader>
@@ -41,7 +41,7 @@ const card = (
 
 const cardWithMedia = (
   <Card
-    className="tablet:grid-col-4"
+    gridLayout={{ tablet: { col: 6 } }}
     layout="standardDefault"
     header={
       <CardHeader>
