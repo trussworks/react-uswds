@@ -2,11 +2,17 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const CardHeader = (
-  props: React.HTMLAttributes<HTMLElement>
+  props: { exdent?: boolean } & React.HTMLAttributes<HTMLElement>
 ): React.ReactElement => {
-  const { children, className, ...headerProps } = props
+  const { exdent, children, className, ...headerProps } = props
 
-  const classes = classnames('usa-card__header', className)
+  const classes = classnames(
+    'usa-card__header',
+    {
+      'usa-card__header--exdent': exdent,
+    },
+    className
+  )
 
   return (
     <header className={classes} {...headerProps} data-testid="CardHeader">

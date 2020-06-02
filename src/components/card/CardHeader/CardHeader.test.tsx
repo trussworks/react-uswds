@@ -18,4 +18,11 @@ describe('CardGroup component', () => {
     const { queryByTestId } = render(<CardHeader className="testClass" />)
     expect(queryByTestId('CardHeader')).toHaveClass('testClass')
   })
+
+  it('renders proper class when exdent is true', () => {
+    const { queryByTestId } = render(
+      <CardHeader exdent={true}>Content</CardHeader>
+    )
+    expect(queryByTestId('CardHeader')).toHaveClass('usa-card__header--exdent')
+  })
 })

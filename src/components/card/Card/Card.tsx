@@ -4,25 +4,13 @@ import classnames from 'classnames'
 import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'
 
 interface CardProps {
-  header: React.ReactNode
-  media?: React.ReactNode
-  footer: React.ReactNode
   layout: 'standardDefault' | 'headerFirst' | 'flagDefault' | 'flagMediaRight'
 }
 
 export const Card = (
   props: CardProps & React.HTMLAttributes<HTMLDivElement> & GridLayoutProp
 ): React.ReactElement => {
-  const {
-    header,
-    media,
-    footer,
-    layout,
-    children,
-    className,
-    gridLayout,
-    ...divProps
-  } = props
+  const { layout, children, className, gridLayout, ...divProps } = props
 
   // TODO determine how to implement the tablet:grid-col-4 class properly, should this be li class?
   const gridClasses = gridLayout && applyGridClasses(gridLayout)
@@ -41,10 +29,7 @@ export const Card = (
   return (
     <li className={classes} data-testid="Card">
       <div className="usa-card__container" {...divProps}>
-        {header}
-        {media}
         {children}
-        {footer}
       </div>
     </li>
   )

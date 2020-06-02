@@ -18,4 +18,11 @@ describe('CardGroup component', () => {
     const { queryByTestId } = render(<CardFooter className="testClass" />)
     expect(queryByTestId('CardFooter')).toHaveClass('testClass')
   })
+
+  it('renders proper class when exdent is true', () => {
+    const { queryByTestId } = render(
+      <CardFooter exdent={true}>Content</CardFooter>
+    )
+    expect(queryByTestId('CardFooter')).toHaveClass('usa-card__footer--exdent')
+  })
 })

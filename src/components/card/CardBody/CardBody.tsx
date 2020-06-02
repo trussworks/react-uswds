@@ -1,24 +1,24 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const CardFooter = (
+export const CardBody = (
   props: { exdent?: boolean } & React.HTMLAttributes<HTMLDivElement>
 ): React.ReactElement => {
-  const { exdent, children, className, ...footerProps } = props
+  const { exdent, children, className, ...bodyProps } = props
 
   const classes = classnames(
-    'usa-card__footer',
+    'usa-card__body',
     {
-      'usa-card__footer--exdent': exdent,
+      'usa-card__body--exdent': exdent,
     },
     className
   )
 
   return (
-    <div className={classes} {...footerProps} data-testid="CardFooter">
+    <div className={classes} {...bodyProps} data-testid="CardBody">
       {children}
     </div>
   )
 }
 
-export default CardFooter
+export default CardBody
