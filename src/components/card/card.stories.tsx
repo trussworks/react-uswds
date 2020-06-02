@@ -84,7 +84,10 @@ const mediaWithSetAspectRatio = (
 )
 
 const mediaAndHeaderFirst = (
-  <Card gridLayout={{ tablet: { col: 4 } }} layout="headerFirst">
+  <Card
+    gridLayout={{ tablet: { col: 4 } }}
+    layout="standardDefault"
+    headerFirst={true}>
     <CardHeader>
       <h2 className="usa-card__heading">Media and Header First</h2>
     </CardHeader>
@@ -110,7 +113,10 @@ const mediaAndHeaderFirst = (
 )
 
 const insetMedia = (
-  <Card gridLayout={{ tablet: { col: 4 } }} layout="headerFirst">
+  <Card
+    gridLayout={{ tablet: { col: 4 } }}
+    layout="standardDefault"
+    headerFirst={true}>
     <CardHeader>
       <h2 className="usa-card__heading">Inset Media</h2>
     </CardHeader>
@@ -137,7 +143,10 @@ const insetMedia = (
 
 // TODO UPdate with ed
 const exdentMedia = (
-  <Card gridLayout={{ tablet: { col: 4 } }} layout="headerFirst">
+  <Card
+    gridLayout={{ tablet: { col: 4 } }}
+    layout="standardDefault"
+    headerFirst={true}>
     <CardHeader>
       <h2 className="usa-card__heading">Exdent Media</h2>
     </CardHeader>
@@ -162,7 +171,10 @@ const exdentMedia = (
 )
 
 const exdentCard = (
-  <Card gridLayout={{ tablet: { col: 4 } }} layout="headerFirst">
+  <Card
+    gridLayout={{ tablet: { col: 4 } }}
+    layout="standardDefault"
+    headerFirst={true}>
     <CardHeader exdent={true}>
       <h2 className="usa-card__heading">Exdent Card</h2>
     </CardHeader>
@@ -209,7 +221,10 @@ const flagDefault = (
 )
 
 const flagMediaOnRight = (
-  <Card gridLayout={{ tablet: { col: 6 } }} layout="flagMediaRight">
+  <Card
+    gridLayout={{ tablet: { col: 6 } }}
+    layout="flagMediaRight"
+    headerFirst={true}>
     <CardHeader>
       <h2 className="usa-card__heading">Flag Media on Right</h2>
     </CardHeader>

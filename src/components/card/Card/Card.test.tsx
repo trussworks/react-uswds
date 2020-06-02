@@ -17,7 +17,9 @@ describe('Card component', () => {
   })
 
   it('renders the header first class when standardHeaderFirst is true', () => {
-    const { getByTestId } = render(<Card layout="headerFirst" />)
+    const { getByTestId } = render(
+      <Card layout="standardDefault" headerFirst={true} />
+    )
     expect(getByTestId('Card')).toHaveClass('usa-card--header-first')
   })
 
