@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Grid, getGridClasses } from './Grid'
+import { Grid, getGridClasses, applyGridClasses } from './Grid'
 
-describe('getGridClasses', () => {
+describe('getGridClasses function', () => {
   it('returns the classes with no breakpoint', () => {
     expect(
       getGridClasses({
@@ -38,6 +38,34 @@ describe('getGridClasses', () => {
     )
     expect(getGridClasses({ gap: 2, col: 6 }, 'mobileLg')).toContain(
       'mobile-lg:grid-gap-2'
+    )
+  })
+})
+
+describe('applyGridClasses function', () => {
+  it('returns a complete set of grid classes with defaults and breakpoints', () => {
+    expect(
+      applyGridClasses({
+        col: 6,
+        tablet: { col: 4 },
+        desktop: { col: 3 },
+      })
+    ).toEqual('grid-col-6 tablet:grid-col-4 desktop:grid-col-3')
+  })
+
+  it('handles all of the possible breakpoints', () => {
+    expect(
+      applyGridClasses({
+        mobile: { col: 12 },
+        mobileLg: { col: 10 },
+        tablet: { col: 8 },
+        tabletLg: { col: 6 },
+        desktop: { col: 4 },
+        desktopLg: { col: 3 },
+        widescreen: { col: 2 },
+      })
+    ).toEqual(
+      'mobile:grid-col-12 mobile-lg:grid-col-10 tablet:grid-col-8 tablet-lg:grid-col-6 desktop:grid-col-4 desktop-lg:grid-col-3 widescreen:grid-col-2'
     )
   })
 })
