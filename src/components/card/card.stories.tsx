@@ -263,3 +263,276 @@ export const cardExamples = (): React.ReactElement => (
     <CardGroup>{[flagDefault, flagMediaOnRight]}</CardGroup>
   </>
 )
+
+export const cardTest = (): React.ReactElement => (
+  <CardGroup>
+    <Card
+      layout="standardDefault"
+      headerFirst
+      gridLayout={{ tablet: { col: 6 } }}>
+      <CardHeader className="bg-base-lightest">
+        <h3 className="usa-card__heading">He had a little small bull pup</h3>
+        <p className="font-sans-6 text-primary">
+          To look at him you’d think he wan’s worth a cent.
+        </p>
+      </CardHeader>
+      <CardMedia imageClass="add-aspect-16x9">
+        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+        <img
+          src="https://source.unsplash.com/featured/800x800/daily?cities"
+          alt="An image's description"
+          className="pin-all"
+        />
+      </CardMedia>
+      <CardBody className="padding-top-3">
+        <p>
+          His underjaw’d begin to stick out like the fo’castle of a steamboat,
+          and his teeth would uncover, and shine savage like the furnaces.
+        </p>
+        <p>
+          And a dog might tackle him, and bully-rag him, and bite him, and throw
+          him over his shoulder two or three times, and Andrew Jackson which was
+          the name of the pup, Andrew Jackson would never let on but what he was
+          satisfied.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button" secondary>
+          Stick out
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <Card layout="standardDefault" gridLayout={{ tablet: { col: 6 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">
+          There was a feller here once by the name of Jim Smiley
+        </h3>
+      </CardHeader>
+      <CardBody>
+        <p>
+          In the winter of ’49 or may be it was the spring of ’50 I don’t
+          recollect exactly, somehow, though what makes me think it was one or
+          the other is because I remember the big flume wasn’t finished when he
+          first came to the camp:
+        </p>
+        <ol className="usa-list">
+          <li>
+            But any way, he was the curiosest man about always betting on any
+            thing that turned up
+          </li>
+          <li>
+            If he could get anybody to bet on the other side; and if he
+            couldn’t, he’d change sides.
+          </li>
+          <li>
+            Any way that suited the other man would suit him any way just so’s
+            he got a bet, he was satisfied.
+          </li>
+          <li>
+            But still he was lucky, uncommon lucky; he most always come out
+            winner.{' '}
+          </li>
+        </ol>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Help the less fortunate</Button>
+      </CardFooter>
+    </Card>
+
+    <Card layout="flagDefault" headerFirst gridLayout={{ tablet: { col: 12 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">I hereunto append the result</h3>
+      </CardHeader>
+      <CardMedia exdent>
+        <img
+          src="https://source.unsplash.com/featured/800x450/daily?patterns"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          He roused up and gave me good-day. I told him a friend of mine had
+          commissioned me to make some inquiries about a cherished companion of
+          his boyhood named Leonidas W. Smiley.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Make some inquiries</Button>
+      </CardFooter>
+    </Card>
+
+    <Card layout="flagMediaRight" gridLayout={{ tablet: { col: 12 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">My friend’s friend</h3>
+      </CardHeader>
+      <CardMedia
+        className="flex-align-center"
+        imageClass="circle-card margin-x-auto">
+        <img
+          src="https://source.unsplash.com/featured/450x600/daily?human"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          He roused up and gave me good-day. I told him a friend of mine had
+          commissioned me to make some inquiries about a cherished companion of
+          his boyhood named Leonidas W. Smiley.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button" outline>
+          Give me good-day
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <Card
+      layout="standardDefault"
+      headerFirst
+      gridLayout={{ tablet: { col: 6 }, desktop: { col: 4 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">
+          If that was the design, it certainly succeeded
+        </h3>
+      </CardHeader>
+      <CardMedia exdent className="usa-card__media--fix-aspect add-aspect-1x1">
+        <img
+          src="https://source.unsplash.com/featured/450x600/daily?people"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          He roused up and gave me good-day. I told him a friend of mine had
+          commissioned me to make some inquiries about a cherished companion of
+          his boyhood named Leonidas W. Smiley.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Rouse Simon</Button>
+      </CardFooter>
+    </Card>
+
+    <Card
+      layout="standardDefault"
+      headerFirst
+      gridLayout={{ tablet: { col: 6 }, desktop: { col: 'fill' } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">Garrulous old Simon Wheeler</h3>
+        <p className="font-sans-6 text-primary margin-top-1">
+          I hereunto append the result.
+        </p>
+      </CardHeader>
+      <CardMedia className="usa-card__media--fix-aspect" aria-hidden="true">
+        <img
+          src="https://source.unsplash.com/featured/800x450/daily?architecture"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          <em>This card has aria-hidden on the image container.</em>
+        </p>
+        <p>
+          I found Simon Wheeler dozing comfortably by the bar-room stove of the
+          old, dilapidated tavern in the ancient mining camp of Angel’s, and I
+          noticed that he was fat and bald-headed, and had an expression of
+          winning gentleness and simplicity upon his tranquil countenance.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Express gentleness</Button>
+      </CardFooter>
+    </Card>
+
+    <Card layout="standardDefault" gridLayout={{ tablet: { col: 4 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
+      </CardHeader>
+      <CardMedia>
+        <img
+          src="https://source.unsplash.com/featured/800x600?geometric"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          Simon Wheeler backed me into a corner and blockaded me there with his
+          chair, and then sat me down and reeled off the monotonous narrative
+          which follows this paragraph. He never smiled, he never frowned, he
+          never changed his voice from the gentle-flowing key to which he tuned
+          the initial sentence, he never betrayed the slightest suspicion of
+          enthusiasm; but all through the interminable narrative there ran a
+          vein of impressive earnestness and sincerity, which showed me plainly
+          that, so far from his imagining that there was any thing ridiculous or
+          funny about his story, he regarded it as a really important matter,
+          and admired its two heroes as men of transcendent genius in finesse.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Read more</Button>
+      </CardFooter>
+    </Card>
+    <Card layout="standardDefault" gridLayout={{ tablet: { col: 4 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
+      </CardHeader>
+      <CardMedia className="usa-card__media--inset">
+        <img
+          src="https://source.unsplash.com/featured/800x600?geometric"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          Simon Wheeler backed me into a corner and blockaded me there with his
+          chair, and then sat me down and reeled off the monotonous narrative
+          which follows this paragraph. He never smiled, he never frowned, he
+          never changed his voice from the gentle-flowing key to which he tuned
+          the initial sentence, he never betrayed the slightest suspicion of
+          enthusiasm; but all through the interminable narrative there ran a
+          vein of impressive earnestness and sincerity, which showed me plainly
+          that, so far from his imagining that there was any thing ridiculous or
+          funny about his story, he regarded it as a really important matter,
+          and admired its two heroes as men of transcendent genius in finesse.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Read more</Button>
+      </CardFooter>
+    </Card>
+    <Card
+      layout="standardDefault"
+      headerFirst
+      gridLayout={{ tablet: { col: 4 } }}>
+      <CardHeader>
+        <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
+      </CardHeader>
+      <CardMedia className="usa-card__media--inset">
+        <img
+          src="https://source.unsplash.com/featured/800x600?geometric"
+          alt=""
+        />
+      </CardMedia>
+      <CardBody>
+        <p>
+          Simon Wheeler backed me into a corner and blockaded me there with his
+          chair, and then sat me down and reeled off the monotonous narrative
+          which follows this paragraph. He never smiled, he never frowned, he
+          never changed his voice from the gentle-flowing key to which he tuned
+          the initial sentence, he never betrayed the slightest suspicion of
+          enthusiasm; but all through the interminable narrative there ran a
+          vein of impressive earnestness and sincerity, which showed me plainly
+          that, so far from his imagining that there was any thing ridiculous or
+          funny about his story, he regarded it as a really important matter,
+          and admired its two heroes as men of transcendent genius in finesse.
+        </p>
+      </CardBody>
+      <CardFooter>
+        <Button type="button">Read more</Button>
+      </CardFooter>
+    </Card>
+  </CardGroup>
+)
