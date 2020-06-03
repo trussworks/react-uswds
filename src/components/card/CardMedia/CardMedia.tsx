@@ -3,6 +3,7 @@ import classnames from 'classnames'
 
 interface CardMediaProps {
   exdent?: boolean
+  inset?: boolean
   imageClass?: string
   children: React.ReactNode
 }
@@ -10,12 +11,20 @@ interface CardMediaProps {
 export const CardMedia = (
   props: CardMediaProps & React.HTMLAttributes<HTMLDivElement>
 ): React.ReactElement => {
-  const { exdent, imageClass, children, className, ...mediaProps } = props
+  const {
+    exdent,
+    inset,
+    imageClass,
+    children,
+    className,
+    ...mediaProps
+  } = props
 
   const classes = classnames(
     'usa-card__media',
     {
       'usa-card__media--exdent': exdent,
+      'usa-card__media--inset': inset,
     },
     className
   )

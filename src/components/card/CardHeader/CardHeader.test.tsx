@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import { CardHeader } from './CardHeader'
 
-describe('CardGroup component', () => {
+describe('CardHeader component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<CardHeader />)
     expect(queryByTestId('CardHeader')).toBeInTheDocument()
@@ -20,9 +20,7 @@ describe('CardGroup component', () => {
   })
 
   it('renders proper class when exdent is true', () => {
-    const { queryByTestId } = render(
-      <CardHeader exdent={true}>Content</CardHeader>
-    )
+    const { queryByTestId } = render(<CardHeader exdent>Content</CardHeader>)
     expect(queryByTestId('CardHeader')).toHaveClass('usa-card__header--exdent')
   })
 })

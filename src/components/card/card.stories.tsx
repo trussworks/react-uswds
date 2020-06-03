@@ -20,7 +20,7 @@ Source: https://designsystem.digital.gov/components/card/
 }
 
 const card = (
-  <Card gridLayout={{ tablet: { col: 6 } }} layout="standardDefault">
+  <Card gridLayout={{ tablet: { col: 6 } }}>
     <CardHeader>
       <h2 className="usa-card__heading">Card</h2>
     </CardHeader>
@@ -36,7 +36,7 @@ const card = (
 )
 
 const cardWithMedia = (
-  <Card gridLayout={{ tablet: { col: 6 } }} layout="standardDefault">
+  <Card gridLayout={{ tablet: { col: 6 } }}>
     <CardHeader>
       <h2 className="usa-card__heading">Card With Media</h2>
     </CardHeader>
@@ -58,7 +58,7 @@ const cardWithMedia = (
 )
 
 const mediaWithSetAspectRatio = (
-  <Card gridLayout={{ tablet: { col: 4 } }} layout="standardDefault">
+  <Card gridLayout={{ tablet: { col: 4 } }}>
     <CardHeader>
       <h2 className="usa-card__heading">Media with Set Aspect Ratio</h2>
     </CardHeader>
@@ -84,10 +84,7 @@ const mediaWithSetAspectRatio = (
 )
 
 const mediaAndHeaderFirst = (
-  <Card
-    gridLayout={{ tablet: { col: 4 } }}
-    layout="standardDefault"
-    headerFirst={true}>
+  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Media and Header First</h2>
     </CardHeader>
@@ -113,19 +110,16 @@ const mediaAndHeaderFirst = (
 )
 
 const insetMedia = (
-  <Card
-    gridLayout={{ tablet: { col: 4 } }}
-    layout="standardDefault"
-    headerFirst={true}>
+  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Inset Media</h2>
     </CardHeader>
-    <CardBody>
+    <CardMedia inset>
       <img
         src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
         alt="A placeholder"
       />
-    </CardBody>
+    </CardMedia>
     <CardBody>
       <p>
         {' '}
@@ -141,16 +135,12 @@ const insetMedia = (
   </Card>
 )
 
-// TODO UPdate with ed
 const exdentMedia = (
-  <Card
-    gridLayout={{ tablet: { col: 4 } }}
-    layout="standardDefault"
-    headerFirst={true}>
+  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Exdent Media</h2>
     </CardHeader>
-    <CardMedia exdent={true}>
+    <CardMedia exdent>
       <img
         src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
         alt="A placeholder"
@@ -171,26 +161,23 @@ const exdentMedia = (
 )
 
 const exdentCard = (
-  <Card
-    gridLayout={{ tablet: { col: 4 } }}
-    layout="standardDefault"
-    headerFirst={true}>
-    <CardHeader exdent={true}>
+  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
+    <CardHeader exdent>
       <h2 className="usa-card__heading">Exdent Card</h2>
     </CardHeader>
-    <CardMedia exdent={true}>
+    <CardMedia exdent>
       <img
         src="https://images.unsplash.com/photo-1484100356142-db6ab6244067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
         alt="A placeholder"
       />
     </CardMedia>
-    <CardBody exdent={true}>
+    <CardBody exdent>
       <p>
         This is a standard card with the header and media first, media, and a
         button in the footer. All of which are exdent style.
       </p>
     </CardBody>
-    <CardFooter exdent={true}>
+    <CardFooter exdent>
       <Button type="button" className="usa-button">
         Example Button
       </Button>
@@ -221,10 +208,7 @@ const flagDefault = (
 )
 
 const flagMediaOnRight = (
-  <Card
-    gridLayout={{ tablet: { col: 6 } }}
-    layout="flagMediaRight"
-    headerFirst={true}>
+  <Card gridLayout={{ tablet: { col: 6 } }} layout="flagMediaRight" headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Flag Media on Right</h2>
     </CardHeader>
@@ -266,10 +250,7 @@ export const cardExamples = (): React.ReactElement => (
 
 export const cardTest = (): React.ReactElement => (
   <CardGroup>
-    <Card
-      layout="standardDefault"
-      headerFirst
-      gridLayout={{ tablet: { col: 6 } }}>
+    <Card headerFirst gridLayout={{ tablet: { col: 6 } }}>
       <CardHeader className="bg-base-lightest">
         <h3 className="usa-card__heading">He had a little small bull pup</h3>
         <p className="font-sans-6 text-primary">
@@ -303,7 +284,7 @@ export const cardTest = (): React.ReactElement => (
       </CardFooter>
     </Card>
 
-    <Card layout="standardDefault" gridLayout={{ tablet: { col: 6 } }}>
+    <Card gridLayout={{ tablet: { col: 6 } }}>
       <CardHeader>
         <h3 className="usa-card__heading">
           There was a feller here once by the name of Jim Smiley
@@ -388,10 +369,7 @@ export const cardTest = (): React.ReactElement => (
       </CardFooter>
     </Card>
 
-    <Card
-      layout="standardDefault"
-      headerFirst
-      gridLayout={{ tablet: { col: 6 }, desktop: { col: 4 } }}>
+    <Card headerFirst gridLayout={{ tablet: { col: 6 }, desktop: { col: 4 } }}>
       <CardHeader>
         <h3 className="usa-card__heading">
           If that was the design, it certainly succeeded
@@ -416,7 +394,6 @@ export const cardTest = (): React.ReactElement => (
     </Card>
 
     <Card
-      layout="standardDefault"
       headerFirst
       gridLayout={{ tablet: { col: 6 }, desktop: { col: 'fill' } }}>
       <CardHeader>
@@ -447,7 +424,7 @@ export const cardTest = (): React.ReactElement => (
       </CardFooter>
     </Card>
 
-    <Card layout="standardDefault" gridLayout={{ tablet: { col: 4 } }}>
+    <Card gridLayout={{ tablet: { col: 4 } }}>
       <CardHeader>
         <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
       </CardHeader>
@@ -475,11 +452,11 @@ export const cardTest = (): React.ReactElement => (
         <Button type="button">Read more</Button>
       </CardFooter>
     </Card>
-    <Card layout="standardDefault" gridLayout={{ tablet: { col: 4 } }}>
+    <Card gridLayout={{ tablet: { col: 4 } }}>
       <CardHeader>
         <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
       </CardHeader>
-      <CardMedia className="usa-card__media--inset">
+      <CardMedia inset>
         <img
           src="https://source.unsplash.com/featured/800x600?geometric"
           alt=""
@@ -503,14 +480,11 @@ export const cardTest = (): React.ReactElement => (
         <Button type="button">Read more</Button>
       </CardFooter>
     </Card>
-    <Card
-      layout="standardDefault"
-      headerFirst
-      gridLayout={{ tablet: { col: 4 } }}>
+    <Card headerFirst gridLayout={{ tablet: { col: 4 } }}>
       <CardHeader>
         <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
       </CardHeader>
-      <CardMedia className="usa-card__media--inset">
+      <CardMedia inset>
         <img
           src="https://source.unsplash.com/featured/800x600?geometric"
           alt=""

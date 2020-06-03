@@ -10,7 +10,11 @@ describe('CardGroup component', () => {
   })
 
   it('renders its children', () => {
-    const { queryByText } = render(<CardGroup>My Content</CardGroup>)
-    expect(queryByText('My Content')).toBeInTheDocument()
+    const { queryByText } = render(
+      <CardGroup>
+        <li>My list item</li>
+      </CardGroup>
+    )
+    expect(queryByText('My list item')).toBeInTheDocument()
   })
 })

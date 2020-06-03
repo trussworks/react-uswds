@@ -4,19 +4,21 @@ import classnames from 'classnames'
 import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'
 
 interface CardProps {
-  layout: 'standardDefault' | 'flagDefault' | 'flagMediaRight'
+  layout?: 'standardDefault' | 'flagDefault' | 'flagMediaRight'
   headerFirst?: boolean
+  containerProps?: React.HTMLAttributes<HTMLDivElement>
 }
 
 export const Card = (
-  props: CardProps & React.HTMLAttributes<HTMLDivElement> & GridLayoutProp
+  props: CardProps & React.HTMLAttributes<HTMLLIElement> & GridLayoutProp
 ): React.ReactElement => {
   const {
-    layout,
+    layout = 'standardDefault',
     headerFirst,
     children,
     className,
     gridLayout,
+    containerProps,
     ...divProps
   } = props
 
@@ -35,8 +37,8 @@ export const Card = (
   )
 
   return (
-    <li className={classes} data-testid="Card">
-      <div className="usa-card__container" {...divProps}>
+    <li className={classes} data-testid="Card" {...divProps}>
+      <div className="usa-card__container" {...containerProps}>
         {children}
       </div>
     </li>

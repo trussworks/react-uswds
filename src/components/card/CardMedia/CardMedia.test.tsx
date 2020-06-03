@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import { CardMedia } from './CardMedia'
 
-describe('CardGroup component', () => {
+describe('CardMedia component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<CardMedia>Media Content</CardMedia>)
     expect(queryByTestId('CardMedia')).toBeInTheDocument()
@@ -23,8 +23,13 @@ describe('CardGroup component', () => {
 
   it('renders proper class when exdent is true', () => {
     const { queryByTestId } = render(
-      <CardMedia exdent={true}>Media Content</CardMedia>
+      <CardMedia exdent>Media Content</CardMedia>
     )
     expect(queryByTestId('CardMedia')).toHaveClass('usa-card__media--exdent')
+  })
+
+  it('renders proper class when inset is true', () => {
+    const { queryByTestId } = render(<CardMedia inset>Inset Content</CardMedia>)
+    expect(queryByTestId('CardMedia')).toHaveClass('usa-card__media--inset')
   })
 })
