@@ -58,7 +58,7 @@ const cardWithMedia = (
 )
 
 const mediaWithSetAspectRatio = (
-  <Card gridLayout={{ tablet: { col: 4 } }}>
+  <Card gridLayout={{ tablet: { col: 6 } }}>
     <CardHeader>
       <h2 className="usa-card__heading">Media with Set Aspect Ratio</h2>
     </CardHeader>
@@ -70,9 +70,8 @@ const mediaWithSetAspectRatio = (
     </CardMedia>
     <CardBody>
       <p>
-        {' '}
         This is a standard card with media at a set aspect ratio of 3X1 and a
-        button in the footer.{' '}
+        button in the footer.
       </p>
     </CardBody>
     <CardFooter>
@@ -84,7 +83,7 @@ const mediaWithSetAspectRatio = (
 )
 
 const mediaAndHeaderFirst = (
-  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
+  <Card gridLayout={{ tablet: { col: 6 } }} headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Media and Header First</h2>
     </CardHeader>
@@ -96,9 +95,8 @@ const mediaAndHeaderFirst = (
     </CardMedia>
     <CardBody>
       <p>
-        {' '}
         This is a standard card with the header and media first and a button in
-        the footer.{' '}
+        the footer.
       </p>
     </CardBody>
     <CardFooter>
@@ -110,7 +108,7 @@ const mediaAndHeaderFirst = (
 )
 
 const insetMedia = (
-  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
+  <Card gridLayout={{ tablet: { col: 6 } }} headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Inset Media</h2>
     </CardHeader>
@@ -122,9 +120,8 @@ const insetMedia = (
     </CardMedia>
     <CardBody>
       <p>
-        {' '}
         This is a standard card with the header and media first, inset media,
-        and a button in the footer.{' '}
+        and a button in the footer.
       </p>
     </CardBody>
     <CardFooter>
@@ -136,7 +133,7 @@ const insetMedia = (
 )
 
 const exdentMedia = (
-  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
+  <Card gridLayout={{ tablet: { col: 6 } }} headerFirst>
     <CardHeader>
       <h2 className="usa-card__heading">Exdent Media</h2>
     </CardHeader>
@@ -161,7 +158,7 @@ const exdentMedia = (
 )
 
 const exdentCard = (
-  <Card gridLayout={{ tablet: { col: 4 } }} headerFirst>
+  <Card gridLayout={{ tablet: { col: 6 } }} headerFirst>
     <CardHeader exdent>
       <h2 className="usa-card__heading">Exdent Card</h2>
     </CardHeader>
@@ -312,7 +309,7 @@ export const cardTest = (): React.ReactElement => (
           </li>
           <li>
             But still he was lucky, uncommon lucky; he most always come out
-            winner.{' '}
+            winner.
           </li>
         </ol>
       </CardBody>
