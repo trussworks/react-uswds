@@ -1,12 +1,20 @@
+<!--
+CHECKLIST
+- [ ] PR title conforms to conventional commits, e.g. feat: Button
+- [ ] PR includes `yarn audit` output if dependencies changed
+- [ ] Any new components are exported from `index.ts`
+-->
+
 # Summary
 
-<!-- Describe the changes and the scope. List any new components clearly. Identify the Github issue(s) that this PR will close or resolve. -->
+<!-- Describe the changes and the scope. List any new components. -->
+
+## Related Issues or PRs
+
+<!-- Link existing Github issue(s), e.g. closes #123 -->
 
 ## How To Test
 
-<!--
-Describe how a reviewer could test or verify your changes. For example, detail the exact commands to run or describe what to test in Storybook. -->
+<!-- Describe how a reviewer could test or verify your changes. -->
 
 ### Screenshots (optional)
-
-### Related PRs (optional)
