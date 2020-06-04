@@ -3,14 +3,6 @@ const happoPluginStorybook = require('happo-plugin-storybook')
 
 require('dotenv').config()
 
-storiesOf('Checkbox', module).add('delayed', () => <CheckBox />, {
-  happo: { delay: 200 },
-})
-
-storiesOf('Accordion', module).add('delayed', () => <Accordion />, {
-  happo: { delay: 200 },
-})
-
 module.exports = {
   apiKey: process.env.HAPPO_API_KEY,
   apiSecret: process.env.HAPPO_API_SECRET,
