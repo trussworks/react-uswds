@@ -247,7 +247,10 @@ export const cardExamples = (): React.ReactElement => (
 
 export const cardTest = (): React.ReactElement => (
   <CardGroup>
-    <Card headerFirst gridLayout={{ tablet: { col: 6 } }}>
+    <Card
+      headerFirst
+      gridLayout={{ tablet: { col: 6 } }}
+      containerProps={{ className: 'border-ink' }}>
       <CardHeader className="bg-base-lightest">
         <h3 className="usa-card__heading">He had a little small bull pup</h3>
         <p className="font-sans-6 text-primary">
@@ -340,7 +343,10 @@ export const cardTest = (): React.ReactElement => (
       </CardFooter>
     </Card>
 
-    <Card layout="flagMediaRight" gridLayout={{ tablet: { col: 12 } }}>
+    <Card
+      layout="flagMediaRight"
+      gridLayout={{ tablet: { col: 12 } }}
+      containerProps={{ className: 'border-primary-vivid' }}>
       <CardHeader>
         <h3 className="usa-card__heading">My friend’s friend</h3>
       </CardHeader>
@@ -392,7 +398,8 @@ export const cardTest = (): React.ReactElement => (
 
     <Card
       headerFirst
-      gridLayout={{ tablet: { col: 6 }, desktop: { col: 'fill' } }}>
+      gridLayout={{ tablet: { col: 6 }, desktop: { col: 'fill' } }}
+      containerProps={{ className: 'bg-base-lightest border-0' }}>
       <CardHeader>
         <h3 className="usa-card__heading">Garrulous old Simon Wheeler</h3>
         <p className="font-sans-6 text-primary margin-top-1">
@@ -421,7 +428,9 @@ export const cardTest = (): React.ReactElement => (
       </CardFooter>
     </Card>
 
-    <Card gridLayout={{ tablet: { col: 4 } }}>
+    <Card
+      gridLayout={{ tablet: { col: 4 } }}
+      containerProps={{ className: 'border-ink' }}>
       <CardHeader>
         <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
       </CardHeader>
@@ -449,7 +458,9 @@ export const cardTest = (): React.ReactElement => (
         <Button type="button">Read more</Button>
       </CardFooter>
     </Card>
-    <Card gridLayout={{ tablet: { col: 4 } }}>
+    <Card
+      gridLayout={{ tablet: { col: 4 } }}
+      containerProps={{ className: 'border-ink' }}>
       <CardHeader>
         <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
       </CardHeader>
@@ -477,7 +488,10 @@ export const cardTest = (): React.ReactElement => (
         <Button type="button">Read more</Button>
       </CardFooter>
     </Card>
-    <Card headerFirst gridLayout={{ tablet: { col: 4 } }}>
+    <Card
+      headerFirst
+      gridLayout={{ tablet: { col: 4 } }}
+      containerProps={{ className: 'border-ink' }}>
       <CardHeader>
         <h3 className="usa-card__heading">He never smiled, he never frowned</h3>
       </CardHeader>

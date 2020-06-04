@@ -19,10 +19,12 @@ export const Card = (
     className,
     gridLayout,
     containerProps,
-    ...divProps
+    ...liProps
   } = props
 
-  // TODO determine how to implement the tablet:grid-col-4 class properly, should this be li class?
+  const { className: containerClass, ...restContainerProps } =
+    containerProps || {}
+
   const gridClasses = gridLayout && applyGridClasses(gridLayout)
 
   const classes = classnames(
@@ -36,9 +38,11 @@ export const Card = (
     className
   )
 
+  const containerClasses = classnames('usa-card__container', containerClass)
+
   return (
-    <li className={classes} data-testid="Card" {...divProps}>
-      <div className="usa-card__container" {...containerProps}>
+    <li className={classes} data-testid="Card" {...liProps}>
+      <div className={containerClasses} {...restContainerProps}>
         {children}
       </div>
     </li>
