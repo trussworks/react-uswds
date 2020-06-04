@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import { deprecationWarning } from '../../deprecation'
 
 interface ButtonProps {
   type: 'button' | 'submit' | 'reset'
@@ -44,14 +45,16 @@ export const Button = (
     className,
   } = props
 
-  let isBig = big || false
-  let isSmall = small || false
-  if (size === 'big') {
-    isBig = true
+  if (big) {
+    deprecationWarning('Button property big is deprecated.  Use size')
   }
-  if (size === 'small') {
-    isSmall = true
+  if (small) {
+    deprecationWarning('Button property small is deprecated.  Use size')
   }
+
+  const isBig = size ? size === 'big' : big
+  const isSmall = size ? size === 'small' : small
+
   const classes = classnames(
     'usa-button',
     {
