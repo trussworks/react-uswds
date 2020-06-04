@@ -10,7 +10,14 @@ interface ButtonProps {
   accent?: boolean
   outline?: boolean
   inverse?: boolean
+  size?: 'big' | 'small'
+  /**
+   * @deprecated since 1.5.0, use size
+   */
   big?: boolean
+  /**
+   * @deprecated since 1.5.0, use size
+   */
   small?: boolean
   icon?: boolean
   unstyled?: boolean
@@ -28,6 +35,7 @@ export const Button = (
     accent,
     outline,
     inverse,
+    size,
     big,
     small,
     icon,
@@ -36,6 +44,14 @@ export const Button = (
     className,
   } = props
 
+  let isBig = big || false
+  let isSmall = small || false
+  if (size === 'big') {
+    isBig = true
+  }
+  if (size === 'small') {
+    isSmall = true
+  }
   const classes = classnames(
     'usa-button',
     {
@@ -44,8 +60,8 @@ export const Button = (
       'usa-button--accent-cool': accent,
       'usa-button--outline': outline,
       'usa-button--inverse': inverse,
-      'usa-button--big': big,
-      'usa-button--small': small,
+      'usa-button--big': isBig,
+      'usa-button--small': isSmall,
       'usa-button--icon': icon,
       'usa-button--unstyled': unstyled,
     },

@@ -40,6 +40,26 @@ describe('Button component', () => {
         expect(queryByTestId('button')).toHaveClass(data[1])
       })
     })
+
+    it('renders uswds class for size small', () => {
+      const { queryByTestId } = render(
+        <Button type="button" size="small">
+          Click Me
+        </Button>
+      )
+      expect(queryByTestId('button')).toHaveClass('usa-button--small')
+      expect(queryByTestId('button')).not.toHaveClass('usa-button--big')
+    })
+
+    it('renders uswds class for size big', () => {
+      const { queryByTestId } = render(
+        <Button type="button" size="big">
+          Click Me
+        </Button>
+      )
+      expect(queryByTestId('button')).toHaveClass('usa-button--big')
+      expect(queryByTestId('button')).not.toHaveClass('usa-button--small')
+    })
   })
 
   it('implements an onClick handler', () => {
