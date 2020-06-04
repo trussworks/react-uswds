@@ -260,7 +260,7 @@ export const cardTest = (): React.ReactElement => (
       <CardMedia imageClass="add-aspect-16x9">
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img
-          src="https://source.unsplash.com/featured/800x800/daily?cities"
+          src="https://images.unsplash.com/photo-1583974098224-f64f67f46778?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop&ixid=eyJhcHBfaWQiOjF9"
           alt="An image's description"
           className="pin-all"
         />
@@ -327,7 +327,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia exdent>
         <img
-          src="https://source.unsplash.com/featured/800x450/daily?patterns"
+          src="https://images.unsplash.com/photo-1552084117-56a987666449?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=450&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800"
           alt=""
         />
       </CardMedia>
@@ -354,7 +354,7 @@ export const cardTest = (): React.ReactElement => (
         className="flex-align-center"
         imageClass="circle-card margin-x-auto">
         <img
-          src="https://source.unsplash.com/featured/450x600/daily?human"
+          src="https://images.unsplash.com/photo-1543596734-951d6f4f052c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=450&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9"
           alt=""
         />
       </CardMedia>
@@ -380,7 +380,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia exdent className="usa-card__media--fix-aspect add-aspect-1x1">
         <img
-          src="https://source.unsplash.com/featured/450x600/daily?people"
+          src="https://images.unsplash.com/photo-1464115337528-7175b92ef5b4?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=450&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9"
           alt=""
         />
       </CardMedia>
@@ -408,7 +408,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia className="usa-card__media--fix-aspect" aria-hidden="true">
         <img
-          src="https://source.unsplash.com/featured/800x450/daily?architecture"
+          src="https://images.unsplash.com/photo-1497904413339-99e9d634f305?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800 "
           alt=""
         />
       </CardMedia>
@@ -436,7 +436,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia>
         <img
-          src="https://source.unsplash.com/featured/800x600?geometric"
+          src="https://images.unsplash.com/photo-1524168948265-8f79ad8d4e33?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800"
           alt=""
         />
       </CardMedia>
@@ -466,7 +466,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia inset>
         <img
-          src="https://source.unsplash.com/featured/800x600?geometric"
+          src="https://images.unsplash.com/photo-1524168948265-8f79ad8d4e33?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800"
           alt=""
         />
       </CardMedia>
@@ -497,7 +497,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia inset>
         <img
-          src="https://source.unsplash.com/featured/800x600?geometric"
+          src="https://images.unsplash.com/photo-1524168948265-8f79ad8d4e33?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800"
           alt=""
         />
       </CardMedia>
