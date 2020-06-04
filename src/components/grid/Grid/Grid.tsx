@@ -3,10 +3,14 @@ import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
 
-type GridProps = GridItemProps &
+export type GridProps = GridItemProps &
   {
     [P in BreakpointKeys]?: GridItemProps
   }
+
+export type GridLayoutProp = {
+  gridLayout?: GridProps
+}
 
 export const getGridClasses = (
   itemProps: GridItemProps,
@@ -26,6 +30,20 @@ export const getGridClasses = (
     [`${prefix}grid-col-${col}`]: col !== true && !!col,
     [`${prefix}grid-offset-${offset}`]: !!offset,
   })
+}
+
+export const applyGridClasses = (gridLayout: GridProps): string => {
+  let classes = getGridClasses(gridLayout)
+
+  Object.keys(breakpoints).forEach((b) => {
+    const bp = b as BreakpointKeys
+    if (Object.prototype.hasOwnProperty.call(gridLayout, bp)) {
+      const bpProps = gridLayout[bp] as GridItemProps
+      classes = classnames(classes, getGridClasses(bpProps, bp))
+    }
+  })
+
+  return classes
 }
 
 export const Grid = ({
