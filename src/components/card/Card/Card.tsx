@@ -28,7 +28,6 @@ export const Card = (
   const gridClasses = gridLayout && applyGridClasses(gridLayout)
 
   const classes = classnames(
-    'usa-card',
     {
       'usa-card--header-first': headerFirst,
       'usa-card--flag': layout === 'flagDefault' || layout === 'flagMediaRight',
