@@ -1,50 +1,88 @@
-import React from 'react'
-import { useRoutes, A } from 'hookrouter'
+import React, { useState } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  Link,
+} from 'react-router-dom'
 
 import '@trussworks/react-uswds/lib/uswds.css'
 import {
   GovBanner,
   Header,
   Title,
-  SideNav,
+  NavMenuButton,
+  PrimaryNav,
   GridContainer,
-  Grid,
 } from '@trussworks/react-uswds'
 
 import HomePage from './pages/Home'
-import TestPage from './pages/Test'
+import ExamplePage from './pages/Example'
 
 import './App.css'
 
-/* Route component definitions */
+/* Routes */
 const routes = {
-  '/': () => <HomePage />,
-  '/test': () => <TestPage />,
+  HOME_PAGE: '/',
+  EXAMPLES_PAGE: '/examples',
 }
 
 const App = () => {
-  const routeResult = useRoutes(routes)
-  const navItems = [<A href="/">Home</A>, <A href="/test">Test</A>]
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const { HOME_PAGE, EXAMPLES_PAGE } = routes
+
+  const toggleMobileNav = (): void => {
+    setMobileNavOpen((prevOpen) => !prevOpen)
+  }
+
+  const navItems = [
+    <NavLink to={HOME_PAGE} activeClassName="usa-current" exact>
+      Home
+    </NavLink>,
+    <NavLink to={EXAMPLES_PAGE} activeClassName="usa-current">
+      Examples
+    </NavLink>,
+  ]
 
   return (
-    <div className="App">
+    <Router>
       <GovBanner />
       <Header basic>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Title>ReactUSWDS Example Application</Title>
+            <Title>
+              <Link to={HOME_PAGE}>Example Application</Link>
+            </Title>
+            <NavMenuButton
+              label="Menu"
+              onClick={toggleMobileNav}
+              className="usa-menu-btn"
+            />
           </div>
+
+          <PrimaryNav
+            aria-label="Primary navigation"
+            items={navItems}
+            onToggleMobileNav={toggleMobileNav}
+            mobileExpanded={mobileNavOpen}
+          />
         </div>
       </Header>
-      <GridContainer>
-        <Grid row gap>
-          <Grid tablet={{ col: 3 }}>
-            <SideNav items={navItems} />
-          </Grid>
-          <Grid col>{routeResult}</Grid>
-        </Grid>
-      </GridContainer>
-    </div>
+
+      <section className="usa-section">
+        <GridContainer>
+          <Switch>
+            <Route path={EXAMPLES_PAGE}>
+              <ExamplePage />
+            </Route>
+            <Route path={HOME_PAGE}>
+              <HomePage />
+            </Route>
+          </Switch>
+        </GridContainer>
+      </section>
+    </Router>
   )
 }
 

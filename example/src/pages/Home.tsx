@@ -1,9 +1,14 @@
 import React from 'react'
 
 const HomePage = (): React.ReactElement => (
-  <section>
-    <h2>Home page</h2>
-  </section>
+  <main>
+    <h1>ReactUSWDS Example App</h1>
+
+    <p className="usa-intro">
+      This is an example application that can be used to demonstrate and test
+      ReactUSWDS functionality.
+    </p>
+  </main>
 )
 
 export default HomePage
