@@ -13,11 +13,11 @@ interface ButtonProps {
   inverse?: boolean
   size?: 'big' | 'small'
   /**
-   * @deprecated since 1.5.0, use size
+   * @deprecated since 1.6.0, use size
    */
   big?: boolean
   /**
-   * @deprecated since 1.5.0, use size
+   * @deprecated since 1.6.0, use size
    */
   small?: boolean
   icon?: boolean
