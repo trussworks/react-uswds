@@ -68,7 +68,6 @@ describe('Button component', () => {
     })
 
     it('prefers size to deprecated big', () => {
-      Button.bind
       const { queryByTestId } = render(
         <Button type="button" size="small" big>
           Click Me
