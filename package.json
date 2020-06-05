@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -32,7 +32,7 @@
     "release": "standard-version -t",
     "prepublishOnly": "yarn build",
     "happo": "happo",
-    "happo-ci": "happo-ci-circleci"
+    "happo-ci": "BASE_BRANCH=\"origin/develop\" happo-ci-circleci"
   },
   "repository": {
     "type": "git",
@@ -109,7 +109,7 @@
     "sass": "^1.26.0",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.1",
-    "source-map-loader": "^0.2.4",
+    "source-map-loader": "^1.0.0",
     "standard-version": "^8.0.0",
     "stylelint": "^13.3.0",
     "stylelint-config-css-modules": "^2.2.0",
@@ -151,7 +151,42 @@
   },
   "standard-version": {
     "skip": {
-      "tag": true
-    }
+      "tag": true,
+      "commit": true
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "section": "Documentation & Examples"
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      },
+      {
+        "type": "perf",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ]
   }
 }

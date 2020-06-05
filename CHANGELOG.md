@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.5.0 (2020-06-03)
+
+### Bug Fixes
+
+- expand required node version range to 10.x - 12.x ([#215](https://github.com/trussworks/react-uswds/issues/215)) ([0be79d3](https://github.com/trussworks/react-uswds/commit/0be79d340f993b5be3b3b41512bdfa94cc02e9da))
+
+### Documentation & Examples
+
+- **example-app:** add create-react-app example app ([#206](https://github.com/trussworks/react-uswds/issues/206)) ([cf28086](https://github.com/trussworks/react-uswds/commit/cf28086ac5c5b29452b04e0b96ceb62b923345e9))
+
 ## 1.4.0 (2020-05-28)
 
 ### Features
