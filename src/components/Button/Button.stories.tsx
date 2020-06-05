@@ -47,13 +47,13 @@ export const inverse = (): React.ReactElement => (
 )
 
 export const big = (): React.ReactElement => (
-  <Button type="button" big>
+  <Button type="button" size="big">
     Click Me
   </Button>
 )
 
 export const small = (): React.ReactElement => (
-  <Button type="button" small>
+  <Button type="button" size="small">
     Click Me
   </Button>
 )
