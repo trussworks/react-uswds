@@ -19,6 +19,6 @@ jobs:
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test -w 1
-      - run: yarn happo-ci
+      - run: HAPPO_IS_ASYNC=true yarn happo-ci
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
