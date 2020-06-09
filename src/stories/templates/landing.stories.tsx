@@ -106,7 +106,7 @@ export const LandingPage = (): React.ReactElement => {
   const footerPrimary = (
     <FooterNav
       aria-label="Footer navigation"
-      medium
+      size="medium"
       links={Array(5).fill(
         <a href="javascript:void(0)" className="usa-footer__primary-link">
           Primary link
