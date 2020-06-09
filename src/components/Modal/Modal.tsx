@@ -75,6 +75,7 @@ export type ModalHook = {
   closeModal: () => void
 }
 
+/** Alternative to redux, usemodal has to be in the component it's self */
 export const useModal = (): ModalHook => {
   const [isOpen, setIsOpen] = useState(false)
 
