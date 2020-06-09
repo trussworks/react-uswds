@@ -48,7 +48,7 @@ See the guide [adding new components](./docs/adding_new_components.md) to get id
 
 When your branch is ready for review, open a PR into `develop` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you can squash & merge it into `develop`.
 
-This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. This standardizes contributions and streamlines the release flow. All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). This generates an automated changelog entry and is required to merge.
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. This standardizes contributions and streamlines the release flow. **All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional).** This generates an automated changelog entry and is required to merge.
 
 (TODO) Passing `develop` builds will automatically be published to the `next` tag on NPM. This allows users to easily test out the latest version in their applications, which may be unstable.
 
@@ -59,10 +59,10 @@ Because this project exports a library that will be used by other projects, it i
 - [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - These checks will also be run on all files in CI, and must pass before the branch can be merged
-  - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages. You can use `yarn commit` instead of `git commit` to start the commitizen prompt
 - [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on PR title.
   - The version number is determined based on conventional commits - **[fix]** indicates a bug fix, **[feat]** indicates a minor bump. **[!]** or [BREAKING CHANGES] indicates a major bump. Be sure to use the correct spec.
-  - The [WIP] prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
+  - The **[WIP]** prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
+  -  We have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages. You can use `yarn commit` instead of `git commit` to start the commitizen prompt
 - The project is configured to only allow [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits.
 - [dangerjs](https://github.com/danger/danger-js) is used to enforce several pull request standards, including:
   - Changes to package source code should include changes to tests.
