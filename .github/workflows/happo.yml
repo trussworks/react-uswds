@@ -1,0 +1,22 @@
+name: Happo CI
+on:
+  pull_request:
+    branches: [develop]
+jobs:
+  happo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+         with:
+          node-version: '12.x'
+      - if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+      - run: yarn ci
+      - run: yarn run happo-ci-github-actions
+        env:
+          HAPPO_IS_ASYNC: true 
+          BASE_BRANCH: \"origin/develop\" 
+          HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
+          HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
