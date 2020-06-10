@@ -7,8 +7,6 @@ on:
     paths:
       - "src/**"
 
-# if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
-
 jobs:
   happo:
     runs-on: ubuntu-latest
@@ -17,8 +15,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - uses: ./.github/actions/setup
+      # - uses: ./.github/actions/setup
       - run: yarn run happo-ci
+        if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
         env:
           HAPPO_IS_ASYNC: true
           BASE_BRANCH: \"origin/develop\"
