@@ -51,7 +51,7 @@ export const Search = (
       <TextInput id={inputId} type="search" name={inputName} />
       <Button type="submit">
         <span className={small ? 'usa-sr-only' : 'usa-search__submit-text'}>
-          SearchTEST
+          Search
         </span>
       </Button>
     </Form>
