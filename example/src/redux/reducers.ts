@@ -5,7 +5,7 @@ import {
   AppState
 } from "./types";
 
-const initialState: AppState = {
+export const initialState: AppState = {
   modalState : {
     openModalKey: ''
   }

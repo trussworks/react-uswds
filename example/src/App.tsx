@@ -47,6 +47,9 @@ const App = () => {
     <NavLink to={EXAMPLES_PAGE} activeClassName="usa-current">
       Examples
     </NavLink>,
+    <NavLink to={MODALS_PAGE} activeClassName="usa-current">
+      Modals
+    </NavLink>,
   ]
 
   return (
