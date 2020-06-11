@@ -7,7 +7,7 @@ type GridContainerProps = {
   containerSize?: ContainerSizes
 }
 
-export const GridContainer = ({
+const GridContainer = ({
   children,
   containerSize,
   className,
@@ -28,3 +28,7 @@ export const GridContainer = ({
     </div>
   )
 }
+
+GridContainer.displayName = 'GridContainer'
+
+export { GridContainer }

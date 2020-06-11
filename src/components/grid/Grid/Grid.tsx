@@ -46,7 +46,7 @@ export const applyGridClasses = (gridLayout: GridProps): string => {
   return classes
 }
 
-export const Grid = ({
+const Grid = ({
   children,
   className,
   ...props
@@ -88,3 +88,7 @@ export const Grid = ({
     </div>
   )
 }
+
+Grid.displayName = 'Grid'
+
+export { Grid }
