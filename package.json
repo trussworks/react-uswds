@@ -32,7 +32,7 @@
     "release": "standard-version -t",
     "prepublishOnly": "yarn build",
     "happo": "happo",
-    "happo-ci": "happo-ci-github-actions"
+    "happo-ci": "happo-ci-circleci"
   },
   "repository": {
     "type": "git",

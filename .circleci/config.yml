@@ -19,5 +19,13 @@ jobs:
           key: v1.0.0-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test -w 1
+
+      - run:
+          name: 'Happo'
+          command: '[ "${CIRCLE_PR_USERNAME}" != "dependabot" && "${CIRCLE_PR_USERNAME}" != "dependabot-preview" ] && yarn happo-ci'
+          environment:
+            HAPPO_IS_ASYNC: 'true'
+            BASE_BRANCH: 'origin/develop'
+
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
