@@ -1,7 +1,7 @@
 import { initialState, rootReducer } from './reducers'
 import { OpenModalAction, CloseModalAction, AppState } from './types'
 
-describe('flashReducer', () => {
+describe('rootReducer', () => {
   it('should set the openModalKey state', () => {
     const openModalAction: OpenModalAction = {
       type: 'OPEN_MODAL',

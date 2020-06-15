@@ -13,10 +13,11 @@ import { AppState, ModalState } from './../redux/types'
 
 /** Example of Modal Component Using Redux */
 interface TestModalProps extends ConnectedModalProps {
-  modalKey: string
+  modalKey?: string
+  children: React.ReactNode
 }
 
-const TestModal = ({ onClose }: TestModalProps): React.ReactElement => (
+const TestModal = ({ onClose, children }: TestModalProps): React.ReactElement => (
   <Modal
     title={<h2>Test Modal</h2>}
     actions={
@@ -29,7 +30,7 @@ const TestModal = ({ onClose }: TestModalProps): React.ReactElement => (
         </Button>
       </>
     }>
-    <p>This is a test modal that uses redux!</p>
+    { children }
   </Modal>
 )
 
@@ -54,28 +55,7 @@ const ExamplePage = ({
   closeModalAction,
 }: ConnectedProps<typeof connector>): React.ReactElement => {
 
-  /** Example of Modal Component Using Hooks */
   const { isOpen, openModal, closeModal } = useModal()
-
-  const HookTestModal = (): React.ReactElement => (
-    <Modal
-      title={<h2>Test Modal</h2>}
-      actions={
-        <>
-          <Button type="button" outline onClick={closeModal}>
-            Cancel
-          </Button>
-          <Button type="button" onClick={closeModal}>
-            Close
-          </Button>
-        </>
-      }>
-      <p>This is a test modal that uses hooks!</p>
-    </Modal>
-  )
-
-  const ConnectedHookTestModal = connectModal(HookTestModal)
-  /** End of Example of Modal Component Using Hooks */
 
   return (
     <section>
@@ -90,25 +70,27 @@ const ExamplePage = ({
         <Button type="button" onClick={() => openModalAction('testModal')}>
           Click me!
         </Button>
+        {/* Example of modal using redux for state management */}
         <ConnectedTestModal
           modalKey="testModal"
           isOpen={'testModal' === openModalKey}
-          onClose={() => closeModalAction('testModal')}
-        />
+          onClose={() => closeModalAction('testModal')}>
+          <p>This is a modal that uses redux!</p>
+        </ConnectedTestModal>
       </div>
       <div style={{ margin: '8px'}}>
         <Button type="button" onClick={openModal}>
           Click me!
         </Button>
-        <ConnectedHookTestModal isOpen={isOpen} onClose={closeModal} />
+        {/* Example of modal using hooks for state management */}
+        <ConnectedTestModal isOpen={isOpen} onClose={closeModal} >
+          <p>This is a modal that uses hooks!</p>
+        </ConnectedTestModal>
     </div>
     </section>
   )
 }
 
-const ConnectedExamplePage = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ExamplePage)
+const ConnectedExamplePage = connector(ExamplePage)
 
 export default ConnectedExamplePage

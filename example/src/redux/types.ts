@@ -19,8 +19,6 @@ export interface CloseModalAction {
 
 export type ModalActionTypes = OpenModalAction | CloseModalAction;
 
-/** this represents what the state object will look like */
-/** Assume each modal has a unique key, open modals is an array of keys for modals, or have a single one open at a time */
 export interface AppState {
     modalState: ModalState
 }
