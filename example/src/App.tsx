@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 import '@trussworks/react-uswds/lib/uswds.css'
+import '@trussworks/react-uswds/lib/index.css'
 import {
   GovBanner,
   Header,
@@ -19,6 +20,7 @@ import {
 
 import HomePage from './pages/Home'
 import ExamplePage from './pages/Example'
+import ModalsPage from './pages/Modals'
 
 import './App.css'
 
@@ -26,11 +28,12 @@ import './App.css'
 const routes = {
   HOME_PAGE: '/',
   EXAMPLES_PAGE: '/examples',
+  MODALS_PAGE: '/modals',
 }
 
 const App = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const { HOME_PAGE, EXAMPLES_PAGE } = routes
+  const { HOME_PAGE, EXAMPLES_PAGE, MODALS_PAGE } = routes
 
   const toggleMobileNav = (): void => {
     setMobileNavOpen((prevOpen) => !prevOpen)
@@ -42,6 +45,9 @@ const App = () => {
     </NavLink>,
     <NavLink to={EXAMPLES_PAGE} activeClassName="usa-current">
       Examples
+    </NavLink>,
+    <NavLink to={MODALS_PAGE} activeClassName="usa-current">
+      Modals
     </NavLink>,
   ]
 
@@ -75,6 +81,9 @@ const App = () => {
           <Switch>
             <Route path={EXAMPLES_PAGE}>
               <ExamplePage />
+            </Route>
+            <Route path={MODALS_PAGE}>
+              <ModalsPage />
             </Route>
             <Route path={HOME_PAGE}>
               <HomePage />
