@@ -9,7 +9,7 @@ export default {
   parameters: {
     info: `
      Display single list of nav items, or grouped nav items in an extended nav. Used in USWDS 2.0 Footer component.
-    
+
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,
   },
@@ -18,7 +18,7 @@ export default {
 export const SlimFooterNav = (): React.ReactElement => (
   <FooterNav
     aria-label="Footer navigation"
-    slim
+    size="slim"
     links={Array(4).fill(
       <a className="usa-footer__primary-link" href="#">
         PrimaryLink
@@ -30,7 +30,7 @@ export const SlimFooterNav = (): React.ReactElement => (
 export const MediumFooterNav = (): React.ReactElement => (
   <FooterNav
     aria-label="Footer navigation"
-    medium
+    size="medium"
     links={Array(4).fill(
       <a className="usa-footer__primary-link" href="#">
         PrimaryLink
@@ -41,11 +41,11 @@ export const MediumFooterNav = (): React.ReactElement => (
 
 export const BigFooterNav = (): React.ReactElement => (
   <Footer
-    big
+    size="big"
     primary={
       <FooterNav
         aria-label="Footer navigation"
-        big
+        size="big"
         links={[
           ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
           [
@@ -65,11 +65,11 @@ export const BigFooterNav = (): React.ReactElement => (
 
 export const MobileBigFooterNav = (): React.ReactElement => (
   <Footer
-    big
+    size="big"
     primary={
       <FooterNav
         aria-label="Footer navigation"
-        big
+        size="big"
         isMobile
         links={[
           ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
