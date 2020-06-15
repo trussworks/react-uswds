@@ -11,7 +11,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import { openModalAction, closeModalAction } from './../redux/actions'
 import { AppState, ModalState } from './../redux/types'
 
-/** Example of Modal Component Using Redux */
+
 interface TestModalProps extends ConnectedModalProps {
   modalKey?: string
   children: React.ReactNode
@@ -34,6 +34,7 @@ const TestModal = ({ onClose, children }: TestModalProps): React.ReactElement =>
   </Modal>
 )
 
+/** Example of Modal Component Using Redux */
 const ConnectedTestModal = connectModal(TestModal)
 
 const mapStateToProps = (state: AppState): ModalState => ({
@@ -46,7 +47,6 @@ const mapDispatchToProps = {
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
-
 /** End of Example of Modal Component Using Redux */
 
 const ExamplePage = ({
@@ -55,7 +55,9 @@ const ExamplePage = ({
   closeModalAction,
 }: ConnectedProps<typeof connector>): React.ReactElement => {
 
+  /** Example of Modal Component Using Hooks */
   const { isOpen, openModal, closeModal } = useModal()
+  /** End of Example of Modal Component Using Hooks */
 
   return (
     <section>
