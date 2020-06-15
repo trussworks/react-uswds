@@ -33,6 +33,11 @@ These should all be run from within the project directory.
 - `yarn build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
+- `yarn example:install`
+  - Installs dependencies for the example app. This must be run prior to viewing/developing the example application (located in `/example`).
+  - Builds the library files from `/src` into `/lib`, and also runs `yarn install` in the `/example` directory
+- `yarn example:start`
+  - After installing dependencies, use this to start the example app dev server, so you can view the example app and also add to it.
 
 ## Development
 
