@@ -6,8 +6,8 @@ update_configs:
     update_schedule: "weekly"
     # Apply dependencies label to PRs
     default_labels:
-      - "dependencies"
-      - "automerge"
+      - "type: dependencies"
+      - "type: automerge"
     allowed_updates:
       # allow updates to development dependencies
       - match:
