@@ -1,29 +1,97 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  Link,
+} from 'react-router-dom'
 
 import '@trussworks/react-uswds/lib/uswds.css'
-import { GovBanner } from '@trussworks/react-uswds'
+import '@trussworks/react-uswds/lib/index.css'
+import {
+  GovBanner,
+  Header,
+  Title,
+  NavMenuButton,
+  PrimaryNav,
+  GridContainer,
+} from '@trussworks/react-uswds'
 
-import logo from './logo.svg'
+import HomePage from './pages/Home'
+import ExamplePage from './pages/Example'
+import ModalsPage from './pages/Modals'
+
 import './App.css'
 
-function App() {
+/* Routes */
+const routes = {
+  HOME_PAGE: '/',
+  EXAMPLES_PAGE: '/examples',
+  MODALS_PAGE: '/modals',
+}
+
+const App = () => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const { HOME_PAGE, EXAMPLES_PAGE, MODALS_PAGE } = routes
+
+  const toggleMobileNav = (): void => {
+    setMobileNavOpen((prevOpen) => !prevOpen)
+  }
+
+  const navItems = [
+    <NavLink to={HOME_PAGE} activeClassName="usa-current" exact>
+      Home
+    </NavLink>,
+    <NavLink to={EXAMPLES_PAGE} activeClassName="usa-current">
+      Examples
+    </NavLink>,
+    <NavLink to={MODALS_PAGE} activeClassName="usa-current">
+      Modals
+    </NavLink>,
+  ]
+
   return (
-    <div className="App">
+    <Router>
       <GovBanner />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Header basic>
+        <div className="usa-nav-container">
+          <div className="usa-navbar">
+            <Title>
+              <Link to={HOME_PAGE}>Example Application</Link>
+            </Title>
+            <NavMenuButton
+              label="Menu"
+              onClick={toggleMobileNav}
+              className="usa-menu-btn"
+            />
+          </div>
+
+          <PrimaryNav
+            aria-label="Primary navigation"
+            items={navItems}
+            onToggleMobileNav={toggleMobileNav}
+            mobileExpanded={mobileNavOpen}
+          />
+        </div>
+      </Header>
+
+      <section className="usa-section">
+        <GridContainer>
+          <Switch>
+            <Route path={EXAMPLES_PAGE}>
+              <ExamplePage />
+            </Route>
+            <Route path={MODALS_PAGE}>
+              <ModalsPage />
+            </Route>
+            <Route path={HOME_PAGE}>
+              <HomePage />
+            </Route>
+          </Switch>
+        </GridContainer>
+      </section>
+    </Router>
   )
 }
 

@@ -12,16 +12,16 @@ import { SocialLinks } from '../SocialLinks/SocialLinks'
 import { TextInput } from '../../forms/TextInput/TextInput'
 
 // assets
-import logoImg from 'uswds/src/img/logo-img.png'
+import logoImg from 'uswds/dist/img/logo-img.png'
 
 export default {
   title: 'Footer/Footer',
   parameters: {
     info: `
   USWDS 2.0 Footer component
-  
+
   Source: https://designsystem.digital.gov/components/form-controls/#footer
-  `,
+    `,
   },
 }
 
@@ -52,13 +52,13 @@ const SignUpForm = (): React.ReactElement => {
 
 export const SlimFooter = (): React.ReactElement => (
   <Footer
-    slim
+    size="slim"
     returnToTop={returnToTop}
     primary={
       <div className="usa-footer__primary-container grid-row">
         <div className="mobile-lg:grid-col-8">
           <FooterNav
-            slim
+            size="slim"
             links={Array(4).fill(
               <a className="usa-footer__primary-link" href="#">
                 Primary Link
@@ -99,11 +99,11 @@ export const SlimFooter = (): React.ReactElement => (
 
 export const MediumFooter = (): React.ReactElement => (
   <Footer
-    medium
+    size="medium"
     returnToTop={returnToTop}
     primary={
       <FooterNav
-        medium
+        size="medium"
         links={Array(4).fill(
           <a className="usa-footer__primary-link" href="#">
             Primary Link
@@ -173,14 +173,14 @@ export const MediumFooter = (): React.ReactElement => (
 
 export const BigFooter = (): React.ReactElement => (
   <Footer
-    big
+    size="big"
     returnToTop={returnToTop}
     primary={
       <div className="grid-container">
         <div className="grid-row grid-gap">
           <div className="tablet:grid-col-8">
             <FooterNav
-              big
+              size="big"
               links={[
                 [
                   'Topic',
@@ -286,7 +286,7 @@ export const BigFooter = (): React.ReactElement => (
 
 export const MobileBigFooter = (): React.ReactElement => (
   <Footer
-    big
+    size="big"
     returnToTop={returnToTop}
     primary={
       <div className="grid-container">
@@ -294,7 +294,7 @@ export const MobileBigFooter = (): React.ReactElement => (
           <div className="tablet:grid-col-8">
             <FooterNav
               isMobile
-              big
+              size="big"
               links={[
                 [
                   'Topic',

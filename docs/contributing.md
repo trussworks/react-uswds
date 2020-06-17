@@ -1,5 +1,11 @@
 # Contributing
 
+## Table of Contents
+
+1. [Environment Setup](#environment-setup)
+2. [Development](#development)
+3. [Releasing](#releasing)
+
 ## Environment Setup
 
 1. Clone this repo!
@@ -27,6 +33,11 @@ These should all be run from within the project directory.
 - `yarn build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
+- `yarn example:install`
+  - Installs dependencies for the example app. This must be run prior to viewing/developing the example application (located in `/example`).
+  - Builds the library files from `/src` into `/lib`, and also runs `yarn install` in the `/example` directory
+- `yarn example:start`
+  - After installing dependencies, use this to start the example app dev server, so you can view the example app and also add to it.
 
 ## Development
 
@@ -36,26 +47,35 @@ To start working on a new issue, make sure you've assigned yourself to the issue
 
 For example: `sr-accordion-component-112`
 
-Because this project exports a library that will be used by other projects, it is important to make sure that updates follow a set of standard practices, and new versions are tagged with an accurate description of changes. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass testing and linting standards. Additionally, this project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification in order to standardize contributions and streamline the release flow.
+See [adding new components](./adding_new_components.md) to get ideas of where to start.
+
+### Pull Requests
+
+When your branch is ready for review, open a PR into `develop` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you can squash & merge it into `develop`.
+
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. This standardizes contributions and streamlines the release flow. **All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional).** This generates an automated changelog entry and is required to merge.
+
+(TODO) Passing `develop` builds will automatically be published to the `next` tag on NPM. This allows users to easily test out the latest version in their applications, which may be unstable.
+
+### Dev Notes
+
+Because this project exports a library that will be used by other projects, it is important that updates follow a set of standard practices. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass testing and linting standards.
 
 - [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - These checks will also be run on all files in CI, and must pass before the branch can be merged
-- All pull requests opened into `develop` or `master` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional). This generates an automated changelog entry and is required to merge. The [WIP] prefix can also be used to indicate a pull request is still work in progress. In this case,  the PR title is not validated and the pull request lint check remains pending.
+- [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on PR title.
+  - The version number is determined based on conventional commits - **[fix]** indicates a bug fix, **[feat]** indicates a minor bump. **[!]** or [BREAKING CHANGES] indicates a major bump. Be sure to use the correct spec.
+  - The **[WIP]** prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
+  - We have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages. You can use `yarn commit` instead of `git commit` to start the commitizen prompt
 - The project is configured to only allow [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits.
-  - We also have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages.
-  - You can use `yarn commit` instead of `git commit` to start the commitizen prompt
-- We also use [dangerjs](https://github.com/danger/danger-js) to enforce several pull request standards, including:
-  - Changes to package source code should include changes to tests
-  - New src/components files should include changes to storybook
-  - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs
+- [dangerjs](https://github.com/danger/danger-js) is used to enforce several pull request standards, including:
+  - Changes to package source code should include changes to tests.
+  - New `src/components` files should include changes to storybook.
+  - New `src/components` files should be exported from the package entrypoint.
+  - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs in PR description.
 - All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
 - [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Developers must have access to the Happo.io account to approve/reject diffs. If you work at Truss, log into Happo.io with your gmail and you will be able to approve/reject changes. Navigate to the happo link for instructions on how to review and approve diffs.
-- [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on commit messages
-
-When your branch is ready for review, open a PR into `develop` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you can squash & merge it into `develop`.
-
-(TODO) Passing `develop` builds will automatically be published to the `next` tag on NPM. This allows users to easily test out the latest version in their applications, which may be unstable.
 
 ## Releasing
 
