@@ -10,7 +10,7 @@ export default {
   parameters: {
     info: `
     Display logo image with optional heading.  Used in USWDS 2.0 Footer component.
-    
+
     Source: https://designsystem.digital.gov/components/form-controls/#footer
     `,
   },
@@ -19,7 +19,7 @@ export default {
 export const Slim = (): React.ReactElement => (
   <div className="usa-footer__secondary-section">
     <Logo
-      slim
+      size="slim"
       image={
         <img className="usa-footer__logo-img" src={logoImg} alt="Mock logo" />
       }
