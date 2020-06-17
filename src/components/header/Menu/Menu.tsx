@@ -10,7 +10,7 @@ export const Menu = (
   props: MenuProps & React.HTMLAttributes<HTMLUListElement>
 ): React.ReactElement => {
   const { items, isOpen, ...listProps } = props
-  return <NavList items={items} subnav={true} hidden={!isOpen} {...listProps} />
+  return <NavList items={items} type="subnav" hidden={!isOpen} {...listProps} />
 }
 
 export default Menu
