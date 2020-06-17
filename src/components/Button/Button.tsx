@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { FunctionComponent, ComponentClass } from 'react'
 import classnames from 'classnames'
 import { deprecationWarning } from '../../deprecation'
 
 interface ButtonProps {
-  type: 'button' | 'submit' | 'reset'
-  disabled?: boolean
+  as?: FunctionComponent<any> | ComponentClass<any> | string
   children: React.ReactNode
   secondary?: boolean
   base?: boolean
@@ -22,14 +21,14 @@ interface ButtonProps {
   small?: boolean
   icon?: boolean
   unstyled?: boolean
+  [x: string]: any
 }
 
 export const Button = (
   props: ButtonProps & React.HTMLAttributes<HTMLButtonElement>
 ): React.ReactElement => {
   const {
-    type,
-    disabled,
+    as,
     children,
     secondary,
     base,
@@ -41,8 +40,8 @@ export const Button = (
     small,
     icon,
     unstyled,
-    onClick,
     className,
+    ...restProps
   } = props
 
   if (big) {
@@ -71,15 +70,14 @@ export const Button = (
     className
   )
 
-  return (
-    <button
-      type={type}
-      className={classes}
-      disabled={disabled}
-      onClick={onClick}
-      data-testid="button">
-      {children}
-    </button>
+  return React.createElement(
+    as || 'button',
+    {
+      ...restProps,
+      'data-testid': 'button',
+      className: classes,
+    },
+    children
   )
 }
 
