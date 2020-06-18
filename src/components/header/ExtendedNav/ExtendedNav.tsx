@@ -14,7 +14,7 @@ type ExtendedNavProps = {
 }
 
 export const ExtendedNav = (
-  props: ExtendedNavProps & React.HTMLAttributes<HTMLElement>
+  props: ExtendedNavProps & JSX.IntrinsicElements['nav']
 ): React.ReactElement => {
   const {
     primaryItems,

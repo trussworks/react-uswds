@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { deprecationWarning } from '../../../deprecation'
 
-interface NavListProps {
+interface CustomNavListProps {
   items: React.ReactNode[]
   type?: 'primary' | 'secondary' | 'subnav' | 'megamenu' | 'footerSecondary'
   /**
@@ -27,9 +27,9 @@ interface NavListProps {
   footerSecondary?: boolean
 }
 
-export const NavList = (
-  props: NavListProps & React.HTMLAttributes<HTMLUListElement>
-): React.ReactElement => {
+export type NavListProps = CustomNavListProps & JSX.IntrinsicElements['ul']
+
+export const NavList = (props: NavListProps): React.ReactElement => {
   const {
     items,
     type,
