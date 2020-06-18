@@ -1,6 +1,8 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
+jest.mock('../../deprecation')
+import { deprecationWarning } from '../../deprecation'
 import { Search } from './Search'
 
 describe('Search component', () => {
@@ -16,5 +18,39 @@ describe('Search component', () => {
 
     fireEvent.submit(getByTestId('textInput'))
     expect(mockSubmit).toHaveBeenCalledTimes(1)
+  })
+
+  describe('renders size classes', () => {
+    beforeEach(() => {
+      jest.clearAllMocks()
+    })
+    it.each([
+      ['big', 'usa-search--big'],
+      ['small', 'usa-search--small'],
+    ])('when size is %s should include class %s', (sizeString, uswdsClass) => {
+      const size = sizeString as 'big' | 'small'
+      const mockSubmit = jest.fn()
+      const { container } = render(<Search onSubmit={mockSubmit} size={size} />)
+      expect(container.querySelector('form')).toHaveClass(uswdsClass)
+      expect(deprecationWarning).toHaveBeenCalledTimes(0)
+    })
+
+    it.each([
+      ['big', 'small', 'usa-search--big'],
+      ['small', 'big', 'usa-search--small'],
+    ])(
+      'prefers size to deprecated %s',
+      (sizeString, deprecatedKey, uswdsClass) => {
+        const size = sizeString as 'big' | 'small'
+        const deprecatedProps: { [key: string]: boolean } = {}
+        deprecatedProps[`${deprecatedKey}`] = true
+        const mockSubmit = jest.fn()
+        const { container } = render(
+          <Search onSubmit={mockSubmit} size={size} {...deprecatedProps} />
+        )
+        expect(container.querySelector('form')).toHaveClass(uswdsClass)
+        expect(deprecationWarning).toHaveBeenCalledTimes(1)
+      }
+    )
   })
 })
