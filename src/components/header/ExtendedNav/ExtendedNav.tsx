@@ -38,9 +38,9 @@ export const ExtendedNav = (
     <nav className={classes} {...navProps}>
       <div className="usa-nav__inner">
         <NavCloseButton onClick={onToggleMobileNav} />
-        <NavList items={primaryItems} primary={true} />
+        <NavList items={primaryItems} type="primary" />
         <div className="usa-nav__secondary">
-          <NavList items={secondaryItems} secondary={true} />
+          <NavList items={secondaryItems} type="secondary" />
           {children}
         </div>
       </div>
