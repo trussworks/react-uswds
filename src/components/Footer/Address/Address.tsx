@@ -1,28 +1,54 @@
 import React from 'react'
 import classnames from 'classnames'
+import { deprecationWarning } from '../../../deprecation'
+
 type AddressProps = {
+  size?: 'big' | 'medium' | 'slim'
+  /**
+   * @deprecated since 1.6.0, use size
+   */
   big?: boolean
+  /**
+   * @deprecated since 1.6.0, use size
+   */
   medium?: boolean
+  /**
+   * @deprecated since 1.6.0, use size
+   */
   slim?: boolean
-  /* 
-    Contact info items - e.g. anchor tags or text for email, phone, website, etc.
-  */
+  /*
+     Contact info items - e.g. anchor tags or text for email, phone, website, etc.
+   */
   items: React.ReactNode[]
 }
 
 export const Address = ({
+  size,
   big,
   medium,
   slim,
   items,
 }: AddressProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+  if (big) {
+    deprecationWarning('FooterNav property big is deprecated.  Use size')
+  }
+  if (medium) {
+    deprecationWarning('FooterNav property medium is deprecated.  Use size')
+  }
+  if (slim) {
+    deprecationWarning('FooterNav property slim is deprecated.  Use size')
+  }
+  const isBig = size ? size === 'big' : big
+  const isMedium = size ? size === 'medium' : medium
+  const isSlim = size ? size === 'slim' : slim
+
   const itemClasses = classnames({
-    'grid-col-auto': big || medium,
-    'grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto': slim,
+    'grid-col-auto': isBig || isMedium,
+    'grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto': isSlim,
   })
   return (
     <address className="usa-footer__address">
-      {slim ? (
+      {isSlim ? (
         <div className="grid-row grid-gap">
           {items.map((item, i) => (
             <div className={itemClasses} key={`addressItem-${i}`}>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
+jest.mock('../../../deprecation')
+import { deprecationWarning } from '../../../deprecation'
 import { Address } from './Address'
 
 const addressItems = [
@@ -22,5 +24,32 @@ describe('Address component', () => {
     const { getByText } = render(<Address items={addressItems} />)
     expect(getByText('(123) 456 - 7890')).toBeInTheDocument()
     expect(getByText('thisnotfake@emailaddress.com')).toBeInTheDocument()
+  })
+
+  describe('renders with size prop', () => {
+    beforeEach(() => {
+      jest.clearAllMocks()
+    })
+
+    it.each([
+      ['big', 'slim', '.grid-col-auto', '.mobile-lg\\:grid-col-12'],
+      ['medium', 'slim', '.grid-col-auto', '.mobile-lg\\:grid-col-12'],
+      ['slim', 'big', '.mobile-lg\\:grid-col-12', undefined],
+    ])(
+      'prefers size to deprecated %s',
+      (sizeString, deprecatedKey, expectedClass, missingClass) => {
+        const size = sizeString as 'big' | 'medium' | 'slim'
+        const deprecatedProps: { [key: string]: boolean } = {}
+        deprecatedProps[`${deprecatedKey}`] = true
+        const { container } = render(
+          <Address items={addressItems} size={size} {...deprecatedProps} />
+        )
+        expect(container.querySelector(expectedClass)).toBeInTheDocument()
+        if (missingClass !== undefined) {
+          expect(container.querySelector(missingClass)).not.toBeInTheDocument()
+        }
+        expect(deprecationWarning).toHaveBeenCalledTimes(1)
+      }
+    )
   })
 })
