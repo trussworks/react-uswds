@@ -35,7 +35,7 @@ export const PrimaryNav = (
   return (
     <nav className={classes} {...navProps}>
       <NavCloseButton onClick={onToggleMobileNav} />
-      <NavList items={items} primary={true} />
+      <NavList items={items} type="primary" />
       {children}
     </nav>
   )

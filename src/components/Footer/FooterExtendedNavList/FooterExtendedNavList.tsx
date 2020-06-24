@@ -94,7 +94,7 @@ const Section = ({
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <section className={classes} onClick={onToggle} onKeyPress={onToggle}>
       <h4 className="usa-footer__primary-link">{primaryLinkOrHeading}</h4>
-      <NavList footerSecondary items={secondaryLinks} />
+      <NavList type="footerSecondary" items={secondaryLinks} />
     </section>
   )
 }
