@@ -21,5 +21,5 @@ const testItems = [
 ]
 
 export const BasicNavList = (): React.ReactElement => (
-  <NavList items={testItems} primary={true} />
+  <NavList items={testItems} type="primary" />
 )

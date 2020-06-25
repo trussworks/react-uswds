@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import { deprecationWarning } from '../../deprecation'
 
 import { Button } from '../Button/Button'
 import { Form } from '../forms/Form/Form'
@@ -10,7 +11,14 @@ interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   inputId?: string
   inputName?: string
+  size?: 'big' | 'small'
+  /**
+   * @deprecated since 1.6.0, use size
+   */
   big?: boolean
+  /**
+   * @deprecated since 1.6.0, use size
+   */
   small?: boolean
   label?: React.ReactNode
   className?: string
@@ -23,17 +31,27 @@ export const Search = (
     onSubmit,
     inputId = 'search-field',
     inputName = 'search',
+    size,
     big,
     small,
     label = 'Search',
     className,
     ...formProps
   } = props
+  if (big) {
+    deprecationWarning('Search property big is deprecated.  Use size')
+  }
+  if (small) {
+    deprecationWarning('Search property big is deprecated.  Use size')
+  }
+
+  const isBig = size ? size === 'big' : big
+  const isSmall = size ? size === 'small' : small
   const classes = classnames(
     'usa-search',
     {
-      'usa-search--small': small,
-      'usa-search--big': big,
+      'usa-search--small': isSmall,
+      'usa-search--big': isBig,
     },
     className
   )
@@ -50,7 +68,7 @@ export const Search = (
       </Label>
       <TextInput id={inputId} type="search" name={inputName} />
       <Button type="submit">
-        <span className={small ? 'usa-sr-only' : 'usa-search__submit-text'}>
+        <span className={isSmall ? 'usa-sr-only' : 'usa-search__submit-text'}>
           Search
         </span>
       </Button>
