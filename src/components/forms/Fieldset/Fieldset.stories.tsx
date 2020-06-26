@@ -22,7 +22,7 @@ export const nameFieldset = (): React.ReactElement => (
     <Label htmlFor="title" hint=" (optional)">
       Title
     </Label>
-    <TextInput id="title" name="title" type="text" small />
+    <TextInput id="title" name="title" type="text" sizeVariant="small" />
     <Label htmlFor="first-name">First name</Label>
     <TextInput id="first-name" name="first-name" type="text" />
     <Label htmlFor="middle-name" hint=" (optional)">

@@ -35,11 +35,21 @@ export const withPlaceholder = (): React.ReactElement => (
 )
 
 export const error = (): React.ReactElement => (
-  <TextInput id="input-error" name="input-error" type="text" error />
+  <TextInput
+    id="input-error"
+    name="input-error"
+    type="text"
+    validationStatus="error"
+  />
 )
 
 export const success = (): React.ReactElement => (
-  <TextInput id="input-success" name="input-success" type="text" success />
+  <TextInput
+    id="input-success"
+    name="input-success"
+    type="text"
+    validationStatus="success"
+  />
 )
 
 export const disabled = (): React.ReactElement => (
@@ -52,11 +62,11 @@ export const readonly = (): React.ReactElement => (
 
 /*
 export const small = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" small />
+  <TextInput id="input-type-text" name="input-type-text" type="text" sizeVariant="small" />
 )
 
 export const medium = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" medium />
+  <TextInput id="input-type-text" name="input-type-text" type="text" sizeVariant="medium" />
 )
 */
 
