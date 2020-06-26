@@ -41,14 +41,15 @@ describe('Link component', () => {
     interface CustomLinkProps {
       to: string
       children: React.ReactNode
+      className: string
     }
 
     const CustomLink: React.FunctionComponent<CustomLinkProps> = ({
       to,
       children,
-      ...rest
+      className,
     }: CustomLinkProps): React.ReactElement => (
-      <a data-testid="customComponent" href={to} {...rest}>
+      <a data-testid="customComponent" href={to} className={className}>
         {children}
       </a>
     )
