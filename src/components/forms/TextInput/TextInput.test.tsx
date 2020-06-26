@@ -13,7 +13,7 @@ describe('TextInput component', () => {
     expect(queryByTestId('textInput')).toBeInTheDocument()
   })
 
-  describe('renders sizeVariant classes', () => {
+  describe('renders inputSize classes', () => {
     beforeEach(() => {
       jest.clearAllMocks()
     })
@@ -22,15 +22,15 @@ describe('TextInput component', () => {
       ['medium', 'usa-input--medium'],
       ['small', 'usa-input--small'],
     ])(
-      'when sizeVariant is %s should include class %s',
+      'when inputSize is %s should include class %s',
       (sizeString, uswdsClass) => {
-        const sizeVariant = sizeString as 'medium' | 'small'
+        const inputSize = sizeString as 'medium' | 'small'
         const { container } = render(
           <TextInput
             id="input-type-text"
             name="input-type-text"
             type="text"
-            sizeVariant={sizeVariant}
+            inputSize={inputSize}
           />
         )
         expect(container.querySelector('input')).toHaveClass(uswdsClass)
@@ -42,9 +42,9 @@ describe('TextInput component', () => {
       ['medium', 'small', 'usa-input--medium'],
       ['small', 'medium', 'usa-input--small'],
     ])(
-      'prefers sizeVariant to deprecated %s',
+      'prefers inputSize to deprecated %s',
       (sizeString, deprecatedKey, uswdsClass) => {
-        const sizeVariant = sizeString as 'medium' | 'small'
+        const inputSize = sizeString as 'medium' | 'small'
         const deprecatedProps: { [key: string]: boolean } = {}
         deprecatedProps[`${deprecatedKey}`] = true
         const { container } = render(
@@ -52,7 +52,7 @@ describe('TextInput component', () => {
             id="input-type-text"
             name="input-type-text"
             type="text"
-            sizeVariant={sizeVariant}
+            inputSize={inputSize}
             {...deprecatedProps}
           />
         )
@@ -91,7 +91,7 @@ describe('TextInput component', () => {
       ['error', 'success', 'usa-input--error'],
       ['success', 'error', 'usa-input--success'],
     ])(
-      'prefers sizeVariant to deprecated %s',
+      'prefers validationStatus to deprecated %s',
       (validationString, deprecatedKey, uswdsClass) => {
         const validationStatus = validationString as 'error' | 'success'
         const deprecatedProps: { [key: string]: boolean } = {}

@@ -16,13 +16,13 @@ interface TextInputProps {
    * @deprecated since 1.6.0, use validationStatus
    */
   success?: boolean
-  sizeVariant?: 'small' | 'medium'
+  inputSize?: 'small' | 'medium'
   /**
-   * @deprecated since 1.6.0, use sizeVariant
+   * @deprecated since 1.6.0, use inputSize
    */
   small?: boolean
   /**
-   * @deprecated since 1.6.0, use sizeVariant
+   * @deprecated since 1.6.0, use inputSize
    */
   medium?: boolean
   inputRef?:
@@ -44,7 +44,7 @@ export const TextInput = (
     validationStatus,
     error,
     success,
-    sizeVariant,
+    inputSize,
     small,
     medium,
     inputRef,
@@ -61,20 +61,18 @@ export const TextInput = (
     )
   }
   if (small) {
-    deprecationWarning(
-      'TextInput property small is deprecated.  Use sizeVariant'
-    )
+    deprecationWarning('TextInput property small is deprecated.  Use inputSize')
   }
   if (medium) {
     deprecationWarning(
-      'TextInput property medium is deprecated.  Use sizeVariant'
+      'TextInput property medium is deprecated.  Use inputSize'
     )
   }
 
   const isError = validationStatus ? validationStatus === 'error' : error
   const isSuccess = validationStatus ? validationStatus === 'success' : success
-  const isSmall = sizeVariant ? sizeVariant === 'small' : small
-  const isMedium = sizeVariant ? sizeVariant === 'medium' : medium
+  const isSmall = inputSize ? inputSize === 'small' : small
+  const isMedium = inputSize ? inputSize === 'medium' : medium
   const classes = classnames(
     'usa-input',
     {

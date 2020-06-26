@@ -77,7 +77,7 @@ export const nameForm = (): React.ReactElement => (
       <Label htmlFor="title" hint=" (optional)">
         Title
       </Label>
-      <TextInput id="title" name="title" type="text" sizeVariant="small" />
+      <TextInput id="title" name="title" type="text" inputSize="small" />
       <Label htmlFor="first-name">First name</Label>
       <TextInput id="first-name" name="first-name" type="text" />
       <Label htmlFor="middle-name" hint=" (optional)">
@@ -176,7 +176,7 @@ export const addressForm = (): React.ReactElement => (
         id="zip"
         name="zip"
         type="text"
-        sizeVariant="medium"
+        inputSize="medium"
         pattern="[\d]{5}(-[\d]{4})?"
       />
     </Fieldset>

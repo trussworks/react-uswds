@@ -62,11 +62,11 @@ export const readonly = (): React.ReactElement => (
 
 /*
 export const small = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" sizeVariant="small" />
+  <TextInput id="input-type-text" name="input-type-text" type="text" inputSize="small" />
 )
 
 export const medium = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" sizeVariant="medium" />
+  <TextInput id="input-type-text" name="input-type-text" type="text" inputSize="medium" />
 )
 */
 
