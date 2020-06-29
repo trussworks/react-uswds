@@ -102,9 +102,14 @@ Steps for a new release (these are in the process of being automated):
    ![image](./release_PR.png)
 
 1. Once the release PR is approved, complete the release and publish the new version (this should be automated by GH - TODO):
-   - Merge the PR into master (select **rebase and merge** option)
-   - Create a release tag on Github (https://github.com/trussworks/react-uswds/releases). Use the same notes as release PR.
-   - Make sure you have pulled down latest `master` locally and then publish the new package to npm: `npm publish`
-     - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack. You may need to `npm login` first.
+   - Merge the PR into master.
+     - Use **Rebase and Merge** option
+   - Create a new [**release tag**](https://github.com/trussworks/react-uswds/releases) pointed at `master` on Github.
+     - Use the same notes as release PR.
+   - Publish the new package to npm: `npm publish`
+     - Pull down latest `master` locally before publishing
+     - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack.
+     - You may need to `npm login` first.
 
-- Create a second PR from release branch back into develop. Squash and merge.
+- Finish process by bringing develop branch back up to date.
+  - Create a second PR from release branch back into develop. PR title should be`chore(release): <version>` **Squash and Merge.**
