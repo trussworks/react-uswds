@@ -19,7 +19,7 @@ export const MegaMenu = (
       <div className="grid-row grid-gap-4">
         {items.map((listItems, i) => (
           <div className="usa-col" key={`subnav_col_${i}`}>
-            <NavList items={listItems} megamenu={true} {...navListProps} />
+            <NavList items={listItems} megamenu {...navListProps} />
           </div>
         ))}
       </div>
