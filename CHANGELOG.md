@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.6.0 (2020-06-29)
+
+### Features
+
+- **Address:** convert to enum size prop, deprecate boolean ([#269](https://github.com/trussworks/react-uswds/issues/269)) ([952bb71](https://github.com/trussworks/react-uswds/commit/952bb71e55650ef87f23f4a74c6efaf785b01414)), closes [#265](https://github.com/trussworks/react-uswds/issues/265)
+- **button:** size enum on Button, add deprecationWarning util ([#229](https://github.com/trussworks/react-uswds/issues/229)) ([3b3f4e7](https://github.com/trussworks/react-uswds/commit/3b3f4e7f792c99d662094af11433d662fae1462d)), closes [#187](https://github.com/trussworks/react-uswds/issues/187)
+- **card:** add card component ([89cf241](https://github.com/trussworks/react-uswds/commit/89cf2419bd34d1df7eaa1288f5384e05307c2803))
+- **example app:** add modals page example 204 ([#250](https://github.com/trussworks/react-uswds/issues/250)) ([1054469](https://github.com/trussworks/react-uswds/commit/1054469393951e4179690585f7db5ba949f54d99))
+- **Footer,FooterNav:** use size prop, deprecate boolean sizes ([#239](https://github.com/trussworks/react-uswds/issues/239)) ([c5abdc4](https://github.com/trussworks/react-uswds/commit/c5abdc49017a31280b4e8608005f96beae545abc)), closes [#233](https://github.com/trussworks/react-uswds/issues/233)
+- **Logo:** use size prop, deprecate boolean types ([#268](https://github.com/trussworks/react-uswds/issues/268)) ([ea88c50](https://github.com/trussworks/react-uswds/commit/ea88c500e31ca80950747f62b310b6ed7d7a8df1)), closes [#264](https://github.com/trussworks/react-uswds/issues/264)
+- **NavList:** use type prop, deprecate boolean types ([#262](https://github.com/trussworks/react-uswds/issues/262)) ([7c83154](https://github.com/trussworks/react-uswds/commit/7c83154de230edde48b6780219eb86131db31265)), closes [#234](https://github.com/trussworks/react-uswds/issues/234)
+- **Search:** add size enum prop, deprecate big,small boolean props ([#270](https://github.com/trussworks/react-uswds/issues/270)) ([c5daf8d](https://github.com/trussworks/react-uswds/commit/c5daf8df90d7d162f6f79a7d0d038d867b8bd4e7)), closes [#266](https://github.com/trussworks/react-uswds/issues/266)
+- **TextInput:** use enum props, deprecate booleans ([#284](https://github.com/trussworks/react-uswds/issues/284)) ([6565be6](https://github.com/trussworks/react-uswds/commit/6565be62721f6cacb6348c571d33dde1cedb99af)), closes [#283](https://github.com/trussworks/react-uswds/issues/283)
+
+### Bug Fixes
+
+- **card:** add card components to export ([d57eefc](https://github.com/trussworks/react-uswds/commit/d57eefc9014f7ca694481589ea250c41b8c04130))
+
+### Documentation & Examples
+
+- **example-app:** Example app UI [#202](https://github.com/trussworks/react-uswds/issues/202) ([#237](https://github.com/trussworks/react-uswds/issues/237)) ([832decc](https://github.com/trussworks/react-uswds/commit/832decc83ec38afefed86a25409a0a9ebce83423))
+- Add new pull request template [#73](https://github.com/trussworks/react-uswds/issues/73) ([#226](https://github.com/trussworks/react-uswds/issues/226)) ([f030ba6](https://github.com/trussworks/react-uswds/commit/f030ba698848827596b35f1dadb07c0589903565))
+- adding new components docs [#73](https://github.com/trussworks/react-uswds/issues/73) ([#248](https://github.com/trussworks/react-uswds/issues/248)) ([981956f](https://github.com/trussworks/react-uswds/commit/981956f599c44dad91d3bc3f70cb46d8c1117a2c))
+
 ## 1.5.0 (2020-06-03)
 
 ### Bug Fixes
