@@ -6,7 +6,7 @@ interface TitleProps {
 }
 
 export const Title = (
-  props: TitleProps & React.HTMLAttributes<HTMLDivElement>
+  props: TitleProps & JSX.IntrinsicElements['div']
 ): React.ReactElement => {
   const { className, children, ...divProps } = props
   const classes = classnames('usa-logo', className)

@@ -5,7 +5,7 @@ interface NavMenuButtonProps {
 }
 
 export const NavMenuButton = (
-  props: NavMenuButtonProps & React.HTMLAttributes<HTMLButtonElement>
+  props: NavMenuButtonProps & JSX.IntrinsicElements['button']
 ): React.ReactElement => {
   const { label, onClick, ...buttonProps } = props
 
