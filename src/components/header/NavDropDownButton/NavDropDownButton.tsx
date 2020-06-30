@@ -13,7 +13,7 @@ type NavDropDownButtonProps = {
 }
 
 export const NavDropDownButton = (
-  props: NavDropDownButtonProps & React.HTMLAttributes<HTMLButtonElement>
+  props: NavDropDownButtonProps & JSX.IntrinsicElements['button']
 ): React.ReactElement => {
   const {
     label,

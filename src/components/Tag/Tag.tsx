@@ -7,9 +7,9 @@ interface TagProps {
 }
 
 export const Tag = (
-  props: TagProps & React.HTMLAttributes<HTMLSpanElement>
+  props: TagProps & JSX.IntrinsicElements['span']
 ): React.ReactElement => {
-  const { children, background, className } = props
+  const { children, background, className, ...spanProps } = props
 
   const style: React.CSSProperties = {}
   if (background) {
@@ -19,7 +19,11 @@ export const Tag = (
   const tagClasses = classnames('usa-tag', className)
 
   return (
-    <span data-testid="tag" className={tagClasses} style={{ ...style }}>
+    <span
+      data-testid="tag"
+      className={tagClasses}
+      style={{ ...style }}
+      {...spanProps}>
       {children}
     </span>
   )
