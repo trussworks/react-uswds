@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NavList } from '../NavList/NavList'
+import { NavList, NavListProps } from '../NavList/NavList'
 
 type MegaMenuProps = {
   items: React.ReactNode[][]
@@ -8,9 +8,9 @@ type MegaMenuProps = {
 }
 
 export const MegaMenu = (
-  props: MegaMenuProps & React.HTMLAttributes<HTMLUListElement>
+  props: MegaMenuProps & NavListProps
 ): React.ReactElement => {
-  const { items, isOpen, ...ulProps } = props
+  const { items, isOpen, ...navListProps } = props
   return (
     <div
       className="usa-nav__submenu usa-megamenu"
@@ -19,7 +19,7 @@ export const MegaMenu = (
       <div className="grid-row grid-gap-4">
         {items.map((listItems, i) => (
           <div className="usa-col" key={`subnav_col_${i}`}>
-            <NavList items={listItems} type="megamenu" {...ulProps} />
+            <NavList items={listItems} megamenu {...navListProps} />
           </div>
         ))}
       </div>

@@ -5,9 +5,7 @@ type SocialLinksProps = {
   links: React.ReactNode[]
 }
 
-export const SocialLinks = (
-  props: SocialLinksProps & React.HTMLAttributes<HTMLElement>
-): React.ReactElement => {
+export const SocialLinks = (props: SocialLinksProps): React.ReactElement => {
   const { links } = props
 
   return (

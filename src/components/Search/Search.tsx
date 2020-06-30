@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { deprecationWarning } from '../../deprecation'
 
 import { Button } from '../Button/Button'
-import { Form } from '../forms/Form/Form'
+import { Form, OptionalFormProps } from '../forms/Form/Form'
 import { Label } from '../forms/Label/Label'
 import { TextInput } from '../forms/TextInput/TextInput'
 
@@ -25,7 +25,7 @@ interface SearchInputProps {
 }
 
 export const Search = (
-  props: SearchInputProps & React.FormHTMLAttributes<HTMLFormElement>
+  props: SearchInputProps & OptionalFormProps
 ): React.ReactElement => {
   const {
     onSubmit,

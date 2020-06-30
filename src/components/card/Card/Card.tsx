@@ -10,7 +10,7 @@ interface CardProps {
 }
 
 export const Card = (
-  props: CardProps & React.HTMLAttributes<HTMLLIElement> & GridLayoutProp
+  props: CardProps & JSX.IntrinsicElements['li'] & GridLayoutProp
 ): React.ReactElement => {
   const {
     layout = 'standardDefault',

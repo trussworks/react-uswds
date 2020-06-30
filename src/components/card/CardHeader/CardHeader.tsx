@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const CardHeader = (
-  props: { exdent?: boolean } & React.HTMLAttributes<HTMLElement>
+  props: { exdent?: boolean } & JSX.IntrinsicElements['header']
 ): React.ReactElement => {
   const { exdent, children, className, ...headerProps } = props
 

@@ -39,7 +39,7 @@ Pay special attention to:
   }
   
   export const Form = (
-    props: FormProps & React.FormHTMLAttributes<HTMLFormElement>
+    props: FormProps & JSX.IntrinsicElements['form']
   ): React.ReactElement =>
   ```
 
