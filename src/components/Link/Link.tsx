@@ -18,7 +18,7 @@ type CustomComponentProps = BaseLinkProps &
     [x: string]: any
   }
 
-type LinkProps = CustomComponentProps | AnchorTagProps // order matters here - default suggestion should be anchor tag props
+type LinkProps = CustomComponentProps | AnchorTagProps
 
 const isCustomComponent = (
   props: Partial<LinkProps>
@@ -26,12 +26,21 @@ const isCustomComponent = (
   return (props as CustomComponentProps).asCustom !== undefined
 }
 
-export const Link = ({
+type ProhibitKeys<K extends keyof any> = { [P in K]?: never }
+
+type Xor<T, U> =
+  | (T & ProhibitKeys<Exclude<keyof U, keyof T>>)
+  | (U & ProhibitKeys<Exclude<keyof T, keyof U>>)
+// Overloads
+export function Link(customComponentProps: CustomComponentProps): JSX.Element
+export function Link(anchorTagProps: AnchorTagProps): JSX.Element
+
+export function Link({
   children,
   variant,
   className,
   ...linkProps
-}: LinkProps): React.ReactElement => {
+}: LinkProps): JSX.Element {
   const unstyled = variant === 'unstyled'
   const isExternalLink = variant === 'external'
 

@@ -20,8 +20,8 @@ export const Visited = (): React.ReactElement => (
   <p>
     <Link className="usa-color-text-visited" href={'#'}>
       This
-    </Link>{' '}
-    is a visited link.
+    </Link>
+    &nbsp;is a visited link.
   </p>
 )
 
