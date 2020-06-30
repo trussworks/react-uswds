@@ -58,7 +58,12 @@ export const textInputForm = (): React.ReactElement => (
       </FormGroup>
 
       <Label htmlFor="input-success">Text input success</Label>
-      <TextInput id="input-success" name="input-success" type="text" success />
+      <TextInput
+        id="input-success"
+        name="input-success"
+        type="text"
+        validationStatus="success"
+      />
 
       <Label htmlFor="input-type-textarea">Text area label</Label>
       <Textarea id="input-type-textarea" name="input-type-textarea"></Textarea>
@@ -72,7 +77,7 @@ export const nameForm = (): React.ReactElement => (
       <Label htmlFor="title" hint=" (optional)">
         Title
       </Label>
-      <TextInput id="title" name="title" type="text" small />
+      <TextInput id="title" name="title" type="text" inputSize="small" />
       <Label htmlFor="first-name">First name</Label>
       <TextInput id="first-name" name="first-name" type="text" />
       <Label htmlFor="middle-name" hint=" (optional)">
@@ -171,7 +176,7 @@ export const addressForm = (): React.ReactElement => (
         id="zip"
         name="zip"
         type="text"
-        medium
+        inputSize="medium"
         pattern="[\d]{5}(-[\d]{4})?"
       />
     </Fieldset>

@@ -29,6 +29,11 @@ export const textInputErrorFormGroup = (): React.ReactElement => (
       Text input label
     </Label>
     <ErrorMessage>Helpful error message</ErrorMessage>
-    <TextInput id="input-type-text" name="input-type-text" type="text" error />
+    <TextInput
+      id="input-type-text"
+      name="input-type-text"
+      type="text"
+      validationStatus="error"
+    />
   </FormGroup>
 )
