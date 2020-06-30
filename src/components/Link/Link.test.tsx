@@ -8,33 +8,45 @@ describe('Link component', () => {
     jest.clearAllMocks()
   })
 
-  it('renders default link', () => {
-    const { container, getByText } = render(
-      <Link href="#">Click this link</Link>
-    )
-    expect(container.querySelector('a')).toHaveClass('usa-link')
-    expect(getByText('Click this link')).toBeInTheDocument()
-  })
+  describe('with default anchor tag', () => {
+    it('renders link', () => {
+      const { container, getByText } = render(
+        <Link href="#">Click this link</Link>
+      )
+      expect(container.querySelector('a')).toHaveClass('usa-link')
+      expect(getByText('Click this link')).toBeInTheDocument()
+    })
 
-  it('renders external link', () => {
-    const { container } = render(
-      <Link href="#" variant="external">
-        Click Me
-      </Link>
-    )
-    expect(container.querySelector('a')).toHaveClass(
-      'usa-link usa-link--external'
-    )
-  })
+    it('renders external link', () => {
+      const { container } = render(
+        <Link href="#" variant="external">
+          Click Me
+        </Link>
+      )
+      expect(container.querySelector('a')).toHaveClass(
+        'usa-link usa-link--external'
+      )
+    })
 
-  it('renders unstyled link', () => {
-    const { container } = render(
-      <Link className="custom-class" href="#" variant="unstyled">
-        Click Me
-      </Link>
-    )
-    expect(container.querySelector('a')).not.toHaveClass('usa-link')
-    expect(container.querySelector('a')).toHaveClass('custom-class')
+    it('renders unstyled link', () => {
+      const { container } = render(
+        <Link className="custom-class" href="#" variant="unstyled">
+          Click Me
+        </Link>
+      )
+      expect(container.querySelector('a')).not.toHaveClass('usa-link')
+      expect(container.querySelector('a')).toHaveClass('custom-class')
+    })
+
+    it('renders link with optional anchor tag attributes', () => {
+      const { container } = render(
+        <Link href="#" target="_blank" title="Test Link" variant="unstyled">
+          Click Me
+        </Link>
+      )
+      expect(container.querySelector('a')).toHaveAttribute('title', 'Test Link')
+      expect(container.querySelector('a')).toHaveAttribute('target', '_blank')
+    })
   })
 
   describe('with custom component', () => {
