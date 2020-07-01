@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const CardBody = (
-  props: { exdent?: boolean } & React.HTMLAttributes<HTMLDivElement>
+  props: { exdent?: boolean } & JSX.IntrinsicElements['div']
 ): React.ReactElement => {
   const { exdent, children, className, ...bodyProps } = props
 

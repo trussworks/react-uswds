@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { TextInput } from '../TextInput/TextInput'
+import { TextInput, OptionalTextInputProps } from '../TextInput/TextInput'
 import { Label } from '../Label/Label'
 import { FormGroup } from '../FormGroup/FormGroup'
 
@@ -15,7 +15,7 @@ interface DateInputElementProps {
 }
 
 export const DateInput = (
-  props: DateInputElementProps & React.InputHTMLAttributes<HTMLInputElement>
+  props: DateInputElementProps & OptionalTextInputProps
 ): React.ReactElement => {
   const {
     id,

@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const DateInputGroup = (
-  props: React.HTMLAttributes<HTMLElement>
+  props: JSX.IntrinsicElements['div']
 ): React.ReactElement => {
   const { children, className, ...divAttributes } = props
 

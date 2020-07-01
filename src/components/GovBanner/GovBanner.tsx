@@ -7,7 +7,7 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
 
 export const GovBanner = (
-  props: React.HTMLAttributes<HTMLElement>
+  props: JSX.IntrinsicElements['section']
 ): React.ReactElement => {
   const { className, ...sectionProps } = props
   const [isOpen, setOpenState] = useState(false)

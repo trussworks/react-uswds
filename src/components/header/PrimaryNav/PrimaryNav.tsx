@@ -13,7 +13,7 @@ type PrimaryNavProps = {
 }
 
 export const PrimaryNav = (
-  props: PrimaryNavProps & React.HTMLAttributes<HTMLElement>
+  props: PrimaryNavProps & JSX.IntrinsicElements['nav']
 ): React.ReactElement => {
   const {
     items,

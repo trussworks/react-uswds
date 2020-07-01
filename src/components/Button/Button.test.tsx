@@ -99,7 +99,6 @@ describe('Button component', () => {
     )
 
     fireEvent.click(getByText('Click Me'))
-
     expect(onClickFn).toHaveBeenCalledTimes(1)
   })
 
