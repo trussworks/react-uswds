@@ -50,11 +50,10 @@ describe('Link component', () => {
   })
 
   describe('with custom component', () => {
-    interface CustomLinkProps {
+    type CustomLinkProps = {
       to: string
-      children: React.ReactNode
       className: string
-    }
+    } & JSX.IntrinsicElements['a']
 
     const CustomLink: React.FunctionComponent<CustomLinkProps> = ({
       to,
@@ -68,7 +67,7 @@ describe('Link component', () => {
 
     it('renders functional component, handling own props', () => {
       const { queryByTestId } = render(
-        <Link
+        <Link<CustomLinkProps>
           className="custom-class"
           asCustom={CustomLink}
           to={'#testlink'}

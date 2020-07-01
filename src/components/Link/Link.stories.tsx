@@ -5,7 +5,7 @@ export default {
   title: 'Link',
   parameters: {
     info: `Link component
-    
+
     Based on Typography guide: https://designsystem.digital.gov/components/typography/#links`,
   },
 }
@@ -53,10 +53,9 @@ export const StyledAsButton = (): React.ReactElement => (
 )
 
 export const CustomComponentLink = (): React.ReactElement => {
-  interface MockLinkProps {
+  type MockLinkProps = {
     to: string
-    children: React.ReactNode
-  }
+  } & JSX.IntrinsicElements['a']
 
   const CustomLink: React.FunctionComponent<MockLinkProps> = ({
     to,
@@ -69,7 +68,7 @@ export const CustomComponentLink = (): React.ReactElement => {
 
   return (
     <p>
-      <Link asCustom={CustomLink} to={'http://www.truss.works'}>
+      <Link<MockLinkProps> asCustom={CustomLink} to={'http://www.truss.works'}>
         This
       </Link>
       &nbsp;is a custom component link.
