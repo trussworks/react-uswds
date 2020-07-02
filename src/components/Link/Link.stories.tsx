@@ -53,22 +53,29 @@ export const StyledAsButton = (): React.ReactElement => (
 )
 
 export const CustomComponentLink = (): React.ReactElement => {
-  type MockLinkProps = {
+  type MockLinkProps = React.PropsWithChildren<{
     to: string
-  } & JSX.IntrinsicElements['a']
+    className: string
+  }> &
+    JSX.IntrinsicElements['a']
 
   const CustomLink: React.FunctionComponent<MockLinkProps> = ({
     to,
+    className,
     children,
+    ...linkProps
   }: MockLinkProps): React.ReactElement => (
-    <a data-testid="customComponent" href={to}>
+    <a href={to} className={className} {...linkProps}>
       {children}
     </a>
   )
 
   return (
     <p>
-      <Link<MockLinkProps> asCustom={CustomLink} to={'http://www.truss.works'}>
+      <Link<MockLinkProps>
+        className="abc"
+        asCustom={CustomLink}
+        to="http://www.truss.works">
         This
       </Link>
       &nbsp;is a custom component link.

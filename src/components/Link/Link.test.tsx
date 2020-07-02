@@ -50,35 +50,42 @@ describe('Link component', () => {
   })
 
   describe('with custom component', () => {
-    type CustomLinkProps = {
+    type CustomLinkProps = React.PropsWithChildren<{
       to: string
       className: string
-    } & JSX.IntrinsicElements['a']
+    }> &
+      JSX.IntrinsicElements['a']
 
     const CustomLink: React.FunctionComponent<CustomLinkProps> = ({
       to,
       children,
       className,
+      ...linkProps
     }: CustomLinkProps): React.ReactElement => (
-      <a data-testid="customComponent" href={to} className={className}>
+      <a href={to} className={className} {...linkProps}>
         {children}
       </a>
     )
 
     it('renders functional component, handling own props', () => {
-      const { queryByTestId } = render(
+      const { getByTestId } = render(
         <Link<CustomLinkProps>
           className="custom-class"
           asCustom={CustomLink}
           to={'#testlink'}
-          data-testid={'customComponent'}>
+          data-testid={'customComponent'}
+          custom-attr="customVal">
           Click Me
         </Link>
       )
-      expect(queryByTestId('customComponent')).toBeInTheDocument()
-      expect(queryByTestId('customComponent')).toHaveAttribute(
+      expect(getByTestId('customComponent')).toBeInTheDocument()
+      expect(getByTestId('customComponent')).toHaveAttribute(
         'href',
         '#testlink'
+      )
+      expect(getByTestId('customComponent')).toHaveAttribute(
+        'custom-attr',
+        'customVal'
       )
     })
 
