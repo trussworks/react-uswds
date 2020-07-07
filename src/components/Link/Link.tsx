@@ -1,46 +1,41 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FunctionComponent, ComponentClass, HTMLAttributes } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
+/* Two ways to use Link 
+    1. Pass in children and props for the default anchor tag element.  Use BaseLinkProps to style. 
+    2. Use the component prop and pass in a custom React element. Use BaseLinkProps to style.
+*/
+
 type BaseLinkProps = {
+  className?: string
   variant?: 'external' | 'unstyled'
 }
 
-type AnchorTagProps = BaseLinkProps &
-  JSX.IntrinsicElements['a'] & {
-    href: string
-    children: React.ReactNode
-  }
+type LinkProps = {
+  href: string
+  children: React.ReactNode
+} & BaseLinkProps &
+  JSX.IntrinsicElements['a']
 
-type CustomComponentProps = BaseLinkProps &
-  HTMLAttributes<HTMLElement> & {
-    asCustom: FunctionComponent<any> | ComponentClass<any>
-    [x: string]: any
-  }
+type CustomComponentProps = {
+  component: React.ReactElement
+  children?: React.ReactNode
+} & BaseLinkProps
 
-type LinkProps = CustomComponentProps | AnchorTagProps
+type PossibleLinkProps = CustomComponentProps | LinkProps
 
 const isCustomComponent = (
-  props: Partial<LinkProps>
+  props: PossibleLinkProps
 ): props is CustomComponentProps => {
-  return (props as CustomComponentProps).asCustom !== undefined
+  return (props as CustomComponentProps).component !== undefined
 }
 
-type ProhibitKeys<K extends keyof any> = { [P in K]?: never }
-
-type Xor<T, U> =
-  | (T & ProhibitKeys<Exclude<keyof U, keyof T>>)
-  | (U & ProhibitKeys<Exclude<keyof T, keyof U>>)
 // Overloads
 export function Link(customComponentProps: CustomComponentProps): JSX.Element
-export function Link(anchorTagProps: AnchorTagProps): JSX.Element
+export function Link(linkProps: LinkProps): JSX.Element
 
-export function Link({
-  children,
-  variant,
-  className,
-  ...linkProps
-}: LinkProps): JSX.Element {
+export function Link(props: PossibleLinkProps): React.ReactElement {
+  const { children, variant, className, ...linkProps } = props
   const unstyled = variant === 'unstyled'
   const isExternalLink = variant === 'external'
 
@@ -54,16 +49,12 @@ export function Link({
         className
       )
 
-  if (isCustomComponent(linkProps)) {
-    const { asCustom, ...restProps } = linkProps
-    return React.createElement(
-      asCustom,
-      {
-        ...restProps,
-        className: classes,
-      },
-      children
-    )
+  if (isCustomComponent(props)) {
+    const { component, ...remainingProps } = linkProps as CustomComponentProps
+    return React.cloneElement(component, {
+      ...remainingProps,
+      className: classes,
+    })
   }
 
   return (

@@ -50,31 +50,15 @@ describe('Link component', () => {
   })
 
   describe('with custom component', () => {
-    interface CustomLinkProps {
-      to: string
-      children: React.ReactNode
-      className: string
-    }
-
-    const CustomLink: React.FunctionComponent<CustomLinkProps> = ({
-      to,
-      children,
-      className,
-    }: CustomLinkProps): React.ReactElement => (
-      <a data-testid="customComponent" href={to} className={className}>
-        {children}
+    const CustomLink = (
+      <a data-testid="customComponent" href="#testlink">
+        Click Me
       </a>
     )
 
-    it('renders functional component, handling own props', () => {
+    it('renders component', () => {
       const { queryByTestId } = render(
-        <Link
-          className="custom-class"
-          asCustom={CustomLink}
-          to={'#testlink'}
-          data-testid={'customComponent'}>
-          Click Me
-        </Link>
+        <Link className="custom-class" component={CustomLink} />
       )
       expect(queryByTestId('customComponent')).toBeInTheDocument()
       expect(queryByTestId('customComponent')).toHaveAttribute(
@@ -83,12 +67,34 @@ describe('Link component', () => {
       )
     })
 
-    it('handles unstyled prop', () => {
+    it('renders component children, ignores Link children', () => {
+      const { queryByText } = render(
+        <Link className="custom-class" component={CustomLink}>
+          Not This
+        </Link>
+      )
+      expect(queryByText('Click Me')).toBeInTheDocument()
+      expect(queryByText('Not This')).not.toBeInTheDocument()
+    })
+
+    it('adds Link styles', () => {
       const { queryByTestId } = render(
         <Link
           className="custom-class"
-          asCustom={CustomLink}
-          to={'#'}
+          component={CustomLink}
+          data-testid={'customComponent'}>
+          Click Me
+        </Link>
+      )
+      expect(queryByTestId('customComponent')).toHaveClass('usa-link')
+      expect(queryByTestId('customComponent')).toHaveClass('custom-class')
+    })
+
+    it('handles variant prop', () => {
+      const { queryByTestId } = render(
+        <Link
+          className="custom-class"
+          component={CustomLink}
           variant="unstyled"
           data-testid={'customComponent'}>
           Click Me

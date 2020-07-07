@@ -53,25 +53,15 @@ export const StyledAsButton = (): React.ReactElement => (
 )
 
 export const CustomComponentLink = (): React.ReactElement => {
-  interface MockLinkProps {
-    to: string
-    children: React.ReactNode
-  }
-
-  const CustomLink: React.FunctionComponent<MockLinkProps> = ({
-    to,
-    children,
-  }: MockLinkProps): React.ReactElement => (
-    <a data-testid="customComponent" href={to}>
-      {children}
-    </a>
-  )
-
   return (
     <p>
-      <Link asCustom={CustomLink} to={'http://www.truss.works'}>
-        This
-      </Link>
+      <Link
+        component={
+          <a data-testid="customComponent" href="http://www.truss.works">
+            This
+          </a>
+        }
+      />
       &nbsp;is a custom component link.
     </p>
   )
