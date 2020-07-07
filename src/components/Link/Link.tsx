@@ -2,8 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 
 /* Two ways to use Link 
-    1. Pass in children and props for the default anchor tag element.  Use BaseLinkProps to style. 
-    2. Use the component prop and pass in a custom React element. Use BaseLinkProps to style.
+    1. Pass in children and props for the default anchor tag element.  Add BaseLinkProps to style. 
+    2. Pass in asComponentComponent=true and children (single element) to use as the base element. Add BaseLinkProps to style.
 */
 
 type BaseLinkProps = {
@@ -11,28 +11,30 @@ type BaseLinkProps = {
   variant?: 'external' | 'unstyled'
 }
 
-type LinkProps = {
+type AnchorTagProps = {
   href: string
   children: React.ReactNode
 } & BaseLinkProps &
   JSX.IntrinsicElements['a']
 
 type CustomComponentProps = {
-  component: React.ReactElement
-  children?: React.ReactNode
+  asCustomComponent: boolean
+  children: React.ReactElement
 } & BaseLinkProps
 
-type PossibleLinkProps = CustomComponentProps | LinkProps
+type PossibleLinkProps = CustomComponentProps | AnchorTagProps
 
 const isCustomComponent = (
   props: PossibleLinkProps
 ): props is CustomComponentProps => {
-  return (props as CustomComponentProps).component !== undefined
+  return (props as CustomComponentProps).asCustomComponent === true
 }
 
 // Overloads
-export function Link(customComponentProps: CustomComponentProps): JSX.Element
-export function Link(linkProps: LinkProps): JSX.Element
+export function Link(
+  customComponentProps: CustomComponentProps
+): React.ReactElement
+export function Link(linkProps: AnchorTagProps): React.ReactElement
 
 export function Link(props: PossibleLinkProps): React.ReactElement {
   const { children, variant, className, ...linkProps } = props
@@ -50,9 +52,9 @@ export function Link(props: PossibleLinkProps): React.ReactElement {
       )
 
   if (isCustomComponent(props)) {
-    const { component, ...remainingProps } = linkProps as CustomComponentProps
-    return React.cloneElement(component, {
-      ...remainingProps,
+    const child = children as CustomComponentProps['children']
+
+    return React.cloneElement(child, {
       className: classes,
     })
   }
