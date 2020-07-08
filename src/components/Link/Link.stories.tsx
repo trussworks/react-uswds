@@ -55,11 +55,13 @@ export const StyledAsButton = (): React.ReactElement => (
 export const CustomComponentLink = (): React.ReactElement => {
   return (
     <p>
-      <Link asCustomComponent>
-        <a data-testid="customComponent" href="http://www.truss.works">
-          This
-        </a>
-      </Link>
+      <Link
+        component={
+          <a data-testid="customComponent" href="http://www.truss.works">
+            This
+          </a>
+        }
+      />
       &nbsp;is a custom component link.
     </p>
   )

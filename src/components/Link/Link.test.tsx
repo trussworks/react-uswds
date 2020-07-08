@@ -58,9 +58,7 @@ describe('Link component', () => {
 
     it('renders component', () => {
       const { queryByTestId } = render(
-        <Link className="custom-class" asCustomComponent>
-          {CustomLink}
-        </Link>
+        <Link className="custom-class" component={CustomLink} />
       )
       expect(queryByTestId('customComponent')).toBeInTheDocument()
       expect(queryByTestId('customComponent')).toHaveAttribute(
@@ -69,19 +67,23 @@ describe('Link component', () => {
       )
     })
 
-    it('renders component children', () => {
+    it('renders component children, ignores Link children', () => {
       const { queryByText } = render(
-        <Link className="custom-class" asCustomComponent>
-          {CustomLink}
+        <Link className="custom-class" component={CustomLink}>
+          Not This
         </Link>
       )
       expect(queryByText('Click Me')).toBeInTheDocument()
+      expect(queryByText('Not This')).not.toBeInTheDocument()
     })
 
     it('adds Link styles', () => {
       const { queryByTestId } = render(
-        <Link className="custom-class" asCustomComponent>
-          {CustomLink}
+        <Link
+          className="custom-class"
+          component={CustomLink}
+          data-testid={'customComponent'}>
+          Click Me
         </Link>
       )
       expect(queryByTestId('customComponent')).toHaveClass('usa-link')
@@ -90,8 +92,12 @@ describe('Link component', () => {
 
     it('handles variant prop', () => {
       const { queryByTestId } = render(
-        <Link className="custom-class" asCustomComponent variant="unstyled">
-          {CustomLink}
+        <Link
+          className="custom-class"
+          component={CustomLink}
+          variant="unstyled"
+          data-testid={'customComponent'}>
+          Click Me
         </Link>
       )
       expect(queryByTestId('customComponent')).not.toHaveClass('usa-link')
