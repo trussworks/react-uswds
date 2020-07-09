@@ -87,6 +87,8 @@ describe('Link component', () => {
         'custom-attr',
         'customVal'
       )
+      expect(getByTestId('customComponent')).toHaveClass('usa-link')
+      expect(getByTestId('customComponent')).toHaveClass('custom-class')
     })
 
     it('handles unstyled prop', () => {
