@@ -52,7 +52,7 @@ describe('Link component', () => {
   describe('with custom component', () => {
     type CustomLinkProps = React.PropsWithChildren<{
       to: string
-      className: string
+      className?: string
     }> &
       JSX.IntrinsicElements['a']
 
@@ -67,7 +67,7 @@ describe('Link component', () => {
       </a>
     )
 
-    it('renders functional component, handling own props', () => {
+    it('handles own props', () => {
       const { getByTestId } = render(
         <Link<CustomLinkProps>
           className="custom-class"
@@ -78,7 +78,8 @@ describe('Link component', () => {
           Click Me
         </Link>
       )
-      expect(getByTestId('customComponent')).toBeInTheDocument()
+      expect
+      expect(getByTestId('customComponent')).toHaveTextContent('Click Me')
       expect(getByTestId('customComponent')).toHaveAttribute(
         'href',
         '#testlink'
@@ -87,11 +88,23 @@ describe('Link component', () => {
         'custom-attr',
         'customVal'
       )
-      expect(getByTestId('customComponent')).toHaveClass('usa-link')
       expect(getByTestId('customComponent')).toHaveClass('custom-class')
     })
 
-    it('handles unstyled prop', () => {
+    it('renders with Link styles', () => {
+      const { getByTestId } = render(
+        <Link<CustomLinkProps>
+          asCustom={CustomLink}
+          to={'#testlink'}
+          data-testid={'customComponent'}>
+          Click Me
+        </Link>
+      )
+      expect(getByTestId('customComponent')).toBeInTheDocument()
+      expect(getByTestId('customComponent')).toHaveClass('usa-link')
+    })
+
+    it('renders unstyled link', () => {
       const { queryByTestId } = render(
         <Link
           className="custom-class"

@@ -6,7 +6,10 @@ type StyledLinkProps = {
   className?: string
 }
 
-type LinkProps = React.PropsWithChildren<StyledLinkProps> &
+type LinkProps = {
+  href: string
+  children: React.ReactNode
+} & React.PropsWithChildren<StyledLinkProps> &
   JSX.IntrinsicElements['a']
 
 type AsCustomProps<T> = {
@@ -23,9 +26,9 @@ function isAsCustomProps<T>(
 }
 
 function linkClasses(
-  variant: 'external' | 'unstyled' | undefined,
-  className: string | undefined
-) {
+  variant: StyledLinkProps['variant'],
+  className: StyledLinkProps['className']
+): string | undefined {
   const unstyled = variant === 'unstyled'
   const isExternalLink = variant === 'external'
 
@@ -62,7 +65,7 @@ export function Link<FCProps = LinkProps>(
       children
     )
   } else {
-    const { children, variant, className, ...linkProps } = props
+    const { children, className, variant, ...linkProps } = props
 
     const classes = linkClasses(variant, className)
     return (
