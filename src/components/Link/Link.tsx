@@ -1,33 +1,37 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type StyledLinkProps = {
+// These props we want to require always, even on custom components
+type StyledLinkProps<T> = React.PropsWithChildren<{
   variant?: 'external' | 'unstyled'
   className?: string
-}
-
-type LinkProps = {
-  href: string
   children: React.ReactNode
-} & React.PropsWithChildren<StyledLinkProps> &
-  JSX.IntrinsicElements['a']
+}> &
+  T
 
-type AsCustomProps<T> = {
-  asCustom: keyof JSX.IntrinsicElements | React.FunctionComponent<T>
-} & StyledLinkProps &
-  React.PropsWithChildren<T>
-
-type PossibleLinkProps<T> = LinkProps | AsCustomProps<T>
-
-function isAsCustomProps<T>(
-  props: PossibleLinkProps<T>
-): props is AsCustomProps<T> {
-  return (props as AsCustomProps<T>).asCustom !== undefined
+// These props are only required on the default Link
+interface WithDefaultLinkProps {
+  href: string
 }
 
-function linkClasses(
-  variant: StyledLinkProps['variant'],
-  className: StyledLinkProps['className']
+// Add `asCustom` to the provided custom props
+interface WithCustomLinkProps<T> {
+  asCustom: React.FunctionComponent<T>
+}
+
+// Default props means allow the StyledLinkProps as well as any
+// props allowed on the `a` element, plus the required props on
+// WithDefaultLinkProps
+export type DefaultLinkProps = StyledLinkProps<JSX.IntrinsicElements['a']> &
+  WithDefaultLinkProps
+
+// Custom props means allow the StyledLinkProps as well as the custom
+// props, plus the required props on WithCustomLinkProps
+export type CustomLinkProps<T> = StyledLinkProps<T> & WithCustomLinkProps<T>
+
+function linkClasses<T>(
+  variant: StyledLinkProps<T>['variant'],
+  className: StyledLinkProps<T>['className']
 ): string | undefined {
   const unstyled = variant === 'unstyled'
   const isExternalLink = variant === 'external'
@@ -43,10 +47,12 @@ function linkClasses(
       )
 }
 
-export function Link<FCProps = LinkProps>(
-  props: PossibleLinkProps<FCProps>
+export function Link(props: DefaultLinkProps): React.ReactElement
+export function Link<T>(props: CustomLinkProps<T>): React.ReactElement
+export function Link<FCProps = DefaultLinkProps>(
+  props: DefaultLinkProps | CustomLinkProps<FCProps>
 ): React.ReactElement {
-  if (isAsCustomProps<FCProps>(props)) {
+  if ('asCustom' in props) {
     const { variant, className, asCustom, children, ...remainingProps } = props
     // 1. We know props is AsCustomProps<FCProps>
     // 2. We know AsCustomProps<FCProps> is
