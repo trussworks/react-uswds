@@ -2,12 +2,11 @@ import React from 'react'
 import classnames from 'classnames'
 
 // These props we want to require always, even on custom components
-type StyledLinkProps<T> = React.PropsWithChildren<{
+type StyledLinkProps<T> = {
   variant?: 'external' | 'unstyled'
   className?: string
   children: React.ReactNode
-}> &
-  T
+} & T
 
 // These props are only required on the default Link
 interface WithDefaultLinkProps {
