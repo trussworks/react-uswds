@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/trussworks/react-uswds/compare/1.6.0...1.6.1) (2020-07-13)
+
+
+### Bug Fixes
+
+* **standard-version:** use -t flag correctly, autocommit changelog and release bump ([#310](https://github.com/trussworks/react-uswds/issues/310)) ([a96591e](https://github.com/trussworks/react-uswds/commit/a96591e71a7ac226b7d397c3714fed25d78c1ab9))
+* Use JSX.ImplicitElements to derive valid property names ([#267](https://github.com/trussworks/react-uswds/issues/267)) ([2eba792](https://github.com/trussworks/react-uswds/commit/2eba7922ea2c6a4f4a710f989da41e7b847d4398))
+
+
+### Documentation & Examples
+
+* Update releasing instructions with current flow ([#297](https://github.com/trussworks/react-uswds/issues/297)) ([87515bc](https://github.com/trussworks/react-uswds/commit/87515bc8577af1630833d0e374c29d08a34cae54))
+
 ## 1.6.0 (2020-06-29)
 
 ### Features
