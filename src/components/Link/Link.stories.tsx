@@ -16,18 +16,15 @@ export const Default = (): React.ReactElement => (
   </p>
 )
 
-/*
- * TODO: sort out how to test visited links in storybook
- *
- * export const Visited = (): React.ReactElement => (
- *   <p>
- *     <Link className="usa-color-text-visited" href={'#'}>
- *       This
- *     </Link>
- *     &nbsp;is a visited link.
- *   </p>
- * )
- *  */
+export const Visited = (): React.ReactElement => (
+  <p>
+    <Link className="usa-color-text-visited" href={'#'}>
+      This
+    </Link>
+    &nbsp;is a visited link.
+  </p>
+)
+
 export const DarkBackground = (): React.ReactElement => (
   <div className="usa-dark-background" style={{ padding: '10px' }}>
     <p>
