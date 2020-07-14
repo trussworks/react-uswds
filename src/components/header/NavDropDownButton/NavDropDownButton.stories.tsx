@@ -26,6 +26,7 @@ export const defaultDropDownMenu = (): React.ReactElement => {
   const onToggle = (index: number): void => {
     setIsOpen((prevIsOpen) => {
       const newIsOpen = [false, false]
+      // eslint-disable-next-line security/detect-object-injection
       newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen
     })
