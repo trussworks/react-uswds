@@ -8,7 +8,9 @@ type MenuProps = {
 
 export const Menu = (props: MenuProps & NavListProps): React.ReactElement => {
   const { items, isOpen, ...navListProps } = props
-  return <NavList items={items} subnav hidden={!isOpen} {...navListProps} />
+  return (
+    <NavList items={items} type="subnav" hidden={!isOpen} {...navListProps} />
+  )
 }
 
 export default Menu
