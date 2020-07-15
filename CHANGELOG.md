@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/trussworks/react-uswds/compare/1.6.1...1.7.0) (2020-07-15)
+
+
+### Features
+
+* Link Component ([#309](https://github.com/trussworks/react-uswds/issues/309)) ([2879bec](https://github.com/trussworks/react-uswds/commit/2879bec7cce64a71b5b9e44ff0ad400cf11d52f1))
+
+
+### Bug Fixes
+
+* address all lint warnings ([#319](https://github.com/trussworks/react-uswds/issues/319)) ([95a12a3](https://github.com/trussworks/react-uswds/commit/95a12a363e6f609fee0760469443a808b1c35732))
+* refactor menu, megamanu; removes deprecation warnings from tests ([#313](https://github.com/trussworks/react-uswds/issues/313)) ([42e2481](https://github.com/trussworks/react-uswds/commit/42e248190cfbeebf72f7617326cfb03c4f241304))
+
 ### [1.6.1](https://github.com/trussworks/react-uswds/compare/1.6.0...1.6.1) (2020-07-13)
 
 
