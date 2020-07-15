@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Link as USWDSLink } from '@trussworks/react-uswds'
 
 const HomePage = (): React.ReactElement => (
   <main>
@@ -6,7 +8,14 @@ const HomePage = (): React.ReactElement => (
 
     <p className="usa-intro">
       This is an example application that can be used to demonstrate and test
-      ReactUSWDS functionality.
+      ReactUSWDS functionality. Here's a{' '}
+      <USWDSLink
+        to="/examples"
+        asCustom={Link}
+        variant="external"
+        target="_blank">
+        link to the examples page!
+      </USWDSLink>
     </p>
   </main>
 )

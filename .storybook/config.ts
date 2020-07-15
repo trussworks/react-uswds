@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info'
 import 'happo-plugin-storybook/register'
 import 'uswds/dist/css/uswds.css'
 import '../src/styles/index.scss'
-import './custom-story.css'
+import './custom-styles.scss'
 
 configure(require.context('../src', true, /\.stories\.tsx?$/), module)
 
