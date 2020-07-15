@@ -3,6 +3,7 @@ import { Link } from './Link'
 
 export default {
   title: 'Link',
+  component: Link,
   parameters: {
     info: `Link component
 

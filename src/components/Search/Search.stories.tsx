@@ -3,6 +3,7 @@ import { Search } from './Search'
 
 export default {
   title: 'Search',
+  component: Search,
   parameters: {
     info: `
 USWDS 2.0 Search component

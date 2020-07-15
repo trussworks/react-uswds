@@ -3,6 +3,7 @@ import { Address } from './Address'
 
 export default {
   title: 'Footer/Address',
+  component: Address,
   parameters: {
     info: `
       Display address items (most likely links or simple text) in a row, wrapped in address tag.  Used in USWDS 2.0 Footer component.

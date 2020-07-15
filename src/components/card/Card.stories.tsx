@@ -10,6 +10,7 @@ import { Button } from '../Button/Button'
 
 export default {
   title: 'Card',
+  component: Card,
   parameters: {
     info: `
 USWDS 2.0 Card components
@@ -408,7 +409,7 @@ export const cardTest = (): React.ReactElement => (
       </CardHeader>
       <CardMedia className="usa-card__media--fix-aspect" aria-hidden="true">
         <img
-          src="https://images.unsplash.com/photo-1497904413339-99e9d634f305?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800 "
+          src="https://images.unsplash.com/photo-1497904413339-99e9d634f305?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800"
           alt=""
         />
       </CardMedia>

@@ -7,6 +7,7 @@ import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 export default {
   title: 'Forms/FormGroup',
+  component: FormGroup,
   parameters: {
     info: `
 USWDS 2.0 FormGroup component

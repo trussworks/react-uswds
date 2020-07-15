@@ -3,6 +3,7 @@ import { TextInput } from './TextInput'
 
 export default {
   title: 'Forms/TextInput',
+  component: TextInput,
   parameters: {
     info: `
 USWDS 2.0 TextInput component

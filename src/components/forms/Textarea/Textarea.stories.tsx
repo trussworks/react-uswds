@@ -3,6 +3,7 @@ import { Textarea } from './Textarea'
 
 export default {
   title: 'Forms/Textarea',
+  component: Textarea,
   parameters: {
     info: `
 USWDS 2.0 Textarea component

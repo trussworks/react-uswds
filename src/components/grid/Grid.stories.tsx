@@ -5,6 +5,7 @@ import { Grid } from './Grid/Grid'
 
 export default {
   title: 'Grid',
+  component: Grid,
   parameters: {
     info: `
 USWDS 2.0 Grid components

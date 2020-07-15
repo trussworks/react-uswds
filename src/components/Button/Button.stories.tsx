@@ -3,6 +3,7 @@ import { Button } from './Button'
 
 export default {
   title: 'Button',
+  component: Button,
   parameters: {
     info: `
 USWDS 2.0 Button component

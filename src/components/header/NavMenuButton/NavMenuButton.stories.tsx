@@ -3,6 +3,7 @@ import { NavMenuButton } from './NavMenuButton'
 
 export default {
   title: 'Header/NavMenuButton',
+  component: NavMenuButton,
   parameters: {
     info: `
 USWDS 2.0 NavMenuButton used within the Header component

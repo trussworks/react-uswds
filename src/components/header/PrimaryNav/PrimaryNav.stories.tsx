@@ -3,6 +3,7 @@ import { PrimaryNav } from './PrimaryNav'
 
 export default {
   title: 'Header/PrimaryNav',
+  component: PrimaryNav,
   parameters: {
     info: `
 USWDS 2.0 PrimaryNav component used within the Header component

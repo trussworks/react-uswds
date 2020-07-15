@@ -3,6 +3,7 @@ import { Radio } from './Radio'
 
 export default {
   title: 'Forms/Radio',
+  component: Radio,
   parameters: {
     info: `
 USWDS 2.0 Radio component

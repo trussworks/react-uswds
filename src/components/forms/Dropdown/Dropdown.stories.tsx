@@ -5,6 +5,7 @@ import { Label } from '../Label/Label'
 
 export default {
   title: 'Forms/Dropdown',
+  component: Dropdown,
   parameters: {
     info: `
 USWDS 2.0 Dropdown component

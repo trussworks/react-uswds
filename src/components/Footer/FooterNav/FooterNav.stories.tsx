@@ -6,6 +6,7 @@ import { FooterNav } from './FooterNav'
 
 export default {
   title: 'Footer/FooterNav',
+  component: FooterNav,
   parameters: {
     info: `
      Display single list of nav items, or grouped nav items in an extended nav. Used in USWDS 2.0 Footer component.
