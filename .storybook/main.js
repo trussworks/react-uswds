@@ -56,7 +56,6 @@ const webpackConfig = (config) => {
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['happo-plugin-storybook'],
   webpackFinal: async (config) => {
     return webpackConfig(config)
   },
