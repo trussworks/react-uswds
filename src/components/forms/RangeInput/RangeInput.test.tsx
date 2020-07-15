@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, queryByText } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { RangeInput } from './RangeInput'
 

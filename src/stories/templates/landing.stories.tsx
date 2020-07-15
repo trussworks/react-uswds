@@ -38,6 +38,7 @@ export const LandingPage = (): React.ReactElement => {
   const handleToggleNavDropdown = (index: number): void => {
     setNavDropdownOpen((prevNavDropdownOpen) => {
       const newOpenState = Array(prevNavDropdownOpen.length).fill(false)
+      // eslint-disable-next-line security/detect-object-injection
       newOpenState[index] = !prevNavDropdownOpen[index]
       return newOpenState
     })

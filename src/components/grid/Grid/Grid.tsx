@@ -13,7 +13,7 @@ export type GridLayoutProp = {
 }
 
 export const getGridClasses = (
-  itemProps: GridItemProps,
+  itemProps: GridItemProps = {},
   breakpoint?: BreakpointKeys
 ): string => {
   // This should be fine bc TypeScript
@@ -38,6 +38,7 @@ export const applyGridClasses = (gridLayout: GridProps): string => {
   Object.keys(breakpoints).forEach((b) => {
     const bp = b as BreakpointKeys
     if (Object.prototype.hasOwnProperty.call(gridLayout, bp)) {
+      // eslint-disable-next-line security/detect-object-injection
       const bpProps = gridLayout[bp] as GridItemProps
       classes = classnames(classes, getGridClasses(bpProps, bp))
     }
@@ -52,12 +53,10 @@ export const Grid = ({
   ...props
 }: GridProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
   const {
-    // defaults
     row,
     col,
     gap,
     offset,
-    // breakpoint specific
     mobile,
     mobileLg,
     tablet,
@@ -65,15 +64,31 @@ export const Grid = ({
     desktop,
     desktopLg,
     widescreen,
-    // other
     ...otherProps
   } = props
 
-  let classes = getGridClasses(props)
+  const itemProps = {
+    row,
+    col,
+    gap,
+    offset,
+  }
+
+  const breakpointProps = {
+    mobile,
+    mobileLg,
+    tablet,
+    tabletLg,
+    desktop,
+    desktopLg,
+    widescreen,
+  }
+  let classes = getGridClasses(itemProps)
 
   Object.keys(breakpoints).forEach((b) => {
     const bp = b as BreakpointKeys
-    if (Object.prototype.hasOwnProperty.call(props, bp)) {
+    if (Object.prototype.hasOwnProperty.call(breakpointProps, bp)) {
+      // eslint-disable-next-line security/detect-object-injection
       const bpProps = props[bp] as GridItemProps
       classes = classnames(classes, getGridClasses(bpProps, bp))
     }

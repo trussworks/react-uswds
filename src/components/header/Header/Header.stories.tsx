@@ -25,6 +25,17 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
+const onToggle = (
+  index: number,
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean[]>>
+): void => {
+  setIsOpen((prevIsOpen) => {
+    const newIsOpen = [false, false]
+    // eslint-disable-next-line security/detect-object-injection
+    newIsOpen[index] = !prevIsOpen[index]
+    return newIsOpen
+  })
+}
 export const BasicHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
@@ -40,20 +51,12 @@ export const BasicHeader = (): React.ReactElement => {
 
   const [isOpen, setIsOpen] = useState([false, false])
 
-  const onToggle = (index: number): void => {
-    setIsOpen((prevIsOpen) => {
-      const newIsOpen = Array(prevIsOpen.length).fill(false)
-      newIsOpen[index] = !prevIsOpen[index]
-      return newIsOpen
-    })
-  }
-
   const testItemsMenu = [
     <>
       <NavDropDownButton
         menuId="testDropDownOne"
         onToggle={(): void => {
-          onToggle(0)
+          onToggle(0, setIsOpen)
         }}
         isOpen={isOpen[0]}
         label="Nav Label"
@@ -139,19 +142,11 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
 
   const [isOpen, setIsOpen] = useState([false, false])
 
-  const onToggle = (index: number): void => {
-    setIsOpen((prevIsOpen) => {
-      const newIsOpen = [false, false]
-      newIsOpen[index] = !prevIsOpen[index]
-      return newIsOpen
-    })
-  }
-
   const testItemsMegaMenu = [
     <>
       <NavDropDownButton
         onToggle={(): void => {
-          onToggle(0)
+          onToggle(0, setIsOpen)
         }}
         menuId="testDropDownOne"
         isOpen={isOpen[0]}
@@ -168,7 +163,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
     <>
       <NavDropDownButton
         onToggle={(): void => {
-          onToggle(1)
+          onToggle(1, setIsOpen)
         }}
         menuId="testDropDownTwo"
         isOpen={isOpen[1]}
@@ -215,14 +210,6 @@ export const extendedHeader = (): React.ReactElement => {
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
   const [isOpen, setIsOpen] = useState([false])
 
-  const onToggle = (index: number): void => {
-    setIsOpen((prevIsOpen) => {
-      const newIsOpen = Array(prevIsOpen.length).fill(false)
-      newIsOpen[index] = !prevIsOpen[index]
-      return newIsOpen
-    })
-  }
-
   const testMenuItems = [
     <a href="#linkOne" key="one">
       Simple link one
@@ -236,7 +223,7 @@ export const extendedHeader = (): React.ReactElement => {
     <>
       <NavDropDownButton
         onToggle={(): void => {
-          onToggle(0)
+          onToggle(0, setIsOpen)
         }}
         menuId="testDropDownOne"
         isOpen={isOpen[0]}
@@ -311,19 +298,11 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
 
   const [isOpen, setIsOpen] = useState([false, false])
 
-  const onToggle = (index: number): void => {
-    setIsOpen((prevIsOpen) => {
-      const newIsOpen = Array(prevIsOpen.length).fill(false)
-      newIsOpen[index] = !prevIsOpen[index]
-      return newIsOpen
-    })
-  }
-
   const testItemsMenu = [
     <>
       <NavDropDownButton
         onToggle={(): void => {
-          onToggle(0)
+          onToggle(0, setIsOpen)
         }}
         menuId="testDropDownOne"
         isOpen={isOpen[0]}
