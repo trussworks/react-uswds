@@ -25,7 +25,7 @@ jobs:
           command: '[[ ( "${CIRCLE_PR_USERNAME}" != "dependabot" ) && ( "${CIRCLE_PR_USERNAME}" != "dependabot-preview" ) ]] && yarn happo-ci'
           environment:
             HAPPO_IS_ASYNC: 'true'
-            BASE_BRANCH: 'origin/develop'
+            BASE_BRANCH: 'origin/main'
 
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
