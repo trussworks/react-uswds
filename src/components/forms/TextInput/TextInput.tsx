@@ -2,10 +2,13 @@ import React from 'react'
 import classnames from 'classnames'
 import { deprecationWarning } from '../../../deprecation'
 
-interface TextInputProps {
+interface RequiredTextInputProps {
   id: string
   name: string
   type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
+}
+
+interface CustomTextInputProps {
   className?: string
   validationStatus?: 'error' | 'success'
   /**
@@ -33,9 +36,12 @@ interface TextInputProps {
     | undefined
 }
 
-export const TextInput = (
-  props: TextInputProps & React.InputHTMLAttributes<HTMLInputElement>
-): React.ReactElement => {
+export type OptionalTextInputProps = CustomTextInputProps &
+  JSX.IntrinsicElements['input']
+
+type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
+
+export const TextInput = (props: TextInputProps): React.ReactElement => {
   const {
     id,
     name,

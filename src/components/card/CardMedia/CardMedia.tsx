@@ -9,7 +9,7 @@ interface CardMediaProps {
 }
 
 export const CardMedia = (
-  props: CardMediaProps & React.HTMLAttributes<HTMLDivElement>
+  props: CardMediaProps & JSX.IntrinsicElements['div']
 ): React.ReactElement => {
   const {
     exdent,

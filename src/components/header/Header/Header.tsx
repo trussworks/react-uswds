@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 export const Header = (
-  props: HeaderProps & React.HtmlHTMLAttributes<HTMLElement>
+  props: HeaderProps & JSX.IntrinsicElements['header']
 ): React.ReactElement => {
   const {
     basic,

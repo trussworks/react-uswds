@@ -4,7 +4,7 @@ import React from 'react'
 import closeImg from 'uswds/src/img/close.svg'
 
 export const NavCloseButton = (
-  props: React.HTMLAttributes<HTMLButtonElement>
+  props: JSX.IntrinsicElements['button']
 ): React.ReactElement => {
   const { onClick, ...buttonProps } = props
 

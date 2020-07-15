@@ -4,7 +4,6 @@ import { deprecationWarning } from '../../deprecation'
 
 interface ButtonProps {
   type: 'button' | 'submit' | 'reset'
-  disabled?: boolean
   children: React.ReactNode
   secondary?: boolean
   base?: boolean
@@ -25,11 +24,10 @@ interface ButtonProps {
 }
 
 export const Button = (
-  props: ButtonProps & React.HTMLAttributes<HTMLButtonElement>
+  props: ButtonProps & JSX.IntrinsicElements['button']
 ): React.ReactElement => {
   const {
     type,
-    disabled,
     children,
     secondary,
     base,
@@ -43,6 +41,7 @@ export const Button = (
     unstyled,
     onClick,
     className,
+    ...defaultProps
   } = props
 
   if (big) {
@@ -75,9 +74,9 @@ export const Button = (
     <button
       type={type}
       className={classes}
-      disabled={disabled}
       onClick={onClick}
-      data-testid="button">
+      data-testid="button"
+      {...defaultProps}>
       {children}
     </button>
   )

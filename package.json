@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -29,7 +29,7 @@
     "build": "webpack -p",
     "build:watch": "webpack --watch",
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
-    "release": "standard-version -t",
+    "release": "standard-version -t ''",
     "prepublishOnly": "yarn build",
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
@@ -109,7 +109,7 @@
     "react-docgen-typescript-loader": "^3.3.0",
     "react-test-renderer": "^16.12.0",
     "sass": "^1.26.0",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.2",
     "sass-resources-loader": "^2.0.1",
     "source-map-loader": "^1.0.0",
     "standard-version": "^8.0.0",
@@ -153,8 +153,7 @@
   },
   "standard-version": {
     "skip": {
-      "tag": true,
-      "commit": true
+      "tag": true
     },
     "types": [
       {

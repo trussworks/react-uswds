@@ -75,3 +75,9 @@ export const customClass = (): React.ReactElement => (
     Click Me
   </Button>
 )
+
+export const disabled = (): React.ReactElement => (
+  <Button type="button" disabled>
+    Click Me
+  </Button>
+)
