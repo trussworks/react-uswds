@@ -3,7 +3,7 @@ name: Deploy Storybook
 on:
   push:
     tags:
-      - v1.*
+      - 1.*
 
 jobs:
   deploy-storybook:
