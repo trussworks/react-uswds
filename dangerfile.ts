@@ -1,5 +1,53 @@
-import { includes } from 'lodash'
+import * as child from 'child_process'
+
+import { includes, replace } from 'lodash'
 import { danger, warn } from 'danger'
+
+const checkYarnAudit = () => {
+  const result = child.spawnSync('yarn', [
+    'audit',
+    '--groups=dependencies',
+    '--level=high',
+    '--json',
+  ])
+  const output = result.stdout.toString().split('\n')
+  const summary = JSON.parse(output[output.length - 2])
+  if (
+    'data' in summary &&
+    'vulnerabilities' in summary.data &&
+    'high' in summary.data.vulnerabilities &&
+    'critical' in summary.data.vulnerabilities
+  ) {
+    if (
+      summary.data.vulnerabilities.high > 0 ||
+      summary.data.vulnerabilities.critical > 0
+    ) {
+      let issuesFound = 'Yarn Audit Issues Found:\n'
+      output.forEach((rawAudit) => {
+        try {
+          const audit = JSON.parse(rawAudit)
+          if (audit.type === 'auditAdvisory') {
+            issuesFound +=
+              `${audit.data.advisory.severity} - ${audit.data.advisory.title}\n` +
+              `Package ${audit.data.advisory.module_name}\n` +
+              `Patched in ${audit.data.advisory.patched_versions}\n` +
+              `Dependency of ${audit.data.resolution.path.split('>')[0]}\n` +
+              `Path ${replace(audit.data.resolution.path, />/g, ' > ')}\n` +
+              `More info ${audit.data.advisory.url}\n\n`
+          }
+        } catch {
+          // not all outputs maybe json and that's okay
+        }
+      })
+      fail(
+        `${issuesFound}${summary.data.vulnerabilities.high} high vulnerabilities and ` +
+          `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
+      )
+    }
+  } else {
+    warn(`Couldn't find summary of vulnerabilities from yarn audit`)
+  }
+}
 
 // No PR is too small to include a description of why you made a change
 if (danger.github && danger.github.pr.body.length < 10) {
@@ -49,23 +97,10 @@ if (packageChanged && !lockfileChanged) {
   warn(`${message} - <i>${idea}</i>`)
 }
 
-// Ensure we have access to github for these checks
-let isYarnAuditMissing = false
-if (danger.github) {
-  const prBody = danger.github.pr.body
-  if (lockfileChanged && danger.github.pr.user.type == 'User') {
-    isYarnAuditMissing = !(
-      includes(prBody, 'vulnerabilities found') &&
-      includes(prBody, 'Packages audited:')
-    )
-  }
-}
-
-// Encourage adding `yarn audit` output on package change
-if (isYarnAuditMissing) {
-  const message =
-    'Changes were made to yarn.lock, but no plain text yarn audit output was found in PR description.'
-  const idea =
-    'Can you run `yarn audit` in your branch and paste the results inside a markdown code block?'
-  warn(`${message} - <i>${idea}</i>`)
+// skip these checks if PR is by dependabot, if we don't have a github object let it run also since we are local
+if (
+  !danger.github ||
+  (danger.github && danger.github.pr.user.login !== 'dependabot-preview[bot]')
+) {
+  checkYarnAudit()
 }
