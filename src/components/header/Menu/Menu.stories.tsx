@@ -3,6 +3,7 @@ import { Menu } from './Menu'
 
 export default {
   title: 'Header/Menu',
+  component: Menu,
   parameters: {
     info: `
 USWDS 2.0 Menu component used within the Header component

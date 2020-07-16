@@ -3,6 +3,7 @@ import { Tag } from './Tag'
 
 export default {
   title: 'Tag',
+  component: Tag,
   parameters: {
     info: `
 USWDS 2.0 Tag component

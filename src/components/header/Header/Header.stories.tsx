@@ -12,6 +12,7 @@ import { ExtendedNav } from '../ExtendedNav/ExtendedNav'
 
 export default {
   title: 'Header/Header',
+  component: Header,
   parameters: {
     info: `
 USWDS 2.0 Header component

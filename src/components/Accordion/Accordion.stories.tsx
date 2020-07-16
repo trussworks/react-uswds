@@ -3,6 +3,7 @@ import { Accordion } from './Accordion'
 
 export default {
   title: 'Accordion',
+  component: Accordion,
   parameters: {
     info: `
 USWDS 2.0 Accordion component

@@ -5,6 +5,7 @@ import { Fieldset } from '../Fieldset/Fieldset'
 
 export default {
   title: 'Forms/DateInput',
+  component: DateInput,
   parameters: {
     info: `
 USWDS 2.0 DateInput component

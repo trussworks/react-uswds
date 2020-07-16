@@ -3,6 +3,7 @@ import { Table } from './Table'
 
 export default {
   title: 'Table',
+  component: Table,
   parameters: {
     info: `
 USWDS 2.0 Table component

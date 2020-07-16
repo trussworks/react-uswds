@@ -3,6 +3,7 @@ import { SideNav } from './SideNav'
 
 export default {
   title: 'SideNav',
+  component: SideNav,
 }
 
 const testItems = [

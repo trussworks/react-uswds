@@ -3,6 +3,7 @@ import { Checkbox } from './Checkbox'
 
 export default {
   title: 'Forms/Checkbox',
+  component: Checkbox,
   parameters: {
     info: `
 USWDS 2.0 Checkbox component

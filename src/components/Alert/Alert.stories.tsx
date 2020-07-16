@@ -5,6 +5,7 @@ import { Button } from '../Button/Button'
 
 export default {
   title: 'Alert',
+  component: Alert,
   parameters: {
     info: `
 USWDS 2.0 Alert component

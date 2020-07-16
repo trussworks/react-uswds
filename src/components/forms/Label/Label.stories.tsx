@@ -3,6 +3,7 @@ import { Label } from './Label'
 
 export default {
   title: 'Forms/Label',
+  component: Label,
   parameters: {
     info: `
 USWDS 2.0 Label component

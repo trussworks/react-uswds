@@ -5,6 +5,7 @@ import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
   title: 'Header/NavDropDownButton',
+  component: NavDropDownButton,
   parameters: {
     info: `
 USWDS 2.0 NavDropDownButton component used within the Header component

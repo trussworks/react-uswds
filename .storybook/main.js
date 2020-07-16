@@ -1,27 +1,31 @@
 const path = require('path')
 
-module.exports = ({ config }) => {
-  config.module.rules = config.module.rules.filter(
-    (rule) => rule.test.toString() !== '/\\.css$/'
-  )
-
+const webpackConfig = (config) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     include: path.resolve(__dirname, '../src'),
     use: [
       {
-        loader: require.resolve('awesome-typescript-loader'),
+        loader: 'awesome-typescript-loader',
       },
       {
-        loader: require.resolve('react-docgen-typescript-loader'),
+        loader: 'react-docgen-typescript-loader',
+        options: {
+          tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+        },
       },
     ],
   })
+  config.resolve.extensions.push('.ts', '.tsx')
 
+  config.module.rules = config.module.rules.filter(
+    (rule) => rule.test.toString() !== '/\\.css$/'
+  )
   config.module.rules.push({
     test: /\.(sa|sc|c)ss$/,
     exclude: /\.module\.(sa|sc|c)ss$/i,
     use: ['style-loader', 'css-loader', 'sass-loader'],
+    include: path.resolve(__dirname, '../'),
   })
 
   config.module.rules.push({
@@ -46,7 +50,13 @@ module.exports = ({ config }) => {
       },
     ],
   })
-  config.resolve.extensions.push('.ts', '.tsx')
 
   return config
+}
+
+module.exports = {
+  stories: ['../src/**/*.stories.@(ts|tsx)'],
+  webpackFinal: async (config) => {
+    return webpackConfig(config)
+  },
 }

@@ -4,6 +4,7 @@ import { SocialLinks } from './SocialLinks'
 
 export default {
   title: 'Footer/SocialLinks',
+  component: SocialLinks,
   parameters: {
     info: `
     Display social links in styled row. Used in USWDS 2.0 Footer component.

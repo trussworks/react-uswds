@@ -8,6 +8,7 @@ import { Radio } from '../Radio/Radio'
 
 export default {
   title: 'Forms/Fieldset',
+  component: Fieldset,
   parameters: {
     info: `
 USWDS 2.0 Fieldset component

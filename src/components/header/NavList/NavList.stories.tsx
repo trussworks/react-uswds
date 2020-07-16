@@ -3,6 +3,7 @@ import { NavList } from './NavList'
 
 export default {
   title: 'Header/NavList',
+  component: NavList,
   parameters: {
     info: `
 USWDS 2.0 NavList component used within the Header component

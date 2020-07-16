@@ -7,6 +7,7 @@ import logoImg from 'uswds/src/img/logo-img.png'
 
 export default {
   title: 'Footer/Logo',
+  component: Logo,
   parameters: {
     info: `
     Display logo image with optional heading.  Used in USWDS 2.0 Footer component.

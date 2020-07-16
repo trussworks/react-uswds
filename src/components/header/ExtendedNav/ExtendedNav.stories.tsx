@@ -3,6 +3,7 @@ import { ExtendedNav } from './ExtendedNav'
 
 export default {
   title: 'Header/ExtendedNav',
+  component: ExtendedNav,
   parameters: {
     info: `
 USWDS 2.0 ExtendedNav component used within the Header component

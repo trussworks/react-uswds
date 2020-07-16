@@ -6,6 +6,7 @@ import { Modal, Overlay, ModalContainer, connectModal, useModal } from './Modal'
 
 export default {
   title: 'Modal',
+  component: Modal,
   parameters: {
     info: `Truss-designed component`,
   },
