@@ -1,4 +1,4 @@
-name: auto approve and merge and tidy
+name: auto approve and merge
 on: pull_request
 
 # job level conditions don't seem to work at the moment
