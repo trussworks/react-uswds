@@ -2,7 +2,8 @@
 name: New USWDS Component
 about: Add a new component based on USWDS spec
 title: "New Component: "
-labels: type: feature
+labels: "type: feature"
+
 ---
 
 # [Component Name](https://designsystem.digital.gov/components/##)
