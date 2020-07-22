@@ -1,6 +1,5 @@
 import * as child from 'child_process'
 
-import { includes, replace } from 'lodash'
 import { danger, warn } from 'danger'
 
 // Load all modified and new files
@@ -35,7 +34,7 @@ const checkYarnAudit: () => void = () => {
               `Package ${audit.data.advisory.module_name}\n` +
               `Patched in ${audit.data.advisory.patched_versions}\n` +
               `Dependency of ${audit.data.resolution.path.split('>')[0]}\n` +
-              `Path ${replace(audit.data.resolution.path, />/g, ' > ')}\n` +
+              `Path ${audit.data.resolution.path.replace(/>/g, ' > ')}\n` +
               `More info ${audit.data.advisory.url}\n\n`
           }
         } catch {
@@ -75,7 +74,7 @@ const checkCodeChanges: () => void = () => {
   const hasNewComponents = danger.git.created_files.some(
     (p) => !!p.match(/src\/components\/.*\.[jt]sx/)
   )
-  const hasEntrypointChanges = includes(allFiles, 'src/index.ts')
+  const hasEntrypointChanges = allFiles.includes('src/index.ts')
   if (hasNewComponents && !hasEntrypointChanges) {
     const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
     const idea = `Did you forget to export new components from the library entrypoint?`
@@ -96,8 +95,8 @@ const checkCodeChanges: () => void = () => {
 
 const checkDependencyChanges: () => void = () => {
   // Request update of yarn.lock if package.json changed but yarn.lock isn't
-  const packageChanged = includes(allFiles, 'package.json')
-  const lockfileChanged = includes(allFiles, 'yarn.lock')
+  const packageChanged = allFiles.includes('package.json')
+  const lockfileChanged = allFiles.includes('yarn.lock')
   if (packageChanged && !lockfileChanged) {
     danger.git
       .structuredDiffForFile('package.json')
