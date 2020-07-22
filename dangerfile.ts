@@ -99,9 +99,31 @@ const checkDependencyChanges: () => void = () => {
   const packageChanged = includes(allFiles, 'package.json')
   const lockfileChanged = includes(allFiles, 'yarn.lock')
   if (packageChanged && !lockfileChanged) {
-    const message = 'Changes were made to package.json, but not to yarn.lock'
-    const idea = 'Perhaps you need to run `yarn install`?'
-    warn(`${message} - <i>${idea}</i>`)
+    danger.git
+      .structuredDiffForFile('package.json')
+      .then((sdiff) => {
+        return sdiff.chunks.every((chunk) => {
+          return chunk.changes
+            .filter((change) => {
+              // filter out changes that are context lines in the diff
+              return change.type !== 'normal'
+            })
+            .every((change) => {
+              // for every add/del, is the only change to the version?
+              return change.content.match(/"version":/)
+            })
+        })
+      })
+      .then((onlyVersionChanges) => {
+        // If the only thing that changed is the version, it is ok if
+        // yarn.lock didn't change
+        if (!onlyVersionChanges) {
+          const message =
+            'Changes were made to package.json, but not to yarn.lock'
+          const idea = 'Perhaps you need to run `yarn install`?'
+          warn(`${message} - <i>${idea}</i>`)
+        }
+      })
   }
 }
 
