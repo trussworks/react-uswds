@@ -3,7 +3,10 @@ import * as child from 'child_process'
 import { includes, replace } from 'lodash'
 import { danger, warn } from 'danger'
 
-const checkYarnAudit = () => {
+// Load all modified and new files
+const allFiles = danger.git.modified_files.concat(danger.git.created_files)
+
+const checkYarnAudit: () => void = () => {
   const result = child.spawnSync('yarn', [
     'audit',
     '--groups=dependencies',
@@ -49,52 +52,57 @@ const checkYarnAudit = () => {
   }
 }
 
-// No PR is too small to include a description of why you made a change
-if (danger.github && danger.github.pr.body.length < 10) {
-  warn('Please include a description of your PR changes.')
+const checkPrDescription: () => void = () => {
+  // No PR is too small to include a description of why you made a change
+  if (danger.github && danger.github.pr.body.length < 10) {
+    warn('Please include a description of your PR changes.')
+  }
 }
 
-// Load all modified and new files
-const allFiles = danger.git.modified_files.concat(danger.git.created_files)
-
-// Request changes to package source code to also include changes to tests.
-const hasCodeChanges = allFiles.some((p) => !!p.match(/src\/.*\.[jt]sx?/))
-const hasTestChanges = allFiles.some((p) => !!p.match(/src\/.*\.test\.[jt]sx?/))
-if (hasCodeChanges && !hasTestChanges) {
-  warn(
-    'This PR does not include changes to tests, even though it affects source code.'
+const checkCodeChanges: () => void = () => {
+  // Request changes to package source code to also include changes to tests.
+  const hasCodeChanges = allFiles.some((p) => !!p.match(/src\/.*\.[jt]sx?/))
+  const hasTestChanges = allFiles.some(
+    (p) => !!p.match(/src\/.*\.test\.[jt]sx?/)
   )
-}
+  if (hasCodeChanges && !hasTestChanges) {
+    warn(
+      'This PR does not include changes to tests, even though it affects source code.'
+    )
+  }
 
-// Make sure to export new components (src/components/*.[jt]sx)
-const hasNewComponents = danger.git.created_files.some(
-  (p) => !!p.match(/src\/components\/.*\.[jt]sx/)
-)
-const hasEntrypointChanges = includes(allFiles, 'src/index.ts')
-if (hasNewComponents && !hasEntrypointChanges) {
-  const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
-  const idea = `Did you forget to export new components from the library entrypoint?`
-  warn(`${message} - <em>${idea}</em>`)
-}
-
-// Require new src/components files to include changes to storybook
-const hasStorybookChanges = allFiles.some(
-  (p) => !!p.match(/src\/.*\.stories\.[jt]sx?/)
-)
-
-if (hasCodeChanges && !hasStorybookChanges) {
-  warn(
-    'This PR does not include changes to storybook, even though it affects component code.'
+  // Make sure to export new components (src/components/*.[jt]sx)
+  const hasNewComponents = danger.git.created_files.some(
+    (p) => !!p.match(/src\/components\/.*\.[jt]sx/)
   )
+  const hasEntrypointChanges = includes(allFiles, 'src/index.ts')
+  if (hasNewComponents && !hasEntrypointChanges) {
+    const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
+    const idea = `Did you forget to export new components from the library entrypoint?`
+    warn(`${message} - <em>${idea}</em>`)
+  }
+
+  // Require new src/components files to include changes to storybook
+  const hasStorybookChanges = allFiles.some(
+    (p) => !!p.match(/src\/.*\.stories\.[jt]sx?/)
+  )
+
+  if (hasCodeChanges && !hasStorybookChanges) {
+    warn(
+      'This PR does not include changes to storybook, even though it affects component code.'
+    )
+  }
 }
 
-// Request update of yarn.lock if package.json changed but yarn.lock isn't
-const packageChanged = includes(allFiles, 'package.json')
-const lockfileChanged = includes(allFiles, 'yarn.lock')
-if (packageChanged && !lockfileChanged) {
-  const message = 'Changes were made to package.json, but not to yarn.lock'
-  const idea = 'Perhaps you need to run `yarn install`?'
-  warn(`${message} - <i>${idea}</i>`)
+const checkDependencyChanges: () => void = () => {
+  // Request update of yarn.lock if package.json changed but yarn.lock isn't
+  const packageChanged = includes(allFiles, 'package.json')
+  const lockfileChanged = includes(allFiles, 'yarn.lock')
+  if (packageChanged && !lockfileChanged) {
+    const message = 'Changes were made to package.json, but not to yarn.lock'
+    const idea = 'Perhaps you need to run `yarn install`?'
+    warn(`${message} - <i>${idea}</i>`)
+  }
 }
 
 // skip these checks if PR is by dependabot, if we don't have a github object let it run also since we are local
@@ -103,4 +111,8 @@ if (
   (danger.github && danger.github.pr.user.login !== 'dependabot-preview[bot]')
 ) {
   checkYarnAudit()
+  checkPrDescription()
+
+  checkCodeChanges()
+  checkDependencyChanges()
 }
