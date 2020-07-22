@@ -21,5 +21,5 @@ Props = {
 **More Details**
   -   `<div>`root element
 
-## Future Considerations
+## Other Considerations
 -  
