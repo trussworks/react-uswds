@@ -10,6 +10,7 @@ interface AlertProps {
   cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean
+  validation: boolean
 }
 
 export const Alert = ({
@@ -20,6 +21,7 @@ export const Alert = ({
   slim,
   noIcon,
   className,
+  validation,
   ...props
 }: AlertProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
   const classes = classnames(
@@ -31,6 +33,7 @@ export const Alert = ({
       'usa-alert--info': type === 'info',
       'usa-alert--slim': slim,
       'usa-alert--no-icon': noIcon,
+      'usa-alert--validation': validation,
       [styles.alertWithCTA]: !!cta,
     },
     className
