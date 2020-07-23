@@ -10,7 +10,7 @@ interface AlertProps {
   cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean
-  validation: boolean
+  validation?: boolean
 }
 
 export const Alert = ({
