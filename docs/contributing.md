@@ -70,7 +70,9 @@ Because this project exports a library that will be used by other projects, it i
   - Changes to package source code should include changes to tests.
   - New `src/components` files should include changes to storybook.
   - New `src/components` files should be exported from the package entrypoint.
-  - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs in PR description.
+  - Package dependency changes should include `yarn.lock` updates and
+    `yarn audit` will be run by danger to ensure no high or critical
+    vulnerabilities are found
 - All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
 - [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Developers must have access to the Happo.io account to approve/reject diffs. If you work at Truss, log into Happo.io with your gmail and you will be able to approve/reject changes. Navigate to the happo link for instructions on how to review and approve diffs.
 
