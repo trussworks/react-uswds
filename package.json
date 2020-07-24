@@ -129,7 +129,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "tsc --noEmit && lint-staged",
-      "pre-push": "yarn danger local --failOnErrors"
+      "pre-push": "yarn danger local -b main --failOnErrors"
     }
   },
   "lint-staged": {
