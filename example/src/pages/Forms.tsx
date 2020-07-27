@@ -24,7 +24,7 @@ const FormSchema = Yup.object().shape({
 const FormsPage = (): React.ReactElement => {
   return (
     <>
-      <h1>Forms</h1>
+      <h1>Forms Examples</h1>
       <section>
         <h2>Formik</h2>
         <Formik
@@ -43,13 +43,11 @@ const FormsPage = (): React.ReactElement => {
                 <Alert type="info" validation heading="Email Requirements">
                   <ValidationChecklist id="validate-email">
                     <ValidationItem
-                      validator="required"
+                      id="required"
                       isValid={values.email.length > 0}>
                       Include required field.
                     </ValidationItem>
-                    <ValidationItem
-                      validator="validFormat"
-                      isValid={!errors.email}>
+                    <ValidationItem id="validFormat" isValid={!errors.email}>
                       Use only valid email formatting
                     </ValidationItem>
                     {errors.email}
@@ -69,13 +67,11 @@ const FormsPage = (): React.ReactElement => {
                 <Alert type="info" validation heading="Password Requirements">
                   <ValidationChecklist id="validate-password">
                     <ValidationItem
-                      validator="required"
+                      id="required"
                       isValid={values.password.length > 0}>
                       Include required field.
                     </ValidationItem>
-                    <ValidationItem
-                      validator="length"
-                      isValid={!errors.password}>
+                    <ValidationItem id="length" isValid={!errors.password}>
                       Length is between 8-20 characters
                     </ValidationItem>
                   </ValidationChecklist>

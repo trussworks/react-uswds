@@ -61,14 +61,10 @@ export const Default = (): React.ReactElement => {
       <Fieldset legend="Enter a code">
         <Alert type="info" validation heading="Code Requirements">
           <ValidationChecklist id="validate-code">
-            <ValidationItem
-              validator="uppercase"
-              isValid={validations.uppercase}>
+            <ValidationItem id="uppercase" isValid={validations.uppercase}>
               Use at least one uppercase character
             </ValidationItem>
-            <ValidationItem
-              validator="numerical"
-              isValid={validations.numerical}>
+            <ValidationItem id="numerical" isValid={validations.numerical}>
               Use at least one number
             </ValidationItem>
           </ValidationChecklist>
