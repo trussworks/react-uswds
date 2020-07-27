@@ -19,7 +19,6 @@ Regardless of whether you are on client work or Reserve, it is _up to each indiv
 ### Active maintainer responsibilities include:
 
 - Maintain a presence in the #react-uswds channel, especially to answer any implementation questions from Trussels who are _not_ active maintainers
-- Attend and help facilitate the ReactUSDS check-in meetings regularly
 - Pay attention to [USWDS](https://github.com/uswds/uswds) updates, and create new issues needed to help this project stay up-to-date with them
 - Participate actively in PR reviews, issue discussion, and project roadmap planning
 - Keep an eye on any security alerts that come up, and make sure they are addressed promptly (see below)
@@ -37,7 +36,6 @@ Typically any security alerts we receive will be related to third-party dependen
 First of all, we’re so excited you want to be an active maintainer on this project! Here are the things you should make sure to do:
 
 - [ ] Join the #react-uswds Slack channel
-- [ ] Add yourself to the ReactUSWDS weekly check-in (this can be found on the Truss Events calendar)
 - [ ] If you haven't already, be sure to familiarize yourself with this repo, especially the docs on [contributing](./contributing.md) and [recent releases](https://github.com/trussworks/react-uswds/releases)
 - [ ] Open a new PR that adds yourself to the Active Maintainers list in the [readme](../README.md).
   - [ ] _Optional:_ Speak with another active maintainer and request admin privlages to the [Happo Account](https://happo.io/)
@@ -70,5 +68,4 @@ We’re equally excited that you’ll be taking something off your plate and mov
   - **_Don't_** remove yourself from `package.json` contributors! You did good work on this project and that should be recognized.
 - [ ] _Optional:_ You don’t need to have npm access revoked, but you can if you want.
 - [ ] _Optional:_ You don’t need to have Happo admin access revoked, but you can if you want.
-- [ ] _Optional:_ Give yourself some time back and remove yourself from the weekly check-in events
 - [ ] _Optional: If you want to,_ feel free to leave the #react-uswds Slack channels
