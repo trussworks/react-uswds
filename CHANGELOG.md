@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/trussworks/react-uswds/compare/1.7.0...1.8.0) (2020-07-27)
+
+
+### Features
+
+* **danger:** Block PR if yarn audit has high or critical, do not run on dependabot, no warn on version ([#327](https://github.com/trussworks/react-uswds/issues/327)) ([ee13281](https://github.com/trussworks/react-uswds/commit/ee13281a7669faaeb6ebd56a22d863d82cfe49e2)), closes [#324](https://github.com/trussworks/react-uswds/issues/324)
+* **storybook:** switch to addon-docs ([#323](https://github.com/trussworks/react-uswds/issues/323)) ([ccae95d](https://github.com/trussworks/react-uswds/commit/ccae95d44995da3be4156601dd6d023087140f9a)), closes [#119](https://github.com/trussworks/react-uswds/issues/119)
+* **storybook:** upgrade to 5.3.0, prepare for addon-docs ([#322](https://github.com/trussworks/react-uswds/issues/322)) ([1f1fc6a](https://github.com/trussworks/react-uswds/commit/1f1fc6a7759c411fff11b9f156b074143ed2eec4)), closes [#119](https://github.com/trussworks/react-uswds/issues/119)
+
+
+### Bug Fixes
+
+* correct version syntax in deploy-storybook worflow([#321](https://github.com/trussworks/react-uswds/issues/321)) ([4eb7d2c](https://github.com/trussworks/react-uswds/commit/4eb7d2c3490d3740be3517d0d0e4715e0fe2ff9f))
+* Export NavDropDownButton ([91f9ca7](https://github.com/trussworks/react-uswds/commit/6e27ce6e3fcc98699b7b442d801a53f113118adf))
+* remove commitizen; upgrade example app dependencies ([#335](https://github.com/trussworks/react-uswds/issues/335)) ([9c5aea2](https://github.com/trussworks/react-uswds/commit/9c5aea26acb34cb282ce9f2e0c2a17af90cae786))
+
+
+### Documentation & Examples
+
+* add [@ahobson](https://github.com/ahobson) as codeowner, remove check-in meeting ([#347](https://github.com/trussworks/react-uswds/issues/347)) ([9eaf02b](https://github.com/trussworks/react-uswds/commit/9eaf02b188fd017322b6e4dc4c1b0d7693e47a9c))
+* Add new component issue template ([#340](https://github.com/trussworks/react-uswds/issues/340)) ([8fb0f4b](https://github.com/trussworks/react-uswds/commit/8fb0f4b004fde789e5fcea6294a5659b91503742))
+
 ## [1.7.0](https://github.com/trussworks/react-uswds/compare/1.6.1...1.7.0) (2020-07-15)
 
 
