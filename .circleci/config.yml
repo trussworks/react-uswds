@@ -28,4 +28,8 @@ jobs:
             BASE_BRANCH: 'origin/main'
 
       - run: yarn lint
-      - run: yarn danger ci --failOnErrors
+      - run:
+          name: 'Danger CI'
+          command: yarn danger ci --failOnErrors
+          environment:
+            DEBUG: '*'
