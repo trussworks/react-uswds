@@ -3,7 +3,6 @@
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
 [![CircleCI](https://img.shields.io/circleci/build/github/trussworks/react-uswds/develop)](https://circleci.com/gh/trussworks/react-uswds)
 [![npm downloads](https://img.shields.io/npm/dm/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 React USWDS 2.0 component library
 

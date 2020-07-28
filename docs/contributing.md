@@ -63,15 +63,21 @@ Because this project exports a library that will be used by other projects, it i
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - These checks will also be run on all files in CI, and must pass before the branch can be merged
 - [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on PR title.
-  - The version number is determined based on conventional commits - **[fix]** indicates a bug fix, **[feat]** indicates a minor bump. **[!]** or [BREAKING CHANGES] indicates a major bump. Be sure to use the correct spec.
+  - The version number is determined based on conventional commits -
+    **[fix]** indicates a bug fix, **[feat]** indicates a minor bump.
+    **[!]** or [BREAKING CHANGES] indicates a major bump. Other
+    possibilities include **build**, **ci**, **chore**, **docs**,
+    **perf**, **refactor**, **revert**, **style**, **test**.  It is
+    *strongly* recommended you familiarize yourself with [conventional commits](https://www.conventionalcommits.org).
   - The **[WIP]** prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
-  - We have set up [`commitizen`](https://commitizen.github.io/cz-cli/) CLI for making it easy to write standard commit messages. You can use `yarn commit` instead of `git commit` to start the commitizen prompt
 - The project is configured to only allow [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits.
 - [dangerjs](https://github.com/danger/danger-js) is used to enforce several pull request standards, including:
   - Changes to package source code should include changes to tests.
   - New `src/components` files should include changes to storybook.
   - New `src/components` files should be exported from the package entrypoint.
-  - Package dependency changes should include `yarn.lock` updates and `yarn audit` outputs in PR description.
+  - Package dependency changes should include `yarn.lock` updates and
+    `yarn audit` will be run by danger to ensure no high or critical
+    vulnerabilities are found
 - All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
 - [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Developers must have access to the Happo.io account to approve/reject diffs. If you work at Truss, log into Happo.io with your gmail and you will be able to approve/reject changes. Navigate to the happo link for instructions on how to review and approve diffs.
 

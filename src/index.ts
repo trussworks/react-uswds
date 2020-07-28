@@ -38,6 +38,7 @@ export { Menu } from './components/header/Menu/Menu'
 export { NavCloseButton } from './components/header/NavCloseButton/NavCloseButton'
 export { NavList } from './components/header/NavList/NavList'
 export { NavMenuButton } from './components/header/NavMenuButton/NavMenuButton'
+export { NavDropDownButton } from './components/header/NavDropDownButton/NavDropDownButton'
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
