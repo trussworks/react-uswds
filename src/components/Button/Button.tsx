@@ -10,7 +10,7 @@ interface ButtonProps {
   accent?: boolean
   outline?: boolean
   inverse?: boolean
-  size?: 'big' | 'small'
+  size?: 'big' | 'small' // small is deprecated
   /**
    * @deprecated since 1.6.0, use size
    */
@@ -19,6 +19,9 @@ interface ButtonProps {
    * @deprecated since 1.6.0, use size
    */
   small?: boolean
+  /**
+   * @deprecated since 1.8.0
+   */
   icon?: boolean
   unstyled?: boolean
 }
@@ -47,12 +50,19 @@ export const Button = (
   if (big) {
     deprecationWarning('Button property big is deprecated.  Use size')
   }
-  if (small) {
-    deprecationWarning('Button property small is deprecated.  Use size')
+
+  if (icon) {
+    deprecationWarning('Button property icon is deprecated.')
   }
 
   const isBig = size ? size === 'big' : big
   const isSmall = size ? size === 'small' : small
+
+  if (isSmall) {
+    deprecationWarning(
+      'Small button is deprecated. Use the default (do not set `size` or `small` properties).'
+    )
+  }
 
   const classes = classnames(
     'usa-button',
