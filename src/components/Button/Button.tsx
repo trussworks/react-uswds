@@ -20,7 +20,7 @@ interface ButtonProps {
    */
   small?: boolean
   /**
-   * @deprecated since 1.8.0
+   * @deprecated since 1.9.0
    */
   icon?: boolean
   unstyled?: boolean
