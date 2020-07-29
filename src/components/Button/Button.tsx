@@ -60,7 +60,7 @@ export const Button = (
 
   if (isSmall) {
     deprecationWarning(
-      'Small button is deprecated. Use the default (do not set `size` or `small` properties).'
+      'Small button is deprecated. Use the default, pass in a custom className, or use size big.'
     )
   }
 

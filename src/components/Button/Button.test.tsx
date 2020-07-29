@@ -51,19 +51,7 @@ describe('Button component', () => {
         </Button>
       )
       expect(queryByTestId('button')).toHaveClass('usa-button--big')
-      expect(queryByTestId('button')).not.toHaveClass('usa-button--small')
       expect(deprecationWarning).toHaveBeenCalledTimes(0)
-    })
-
-    it('prefers size to deprecated big', () => {
-      const { queryByTestId } = render(
-        <Button type="button" size="small" big>
-          Click Me
-        </Button>
-      )
-      expect(queryByTestId('button')).toHaveClass('usa-button--small')
-      expect(queryByTestId('button')).not.toHaveClass('usa-button--big')
-      expect(deprecationWarning).toHaveBeenCalledTimes(1)
     })
   })
 
