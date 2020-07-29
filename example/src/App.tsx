@@ -21,6 +21,7 @@ import {
 import HomePage from './pages/Home'
 import ExamplePage from './pages/Example'
 import ModalsPage from './pages/Modals'
+import IconsPage from './pages/Icons'
 
 import './App.css'
 
@@ -29,11 +30,12 @@ const routes = {
   HOME_PAGE: '/',
   EXAMPLES_PAGE: '/examples',
   MODALS_PAGE: '/modals',
+  ICONS_PAGE: '/icons',
 }
 
 const App = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const { HOME_PAGE, EXAMPLES_PAGE, MODALS_PAGE } = routes
+  const { HOME_PAGE, EXAMPLES_PAGE, MODALS_PAGE, ICONS_PAGE } = routes
 
   const toggleMobileNav = (): void => {
     setMobileNavOpen((prevOpen) => !prevOpen)
@@ -48,6 +50,9 @@ const App = () => {
     </NavLink>,
     <NavLink to={MODALS_PAGE} activeClassName="usa-current">
       Modals
+    </NavLink>,
+    <NavLink to={ICONS_PAGE} activeClassName="usa-current">
+      Icons
     </NavLink>,
   ]
 
@@ -84,6 +89,9 @@ const App = () => {
             </Route>
             <Route path={MODALS_PAGE}>
               <ModalsPage />
+            </Route>
+            <Route path={ICONS_PAGE}>
+              <IconsPage />
             </Route>
             <Route path={HOME_PAGE}>
               <HomePage />
