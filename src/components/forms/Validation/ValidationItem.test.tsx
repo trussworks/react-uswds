@@ -6,7 +6,7 @@ import { ValidationItem } from './ValidationItem'
 describe('ValidationItem', () => {
   it('renders without errors', () => {
     const { container } = render(
-      <ValidationItem validator="uppercase" isValid={false}>
+      <ValidationItem id="uppercase" isValid={false}>
         Validation message
       </ValidationItem>
     )
@@ -17,16 +17,10 @@ describe('ValidationItem', () => {
   it('renders list item with styles', () => {
     const { queryByTestId } = render(
       <ul>
-        <ValidationItem
-          data-testid="uppercase"
-          validator="uppercase"
-          isValid={false}>
+        <ValidationItem data-testid="uppercase" id="uppercase" isValid={false}>
           Validation message
         </ValidationItem>
-        <ValidationItem
-          data-testid="lowercase"
-          validator="numerical"
-          isValid={true}>
+        <ValidationItem data-testid="lowercase" id="numerical" isValid={true}>
           Validation message
         </ValidationItem>
       </ul>
@@ -44,10 +38,10 @@ describe('ValidationItem', () => {
   it('renders its children', () => {
     const { queryByText } = render(
       <ul>
-        <ValidationItem validator="minLength" isValid={true}>
+        <ValidationItem id="minLength" isValid={true}>
           Length is more than 2 characters
         </ValidationItem>
-        <ValidationItem validator="maxLength" isValid={false}>
+        <ValidationItem id="maxLength" isValid={false}>
           Length is less than 16 characters
         </ValidationItem>
       </ul>
