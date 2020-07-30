@@ -9,7 +9,7 @@ const IconsPage = (): React.ReactElement => (
     <h1>Icons</h1>
 
     <p className="usa-intro">
-      We recommend using icons from <a href="https://www.google.com/search?client=safari&rls=en&q=react-fontawesome&ie=UTF-8&oe=UTF-8">react-fontawesome</a> for projects that need icons.
+      We recommend using icons from <a href="https://github.com/FortAwesome/react-fontawesome">react-fontawesome</a> for projects that need icons.
     </p>
 
     <FontAwesomeIcon icon={faUpload} /> Upload Image
