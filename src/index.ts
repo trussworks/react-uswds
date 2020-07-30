@@ -16,6 +16,7 @@ export { GridContainer } from './components/grid/GridContainer/GridContainer'
 export { Grid } from './components/grid/Grid/Grid'
 
 /** Form components */
+export { CharacterCount } from './components/forms/CharacterCount/CharacterCount'
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
 export { DateInput } from './components/forms/DateInput/DateInput'
 export { DateInputGroup } from './components/forms/DateInputGroup/DateInputGroup'

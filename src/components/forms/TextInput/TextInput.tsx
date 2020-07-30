@@ -2,6 +2,13 @@ import React from 'react'
 import classnames from 'classnames'
 import { deprecationWarning } from '../../../deprecation'
 
+export type TextInputRef =
+  | string
+  | ((instance: HTMLInputElement | null) => void)
+  | React.RefObject<HTMLInputElement>
+  | null
+  | undefined
+
 interface RequiredTextInputProps {
   id: string
   name: string
@@ -28,12 +35,7 @@ interface CustomTextInputProps {
    * @deprecated since 1.6.0, use inputSize
    */
   medium?: boolean
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined
+  inputRef?: TextInputRef
 }
 
 export type OptionalTextInputProps = CustomTextInputProps &
