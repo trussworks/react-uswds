@@ -11,7 +11,7 @@ import { ValidationItem } from './ValidationItem'
 export default {
   title: 'Forms/Validation',
   component: ValidationChecklist,
-  ValidationItem,
+  subcomponents: { ValidationItem },
   parameters: {
     info: `
 USWDS 2.0 Validation component
