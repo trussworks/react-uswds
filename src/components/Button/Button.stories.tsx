@@ -53,18 +53,6 @@ export const big = (): React.ReactElement => (
   </Button>
 )
 
-export const small = (): React.ReactElement => (
-  <Button type="button" size="small">
-    Click Me
-  </Button>
-)
-
-export const icon = (): React.ReactElement => (
-  <Button type="button" icon>
-    Click Me
-  </Button>
-)
-
 export const unstyled = (): React.ReactElement => (
   <Button type="button" unstyled>
     Click Me
