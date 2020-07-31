@@ -1,29 +1,43 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-    time: "10:00"
-    timezone: PST8PDT
-  pull-request-branch-name:
-    separator: "-"
-  open-pull-requests-limit: 10
-  labels:
-  - "type: dependencies"
-  - "type: automerge"
-  allow:
-  - dependency-type: development
-  ignore:
-  - dependency-name: react
-    versions:
-    - "^16.11.0"
-  - dependency-name: react-dom
-    versions:
-    - "^16.11.0"
-  - dependency-name: "@types/react"
-    versions:
-    - "^16.10.0"
-  - dependency-name: "@types/react-dom"
-    versions:
-    - "^16.10.0"
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+      time: '10:00'
+      timezone: PST8PDT
+    pull-request-branch-name:
+      separator: '-'
+    open-pull-requests-limit: 10
+    labels:
+      - 'type: dependencies'
+      - 'type: automerge'
+    allow:
+      - dependency-type: development
+    ignore:
+      - dependency-name: react
+        versions:
+          - '^16.11.0'
+      - dependency-name: react-dom
+        versions:
+          - '^16.11.0'
+      - dependency-name: '@types/react'
+        versions:
+          - '^16.10.0'
+      - dependency-name: '@types/react-dom'
+        versions:
+          - '^16.10.0'
+
+  - package-ecosystem: npm
+    directory: '/example/'
+    schedule:
+      interval: monthly
+    pull-request-branch-name:
+      separator: '-'
+    open-pull-requests-limit: 10
+    labels:
+      - 'type: dependencies'
+      - 'type: automerge'
+      - 'type: example'
+    allow:
+      - dependency-type: development
