@@ -1,21 +1,31 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Link as USWDSLink } from '@trussworks/react-uswds'
 
 const ExamplePage = (): React.ReactElement => (
   <section>
     <h1>Examples</h1>
 
-    <p className="usa-intro">
-      Right now there are no examples! Things that we could add include...
-    </p>
+    <p className="usa-intro">Example usage of react-uswds in real life!</p>
 
     <ul className="usa-list">
-      <li>Modals</li>
       <li>
-        Form libraries
-        <ul className="usa-list">
-          <li>Formik</li>
-          <li>React-hook-form</li>
-        </ul>
+        <USWDSLink
+          to="/forms"
+          asCustom={Link}
+          variant="external"
+          target="_blank">
+          Forms
+        </USWDSLink>
+      </li>
+      <li>
+        <USWDSLink
+          to="/modals"
+          asCustom={Link}
+          variant="external"
+          target="_blank">
+          Modals
+        </USWDSLink>
       </li>
     </ul>
   </section>
