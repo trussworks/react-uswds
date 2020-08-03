@@ -60,9 +60,9 @@ const checkPrDescription: () => void = () => {
 
 const checkCodeChanges: () => void = () => {
   // Request changes to package source code to also include changes to tests.
-  const hasCodeChanges = allFiles.some((p) => !!p.match(/src\/.*\.[jt]sx?/))
+  const hasCodeChanges = allFiles.some((p) => !!p.match(/^src\/.*\.[jt]sx?/))
   const hasTestChanges = allFiles.some(
-    (p) => !!p.match(/src\/.*\.test\.[jt]sx?/)
+    (p) => !!p.match(/^src\/.*\.test\.[jt]sx?/)
   )
   if (hasCodeChanges && !hasTestChanges) {
     warn(
@@ -72,9 +72,9 @@ const checkCodeChanges: () => void = () => {
 
   // Make sure to export new components (src/components/*.[jt]sx)
   const hasNewComponents = danger.git.created_files.some(
-    (p) => !!p.match(/src\/components\/.*\.[jt]sx/)
+    (p) => !!p.match(/^src\/components\/.*\.[jt]sx/)
   )
-  const hasEntrypointChanges = allFiles.includes('src/index.ts')
+  const hasEntrypointChanges = allFiles.includes('^src/index.ts')
   if (hasNewComponents && !hasEntrypointChanges) {
     const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
     const idea = `Did you forget to export new components from the library entrypoint?`
@@ -83,7 +83,7 @@ const checkCodeChanges: () => void = () => {
 
   // Require new src/components files to include changes to storybook
   const hasStorybookChanges = allFiles.some(
-    (p) => !!p.match(/src\/.*\.stories\.[jt]sx?/)
+    (p) => !!p.match(/^src\/.*\.stories\.[jt]sx?/)
   )
 
   if (hasCodeChanges && !hasStorybookChanges) {
