@@ -17,49 +17,79 @@ Source: https://designsystem.digital.gov/components/form-controls/#character-cou
 
 export const textInput = (): React.ReactElement => (
   <FormGroup>
-    <Label htmlFor="character-count-id">Text Input</Label>
+    <Label htmlFor="with-hint-input">Text input</Label>
+    <span id="with-hint-input-hint" className="usa-hint">
+      This is an input with a character counter.
+    </span>
     <CharacterCount
-      id="character-count-id"
-      name="characterCount"
-      maxLength={10}
+      id="with-hint-input"
+      name="with-hint-input"
+      aria-describedby="with-hint-input-info with-hint-input-hint"
+      maxLength={25}
     />
   </FormGroup>
 )
 
 export const textarea = (): React.ReactElement => (
   <FormGroup>
-    <Label htmlFor="character-count-id">Textarea</Label>
+    <Label htmlFor="with-hint-textarea">Textarea</Label>
+    <span id="with-hint-textarea-hint" className="usa-hint">
+      This is a textarea with a character counter.
+    </span>
     <CharacterCount
-      id="character-count-id"
-      name="characterCount"
-      maxLength={20}
+      id="with-hint-textarea"
+      name="with-hint-textarea"
+      maxLength={50}
       isTextArea
-      rows={20}
+      rows={2}
+      aria-describedby="with-hint-textarea-info with-hint-textarea-hint"
     />
   </FormGroup>
 )
 
-export const withCustomValidation = (): React.ReactElement => (
-  <Form onSubmit={}>
-    <FormGroup>
-      <Label htmlFor="character-count-input">
-        Text Input With Default Value
-      </Label>
-      <CharacterCount
-        id="character-count-input"
-        name="characterCountInput"
-        defaultValue="Already over the maximum"
-        maxLength={10}
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label htmlFor="character-count-textarea">Textarea</Label>
-      <CharacterCount
-        id="character-count-textarea"
-        name="characterCountTextArea"
-        isTextArea
-        maxLength={10}
-      />
-    </FormGroup>
-  </Form>
-)
+export const withCustomCharacterCount = (): React.ReactElement => {
+  const customEmojiCharacterCount = (text: string): number => {
+    const starCount = (text.match(/⭐️/g) || []).length
+    return Array.from(text).length - starCount * 2
+  }
+
+  const customEmojiMessage = (count: number, maxCount: number): string => {
+    const remainingCount = maxCount - count
+    if (remainingCount >= 0) return `${remainingCount} of ${maxCount} remain`
+  }
+
+  const twitterStyleMessage = (count: number, maxCount: number): string => {
+    if (maxCount - count < 5) return `${maxCount - count}`
+  }
+
+  const mockSubmit = (): void => {
+    /* mock submit fn */
+  }
+
+  return (
+    <Form onSubmit={mockSubmit}>
+      <FormGroup>
+        <Label htmlFor="character-count-input">Custom - stars are free</Label>
+        <CharacterCount
+          id="character-count-input"
+          name="characterCountInput"
+          defaultValue="⭐️⭐️⭐️"
+          getCharacterCount={customEmojiCharacterCount}
+          getMessage={customEmojiMessage}
+          maxLength={10}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="character-count-textarea">Custom - Twitter style</Label>
+        <CharacterCount
+          id="character-count-textarea"
+          name="characterCountTextArea"
+          isTextArea
+          defaultValue="In most cases, the text content of a Tweet can contain up to 280 characters or Unicode glyphs. The exact definition of which characters have weights greater than one character is found in the configuration file for the twitter-text Tweet parsing library. This is just an example using regex😇"
+          maxLength={280}
+          getMessage={twitterStyleMessage}
+        />
+      </FormGroup>
+    </Form>
+  )
+}

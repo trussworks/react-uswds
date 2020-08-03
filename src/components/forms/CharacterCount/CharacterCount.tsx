@@ -5,38 +5,30 @@ import { TextInput, TextInputProps } from '../TextInput/TextInput'
 import { Textarea, TextareaProps } from '../Textarea/Textarea'
 
 /* Defaults
-   This is a fallback for character count validation.
-   In most cases, though, props will be passed in by consumer 
-   to use custom logic for character count (for example, unicode aware)
-   and to account for i18n-aware strings
+  This is a fallback for character count and validation message.
+  In many cases, though, props will be passed in by consumer 
+  for example, to account for i18n-aware strings
 */
-const defaultCharacterCount = (text: string): number => text.length
-const defaultMessage = (currentCount: number, max: number): string => {
+const defaultCharacterCount = (text: string): number => Array.from(text).length
+const defaultMessage = (count: number, max: number): string => {
   const emptyMessageFormat = `${max} characters allowed`
   const remainingPluralFormat = '$0 characters left'
   const remainingSingularFormat = '$0 character left'
   const overSingularFormat = '$0 character over limit'
   const overPluralFormat = '$0 characters over limit'
+  const remainingCount = max - count
 
-  if (currentCount === 0) {
-    return emptyMessageFormat
-  } else if (currentCount <= max) {
-    switch (max - currentCount) {
-      case 1:
-        return remainingSingularFormat.replace('$0', '1')
-      default:
-        return remainingPluralFormat.replace(
-          '$0',
-          (max - currentCount).toString()
-        )
-    }
-  } else {
-    switch (currentCount - max) {
-      case 1:
-        return overSingularFormat.replace('$0', '1')
-      default:
-        return overPluralFormat.replace('$0', (currentCount - max).toString())
-    }
+  switch (remainingCount) {
+    case max:
+      return emptyMessageFormat
+    case 1:
+      return remainingSingularFormat.replace('$0', '1')
+    case -1:
+      return overSingularFormat.replace('$0', '1')
+    default:
+      return remainingCount >= 0
+        ? remainingPluralFormat.replace('$0', remainingCount.toString())
+        : overPluralFormat.replace('$0', Math.abs(remainingCount).toString())
   }
 }
 
@@ -49,7 +41,7 @@ interface BaseCharacterCountProps {
   className?: string
   isTextArea?: boolean
   getCharacterCount?: (text: string) => number
-  getMessage?: (remainingCount: number) => string
+  getMessage?: (remainingCount: number, max: number) => string
 }
 
 type TextInputCharacterCountProps = BaseCharacterCountProps & TextInputProps
@@ -75,6 +67,7 @@ export const CharacterCount = (
   } = props
 
   const initialCount = getCharacterCount(defaultValue)
+  console.log(initialCount, 'initial')
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
   const [isValid, setIsValid] = useState(initialCount > maxLength)
 
@@ -109,7 +102,7 @@ export const CharacterCount = (
 
   const Message = (): React.ReactElement => {
     return (
-      <span id={id} className={messageClasses} aria-live="polite">
+      <span id={`${id}-info`} className={messageClasses} aria-live="polite">
         {message}
       </span>
     )
