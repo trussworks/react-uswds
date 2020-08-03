@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { deprecationWarning } from '../../../deprecation'
 
-export type TextInputRef =
+type TextInputRef =
   | string
   | ((instance: HTMLInputElement | null) => void)
   | React.RefObject<HTMLInputElement>
@@ -41,7 +41,7 @@ interface CustomTextInputProps {
 export type OptionalTextInputProps = CustomTextInputProps &
   JSX.IntrinsicElements['input']
 
-type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
+export type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
 
 export const TextInput = (props: TextInputProps): React.ReactElement => {
   const {

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type TextareaRef =
+type TextareaRef =
   | string
   | string
   | ((instance: HTMLTextAreaElement | null) => void)
@@ -9,7 +9,7 @@ export type TextareaRef =
   | null
   | undefined
 
-interface TextareaProps {
+export interface TextareaProps {
   id: string
   name: string
   className?: string

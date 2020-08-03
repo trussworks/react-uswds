@@ -1,165 +1,165 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
-import { TextInput, TextInputRef } from '../TextInput/TextInput'
-import { Textarea, TextareaRef } from '../Textarea/Textarea'
-import { FormGroup } from '../FormGroup/FormGroup'
+import { TextInput, TextInputProps } from '../TextInput/TextInput'
+import { Textarea, TextareaProps } from '../Textarea/Textarea'
 
-interface CharacterCountProps {
-  id: string
-  name: string
-  maxLength: number
-  className?: string
-  label?: React.ReactNode
-  isTextArea?: boolean
-  textRef?: // currently getting an error when adding this as ref
-  | string
-    | ((instance: HTMLInputElement | null) => void)
-    | ((instance: HTMLTextAreaElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | React.RefObject<HTMLTextAreaElement>
-    | null
-    | undefined
-}
-
-export const CharacterCount = (
-  props: CharacterCountProps &
-    React.InputHTMLAttributes<HTMLInputElement> &
-    React.TextareaHTMLAttributes<HTMLTextAreaElement>
-): React.ReactElement => {
-  const {
-    id,
-    name,
-    className,
-    label,
-    maxLength,
-    defaultValue,
-    isTextArea,
-    textRef,
-    type, // Conflicts with type attribute already set on TextInput component
-    ...inputProps
-  } = props
-
-  const defaultLength =
-    defaultValue === undefined ? 0 : defaultValue.toString().length
-  const maxNum = maxLength === undefined ? 0 : maxLength
-
-  /* Ideally defined as i18n translation strings */
-  const emptyMessageFormat = `${maxLength} characters allowed`
+/* Defaults
+   This is a fallback for character count validation.
+   In most cases, though, props will be passed in by consumer 
+   to use custom logic for character count (for example, unicode aware)
+   and to account for i18n-aware strings
+*/
+const defaultCharacterCount = (text: string): number => text.length
+const defaultMessage = (currentCount: number, max: number): string => {
+  const emptyMessageFormat = `${max} characters allowed`
   const remainingPluralFormat = '$0 characters left'
   const remainingSingularFormat = '$0 character left'
   const overSingularFormat = '$0 character over limit'
   const overPluralFormat = '$0 characters over limit'
 
-  const limitMessage = (len: number): string => {
-    let limitMessage
-    if (len === 0) {
-      return emptyMessageFormat
-    } else if (len <= maxNum) {
-      switch (maxNum - len) {
-        case 1:
-          return remainingSingularFormat.replace('$0', '1')
-        default:
-          return remainingPluralFormat.replace('$0', (maxNum - len).toString())
-      }
-    } else {
-      switch (len - maxNum) {
-        case 1:
-          return overSingularFormat.replace('$0', '1')
-        default:
-          return overPluralFormat.replace('$0', (len - maxNum).toString())
-      }
+  if (currentCount === 0) {
+    return emptyMessageFormat
+  } else if (currentCount <= max) {
+    switch (max - currentCount) {
+      case 1:
+        return remainingSingularFormat.replace('$0', '1')
+      default:
+        return remainingPluralFormat.replace(
+          '$0',
+          (max - currentCount).toString()
+        )
+    }
+  } else {
+    switch (currentCount - max) {
+      case 1:
+        return overSingularFormat.replace('$0', '1')
+      default:
+        return overPluralFormat.replace('$0', (currentCount - max).toString())
     }
   }
+}
 
-  const [state, setState] = useState({
-    characterLength: defaultLength,
-    limitMessage: limitMessage(defaultLength),
-    invalidMessage: defaultLength > maxNum,
-  })
+/* Types */
+interface BaseCharacterCountProps {
+  id: string
+  name: string
+  maxLength: number
+  defaultValue?: string
+  className?: string
+  isTextArea?: boolean
+  getCharacterCount?: (text: string) => number
+  getMessage?: (remainingCount: number) => string
+}
+
+type TextInputCharacterCountProps = BaseCharacterCountProps & TextInputProps
+
+type TextareaCharacterCountProps = BaseCharacterCountProps &
+  TextareaProps &
+  JSX.IntrinsicElements['textarea']
+
+/* Main */
+export const CharacterCount = (
+  props: TextInputCharacterCountProps | TextareaCharacterCountProps
+): React.ReactElement => {
+  const {
+    id,
+    name,
+    className,
+    maxLength,
+    defaultValue = '',
+    isTextArea = false,
+    getCharacterCount = defaultCharacterCount,
+    getMessage = defaultMessage,
+    ...remainingProps
+  } = props
+
+  const initialCount = getCharacterCount(defaultValue)
+  const [message, setMessage] = useState(getMessage(initialCount, maxLength))
+  const [isValid, setIsValid] = useState(initialCount > maxLength)
 
   const classes = classnames('usa-character-count__field', className)
   const messageClasses = classnames(
     'usa-hint',
     'usa-character-count__message',
-    { 'usa-character-count__message--invalid': state.invalidMessage }
+    { 'usa-character-count__message--invalid': isValid }
   )
 
-  const messageId = id + '-info'
+  const updateStateOnChange = (inputValue: string): void => {
+    const length = getCharacterCount(inputValue)
+    const message = getMessage(length, maxLength)
+    setMessage(message)
+    setIsValid(length > maxLength)
+  }
 
+  // Update component state and also handle any onChange passed in via props
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement> &
-      React.ChangeEvent<HTMLTextAreaElement>
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    callback?: (e: any) => void
   ): void => {
-    const len = e.target.value.length
-    setState({
-      characterLength: len,
-      limitMessage: limitMessage(len),
-      invalidMessage: len > maxLength,
-    })
+    const {
+      target: { value = '' },
+    } = e
+    updateStateOnChange(value)
+    if (callback) callback(e)
   }
 
-  const handleBlur = (
-    e: React.FocusEvent<HTMLInputElement> &
-      React.FocusEvent<HTMLTextAreaElement>
-  ): void => {
-    const validationMessage = state.invalidMessage
-      ? 'The content is too long.'
-      : ''
-    e.target.setCustomValidity(validationMessage)
+  const Message = (): React.ReactElement => {
+    return (
+      <span id={id} className={messageClasses} aria-live="polite">
+        {message}
+      </span>
+    )
   }
 
-  let inputComponent
   if (isTextArea) {
-    const ref = textRef as TextareaRef
-    // How will we know if the label or hint has an id value should we add it to the describedby?
-    inputComponent = (
-      <Textarea
-        id={id}
-        data-testid="characterCountInput"
-        name={name}
-        className={classes}
-        defaultValue={defaultValue}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        aria-describedby={messageId}
-        inputRef={ref}
-        {...inputProps}
-      />
+    const { onChange, inputRef, ...textAreaProps } = remainingProps as Partial<
+      TextareaCharacterCountProps
+    >
+
+    return (
+      <>
+        <Textarea
+          id={id}
+          data-testid="characterCountTextarea"
+          name={name}
+          className={classes}
+          defaultValue={defaultValue}
+          onChange={(e): void => handleChange(e, onChange)}
+          inputRef={inputRef}
+          {...textAreaProps}
+        />
+        <Message />
+      </>
     )
   } else {
-    const ref = textRef as TextInputRef
-    inputComponent = (
-      <TextInput
-        id={id}
-        data-testid="characterCountInput"
-        name={name}
-        type="text"
-        className={classes}
-        defaultValue={defaultValue}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        aria-describedby={messageId}
-        inputRef={ref}
-        {...inputProps}
-      />
+    const {
+      onChange,
+      inputRef,
+      type = 'text',
+      ...inputProps
+    } = remainingProps as Partial<TextInputCharacterCountProps>
+
+    return (
+      <>
+        <TextInput
+          id={id}
+          type={type}
+          data-testid="characterCountTextInput"
+          name={name}
+          className={classes}
+          defaultValue={defaultValue}
+          onChange={(e): void => handleChange(e, onChange)}
+          inputRef={inputRef}
+          {...inputProps}
+        />
+        <Message />
+      </>
     )
   }
-
-  return (
-    <>
-      {/* Moves maxlength attribute off of input so it is not a hard entry limit */}
-      <div className="usa-character-count" data-maxlength={maxLength}>
-        <FormGroup>
-          {label}
-          {inputComponent}
-        </FormGroup>
-        <span id={messageId} className={messageClasses} aria-live="polite">
-          {state.limitMessage}
-        </span>
-      </div>
-    </>
-  )
 }
 
 export default CharacterCount
