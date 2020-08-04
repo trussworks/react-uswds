@@ -12,6 +12,7 @@ module.exports = {
     filename: '[name].js',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   externals: {
     react: {
