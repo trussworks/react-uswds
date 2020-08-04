@@ -67,7 +67,6 @@ export const CharacterCount = (
   } = props
 
   const initialCount = getCharacterCount(defaultValue)
-  console.log(initialCount, 'initial')
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
   const [isValid, setIsValid] = useState(initialCount > maxLength)
 
@@ -102,7 +101,11 @@ export const CharacterCount = (
 
   const Message = (): React.ReactElement => {
     return (
-      <span id={`${id}-info`} className={messageClasses} aria-live="polite">
+      <span
+        data-testid="characterCountMessage"
+        id={`${id}-info`}
+        className={messageClasses}
+        aria-live="polite">
         {message}
       </span>
     )
@@ -117,7 +120,6 @@ export const CharacterCount = (
       <>
         <Textarea
           id={id}
-          data-testid="characterCountTextarea"
           name={name}
           className={classes}
           defaultValue={defaultValue}
@@ -141,7 +143,6 @@ export const CharacterCount = (
         <TextInput
           id={id}
           type={type}
-          data-testid="characterCountTextInput"
           name={name}
           className={classes}
           defaultValue={defaultValue}
