@@ -13,6 +13,11 @@ describe('ButtonGroup component', () => {
     expect(getByRole('list')).toBeInTheDocument()
   })
 
+  it('renders its children', () => {
+    const { getByText } = render(<ButtonGroup>My Text Input</ButtonGroup>)
+    expect(getByText('My Text Input')).toBeInTheDocument()
+  })
+
   it('displays with expected styles', () => {
     const { getByRole } = render(
       <ButtonGroup>
@@ -20,11 +25,6 @@ describe('ButtonGroup component', () => {
       </ButtonGroup>
     )
     expect(getByRole('list')).toHaveClass('usa-button-group')
-  })
-
-  it('renders its children', () => {
-    const { getByText } = render(<ButtonGroup>My Text Input</ButtonGroup>)
-    expect(getByText('My Text Input')).toBeInTheDocument()
   })
 
   it('handles type prop  - default', () => {

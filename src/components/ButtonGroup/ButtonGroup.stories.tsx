@@ -10,13 +10,13 @@ export default {
     info: `
 USWDS 2.0 ButtonGroup component
 
-Source: https://designsystem.digital.gov/components/form-controls/
+Source: https://designsystem.digital.gov/components/button-groups/
 `,
   },
 }
 
 export const Default = (): React.ReactElement => (
-  <ButtonGroup type="default" role="toolbar">
+  <ButtonGroup type="default">
     <Link href="#" className="usa-button usa-button--outline">
       Back
     </Link>
