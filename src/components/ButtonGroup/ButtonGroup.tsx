@@ -14,7 +14,7 @@ export function ButtonGroup<FCProps = ButtonGroupProps>(
   const { className, children, type = 'default', ...restProps } = props
 
   const classes = classnames(
-    ' usa-button-group',
+    'usa-button-group',
     {
       'usa-button-group--segmented': type == 'segmented',
     },
@@ -22,7 +22,7 @@ export function ButtonGroup<FCProps = ButtonGroupProps>(
   )
 
   return (
-    <ul data-testid="buttonGroup" className={classes} {...restProps}>
+    <ul className={classes} {...restProps}>
       {React.Children.map(children, (child: React.ReactNode) => {
         return <li className="usa-button-group__item">{child}</li>
       })}
