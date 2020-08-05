@@ -58,24 +58,32 @@ describe('CharacterCount component', () => {
       expect(input).toHaveAttribute('value', 'Prefill this value')
     })
 
-    it('calls own onChange function', () => {
+    it('calls own onChange and onBlur functions', () => {
+      const onBlur = jest.fn()
       const onChange = jest.fn()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
           name="character-count"
           maxLength={2}
+          onBlur={onBlur}
           onChange={onChange}
         />
       )
+      const input = getByRole('textbox')
+
       expect(onChange).not.toHaveBeenCalled()
 
-      fireEvent.change(getByRole('textbox'), {
+      fireEvent.change(input, {
         target: { value: 'a' },
       })
 
       expect(onChange).toHaveBeenCalled()
+      fireEvent.blur(input)
+
+      expect(onBlur).toHaveBeenCalled()
     })
+
     it('includes the message hint', () => {
       const { getByTestId } = render(
         <CharacterCount
@@ -136,24 +144,32 @@ describe('CharacterCount component', () => {
       expect(textarea).toHaveTextContent('Prefill this value')
     })
 
-    it('calls own onChange function', () => {
+    it('calls own onChange and onBlur functions', () => {
       const onChange = jest.fn()
+      const onBlur = jest.fn()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
           name="character-count"
           isTextArea
           maxLength={10}
+          onBlur={onBlur}
           onChange={onChange}
         />
       )
+      const input = getByRole('textbox')
+
       expect(onChange).not.toHaveBeenCalled()
 
-      fireEvent.change(getByRole('textbox'), {
+      fireEvent.change(input, {
         target: { value: 'a' },
       })
 
       expect(onChange).toHaveBeenCalled()
+
+      fireEvent.blur(input)
+
+      expect(onBlur).toHaveBeenCalled()
     })
 
     it('includes the message hint', () => {
@@ -231,7 +247,7 @@ describe('CharacterCount component', () => {
       expect(getByText('2 characters over limit')).toBeInTheDocument()
     })
 
-    xit('updates input validity onChange', () => {
+    it('updates input validity', () => {
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -241,16 +257,17 @@ describe('CharacterCount component', () => {
       )
       const input = getByRole('textbox')
 
-      expect(input).toBeValid()
-
       fireEvent.change(getByRole('textbox'), {
         target: { value: 'abcdefdfsfdsfdsfsd' },
       })
+      fireEvent.blur(input)
+
       expect(getByRole('textbox')).toBeInvalid()
 
       fireEvent.change(input, {
         target: { value: 'abce' },
       })
+      fireEvent.blur(input)
 
       expect(input).toBeValid()
     })
@@ -340,7 +357,7 @@ describe('CharacterCount component', () => {
       expect(getByText('4 characters left')).toBeInTheDocument()
     })
 
-    xit('updates input validity onChange', () => {
+    it('updates input validity', () => {
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -356,6 +373,8 @@ describe('CharacterCount component', () => {
       fireEvent.change(input, {
         target: { value: 'abcad' },
       })
+      fireEvent.blur(input)
+
       expect(input).toBeInvalid
     })
   })

@@ -81,6 +81,18 @@ export const CharacterCount = ({
     setIsValid(length <= maxLength)
   }, [length])
 
+  const handleBlur = (
+    e:
+      | React.FocusEvent<HTMLInputElement>
+      | React.FocusEvent<HTMLTextAreaElement>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    callback?: (e: any) => void
+  ): void => {
+    const validationMessage = !isValid ? 'The content is too long.' : ''
+    e.target.setCustomValidity(validationMessage)
+    if (callback) callback(e)
+  }
+
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -92,14 +104,18 @@ export const CharacterCount = ({
       target: { value = '' },
     } = e
     setLength(getCharacterCount(value))
+
     if (callback) callback(e)
   }
 
   let InputComponent: React.ReactElement
   if (isTextArea) {
-    const { onChange, inputRef, ...textAreaProps } = remainingProps as Partial<
-      TextareaCharacterCountProps
-    >
+    const {
+      onBlur,
+      onChange,
+      inputRef,
+      ...textAreaProps
+    } = remainingProps as Partial<TextareaCharacterCountProps>
 
     InputComponent = (
       <Textarea
@@ -107,6 +123,7 @@ export const CharacterCount = ({
         name={name}
         className={classes}
         defaultValue={defaultValue}
+        onBlur={(e): void => handleBlur(e, onBlur)}
         onChange={(e): void => handleChange(e, onChange)}
         inputRef={inputRef}
         {...textAreaProps}
@@ -114,6 +131,7 @@ export const CharacterCount = ({
     )
   } else {
     const {
+      onBlur,
       onChange,
       inputRef,
       type = 'text',
@@ -127,6 +145,7 @@ export const CharacterCount = ({
         name={name}
         className={classes}
         defaultValue={defaultValue}
+        onBlur={(e): void => handleBlur(e, onBlur)}
         onChange={(e): void => handleChange(e, onChange)}
         inputRef={inputRef}
         {...inputProps}
