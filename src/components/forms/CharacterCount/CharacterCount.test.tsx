@@ -4,6 +4,8 @@ import { render, fireEvent } from '@testing-library/react'
 import { CharacterCount } from './CharacterCount'
 
 describe('CharacterCount component', () => {
+  afterEach(() => jest.clearAllMocks())
+
   it('renders without errors', () => {
     const { getByRole } = render(
       <CharacterCount
@@ -14,20 +16,6 @@ describe('CharacterCount component', () => {
     )
     expect(getByRole('textbox')).toBeInTheDocument()
   })
-
-  it('renders with default value', () => {
-    const { queryByText } = render(
-      <CharacterCount
-        id="character-count-id"
-        name="characterCount"
-        defaultValue="Prefill with this value"
-        maxLength={20}
-      />
-    )
-    expect(queryByText('Prefill with this value')).toBeInTheDocument()
-  })
-
-  it.todo('can be passed a ref')
 
   describe('renders text input', () => {
     it('with expected element', () => {
@@ -70,6 +58,24 @@ describe('CharacterCount component', () => {
       expect(input).toHaveAttribute('value', 'Prefill this value')
     })
 
+    it('calls own onChange function', () => {
+      const onChange = jest.fn()
+      const { getByRole } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="character-count"
+          maxLength={2}
+          onChange={onChange}
+        />
+      )
+      expect(onChange).not.toHaveBeenCalled()
+
+      fireEvent.change(getByRole('textbox'), {
+        target: { value: 'a' },
+      })
+
+      expect(onChange).toHaveBeenCalled()
+    })
     it('includes the message hint', () => {
       const { getByTestId } = render(
         <CharacterCount
@@ -127,7 +133,27 @@ describe('CharacterCount component', () => {
       const textarea = getByRole('textbox')
       expect(textarea).toHaveAttribute('name', 'character-count')
       expect(textarea).toHaveAttribute('rows', '5')
-      expect(textarea).toHaveAttribute('value', 'Prefill this value')
+      expect(textarea).toHaveTextContent('Prefill this value')
+    })
+
+    it('calls own onChange function', () => {
+      const onChange = jest.fn()
+      const { getByRole } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="character-count"
+          isTextArea
+          maxLength={10}
+          onChange={onChange}
+        />
+      )
+      expect(onChange).not.toHaveBeenCalled()
+
+      fireEvent.change(getByRole('textbox'), {
+        target: { value: 'a' },
+      })
+
+      expect(onChange).toHaveBeenCalled()
     })
 
     it('includes the message hint', () => {
@@ -145,107 +171,192 @@ describe('CharacterCount component', () => {
     })
   })
 
-  describe('uses default character count and message', () => {
+  describe('with default character count and message', () => {
     it('displays allowed characters when character count is zero', () => {
-      const { queryByText } = render(
+      const { getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
-          defaultValue=""
           maxLength={20}
         />
       )
-      expect(queryByText('20 characters allowed')).toBeInTheDocument()
+      expect(getByText('20 characters allowed')).toBeInTheDocument()
     })
 
-    it('updates message field onChange', () => {
-      const { queryByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          defaultValue=""
-          maxLength={20}
-        />
-      )
-      expect(queryByText('20 characters allowed')).toBeInTheDocument()
-    })
-
-    it('updates message field with characters left when expected', () => {
-      const { getByTestId, queryByText } = render(
+    it('updates message text with characters left onChange', () => {
+      const { getByRole, getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
           maxLength={5}
         />
       )
-
-      fireEvent.change(getByTestId('characterCountInput'), {
+      const input = getByRole('textbox')
+      fireEvent.change(input, {
         target: { value: 'a' },
       })
 
-      expect(queryByText('4 characters left')).toBeInTheDocument()
+      expect(getByText('4 characters left')).toBeInTheDocument()
 
-      fireEvent.change(getByTestId('characterCountInput'), {
+      fireEvent.change(input, {
         target: { value: 'abcd' },
       })
 
-      expect(queryByText('1 character left')).toBeInTheDocument()
+      expect(getByText('1 character left')).toBeInTheDocument()
     })
 
-    it('updates message field with characters over the limit when expected ', () => {
-      const { getByTestId, queryByText } = render(
+    it('updates message text with characters over the limit when expected ', () => {
+      const { getByRole, getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
           maxLength={5}
         />
       )
+      const input = getByRole('textbox')
 
-      fireEvent.change(getByTestId('characterCountInput'), {
+      fireEvent.change(input, {
         target: { value: 'abcdef' },
       })
 
-      expect(queryByText('1 character over limit')).toBeInTheDocument()
-      expect(queryByText('1 character over limit')).toHaveClass(
+      expect(getByText('1 character over limit')).toBeInTheDocument()
+      expect(getByText('1 character over limit')).toHaveClass(
         'usa-character-count__message--invalid'
       )
 
-      fireEvent.change(getByTestId('characterCountInput'), {
+      fireEvent.change(input, {
         target: { value: 'abcdefg' },
       })
 
-      expect(queryByText('2 characters over limit')).toBeInTheDocument()
+      expect(getByText('2 characters over limit')).toBeInTheDocument()
     })
 
-    it('sets validity onChange', () => {
-      const { getByTestId, queryByText } = render(
+    xit('updates input validity onChange', () => {
+      const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
           maxLength={5}
         />
       )
+      const input = getByRole('textbox')
 
-      fireEvent.change(getByTestId('characterCountInput'), {
-        target: { value: 'abcdef' },
+      expect(input).toBeValid()
+
+      fireEvent.change(getByRole('textbox'), {
+        target: { value: 'abcdefdfsfdsfdsfsd' },
+      })
+      expect(getByRole('textbox')).toBeInvalid()
+
+      fireEvent.change(input, {
+        target: { value: 'abce' },
       })
 
-      fireEvent.blur(getByTestId('characterCountInput'))
+      expect(input).toBeValid()
+    })
 
-      expect(getByTestId('characterCountInput')).toBeInvalid()
+    it('adjusts message styles onChange', () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+        />
+      )
+      const input = getByRole('textbox')
 
-      fireEvent.change(getByTestId('characterCountInput'), {
+      fireEvent.change(input, {
+        target: { value: 'abcdef' },
+      })
+      expect(getByTestId('characterCountMessage')).toHaveClass(
+        'usa-character-count__message--invalid'
+      )
+
+      fireEvent.change(input, {
         target: { value: 'abcde' },
       })
 
-      fireEvent.blur(getByTestId('characterCountInput'))
-
-      expect(getByTestId('characterCountInput')).toBeValid()
+      expect(getByTestId('characterCountMessage')).not.toHaveClass(
+        'usa-character-count__message--invalid'
+      )
     })
   })
 
-  describe('uses custom character count and message when props included', () => {
-    const customCharacterCount = jest.mock()
-    const customMessage = jest.mock()
+  describe('with custom message', () => {
+    const customMessage = jest.fn(
+      (count: number, maxCount: number): string =>
+        `${maxCount - count} characters remain`
+    )
+
+    it('renders initially with custom message', () => {
+      const { getByText } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          getMessage={customMessage}
+          maxLength={6}
+        />
+      )
+      expect(customMessage).toHaveBeenCalled()
+      expect(getByText('6 characters remain')).toBeInTheDocument()
+    })
+
+    it('updates message text onChange', () => {
+      const { getByRole, getByText } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          getMessage={customMessage}
+          maxLength={6}
+        />
+      )
+
+      const input = getByRole('textbox')
+      expect(getByText('6 characters remain')).toBeInTheDocument()
+
+      fireEvent.change(input, {
+        target: { value: 'abcdef' },
+      })
+
+      expect(getByText('0 characters remain')).toBeInTheDocument()
+    })
+  })
+
+  describe('with custom character count', () => {
+    const customCharacterCount = jest.fn(
+      (text: string): number => text.length + 2
+    )
+
+    it('renders initially with custom character count', () => {
+      const { getByText } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          getCharacterCount={customCharacterCount}
+          maxLength={6}
+        />
+      )
+      expect(customCharacterCount).toHaveBeenCalled()
+      expect(getByText('4 characters left')).toBeInTheDocument()
+    })
+
+    xit('updates input validity onChange', () => {
+      const { getByRole } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          getCharacterCount={customCharacterCount}
+          maxLength={6}
+        />
+      )
+
+      const input = getByRole('textbox')
+      expect(input).toBeValid
+
+      fireEvent.change(input, {
+        target: { value: 'abcad' },
+      })
+      expect(input).toBeInvalid
+    })
   })
 })
