@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
@@ -51,40 +51,36 @@ type TextareaCharacterCountProps = BaseCharacterCountProps &
   JSX.IntrinsicElements['textarea']
 
 /* Main */
-export const CharacterCount = (
-  props: TextInputCharacterCountProps | TextareaCharacterCountProps
-): React.ReactElement => {
-  const {
-    id,
-    name,
-    className,
-    maxLength,
-    defaultValue = '',
-    isTextArea = false,
-    getCharacterCount = defaultCharacterCount,
-    getMessage = defaultMessage,
-    ...remainingProps
-  } = props
-
+export const CharacterCount = ({
+  id,
+  name,
+  className,
+  maxLength,
+  defaultValue = '',
+  isTextArea = false,
+  getCharacterCount = defaultCharacterCount,
+  getMessage = defaultMessage,
+  ...remainingProps
+}:
+  | TextInputCharacterCountProps
+  | TextareaCharacterCountProps): React.ReactElement => {
   const initialCount = getCharacterCount(defaultValue)
+  const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
-  const [isValid, setIsValid] = useState(initialCount > maxLength)
+  const [isValid, setIsValid] = useState(initialCount < maxLength)
 
   const classes = classnames('usa-character-count__field', className)
   const messageClasses = classnames(
     'usa-hint',
     'usa-character-count__message',
-    { 'usa-character-count__message--invalid': isValid }
+    { 'usa-character-count__message--invalid': !isValid }
   )
 
-  const updateStateOnChange = (inputValue: string): void => {
-    const length = getCharacterCount(inputValue)
-    const message = getMessage(length, maxLength)
-    setMessage(message)
-    setIsValid(length > maxLength)
-  }
+  useEffect(() => {
+    setMessage(getMessage(length, maxLength))
+    setIsValid(length <= maxLength)
+  }, [length])
 
-  // Update component state and also handle any onChange passed in via props
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -95,40 +91,26 @@ export const CharacterCount = (
     const {
       target: { value = '' },
     } = e
-    updateStateOnChange(value)
+    setLength(getCharacterCount(value))
     if (callback) callback(e)
   }
 
-  const Message = (): React.ReactElement => {
-    return (
-      <span
-        data-testid="characterCountMessage"
-        id={`${id}-info`}
-        className={messageClasses}
-        aria-live="polite">
-        {message}
-      </span>
-    )
-  }
-
+  let InputComponent: React.ReactElement
   if (isTextArea) {
     const { onChange, inputRef, ...textAreaProps } = remainingProps as Partial<
       TextareaCharacterCountProps
     >
 
-    return (
-      <>
-        <Textarea
-          id={id}
-          name={name}
-          className={classes}
-          defaultValue={defaultValue}
-          onChange={(e): void => handleChange(e, onChange)}
-          inputRef={inputRef}
-          {...textAreaProps}
-        />
-        <Message />
-      </>
+    InputComponent = (
+      <Textarea
+        id={id}
+        name={name}
+        className={classes}
+        defaultValue={defaultValue}
+        onChange={(e): void => handleChange(e, onChange)}
+        inputRef={inputRef}
+        {...textAreaProps}
+      />
     )
   } else {
     const {
@@ -138,22 +120,32 @@ export const CharacterCount = (
       ...inputProps
     } = remainingProps as Partial<TextInputCharacterCountProps>
 
-    return (
-      <>
-        <TextInput
-          id={id}
-          type={type}
-          name={name}
-          className={classes}
-          defaultValue={defaultValue}
-          onChange={(e): void => handleChange(e, onChange)}
-          inputRef={inputRef}
-          {...inputProps}
-        />
-        <Message />
-      </>
+    InputComponent = (
+      <TextInput
+        id={id}
+        type={type}
+        name={name}
+        className={classes}
+        defaultValue={defaultValue}
+        onChange={(e): void => handleChange(e, onChange)}
+        inputRef={inputRef}
+        {...inputProps}
+      />
     )
   }
+
+  return (
+    <>
+      {InputComponent}
+      <span
+        data-testid="characterCountMessage"
+        id={`${id}-info`}
+        className={messageClasses}
+        aria-live="polite">
+        {message}
+      </span>
+    </>
+  )
 }
 
 export default CharacterCount
