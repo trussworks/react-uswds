@@ -66,6 +66,36 @@ Also make sure to include the following in order to import the compiled CSS from
 
 **[More info about using USWDS CSS & SCSS](./docs/scss.md)**
 
+### Icons
+
+[USWDS recommends using Font Awesome](https://designsystem.digital.gov/components/icons/), and that project [provides a package for use with React](https://github.com/FortAwesome/react-fontawesome).
+
+To add this to your project, install react-font-awesome and at least one style of icon:
+
+```
+yarn add @fortawesome/fontawesome-svg-core \
+         @fortawesome/free-solid-svg-icons \
+         @fortawesome/react-fontawesome
+```
+
+You can then add Font Awesome icons to your projects using the `FontAwesome` component:
+
+
+```jsx
+import ReactDOM from 'react-dom'
+import { Button } from '@trussworks/react-uswds'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
+
+const button = <Button type="button">
+  <FontAwesomeIcon icon={faSave} /> Save Changes
+</Button>;
+
+ReactDOM.render(button, document.body);
+```
+
+For more information on working with and configuring react-fontawesome, please see [that project's documentation](https://github.com/FortAwesome/react-fontawesome#installation). To find specific icons for your project, [search on the Font Awesome site](https://fontawesome.com/icons).
+
 ## Maintainers
 
 - [@suzubara](https://github.com/suzubara)

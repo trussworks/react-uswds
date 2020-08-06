@@ -30,6 +30,8 @@ export { Radio } from './components/forms/Radio/Radio'
 export { RangeInput } from './components/forms/RangeInput/RangeInput'
 export { Textarea } from './components/forms/Textarea/Textarea'
 export { TextInput } from './components/forms/TextInput/TextInput'
+export { ValidationChecklist } from './components/forms/Validation/ValidationChecklist'
+export { ValidationItem } from './components/forms/Validation/ValidationItem'
 
 /** Header Components */
 export { ExtendedNav } from './components/header/ExtendedNav/ExtendedNav'
