@@ -74,7 +74,7 @@ const checkCodeChanges: () => void = () => {
   const hasNewComponents = danger.git.created_files.some(
     (p) => !!p.match(/^src\/components\/.*\.[jt]sx/)
   )
-  const hasEntrypointChanges = allFiles.includes('^src/index.ts')
+  const hasEntrypointChanges = allFiles.includes('src/index.ts')
   if (hasNewComponents && !hasEntrypointChanges) {
     const message = `It looks like there are new component (JSX/TSX) files, but the entrypoint (index.ts) has not changed.`
     const idea = `Did you forget to export new components from the library entrypoint?`
