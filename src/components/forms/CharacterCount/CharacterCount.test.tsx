@@ -45,17 +45,20 @@ describe('CharacterCount component', () => {
     })
 
     it('handles own props', () => {
+      const tRef = React.createRef<HTMLTextAreaElement>()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
           name="character-count"
           defaultValue="Prefill this value"
           maxLength={10}
+          inputRef={tRef}
         />
       )
       const input = getByRole('textbox')
       expect(input).toHaveAttribute('name', 'character-count')
       expect(input).toHaveAttribute('value', 'Prefill this value')
+      expect(input).toBe(tRef.current)
     })
 
     it('calls own onChange and onBlur functions', () => {
@@ -128,6 +131,7 @@ describe('CharacterCount component', () => {
     })
 
     it('handles own props', () => {
+      const tRef = React.createRef<HTMLTextAreaElement>()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -136,12 +140,14 @@ describe('CharacterCount component', () => {
           isTextArea
           rows={5}
           maxLength={10}
+          inputRef={tRef}
         />
       )
       const textarea = getByRole('textbox')
       expect(textarea).toHaveAttribute('name', 'character-count')
       expect(textarea).toHaveAttribute('rows', '5')
       expect(textarea).toHaveTextContent('Prefill this value')
+      expect(textarea).toBe(tRef.current)
     })
 
     it('calls own onChange and onBlur functions', () => {
