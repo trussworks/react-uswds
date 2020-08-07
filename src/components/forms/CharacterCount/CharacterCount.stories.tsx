@@ -14,37 +14,44 @@ Source: https://designsystem.digital.gov/components/form-controls/#character-cou
 `,
   },
 }
+const mockSubmit = (): void => {
+  /* mock submit fn */
+}
 
 export const textInput = (): React.ReactElement => (
-  <FormGroup>
-    <Label htmlFor="with-hint-input">Text input</Label>
-    <span id="with-hint-input-hint" className="usa-hint">
-      This is an input with a character counter.
-    </span>
-    <CharacterCount
-      id="with-hint-input"
-      name="with-hint-input"
-      aria-describedby="with-hint-input-info with-hint-input-hint"
-      maxLength={25}
-    />
-  </FormGroup>
+  <Form onSubmit={mockSubmit}>
+    <FormGroup>
+      <Label htmlFor="with-hint-input">Text input</Label>
+      <span id="with-hint-input-hint" className="usa-hint">
+        This is an input with a character counter.
+      </span>
+      <CharacterCount
+        id="with-hint-input"
+        name="with-hint-input"
+        aria-describedby="with-hint-input-info with-hint-input-hint"
+        maxLength={25}
+      />
+    </FormGroup>
+  </Form>
 )
 
 export const textarea = (): React.ReactElement => (
-  <FormGroup>
-    <Label htmlFor="with-hint-textarea">Textarea</Label>
-    <span id="with-hint-textarea-hint" className="usa-hint">
-      This is a textarea with a character counter.
-    </span>
-    <CharacterCount
-      id="with-hint-textarea"
-      name="with-hint-textarea"
-      maxLength={50}
-      isTextArea
-      rows={2}
-      aria-describedby="with-hint-textarea-info with-hint-textarea-hint"
-    />
-  </FormGroup>
+  <Form onSubmit={mockSubmit}>
+    <FormGroup>
+      <Label htmlFor="with-hint-textarea">Textarea</Label>
+      <span id="with-hint-textarea-hint" className="usa-hint">
+        This is a textarea with a character counter.
+      </span>
+      <CharacterCount
+        id="with-hint-textarea"
+        name="with-hint-textarea"
+        maxLength={50}
+        isTextArea
+        rows={2}
+        aria-describedby="with-hint-textarea-info with-hint-textarea-hint"
+      />
+    </FormGroup>
+  </Form>
 )
 
 export const withCustomCharacterCount = (): React.ReactElement => {
@@ -60,10 +67,6 @@ export const withCustomCharacterCount = (): React.ReactElement => {
 
   const twitterStyleMessage = (count: number, maxCount: number): string => {
     if (maxCount - count < 5) return `${maxCount - count}`
-  }
-
-  const mockSubmit = (): void => {
-    /* mock submit fn */
   }
 
   return (
