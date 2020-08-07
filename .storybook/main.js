@@ -56,7 +56,7 @@ const webpackConfig = (config) => {
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-docs'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-viewport'],
   webpackFinal: async (config) => {
     return webpackConfig(config)
   },
