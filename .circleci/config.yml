@@ -12,6 +12,7 @@ jobs:
             - v1.0.0-dependencies-
 
       - run: yarn install
+      - run: gem install license_finder
 
       - save_cache:
           paths:
