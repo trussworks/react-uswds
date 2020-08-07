@@ -1,32 +1,47 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/node:12.16.2
-    working_directory: ~/react-uswds
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1.0.0-dependencies-{{ checksum "package.json" }}
-            - v1.0.0-dependencies-
+workflows:
+  version: 2
+  jobs:
+    build:
+      docker:
+        - image: circleci/node:12.16.2
+      working_directory: ~/react-uswds
+      steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - v1.0.0-dependencies-{{ checksum "package.json" }}
+              - v1.0.0-dependencies-
 
-      - run: yarn install
-      - run: gem install license_finder
+        - run: yarn install
 
-      - save_cache:
+        - save_cache:
+            paths:
+              - node_modules
+            key: v1.0.0-dependencies-{{ checksum "package.json" }}
+
+        - run: yarn test -w 1
+
+        - run:
+            name: 'Happo'
+            command: '[[ ( "${CIRCLE_PR_USERNAME}" != "dependabot" ) && ( "${CIRCLE_PR_USERNAME}" != "dependabot-preview" ) ]] && yarn happo-ci'
+            environment:
+              HAPPO_IS_ASYNC: 'true'
+              BASE_BRANCH: 'origin/main'
+
+        - run: yarn lint
+        - run: yarn danger ci --failOnErrors
+        - persist_to_workspace:
+          root: .
           paths:
-            - node_modules
-          key: v1.0.0-dependencies-{{ checksum "package.json" }}
-
-      - run: yarn test -w 1
-
-      - run:
-          name: 'Happo'
-          command: '[[ ( "${CIRCLE_PR_USERNAME}" != "dependabot" ) && ( "${CIRCLE_PR_USERNAME}" != "dependabot-preview" ) ]] && yarn happo-ci'
-          environment:
-            HAPPO_IS_ASYNC: 'true'
-            BASE_BRANCH: 'origin/main'
-
-      - run: yarn lint
-      - run: yarn danger ci --failOnErrors
+            - '*'
+      
+    licenses:
+      requires: 
+        - build
+      docker:
+        - image: circleci/ruby:2.4
+      steps:
+        - attach_workspace:
+          at: .
+        - run: gem install license_finder
+        - run: license_finder
