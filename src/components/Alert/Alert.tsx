@@ -10,6 +10,7 @@ interface AlertProps {
   cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean
+  validation?: boolean
 }
 
 export const Alert = ({
@@ -20,6 +21,7 @@ export const Alert = ({
   slim,
   noIcon,
   className,
+  validation,
   ...props
 }: AlertProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
   const classes = classnames(
@@ -31,6 +33,7 @@ export const Alert = ({
       'usa-alert--info': type === 'info',
       'usa-alert--slim': slim,
       'usa-alert--no-icon': noIcon,
+      'usa-alert--validation': validation,
       [styles.alertWithCTA]: !!cta,
     },
     className
@@ -40,7 +43,12 @@ export const Alert = ({
     <div className={classes} data-testid="alert" {...props}>
       <div className="usa-alert__body">
         {heading && <h3 className="usa-alert__heading">{heading}</h3>}
-        {children && <p className="usa-alert__text">{children}</p>}
+        {children &&
+          (validation ? (
+            children
+          ) : (
+            <p className="usa-alert__text">{children}</p>
+          ))}
       </div>
       {cta && <div>{cta}</div>}
     </div>
