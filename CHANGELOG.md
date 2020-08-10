@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/trussworks/react-uswds/compare/1.8.0...1.9.0) (2020-08-10)
+
+
+### Features
+
+* **ButtonGroup:** Add new component ButtonGroup ([#382](https://github.com/trussworks/react-uswds/issues/382)) ([a7b84d6](https://github.com/trussworks/react-uswds/commit/a7b84d6ebd9a144412faf9685d80310204566ba8))
+* **CharacterCount:** Add new component CharacterCount ([#383](https://github.com/trussworks/react-uswds/issues/383)) ([cc12034](https://github.com/trussworks/react-uswds/commit/cc120342c3a6484227b6bab00d18c4ce8212d30c))
+* add addon-viewports using the included INITIAL_VIEWPORTS list as default for all stories ([#376](https://github.com/trussworks/react-uswds/issues/376)) ([9683b40](https://github.com/trussworks/react-uswds/commit/9683b400769e63bb3035c986acc253ffdc2f008b))
+* **Validation:** Add new Validation components ([#351](https://github.com/trussworks/react-uswds/issues/351)) ([2b2369a](https://github.com/trussworks/react-uswds/commit/2b2369a9ad231200daae3042a3070b872081310b))
+
+
+### Bug Fixes
+
+* **Button:** Deprecate icon, size small properties  ([#362](https://github.com/trussworks/react-uswds/issues/362)) ([23a2e4b](https://github.com/trussworks/react-uswds/commit/23a2e4ba9af1f7d16b13625d3b4b3d80fcdd24a3))
+
+
+### Documentation & Examples
+
+* Even more info and emphasis on conventional commits ([#350](https://github.com/trussworks/react-uswds/issues/350)) ([1301cc4](https://github.com/trussworks/react-uswds/commit/1301cc4aef7661a6f6bbead1d89e829a8047fecd))
+* Point users to react-fontawesome for icons ([#364](https://github.com/trussworks/react-uswds/issues/364)) ([3de50ef](https://github.com/trussworks/react-uswds/commit/3de50ef1046a1b368e4e8f32b2aa7cef5750d2b8))
+
 ## [1.8.0](https://github.com/trussworks/react-uswds/compare/1.7.0...1.8.0) (2020-07-27)
 
 
