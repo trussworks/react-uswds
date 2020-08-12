@@ -4,7 +4,7 @@ updates:
     directory: '/'
     schedule:
       interval: weekly
-      time: '10:00'
+      time: '6:00'
       timezone: PST8PDT
     pull-request-branch-name:
       separator: '-'
@@ -41,3 +41,16 @@ updates:
       - 'type: example'
     allow:
       - dependency-type: development
+    ignore:
+      - dependency-name: react
+        versions:
+          - '^16.11.0'
+      - dependency-name: react-dom
+        versions:
+          - '^16.11.0'
+      - dependency-name: '@types/react'
+        versions:
+          - '^16.10.0'
+      - dependency-name: '@types/react-dom'
+        versions:
+          - '^16.10.0'
