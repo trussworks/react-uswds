@@ -1,4 +1,10 @@
-import React, { KeyboardEvent, useState, useEffect, useRef } from 'react'
+import React, {
+  KeyboardEvent,
+  FocusEvent,
+  useState,
+  useEffect,
+  useRef,
+} from 'react'
 import classnames from 'classnames'
 
 interface ComboBoxOption {
@@ -9,6 +15,12 @@ interface ComboBoxOption {
 enum Direction {
   Up = -1,
   Down = 1,
+}
+
+enum FocusMode {
+  None,
+  Input, // The textfield
+  Item, // One of the list items
 }
 
 interface ComboBoxProps {
@@ -23,9 +35,13 @@ export const ComboBox = (
 ): React.ReactElement => {
   const { id, name, className, options, ...selectProps } = props
 
-  const [inputValue, setInputValue] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedValue, setSelectedValue] = useState<string>()
+  const [inputValue, setInputValue] = useState('') // value entered into textfield
+  const [isOpen, setIsOpen] = useState(false) // if the list of options is shown
+  const [selectedValue, setSelectedValue] = useState<string>() // currently selected value
+  const [focusedValue, setFocusedValue] = useState<string>() // which item is focused
+  const [focusMode, setFocusMode] = useState<FocusMode>(FocusMode.None)
+
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const classes = classnames('usa-combo-box', className)
 
@@ -36,34 +52,35 @@ export const ComboBox = (
 
   const itemRef = useRef<HTMLLIElement>(null)
   useEffect(() => {
-    if (selectedValue && itemRef.current) {
+    if (focusMode === FocusMode.Item && focusedValue && itemRef.current) {
       itemRef.current.focus()
     }
   })
 
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    if (!selectedValue && inputRef.current) {
+    if (focusMode === FocusMode.Input && inputRef.current) {
       inputRef.current.focus()
     }
   })
 
-  const moveSelection = (change: Direction): void => {
+  const changeFocus = (change: Direction): void => {
     const currentIndex = options.findIndex(
-      (option) => option.value === selectedValue
+      (option) => option.value === focusedValue
     )
     if (currentIndex === -1) {
       const newOption = options[0]
-      setSelectedValue(newOption.value)
+      setFocusedValue(newOption.value)
     } else {
       const newIndex = currentIndex + change
       if (newIndex < 0) {
         setIsOpen(false)
-        setSelectedValue(undefined)
+        setFocusedValue(undefined)
+        setFocusMode(FocusMode.Input)
       } else {
         // eslint-disable-next-line security/detect-object-injection
         const newOption = options[newIndex]
-        setSelectedValue(newOption.value)
+        setFocusedValue(newOption.value)
       }
     }
   }
@@ -73,8 +90,28 @@ export const ComboBox = (
       setIsOpen(false)
     } else if (event.key == 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
-      moveSelection(1)
       setIsOpen(true)
+      changeFocus(Direction.Down)
+      setFocusMode(FocusMode.Item)
+    }
+  }
+
+  const handleInputClick = (): void => {
+    setFocusMode(FocusMode.Input)
+    setIsOpen(true)
+  }
+
+  const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
+    console.debug(event.relatedTarget)
+    console.debug(event.target)
+    const target = event.relatedTarget
+
+    if (
+      !target ||
+      (target instanceof Node && !containerRef.current?.contains(event.target))
+    ) {
+      setFocusMode(FocusMode.None)
+      setIsOpen(false)
     }
   }
 
@@ -83,17 +120,30 @@ export const ComboBox = (
       setIsOpen(false)
       setSelectedValue(undefined)
       setInputValue('')
+      setFocusMode(FocusMode.Input)
     } else if (event.key == 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
-      moveSelection(1)
+      changeFocus(Direction.Down)
     } else if (event.key == 'ArrowUp' || event.key == 'Up') {
       event.preventDefault()
-      moveSelection(-1)
+      changeFocus(Direction.Up)
     }
   }
 
+  const handleListItemClick = (value: string): void => {
+    setSelectedValue(value)
+    setInputValue(value)
+    setIsOpen(false)
+    setFocusMode(FocusMode.Input)
+  }
+
+  const handleArrowClick = (): void => {
+    setFocusMode(FocusMode.Input)
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <div data-testid="combo-box" className={classes} id={id}>
+    <div data-testid="combo-box" className={classes} id={id} ref={containerRef}>
       <select
         className="usa-select usa-sr-only usa-combo-box__select"
         name={name}
@@ -117,11 +167,11 @@ export const ComboBox = (
         className="usa-combo-box__input"
         type="text"
         role="combobox"
-        onClick={(): void => setIsOpen(true)}
         ref={inputRef}
-        // onBlur={(): void => setIsOpen(false)}
-        onKeyDown={handleInputKeyDown}
         value={inputValue}
+        onBlur={handleInputBlur}
+        onClick={handleInputClick}
+        onKeyDown={handleInputKeyDown}
         onChange={(e): void => setInputValue(e.target.value)}
         // these do not type check:
         // autocapitalize="off"
@@ -141,7 +191,8 @@ export const ComboBox = (
           type="button"
           tabIndex={-1}
           className="usa-combo-box__toggle-list"
-          aria-label="Toggle the dropdown list">
+          aria-label="Toggle the dropdown list"
+          onClick={handleArrowClick}>
           &nbsp;
         </button>
       </span>
@@ -152,24 +203,28 @@ export const ComboBox = (
         role="listbox"
         hidden={!isOpen}>
         {options.map((option, index) => {
+          const focused = option.value === focusedValue
           const selected = option.value === selectedValue
           const itemClasses = classnames('usa-combo-box__list-option', {
-            'usa-combo-box__list-option--focused': selected,
+            'usa-combo-box__list-option--focused': focused,
           })
 
           return (
             <li
-              ref={selected ? itemRef : null}
+              ref={focused ? itemRef : null}
               value={option.value}
               key={option.value}
               className={itemClasses}
-              tabIndex={selected ? 0 : -1}
+              tabIndex={focused ? 0 : -1}
               role="option"
               aria-selected={selected}
               aria-setsize={64}
               aria-posinset={index + 1}
               id={listID + `--option-${index}`}
-              onKeyDown={handleListItemKeyDown}>
+              onKeyDown={handleListItemKeyDown}
+              onClick={(): void => {
+                handleListItemClick(option.value)
+              }}>
               {option.label || option.value}
             </li>
           )

@@ -87,7 +87,7 @@ const fruits = {
 }
 
 export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
-  const opts = Object.entries(fruits).map(([key, value]) => ({
+  const opts = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
   }))
