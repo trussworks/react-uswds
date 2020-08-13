@@ -1,6 +1,7 @@
 import React, {
   KeyboardEvent,
   FocusEvent,
+  MouseEvent,
   useState,
   useEffect,
   useRef,
@@ -102,8 +103,6 @@ export const ComboBox = (
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
-    console.debug(event.relatedTarget)
-    console.debug(event.target)
     const target = event.relatedTarget
 
     if (
@@ -118,8 +117,10 @@ export const ComboBox = (
   const handleListItemKeyDown = (event: KeyboardEvent): void => {
     if (event.key == 'Escape') {
       setIsOpen(false)
-      setSelectedValue(undefined)
-      setInputValue('')
+      if (!selectedValue) {
+        setInputValue('')
+      }
+      setFocusedValue(undefined)
       setFocusMode(FocusMode.Input)
     } else if (event.key == 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
@@ -130,16 +131,30 @@ export const ComboBox = (
     }
   }
 
-  const handleListItemClick = (value: string): void => {
-    setSelectedValue(value)
-    setInputValue(value)
+  const handleListItemClick = (option: ComboBoxOption): void => {
+    setSelectedValue(option.value)
+    setInputValue(option.label || option.value)
     setIsOpen(false)
     setFocusMode(FocusMode.Input)
   }
 
+  const handleListItemMouseMove = (option: ComboBoxOption): void => {
+    if (focusedValue !== option.value) {
+      setFocusedValue(option.value)
+      setFocusMode(FocusMode.Item)
+    }
+  }
+
   const handleArrowClick = (): void => {
-    setFocusMode(FocusMode.Input)
-    setIsOpen(!isOpen)
+    if (isOpen) {
+      setFocusMode(FocusMode.Input)
+      setIsOpen(false)
+    } else {
+      if (selectedValue) {
+        setFocusMode(FocusMode.Item)
+      }
+      setIsOpen(true)
+    }
   }
 
   return (
@@ -207,6 +222,7 @@ export const ComboBox = (
           const selected = option.value === selectedValue
           const itemClasses = classnames('usa-combo-box__list-option', {
             'usa-combo-box__list-option--focused': focused,
+            'usa-combo-box__list-option--selected': selected,
           })
 
           return (
@@ -222,8 +238,9 @@ export const ComboBox = (
               aria-posinset={index + 1}
               id={listID + `--option-${index}`}
               onKeyDown={handleListItemKeyDown}
+              onMouseMove={(): void => handleListItemMouseMove(option)}
               onClick={(): void => {
-                handleListItemClick(option.value)
+                handleListItemClick(option)
               }}>
               {option.label || option.value}
             </li>
