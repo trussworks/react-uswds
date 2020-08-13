@@ -1,19 +1,22 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface TextareaProps {
+type TextareaRef =
+  | string
+  | string
+  | ((instance: HTMLTextAreaElement | null) => void)
+  | React.RefObject<HTMLTextAreaElement>
+  | null
+  | undefined
+
+export interface TextareaProps {
   id: string
   name: string
   className?: string
   error?: boolean
   success?: boolean
   children?: React.ReactNode
-  inputRef?:
-    | string
-    | ((instance: HTMLTextAreaElement | null) => void)
-    | React.RefObject<HTMLTextAreaElement>
-    | null
-    | undefined
+  inputRef?: TextareaRef
 }
 
 export const Textarea = (

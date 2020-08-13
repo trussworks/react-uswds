@@ -2,53 +2,65 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.8.0](https://github.com/trussworks/react-uswds/compare/1.7.0...1.8.0) (2020-07-27)
-
+## [1.9.0](https://github.com/trussworks/react-uswds/compare/1.8.0...1.9.0) (2020-08-10)
 
 ### Features
 
-* **danger:** Block PR if yarn audit has high or critical, do not run on dependabot, no warn on version ([#327](https://github.com/trussworks/react-uswds/issues/327)) ([ee13281](https://github.com/trussworks/react-uswds/commit/ee13281a7669faaeb6ebd56a22d863d82cfe49e2)), closes [#324](https://github.com/trussworks/react-uswds/issues/324)
-* **storybook:** switch to addon-docs ([#323](https://github.com/trussworks/react-uswds/issues/323)) ([ccae95d](https://github.com/trussworks/react-uswds/commit/ccae95d44995da3be4156601dd6d023087140f9a)), closes [#119](https://github.com/trussworks/react-uswds/issues/119)
-* **storybook:** upgrade to 5.3.0, prepare for addon-docs ([#322](https://github.com/trussworks/react-uswds/issues/322)) ([1f1fc6a](https://github.com/trussworks/react-uswds/commit/1f1fc6a7759c411fff11b9f156b074143ed2eec4)), closes [#119](https://github.com/trussworks/react-uswds/issues/119)
-
+- **ButtonGroup:** Add new component ButtonGroup ([#382](https://github.com/trussworks/react-uswds/issues/382)) ([a7b84d6](https://github.com/trussworks/react-uswds/commit/a7b84d6ebd9a144412faf9685d80310204566ba8))
+- **CharacterCount:** Add new component CharacterCount ([#383](https://github.com/trussworks/react-uswds/issues/383)) ([cc12034](https://github.com/trussworks/react-uswds/commit/cc120342c3a6484227b6bab00d18c4ce8212d30c))
+- add addon-viewports using the included INITIAL_VIEWPORTS list as default for all stories ([#376](https://github.com/trussworks/react-uswds/issues/376)) ([9683b40](https://github.com/trussworks/react-uswds/commit/9683b400769e63bb3035c986acc253ffdc2f008b))
+- **Validation:** Add new Validation components ([#351](https://github.com/trussworks/react-uswds/issues/351)) ([2b2369a](https://github.com/trussworks/react-uswds/commit/2b2369a9ad231200daae3042a3070b872081310b))
 
 ### Bug Fixes
 
-* correct version syntax in deploy-storybook worflow([#321](https://github.com/trussworks/react-uswds/issues/321)) ([4eb7d2c](https://github.com/trussworks/react-uswds/commit/4eb7d2c3490d3740be3517d0d0e4715e0fe2ff9f))
-* Export NavDropDownButton ([91f9ca7](https://github.com/trussworks/react-uswds/commit/6e27ce6e3fcc98699b7b442d801a53f113118adf))
-* remove commitizen; upgrade example app dependencies ([#335](https://github.com/trussworks/react-uswds/issues/335)) ([9c5aea2](https://github.com/trussworks/react-uswds/commit/9c5aea26acb34cb282ce9f2e0c2a17af90cae786))
-
+- **Button:** Deprecate icon, size small properties ([#362](https://github.com/trussworks/react-uswds/issues/362)) ([23a2e4b](https://github.com/trussworks/react-uswds/commit/23a2e4ba9af1f7d16b13625d3b4b3d80fcdd24a3))
+- **webpack:** support browsers and node
 
 ### Documentation & Examples
 
-* add [@ahobson](https://github.com/ahobson) as codeowner, remove check-in meeting ([#347](https://github.com/trussworks/react-uswds/issues/347)) ([9eaf02b](https://github.com/trussworks/react-uswds/commit/9eaf02b188fd017322b6e4dc4c1b0d7693e47a9c))
-* Add new component issue template ([#340](https://github.com/trussworks/react-uswds/issues/340)) ([8fb0f4b](https://github.com/trussworks/react-uswds/commit/8fb0f4b004fde789e5fcea6294a5659b91503742))
+- Even more info and emphasis on conventional commits ([#350](https://github.com/trussworks/react-uswds/issues/350)) ([1301cc4](https://github.com/trussworks/react-uswds/commit/1301cc4aef7661a6f6bbead1d89e829a8047fecd))
+- Point users to react-fontawesome for icons ([#364](https://github.com/trussworks/react-uswds/issues/364)) ([3de50ef](https://github.com/trussworks/react-uswds/commit/3de50ef1046a1b368e4e8f32b2aa7cef5750d2b8))
+
+## [1.8.0](https://github.com/trussworks/react-uswds/compare/1.7.0...1.8.0) (2020-07-27)
+
+### Features
+
+- **danger:** Block PR if yarn audit has high or critical, do not run on dependabot, no warn on version ([#327](https://github.com/trussworks/react-uswds/issues/327)) ([ee13281](https://github.com/trussworks/react-uswds/commit/ee13281a7669faaeb6ebd56a22d863d82cfe49e2)), closes [#324](https://github.com/trussworks/react-uswds/issues/324)
+- **storybook:** switch to addon-docs ([#323](https://github.com/trussworks/react-uswds/issues/323)) ([ccae95d](https://github.com/trussworks/react-uswds/commit/ccae95d44995da3be4156601dd6d023087140f9a)), closes [#119](https://github.com/trussworks/react-uswds/issues/119)
+- **storybook:** upgrade to 5.3.0, prepare for addon-docs ([#322](https://github.com/trussworks/react-uswds/issues/322)) ([1f1fc6a](https://github.com/trussworks/react-uswds/commit/1f1fc6a7759c411fff11b9f156b074143ed2eec4)), closes [#119](https://github.com/trussworks/react-uswds/issues/119)
+
+### Bug Fixes
+
+- correct version syntax in deploy-storybook worflow([#321](https://github.com/trussworks/react-uswds/issues/321)) ([4eb7d2c](https://github.com/trussworks/react-uswds/commit/4eb7d2c3490d3740be3517d0d0e4715e0fe2ff9f))
+- Export NavDropDownButton ([91f9ca7](https://github.com/trussworks/react-uswds/commit/6e27ce6e3fcc98699b7b442d801a53f113118adf))
+- remove commitizen; upgrade example app dependencies ([#335](https://github.com/trussworks/react-uswds/issues/335)) ([9c5aea2](https://github.com/trussworks/react-uswds/commit/9c5aea26acb34cb282ce9f2e0c2a17af90cae786))
+
+### Documentation & Examples
+
+- add [@ahobson](https://github.com/ahobson) as codeowner, remove check-in meeting ([#347](https://github.com/trussworks/react-uswds/issues/347)) ([9eaf02b](https://github.com/trussworks/react-uswds/commit/9eaf02b188fd017322b6e4dc4c1b0d7693e47a9c))
+- Add new component issue template ([#340](https://github.com/trussworks/react-uswds/issues/340)) ([8fb0f4b](https://github.com/trussworks/react-uswds/commit/8fb0f4b004fde789e5fcea6294a5659b91503742))
 
 ## [1.7.0](https://github.com/trussworks/react-uswds/compare/1.6.1...1.7.0) (2020-07-15)
 
-
 ### Features
 
-* Link Component ([#309](https://github.com/trussworks/react-uswds/issues/309)) ([2879bec](https://github.com/trussworks/react-uswds/commit/2879bec7cce64a71b5b9e44ff0ad400cf11d52f1))
-
+- Link Component ([#309](https://github.com/trussworks/react-uswds/issues/309)) ([2879bec](https://github.com/trussworks/react-uswds/commit/2879bec7cce64a71b5b9e44ff0ad400cf11d52f1))
 
 ### Bug Fixes
 
-* address all lint warnings ([#319](https://github.com/trussworks/react-uswds/issues/319)) ([95a12a3](https://github.com/trussworks/react-uswds/commit/95a12a363e6f609fee0760469443a808b1c35732))
-* refactor menu, megamanu; removes deprecation warnings from tests ([#313](https://github.com/trussworks/react-uswds/issues/313)) ([42e2481](https://github.com/trussworks/react-uswds/commit/42e248190cfbeebf72f7617326cfb03c4f241304))
+- address all lint warnings ([#319](https://github.com/trussworks/react-uswds/issues/319)) ([95a12a3](https://github.com/trussworks/react-uswds/commit/95a12a363e6f609fee0760469443a808b1c35732))
+- refactor menu, megamanu; removes deprecation warnings from tests ([#313](https://github.com/trussworks/react-uswds/issues/313)) ([42e2481](https://github.com/trussworks/react-uswds/commit/42e248190cfbeebf72f7617326cfb03c4f241304))
 
 ### [1.6.1](https://github.com/trussworks/react-uswds/compare/1.6.0...1.6.1) (2020-07-13)
 
-
 ### Bug Fixes
 
-* **standard-version:** use -t flag correctly, autocommit changelog and release bump ([#310](https://github.com/trussworks/react-uswds/issues/310)) ([a96591e](https://github.com/trussworks/react-uswds/commit/a96591e71a7ac226b7d397c3714fed25d78c1ab9))
-* Use JSX.ImplicitElements to derive valid property names ([#267](https://github.com/trussworks/react-uswds/issues/267)) ([2eba792](https://github.com/trussworks/react-uswds/commit/2eba7922ea2c6a4f4a710f989da41e7b847d4398))
-
+- **standard-version:** use -t flag correctly, autocommit changelog and release bump ([#310](https://github.com/trussworks/react-uswds/issues/310)) ([a96591e](https://github.com/trussworks/react-uswds/commit/a96591e71a7ac226b7d397c3714fed25d78c1ab9))
+- Use JSX.ImplicitElements to derive valid property names ([#267](https://github.com/trussworks/react-uswds/issues/267)) ([2eba792](https://github.com/trussworks/react-uswds/commit/2eba7922ea2c6a4f4a710f989da41e7b847d4398))
 
 ### Documentation & Examples
 
-* Update releasing instructions with current flow ([#297](https://github.com/trussworks/react-uswds/issues/297)) ([87515bc](https://github.com/trussworks/react-uswds/commit/87515bc8577af1630833d0e374c29d08a34cae54))
+- Update releasing instructions with current flow ([#297](https://github.com/trussworks/react-uswds/issues/297)) ([87515bc](https://github.com/trussworks/react-uswds/commit/87515bc8577af1630833d0e374c29d08a34cae54))
 
 ## 1.6.0 (2020-06-29)
 
