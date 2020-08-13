@@ -31,6 +31,11 @@ interface ComboBoxProps {
   options: ComboBoxOption[]
 }
 
+const optionFilter = (needle: string): ((event: ComboBoxOption) => boolean) => {
+  return (option: ComboBoxOption): boolean =>
+    option.label?.toLowerCase().indexOf(needle) != -1
+}
+
 export const ComboBox = (
   props: ComboBoxProps & JSX.IntrinsicElements['select']
 ): React.ReactElement => {
@@ -44,7 +49,8 @@ export const ComboBox = (
 
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const classes = classnames('usa-combo-box', className)
+  const filteredOptions =
+    inputValue !== '' ? options.filter(optionFilter(inputValue)) : options
 
   // TODO implement these
   const listID = ''
@@ -66,11 +72,11 @@ export const ComboBox = (
   })
 
   const changeFocus = (change: Direction): void => {
-    const currentIndex = options.findIndex(
+    const currentIndex = filteredOptions.findIndex(
       (option) => option.value === focusedValue
     )
     if (currentIndex === -1) {
-      const newOption = options[0]
+      const newOption = filteredOptions[0]
       setFocusedValue(newOption.value)
     } else {
       const newIndex = currentIndex + change
@@ -80,7 +86,7 @@ export const ComboBox = (
         setFocusMode(FocusMode.Input)
       } else {
         // eslint-disable-next-line security/detect-object-injection
-        const newOption = options[newIndex]
+        const newOption = filteredOptions[newIndex]
         setFocusedValue(newOption.value)
       }
     }
@@ -157,8 +163,14 @@ export const ComboBox = (
     }
   }
 
+  const containerClasses = classnames('usa-combo-box', className)
+
   return (
-    <div data-testid="combo-box" className={classes} id={id} ref={containerRef}>
+    <div
+      data-testid="combo-box"
+      className={containerClasses}
+      id={id}
+      ref={containerRef}>
       <select
         className="usa-select usa-sr-only usa-combo-box__select"
         name={name}
@@ -217,7 +229,7 @@ export const ComboBox = (
         className="usa-combo-box__list"
         role="listbox"
         hidden={!isOpen}>
-        {options.map((option, index) => {
+        {filteredOptions.map((option, index) => {
           const focused = option.value === focusedValue
           const selected = option.value === selectedValue
           const itemClasses = classnames('usa-combo-box__list-option', {
