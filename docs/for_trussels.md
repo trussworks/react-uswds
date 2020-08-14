@@ -2,11 +2,9 @@
 
 Below is documentation specifically to provide guidance for contributors who work at [Truss](https://github.com/trussworks). If you don't work at Truss, please feel free to ignore!
 
-### Internal Communication
+## Internal Communication
 
 We have a Truss Slack channel dedicated to discussing this project (**#react-uswds**), as well as a channel for automated updates such as new issues, pull requests, and releases (**#react-uswds-feed**). Anyone is welcome to join and participate in these channels, whether or not they are an active maintainer.
-
-We also have a regularly scheduled check-in meeting, which serves as a catch-all stand-up / backlog grooming / sprint planning for anyone who is actively working on the library. This meeting is also open to anyone, but is focused on discussing current & upcoming work, and any blockers or questions that need to be resolved. The meeting cadence and attendance will vary depending on who is an active maintainer, and the agenda and notes can be found via the #react-uswds channel.
 
 ## Active Maintainers
 
@@ -19,28 +17,29 @@ Regardless of whether you are on client work or Reserve, it is _up to each indiv
 ### Active maintainer responsibilities include:
 
 - Maintain a presence in the #react-uswds channel, especially to answer any implementation questions from Trussels who are _not_ active maintainers
-- Pay attention to [USWDS](https://github.com/uswds/uswds) updates, and create new issues needed to help this project stay up-to-date with them
-- Participate actively in PR reviews, issue discussion, and project roadmap planning
-- Keep an eye on any security alerts that come up, and make sure they are addressed promptly (see below)
-- Assist with shepherding library releases forward, and publishing to npm
-- Prevent PRs and issues from becoming stale, and clean up the ones that do
-- Moderate this repo and help keep it aligned with Truss project values
-- Maintain admin responsibilities for the repo's [Happo Account](https://happo.io/)
+- Watch [USWDS](https://github.com/uswds/uswds) updates, and create new issues needed to help this project stay up-to-date with them
+- Participate in PR reviews, issue discussion, and project roadmap planning
+- Address any security alerts that come up promptly (see below)
+- Shepherd library releases forward and publish to npm. See [releasing documentation](./docs/for_trussels.md). 
+- Maintain the project board.
+- Prevent PRs and issues from becoming stale, and clean up the ones that do.  
+- Moderate discussions to keep alignment with [Truss values](https://truss.works/values)
+- Administrative the repo's [Happo Account](https://happo.io/). Once you have access, log into Happo.io with your Truss email and you will be able to approve/reject changes on PRs. [Happo docs](https://docs.happo.io/docs/getting-started) have more information.
 
 ### Addressing Security Alerts
 
-Typically any security alerts we receive will be related to third-party dependencies. This repo is currently configured so that Dependabot will automatically open PRs that fix dependency vulnurabilities, so ideally most of the time manual intervention is not needed. There may also be periods of time during which an alert is issued, but the related dependencies have not yet updated -- in this case, we usually choose to accept the risk of waiting until the updates have been released. However, if an exceptional case comes up -- such as a high severity vulnurability or even a vulnurability within this library -- and you aren't sure how to handle it, you can ask for help in one of the following Truss Slack channels (in order of relevance): #react-uswds, #g-frontend, #infrasec, #engineering
+Typically any security alerts we receive will be related to third-party dependencies. This repo is currently configured so that Dependabot will automatically open PRs that fix dependency vulnerabilities, so ideally most of the time manual intervention is not needed. There may also be periods of time during which an alert is issued, but the related dependencies have not yet updated -- in this case, we usually choose to accept the risk of waiting until the updates have been released. However, if an exceptional case comes up -- such as a high severity vulnerability or even a vulnerability within this library -- and you aren't sure how to handle it, you can ask for help in one of the following Truss Slack channels (in order of relevance): #react-uswds, #g-frontend, #infrasec, #engineering
 
 ## Onboarding
 
 First of all, we’re so excited you want to be an active maintainer on this project! Here are the things you should make sure to do:
 
 - [ ] Join the #react-uswds Slack channel
-- [ ] If you haven't already, be sure to familiarize yourself with this repo, especially the docs on [contributing](./contributing.md) and [recent releases](https://github.com/trussworks/react-uswds/releases)
+- [ ] If you haven't already, be sure to familiarize yourself with this repo, especially the docs on [contributing](./contributing.md) and [releasing](./releasing.md). Also, review [recent releases](https://github.com/trussworks/react-uswds/releases).
 - [ ] Open a new PR that adds yourself to the Active Maintainers list in the [readme](../README.md).
-  - [ ] _Optional:_ Speak with another active maintainer and request admin privlages to the [Happo Account](https://happo.io/)
-  - [ ] If you aren't already, you can also add yourself to the `contributors` list in the [package.json](../package.json),
-  - [ ] and to [CODEOWNERS](../CODEOWNERS) if you'd like to automatically be requested to review PRs _(this is optional)_.
+  - [ ] _Optional:_ Speak with another active maintainer and request admin privileges to the [Happo Account](https://happo.io/)
+  - [ ] _Optional:_ Add yourself to the `contributors` list in the [package.json](../package.json),
+  - [ ] _Optional: Add yourself to [CODEOWNERS](../CODEOWNERS) if you'd like to automatically be requested to review PRs.
 - [ ] _Optional:_ If you want access to the npm org so you can publish new releases, ping `@npm-admins` in Slack
 
 If you've completed all of the above and are wondering what to do next, here are some ideas!

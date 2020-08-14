@@ -1,10 +1,15 @@
-# USWDS CSS & SCSS
+# USWDS Styles and Assets
 
-If you only want the compiled USWDS CSS, and you aren't going to use any of the USWDS SCSS, you can just include the following:
+## Importing Styles
+
+If you are using this library and you don't have [uswds](https://www.npmjs.com/package/uswds) as an existing dependency in your project, you will need to import the uswds css in the root of your React application. Our library exports a version for this purpose.
 
 ```
-@import 'uswds';
+import '@trussworks/react-uswds/lib/uswds.css'
+import '@trussworks/react-uswds/lib/index.css'
 ```
+
+If you already have uswds as a dependency (this is most likely case) you only need `import '@trussworks/react-uswds/lib/index.css'` in your application.
 
 If you want to use USWDS SCSS (mixins, functions, variables, etc.), you will need to define some required SCSS variables (even if you aren't going to use them):
 
@@ -68,3 +73,34 @@ $theme-grid-container-max-width: 'desktop-lg';
 /* COMPONENTS */
 $theme-hero-image: '~uswds/src/img/hero.png';
 ```
+
+### Icons
+
+[USWDS recommends using Font Awesome](https://designsystem.digital.gov/components/icons/), and that project [provides a package for use with React](https://github.com/FortAwesome/react-fontawesome).
+
+To add this to your project, install react-font-awesome and at least one style of icon:
+
+```
+yarn add @fortawesome/fontawesome-svg-core \
+         @fortawesome/free-solid-svg-icons \
+         @fortawesome/react-fontawesome
+```
+
+You can then add Font Awesome icons to your projects using the `FontAwesome` component:
+
+```jsx
+import ReactDOM from 'react-dom'
+import { Button } from '@trussworks/react-uswds'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
+
+const button = (
+  <Button type="button">
+    <FontAwesomeIcon icon={faSave} /> Save Changes
+  </Button>
+)
+
+ReactDOM.render(button, document.body)
+```
+
+For more information on working with and configuring react-fontawesome, please see [that project's documentation](https://github.com/FortAwesome/react-fontawesome#installation). To find specific icons for your project, [search on the Font Awesome site](https://fontawesome.com/icons).

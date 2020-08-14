@@ -1,23 +1,31 @@
 # Contributing
 
+We are glad you are interested to contribute to this project! Please make sure you've seen the README and license for this project before continuing further. If you work for Truss, check out the [guide for Trussels](./docs/for_trussels.md) as well.
+
+We welcome contributions in the form of comments, issues, or pull requests with code changes. If you see an error, have a question, or want to share feedback please use one of these formats to get in touch with us.
+
 ## Table of Contents
 
-1. [Environment Setup](#environment-setup)
-2. [Development](#development)
-3. [Releasing](#releasing)
+- [Contributing](#contributing)
+  - [Table of Contents](#table-of-contents)
+  - [Environment Setup](#environment-setup)
+    - [Available Commands](#available-commands)
+  - [Development](#development)
+    - [Before You Start](#before-you-start)
+    - [Pull Requests](#pull-requests)
+    - [Guidelines](#guidelines)
+    - [Linting, Testing, and Automation](#linting-testing-and-automation)
 
 ## Environment Setup
 
-1. Clone this repo!
-
 1. Use the node environment manager of your choice, but make sure you have the required version specified in `.node-version`. We recommend using [nodenv](https://github.com/nodenv/nodenv) to manage your node versions, but you can also use [homebrew](https://brew.sh/). More info can be found here: [how to install Node.js](https://nodejs.dev/how-to-install-nodejs)
 
-1. Use [yarn](https://yarnpkg.com) to manage JS packages.
+2. Use [yarn](https://yarnpkg.com) to manage JS packages.
 
    - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
    - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
 
-1. Make sure you can run all of the available commands listed below with no errors.
+3. Clone this repo and make sure you can run all of the available commands listed below with no errors.
 
 ### Available Commands
 
@@ -41,36 +49,38 @@ These should all be run from within the project directory.
 
 ## Development
 
-To start working on a new issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress." Create a new branch off `main` using the naming convention:
+### Before You Start
 
-`{type}-{summary}-{issue #}`
-
-For example: `feat-accordion-component-112`, `fix-accordion-component-112`
-
-See [adding new components](./adding_new_components.md) to get ideas of where to start.
+Make sure you understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)** This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
 
 ### Pull Requests
 
-When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc., and once your branch is approved you should **squash & merge**.
+To being working on a issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress.". If there isn't an issue yet for what you want to work on, [please create one](https://github.com/trussworks/react-uswds/issues/new/choose).
 
-This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. This standardizes contributions and streamlines the release flow. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)** This generates an automated changelog entry and is required to merge.
+Create a new branch off `main` using the naming convention:
 
-### Dev Notes
+`{your initials or username}-{summary}-{issue #}`
 
-Because this project exports a library that will be used by other projects, it is important that updates follow a set of standard practices. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass testing and linting standards.
+For example: `hw-accordion-component-112`, `hw-accordion-component-112`
 
-- [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook
+When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once your branch is approved, the work will be merged with **squash & merge**.
+
+### Guidelines
+
+- Encourage a strict separation of concerns, focusing on UI (rendered HTML and CSS) rather than any application logic.
+- Expose the necessary props for composability and extensibility, such as event handlers, custom CSS classes, etc.
+- Maintain a high standard of unit test coverage and cross-browser/device support, so that projects including this dependency can focus on integration and implementation.
+- Provide thorough documentation (in Storybook and in the example app) so that users can view the components as they render in the UI, the source code required to use them, and specifications such as how props are used, a11y support, and test coverage.
+- Consistent and transparent versioning so that multiple projects can rely on this package, and it can be maintained as React and USWDS release new versions while also providing backwards compatibility.
+
+More guidance for preferred React practices can be found in the [adding new components](./adding_new_components.md) documentation.
+
+### Linting, Testing, and Automation
+
+Because this project exports a library that will be used by other projects, it is important that updates follow a set of standard practices. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass the following automation.
+
+- [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook/
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
-  - These checks will also be run on all files in CI, and must pass before the branch can be merged
-- [`standard-version`](https://github.com/conventional-changelog/standard-version) is used during releases to auto-generate version numbers and changelog based on PR title.
-  - The version number is determined based on conventional commits -
-    **[fix]** indicates a bug fix, **[feat]** indicates a minor bump.
-    **[!]** or [BREAKING CHANGES] indicates a major bump. Other
-    possibilities include **build**, **ci**, **chore**, **docs**,
-    **perf**, **refactor**, **revert**, **style**, **test**.  It is
-    *strongly* recommended you familiarize yourself with [conventional commits](https://www.conventionalcommits.org).
-  - The **[WIP]** prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
-- The project is configured to only allow [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits.
 - [dangerjs](https://github.com/danger/danger-js) is used to enforce several pull request standards, including:
   - Changes to package source code should include changes to tests.
   - New `src/components` files should include changes to storybook.
@@ -78,42 +88,16 @@ Because this project exports a library that will be used by other projects, it i
   - Package dependency changes should include `yarn.lock` updates and
     `yarn audit` will be run by danger to ensure no high or critical
     vulnerabilities are found
-- All [Jest tests](https://jestjs.io/) will be run in CI and must pass before the branch can be merged
-- [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) will be run in CI and all diffs must be approved before the branch can be merged. Developers must have access to the Happo.io account to approve/reject diffs. If you work at Truss, log into Happo.io with your gmail and you will be able to approve/reject changes. Navigate to the happo link for instructions on how to review and approve diffs.
+- [Jest tests](https://jestjs.io/) are run in CI and must pass before the branch can be merged
+- [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) are run CI against Storybook stories. All diffs must be approved before the branch can be merged. Developers with access (maintainers and many codeowners) log in to Happo.io account to approve/reject diffs.
+- PR titles must follow conventional commits specification.
+  - We use [`standard-version`](https://github.com/conventional-changelog/standard-version). This auto-generates version numbers and changelog based on commits. We [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits, so the title must be correct.
+  - The version number is determined based on the commit prefix -
+    **[fix]** indicates a bug fix, **[feat]** indicates a minor bump.
+    **[!]** or [BREAKING CHANGES] indicates a major bump. Other
+    possibilities include **build**, **ci**, **chore**, **docs**,
+    **perf**, **refactor**, **revert**, **style**, **test**. It is
+    _strongly_ recommended you familiarize yourself with [conventional commits](https://www.conventionalcommits.org).
+  - The **[WIP]** prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
 
-## Releasing
-
-Steps for a new release (these are in the process of being automated):
-
-1. Check out `main` and make sure you have pulled down the latest changes (`git fetch origin main --tags`)
-
-2. Run `yarn release` which uses [`standard-version`](https://github.com/conventional-changelog/standard-version) to:
-
-   - Determine the new version based on new commits.
-   - Generate a new entry in the changelog with the version, release notes, and today's date.
-   - Commit all of the above changes with the message `chore(release): <version>`
-   - Note: Creating a new tag is **skipped** (this will happen as part of the publish flow)
-
-3. Push changes to a new branch following the naming pattern: `release-<version>`
-
-   - For example: `git checkout -b release-1.1.0`
-
-4. Open a PR for the release branch against `main`, with the changelog generated by the previous step included in the PR description. Resolve any conflicts.
-
-   - PR title should be `chore(release): <version>`
-   - Ask for approvals from stakeholders, perform testing on applications, etc.
-   - Last minute bugfix from testing or PR feedback can be made. Use conventional commits syntax. For example: `fix: export Grid component`.
-     - Add bugfix commits on top of the release. You will eventually squash and merge the PR as usual.
-     - _For significant bugfix_
-       - Redo the release. Reset your local release branch, add bugfix commits, rerun `yarn release`. The release chore commit should be the last commit on the branch. The fix will be included in the changelog. _Rebase and merge the PR in this special case._
-
-![image](./release_PR.png)
-
-1. Once the release PR is approved, complete the release and publish the new version (this should be automated by GH - TODO):
-   - Merge the PR.
-   - Create a new [**release tag**](https://github.com/trussworks/react-uswds/releases) pointed at `main` on Github.
-     - Use the same notes as release PR.
-   - Pull down latest `main` locally before publishing - `git fetch origin main --tags`
-   - Publish the new package to npm: `npm publish`. You will be prompted for a MFA code.
-     - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack.
-     - You may need to `npm login` first.
+Having issues? See [FAQs](./docs/faqs.md).
