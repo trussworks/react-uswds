@@ -193,6 +193,7 @@ export const ComboBox = (
         ))}
       </select>
       <input
+        data-testid="combo-box-input"
         aria-owns={listID}
         aria-autocomplete="list"
         aria-describedby={assistiveHintID}
@@ -233,6 +234,7 @@ export const ComboBox = (
         </button>
       </span>
       <ul
+        data-testid="combo-box-option-list"
         tabIndex={-1}
         id={listID}
         className="usa-combo-box__list"
