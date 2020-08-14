@@ -103,13 +103,6 @@ describe('ComboBox component', () => {
       'true'
     )
     expect(getByTestId('combo-box-option-list')).toBeVisible()
-
-    fireEvent.click(getByTestId('combo-box-input'))
-    expect(getByTestId('combo-box-input')).toHaveAttribute(
-      'aria-expanded',
-      'true'
-    )
-    expect(getByTestId('combo-box-option-list')).toBeVisible()
   })
 
   it('display options list when input is clicked twice', () => {
