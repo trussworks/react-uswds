@@ -163,7 +163,15 @@ export const ComboBox = (
     }
   }
 
-  const containerClasses = classnames('usa-combo-box', className)
+  const handleClearClick = (): void => {
+    setInputValue('')
+    setSelectedValue(undefined)
+    setFocusMode(FocusMode.Input)
+  }
+
+  const containerClasses = classnames('usa-combo-box', className, {
+    'usa-combo-box--pristine': selectedValue,
+  })
 
   return (
     <div
@@ -208,7 +216,8 @@ export const ComboBox = (
         <button
           type="button"
           className="usa-combo-box__clear-input"
-          aria-label="Clear the select contents">
+          aria-label="Clear the select contents"
+          onClick={handleClearClick}>
           &nbsp;
         </button>
       </span>
