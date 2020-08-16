@@ -37,7 +37,7 @@ export const Search = (
     small,
     label = 'Search',
     className,
-    placeholder = '',
+    placeholder,
     ...formProps
   } = props
   if (big) {
