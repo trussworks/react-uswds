@@ -1,7 +1,6 @@
 import React, {
   KeyboardEvent,
   FocusEvent,
-  MouseEvent,
   useState,
   useEffect,
   useRef,
@@ -9,7 +8,7 @@ import React, {
 import classnames from 'classnames'
 
 interface ComboBoxOption {
-  value: string
+  id: string
   label: string
 }
 
@@ -54,7 +53,7 @@ export const ComboBox = (
   let defaultLabel = ''
   if (defaultValue) {
     const defaultOption = options.find((opt: ComboBoxOption): boolean => {
-      return opt.value === defaultValue
+      return opt.id === defaultValue
     })
     if (defaultOption) {
       defaultLabel = defaultOption.label
@@ -100,11 +99,11 @@ export const ComboBox = (
 
   const changeFocus = (change: Direction): void => {
     const currentIndex = filteredOptions.findIndex(
-      (option) => option.value === focusedValue
+      (option) => option.id === focusedValue
     )
     if (currentIndex === -1) {
       const newOption = filteredOptions[0]
-      setFocusedValue(newOption.value)
+      setFocusedValue(newOption.id)
     } else {
       const newIndex = currentIndex + change
       if (newIndex < 0) {
@@ -114,7 +113,7 @@ export const ComboBox = (
       } else {
         // eslint-disable-next-line security/detect-object-injection
         const newOption = filteredOptions[newIndex]
-        setFocusedValue(newOption.value)
+        setFocusedValue(newOption.id)
       }
     }
   }
@@ -133,7 +132,7 @@ export const ComboBox = (
   const handleInputClick = (): void => {
     setFocusMode(FocusMode.Input)
     setIsOpen(true)
-    setFocusedValue(filteredOptions[0].value)
+    setFocusedValue(filteredOptions[0].id)
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
@@ -166,15 +165,15 @@ export const ComboBox = (
   }
 
   const handleListItemClick = (option: ComboBoxOption): void => {
-    selectValue(option.value)
-    setInputValue(option.label || option.value)
+    selectValue(option.id)
+    setInputValue(option.label || option.id)
     setIsOpen(false)
     setFocusMode(FocusMode.Input)
   }
 
   const handleListItemMouseMove = (option: ComboBoxOption): void => {
-    if (focusedValue !== option.value) {
-      setFocusedValue(option.value)
+    if (focusedValue !== option.id) {
+      setFocusedValue(option.id)
       setFocusMode(FocusMode.Item)
     }
   }
@@ -215,8 +214,8 @@ export const ComboBox = (
         value={selectedValue}
         {...selectProps}>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label || option.value}
+          <option key={option.id} value={option.id}>
+            {option.label || option.id}
           </option>
         ))}
       </select>
@@ -269,8 +268,8 @@ export const ComboBox = (
         role="listbox"
         hidden={!isOpen}>
         {filteredOptions.map((option, index) => {
-          const focused = option.value === focusedValue
-          const selected = option.value === selectedValue
+          const focused = option.id === focusedValue
+          const selected = option.id === selectedValue
           const itemClasses = classnames('usa-combo-box__list-option', {
             'usa-combo-box__list-option--focused': focused,
             'usa-combo-box__list-option--selected': selected,
@@ -279,8 +278,8 @@ export const ComboBox = (
           return (
             <li
               ref={focused ? itemRef : null}
-              value={option.value}
-              key={option.value}
+              value={option.id}
+              key={option.id}
               className={itemClasses}
               tabIndex={focused ? 0 : -1}
               role="option"
@@ -293,7 +292,7 @@ export const ComboBox = (
               onClick={(): void => {
                 handleListItemClick(option)
               }}>
-              {option.label || option.value}
+              {option.label || option.id}
             </li>
           )
         })}

@@ -6,7 +6,7 @@ import { ComboBox } from './ComboBox'
 import { fruits } from './fruits'
 
 const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
-  value: value,
+  id: value,
   label: key,
 }))
 
@@ -135,7 +135,7 @@ describe('ComboBox component', () => {
     fireEvent.click(firstItem)
 
     expect(key).toEqual('favorite-fruit')
-    expect(value).toEqual(fruitOptions[0].value)
+    expect(value).toEqual(fruitOptions[0].id)
   })
 
   describe('accessibility', () => {
