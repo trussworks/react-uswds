@@ -216,9 +216,8 @@ export const ComboBox = (
         onClick={handleInputClick}
         onKeyDown={handleInputKeyDown}
         onChange={(e): void => setInputValue(e.target.value)}
-        // these do not type check:
-        // autocapitalize="off"
-        // autocomplete="off"
+        autoCapitalize="off"
+        autoComplete="off"
       />
       <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
         <button
