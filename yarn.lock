@@ -7430,9 +7430,9 @@ happo-plugin-storybook@^2.5.3:
     rimraf "^2.6.3"
 
 happo.io@^5.4.0:
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-5.6.2.tgz#fa29f30676ebf0dca81c73ae59fe9cbcf242b3ed"
-  integrity sha512-yQyVF7Ce5pGDonqROahbEyJysUGuAE5qVcdm+Ye2aqtHbB4kaZN52ur/CfePwQloU4agrVaQ+woNya1liTvS4A==
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-5.6.3.tgz#eae094aa0bf481d18f2040eaeaf6122141c9eb62"
+  integrity sha512-lnhBPQ6Qdi+74js3D0tDNc6JxRHoIO9BjV2/5lin1pcmXCeme4aY04m/9zU2FJRfo2SgJmku18eMHpZxD+Q36w==
   dependencies:
     archiver "^3.0.0"
     async-retry "^1.3.1"
