@@ -63,7 +63,9 @@ Create a new branch off `main` using the naming convention:
 
 For example: `hw-accordion-component-112`, `hw-accordion-component-112`
 
-When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once your branch is approved, the work will be merged with **squash & merge**.
+When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once the works approved, the work will be merged with **squash & merge**.
+
+> Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and this prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
 
 ### Guidelines
 
