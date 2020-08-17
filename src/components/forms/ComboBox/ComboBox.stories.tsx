@@ -39,10 +39,24 @@ export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
   )
 }
 
-// export const withDefaultValue = (): React.ReactElement => (
-//   <ComboBox id="input-ComboBox" name="input-ComboBox" defaultValue="value2">
-//   </ComboBox>
-// )
+export const withDefaultValue = (): React.ReactElement => {
+  const opts = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  return (
+    <Form onSubmit={noop}>
+      <ComboBox
+        id="input-ComboBox"
+        name="input-ComboBox"
+        options={opts}
+        setFieldValue={noop}
+        defaultValue={'apple'}
+      />
+    </Form>
+  )
+}
 
 // export const withLabel = (): React.ReactElement => (
 //   <>

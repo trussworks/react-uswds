@@ -10,7 +10,7 @@ import classnames from 'classnames'
 
 interface ComboBoxOption {
   value: string
-  label?: string
+  label: string
 }
 
 enum Direction {
@@ -29,22 +29,43 @@ interface ComboBoxProps {
   name: string
   className?: string
   options: ComboBoxOption[]
+  defaultValue?: string
   setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void
 }
 
 const optionFilter = (needle: string): ((event: ComboBoxOption) => boolean) => {
   return (option: ComboBoxOption): boolean =>
-    option.label?.toLowerCase().indexOf(needle) != -1
+    option.label.toLowerCase().indexOf(needle) != -1
 }
 
 export const ComboBox = (
   props: ComboBoxProps //& JSX.IntrinsicElements['select']
 ): React.ReactElement => {
-  const { id, name, className, options, setFieldValue, ...selectProps } = props
+  const {
+    id,
+    name,
+    className,
+    options,
+    defaultValue,
+    setFieldValue,
+    ...selectProps
+  } = props
 
-  const [inputValue, setInputValue] = useState('') // value entered into textfield
+  let defaultLabel = ''
+  if (defaultValue) {
+    const defaultOption = options.find((opt: ComboBoxOption): boolean => {
+      return opt.value === defaultValue
+    })
+    if (defaultOption) {
+      defaultLabel = defaultOption.label
+    }
+  }
+
+  const [inputValue, setInputValue] = useState(defaultLabel) // value entered into textfield
   const [isOpen, setIsOpen] = useState(false) // if the list of options is shown
-  const [selectedValue, setSelectedValue] = useState<string>() // currently selected value
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    defaultValue || undefined
+  ) // currently selected value
   const [focusedValue, setFocusedValue] = useState<string>() // which item is focused
   const [focusMode, setFocusMode] = useState<FocusMode>(FocusMode.None)
 
