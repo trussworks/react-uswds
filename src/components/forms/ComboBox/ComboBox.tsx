@@ -29,6 +29,7 @@ interface ComboBoxProps {
   name: string
   className?: string
   options: ComboBoxOption[]
+  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void
 }
 
 const optionFilter = (needle: string): ((event: ComboBoxOption) => boolean) => {
@@ -37,9 +38,9 @@ const optionFilter = (needle: string): ((event: ComboBoxOption) => boolean) => {
 }
 
 export const ComboBox = (
-  props: ComboBoxProps & JSX.IntrinsicElements['select']
+  props: ComboBoxProps //& JSX.IntrinsicElements['select']
 ): React.ReactElement => {
-  const { id, name, className, options, ...selectProps } = props
+  const { id, name, className, options, setFieldValue, ...selectProps } = props
 
   const [inputValue, setInputValue] = useState('') // value entered into textfield
   const [isOpen, setIsOpen] = useState(false) // if the list of options is shown
@@ -70,6 +71,11 @@ export const ComboBox = (
       inputRef.current.focus()
     }
   })
+
+  const selectValue = (value: string): void => {
+    setSelectedValue(value)
+    setFieldValue(props.name, value)
+  }
 
   const changeFocus = (change: Direction): void => {
     const currentIndex = filteredOptions.findIndex(
@@ -106,6 +112,7 @@ export const ComboBox = (
   const handleInputClick = (): void => {
     setFocusMode(FocusMode.Input)
     setIsOpen(true)
+    setFocusedValue(filteredOptions[0].value)
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
@@ -138,7 +145,7 @@ export const ComboBox = (
   }
 
   const handleListItemClick = (option: ComboBoxOption): void => {
-    setSelectedValue(option.value)
+    selectValue(option.value)
     setInputValue(option.label || option.value)
     setIsOpen(false)
     setFocusMode(FocusMode.Input)
@@ -225,6 +232,7 @@ export const ComboBox = (
       <span className="usa-combo-box__input-button-separator">&nbsp;</span>
       <span className="usa-combo-box__toggle-list__wrapper" tabIndex={-1}>
         <button
+          data-testid="combo-box-toggle"
           type="button"
           tabIndex={-1}
           className="usa-combo-box__toggle-list"
