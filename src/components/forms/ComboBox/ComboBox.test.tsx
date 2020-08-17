@@ -163,5 +163,20 @@ describe('ComboBox component', () => {
         expect(node).toHaveAttribute('role', 'option')
       })
     })
+
+    it('allows the assistive hint to be customized', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+          assistiveHint="Customized assistive hint"
+        />
+      )
+
+      const node = getByTestId('combo-box-assistive-hint')
+      expect(node).toHaveTextContent('Customized assistive hint')
+    })
   })
 })

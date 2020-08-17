@@ -29,6 +29,7 @@ interface ComboBoxProps {
   className?: string
   options: ComboBoxOption[]
   defaultValue?: string
+  assistiveHint?: string
   setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void
 }
 
@@ -47,6 +48,7 @@ export const ComboBox = (
     options,
     defaultValue,
     setFieldValue,
+    assistiveHint,
     ...selectProps
   } = props
 
@@ -299,10 +301,14 @@ export const ComboBox = (
       </ul>
 
       <div className="usa-combo-box__status usa-sr-only" role="status"></div>
-      <span id={assistiveHintID} className="usa-sr-only">
-        When autocomplete results are available use up and down arrows to review
-        and enter to select. Touch device users, explore by touch or with swipe
-        gestures.
+      <span
+        id={assistiveHintID}
+        className="usa-sr-only"
+        data-testid="combo-box-assistive-hint">
+        {assistiveHint ||
+          `When autocomplete results are available use up and down arrows to review
+           and enter to select. Touch device users, explore by touch or with swipe
+           gestures.`}
       </span>
     </div>
   )
