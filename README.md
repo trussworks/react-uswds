@@ -12,10 +12,9 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 
 An example application, built with React-USWDS, can be found in the `/example` folder and run with the appropriate [`yarn:example` commands](./docs/contributing.md#available-commands).
 
-## Table of Contents
+**Table of Contents**
 
 - [@trussworks/react-uswds](#trussworksreact-uswds)
-  - [Table of Contents](#table-of-contents)
   - [Background](#background)
     - [Non-Goals](#non-goals)
   - [Install](#install)
@@ -42,6 +41,12 @@ Install this package with npm or yarn:
 yarn add @trussworks/react-uswds
 ```
 
+or
+
+```
+npm i @trussworks/react-uswds
+```
+
 ## Usage
 
 You can import modules using ES6 syntax:
@@ -56,7 +61,7 @@ Also make sure to include the following in order to import the compiled CSS from
 @import '~@trussworks/react-uswds/lib/index.css';
 ```
 
-Note: If you aren't already using USWDS as a dependency, you will also need to import uswds styles. **[Read more info about using USWDS styles and assets here](./docs/styles_and_assets.md)**
+Note: If you aren't already using USWDS as a dependency, you also need to import uswds styles. **[Read more info about using USWDS styles and assets here](./docs/styles_and_assets.md)**
 
 Having issues? See [FAQs](./docs/faqs.md).
 

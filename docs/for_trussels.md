@@ -32,7 +32,7 @@ Typically any security alerts we receive will be related to third-party dependen
 
 ### Merging External PRS
 
-Currently our CI cannot run on external PRs (work from outside the Truss organization). This prevents merge. To manage this, we pull PRs into a separate branch that a CODEOWNER creates [using this script](https://github.com/jklukas/git-push-fork-to-upstream-branch) We then close the external contribution PR [with a comment](https://github.com/trussworks/react-uswds/pull/375#issuecomment-668116811) explaining what's going. This allows automation to run properly. This is temporary solution.
+Currently our CI cannot run on external PRs (work from outside the Truss organization) and this prevents merge. Instead, we pull PRs into a separate branch that a CODEOWNER creates [using this script](https://github.com/jklukas/git-push-fork-to-upstream-branch). We then close the external contribution PR [with a comment](https://github.com/trussworks/react-uswds/pull/375#issuecomment-668116811) explaining what's going. This allows automation to run properly. This is temporary solution.
 
 ## Onboarding
 

@@ -9,7 +9,7 @@ import '@trussworks/react-uswds/lib/uswds.css'
 import '@trussworks/react-uswds/lib/index.css'
 ```
 
-If you already have uswds as a dependency (this is most likely case) you only need `import '@trussworks/react-uswds/lib/index.css'` in your application.
+If you already have uswds as a dependency (this is most likely already the case) you only need `import '@trussworks/react-uswds/lib/index.css'` in your application.
 
 If you want to use USWDS SCSS (mixins, functions, variables, etc.), you will need to define some required SCSS variables (even if you aren't going to use them):
 

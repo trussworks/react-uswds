@@ -4,10 +4,9 @@ We are glad you are interested to contribute to this project! Please make sure y
 
 We welcome contributions in the form of comments, issues, or pull requests with code changes. If you see an error, have a question, or want to share feedback please use one of these formats to get in touch with us.
 
-## Table of Contents
+**Table of Contents**
 
 - [Contributing](#contributing)
-  - [Table of Contents](#table-of-contents)
   - [Environment Setup](#environment-setup)
     - [Available Commands](#available-commands)
   - [Development](#development)
@@ -55,7 +54,7 @@ Make sure you understand the [Conventional Commits](https://www.conventionalcomm
 
 ### Pull Requests
 
-To being working on a issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress.". If there isn't an issue yet for what you want to work on, [please create one](https://github.com/trussworks/react-uswds/issues/new/choose).
+To begin working on an issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress.". If there isn't an issue yet for what you want to work on, [please create one](https://github.com/trussworks/react-uswds/issues/new/choose).
 
 Create a new branch off `main` using the naming convention:
 
@@ -63,9 +62,9 @@ Create a new branch off `main` using the naming convention:
 
 For example: `hw-accordion-component-112`, `hw-accordion-component-112`
 
-When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once the works approved, the work will be merged with **squash & merge**.
+When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once the work is approved, it will be merged with **squash & merge**.
 
-> Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and this prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
+> Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
 
 ### Guidelines
 
