@@ -22,6 +22,7 @@ interface SearchInputProps {
   small?: boolean
   label?: React.ReactNode
   className?: string
+  placeholder?: string
 }
 
 export const Search = (
@@ -36,6 +37,7 @@ export const Search = (
     small,
     label = 'Search',
     className,
+    placeholder,
     ...formProps
   } = props
   if (big) {
@@ -66,7 +68,12 @@ export const Search = (
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>
-      <TextInput id={inputId} type="search" name={inputName} />
+      <TextInput
+        id={inputId}
+        type="search"
+        name={inputName}
+        placeholder={placeholder}
+      />
       <Button type="submit">
         <span className={isSmall ? 'usa-sr-only' : 'usa-search__submit-text'}>
           Search
