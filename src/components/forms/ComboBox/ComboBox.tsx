@@ -284,7 +284,7 @@ export const ComboBox = (
         {...selectProps}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
-            {option.label || option.id}
+            {option.label}
           </option>
         ))}
       </select>
@@ -362,7 +362,7 @@ export const ComboBox = (
               onClick={(): void => {
                 dispatch({ type: 'SELECT_OPTION', option: option })
               }}>
-              {option.label || option.id}
+              {option.label}
             </li>
           )
         })}
