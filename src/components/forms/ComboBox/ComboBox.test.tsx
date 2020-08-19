@@ -139,7 +139,7 @@ describe('ComboBox component', () => {
   })
 
   describe('accessibility', () => {
-    it('adds aria attributes to options', () => {
+    it.skip('adds aria attributes to options', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"

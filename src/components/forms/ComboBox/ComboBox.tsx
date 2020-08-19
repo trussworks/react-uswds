@@ -1,9 +1,9 @@
 import React, {
   KeyboardEvent,
   FocusEvent,
-  useState,
   useEffect,
   useRef,
+  useReducer,
 } from 'react'
 import classnames from 'classnames'
 
@@ -13,8 +13,8 @@ interface ComboBoxOption {
 }
 
 enum Direction {
-  Up = -1,
-  Down = 1,
+  Previous = -1,
+  Next = 1,
 }
 
 enum FocusMode {
@@ -30,12 +30,46 @@ interface ComboBoxProps {
   options: ComboBoxOption[]
   defaultValue?: string
   assistiveHint?: string
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void
+  setFieldValue: (
+    field: string,
+    value: string,
+    shouldValidate?: boolean
+  ) => void
+  inputProps?: JSX.IntrinsicElements['input']
+  selectProps?: JSX.IntrinsicElements['select']
 }
 
 const optionFilter = (needle: string): ((event: ComboBoxOption) => boolean) => {
   return (option: ComboBoxOption): boolean =>
-    option.label.toLowerCase().indexOf(needle) != -1
+    option.label.toLowerCase().indexOf(needle.toLowerCase()) != -1
+}
+
+interface InputProps {
+  focused: boolean
+}
+
+const Input = (
+  props: InputProps & JSX.IntrinsicElements['input']
+): React.ReactElement => {
+  const { focused, ...inputProps } = props
+  const inputRef = useRef<HTMLInputElement>(null)
+  useEffect(() => {
+    if (focused && inputRef.current) {
+      inputRef.current.focus()
+    }
+  })
+
+  return (
+    <input
+      aria-autocomplete="list"
+      aria-controls=""
+      type="text"
+      {...inputProps}
+      autoCapitalize="off"
+      autoComplete="off"
+      ref={inputRef}
+    />
+  )
 }
 
 export const ComboBox = (
@@ -62,18 +96,101 @@ export const ComboBox = (
     }
   }
 
-  const [inputValue, setInputValue] = useState(defaultLabel) // value entered into textfield
-  const [isOpen, setIsOpen] = useState(false) // if the list of options is shown
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(
-    defaultValue || undefined
-  ) // currently selected value
-  const [focusedValue, setFocusedValue] = useState<string>() // which item is focused
-  const [focusMode, setFocusMode] = useState<FocusMode>(FocusMode.None)
+  interface State {
+    isOpen: boolean
+    selectedOption: ComboBoxOption | undefined
+    focusedOption: ComboBoxOption | undefined
+    focusMode: FocusMode
+    filter: string | undefined
+    filteredOptions: ComboBoxOption[]
+    inputValue: string
+  }
+
+  type Action =
+    | {
+        type: 'SELECT_OPTION'
+        option: ComboBoxOption
+      }
+    | {
+        type: 'CLEAR'
+      }
+    | {
+        type: 'OPEN_LIST'
+      }
+    | {
+        type: 'CLOSE_LIST'
+      }
+    | {
+        type: 'FOCUS_OPTION'
+        option: ComboBoxOption
+      }
+    | {
+        type: 'UPDATE_FILTER'
+        filter: string
+      }
+
+  function reducer(state: State, action: Action): State {
+    switch (action.type) {
+      case 'SELECT_OPTION':
+        props.setFieldValue(props.name, action.option.id)
+        return {
+          ...state,
+          isOpen: false,
+          selectedOption: action.option,
+          focusMode: FocusMode.Input,
+          inputValue: action.option.label,
+        }
+      case 'UPDATE_FILTER':
+        return {
+          ...state,
+          isOpen: true,
+          filter: action.filter,
+          filteredOptions: options.filter(optionFilter(action.filter)),
+        }
+      case 'OPEN_LIST':
+        return {
+          ...state,
+          isOpen: true,
+          focusMode: FocusMode.Input,
+          focusedOption: undefined,
+        }
+      case 'CLOSE_LIST':
+        return {
+          ...state,
+          isOpen: false,
+          focusMode: FocusMode.Input,
+          focusedOption: undefined,
+        }
+      case 'FOCUS_OPTION':
+        return {
+          ...state,
+          focusedOption: action.option,
+          focusMode: FocusMode.Item,
+        }
+      case 'CLEAR':
+        return {
+          ...state,
+          inputValue: '',
+          selectedOption: undefined,
+        }
+      default:
+        throw new Error()
+    }
+  }
+
+  const initialState: State = {
+    isOpen: false,
+    selectedOption: undefined,
+    focusedOption: undefined,
+    focusMode: FocusMode.None,
+    filteredOptions: props.options,
+    filter: undefined,
+    inputValue: defaultLabel,
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   const containerRef = useRef<HTMLDivElement>(null)
-
-  const filteredOptions =
-    inputValue !== '' ? options.filter(optionFilter(inputValue)) : options
 
   // TODO implement these
   const listID = ''
@@ -82,59 +199,22 @@ export const ComboBox = (
 
   const itemRef = useRef<HTMLLIElement>(null)
   useEffect(() => {
-    if (focusMode === FocusMode.Item && focusedValue && itemRef.current) {
+    if (
+      state.focusMode === FocusMode.Item &&
+      state.focusedOption &&
+      itemRef.current
+    ) {
       itemRef.current.focus()
     }
   })
 
-  const inputRef = useRef<HTMLInputElement>(null)
-  useEffect(() => {
-    if (focusMode === FocusMode.Input && inputRef.current) {
-      inputRef.current.focus()
-    }
-  })
-
-  const selectValue = (value: string): void => {
-    setSelectedValue(value)
-    setFieldValue(props.name, value)
-  }
-
-  const changeFocus = (change: Direction): void => {
-    const currentIndex = filteredOptions.findIndex(
-      (option) => option.id === focusedValue
-    )
-    if (currentIndex === -1) {
-      const newOption = filteredOptions[0]
-      setFocusedValue(newOption.id)
-    } else {
-      const newIndex = currentIndex + change
-      if (newIndex < 0) {
-        setIsOpen(false)
-        setFocusedValue(undefined)
-        setFocusMode(FocusMode.Input)
-      } else {
-        // eslint-disable-next-line security/detect-object-injection
-        const newOption = filteredOptions[newIndex]
-        setFocusedValue(newOption.id)
-      }
-    }
-  }
-
   const handleInputKeyDown = (event: KeyboardEvent): void => {
     if (event.key == 'Escape') {
-      setIsOpen(false)
+      dispatch({ type: 'CLOSE_LIST' })
     } else if (event.key == 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
-      setIsOpen(true)
-      changeFocus(Direction.Down)
-      setFocusMode(FocusMode.Item)
+      dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
     }
-  }
-
-  const handleInputClick = (): void => {
-    setFocusMode(FocusMode.Input)
-    setIsOpen(true)
-    setFocusedValue(filteredOptions[0].id)
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
@@ -144,62 +224,49 @@ export const ComboBox = (
       !target ||
       (target instanceof Node && !containerRef.current?.contains(event.target))
     ) {
-      setFocusMode(FocusMode.None)
-      setIsOpen(false)
+      dispatch({ type: 'CLOSE_LIST' })
+    }
+  }
+
+  const focusSibling = (
+    dispatch: React.Dispatch<Action>,
+    state: State,
+    change: Direction
+  ): void => {
+    const currentIndex = state.focusedOption
+      ? state.filteredOptions.indexOf(state.focusedOption)
+      : -1
+    if (currentIndex === -1) {
+      const newOption = state.filteredOptions[0]
+      dispatch({ type: 'FOCUS_OPTION', option: newOption })
+    } else {
+      const newIndex = currentIndex + change
+      if (newIndex < 0) {
+        dispatch({ type: 'CLOSE_LIST' })
+      } else {
+        // eslint-disable-next-line security/detect-object-injection
+        const newOption = state.filteredOptions[newIndex]
+        dispatch({ type: 'FOCUS_OPTION', option: newOption })
+      }
     }
   }
 
   const handleListItemKeyDown = (event: KeyboardEvent): void => {
     if (event.key == 'Escape') {
-      setIsOpen(false)
-      if (!selectedValue) {
-        setInputValue('')
-      }
-      setFocusedValue(undefined)
-      setFocusMode(FocusMode.Input)
-    } else if (event.key == 'ArrowDown' || event.key == 'Down') {
+      return dispatch({ type: 'CLOSE_LIST' })
+    }
+
+    if (event.key == 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
-      changeFocus(Direction.Down)
+      focusSibling(dispatch, state, Direction.Next)
     } else if (event.key == 'ArrowUp' || event.key == 'Up') {
       event.preventDefault()
-      changeFocus(Direction.Up)
+      focusSibling(dispatch, state, Direction.Previous)
     }
-  }
-
-  const handleListItemClick = (option: ComboBoxOption): void => {
-    selectValue(option.id)
-    setInputValue(option.label || option.id)
-    setIsOpen(false)
-    setFocusMode(FocusMode.Input)
-  }
-
-  const handleListItemMouseMove = (option: ComboBoxOption): void => {
-    if (focusedValue !== option.id) {
-      setFocusedValue(option.id)
-      setFocusMode(FocusMode.Item)
-    }
-  }
-
-  const handleArrowClick = (): void => {
-    if (isOpen) {
-      setFocusMode(FocusMode.Input)
-      setIsOpen(false)
-    } else {
-      if (selectedValue) {
-        setFocusMode(FocusMode.Item)
-      }
-      setIsOpen(true)
-    }
-  }
-
-  const handleClearClick = (): void => {
-    setInputValue('')
-    setSelectedValue(undefined)
-    setFocusMode(FocusMode.Input)
   }
 
   const containerClasses = classnames('usa-combo-box', className, {
-    'usa-combo-box--pristine': selectedValue,
+    'usa-combo-box--pristine': state.selectedOption,
   })
 
   return (
@@ -213,7 +280,7 @@ export const ComboBox = (
         name={name}
         aria-hidden
         tabIndex={-1}
-        value={selectedValue}
+        value={state.selectedOption?.id}
         {...selectProps}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -221,32 +288,29 @@ export const ComboBox = (
           </option>
         ))}
       </select>
-      <input
-        data-testid="combo-box-input"
-        aria-owns={listID}
-        aria-autocomplete="list"
-        aria-describedby={assistiveHintID}
-        aria-expanded={isOpen}
-        aria-controls=""
-        id={selectID}
-        className="usa-combo-box__input"
-        type="text"
-        role="combobox"
-        ref={inputRef}
-        value={inputValue}
+      <Input
+        onChange={(e): void =>
+          dispatch({ type: 'UPDATE_FILTER', filter: e.target.value })
+        }
+        onClick={(): void => dispatch({ type: 'OPEN_LIST' })}
         onBlur={handleInputBlur}
-        onClick={handleInputClick}
         onKeyDown={handleInputKeyDown}
-        onChange={(e): void => setInputValue(e.target.value)}
-        autoCapitalize="off"
-        autoComplete="off"
+        value={state.inputValue}
+        focused={state.focusMode === FocusMode.Input}
+        role="combobox"
+        id="TBD"
+        className="usa-combo-box__input"
+        aria-owns={listID}
+        aria-describedby={assistiveHintID}
+        aria-expanded={state.isOpen}
+        data-testid="combo-box-input"
       />
       <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
         <button
           type="button"
           className="usa-combo-box__clear-input"
           aria-label="Clear the select contents"
-          onClick={handleClearClick}>
+          onClick={(): void => dispatch({ type: 'CLEAR' })}>
           &nbsp;
         </button>
       </span>
@@ -258,7 +322,9 @@ export const ComboBox = (
           tabIndex={-1}
           className="usa-combo-box__toggle-list"
           aria-label="Toggle the dropdown list"
-          onClick={handleArrowClick}>
+          onClick={(): void =>
+            dispatch({ type: state.isOpen ? 'CLOSE_LIST' : 'OPEN_LIST' })
+          }>
           &nbsp;
         </button>
       </span>
@@ -268,10 +334,10 @@ export const ComboBox = (
         id={listID}
         className="usa-combo-box__list"
         role="listbox"
-        hidden={!isOpen}>
-        {filteredOptions.map((option, index) => {
-          const focused = option.id === focusedValue
-          const selected = option.id === selectedValue
+        hidden={!state.isOpen}>
+        {state.filteredOptions.map((option, index) => {
+          const focused = option === state.focusedOption
+          const selected = option === state.selectedOption
           const itemClasses = classnames('usa-combo-box__list-option', {
             'usa-combo-box__list-option--focused': focused,
             'usa-combo-box__list-option--selected': selected,
@@ -290,9 +356,11 @@ export const ComboBox = (
               aria-posinset={index + 1}
               id={listID + `--option-${index}`}
               onKeyDown={handleListItemKeyDown}
-              onMouseMove={(): void => handleListItemMouseMove(option)}
+              onMouseMove={(): void =>
+                dispatch({ type: 'FOCUS_OPTION', option: option })
+              }
               onClick={(): void => {
-                handleListItemClick(option)
+                dispatch({ type: 'SELECT_OPTION', option: option })
               }}>
               {option.label || option.id}
             </li>
