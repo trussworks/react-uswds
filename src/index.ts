@@ -70,7 +70,8 @@ export {
   Overlay,
   ModalContainer,
   connectModal,
-  ConnectedModalProps,
   useModal,
-  ModalHook,
 } from './components/Modal/Modal'
+
+// Types and interfaces should be exported separately
+export type { ConnectedModalProps, ModalHook } from './components/Modal/Modal'
