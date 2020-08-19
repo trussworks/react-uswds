@@ -26,5 +26,9 @@ export const bigSearch = (): React.ReactElement => (
 )
 
 export const smallSearch = (): React.ReactElement => (
-  <Search size="small" onSubmit={mockSubmit} />
+  <Search
+    placeholder="(Optional) Placeholder Text"
+    size="small"
+    onSubmit={mockSubmit}
+  />
 )

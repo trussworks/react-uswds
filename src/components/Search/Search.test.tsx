@@ -20,6 +20,18 @@ describe('Search component', () => {
     expect(mockSubmit).toHaveBeenCalledTimes(1)
   })
 
+  it('renders a placeholder', () => {
+    const mockSubmit = jest.fn()
+    const placeholder = 'Search here'
+    const { queryByTestId } = render(
+      <Search onSubmit={mockSubmit} placeholder={placeholder}></Search>
+    )
+    expect(queryByTestId('textInput')).toHaveAttribute(
+      'placeholder',
+      placeholder
+    )
+  })
+
   describe('renders size classes', () => {
     beforeEach(() => {
       jest.clearAllMocks()

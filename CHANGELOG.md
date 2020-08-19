@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.1](https://github.com/trussworks/react-uswds/compare/1.9.0...1.9.1) (2020-08-18)
+
+
+### Bug Fixes
+
+* **Search:** Add  placeholder to Search input [#403](https://github.com/trussworks/react-uswds/issues/403) ([#415](https://github.com/trussworks/react-uswds/issues/415)) ([ca31eb4](https://github.com/trussworks/react-uswds/commit/ca31eb49d76a9bea5bafc14b141ff83573bdeb05))
+
 ## [1.9.0](https://github.com/trussworks/react-uswds/compare/1.8.0...1.9.0) (2020-08-10)
 
 ### Features
