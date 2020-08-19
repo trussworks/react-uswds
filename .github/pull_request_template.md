@@ -1,13 +1,4 @@
-<!--
-CHECKLIST
-- [ ] PR title conforms to conventional commits, e.g. feat: Button
-- [ ] PR includes `yarn audit` output if dependencies changed
-- [ ] Any new components are exported from `index.ts`
--->
-
 # Summary
-
-<!-- Describe the changes and the scope. List any new components. -->
 
 ## Related Issues or PRs
 

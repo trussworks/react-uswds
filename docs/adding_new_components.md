@@ -4,7 +4,7 @@
 
 Every new `react-uswds` component needs the following:
 
-- [ ] **A Github issue with the requirements clearly listed.** Requirements include a rough sketch of the expected props and any state the component will handle.
+- [ ] **A Github issue with the requirements clearly listed.** Requirements include a rough sketch of the expected props and state the component will handle.
 - [ ] **A component file (`.tsx`) inside a matching folder** - e.g. `component/GovBanner/GovBanner.tsx`.
 - [ ] **An export from the package entry point** - e.g. `index.ts` must have the line `export { GovBanner } from './components/GovBanner/GovBanner'`
 - [ ] **Unit tests** (`test.tsx` file) for logic relating to props and events handlers.
@@ -12,7 +12,7 @@ Every new `react-uswds` component needs the following:
 
 ## Navigating documentation
 
-We can extrapolate the requirements for `react-uswds` components by referencing several sources. Relevant documentation includes:
+We extrapolate the requirements for `react-uswds` components by referencing several sources. Relevant documentation includes:
 
 - HTML markup and written descriptions of components in the [design system docs](https://designsystem.digital.gov/components/footer/)
 - Live code demos in the [uswds storybook](https://components.designsystem.digital.gov/)
@@ -29,8 +29,9 @@ Pay special attention to:
 
 ### Props
 
-- Require props that are fundamental to the element (such as `id` and `name` for a form input), even if they aren't necessarily "required" HTML attributes. Make all other props optional.
-- Extend the standard HTML attributes as props for the primary element in the component. For example, a form can have its own props and also extend the `HTMLFormElement`
+- Require props that are fundamental to the element (such as `id` and `name` for a form input), even if they aren't necessarily "required" HTML attributes. - Make all other props optional.
+- Avoid [conflicting boolean props](https://spicefactory.co/blog/2019/03/26/how-to-avoid-the-boolean-trap-when-designing-react-components/). When props are mutually exclusive you likely need to use an enum prop instead. See `<Button />`.
+- Extend the standard HTML attributes as props for the primary element in the component. For example, see how a form has its own props and also extends the `HTMLFormElement`
   
 ```javascript
   interface FormProps {
@@ -43,13 +44,13 @@ Pay special attention to:
   ): React.ReactElement =>
   ```
 
-- Avoid [conflicting boolean props](https://spicefactory.co/blog/2019/03/26/how-to-avoid-the-boolean-trap-when-designing-react-components/). When props are mutually exclusive you likely need to use an enum prop instead. See `<Button />`.
-
+There is a significant difference between thinking about the component props in `react-uswds` versus in application code, where all the likely prop values are known and where the domain is well understood. We don't know all the potential ways our components will be used. We want to allow a consumer to use a variety of HTML attributes, including `aria-` values, additional CSS classes, , and custom event handlers. This is why the library uses [spread attributes](https://reactjs.org/docs/jsx-in-depth.html#spread-attributes) for the basic HTML element props in each component. This allows us to be more expansive with the allowable props while still maintaining type safety with Typescript.
+ 
 ### State
 
 - Group state declarations and hooks at the top of the component function. Make it easy to see how state is being used in the component.
 - When using [`useState`](https://reactjs.org/docs/hooks-state.html), prefer [functional updates](https://reactjs.org/docs/hooks-reference.html#functional-updates). Object spread syntax is useful here.
-- Keep components as flexible as possible. This means leaving business logic/implementation details out of the component (use props instead of internal state). Anytime you find yourself using component `state` heavily, ask yourself if its something that should actually be tracked by the consumer instead.
+- Leave business logic/implementation details out of the component state.  Use props for this purpose instead. Anytime you find yourself using component `state` heavily, ask yourself if its something that should actually be tracked by the consumer (and passed in as props instead).
 
 ### Children
 
