@@ -130,6 +130,7 @@ export const ComboBox = (
       }
 
   function reducer(state: State, action: Action): State {
+    // console.debug(action)
     switch (action.type) {
       case 'SELECT_OPTION':
         props.setFieldValue(props.name, action.option.id)
@@ -146,6 +147,7 @@ export const ComboBox = (
           isOpen: true,
           filter: action.filter,
           filteredOptions: options.filter(optionFilter(action.filter)),
+          inputValue: action.filter,
         }
       case 'OPEN_LIST':
         return {
@@ -160,6 +162,7 @@ export const ComboBox = (
           isOpen: false,
           focusMode: FocusMode.Input,
           focusedOption: undefined,
+          inputValue: state.selectedOption ? state.selectedOption.label : '',
         }
       case 'FOCUS_OPTION':
         return {
@@ -209,9 +212,12 @@ export const ComboBox = (
   })
 
   const handleInputKeyDown = (event: KeyboardEvent): void => {
-    if (event.key == 'Escape') {
+    if (event.key === 'Escape') {
       dispatch({ type: 'CLOSE_LIST' })
-    } else if (event.key == 'ArrowDown' || event.key == 'Down') {
+    } else if (event.key === 'ArrowDown' || event.key == 'Down') {
+      event.preventDefault()
+      dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
+    } else if (event.key === 'Tab' && state.inputValue !== '') {
       event.preventDefault()
       dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
     }

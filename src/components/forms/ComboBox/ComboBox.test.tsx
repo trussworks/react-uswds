@@ -78,6 +78,9 @@ describe('ComboBox component', () => {
     fireEvent.click(getByTestId('combo-box-input'))
     fireEvent.blur(getByTestId('combo-box-input'))
 
+    // TODO fix
+    // expect(getByTestId('combo-box-input')).not.toHaveFocus()
+
     expect(getByTestId('combo-box-input')).toHaveAttribute(
       'aria-expanded',
       'false'
@@ -110,6 +113,62 @@ describe('ComboBox component', () => {
       'false'
     )
     expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+  })
+
+  it('filters the list after a character is typed', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    const input = getByTestId('combo-box-input')
+    fireEvent.focus(input)
+    fireEvent.change(input, { target: { value: 'a' } })
+
+    expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
+  })
+
+  it('resets input value when an incomplete item is remaining on blur', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.focus(getByTestId('combo-box-input'))
+    fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
+    fireEvent.blur(getByTestId('combo-box-input'))
+
+    expect(getByTestId('combo-box-input')).toHaveValue('')
+  })
+
+  it('focuses the first filtered option with tab', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.focus(getByTestId('combo-box-input'))
+    fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
+
+    fireEvent.keyDown(getByTestId('combo-box-input'), { key: 'Tab' })
+
+    expect(getByTestId('combo-box-option-list').children[0]).toHaveFocus()
+    expect(getByTestId('combo-box-option-list').children[0]).toHaveAttribute(
+      'tab-index',
+      '0'
+    )
   })
 
   it('selects an item by clicking on an option', () => {
