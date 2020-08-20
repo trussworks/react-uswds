@@ -24,6 +24,44 @@ describe('ComboBox component', () => {
     expect(queryByTestId('combo-box')).toBeInTheDocument()
   })
 
+  it.todo('loads with default value if included')
+
+  it.todo('input is visible on load')
+  it.todo('options list is hidden on load')
+
+  it.todo('initalizes with custom selectProps')
+  it.todo('initalizes with custom inputsProps')
+
+  it.todo('can be disabled (both select and input)')
+
+  it.todo(
+    'should show a clear button when the input has a selected value present'
+  )
+
+  it.todo('should clear the input when the clear button is clicked')
+
+  describe('filtering', () => {
+    it.todo('shows that there are no results when there is no match')
+    it('filters the list after a character is typed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'a' } })
+
+      expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
+    })
+
+    it.todo('clears input when there is no match and enter is pressed')
+  })
+
   it('displays options list when input is clicked', () => {
     const { getByTestId } = render(
       <ComboBox
@@ -116,23 +154,6 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
-  it('filters the list after a character is typed', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={jest.fn()}
-      />
-    )
-
-    const input = getByTestId('combo-box-input')
-    fireEvent.focus(input)
-    fireEvent.change(input, { target: { value: 'a' } })
-
-    expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
-  })
-
   it('resets input value when an incomplete item is remaining on blur', () => {
     const { getByTestId } = render(
       <ComboBox
@@ -150,66 +171,76 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-input')).toHaveValue('')
   })
 
-  it('focuses the first filtered option with tab', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={jest.fn()}
-      />
+  describe('keyboard actions', () => {
+    it('focuses the first filtered option with tab', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'a')
+      userEvent.tab()
+
+      const firstItem = getByTestId('combo-box-option-list').children[0]
+      expect(firstItem).toHaveFocus()
+      expect(firstItem).toHaveAttribute('tabindex', '0')
+    })
+
+    it('selects the focused option with tab', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'a')
+      userEvent.tab()
+
+      const firstItem = getByTestId('combo-box-option-list').children[0]
+      expect(firstItem).toHaveFocus()
+      expect(firstItem).toHaveAttribute('tabindex', '0')
+    })
+
+    it.todo('selects the focused option with enter keypress')
+
+    it.todo('focuses the next option when down arrow is pressed')
+    it.todo('focuses the previous option when up arrow is pressed')
+    it.todo(
+      'does not change focus last option is focused and down arrow is pressed.'
     )
 
-    userEvent.type(getByTestId('combo-box-input'), 'a')
-    userEvent.tab()
+    it('selects an item by clicking on an option', () => {
+      let key = ''
+      let value = ''
 
-    const firstItem = getByTestId('combo-box-option-list').children[0]
-    expect(firstItem).toHaveFocus()
-    expect(firstItem).toHaveAttribute('tabindex', '0')
-  })
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={(newKey: string, newValue: string): void => {
+            key = newKey
+            value = newValue
+          }}
+        />
+      )
 
-  it('selects the focused option with tab', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={jest.fn()}
-      />
-    )
+      fireEvent.click(getByTestId('combo-box-toggle'))
 
-    fireEvent.focus(getByTestId('combo-box-input'))
-    fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const firstItem = getByTestId('combo-box-option-list').firstChild!
+      fireEvent.click(firstItem)
 
-    fireEvent.keyDown(getByTestId('combo-box-input'), { key: 'Tab' })
-    const firstItem = getByTestId('combo-box-option-list').children[0]
-    expect(firstItem).toHaveFocus()
-    expect(firstItem).toHaveAttribute('tabindex', '0')
-  })
-  it('selects an item by clicking on an option', () => {
-    let key = ''
-    let value = ''
-
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={(newKey: string, newValue: string): void => {
-          key = newKey
-          value = newValue
-        }}
-      />
-    )
-
-    fireEvent.click(getByTestId('combo-box-toggle'))
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const firstItem = getByTestId('combo-box-option-list').firstChild!
-    fireEvent.click(firstItem)
-
-    expect(key).toEqual('favorite-fruit')
-    expect(value).toEqual(fruitOptions[0].id)
+      expect(key).toEqual('favorite-fruit')
+      expect(value).toEqual(fruitOptions[0].id)
+    })
   })
 
   describe('accessibility', () => {
