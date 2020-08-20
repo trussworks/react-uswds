@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, prettyDOM } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { ComboBox } from './ComboBox'
 
@@ -159,18 +160,32 @@ describe('ComboBox component', () => {
       />
     )
 
+    userEvent.type(getByTestId('combo-box-input'), 'a')
+    userEvent.tab()
+
+    const firstItem = getByTestId('combo-box-option-list').children[0]
+    expect(firstItem).toHaveFocus()
+    expect(firstItem).toHaveAttribute('tabindex', '0')
+  })
+
+  it('selects the focused option with tab', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
     fireEvent.focus(getByTestId('combo-box-input'))
     fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
 
     fireEvent.keyDown(getByTestId('combo-box-input'), { key: 'Tab' })
-
-    expect(getByTestId('combo-box-option-list').children[0]).toHaveFocus()
-    expect(getByTestId('combo-box-option-list').children[0]).toHaveAttribute(
-      'tab-index',
-      '0'
-    )
+    const firstItem = getByTestId('combo-box-option-list').children[0]
+    expect(firstItem).toHaveFocus()
+    expect(firstItem).toHaveAttribute('tabindex', '0')
   })
-
   it('selects an item by clicking on an option', () => {
     let key = ''
     let value = ''
