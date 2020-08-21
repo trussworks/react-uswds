@@ -35,6 +35,7 @@ interface ComboBoxProps {
     value: string,
     shouldValidate?: boolean
   ) => void
+  disabled?: boolean
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
 }
@@ -83,6 +84,8 @@ export const ComboBox = (
     defaultValue,
     setFieldValue,
     assistiveHint,
+    disabled = false,
+    inputProps,
     ...selectProps
   } = props
 
@@ -192,7 +195,6 @@ export const ComboBox = (
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-
   const containerRef = useRef<HTMLDivElement>(null)
 
   // TODO implement these
@@ -287,6 +289,8 @@ export const ComboBox = (
         aria-hidden
         tabIndex={-1}
         value={state.selectedOption?.id}
+        disabled={disabled}
+        data-testid="combo-box-select"
         {...selectProps}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -310,10 +314,13 @@ export const ComboBox = (
         aria-describedby={assistiveHintID}
         aria-expanded={state.isOpen}
         data-testid="combo-box-input"
+        disabled={disabled}
+        {...inputProps}
       />
       <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
         <button
           type="button"
+          data-testid="combo-box-clear"
           className="usa-combo-box__clear-input"
           aria-label="Clear the select contents"
           onClick={(): void => dispatch({ type: 'CLEAR' })}>
