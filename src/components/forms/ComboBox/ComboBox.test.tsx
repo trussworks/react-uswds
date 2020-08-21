@@ -27,7 +27,23 @@ describe('ComboBox component', () => {
   it.todo('loads with default value if included')
 
   it.todo('input is visible on load')
-  it.todo('options list is hidden on load')
+
+  it('hides options list on load', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-expanded',
+      'false'
+    )
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+  })
 
   it.todo('initalizes with custom selectProps')
   it.todo('initalizes with custom inputsProps')
@@ -41,7 +57,24 @@ describe('ComboBox component', () => {
   it.todo('should clear the input when the clear button is clicked')
 
   describe('filtering', () => {
-    it.todo('shows that there are no results when there is no match')
+    it('shows that there are no results when there is no match', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'zz')
+
+      const firstItem = getByTestId('combo-box-option-list').children[0]
+      expect(firstItem).not.toHaveFocus()
+      expect(firstItem).not.toHaveAttribute('tabindex', '0')
+      expect(firstItem).toHaveTextContent('No results found')
+    })
+
     it('filters the list after a character is typed', () => {
       const { getByTestId } = render(
         <ComboBox

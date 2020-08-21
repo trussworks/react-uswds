@@ -372,6 +372,11 @@ export const ComboBox = (
             </li>
           )
         })}
+        {state.filteredOptions.length === 0 ? (
+          <li className="usa-combo-box__list-option--no-results">
+            No results found
+          </li>
+        ) : null}
       </ul>
 
       <div className="usa-combo-box__status usa-sr-only" role="status"></div>
