@@ -102,7 +102,7 @@ type Action =
     }
   | {
       type: 'UPDATE_FILTER'
-      filter: string
+      value: string
     }
 
 export const ComboBox = (
@@ -153,14 +153,24 @@ export const ComboBox = (
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
         }
-      case 'UPDATE_FILTER':
-        return {
+      case 'UPDATE_FILTER': {
+        const newState = {
           ...state,
           isOpen: true,
-          filter: action.filter,
-          filteredOptions: options.filter(optionFilter(action.filter)),
-          inputValue: action.filter,
+          filter: action.value,
+          filteredOptions: options.filter(optionFilter(action.value)),
+          inputValue: action.value,
         }
+
+        if (
+          state.selectedOption &&
+          state.selectedOption.label !== action.value
+        ) {
+          newState.selectedOption = undefined
+        }
+
+        return newState
+      }
       case 'OPEN_LIST':
         return {
           ...state,
@@ -298,7 +308,7 @@ export const ComboBox = (
       </select>
       <Input
         onChange={(e): void =>
-          dispatch({ type: 'UPDATE_FILTER', filter: e.target.value })
+          dispatch({ type: 'UPDATE_FILTER', value: e.target.value })
         }
         onClick={(): void => dispatch({ type: 'OPEN_LIST' })}
         onBlur={handleInputBlur}

@@ -287,7 +287,24 @@ describe('ComboBox component', () => {
       expect(value).toEqual(fruitOptions[0].id)
     })
 
-    it.todo('deselects option when pressing delete inside input')
+    it('deselects option when pressing delete inside input', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          defaultValue={'avocado'}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, '{backspace}')
+
+      expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
+
+      expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+    })
   })
 
   describe('accessibility', () => {
