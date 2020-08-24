@@ -35,7 +35,6 @@ interface ComboBoxProps {
     value: string,
     shouldValidate?: boolean
   ) => void
-  disabled?: boolean
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
 }
@@ -73,6 +72,39 @@ const Input = (
   )
 }
 
+interface State {
+  isOpen: boolean
+  selectedOption?: ComboBoxOption
+  focusedOption?: ComboBoxOption
+  focusMode: FocusMode
+  filter?: string
+  filteredOptions: ComboBoxOption[]
+  inputValue: string
+}
+
+type Action =
+  | {
+      type: 'SELECT_OPTION'
+      option: ComboBoxOption
+    }
+  | {
+      type: 'CLEAR'
+    }
+  | {
+      type: 'OPEN_LIST'
+    }
+  | {
+      type: 'CLOSE_LIST'
+    }
+  | {
+      type: 'FOCUS_OPTION'
+      option: ComboBoxOption
+    }
+  | {
+      type: 'UPDATE_FILTER'
+      filter: string
+    }
+
 export const ComboBox = (
   props: ComboBoxProps //& JSX.IntrinsicElements['select']
 ): React.ReactElement => {
@@ -84,53 +116,30 @@ export const ComboBox = (
     defaultValue,
     setFieldValue,
     assistiveHint,
-    disabled = false,
-    inputProps,
     ...selectProps
   } = props
 
   let defaultLabel = ''
+  let selectedOption
   if (defaultValue) {
     const defaultOption = options.find((opt: ComboBoxOption): boolean => {
       return opt.id === defaultValue
     })
     if (defaultOption) {
       defaultLabel = defaultOption.label
+      selectedOption = defaultOption
     }
   }
 
-  interface State {
-    isOpen: boolean
-    selectedOption: ComboBoxOption | undefined
-    focusedOption: ComboBoxOption | undefined
-    focusMode: FocusMode
-    filter: string | undefined
-    filteredOptions: ComboBoxOption[]
-    inputValue: string
+  const initialState: State = {
+    isOpen: false,
+    selectedOption: selectedOption,
+    focusedOption: undefined,
+    focusMode: FocusMode.None,
+    filteredOptions: props.options,
+    filter: undefined,
+    inputValue: defaultLabel,
   }
-
-  type Action =
-    | {
-        type: 'SELECT_OPTION'
-        option: ComboBoxOption
-      }
-    | {
-        type: 'CLEAR'
-      }
-    | {
-        type: 'OPEN_LIST'
-      }
-    | {
-        type: 'CLOSE_LIST'
-      }
-    | {
-        type: 'FOCUS_OPTION'
-        option: ComboBoxOption
-      }
-    | {
-        type: 'UPDATE_FILTER'
-        filter: string
-      }
 
   function reducer(state: State, action: Action): State {
     // console.debug(action)
@@ -184,17 +193,8 @@ export const ComboBox = (
     }
   }
 
-  const initialState: State = {
-    isOpen: false,
-    selectedOption: undefined,
-    focusedOption: undefined,
-    focusMode: FocusMode.None,
-    filteredOptions: props.options,
-    filter: undefined,
-    inputValue: defaultLabel,
-  }
-
   const [state, dispatch] = useReducer(reducer, initialState)
+
   const containerRef = useRef<HTMLDivElement>(null)
 
   // TODO implement these
@@ -289,8 +289,6 @@ export const ComboBox = (
         aria-hidden
         tabIndex={-1}
         value={state.selectedOption?.id}
-        disabled={disabled}
-        data-testid="combo-box-select"
         {...selectProps}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -314,16 +312,15 @@ export const ComboBox = (
         aria-describedby={assistiveHintID}
         aria-expanded={state.isOpen}
         data-testid="combo-box-input"
-        disabled={disabled}
-        {...inputProps}
       />
       <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
         <button
           type="button"
-          data-testid="combo-box-clear"
           className="usa-combo-box__clear-input"
           aria-label="Clear the select contents"
-          onClick={(): void => dispatch({ type: 'CLEAR' })}>
+          onClick={(): void => dispatch({ type: 'CLEAR' })}
+          data-testid="combo-box-clear-button"
+          hidden={!state.selectedOption}>
           &nbsp;
         </button>
       </span>

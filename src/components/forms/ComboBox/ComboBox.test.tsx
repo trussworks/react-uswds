@@ -22,55 +22,25 @@ describe('ComboBox component', () => {
       />
     )
     expect(queryByTestId('combo-box')).toBeInTheDocument()
-    expect(queryByTestId('combo-box-input')).toBeInTheDocument()
   })
 
-  it('initializes with custom inputProps', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        inputProps={{ className: 'custom-class' }}
-        setFieldValue={jest.fn()}
-      />
-    )
-
-    expect(getByTestId('combo-box-input')).toHaveClass('custom-class')
-  })
-
-  it('can load with already selected option', () => {
+  it('loads with default value if included', () => {
     const { queryByTestId } = render(
       <ComboBox
         id="favorite-fruit"
         name="favorite-fruit"
-        defaultValue="breadfruit"
         options={fruitOptions}
         setFieldValue={jest.fn()}
+        defaultValue="apple"
       />
     )
-
-    expect(queryByTestId('combo-box-input')).toHaveAttribute(
-      'value',
-      'Breadfruit'
-    )
+    expect(queryByTestId('combo-box-input')).toHaveValue('Apple')
+    expect(queryByTestId('combo-box-clear-button')).toBeVisible()
   })
 
-  it('can be disabled', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={jest.fn()}
-        disabled
-      />
-    )
-    expect(getByTestId('combo-box-input')).toBeDisabled()
-    expect(getByTestId('combo-box-select')).toBeDisabled()
-  })
+  it.todo('input is visible on load')
 
-  it('resets input value when an incomplete item is remaining on blur', () => {
+  it('hides options list on load', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -80,170 +50,23 @@ describe('ComboBox component', () => {
       />
     )
 
-    fireEvent.focus(getByTestId('combo-box-input'))
-    fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
-    fireEvent.blur(getByTestId('combo-box-input'))
-
-    expect(getByTestId('combo-box-input')).toHaveAttribute('value', '')
-  })
-
-  it('shows clear button when input has selected value', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={jest.fn()}
-      />
-    )
-    userEvent.type(getByTestId('combo-box-input'), 'Breadfruit')
-    userEvent.tab()
-    expect(getByTestId('combo-box-clear')).toBeVisible()
-  })
-
-  it('clears input when the clear button is clicked', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        inputProps={{ className: 'custom-class' }}
-        setFieldValue={jest.fn()}
-      />
-    )
-
-    userEvent.type(getByTestId('combo-box-input'), 'Breadfruit')
     expect(getByTestId('combo-box-input')).toHaveAttribute(
-      'value',
-      'Breadfruit'
+      'aria-expanded',
+      'false'
     )
-    userEvent.click(getByTestId('combo-box-clear'))
-    expect(getByTestId('combo-box-input')).toHaveAttribute('value', '')
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
-  xit('hides clear button when input is empty', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        setFieldValue={jest.fn()}
-      />
-    )
+  it.todo('initalizes with custom selectProps')
+  it.todo('initalizes with custom inputsProps')
 
-    expect(getByTestId('combo-box-clear')).not.toBeVisible()
-  })
+  it.todo('can be disabled (both select and input)')
 
-  describe('options list', () => {
-    it('hides options list initial load', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
+  it.todo(
+    'should show a clear button when the input has a selected value present'
+  )
 
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'aria-expanded',
-        'false'
-      )
-      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
-    })
-
-    it('displays options list when input is clicked', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
-
-      fireEvent.click(getByTestId('combo-box-input'))
-
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'aria-expanded',
-        'true'
-      )
-      expect(getByTestId('combo-box-option-list')).toBeVisible()
-      expect(getByTestId('combo-box-option-list').childElementCount).toEqual(
-        fruitOptions.length
-      )
-    })
-
-    it('displays options list when input is clicked twice', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
-
-      fireEvent.click(getByTestId('combo-box-input'))
-      fireEvent.click(getByTestId('combo-box-input'))
-
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'aria-expanded',
-        'true'
-      )
-      expect(getByTestId('combo-box-option-list')).toBeVisible()
-    })
-
-    it('hides options list when clicking away', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
-
-      fireEvent.click(getByTestId('combo-box-input'))
-      fireEvent.blur(getByTestId('combo-box-input'))
-
-      // TODO fix
-      // expect(getByTestId('combo-box-input')).not.toHaveFocus()
-
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'aria-expanded',
-        'false'
-      )
-      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
-    })
-
-    it('shows and hides options list when toggle is clicked', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
-
-      fireEvent.click(getByTestId('combo-box-toggle'))
-
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'aria-expanded',
-        'true'
-      )
-      expect(getByTestId('combo-box-option-list')).toBeVisible()
-
-      fireEvent.click(getByTestId('combo-box-toggle'))
-
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'aria-expanded',
-        'false'
-      )
-      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
-    })
-  })
+  it.todo('should clear the input when the clear button is clicked')
 
   describe('filtering', () => {
     it('shows that there are no results when there is no match', () => {
@@ -281,24 +104,116 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
     })
 
-    xit('clears input when there is no match and enter is pressed', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
+    it.todo('clears input when there is no match and enter is pressed')
+  })
 
-      userEvent.type(getByTestId('combo-box-input'), 'Lettuce')
-      userEvent.tab()
-      fireEvent.keyDown(getByTestId('combo-box-list'), {
-        key: 'Enter',
-        code: 'Enter',
-      })
-      expect(getByTestId('combo-box-input')).toHaveAttribute('value', '')
-    })
+  it('displays options list when input is clicked', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.click(getByTestId('combo-box-input'))
+
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-expanded',
+      'true'
+    )
+    expect(getByTestId('combo-box-option-list')).toBeVisible()
+    expect(getByTestId('combo-box-option-list').childElementCount).toEqual(
+      fruitOptions.length
+    )
+  })
+
+  it('displays options list when input is clicked twice', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.click(getByTestId('combo-box-input'))
+    fireEvent.click(getByTestId('combo-box-input'))
+
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-expanded',
+      'true'
+    )
+    expect(getByTestId('combo-box-option-list')).toBeVisible()
+  })
+
+  it('hides options list when clicking away', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.click(getByTestId('combo-box-input'))
+    fireEvent.blur(getByTestId('combo-box-input'))
+
+    // TODO fix
+    // expect(getByTestId('combo-box-input')).not.toHaveFocus()
+
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-expanded',
+      'false'
+    )
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+  })
+
+  it('shows and hides options list when toggle is clicked', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.click(getByTestId('combo-box-toggle'))
+
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-expanded',
+      'true'
+    )
+    expect(getByTestId('combo-box-option-list')).toBeVisible()
+
+    fireEvent.click(getByTestId('combo-box-toggle'))
+
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-expanded',
+      'false'
+    )
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+  })
+
+  it('resets input value when an incomplete item is remaining on blur', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        setFieldValue={jest.fn()}
+      />
+    )
+
+    fireEvent.focus(getByTestId('combo-box-input'))
+    fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
+    fireEvent.blur(getByTestId('combo-box-input'))
+
+    expect(getByTestId('combo-box-input')).toHaveValue('')
   })
 
   describe('keyboard actions', () => {
@@ -311,11 +226,13 @@ describe('ComboBox component', () => {
           setFieldValue={jest.fn()}
         />
       )
+
       userEvent.type(getByTestId('combo-box-input'), 'a')
       userEvent.tab()
 
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveFocus()
+      expect(firstItem).toHaveAttribute('tabindex', '0')
     })
 
     it('selects the focused option with tab', () => {
@@ -336,35 +253,10 @@ describe('ComboBox component', () => {
       expect(firstItem).toHaveAttribute('tabindex', '0')
     })
 
-    xit('selects the focused option with enter keypress', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-        />
-      )
-
-      userEvent.type(getByTestId('combo-box-input'), 'a')
-      userEvent.tab()
-
-      const firstItem = getByTestId('combo-box-option-list').children[0]
-      fireEvent.keyDown(firstItem, {
-        key: 'Enter',
-        code: 'Enter',
-      })
-
-      expect(getByTestId('combo-box-input')).toHaveAttribute(
-        'value',
-        firstItem.textContent
-      )
-    })
+    it.todo('selects the focused option with enter keypress')
 
     it.todo('focuses the next option when down arrow is pressed')
-
     it.todo('focuses the previous option when up arrow is pressed')
-
     it.todo(
       'does not change focus last option is focused and down arrow is pressed.'
     )
@@ -394,6 +286,8 @@ describe('ComboBox component', () => {
       expect(key).toEqual('favorite-fruit')
       expect(value).toEqual(fruitOptions[0].id)
     })
+
+    it.todo('deselects option when pressing delete inside input')
   })
 
   describe('accessibility', () => {
