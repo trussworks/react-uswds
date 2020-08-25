@@ -298,7 +298,7 @@ export const ComboBox = (
         name={name}
         aria-hidden
         tabIndex={-1}
-        value={state.selectedOption?.id}
+        defaultValue={state.selectedOption?.id}
         {...selectProps}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
