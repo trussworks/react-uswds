@@ -52,7 +52,7 @@ export const withDefaultValue = (): React.ReactElement => {
         name="input-ComboBox"
         options={opts}
         setFieldValue={noop}
-        defaultValue={'apple'}
+        defaultValue="avocado"
       />
     </Form>
   )

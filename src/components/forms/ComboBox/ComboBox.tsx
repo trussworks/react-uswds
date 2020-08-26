@@ -179,7 +179,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           ...state,
           isOpen: true,
           focusMode: FocusMode.Input,
-          focusedOption: undefined,
+          focusedOption: state.selectedOption,
         }
       case 'CLOSE_LIST':
         return {
@@ -192,6 +192,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       case 'FOCUS_OPTION':
         return {
           ...state,
+          isOpen: true,
           focusedOption: action.option,
           focusMode: FocusMode.Item,
         }
@@ -233,7 +234,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     } else if (event.key === 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
       dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
-    } else if (event.key === 'Tab' && state.inputValue !== '') {
+    } else if (event.key === 'Tab') {
       event.preventDefault()
       dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
     } else if (event.key === 'Enter' && state.inputValue !== '') {
@@ -277,14 +278,21 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   }
 
   const handleListItemKeyDown = (event: KeyboardEvent): void => {
-    if (event.key == 'Escape') {
+    if (event.key === 'Escape') {
       return dispatch({ type: 'CLOSE_LIST' })
     }
 
-    if (event.key == 'ArrowDown' || event.key == 'Down') {
+    if (event.key === 'Tab' || event.key === 'Enter') {
+      event.preventDefault()
+      if (state.focusedOption) {
+        return dispatch({ type: 'SELECT_OPTION', option: state.focusedOption })
+      }
+    }
+
+    if (event.key === 'ArrowDown' || event.key === 'Down') {
       event.preventDefault()
       focusSibling(dispatch, state, Direction.Next)
-    } else if (event.key == 'ArrowUp' || event.key == 'Up') {
+    } else if (event.key === 'ArrowUp' || event.key === 'Up') {
       event.preventDefault()
       focusSibling(dispatch, state, Direction.Previous)
     }
@@ -387,6 +395,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
               aria-posinset={index + 1}
               id={listID + `--option-${index}`}
               onKeyDown={handleListItemKeyDown}
+              data-testid={`combo-box-option-${option.id}`}
               onMouseMove={(): void =>
                 dispatch({ type: 'FOCUS_OPTION', option: option })
               }

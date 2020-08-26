@@ -132,27 +132,6 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-clear-button')).toBeVisible()
   })
 
-  it('should clear the input when the clear button is clicked', () => {
-    const setFieldValue = jest.fn()
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        defaultValue="apple"
-        setFieldValue={setFieldValue}
-      />
-    )
-
-    fireEvent.click(getByTestId('combo-box-clear-button'))
-
-    expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
-    expect(getByTestId('combo-box-input')).toHaveValue('')
-    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
-
-    expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', undefined)
-  })
-
   describe('filtering', () => {
     it('shows that there are no results when there is no match', () => {
       const { getByTestId } = render(
@@ -335,7 +314,65 @@ describe('ComboBox component', () => {
       expect(firstItem).toHaveAttribute('tabindex', '0')
     })
 
+    it('focuses the first option with tab', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'a{del}') // open menu
+      userEvent.tab()
+
+      expect(getByTestId('combo-box-option-apple')).toHaveFocus()
+      expect(getByTestId('combo-box-option-apple')).toHaveAttribute(
+        'tabindex',
+        '0'
+      )
+    })
+
     it('selects the focused option with tab', () => {
+      const setFieldValue = jest.fn()
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={setFieldValue}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'a')
+      userEvent.tab()
+      userEvent.tab()
+
+      expect(getByTestId('combo-box-input')).toHaveValue('Apple')
+      expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', 'apple')
+    })
+
+    it('selects the focused option with enter', () => {
+      const setFieldValue = jest.fn()
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={setFieldValue}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'a')
+      userEvent.tab()
+      userEvent.type(getByTestId('combo-box-option-apple'), '{enter}')
+
+      expect(getByTestId('combo-box-input')).toHaveValue('Apple')
+      expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', 'apple')
+    })
+
+    it('focuses the next option when down arrow is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -347,19 +384,173 @@ describe('ComboBox component', () => {
 
       userEvent.type(getByTestId('combo-box-input'), 'a')
       userEvent.tab()
+      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
+        key: 'ArrowDown',
+      })
 
-      const firstItem = getByTestId('combo-box-option-list').children[0]
-      expect(firstItem).toHaveFocus()
-      expect(firstItem).toHaveAttribute('tabindex', '0')
+      expect(getByTestId('combo-box-option-apricot')).toHaveFocus()
     })
 
-    it.todo('selects the focused option with enter keypress')
+    it('focuses the previous option when up arrow is pressed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
 
-    it.todo('focuses the next option when down arrow is pressed')
-    it.todo('focuses the previous option when up arrow is pressed')
+      userEvent.type(getByTestId('combo-box-input'), 'a')
+      userEvent.tab()
+      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
+        key: 'ArrowDown',
+      })
+      fireEvent.keyDown(getByTestId('combo-box-option-apricot'), {
+        key: 'ArrowDown',
+      })
+      fireEvent.keyDown(getByTestId('combo-box-option-avocado'), {
+        key: 'ArrowUp',
+      })
+
+      expect(getByTestId('combo-box-option-apricot')).toHaveFocus()
+    })
+
+    it('opens the menu when down arrow is pressed in the input', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      fireEvent.focus(getByTestId('combo-box-input'))
+      fireEvent.keyDown(getByTestId('combo-box-input'), {
+        key: 'ArrowDown',
+      })
+
+      expect(getByTestId('combo-box-option-list')).toBeVisible()
+      expect(getByTestId('combo-box-option-apple')).toHaveFocus()
+    })
+
+    it('closes the menu when the first option is focused and arrow up is pressed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      fireEvent.focus(getByTestId('combo-box-input'))
+      fireEvent.keyDown(getByTestId('combo-box-input'), {
+        key: 'ArrowDown',
+      })
+      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
+        key: 'ArrowUp',
+      })
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(getByTestId('combo-box-input')).toHaveFocus()
+    })
+
+    it('does not change focus last option is focused and down arrow is pressed.', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+          defaultValue={fruitOptions[fruitOptions.length - 1]?.id}
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-input'))
+
+      fireEvent.keyDown(getByTestId('combo-box-input'), {
+        key: 'ArrowDown',
+      })
+      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
+        key: 'ArrowUp',
+      })
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(getByTestId('combo-box-input')).toHaveFocus()
+    })
+
+    it('highlights the current value when opening the menu with a selected option', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          setFieldValue={jest.fn()}
+          defaultValue="avocado"
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-input'))
+
+      expect(getByTestId('combo-box-option-avocado')).toHaveAttribute(
+        'aria-selected',
+        'true'
+      )
+    })
+
     it.todo(
-      'does not change focus last option is focused and down arrow is pressed.'
+      'focuses the input when an option is focused and shift-tab is pressed'
     )
+    it.todo(
+      'focuses the next option when an option is selected and down arrow is pressed'
+    )
+
+    it.todo(
+      'does not close menu when an option is selected and the first option is focused and up arrow is pressed'
+    )
+
+    it('deselects option when pressing delete inside input', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          defaultValue={'avocado'}
+          setFieldValue={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, '{backspace}')
+
+      expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
+      expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+    })
+  })
+
+  describe('mouse actions', () => {
+    it('should clear the input when the clear button is clicked', () => {
+      const setFieldValue = jest.fn()
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          defaultValue="apple"
+          setFieldValue={setFieldValue}
+        />
+      )
+
+      fireEvent.click(getByTestId('combo-box-clear-button'))
+
+      expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
+      expect(getByTestId('combo-box-input')).toHaveValue('')
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+
+      expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', undefined)
+    })
 
     it('selects an item by clicking on an option', () => {
       const setFieldValue = jest.fn()
@@ -384,23 +575,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('deselects option when pressing delete inside input', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          defaultValue={'avocado'}
-          setFieldValue={jest.fn()}
-        />
-      )
-
-      const input = getByTestId('combo-box-input')
-      userEvent.type(input, '{backspace}')
-
-      expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
-      expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
-    })
+    it.todo('focuses an option on hover')
   })
 
   describe('accessibility', () => {
