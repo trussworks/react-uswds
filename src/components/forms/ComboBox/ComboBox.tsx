@@ -30,9 +30,10 @@ interface ComboBoxProps {
   options: ComboBoxOption[]
   defaultValue?: string
   assistiveHint?: string
+  disabled?: boolean
   setFieldValue: (
     field: string,
-    value: string,
+    value?: string,
     shouldValidate?: boolean
   ) => void
   inputProps?: JSX.IntrinsicElements['input']
@@ -105,19 +106,21 @@ type Action =
       value: string
     }
 
-export const ComboBox = (
-  props: ComboBoxProps //& JSX.IntrinsicElements['select']
-): React.ReactElement => {
+export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   const {
     id,
     name,
     className,
     options,
     defaultValue,
+    disabled,
     setFieldValue,
     assistiveHint,
-    ...selectProps
+    selectProps,
+    inputProps,
   } = props
+
+  const isDisabled = !!disabled
 
   let defaultLabel = ''
   let selectedOption
@@ -193,6 +196,7 @@ export const ComboBox = (
           focusMode: FocusMode.Item,
         }
       case 'CLEAR':
+        props.setFieldValue(props.name, undefined)
         return {
           ...state,
           inputValue: '',
@@ -232,6 +236,9 @@ export const ComboBox = (
     } else if (event.key === 'Tab' && state.inputValue !== '') {
       event.preventDefault()
       dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
+    } else if (event.key === 'Enter' && state.inputValue !== '') {
+      event.preventDefault()
+      dispatch({ type: 'CLOSE_LIST' })
     }
   }
 
@@ -299,6 +306,8 @@ export const ComboBox = (
         aria-hidden
         tabIndex={-1}
         defaultValue={state.selectedOption?.id}
+        data-testid="combo-box-select"
+        disabled={isDisabled}
         {...selectProps}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -322,6 +331,8 @@ export const ComboBox = (
         aria-describedby={assistiveHintID}
         aria-expanded={state.isOpen}
         data-testid="combo-box-input"
+        disabled={isDisabled}
+        {...inputProps}
       />
       <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
         <button
