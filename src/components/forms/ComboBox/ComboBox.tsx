@@ -8,7 +8,7 @@ import React, {
 import classnames from 'classnames'
 
 interface ComboBoxOption {
-  id: string
+  value: string
   label: string
 }
 
@@ -126,7 +126,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   let selectedOption
   if (defaultValue) {
     const defaultOption = options.find((opt: ComboBoxOption): boolean => {
-      return opt.id === defaultValue
+      return opt.value === defaultValue
     })
     if (defaultOption) {
       defaultLabel = defaultOption.label
@@ -148,7 +148,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     // console.debug(action)
     switch (action.type) {
       case 'SELECT_OPTION':
-        props.setFieldValue(props.name, action.option.id)
+        props.setFieldValue(props.name, action.option.value)
         return {
           ...state,
           isOpen: false,
@@ -269,7 +269,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       const newIndex = currentIndex + change
       if (newIndex < 0) {
         dispatch({ type: 'CLOSE_LIST' })
-      } else {
+      } else if (newIndex <= state.filteredOptions.length - 1) {
         // eslint-disable-next-line security/detect-object-injection
         const newOption = state.filteredOptions[newIndex]
         dispatch({ type: 'FOCUS_OPTION', option: newOption })
@@ -279,17 +279,13 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
 
   const handleListItemKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
-      return dispatch({ type: 'CLOSE_LIST' })
-    }
-
-    if (event.key === 'Tab' || event.key === 'Enter') {
+      dispatch({ type: 'CLOSE_LIST' })
+    } else if (event.key === 'Tab' || event.key === 'Enter') {
       event.preventDefault()
       if (state.focusedOption) {
-        return dispatch({ type: 'SELECT_OPTION', option: state.focusedOption })
+        dispatch({ type: 'SELECT_OPTION', option: state.focusedOption })
       }
-    }
-
-    if (event.key === 'ArrowDown' || event.key === 'Down') {
+    } else if (event.key === 'ArrowDown' || event.key === 'Down') {
       event.preventDefault()
       focusSibling(dispatch, state, Direction.Next)
     } else if (event.key === 'ArrowUp' || event.key === 'Up') {
@@ -313,12 +309,12 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         name={name}
         aria-hidden
         tabIndex={-1}
-        defaultValue={state.selectedOption?.id}
+        defaultValue={state.selectedOption?.value}
         data-testid="combo-box-select"
         disabled={isDisabled}
         {...selectProps}>
         {options.map((option) => (
-          <option key={option.id} value={option.id}>
+          <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}
@@ -385,8 +381,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           return (
             <li
               ref={focused ? itemRef : null}
-              value={option.id}
-              key={option.id}
+              value={option.value}
+              key={option.value}
               className={itemClasses}
               tabIndex={focused ? 0 : -1}
               role="option"
@@ -395,7 +391,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
               aria-posinset={index + 1}
               id={listID + `--option-${index}`}
               onKeyDown={handleListItemKeyDown}
-              data-testid={`combo-box-option-${option.id}`}
+              data-testid={`combo-box-option-${option.value}`}
               onMouseMove={(): void =>
                 dispatch({ type: 'FOCUS_OPTION', option: option })
               }

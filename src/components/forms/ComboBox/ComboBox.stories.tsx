@@ -23,7 +23,7 @@ const noop = (): void => {
 
 export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
   const opts = Object.entries(fruits).map(([value, key]) => ({
-    id: value,
+    value: value,
     label: key,
   }))
 
@@ -41,7 +41,7 @@ export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
 
 export const withDefaultValue = (): React.ReactElement => {
   const opts = Object.entries(fruits).map(([value, key]) => ({
-    id: value,
+    value: value,
     label: key,
   }))
 

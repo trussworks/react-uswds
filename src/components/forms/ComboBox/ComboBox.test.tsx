@@ -5,10 +5,9 @@ import userEvent from '@testing-library/user-event'
 import { ComboBox } from './ComboBox'
 
 import { fruits } from './fruits'
-import { scryRenderedDOMComponentsWithTag } from 'react-dom/test-utils'
 
 const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
-  id: value,
+  value: value,
   label: key,
 }))
 
@@ -375,29 +374,17 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
 
-    it('does not change focus last option is focused and down arrow is pressed.', () => {
-      const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          setFieldValue={jest.fn()}
-          defaultValue={fruitOptions[fruitOptions.length - 1]?.id}
-        />
-      )
+    it.todo(
+      'does not change focus last option is focused and down arrow is pressed'
+    )
 
-      userEvent.click(getByTestId('combo-box-input'))
+    it.todo(
+      'clicking on toggle and pressing tab twice focuses the selected option'
+    )
 
-      fireEvent.keyDown(getByTestId('combo-box-input'), {
-        key: 'ArrowDown',
-      })
-      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
-        key: 'ArrowUp',
-      })
-
-      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
-      expect(getByTestId('combo-box-input')).toHaveFocus()
-    })
+    it.todo(
+      'pressing tab in the input with a selected option focuses the clear button'
+    )
 
     it('highlights the current value when opening the menu with a selected option', () => {
       const { getByTestId } = render(
@@ -592,14 +579,11 @@ describe('ComboBox component', () => {
       )
 
       fireEvent.click(getByTestId('combo-box-toggle'))
-
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const firstItem = getByTestId('combo-box-option-list').firstChild!
-      fireEvent.click(firstItem)
+      fireEvent.click(getByTestId('combo-box-option-apple'))
 
       expect(setFieldValue).toHaveBeenCalledWith(
         'favorite-fruit',
-        fruitOptions[0].id
+        fruitOptions[0].value
       )
     })
 
