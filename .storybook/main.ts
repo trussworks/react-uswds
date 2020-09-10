@@ -1,23 +1,6 @@
 const path = require('path')
 
 const webpackConfig = (config) => {
-  config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    include: path.resolve(__dirname, '../src'),
-    use: [
-      {
-        loader: 'awesome-typescript-loader',
-      },
-      {
-        loader: 'react-docgen-typescript-loader',
-        options: {
-          tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
-        },
-      },
-    ],
-  })
-  config.resolve.extensions.push('.ts', '.tsx')
-
   config.module.rules = config.module.rules.filter(
     (rule) => rule.test.toString() !== '/\\.css$/'
   )
@@ -57,6 +40,14 @@ const webpackConfig = (config) => {
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-docs', '@storybook/addon-viewport'],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+    },
+  },
   webpackFinal: async (config) => {
     return webpackConfig(config)
   },
