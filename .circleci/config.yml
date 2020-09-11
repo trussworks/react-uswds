@@ -22,7 +22,7 @@ jobs:
 
       - run:
           name: 'Happo'
-          command: '[[ -n "${CIRCLE_PR_USERNAME}" ]] && yarn happo-ci'
+          command: '[[ -n "${CIRCLE_USERNAME}" ]] && yarn happo-ci'
           environment:
             HAPPO_IS_ASYNC: 'true'
             BASE_BRANCH: 'origin/main'
