@@ -22,7 +22,7 @@ jobs:
 
       - run:
           name: 'Happo'
-          command: '[[ ( "${CIRCLE_PR_USERNAME}" != "dependabot" ) && ( "${CIRCLE_PR_USERNAME}" != "dependabot-preview" ) ]] && yarn happo-ci'
+          command: '[[ ( "${CIRCLE_PR_USERNAME}" != "github" ) ]] && yarn happo-ci'
           environment:
             HAPPO_IS_ASYNC: 'true'
             BASE_BRANCH: 'origin/main'
