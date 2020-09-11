@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -124,8 +124,9 @@
     "webpack-cli": "^3.3.9"
   },
   "resolutions": {
-    "webpack/acorn": "^6.4.1",
-    "acorn-globals/acorn": "^6.4.1"
+    "bl": "^4.0.3",
+    "acorn-globals/acorn": "^6.4.1",
+    "webpack/acorn": "^6.4.1"
   },
   "husky": {
     "hooks": {
