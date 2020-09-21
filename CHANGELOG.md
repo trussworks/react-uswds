@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.2](https://github.com/trussworks/react-uswds/compare/1.9.1...1.9.2) (2020-09-10)
+
+
+### Bug Fixes
+
+* Change happo command to check for github user ([#451](https://github.com/trussworks/react-uswds/issues/451)) ([cd0add9](https://github.com/trussworks/react-uswds/commit/cd0add9bd922bafe858bda9a658b9e0983ebec38))
+
+
+### Documentation & Examples
+
+* **storybook:** Upgrade to 6.0.12 ([#418](https://github.com/trussworks/react-uswds/issues/418)) ([65d91cc](https://github.com/trussworks/react-uswds/commit/65d91ccd77fb102e819480412cc4fc84631b6f51))
+* Improve documentation for new contributors, trussels ([#402](https://github.com/trussworks/react-uswds/issues/402)) ([0849a30](https://github.com/trussworks/react-uswds/commit/0849a3093365514741387edd66e7e948861babaa))
+
 ### [1.9.1](https://github.com/trussworks/react-uswds/compare/1.9.0...1.9.1) (2020-08-18)
 
 
