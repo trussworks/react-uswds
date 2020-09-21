@@ -60,6 +60,13 @@ with the `read:packages` scope.
 @trussworks:registry=https://npm.pkg.github.com
 ```
 
+or
+
+Create a `.yarnrc` file with
+```
+"@trussworks:registry" "https://npm.pkg.github.com"
+```
+
 2. In your `package.json`, use `"@trussworks/react-uswds": "next"`
 
 See [GitHub Packages with npm
