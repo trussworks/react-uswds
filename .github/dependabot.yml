@@ -4,7 +4,7 @@ updates:
     directory: '/'
     schedule:
       interval: weekly
-      time: '6:00'
+      time: '06:00'
       timezone: PST8PDT
     pull-request-branch-name:
       separator: '-'
@@ -27,6 +27,15 @@ updates:
       - dependency-name: '@types/react-dom'
         versions:
           - '^16.10.0'
+      - dependency-name: '@storybook/react'
+        versions:
+          - '^6.0.12'
+      - dependency-name: '@storybook/addon-docs'
+        versions:
+          - '^6.0.12'
+      - dependency-name: '@storybook/addon-viewport'
+        versions:
+          - '^6.0.12'
 
   - package-ecosystem: npm
     directory: '/example/'
