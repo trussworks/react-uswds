@@ -22,7 +22,9 @@ jobs:
 
       - run:
           name: 'Happo'
-          command: '[[ ( "${CIRCLE_PR_USERNAME}" != "dependabot" ) && ( "${CIRCLE_PR_USERNAME}" != "dependabot-preview" ) ]] && yarn happo-ci'
+          # Only run happo if CIRCLE_USERNAME is set.  This will skip
+          # dependabot PRs
+          command: '[[ -z "${CIRCLE_USERNAME}" ]] || yarn happo-ci'
           environment:
             HAPPO_IS_ASYNC: 'true'
             BASE_BRANCH: 'origin/main'
