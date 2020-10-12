@@ -1391,6 +1391,27 @@
     source-map "^0.6.1"
     write-file-atomic "^3.0.0"
 
+"@jest/transform@^26.3.0":
+  version "26.5.2"
+  resolved "https://registry.yarnpkg.com/@jest/transform/-/transform-26.5.2.tgz#6a0033a1d24316a1c75184d010d864f2c681bef5"
+  integrity sha512-AUNjvexh+APhhmS8S+KboPz+D3pCxPvEAGduffaAJYxIFxGi/ytZQkrqcKDUU0ERBAo5R7087fyOYr2oms1seg==
+  dependencies:
+    "@babel/core" "^7.1.0"
+    "@jest/types" "^26.5.2"
+    babel-plugin-istanbul "^6.0.0"
+    chalk "^4.0.0"
+    convert-source-map "^1.4.0"
+    fast-json-stable-stringify "^2.0.0"
+    graceful-fs "^4.2.4"
+    jest-haste-map "^26.5.2"
+    jest-regex-util "^26.0.0"
+    jest-util "^26.5.2"
+    micromatch "^4.0.2"
+    pirates "^4.0.1"
+    slash "^3.0.0"
+    source-map "^0.6.1"
+    write-file-atomic "^3.0.0"
+
 "@jest/types@^25.5.0":
   version "25.5.0"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-25.5.0.tgz#4d6a4793f7b9599fc3680877b856a97dbccf2a9d"
@@ -1402,6 +1423,17 @@
     chalk "^3.0.0"
 
 "@jest/types@^26.3.0", "@jest/types@^26.5.0", "@jest/types@^26.5.2":
+  version "26.5.2"
+  resolved "https://registry.yarnpkg.com/@jest/types/-/types-26.5.2.tgz#44c24f30c8ee6c7f492ead9ec3f3c62a5289756d"
+  integrity sha512-QDs5d0gYiyetI8q+2xWdkixVQMklReZr4ltw7GFDtb4fuJIBCE6mzj2LnitGqCuAlLap6wPyb8fpoHgwZz5fdg==
+  dependencies:
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    "@types/istanbul-reports" "^3.0.0"
+    "@types/node" "*"
+    "@types/yargs" "^15.0.0"
+    chalk "^4.0.0"
+
+"@jest/types@^26.5.2":
   version "26.5.2"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-26.5.2.tgz#44c24f30c8ee6c7f492ead9ec3f3c62a5289756d"
   integrity sha512-QDs5d0gYiyetI8q+2xWdkixVQMklReZr4ltw7GFDtb4fuJIBCE6mzj2LnitGqCuAlLap6wPyb8fpoHgwZz5fdg==
@@ -9268,10 +9300,10 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-klona@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.3.tgz#98274552c513583ad7a01456a789a2a0b4a2a538"
-  integrity sha512-CgPOT3ZadDpXxKcfV56lEQ9OQSZ42Mk26gnozI+uN/k39vzD8toUhRQoqsX0m9Q3eMPEfsLWmtyUpK/yqST4yg==
+klona@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
+  integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
 known-css-properties@^0.19.0:
   version "0.19.0"
@@ -12467,14 +12499,14 @@ sane@^4.0.3:
     walker "~1.0.5"
 
 sass-loader@^10.0.2:
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.0.2.tgz#c7b73010848b264792dd45372eea0b87cba4401e"
-  integrity sha512-wV6NDUVB8/iEYMalV/+139+vl2LaRFlZGEd5/xmdcdzQcgmis+npyco6NsDTVOlNA3y2NV9Gcz+vHyFMIT+ffg==
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.0.3.tgz#9e2f1bfdd6355f2adde4e4835d838b020bf800b0"
+  integrity sha512-W4+FV5oUdYy0PnC11ZoPrcAexODgDCa3ngxoy5X5qBhZYoPz9FPjb6Oox8Aa0ZYEyx34k8AQfOVuvqefOSAAUQ==
   dependencies:
-    klona "^2.0.3"
+    klona "^2.0.4"
     loader-utils "^2.0.0"
     neo-async "^2.6.2"
-    schema-utils "^2.7.1"
+    schema-utils "^3.0.0"
     semver "^7.3.2"
 
 sass-resources-loader@^2.0.1:
