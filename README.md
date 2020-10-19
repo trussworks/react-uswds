@@ -102,6 +102,8 @@ Interested in contributing? See our [guidelines and dev setup here](./docs/contr
 
 Are you a Trussel and new to this project? Check out our [on & offboarding guide](./docs/for_trussels.md) made just for you!
 
+This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
+
 ## License
 
 [Copyright 2019, TrussWorks, Inc.](../LICENSE)
