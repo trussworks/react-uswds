@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import {
   Alert,
   Button,
+  ComboBox,
   Form,
   Label,
   TextInput,
@@ -21,7 +22,29 @@ const FormSchema = Yup.object().shape({
   password: Yup.string().min(8).max(20).required(),
 })
 
+const fruits = {
+  apple: 'Apple',
+  apricot: 'Apricot',
+  avocado: 'Avocado',
+  banana: 'Banana',
+  blackberry: 'Blackberry',
+  'blood orange': 'Blood orange',
+  blueberry: 'Blueberry',
+  boysenberry: 'Boysenberry',
+  breadfruit: 'Breadfruit',
+}
+
+const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
+  value: value,
+  label: key,
+}))
+const noop = (): void => {
+  return
+}
+
 const FormsPage = (): React.ReactElement => {
+  const [favFruit, setFavFruit] = useState('not set')
+
   return (
     <>
       <h1>Forms Examples</h1>
@@ -84,6 +107,17 @@ const FormsPage = (): React.ReactElement => {
                 name="password"
                 id="password"
                 value={values.password}
+              />
+
+              <Label htmlFor="my-fruit">My Favorite Fruit</Label>
+              <pre>This is my fav: {favFruit}</pre>
+              <ComboBox
+                id="my-fruit"
+                name="my-fruit"
+                options={fruitOptions}
+                setFieldValue={noop}
+                onChange={setFavFruit}
+                defaultValue="avocado"
               />
 
               <Button type="submit" disabled={isSubmitting}>

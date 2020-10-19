@@ -270,7 +270,8 @@ describe('ComboBox component', () => {
       expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', 'apple')
     })
 
-    it('selects the focused option with enter', () => {
+    fit('selects the focused option with enter', () => {
+      const onChange = jest.fn()
       const setFieldValue = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -278,6 +279,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           setFieldValue={setFieldValue}
+          onChange={onChange}
         />
       )
 
@@ -286,7 +288,7 @@ describe('ComboBox component', () => {
       userEvent.type(getByTestId('combo-box-option-apple'), '{enter}')
 
       expect(getByTestId('combo-box-input')).toHaveValue('Apple')
-      expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', 'apple')
+      expect(onChange).toHaveBeenCalledWith('apple')
     })
 
     it('focuses the next option when down arrow is pressed', () => {

@@ -7,6 +7,11 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
+//  TODO:
+//  - add use Effect
+//  - get onChange working properly with a change event
+//  - implement all tests
+
 interface ComboBoxOption {
   value: string
   label: string
@@ -31,6 +36,8 @@ interface ComboBoxProps {
   defaultValue?: string
   assistiveHint?: string
   disabled?: boolean
+  onChange?: (val: string) => void
+  // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   setFieldValue: (
     field: string,
     value?: string,
@@ -114,6 +121,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     options,
     defaultValue,
     disabled,
+    onChange,
     setFieldValue,
     assistiveHint,
     selectProps,
@@ -149,6 +157,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     switch (action.type) {
       case 'SELECT_OPTION':
         props.setFieldValue(props.name, action.option.value)
+        props.onChange && props.onChange(action.option.value)
+
         return {
           ...state,
           isOpen: false,
