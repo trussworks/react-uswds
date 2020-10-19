@@ -21,6 +21,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 9009",
@@ -64,7 +65,7 @@
     "happo-plugin-storybook": "^2.5.3",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
-    "uswds": "^2.7.0"
+    "uswds": "2.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -73,9 +74,11 @@
     "@storybook/addon-viewport": "^6.0.21",
     "@storybook/react": "^6.0.21",
     "@storybook/storybook-deployer": "^2.8.6",
+    "@testing-library/dom": "^7.22.3",
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^11.0.2",
     "@testing-library/react-hooks": "^3.2.1",
+    "@testing-library/user-event": "^12.1.1",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^26.0.0",
     "@types/react": "^16.9.5",
