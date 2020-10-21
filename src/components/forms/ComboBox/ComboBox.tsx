@@ -8,9 +8,11 @@ import React, {
 import classnames from 'classnames'
 
 //  TODO:
-//  - add use Effect
-//  - get onChange working properly with a change event
+//  - JIM - add use Effect
+//  - remove setFieldValue
 //  - implement all tests
+//  - get onChange working properly with a change event
+//  - check for recent ComboBox changes in recent uswds release
 
 interface ComboBoxOption {
   value: string
@@ -156,8 +158,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     // console.debug(action)
     switch (action.type) {
       case 'SELECT_OPTION':
-        props.setFieldValue(props.name, action.option.value)
-        props.onChange && props.onChange(action.option.value)
+        setFieldValue(props.name, action.option.value)
+        onChange && onChange(action.option.value)
 
         return {
           ...state,
