@@ -26,7 +26,7 @@
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 9009",
     "storybook:deploy": "storybook-to-ghpages",
-    "build": "webpack -p",
+    "build": "webpack --progress",
     "build:watch": "webpack --watch",
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t ''",

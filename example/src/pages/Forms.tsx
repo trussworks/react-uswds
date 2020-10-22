@@ -15,11 +15,13 @@ import {
 type FormValues = {
   email?: string
   password?: string
+  fruit?: string
 }
 
 const FormSchema = Yup.object().shape({
   email: Yup.string().email().required(),
   password: Yup.string().min(8).max(20).required(),
+  fruit: Yup.string().nullable(),
 })
 
 const fruits = {
@@ -43,15 +45,13 @@ const noop = (): void => {
 }
 
 const FormsPage = (): React.ReactElement => {
-  const [favFruit, setFavFruit] = useState('not set')
-
   return (
     <>
       <h1>Forms Examples</h1>
       <section>
         <h2>Formik</h2>
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: '', password: '', fruit: 'avocado' }}
           validationSchema={FormSchema}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
@@ -60,8 +60,20 @@ const FormsPage = (): React.ReactElement => {
               setSubmitting(false)
             }, 400)
           }}>
-          {({ values, errors, touched, handleSubmit, isSubmitting }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleSubmit,
+            isSubmitting,
+            setFieldValue,
+          }) => (
             <Form onSubmit={handleSubmit}>
+              <div>
+                <span>Form data</span>
+                <pre>{JSON.stringify(values)}</pre>
+              </div>
+
               {touched.email && errors.email && (
                 <Alert type="info" validation heading="Email Requirements">
                   <ValidationChecklist id="validate-email">
@@ -85,7 +97,6 @@ const FormsPage = (): React.ReactElement => {
                 id="email"
                 value={values.email}
               />
-
               {touched.password && errors.password && (
                 <Alert type="info" validation heading="Password Requirements">
                   <ValidationChecklist id="validate-password">
@@ -108,18 +119,15 @@ const FormsPage = (): React.ReactElement => {
                 id="password"
                 value={values.password}
               />
-
-              <Label htmlFor="my-fruit">My Favorite Fruit</Label>
-              <pre>This is my fav: {favFruit}</pre>
-              <ComboBox
-                id="my-fruit"
-                name="my-fruit"
+              <Label htmlFor="fruit">My Favorite Fruit</Label>
+              <Field
+                as={ComboBox}
+                name="fruit"
+                id="fruit"
                 options={fruitOptions}
                 setFieldValue={noop}
-                onChange={setFavFruit}
-                defaultValue="avocado"
-              />
-
+                onChange={(val: string) => setFieldValue('fruit', val, true)}
+                defaultValue="avocado"></Field>
               <Button type="submit" disabled={isSubmitting}>
                 Submit
               </Button>

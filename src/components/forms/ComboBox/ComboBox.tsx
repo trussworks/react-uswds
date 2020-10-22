@@ -11,7 +11,7 @@ import classnames from 'classnames'
 //  - JIM - add use Effect
 //  - remove setFieldValue
 //  - implement all tests
-//  - get onChange working properly with a change event
+//  - get onChange working properly with a change event and make required prop
 //  - check for recent ComboBox changes in recent uswds release
 
 interface ComboBoxOption {
@@ -210,6 +210,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         }
       case 'CLEAR':
         props.setFieldValue(props.name, undefined)
+        onChange && onChange('')
         return {
           ...state,
           inputValue: '',
