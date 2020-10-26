@@ -97,7 +97,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
     "file-loader": "^6.0.0",
-    "happo.io": "^5.4.0",
+    "happo.io": "^6.0.0",
     "husky": "^4.2.3",
     "jest": "^26.1.0",
     "lint-staged": "^10.0.9",
