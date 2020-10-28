@@ -49,7 +49,7 @@
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
     "react-scripts": "^3.4.3",
-    "typescript": "~3.9.7"
+    "typescript": "~4.0.5"
   },
   "jest": {
     "moduleNameMapper": {
