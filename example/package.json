@@ -7,7 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
     "@trussworks/react-uswds": "file:./../",
-    "formik": "^2.1.5",
+    "formik": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
