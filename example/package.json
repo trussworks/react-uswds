@@ -10,7 +10,7 @@
     "formik": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
+    "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "yup": "^0.29.3"
@@ -43,7 +43,7 @@
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@types/react-redux": "^7.1.9",
+    "@types/react-redux": "^7.1.10",
     "@types/react-router-dom": "^5.1.6",
     "@types/yup": "^0.29.9",
     "customize-cra": "^1.0.0",
