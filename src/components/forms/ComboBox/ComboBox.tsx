@@ -8,7 +8,6 @@ import React, {
 import classnames from 'classnames'
 
 //  TODO:
-//  - JIM - add use Effect
 //  - remove setFieldValue
 //  - implement all tests
 //  - get onChange working properly with a change event and make required prop
@@ -38,7 +37,7 @@ interface ComboBoxProps {
   defaultValue?: string
   assistiveHint?: string
   disabled?: boolean
-  onChange?: (val: string) => void
+  onChange?: (val?: string) => void
   // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   setFieldValue: (
     field: string,
@@ -155,12 +154,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   }
 
   function reducer(state: State, action: Action): State {
-    // console.debug(action)
     switch (action.type) {
       case 'SELECT_OPTION':
-        setFieldValue(props.name, action.option.value)
-        onChange && onChange(action.option.value)
-
         return {
           ...state,
           isOpen: false,
@@ -209,8 +204,6 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           focusMode: FocusMode.Item,
         }
       case 'CLEAR':
-        props.setFieldValue(props.name, undefined)
-        onChange && onChange('')
         return {
           ...state,
           inputValue: '',
@@ -229,6 +222,11 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   const listID = ''
   const assistiveHintID = ''
   const selectID = ''
+
+  useEffect(() => {
+    setFieldValue(props.name, state.selectedOption?.value)
+    onChange && onChange(state.selectedOption?.value)
+  }, [state.selectedOption])
 
   const itemRef = useRef<HTMLLIElement>(null)
   useEffect(() => {
