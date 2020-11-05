@@ -8,7 +8,6 @@ import React, {
 import classnames from 'classnames'
 
 //  TODO:
-//  - remove setFieldValue
 //  - implement all tests
 //  - get onChange working properly with a change event and make required prop
 //  - check for recent ComboBox changes in recent uswds release
@@ -39,11 +38,6 @@ interface ComboBoxProps {
   disabled?: boolean
   onChange?: (val?: string) => void
   // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  setFieldValue: (
-    field: string,
-    value?: string,
-    shouldValidate?: boolean
-  ) => void
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
 }
@@ -123,7 +117,6 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     defaultValue,
     disabled,
     onChange,
-    setFieldValue,
     assistiveHint,
     selectProps,
     inputProps,
@@ -224,7 +217,6 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   const selectID = ''
 
   useEffect(() => {
-    setFieldValue(props.name, state.selectedOption?.value)
     onChange && onChange(state.selectedOption?.value)
   }, [state.selectedOption])
 

@@ -18,7 +18,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
       />
     )
     expect(getByTestId('combo-box')).toBeInTheDocument()
@@ -30,7 +30,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
         defaultValue="apple"
       />
     )
@@ -44,7 +44,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
       />
     )
     expect(getByTestId('combo-box-input')).toBeVisible()
@@ -56,7 +56,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
       />
     )
 
@@ -73,7 +73,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
         selectProps={{ required: true, role: 'testing' }}
       />
     )
@@ -88,7 +88,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
         inputProps={{ required: true, role: 'testing' }}
       />
     )
@@ -103,7 +103,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
         disabled={true}
       />
     )
@@ -118,7 +118,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
       />
     )
 
@@ -142,7 +142,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -160,7 +160,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -177,7 +177,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -201,7 +201,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        setFieldValue={jest.fn()}
+        onChange={jest.fn()}
       />
     )
 
@@ -219,7 +219,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -237,7 +237,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -252,13 +252,13 @@ describe('ComboBox component', () => {
     })
 
     it('selects the focused option with tab', () => {
-      const setFieldValue = jest.fn()
+      const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={setFieldValue}
+          onChange={onChange}
         />
       )
 
@@ -267,18 +267,16 @@ describe('ComboBox component', () => {
       userEvent.tab()
 
       expect(getByTestId('combo-box-input')).toHaveValue('Apple')
-      expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', 'apple')
+      expect(onChange).toHaveBeenCalledWith('favorite-fruit', 'apple')
     })
 
     fit('selects the focused option with enter', () => {
       const onChange = jest.fn()
-      const setFieldValue = jest.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={setFieldValue}
           onChange={onChange}
         />
       )
@@ -297,7 +295,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -316,7 +314,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -341,7 +339,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -360,7 +358,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -394,7 +392,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
           defaultValue="avocado"
         />
       )
@@ -425,7 +423,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue={'avocado'}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -444,7 +442,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -466,7 +464,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -486,7 +484,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -509,7 +507,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -531,14 +529,14 @@ describe('ComboBox component', () => {
     })
 
     it('should clear the input when the clear button is clicked', () => {
-      const setFieldValue = jest.fn()
+      const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="apple"
-          setFieldValue={setFieldValue}
+          onChange={onChange}
         />
       )
 
@@ -548,7 +546,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-input')).toHaveValue('')
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
 
-      expect(setFieldValue).toHaveBeenCalledWith('favorite-fruit', undefined)
+      expect(onChange).toHaveBeenCalledWith('favorite-fruit', undefined)
     })
 
     it('resets the filter when clicking the clear button', () => {
@@ -558,7 +556,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="apple"
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -570,20 +568,20 @@ describe('ComboBox component', () => {
     })
 
     it('selects an item by clicking on an option', () => {
-      const setFieldValue = jest.fn()
+      const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={setFieldValue}
+          onChange={onChange}
         />
       )
 
       fireEvent.click(getByTestId('combo-box-toggle'))
       fireEvent.click(getByTestId('combo-box-option-apple'))
 
-      expect(setFieldValue).toHaveBeenCalledWith(
+      expect(onChange).toHaveBeenCalledWith(
         'favorite-fruit',
         fruitOptions[0].value
       )
@@ -599,7 +597,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
         />
       )
 
@@ -624,7 +622,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          setFieldValue={jest.fn()}
+          onChange={jest.fn()}
           assistiveHint="Customized assistive hint"
         />
       )
