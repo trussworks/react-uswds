@@ -48,7 +48,7 @@
     "@types/yup": "^0.29.9",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^3.4.4",
     "typescript": "~3.9.7"
   },
   "jest": {
