@@ -2219,9 +2219,9 @@
     pretty-format "^26.6.2"
 
 "@testing-library/jest-dom@^5.3.0":
-  version "5.11.5"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.11.5.tgz#44010f37f4b1e15f9d433963b515db0b05182fc8"
-  integrity sha512-XI+ClHR864i6p2kRCEyhvpVejuer+ObVUF4cjCvRSF88eOMIfqw7RoS9+qoRhyigGswMfT64L6Nt0Ufotxbwtg==
+  version "5.11.6"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.11.6.tgz#782940e82e5cd17bc0a36f15156ba16f3570ac81"
+  integrity sha512-cVZyUNRWwUKI0++yepYpYX7uhrP398I+tGz4zOlLVlUYnZS+Svuxv4fwLeCIy7TnBYKXUaOlQr3vopxL8ZfEnA==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -7279,9 +7279,9 @@ happo-plugin-storybook@^2.5.3:
     rimraf "^2.6.3"
 
 happo.io@^6.0.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.1.0.tgz#b48575ef9f5cfdfcc73d73612fee7e50c1507b2e"
-  integrity sha512-cibnQ3qT0L79NbTnIli9xpTRLr7VBegyQX87Lc8xsQIAfdajGUjiuQ6uDrimIFVE7po0ZmgODq7GuQH+PQahaw==
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.2.0.tgz#23c06997d0a719dd687a1aad6bff49de012e5309"
+  integrity sha512-TYaNI6334qfdlypcWbkJywgM74X9QlD0JGseJurE1GnRmMI9RAjIPUkYzO9qEmYkftkje//5rpA2laj1u4NmvQ==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@babel/preset-react" "^7.12.1"
