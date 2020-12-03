@@ -340,7 +340,7 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-input')).toHaveValue('')
   })
 
-  fdescribe('keyboard actions', () => {
+  describe('keyboard actions', () => {
     it('clears input when there is no match and enter is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
@@ -685,7 +685,7 @@ describe('ComboBox component', () => {
     })
   })
 
-  describe('mouse actions', () => {
+  fdescribe('mouse actions', () => {
     it('displays options list when input is clicked', () => {
       const { getByTestId } = render(
         <ComboBox
@@ -741,9 +741,6 @@ describe('ComboBox component', () => {
       fireEvent.click(getByTestId('combo-box-input'))
       fireEvent.blur(getByTestId('combo-box-input'))
 
-      // TODO fix
-      // expect(getByTestId('combo-box-input')).not.toHaveFocus()
-
       expect(getByTestId('combo-box-input')).toHaveAttribute(
         'aria-expanded',
         'false'
@@ -792,17 +789,30 @@ describe('ComboBox component', () => {
       fireEvent.click(getByTestId('combo-box-toggle'))
       fireEvent.click(getByTestId('combo-box-option-apple'))
 
-      expect(onChange).toHaveBeenCalledWith(
-        'favorite-fruit',
-        fruitOptions[0].value
-      )
+      expect(onChange).toHaveBeenCalledWith(fruitOptions[0].value)
     })
 
-    it.todo('focuses an option on hover')
+    it('focuses an option on hover', () => {
+      // TODO: ?? Test failure may be an issue with userEvent hover
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      userEvent.hover(getByTestId('combo-box-option-blackberry'))
+
+      expect(getByTestId('combo-box-option-blackberry')).toHaveFocus()
+    })
   })
 
   describe('accessibility', () => {
-    it.skip('adds aria attributes to options', () => {
+    it('adds correct aria attributes to options when no item selected', () => {
+      // TODO: Valid test failure, we should be highlighting first item in list when no item in list bu
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -817,12 +827,39 @@ describe('ComboBox component', () => {
       const list = getByTestId('combo-box-option-list')
 
       Object.values(list.children).forEach((node, index) => {
-        if (index === 0) {
+        if (index == 0) {
           expect(node).toHaveAttribute('tabindex', '0')
         } else {
           expect(node).toHaveAttribute('tabindex', '-1')
         }
         expect(node).toHaveAttribute('aria-selected', 'false')
+        expect(node).toHaveAttribute('role', 'option')
+      })
+    })
+
+    it('adds correct aria attributes on options when an item is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+      const list = getByTestId('combo-box-option-list')
+      const selectedItem = getByTestId('combo-box-option-apricot')
+
+      fireEvent.click(getByTestId('combo-box-input'))
+      fireEvent.click(selectedItem)
+
+      Object.values(list.children).forEach((node) => {
+        if (node === selectedItem) {
+          expect(node).toHaveAttribute('tabindex', '0')
+          expect(node).toHaveAttribute('aria-selected', 'true')
+        } else {
+          expect(node).toHaveAttribute('tabindex', '-1')
+          expect(node).toHaveAttribute('aria-selected', 'false')
+        }
         expect(node).toHaveAttribute('role', 'option')
       })
     })
