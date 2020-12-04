@@ -8,7 +8,8 @@ import React, {
 import classnames from 'classnames'
 
 //  TODO:
-//  - get onChange working properly with a change event and make required prop
+//  - fix major bugs 🛑 🐛. noted in test failures
+// - get onChange working properly with a change event and make required prop
 //  - double check all tab behavior
 //  - check for recent ComboBox changes in recent uswds release
 
