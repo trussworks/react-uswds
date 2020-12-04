@@ -7,11 +7,11 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
-//  TODO:
-//  - fix major bugs 🛑 🐛. noted in test failures
-// - get onChange working properly with a change event and make required prop
-//  - double check all tab behavior
-//  - check for recent ComboBox changes in recent uswds release
+/*  TODO:
+  - fix major bugs 🛑 🐛. noted in test failures
+  - double check all tab behavior
+  - check for recent ComboBox changes in recent uswds release
+*/
 
 interface ComboBoxOption {
   value: string
@@ -35,10 +35,10 @@ interface ComboBoxProps {
   className?: string
   options: ComboBoxOption[]
   defaultValue?: string
-  assistiveHint?: string
   disabled?: boolean
-  onChange?: (val?: string) => void
-  // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (val?: string) => void
+  assistiveHint?: string
+  noResults?: string
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
 }
@@ -119,6 +119,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     disabled,
     onChange,
     assistiveHint,
+    noResults,
     selectProps,
     inputProps,
   } = props
@@ -218,7 +219,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   const selectID = ''
 
   useEffect(() => {
-    onChange && onChange(state.selectedOption?.value)
+    onChange && onChange(state.selectedOption?.value || undefined)
   }, [state.selectedOption])
 
   const itemRef = useRef<HTMLLIElement>(null)
@@ -408,7 +409,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         })}
         {state.filteredOptions.length === 0 ? (
           <li className="usa-combo-box__list-option--no-results">
-            No results found
+            {noResults || 'No results found'}
           </li>
         ) : null}
       </ul>

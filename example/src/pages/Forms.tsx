@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -40,9 +40,6 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
   value: value,
   label: key,
 }))
-const noop = (): void => {
-  return
-}
 
 const FormsPage = (): React.ReactElement => {
   return (
@@ -125,7 +122,6 @@ const FormsPage = (): React.ReactElement => {
                 name="fruit"
                 id="fruit"
                 options={fruitOptions}
-                setFieldValue={noop}
                 onChange={(val: string) => setFieldValue('fruit', val, true)}
                 defaultValue="avocado"></Field>
               <Button type="submit" disabled={isSubmitting}>

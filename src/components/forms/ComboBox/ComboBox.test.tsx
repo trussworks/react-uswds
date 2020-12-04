@@ -938,7 +938,7 @@ describe('ComboBox component', () => {
     })
   })
 
-  describe('accessibility', () => {
+  describe('accessibility and internationalization', () => {
     xit('adds correct aria attributes to options when no item selected', () => {
       // TODO: 🐛 Currently no item focused, should highlighting first item in list in this case
       const { getByTestId } = render(
@@ -1005,6 +1005,21 @@ describe('ComboBox component', () => {
 
       const node = getByTestId('combo-box-assistive-hint')
       expect(node).toHaveTextContent('Customized assistive hint')
+    })
+
+    it('allows no results message to be customized', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          noResults="NOTHING"
+        />
+      )
+      userEvent.type(getByTestId('combo-box-input'), 'zzz{enter}')
+      const firstItem = getByTestId('combo-box-option-list').children[0]
+      expect(firstItem).toHaveTextContent('NOTHING')
     })
   })
 })
