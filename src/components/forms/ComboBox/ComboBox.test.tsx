@@ -278,6 +278,45 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
     })
 
+    it('persists filter options if dropdown is closed and open without selection', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'yu')
+      userEvent.click(getByTestId('combo-box-toggle'))
+
+      expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+    })
+
+    it('clears filter when item selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'yu')
+      userEvent.click(getByTestId('combo-box-option-yuzu'))
+
+      expect(getByTestId('combo-box-option-list').children.length).toEqual(
+        fruitOptions.length
+      )
+    })
+
     it('shows no results message when there is no match', () => {
       const { getByTestId } = render(
         <ComboBox
@@ -336,9 +375,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-clear-button')).toBeVisible()
     })
 
-    xit('resets the filter on click', () => {
-      // TODO: major bug 🛑 🐛. right now clear button click clears the input but does not reset the options list
-      // user has to refresh to get options back
+    it('resets the filter on click', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -433,7 +470,7 @@ describe('ComboBox component', () => {
     })
   })
 
-  it('clears input value when an incomplete item is remaining on blur', () => {
+  it('clears input value and closes list when an incomplete item is remaining on blur', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -468,9 +505,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
 
-    xit('clears filter when there is no match and enter is pressed', () => {
-      // TODO: major bug 🛑 🐛. right now pressing enter clears the input but does not reset the options list
-      // user has to refresh to get options back
+    it('clears filter when there is no match and enter is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -911,6 +946,43 @@ describe('ComboBox component', () => {
       expect(onChange).toHaveBeenCalledWith(fruitOptions[0].value)
     })
 
+    it('persists input text if dropdown is closed and open without selection', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'yu')
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      expect(input).toHaveValue('yu')
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      expect(input).toHaveValue('yu')
+    })
+
+    it('updates input with item selected on click', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'yu')
+      userEvent.click(getByTestId('combo-box-option-yuzu'))
+
+      expect(getByTestId('combo-box-input')).toHaveValue('Yuzu')
+    })
+
     it('focuses an option on hover', () => {
       const { getByTestId } = render(
         <ComboBox
@@ -1017,7 +1089,7 @@ describe('ComboBox component', () => {
           noResults="NOTHING"
         />
       )
-      userEvent.type(getByTestId('combo-box-input'), 'zzz{enter}')
+      userEvent.type(getByTestId('combo-box-input'), 'zzz')
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveTextContent('NOTHING')
     })

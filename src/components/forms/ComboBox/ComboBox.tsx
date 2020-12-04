@@ -8,8 +8,6 @@ import React, {
 import classnames from 'classnames'
 
 /*  TODO:
-  - fix major bugs 🛑 🐛. noted in test failures
-  - double check all tab behavior
   - check for recent ComboBox changes in recent uswds release
 */
 
@@ -157,6 +155,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           selectedOption: action.option,
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
+          filter: undefined,
+          filteredOptions: options.filter(optionFilter('')),
         }
       case 'UPDATE_FILTER': {
         const newState = {
@@ -183,14 +183,26 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           focusMode: FocusMode.Input,
           focusedOption: state.selectedOption,
         }
-      case 'CLOSE_LIST':
-        return {
+      case 'CLOSE_LIST': {
+        const newState = {
           ...state,
           isOpen: false,
           focusMode: FocusMode.Input,
           focusedOption: undefined,
-          inputValue: state.selectedOption ? state.selectedOption.label : '',
         }
+
+        if (state.filteredOptions.length === 0) {
+          newState.filteredOptions = options.filter(optionFilter(''))
+          newState.inputValue = ''
+        }
+
+        if (state.selectedOption) {
+          newState.inputValue = state.selectedOption.label
+        }
+
+        return newState
+      }
+
       case 'FOCUS_OPTION':
         return {
           ...state,
@@ -202,8 +214,12 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         return {
           ...state,
           inputValue: '',
+          isOpen: false,
           selectedOption: undefined,
+          filter: undefined,
+          filteredOptions: options.filter(optionFilter('')),
         }
+
       default:
         throw new Error()
     }
@@ -255,7 +271,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       !target ||
       (target instanceof Node && !containerRef.current?.contains(event.target))
     ) {
-      dispatch({ type: 'CLOSE_LIST' })
+      dispatch({ type: 'CLEAR' })
     }
   }
 
