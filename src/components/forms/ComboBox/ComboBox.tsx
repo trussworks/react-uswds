@@ -41,11 +41,6 @@ interface ComboBoxProps {
   selectProps?: JSX.IntrinsicElements['select']
 }
 
-const optionFilter = (needle: string): ((event: ComboBoxOption) => boolean) => {
-  return (option: ComboBoxOption): boolean =>
-    option.label.toLowerCase().indexOf(needle.toLowerCase()) != -1
-}
-
 interface InputProps {
   focused: boolean
 }
@@ -63,9 +58,10 @@ const Input = (
 
   return (
     <input
-      aria-autocomplete="list"
-      aria-controls=""
       type="text"
+      id="TBD"
+      className="usa-combo-box__input"
+      data-testid="combo-box-input"
       {...inputProps}
       autoCapitalize="off"
       autoComplete="off"
@@ -107,43 +103,15 @@ type Action =
       value: string
     }
 
-export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
-  const {
-    id,
-    name,
-    className,
-    options,
-    defaultValue,
-    disabled,
-    onChange,
-    assistiveHint,
-    noResults,
-    selectProps,
-    inputProps,
-  } = props
-
-  const isDisabled = !!disabled
-
-  let defaultLabel = ''
-  let selectedOption
-  if (defaultValue) {
-    const defaultOption = options.find((opt: ComboBoxOption): boolean => {
-      return opt.value === defaultValue
-    })
-    if (defaultOption) {
-      defaultLabel = defaultOption.label
-      selectedOption = defaultOption
-    }
-  }
-
-  const initialState: State = {
-    isOpen: false,
-    selectedOption: selectedOption,
-    focusedOption: undefined,
-    focusMode: FocusMode.None,
-    filteredOptions: props.options,
-    filter: undefined,
-    inputValue: defaultLabel,
+const useCombobox = (
+  initialState: State,
+  optionsList: ComboBoxOption[]
+): [State, React.Dispatch<Action>] => {
+  const optionFilter = (
+    needle: string
+  ): ((event: ComboBoxOption) => boolean) => {
+    return (option: ComboBoxOption): boolean =>
+      option.label.toLowerCase().indexOf(needle.toLowerCase()) != -1
   }
 
   function reducer(state: State, action: Action): State {
@@ -156,14 +124,14 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
           filter: undefined,
-          filteredOptions: options.filter(optionFilter('')),
+          filteredOptions: optionsList.filter(optionFilter('')),
         }
       case 'UPDATE_FILTER': {
         const newState = {
           ...state,
           isOpen: true,
           filter: action.value,
-          filteredOptions: options.filter(optionFilter(action.value)),
+          filteredOptions: optionsList.filter(optionFilter(action.value)),
           inputValue: action.value,
         }
 
@@ -192,7 +160,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         }
 
         if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = options.filter(optionFilter(''))
+          newState.filteredOptions = optionsList.filter(optionFilter(''))
           newState.inputValue = ''
         }
 
@@ -217,7 +185,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           isOpen: false,
           selectedOption: undefined,
           filter: undefined,
-          filteredOptions: options.filter(optionFilter('')),
+          filteredOptions: optionsList.filter(optionFilter('')),
         }
 
       default:
@@ -225,20 +193,52 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     }
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  return useReducer(reducer, initialState)
+}
+
+export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
+  const {
+    id,
+    name,
+    className,
+    options,
+    defaultValue,
+    disabled,
+    onChange,
+    assistiveHint,
+    noResults,
+    selectProps,
+    inputProps,
+  } = props
+
+  const isDisabled = !!disabled
+
+  let defaultOption
+  if (defaultValue) {
+    defaultOption = options.find((opt: ComboBoxOption): boolean => {
+      return opt.value === defaultValue
+    })
+  }
+
+  const initialState: State = {
+    isOpen: false,
+    selectedOption: defaultOption ? defaultOption : undefined,
+    focusedOption: undefined,
+    focusMode: FocusMode.None,
+    filteredOptions: options,
+    filter: undefined,
+    inputValue: defaultOption ? defaultOption.label : '',
+  }
+
+  const [state, dispatch] = useCombobox(initialState, options)
 
   const containerRef = useRef<HTMLDivElement>(null)
-
-  // TODO implement these
-  const listID = ''
-  const assistiveHintID = ''
-  const selectID = ''
+  const itemRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
     onChange && onChange(state.selectedOption?.value || undefined)
   }, [state.selectedOption])
 
-  const itemRef = useRef<HTMLLIElement>(null)
   useEffect(() => {
     if (
       state.focusMode === FocusMode.Item &&
@@ -318,6 +318,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   const containerClasses = classnames('usa-combo-box', className, {
     'usa-combo-box--pristine': state.selectedOption,
   })
+  const listID = `combobox-${name}-list`
+  const assistiveHintID = `combobox-${name}-assistive-hint`
 
   return (
     <div
