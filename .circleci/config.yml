@@ -2,7 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.16.2
+    - auth:
+        password: $DOCKER_PASSWORD
+        username: $DOCKER_USERNAME
+      image: circleci/node:12.16.2
     working_directory: ~/react-uswds
     steps:
       - checkout
