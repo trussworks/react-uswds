@@ -1,17 +1,15 @@
-import React, {
-  KeyboardEvent,
-  FocusEvent,
-  useEffect,
-  useRef,
-  useReducer,
-} from 'react'
+import React, { KeyboardEvent, FocusEvent, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
-/*  TODO:
-  - check for recent ComboBox changes in recent uswds release
-*/
+import { ActionTypes, Action, State, useCombobox } from './useCombobox'
 
-interface ComboBoxOption {
+/*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
+    The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
+
+    There is the ability to pass in custom props directly to the select and input.
+    This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
+*/
+export interface ComboBoxOption {
   value: string
   label: string
 }
@@ -21,10 +19,10 @@ enum Direction {
   Next = 1,
 }
 
-enum FocusMode {
+export enum FocusMode {
   None,
-  Input, // The textfield
-  Item, // One of the list items
+  Input,
+  Item,
 }
 
 interface ComboBoxProps {
@@ -59,7 +57,6 @@ const Input = (
   return (
     <input
       type="text"
-      id="TBD"
       className="usa-combo-box__input"
       data-testid="combo-box-input"
       {...inputProps}
@@ -68,132 +65,6 @@ const Input = (
       ref={inputRef}
     />
   )
-}
-
-interface State {
-  isOpen: boolean
-  selectedOption?: ComboBoxOption
-  focusedOption?: ComboBoxOption
-  focusMode: FocusMode
-  filter?: string
-  filteredOptions: ComboBoxOption[]
-  inputValue: string
-}
-
-type Action =
-  | {
-      type: 'SELECT_OPTION'
-      option: ComboBoxOption
-    }
-  | {
-      type: 'CLEAR'
-    }
-  | {
-      type: 'OPEN_LIST'
-    }
-  | {
-      type: 'CLOSE_LIST'
-    }
-  | {
-      type: 'FOCUS_OPTION'
-      option: ComboBoxOption
-    }
-  | {
-      type: 'UPDATE_FILTER'
-      value: string
-    }
-
-const useCombobox = (
-  initialState: State,
-  optionsList: ComboBoxOption[]
-): [State, React.Dispatch<Action>] => {
-  const optionFilter = (
-    needle: string
-  ): ((event: ComboBoxOption) => boolean) => {
-    return (option: ComboBoxOption): boolean =>
-      option.label.toLowerCase().indexOf(needle.toLowerCase()) != -1
-  }
-
-  function reducer(state: State, action: Action): State {
-    switch (action.type) {
-      case 'SELECT_OPTION':
-        return {
-          ...state,
-          isOpen: false,
-          selectedOption: action.option,
-          focusMode: FocusMode.Input,
-          inputValue: action.option.label,
-          filter: undefined,
-          filteredOptions: optionsList.filter(optionFilter('')),
-        }
-      case 'UPDATE_FILTER': {
-        const newState = {
-          ...state,
-          isOpen: true,
-          filter: action.value,
-          filteredOptions: optionsList.filter(optionFilter(action.value)),
-          inputValue: action.value,
-        }
-
-        if (
-          state.selectedOption &&
-          state.selectedOption.label !== action.value
-        ) {
-          newState.selectedOption = undefined
-        }
-
-        return newState
-      }
-      case 'OPEN_LIST':
-        return {
-          ...state,
-          isOpen: true,
-          focusMode: FocusMode.Input,
-          focusedOption: state.selectedOption,
-        }
-      case 'CLOSE_LIST': {
-        const newState = {
-          ...state,
-          isOpen: false,
-          focusMode: FocusMode.Input,
-          focusedOption: undefined,
-        }
-
-        if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = optionsList.filter(optionFilter(''))
-          newState.inputValue = ''
-        }
-
-        if (state.selectedOption) {
-          newState.inputValue = state.selectedOption.label
-        }
-
-        return newState
-      }
-
-      case 'FOCUS_OPTION':
-        return {
-          ...state,
-          isOpen: true,
-          focusedOption: action.option,
-          focusMode: FocusMode.Item,
-        }
-      case 'CLEAR':
-        return {
-          ...state,
-          inputValue: '',
-          isOpen: false,
-          selectedOption: undefined,
-          filter: undefined,
-          filteredOptions: optionsList.filter(optionFilter('')),
-        }
-
-      default:
-        throw new Error()
-    }
-  }
-
-  return useReducer(reducer, initialState)
 }
 
 export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
@@ -251,16 +122,22 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
 
   const handleInputKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
-      dispatch({ type: 'CLOSE_LIST' })
+      dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (event.key === 'ArrowDown' || event.key == 'Down') {
       event.preventDefault()
-      dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
+      dispatch({
+        type: ActionTypes.FOCUS_OPTION,
+        option: state.filteredOptions[0],
+      })
     } else if (event.key === 'Tab') {
       event.preventDefault()
-      dispatch({ type: 'FOCUS_OPTION', option: state.filteredOptions[0] })
+      dispatch({
+        type: ActionTypes.FOCUS_OPTION,
+        option: state.filteredOptions[0],
+      })
     } else if (event.key === 'Enter' && state.inputValue !== '') {
       event.preventDefault()
-      dispatch({ type: 'CLOSE_LIST' })
+      dispatch({ type: ActionTypes.CLOSE_LIST })
     }
   }
 
@@ -271,7 +148,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       !target ||
       (target instanceof Node && !containerRef.current?.contains(event.target))
     ) {
-      dispatch({ type: 'CLEAR' })
+      dispatch({ type: ActionTypes.CLEAR })
     }
   }
 
@@ -285,26 +162,29 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       : -1
     if (currentIndex === -1) {
       const newOption = state.filteredOptions[0]
-      dispatch({ type: 'FOCUS_OPTION', option: newOption })
+      dispatch({ type: ActionTypes.FOCUS_OPTION, option: newOption })
     } else {
       const newIndex = currentIndex + change
       if (newIndex < 0) {
-        dispatch({ type: 'CLOSE_LIST' })
+        dispatch({ type: ActionTypes.CLOSE_LIST })
       } else if (newIndex <= state.filteredOptions.length - 1) {
         // eslint-disable-next-line security/detect-object-injection
         const newOption = state.filteredOptions[newIndex]
-        dispatch({ type: 'FOCUS_OPTION', option: newOption })
+        dispatch({ type: ActionTypes.FOCUS_OPTION, option: newOption })
       }
     }
   }
 
   const handleListItemKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
-      dispatch({ type: 'CLOSE_LIST' })
+      dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (event.key === 'Tab' || event.key === 'Enter') {
       event.preventDefault()
       if (state.focusedOption) {
-        dispatch({ type: 'SELECT_OPTION', option: state.focusedOption })
+        dispatch({
+          type: ActionTypes.SELECT_OPTION,
+          option: state.focusedOption,
+        })
       }
     } else if (event.key === 'ArrowDown' || event.key === 'Down') {
       event.preventDefault()
@@ -344,20 +224,17 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       </select>
       <Input
         onChange={(e): void =>
-          dispatch({ type: 'UPDATE_FILTER', value: e.target.value })
+          dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value })
         }
-        onClick={(): void => dispatch({ type: 'OPEN_LIST' })}
+        onClick={(): void => dispatch({ type: ActionTypes.OPEN_LIST })}
         onBlur={handleInputBlur}
         onKeyDown={handleInputKeyDown}
         value={state.inputValue}
         focused={state.focusMode === FocusMode.Input}
         role="combobox"
-        id="TBD"
-        className="usa-combo-box__input"
         aria-owns={listID}
         aria-describedby={assistiveHintID}
         aria-expanded={state.isOpen}
-        data-testid="combo-box-input"
         disabled={isDisabled}
         {...inputProps}
       />
@@ -366,7 +243,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           type="button"
           className="usa-combo-box__clear-input"
           aria-label="Clear the select contents"
-          onClick={(): void => dispatch({ type: 'CLEAR' })}
+          onClick={(): void => dispatch({ type: ActionTypes.CLEAR })}
           data-testid="combo-box-clear-button"
           hidden={!state.selectedOption}>
           &nbsp;
@@ -381,8 +258,13 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           className="usa-combo-box__toggle-list"
           aria-label="Toggle the dropdown list"
           onClick={(): void =>
-            dispatch({ type: state.isOpen ? 'CLOSE_LIST' : 'OPEN_LIST' })
-          }>
+            dispatch({
+              type: state.isOpen
+                ? ActionTypes.CLOSE_LIST
+                : ActionTypes.OPEN_LIST,
+            })
+          }
+          disabled={isDisabled}>
           &nbsp;
         </button>
       </span>
@@ -416,10 +298,10 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
               onKeyDown={handleListItemKeyDown}
               data-testid={`combo-box-option-${option.value}`}
               onMouseMove={(): void =>
-                dispatch({ type: 'FOCUS_OPTION', option: option })
+                dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
               }
               onClick={(): void => {
-                dispatch({ type: 'SELECT_OPTION', option: option })
+                dispatch({ type: ActionTypes.SELECT_OPTION, option: option })
               }}>
               {option.label}
             </li>

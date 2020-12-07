@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ComboBox } from './ComboBox'
 import { Form } from '../Form/Form'
+import { Label } from '../Label/Label'
 
 import { fruits } from './fruits'
 
@@ -22,9 +23,9 @@ const noop = (): void => {
 }
 
 export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
-  const opts = Object.entries(fruits).map(([value, key]) => ({
-    value: value,
-    label: key,
+  const fruitList = Object.entries(fruits).map(([key, value]) => ({
+    value: key,
+    label: value,
   }))
 
   return (
@@ -32,15 +33,15 @@ export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
       <ComboBox
         id="input-ComboBox"
         name="input-ComboBox"
-        options={opts}
-        setFieldValue={noop}
+        options={fruitList}
+        onChange={noop}
       />
     </Form>
   )
 }
 
 export const withDefaultValue = (): React.ReactElement => {
-  const opts = Object.entries(fruits).map(([value, key]) => ({
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
   }))
@@ -50,23 +51,44 @@ export const withDefaultValue = (): React.ReactElement => {
       <ComboBox
         id="input-ComboBox"
         name="input-ComboBox"
-        options={opts}
-        setFieldValue={noop}
+        options={fruitList}
+        onChange={noop}
         defaultValue="avocado"
       />
     </Form>
   )
 }
 
-// export const withLabel = (): React.ReactElement => (
-//   <>
-//     <Label htmlFor="options">ComboBox label</Label>
-//     <ComboBox id="input-ComboBox" name="input-ComboBox">
-//     </ComboBox>
-//   </>
-// )
+export const withLabel = (): React.ReactElement => {
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
 
-// export const disabled = (): React.ReactElement => (
-//   <ComboBox id="input-ComboBox" name="input-ComboBox" disabled>
-//   </ComboBox>
-// )
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="fruit">Select A Fruit</Label>
+      <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
+    </Form>
+  )
+}
+
+export const disabled = (): React.ReactElement => {
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="fruit">Select a Fruit</Label>
+      <ComboBox
+        id="fruit"
+        name="fruit"
+        options={fruitList}
+        onChange={noop}
+        disabled
+      />
+    </Form>
+  )
+}

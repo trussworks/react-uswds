@@ -3,8 +3,13 @@ import { render, fireEvent, prettyDOM } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox } from './ComboBox'
-
 import { fruits } from './fruits'
+
+/*
+  Source of truth for combo box behavior is USWDS storybook examples and tests. For more:
+  - https://designsystem.digital.gov/form-controls/03-combo-box/
+  - https://github.com/uswds/uswds/tree/7a89611fe649650922e4d431b78c39fed6a867e1/spec/unit/combo-box
+*/
 
 const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
   value: value,
@@ -25,10 +30,6 @@ describe('ComboBox component', () => {
   })
 
   it('renders hidden select element on load', () => {
-    /*  As per USWDS spec, select is usa-sr-only. 
-        This means the select is hidden via CSS. 
-        The part of combobox that is directly interacted with is an additional input and dropdown list. 
-    */
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -60,7 +61,6 @@ describe('ComboBox component', () => {
   })
 
   it('renders hidden options list on load', () => {
-    // List becomes visible only when input is interacted with
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -79,7 +79,7 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
-  it('shows list when input toggle clicked', () => {
+  it('shows options list when input toggle clicked', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -162,7 +162,7 @@ describe('ComboBox component', () => {
     )
   })
 
-  it('functionality can be disabled', () => {
+  it('can be disabled', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -172,9 +172,23 @@ describe('ComboBox component', () => {
         disabled={true}
       />
     )
-    // when combobox is disabled both the input and select should be disabled
     expect(getByTestId('combo-box-input')).toBeDisabled()
     expect(getByTestId('combo-box-select')).toBeDisabled()
+  })
+
+  it('does not show the list when clicking the disabled component', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        onChange={jest.fn()}
+        disabled={true}
+      />
+    )
+    userEvent.click(getByTestId('combo-box-toggle'))
+
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
   it('renders input with default value if passed in', () => {
