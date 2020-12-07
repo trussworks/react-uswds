@@ -45,7 +45,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.10",
     "@types/react-router-dom": "^5.1.6",
-    "@types/yup": "^0.29.9",
+    "@types/yup": "^0.29.10",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
     "react-scripts": "^3.4.4",
