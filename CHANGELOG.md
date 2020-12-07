@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.3](https://github.com/trussworks/react-uswds/compare/1.9.2...1.9.3) (2020-11-13)
+
+
+### Bug Fixes
+
+*  Happo automation should skip dependabot PRs ([#453](https://github.com/trussworks/react-uswds/issues/453)) ([dc5bffc](https://github.com/trussworks/react-uswds/commit/dc5bffc88784eef283a075045172e6228cf5384f))
+* Require Typescript 3.8+ ([#521](https://github.com/trussworks/react-uswds/issues/521)) ([53efe5d](https://github.com/trussworks/react-uswds/commit/53efe5d164d8dd488c94eb8bdce1c13243d04dae))
+* update example app deps to fix security issue ([#476](https://github.com/trussworks/react-uswds/issues/476)) ([00fd70a](https://github.com/trussworks/react-uswds/commit/00fd70a5b597af29d54a6d5b4ca90a619ef05c51))
+
+
+### Documentation & Examples
+
+* Add Code of Conduct ([#455](https://github.com/trussworks/react-uswds/issues/455)) ([6b8f96c](https://github.com/trussworks/react-uswds/commit/6b8f96cae8d677d9f7a58b82db27a721b7282dc0))
+
 ### [1.9.2](https://github.com/trussworks/react-uswds/compare/1.9.1...1.9.2) (2020-09-10)
 
 

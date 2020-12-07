@@ -40,7 +40,7 @@ updates:
   - package-ecosystem: npm
     directory: '/example/'
     schedule:
-      interval: monthly
+      interval: weekly
     pull-request-branch-name:
       separator: '-'
     open-pull-requests-limit: 10
@@ -49,17 +49,17 @@ updates:
       - 'type: automerge'
       - 'type: example'
     allow:
-      - dependency-type: development
+      - dependency-type: all
     ignore:
       - dependency-name: react
         versions:
-          - '^16.11.0'
+          - '^16.13.1'
       - dependency-name: react-dom
         versions:
-          - '^16.11.0'
+          - '^16.13.1'
       - dependency-name: '@types/react'
         versions:
-          - '^16.10.0'
+          - '^16.9.0'
       - dependency-name: '@types/react-dom'
         versions:
-          - '^16.10.0'
+          - '^16.9.0'

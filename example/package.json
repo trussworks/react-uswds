@@ -3,28 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@testing-library/jest-dom": "^5.11.1",
-    "@testing-library/react": "^10.4.7",
-    "@testing-library/user-event": "^12.0.11",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "@trussworks/react-uswds": "file:./../",
-    "@types/jest": "^26.0.5",
-    "@types/node": "^14.0.24",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-redux": "^7.1.9",
-    "@types/yup": "^0.29.3",
-    "formik": "^2.1.5",
+    "formik": "^2.2.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
+    "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
     "redux": "^4.0.5",
-    "typescript": "~3.9.7",
-    "yup": "^0.29.1"
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
@@ -47,9 +36,20 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.5",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.0",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.9",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-redux": "^7.1.10",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/yup": "^0.29.10",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.1.6"
+    "react-app-rewired": "^2.1.6",
+    "react-scripts": "^3.4.4",
+    "typescript": "~4.1.2"
   },
   "jest": {
     "moduleNameMapper": {
