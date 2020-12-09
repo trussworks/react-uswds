@@ -1,5 +1,14 @@
-// Import react-uswds scss
-@import '../src/styles/index.scss';
+// Establish settings needed to customize uswds further
+$theme-image-path: '~uswds/src/img';
+$theme-font-path: '~uswds/src/fonts';
+$theme-hero-image: '~uswds/src/img/hero.png';
+
+// Custom overrides for storybook (to better match USWDS demos)
+$theme-show-notifications: false;
+$theme-global-link-styles: true;
+
+// Import the rest of USWDS scss (most consumers will have uswds as a dependency)
+@import 'uswds';
 
 // Custom storybook styles
 @import './custom-styles.scss';
