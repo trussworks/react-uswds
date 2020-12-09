@@ -1,11 +1,23 @@
+/*
+USWDS settings variables tell the design system how to build.
+
+Make sure to follow USWDS settings guidelines: https://designsystem.digital.gov/documentation/settings/
+  1. Import settings: Tell the design system how to build.
+  2. Import uswds: Build the design system.
+  3. Import custom styles: Build on top of the design system.
+
+  This file covers the minimum for steps 1 - 2.
+*/
+
+// Settings
 @import '~uswds/src/stylesheets/theme/uswds-theme-general';
 @import '~uswds/src/stylesheets/theme/uswds-theme-typography';
 @import '~uswds/src/stylesheets/theme/uswds-theme-spacing';
 @import '~uswds/src/stylesheets/theme/uswds-theme-color';
 @import '~uswds/src/stylesheets/theme/uswds-theme-utilities';
 
-// Custom theme settings/USWDS overrides go here
-// @import './styles/settings';
+// Modify settings for react-uswds library
 $theme-show-notifications: false;
 
+// Import uswds design system (required modules only)
 @import '~uswds/src/stylesheets/packages/required';
