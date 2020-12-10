@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -32,3 +32,11 @@ jobs:
 
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
+
+workflows:
+  build:
+    jobs:
+      - build:
+          context:
+          - org-global
+      
