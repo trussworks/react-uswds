@@ -142,6 +142,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
+    if (state.selectedOption?.value) return
     const target = event.relatedTarget
 
     if (
