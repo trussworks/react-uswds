@@ -379,7 +379,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-toggle'), 'app')
+      userEvent.type(getByTestId('combo-box-input'), 'app')
 
       // We are sure the first child exists
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -803,12 +803,16 @@ describe('ComboBox component', () => {
       )
 
       // Apple is the item at top of list
-      fireEvent.focus(getByTestId('combo-box-option-apple'))
+      userEvent.hover(getByTestId('combo-box-option-apple'))
       fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
         key: 'ArrowUp',
       })
 
       expect(getByTestId('combo-box-option-apple')).toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-expanded',
+        'true'
+      )
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
@@ -886,8 +890,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      fireEvent.click(getByTestId('combo-box-input'))
-      fireEvent.click(getByTestId('combo-box-input'))
+      userEvent.dblClick(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-input')).toHaveAttribute(
         'aria-expanded',
@@ -896,7 +899,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('hides options list when clicking away', () => {
+    it('hides options list when clicking away and input has focus', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -908,6 +911,28 @@ describe('ComboBox component', () => {
 
       fireEvent.click(getByTestId('combo-box-input'))
       fireEvent.blur(getByTestId('combo-box-input'))
+
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+    })
+
+    it('hides options list when clicking away and a specific option has focus', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      fireEvent.click(getByTestId('combo-box-input'))
+      userEvent.hover(getByTestId('combo-box-option-blackberry'))
+
+      fireEvent.blur(getByTestId('combo-box-option-list'))
 
       expect(getByTestId('combo-box-input')).toHaveAttribute(
         'aria-expanded',
@@ -957,7 +982,32 @@ describe('ComboBox component', () => {
       fireEvent.click(getByTestId('combo-box-toggle'))
       fireEvent.click(getByTestId('combo-box-option-apple'))
 
-      expect(onChange).toHaveBeenCalledWith(fruitOptions[0].value)
+      expect(onChange).toHaveBeenLastCalledWith('apple')
+      expect(getByTestId('combo-box-input')).toHaveDisplayValue('Apple')
+      expect(getByTestId('combo-box-input')).toHaveValue('Apple')
+    })
+
+    it('persists input text when items list is blurred', () => {
+      const onChange = jest.fn()
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={onChange}
+          />
+        </>
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      userEvent.click(getByTestId('combo-box-option-apple'))
+      fireEvent.blur(getByTestId('combo-box-input'))
+
+      expect(onChange).toHaveBeenLastCalledWith('apple')
+      expect(getByTestId('combo-box-input')).toHaveDisplayValue('Apple')
+      expect(getByTestId('combo-box-input')).toHaveValue('Apple')
     })
 
     it('persists input text if dropdown is closed and open without selection', () => {
@@ -981,12 +1031,13 @@ describe('ComboBox component', () => {
     })
 
     it('updates input with item selected on click', () => {
+      const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={onChange}
         />
       )
 
@@ -994,6 +1045,7 @@ describe('ComboBox component', () => {
       userEvent.type(input, 'yu')
       userEvent.click(getByTestId('combo-box-option-yuzu'))
 
+      expect(onChange).toHaveBeenLastCalledWith('yuzu')
       expect(getByTestId('combo-box-input')).toHaveValue('Yuzu')
     })
 
