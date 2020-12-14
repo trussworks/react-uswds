@@ -130,11 +130,14 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         option: state.filteredOptions[0],
       })
     } else if (event.key === 'Tab') {
-      event.preventDefault()
-      dispatch({
-        type: ActionTypes.FOCUS_OPTION,
-        option: state.filteredOptions[0],
-      })
+      // Clear button is not visible in this case so manually handle focus
+      if (state.isOpen && !state.selectedOption) {
+        event.preventDefault()
+        dispatch({
+          type: ActionTypes.FOCUS_OPTION,
+          option: state.filteredOptions[0],
+        })
+      }
     } else if (event.key === 'Enter' && state.inputValue !== '') {
       event.preventDefault()
       dispatch({ type: ActionTypes.CLOSE_LIST })
@@ -152,6 +155,16 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       if (newTargetIsOutside) dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (newTargetIsOutside) {
       dispatch({ type: ActionTypes.CLEAR })
+    }
+  }
+
+  const handleClearKeyDown = (event: KeyboardEvent): void => {
+    if (event.key === 'Tab' && state.isOpen && state.selectedOption) {
+      event.preventDefault()
+      dispatch({
+        type: ActionTypes.FOCUS_OPTION,
+        option: state.selectedOption,
+      })
     }
   }
 
@@ -264,6 +277,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           aria-label="Clear the select contents"
           onClick={(): void => dispatch({ type: ActionTypes.CLEAR })}
           data-testid="combo-box-clear-button"
+          onKeyDown={handleClearKeyDown}
           hidden={!state.selectedOption}>
           &nbsp;
         </button>
@@ -273,8 +287,8 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         <button
           data-testid="combo-box-toggle"
           type="button"
-          tabIndex={-1}
           className="usa-combo-box__toggle-list"
+          tabIndex={-1}
           aria-label="Toggle the dropdown list"
           onClick={(): void =>
             dispatch({

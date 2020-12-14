@@ -718,8 +718,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-yuzu')).toHaveFocus()
     })
 
-    xit('pressing tab once in the input with a selected option focuses the clear button', () => {
-      // TODO: 🐛  Currently first tab opens list to selected option and second tab selects first option
+    it('pressing tab once in the input with a selected option focuses the clear button', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -729,23 +728,15 @@ describe('ComboBox component', () => {
           onChange={jest.fn()}
         />
       )
-
-      // focus banana
-      userEvent.click(getByTestId('combo-box-input'))
+      // first tab goes to input
       userEvent.tab()
 
-      // tab once
       userEvent.tab()
 
       expect(getByTestId('combo-box-clear-button')).toHaveFocus()
     })
 
-    xit('pressing tab twice in the input with a selected option focuses the selected option', () => {
-      /* TODO: 🐛  Currently first tab opens list to selected option and second tab selects first option 
-        Expected behavior: 
-        1. we should be moving the focus to the selected option when its first open
-        2. 1st tab goes to clear, second tab goes to selected option 
-      */
+    it('pressing tab twice in an input with a default value, when options list is open, focuses the selected option', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -755,13 +746,11 @@ describe('ComboBox component', () => {
           onChange={jest.fn()}
         />
       )
-
-      // focus banana
       userEvent.click(getByTestId('combo-box-input'))
-      userEvent.tab()
 
-      // tab twice
       userEvent.tab()
+      expect(getByTestId('combo-box-clear-button')).toHaveFocus()
+
       userEvent.tab()
 
       expect(getByTestId('combo-box-option-banana')).toHaveFocus()
