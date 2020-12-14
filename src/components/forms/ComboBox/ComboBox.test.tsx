@@ -932,7 +932,7 @@ describe('ComboBox component', () => {
       fireEvent.click(getByTestId('combo-box-input'))
       userEvent.hover(getByTestId('combo-box-option-blackberry'))
 
-      fireEvent.blur(getByTestId('combo-box-option-list'))
+      fireEvent.blur(getByTestId('combo-box-option-blackberry'))
 
       expect(getByTestId('combo-box-input')).toHaveAttribute(
         'aria-expanded',

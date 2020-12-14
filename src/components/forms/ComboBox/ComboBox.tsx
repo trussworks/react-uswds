@@ -142,12 +142,14 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
+    const { target: elementLosingFocus, relatedTarget: newTarget } = event
+
     if (state.selectedOption?.value) return
-    const target = event.relatedTarget
 
     if (
-      !target ||
-      (target instanceof Node && !containerRef.current?.contains(event.target))
+      !newTarget ||
+      (newTarget instanceof Node &&
+        !containerRef.current?.contains(elementLosingFocus))
     ) {
       dispatch({ type: ActionTypes.CLEAR })
     }
@@ -173,6 +175,16 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
         const newOption = state.filteredOptions[newIndex]
         dispatch({ type: ActionTypes.FOCUS_OPTION, option: newOption })
       }
+    }
+  }
+  const handleListItemBlur = (event: FocusEvent<HTMLLIElement>): void => {
+    const { relatedTarget: newTarget } = event
+
+    if (
+      !newTarget ||
+      (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
+    ) {
+      dispatch({ type: ActionTypes.CLOSE_LIST })
     }
   }
 
@@ -297,6 +309,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
               aria-posinset={index + 1}
               id={listID + `--option-${index}`}
               onKeyDown={handleListItemKeyDown}
+              onBlur={handleListItemBlur}
               data-testid={`combo-box-option-${option.value}`}
               onMouseMove={(): void =>
                 dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
