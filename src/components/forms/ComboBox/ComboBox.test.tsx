@@ -251,7 +251,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      fireEvent.focus(getByTestId('combo-box-input'))
+      userEvent.click(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-option-list').children.length).toBe(
         fruitOptions.length
@@ -269,7 +269,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      fireEvent.focus(getByTestId('combo-box-input'))
+      userEvent.click(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-option-list').children.length).toBe(
         fruitOptions.length
@@ -494,8 +494,7 @@ describe('ComboBox component', () => {
       />
     )
 
-    fireEvent.focus(getByTestId('combo-box-input'))
-    fireEvent.change(getByTestId('combo-box-input'), { target: { value: 'a' } })
+    userEvent.type(getByTestId('combo-box-input'), 'a')
     fireEvent.blur(getByTestId('combo-box-input'))
 
     expect(getByTestId('combo-box-input')).toHaveValue('')
@@ -672,7 +671,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      fireEvent.focus(getByTestId('combo-box-input'))
+      userEvent.click(getByTestId('combo-box-input'))
       fireEvent.keyDown(getByTestId('combo-box-input'), {
         key: 'ArrowDown',
       })
@@ -691,7 +690,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      fireEvent.focus(getByTestId('combo-box-input'))
+      userEvent.click(getByTestId('combo-box-input'))
       fireEvent.keyDown(getByTestId('combo-box-input'), {
         key: 'ArrowDown',
       })
@@ -703,8 +702,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
 
-    xit('does not change focus when last option is focused and down arrow is pressed', () => {
-      // TODO: 🐛 right now tabbing starts the list over at the beginning
+    it('does not change focus when last option is focused and down arrow is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -715,7 +713,7 @@ describe('ComboBox component', () => {
       )
 
       fireEvent.click(getByTestId('combo-box-input'))
-      fireEvent.focus(getByTestId('combo-box-option-yuzu'))
+      userEvent.hover(getByTestId('combo-box-option-yuzu'))
       fireEvent.keyDown(getByTestId('combo-box-option-yuzu'), {
         key: 'ArrowDown',
       })
@@ -834,7 +832,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
     })
 
-    it('focuses the input when an option is focused and shift-tab is pressed', () => {
+    xit('focuses the input when an option is focused and shift-tab is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -845,8 +843,8 @@ describe('ComboBox component', () => {
       )
       const input = getByTestId('combo-box-input')
 
-      userEvent.click(getByTestId('combo-box-input'))
-      fireEvent.focus(getByTestId('combo-box-option-apricot'))
+      userEvent.tab()
+      userEvent.hover(getByTestId('combo-box-option-apricot'))
       fireEvent.keyDown(getByTestId('combo-box-option-apricot'), {
         key: 'tab',
         keyCode: 9,

@@ -163,14 +163,20 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     const currentIndex = state.focusedOption
       ? state.filteredOptions.indexOf(state.focusedOption)
       : -1
+    const firstOption = state.filteredOptions[0]
+    const lastOption = state.filteredOptions[state.filteredOptions.length - 1]
+
     if (currentIndex === -1) {
-      const newOption = state.filteredOptions[0]
-      dispatch({ type: ActionTypes.FOCUS_OPTION, option: newOption })
+      dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption })
     } else {
       const newIndex = currentIndex + change
-      if (newIndex < 0) {
+      if (newIndex < 0 && state.selectedOption) {
+        dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption })
+      } else if (newIndex < 0) {
         dispatch({ type: ActionTypes.CLOSE_LIST })
-      } else if (newIndex <= state.filteredOptions.length - 1) {
+      } else if (newIndex >= state.filteredOptions.length) {
+        dispatch({ type: ActionTypes.FOCUS_OPTION, option: lastOption })
+      } else {
         // eslint-disable-next-line security/detect-object-injection
         const newOption = state.filteredOptions[newIndex]
         dispatch({ type: ActionTypes.FOCUS_OPTION, option: newOption })
