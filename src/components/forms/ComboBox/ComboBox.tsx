@@ -143,14 +143,14 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
     const { target: elementLosingFocus, relatedTarget: newTarget } = event
-
-    if (state.selectedOption?.value) return
-
-    if (
+    const newTargetIsOutside =
       !newTarget ||
       (newTarget instanceof Node &&
         !containerRef.current?.contains(elementLosingFocus))
-    ) {
+
+    if (state.selectedOption?.value) {
+      if (newTargetIsOutside) dispatch({ type: ActionTypes.CLOSE_LIST })
+    } else if (newTargetIsOutside) {
       dispatch({ type: ActionTypes.CLEAR })
     }
   }
