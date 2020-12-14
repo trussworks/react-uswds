@@ -592,7 +592,7 @@ describe('ComboBox component', () => {
       userEvent.tab()
 
       expect(getByTestId('combo-box-input')).toHaveValue('Mango')
-      expect(onChange).toHaveBeenNthCalledWith(2, 'mango')
+      expect(onChange).toHaveBeenLastCalledWith('mango')
     })
 
     it('selects the focused option with enter', () => {
@@ -606,15 +606,12 @@ describe('ComboBox component', () => {
         />
       )
 
-      // focus apricot
       userEvent.type(getByTestId('combo-box-input'), 'apri')
       userEvent.tab()
-
-      // select apricot
       userEvent.type(getByTestId('combo-box-option-apricot'), '{enter}')
 
       expect(getByTestId('combo-box-input')).toHaveValue('Apricot')
-      expect(onChange).toHaveBeenCalledWith('apricot')
+      expect(onChange).toHaveBeenLastCalledWith('apricot')
     })
 
     it('focuses the next option when down arrow is pressed', () => {
@@ -1041,10 +1038,10 @@ describe('ComboBox component', () => {
 
       const input = getByTestId('combo-box-input')
       userEvent.type(input, 'yu')
-      userEvent.click(getByTestId('combo-box-option-yuzu'))
+      fireEvent.click(getByTestId('combo-box-option-yuzu'))
 
+      expect(input).toHaveValue('Yuzu')
       expect(onChange).toHaveBeenLastCalledWith('yuzu')
-      expect(getByTestId('combo-box-input')).toHaveValue('Yuzu')
     })
 
     it('focuses an option on hover', () => {
