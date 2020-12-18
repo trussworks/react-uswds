@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
 import {
   Alert,
   Button,
+  ComboBox,
   Form,
   Label,
   TextInput,
@@ -14,12 +15,31 @@ import {
 type FormValues = {
   email?: string
   password?: string
+  fruit?: string
 }
 
 const FormSchema = Yup.object().shape({
   email: Yup.string().email().required(),
   password: Yup.string().min(8).max(20).required(),
+  fruit: Yup.string().nullable(),
 })
+
+const fruits = {
+  apple: 'Apple',
+  apricot: 'Apricot',
+  avocado: 'Avocado',
+  banana: 'Banana',
+  blackberry: 'Blackberry',
+  'blood orange': 'Blood orange',
+  blueberry: 'Blueberry',
+  boysenberry: 'Boysenberry',
+  breadfruit: 'Breadfruit',
+}
+
+const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
+  value: value,
+  label: key,
+}))
 
 const FormsPage = (): React.ReactElement => {
   return (
@@ -28,7 +48,7 @@ const FormsPage = (): React.ReactElement => {
       <section>
         <h2>Formik</h2>
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: '', password: '', fruit: 'avocado' }}
           validationSchema={FormSchema}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
@@ -37,8 +57,20 @@ const FormsPage = (): React.ReactElement => {
               setSubmitting(false)
             }, 400)
           }}>
-          {({ values, errors, touched, handleSubmit, isSubmitting }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleSubmit,
+            isSubmitting,
+            setFieldValue,
+          }) => (
             <Form onSubmit={handleSubmit}>
+              <div>
+                <span>Form data</span>
+                <pre>{JSON.stringify(values)}</pre>
+              </div>
+
               {touched.email && errors.email && (
                 <Alert type="info" validation heading="Email Requirements">
                   <ValidationChecklist id="validate-email">
@@ -62,7 +94,6 @@ const FormsPage = (): React.ReactElement => {
                 id="email"
                 value={values.email}
               />
-
               {touched.password && errors.password && (
                 <Alert type="info" validation heading="Password Requirements">
                   <ValidationChecklist id="validate-password">
@@ -85,7 +116,14 @@ const FormsPage = (): React.ReactElement => {
                 id="password"
                 value={values.password}
               />
-
+              <Label htmlFor="fruit">My Favorite Fruit</Label>
+              <Field
+                as={ComboBox}
+                name="fruit"
+                id="fruit"
+                options={fruitOptions}
+                onChange={(val: string) => setFieldValue('fruit', val, true)}
+                defaultValue="avocado"></Field>
               <Button type="submit" disabled={isSubmitting}>
                 Submit
               </Button>
