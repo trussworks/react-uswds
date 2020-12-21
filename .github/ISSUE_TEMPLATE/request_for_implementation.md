@@ -1,8 +1,8 @@
 ---
 name: Request for Implementation 
 about: Suggest a new component for the library based on an existing example from your codebase 
-title: "[feat]"
-labels: "type: feature"
+title: ''
+labels: 'type: request for implementation'
 assignees: ''
 
 ---
