@@ -7,7 +7,7 @@ const webpackConfig = (config) => {
   config.module.rules.push({
     test: /\.(sa|sc|c)ss$/,
     exclude: /\.module\.(sa|sc|c)ss$/i,
-    use: ['style-loader', 'css-loader', 'sass-loader'],
+    use: ['style-loader', 'css-loader', 'sass-loader', "postcss-loader"],
     include: path.resolve(__dirname, '../'),
   })
 
