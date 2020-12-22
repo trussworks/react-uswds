@@ -7,9 +7,16 @@ type MenuProps = {
 }
 
 export const Menu = (props: MenuProps & NavListProps): React.ReactElement => {
-  const { items, isOpen, ...navListProps } = props
+  const { className, items, isOpen, ...navListProps } = props
+
   return (
-    <NavList items={items} type="subnav" hidden={!isOpen} {...navListProps} />
+    <NavList
+      className={className}
+      items={items}
+      type="subnav"
+      hidden={!isOpen}
+      {...navListProps}
+    />
   )
 }
 

@@ -9,6 +9,11 @@ describe('NavCloseButton component', () => {
     expect(getByTestId('navCloseButton')).toBeInTheDocument()
   })
 
+  it('renders custom styles', () => {
+    const { getByTestId } = render(<NavCloseButton className="custom-class" />)
+    expect(getByTestId('navCloseButton')).toHaveClass('custom-class')
+  })
+
   it('implements an onClick handler', () => {
     const onClickFn = jest.fn()
     const { getByTestId } = render(<NavCloseButton onClick={onClickFn} />)

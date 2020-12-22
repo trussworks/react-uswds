@@ -26,6 +26,13 @@ describe('Address component', () => {
     expect(getByText('thisnotfake@emailaddress.com')).toBeInTheDocument()
   })
 
+  it('renders custom styles', () => {
+    const { container } = render(
+      <Address className="custom-class" items={addressItems} />
+    )
+    expect(container.querySelector('address')).toHaveClass('custom-class')
+  })
+
   describe('renders with size prop', () => {
     beforeEach(() => {
       jest.clearAllMocks()
