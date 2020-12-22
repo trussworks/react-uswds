@@ -69,7 +69,7 @@ export const SlimFooter = (): React.ReactElement => (
         </div>
         <div className="tablet:grid-col-4">
           <Address
-            slim
+            size="slim"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -84,7 +84,7 @@ export const SlimFooter = (): React.ReactElement => (
     }
     secondary={
       <Logo
-        slim
+        size="slim"
         image={
           <img
             className="usa-footer__logo-img"
@@ -115,7 +115,7 @@ export const MediumFooter = (): React.ReactElement => (
     secondary={
       <div className="grid-row grid-gap">
         <Logo
-          medium
+          size="medium"
           image={
             <img
               className="usa-footer__logo-img"
@@ -156,7 +156,7 @@ export const MediumFooter = (): React.ReactElement => (
           />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
-            medium
+            size="medium"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -228,7 +228,7 @@ export const BigFooter = (): React.ReactElement => (
     secondary={
       <div className="grid-row grid-gap">
         <Logo
-          big
+          size="big"
           image={
             <img
               className="usa-footer__logo-img"
@@ -269,7 +269,7 @@ export const BigFooter = (): React.ReactElement => (
           />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
-            big
+            size="big"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT

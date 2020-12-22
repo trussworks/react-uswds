@@ -44,7 +44,7 @@ export const Search = (
     deprecationWarning('Search property big is deprecated.  Use size')
   }
   if (small) {
-    deprecationWarning('Search property big is deprecated.  Use size')
+    deprecationWarning('Search property small is deprecated.  Use size')
   }
 
   const isBig = size ? size === 'big' : big
