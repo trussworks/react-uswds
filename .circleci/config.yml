@@ -5,7 +5,7 @@ jobs:
     - auth:
         password: $DOCKER_PASSWORD
         username: $DOCKER_USERNAME
-      image: circleci/node:12.16.2
+      image: circleci/node:14.15.3
     working_directory: ~/react-uswds
     steps:
       - checkout
