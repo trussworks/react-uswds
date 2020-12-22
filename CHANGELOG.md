@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/trussworks/react-uswds/compare/1.9.3...1.10.0) (2020-12-22)
+
+
+### Features
+
+* ComboBox component ([#694](https://github.com/trussworks/react-uswds/issues/694)) ([824028a](https://github.com/trussworks/react-uswds/commit/824028a48d4f7cb2c16472893437128d8411f67b))
+
 ### [1.9.3](https://github.com/trussworks/react-uswds/compare/1.9.2...1.9.3) (2020-11-13)
 
 
