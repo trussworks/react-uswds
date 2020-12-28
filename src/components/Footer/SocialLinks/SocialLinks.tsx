@@ -1,15 +1,21 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import classnames from 'classnames'
 
 type SocialLinksProps = {
   links: React.ReactNode[]
 }
 
-export const SocialLinks = (props: SocialLinksProps): React.ReactElement => {
-  const { links } = props
-
+export const SocialLinks = (
+  props: SocialLinksProps & JSX.IntrinsicElements['div']
+): React.ReactElement => {
+  const { className, links } = props
+  const classes = classnames(
+    'usa-footer__social-links grid-row grid-gap-1',
+    className
+  )
   return (
-    <div className="usa-footer__social-links grid-row grid-gap-1">
+    <div className={classes}>
       {links.map((link, i) => (
         <div key={`socialLink${i}`} className="grid-col-auto">
           {link}

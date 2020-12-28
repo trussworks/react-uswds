@@ -24,6 +24,7 @@ type AddressProps = {
 
 export const Address = ({
   size,
+  className,
   big,
   medium,
   slim,
@@ -42,12 +43,14 @@ export const Address = ({
   const isMedium = size ? size === 'medium' : medium
   const isSlim = size ? size === 'slim' : slim
 
+  const addressClasses = classnames('usa-footer__address', className)
+
   const itemClasses = classnames({
     'grid-col-auto': isBig || isMedium,
     'grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto': isSlim,
   })
   return (
-    <address className="usa-footer__address">
+    <address className={addressClasses}>
       {isSlim ? (
         <div className="grid-row grid-gap">
           {items.map((item, i) => (

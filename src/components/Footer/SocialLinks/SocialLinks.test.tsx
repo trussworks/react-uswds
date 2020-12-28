@@ -21,6 +21,15 @@ describe('SocialLinks component', () => {
     ).toBeInTheDocument()
   })
 
+  it('renders custom styles', () => {
+    const { container } = render(
+      <SocialLinks className="custom-class" links={links} />
+    )
+    expect(container.querySelector('.usa-footer__social-links')).toHaveClass(
+      'custom-class'
+    )
+  })
+
   it('renders social links', () => {
     const { getByText } = render(<SocialLinks links={links} />)
     expect(getByText('Facebooked')).toBeInTheDocument()

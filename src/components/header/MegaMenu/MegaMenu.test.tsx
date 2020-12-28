@@ -29,6 +29,13 @@ describe('MegaMenu component', () => {
     expect(container.querySelector('.usa-megamenu')).toBeInTheDocument()
   })
 
+  it('renders custom styles', () => {
+    const { container } = render(
+      <MegaMenu className="custom-class" items={testItems} isOpen={true} />
+    )
+    expect(container.querySelector('.usa-megamenu')).toHaveClass('custom-class')
+  })
+
   it('renders all test items when open', () => {
     const { getByText } = render(<MegaMenu items={testItems} isOpen={true} />)
     expect(getByText('Simple link one')).toBeInTheDocument()
