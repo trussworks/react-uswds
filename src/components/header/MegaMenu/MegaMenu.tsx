@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 
 import { NavList, NavListProps } from '../NavList/NavList'
 
@@ -10,12 +11,11 @@ type MegaMenuProps = {
 export const MegaMenu = (
   props: MegaMenuProps & NavListProps
 ): React.ReactElement => {
-  const { items, isOpen, ...navListProps } = props
+  const { items, isOpen, className, ...navListProps } = props
+  const classes = classnames('usa-nav__submenu usa-megamenu', className)
+
   return (
-    <div
-      className="usa-nav__submenu usa-megamenu"
-      hidden={!isOpen}
-      data-testid="megamenu">
+    <div className={classes} hidden={!isOpen} data-testid="megamenu">
       <div className="grid-row grid-gap-4">
         {items.map((listItems, i) => (
           <div className="usa-col" key={`subnav_col_${i}`}>
