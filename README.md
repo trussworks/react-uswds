@@ -18,6 +18,7 @@ An example application, built with React-USWDS, can be found in the `/example` f
   - [Background](#background)
     - [Non-Goals](#non-goals)
   - [Install](#install)
+    - [Pre-Release](#pre-release)
   - [Usage](#usage)
   - [Maintainers](#maintainers)
   - [Contributing](#contributing)
@@ -106,7 +107,7 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 
 ## License
 
-[Copyright 2019, TrussWorks, Inc.](../LICENSE)
+[Copyright 2021, TrussWorks, Inc.](../LICENSE)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
