@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.9.3",
+  "version": "1.10.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -17,7 +17,7 @@
     "lib"
   ],
   "engines": {
-    "node": "10.x - 12.x"
+    "node": "10.x - 14.x"
   },
   "scripts": {
     "test": "jest",

@@ -4,8 +4,6 @@ updates:
     directory: '/'
     schedule:
       interval: weekly
-      time: '06:00'
-      timezone: PST8PDT
     pull-request-branch-name:
       separator: '-'
     open-pull-requests-limit: 10

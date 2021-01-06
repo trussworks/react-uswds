@@ -18,6 +18,15 @@ describe('Menu component', () => {
     expect(container.querySelector('.usa-nav__submenu')).toBeInTheDocument()
   })
 
+  it('renders custom styles', () => {
+    const { container } = render(
+      <Menu className="custom-class" items={testItems} isOpen={true} />
+    )
+    expect(container.querySelector('.usa-nav__submenu')).toHaveClass(
+      'custom-class'
+    )
+  })
+
   it('renders all test items when open', () => {
     const { getByText } = render(<Menu items={testItems} isOpen={true} />)
     expect(getByText('Simple link one')).toBeInTheDocument()

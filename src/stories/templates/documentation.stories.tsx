@@ -225,7 +225,7 @@ export const DocumentationPage = (): React.ReactElement => {
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}>
-            <Search small onSubmit={handleSearch} />
+            <Search size="small" onSubmit={handleSearch} />
           </PrimaryNav>
         </div>
       </Header>

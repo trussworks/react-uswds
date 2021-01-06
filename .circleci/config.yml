@@ -5,21 +5,21 @@ jobs:
     - auth:
         password: $DOCKER_PASSWORD
         username: $DOCKER_USERNAME
-      image: circleci/node:12.16.2
+      image: circleci/node:14.15.3
     working_directory: ~/react-uswds
     steps:
       - checkout
       - restore_cache:
           keys:
-            - v1.0.0-dependencies-{{ checksum "package.json" }}
-            - v1.0.0-dependencies-
+            - v1-yarn-{{ checksum "yarn.lock" }}
+            - v1-yarn-
 
-      - run: yarn install
+      - run: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
 
       - save_cache:
           paths:
-            - node_modules
-          key: v1.0.0-dependencies-{{ checksum "package.json" }}
+            - ~/.cache/yarn
+          key: v1-yarn-{{ checksum "yarn.lock" }}
 
       - run: yarn test -w 1
 
