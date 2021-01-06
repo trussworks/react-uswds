@@ -69,7 +69,7 @@ export const SlimFooter = (): React.ReactElement => (
         </div>
         <div className="tablet:grid-col-4">
           <Address
-            slim
+            size="slim"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -84,7 +84,7 @@ export const SlimFooter = (): React.ReactElement => (
     }
     secondary={
       <Logo
-        slim
+        size="slim"
         image={
           <img
             className="usa-footer__logo-img"
@@ -115,7 +115,7 @@ export const MediumFooter = (): React.ReactElement => (
     secondary={
       <div className="grid-row grid-gap">
         <Logo
-          medium
+          size="medium"
           image={
             <img
               className="usa-footer__logo-img"
@@ -156,7 +156,7 @@ export const MediumFooter = (): React.ReactElement => (
           />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
-            medium
+            size="medium"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -228,7 +228,7 @@ export const BigFooter = (): React.ReactElement => (
     secondary={
       <div className="grid-row grid-gap">
         <Logo
-          big
+          size="big"
           image={
             <img
               className="usa-footer__logo-img"
@@ -269,121 +269,7 @@ export const BigFooter = (): React.ReactElement => (
           />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
-            big
-            items={[
-              <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
-              </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
-              </a>,
-            ]}
-          />
-        </div>
-      </div>
-    }
-  />
-)
-
-export const MobileBigFooter = (): React.ReactElement => (
-  <Footer
-    size="big"
-    returnToTop={returnToTop}
-    primary={
-      <div className="grid-container">
-        <div className="grid-row grid-gap">
-          <div className="tablet:grid-col-8">
-            <FooterNav
-              isMobile
-              size="big"
-              links={[
-                [
-                  'Topic',
-                  ...Array(2).fill(<a href="#">Secondary link</a>),
-                  <a key="4" href="#">
-                    Secondary link that is a bit longer than most of the others
-                  </a>,
-                  <a key="5" href="#">
-                    Secondary link
-                  </a>,
-                ],
-                [
-                  'Topic',
-                  <a key="2" href="#">
-                    Secondary link that is pretty long
-                  </a>,
-                  ...Array(3).fill(<a href="#">Secondary link</a>),
-                ],
-                [
-                  'Topic',
-                  ...Array(4).fill(
-                    <a className="usa-footer__secondary-link" href="#">
-                      Secondary link
-                    </a>
-                  ),
-                ],
-                [
-                  'Topic',
-                  ...Array(4).fill(
-                    <a className="usa-footer__secondary-link" href="#">
-                      Secondary link
-                    </a>
-                  ),
-                ],
-              ]}
-            />
-          </div>
-          <div className="tablet:grid-col-4">
-            <SignUpForm />
-          </div>
-        </div>
-      </div>
-    }
-    secondary={
-      <div className="grid-row grid-gap">
-        <Logo
-          big
-          image={
-            <img
-              className="usa-footer__logo-img"
-              alt="img alt text"
-              src={logoImg}
-            />
-          }
-          heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
-        />
-        <div className="usa-footer__contact-links mobile-lg:grid-col-6">
-          <SocialLinks
-            links={[
-              <a
-                key="facebook"
-                className="usa-social-link usa-social-link--facebook"
-                href="#">
-                <span>Facebook</span>
-              </a>,
-              <a
-                key="twitter"
-                className="usa-social-link usa-social-link--twitter"
-                href="#">
-                <span>Twitter</span>
-              </a>,
-              <a
-                key="youtube"
-                className="usa-social-link usa-social-link--youtube"
-                href="#">
-                <span>YouTube</span>
-              </a>,
-              <a
-                key="rss"
-                className="usa-social-link usa-social-link--rss"
-                href="#">
-                <span>RSS</span>
-              </a>,
-            ]}
-          />
-          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
-          <Address
-            big
+            size="big"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT

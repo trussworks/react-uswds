@@ -91,7 +91,7 @@ export const BasicHeader = (): React.ReactElement => {
             items={testItemsMenu}
             mobileExpanded={expanded}
             onToggleMobileNav={onClick}>
-            <Search small onSubmit={mockSubmit} />
+            <Search size="small" onSubmit={mockSubmit} />
           </PrimaryNav>
         </div>
       </Header>
@@ -198,7 +198,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
             items={testItemsMegaMenu}
             mobileExpanded={expanded}
             onToggleMobileNav={onClick}>
-            <Search small onSubmit={mockSubmit} />
+            <Search size="small" onSubmit={mockSubmit} />
           </PrimaryNav>
         </div>
       </Header>
@@ -258,7 +258,7 @@ export const extendedHeader = (): React.ReactElement => {
           secondaryItems={testMenuItems}
           mobileExpanded={expanded}
           onToggleMobileNav={onClick}>
-          <Search small onSubmit={mockSubmit} />
+          <Search size="small" onSubmit={mockSubmit} />
         </ExtendedNav>
       </Header>
     </>
@@ -337,7 +337,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
           secondaryItems={testMenuItems}
           mobileExpanded={expanded}
           onToggleMobileNav={onClick}>
-          <Search small onSubmit={mockSubmit} />
+          <Search size="small" onSubmit={mockSubmit} />
         </ExtendedNav>
       </Header>
     </>

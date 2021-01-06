@@ -196,7 +196,7 @@ export const LandingPage = (): React.ReactElement => {
           secondaryItems={secondaryNavItems}
           onToggleMobileNav={toggleMobileNav}
           mobileExpanded={mobileNavOpen}>
-          <Search small onSubmit={handleSearch} />
+          <Search size="small" onSubmit={handleSearch} />
         </ExtendedNav>
       </Header>
 
