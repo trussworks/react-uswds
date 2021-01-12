@@ -7,15 +7,17 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
 import lockIcon from 'uswds/src/img/lock.svg'
 
-enum Language {
-  ENGLISH = 'en',
-  SPANISH = 'es',
-}
+const Language = {
+  ENGLISH: 'en',
+  SPANISH: 'es',
+} as const
+type Language = typeof Language[keyof typeof Language]
 
-enum TLD {
-  DOT_GOV = '.gov',
-  DOT_MIL = '.mil',
-}
+const TLD = {
+  DOT_GOV: '.gov',
+  DOT_MIL: '.mil',
+} as const
+type TLD = typeof TLD[keyof typeof TLD]
 
 interface GovBannerCopy {
   header: string
@@ -38,7 +40,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
       return {
         header: 'An official website of the United States government',
         headerAction: 'Here’s how you know',
-        tldSectionHeader: `The ${tld} means it’s official.`,
+        tldSectionHeader: `Offical websites use ${tld}`,
         tldSectionContent: ((): JSX.Element => {
           switch (tld) {
             case TLD.DOT_GOV:
@@ -89,7 +91,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
               )
           }
         })(),
-        httpsSectionHeader: `Secure ${tld} websites use HTTPS`,
+        httpsSectionHeader: `Los sitios web seguros ${tld} usan HTTPS`,
         httpsSectionContent: (
           <>
             Un <strong>candado ({lock})</strong> o <strong>https://</strong>{' '}
