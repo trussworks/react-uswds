@@ -5,14 +5,122 @@ import classnames from 'classnames'
 import flagImg from 'uswds/src/img/us_flag_small.png'
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
+import lockIcon from 'uswds/src/img/lock.svg'
+
+enum Language {
+  ENGLISH = 'en',
+  SPANISH = 'es',
+}
+
+enum TLD {
+  DOT_GOV = '.gov',
+  DOT_MIL = '.mil',
+}
+
+interface GovBannerCopy {
+  header: string
+  headerAction: string
+  tldSectionHeader: string
+  tldSectionContent: JSX.Element
+  httpsSectionHeader: string
+  httpsSectionContent: JSX.Element
+}
+
+const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
+  const lock = (
+    <span className="icon-lock">
+      <img src={lockIcon} className="usa-banner__lock-image" alt="lock" />
+    </span>
+  )
+
+  switch (language) {
+    case Language.ENGLISH:
+      return {
+        header: 'An official website of the United States government',
+        headerAction: 'Here’s how you know',
+        tldSectionHeader: `The ${tld} means it’s official.`,
+        tldSectionContent: ((): JSX.Element => {
+          switch (tld) {
+            case TLD.DOT_GOV:
+              return (
+                <>
+                  A <strong>{TLD.DOT_GOV}</strong> website belongs to an
+                  official government organization in the United States.
+                </>
+              )
+            case TLD.DOT_MIL:
+              return (
+                <>
+                  A <strong>{TLD.DOT_MIL}</strong> website belongs to an
+                  official U.S. Department of Defense organization.
+                </>
+              )
+          }
+        })(),
+        httpsSectionHeader: `Secure ${tld} websites use HTTPS`,
+        httpsSectionContent: (
+          <>
+            A <strong>lock ({lock})</strong> or <strong>https://</strong> means
+            you’ve safely connected to the {tld} website. Share sensitive
+            information only on official, secure websites.
+          </>
+        ),
+      }
+    case Language.SPANISH:
+      return {
+        header: 'Un sitio oficial del Gobierno de Estados Unidos',
+        headerAction: 'Así es como usted puede verificarlo',
+        tldSectionHeader: `Los sitios web oficiales usan ${tld}`,
+        tldSectionContent: ((): JSX.Element => {
+          switch (tld) {
+            case TLD.DOT_GOV:
+              return (
+                <>
+                  Un sitio web <strong>{TLD.DOT_GOV}</strong> pertenece a una
+                  organización oficial del Gobierno de Estados Unidos.
+                </>
+              )
+            case TLD.DOT_MIL:
+              return (
+                <>
+                  Un sitio web <strong>{TLD.DOT_MIL}</strong> pertenece a una
+                  organización oficial del Departamento de Defensa de EE. UU.
+                </>
+              )
+          }
+        })(),
+        httpsSectionHeader: `Secure ${tld} websites use HTTPS`,
+        httpsSectionContent: (
+          <>
+            Un <strong>candado ({lock})</strong> o <strong>https://</strong>{' '}
+            significa que usted se conectó de forma segura a un sitio web {tld}.
+            Comparta información sensible sólo en sitios web oficiales y
+            seguros.
+          </>
+        ),
+      }
+  }
+}
+
+interface GovBannerProps {
+  tld?: TLD
+  language?: Language
+}
 
 export const GovBanner = (
-  props: JSX.IntrinsicElements['section']
+  props: GovBannerProps & JSX.IntrinsicElements['section']
 ): React.ReactElement => {
-  const { className, ...sectionProps } = props
+  const {
+    tld = TLD.DOT_GOV,
+    language = Language.ENGLISH,
+    className,
+    ...sectionProps
+  } = props
   const [isOpen, setOpenState] = useState(false)
 
   const classes = classnames('usa-banner', className)
+
+  const copy = getCopy(language, tld)
 
   return (
     <section className={classes} data-testid="govBanner" {...sectionProps}>
@@ -27,11 +135,9 @@ export const GovBanner = (
               />
             </div>
             <div className="grid-col-fill tablet:grid-col-auto">
-              <p className="usa-banner__header-text">
-                An official website of the United States government
-              </p>
+              <p className="usa-banner__header-text">{copy.header}</p>
               <p className="usa-banner__header-action" aria-hidden="true">
-                Here’s how you know
+                {copy.headerAction}
               </p>
             </div>
             <button
@@ -43,7 +149,7 @@ export const GovBanner = (
                 setOpenState(!isOpen)
               }}>
               <span className="usa-banner__button-text">
-                Here’s how you know
+                {copy.headerAction}
               </span>
             </button>
           </div>
@@ -61,11 +167,9 @@ export const GovBanner = (
               />
               <div className="usa-media-block__body">
                 <p>
-                  <strong>The .gov means it’s official.</strong>
+                  <strong>{copy.tldSectionHeader}</strong>
                   <br />
-                  Federal government websites often end in .gov or .mil. Before
-                  sharing sensitive information, make sure you’re on a federal
-                  government site.
+                  {copy.tldSectionContent}
                 </p>
               </div>
             </div>
@@ -77,11 +181,9 @@ export const GovBanner = (
               />
               <div className="usa-media-block__body">
                 <p>
-                  <strong>The site is secure.</strong>
+                  <strong>{copy.httpsSectionHeader}</strong>
                   <br />
-                  The <strong>https://</strong> ensures that you are connecting
-                  to the official website and that any information you provide
-                  is encrypted and transmitted securely.
+                  {copy.httpsSectionContent}
                 </p>
               </div>
             </div>
