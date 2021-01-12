@@ -15,4 +15,11 @@ describe('GovBanner component', () => {
     )
     expect(queryByTestId('govBanner')).toHaveAttribute('aria-label')
   })
+
+  it('renders with language and tld props passed', () => {
+    const { queryByTestId } = render(
+      <GovBanner language="english" tld=".mil" />
+    )
+    expect(queryByTestId('govBanner')).toBeInTheDocument
+  })
 })
