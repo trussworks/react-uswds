@@ -8,7 +8,9 @@ import httpsIcon from 'uswds/src/img/icon-https.svg'
 import lockIcon from 'uswds/src/img/lock.svg'
 
 type Language = 'english' | 'spanish'
+
 type TLD = '.gov' | '.mil'
+
 interface GovBannerCopy {
   header: string
   headerAction: string
