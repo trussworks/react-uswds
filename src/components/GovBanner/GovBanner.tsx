@@ -7,18 +7,8 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
 import lockIcon from 'uswds/src/img/lock.svg'
 
-const Language = {
-  ENGLISH: 'en',
-  SPANISH: 'es',
-} as const
-type Language = typeof Language[keyof typeof Language]
-
-const TLD = {
-  DOT_GOV: '.gov',
-  DOT_MIL: '.mil',
-} as const
-type TLD = typeof TLD[keyof typeof TLD]
-
+type Language = 'english' | 'spanish'
+type TLD = '.gov' | '.mil'
 interface GovBannerCopy {
   header: string
   headerAction: string
@@ -36,25 +26,25 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   )
 
   switch (language) {
-    case Language.ENGLISH:
+    case 'english':
       return {
         header: 'An official website of the United States government',
         headerAction: 'Here’s how you know',
         tldSectionHeader: `Offical websites use ${tld}`,
         tldSectionContent: ((): JSX.Element => {
           switch (tld) {
-            case TLD.DOT_GOV:
+            case '.gov':
               return (
                 <>
-                  A <strong>{TLD.DOT_GOV}</strong> website belongs to an
-                  official government organization in the United States.
+                  A <strong>.gov</strong> website belongs to an official
+                  government organization in the United States.
                 </>
               )
-            case TLD.DOT_MIL:
+            case '.mil':
               return (
                 <>
-                  A <strong>{TLD.DOT_MIL}</strong> website belongs to an
-                  official U.S. Department of Defense organization.
+                  A <strong>.mil</strong> website belongs to an official U.S.
+                  Department of Defense organization.
                 </>
               )
           }
@@ -68,24 +58,24 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
           </>
         ),
       }
-    case Language.SPANISH:
+    case 'spanish':
       return {
         header: 'Un sitio oficial del Gobierno de Estados Unidos',
         headerAction: 'Así es como usted puede verificarlo',
         tldSectionHeader: `Los sitios web oficiales usan ${tld}`,
         tldSectionContent: ((): JSX.Element => {
           switch (tld) {
-            case TLD.DOT_GOV:
+            case '.gov':
               return (
                 <>
-                  Un sitio web <strong>{TLD.DOT_GOV}</strong> pertenece a una
+                  Un sitio web <strong>.gov</strong> pertenece a una
                   organización oficial del Gobierno de Estados Unidos.
                 </>
               )
-            case TLD.DOT_MIL:
+            case '.mil':
               return (
                 <>
-                  Un sitio web <strong>{TLD.DOT_MIL}</strong> pertenece a una
+                  Un sitio web <strong>.mil</strong> pertenece a una
                   organización oficial del Departamento de Defensa de EE. UU.
                 </>
               )
@@ -113,8 +103,8 @@ export const GovBanner = (
   props: GovBannerProps & JSX.IntrinsicElements['section']
 ): React.ReactElement => {
   const {
-    tld = TLD.DOT_GOV,
-    language = Language.ENGLISH,
+    tld = '.gov',
+    language = 'english',
     className,
     ...sectionProps
   } = props

@@ -9,7 +9,7 @@ export const govBannerDefault = (): React.ReactElement => (
 
 export const govBannerEnglishDotGov = (): React.ReactElement => (
   <GovBanner
-    language="en"
+    language="english"
     tld=".gov"
     aria-label="Official government website"
   />
@@ -17,7 +17,7 @@ export const govBannerEnglishDotGov = (): React.ReactElement => (
 
 export const govBannerEnglishDotMil = (): React.ReactElement => (
   <GovBanner
-    language="en"
+    language="english"
     tld=".mil"
     aria-label="Official government website"
   />
@@ -25,7 +25,7 @@ export const govBannerEnglishDotMil = (): React.ReactElement => (
 
 export const govBannerSpanishDotGov = (): React.ReactElement => (
   <GovBanner
-    language="es"
+    language="spanish"
     tld=".gov"
     aria-label="Official government website"
   />
@@ -33,7 +33,7 @@ export const govBannerSpanishDotGov = (): React.ReactElement => (
 
 export const govBannerSpanishDotMil = (): React.ReactElement => (
   <GovBanner
-    language="es"
+    language="spanish"
     tld=".mil"
     aria-label="Official government website"
   />
