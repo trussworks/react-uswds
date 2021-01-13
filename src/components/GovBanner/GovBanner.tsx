@@ -32,7 +32,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
       return {
         header: 'An official website of the United States government',
         headerAction: 'Here’s how you know',
-        tldSectionHeader: `Offical websites use ${tld}`,
+        tldSectionHeader: `Official websites use ${tld}`,
         tldSectionContent: ((): JSX.Element => {
           switch (tld) {
             case '.gov':
