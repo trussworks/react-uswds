@@ -1,6 +1,6 @@
 # Contributing
 
-We are glad you are interested to contribute to this project! Please make sure you've seen the README and license for this project before continuing further. If you work for Truss, check out the [guide for Trussels](./docs/for_trussels.md) as well.
+We are glad you are interested to contribute to this project! Please make sure you've seen the README and license for this project before continuing further. If you work for Truss, check out the [guide for Trussels](./for_trussels.md) as well.
 
 We welcome contributions in the form of comments, issues, or pull requests with code changes. If you see an error, have a question, or want to share feedback open an issue to discuss. This repository is governed by the [Contributor Covenant](../CODE_OF_CONDUCT.md)
 
@@ -101,4 +101,4 @@ Because this project exports a library that will be used by other projects, it i
     _strongly_ recommended you familiarize yourself with [conventional commits](https://www.conventionalcommits.org).
   - The **[WIP]** prefix can be used to indicate a pull request is still work in progress. In this case, the PR title is not validated and the pull request lint check remains pending.
 
-Having issues? See [FAQs](./docs/faqs.md).
+Having issues? See [FAQs](./faqs.md).

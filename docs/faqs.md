@@ -2,7 +2,7 @@
 
 - How come my components are not loading with the proper styles?
 
-  - Make sure you are importing the needed CSS before trying to use any of the React components. See styles and assets [documentation](./docs/styles_and_assets.md) for more detail. If something is unclear or seems broken, please file an issue.
+  - Make sure you are importing the needed CSS before trying to use any of the React components. See styles and assets [documentation](./styles_and_assets.md) for more detail. If something is unclear or seems broken, please file an issue.
 
 - How do I use a component from this library?
 
