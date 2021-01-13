@@ -7,8 +7,8 @@ assignees: ''
 
 ---
 
-**Does your feature request relate to a specific USWDS feature?**
-<!-- If your feature request relates to a USWDS feature, please name and link it here.  Provide some context. -->
+**Does your feature request relate to a specific USWDS component?**
+<!-- If your feature request relates to a USWDS component, please name and link it here. -->
 
 **Is your feature request related to a problem? Please describe.**
 <!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->
