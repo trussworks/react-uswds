@@ -28,13 +28,14 @@ describe('GovBanner component', () => {
     it('renders consistently with default props', () => {
       const tree = renderer.create(<GovBanner />).toJSON()
       expect(tree).toMatchSnapshot()
-    }),
-      it('renders consistently in English for .gov sites', () => {
-        const tree = renderer
-          .create(<GovBanner language="english" tld=".gov" />)
-          .toJSON()
-        expect(tree).toMatchSnapshot()
-      })
+    })
+
+    it('renders consistently in English for .gov sites', () => {
+      const tree = renderer
+        .create(<GovBanner language="english" tld=".gov" />)
+        .toJSON()
+      expect(tree).toMatchSnapshot()
+    })
 
     it('renders consistently in English for .mil sites', () => {
       const tree = renderer
