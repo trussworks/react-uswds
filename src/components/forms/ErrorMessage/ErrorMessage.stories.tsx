@@ -2,7 +2,7 @@ import React from 'react'
 import { ErrorMessage } from './ErrorMessage'
 
 export default {
-  title: 'Forms/ErrorMessage',
+  title: 'Components/Form elements/ErrorMessage',
   component: ErrorMessage,
   parameters: {
     info: `

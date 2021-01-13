@@ -2,7 +2,7 @@ import React from 'react'
 import { Address } from './Address'
 
 export default {
-  title: 'Footer/Address',
+  title: 'Components/Footer/Address',
   component: Address,
   parameters: {
     info: `

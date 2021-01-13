@@ -5,7 +5,7 @@ import { Button } from '../Button/Button'
 import { Modal, Overlay, ModalContainer, connectModal, useModal } from './Modal'
 
 export default {
-  title: 'Modal',
+  title: 'Other/Modal',
   component: Modal,
   parameters: {
     info: `Truss-designed component`,

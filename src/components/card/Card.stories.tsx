@@ -9,7 +9,7 @@ import { CardMedia } from './CardMedia/CardMedia'
 import { Button } from '../Button/Button'
 
 export default {
-  title: 'Card',
+  title: 'Components/Card',
   component: Card,
   parameters: {
     info: `
