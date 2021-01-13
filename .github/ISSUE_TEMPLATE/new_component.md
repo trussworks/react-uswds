@@ -14,10 +14,17 @@ labels: "type: feature"
 
 ## Requirements (proposed)
 **Prop Interface**
-``` 
+``` JSX
 Props = {
 }
 ```
+
+## Example Implementation (proposed)
+``` JSX
+return (
+)
+```
+
 **More Details**
   -   `<div>`root element
 
