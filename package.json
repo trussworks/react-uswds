@@ -65,7 +65,7 @@
     "happo-plugin-storybook": "^2.5.3",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
-    "uswds": "2.7.1"
+    "uswds": "2.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
