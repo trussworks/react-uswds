@@ -7,4 +7,6 @@ export default {
   component: DatePicker,
 }
 
-export const defaultDatePicker = (): React.ReactElement => <DatePicker />
+export const defaultDatePicker = (): React.ReactElement => (
+  <DatePicker id="birthdate" name="birthdate" />
+)
