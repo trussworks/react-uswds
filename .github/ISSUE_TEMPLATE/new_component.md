@@ -9,7 +9,7 @@ labels: 'type: feature'
 
 ## USWDS Version
 
-<!-- If this feature relates to a specific feature in USWDS, please note what version it was introduced in. -->
+<!-- Please note what USWDS version this component was introduced in. -->
 
 ## Description
 

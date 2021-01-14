@@ -8,7 +8,7 @@ assignees: ''
 
 **Which USWDS component(s) does this relate to?**
 
-**What USWDS Version was this component introduced by?**
+**What USWDS version was this component introduced in?**
 
 **Code snippet**
 
