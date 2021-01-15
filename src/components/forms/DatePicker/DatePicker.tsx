@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import classnames from 'classnames'
+
 import { DEFAULT_EXTERNAL_DATE_FORMAT } from './constants'
 import { formatDate, parseDateString } from './utils'
 
@@ -17,6 +19,8 @@ export const DatePicker = (
 
   const [internalValue, setInternalValue] = useState('')
   const [externalValue, setExternalValue] = useState('')
+  const [showCalendar, setShowCalendar] = useState(false)
+  const [calendarDisplayValue, setCalendarDisplayValue] = useState(null)
 
   useEffect(() => {
     if (defaultValue) {
@@ -30,10 +34,26 @@ export const DatePicker = (
     }
   }, [defaultValue])
 
+  const handleToggleClick = (): void => {
+    // test if disabled
+    setShowCalendar(!showCalendar)
+    // TODO get date to display when opened (default to today)
+    // TODO focus date when opened
+    // TODO set style top when opened
+    // TODO set dataset value when opened
+    // TODO update statuses
+  }
+
+  const datePickerClasses = classnames(
+    'usa-date-picker',
+    'usa-date-picker--initialized',
+    {
+      'usa-date-picker--active': showCalendar,
+    }
+  )
+
   return (
-    <div
-      data-testid="date-picker"
-      className="usa-date-picker usa-date-picker--initialized">
+    <div data-testid="date-picker" className={datePickerClasses}>
       <input
         name={name}
         data-testid="date-picker-internal-input"
@@ -60,7 +80,8 @@ export const DatePicker = (
           className="usa-date-picker__button"
           aria-haspopup={true}
           aria-label="Toggle calendar"
-          disabled={disabled}>
+          disabled={disabled}
+          onClick={handleToggleClick}>
           &nbsp;
         </button>
         <div
@@ -68,7 +89,7 @@ export const DatePicker = (
           className="usa-date-picker__calendar"
           role="dialog"
           aria-modal="true"
-          hidden={true}></div>
+          hidden={!showCalendar}></div>
         <div
           data-testid="date-picker-status"
           className="usa-sr-only usa-date-picker__status"

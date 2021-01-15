@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { DatePicker } from './DatePicker'
+import userEvent from '@testing-library/user-event'
 
 /* TODO
 elements to render:
@@ -132,6 +133,13 @@ describe('DatePicker component', () => {
     const { getByTestId } = render(<DatePicker {...testProps} />)
     expect(getByTestId('date-picker-status')).toBeInstanceOf(HTMLDivElement)
     expect(getByTestId('date-picker-status')).toHaveAttribute('role', 'status')
+  })
+
+  it('shows the calendar when the toggle button is clicked', () => {
+    const { getByTestId } = render(<DatePicker {...testProps} />)
+    userEvent.click(getByTestId('date-picker-button'))
+    expect(getByTestId('date-picker-calendar')).toBeVisible()
+    expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
   })
 
   describe('with the disabled prop', () => {
