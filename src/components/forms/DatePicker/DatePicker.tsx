@@ -1,16 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { DEFAULT_EXTERNAL_DATE_FORMAT } from './constants'
+import { formatDate, parseDateString } from './utils'
 
 interface DatePickerProps {
   id: string
   name: string
   className?: string
   disabled?: boolean
+  defaultValue?: string
 }
 
 export const DatePicker = (
   props: DatePickerProps & JSX.IntrinsicElements['input']
 ): React.ReactElement => {
-  const { id, name } = props
+  const { id, name, defaultValue, disabled } = props
+
+  const [internalValue, setInternalValue] = useState('')
+  const [externalValue, setExternalValue] = useState('')
+
+  useEffect(() => {
+    if (defaultValue) {
+      const parsedValue = parseDateString(defaultValue)
+      const formattedValue =
+        parsedValue && formatDate(parsedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
+
+      if (parsedValue) setInternalValue(defaultValue)
+      if (formattedValue) setExternalValue(formattedValue)
+      // TODO - validate input on mount if default value is passed
+    }
+  }, [defaultValue])
 
   return (
     <div
@@ -24,6 +42,8 @@ export const DatePicker = (
         aria-hidden={true}
         tabIndex={-1}
         required={false}
+        disabled={false}
+        defaultValue={internalValue}
       />
       <div className="usa-date-picker__wrapper" tabIndex={-1}>
         <input
@@ -31,13 +51,16 @@ export const DatePicker = (
           data-testid="date-picker-external-input"
           className="usa-input usa-date-picker__external-input"
           type="text"
+          disabled={disabled}
+          value={externalValue}
         />
         <button
           data-testid="date-picker-button"
           type="button"
           className="usa-date-picker__button"
           aria-haspopup={true}
-          aria-label="Toggle calendar">
+          aria-label="Toggle calendar"
+          disabled={disabled}>
           &nbsp;
         </button>
         <div

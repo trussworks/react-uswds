@@ -97,6 +97,8 @@ describe('DatePicker component', () => {
     expect(getByTestId('date-picker-external-input')).toBeInstanceOf(
       HTMLInputElement
     )
+    expect(getByTestId('date-picker-external-input')).toBeVisible()
+
     expect(getByTestId('date-picker-external-input')).toHaveAttribute(
       'type',
       'text'
@@ -123,12 +125,35 @@ describe('DatePicker component', () => {
       'role',
       'dialog'
     )
-    expect(getByTestId('date-picker-calendar')).toHaveAttribute('hidden')
+    expect(getByTestId('date-picker-calendar')).not.toBeVisible()
   })
 
   it('renders a screen reader status element', () => {
     const { getByTestId } = render(<DatePicker {...testProps} />)
     expect(getByTestId('date-picker-status')).toBeInstanceOf(HTMLDivElement)
     expect(getByTestId('date-picker-status')).toHaveAttribute('role', 'status')
+  })
+
+  describe('with the disabled prop', () => {
+    it('the toggle button and external inputs are disabled, and the internal input is not disabled', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} disabled />)
+      expect(getByTestId('date-picker-button')).toBeDisabled()
+      expect(getByTestId('date-picker-external-input')).toBeDisabled()
+      expect(getByTestId('date-picker-internal-input')).not.toBeDisabled()
+    })
+  })
+
+  describe('with a default value prop', () => {
+    it('the internal input value is the date string, and the external input value is the formatted date', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="1988-05-16" />
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveValue(
+        '05/16/1988'
+      )
+      expect(getByTestId('date-picker-internal-input')).toHaveValue(
+        '1988-05-16'
+      )
+    })
   })
 })
