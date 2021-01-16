@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
 import { DEFAULT_EXTERNAL_DATE_FORMAT } from './constants'
 import { formatDate, parseDateString } from './utils'
+import { Calendar } from './Calendar'
 
 interface DatePickerProps {
   id: string
@@ -16,11 +17,17 @@ export const DatePicker = (
   props: DatePickerProps & JSX.IntrinsicElements['input']
 ): React.ReactElement => {
   const { id, name, defaultValue, disabled } = props
+  // TODO min date, max date
+
+  const datePickerEl = useRef<HTMLDivElement>(null)
 
   const [internalValue, setInternalValue] = useState('')
   const [externalValue, setExternalValue] = useState('')
   const [showCalendar, setShowCalendar] = useState(false)
-  const [calendarDisplayValue, setCalendarDisplayValue] = useState(null)
+  const [calendarDisplayValue, setCalendarDisplayValue] = useState<
+    Date | undefined
+  >(undefined)
+  const [calendarPosY, setCalendarPosY] = useState<number | undefined>(0)
 
   useEffect(() => {
     if (defaultValue) {
@@ -36,11 +43,20 @@ export const DatePicker = (
 
   const handleToggleClick = (): void => {
     // test if disabled
+    // TODO get date to display when opened (default to today) - write tests
+
+    const parsedValue = parseDateString(
+      externalValue,
+      DEFAULT_EXTERNAL_DATE_FORMAT,
+      true
+    )
+
+    if (parsedValue) setCalendarDisplayValue(parsedValue)
+
+    setCalendarPosY(datePickerEl?.current?.offsetHeight)
     setShowCalendar(!showCalendar)
-    // TODO get date to display when opened (default to today)
+
     // TODO focus date when opened
-    // TODO set style top when opened
-    // TODO set dataset value when opened
     // TODO update statuses
   }
 
@@ -53,7 +69,10 @@ export const DatePicker = (
   )
 
   return (
-    <div data-testid="date-picker" className={datePickerClasses}>
+    <div
+      data-testid="date-picker"
+      className={datePickerClasses}
+      ref={datePickerEl}>
       <input
         name={name}
         data-testid="date-picker-internal-input"
@@ -89,7 +108,11 @@ export const DatePicker = (
           className="usa-date-picker__calendar"
           role="dialog"
           aria-modal="true"
-          hidden={!showCalendar}></div>
+          hidden={!showCalendar}
+          data-value={calendarDisplayValue && formatDate(calendarDisplayValue)}
+          style={{ top: `${calendarPosY}px` }}>
+          {showCalendar && <Calendar date={calendarDisplayValue} />}
+        </div>
         <div
           data-testid="date-picker-status"
           className="usa-sr-only usa-date-picker__status"

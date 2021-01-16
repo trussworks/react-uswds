@@ -25,6 +25,8 @@ export const DAY_OF_WEEK_LABELS = [
   'Saturday',
 ]
 
+export const DAY_OF_WEEK_SHORT_LABELS = ['S', 'M', 'T', 'W', 'Th', 'F', 'S']
+
 export const ENTER_KEYCODE = 13
 
 export const YEAR_CHUNK = 12
