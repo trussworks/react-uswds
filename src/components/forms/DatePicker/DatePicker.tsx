@@ -12,6 +12,8 @@ import {
   isDateInvalid,
   today,
   keepDateBetweenMinAndMax,
+  isSameDay,
+  addDays,
 } from './utils'
 import { Calendar } from './Calendar'
 
@@ -47,6 +49,7 @@ export const DatePicker = (
     Date | undefined
   >(undefined)
   const [calendarPosY, setCalendarPosY] = useState<number | undefined>(0)
+  const [statuses, setStatuses] = useState<string[]>([])
 
   const parsedMinDate = parseDateString(minDate) as Date
   const parsedMaxDate = maxDate ? parseDateString(maxDate) : undefined
@@ -76,6 +79,7 @@ export const DatePicker = (
 
     if (closeCalendar) {
       setShowCalendar(false)
+      setStatuses([])
       externalInputEl?.current?.focus()
     }
   }
@@ -108,6 +112,7 @@ export const DatePicker = (
   const handleToggleClick = (): void => {
     if (showCalendar) {
       // calendar is open, hide it
+      setStatuses([])
     } else {
       // calendar is closed, show it
       const inputDate = parseDateString(
@@ -124,11 +129,24 @@ export const DatePicker = (
 
       setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
+
+      const statuses = [
+        'You can navigate by day using left and right arrows',
+        'Weeks by using up and down arrows',
+        'Months by using page up and page down keys',
+        'Years by using shift plus page up and shift plus page down',
+        'Home and end keys navigate to the beginning and end of a week',
+      ]
+
+      const selectedDate = parseDateString(internalValue)
+      if (selectedDate && isSameDay(selectedDate, addDays(displayDate, 0))) {
+        statuses.unshift('Selected date')
+      }
+
+      setStatuses(statuses)
     }
 
     setShowCalendar(!showCalendar)
-
-    // TODO update statuses
   }
 
   const datePickerClasses = classnames(
@@ -196,7 +214,9 @@ export const DatePicker = (
           data-testid="date-picker-status"
           className="usa-sr-only usa-date-picker__status"
           role="status"
-          aria-live="polite"></div>
+          aria-live="polite">
+          {statuses.join('. ')}
+        </div>
       </div>
     </div>
   )
