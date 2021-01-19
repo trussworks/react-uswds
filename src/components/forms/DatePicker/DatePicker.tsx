@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
-import { DEFAULT_EXTERNAL_DATE_FORMAT } from './constants'
-import { formatDate, parseDateString } from './utils'
+import {
+  DEFAULT_EXTERNAL_DATE_FORMAT,
+  VALIDATION_MESSAGE,
+  DEFAULT_MIN_DATE,
+} from './constants'
+import { formatDate, parseDateString, isDateInvalid } from './utils'
 import { Calendar } from './Calendar'
 
 interface DatePickerProps {
@@ -11,13 +15,21 @@ interface DatePickerProps {
   className?: string
   disabled?: boolean
   defaultValue?: string
+  minDate: string
+  maxDate?: string
 }
 
 export const DatePicker = (
   props: DatePickerProps & JSX.IntrinsicElements['input']
 ): React.ReactElement => {
-  const { id, name, defaultValue, disabled } = props
-  // TODO min date, max date
+  const {
+    id,
+    name,
+    defaultValue,
+    disabled,
+    minDate = DEFAULT_MIN_DATE,
+    maxDate,
+  } = props
 
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
@@ -29,6 +41,24 @@ export const DatePicker = (
     Date | undefined
   >(undefined)
   const [calendarPosY, setCalendarPosY] = useState<number | undefined>(0)
+
+  const parsedMinDate = parseDateString(minDate) as Date
+  const parsedMaxDate = maxDate ? parseDateString(maxDate) : undefined
+
+  const validateInput = (): void => {
+    const isInvalid = isDateInvalid(externalValue, parsedMinDate, parsedMaxDate)
+
+    if (isInvalid && !externalInputEl?.current?.validationMessage) {
+      externalInputEl?.current?.setCustomValidity(VALIDATION_MESSAGE)
+    }
+
+    if (
+      !isInvalid &&
+      externalInputEl?.current?.validationMessage === VALIDATION_MESSAGE
+    ) {
+      externalInputEl?.current?.setCustomValidity('')
+    }
+  }
 
   const handleSelectDate = (dateString: string, closeCalendar = true): void => {
     const parsedValue = parseDateString(dateString)
@@ -42,8 +72,6 @@ export const DatePicker = (
       setShowCalendar(false)
       externalInputEl?.current?.focus()
     }
-
-    // TODO - validate
   }
 
   useEffect(() => {
@@ -67,6 +95,10 @@ export const DatePicker = (
       }
     }
   }, [showCalendar])
+
+  useEffect(() => {
+    validateInput()
+  }, [externalValue, minDate, maxDate])
 
   const handleToggleClick = (): void => {
     // test if disabled
@@ -162,4 +194,8 @@ export const DatePicker = (
       </div>
     </div>
   )
+}
+
+DatePicker.defaultProps = {
+  minDate: DEFAULT_MIN_DATE,
 }

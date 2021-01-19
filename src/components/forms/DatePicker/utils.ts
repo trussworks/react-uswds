@@ -308,7 +308,7 @@ export const keepDateBetweenMinAndMax = (
 export const isDateWithinMinAndMax = (
   date: Date,
   minDate: Date,
-  maxDate: Date
+  maxDate?: Date
 ): boolean => date >= minDate && (!maxDate || date <= maxDate)
 
 /**
@@ -447,4 +447,42 @@ export const formatDate = (
   }
 
   return [padZeros(year, 4), padZeros(month, 2), padZeros(day, 2)].join('-')
+}
+
+// VALIDATION
+
+export const isDateInvalid = (
+  dateString: string,
+  minDate: Date,
+  maxDate?: Date
+): boolean => {
+  let isInvalid = false
+
+  if (dateString) {
+    isInvalid = true
+
+    const dateStringParts = dateString.split('/')
+    const [month, day, year] = dateStringParts.map((str) => {
+      let value
+      const parsed = parseInt(str, 10)
+      if (!Number.isNaN(parsed)) value = parsed
+      return value
+    })
+
+    if (month && day && year != null) {
+      const checkDate = setDate(year, month - 1, day)
+
+      if (
+        checkDate.getMonth() === month - 1 &&
+        checkDate.getDate() === day &&
+        checkDate.getFullYear() === year &&
+        dateStringParts[2].length === 4 &&
+        isDateWithinMinAndMax(checkDate, minDate, maxDate)
+      ) {
+        isInvalid = false
+      }
+    }
+  }
+
+  return isInvalid
 }

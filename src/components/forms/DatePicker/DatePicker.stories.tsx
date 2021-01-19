@@ -18,3 +18,12 @@ export const disabled = (): React.ReactElement => (
 export const withDefaultValue = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
 )
+
+export const withDefaultInvalidValue = (): React.ReactElement => (
+  <DatePicker
+    id="birthdate"
+    name="birthdate"
+    defaultValue="1988-05-16"
+    minDate="2020-01-01"
+  />
+)

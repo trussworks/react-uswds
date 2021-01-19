@@ -221,6 +221,25 @@ describe('DatePicker component', () => {
         '1988-05-16'
       )
     })
+
+    it('validates a valid default value', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="1988-05-16" />
+      )
+      expect(getByTestId('date-picker-external-input')).toBeValid()
+    })
+
+    it('validates an invalid default value', () => {
+      const { getByTestId } = render(
+        <DatePicker
+          {...testProps}
+          defaultValue="1990-01-01"
+          minDate="2020-01-01"
+        />
+      )
+
+      expect(getByTestId('date-picker-external-input')).toBeInvalid()
+    })
   })
 
   describe('selecting a date', () => {
