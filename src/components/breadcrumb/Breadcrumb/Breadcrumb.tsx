@@ -6,6 +6,7 @@ export interface BreadcrumbProps {
   href?: string
   current?: boolean
   withMetaData?: boolean
+  position?: number
 }
 
 export const Breadcrumb = (
@@ -16,6 +17,7 @@ export const Breadcrumb = (
     href,
     current = false,
     withMetaData = false,
+    position = undefined,
     className,
     ...listItemProps
   } = props
@@ -38,6 +40,10 @@ export const Breadcrumb = (
     },
   }
 
+  const metaPositionTag = position ? (
+    <meta property="position" content={position.toString()} />
+  ) : undefined
+
   if (current) {
     return (
       <li
@@ -49,10 +55,8 @@ export const Breadcrumb = (
         )}
         {...listItemProps}
         aria-current="page">
-        <span property={withMetaData ? metaData.span.property : undefined}>
-          {label}
-          {/*TODO: Meta Position Prop*/}
-        </span>
+        <span property={metaData.span.property}>{label}</span>
+        {withMetaData && metaPositionTag}
       </li>
     )
   }
@@ -68,10 +72,8 @@ export const Breadcrumb = (
         typeof={metaData.a.typeof}
         href={href}
         className="usa-breadcrumb__link">
-        <span property={metaData.span.property}>
-          {label}
-          {/*TODO: Meta Position Prop*/}
-        </span>
+        <span property={metaData.span.property}>{label}</span>
+        {withMetaData && metaPositionTag}
       </a>
     </li>
   )

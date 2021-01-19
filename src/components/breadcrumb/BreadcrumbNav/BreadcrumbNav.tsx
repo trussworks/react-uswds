@@ -27,8 +27,11 @@ export const BreadcrumbNav = (
 
   let breadcrumbs = children
   if (withMetaData) {
-    breadcrumbs = children.map((child) =>
-      React.cloneElement(child, { withMetaData: true })
+    breadcrumbs = children.map((child, index) =>
+      React.cloneElement(child, {
+        withMetaData: true,
+        position: index + 1,
+      })
     )
   }
 
