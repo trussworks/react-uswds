@@ -11,7 +11,7 @@ export const Day = ({
   isSelected = false,
   isFocused = false,
   isPrevMonth = false,
-  isSameMonth = false,
+  isFocusedMonth = false,
   isNextMonth = false,
   isToday = false,
 }: {
@@ -21,7 +21,7 @@ export const Day = ({
   isSelected?: boolean
   isFocused?: boolean
   isPrevMonth?: boolean
-  isSameMonth?: boolean
+  isFocusedMonth?: boolean
   isNextMonth?: boolean
   isToday?: boolean
 }): React.ReactElement => {
@@ -37,7 +37,7 @@ export const Day = ({
 
   const classes = classnames('usa-date-picker__calendar__date', {
     'usa-date-picker__calendar__date--previous-month': isPrevMonth,
-    'usa-date-picker__calendar__date--current-month': isSameMonth,
+    'usa-date-picker__calendar__date--current-month': isFocusedMonth,
     'usa-date-picker__calendar__date--next-month': isNextMonth,
     'usa-date-picker__calendar__date--selected': isSelected,
     'usa-date-picker__calendar__date--today': isToday,

@@ -27,3 +27,12 @@ export const withDefaultInvalidValue = (): React.ReactElement => (
     minDate="2020-01-01"
   />
 )
+
+export const withMinMaxInSameMonth = (): React.ReactElement => (
+  <DatePicker
+    id="birthdate"
+    name="birthdate"
+    minDate="2021-01-10"
+    maxDate="2021-01-20"
+  />
+)

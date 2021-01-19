@@ -1,8 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
-import userEvent from '@testing-library/user-event'
+import { today } from './utils'
+import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
 
 /* TODO
 elements to render:
@@ -25,8 +27,8 @@ PROPS
 - passes required prop to input
 - passes disabled prop to input
 - handles default value - DONE
-- min date
-- max date
+- min date - DONE
+- max date - DONE
 - range date (?)
 
 METHODS
@@ -171,6 +173,33 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker')).not.toHaveClass(
         'usa-date-picker--active'
       )
+    })
+
+    it('defaults to today if there is no value', () => {
+      const todayDate = today()
+      const todayLabel = `${todayDate.getDate()} ${
+        MONTH_LABELS[todayDate.getMonth()]
+      } ${todayDate.getFullYear()} ${DAY_OF_WEEK_LABELS[todayDate.getDay()]}`
+
+      const { getByTestId, getByLabelText } = render(
+        <DatePicker {...testProps} />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByLabelText(todayLabel)).toHaveFocus()
+    })
+
+    it('coerces the display date to a valid value', () => {
+      const { getByTestId, getByLabelText } = render(
+        <DatePicker
+          {...testProps}
+          defaultValue="2021-01-06"
+          minDate="2021-01-10"
+          maxDate="2021-01-20"
+        />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByLabelText('6 January 2021 Wednesday')).not.toHaveFocus()
+      expect(getByLabelText('10 January 2021 Sunday')).toHaveFocus()
     })
   })
 

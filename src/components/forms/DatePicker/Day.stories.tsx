@@ -8,24 +8,31 @@ export default {
 }
 
 const testDate = new Date('January 20 2021')
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const mockClick = (): void => {}
 
-export const defaultDay = (): React.ReactElement => <Day date={testDate} />
+const defaultProps = {
+  date: testDate,
+  onClick: mockClick,
+}
+
+export const defaultDay = (): React.ReactElement => <Day {...defaultProps} />
 export const disabled = (): React.ReactElement => (
-  <Day date={testDate} isDisabled />
+  <Day {...defaultProps} isDisabled />
 )
 export const selected = (): React.ReactElement => (
-  <Day date={testDate} isSelected />
+  <Day {...defaultProps} isSelected />
 )
 export const focused = (): React.ReactElement => (
-  <Day date={testDate} isFocused />
+  <Day {...defaultProps} isFocused />
 )
 export const previousMonth = (): React.ReactElement => (
-  <Day date={testDate} isPrevMonth />
+  <Day {...defaultProps} isPrevMonth />
 )
 export const sameMonth = (): React.ReactElement => (
-  <Day date={testDate} isSameMonth />
+  <Day {...defaultProps} isFocusedMonth />
 )
 export const nextMonth = (): React.ReactElement => (
-  <Day date={testDate} isNextMonth />
+  <Day {...defaultProps} isNextMonth />
 )
-export const today = (): React.ReactElement => <Day date={testDate} isToday />
+export const today = (): React.ReactElement => <Day {...defaultProps} isToday />

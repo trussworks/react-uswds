@@ -2,16 +2,18 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { Calendar } from './Calendar'
-import { today } from './utils'
+import { parseDateString, today } from './utils'
 import { MONTH_LABELS } from './constants'
 
 describe('Calendar', () => {
   const mockSelectDate = jest.fn()
+  const testProps = {
+    handleSelectDate: mockSelectDate,
+    minDate: parseDateString('0000-01-01') as Date,
+  }
 
   it('renders calendar navigation', () => {
-    const { getByTestId } = render(
-      <Calendar handleSelectDate={mockSelectDate} />
-    )
+    const { getByTestId } = render(<Calendar {...testProps} />)
     expect(getByTestId('previous-year')).toBeInstanceOf(HTMLButtonElement)
     expect(getByTestId('previous-month')).toBeInstanceOf(HTMLButtonElement)
     expect(getByTestId('next-month')).toBeInstanceOf(HTMLButtonElement)
@@ -20,10 +22,7 @@ describe('Calendar', () => {
 
   it('renders the selected month and year', () => {
     const { getByTestId } = render(
-      <Calendar
-        handleSelectDate={mockSelectDate}
-        date={new Date('January 2021')}
-      />
+      <Calendar {...testProps} date={new Date('January 2021')} />
     )
     expect(getByTestId('select-month')).toHaveTextContent('January')
     expect(getByTestId('select-year')).toHaveTextContent('2021')
@@ -31,14 +30,79 @@ describe('Calendar', () => {
 
   it('defaults to the current month and year', () => {
     const todayDate = today()
-    const { getByTestId } = render(
-      <Calendar handleSelectDate={mockSelectDate} />
-    )
+    const { getByTestId } = render(<Calendar {...testProps} />)
     expect(getByTestId('select-month')).toHaveTextContent(
       MONTH_LABELS[todayDate.getMonth()]
     )
     expect(getByTestId('select-year')).toHaveTextContent(
       `${todayDate.getFullYear()}`
     )
+  })
+
+  it('disables previous buttons if the min date is in the displayed month and year', () => {
+    const { getByTestId } = render(
+      <Calendar
+        {...testProps}
+        date={new Date('January 20 2021')}
+        minDate={new Date('January 01 2021')}
+      />
+    )
+    expect(getByTestId('previous-year')).toBeDisabled()
+    expect(getByTestId('previous-month')).toBeDisabled()
+  })
+
+  it('disables next buttons if the max date is in the displayed month and year', () => {
+    const { getByTestId } = render(
+      <Calendar
+        {...testProps}
+        date={new Date('January 20 2021')}
+        maxDate={new Date('January 30 2021')}
+      />
+    )
+    expect(getByTestId('next-year')).toBeDisabled()
+    expect(getByTestId('next-month')).toBeDisabled()
+  })
+
+  it('disables select date buttons that are outside the min and max dates', () => {
+    const { getByLabelText } = render(
+      <Calendar
+        {...testProps}
+        date={new Date('January 15 2021')}
+        minDate={parseDateString('2021-01-10')}
+        maxDate={parseDateString('2021-01-20')}
+      />
+    )
+
+    const disabledDates = [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+    ]
+    const enabledDates = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    disabledDates.forEach((date) => {
+      const datePattern = new RegExp(`^${date} January 2021`)
+      expect(getByLabelText(datePattern)).toBeDisabled()
+    })
+    enabledDates.forEach((date) => {
+      const datePattern = new RegExp(`^${date} January 2021`)
+      expect(getByLabelText(datePattern)).toBeEnabled()
+    })
   })
 })

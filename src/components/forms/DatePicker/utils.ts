@@ -284,7 +284,7 @@ export const isSameDay = (dateA: Date, dateB: Date): boolean => {
 export const keepDateBetweenMinAndMax = (
   date: Date,
   minDate: Date,
-  maxDate: Date
+  maxDate?: Date
 ): Date => {
   let newDate = date
 

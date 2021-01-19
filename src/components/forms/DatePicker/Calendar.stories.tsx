@@ -1,18 +1,38 @@
 import React from 'react'
 
 import { Calendar } from './Calendar'
+import { parseDateString } from './utils'
 
 export default {
   title: 'Forms/Date picker/Calendar',
   component: Calendar,
 }
 
-export const defaultCalendar = (): React.ReactElement => <Calendar />
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const mockSelectDate = (): void => {}
+
+const defaultProps = {
+  handleSelectDate: mockSelectDate,
+  minDate: new Date('0000-01-01'),
+}
+
+export const defaultCalendar = (): React.ReactElement => (
+  <Calendar {...defaultProps} />
+)
 
 export const givenDate = (): React.ReactElement => (
-  <Calendar date={new Date('July 4, 2019')} />
+  <Calendar {...defaultProps} date={new Date('July 4, 2019')} />
 )
 
 export const selectedDate = (): React.ReactElement => (
-  <Calendar selectedDate={new Date('January 20, 2021')} />
+  <Calendar {...defaultProps} selectedDate={new Date('January 20, 2021')} />
+)
+
+export const minAndMax = (): React.ReactElement => (
+  <Calendar
+    {...defaultProps}
+    date={new Date('January 15 2021')}
+    minDate={parseDateString('2021-01-10')}
+    maxDate={parseDateString('2021-01-20')}
+  />
 )

@@ -14,6 +14,7 @@ import {
   startOfWeek,
   isSameDay,
   isSameMonth,
+  isDateWithinMinAndMax,
 } from './utils'
 
 import { Day } from './Day'
@@ -51,12 +52,15 @@ export const Calendar = ({
   date = today(),
   selectedDate,
   handleSelectDate,
+  minDate,
+  maxDate,
 }: {
   date?: Date
   selectedDate?: Date
   handleSelectDate: (value: string) => void
+  minDate: Date
+  maxDate?: Date
 }): React.ReactElement => {
-  // TODO handle disabled buttons
   // TODO handle button clicks
 
   const focusedDate = addDays(date, 0)
@@ -67,8 +71,8 @@ export const Calendar = ({
   const nextMonth = addMonths(date, 1)
 
   const firstOfMonth = startOfMonth(date)
-  const prevButtonsDisabled = false // TODO - mindate
-  const nextButtonsDisabled = false // TODO - maxdate
+  const prevButtonsDisabled = isSameMonth(date, minDate)
+  const nextButtonsDisabled = maxDate && isSameMonth(date, maxDate)
 
   // TODO - range date
 
@@ -86,10 +90,11 @@ export const Calendar = ({
       <Day
         date={dateIterator}
         onClick={handleSelectDate}
+        isDisabled={!isDateWithinMinAndMax(dateIterator, minDate, maxDate)}
         isSelected={selectedDate && isSameDay(dateIterator, selectedDate)}
         isFocused={isSameDay(dateIterator, focusedDate)}
         isPrevMonth={isSameMonth(dateIterator, prevMonth)}
-        isSameMonth={isSameMonth(dateIterator, focusedDate)}
+        isFocusedMonth={isSameMonth(dateIterator, focusedDate)}
         isNextMonth={isSameMonth(dateIterator, nextMonth)}
         isToday={isSameDay(dateIterator, today())}
       />
@@ -105,7 +110,8 @@ export const Calendar = ({
             type="button"
             data-testid="previous-year"
             className="usa-date-picker__calendar__previous-year"
-            aria-label="Navigate back one year">
+            aria-label="Navigate back one year"
+            disabled={prevButtonsDisabled}>
             &nbsp;
           </button>
         </div>
@@ -114,7 +120,8 @@ export const Calendar = ({
             type="button"
             data-testid="previous-month"
             className="usa-date-picker__calendar__previous-month"
-            aria-label="Navigate back one month">
+            aria-label="Navigate back one month"
+            disabled={prevButtonsDisabled}>
             &nbsp;
           </button>
         </div>
@@ -139,7 +146,8 @@ export const Calendar = ({
             type="button"
             data-testid="next-month"
             className="usa-date-picker__calendar__next-month"
-            aria-label="Navigate forward one month">
+            aria-label="Navigate forward one month"
+            disabled={nextButtonsDisabled}>
             &nbsp;
           </button>
         </div>
@@ -148,7 +156,8 @@ export const Calendar = ({
             type="button"
             data-testid="next-year"
             className="usa-date-picker__calendar__next-year"
-            aria-label="Navigate forward one year">
+            aria-label="Navigate forward one year"
+            disabled={nextButtonsDisabled}>
             &nbsp;
           </button>
         </div>

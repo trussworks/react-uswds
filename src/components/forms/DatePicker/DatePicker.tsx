@@ -6,7 +6,13 @@ import {
   VALIDATION_MESSAGE,
   DEFAULT_MIN_DATE,
 } from './constants'
-import { formatDate, parseDateString, isDateInvalid } from './utils'
+import {
+  formatDate,
+  parseDateString,
+  isDateInvalid,
+  today,
+  keepDateBetweenMinAndMax,
+} from './utils'
 import { Calendar } from './Calendar'
 
 interface DatePickerProps {
@@ -75,7 +81,6 @@ export const DatePicker = (
   }
 
   useEffect(() => {
-    // TODO - test this only happens on mount
     if (defaultValue) {
       handleSelectDate(defaultValue, false)
     }
@@ -101,24 +106,23 @@ export const DatePicker = (
   }, [externalValue, minDate, maxDate])
 
   const handleToggleClick = (): void => {
-    // test if disabled
-    // TODO get date to display when opened (default to today) - write tests
-
     if (showCalendar) {
       // calendar is open, hide it
     } else {
       // calendar is closed, show it
-
-      const parsedValue = parseDateString(
+      const inputDate = parseDateString(
         externalValue,
         DEFAULT_EXTERNAL_DATE_FORMAT,
         true
       )
 
-      // TODO - keep parsedValue (inputDate) between min/max
+      const displayDate = keepDateBetweenMinAndMax(
+        inputDate || (defaultValue && parseDateString(defaultValue)) || today(),
+        parsedMinDate,
+        parsedMaxDate
+      )
 
-      if (parsedValue) setCalendarDisplayValue(parsedValue)
-
+      setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
     }
 
@@ -183,6 +187,8 @@ export const DatePicker = (
             <Calendar
               date={calendarDisplayValue}
               handleSelectDate={handleSelectDate}
+              minDate={parsedMinDate}
+              maxDate={parsedMaxDate}
             />
           )}
         </div>

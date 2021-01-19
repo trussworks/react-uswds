@@ -124,7 +124,7 @@ describe('Day', () => {
   describe('when in the current month', () => {
     it('has the current month class', () => {
       const { getByTestId } = render(
-        <Day date={testDate} onClick={mockSelectDate} isSameMonth />
+        <Day date={testDate} onClick={mockSelectDate} isFocusedMonth />
       )
       const button = getByTestId('select-date')
       expect(button).toHaveClass(

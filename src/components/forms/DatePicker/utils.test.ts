@@ -5,6 +5,7 @@ import {
   parseDateString,
   formatDate,
   isDateInvalid,
+  isDateWithinMinAndMax,
 } from './utils'
 
 describe('keepDateWithinMonth', () => {
@@ -87,6 +88,36 @@ describe('isDateInvalid', () => {
     it('returns true if the date is not after the min', () => {
       const testMin = new Date('May 1, 1988')
       expect(isDateInvalid('02/16/1988', testMin)).toEqual(true)
+    })
+  })
+})
+
+describe('isDateWithinMinAndMax', () => {
+  it('returns true if the date is within the min & max', () => {
+    const testDate = new Date('January 12, 2021')
+    const testMin = new Date('January 10, 2021')
+    const testMax = new Date('January 30, 2021')
+    expect(isDateWithinMinAndMax(testDate, testMin, testMax)).toEqual(true)
+  })
+
+  it('returns false if the date is not within the min & max', () => {
+    const testDate = new Date('August 16, 1988')
+    const testMin = new Date('May 1, 1988')
+    const testMax = new Date('June 1, 1988')
+    expect(isDateWithinMinAndMax(testDate, testMin, testMax)).toEqual(false)
+  })
+
+  describe('with no max date', () => {
+    it('returns true if the date is after the min', () => {
+      const testDate = new Date('May 16, 1988')
+      const testMin = new Date('May 1, 1988')
+      expect(isDateWithinMinAndMax(testDate, testMin)).toEqual(true)
+    })
+
+    it('returns false if the date is before the min', () => {
+      const testDate = new Date('February 16, 1988')
+      const testMin = new Date('May 1, 1988')
+      expect(isDateWithinMinAndMax(testDate, testMin)).toEqual(false)
     })
   })
 })
