@@ -6,37 +6,45 @@ import userEvent from '@testing-library/user-event'
 
 /* TODO
 elements to render:
-- internal input (text)
-- external input (text)
-- toggle button
-- date picker calendar dialog
+- internal input (text) - DONE
+- external input (text) - DONE
+- toggle button - DONE
+- date picker calendar dialog - DONE
   states:
-  - calendar closed
+  - calendar closed - DONE
   - calendar open
-    - date selection
+    - date selection - DONE
     - month selection
     - year selection
 - status text
 
 PROPS
-- input name (internal input)
-- input ID (external input)
+- input name (internal input) - DONE
+- input ID (external input) - DONE
 - label & hint IDs (for aria describedby)
 - passes required prop to input
 - passes disabled prop to input
-- handles default value
+- handles default value - DONE
 - min date
 - max date
 - range date (?)
 
 METHODS
 toggle
+  SHOW CALENDAR:
+    - gets date to display (keep between min/max, default to today)
+    - render calendar with date to display
+    - focus on date
+  HIDE CALENDAR:
+    - remove active class
+    - set hidden to true
+    - set status text to ''
 validate
 navigate
 
 EVENTS
-- click button toggles calendar
-- click date selects date
+- click button toggles calendar - DONE
+- click date selects date - DONE
 - click month selects month
 - click year selects year
 - click previous month displays previous month
@@ -74,18 +82,18 @@ describe('DatePicker component', () => {
     expect(getByTestId('date-picker')).toBeInTheDocument()
   })
 
-  it('renders a hidden "internal" input', () => {
+  it('renders a hidden "internal" input with the name prop', () => {
     const { getByTestId } = render(<DatePicker {...testProps} />)
     expect(getByTestId('date-picker-internal-input')).toBeInstanceOf(
       HTMLInputElement
     )
     expect(getByTestId('date-picker-internal-input')).toHaveAttribute(
-      'aria-hidden',
-      'true'
-    )
-    expect(getByTestId('date-picker-internal-input')).toHaveAttribute(
       'type',
       'text'
+    )
+    expect(getByTestId('date-picker-internal-input')).toHaveAttribute(
+      'aria-hidden',
+      'true'
     )
     expect(getByTestId('date-picker-internal-input')).toHaveAttribute(
       'name',
@@ -93,17 +101,16 @@ describe('DatePicker component', () => {
     )
   })
 
-  it('renders a visible "external" input', () => {
+  it('renders a visible "external" input with the id prop', () => {
     const { getByTestId } = render(<DatePicker {...testProps} />)
     expect(getByTestId('date-picker-external-input')).toBeInstanceOf(
       HTMLInputElement
     )
-    expect(getByTestId('date-picker-external-input')).toBeVisible()
-
     expect(getByTestId('date-picker-external-input')).toHaveAttribute(
       'type',
       'text'
     )
+    expect(getByTestId('date-picker-external-input')).toBeVisible()
     expect(getByTestId('date-picker-external-input')).toHaveAttribute(
       'id',
       testProps.id
@@ -135,11 +142,36 @@ describe('DatePicker component', () => {
     expect(getByTestId('date-picker-status')).toHaveAttribute('role', 'status')
   })
 
-  it('shows the calendar when the toggle button is clicked', () => {
-    const { getByTestId } = render(<DatePicker {...testProps} />)
-    userEvent.click(getByTestId('date-picker-button'))
-    expect(getByTestId('date-picker-calendar')).toBeVisible()
-    expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+  describe('toggling the calendar', () => {
+    it('the calendar is hidden on mount', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(getByTestId('date-picker')).not.toHaveClass(
+        'usa-date-picker--active'
+      )
+    })
+
+    it('shows the calendar when the toggle button is clicked and focuses on the selected date', () => {
+      const { getByTestId, getByText } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+      expect(getByText('20')).toHaveFocus()
+    })
+
+    it('hides the calendar when the toggle button is clicked a second time', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(getByTestId('date-picker')).not.toHaveClass(
+        'usa-date-picker--active'
+      )
+    })
   })
 
   describe('with the disabled prop', () => {
@@ -148,6 +180,32 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-button')).toBeDisabled()
       expect(getByTestId('date-picker-external-input')).toBeDisabled()
       expect(getByTestId('date-picker-internal-input')).not.toBeDisabled()
+    })
+
+    it('does not show the calendar when the toggle button is clicked', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} disabled />)
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(getByTestId('date-picker')).not.toHaveClass(
+        'usa-date-picker--active'
+      )
+    })
+
+    it.skip('clicking a date button does not select that date', () => {
+      // TODO - test if disabled happens after mount
+      const { getByTestId, getByText } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      const dateButton = getByText('15')
+      expect(dateButton).toHaveClass('usa-date-picker__calendar__date')
+      userEvent.click(dateButton)
+      expect(getByTestId('date-picker-external-input')).toHaveValue(
+        '01/15/2021'
+      )
+      expect(getByTestId('date-picker-internal-input')).toHaveValue(
+        '2021-01-15'
+      )
     })
   })
 
@@ -162,6 +220,41 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-internal-input')).toHaveValue(
         '1988-05-16'
       )
+    })
+  })
+
+  describe('selecting a date', () => {
+    it('clicking a date button selects that date and closes the calendar and focuses the external input', () => {
+      const { getByTestId, getByText } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      const dateButton = getByText('15')
+      expect(dateButton).toHaveClass('usa-date-picker__calendar__date')
+      userEvent.click(dateButton)
+      expect(getByTestId('date-picker-external-input')).toHaveValue(
+        '01/15/2021'
+      )
+      expect(getByTestId('date-picker-internal-input')).toHaveValue(
+        '2021-01-15'
+      )
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(getByTestId('date-picker-external-input')).toHaveFocus()
+    })
+
+    it('selecting a date and opening the calendar focuses on the selected date', () => {
+      const { getByTestId, getByText } = render(<DatePicker {...testProps} />)
+
+      // open calendar
+      userEvent.click(getByTestId('date-picker-button'))
+
+      // select date
+      const dateButton = getByText('12')
+      userEvent.click(dateButton)
+
+      // open calendar again
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByText('12')).toHaveFocus()
     })
   })
 })

@@ -18,7 +18,10 @@ import {
 
 import { Day } from './Day'
 
-const listToTable = (list: React.ReactNode[], rowSize: number) => {
+const listToTable = (
+  list: React.ReactNode[],
+  rowSize: number
+): React.ReactFragment => {
   const rows = []
   let i = 0
 
@@ -47,9 +50,11 @@ const listToTable = (list: React.ReactNode[], rowSize: number) => {
 export const Calendar = ({
   date = today(),
   selectedDate,
+  handleSelectDate,
 }: {
   date?: Date
   selectedDate?: Date
+  handleSelectDate: (value: string) => void
 }): React.ReactElement => {
   // TODO handle disabled buttons
   // TODO handle button clicks
@@ -80,6 +85,7 @@ export const Calendar = ({
     days.push(
       <Day
         date={dateIterator}
+        onClick={handleSelectDate}
         isSelected={selectedDate && isSameDay(dateIterator, selectedDate)}
         isFocused={isSameDay(dateIterator, focusedDate)}
         isPrevMonth={isSameMonth(dateIterator, prevMonth)}

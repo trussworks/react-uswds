@@ -6,6 +6,7 @@ import { formatDate } from './utils'
 
 export const Day = ({
   date,
+  onClick,
   isDisabled = false,
   isSelected = false,
   isFocused = false,
@@ -15,6 +16,7 @@ export const Day = ({
   isToday = false,
 }: {
   date: Date
+  onClick: (value: string) => void
   isDisabled?: boolean
   isSelected?: boolean
   isFocused?: boolean
@@ -45,12 +47,16 @@ export const Day = ({
   const monthStr = MONTH_LABELS[month]
   const dayStr = DAY_OF_WEEK_LABELS[dayOfWeek]
 
-  // TODO click handler!
+  const handleClick = (): void => {
+    onClick(formattedDate)
+  }
 
   return (
     // eslint-disable-next-line jsx-a11y/role-supports-aria-props
     <button
       type="button"
+      data-testid="select-date"
+      onClick={handleClick}
       tabIndex={tabIndex}
       className={classes}
       data-day={day}

@@ -20,6 +20,7 @@ export const DatePicker = (
   // TODO min date, max date
 
   const datePickerEl = useRef<HTMLDivElement>(null)
+  const externalInputEl = useRef<HTMLInputElement>(null)
 
   const [internalValue, setInternalValue] = useState('')
   const [externalValue, setExternalValue] = useState('')
@@ -29,34 +30,68 @@ export const DatePicker = (
   >(undefined)
   const [calendarPosY, setCalendarPosY] = useState<number | undefined>(0)
 
-  useEffect(() => {
-    if (defaultValue) {
-      const parsedValue = parseDateString(defaultValue)
-      const formattedValue =
-        parsedValue && formatDate(parsedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
+  const handleSelectDate = (dateString: string, closeCalendar = true): void => {
+    const parsedValue = parseDateString(dateString)
+    const formattedValue =
+      parsedValue && formatDate(parsedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
 
-      if (parsedValue) setInternalValue(defaultValue)
-      if (formattedValue) setExternalValue(formattedValue)
-      // TODO - validate input on mount if default value is passed
+    if (parsedValue) setInternalValue(dateString)
+    if (formattedValue) setExternalValue(formattedValue)
+
+    if (closeCalendar) {
+      setShowCalendar(false)
+      externalInputEl?.current?.focus()
     }
-  }, [defaultValue])
+
+    // TODO - validate
+  }
+
+  useEffect(() => {
+    // TODO - test this only happens on mount
+    if (defaultValue) {
+      handleSelectDate(defaultValue, false)
+    }
+  }, [])
+
+  useEffect(() => {
+    // focus on selected date when open
+    if (showCalendar) {
+      const focusedDate =
+        datePickerEl.current &&
+        datePickerEl.current.querySelector<HTMLElement>(
+          '.usa-date-picker__calendar__date--focused'
+        )
+
+      if (focusedDate) {
+        focusedDate.focus()
+      }
+    }
+  }, [showCalendar])
 
   const handleToggleClick = (): void => {
     // test if disabled
     // TODO get date to display when opened (default to today) - write tests
 
-    const parsedValue = parseDateString(
-      externalValue,
-      DEFAULT_EXTERNAL_DATE_FORMAT,
-      true
-    )
+    if (showCalendar) {
+      // calendar is open, hide it
+    } else {
+      // calendar is closed, show it
 
-    if (parsedValue) setCalendarDisplayValue(parsedValue)
+      const parsedValue = parseDateString(
+        externalValue,
+        DEFAULT_EXTERNAL_DATE_FORMAT,
+        true
+      )
 
-    setCalendarPosY(datePickerEl?.current?.offsetHeight)
+      // TODO - keep parsedValue (inputDate) between min/max
+
+      if (parsedValue) setCalendarDisplayValue(parsedValue)
+
+      setCalendarPosY(datePickerEl?.current?.offsetHeight)
+    }
+
     setShowCalendar(!showCalendar)
 
-    // TODO focus date when opened
     // TODO update statuses
   }
 
@@ -82,7 +117,7 @@ export const DatePicker = (
         tabIndex={-1}
         required={false}
         disabled={false}
-        defaultValue={internalValue}
+        value={internalValue}
       />
       <div className="usa-date-picker__wrapper" tabIndex={-1}>
         <input
@@ -92,6 +127,7 @@ export const DatePicker = (
           type="text"
           disabled={disabled}
           value={externalValue}
+          ref={externalInputEl}
         />
         <button
           data-testid="date-picker-button"
@@ -111,7 +147,12 @@ export const DatePicker = (
           hidden={!showCalendar}
           data-value={calendarDisplayValue && formatDate(calendarDisplayValue)}
           style={{ top: `${calendarPosY}px` }}>
-          {showCalendar && <Calendar date={calendarDisplayValue} />}
+          {showCalendar && (
+            <Calendar
+              date={calendarDisplayValue}
+              handleSelectDate={handleSelectDate}
+            />
+          )}
         </div>
         <div
           data-testid="date-picker-status"
