@@ -6,7 +6,7 @@ import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 interface BreadcrumbNavProps {
   variant?: 'default' | 'wrap'
   withMetaData?: boolean
-  children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
+  children: ReactElement<BreadcrumbProps>[]
 }
 
 export const BreadcrumbNav = (
@@ -25,9 +25,20 @@ export const BreadcrumbNav = (
       : 'usa-breadcrumb'
   const classes = classnames(uswdsClassName, className)
 
+  let breadcrumbs = children
+  if (withMetaData) {
+    breadcrumbs = children.map((child) =>
+      React.cloneElement(child, { withMetaData: true })
+    )
+  }
+
   return (
     <nav className={classes} {...navProps} aria-label="Breadcrumbs">
-      <ol className="usa-breadcrumb__list">{children}</ol>
+      <ol
+        vocab={withMetaData ? 'http://schema.org/' : undefined}
+        className="usa-breadcrumb__list">
+        {breadcrumbs}
+      </ol>
     </nav>
   )
 }
