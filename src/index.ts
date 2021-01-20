@@ -11,7 +11,7 @@ export { Link } from './components/Link/Link'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { SideNav } from './components/SideNav/SideNav'
-export { BreadcrumbBar } from './components/BreadcrumbBar/BreadcrumbBar'
+export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
 
 /** Grid components */
 export { GridContainer } from './components/grid/GridContainer/GridContainer'

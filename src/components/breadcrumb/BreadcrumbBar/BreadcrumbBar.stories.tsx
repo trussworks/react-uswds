@@ -31,7 +31,7 @@ export const DefaultBreadcrumb = (): React.ReactElement => (
 
 export const BreadcrumbWithRdfaMetaData = (): React.ReactElement => (
   <BreadcrumbBar
-    withMetaData
+    withRdfaMetaData
     pageHierarchy={sampleBreadcrumbs}
     pageName={sampleCurrentPageName}
   />
