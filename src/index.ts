@@ -11,7 +11,6 @@ export { Link } from './components/Link/Link'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { SideNav } from './components/SideNav/SideNav'
-export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
 
 /** Grid components */
 export { GridContainer } from './components/grid/GridContainer/GridContainer'
@@ -63,6 +62,12 @@ export { CardHeader } from './components/card/CardHeader/CardHeader'
 export { CardMedia } from './components/card/CardMedia/CardMedia'
 export { CardBody } from './components/card/CardBody/CardBody'
 export { CardFooter } from './components/card/CardFooter/CardFooter'
+
+/** Breadcrumb components */
+export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
+export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
+export { LinkingBreadcrumb } from './components/breadcrumb/LinkingBreadcrumb/LinkingBreadcrumb'
+export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
 
 export { Search } from './components/Search/Search'
 

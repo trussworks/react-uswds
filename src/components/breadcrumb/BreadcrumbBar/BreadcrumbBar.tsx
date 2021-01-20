@@ -1,29 +1,26 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
-import { Breadcrumb, LinkingBreadcrumb } from '../Breadcrumb/Breadcrumb'
-
-type PageInfo = {
-  pageName: string
-  href: string
-}
+import { BaseBreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
 interface BreadcrumbBarProps {
+  children:
+    | ReactElement<BaseBreadcrumbProps>
+    | ReactElement<BaseBreadcrumbProps>[]
   variant?: 'default' | 'wrap'
-  withRdfaMetaData?: boolean
-  pageName: string
-  pageHierarchy: PageInfo[]
+  className?: string
+  navProps?: JSX.IntrinsicElements['nav']
+  listProps?: JSX.IntrinsicElements['ol']
 }
 
 export const BreadcrumbBar = (
-  props: BreadcrumbBarProps & JSX.IntrinsicElements['nav']
+  props: BreadcrumbBarProps
 ): React.ReactElement => {
   const {
     variant = 'default',
-    withRdfaMetaData = false,
-    pageName,
-    pageHierarchy,
+    children,
     className,
-    ...navProps
+    navProps,
+    listProps,
   } = props
   const uswdsClassName =
     variant === 'wrap'
@@ -31,31 +28,10 @@ export const BreadcrumbBar = (
       : 'usa-breadcrumb'
   const classes = classnames(uswdsClassName, className)
 
-  const linkingBreadcrumbs = pageHierarchy.map((pageInfo, i) => (
-    <LinkingBreadcrumb
-      key={`breadcrumb-${i}`}
-      pageName={pageInfo.pageName}
-      href={pageInfo.href}
-      position={i + 1}
-      withRdfaMetaData={withRdfaMetaData}
-    />
-  ))
-
-  const currentPageBreadcrumb = (
-    <Breadcrumb
-      pageName={pageName}
-      withRdfaMetaData={withRdfaMetaData}
-      position={linkingBreadcrumbs.length + 1}
-    />
-  )
-
   return (
     <nav className={classes} {...navProps} aria-label="Breadcrumbs">
-      <ol
-        vocab={withRdfaMetaData ? 'http://schema.org/' : undefined}
-        className="usa-breadcrumb__list">
-        {linkingBreadcrumbs}
-        {currentPageBreadcrumb}
+      <ol className="usa-breadcrumb__list" {...listProps}>
+        {children}
       </ol>
     </nav>
   )

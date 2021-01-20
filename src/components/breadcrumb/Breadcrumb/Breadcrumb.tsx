@@ -1,86 +1,30 @@
-import classnames from 'classnames'
 import React from 'react'
+import classnames from 'classnames'
 
-const rdfaMetaData = {
-  li: {
-    property: 'itemListElement',
-    typeof: 'ListItem',
-  },
-  a: {
-    property: 'item',
-    typeof: 'WebPage',
-  },
-  span: {
-    property: 'name',
-  },
+export interface BaseBreadcrumbProps {
+  children: React.ReactNode
+  className?: string
+  listItemProps?: JSX.IntrinsicElements['li']
+}
+interface BreadcrumbProps extends BaseBreadcrumbProps {
+  current?: boolean
 }
 
-const getMetaPositionTag = (position: number): JSX.Element => (
-  <meta property="position" content={position.toString()} />
-)
-
-interface BreadcrumbProps {
-  pageName: string
-  position: number
-  withRdfaMetaData?: boolean
-}
-
-export const Breadcrumb = (
-  props: BreadcrumbProps & JSX.IntrinsicElements['li']
-): JSX.Element => {
-  const {
-    pageName,
-    position,
-    withRdfaMetaData = false,
-    className,
-    ...listItemProps
-  } = props
-  const classes = classnames('usa-breadcrumb__list-item usa-current', className)
-
-  return (
-    <li
-      property={rdfaMetaData.li.property}
-      typeof={rdfaMetaData.li.typeof}
-      className={classes}
-      aria-current="page"
-      {...listItemProps}>
-      <span property={rdfaMetaData.span.property}>{pageName}</span>
-      {withRdfaMetaData && getMetaPositionTag(position)}
-    </li>
+export const Breadcrumb = (props: BreadcrumbProps): JSX.Element => {
+  const { children, current = false, className, listItemProps } = props
+  const classes = classnames(
+    current
+      ? 'usa-breadcrumb__list-item usa-current'
+      : 'usa-breadcrumb__list-item',
+    className
   )
-}
-
-interface LinkingBreadcrumbProps extends BreadcrumbProps {
-  href: string
-}
-
-export const LinkingBreadcrumb = (
-  props: LinkingBreadcrumbProps & JSX.IntrinsicElements['li']
-): JSX.Element => {
-  const {
-    pageName,
-    href,
-    position,
-    withRdfaMetaData = false,
-    className,
-    ...listItemProps
-  } = props
-  const classes = classnames('usa-breadcrumb__list-item', className)
 
   return (
     <li
-      property={rdfaMetaData.li.property}
-      typeof={rdfaMetaData.li.typeof}
       className={classes}
+      aria-current={current ? 'page' : undefined}
       {...listItemProps}>
-      <a
-        property={rdfaMetaData.a.property}
-        typeof={rdfaMetaData.a.typeof}
-        href={href}
-        className="usa-breadcrumb__link">
-        <span property={rdfaMetaData.span.property}>{pageName}</span>
-        {withRdfaMetaData && getMetaPositionTag(position)}
-      </a>
+      {children}
     </li>
   )
 }
