@@ -2,6 +2,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { Breadcrumb } from './Breadcrumb'
+import { Link } from '../../Link/Link'
 
 const testPageName = 'Test Page'
 
@@ -17,7 +18,7 @@ describe('Breadcrumb component', () => {
   it('renders properly with custom elements passesd in', () => {
     const { getByRole, queryByText } = render(
       <Breadcrumb>
-        <a href="#">{testPageName}</a>
+        <Link href="#">{testPageName}</Link>
       </Breadcrumb>
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
