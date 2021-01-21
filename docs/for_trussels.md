@@ -20,7 +20,7 @@ Regardless of whether you are on client work or Reserve, it is _up to each indiv
 - Watch [USWDS](https://github.com/uswds/uswds) updates, and create new issues needed to help this project stay up-to-date with them
 - Participate in PR reviews, issue discussion, and project roadmap planning
 - Address any security alerts that come up promptly (see below)
-- Shepherd library releases forward and publish to npm. See [releasing documentation](./for_trussels.md).
+- Shepherd library releases forward and publish to npm. See [releasing documentation](./releasing.md).
 - Maintain the project board.
 - Prevent PRs and issues from becoming stale, and clean up the ones that do.
 - Moderate discussions to keep alignment with [Truss values](https://truss.works/values)
