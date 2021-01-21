@@ -30,8 +30,8 @@ export const DefaultBreadcrumb = (): React.ReactElement => (
   </BreadcrumbBar>
 )
 
-export const BreadcrumbWithRdfaMetaData = (): React.ReactElement => {
-  const rdfaMetaData = {
+export const BreadcrumbWithRdfaMetadata = (): React.ReactElement => {
+  const rdfaMetadata = {
     ol: {
       vocab: 'http://schema.org/',
       typeof: 'BreadcrumbList',
@@ -47,29 +47,29 @@ export const BreadcrumbWithRdfaMetaData = (): React.ReactElement => {
   }
 
   return (
-    <BreadcrumbBar listProps={{ ...rdfaMetaData.ol }}>
+    <BreadcrumbBar listProps={{ ...rdfaMetadata.ol }}>
       <LinkingBreadcrumb
         href="#"
-        listItemProps={{ ...rdfaMetaData.li }}
-        anchorProps={{ ...rdfaMetaData.a }}>
+        listItemProps={{ ...rdfaMetadata.li }}
+        anchorProps={{ ...rdfaMetadata.a }}>
         <span property="name">Home</span>
         <meta property="position" content="1" />
       </LinkingBreadcrumb>
       <LinkingBreadcrumb
         href="#"
-        listItemProps={{ ...rdfaMetaData.li }}
-        anchorProps={{ ...rdfaMetaData.a }}>
+        listItemProps={{ ...rdfaMetadata.li }}
+        anchorProps={{ ...rdfaMetadata.a }}>
         <span property="name">Federal Contracting</span>
         <meta property="position" content="2" />
       </LinkingBreadcrumb>
       <LinkingBreadcrumb
         href="#"
-        listItemProps={{ ...rdfaMetaData.li }}
-        anchorProps={{ ...rdfaMetaData.a }}>
+        listItemProps={{ ...rdfaMetadata.li }}
+        anchorProps={{ ...rdfaMetadata.a }}>
         <span property="name">Contacting assistance programs</span>
         <meta property="position" content="3" />
       </LinkingBreadcrumb>
-      <Breadcrumb current listItemProps={{ ...rdfaMetaData.li }}>
+      <Breadcrumb current listItemProps={{ ...rdfaMetadata.li }}>
         <span property="name">
           Women-owned small business federal contracting program
         </span>
