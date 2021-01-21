@@ -3,6 +3,7 @@ import React from 'react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { LinkingBreadcrumb } from '../LinkingBreadcrumb/LinkingBreadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
+import { Link } from '../../Link/Link'
 
 export default {
   title: 'Breadcrumb',
@@ -94,7 +95,9 @@ export const WrappingBreadcrumb = (): React.ReactElement => (
 export const CustomBreadcrumbLinks = (): React.ReactElement => (
   <BreadcrumbBar variant="wrap">
     <Breadcrumb>
-      <a href="#">A custom link</a>
+      <Link className="usa-button" variant="unstyled" href={'#'}>
+        Custom link component
+      </Link>
     </Breadcrumb>
     <Breadcrumb current>The current page</Breadcrumb>
   </BreadcrumbBar>
