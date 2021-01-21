@@ -12,23 +12,25 @@ describe('Breadcrumb component', () => {
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('listitem')).toHaveClass('usa-breadcrumb__list-item')
-  }),
-    it('renders properly with custom elements passesd in', () => {
-      const { getByRole, queryByText } = render(
-        <Breadcrumb>
-          <a href="#">{testPageName}</a>
-        </Breadcrumb>
-      )
-      expect(queryByText(testPageName)).toBeInTheDocument()
-      expect(getByRole('listitem')).toHaveClass('usa-breadcrumb__list-item')
-    }),
-    it("renders the appropriate class when defined as 'current'", () => {
-      const { getByRole, queryByText } = render(
-        <Breadcrumb current>{testPageName}</Breadcrumb>
-      )
-      expect(queryByText(testPageName)).toBeInTheDocument()
-      expect(getByRole('listitem')).toHaveClass(
-        'usa-breadcrumb__list-item usa-current'
-      )
-    })
+  })
+
+  it('renders properly with custom elements passesd in', () => {
+    const { getByRole, queryByText } = render(
+      <Breadcrumb>
+        <a href="#">{testPageName}</a>
+      </Breadcrumb>
+    )
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('listitem')).toHaveClass('usa-breadcrumb__list-item')
+  })
+
+  it("renders the appropriate class when defined as 'current'", () => {
+    const { getByRole, queryByText } = render(
+      <Breadcrumb current>{testPageName}</Breadcrumb>
+    )
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('listitem')).toHaveClass(
+      'usa-breadcrumb__list-item usa-current'
+    )
+  })
 })

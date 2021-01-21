@@ -19,29 +19,31 @@ describe('BreadcrumbBar component', () => {
     expect(queryByText(testParentPageName)).toBeInTheDocument()
     expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
-  }),
-    it('renders properly using the built-in LinkingBreadcrumb', () => {
-      const { getByRole, queryByText } = render(
-        <BreadcrumbBar>
-          <LinkingBreadcrumb href="#">{testParentPageName}</LinkingBreadcrumb>
-          <Breadcrumb current>{testPageName}</Breadcrumb>
-        </BreadcrumbBar>
-      )
-      expect(queryByText(testParentPageName)).toBeInTheDocument()
-      expect(queryByText(testPageName)).toBeInTheDocument()
-      expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
-    }),
-    it('renders properly with Breadcrumbs using custom elements', () => {
-      const { getByRole, queryByText } = render(
-        <BreadcrumbBar>
-          <Breadcrumb>
-            <a href="#">{testParentPageName}</a>
-          </Breadcrumb>
-          <Breadcrumb current>{testPageName}</Breadcrumb>
-        </BreadcrumbBar>
-      )
-      expect(queryByText(testParentPageName)).toBeInTheDocument()
-      expect(queryByText(testPageName)).toBeInTheDocument()
-      expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
-    })
+  })
+
+  it('renders properly using the built-in LinkingBreadcrumb', () => {
+    const { getByRole, queryByText } = render(
+      <BreadcrumbBar>
+        <LinkingBreadcrumb href="#">{testParentPageName}</LinkingBreadcrumb>
+        <Breadcrumb current>{testPageName}</Breadcrumb>
+      </BreadcrumbBar>
+    )
+    expect(queryByText(testParentPageName)).toBeInTheDocument()
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
+  })
+
+  it('renders properly with Breadcrumbs using custom elements', () => {
+    const { getByRole, queryByText } = render(
+      <BreadcrumbBar>
+        <Breadcrumb>
+          <a href="#">{testParentPageName}</a>
+        </Breadcrumb>
+        <Breadcrumb current>{testPageName}</Breadcrumb>
+      </BreadcrumbBar>
+    )
+    expect(queryByText(testParentPageName)).toBeInTheDocument()
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
+  })
 })
