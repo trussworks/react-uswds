@@ -8,6 +8,7 @@ export default {
   component: Calendar,
 }
 
+// TODO - use actions
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const mockSelectDate = (): void => {}
 

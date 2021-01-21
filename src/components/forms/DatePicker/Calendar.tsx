@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 
 import {
   DAY_OF_WEEK_LABELS,
@@ -15,6 +15,9 @@ import {
   isSameDay,
   isSameMonth,
   isDateWithinMinAndMax,
+  subYears,
+  keepDateBetweenMinAndMax,
+  addYears,
 } from './utils'
 
 import { Day } from './Day'
@@ -61,18 +64,51 @@ export const Calendar = ({
   minDate: Date
   maxDate?: Date
 }): React.ReactElement => {
+  const prevYearEl = useRef<HTMLButtonElement>(null)
+  const datePickerEl = useRef<HTMLDivElement>(null)
+
+  const [dateToDisplay, setDateToDisplay] = useState(date)
+
+  const focusedDate = addDays(dateToDisplay, 0)
+  const focusedMonth = dateToDisplay.getMonth()
+  const focusedYear = dateToDisplay.getFullYear()
+
+  const prevMonth = subMonths(dateToDisplay, 1)
+  const nextMonth = addMonths(dateToDisplay, 1)
+
+  const firstOfMonth = startOfMonth(dateToDisplay)
+  const prevButtonsDisabled = isSameMonth(dateToDisplay, minDate)
+  const nextButtonsDisabled = maxDate && isSameMonth(dateToDisplay, maxDate)
+
   // TODO handle button clicks
+  const handlePreviousYearClick = (): void => {
+    let newDate = subYears(dateToDisplay, 1)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setDateToDisplay(newDate)
+    // TODO - set focus
+    prevYearEl?.current?.focus()
+  }
 
-  const focusedDate = addDays(date, 0)
-  const focusedMonth = date.getMonth()
-  const focusedYear = date.getFullYear()
+  const handlePreviousMonthClick = (): void => {
+    let newDate = subMonths(dateToDisplay, 1)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setDateToDisplay(newDate)
+    // TODO - set focus
+  }
 
-  const prevMonth = subMonths(date, 1)
-  const nextMonth = addMonths(date, 1)
+  const handleNextMonthClick = (): void => {
+    let newDate = addMonths(dateToDisplay, 1)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setDateToDisplay(newDate)
+    // TODO - set focus
+  }
 
-  const firstOfMonth = startOfMonth(date)
-  const prevButtonsDisabled = isSameMonth(date, minDate)
-  const nextButtonsDisabled = maxDate && isSameMonth(date, maxDate)
+  const handleNextYearClick = (): void => {
+    let newDate = addYears(dateToDisplay, 1)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setDateToDisplay(newDate)
+    // TODO - set focus
+  }
 
   // TODO - range date
 
@@ -103,12 +139,17 @@ export const Calendar = ({
   }
 
   return (
-    <div tabIndex={-1} className="usa-date-picker__calendar__date-picker">
+    <div
+      tabIndex={-1}
+      className="usa-date-picker__calendar__date-picker"
+      ref={datePickerEl}>
       <div className="usa-date-picker__calendar__row">
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__cell--center-items">
           <button
             type="button"
             data-testid="previous-year"
+            onClick={handlePreviousYearClick}
+            ref={prevYearEl}
             className="usa-date-picker__calendar__previous-year"
             aria-label="Navigate back one year"
             disabled={prevButtonsDisabled}>
@@ -119,6 +160,7 @@ export const Calendar = ({
           <button
             type="button"
             data-testid="previous-month"
+            onClick={handlePreviousMonthClick}
             className="usa-date-picker__calendar__previous-month"
             aria-label="Navigate back one month"
             disabled={prevButtonsDisabled}>
@@ -145,6 +187,7 @@ export const Calendar = ({
           <button
             type="button"
             data-testid="next-month"
+            onClick={handleNextMonthClick}
             className="usa-date-picker__calendar__next-month"
             aria-label="Navigate forward one month"
             disabled={nextButtonsDisabled}>
@@ -155,6 +198,7 @@ export const Calendar = ({
           <button
             type="button"
             data-testid="next-year"
+            onClick={handleNextYearClick}
             className="usa-date-picker__calendar__next-year"
             aria-label="Navigate forward one year"
             disabled={nextButtonsDisabled}>

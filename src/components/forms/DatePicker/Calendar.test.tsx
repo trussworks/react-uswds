@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Calendar } from './Calendar'
 import { parseDateString, today } from './utils'
@@ -68,8 +69,8 @@ describe('Calendar', () => {
       <Calendar
         {...testProps}
         date={new Date('January 15 2021')}
-        minDate={parseDateString('2021-01-10')}
-        maxDate={parseDateString('2021-01-20')}
+        minDate={parseDateString('2021-01-10') as Date}
+        maxDate={parseDateString('2021-01-20') as Date}
       />
     )
 
@@ -103,6 +104,44 @@ describe('Calendar', () => {
     enabledDates.forEach((date) => {
       const datePattern = new RegExp(`^${date} January 2021`)
       expect(getByLabelText(datePattern)).toBeEnabled()
+    })
+  })
+
+  describe('navigation', () => {
+    it('clicking previous year navigates the calendar back one year', () => {
+      const { getByTestId } = render(
+        <Calendar {...testProps} date={new Date('January 2021')} />
+      )
+      userEvent.click(getByTestId('previous-year'))
+      expect(getByTestId('select-month')).toHaveTextContent('January')
+      expect(getByTestId('select-year')).toHaveTextContent('2020')
+    })
+
+    it('clicking next year navigates the calendar forward one year', () => {
+      const { getByTestId } = render(
+        <Calendar {...testProps} date={new Date('January 2021')} />
+      )
+      userEvent.click(getByTestId('next-year'))
+      expect(getByTestId('select-month')).toHaveTextContent('January')
+      expect(getByTestId('select-year')).toHaveTextContent('2022')
+    })
+
+    it('clicking previous month navigates the calendar back one month', () => {
+      const { getByTestId } = render(
+        <Calendar {...testProps} date={new Date('January 2021')} />
+      )
+      userEvent.click(getByTestId('previous-month'))
+      expect(getByTestId('select-month')).toHaveTextContent('December')
+      expect(getByTestId('select-year')).toHaveTextContent('2020')
+    })
+
+    it('clicking next month navigates the calendar forward one month', () => {
+      const { getByTestId } = render(
+        <Calendar {...testProps} date={new Date('January 2021')} />
+      )
+      userEvent.click(getByTestId('next-month'))
+      expect(getByTestId('select-month')).toHaveTextContent('February')
+      expect(getByTestId('select-year')).toHaveTextContent('2021')
     })
   })
 })

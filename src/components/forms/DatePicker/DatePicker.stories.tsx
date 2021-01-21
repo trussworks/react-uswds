@@ -36,3 +36,12 @@ export const withMinMaxInSameMonth = (): React.ReactElement => (
     maxDate="2021-01-20"
   />
 )
+
+export const withMinMax = (): React.ReactElement => (
+  <DatePicker
+    id="birthdate"
+    name="birthdate"
+    minDate="2020-01-01"
+    maxDate="2021-5-31"
+  />
+)
