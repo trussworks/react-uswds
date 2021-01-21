@@ -93,12 +93,24 @@ export const WrappingBreadcrumb = (): React.ReactElement => (
 )
 
 export const CustomBreadcrumbLinks = (): React.ReactElement => (
-  <BreadcrumbBar variant="wrap">
+  <BreadcrumbBar>
     <Breadcrumb>
       <Link className="usa-button" variant="unstyled" href={'#'}>
-        Custom link component
+        Home
       </Link>
     </Breadcrumb>
-    <Breadcrumb current>The current page</Breadcrumb>
+    <Breadcrumb>
+      <Link className="usa-button" variant="unstyled" href={'#'}>
+        Federal Contracting
+      </Link>
+    </Breadcrumb>
+    <Breadcrumb>
+      <Link className="usa-button" variant="unstyled" href={'#'}>
+        Contacting assistance programs
+      </Link>
+    </Breadcrumb>
+    <Breadcrumb current>
+      Women-owned small business federal contracting program
+    </Breadcrumb>
   </BreadcrumbBar>
 )

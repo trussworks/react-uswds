@@ -4,6 +4,7 @@ import { render } from '@testing-library/react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
 import { LinkingBreadcrumb } from '../LinkingBreadcrumb/LinkingBreadcrumb'
+import { Link } from '../../Link/Link'
 
 const testPageName = 'Test Page'
 const testParentPageName = 'Test Parent Page'
@@ -37,7 +38,7 @@ describe('BreadcrumbBar component', () => {
     const { getByRole, queryByText } = render(
       <BreadcrumbBar>
         <Breadcrumb>
-          <a href="#">{testParentPageName}</a>
+          <Link href="#">{testParentPageName}</Link>
         </Breadcrumb>
         <Breadcrumb current>{testPageName}</Breadcrumb>
       </BreadcrumbBar>
