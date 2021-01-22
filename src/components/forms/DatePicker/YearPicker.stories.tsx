@@ -20,10 +20,22 @@ export const yearPicker = (): React.ReactElement => (
   <YearPicker {...testProps} />
 )
 
-export const withMinAndMax = (): React.ReactElement => (
+export const withMinAndMaxInCurrentChunk = (): React.ReactElement => (
   <YearPicker
     {...testProps}
     minDate={parseDateString('2021-01-01') as Date}
+    maxDate={parseDateString('2025-01-01') as Date}
+  />
+)
+
+export const withMinInCurrentChunk = (): React.ReactElement => (
+  <YearPicker {...testProps} minDate={parseDateString('2021-01-01') as Date} />
+)
+
+export const withMaxInCurrentChunk = (): React.ReactElement => (
+  <YearPicker
+    {...testProps}
+    minDate={parseDateString('1950-01-01') as Date}
     maxDate={parseDateString('2025-01-01') as Date}
   />
 )

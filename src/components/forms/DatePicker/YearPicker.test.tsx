@@ -67,6 +67,35 @@ describe('YearPicker', () => {
     })
   })
 
+  it('renders a button to navigate to the previous and next chunks of years', () => {
+    const { getByTestId } = render(<YearPicker {...testProps} />)
+    expect(getByTestId('previous-year-chunk')).toBeInstanceOf(HTMLButtonElement)
+    expect(getByTestId('next-year-chunk')).toBeInstanceOf(HTMLButtonElement)
+  })
+
+  it('disables the previous button if the min date is in the displayed year chunk', () => {
+    const { getByTestId } = render(
+      <YearPicker
+        {...testProps}
+        minDate={parseDateString('2021-01-01') as Date}
+      />
+    )
+    expect(getByTestId('previous-year-chunk')).toBeDisabled()
+    expect(getByTestId('next-year-chunk')).not.toBeDisabled()
+  })
+
+  it('disables the next button if the max date is in the displayed year chunk', () => {
+    const { getByTestId } = render(
+      <YearPicker
+        {...testProps}
+        minDate={parseDateString('1980-01-01') as Date}
+        maxDate={parseDateString('2025-01-01') as Date}
+      />
+    )
+    expect(getByTestId('next-year-chunk')).toBeDisabled()
+    expect(getByTestId('previous-year-chunk')).not.toBeDisabled()
+  })
+
   it('the currently displayed year has the selected class', () => {
     const { getByText } = render(<YearPicker {...testProps} />)
     const button = getByText('2021')
@@ -111,6 +140,60 @@ describe('YearPicker', () => {
       } else {
         expect(getByText(year)).not.toBeDisabled()
       }
+    })
+  })
+
+  describe('navigation', () => {
+    it('clicking previous year chunk navigates the year picker back one chunk', () => {
+      const { getByTestId, getByText } = render(<YearPicker {...testProps} />)
+      userEvent.click(getByTestId('previous-year-chunk'))
+
+      const years = [
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+      ]
+
+      years.forEach((year) => {
+        const button = getByText(year)
+        expect(button).toBeInstanceOf(HTMLButtonElement)
+        expect(button).toHaveAttribute('data-value', `${year}`)
+      })
+    })
+
+    it('clicking next year chunk navigates the year picker forward one chunk', () => {
+      const { getByTestId, getByText } = render(<YearPicker {...testProps} />)
+      userEvent.click(getByTestId('next-year-chunk'))
+
+      const years = [
+        2028,
+        2029,
+        2030,
+        2031,
+        2032,
+        2033,
+        2034,
+        2035,
+        2036,
+        2037,
+        2038,
+        2039,
+      ]
+
+      years.forEach((year) => {
+        const button = getByText(year)
+        expect(button).toBeInstanceOf(HTMLButtonElement)
+        expect(button).toHaveAttribute('data-value', `${year}`)
+      })
     })
   })
 })

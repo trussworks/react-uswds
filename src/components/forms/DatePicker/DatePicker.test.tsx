@@ -17,7 +17,7 @@ elements to render:
   - calendar open
     - date selection - DONE
     - month selection - DONE
-    - year selection
+    - year selection - DONE
 - status text
 
 PROPS
@@ -54,8 +54,8 @@ EVENTS
 - click next month displays next month - DONE
 - click previous year displays previous year - DONE
 - click next year displays next year - DONE
-- click previous year chunk displays previous year chunk
-- click next year chunk displays next year chunk
+- click previous year chunk displays previous year chunk - DONE
+- click next year chunk displays next year chunk - DONE
 - click month selection displays select month - DONE
 - click year selection displays select year - DONE
 
@@ -414,6 +414,28 @@ describe('DatePicker component', () => {
       )
     })
 
-    // TODO test year nav
+    it('clicking previous year chunk updates the status text', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      userEvent.click(getByTestId('select-year'))
+      userEvent.click(getByTestId('previous-year-chunk'))
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Showing years 2004 to 2015. Select a year.'
+      )
+    })
+
+    it('clicking next year chunk navigates the year picker forward one chunk', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      userEvent.click(getByTestId('select-year'))
+      userEvent.click(getByTestId('next-year-chunk'))
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Showing years 2028 to 2039. Select a year.'
+      )
+    })
   })
 })

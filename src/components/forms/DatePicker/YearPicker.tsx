@@ -2,7 +2,12 @@ import React, { useEffect, useState, useRef } from 'react'
 import classnames from 'classnames'
 
 import { YEAR_CHUNK } from './constants'
-import { isDatesYearOutsideMinOrMax, listToTable, setYear } from './utils'
+import {
+  isDatesYearOutsideMinOrMax,
+  keepDateBetweenMinAndMax,
+  listToTable,
+  setYear,
+} from './utils'
 
 export const YearPicker = ({
   date,
@@ -28,9 +33,16 @@ export const YearPicker = ({
   yearToChunk -= yearToChunk % YEAR_CHUNK
   yearToChunk = Math.max(0, yearToChunk)
 
-  // TODO next/prev navigation
-
-  // next/prev buttons disabled
+  const prevYearChunkDisabled = isDatesYearOutsideMinOrMax(
+    setYear(date, yearToChunk - 1),
+    minDate,
+    maxDate
+  )
+  const nextYearChunkDisabled = isDatesYearOutsideMinOrMax(
+    setYear(date, yearToChunk + YEAR_CHUNK),
+    minDate,
+    maxDate
+  )
 
   useEffect(() => {
     // update status text when year chunk changes
@@ -90,6 +102,30 @@ export const YearPicker = ({
     yearIndex += 1
   }
 
+  const handlePreviousYearChunkClick = (): void => {
+    let adjustedYear = yearToDisplay - YEAR_CHUNK
+    adjustedYear = Math.max(0, adjustedYear)
+
+    let newDate = setYear(date, adjustedYear)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setYearToDisplay(newDate.getFullYear())
+    setFocusedYear(newDate.getFullYear())
+
+    // TODO focus
+  }
+
+  const handleNextYearChunkClick = (): void => {
+    let adjustedYear = yearToDisplay + YEAR_CHUNK
+    adjustedYear = Math.max(0, adjustedYear)
+
+    let newDate = setYear(date, adjustedYear)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setYearToDisplay(newDate.getFullYear())
+    setFocusedYear(newDate.getFullYear())
+
+    // TODO focus
+  }
+
   return (
     <div
       tabIndex={-1}
@@ -99,12 +135,34 @@ export const YearPicker = ({
       <table className="usa-date-picker__calendar__table" role="presentation">
         <tbody>
           <tr>
+            <td>
+              <button
+                type="button"
+                data-testid="previous-year-chunk"
+                className="usa-date-picker__calendar__previous-year-chunk"
+                aria-label={`Navigate back ${YEAR_CHUNK} years`}
+                disabled={prevYearChunkDisabled}
+                onClick={handlePreviousYearChunkClick}>
+                &nbsp;
+              </button>
+            </td>
             <td colSpan={3}>
               <table
                 className="usa-date-picker__calendar__table"
                 role="presentation">
                 <tbody>{listToTable(years, 3)}</tbody>
               </table>
+            </td>
+            <td>
+              <button
+                type="button"
+                data-testid="next-year-chunk"
+                className="usa-date-picker__calendar__next-year-chunk"
+                aria-label={`Navigate forward ${YEAR_CHUNK} years`}
+                disabled={nextYearChunkDisabled}
+                onClick={handleNextYearChunkClick}>
+                &nbsp;
+              </button>
             </td>
           </tr>
         </tbody>
