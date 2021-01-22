@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import {
   DAY_OF_WEEK_LABELS,
@@ -109,6 +109,11 @@ export const Calendar = ({
     setDateToDisplay(newDate)
     // TODO - set focus
   }
+
+  useEffect(() => {
+    // Update displayed date when input changes
+    setDateToDisplay(date)
+  }, [date])
 
   // TODO - range date
 

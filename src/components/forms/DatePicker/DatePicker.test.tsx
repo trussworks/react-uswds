@@ -162,6 +162,9 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
       expect(getByText('20')).toHaveFocus()
+      expect(getByText('20')).toHaveClass(
+        'usa-date-picker__calendar__date--selected'
+      )
 
       expect(getByTestId('date-picker-status')).toHaveTextContent(
         'You can navigate by day using left and right arrows'
@@ -193,7 +196,7 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-status')).toHaveTextContent('')
     })
 
-    it('defaults to today if there is no value', () => {
+    it('focus defaults to today if there is no value', () => {
       const todayDate = today()
       const todayLabel = `${todayDate.getDate()} ${
         MONTH_LABELS[todayDate.getMonth()]
@@ -220,6 +223,7 @@ describe('DatePicker component', () => {
       )
     })
 
+    // TODO - test this better
     it('does not add Selected date to the status text if the selected date and the focused date are not the same', () => {
       const { getByTestId } = render(<DatePicker {...testProps} />)
       userEvent.click(getByTestId('date-picker-button'))
@@ -346,6 +350,39 @@ describe('DatePicker component', () => {
       // open calendar again
       userEvent.click(getByTestId('date-picker-button'))
       expect(getByText('12')).toHaveFocus()
+      expect(getByText('12')).toHaveClass(
+        'usa-date-picker__calendar__date--selected'
+      )
+    })
+  })
+
+  describe('typing in a date', () => {
+    it('typing a date in the external input updates the selected date', () => {
+      const { getByTestId, getByText } = render(<DatePicker {...testProps} />)
+      userEvent.type(getByTestId('date-picker-external-input'), '05/16/1988')
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('select-month')).toHaveTextContent('May')
+      expect(getByTestId('select-year')).toHaveTextContent('1988')
+      expect(getByText('16')).toHaveFocus()
+      expect(getByText('16')).toHaveClass(
+        'usa-date-picker__calendar__date--selected'
+      )
+    })
+
+    it('typing a date with the calendar open updates the calendar to the entered date', () => {
+      const { getByTestId, getByText } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('select-month')).toHaveTextContent('January')
+      expect(getByTestId('select-year')).toHaveTextContent('2021')
+      userEvent.clear(getByTestId('date-picker-external-input'))
+      userEvent.type(getByTestId('date-picker-external-input'), '05/16/1988')
+      expect(getByTestId('select-month')).toHaveTextContent('May')
+      expect(getByTestId('select-year')).toHaveTextContent('1988')
+      expect(getByText('16')).toHaveClass(
+        'usa-date-picker__calendar__date--selected'
+      )
     })
   })
 })

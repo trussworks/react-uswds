@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, FormEvent } from 'react'
 import classnames from 'classnames'
 
 import {
@@ -81,6 +81,31 @@ export const DatePicker = (
       setShowCalendar(false)
       setStatuses([])
       externalInputEl?.current?.focus()
+    }
+  }
+
+  const handleExternalInput = (event: FormEvent<HTMLInputElement>): void => {
+    // Keep external & internal input values in sync
+    const value = (event.target as HTMLInputElement).value
+    setExternalValue(value)
+
+    const inputDate = parseDateString(value, DEFAULT_EXTERNAL_DATE_FORMAT, true)
+    let newValue = ''
+    if (inputDate && !isDateInvalid(value, parsedMinDate, parsedMaxDate)) {
+      newValue = formatDate(inputDate)
+    }
+
+    if (internalValue !== newValue) {
+      setInternalValue(newValue)
+    }
+
+    if (inputDate && showCalendar) {
+      const newCalendarDate = keepDateBetweenMinAndMax(
+        inputDate,
+        parsedMinDate,
+        parsedMaxDate
+      )
+      setCalendarDisplayValue(newCalendarDate)
     }
   }
 
@@ -182,6 +207,7 @@ export const DatePicker = (
           disabled={disabled}
           value={externalValue}
           ref={externalInputEl}
+          onInput={handleExternalInput}
         />
         <button
           data-testid="date-picker-button"
@@ -207,6 +233,7 @@ export const DatePicker = (
               handleSelectDate={handleSelectDate}
               minDate={parsedMinDate}
               maxDate={parsedMaxDate}
+              selectedDate={parseDateString(internalValue)}
             />
           )}
         </div>
