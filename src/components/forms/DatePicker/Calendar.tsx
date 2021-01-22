@@ -19,6 +19,7 @@ import {
   keepDateBetweenMinAndMax,
   addYears,
   listToTable,
+  setMonth,
 } from './utils'
 
 enum CalendarModes {
@@ -31,7 +32,7 @@ import { Day } from './Day'
 import { MonthPicker } from './MonthPicker'
 
 export const Calendar = ({
-  date = today(),
+  date,
   selectedDate,
   handleSelectDate,
   minDate,
@@ -48,19 +49,31 @@ export const Calendar = ({
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const datePickerEl = useRef<HTMLDivElement>(null)
 
-  const [dateToDisplay, setDateToDisplay] = useState(date)
+  const [dateToDisplay, setDateToDisplay] = useState(date || today())
   const [mode, setMode] = useState<CalendarModes>(CalendarModes.DATE_PICKER)
+
+  const handleSelectMonth = (monthIndex: number): void => {
+    let newDate = setMonth(dateToDisplay, monthIndex)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setDateToDisplay(newDate)
+    setMode(CalendarModes.DATE_PICKER)
+  }
 
   useEffect(() => {
     // Update displayed date when input changes (only if viewing date picker - otherwise an effect loop will occur)
-    if (mode === CalendarModes.DATE_PICKER) {
+    if (date && mode === CalendarModes.DATE_PICKER) {
       setDateToDisplay(date)
     }
   }, [date])
 
   if (mode === CalendarModes.MONTH_PICKER) {
     return (
-      <MonthPicker date={dateToDisplay} minDate={minDate} maxDate={maxDate} />
+      <MonthPicker
+        date={dateToDisplay}
+        minDate={minDate}
+        maxDate={maxDate}
+        handleSelectMonth={handleSelectMonth}
+      />
     )
   }
 

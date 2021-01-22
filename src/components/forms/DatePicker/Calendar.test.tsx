@@ -153,5 +153,17 @@ describe('Calendar', () => {
       expect(queryByTestId('calendar-date-picker')).not.toBeInTheDocument()
       expect(getByTestId('calendar-month-picker')).toBeInTheDocument()
     })
+
+    it('clicking a select month button selects that month and hides month selection', () => {
+      const { getByTestId, queryByTestId, getByText } = render(
+        <Calendar {...testProps} date={new Date('January 2021')} />
+      )
+      userEvent.click(getByTestId('select-month'))
+      userEvent.click(getByText('May'))
+      expect(getByTestId('select-month')).toHaveTextContent('May')
+      expect(getByTestId('select-year')).toHaveTextContent('2021')
+      expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
+      expect(queryByTestId('calendar-month-picker')).not.toBeInTheDocument()
+    })
   })
 })

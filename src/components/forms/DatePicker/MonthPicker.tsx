@@ -8,10 +8,12 @@ export const MonthPicker = ({
   date,
   minDate,
   maxDate,
+  handleSelectMonth,
 }: {
   date: Date
   minDate: Date
   maxDate?: Date
+  handleSelectMonth: (value: number) => void
 }): React.ReactElement => {
   // TODO - use state for focused month
   const selectedMonth = date.getMonth()
@@ -54,7 +56,10 @@ export const MonthPicker = ({
         data-value={index}
         data-label={month}
         aria-selected={isSelected}
-        disabled={isDisabled}>
+        disabled={isDisabled}
+        onClick={(): void => {
+          handleSelectMonth(index)
+        }}>
         {month}
       </button>
     )

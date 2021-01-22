@@ -10,6 +10,7 @@ describe('MonthPicker', () => {
   const testProps = {
     date: new Date('January 20 2021'),
     minDate: parseDateString('0000-01-01') as Date,
+    handleSelectMonth: jest.fn(),
   }
 
   it('renders a button for each month', () => {
@@ -18,6 +19,20 @@ describe('MonthPicker', () => {
     MONTH_LABELS.forEach((month) => {
       const button = getByText(month)
       expect(button).toBeInstanceOf(HTMLButtonElement)
+    })
+  })
+
+  it('each button implements an onClick handler to select the month', () => {
+    const mockSelectMonth = jest.fn()
+    const { getByText } = render(
+      <MonthPicker {...testProps} handleSelectMonth={mockSelectMonth} />
+    )
+
+    MONTH_LABELS.forEach((month, index) => {
+      const button = getByText(month)
+      expect(button).toBeInstanceOf(HTMLButtonElement)
+      userEvent.click(button)
+      expect(mockSelectMonth).toHaveBeenCalledWith(index)
     })
   })
 
