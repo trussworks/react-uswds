@@ -16,7 +16,7 @@ elements to render:
   - calendar closed - DONE
   - calendar open
     - date selection - DONE
-    - month selection
+    - month selection - DONE
     - year selection
 - status text
 
@@ -48,16 +48,16 @@ navigate
 EVENTS
 - click button toggles calendar - DONE
 - click date selects date - DONE
-- click month selects month
-- click year selects year
+- click month selects month - DONE
+- click year selects year - DONE
 - click previous month displays previous month - DONE
 - click next month displays next month - DONE
 - click previous year displays previous year - DONE
 - click next year displays next year - DONE
 - click previous year chunk displays previous year chunk
 - click next year chunk displays next year chunk
-- click month selection displays select month
-- click year selection displays select year
+- click month selection displays select month - DONE
+- click year selection displays select year - DONE
 
 - keyup on date picker calendar prevents default if keyCode !== keydown (?)
   - keydown on date picker calendar sets keydown (see keyup)
@@ -400,5 +400,20 @@ describe('DatePicker component', () => {
         'Select a month'
       )
     })
+  })
+
+  describe('year selection', () => {
+    it('clicking the selected year updates the status text', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      userEvent.click(getByTestId('select-year'))
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Showing years 2016 to 2027. Select a year.'
+      )
+    })
+
+    // TODO test year nav
   })
 })

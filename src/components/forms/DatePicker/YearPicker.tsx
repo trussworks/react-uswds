@@ -1,0 +1,114 @@
+import React, { useEffect, useState, useRef } from 'react'
+import classnames from 'classnames'
+
+import { YEAR_CHUNK } from './constants'
+import { isDatesYearOutsideMinOrMax, listToTable, setYear } from './utils'
+
+export const YearPicker = ({
+  date,
+  minDate,
+  maxDate,
+  handleSelectYear,
+  setStatuses,
+}: {
+  date: Date
+  minDate: Date
+  maxDate?: Date
+  handleSelectYear: (year: number) => void
+  setStatuses: (statuses: string[]) => void
+}): React.ReactElement => {
+  // TODO focusedYear state
+  const selectedYear = date.getFullYear()
+
+  const [yearToDisplay, setYearToDisplay] = useState(selectedYear)
+  const [focusedYear, setFocusedYear] = useState(yearToDisplay)
+  const yearPickerEl = useRef<HTMLDivElement>(null)
+
+  let yearToChunk = focusedYear
+  yearToChunk -= yearToChunk % YEAR_CHUNK
+  yearToChunk = Math.max(0, yearToChunk)
+
+  // TODO next/prev navigation
+
+  // next/prev buttons disabled
+
+  useEffect(() => {
+    // update status text when year chunk changes
+    const statusStr = `Showing years ${yearToChunk} to ${
+      yearToChunk + YEAR_CHUNK - 1
+    }. Select a year.`
+    setStatuses([statusStr])
+  }, [yearToDisplay])
+
+  useEffect(() => {
+    // focus on year button
+    const yearToFocus =
+      yearPickerEl.current &&
+      yearPickerEl.current.querySelector<HTMLButtonElement>(
+        `[data-value="${focusedYear}"]`
+      )
+    if (yearToFocus) yearToFocus.focus()
+  })
+
+  const years = []
+  let yearIndex = yearToChunk
+  while (years.length < YEAR_CHUNK) {
+    const yearIterator = yearIndex
+    const isDisabled = isDatesYearOutsideMinOrMax(
+      setYear(date, yearIndex),
+      minDate,
+      maxDate
+    )
+
+    const isSelected = yearIndex === selectedYear
+    const isFocused = yearIndex === focusedYear
+    const tabIndex = isFocused ? 0 : -1
+
+    const classes = classnames('usa-date-picker__calendar__year', {
+      'usa-date-picker__calendar__year--selected': isSelected,
+      'usa-date-picker__calendar__year--focused': isFocused,
+    })
+
+    const onClick = (): void => {
+      handleSelectYear(yearIterator)
+    }
+
+    years.push(
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+      <button
+        type="button"
+        tabIndex={tabIndex}
+        className={classes}
+        data-value={yearIndex}
+        aria-selected={isSelected}
+        disabled={isDisabled}
+        onClick={onClick}>
+        {yearIndex}
+      </button>
+    )
+
+    yearIndex += 1
+  }
+
+  return (
+    <div
+      tabIndex={-1}
+      className="usa-date-picker__calendar__year-picker"
+      data-testid="calendar-year-picker"
+      ref={yearPickerEl}>
+      <table className="usa-date-picker__calendar__table" role="presentation">
+        <tbody>
+          <tr>
+            <td colSpan={3}>
+              <table
+                className="usa-date-picker__calendar__table"
+                role="presentation">
+                <tbody>{listToTable(years, 3)}</tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  )
+}

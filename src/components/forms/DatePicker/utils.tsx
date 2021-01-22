@@ -343,11 +343,11 @@ export const isDatesMonthOutsideMinOrMax = (
 export const isDatesYearOutsideMinOrMax = (
   date: Date,
   minDate: Date,
-  maxDate: Date
+  maxDate?: Date
 ): boolean => {
   return (
     lastDayOfMonth(setMonth(date, 11)) < minDate ||
-    (maxDate && startOfMonth(setMonth(date, 0)) > maxDate)
+    (!!maxDate && startOfMonth(setMonth(date, 0)) > maxDate)
   )
 }
 

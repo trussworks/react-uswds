@@ -16,9 +16,11 @@ describe('MonthPicker', () => {
   it('renders a button for each month', () => {
     const { getByText } = render(<MonthPicker {...testProps} />)
 
-    MONTH_LABELS.forEach((month) => {
+    MONTH_LABELS.forEach((month, index) => {
       const button = getByText(month)
       expect(button).toBeInstanceOf(HTMLButtonElement)
+      expect(button).toHaveAttribute('data-value', `${index}`)
+      expect(button).toHaveAttribute('data-label', month)
     })
   })
 

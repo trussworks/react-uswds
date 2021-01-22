@@ -20,6 +20,7 @@ import {
   addYears,
   listToTable,
   setMonth,
+  setYear,
 } from './utils'
 
 enum CalendarModes {
@@ -30,6 +31,7 @@ enum CalendarModes {
 
 import { Day } from './Day'
 import { MonthPicker } from './MonthPicker'
+import { YearPicker } from './YearPicker'
 
 export const Calendar = ({
   date,
@@ -57,6 +59,15 @@ export const Calendar = ({
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
     setMode(CalendarModes.DATE_PICKER)
+    // TODO focus
+  }
+
+  const handleSelectYear = (year: number): void => {
+    let newDate = setYear(dateToDisplay, year)
+    newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setDateToDisplay(newDate)
+    setMode(CalendarModes.DATE_PICKER)
+    // TODO focus
   }
 
   useEffect(() => {
@@ -66,6 +77,23 @@ export const Calendar = ({
     }
   }, [date])
 
+  // TODO - prevent this from stealing focus from input
+  /*
+  useEffect(() => {
+
+    // Focus on new date when it changes
+    const focusedDate =
+      datePickerEl.current &&
+      datePickerEl.current.querySelector<HTMLElement>(
+        '.usa-date-picker__calendar__date--focused'
+      )
+
+    if (focusedDate) {
+      focusedDate.focus()
+    }
+  }, [dateToDisplay])
+  */
+
   if (mode === CalendarModes.MONTH_PICKER) {
     return (
       <MonthPicker
@@ -73,6 +101,16 @@ export const Calendar = ({
         minDate={minDate}
         maxDate={maxDate}
         handleSelectMonth={handleSelectMonth}
+      />
+    )
+  } else if (mode === CalendarModes.YEAR_PICKER) {
+    return (
+      <YearPicker
+        date={dateToDisplay}
+        minDate={minDate}
+        maxDate={maxDate}
+        handleSelectYear={handleSelectYear}
+        setStatuses={setStatuses}
       />
     )
   }
@@ -121,6 +159,10 @@ export const Calendar = ({
   const handleToggleMonthSelection = (): void => {
     setMode(CalendarModes.MONTH_PICKER)
     setStatuses(['Select a month.'])
+  }
+
+  const handleToggleYearSelection = (): void => {
+    setMode(CalendarModes.YEAR_PICKER)
   }
 
   // TODO - range date
@@ -193,6 +235,7 @@ export const Calendar = ({
           <button
             type="button"
             data-testid="select-year"
+            onClick={handleToggleYearSelection}
             className="usa-date-picker__calendar__year-selection"
             aria-label={`${focusedYear}. Click to select year`}>
             {focusedYear}

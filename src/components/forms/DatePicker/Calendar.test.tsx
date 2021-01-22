@@ -156,7 +156,7 @@ describe('Calendar', () => {
 
     it('clicking a select month button selects that month and hides month selection', () => {
       const { getByTestId, queryByTestId, getByText } = render(
-        <Calendar {...testProps} date={new Date('January 2021')} />
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
       userEvent.click(getByTestId('select-month'))
       userEvent.click(getByText('May'))
@@ -164,6 +164,29 @@ describe('Calendar', () => {
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
       expect(queryByTestId('calendar-month-picker')).not.toBeInTheDocument()
+      // TODO expect(getByText('20')).toHaveFocus()
+    })
+  })
+
+  describe('year selection', () => {
+    it('clicking the selected year shows year selection', () => {
+      const { queryByTestId, getByTestId } = render(<Calendar {...testProps} />)
+      userEvent.click(getByTestId('select-year'))
+      expect(queryByTestId('calendar-date-picker')).not.toBeInTheDocument()
+      expect(getByTestId('calendar-year-picker')).toBeInTheDocument()
+    })
+
+    it('clicking a select year button selects that year and hides year selection', () => {
+      const { getByTestId, queryByTestId, getByText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+      userEvent.click(getByTestId('select-year'))
+      userEvent.click(getByText('2017'))
+      expect(getByTestId('select-month')).toHaveTextContent('January')
+      expect(getByTestId('select-year')).toHaveTextContent('2017')
+      expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
+      expect(queryByTestId('calendar-year-picker')).not.toBeInTheDocument()
+      // TODO expect(getByText('20')).toHaveFocus()
     })
   })
 })
