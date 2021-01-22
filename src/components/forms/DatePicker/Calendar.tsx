@@ -18,38 +18,17 @@ import {
   subYears,
   keepDateBetweenMinAndMax,
   addYears,
+  listToTable,
 } from './utils'
 
-import { Day } from './Day'
-
-const listToTable = (
-  list: React.ReactNode[],
-  rowSize: number
-): React.ReactFragment => {
-  const rows = []
-  let i = 0
-
-  while (i < list.length) {
-    const row = []
-    while (i < list.length && row.length < rowSize) {
-      row.push(list[i])
-      i += 1
-    }
-    rows.push(row)
-  }
-
-  return (
-    <>
-      {rows.map((r, rIndex) => (
-        <tr key={`row_${rIndex}`}>
-          {r.map((cell, cIndex) => (
-            <td key={`row_${rIndex}_cell_${cIndex}`}>{cell}</td>
-          ))}
-        </tr>
-      ))}
-    </>
-  )
+enum CalendarModes {
+  DATE_PICKER,
+  MONTH_PICKER,
+  YEAR_PICKER,
 }
+
+import { Day } from './Day'
+import { MonthPicker } from './MonthPicker'
 
 export const Calendar = ({
   date = today(),
@@ -57,17 +36,33 @@ export const Calendar = ({
   handleSelectDate,
   minDate,
   maxDate,
+  setStatuses,
 }: {
   date?: Date
   selectedDate?: Date
   handleSelectDate: (value: string) => void
   minDate: Date
   maxDate?: Date
+  setStatuses: (statuses: string[]) => void
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const datePickerEl = useRef<HTMLDivElement>(null)
 
   const [dateToDisplay, setDateToDisplay] = useState(date)
+  const [mode, setMode] = useState<CalendarModes>(CalendarModes.DATE_PICKER)
+
+  useEffect(() => {
+    // Update displayed date when input changes (only if viewing date picker - otherwise an effect loop will occur)
+    if (mode === CalendarModes.DATE_PICKER) {
+      setDateToDisplay(date)
+    }
+  }, [date])
+
+  if (mode === CalendarModes.MONTH_PICKER) {
+    return (
+      <MonthPicker date={dateToDisplay} minDate={minDate} maxDate={maxDate} />
+    )
+  }
 
   const focusedDate = addDays(dateToDisplay, 0)
   const focusedMonth = dateToDisplay.getMonth()
@@ -110,10 +105,10 @@ export const Calendar = ({
     // TODO - set focus
   }
 
-  useEffect(() => {
-    // Update displayed date when input changes
-    setDateToDisplay(date)
-  }, [date])
+  const handleToggleMonthSelection = (): void => {
+    setMode(CalendarModes.MONTH_PICKER)
+    setStatuses(['Select a month.'])
+  }
 
   // TODO - range date
 
@@ -147,6 +142,7 @@ export const Calendar = ({
     <div
       tabIndex={-1}
       className="usa-date-picker__calendar__date-picker"
+      data-testid="calendar-date-picker"
       ref={datePickerEl}>
       <div className="usa-date-picker__calendar__row">
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__cell--center-items">
@@ -176,6 +172,7 @@ export const Calendar = ({
           <button
             type="button"
             data-testid="select-month"
+            onClick={handleToggleMonthSelection}
             className="usa-date-picker__calendar__month-selection"
             aria-label={`${monthLabel}. Click to select month`}>
             {monthLabel}

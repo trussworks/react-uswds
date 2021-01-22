@@ -234,6 +234,7 @@ export const DatePicker = (
               minDate={parsedMinDate}
               maxDate={parsedMaxDate}
               selectedDate={parseDateString(internalValue)}
+              setStatuses={setStatuses}
             />
           )}
         </div>

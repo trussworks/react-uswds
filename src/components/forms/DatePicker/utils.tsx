@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
 
 /**
@@ -322,10 +324,11 @@ export const isDateWithinMinAndMax = (
 export const isDatesMonthOutsideMinOrMax = (
   date: Date,
   minDate: Date,
-  maxDate: Date
+  maxDate?: Date
 ): boolean => {
   return (
-    lastDayOfMonth(date) < minDate || (maxDate && startOfMonth(date) > maxDate)
+    lastDayOfMonth(date) < minDate ||
+    (!!maxDate && startOfMonth(date) > maxDate)
   )
 }
 
@@ -485,4 +488,35 @@ export const isDateInvalid = (
   }
 
   return isInvalid
+}
+
+// RENDERING TABLES
+
+export const listToTable = (
+  list: React.ReactNode[],
+  rowSize: number
+): React.ReactFragment => {
+  const rows = []
+  let i = 0
+
+  while (i < list.length) {
+    const row = []
+    while (i < list.length && row.length < rowSize) {
+      row.push(list[i])
+      i += 1
+    }
+    rows.push(row)
+  }
+
+  return (
+    <>
+      {rows.map((r, rIndex) => (
+        <tr key={`row_${rIndex}`}>
+          {r.map((cell, cIndex) => (
+            <td key={`row_${rIndex}_cell_${cIndex}`}>{cell}</td>
+          ))}
+        </tr>
+      ))}
+    </>
+  )
 }

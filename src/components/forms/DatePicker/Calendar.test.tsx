@@ -11,6 +11,7 @@ describe('Calendar', () => {
   const testProps = {
     handleSelectDate: mockSelectDate,
     minDate: parseDateString('0000-01-01') as Date,
+    setStatuses: jest.fn(),
   }
 
   it('renders calendar navigation', () => {
@@ -142,6 +143,15 @@ describe('Calendar', () => {
       userEvent.click(getByTestId('next-month'))
       expect(getByTestId('select-month')).toHaveTextContent('February')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
+    })
+  })
+
+  describe('month selection', () => {
+    it('clicking the selected month shows month selection', () => {
+      const { queryByTestId, getByTestId } = render(<Calendar {...testProps} />)
+      userEvent.click(getByTestId('select-month'))
+      expect(queryByTestId('calendar-date-picker')).not.toBeInTheDocument()
+      expect(getByTestId('calendar-month-picker')).toBeInTheDocument()
     })
   })
 })

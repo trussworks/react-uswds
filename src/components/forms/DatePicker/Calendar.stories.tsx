@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react'
 
 import { Calendar } from './Calendar'
@@ -9,12 +10,12 @@ export default {
 }
 
 // TODO - use actions
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 const mockSelectDate = (): void => {}
 
 const defaultProps = {
   handleSelectDate: mockSelectDate,
   minDate: new Date('0000-01-01'),
+  setStatuses: (): void => {},
 }
 
 export const defaultCalendar = (): React.ReactElement => (

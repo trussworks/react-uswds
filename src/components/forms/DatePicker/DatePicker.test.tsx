@@ -36,12 +36,13 @@ toggle
   SHOW CALENDAR:
     - gets date to display (keep between min/max, default to today)
     - render calendar with date to display
-    - focus on date
-  HIDE CALENDAR:
+    - focus on date - ?
+    - set status text
+  HIDE CALENDAR: - DONE
     - remove active class
     - set hidden to true
     - set status text to ''
-validate
+validate - DONE
 navigate
 
 EVENTS
@@ -49,14 +50,15 @@ EVENTS
 - click date selects date - DONE
 - click month selects month
 - click year selects year
-- click previous month displays previous month
-- click next month displays next month
-- click previous year displays previous year
-- click next year displays next year
+- click previous month displays previous month - DONE
+- click next month displays next month - DONE
+- click previous year displays previous year - DONE
+- click next year displays next year - DONE
 - click previous year chunk displays previous year chunk
 - click next year chunk displays next year chunk
-- click month focuses month
-- click year focuses year
+- click month selection displays select month
+- click year selection displays select year
+
 - keyup on date picker calendar prevents default if keyCode !== keydown (?)
   - keydown on date picker calendar sets keydown (see keyup)
 - keydown on date picker input validates if keycode is enter
@@ -67,9 +69,12 @@ EVENTS
 - keydown on calendar year handles up/down/left/right, home, end, pageup, pagedown
 - keydown on calendar year picker handles tab, shift+tab
 - keydown on date picker handles escape
+
 - focus out on date picker external input validates
 - focus out on date picker hides calendar if outside
-- input on date picker external input calls reconcileInputValues, update calendar if visible
+
+- input on date picker external input calls reconcileInputValues, update calendar if visible - DONE
+
 - handle mouse move from date/month/year if not mobile
  */
 
@@ -382,6 +387,17 @@ describe('DatePicker component', () => {
       expect(getByTestId('select-year')).toHaveTextContent('1988')
       expect(getByText('16')).toHaveClass(
         'usa-date-picker__calendar__date--selected'
+      )
+    })
+  })
+
+  describe('month selection', () => {
+    it('clicking the selected month updates the status text', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      userEvent.click(getByTestId('date-picker-button'))
+      userEvent.click(getByTestId('select-month'))
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Select a month'
       )
     })
   })
