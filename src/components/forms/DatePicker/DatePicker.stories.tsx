@@ -45,3 +45,12 @@ export const withMinMax = (): React.ReactElement => (
     maxDate="2021-5-31"
   />
 )
+
+export const withRangeDate = (): React.ReactElement => (
+  <DatePicker
+    id="birthdate"
+    name="birthdate"
+    defaultValue="2021-01-20"
+    rangeDate="2021-01-08"
+  />
+)

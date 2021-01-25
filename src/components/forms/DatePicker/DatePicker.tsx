@@ -25,6 +25,7 @@ interface DatePickerProps {
   defaultValue?: string
   minDate: string
   maxDate?: string
+  rangeDate?: string
 }
 
 export const DatePicker = (
@@ -37,6 +38,7 @@ export const DatePicker = (
     disabled,
     minDate = DEFAULT_MIN_DATE,
     maxDate,
+    rangeDate,
   } = props
 
   const datePickerEl = useRef<HTMLDivElement>(null)
@@ -53,6 +55,7 @@ export const DatePicker = (
 
   const parsedMinDate = parseDateString(minDate) as Date
   const parsedMaxDate = maxDate ? parseDateString(maxDate) : undefined
+  const parsedRangeDate = rangeDate ? parseDateString(rangeDate) : undefined
 
   const validateInput = (): void => {
     const isInvalid = isDateInvalid(externalValue, parsedMinDate, parsedMaxDate)
@@ -233,6 +236,7 @@ export const DatePicker = (
               handleSelectDate={handleSelectDate}
               minDate={parsedMinDate}
               maxDate={parsedMaxDate}
+              rangeDate={parsedRangeDate}
               selectedDate={parseDateString(internalValue)}
               setStatuses={setStatuses}
             />

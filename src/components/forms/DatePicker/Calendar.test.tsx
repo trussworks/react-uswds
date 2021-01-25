@@ -108,6 +108,31 @@ describe('Calendar', () => {
     })
   })
 
+  it('highlights a range of dates if there is a rangeDate prop', () => {
+    const { getByLabelText } = render(
+      <Calendar
+        {...testProps}
+        selectedDate={parseDateString('2021-01-20')}
+        rangeDate={parseDateString('2021-01-08')}
+      />
+    )
+
+    expect(getByLabelText(/^8 January 2021/)).toHaveClass(
+      'usa-date-picker__calendar__date--range-date-start'
+    )
+    expect(getByLabelText(/^20 January 2021/)).toHaveClass(
+      'usa-date-picker__calendar__date--range-date-end'
+    )
+
+    const rangeDates = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    rangeDates.forEach((date) => {
+      const datePattern = new RegExp(`^${date} January 2021`)
+      expect(getByLabelText(datePattern)).toHaveClass(
+        'usa-date-picker__calendar__date--within-range'
+      )
+    })
+  })
+
   describe('navigation', () => {
     it('clicking previous year navigates the calendar back one year', () => {
       const { getByTestId } = render(

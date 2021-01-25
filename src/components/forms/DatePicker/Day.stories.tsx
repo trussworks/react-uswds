@@ -38,3 +38,17 @@ export const nextMonth = (): React.ReactElement => (
   <Day {...defaultProps} isNextMonth />
 )
 export const today = (): React.ReactElement => <Day {...defaultProps} isToday />
+
+export const isRangeDate = (): React.ReactElement => (
+  <Day {...defaultProps} isRangeDate />
+)
+
+export const isRangeStart = (): React.ReactElement => (
+  <Day {...defaultProps} isRangeStart />
+)
+export const isRangeEnd = (): React.ReactElement => (
+  <Day {...defaultProps} isRangeEnd />
+)
+export const isWithinRange = (): React.ReactElement => (
+  <Day {...defaultProps} isWithinRange />
+)

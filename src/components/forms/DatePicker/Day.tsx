@@ -14,6 +14,10 @@ export const Day = ({
   isFocusedMonth = false,
   isNextMonth = false,
   isToday = false,
+  isRangeDate = false,
+  isRangeStart = false,
+  isRangeEnd = false,
+  isWithinRange = false,
 }: {
   date: Date
   onClick: (value: string) => void
@@ -24,6 +28,10 @@ export const Day = ({
   isFocusedMonth?: boolean
   isNextMonth?: boolean
   isToday?: boolean
+  isRangeDate?: boolean
+  isRangeStart?: boolean
+  isRangeEnd?: boolean
+  isWithinRange?: boolean
 }): React.ReactElement => {
   const day = date.getDate()
   const month = date.getMonth()
@@ -33,8 +41,6 @@ export const Day = ({
   const formattedDate = formatDate(date)
   const tabIndex = isFocused ? 0 : -1
 
-  // TODO - range date?
-
   const classes = classnames('usa-date-picker__calendar__date', {
     'usa-date-picker__calendar__date--previous-month': isPrevMonth,
     'usa-date-picker__calendar__date--current-month': isFocusedMonth,
@@ -42,9 +48,13 @@ export const Day = ({
     'usa-date-picker__calendar__date--selected': isSelected,
     'usa-date-picker__calendar__date--today': isToday,
     'usa-date-picker__calendar__date--focused': isFocused,
+    'usa-date-picker__calendar__date--range-date': isRangeDate,
+    'usa-date-picker__calendar__date--range-date-start': isRangeStart,
+    'usa-date-picker__calendar__date--range-date-end': isRangeEnd,
+    'usa-date-picker__calendar__date--within-range': isWithinRange,
   })
 
-  const monthStr = MONTH_LABELS[month]
+  const monthStr = MONTH_LABELS[parseInt(`${month}`)]
   const dayStr = DAY_OF_WEEK_LABELS[dayOfWeek]
 
   const handleClick = (): void => {

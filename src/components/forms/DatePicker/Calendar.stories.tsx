@@ -38,3 +38,11 @@ export const minAndMax = (): React.ReactElement => (
     maxDate={parseDateString('2021-01-20')}
   />
 )
+
+export const rangeDate = (): React.ReactElement => (
+  <Calendar
+    {...defaultProps}
+    selectedDate={parseDateString('2021-01-20')}
+    rangeDate={parseDateString('2021-01-08')}
+  />
+)

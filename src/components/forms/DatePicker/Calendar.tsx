@@ -21,6 +21,9 @@ import {
   listToTable,
   setMonth,
   setYear,
+  min,
+  max,
+  subDays,
 } from './utils'
 
 enum CalendarModes {
@@ -39,6 +42,7 @@ export const Calendar = ({
   handleSelectDate,
   minDate,
   maxDate,
+  rangeDate,
   setStatuses,
 }: {
   date?: Date
@@ -46,6 +50,7 @@ export const Calendar = ({
   handleSelectDate: (value: string) => void
   minDate: Date
   maxDate?: Date
+  rangeDate?: Date
   setStatuses: (statuses: string[]) => void
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
@@ -126,7 +131,13 @@ export const Calendar = ({
   const prevButtonsDisabled = isSameMonth(dateToDisplay, minDate)
   const nextButtonsDisabled = maxDate && isSameMonth(dateToDisplay, maxDate)
 
-  // TODO handle button clicks
+  const rangeConclusionDate = selectedDate || dateToDisplay
+  const rangeStartDate = rangeDate && min(rangeConclusionDate, rangeDate)
+  const rangeEndDate = rangeDate && max(rangeConclusionDate, rangeDate)
+
+  const withinRangeStartDate = rangeStartDate && addDays(rangeStartDate, 1)
+  const withinRangeEndDate = rangeEndDate && subDays(rangeEndDate, 1)
+
   const handlePreviousYearClick = (): void => {
     let newDate = subYears(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
@@ -165,8 +176,6 @@ export const Calendar = ({
     setMode(CalendarModes.YEAR_PICKER)
   }
 
-  // TODO - range date
-
   const monthLabel = MONTH_LABELS[focusedMonth]
 
   const days = []
@@ -188,6 +197,18 @@ export const Calendar = ({
         isFocusedMonth={isSameMonth(dateIterator, focusedDate)}
         isNextMonth={isSameMonth(dateIterator, nextMonth)}
         isToday={isSameDay(dateIterator, today())}
+        isRangeDate={rangeDate && isSameDay(dateIterator, rangeDate)}
+        isRangeStart={rangeStartDate && isSameDay(dateIterator, rangeStartDate)}
+        isRangeEnd={rangeEndDate && isSameDay(dateIterator, rangeEndDate)}
+        isWithinRange={
+          withinRangeStartDate &&
+          withinRangeEndDate &&
+          isDateWithinMinAndMax(
+            dateIterator,
+            withinRangeStartDate,
+            withinRangeEndDate
+          )
+        }
       />
     )
     dateIterator = addDays(dateIterator, 1)

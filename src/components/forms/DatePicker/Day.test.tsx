@@ -142,4 +142,50 @@ describe('Day', () => {
       expect(button).toHaveClass('usa-date-picker__calendar__date--today')
     })
   })
+
+  describe('when is the range date', () => {
+    it('has the range class', () => {
+      const { getByTestId } = render(
+        <Day date={testDate} onClick={mockSelectDate} isRangeDate />
+      )
+      const button = getByTestId('select-date')
+      expect(button).toHaveClass('usa-date-picker__calendar__date--range-date')
+    })
+  })
+
+  describe('when is the range start date', () => {
+    it('has the range start class', () => {
+      const { getByTestId } = render(
+        <Day date={testDate} onClick={mockSelectDate} isRangeStart />
+      )
+      const button = getByTestId('select-date')
+      expect(button).toHaveClass(
+        'usa-date-picker__calendar__date--range-date-start'
+      )
+    })
+  })
+
+  describe('when is the range end date', () => {
+    it('has the range end class', () => {
+      const { getByTestId } = render(
+        <Day date={testDate} onClick={mockSelectDate} isRangeEnd />
+      )
+      const button = getByTestId('select-date')
+      expect(button).toHaveClass(
+        'usa-date-picker__calendar__date--range-date-end'
+      )
+    })
+  })
+
+  describe('when is within the range', () => {
+    it('has the within range class', () => {
+      const { getByTestId } = render(
+        <Day date={testDate} onClick={mockSelectDate} isWithinRange />
+      )
+      const button = getByTestId('select-date')
+      expect(button).toHaveClass(
+        'usa-date-picker__calendar__date--within-range'
+      )
+    })
+  })
 })
