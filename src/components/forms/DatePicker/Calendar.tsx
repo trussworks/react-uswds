@@ -26,11 +26,13 @@ import {
   subDays,
 } from './utils'
 
-enum CalendarModes {
-  DATE_PICKER,
-  MONTH_PICKER,
-  YEAR_PICKER,
-}
+const CalendarModes = {
+  DATE_PICKER: 'DATE_PICKER',
+  MONTH_PICKER: 'MONTH_PICKER',
+  YEAR_PICKER: 'YEAR_PICKER',
+} as const
+
+type CalendarMode = typeof CalendarModes[keyof typeof CalendarModes]
 
 import { Day } from './Day'
 import { MonthPicker } from './MonthPicker'
@@ -57,7 +59,7 @@ export const Calendar = ({
   const datePickerEl = useRef<HTMLDivElement>(null)
 
   const [dateToDisplay, setDateToDisplay] = useState(date || today())
-  const [mode, setMode] = useState<CalendarModes>(CalendarModes.DATE_PICKER)
+  const [mode, setMode] = useState<CalendarMode>(CalendarModes.DATE_PICKER)
 
   const handleSelectMonth = (monthIndex: number): void => {
     let newDate = setMonth(dateToDisplay, monthIndex)
