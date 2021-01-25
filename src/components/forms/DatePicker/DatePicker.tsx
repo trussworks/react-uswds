@@ -28,6 +28,11 @@ interface DatePickerProps {
   rangeDate?: string
 }
 
+export enum FocusMode {
+  None,
+  Input,
+}
+
 export const DatePicker = (
   props: DatePickerProps & JSX.IntrinsicElements['input']
 ): React.ReactElement => {
@@ -52,6 +57,7 @@ export const DatePicker = (
   >(undefined)
   const [calendarPosY, setCalendarPosY] = useState<number | undefined>(0)
   const [statuses, setStatuses] = useState<string[]>([])
+  const [focusMode, setFocusMode] = useState<FocusMode>(FocusMode.None)
 
   const parsedMinDate = parseDateString(minDate) as Date
   const parsedMaxDate = maxDate ? parseDateString(maxDate) : undefined
@@ -211,6 +217,12 @@ export const DatePicker = (
           value={externalValue}
           ref={externalInputEl}
           onInput={handleExternalInput}
+          onFocus={(): void => {
+            setFocusMode(FocusMode.Input)
+          }}
+          onBlur={(): void => {
+            setFocusMode(FocusMode.None)
+          }}
         />
         <button
           data-testid="date-picker-button"
@@ -239,6 +251,7 @@ export const DatePicker = (
               rangeDate={parsedRangeDate}
               selectedDate={parseDateString(internalValue)}
               setStatuses={setStatuses}
+              focusMode={focusMode}
             />
           )}
         </div>

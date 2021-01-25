@@ -22,12 +22,17 @@ export const YearPicker = ({
   handleSelectYear: (year: number) => void
   setStatuses: (statuses: string[]) => void
 }): React.ReactElement => {
-  // TODO focusedYear state
+  const prevYearChunkEl = useRef<HTMLButtonElement>(null)
+  const nextYearChunkEl = useRef<HTMLButtonElement>(null)
+  const yearPickerEl = useRef<HTMLDivElement>(null)
+
   const selectedYear = date.getFullYear()
 
   const [yearToDisplay, setYearToDisplay] = useState(selectedYear)
   const [focusedYear, setFocusedYear] = useState(yearToDisplay)
-  const yearPickerEl = useRef<HTMLDivElement>(null)
+  const [nextToFocus, setNextToFocus] = useState<
+    [HTMLButtonElement | null, HTMLDivElement | null]
+  >([null, null])
 
   let yearToChunk = focusedYear
   yearToChunk -= yearToChunk % YEAR_CHUNK
@@ -50,17 +55,29 @@ export const YearPicker = ({
       yearToChunk + YEAR_CHUNK - 1
     }. Select a year.`
     setStatuses([statusStr])
+
+    // also focus on next element
+    const [focusEl, fallbackFocusEl] = nextToFocus
+
+    if (focusEl && fallbackFocusEl) {
+      if (focusEl.disabled) {
+        fallbackFocusEl.focus()
+      } else {
+        focusEl.focus()
+      }
+      setNextToFocus([null, null])
+    }
   }, [yearToDisplay])
 
   useEffect(() => {
-    // focus on year button
+    // focus on year button on mount
     const yearToFocus =
       yearPickerEl.current &&
       yearPickerEl.current.querySelector<HTMLButtonElement>(
         `[data-value="${focusedYear}"]`
       )
     if (yearToFocus) yearToFocus.focus()
-  })
+  }, [])
 
   const years = []
   let yearIndex = yearToChunk
@@ -108,10 +125,9 @@ export const YearPicker = ({
 
     let newDate = setYear(date, adjustedYear)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setNextToFocus([prevYearChunkEl.current, yearPickerEl.current])
     setYearToDisplay(newDate.getFullYear())
     setFocusedYear(newDate.getFullYear())
-
-    // TODO focus
   }
 
   const handleNextYearChunkClick = (): void => {
@@ -120,10 +136,9 @@ export const YearPicker = ({
 
     let newDate = setYear(date, adjustedYear)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+    setNextToFocus([nextYearChunkEl.current, yearPickerEl.current])
     setYearToDisplay(newDate.getFullYear())
     setFocusedYear(newDate.getFullYear())
-
-    // TODO focus
   }
 
   return (
@@ -142,7 +157,8 @@ export const YearPicker = ({
                 className="usa-date-picker__calendar__previous-year-chunk"
                 aria-label={`Navigate back ${YEAR_CHUNK} years`}
                 disabled={prevYearChunkDisabled}
-                onClick={handlePreviousYearChunkClick}>
+                onClick={handlePreviousYearChunkClick}
+                ref={prevYearChunkEl}>
                 &nbsp;
               </button>
             </td>
@@ -160,7 +176,8 @@ export const YearPicker = ({
                 className="usa-date-picker__calendar__next-year-chunk"
                 aria-label={`Navigate forward ${YEAR_CHUNK} years`}
                 disabled={nextYearChunkDisabled}
-                onClick={handleNextYearChunkClick}>
+                onClick={handleNextYearChunkClick}
+                ref={nextYearChunkEl}>
                 &nbsp;
               </button>
             </td>

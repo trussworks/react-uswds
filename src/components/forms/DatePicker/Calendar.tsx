@@ -37,6 +37,7 @@ type CalendarMode = typeof CalendarModes[keyof typeof CalendarModes]
 import { Day } from './Day'
 import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
+import { FocusMode } from './DatePicker'
 
 export const Calendar = ({
   date,
@@ -46,6 +47,7 @@ export const Calendar = ({
   maxDate,
   rangeDate,
   setStatuses,
+  focusMode,
 }: {
   date?: Date
   selectedDate?: Date
@@ -54,19 +56,25 @@ export const Calendar = ({
   maxDate?: Date
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
+  focusMode: FocusMode
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
+  const prevMonthEl = useRef<HTMLButtonElement>(null)
+  const nextMonthEl = useRef<HTMLButtonElement>(null)
+  const nextYearEl = useRef<HTMLButtonElement>(null)
   const datePickerEl = useRef<HTMLDivElement>(null)
 
   const [dateToDisplay, setDateToDisplay] = useState(date || today())
   const [mode, setMode] = useState<CalendarMode>(CalendarModes.DATE_PICKER)
+  const [nextToFocus, setNextToFocus] = useState<
+    [HTMLButtonElement | null, HTMLDivElement | null]
+  >([null, null])
 
   const handleSelectMonth = (monthIndex: number): void => {
     let newDate = setMonth(dateToDisplay, monthIndex)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
     setMode(CalendarModes.DATE_PICKER)
-    // TODO focus
   }
 
   const handleSelectYear = (year: number): void => {
@@ -74,7 +82,6 @@ export const Calendar = ({
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
     setMode(CalendarModes.DATE_PICKER)
-    // TODO focus
   }
 
   useEffect(() => {
@@ -84,22 +91,31 @@ export const Calendar = ({
     }
   }, [date])
 
-  // TODO - prevent this from stealing focus from input
-  /*
   useEffect(() => {
+    if (focusMode !== FocusMode.Input) {
+      const [focusEl, fallbackFocusEl] = nextToFocus
 
-    // Focus on new date when it changes
-    const focusedDate =
-      datePickerEl.current &&
-      datePickerEl.current.querySelector<HTMLElement>(
-        '.usa-date-picker__calendar__date--focused'
-      )
+      if (focusEl && fallbackFocusEl) {
+        if (focusEl.disabled) {
+          fallbackFocusEl.focus()
+        } else {
+          focusEl.focus()
+        }
+        setNextToFocus([null, null])
+      } else {
+        // Focus on new date when it changes
+        const focusedDate =
+          datePickerEl.current &&
+          datePickerEl.current.querySelector<HTMLElement>(
+            '.usa-date-picker__calendar__date--focused'
+          )
 
-    if (focusedDate) {
-      focusedDate.focus()
+        if (focusedDate) {
+          focusedDate.focus()
+        }
+      }
     }
   }, [dateToDisplay])
-  */
 
   if (mode === CalendarModes.MONTH_PICKER) {
     return (
@@ -144,29 +160,28 @@ export const Calendar = ({
     let newDate = subYears(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
-    // TODO - set focus
-    prevYearEl?.current?.focus()
+    setNextToFocus([prevYearEl.current, datePickerEl.current])
   }
 
   const handlePreviousMonthClick = (): void => {
     let newDate = subMonths(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
-    // TODO - set focus
+    setNextToFocus([prevMonthEl.current, datePickerEl.current])
   }
 
   const handleNextMonthClick = (): void => {
     let newDate = addMonths(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
-    // TODO - set focus
+    setNextToFocus([nextMonthEl.current, datePickerEl.current])
   }
 
   const handleNextYearClick = (): void => {
     let newDate = addYears(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setDateToDisplay(newDate)
-    // TODO - set focus
+    setNextToFocus([nextYearEl.current, datePickerEl.current])
   }
 
   const handleToggleMonthSelection = (): void => {
@@ -240,6 +255,7 @@ export const Calendar = ({
             type="button"
             data-testid="previous-month"
             onClick={handlePreviousMonthClick}
+            ref={prevMonthEl}
             className="usa-date-picker__calendar__previous-month"
             aria-label="Navigate back one month"
             disabled={prevButtonsDisabled}>
@@ -269,6 +285,7 @@ export const Calendar = ({
             type="button"
             data-testid="next-month"
             onClick={handleNextMonthClick}
+            ref={nextMonthEl}
             className="usa-date-picker__calendar__next-month"
             aria-label="Navigate forward one month"
             disabled={nextButtonsDisabled}>
@@ -280,6 +297,7 @@ export const Calendar = ({
             type="button"
             data-testid="next-year"
             onClick={handleNextYearClick}
+            ref={nextYearEl}
             className="usa-date-picker__calendar__next-year"
             aria-label="Navigate forward one year"
             disabled={nextButtonsDisabled}>

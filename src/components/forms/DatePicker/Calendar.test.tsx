@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { Calendar } from './Calendar'
 import { parseDateString, today } from './utils'
 import { MONTH_LABELS } from './constants'
+import { FocusMode } from './DatePicker'
 
 describe('Calendar', () => {
   const mockSelectDate = jest.fn()
@@ -12,6 +13,7 @@ describe('Calendar', () => {
     handleSelectDate: mockSelectDate,
     minDate: parseDateString('0000-01-01') as Date,
     setStatuses: jest.fn(),
+    focusMode: FocusMode.None,
   }
 
   it('renders calendar navigation', () => {
@@ -141,6 +143,22 @@ describe('Calendar', () => {
       userEvent.click(getByTestId('previous-year'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
+      expect(getByTestId('previous-year')).toHaveFocus()
+    })
+
+    it('clicking previous year focuses the date picker if previous year becomes disabled', () => {
+      const { getByTestId } = render(
+        <Calendar
+          {...testProps}
+          minDate={new Date('January 01 2020')}
+          date={new Date('January 2021')}
+        />
+      )
+      userEvent.click(getByTestId('previous-year'))
+      expect(getByTestId('select-month')).toHaveTextContent('January')
+      expect(getByTestId('select-year')).toHaveTextContent('2020')
+      expect(getByTestId('previous-year')).toBeDisabled()
+      expect(getByTestId('calendar-date-picker')).toHaveFocus()
     })
 
     it('clicking next year navigates the calendar forward one year', () => {
@@ -150,6 +168,22 @@ describe('Calendar', () => {
       userEvent.click(getByTestId('next-year'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2022')
+      expect(getByTestId('next-year')).toHaveFocus()
+    })
+
+    it('clicking next year focuses the date picker if next year becomes disabled', () => {
+      const { getByTestId } = render(
+        <Calendar
+          {...testProps}
+          maxDate={new Date('January 01 2022')}
+          date={new Date('January 2021')}
+        />
+      )
+      userEvent.click(getByTestId('next-year'))
+      expect(getByTestId('select-month')).toHaveTextContent('January')
+      expect(getByTestId('select-year')).toHaveTextContent('2022')
+      expect(getByTestId('next-year')).toBeDisabled()
+      expect(getByTestId('calendar-date-picker')).toHaveFocus()
     })
 
     it('clicking previous month navigates the calendar back one month', () => {
@@ -159,6 +193,22 @@ describe('Calendar', () => {
       userEvent.click(getByTestId('previous-month'))
       expect(getByTestId('select-month')).toHaveTextContent('December')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
+      expect(getByTestId('previous-month')).toHaveFocus()
+    })
+
+    it('clicking previous month focuses the date picker if previous month becomes disabled', () => {
+      const { getByTestId } = render(
+        <Calendar
+          {...testProps}
+          minDate={new Date('December 01 2020')}
+          date={new Date('January 2021')}
+        />
+      )
+      userEvent.click(getByTestId('previous-month'))
+      expect(getByTestId('select-month')).toHaveTextContent('December')
+      expect(getByTestId('select-year')).toHaveTextContent('2020')
+      expect(getByTestId('previous-month')).toBeDisabled()
+      expect(getByTestId('calendar-date-picker')).toHaveFocus()
     })
 
     it('clicking next month navigates the calendar forward one month', () => {
@@ -168,6 +218,22 @@ describe('Calendar', () => {
       userEvent.click(getByTestId('next-month'))
       expect(getByTestId('select-month')).toHaveTextContent('February')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
+      expect(getByTestId('next-month')).toHaveFocus()
+    })
+
+    it('clicking next month focuses the date picker if next month becomes disabled', () => {
+      const { getByTestId } = render(
+        <Calendar
+          {...testProps}
+          maxDate={new Date('February 01 2021')}
+          date={new Date('January 2021')}
+        />
+      )
+      userEvent.click(getByTestId('next-month'))
+      expect(getByTestId('select-month')).toHaveTextContent('February')
+      expect(getByTestId('select-year')).toHaveTextContent('2021')
+      expect(getByTestId('next-month')).toBeDisabled()
+      expect(getByTestId('calendar-date-picker')).toHaveFocus()
     })
   })
 
@@ -189,7 +255,7 @@ describe('Calendar', () => {
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
       expect(queryByTestId('calendar-month-picker')).not.toBeInTheDocument()
-      // TODO expect(getByText('20')).toHaveFocus()
+      expect(getByText('20')).toHaveFocus()
     })
   })
 
@@ -211,7 +277,7 @@ describe('Calendar', () => {
       expect(getByTestId('select-year')).toHaveTextContent('2017')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
       expect(queryByTestId('calendar-year-picker')).not.toBeInTheDocument()
-      // TODO expect(getByText('20')).toHaveFocus()
+      expect(getByText('20')).toHaveFocus()
     })
   })
 })

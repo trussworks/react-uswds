@@ -18,7 +18,7 @@ elements to render:
     - date selection - DONE
     - month selection - DONE
     - year selection - DONE
-- status text
+- status text - DONE
 
 PROPS
 - input name (internal input) - DONE
@@ -29,7 +29,7 @@ PROPS
 - handles default value - DONE
 - min date - DONE
 - max date - DONE
-- range date (?)
+- range date - DONE
 
 METHODS
 toggle
@@ -43,7 +43,7 @@ toggle
     - set hidden to true
     - set status text to ''
 validate - DONE
-navigate
+navigate - DONE
 
 EVENTS
 - click button toggles calendar - DONE
