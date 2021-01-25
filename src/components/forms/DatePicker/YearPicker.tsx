@@ -29,12 +29,11 @@ export const YearPicker = ({
   const selectedYear = date.getFullYear()
 
   const [yearToDisplay, setYearToDisplay] = useState(selectedYear)
-  const [focusedYear, setFocusedYear] = useState(yearToDisplay)
   const [nextToFocus, setNextToFocus] = useState<
     [HTMLButtonElement | null, HTMLDivElement | null]
   >([null, null])
 
-  let yearToChunk = focusedYear
+  let yearToChunk = yearToDisplay
   yearToChunk -= yearToChunk % YEAR_CHUNK
   yearToChunk = Math.max(0, yearToChunk)
 
@@ -59,6 +58,7 @@ export const YearPicker = ({
     // also focus on next element
     const [focusEl, fallbackFocusEl] = nextToFocus
 
+    // TODO - fallback to focus on yearToDisplay if there is no nextToFocus
     if (focusEl && fallbackFocusEl) {
       if (focusEl.disabled) {
         fallbackFocusEl.focus()
@@ -74,7 +74,7 @@ export const YearPicker = ({
     const yearToFocus =
       yearPickerEl.current &&
       yearPickerEl.current.querySelector<HTMLButtonElement>(
-        `[data-value="${focusedYear}"]`
+        `[data-value="${yearToDisplay}"]`
       )
     if (yearToFocus) yearToFocus.focus()
   }, [])
@@ -90,7 +90,7 @@ export const YearPicker = ({
     )
 
     const isSelected = yearIndex === selectedYear
-    const isFocused = yearIndex === focusedYear
+    const isFocused = yearIndex === yearToDisplay
     const tabIndex = isFocused ? 0 : -1
 
     const classes = classnames('usa-date-picker__calendar__year', {
@@ -127,7 +127,6 @@ export const YearPicker = ({
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setNextToFocus([prevYearChunkEl.current, yearPickerEl.current])
     setYearToDisplay(newDate.getFullYear())
-    setFocusedYear(newDate.getFullYear())
   }
 
   const handleNextYearChunkClick = (): void => {
@@ -138,7 +137,6 @@ export const YearPicker = ({
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
     setNextToFocus([nextYearChunkEl.current, yearPickerEl.current])
     setYearToDisplay(newDate.getFullYear())
-    setFocusedYear(newDate.getFullYear())
   }
 
   return (

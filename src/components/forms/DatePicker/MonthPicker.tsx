@@ -17,17 +17,17 @@ export const MonthPicker = ({
 }): React.ReactElement => {
   // TODO - use state for focused month
   const selectedMonth = date.getMonth()
-  const [focusedMonth, setFocusedMonth] = useState(selectedMonth)
+  const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
   const monthPickerEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const monthToFocus =
       monthPickerEl.current &&
       monthPickerEl.current.querySelector<HTMLButtonElement>(
-        `[data-value="${focusedMonth}"]`
+        `[data-value="${monthToDisplay}"]`
       )
     if (monthToFocus) monthToFocus.focus()
-  }, [focusedMonth])
+  }, [monthToDisplay])
 
   const months = MONTH_LABELS.map((month, index) => {
     const monthToCheck = setMonth(date, index)
@@ -37,7 +37,7 @@ export const MonthPicker = ({
       maxDate
     )
     const isSelected = index === selectedMonth
-    const isFocused = index === focusedMonth
+    const isFocused = index === monthToDisplay
 
     const tabIndex = isFocused ? 0 : -1
 

@@ -54,3 +54,10 @@ export const withRangeDate = (): React.ReactElement => (
     rangeDate="2021-01-08"
   />
 )
+
+export const withExternalInput = (): React.ReactElement => (
+  <>
+    <DatePicker id="birthdate" name="birthdate" />
+    <input type="text" data-testid="test-external-element" />
+  </>
+)

@@ -140,6 +140,7 @@ export const DatePicker = (
   }, [showCalendar])
 
   useEffect(() => {
+    // TODO - when should this happen actually? onBlur?
     validateInput()
   }, [externalValue, minDate, maxDate])
 
@@ -181,6 +182,21 @@ export const DatePicker = (
     }
 
     setShowCalendar(!showCalendar)
+  }
+
+  // TODO - we need React 17
+  // https://github.com/facebook/react/issues/6410
+  const handleFocusOut = ({
+    relatedTarget,
+  }: {
+    relatedTarget: HTMLDivElement
+  }): void => {
+    if (!datePickerEl.current?.contains(relatedTarget)) {
+      if (showCalendar) {
+        setShowCalendar(false)
+        setStatuses([])
+      }
+    }
   }
 
   const datePickerClasses = classnames(

@@ -253,6 +253,20 @@ describe('DatePicker component', () => {
       expect(getByLabelText('6 January 2021 Wednesday')).not.toHaveFocus()
       expect(getByLabelText('10 January 2021 Sunday')).toHaveFocus()
     })
+
+    it('hides the calendar if focus moves to another element', () => {
+      const { getByTestId } = render(
+        <>
+          <DatePicker {...testProps} />
+          <input type="text" data-testid="test-external-element" />
+        </>
+      )
+
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      getByTestId('test-external-element').focus()
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+    })
   })
 
   describe('with the disabled prop', () => {
@@ -388,6 +402,15 @@ describe('DatePicker component', () => {
       expect(getByText('16')).toHaveClass(
         'usa-date-picker__calendar__date--selected'
       )
+    })
+
+    it('typing in an invalid date and blurring triggers validation', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
+      )
+      userEvent.type(getByTestId('date-picker-external-input'), '05/16/1988')
+      getByTestId('date-picker-external-input').blur()
+      expect(getByTestId('date-picker-external-input')).toBeInvalid()
     })
   })
 
