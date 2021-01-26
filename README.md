@@ -96,6 +96,7 @@ Having issues? See [FAQs](./docs/faqs.md).
 
 - [@suzubara](https://github.com/suzubara)
 - [@haworku](https://github.com/haworku)
+- [@brandonlenz](https://github.com/brandonlenz)
 
 ## Contributing
 
