@@ -71,9 +71,9 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-react": "^7.10.4",
-    "@storybook/addon-docs": "^6.0.21",
-    "@storybook/addon-viewport": "^6.0.21",
-    "@storybook/react": "^6.0.21",
+    "@storybook/addon-docs": "^6.1.5",
+    "@storybook/addon-viewport": "^6.1.5",
+    "@storybook/react": "^6.1.5",
     "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/dom": "^7.22.3",
     "@testing-library/jest-dom": "^5.3.0",
