@@ -57,15 +57,15 @@
   },
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
-    "react": "^16.x",
-    "react-dom": "^16.x"
+    "react": "^16.x || ^17.x",
+    "react-dom": "^16.x || ^17.x"
   },
   "dependencies": {
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
     "happo-plugin-storybook": "^2.5.3",
-    "react": "^16.10.0",
-    "react-dom": "^16.10.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "uswds": "2.8.0"
   },
   "devDependencies": {
@@ -108,7 +108,7 @@
     "mini-css-extract-plugin": "^1.0.0",
     "prettier": "^2.0.2",
     "react-docgen-typescript-loader": "^3.7.2",
-    "react-test-renderer": "^16.12.0",
+    "react-test-renderer": "^17.0.0",
     "sass": "^1.26.0",
     "sass-loader": "^10.0.2",
     "sass-resources-loader": "^2.0.1",
