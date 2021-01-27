@@ -7,7 +7,7 @@ import { Label } from '../Label/Label'
 import { fruits } from './fruits'
 
 export default {
-  title: 'Forms/ComboBox',
+  title: 'Components/Form controls/Combo box',
   component: ComboBox,
   parameters: {
     info: `

@@ -2,7 +2,7 @@ import React from 'react'
 import { PrimaryNav } from './PrimaryNav'
 
 export default {
-  title: 'Header/PrimaryNav',
+  title: 'Components/Header/PrimaryNav',
   component: PrimaryNav,
   parameters: {
     info: `

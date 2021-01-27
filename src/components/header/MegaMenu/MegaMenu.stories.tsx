@@ -2,7 +2,7 @@ import React from 'react'
 import { MegaMenu } from './MegaMenu'
 
 export default {
-  title: 'Header/MegaMenu',
+  title: 'Components/Header/MegaMenu',
   component: MegaMenu,
   parameters: {
     info: `
