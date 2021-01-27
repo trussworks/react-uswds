@@ -3,7 +3,6 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
-import { LinkingBreadcrumb } from '../LinkingBreadcrumb/LinkingBreadcrumb'
 import { Link } from '../../Link/Link'
 
 const testPageName = 'Test Page'
@@ -14,18 +13,6 @@ describe('BreadcrumbBar component', () => {
     const { getByRole, queryByText } = render(
       <BreadcrumbBar>
         <Breadcrumb>{testParentPageName}</Breadcrumb>
-        <Breadcrumb current>{testPageName}</Breadcrumb>
-      </BreadcrumbBar>
-    )
-    expect(queryByText(testParentPageName)).toBeInTheDocument()
-    expect(queryByText(testPageName)).toBeInTheDocument()
-    expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
-  })
-
-  it('renders properly using the built-in LinkingBreadcrumb', () => {
-    const { getByRole, queryByText } = render(
-      <BreadcrumbBar>
-        <LinkingBreadcrumb href="#">{testParentPageName}</LinkingBreadcrumb>
         <Breadcrumb current>{testPageName}</Breadcrumb>
       </BreadcrumbBar>
     )

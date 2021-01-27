@@ -1,11 +1,9 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
-import { BaseBreadcrumbProps } from '../Breadcrumb/Breadcrumb'
+import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
 interface BreadcrumbBarProps {
-  children:
-    | ReactElement<BaseBreadcrumbProps>
-    | ReactElement<BaseBreadcrumbProps>[]
+  children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
   variant?: 'default' | 'wrap'
   className?: string
   navProps?: JSX.IntrinsicElements['nav']

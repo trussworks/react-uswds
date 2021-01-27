@@ -66,7 +66,6 @@ export { CardFooter } from './components/card/CardFooter/CardFooter'
 /** Breadcrumb components */
 export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
 export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
-export { LinkingBreadcrumb } from './components/breadcrumb/LinkingBreadcrumb/LinkingBreadcrumb'
 export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
 
 export { Search } from './components/Search/Search'

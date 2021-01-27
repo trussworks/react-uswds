@@ -1,8 +1,8 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
-import { LinkingBreadcrumb } from '../LinkingBreadcrumb/LinkingBreadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
+import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
 import { Link } from '../../Link/Link'
 
 export default {
@@ -19,11 +19,21 @@ export default {
 
 export const DefaultBreadcrumb = (): React.ReactElement => (
   <BreadcrumbBar>
-    <LinkingBreadcrumb href="#">Home</LinkingBreadcrumb>
-    <LinkingBreadcrumb href="#">Federal Contracting</LinkingBreadcrumb>
-    <LinkingBreadcrumb href="#">
-      Contacting assistance programs
-    </LinkingBreadcrumb>
+    <Breadcrumb>
+      <BreadcrumbLink href="#">
+        <span>Home</span>
+      </BreadcrumbLink>
+    </Breadcrumb>
+    <Breadcrumb>
+      <BreadcrumbLink href="#">
+        <span>Federal Contracting</span>
+      </BreadcrumbLink>
+    </Breadcrumb>
+    <Breadcrumb>
+      <BreadcrumbLink href="#">
+        <span>Contacting assistance programs</span>
+      </BreadcrumbLink>
+    </Breadcrumb>
     <Breadcrumb current>
       Women-owned small business federal contracting program
     </Breadcrumb>
@@ -48,28 +58,25 @@ export const BreadcrumbWithRdfaMetadata = (): React.ReactElement => {
 
   return (
     <BreadcrumbBar listProps={{ ...rdfaMetadata.ol }}>
-      <LinkingBreadcrumb
-        href="#"
-        listItemProps={{ ...rdfaMetadata.li }}
-        anchorProps={{ ...rdfaMetadata.a }}>
-        <span property="name">Home</span>
+      <Breadcrumb {...rdfaMetadata.li}>
+        <BreadcrumbLink href="#" {...rdfaMetadata.a}>
+          <span property="name">Home</span>
+        </BreadcrumbLink>
         <meta property="position" content="1" />
-      </LinkingBreadcrumb>
-      <LinkingBreadcrumb
-        href="#"
-        listItemProps={{ ...rdfaMetadata.li }}
-        anchorProps={{ ...rdfaMetadata.a }}>
-        <span property="name">Federal Contracting</span>
+      </Breadcrumb>
+      <Breadcrumb {...rdfaMetadata.li}>
+        <BreadcrumbLink href="#" {...rdfaMetadata.a}>
+          <span property="name">Federal Contracting</span>
+        </BreadcrumbLink>
         <meta property="position" content="2" />
-      </LinkingBreadcrumb>
-      <LinkingBreadcrumb
-        href="#"
-        listItemProps={{ ...rdfaMetadata.li }}
-        anchorProps={{ ...rdfaMetadata.a }}>
-        <span property="name">Contacting assistance programs</span>
+      </Breadcrumb>
+      <Breadcrumb {...rdfaMetadata.li}>
+        <BreadcrumbLink href="#" {...rdfaMetadata.a}>
+          <span property="name">Contacting assistance programs</span>
+        </BreadcrumbLink>
         <meta property="position" content="3" />
-      </LinkingBreadcrumb>
-      <Breadcrumb current listItemProps={{ ...rdfaMetadata.li }}>
+      </Breadcrumb>
+      <Breadcrumb current {...rdfaMetadata.li}>
         <span property="name">
           Women-owned small business federal contracting program
         </span>
@@ -81,11 +88,21 @@ export const BreadcrumbWithRdfaMetadata = (): React.ReactElement => {
 
 export const WrappingBreadcrumb = (): React.ReactElement => (
   <BreadcrumbBar variant="wrap">
-    <LinkingBreadcrumb href="#">Home</LinkingBreadcrumb>
-    <LinkingBreadcrumb href="#">Federal Contracting</LinkingBreadcrumb>
-    <LinkingBreadcrumb href="#">
-      Contacting assistance programs
-    </LinkingBreadcrumb>
+    <Breadcrumb>
+      <BreadcrumbLink href="#">
+        <span>Home</span>
+      </BreadcrumbLink>
+    </Breadcrumb>
+    <Breadcrumb>
+      <BreadcrumbLink href="#">
+        <span>Federal Contracting</span>
+      </BreadcrumbLink>
+    </Breadcrumb>
+    <Breadcrumb>
+      <BreadcrumbLink href="#">
+        <span>Contacting assistance programs</span>
+      </BreadcrumbLink>
+    </Breadcrumb>
     <Breadcrumb current>
       Women-owned small business federal contracting program
     </Breadcrumb>
