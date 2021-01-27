@@ -22,11 +22,13 @@ export const BreadcrumbBar = (
     navProps,
     listProps,
   } = props
-  const uswdsClassName =
-    variant === 'wrap'
-      ? 'usa-breadcrumb usa-breadcrumb--wrap'
-      : 'usa-breadcrumb'
-  const classes = classnames(uswdsClassName, className)
+  const classes = classnames(
+    'usa-breadcrumb',
+    {
+      'usa-breadcrumb--wrap': variant === 'wrap',
+    },
+    className
+  )
 
   return (
     <nav className={classes} {...navProps} aria-label="Breadcrumbs">

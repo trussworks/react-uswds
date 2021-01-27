@@ -13,9 +13,10 @@ interface BreadcrumbProps extends BaseBreadcrumbProps {
 export const Breadcrumb = (props: BreadcrumbProps): JSX.Element => {
   const { children, current = false, className, listItemProps } = props
   const classes = classnames(
-    current
-      ? 'usa-breadcrumb__list-item usa-current'
-      : 'usa-breadcrumb__list-item',
+    'usa-breadcrumb__list-item',
+    {
+      'usa-current': current,
+    },
     className
   )
 
