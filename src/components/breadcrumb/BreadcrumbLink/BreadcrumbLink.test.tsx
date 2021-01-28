@@ -11,6 +11,7 @@ describe('BreadcrumbLink component', () => {
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('link')).toHaveClass('usa-breadcrumb__link')
+    expect(getByRole('link')).not.toHaveClass('usa-link')
   })
 
   it('renders with a custom component', () => {
@@ -34,12 +35,13 @@ describe('BreadcrumbLink component', () => {
     const { getByRole, queryByText } = render(
       <BreadcrumbLink<CustomLinkProps>
         to="#"
-        className="abc"
+        className="custom-class"
         asCustom={CustomLink}>
         {testPageName}
       </BreadcrumbLink>
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
-    expect(getByRole('link')).toHaveClass('abc usa-breadcrumb__link')
+    expect(getByRole('link')).toHaveClass('custom-class usa-breadcrumb__link')
+    expect(getByRole('link')).not.toHaveClass('usa-link')
   })
 })
