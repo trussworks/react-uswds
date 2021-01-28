@@ -12,4 +12,34 @@ describe('BreadcrumbLink component', () => {
     expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('link')).toHaveClass('usa-breadcrumb__link')
   })
+
+  it('renders with a custom component', () => {
+    type CustomLinkProps = React.PropsWithChildren<{
+      to: string
+      className?: string
+    }> &
+      JSX.IntrinsicElements['a']
+
+    const CustomLink: React.FunctionComponent<CustomLinkProps> = ({
+      to,
+      children,
+      className,
+      ...linkProps
+    }: CustomLinkProps): React.ReactElement => (
+      <a href={to} className={className} {...linkProps}>
+        {children}
+      </a>
+    )
+
+    const { getByRole, queryByText } = render(
+      <BreadcrumbLink<CustomLinkProps>
+        to="#"
+        className="abc"
+        asCustom={CustomLink}>
+        {testPageName}
+      </BreadcrumbLink>
+    )
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('link')).toHaveClass('abc usa-breadcrumb__link')
+  })
 })

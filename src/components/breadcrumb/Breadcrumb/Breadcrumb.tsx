@@ -8,7 +8,7 @@ export interface BreadcrumbProps {
 
 export const Breadcrumb = (
   props: BreadcrumbProps & JSX.IntrinsicElements['li']
-): JSX.Element => {
+): React.ReactElement => {
   const { children, current = false, className, ...listItemProps } = props
   const classes = classnames(
     'usa-breadcrumb__list-item',

@@ -109,25 +109,53 @@ export const WrappingBreadcrumb = (): React.ReactElement => (
   </BreadcrumbBar>
 )
 
-export const CustomBreadcrumbLinks = (): React.ReactElement => (
-  <BreadcrumbBar>
-    <Breadcrumb>
-      <Link className="usa-button" variant="unstyled" href={'#'}>
-        Home
-      </Link>
-    </Breadcrumb>
-    <Breadcrumb>
-      <Link className="usa-button" variant="unstyled" href={'#'}>
-        Federal Contracting
-      </Link>
-    </Breadcrumb>
-    <Breadcrumb>
-      <Link className="usa-button" variant="unstyled" href={'#'}>
-        Contacting assistance programs
-      </Link>
-    </Breadcrumb>
-    <Breadcrumb current>
-      Women-owned small business federal contracting program
-    </Breadcrumb>
-  </BreadcrumbBar>
-)
+export const CustomBreadcrumbLinks = (): React.ReactElement => {
+  type MockLinkProps = React.PropsWithChildren<{
+    to: string
+    className: string
+  }> &
+    JSX.IntrinsicElements['a']
+
+  const CustomLink: React.FunctionComponent<MockLinkProps> = ({
+    to,
+    className,
+    children,
+    ...linkProps
+  }: MockLinkProps): React.ReactElement => (
+    <a href={to} className={className} {...linkProps}>
+      {children}
+    </a>
+  )
+
+  return (
+    <BreadcrumbBar>
+      <Breadcrumb>
+        <BreadcrumbLink<MockLinkProps>
+          className="abc"
+          asCustom={CustomLink}
+          to="#">
+          Home
+        </BreadcrumbLink>
+      </Breadcrumb>
+      <Breadcrumb>
+        <BreadcrumbLink<MockLinkProps>
+          className="abc"
+          asCustom={CustomLink}
+          to="#">
+          Federal Contracting
+        </BreadcrumbLink>
+      </Breadcrumb>
+      <Breadcrumb>
+        <BreadcrumbLink<MockLinkProps>
+          className="abc"
+          asCustom={CustomLink}
+          to="#">
+          Contacting assistance programs
+        </BreadcrumbLink>
+      </Breadcrumb>
+      <Breadcrumb current>
+        Women-owned small business federal contracting program
+      </Breadcrumb>
+    </BreadcrumbBar>
+  )
+}

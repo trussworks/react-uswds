@@ -1,17 +1,23 @@
+import classnames from 'classnames'
 import React from 'react'
+import {
+  CustomLinkProps,
+  DefaultLinkProps,
+  isCustomProps,
+  Link,
+} from '../../Link/Link'
 
-interface BreadcrumbLinkProps {
-  children: React.ReactNode
-  href: string
-}
+export function BreadcrumbLink(props: DefaultLinkProps): React.ReactElement
+export function BreadcrumbLink<T>(props: CustomLinkProps<T>): React.ReactElement
+export function BreadcrumbLink<FCProps = DefaultLinkProps>(
+  props: DefaultLinkProps | CustomLinkProps<FCProps>
+): React.ReactElement {
+  const { className } = props
+  const classes = classnames(className, 'usa-breadcrumb__link')
 
-export const BreadcrumbLink = (
-  props: BreadcrumbLinkProps & JSX.IntrinsicElements['a']
-): JSX.Element => {
-  const { children, href, ...anchorProps } = props
-  return (
-    <a href={href} className="usa-breadcrumb__link" {...anchorProps}>
-      {children}
-    </a>
-  )
+  if (isCustomProps(props)) {
+    return <Link<FCProps> {...props} className={classes} variant="unstyled" />
+  }
+
+  return <Link {...props} className={classes} variant="unstyled" />
 }
