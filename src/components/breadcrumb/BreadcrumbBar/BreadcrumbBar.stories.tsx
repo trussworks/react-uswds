@@ -35,7 +35,7 @@ export const DefaultBreadcrumb = (): React.ReactElement => (
       </BreadcrumbLink>
     </Breadcrumb>
     <Breadcrumb current>
-      Women-owned small business federal contracting program
+      <span>Women-owned small business federal contracting program</span>
     </Breadcrumb>
   </BreadcrumbBar>
 )
@@ -104,7 +104,7 @@ export const WrappingBreadcrumb = (): React.ReactElement => (
       </BreadcrumbLink>
     </Breadcrumb>
     <Breadcrumb current>
-      Women-owned small business federal contracting program
+      <span>Women-owned small business federal contracting program</span>
     </Breadcrumb>
   </BreadcrumbBar>
 )
