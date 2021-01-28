@@ -15,7 +15,7 @@ import { TextInput } from '../../forms/TextInput/TextInput'
 import logoImg from 'uswds/dist/img/logo-img.png'
 
 export default {
-  title: 'Footer/Footer',
+  title: 'Components/Footer',
   component: Footer,
   parameters: {
     info: `

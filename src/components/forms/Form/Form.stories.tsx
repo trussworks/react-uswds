@@ -13,7 +13,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { Textarea } from '../Textarea/Textarea'
 
 export default {
-  title: 'Forms/Form',
+  title: 'Components/Form templates',
   component: Form,
   parameters: {
     info: `

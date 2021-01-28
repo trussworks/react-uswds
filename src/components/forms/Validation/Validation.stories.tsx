@@ -9,7 +9,7 @@ import { ValidationChecklist } from './ValidationChecklist'
 import { ValidationItem } from './ValidationItem'
 
 export default {
-  title: 'Forms/Validation',
+  title: 'Components/Form controls/Validation',
   component: ValidationChecklist,
   subcomponents: { ValidationItem },
   parameters: {

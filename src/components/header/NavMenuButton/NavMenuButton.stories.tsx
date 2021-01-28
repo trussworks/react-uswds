@@ -2,7 +2,7 @@ import React from 'react'
 import { NavMenuButton } from './NavMenuButton'
 
 export default {
-  title: 'Header/NavMenuButton',
+  title: 'Components/Header/NavMenuButton',
   component: NavMenuButton,
   parameters: {
     info: `
