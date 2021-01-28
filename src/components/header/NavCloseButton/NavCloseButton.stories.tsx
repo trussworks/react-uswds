@@ -2,7 +2,7 @@ import React from 'react'
 import { NavCloseButton } from './NavCloseButton'
 
 export default {
-  title: 'Header/NavCloseButton',
+  title: 'Components/Header/NavCloseButton',
   component: NavCloseButton,
   parameters: {
     info: `

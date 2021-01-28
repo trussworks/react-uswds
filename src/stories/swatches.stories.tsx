@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default {
-  title: 'Swatches',
+  title: 'Design tokens/Swatches',
 }
 
 export const BackgroundColors = (): React.ReactElement => (

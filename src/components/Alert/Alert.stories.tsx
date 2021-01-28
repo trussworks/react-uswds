@@ -4,7 +4,7 @@ import { Alert } from './Alert'
 import { Button } from '../Button/Button'
 
 export default {
-  title: 'Alert',
+  title: 'Components/Alert',
   component: Alert,
   parameters: {
     info: `

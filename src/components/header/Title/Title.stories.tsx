@@ -2,7 +2,7 @@ import React from 'react'
 import { Title } from './Title'
 
 export default {
-  title: 'Header/Title',
+  title: 'Components/Header/Title',
   component: Title,
   parameters: {
     info: `
