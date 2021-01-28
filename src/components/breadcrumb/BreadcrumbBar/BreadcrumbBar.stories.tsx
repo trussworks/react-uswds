@@ -6,7 +6,7 @@ import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
 import { Link } from '../../Link/Link'
 
 export default {
-  title: 'Breadcrumb',
+  title: 'Components/Breadcrumb',
   component: BreadcrumbBar,
   parameters: {
     info: `
