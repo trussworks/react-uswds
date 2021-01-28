@@ -7,7 +7,7 @@ import { Checkbox } from '../Checkbox/Checkbox'
 import { Radio } from '../Radio/Radio'
 
 export default {
-  title: 'Forms/Fieldset',
+  title: 'Components/Form elements/Fieldset',
   component: Fieldset,
   parameters: {
     info: `

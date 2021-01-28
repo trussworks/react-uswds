@@ -11,7 +11,7 @@ import { NavDropDownButton } from '../NavDropDownButton/NavDropDownButton'
 import { ExtendedNav } from '../ExtendedNav/ExtendedNav'
 
 export default {
-  title: 'Header/Header',
+  title: 'Components/Header',
   component: Header,
   parameters: {
     info: `

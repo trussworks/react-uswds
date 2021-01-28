@@ -5,7 +5,7 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Forms/CharacterCount',
+  title: 'Components/Form controls/CharacterCount',
   parameters: {
     info: `
 USWDS 2.0 Character count component

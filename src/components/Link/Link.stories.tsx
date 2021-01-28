@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from './Link'
 
 export default {
-  title: 'Link',
+  title: 'Components/Typography/Link',
   component: Link,
   parameters: {
     info: `Link component

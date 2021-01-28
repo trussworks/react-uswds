@@ -3,7 +3,7 @@ import { RangeInput } from './RangeInput'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Forms/RangeInput',
+  title: 'Components/Form controls/Range slider',
   component: RangeInput,
   parameters: {
     info: `

@@ -2,7 +2,7 @@ import React from 'react'
 import { NavList } from './NavList'
 
 export default {
-  title: 'Header/NavList',
+  title: 'Components/Header/NavList',
   component: NavList,
   parameters: {
     info: `
