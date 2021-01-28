@@ -3,7 +3,6 @@ import React from 'react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
 import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
-import { Link } from '../../Link/Link'
 
 export default {
   title: 'Components/Breadcrumb',
