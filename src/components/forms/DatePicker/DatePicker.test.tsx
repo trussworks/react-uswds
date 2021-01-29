@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
@@ -70,12 +70,13 @@ EVENTS
 - keydown on calendar year picker handles tab, shift+tab
 - keydown on date picker handles escape
 
-- focus out on date picker external input validates
-- focus out on date picker hides calendar if outside
-
+- focus out on date picker hides calendar if outside - DONE
 - input on date picker external input calls reconcileInputValues, update calendar if visible - DONE
 
 - handle mouse move from date/month/year if not mobile
+
+OUTSTANDING:
+- focus out on date picker external input validates
  */
 
 describe('DatePicker component', () => {
@@ -404,13 +405,37 @@ describe('DatePicker component', () => {
       )
     })
 
+    // TODO - this might be an outstanding difference in behavior from USWDS
+    it.skip('typing in the external input does not validate until blurring', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
+      )
+
+      const externalInput = getByTestId('date-picker-external-input')
+      expect(externalInput).toBeValid()
+      act(() => {
+        userEvent.type(externalInput, '05/16/1988')
+      })
+      expect(externalInput).toBeValid()
+      act(() => {
+        externalInput.blur()
+      })
+
+      expect(externalInput).toBeInvalid()
+    })
+
     it('typing in an invalid date and blurring triggers validation', () => {
       const { getByTestId } = render(
         <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
       )
-      userEvent.type(getByTestId('date-picker-external-input'), '05/16/1988')
-      getByTestId('date-picker-external-input').blur()
-      expect(getByTestId('date-picker-external-input')).toBeInvalid()
+      const externalInput = getByTestId('date-picker-external-input')
+
+      act(() => {
+        userEvent.type(externalInput, '05/16/1988')
+        externalInput.blur()
+      })
+
+      expect(externalInput).toBeInvalid()
     })
   })
 

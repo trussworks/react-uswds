@@ -5,7 +5,7 @@ import { MonthPicker } from './MonthPicker'
 import { parseDateString } from './utils'
 
 export default {
-  title: 'Forms/Date picker/Month picker',
+  title: 'Components/Form controls/Date picker/Month picker',
   component: MonthPicker,
 }
 

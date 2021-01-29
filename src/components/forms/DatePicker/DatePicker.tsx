@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, FormEvent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  FocusEvent,
+  FormEvent,
+} from 'react'
 import classnames from 'classnames'
 
 import {
@@ -140,7 +146,6 @@ export const DatePicker = (
   }, [showCalendar])
 
   useEffect(() => {
-    // TODO - when should this happen actually? onBlur?
     validateInput()
   }, [externalValue, minDate, maxDate])
 
@@ -184,14 +189,9 @@ export const DatePicker = (
     setShowCalendar(!showCalendar)
   }
 
-  // TODO - we need React 17
-  // https://github.com/facebook/react/issues/6410
-  const handleFocusOut = ({
-    relatedTarget,
-  }: {
-    relatedTarget: HTMLDivElement
-  }): void => {
-    if (!datePickerEl.current?.contains(relatedTarget)) {
+  // This is why the DatePicker requires React 17
+  const handleFocusOut = (event: FocusEvent<HTMLDivElement>): void => {
+    if (!datePickerEl.current?.contains(event?.relatedTarget as Element)) {
       if (showCalendar) {
         setShowCalendar(false)
         setStatuses([])
@@ -211,7 +211,8 @@ export const DatePicker = (
     <div
       data-testid="date-picker"
       className={datePickerClasses}
-      ref={datePickerEl}>
+      ref={datePickerEl}
+      onBlur={handleFocusOut}>
       <input
         name={name}
         data-testid="date-picker-internal-input"

@@ -2,10 +2,11 @@
 import React from 'react'
 
 import { Calendar } from './Calendar'
+import { FocusMode } from './DatePicker'
 import { parseDateString } from './utils'
 
 export default {
-  title: 'Forms/Date picker/Calendar',
+  title: 'Components/Form controls/Date picker/Calendar',
   component: Calendar,
 }
 
@@ -16,6 +17,7 @@ const defaultProps = {
   handleSelectDate: mockSelectDate,
   minDate: new Date('0000-01-01'),
   setStatuses: (): void => {},
+  focusMode: FocusMode.None,
 }
 
 export const defaultCalendar = (): React.ReactElement => (

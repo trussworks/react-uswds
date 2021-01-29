@@ -3,7 +3,7 @@ import React from 'react'
 import { DatePicker } from './DatePicker'
 
 export default {
-  title: 'Forms/Date picker',
+  title: 'Components/Form controls/Date picker',
   component: DatePicker,
 }
 

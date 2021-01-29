@@ -3,7 +3,7 @@ import React from 'react'
 import { Day } from './Day'
 
 export default {
-  title: 'Forms/Date picker/Day',
+  title: 'Components/Form controls/Date picker/Day',
   component: Day,
 }
 

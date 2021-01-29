@@ -5,7 +5,7 @@ import { YearPicker } from './YearPicker'
 import { parseDateString } from './utils'
 
 export default {
-  title: 'Forms/Date picker/Year picker',
+  title: 'Components/Form controls/Date picker/Year picker',
   component: YearPicker,
 }
 
