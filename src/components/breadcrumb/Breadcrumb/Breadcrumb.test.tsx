@@ -1,8 +1,8 @@
-/*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { render } from '@testing-library/react'
 import { Breadcrumb } from './Breadcrumb'
 import { Link } from '../../Link/Link'
+import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
 
 const testPageName = 'Test Page'
 
@@ -10,6 +10,16 @@ describe('Breadcrumb component', () => {
   it('renders without errors', () => {
     const { getByRole, queryByText } = render(
       <Breadcrumb>{testPageName}</Breadcrumb>
+    )
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('listitem')).toHaveClass('usa-breadcrumb__list-item')
+  })
+
+  it('renders properly with BreadcrumbLinks', () => {
+    const { getByRole, queryByText } = render(
+      <Breadcrumb>
+        <BreadcrumbLink href="#">{testPageName}</BreadcrumbLink>
+      </Breadcrumb>
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('listitem')).toHaveClass('usa-breadcrumb__list-item')

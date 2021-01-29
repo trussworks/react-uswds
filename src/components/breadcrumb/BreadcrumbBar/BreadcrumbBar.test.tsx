@@ -1,9 +1,7 @@
-/*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { render } from '@testing-library/react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
-import { Link } from '../../Link/Link'
 import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
 
 const testPageName = 'Test Page'
