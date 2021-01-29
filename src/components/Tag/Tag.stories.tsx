@@ -2,7 +2,7 @@ import React from 'react'
 import { Tag } from './Tag'
 
 export default {
-  title: 'Tag',
+  title: 'Components/Tag',
   component: Tag,
   parameters: {
     info: `

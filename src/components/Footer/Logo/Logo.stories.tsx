@@ -6,7 +6,7 @@ import { Logo } from './Logo'
 import logoImg from 'uswds/src/img/logo-img.png'
 
 export default {
-  title: 'Footer/Logo',
+  title: 'Components/Footer/Logo',
   component: Logo,
   parameters: {
     info: `

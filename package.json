@@ -48,7 +48,8 @@
     "Jeri Sommers <sojeri@truss.works>",
     "Emily Mahanna <emahanna@truss.works>",
     "Hana Worku <hana@truss.works>",
-    "Duncan Spencer <duncan@truss.works>"
+    "Duncan Spencer <duncan@truss.works>",
+    "Brandon Lenz <brandon@truss.works>"
   ],
   "license": "Apache-2.0",
   "bugs": {
@@ -77,7 +78,7 @@
     "@testing-library/dom": "^7.22.3",
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^11.0.2",
-    "@testing-library/react-hooks": "^4.0.0",
+    "@testing-library/react-hooks": "^5.0.0",
     "@testing-library/user-event": "^12.1.1",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^26.0.0",

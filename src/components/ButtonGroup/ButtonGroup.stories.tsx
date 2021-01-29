@@ -4,7 +4,7 @@ import { Button } from '../Button/Button'
 import { Link } from '../Link/Link'
 
 export default {
-  title: 'ButtonGroup',
+  title: 'Components/Button groups',
   component: ButtonGroup,
   parameters: {
     info: `
