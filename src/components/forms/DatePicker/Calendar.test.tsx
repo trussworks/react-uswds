@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Calendar } from './Calendar'
@@ -234,6 +234,120 @@ describe('Calendar', () => {
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('next-month')).toBeDisabled()
       expect(getByTestId('calendar-date-picker')).toHaveFocus()
+    })
+  })
+
+  describe('keyboard navigation', () => {
+    it('pressing the up arrow key from a day navigates to the same day in the previous week', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'ArrowUp',
+      })
+      expect(getByLabelText(/^13 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing the down arrow key from a day navigates to the same day in the next week', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'ArrowDown',
+      })
+      expect(getByLabelText(/^27 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing the left arrow key from a day navigates to the previous day', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'ArrowLeft',
+      })
+      expect(getByLabelText(/^19 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing the right arrow key from a day navigates to the next day', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'ArrowRight',
+      })
+      expect(getByLabelText(/^21 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing the home key from a day navigates to the first day of the selected week', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'Home',
+      })
+      expect(getByLabelText(/^17 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing the end key from a day navigates to the last day of the selected week', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'End',
+      })
+      expect(getByLabelText(/^23 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing the page down key from a day navigates to the same day in the next month', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'PageDown',
+      })
+      expect(getByLabelText(/^20 February 2021/)).toHaveFocus()
+    })
+
+    it('pressing the page up key from a day navigates to the same day in the previous month', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'PageUp',
+      })
+      expect(getByLabelText(/^20 December 2020/)).toHaveFocus()
+    })
+
+    it('pressing the shift + page down keys from a day navigates to the same day in the next year', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'PageDown',
+        shiftKey: true,
+      })
+      expect(getByLabelText(/^20 January 2022/)).toHaveFocus()
+    })
+
+    it('pressing the shift + page up keys from a day navigates to the same day in the previous year', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
+        key: 'PageUp',
+        shiftKey: true,
+      })
+      expect(getByLabelText(/^20 January 2020/)).toHaveFocus()
     })
   })
 

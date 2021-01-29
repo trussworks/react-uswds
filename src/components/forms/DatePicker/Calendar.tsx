@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, KeyboardEvent } from 'react'
 
 import {
   DAY_OF_WEEK_LABELS,
@@ -24,6 +24,9 @@ import {
   min,
   max,
   subDays,
+  subWeeks,
+  addWeeks,
+  endOfWeek,
 } from './utils'
 
 const CalendarModes = {
@@ -156,6 +159,61 @@ export const Calendar = ({
   const withinRangeStartDate = rangeStartDate && addDays(rangeStartDate, 1)
   const withinRangeEndDate = rangeEndDate && subDays(rangeEndDate, 1)
 
+  const handleKeyDownFromDay = (event: KeyboardEvent): void => {
+    let newDisplayDate
+    switch (event.key) {
+      case 'ArrowUp':
+      case 'Up':
+        newDisplayDate = subWeeks(dateToDisplay, 1)
+        break
+      case 'ArrowDown':
+      case 'Down':
+        newDisplayDate = addWeeks(dateToDisplay, 1)
+        break
+      case 'ArrowLeft':
+      case 'Left':
+        newDisplayDate = subDays(dateToDisplay, 1)
+        break
+      case 'ArrowRight':
+      case 'Right':
+        newDisplayDate = addDays(dateToDisplay, 1)
+        break
+      case 'Home':
+        newDisplayDate = startOfWeek(dateToDisplay)
+        break
+      case 'End':
+        newDisplayDate = endOfWeek(dateToDisplay)
+        break
+      case 'PageDown':
+        if (event.shiftKey) {
+          newDisplayDate = addYears(dateToDisplay, 1)
+        } else {
+          newDisplayDate = addMonths(dateToDisplay, 1)
+        }
+        break
+      case 'PageUp':
+        if (event.shiftKey) {
+          newDisplayDate = subYears(dateToDisplay, 1)
+        } else {
+          newDisplayDate = subMonths(dateToDisplay, 1)
+        }
+        break
+    }
+
+    if (newDisplayDate) {
+      const cappedDate = keepDateBetweenMinAndMax(
+        newDisplayDate,
+        minDate,
+        maxDate
+      )
+      if (!isSameDay(dateToDisplay, cappedDate)) {
+        setDateToDisplay(newDisplayDate)
+      }
+    }
+
+    event.preventDefault()
+  }
+
   const handlePreviousYearClick = (): void => {
     let newDate = subYears(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
@@ -207,6 +265,7 @@ export const Calendar = ({
       <Day
         date={dateIterator}
         onClick={handleSelectDate}
+        onKeyDown={handleKeyDownFromDay}
         isDisabled={!isDateWithinMinAndMax(dateIterator, minDate, maxDate)}
         isSelected={selectedDate && isSameDay(dateIterator, selectedDate)}
         isFocused={isSameDay(dateIterator, focusedDate)}

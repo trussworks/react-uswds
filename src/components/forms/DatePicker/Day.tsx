@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
@@ -7,6 +7,7 @@ import { formatDate } from './utils'
 export const Day = ({
   date,
   onClick,
+  onKeyDown,
   isDisabled = false,
   isSelected = false,
   isFocused = false,
@@ -21,6 +22,7 @@ export const Day = ({
 }: {
   date: Date
   onClick: (value: string) => void
+  onKeyDown: (event: KeyboardEvent) => void
   isDisabled?: boolean
   isSelected?: boolean
   isFocused?: boolean
@@ -61,6 +63,10 @@ export const Day = ({
     onClick(formattedDate)
   }
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>): void => {
+    onKeyDown(e)
+  }
+
   return (
     // eslint-disable-next-line jsx-a11y/role-supports-aria-props
     <button
@@ -75,7 +81,8 @@ export const Day = ({
       data-value={formattedDate}
       aria-label={`${day} ${monthStr} ${year} ${dayStr}`}
       aria-selected={isSelected ? true : false}
-      disabled={isDisabled}>
+      disabled={isDisabled}
+      onKeyDown={handleKeyDown}>
       {day}
     </button>
   )

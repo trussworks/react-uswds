@@ -99,6 +99,10 @@ export const DatePicker = (
     }
   }
 
+  const handleInternalInput = (): void => {
+    // no-op
+  }
+
   const handleExternalInput = (event: FormEvent<HTMLInputElement>): void => {
     // Keep external & internal input values in sync
     const value = (event.target as HTMLInputElement).value
@@ -223,6 +227,7 @@ export const DatePicker = (
         required={false}
         disabled={false}
         value={internalValue}
+        onChange={handleInternalInput}
       />
       <div className="usa-date-picker__wrapper" tabIndex={-1}>
         <input

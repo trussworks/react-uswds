@@ -61,8 +61,8 @@ EVENTS
 
 - keyup on date picker calendar prevents default if keyCode !== keydown (?)
   - keydown on date picker calendar sets keydown (see keyup)
-- keydown on date picker input validates if keycode is enter
-- keydown on calendar date handles up/down/left/right, home, end, pageup, pagedown, shift+pageup, shift+pagedown
+
+  - keydown on calendar date handles up/down/left/right, home, end, pageup, pagedown, shift+pageup, shift+pagedown - DONE
 - keydown on calendar date picker handles tab, shift+tab
 - keydown on calendar month handles up/down/left/right, home, end, pageup, pagedown
 - keydown on calendar month picker handles tab, shift+tab
@@ -77,6 +77,7 @@ EVENTS
 
 OUTSTANDING:
 - focus out on date picker external input validates
+- keydown on date picker input validates if keycode is enter
  */
 
 describe('DatePicker component', () => {
