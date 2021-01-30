@@ -72,94 +72,92 @@ describe('MonthPicker', () => {
   })
 
   describe('keyboard navigation', () => {
-    describe('from a month button', () => {
-      it('pressing the up arrow key from a month navigates to 3 months before', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the up arrow key from a month navigates to 3 months before', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'ArrowUp',
-        })
-        expect(getByText('February')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'ArrowUp',
       })
+      expect(getByText('February')).toHaveFocus()
+    })
 
-      it('pressing the down arrow key from a month navigates to 3 months later', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the down arrow key from a month navigates to 3 months later', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'ArrowDown',
-        })
-        expect(getByText('August')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'ArrowDown',
       })
+      expect(getByText('August')).toHaveFocus()
+    })
 
-      it('pressing the left arrow key from a month navigates to the previous month', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the left arrow key from a month navigates to the previous month', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'ArrowLeft',
-        })
-        expect(getByText('April')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'ArrowLeft',
       })
+      expect(getByText('April')).toHaveFocus()
+    })
 
-      it('pressing the right arrow key from a month navigates to the next month', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the right arrow key from a month navigates to the next month', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'ArrowRight',
-        })
-        expect(getByText('June')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'ArrowRight',
       })
+      expect(getByText('June')).toHaveFocus()
+    })
 
-      it('pressing the home key from a month navigates to the first month of the selected row', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the home key from a month navigates to the first month of the selected row', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'Home',
-        })
-        expect(getByText('April')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'Home',
       })
+      expect(getByText('April')).toHaveFocus()
+    })
 
-      it('pressing the end key from a month navigates to the last month of the selected row', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the end key from a month navigates to the last month of the selected row', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'End',
-        })
-        expect(getByText('June')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'End',
       })
+      expect(getByText('June')).toHaveFocus()
+    })
 
-      it('pressing the page down key from a month navigates to December', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the page down key from a month navigates to December', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'PageDown',
-        })
-        expect(getByText('December')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'PageDown',
       })
+      expect(getByText('December')).toHaveFocus()
+    })
 
-      it('pressing the page up key from a month navigates to January', () => {
-        const { getByText } = render(
-          <MonthPicker {...testProps} date={new Date('May 20 2021')} />
-        )
+    it('pressing the page up key from a month navigates to January', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('May 20 2021')} />
+      )
 
-        fireEvent.keyDown(getByText('May'), {
-          key: 'PageUp',
-        })
-        expect(getByText('January')).toHaveFocus()
+      fireEvent.keyDown(getByText('May'), {
+        key: 'PageUp',
       })
+      expect(getByText('January')).toHaveFocus()
     })
   })
 })

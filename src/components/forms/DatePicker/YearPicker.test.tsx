@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { YearPicker } from './YearPicker'
@@ -266,6 +266,80 @@ describe('YearPicker', () => {
 
       expect(getByTestId('next-year-chunk')).toBeDisabled()
       expect(getByTestId('calendar-year-picker')).toHaveFocus()
+    })
+  })
+
+  describe('keyboard navigation', () => {
+    it('pressing the up arrow key from a year navigates to 3 years before', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'ArrowUp',
+      })
+      expect(getByText('2018')).toHaveFocus()
+    })
+
+    it('pressing the down arrow key from a year navigates to 3 years later', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'ArrowDown',
+      })
+      expect(getByText('2024')).toHaveFocus()
+    })
+
+    it('pressing the left arrow key from a year navigates to the previous year', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'ArrowLeft',
+      })
+      expect(getByText('2020')).toHaveFocus()
+    })
+
+    it('pressing the right arrow key from a year navigates to the next year', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'ArrowRight',
+      })
+      expect(getByText('2022')).toHaveFocus()
+    })
+
+    it('pressing the home key from a year navigates to the first year of the selected row', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'Home',
+      })
+      expect(getByText('2019')).toHaveFocus()
+    })
+
+    it('pressing the end key from a year navigates to the last year of the selected row', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'End',
+      })
+      expect(getByText('2021')).toHaveFocus()
+    })
+
+    it('pressing the page down key from a year navigates forward a year chunk', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'PageDown',
+      })
+      expect(getByText('2033')).toHaveFocus()
+    })
+
+    it('pressing the page up key from a year navigates back a year chunk', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      fireEvent.keyDown(getByText('2021'), {
+        key: 'PageUp',
+      })
+      expect(getByText('2009')).toHaveFocus()
     })
   })
 })

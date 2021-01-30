@@ -64,7 +64,7 @@ EVENTS
 
   - keydown on calendar date handles up/down/left/right, home, end, pageup, pagedown, shift+pageup, shift+pagedown - DONE
   - keydown on calendar month handles up/down/left/right, home, end, pageup, pagedown - DONE
-- keydown on calendar year handles up/down/left/right, home, end, pageup, pagedown
+- keydown on calendar year handles up/down/left/right, home, end, pageup, pagedown - DONE
 
 - keydown on calendar date picker handles tab, shift+tab
 - keydown on calendar month picker handles tab, shift+tab

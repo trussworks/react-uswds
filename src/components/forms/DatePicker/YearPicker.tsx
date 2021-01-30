@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { YEAR_CHUNK } from './constants'
@@ -7,6 +7,7 @@ import {
   keepDateBetweenMinAndMax,
   listToTable,
   setYear,
+  isSameYear,
 } from './utils'
 
 export const YearPicker = ({
@@ -58,7 +59,6 @@ export const YearPicker = ({
     // also focus on next element
     const [focusEl, fallbackFocusEl] = nextToFocus
 
-    // TODO - fallback to focus on yearToDisplay if there is no nextToFocus
     if (focusEl && fallbackFocusEl) {
       if (focusEl.disabled) {
         fallbackFocusEl.focus()
@@ -66,6 +66,16 @@ export const YearPicker = ({
         focusEl.focus()
       }
       setNextToFocus([null, null])
+    } else {
+      // Focus on the new year when it changes
+      const focusedYear =
+        yearPickerEl.current &&
+        yearPickerEl.current.querySelector<HTMLElement>(
+          '.usa-date-picker__calendar__year--focused'
+        )
+      if (focusedYear) {
+        focusedYear.focus()
+      }
     }
   }, [yearToDisplay])
 
@@ -102,6 +112,55 @@ export const YearPicker = ({
       handleSelectYear(yearIterator)
     }
 
+    const handleKeyDownFromYear = (event: KeyboardEvent): void => {
+      let newDisplayYear
+      const target = event.target as HTMLButtonElement
+      const focusedYear = parseInt(target.dataset?.value || '', 10)
+      const currentDate = setYear(date, focusedYear)
+
+      switch (event.key) {
+        case 'ArrowUp':
+        case 'Up':
+          newDisplayYear = focusedYear - 3
+          break
+        case 'ArrowDown':
+        case 'Down':
+          newDisplayYear = focusedYear + 3
+          break
+        case 'ArrowLeft':
+        case 'Left':
+          newDisplayYear = focusedYear - 1
+          break
+        case 'ArrowRight':
+        case 'Right':
+          newDisplayYear = focusedYear + 1
+          break
+        case 'Home':
+          newDisplayYear = focusedYear - (focusedYear % 3)
+          break
+        case 'End':
+          newDisplayYear = focusedYear + 2 - (focusedYear % 3)
+          break
+        case 'PageDown':
+          newDisplayYear = focusedYear + YEAR_CHUNK
+          break
+        case 'PageUp':
+          newDisplayYear = focusedYear - YEAR_CHUNK
+          break
+      }
+
+      if (newDisplayYear !== undefined) {
+        newDisplayYear = Math.max(0, newDisplayYear)
+        const newDate = setYear(date, newDisplayYear)
+        const cappedDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+        if (!isSameYear(currentDate, cappedDate)) {
+          setYearToDisplay(cappedDate.getFullYear())
+        }
+      }
+
+      event.preventDefault()
+    }
+
     years.push(
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
@@ -111,7 +170,8 @@ export const YearPicker = ({
         data-value={yearIndex}
         aria-selected={isSelected}
         disabled={isDisabled}
-        onClick={onClick}>
+        onClick={onClick}
+        onKeyDown={handleKeyDownFromYear}>
         {yearIndex}
       </button>
     )

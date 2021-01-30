@@ -21,7 +21,6 @@ export const MonthPicker = ({
   maxDate?: Date
   handleSelectMonth: (value: number) => void
 }): React.ReactElement => {
-  // TODO - use state for focused month
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
   const monthPickerEl = useRef<HTMLDivElement>(null)
