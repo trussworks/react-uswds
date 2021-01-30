@@ -200,7 +200,7 @@ export const Calendar = ({
         break
     }
 
-    if (newDisplayDate) {
+    if (newDisplayDate !== undefined) {
       const cappedDate = keepDateBetweenMinAndMax(
         newDisplayDate,
         minDate,

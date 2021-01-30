@@ -1,8 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { MONTH_LABELS } from './constants'
-import { isDatesMonthOutsideMinOrMax, listToTable, setMonth } from './utils'
+import {
+  isDatesMonthOutsideMinOrMax,
+  isSameMonth,
+  keepDateBetweenMinAndMax,
+  listToTable,
+  setMonth,
+} from './utils'
 
 export const MonthPicker = ({
   date,
@@ -46,6 +52,55 @@ export const MonthPicker = ({
       'usa-date-picker__calendar__month--focused': isFocused,
     })
 
+    const handleKeyDownFromMonth = (event: KeyboardEvent): void => {
+      let newDisplayMonth
+      const target = event.target as HTMLButtonElement
+      const selectedMonth = parseInt(target.dataset?.value || '', 10)
+      const currentDate = setMonth(date, selectedMonth)
+
+      switch (event.key) {
+        case 'ArrowUp':
+        case 'Up':
+          newDisplayMonth = selectedMonth - 3
+          break
+        case 'ArrowDown':
+        case 'Down':
+          newDisplayMonth = selectedMonth + 3
+          break
+        case 'ArrowLeft':
+        case 'Left':
+          newDisplayMonth = selectedMonth - 1
+          break
+        case 'ArrowRight':
+        case 'Right':
+          newDisplayMonth = selectedMonth + 1
+          break
+        case 'Home':
+          newDisplayMonth = selectedMonth - (selectedMonth % 3)
+          break
+        case 'End':
+          newDisplayMonth = selectedMonth + 2 - (selectedMonth % 3)
+          break
+        case 'PageDown':
+          newDisplayMonth = 11
+          break
+        case 'PageUp':
+          newDisplayMonth = 0
+          break
+      }
+
+      if (newDisplayMonth !== undefined) {
+        newDisplayMonth = Math.max(0, Math.min(11, newDisplayMonth))
+        const newDate = setMonth(date, newDisplayMonth)
+        const cappedDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+        if (!isSameMonth(currentDate, cappedDate)) {
+          setMonthToDisplay(cappedDate.getMonth())
+        }
+      }
+
+      event.preventDefault()
+    }
+
     return (
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
@@ -59,7 +114,8 @@ export const MonthPicker = ({
         disabled={isDisabled}
         onClick={(): void => {
           handleSelectMonth(index)
-        }}>
+        }}
+        onKeyDown={handleKeyDownFromMonth}>
         {month}
       </button>
     )

@@ -63,11 +63,13 @@ EVENTS
   - keydown on date picker calendar sets keydown (see keyup)
 
   - keydown on calendar date handles up/down/left/right, home, end, pageup, pagedown, shift+pageup, shift+pagedown - DONE
-- keydown on calendar date picker handles tab, shift+tab
-- keydown on calendar month handles up/down/left/right, home, end, pageup, pagedown
-- keydown on calendar month picker handles tab, shift+tab
+  - keydown on calendar month handles up/down/left/right, home, end, pageup, pagedown - DONE
 - keydown on calendar year handles up/down/left/right, home, end, pageup, pagedown
+
+- keydown on calendar date picker handles tab, shift+tab
+- keydown on calendar month picker handles tab, shift+tab
 - keydown on calendar year picker handles tab, shift+tab
+
 - keydown on date picker handles escape
 
 - focus out on date picker hides calendar if outside - DONE
