@@ -27,6 +27,7 @@ import {
   subWeeks,
   addWeeks,
   endOfWeek,
+  handleTabKey,
 } from './utils'
 
 const CalendarModes = {
@@ -65,6 +66,9 @@ export const Calendar = ({
   const prevMonthEl = useRef<HTMLButtonElement>(null)
   const nextMonthEl = useRef<HTMLButtonElement>(null)
   const nextYearEl = useRef<HTMLButtonElement>(null)
+  const selectMonthEl = useRef<HTMLButtonElement>(null)
+  const selectYearEl = useRef<HTMLButtonElement>(null)
+  const focusedDayEl = useRef<HTMLButtonElement>(null)
   const datePickerEl = useRef<HTMLDivElement>(null)
 
   const [dateToDisplay, setDateToDisplay] = useState(date || today())
@@ -159,6 +163,18 @@ export const Calendar = ({
   const withinRangeStartDate = rangeStartDate && addDays(rangeStartDate, 1)
   const withinRangeEndDate = rangeEndDate && subDays(rangeEndDate, 1)
 
+  const handleDatePickerTab = (event: KeyboardEvent): void => {
+    handleTabKey(event, [
+      prevYearEl?.current,
+      prevMonthEl?.current,
+      selectMonthEl?.current,
+      selectYearEl?.current,
+      nextMonthEl?.current,
+      nextYearEl?.current,
+      focusedDayEl?.current,
+    ])
+  }
+
   const handleKeyDownFromDay = (event: KeyboardEvent): void => {
     let newDisplayDate
     switch (event.key) {
@@ -198,6 +214,8 @@ export const Calendar = ({
           newDisplayDate = subMonths(dateToDisplay, 1)
         }
         break
+      default:
+        return
     }
 
     if (newDisplayDate !== undefined) {
@@ -261,14 +279,17 @@ export const Calendar = ({
     dateIterator.getMonth() === focusedMonth ||
     days.length % 7 !== 0
   ) {
+    const isFocused = isSameDay(dateIterator, focusedDate)
+
     days.push(
       <Day
         date={dateIterator}
         onClick={handleSelectDate}
         onKeyDown={handleKeyDownFromDay}
+        ref={isFocused ? focusedDayEl : null}
         isDisabled={!isDateWithinMinAndMax(dateIterator, minDate, maxDate)}
         isSelected={selectedDate && isSameDay(dateIterator, selectedDate)}
-        isFocused={isSameDay(dateIterator, focusedDate)}
+        isFocused={isFocused}
         isPrevMonth={isSameMonth(dateIterator, prevMonth)}
         isFocusedMonth={isSameMonth(dateIterator, focusedDate)}
         isNextMonth={isSameMonth(dateIterator, nextMonth)}
@@ -291,11 +312,13 @@ export const Calendar = ({
   }
 
   return (
+    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div
       tabIndex={-1}
       className="usa-date-picker__calendar__date-picker"
       data-testid="calendar-date-picker"
-      ref={datePickerEl}>
+      ref={datePickerEl}
+      onKeyDown={handleDatePickerTab}>
       <div className="usa-date-picker__calendar__row">
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__cell--center-items">
           <button
@@ -326,6 +349,7 @@ export const Calendar = ({
             type="button"
             data-testid="select-month"
             onClick={handleToggleMonthSelection}
+            ref={selectMonthEl}
             className="usa-date-picker__calendar__month-selection"
             aria-label={`${monthLabel}. Click to select month`}>
             {monthLabel}
@@ -334,6 +358,7 @@ export const Calendar = ({
             type="button"
             data-testid="select-year"
             onClick={handleToggleYearSelection}
+            ref={selectYearEl}
             className="usa-date-picker__calendar__year-selection"
             aria-label={`${focusedYear}. Click to select year`}>
             {focusedYear}

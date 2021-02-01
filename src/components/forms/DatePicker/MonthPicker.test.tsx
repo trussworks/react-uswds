@@ -159,5 +159,15 @@ describe('MonthPicker', () => {
       })
       expect(getByText('January')).toHaveFocus()
     })
+
+    it('pressing tab cycles through the focusable elements within the month picker', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByText('January')).toHaveFocus()
+      userEvent.tab()
+      expect(getByText('January')).toHaveFocus()
+    })
   })
 })

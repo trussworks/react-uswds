@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, KeyboardEvent } from 'react'
+import React, { useEffect, useState, useRef, KeyboardEvent, Key } from 'react'
 import classnames from 'classnames'
 
 import { YEAR_CHUNK } from './constants'
@@ -8,6 +8,7 @@ import {
   listToTable,
   setYear,
   isSameYear,
+  handleTabKey,
 } from './utils'
 
 export const YearPicker = ({
@@ -25,6 +26,7 @@ export const YearPicker = ({
 }): React.ReactElement => {
   const prevYearChunkEl = useRef<HTMLButtonElement>(null)
   const nextYearChunkEl = useRef<HTMLButtonElement>(null)
+  const focusedYearEl = useRef<HTMLButtonElement>(null)
   const yearPickerEl = useRef<HTMLDivElement>(null)
 
   const selectedYear = date.getFullYear()
@@ -89,6 +91,65 @@ export const YearPicker = ({
     if (yearToFocus) yearToFocus.focus()
   }, [])
 
+  const handleYearPickerTab = (event: KeyboardEvent): void => {
+    handleTabKey(event, [
+      prevYearChunkEl?.current,
+      focusedYearEl?.current,
+      nextYearChunkEl?.current,
+    ])
+  }
+
+  const handleKeyDownFromYear = (event: KeyboardEvent): void => {
+    let newDisplayYear
+    const target = event.target as HTMLButtonElement
+    const focusedYear = parseInt(target.dataset?.value || '', 10)
+    const currentDate = setYear(date, focusedYear)
+
+    switch (event.key) {
+      case 'ArrowUp':
+      case 'Up':
+        newDisplayYear = focusedYear - 3
+        break
+      case 'ArrowDown':
+      case 'Down':
+        newDisplayYear = focusedYear + 3
+        break
+      case 'ArrowLeft':
+      case 'Left':
+        newDisplayYear = focusedYear - 1
+        break
+      case 'ArrowRight':
+      case 'Right':
+        newDisplayYear = focusedYear + 1
+        break
+      case 'Home':
+        newDisplayYear = focusedYear - (focusedYear % 3)
+        break
+      case 'End':
+        newDisplayYear = focusedYear + 2 - (focusedYear % 3)
+        break
+      case 'PageDown':
+        newDisplayYear = focusedYear + YEAR_CHUNK
+        break
+      case 'PageUp':
+        newDisplayYear = focusedYear - YEAR_CHUNK
+        break
+      default:
+        return
+    }
+
+    if (newDisplayYear !== undefined) {
+      newDisplayYear = Math.max(0, newDisplayYear)
+      const newDate = setYear(date, newDisplayYear)
+      const cappedDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+      if (!isSameYear(currentDate, cappedDate)) {
+        setYearToDisplay(cappedDate.getFullYear())
+      }
+    }
+
+    event.preventDefault()
+  }
+
   const years = []
   let yearIndex = yearToChunk
   while (years.length < YEAR_CHUNK) {
@@ -112,60 +173,12 @@ export const YearPicker = ({
       handleSelectYear(yearIterator)
     }
 
-    const handleKeyDownFromYear = (event: KeyboardEvent): void => {
-      let newDisplayYear
-      const target = event.target as HTMLButtonElement
-      const focusedYear = parseInt(target.dataset?.value || '', 10)
-      const currentDate = setYear(date, focusedYear)
-
-      switch (event.key) {
-        case 'ArrowUp':
-        case 'Up':
-          newDisplayYear = focusedYear - 3
-          break
-        case 'ArrowDown':
-        case 'Down':
-          newDisplayYear = focusedYear + 3
-          break
-        case 'ArrowLeft':
-        case 'Left':
-          newDisplayYear = focusedYear - 1
-          break
-        case 'ArrowRight':
-        case 'Right':
-          newDisplayYear = focusedYear + 1
-          break
-        case 'Home':
-          newDisplayYear = focusedYear - (focusedYear % 3)
-          break
-        case 'End':
-          newDisplayYear = focusedYear + 2 - (focusedYear % 3)
-          break
-        case 'PageDown':
-          newDisplayYear = focusedYear + YEAR_CHUNK
-          break
-        case 'PageUp':
-          newDisplayYear = focusedYear - YEAR_CHUNK
-          break
-      }
-
-      if (newDisplayYear !== undefined) {
-        newDisplayYear = Math.max(0, newDisplayYear)
-        const newDate = setYear(date, newDisplayYear)
-        const cappedDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
-        if (!isSameYear(currentDate, cappedDate)) {
-          setYearToDisplay(cappedDate.getFullYear())
-        }
-      }
-
-      event.preventDefault()
-    }
-
     years.push(
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         type="button"
         tabIndex={tabIndex}
+        ref={isFocused ? focusedYearEl : null}
         className={classes}
         data-value={yearIndex}
         aria-selected={isSelected}
@@ -200,11 +213,13 @@ export const YearPicker = ({
   }
 
   return (
+    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div
       tabIndex={-1}
       className="usa-date-picker__calendar__year-picker"
       data-testid="calendar-year-picker"
-      ref={yearPickerEl}>
+      ref={yearPickerEl}
+      onKeyDown={handleYearPickerTab}>
       <table className="usa-date-picker__calendar__table" role="presentation">
         <tbody>
           <tr>

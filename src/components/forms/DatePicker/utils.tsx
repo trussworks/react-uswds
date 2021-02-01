@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { KeyboardEvent } from 'react'
 
 import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
 
@@ -519,4 +519,41 @@ export const listToTable = (
       ))}
     </>
   )
+}
+
+export const handleTabKey = (
+  event: KeyboardEvent,
+  focusableEl: Array<HTMLButtonElement | null>
+): void => {
+  if (event.key === 'Tab') {
+    const focusable = focusableEl.filter((el) => el && !el.disabled)
+    const activeElement = document?.activeElement
+
+    const firstTabIndex = 0
+    const lastTabIndex = focusable.length - 1
+    const firstTabStop = focusable[firstTabIndex]
+    const lastTabStop = focusable[lastTabIndex]
+    const focusIndex =
+      activeElement instanceof HTMLButtonElement
+        ? focusable.indexOf(activeElement)
+        : -1
+
+    const isLastTab = focusIndex === lastTabIndex
+    const isFirstTab = focusIndex === firstTabIndex
+    const isNotFound = focusIndex === -1
+
+    if (event.shiftKey) {
+      // Tab backwards
+      if (isFirstTab || isNotFound) {
+        event.preventDefault()
+        lastTabStop?.focus()
+      }
+    } else {
+      // Tab forwards
+      if (isLastTab || isNotFound) {
+        event.preventDefault()
+        firstTabStop?.focus()
+      }
+    }
+  }
 }

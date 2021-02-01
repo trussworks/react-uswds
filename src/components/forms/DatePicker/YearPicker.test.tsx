@@ -341,5 +341,46 @@ describe('YearPicker', () => {
       })
       expect(getByText('2009')).toHaveFocus()
     })
+
+    it('pressing tab cycles through the focusable elements within the year picker', () => {
+      const { getByText, getByTestId } = render(<YearPicker {...testProps} />)
+
+      expect(getByText('2021')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('next-year-chunk')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('previous-year-chunk')).toHaveFocus()
+      userEvent.tab()
+      expect(getByText('2021')).toHaveFocus()
+    })
+
+    it('pressing tab+shift cycles backwards through the focusable elements within the year picker', () => {
+      const { getByText, getByTestId } = render(<YearPicker {...testProps} />)
+
+      expect(getByText('2021')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('previous-year-chunk')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('next-year-chunk')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByText('2021')).toHaveFocus()
+    })
+
+    it('pressing tab only cycles through elements that are not disabled', () => {
+      const { getByText, getByTestId } = render(
+        <YearPicker
+          {...testProps}
+          minDate={parseDateString('1980-01-01') as Date}
+          maxDate={parseDateString('2025-01-01') as Date}
+        />
+      )
+
+      expect(getByText('2021')).toHaveFocus()
+      expect(getByTestId('next-year-chunk')).toBeDisabled()
+      userEvent.tab()
+      expect(getByTestId('previous-year-chunk')).toHaveFocus()
+      userEvent.tab()
+      expect(getByText('2021')).toHaveFocus()
+    })
   })
 })

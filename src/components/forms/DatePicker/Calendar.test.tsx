@@ -348,6 +348,75 @@ describe('Calendar', () => {
       })
       expect(getByLabelText(/^20 January 2020/)).toHaveFocus()
     })
+
+    it('pressing tab cycles through the focusable elements within the date picker', () => {
+      const { getByLabelText, getByTestId } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('previous-year')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('previous-month')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('select-month')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('select-year')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('next-month')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('next-year')).toHaveFocus()
+      userEvent.tab()
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing tab+shift cycles backwards through the focusable elements within the date picker', () => {
+      const { getByLabelText, getByTestId } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('next-year')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('next-month')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('select-year')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('select-month')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('previous-month')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByTestId('previous-year')).toHaveFocus()
+      userEvent.tab({ shift: true })
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+    })
+
+    it('pressing tab only cycles through elements that are not disabled', () => {
+      const { getByLabelText, getByTestId } = render(
+        <Calendar
+          {...testProps}
+          date={new Date('January 20 2021')}
+          minDate={new Date('January 01 2021')}
+        />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      expect(getByTestId('previous-year')).toBeDisabled()
+      expect(getByTestId('previous-month')).toBeDisabled()
+
+      userEvent.tab()
+      expect(getByTestId('select-month')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('select-year')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('next-month')).toHaveFocus()
+      userEvent.tab()
+      expect(getByTestId('next-year')).toHaveFocus()
+      userEvent.tab()
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+    })
   })
 
   describe('month selection', () => {

@@ -8,6 +8,7 @@ import {
   keepDateBetweenMinAndMax,
   listToTable,
   setMonth,
+  handleTabKey,
 } from './utils'
 
 export const MonthPicker = ({
@@ -24,6 +25,7 @@ export const MonthPicker = ({
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
   const monthPickerEl = useRef<HTMLDivElement>(null)
+  const focusedMonthEl = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const monthToFocus =
@@ -33,6 +35,61 @@ export const MonthPicker = ({
       )
     if (monthToFocus) monthToFocus.focus()
   }, [monthToDisplay])
+
+  const handleMonthPickerTab = (event: KeyboardEvent): void => {
+    handleTabKey(event, [focusedMonthEl?.current])
+  }
+
+  const handleKeyDownFromMonth = (event: KeyboardEvent): void => {
+    let newDisplayMonth
+    const target = event.target as HTMLButtonElement
+    const selectedMonth = parseInt(target.dataset?.value || '', 10)
+    const currentDate = setMonth(date, selectedMonth)
+
+    switch (event.key) {
+      case 'ArrowUp':
+      case 'Up':
+        newDisplayMonth = selectedMonth - 3
+        break
+      case 'ArrowDown':
+      case 'Down':
+        newDisplayMonth = selectedMonth + 3
+        break
+      case 'ArrowLeft':
+      case 'Left':
+        newDisplayMonth = selectedMonth - 1
+        break
+      case 'ArrowRight':
+      case 'Right':
+        newDisplayMonth = selectedMonth + 1
+        break
+      case 'Home':
+        newDisplayMonth = selectedMonth - (selectedMonth % 3)
+        break
+      case 'End':
+        newDisplayMonth = selectedMonth + 2 - (selectedMonth % 3)
+        break
+      case 'PageDown':
+        newDisplayMonth = 11
+        break
+      case 'PageUp':
+        newDisplayMonth = 0
+        break
+      default:
+        return
+    }
+
+    if (newDisplayMonth !== undefined) {
+      newDisplayMonth = Math.max(0, Math.min(11, newDisplayMonth))
+      const newDate = setMonth(date, newDisplayMonth)
+      const cappedDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
+      if (!isSameMonth(currentDate, cappedDate)) {
+        setMonthToDisplay(cappedDate.getMonth())
+      }
+    }
+
+    event.preventDefault()
+  }
 
   const months = MONTH_LABELS.map((month, index) => {
     const monthToCheck = setMonth(date, index)
@@ -51,60 +108,12 @@ export const MonthPicker = ({
       'usa-date-picker__calendar__month--focused': isFocused,
     })
 
-    const handleKeyDownFromMonth = (event: KeyboardEvent): void => {
-      let newDisplayMonth
-      const target = event.target as HTMLButtonElement
-      const selectedMonth = parseInt(target.dataset?.value || '', 10)
-      const currentDate = setMonth(date, selectedMonth)
-
-      switch (event.key) {
-        case 'ArrowUp':
-        case 'Up':
-          newDisplayMonth = selectedMonth - 3
-          break
-        case 'ArrowDown':
-        case 'Down':
-          newDisplayMonth = selectedMonth + 3
-          break
-        case 'ArrowLeft':
-        case 'Left':
-          newDisplayMonth = selectedMonth - 1
-          break
-        case 'ArrowRight':
-        case 'Right':
-          newDisplayMonth = selectedMonth + 1
-          break
-        case 'Home':
-          newDisplayMonth = selectedMonth - (selectedMonth % 3)
-          break
-        case 'End':
-          newDisplayMonth = selectedMonth + 2 - (selectedMonth % 3)
-          break
-        case 'PageDown':
-          newDisplayMonth = 11
-          break
-        case 'PageUp':
-          newDisplayMonth = 0
-          break
-      }
-
-      if (newDisplayMonth !== undefined) {
-        newDisplayMonth = Math.max(0, Math.min(11, newDisplayMonth))
-        const newDate = setMonth(date, newDisplayMonth)
-        const cappedDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
-        if (!isSameMonth(currentDate, cappedDate)) {
-          setMonthToDisplay(cappedDate.getMonth())
-        }
-      }
-
-      event.preventDefault()
-    }
-
     return (
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         type="button"
         key={`selectMonth_${month}`}
+        ref={isFocused ? focusedMonthEl : null}
         tabIndex={tabIndex}
         className={classes}
         data-value={index}
@@ -121,11 +130,13 @@ export const MonthPicker = ({
   })
 
   return (
+    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div
       tabIndex={-1}
       data-testid="calendar-month-picker"
       className="usa-date-picker__calendar__month-picker"
-      ref={monthPickerEl}>
+      ref={monthPickerEl}
+      onKeyDown={handleMonthPickerTab}>
       <table className="usa-date-picker__calendar__table" role="presentation">
         <tbody>{listToTable(months, 3)}</tbody>
       </table>
