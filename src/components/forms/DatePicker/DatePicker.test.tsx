@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, act } from '@testing-library/react'
+import { render, act, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
@@ -59,9 +59,6 @@ EVENTS
 - click month selection displays select month - DONE
 - click year selection displays select year - DONE
 
-- keyup on date picker calendar prevents default if keyCode !== keydown (?)
-  - keydown on date picker calendar sets keydown (see keyup)
-
   - keydown on calendar date handles up/down/left/right, home, end, pageup, pagedown, shift+pageup, shift+pagedown - DONE
   - keydown on calendar month handles up/down/left/right, home, end, pageup, pagedown - DONE
 - keydown on calendar year handles up/down/left/right, home, end, pageup, pagedown - DONE
@@ -70,12 +67,15 @@ EVENTS
 - keydown on calendar month picker handles tab, shift+tab
 - keydown on calendar year picker handles tab, shift+tab
 
-- keydown on date picker handles escape
+- keyup on date picker calendar prevents default if keyCode !== keydown (?)
+  - keydown on date picker calendar sets keydown (see keyup)
+
+- keydown on date picker handles escape - DONE
+
+- handle mouse move from date/month/year if not mobile
 
 - focus out on date picker hides calendar if outside - DONE
 - input on date picker external input calls reconcileInputValues, update calendar if visible - DONE
-
-- handle mouse move from date/month/year if not mobile
 
 OUTSTANDING:
 - focus out on date picker external input validates
@@ -190,6 +190,21 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-status')).toHaveTextContent(
         'Home and end keys navigate to the beginning and end of a week'
       )
+    })
+
+    it('hides the calendar when the escape key is pressed', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+
+      fireEvent.keyDown(getByTestId('date-picker'), { key: 'Escape' })
+
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(getByTestId('date-picker')).not.toHaveClass(
+        'usa-date-picker--active'
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveFocus()
     })
 
     it('hides the calendar when the toggle button is clicked a second time', () => {

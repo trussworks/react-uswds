@@ -4,6 +4,7 @@ import React, {
   useRef,
   FocusEvent,
   FormEvent,
+  KeyboardEvent,
 } from 'react'
 import classnames from 'classnames'
 
@@ -203,6 +204,17 @@ export const DatePicker = (
     }
   }
 
+  const handleEscapeKey = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      if (showCalendar) {
+        setShowCalendar(false)
+        setStatuses([])
+        externalInputEl?.current?.focus()
+      }
+      event.preventDefault()
+    }
+  }
+
   const datePickerClasses = classnames(
     'usa-date-picker',
     'usa-date-picker--initialized',
@@ -212,11 +224,13 @@ export const DatePicker = (
   )
 
   return (
+    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div
       data-testid="date-picker"
       className={datePickerClasses}
       ref={datePickerEl}
-      onBlur={handleFocusOut}>
+      onBlur={handleFocusOut}
+      onKeyDown={handleEscapeKey}>
       <input
         name={name}
         data-testid="date-picker-internal-input"

@@ -10,6 +10,7 @@ import { FocusMode } from './DatePicker'
 describe('Calendar', () => {
   const mockSelectDate = jest.fn()
   const testProps = {
+    date: new Date('January 2021'),
     handleSelectDate: mockSelectDate,
     minDate: parseDateString('0000-01-01') as Date,
     setStatuses: jest.fn(),
@@ -25,16 +26,14 @@ describe('Calendar', () => {
   })
 
   it('renders the selected month and year', () => {
-    const { getByTestId } = render(
-      <Calendar {...testProps} date={new Date('January 2021')} />
-    )
+    const { getByTestId } = render(<Calendar {...testProps} />)
     expect(getByTestId('select-month')).toHaveTextContent('January')
     expect(getByTestId('select-year')).toHaveTextContent('2021')
   })
 
   it('defaults to the current month and year', () => {
     const todayDate = today()
-    const { getByTestId } = render(<Calendar {...testProps} />)
+    const { getByTestId } = render(<Calendar {...testProps} date={undefined} />)
     expect(getByTestId('select-month')).toHaveTextContent(
       MONTH_LABELS[todayDate.getMonth()]
     )
