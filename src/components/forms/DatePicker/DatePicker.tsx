@@ -313,7 +313,7 @@ export const DatePicker = (
         </div>
         <div
           data-testid="date-picker-status"
-          className="usa-date-picker__status"
+          className="usa-sr-only usa-date-picker__status"
           role="status"
           aria-live="polite">
           {statuses.join('. ')}

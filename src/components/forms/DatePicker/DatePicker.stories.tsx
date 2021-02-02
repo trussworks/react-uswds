@@ -8,7 +8,10 @@ import { Label } from '../Label/Label'
 export default {
   title: 'Components/Form controls/Date picker',
   component: DatePicker,
-  argTypes: { onSubmit: { action: 'submitted' } },
+  argTypes: {
+    onSubmit: { action: 'submitted' },
+    disabled: { control: { type: 'boolean' } },
+  },
 }
 
 export const completeDatePicker = (argTypes): React.ReactElement => (
@@ -24,6 +27,7 @@ export const completeDatePicker = (argTypes): React.ReactElement => (
         id="appointment-date"
         name="appointment-date"
         aria-describedby="appointment-date-label appointment-date-hint"
+        disabled={argTypes.disabled}
       />
     </FormGroup>
   </Form>

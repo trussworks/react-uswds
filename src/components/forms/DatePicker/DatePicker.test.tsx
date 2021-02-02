@@ -341,23 +341,6 @@ describe('DatePicker component', () => {
         'usa-date-picker--active'
       )
     })
-
-    it.skip('clicking a date button does not select that date', () => {
-      // TODO - test if disabled happens after mount
-      const { getByTestId, getByText } = render(
-        <DatePicker {...testProps} defaultValue="2021-01-20" />
-      )
-      userEvent.click(getByTestId('date-picker-button'))
-      const dateButton = getByText('15')
-      expect(dateButton).toHaveClass('usa-date-picker__calendar__date')
-      userEvent.click(dateButton)
-      expect(getByTestId('date-picker-external-input')).toHaveValue(
-        '01/15/2021'
-      )
-      expect(getByTestId('date-picker-internal-input')).toHaveValue(
-        '2021-01-15'
-      )
-    })
   })
 
   describe('with a default value prop', () => {
