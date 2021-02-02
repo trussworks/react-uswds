@@ -71,6 +71,48 @@ describe('MonthPicker', () => {
     })
   })
 
+  describe('focusing on hover', () => {
+    it('focuses on a month when hovered over', () => {
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByText('January')).toHaveFocus()
+      fireEvent.mouseMove(getByText('March'))
+      expect(getByText('March')).toHaveFocus()
+    })
+
+    it('does not focus on a disabled month when hovered over', () => {
+      const { getByText } = render(
+        <MonthPicker
+          {...testProps}
+          date={new Date('January 20 2021')}
+          maxDate={new Date('April 2021')}
+        />
+      )
+
+      expect(getByText('January')).toHaveFocus()
+      expect(getByText('May')).toBeDisabled()
+      fireEvent.mouseMove(getByText('May'))
+      expect(getByText('May')).not.toHaveFocus()
+    })
+
+    it('does not focus on a month when hovered over if on an iOS device', () => {
+      jest
+        .spyOn(navigator, 'userAgent', 'get')
+        .mockImplementation(() => 'iPhone')
+
+      const { getByText } = render(
+        <MonthPicker {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByText('January')).toHaveFocus()
+      fireEvent.mouseMove(getByText('March'))
+      expect(getByText('March')).not.toHaveFocus()
+      jest.restoreAllMocks()
+    })
+  })
+
   describe('keyboard navigation', () => {
     it('pressing the up arrow key from a month navigates to 3 months before', () => {
       const { getByText } = render(

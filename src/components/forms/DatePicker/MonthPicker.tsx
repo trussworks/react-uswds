@@ -9,6 +9,7 @@ import {
   listToTable,
   setMonth,
   handleTabKey,
+  isIosDevice,
 } from './utils'
 
 export const MonthPicker = ({
@@ -108,6 +109,16 @@ export const MonthPicker = ({
       'usa-date-picker__calendar__month--focused': isFocused,
     })
 
+    const onClick = (): void => {
+      handleSelectMonth(index)
+    }
+
+    const handleMouseMoveFromMonth = (): void => {
+      if (isDisabled || isIosDevice()) return
+      if (index === monthToDisplay) return
+      setMonthToDisplay(index)
+    }
+
     return (
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
@@ -120,10 +131,9 @@ export const MonthPicker = ({
         data-label={month}
         aria-selected={isSelected}
         disabled={isDisabled}
-        onClick={(): void => {
-          handleSelectMonth(index)
-        }}
-        onKeyDown={handleKeyDownFromMonth}>
+        onClick={onClick}
+        onKeyDown={handleKeyDownFromMonth}
+        onMouseMove={handleMouseMoveFromMonth}>
         {month}
       </button>
     )

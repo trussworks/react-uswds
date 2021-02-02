@@ -9,6 +9,7 @@ import {
   setYear,
   isSameYear,
   handleTabKey,
+  isIosDevice,
 } from './utils'
 
 export const YearPicker = ({
@@ -155,13 +156,13 @@ export const YearPicker = ({
   while (years.length < YEAR_CHUNK) {
     const yearIterator = yearIndex
     const isDisabled = isDatesYearOutsideMinOrMax(
-      setYear(date, yearIndex),
+      setYear(date, yearIterator),
       minDate,
       maxDate
     )
 
-    const isSelected = yearIndex === selectedYear
-    const isFocused = yearIndex === yearToDisplay
+    const isSelected = yearIterator === selectedYear
+    const isFocused = yearIterator === yearToDisplay
     const tabIndex = isFocused ? 0 : -1
 
     const classes = classnames('usa-date-picker__calendar__year', {
@@ -173,6 +174,12 @@ export const YearPicker = ({
       handleSelectYear(yearIterator)
     }
 
+    const handleMouseMoveFromYear = (): void => {
+      if (isDisabled || isIosDevice()) return
+      if (yearIterator === yearToDisplay) return
+      setYearToDisplay(yearIterator)
+    }
+
     years.push(
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
@@ -180,12 +187,13 @@ export const YearPicker = ({
         tabIndex={tabIndex}
         ref={isFocused ? focusedYearEl : null}
         className={classes}
-        data-value={yearIndex}
+        data-value={yearIterator}
         aria-selected={isSelected}
         disabled={isDisabled}
         onClick={onClick}
-        onKeyDown={handleKeyDownFromYear}>
-        {yearIndex}
+        onKeyDown={handleKeyDownFromYear}
+        onMouseMove={handleMouseMoveFromYear}>
+        {yearIterator}
       </button>
     )
 

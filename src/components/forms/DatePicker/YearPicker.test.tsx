@@ -269,6 +269,40 @@ describe('YearPicker', () => {
     })
   })
 
+  describe('focusing on hover', () => {
+    it('focuses on a year when hovered over', () => {
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      expect(getByText('2021')).toHaveFocus()
+      fireEvent.mouseMove(getByText('2017'))
+      expect(getByText('2017')).toHaveFocus()
+    })
+
+    it('does not focus on a disabled year when hovered over', () => {
+      const { getByText } = render(
+        <YearPicker {...testProps} maxDate={new Date('April 2021')} />
+      )
+
+      expect(getByText('2021')).toHaveFocus()
+      expect(getByText('2024')).toBeDisabled()
+      fireEvent.mouseMove(getByText('2024'))
+      expect(getByText('2024')).not.toHaveFocus()
+    })
+
+    it('does not focus on a year when hovered over if on an iOS device', () => {
+      jest
+        .spyOn(navigator, 'userAgent', 'get')
+        .mockImplementation(() => 'iPhone')
+
+      const { getByText } = render(<YearPicker {...testProps} />)
+
+      expect(getByText('2021')).toHaveFocus()
+      fireEvent.mouseMove(getByText('2017'))
+      expect(getByText('2017')).not.toHaveFocus()
+      jest.restoreAllMocks()
+    })
+  })
+
   describe('keyboard navigation', () => {
     it('pressing the up arrow key from a year navigates to 3 years before', () => {
       const { getByText } = render(<YearPicker {...testProps} />)

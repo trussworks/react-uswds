@@ -72,7 +72,7 @@ EVENTS
 - keyup on date picker calendar prevents default if keyCode !== keydown (?)
   - keydown on date picker calendar sets keydown (see keyup)
 
-- handle mouse move from date/month/year if not mobile
+- handle mouse move from date/month/year if not mobile - DONE
 
 - focus out on date picker hides calendar if outside - DONE
 - input on date picker external input calls reconcileInputValues, update calendar if visible - DONE

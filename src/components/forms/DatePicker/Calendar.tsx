@@ -234,7 +234,6 @@ export const Calendar = ({
 
   const handleMouseMoveFromDay = (hoverDate: Date): void => {
     if (hoverDate === dateToDisplay) return
-
     setDateToDisplay(hoverDate)
   }
 
