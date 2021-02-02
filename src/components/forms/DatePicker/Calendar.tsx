@@ -232,6 +232,12 @@ export const Calendar = ({
     event.preventDefault()
   }
 
+  const handleMouseMoveFromDay = (hoverDate: Date): void => {
+    if (hoverDate === dateToDisplay) return
+
+    setDateToDisplay(hoverDate)
+  }
+
   const handlePreviousYearClick = (): void => {
     let newDate = subYears(dateToDisplay, 1)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
@@ -286,6 +292,7 @@ export const Calendar = ({
         date={dateIterator}
         onClick={handleSelectDate}
         onKeyDown={handleKeyDownFromDay}
+        onMouseMove={handleMouseMoveFromDay}
         ref={isFocused ? focusedDayEl : null}
         isDisabled={!isDateWithinMinAndMax(dateIterator, minDate, maxDate)}
         isSelected={selectedDate && isSameDay(dateIterator, selectedDate)}

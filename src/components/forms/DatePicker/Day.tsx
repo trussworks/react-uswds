@@ -2,7 +2,7 @@ import React, { forwardRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
-import { formatDate } from './utils'
+import { formatDate, isIosDevice } from './utils'
 
 export const Day = forwardRef(
   (
@@ -10,6 +10,7 @@ export const Day = forwardRef(
       date,
       onClick,
       onKeyDown,
+      onMouseMove,
       isDisabled = false,
       isSelected = false,
       isFocused = false,
@@ -25,6 +26,7 @@ export const Day = forwardRef(
       date: Date
       onClick: (value: string) => void
       onKeyDown: (event: KeyboardEvent) => void
+      onMouseMove: (hoverDate: Date) => void
       isDisabled?: boolean
       isSelected?: boolean
       isFocused?: boolean
@@ -71,6 +73,11 @@ export const Day = forwardRef(
       onKeyDown(e)
     }
 
+    const handleMouseMove = (): void => {
+      if (isDisabled || isIosDevice()) return
+      onMouseMove(date)
+    }
+
     return (
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
@@ -87,7 +94,8 @@ export const Day = forwardRef(
         aria-label={`${day} ${monthStr} ${year} ${dayStr}`}
         aria-selected={isSelected ? true : false}
         disabled={isDisabled}
-        onKeyDown={handleKeyDown}>
+        onKeyDown={handleKeyDown}
+        onMouseMove={isFocusedMonth ? handleMouseMove : undefined}>
         {day}
       </button>
     )

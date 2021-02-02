@@ -134,6 +134,58 @@ describe('Calendar', () => {
     })
   })
 
+  describe('focusing on hover', () => {
+    it('focuses on a date in the current month when hovered over', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      expect(getByLabelText(/^13 January 2021/)).toHaveFocus()
+    })
+
+    it('does not focus on a date not in the current month when hovered over', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      fireEvent.mouseMove(getByLabelText(/^2 February 2021/))
+      expect(getByLabelText(/^2 February 2021/)).not.toHaveFocus()
+    })
+
+    it('does not focus on a disabled date in the current month when hovered over', () => {
+      const { getByLabelText } = render(
+        <Calendar
+          {...testProps}
+          date={new Date('January 20 2021')}
+          minDate={new Date('January 15 2021')}
+        />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      expect(getByLabelText(/^13 January 2021/)).toBeDisabled()
+      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      expect(getByLabelText(/^13 January 2021/)).not.toHaveFocus()
+    })
+
+    it('does not focus on a date when hovered over if on an iOS device', () => {
+      jest
+        .spyOn(navigator, 'userAgent', 'get')
+        .mockImplementation(() => 'iPhone')
+
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 20 2021')} />
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      expect(getByLabelText(/^13 January 2021/)).not.toHaveFocus()
+      jest.restoreAllMocks()
+    })
+  })
+
   describe('navigation', () => {
     it('clicking previous year navigates the calendar back one year', () => {
       const { getByTestId } = render(

@@ -9,6 +9,7 @@ describe('Day', () => {
     date: new Date('January 20 2021'),
     onClick: jest.fn(),
     onKeyDown: jest.fn(),
+    onMouseMove: jest.fn(),
   }
 
   it('renders a date selection button', () => {
