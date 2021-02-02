@@ -123,22 +123,6 @@ describe('DatePicker component', () => {
       expect(getByText('20')).toHaveClass(
         'usa-date-picker__calendar__date--selected'
       )
-
-      expect(getByTestId('date-picker-status')).toHaveTextContent(
-        'You can navigate by day using left and right arrows'
-      )
-      expect(getByTestId('date-picker-status')).toHaveTextContent(
-        'Weeks by using up and down arrows'
-      )
-      expect(getByTestId('date-picker-status')).toHaveTextContent(
-        'Months by using page up and page down keys'
-      )
-      expect(getByTestId('date-picker-status')).toHaveTextContent(
-        'Years by using shift plus page up and shift plus page down'
-      )
-      expect(getByTestId('date-picker-status')).toHaveTextContent(
-        'Home and end keys navigate to the beginning and end of a week'
-      )
     })
 
     it('hides the calendar when the escape key is pressed', () => {
@@ -196,18 +180,6 @@ describe('DatePicker component', () => {
       )
     })
 
-    // TODO - test this better
-    it('does not add Selected date to the status text if the selected date and the focused date are not the same', () => {
-      const { getByTestId } = render(<DatePicker {...testProps} />)
-      userEvent.click(getByTestId('date-picker-button'))
-      expect(getByTestId('date-picker-calendar')).toBeVisible()
-      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
-
-      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
-        'Selected date'
-      )
-    })
-
     it('coerces the display date to a valid value', () => {
       const { getByTestId, getByLabelText } = render(
         <DatePicker
@@ -234,6 +206,114 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       getByTestId('test-external-element').focus()
       expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+    })
+  })
+
+  describe('status text', () => {
+    it('shows instructions in the status text when the calendar is opened', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'You can navigate by day using left and right arrows'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Weeks by using up and down arrows'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Months by using page up and page down keys'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Years by using shift plus page up and shift plus page down'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Home and end keys navigate to the beginning and end of a week'
+      )
+    })
+
+    it('removes instructions from the status text when the calendar is already open and the displayed date changes', () => {
+      const { getByTestId, getByLabelText } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'January 2021'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'You can navigate by day using left and right arrows'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Weeks by using up and down arrows'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Months by using page up and page down keys'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Years by using shift plus page up and shift plus page down'
+      )
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Home and end keys navigate to the beginning and end of a week'
+      )
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      expect(getByLabelText(/^13 January 2021/)).toHaveFocus()
+
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'January 2021'
+      )
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'You can navigate by day using left and right arrows'
+      )
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'Weeks by using up and down arrows'
+      )
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'Months by using page up and page down keys'
+      )
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'Years by using shift plus page up and shift plus page down'
+      )
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'Home and end keys navigate to the beginning and end of a week'
+      )
+    })
+
+    it('does not add Selected date to the status text if the selected date and the focused date are not the same', () => {
+      const { getByTestId, getByLabelText } = render(
+        <DatePicker {...testProps} defaultValue="2021-01-20" />
+      )
+
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Selected date'
+      )
+
+      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+
+      expect(getByLabelText(/^13 January 2021/)).toHaveFocus()
+      expect(getByTestId('date-picker-status')).not.toHaveTextContent(
+        'Selected date'
+      )
+
+      fireEvent.mouseMove(getByLabelText(/^20 January 2021/))
+
+      expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
+      expect(getByTestId('date-picker-status')).toHaveTextContent(
+        'Selected date'
+      )
     })
   })
 

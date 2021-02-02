@@ -77,6 +77,8 @@ export const Calendar = ({
     [HTMLButtonElement | null, HTMLDivElement | null]
   >([null, null])
 
+  let firstMount = false
+
   const handleSelectMonth = (monthIndex: number): void => {
     let newDate = setMonth(dateToDisplay, monthIndex)
     newDate = keepDateBetweenMinAndMax(newDate, minDate, maxDate)
@@ -90,6 +92,16 @@ export const Calendar = ({
     setDateToDisplay(newDate)
     setMode(CalendarModes.DATE_PICKER)
   }
+
+  const focusedDate = addDays(dateToDisplay, 0)
+  const focusedMonth = dateToDisplay.getMonth()
+  const focusedYear = dateToDisplay.getFullYear()
+
+  const monthLabel = MONTH_LABELS[focusedMonth]
+
+  useEffect(() => {
+    firstMount = true
+  }, [])
 
   useEffect(() => {
     // Update displayed date when input changes (only if viewing date picker - otherwise an effect loop will occur)
@@ -111,16 +123,23 @@ export const Calendar = ({
         setNextToFocus([null, null])
       } else {
         // Focus on new date when it changes
-        const focusedDate =
+        const focusedDateEl =
           datePickerEl.current &&
           datePickerEl.current.querySelector<HTMLElement>(
             '.usa-date-picker__calendar__date--focused'
           )
 
-        if (focusedDate) {
-          focusedDate.focus()
+        if (focusedDateEl) {
+          focusedDateEl.focus()
         }
       }
+    }
+
+    if (!firstMount) {
+      const newStatuses = [`${monthLabel} ${focusedYear}`]
+      if (selectedDate && isSameDay(focusedDate, selectedDate))
+        newStatuses.unshift('Selected date')
+      setStatuses(newStatuses)
     }
   }, [dateToDisplay])
 
@@ -144,10 +163,6 @@ export const Calendar = ({
       />
     )
   }
-
-  const focusedDate = addDays(dateToDisplay, 0)
-  const focusedMonth = dateToDisplay.getMonth()
-  const focusedYear = dateToDisplay.getFullYear()
 
   const prevMonth = subMonths(dateToDisplay, 1)
   const nextMonth = addMonths(dateToDisplay, 1)
@@ -273,8 +288,6 @@ export const Calendar = ({
   const handleToggleYearSelection = (): void => {
     setMode(CalendarModes.YEAR_PICKER)
   }
-
-  const monthLabel = MONTH_LABELS[focusedMonth]
 
   const days = []
 
