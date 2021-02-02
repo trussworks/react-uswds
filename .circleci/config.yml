@@ -32,6 +32,22 @@ jobs:
 
       - run: yarn lint
       - run: yarn danger ci --failOnErrors
+      - run:
+          name: Create GitHub Deployment
+          command: ./scripts/deployment_start.sh > deployment
+      - run:
+          name: Build Storybook
+          command: yarn run build-storybook
+      - store_artifacts:
+          path: storybook-static
+      - run:
+          name: Add GitHub Deployment success status
+          command: ./scripts/deployment_stop.sh success
+          when: on_success
+      - run:
+          name: Add GitHub Deployment error status
+          command: ./scripts/deployment_stop.sh error
+          when: on_fail
 
 workflows:
   build:
