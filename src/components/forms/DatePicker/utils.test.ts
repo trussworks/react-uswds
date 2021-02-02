@@ -1,7 +1,8 @@
-import { DEFAULT_EXTERNAL_DATE_FORMAT } from './constants'
+import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
 import {
   keepDateWithinMonth,
   setDate,
+  today,
   parseDateString,
   formatDate,
   isDateInvalid,
@@ -10,42 +11,61 @@ import {
 
 describe('keepDateWithinMonth', () => {
   it('returns the original date if the month matches', () => {
-    const testDate = new Date('January 15, 2020')
+    const testDate = new Date('January 20, 2021')
     expect(keepDateWithinMonth(testDate, 0)).toEqual(testDate)
   })
 
   it('returns the last day of the previous month if the month does not match', () => {
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate
-    const testDate = new Date('January 15, 2020')
+    const testDate = new Date('January 20, 2021')
     expect(keepDateWithinMonth(testDate, 1)).toEqual(
-      new Date('December 31, 2019')
+      new Date('December 31, 2020')
     )
   })
 })
 
 describe('setDate', () => {
-  it('returns a Date object with the given year, month, and date in UTC', () => {
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setFullYear
-    expect(setDate(2020, 3, 15)).toEqual(new Date('2020-04-15T23:00:00.000Z'))
+  it('returns a Date object with the given year, month, and date', () => {
+    const expectedDate = new Date(0)
+    expectedDate.setFullYear(2020, 0, 20)
+    expect(setDate(2020, 0, 20)).toEqual(expectedDate)
+  })
+})
+
+describe('today', () => {
+  it('returns a Date object with today’s date', () => {
+    const todaysDate = new Date()
+    const expectedDate = new Date(0)
+    expectedDate.setFullYear(
+      todaysDate.getFullYear(),
+      todaysDate.getMonth(),
+      todaysDate.getDate()
+    )
+    expect(today()).toEqual(expectedDate)
   })
 })
 
 describe('parseDateString', () => {
   it('parses a date string using - syntax and returns a Date object', () => {
-    expect(parseDateString('1988-05-16')).toEqual(
-      new Date('May 16, 1988 23:00:00Z')
-    )
+    const expectedDate = new Date(0)
+    expectedDate.setFullYear(2021, 0, 20)
+    expect(parseDateString('2021-01-20')).toEqual(expectedDate)
   })
 
   it('parses a date string using / syntax and returns a Date object', () => {
-    expect(parseDateString('5/16/1988', DEFAULT_EXTERNAL_DATE_FORMAT)).toEqual(
-      new Date('May 16, 1988 23:00:00Z')
+    const expectedDate = new Date(0)
+    expectedDate.setFullYear(2021, 0, 20)
+    expect(parseDateString('1/20/2021', DEFAULT_EXTERNAL_DATE_FORMAT)).toEqual(
+      expectedDate
     )
   })
 
-  // TODO
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  it.skip('adjusts the date', () => {})
+  it('coerces the date if the string is invalid', () => {
+    const expectedDate = new Date(0)
+    expectedDate.setFullYear(2021, 11, 31)
+    expect(parseDateString('2021-14-38', INTERNAL_DATE_FORMAT, true)).toEqual(
+      expectedDate
+    )
+  })
 })
 
 describe('formatDate', () => {
