@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, act, fireEvent } from '@testing-library/react'
+import { render, act, fireEvent, createEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
@@ -69,8 +69,8 @@ EVENTS
 
 - keydown on date picker handles escape - DONE
 
-- keyup on date picker calendar prevents default if keyCode !== keydown (?)
-  - keydown on date picker calendar sets keydown (see keyup)
+- keyup on date picker calendar prevents default if keyCode !== keydown (?) - DONE
+  - keydown on date picker calendar sets keydown (see keyup) - DONE
 
 - handle mouse move from date/month/year if not mobile - DONE
 
@@ -152,6 +152,25 @@ describe('DatePicker component', () => {
     expect(getByTestId('date-picker-status')).toBeInstanceOf(HTMLDivElement)
     expect(getByTestId('date-picker-status')).toHaveAttribute('role', 'status')
     expect(getByTestId('date-picker-status')).toHaveTextContent('')
+  })
+
+  // https://github.com/uswds/uswds/blob/develop/spec/unit/date-picker/date-picker.spec.js#L933
+  it('prevents default action if keyup doesn’t originate within the calendar', () => {
+    const { getByTestId } = render(
+      <DatePicker {...testProps} defaultValue="2021-01-20" />
+    )
+
+    const calendarEl = getByTestId('date-picker-calendar')
+    userEvent.click(getByTestId('date-picker-button'))
+    expect(calendarEl).toBeVisible()
+    const keyUpEvent = createEvent.keyUp(calendarEl, {
+      key: 'Enter',
+      bubbles: true,
+      keyCode: 13,
+    })
+    const preventDefaultSpy = jest.spyOn(keyUpEvent, 'preventDefault')
+    fireEvent(calendarEl, keyUpEvent)
+    expect(preventDefaultSpy).toHaveBeenCalled()
   })
 
   describe('toggling the calendar', () => {

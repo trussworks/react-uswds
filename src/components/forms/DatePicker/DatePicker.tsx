@@ -65,6 +65,9 @@ export const DatePicker = (
   const [calendarPosY, setCalendarPosY] = useState<number | undefined>(0)
   const [statuses, setStatuses] = useState<string[]>([])
   const [focusMode, setFocusMode] = useState<FocusMode>(FocusMode.None)
+  const [keydownKeyCode, setKeydownKeyCode] = useState<number | undefined>(
+    undefined
+  )
 
   const parsedMinDate = parseDateString(minDate) as Date
   const parsedMaxDate = maxDate ? parseDateString(maxDate) : undefined
@@ -215,6 +218,14 @@ export const DatePicker = (
     }
   }
 
+  const handleCalendarKeydown = (event: KeyboardEvent): void => {
+    setKeydownKeyCode(event.keyCode)
+  }
+
+  const handleCalendarKeyup = (event: KeyboardEvent): void => {
+    if (event.keyCode !== keydownKeyCode) event.preventDefault()
+  }
+
   const datePickerClasses = classnames(
     'usa-date-picker',
     'usa-date-picker--initialized',
@@ -270,6 +281,7 @@ export const DatePicker = (
           onClick={handleToggleClick}>
           &nbsp;
         </button>
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           data-testid="date-picker-calendar"
           className="usa-date-picker__calendar"
@@ -277,7 +289,9 @@ export const DatePicker = (
           aria-modal="true"
           hidden={!showCalendar}
           data-value={calendarDisplayValue && formatDate(calendarDisplayValue)}
-          style={{ top: `${calendarPosY}px` }}>
+          style={{ top: `${calendarPosY}px` }}
+          onKeyDown={handleCalendarKeydown}
+          onKeyUp={handleCalendarKeyup}>
           {showCalendar && (
             <Calendar
               date={calendarDisplayValue}
