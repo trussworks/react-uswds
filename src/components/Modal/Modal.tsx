@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 
 import styles from './Modal.module.scss'
+import { deprecationWarning } from '../../deprecation'
 
 type ModalProps = {
   title?: React.ReactNode
@@ -18,6 +19,10 @@ export const Modal = ({
   className,
 }: ModalProps): React.ReactElement => {
   const classes = classnames(styles.modal, className)
+
+  deprecationWarning(
+    'Modal is deprecated.  Modal will be removed from react-uswds alongside all other Modal related components and functions in the next major release.'
+  )
 
   return (
     <div data-testid="modal" className={classes}>
@@ -38,9 +43,13 @@ export const ModalContainer = ({
   children,
 }: {
   children: React.ReactNode
-}): React.ReactElement => (
-  <div className={styles.modalContainer}>{children}</div>
-)
+}): React.ReactElement => {
+  deprecationWarning(
+    'Modal is deprecated. ModalContainer will be removed from react-uswds alongside all other Modal related components and functions in the next major release.'
+  )
+
+  return <div className={styles.modalContainer}>{children}</div>
+}
 
 /** connectModal and useModal package the logic & state of opening/closing a modal */
 export interface ConnectedModalProps {
@@ -55,6 +64,10 @@ export const connectModal = function <P extends ConnectedModalProps>(
     isOpen,
     ...props
   }: P): React.ReactElement | null => {
+    deprecationWarning(
+      "Modal is deprecated. 'connectModal' will be removed from react-uswds alongside all other Modal related components and functions in the next major release."
+    )
+
     if (!isOpen) return null
     return (
       <>
@@ -76,6 +89,10 @@ export type ModalHook = {
 }
 
 export const useModal = (): ModalHook => {
+  deprecationWarning(
+    'Modal is deprecated. The useModal hook will be removed from react-uswds alongside all other Modal related components and functions in the next major release.'
+  )
+
   const [isOpen, setIsOpen] = useState(false)
 
   const openModal = (): void => {
