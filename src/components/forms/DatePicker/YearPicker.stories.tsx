@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react'
 
 import { YearPicker } from './YearPicker'
@@ -7,34 +6,49 @@ import { parseDateString } from './utils'
 export default {
   title: 'Components/Form controls/Date picker/Year picker',
   component: YearPicker,
+  argTypes: {
+    handleSelectYear: { action: 'handle select year' },
+    setStatuses: { action: 'set statuses' },
+  },
 }
 
 const testProps = {
   date: new Date('January 20 2021'),
   minDate: parseDateString('0000-01-01') as Date,
-  handleSelectYear: (): void => {},
-  setStatuses: (): void => {},
 }
 
-export const yearPicker = (): React.ReactElement => (
-  <YearPicker {...testProps} />
-)
-
-export const withMinAndMaxInCurrentChunk = (): React.ReactElement => (
+export const yearPicker = (argTypes): React.ReactElement => (
   <YearPicker
     {...testProps}
+    handleSelectYear={argTypes.handleSelectYear}
+    setStatuses={argTypes.setStatuses}
+  />
+)
+
+export const withMinAndMaxInCurrentChunk = (argTypes): React.ReactElement => (
+  <YearPicker
+    {...testProps}
+    handleSelectYear={argTypes.handleSelectYear}
+    setStatuses={argTypes.setStatuses}
     minDate={parseDateString('2021-01-01') as Date}
     maxDate={parseDateString('2025-01-01') as Date}
   />
 )
 
-export const withMinInCurrentChunk = (): React.ReactElement => (
-  <YearPicker {...testProps} minDate={parseDateString('2021-01-01') as Date} />
-)
-
-export const withMaxInCurrentChunk = (): React.ReactElement => (
+export const withMinInCurrentChunk = (argTypes): React.ReactElement => (
   <YearPicker
     {...testProps}
+    handleSelectYear={argTypes.handleSelectYear}
+    setStatuses={argTypes.setStatuses}
+    minDate={parseDateString('2021-01-01') as Date}
+  />
+)
+
+export const withMaxInCurrentChunk = (argTypes): React.ReactElement => (
+  <YearPicker
+    {...testProps}
+    handleSelectYear={argTypes.handleSelectYear}
+    setStatuses={argTypes.setStatuses}
     minDate={parseDateString('1950-01-01') as Date}
     maxDate={parseDateString('2025-01-01') as Date}
   />

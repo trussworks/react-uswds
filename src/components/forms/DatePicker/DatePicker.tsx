@@ -29,6 +29,7 @@ interface DatePickerProps {
   name: string
   className?: string
   disabled?: boolean
+  required?: boolean
   defaultValue?: string
   minDate: string
   maxDate?: string
@@ -48,9 +49,11 @@ export const DatePicker = (
     name,
     defaultValue,
     disabled,
+    required,
     minDate = DEFAULT_MIN_DATE,
     maxDate,
     rangeDate,
+    ...inputProps
   } = props
 
   const datePickerEl = useRef<HTMLDivElement>(null)
@@ -243,6 +246,7 @@ export const DatePicker = (
       onBlur={handleFocusOut}
       onKeyDown={handleEscapeKey}>
       <input
+        {...inputProps}
         name={name}
         data-testid="date-picker-internal-input"
         className="usa-input usa-sr-only usa-date-picker__internal-input"
@@ -256,11 +260,13 @@ export const DatePicker = (
       />
       <div className="usa-date-picker__wrapper" tabIndex={-1}>
         <input
+          {...inputProps}
           id={id}
           data-testid="date-picker-external-input"
           className="usa-input usa-date-picker__external-input"
           type="text"
           disabled={disabled}
+          required={required}
           value={externalValue}
           ref={externalInputEl}
           onInput={handleExternalInput}

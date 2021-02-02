@@ -5,50 +5,126 @@ import { Day } from './Day'
 export default {
   title: 'Components/Form controls/Date picker/Day',
   component: Day,
+  argTypes: {
+    onClick: { action: 'on click' },
+    onKeyDown: { action: 'on keydown' },
+    onMouseMove: { action: 'on mouse move' },
+  },
 }
 
 const testDate = new Date('January 20 2021')
 
-// TODO - use actions
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const mockClick = (): void => {}
-
 const defaultProps = {
   date: testDate,
-  onClick: mockClick,
 }
 
-export const defaultDay = (): React.ReactElement => <Day {...defaultProps} />
-export const disabled = (): React.ReactElement => (
-  <Day {...defaultProps} isDisabled />
-)
-export const selected = (): React.ReactElement => (
-  <Day {...defaultProps} isSelected />
-)
-export const focused = (): React.ReactElement => (
-  <Day {...defaultProps} isFocused />
-)
-export const previousMonth = (): React.ReactElement => (
-  <Day {...defaultProps} isPrevMonth />
-)
-export const sameMonth = (): React.ReactElement => (
-  <Day {...defaultProps} isFocusedMonth />
-)
-export const nextMonth = (): React.ReactElement => (
-  <Day {...defaultProps} isNextMonth />
-)
-export const today = (): React.ReactElement => <Day {...defaultProps} isToday />
-
-export const isRangeDate = (): React.ReactElement => (
-  <Day {...defaultProps} isRangeDate />
+export const defaultDay = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+  />
 )
 
-export const isRangeStart = (): React.ReactElement => (
-  <Day {...defaultProps} isRangeStart />
+export const disabled = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isDisabled
+  />
 )
-export const isRangeEnd = (): React.ReactElement => (
-  <Day {...defaultProps} isRangeEnd />
+export const selected = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isSelected
+  />
 )
-export const isWithinRange = (): React.ReactElement => (
-  <Day {...defaultProps} isWithinRange />
+export const focused = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isFocused
+  />
+)
+export const previousMonth = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isPrevMonth
+  />
+)
+export const sameMonth = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isFocusedMonth
+  />
+)
+export const nextMonth = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isNextMonth
+  />
+)
+export const today = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isToday
+  />
+)
+
+export const isRangeDate = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isRangeDate
+  />
+)
+
+export const isRangeStart = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isRangeStart
+  />
+)
+export const isRangeEnd = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isRangeEnd
+  />
+)
+export const isWithinRange = (argTypes): React.ReactElement => (
+  <Day
+    {...defaultProps}
+    onClick={argTypes.onClick}
+    onKeyDown={argTypes.onKeyDown}
+    onMouseMove={argTypes.onMouseMove}
+    isWithinRange
+  />
 )

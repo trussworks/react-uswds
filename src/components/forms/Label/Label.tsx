@@ -10,8 +10,18 @@ interface LabelProps {
   srOnly?: boolean
 }
 
-export const Label = (props: LabelProps): React.ReactElement => {
-  const { children, htmlFor, className, error, hint, srOnly } = props
+export const Label = (
+  props: LabelProps & JSX.IntrinsicElements['label']
+): React.ReactElement => {
+  const {
+    children,
+    htmlFor,
+    className,
+    error,
+    hint,
+    srOnly,
+    ...labelProps
+  } = props
 
   const classes = classnames(
     {
@@ -23,7 +33,11 @@ export const Label = (props: LabelProps): React.ReactElement => {
   )
 
   return (
-    <label data-testid="label" className={classes} htmlFor={htmlFor}>
+    <label
+      {...labelProps}
+      data-testid="label"
+      className={classes}
+      htmlFor={htmlFor}>
       {children}
       {hint && <span className="usa-hint">{hint}</span>}
     </label>

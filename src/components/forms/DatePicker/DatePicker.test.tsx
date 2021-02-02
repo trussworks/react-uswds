@@ -6,77 +6,7 @@ import { DatePicker } from './DatePicker'
 import { today } from './utils'
 import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
 
-/* TODO
-elements to render:
-- internal input (text) - DONE
-- external input (text) - DONE
-- toggle button - DONE
-- date picker calendar dialog - DONE
-  states:
-  - calendar closed - DONE
-  - calendar open
-    - date selection - DONE
-    - month selection - DONE
-    - year selection - DONE
-- status text - DONE
-
-PROPS
-- input name (internal input) - DONE
-- input ID (external input) - DONE
-- label & hint IDs (for aria describedby)
-- passes required prop to input
-- passes disabled prop to input
-- handles default value - DONE
-- min date - DONE
-- max date - DONE
-- range date - DONE
-
-METHODS
-toggle
-  SHOW CALENDAR:
-    - gets date to display (keep between min/max, default to today)
-    - render calendar with date to display
-    - focus on date - ?
-    - set status text
-  HIDE CALENDAR: - DONE
-    - remove active class
-    - set hidden to true
-    - set status text to ''
-validate - DONE
-navigate - DONE
-
-EVENTS
-- click button toggles calendar - DONE
-- click date selects date - DONE
-- click month selects month - DONE
-- click year selects year - DONE
-- click previous month displays previous month - DONE
-- click next month displays next month - DONE
-- click previous year displays previous year - DONE
-- click next year displays next year - DONE
-- click previous year chunk displays previous year chunk - DONE
-- click next year chunk displays next year chunk - DONE
-- click month selection displays select month - DONE
-- click year selection displays select year - DONE
-
-  - keydown on calendar date handles up/down/left/right, home, end, pageup, pagedown, shift+pageup, shift+pagedown - DONE
-  - keydown on calendar month handles up/down/left/right, home, end, pageup, pagedown - DONE
-- keydown on calendar year handles up/down/left/right, home, end, pageup, pagedown - DONE
-
-- keydown on calendar date picker handles tab, shift+tab - DONE
-- keydown on calendar month picker handles tab, shift+tab - DONE
-- keydown on calendar year picker handles tab, shift+tab - DONE
-
-- keydown on date picker handles escape - DONE
-
-- keyup on date picker calendar prevents default if keyCode !== keydown (?) - DONE
-  - keydown on date picker calendar sets keydown (see keyup) - DONE
-
-- handle mouse move from date/month/year if not mobile - DONE
-
-- focus out on date picker hides calendar if outside - DONE
-- input on date picker external input calls reconcileInputValues, update calendar if visible - DONE
-
+/* 
 OUTSTANDING:
 - focus out on date picker external input validates
 - keydown on date picker input validates if keycode is enter
@@ -304,6 +234,14 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       getByTestId('test-external-element').focus()
       expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+    })
+  })
+
+  describe('with the required prop', () => {
+    it('the external input is required, and the internal input is not required', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} required />)
+      expect(getByTestId('date-picker-external-input')).toBeRequired()
+      expect(getByTestId('date-picker-internal-input')).not.toBeRequired()
     })
   })
 
