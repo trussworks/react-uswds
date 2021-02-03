@@ -30,7 +30,7 @@
     "build:watch": "webpack --watch",
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t ''",
-    "prepublishOnly": "yarn build",
+    "prepare": "yarn build",
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
     "example:install": "yarn build && cd example/ && yarn",
