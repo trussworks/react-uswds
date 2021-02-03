@@ -32,7 +32,6 @@
     "release": "standard-version -t ''",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
-    "preversion": "yarn lint",
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
     "example:install": "yarn build && cd example/ && yarn",
