@@ -44,7 +44,7 @@ describe('Link component', () => {
           Click Me
         </Link>
       )
-      expect(container.querySelector('a')).toHaveClass('usa-link usa-nav_link')
+      expect(container.querySelector('a')).toHaveClass('usa-link usa-nav__link')
     })
 
     it('renders link with optional anchor tag attributes', () => {

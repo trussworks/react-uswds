@@ -46,7 +46,7 @@ function linkClasses<T>(
     ? className
     : classnames(
         'usa-link',
-        { 'usa-link--external': isExternalLink, 'usa-nav_link': isNavLink },
+        { 'usa-link--external': isExternalLink, 'usa-nav__link': isNavLink },
         className
       )
 }
