@@ -28,6 +28,12 @@ export type DefaultLinkProps = StyledLinkProps<JSX.IntrinsicElements['a']> &
 // props, plus the required props on WithCustomLinkProps
 export type CustomLinkProps<T> = StyledLinkProps<T> & WithCustomLinkProps<T>
 
+export function isCustomProps<T>(
+  props: DefaultLinkProps | CustomLinkProps<T>
+): props is CustomLinkProps<T> {
+  return 'asCustom' in props
+}
+
 function linkClasses<T>(
   variant: StyledLinkProps<T>['variant'],
   className: StyledLinkProps<T>['className']
@@ -51,7 +57,7 @@ export function Link<T>(props: CustomLinkProps<T>): React.ReactElement
 export function Link<FCProps = DefaultLinkProps>(
   props: DefaultLinkProps | CustomLinkProps<FCProps>
 ): React.ReactElement {
-  if ('asCustom' in props) {
+  if (isCustomProps(props)) {
     const { variant, className, asCustom, children, ...remainingProps } = props
     // 1. We know props is AsCustomProps<FCProps>
     // 2. We know AsCustomProps<FCProps> is

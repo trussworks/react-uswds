@@ -50,12 +50,13 @@ npm i @trussworks/react-uswds
 
 ### Pre-Release
 
-Pre-release packages are published to GitHub Packages.  To use, you
+Pre-release packages are published to GitHub Packages. To use, you
 will need a [GitHub access
 token](https://docs.github.com/en/packages/publishing-and-managing-packages/about-github-packages#about-tokens)
 with the `read:packages` scope.
 
 1. Create an `.npmrc` with
+
 ```
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN_GOES_HERE
 @trussworks:registry=https://npm.pkg.github.com
@@ -64,6 +65,7 @@ with the `read:packages` scope.
 or
 
 Create a `.yarnrc` file with
+
 ```
 "@trussworks:registry" "https://npm.pkg.github.com"
 ```
@@ -76,11 +78,13 @@ for more detailed information.
 
 ## Usage
 
-You can import modules using ES6 syntax:
+You can import ReactUSWDS components using ES6 syntax:
 
 ```
 import { Alert } from '@trussworks/react-uswds'
 ```
+
+> **Warning:** Do _not_ include the full USWDS JS in your project alongside this library, as that will result in some components that use JS (such as the ComboBox) to initialize twice.
 
 Also make sure to include the following in order to import the compiled CSS from this project:
 
@@ -88,7 +92,7 @@ Also make sure to include the following in order to import the compiled CSS from
 @import '~@trussworks/react-uswds/lib/index.css';
 ```
 
-Note: If you aren't already using USWDS as a dependency, you also need to import uswds styles. **[Read more info about using USWDS styles and assets here](./docs/styles_and_assets.md)**
+If you aren't already using USWDS as a dependency, you also need to import USWDS styles. **[Read more info about using USWDS styles and assets here](./docs/styles_and_assets.md)**
 
 Having issues? See [FAQs](./docs/faqs.md).
 
