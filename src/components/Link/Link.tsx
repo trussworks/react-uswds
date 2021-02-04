@@ -44,13 +44,11 @@ function linkClasses<T>(
 
   return unstyled
     ? className
-    : isExternalLink
-    ? classnames(
+    : classnames(
         'usa-link',
-        { 'usa-link--external': isExternalLink },
+        { 'usa-link--external': isExternalLink, 'usa-nav_link': isNavLink },
         className
       )
-    : classnames('usa-link', { 'usa-nav_link': isNavLink }, className)
 }
 
 export function Link(props: DefaultLinkProps): React.ReactElement
