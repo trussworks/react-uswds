@@ -140,7 +140,7 @@ export const GovBanner = (
               aria-expanded={isOpen}
               aria-controls="gov-banner"
               onClick={(): void => {
-                setOpenState(!isOpen)
+                setOpenState((isOpen) => !isOpen)
               }}>
               <span className="usa-banner__button-text">
                 {copy.headerAction}
