@@ -38,6 +38,15 @@ describe('Link component', () => {
       expect(container.querySelector('a')).toHaveClass('custom-class')
     })
 
+    it('renders navlink', () => {
+      const { container } = render(
+        <Link href="#" variant="nav">
+          Click Me
+        </Link>
+      )
+      expect(container.querySelector('a')).toHaveClass('usa-link usa-nav__link')
+    })
+
     it('renders link with optional anchor tag attributes', () => {
       const { container } = render(
         <Link href="#" target="_blank" title="Test Link" variant="unstyled">
