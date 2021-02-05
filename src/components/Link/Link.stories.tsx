@@ -44,6 +44,15 @@ export const ExternalLink = (): React.ReactElement => (
   </p>
 )
 
+export const NavLink = (): React.ReactElement => (
+  <p>
+    This is a&nbsp;
+    <Link variant="nav" href={'#'}>
+      NavLink
+    </Link>
+  </p>
+)
+
 export const StyledAsButton = (): React.ReactElement => (
   <p>
     <Link className="usa-button" variant="unstyled" href={'#'}>
