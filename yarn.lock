@@ -407,7 +407,7 @@
     "@babel/traverse" "^7.12.5"
     "@babel/types" "^7.12.5"
 
-"@babel/highlight@^7.12.13":
+"@babel/highlight@^7.10.4", "@babel/highlight@^7.12.13":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.12.13.tgz#8ab538393e00370b26271b01fa08f7f27f2e795c"
   integrity sha512-kocDQvIbgMKlWxXe9fof3TQ+gkIPOUSEYhJjqUjvKMez3krV7vbzYCDq39Oj11UAVK7JqPVGQPlgE85dPNlQww==
@@ -1154,7 +1154,7 @@
     "@babel/parser" "^7.12.7"
     "@babel/types" "^7.12.7"
 
-"@babel/traverse@^7.1.0", "@babel/traverse@^7.10.4", "@babel/traverse@^7.12.13", "@babel/traverse@^7.7.0":
+"@babel/traverse@^7.1.0", "@babel/traverse@^7.10.4", "@babel/traverse@^7.12.13", "@babel/traverse@^7.12.5", "@babel/traverse@^7.7.0":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.12.13.tgz#689f0e4b4c08587ad26622832632735fb8c4e0c0"
   integrity sha512-3Zb4w7eE/OslI0fTp8c7b286/cQps3+vdLW3UcwC8VSJC6GbKn55aeVVu2QJNuCDoeKyptLOFrPq8WqZZBodyA==
@@ -1184,7 +1184,7 @@
     globals "^11.1.0"
     lodash "^4.17.19"
 
-"@babel/types@^7.0.0", "@babel/types@^7.10.4", "@babel/types@^7.10.5", "@babel/types@^7.12.1", "@babel/types@^7.12.10", "@babel/types@^7.12.13", "@babel/types@^7.12.5", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.4", "@babel/types@^7.7.0":
+"@babel/types@^7.0.0", "@babel/types@^7.10.4", "@babel/types@^7.10.5", "@babel/types@^7.11.0", "@babel/types@^7.12.1", "@babel/types@^7.12.10", "@babel/types@^7.12.13", "@babel/types@^7.12.5", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.4", "@babel/types@^7.7.0":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.12.13.tgz#8be1aa8f2c876da11a9cf650c0ecf656913ad611"
   integrity sha512-oKrdZTld2im1z8bDwTOQvUbxKwE+854zc16qWZQlcTqMN00pWxHQ4ZeOq0yDMnisOpRykH2/5Qqcrk/OlbAjiQ==
@@ -13195,9 +13195,9 @@ stylelint-prettier@^1.1.1:
     prettier-linter-helpers "^1.0.0"
 
 stylelint-scss@^3.17.1, stylelint-scss@^3.18.0:
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.18.0.tgz#8f06371c223909bf3f62e839548af1badeed31e9"
-  integrity sha512-LD7+hv/6/ApNGt7+nR/50ft7cezKP2HM5rI8avIdGaUWre3xlHfV4jKO/DRZhscfuN+Ewy9FMhcTq0CcS0C/SA==
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.19.0.tgz#528006d5a4c5a0f1f4d709b02fd3f626ed66d742"
+  integrity sha512-Ic5bsmpS4wVucOw44doC1Yi9f5qbeVL4wPFiEOaUElgsOuLEN6Ofn/krKI8BeNL2gAn53Zu+IcVV4E345r6rBw==
   dependencies:
     lodash "^4.17.15"
     postcss-media-query-parser "^0.2.3"
