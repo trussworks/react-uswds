@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 // These props we want to require always, even on custom components
 type StyledLinkProps<T> = {
-  variant?: 'external' | 'unstyled'
+  variant?: 'external' | 'unstyled' | 'nav'
   className?: string
   children: React.ReactNode
 } & T
@@ -40,14 +40,13 @@ function linkClasses<T>(
 ): string | undefined {
   const unstyled = variant === 'unstyled'
   const isExternalLink = variant === 'external'
+  const isNavLink = variant === 'nav'
 
   return unstyled
     ? className
     : classnames(
         'usa-link',
-        {
-          'usa-link--external': isExternalLink,
-        },
+        { 'usa-link--external': isExternalLink, 'usa-nav__link': isNavLink },
         className
       )
 }
