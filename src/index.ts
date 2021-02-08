@@ -64,6 +64,11 @@ export { CardMedia } from './components/card/CardMedia/CardMedia'
 export { CardBody } from './components/card/CardBody/CardBody'
 export { CardFooter } from './components/card/CardFooter/CardFooter'
 
+/** Breadcrumb components */
+export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
+export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
+export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
+
 export { Search } from './components/Search/Search'
 
 /** Truss-designed components */
