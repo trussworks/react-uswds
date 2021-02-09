@@ -77,7 +77,7 @@ export const Calendar = ({
     [HTMLButtonElement | null, HTMLDivElement | null]
   >([null, null])
 
-  let firstMount = false
+  let calendarWasHidden = true
 
   const handleSelectMonth = (monthIndex: number): void => {
     let newDate = setMonth(dateToDisplay, monthIndex)
@@ -97,10 +97,10 @@ export const Calendar = ({
   const focusedMonth = dateToDisplay.getMonth()
   const focusedYear = dateToDisplay.getFullYear()
 
-  const monthLabel = MONTH_LABELS[focusedMonth]
+  const monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
 
   useEffect(() => {
-    firstMount = true
+    calendarWasHidden = false
   }, [])
 
   useEffect(() => {
@@ -135,7 +135,7 @@ export const Calendar = ({
       }
     }
 
-    if (!firstMount) {
+    if (calendarWasHidden) {
       const newStatuses = [`${monthLabel} ${focusedYear}`]
       if (selectedDate && isSameDay(focusedDate, selectedDate))
         newStatuses.unshift('Selected date')
@@ -331,7 +331,9 @@ export const Calendar = ({
   }
 
   return (
-    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+    // Ignoring error: "Static HTML elements with event handlers require a role."
+    // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1042)
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       tabIndex={-1}
       className="usa-date-picker__calendar__date-picker"
@@ -415,8 +417,7 @@ export const Calendar = ({
               <th
                 className="usa-date-picker__calendar__day-of-week"
                 scope="col"
-                // eslint-disable-next-line security/detect-object-injection
-                aria-label={DAY_OF_WEEK_LABELS[i]}
+                aria-label={DAY_OF_WEEK_LABELS[parseInt(`${i}`)]}
                 key={`day-of-week-${d}-${i}`}>
                 {d}
               </th>
@@ -428,3 +429,5 @@ export const Calendar = ({
     </div>
   )
 }
+
+Calendar.displayName = 'Calendar'

@@ -502,7 +502,7 @@ export const listToTable = (
   while (i < list.length) {
     const row = []
     while (i < list.length && row.length < rowSize) {
-      row.push(list[i])
+      row.push(list[parseInt(`${i}`)])
       i += 1
     }
     rows.push(row)
@@ -531,8 +531,8 @@ export const handleTabKey = (
 
     const firstTabIndex = 0
     const lastTabIndex = focusable.length - 1
-    const firstTabStop = focusable[firstTabIndex]
-    const lastTabStop = focusable[lastTabIndex]
+    const firstTabStop = focusable[parseInt(`${firstTabIndex}`)]
+    const lastTabStop = focusable[parseInt(`${lastTabIndex}`)]
     const focusIndex =
       activeElement instanceof HTMLButtonElement
         ? focusable.indexOf(activeElement)

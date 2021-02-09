@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, KeyboardEvent, Key } from 'react'
+import React, { useEffect, useState, useRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { YEAR_CHUNK } from './constants'
@@ -181,6 +181,8 @@ export const YearPicker = ({
     }
 
     years.push(
+      // Ignoring error: "The attribute aria-selected is not supported by the role button. This role is implicit on the element button."
+      // Ignoring because this attribute is present in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1447)
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         type="button"
@@ -221,7 +223,9 @@ export const YearPicker = ({
   }
 
   return (
-    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+    // Ignoring error: "Static HTML elements with event handlers require a role."
+    // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1457)
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       tabIndex={-1}
       className="usa-date-picker__calendar__year-picker"
@@ -268,3 +272,5 @@ export const YearPicker = ({
     </div>
   )
 }
+
+YearPicker.displayName = 'YearPicker'

@@ -1,16 +1,10 @@
 import React from 'react'
 import { render, act, fireEvent, createEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import userEvent, { specialChars } from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
 import { today } from './utils'
 import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
-
-/* 
-OUTSTANDING:
-- focus out on date picker external input validates
-- keydown on date picker input validates if keycode is enter
- */
 
 describe('DatePicker component', () => {
   const testProps = {
@@ -443,7 +437,7 @@ describe('DatePicker component', () => {
       )
     })
 
-    // TODO - this might be an outstanding difference in behavior from USWDS
+    // TODO - this is an outstanding difference in behavior from USWDS. Fails because validation happens onChange.
     it.skip('typing in the external input does not validate until blurring', () => {
       const { getByTestId } = render(
         <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
@@ -451,14 +445,23 @@ describe('DatePicker component', () => {
 
       const externalInput = getByTestId('date-picker-external-input')
       expect(externalInput).toBeValid()
-      act(() => {
-        userEvent.type(externalInput, '05/16/1988')
-      })
+      userEvent.type(externalInput, '05/16/1988')
       expect(externalInput).toBeValid()
-      act(() => {
-        externalInput.blur()
-      })
+      externalInput.blur()
+      expect(externalInput).toBeInvalid()
+    })
 
+    // TODO - this can be implemented if the above test case is implemented
+    it.skip('pressing the Enter key in the external input validates the date', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
+      )
+
+      const externalInput = getByTestId('date-picker-external-input')
+      expect(externalInput).toBeValid()
+      userEvent.type(externalInput, '05/16/1988')
+      expect(externalInput).toBeValid()
+      userEvent.type(externalInput, specialChars.enter)
       expect(externalInput).toBeInvalid()
     })
 

@@ -100,10 +100,12 @@ describe('Calendar', () => {
     ]
     const enabledDates = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     disabledDates.forEach((date) => {
+      // eslint-disable-next-line security/detect-non-literal-regexp
       const datePattern = new RegExp(`^${date} January 2021`)
       expect(getByLabelText(datePattern)).toBeDisabled()
     })
     enabledDates.forEach((date) => {
+      // eslint-disable-next-line security/detect-non-literal-regexp
       const datePattern = new RegExp(`^${date} January 2021`)
       expect(getByLabelText(datePattern)).toBeEnabled()
     })
@@ -127,6 +129,7 @@ describe('Calendar', () => {
 
     const rangeDates = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
     rangeDates.forEach((date) => {
+      // eslint-disable-next-line security/detect-non-literal-regexp
       const datePattern = new RegExp(`^${date} January 2021`)
       expect(getByLabelText(datePattern)).toHaveClass(
         'usa-date-picker__calendar__date--within-range'

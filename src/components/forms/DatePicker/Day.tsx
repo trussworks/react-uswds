@@ -63,7 +63,7 @@ export const Day = forwardRef(
     })
 
     const monthStr = MONTH_LABELS[parseInt(`${month}`)]
-    const dayStr = DAY_OF_WEEK_LABELS[dayOfWeek]
+    const dayStr = DAY_OF_WEEK_LABELS[parseInt(`${dayOfWeek}`)]
 
     const handleClick = (): void => {
       onClick(formattedDate)
@@ -79,6 +79,8 @@ export const Day = forwardRef(
     }
 
     return (
+      // Ignoring error: "The attribute aria-selected is not supported by the role button. This role is implicit on the element button."
+      // Ignoring because this attribute is present in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1017)
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         type="button"
@@ -101,3 +103,5 @@ export const Day = forwardRef(
     )
   }
 )
+
+Day.displayName = 'Day'
