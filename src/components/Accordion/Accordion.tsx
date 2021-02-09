@@ -12,6 +12,7 @@ interface AccordionItem {
 
 interface AccordionProps {
   bordered?: boolean
+  /* multiselectable: boolean */
   items: AccordionItem[]
   className?: string
 }
@@ -51,16 +52,18 @@ export const AccordionItem = (props: AccordionItem): React.ReactElement => {
 }
 
 export const Accordion = (props: AccordionProps): React.ReactElement => {
-  const { bordered, items, className } = props
+  const { bordered, items, className /* multiselectable */ } = props
 
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
+  // add multiselectable conditional
 
   const classes = classnames(
     'usa-accordion',
     {
       'usa-accordion--bordered': bordered,
+      // {'aria-multiselectable': multiselectable}
     },
     className
   )
