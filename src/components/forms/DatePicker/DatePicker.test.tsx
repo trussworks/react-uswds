@@ -193,9 +193,10 @@ describe('DatePicker component', () => {
     })
 
     it('hides the calendar if focus moves to another element', () => {
+      const mockOnBlur = jest.fn()
       const { getByTestId } = render(
         <>
-          <DatePicker {...testProps} />
+          <DatePicker {...testProps} onBlur={mockOnBlur} />
           <input type="text" data-testid="test-external-element" />
         </>
       )
@@ -204,6 +205,7 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       getByTestId('test-external-element').focus()
       expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(mockOnBlur).toHaveBeenCalled()
     })
   })
 
@@ -376,8 +378,13 @@ describe('DatePicker component', () => {
 
   describe('selecting a date', () => {
     it('clicking a date button selects that date and closes the calendar and focuses the external input', () => {
+      const mockOnChange = jest.fn()
       const { getByTestId, getByText } = render(
-        <DatePicker {...testProps} defaultValue="2021-01-20" />
+        <DatePicker
+          {...testProps}
+          defaultValue="2021-01-20"
+          onChange={mockOnChange}
+        />
       )
       userEvent.click(getByTestId('date-picker-button'))
       const dateButton = getByText('15')
@@ -391,6 +398,7 @@ describe('DatePicker component', () => {
       )
       expect(getByTestId('date-picker-calendar')).not.toBeVisible()
       expect(getByTestId('date-picker-external-input')).toHaveFocus()
+      expect(mockOnChange).toHaveBeenCalledWith('01/15/2021')
     })
 
     it('selecting a date and opening the calendar focuses on the selected date', () => {
@@ -414,7 +422,10 @@ describe('DatePicker component', () => {
 
   describe('typing in a date', () => {
     it('typing a date in the external input updates the selected date', () => {
-      const { getByTestId, getByText } = render(<DatePicker {...testProps} />)
+      const mockOnChange = jest.fn()
+      const { getByTestId, getByText } = render(
+        <DatePicker {...testProps} onChange={mockOnChange} />
+      )
       userEvent.type(getByTestId('date-picker-external-input'), '05/16/1988')
       userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('select-month')).toHaveTextContent('May')
@@ -423,6 +434,7 @@ describe('DatePicker component', () => {
       expect(getByText('16')).toHaveClass(
         'usa-date-picker__calendar__date--selected'
       )
+      expect(mockOnChange).toHaveBeenCalledWith('05/16/1988')
     })
 
     it('typing a date with a 2-digit year in the external input focuses that year in the current century', () => {
@@ -450,6 +462,17 @@ describe('DatePicker component', () => {
       expect(getByText('16')).toHaveClass(
         'usa-date-picker__calendar__date--selected'
       )
+    })
+
+    it('implements a custom onBlur handler', () => {
+      const mockOnBlur = jest.fn()
+      const { getByTestId } = render(
+        <DatePicker {...testProps} onBlur={mockOnBlur} />
+      )
+
+      userEvent.type(getByTestId('date-picker-external-input'), '05/16/1988')
+      getByTestId('date-picker-external-input').blur()
+      expect(mockOnBlur).toHaveBeenCalled()
     })
 
     // TODO - this is an outstanding difference in behavior from USWDS. Fails because validation happens onChange.
@@ -494,50 +517,75 @@ describe('DatePicker component', () => {
     })
 
     it('entering a non-date value sets a validation message', () => {
-      const { getByTestId } = render(<DatePicker {...testProps} />)
+      const mockOnChange = jest.fn()
+      const { getByTestId } = render(
+        <DatePicker {...testProps} onChange={mockOnChange} />
+      )
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
       userEvent.type(externalInput, 'abcdefg... That means the convo is done')
+      expect(mockOnChange).toHaveBeenCalledWith(
+        'abcdefg... That means the convo is done'
+      )
+
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
 
     it('entering a non-date value sets a validation message', () => {
-      const { getByTestId } = render(<DatePicker {...testProps} />)
+      const mockOnChange = jest.fn()
+      const { getByTestId } = render(
+        <DatePicker {...testProps} onChange={mockOnChange} />
+      )
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
       userEvent.type(externalInput, 'ab/cd/efg')
+      expect(mockOnChange).toHaveBeenCalledWith('ab/cd/efg')
+
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
 
     it('entering an invalid date sets a validation message and becomes valid when selecting a date in the calendar', () => {
+      const mockOnChange = jest.fn()
       const { getByTestId, getByLabelText } = render(
-        <DatePicker {...testProps} />
+        <DatePicker {...testProps} onChange={mockOnChange} />
       )
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
       userEvent.type(externalInput, '2/31/2019')
+      expect(mockOnChange).toHaveBeenCalledWith('2/31/2019')
+
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
       userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       userEvent.click(getByLabelText(/^10 February 2019/))
+      expect(mockOnChange).toHaveBeenCalledWith('02/10/2019')
+
       expect(externalInput).toBeValid()
       expect(externalInput.validationMessage).toEqual('')
     })
 
     it('entering a valid date outside of the min/max date sets a validation message', () => {
+      const mockOnChange = jest.fn()
       const { getByTestId } = render(
-        <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
+        <DatePicker
+          {...testProps}
+          minDate="2021-01-20"
+          maxDate="2021-02-14"
+          onChange={mockOnChange}
+        />
       )
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
       userEvent.type(externalInput, '05/16/1988')
+      expect(mockOnChange).toHaveBeenCalledWith('05/16/1988')
+
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })

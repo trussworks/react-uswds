@@ -34,6 +34,10 @@ interface DatePickerProps {
   minDate: string
   maxDate?: string
   rangeDate?: string
+  onChange?: (val?: string) => void
+  onBlur?: (
+    event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
+  ) => void
 }
 
 export enum FocusMode {
@@ -53,6 +57,8 @@ export const DatePicker = (
     minDate = DEFAULT_MIN_DATE,
     maxDate,
     rangeDate,
+    onChange,
+    onBlur,
     ...inputProps
   } = props
 
@@ -98,6 +104,7 @@ export const DatePicker = (
 
     if (parsedValue) setInternalValue(dateString)
     if (formattedValue) setExternalValue(formattedValue)
+    if (onChange) onChange(formattedValue)
 
     if (closeCalendar) {
       setShowCalendar(false)
@@ -114,6 +121,7 @@ export const DatePicker = (
     // Keep external & internal input values in sync
     const value = (event.target as HTMLInputElement).value
     setExternalValue(value)
+    if (onChange) onChange(value)
 
     const inputDate = parseDateString(value, DEFAULT_EXTERNAL_DATE_FORMAT, true)
     let newValue = ''
@@ -207,6 +215,8 @@ export const DatePicker = (
         setShowCalendar(false)
         setStatuses([])
       }
+
+      if (onBlur) onBlur(event)
     }
   }
 
@@ -275,8 +285,9 @@ export const DatePicker = (
           onFocus={(): void => {
             setFocusMode(FocusMode.Input)
           }}
-          onBlur={(): void => {
+          onBlur={(e): void => {
             setFocusMode(FocusMode.None)
+            onBlur && onBlur(e)
           }}
         />
         <button
