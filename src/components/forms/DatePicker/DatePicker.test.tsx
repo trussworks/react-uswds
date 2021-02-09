@@ -1,10 +1,14 @@
 import React from 'react'
-import { render, act, fireEvent, createEvent } from '@testing-library/react'
+import { render, fireEvent, createEvent } from '@testing-library/react'
 import userEvent, { specialChars } from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
 import { today } from './utils'
-import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
+import {
+  DAY_OF_WEEK_LABELS,
+  MONTH_LABELS,
+  VALIDATION_MESSAGE,
+} from './constants'
 
 describe('DatePicker component', () => {
   const testProps = {
@@ -421,6 +425,17 @@ describe('DatePicker component', () => {
       )
     })
 
+    it('typing a date with a 2-digit year in the external input focuses that year in the current century', () => {
+      const { getByTestId, getByLabelText } = render(
+        <DatePicker {...testProps} />
+      )
+      userEvent.type(getByTestId('date-picker-external-input'), '2/29/20')
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('select-month')).toHaveTextContent('February')
+      expect(getByTestId('select-year')).toHaveTextContent('2020')
+      expect(getByLabelText(/^29 February 2020/)).toHaveFocus()
+    })
+
     it('typing a date with the calendar open updates the calendar to the entered date', () => {
       const { getByTestId, getByText } = render(
         <DatePicker {...testProps} defaultValue="2021-01-20" />
@@ -464,19 +479,67 @@ describe('DatePicker component', () => {
       userEvent.type(externalInput, specialChars.enter)
       expect(externalInput).toBeInvalid()
     })
+  })
 
-    it('typing in an invalid date and blurring triggers validation', () => {
+  describe('validation', () => {
+    it('entering an empty value is valid', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      const externalInput = getByTestId(
+        'date-picker-external-input'
+      ) as HTMLInputElement
+      userEvent.type(externalInput, '')
+      externalInput.blur()
+      expect(externalInput).toBeValid()
+      expect(externalInput.validationMessage).toEqual('')
+    })
+
+    it('entering a non-date value sets a validation message', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      const externalInput = getByTestId(
+        'date-picker-external-input'
+      ) as HTMLInputElement
+      userEvent.type(externalInput, 'abcdefg... That means the convo is done')
+      expect(externalInput).toBeInvalid()
+      expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
+    })
+
+    it('entering a non-date value sets a validation message', () => {
+      const { getByTestId } = render(<DatePicker {...testProps} />)
+      const externalInput = getByTestId(
+        'date-picker-external-input'
+      ) as HTMLInputElement
+      userEvent.type(externalInput, 'ab/cd/efg')
+      expect(externalInput).toBeInvalid()
+      expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
+    })
+
+    it('entering an invalid date sets a validation message and becomes valid when selecting a date in the calendar', () => {
+      const { getByTestId, getByLabelText } = render(
+        <DatePicker {...testProps} />
+      )
+      const externalInput = getByTestId(
+        'date-picker-external-input'
+      ) as HTMLInputElement
+      userEvent.type(externalInput, '2/31/2019')
+      expect(externalInput).toBeInvalid()
+      expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).toBeVisible()
+      userEvent.click(getByLabelText(/^10 February 2019/))
+      expect(externalInput).toBeValid()
+      expect(externalInput.validationMessage).toEqual('')
+    })
+
+    it('entering a valid date outside of the min/max date sets a validation message', () => {
       const { getByTestId } = render(
         <DatePicker {...testProps} minDate="2021-01-20" maxDate="2021-02-14" />
       )
-      const externalInput = getByTestId('date-picker-external-input')
-
-      act(() => {
-        userEvent.type(externalInput, '05/16/1988')
-        externalInput.blur()
-      })
-
+      const externalInput = getByTestId(
+        'date-picker-external-input'
+      ) as HTMLInputElement
+      userEvent.type(externalInput, '05/16/1988')
       expect(externalInput).toBeInvalid()
+      expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
   })
 

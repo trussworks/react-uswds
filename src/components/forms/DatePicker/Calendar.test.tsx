@@ -369,6 +369,17 @@ describe('Calendar', () => {
       expect(getByLabelText(/^20 February 2021/)).toHaveFocus()
     })
 
+    it('pressing the page down key from the last day of a longer month navigates to the last day in the shorter next month', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('January 31 2020')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^31 January 2020/), {
+        key: 'PageDown',
+      })
+      expect(getByLabelText(/^29 February 2020/)).toHaveFocus()
+    })
+
     it('pressing the page up key from a day navigates to the same day in the previous month', () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
@@ -378,6 +389,17 @@ describe('Calendar', () => {
         key: 'PageUp',
       })
       expect(getByLabelText(/^20 December 2020/)).toHaveFocus()
+    })
+
+    it('pressing the page up key from the last day of a longer month navigates to the last day in the shorter previous month', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('December 31 2019')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^31 December 2019/), {
+        key: 'PageUp',
+      })
+      expect(getByLabelText(/^30 November 2019/)).toHaveFocus()
     })
 
     it('pressing the shift + page down keys from a day navigates to the same day in the next year', () => {
@@ -392,6 +414,18 @@ describe('Calendar', () => {
       expect(getByLabelText(/^20 January 2022/)).toHaveFocus()
     })
 
+    it('pressing the shift + page down keys from February 29th of a leap year navigates to February 28th in the next year', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('February 29 2020')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^29 February 2020/), {
+        key: 'PageDown',
+        shiftKey: true,
+      })
+      expect(getByLabelText(/^28 February 2021/)).toHaveFocus()
+    })
+
     it('pressing the shift + page up keys from a day navigates to the same day in the previous year', () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
@@ -402,6 +436,18 @@ describe('Calendar', () => {
         shiftKey: true,
       })
       expect(getByLabelText(/^20 January 2020/)).toHaveFocus()
+    })
+
+    it('pressing the shift + page up keys from February 29th of a leap year navigates to February 28th in the previous year', () => {
+      const { getByLabelText } = render(
+        <Calendar {...testProps} date={new Date('February 29 2020')} />
+      )
+
+      fireEvent.keyDown(getByLabelText(/^29 February 2020/), {
+        key: 'PageUp',
+        shiftKey: true,
+      })
+      expect(getByLabelText(/^28 February 2019/)).toHaveFocus()
     })
 
     it('pressing tab cycles through the focusable elements within the date picker', () => {
