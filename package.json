@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -50,7 +50,8 @@
     "Emily Mahanna <emahanna@truss.works>",
     "Hana Worku <hana@truss.works>",
     "Duncan Spencer <duncan@truss.works>",
-    "Brandon Lenz <brandon@truss.works>"
+    "Brandon Lenz <brandon@truss.works>",
+    "Arianna Kellogg <ari@truss.works>"
   ],
   "license": "Apache-2.0",
   "bugs": {
