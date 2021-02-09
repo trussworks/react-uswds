@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Day } from './Day'
 
+/*
+// THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 export default {
   title: 'Components/Form controls/Date picker/Day',
   component: Day,
@@ -11,6 +13,7 @@ export default {
     onMouseMove: { action: 'on mouse move' },
   },
 }
+*/
 
 const testDate = new Date('January 20 2021')
 

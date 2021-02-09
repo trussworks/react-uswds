@@ -4,6 +4,9 @@ import { Calendar } from './Calendar'
 import { FocusMode } from './DatePicker'
 import { parseDateString } from './utils'
 
+/*
+// THIS STORY FOR INTERNAL DEVELOPMENT ONLY
+
 export default {
   title: 'Components/Form controls/Date picker/Calendar',
   component: Calendar,
@@ -12,6 +15,7 @@ export default {
     setStatuses: { action: 'set statuses' },
   },
 }
+*/
 
 const defaultProps = {
   minDate: new Date('0000-01-01'),

@@ -3,6 +3,9 @@ import React from 'react'
 import { YearPicker } from './YearPicker'
 import { parseDateString } from './utils'
 
+/*
+// THIS STORY FOR INTERNAL DEVELOPMENT ONLY
+
 export default {
   title: 'Components/Form controls/Date picker/Year picker',
   component: YearPicker,
@@ -11,6 +14,7 @@ export default {
     setStatuses: { action: 'set statuses' },
   },
 }
+*/
 
 const testProps = {
   date: new Date('January 20 2021'),

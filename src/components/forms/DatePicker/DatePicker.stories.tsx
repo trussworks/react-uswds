@@ -12,6 +12,31 @@ export default {
     onSubmit: { action: 'submitted' },
     disabled: { control: { type: 'boolean' } },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 DatePicker component
+Source: https://designsystem.digital.gov/components/form-controls/#DatePicker
+
+**Note:** There is one small difference in functionality between this component and the USWDS implementation, related to validating the input. The USWDS implementation validates when:
+- setting the initial value based on the default value passed in
+- clicking on a date in the calendar UI
+- typing the Enter key in the external text input
+- on focusout (blur) of the external text input
+
+Because this component uses the useEffect hook to trigger validation whenever the date value changes (regardless of how), the React DatePicker will validate when:
+- setting the initial value based on the default value passed in (same as above)
+- clicking on a date in the calendar UI (same as above)
+- on input (change) of the external text input
+
+It's also worth mentioning that validation in this case is just calling [setCustomValidity](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/setCustomValidity) on the external text input, and library users should be able to determine how & when they want invalid UI to display by inspecting the [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) of the external input.
+
+We may find that we want to expose props for custom event handlers or even a ref to the component for better integration with 3rd party form libraries. If you are running into this, please [file an issue](https://github.com/trussworks/react-uswds/issues/new/choose) describing your use case.
+`,
+      },
+    },
+  },
 }
 
 export const completeDatePicker = (argTypes): React.ReactElement => (
