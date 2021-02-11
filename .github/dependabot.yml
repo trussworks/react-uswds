@@ -28,12 +28,9 @@ updates:
       - dependency-name: '@storybook/react'
         versions:
           - '^6.0.21'
-      - dependency-name: '@storybook/addon-docs'
+      - dependency-name: '@storybook/addon-essentials'
         versions:
-          - '^6.0.21'
-      - dependency-name: '@storybook/addon-viewport'
-        versions:
-          - '^6.0.21'
+          - '^6.1.5'
 
   - package-ecosystem: npm
     directory: '/example/'
