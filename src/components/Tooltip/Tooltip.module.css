@@ -15,3 +15,27 @@
 .tooltip:hover .tooltipText {
   visibility: visible;
 }
+
+/* .usa-tooltip--top, .tooltipText{
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.usa-tooltip--bottom, .tooltipText{
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+} */
+
+.usa-tooltip--right, .tooltipText{
+  top: -5px;
+  left: 105%;
+}
+
+.usa-tooltip--left, .tooltipText{
+  top: -5px;
+  right: 105%;
+}

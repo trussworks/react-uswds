@@ -14,12 +14,20 @@ export const Tooltip = (
   props: TooltipProps
 ): React.ReactElement => {
   const {children, label, position, className} = props
-  console.log(props)
-
+  
   const style: React.CSSProperties = {}
-
-  const tooltipClasses = classnames(styles.tooltip, className)
+  
+  const tooltipClasses = classnames('usa-tooltip', 'usa-button', styles.tooltip, {
+    'usa-tooltip--top': position === 'top',
+    'usa-tooltip--bottom': position === 'bottom',
+    'usa-tooltip--right': position === 'right',
+    'usa-tooltip--left': position === 'left',
+  })
   const tooltipTextClasses = classnames(styles.tooltipText)
+  console.log('props', props)
+  console.log('tooltipClasses', tooltipClasses)
+  console.log('tooltipTextClasses', tooltipTextClasses)
+
   return (
     <button
       className={tooltipClasses}
@@ -28,7 +36,6 @@ export const Tooltip = (
         {children}
         <span
           className={tooltipTextClasses}
-          
           >
             {label}
           </span>
