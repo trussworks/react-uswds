@@ -29,7 +29,7 @@ export const DefaultBreadcrumb = (): React.ReactElement => (
     </Breadcrumb>
     <Breadcrumb>
       <BreadcrumbLink href="#">
-        <span>Contacting assistance programs</span>
+        <span>Contracting assistance programs</span>
       </BreadcrumbLink>
     </Breadcrumb>
     <Breadcrumb current>
@@ -70,7 +70,7 @@ export const BreadcrumbWithRdfaMetadata = (): React.ReactElement => {
       </Breadcrumb>
       <Breadcrumb {...rdfaMetadata.li}>
         <BreadcrumbLink href="#" {...rdfaMetadata.a}>
-          <span property="name">Contacting assistance programs</span>
+          <span property="name">Contracting assistance programs</span>
         </BreadcrumbLink>
         <meta property="position" content="3" />
       </Breadcrumb>
@@ -98,7 +98,7 @@ export const WrappingBreadcrumb = (): React.ReactElement => (
     </Breadcrumb>
     <Breadcrumb>
       <BreadcrumbLink href="#">
-        <span>Contacting assistance programs</span>
+        <span>Contracting assistance programs</span>
       </BreadcrumbLink>
     </Breadcrumb>
     <Breadcrumb current>
@@ -148,7 +148,7 @@ export const CustomBreadcrumbLinks = (): React.ReactElement => {
           className="abc"
           asCustom={CustomLink}
           to="#">
-          Contacting assistance programs
+          Contracting assistance programs
         </BreadcrumbLink>
       </Breadcrumb>
       <Breadcrumb current>
