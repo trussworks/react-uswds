@@ -4,6 +4,7 @@ import { DatePicker } from './DatePicker'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
+import { TextInput } from '../TextInput/TextInput'
 
 export default {
   title: 'Components/Form controls/Date picker',
@@ -54,6 +55,8 @@ export const completeDatePicker = (argTypes): React.ReactElement => (
         aria-describedby="appointment-date-label appointment-date-hint"
         disabled={argTypes.disabled}
       />
+      <Label htmlFor="otherInput">Another unrelated input</Label>
+      <TextInput id="otherInput" name="otherInput" type="text" />
     </FormGroup>
   </Form>
 )
@@ -104,11 +107,4 @@ export const withRangeDate = (): React.ReactElement => (
     defaultValue="2021-01-20"
     rangeDate="2021-01-08"
   />
-)
-
-export const withExternalInput = (): React.ReactElement => (
-  <>
-    <DatePicker id="birthdate" name="birthdate" />
-    <input type="text" data-testid="test-external-element" />
-  </>
 )
