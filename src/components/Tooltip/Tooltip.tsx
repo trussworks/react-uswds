@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState} from 'react'
 import classnames from 'classnames'
 import styles from './Tooltip.module.css'
 
@@ -6,40 +6,40 @@ import styles from './Tooltip.module.css'
 interface TooltipProps {
   label: string,
   position: 'top' | 'bottom' | 'left' | 'right'
-  children: React.ReactNode,
-  className: string
-}
+  className?: string
+} 
+
 
 export const Tooltip = (
-  props: TooltipProps
-): React.ReactElement => {
-  const {children, label, position, className} = props
+  
+  props: TooltipProps & JSX.IntrinsicElements['span']
+  ): React.ReactElement => {
+    const {label, position, children, className, ...spanProps } = props
+    
+    const [isVisible, setVisible] = useState(false)
   
   const style: React.CSSProperties = {}
   
-  const tooltipClasses = classnames('usa-tooltip', 'usa-button', styles.tooltip, {
+  const tooltipClasses = classnames('usa-tooltip__body', 'usa-button', {
     'usa-tooltip--top': position === 'top',
     'usa-tooltip--bottom': position === 'bottom',
     'usa-tooltip--right': position === 'right',
     'usa-tooltip--left': position === 'left',
+    'is-visible': isVisible,
+    'is-set': isVisible,
   })
   const tooltipTextClasses = classnames(styles.tooltipText)
-  console.log('props', props)
-  console.log('tooltipClasses', tooltipClasses)
-  console.log('tooltipTextClasses', tooltipTextClasses)
 
   return (
-    <button
-      className={tooltipClasses}
-      data-position={position}
-      title={label}>
-        {children}
-        <span
-          className={tooltipTextClasses}
-          >
-            {label}
-          </span>
-    </button>
+    <span className="usa-tooltip" {...spanProps}
+      onMouseEnter={() => {setVisible(true)}}
+      onMouseLeave={() => {setVisible(false)}}
+      >
+      {children}
+      <span className={tooltipClasses}>
+        {label}
+      </span>
+    </span>   // the span that wraps the element with have the tooltip class
   )
 }
 
