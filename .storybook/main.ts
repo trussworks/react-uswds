@@ -39,7 +39,7 @@ const webpackConfig = (config) => {
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-viewport'],
+  addons: ['@storybook/addon-essentials'],
   typescript: {
     check: false,
     checkOptions: {},
