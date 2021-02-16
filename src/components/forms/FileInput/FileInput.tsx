@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
+import { FilePreview } from './FilePreview'
+import { makeSafeForID } from './utils'
+
 interface FileInputProps {
   id: string
   name: string
@@ -13,6 +16,7 @@ export const FileInput = (
 ): React.ReactElement => {
   const { name, id, disabled, multiple, className, ...inputProps } = props
   const [isDragging, setIsDragging] = useState(false)
+  const [files, setFiles] = useState<FileList | null>(null)
 
   const fileInputClasses = classnames(
     'usa-file-input',
@@ -32,9 +36,24 @@ export const FileInput = (
 
   const dragText = multiple ? 'Drag files here or ' : 'Drag file here or '
 
+  const filePreviews = []
+  if (files) {
+    for (let i = 0; i < files?.length; i++) {
+      const imageId = makeSafeForID(files[i].name)
+      const key = `filePreview_${imageId}`
+      filePreviews.push(
+        <FilePreview key={key} imageId={imageId} file={files[i]} />
+      )
+    }
+  }
+
   // Event handlers
   const handleDragOver = (): void => setIsDragging(true)
   const handleDragLeave = (): void => setIsDragging(false)
+  const handleDrop = (): void => setIsDragging(false)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setFiles(e.target?.files)
+  }
 
   return (
     <div
@@ -45,7 +64,8 @@ export const FileInput = (
         data-testid="file-input-droptarget"
         className={targetClasses}
         onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}>
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}>
         <div
           data-testid="file-input-instructions"
           className="usa-file-input__instructions"
@@ -55,6 +75,7 @@ export const FileInput = (
           )}
           <span className="usa-file-input__choose">choose from folder</span>
         </div>
+        {filePreviews}
         <div data-testid="file-input-box" className="usa-file-input__box"></div>
         <input
           {...inputProps}
@@ -64,6 +85,7 @@ export const FileInput = (
           id={id}
           className="usa-file-input__input"
           disabled={disabled}
+          onChange={handleChange}
         />
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 
 import { FileInput } from './FileInput'
+import userEvent from '@testing-library/user-event'
 
 /**
  * TEST CASES
@@ -52,6 +53,14 @@ describe('FileInput component', () => {
     id: 'testFile',
     name: 'testFile',
   }
+
+  const TEST_TEXT_FILE = new File(['Test File Contents'], 'testFile.txt', {
+    type: 'text/plain',
+  })
+
+  const TEST_PNG_FILE = new File(['Test PNG Image'], 'testFile.png', {
+    type: 'image/png',
+  })
 
   it('renders without errors', () => {
     const { getByTestId } = render(<FileInput {...testProps} />)
@@ -150,6 +159,34 @@ describe('FileInput component', () => {
       expect(targetEl).toHaveClass('usa-file-input--drag')
       fireEvent.dragLeave(targetEl)
       expect(targetEl).not.toHaveClass('usa-file-input--drag')
+    })
+
+    it('removes the drag class when dropping over the target element', () => {
+      const { getByTestId } = render(<FileInput {...testProps} />)
+      const targetEl = getByTestId('file-input-droptarget')
+      fireEvent.dragOver(targetEl)
+      expect(targetEl).toHaveClass('usa-file-input--drag')
+      fireEvent.drop(targetEl, {
+        dataTransfer: {
+          files: [TEST_TEXT_FILE],
+        },
+      })
+      expect(targetEl).not.toHaveClass('usa-file-input--drag')
+    })
+  })
+
+  describe('uploading files', () => {
+    it('renders a preview when a single file is chosen', () => {
+      const { getByTestId } = render(<FileInput {...testProps} />)
+      const inputEl = getByTestId('file-input-input')
+      userEvent.upload(inputEl, TEST_PNG_FILE)
+      expect(getByTestId('file-input-preview')).toBeInTheDocument()
+    })
+
+    it.skip('renders a preview for each file when multiple files are chosen', () => {
+      const { getByTestId } = render(<FileInput {...testProps} />)
+      const inputEl = getByTestId('file-input-input')
+      userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
     })
   })
 
