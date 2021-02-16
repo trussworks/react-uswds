@@ -3,14 +3,19 @@ import { fireEvent, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { FileInput } from './FileInput'
-import { TEST_TEXT_FILE, TEST_PNG_FILE, TEST_XLS_FILE } from './constants'
+import {
+  TEST_TEXT_FILE,
+  TEST_PNG_FILE,
+  TEST_XLS_FILE,
+  TEST_PDF_FILE,
+} from './constants'
 
 /**
  * TEST CASES
- * - single file
- * - restrict file types
+ * - single file - DONE
+ * - restrict file types - DONE
  * - accepts images
- * - accepts multiple files
+ * - accepts multiple files - DONE
  * - error
  * - disabled/enabled - DONE
  * - other input props (required, aria-describedby)
@@ -46,6 +51,7 @@ import { TEST_TEXT_FILE, TEST_PNG_FILE, TEST_XLS_FILE } from './constants'
  * - on change event handler - DONE
  *
  * other examples:
+ * - custom handlers
  * - async upload? onDrop/onChange prop
  */
 
@@ -229,6 +235,61 @@ describe('FileInput component', () => {
       expect(getByTestId('file-input-instructions')).toHaveTextContent(
         /Drag files here or choose from folder/i
       )
+    })
+  })
+
+  describe('when it only accepts certain file types', () => {
+    // TODO - try to make this testing better when adding custom drop/change handlers
+    it('accepts an uploaded file of an accepted type', () => {
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept=".pdf,.txt" />
+      )
+
+      const inputEl = getByTestId('file-input-input') as HTMLInputElement
+      expect(inputEl).toHaveAttribute('accept', '.pdf,.txt')
+
+      const targetEl = getByTestId('file-input-droptarget')
+      fireEvent.drop(targetEl, {
+        dataTransfer: {
+          files: [TEST_PDF_FILE],
+        },
+      })
+      // For some reason the simulated drop event does not trigger an onChange event
+      userEvent.upload(inputEl, TEST_PDF_FILE)
+
+      expect(queryByTestId('file-input-error')).not.toBeInTheDocument()
+      expect(getByTestId('file-input-droptarget')).not.toHaveClass(
+        'has-invalid-file'
+      )
+      expect(getByTestId('file-input-preview')).toBeInTheDocument()
+    })
+
+    it('shows an error and clears the input if any files are not an accepted type', () => {
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept=".pdf,.txt" />
+      )
+
+      const inputEl = getByTestId('file-input-input') as HTMLInputElement
+      expect(inputEl).toHaveAttribute('accept', '.pdf,.txt')
+
+      const targetEl = getByTestId('file-input-droptarget')
+      fireEvent.drop(targetEl, {
+        dataTransfer: {
+          files: [TEST_PNG_FILE],
+        },
+      })
+
+      expect(getByTestId('file-input-error')).toHaveTextContent(
+        'This is not a valid file type'
+      )
+      expect(getByTestId('file-input-error')).toHaveClass(
+        'usa-file-input__accepted-files-message'
+      )
+      expect(getByTestId('file-input-droptarget')).toHaveClass(
+        'has-invalid-file'
+      )
+
+      expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
     })
   })
 })

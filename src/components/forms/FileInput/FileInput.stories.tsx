@@ -19,3 +19,11 @@ export const singleFileInput = (): React.ReactElement => (
 export const multipleFilesInput = (): React.ReactElement => (
   <FileInput {...testProps} multiple />
 )
+
+export const disabled = (): React.ReactElement => (
+  <FileInput {...testProps} disabled />
+)
+
+export const acceptTextAndPDF = (): React.ReactElement => (
+  <FileInput {...testProps} accept=".pdf,.txt" />
+)

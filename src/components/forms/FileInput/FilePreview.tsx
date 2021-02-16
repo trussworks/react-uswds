@@ -31,7 +31,6 @@ export const FilePreview = ({
   const { name } = file
 
   const onImageError = (): void => {
-    console.log('on img error', previewSrc)
     setPreviewSrc(SPACER_GIF)
     setShowGenericPreview(true)
   }
