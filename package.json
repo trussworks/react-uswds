@@ -61,7 +61,7 @@
   "peerDependencies": {
     "react": "^16.x || ^17.x",
     "react-dom": "^16.x || ^17.x",
-    "uswds": "2.8.0"
+    "uswds": "2.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
