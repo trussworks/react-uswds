@@ -11,7 +11,7 @@ updates:
       - 'type: dependencies'
       - 'type: automerge'
     allow:
-      - dependency-type: development
+      - dependency-type: direct
     ignore:
       - dependency-name: react
         versions:
