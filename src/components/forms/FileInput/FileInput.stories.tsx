@@ -15,3 +15,7 @@ const testProps = {
 export const singleFileInput = (): React.ReactElement => (
   <FileInput {...testProps} />
 )
+
+export const multipleFilesInput = (): React.ReactElement => (
+  <FileInput {...testProps} multiple />
+)

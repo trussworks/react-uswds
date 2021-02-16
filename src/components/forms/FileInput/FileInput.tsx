@@ -47,6 +47,15 @@ export const FileInput = (
     }
   }
 
+  const instructionClasses = classnames('usa-file-input__instructions', {
+    'display-none': filePreviews.length > 0,
+  })
+
+  const previewHeaderText =
+    filePreviews.length > 1
+      ? `${filePreviews.length} files selected`
+      : 'Selected file'
+
   // Event handlers
   const handleDragOver = (): void => setIsDragging(true)
   const handleDragLeave = (): void => setIsDragging(false)
@@ -66,9 +75,19 @@ export const FileInput = (
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}>
+        {filePreviews.length > 0 && (
+          <div
+            data-testid="file-input-preview-heading"
+            className="usa-file-input__preview-heading">
+            {previewHeaderText}{' '}
+            <span className="usa-file-input__choose">
+              Change file{filePreviews.length > 1 && 's'}
+            </span>
+          </div>
+        )}
         <div
           data-testid="file-input-instructions"
-          className="usa-file-input__instructions"
+          className={instructionClasses}
           aria-hidden="true">
           {!hideDragText && (
             <span className="usa-file-input__drag-text">{dragText}</span>
@@ -86,6 +105,7 @@ export const FileInput = (
           className="usa-file-input__input"
           disabled={disabled}
           onChange={handleChange}
+          multiple={multiple}
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { FileInput } from './FileInput'
-import { TEST_TEXT_FILE, TEST_PNG_FILE } from './constants'
+import { TEST_TEXT_FILE, TEST_PNG_FILE, TEST_XLS_FILE } from './constants'
 
 /**
  * TEST CASES
@@ -23,7 +23,7 @@ import { TEST_TEXT_FILE, TEST_PNG_FILE } from './constants'
  * - instructions - DONE
  *
  * features:
- * - makeSafeForID util fn
+ * - makeSafeForID util fn - DONE
  * - modify drop instructions for IE11/Edge - DONE
  * - removeOldPreviews:
  *  - reset previews/heading/error message
@@ -34,16 +34,16 @@ import { TEST_TEXT_FILE, TEST_PNG_FILE } from './constants'
  *      - remove old previews
  *      - reset value and display error UI, stop event
  * - onChange handler:
- *  - remove old previews
- *  - FileReader, onloadstart/onloadend events to show previews
- *  - display heading
+ *  - remove old previews - reset error
+ *  - FileReader, onloadstart/onloadend events to show previews - DONE
+ *  - display heading - DONE
  *
  * event handlers:
  * - drag class added on drag over - DONE
  * - drag class removed on drag leave - DONE
  * - drop handler prevents invalid files
- * - drop handler removes drag class
- * - on change event handler
+ * - drop handler removes drag class - DONE
+ * - on change event handler - DONE
  *
  * other examples:
  * - async upload? onDrop/onChange prop
@@ -169,18 +169,55 @@ describe('FileInput component', () => {
   })
 
   describe('uploading files', () => {
-    it('renders a preview when a single file is chosen', () => {
+    it('renders a preview and header text when a single file is chosen', () => {
       const { getByTestId } = render(<FileInput {...testProps} />)
       const inputEl = getByTestId('file-input-input')
       userEvent.upload(inputEl, TEST_PNG_FILE)
       expect(getByTestId('file-input-preview')).toBeInTheDocument()
+      expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
+      const previewHeading = getByTestId('file-input-preview-heading')
+      expect(previewHeading).toHaveTextContent('Selected file Change file')
     })
 
-    // TODO
-    it.skip('renders a preview for each file when multiple files are chosen', () => {
-      const { getByTestId } = render(<FileInput {...testProps} />)
+    it('renders a preview for each file and header text when multiple files are chosen', () => {
+      const { getByTestId, getAllByTestId } = render(
+        <FileInput {...testProps} multiple={true} />
+      )
       const inputEl = getByTestId('file-input-input')
       userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
+      expect(getAllByTestId('file-input-preview')).toHaveLength(2)
+      expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
+      const previewHeading = getByTestId('file-input-preview-heading')
+      expect(previewHeading).toHaveTextContent('2 files selected Change files')
+    })
+
+    it('only shows previews for the most recently selected files if files are selected multiple times', () => {
+      const { getByTestId, getAllByTestId, queryByTestId } = render(
+        <FileInput {...testProps} multiple={true} />
+      )
+      const inputEl = getByTestId('file-input-input')
+      userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
+      let previews = getAllByTestId('file-input-preview')
+      expect(previews).toHaveLength(2)
+      expect(previews[0]).toHaveTextContent(TEST_PNG_FILE.name)
+      expect(previews[1]).toHaveTextContent(TEST_TEXT_FILE.name)
+      const previewHeading = getByTestId('file-input-preview-heading')
+      expect(previewHeading).toHaveTextContent('2 files selected Change files')
+
+      // Change to 1 file
+      userEvent.upload(inputEl, [TEST_XLS_FILE])
+      previews = getAllByTestId('file-input-preview')
+      expect(previews).toHaveLength(1)
+      expect(previews[0]).toHaveTextContent(TEST_XLS_FILE.name)
+      expect(previewHeading).toHaveTextContent('Selected file Change file')
+
+      // Change to no files
+      userEvent.upload(inputEl, [])
+      expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
+      expect(previewHeading).not.toBeInTheDocument()
+      expect(getByTestId('file-input-instructions')).not.toHaveClass(
+        'display-none'
+      )
     })
   })
 
