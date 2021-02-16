@@ -1,8 +1,9 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { FileInput } from './FileInput'
-import userEvent from '@testing-library/user-event'
+import { TEST_TEXT_FILE, TEST_PNG_FILE } from './constants'
 
 /**
  * TEST CASES
@@ -53,14 +54,6 @@ describe('FileInput component', () => {
     id: 'testFile',
     name: 'testFile',
   }
-
-  const TEST_TEXT_FILE = new File(['Test File Contents'], 'testFile.txt', {
-    type: 'text/plain',
-  })
-
-  const TEST_PNG_FILE = new File(['Test PNG Image'], 'testFile.png', {
-    type: 'image/png',
-  })
 
   it('renders without errors', () => {
     const { getByTestId } = render(<FileInput {...testProps} />)
@@ -183,6 +176,7 @@ describe('FileInput component', () => {
       expect(getByTestId('file-input-preview')).toBeInTheDocument()
     })
 
+    // TODO
     it.skip('renders a preview for each file when multiple files are chosen', () => {
       const { getByTestId } = render(<FileInput {...testProps} />)
       const inputEl = getByTestId('file-input-input')

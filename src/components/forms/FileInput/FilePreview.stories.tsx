@@ -1,35 +1,19 @@
 import React from 'react'
 
 import { FilePreview } from './FilePreview'
+import {
+  TEST_TEXT_FILE,
+  TEST_PDF_FILE,
+  TEST_DOC_FILE,
+  TEST_XLS_FILE,
+  TEST_VIDEO_FILE,
+  TEST_PNG_FILE,
+} from './constants'
 
 export default {
   title: 'Components/Form controls/File input/File preview',
   component: FilePreview,
 }
-
-const TEST_TEXT_FILE = new File(['Test File Contents'], 'testFile.txt', {
-  type: 'text/plain',
-})
-
-const TEST_PDF_FILE = new File(['Test PDF File'], 'testFile.pdf', {
-  type: 'application/pdf',
-})
-
-const TEST_DOC_FILE = new File(['Test doc File'], 'testFile.doc', {
-  type: 'application/msword',
-})
-
-const TEST_XLS_FILE = new File(['Test xls File'], 'testFile.xls', {
-  type: 'application/vnd.ms-excel',
-})
-
-const TEST_VIDEO_FILE = new File(['Test video File'], 'testFile.mp4', {
-  type: 'video/mp4',
-})
-
-const TEST_PNG_FILE = new File(['Test PNG Image'], 'testFile.png', {
-  type: 'image/png',
-})
 
 const testProps = {
   imageId: 'testImageId_12345',

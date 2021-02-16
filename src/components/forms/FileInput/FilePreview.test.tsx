@@ -1,22 +1,10 @@
 import React from 'react'
-import { fireEvent, render, waitFor } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 
 import { FilePreview } from './FilePreview'
-import { SPACER_GIF } from './constants'
-
-const TEST_TEXT_FILE = new File(['Test File Contents'], 'testFile.txt', {
-  type: 'text/plain',
-})
-
-const TEST_PDF_FILE = new File(['Test PDF File'], 'testFile.pdf', {
-  type: 'application/pdf',
-})
+import { SPACER_GIF, TEST_TEXT_FILE } from './constants'
 
 const INVALID_TEST_PDF_FILE = new File([], 'testFile.pdf')
-
-const TEST_PNG_FILE = new File(['Test PNG Image'], 'testFile.png', {
-  type: 'image/png',
-})
 
 describe('FilePreview component', () => {
   const testProps = {
@@ -75,7 +63,7 @@ describe('FilePreview component', () => {
       expect(imageEl).toHaveAttribute('src', expectedSrc)
     })
 
-    // TODO - force an image error on load?
+    // TODO - how to force an image error on load? test each file type class
     describe.skip('for a PDF file', () => {
       it('shows the PDF generic preview', async () => {
         const { getByTestId } = await waitFor(() =>
