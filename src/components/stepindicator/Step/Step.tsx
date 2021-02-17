@@ -38,7 +38,7 @@ export const Step = (
         {
           status === Status.COMPLETE && (
             <span className="usa-sr-only">completed</span>
-          ) /*TODO: localize*/
+          ) /*TODO: localize and maybe use map conditional rendering: https://medium.com/@omt66/conditional-rendering-in-react-ts-240526074821*/
         }
         {
           status === Status.INCOMPLETE && (
