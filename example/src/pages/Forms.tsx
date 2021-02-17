@@ -6,10 +6,12 @@ import {
   Button,
   ComboBox,
   Form,
+  FormGroup,
   Label,
   TextInput,
   ValidationChecklist,
   ValidationItem,
+  DatePicker,
 } from '@trussworks/react-uswds'
 
 type FormValues = {
@@ -48,7 +50,12 @@ const FormsPage = (): React.ReactElement => {
       <section>
         <h2>Formik</h2>
         <Formik
-          initialValues={{ email: '', password: '', fruit: 'avocado' }}
+          initialValues={{
+            email: '',
+            password: '',
+            fruit: 'avocado',
+            appointmentDate: '1/20/2021',
+          }}
           validationSchema={FormSchema}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
@@ -124,6 +131,26 @@ const FormsPage = (): React.ReactElement => {
                 options={fruitOptions}
                 onChange={(val: string) => setFieldValue('fruit', val, true)}
                 defaultValue="avocado"></Field>
+
+              <FormGroup>
+                <Label id="appointment-date-label" htmlFor="appointment-date">
+                  Appointment date
+                </Label>
+                <div className="usa-hint" id="appointment-date-hint">
+                  mm/dd/yyyy
+                </div>
+                <Field
+                  as={DatePicker}
+                  id="appointmentDate"
+                  name="appointmentDate"
+                  aria-describedby="appointment-date-label appointment-date-hint"
+                  defaultValue="2021-01-01"
+                  onChange={(val: string) =>
+                    setFieldValue('appointmentDate', val, true)
+                  }
+                />
+              </FormGroup>
+
               <Button type="submit" disabled={isSubmitting}>
                 Submit
               </Button>
