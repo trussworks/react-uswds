@@ -34,6 +34,7 @@ updates:
       - dependency-name: '@storybook/addon-essentials'
         versions:
           - '^6.1.5'
+      - dependency-name: 'uswds'
 
   - package-ecosystem: npm
     directory: '/example/'
