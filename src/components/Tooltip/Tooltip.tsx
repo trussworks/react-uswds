@@ -18,13 +18,11 @@ export const Tooltip = (
     
     const [isVisible, setVisible] = useState(false)
   
-  const style: React.CSSProperties = {}
-  
-  const tooltipClasses = classnames('usa-tooltip__body', 'usa-button', {
-    'usa-tooltip--top': position === 'top',
-    'usa-tooltip--bottom': position === 'bottom',
-    'usa-tooltip--right': position === 'right',
-    'usa-tooltip--left': position === 'left',
+  const tooltipClasses = classnames('usa-tooltip__body', {
+    'usa-tooltip__body--top': position === 'top',
+    'usa-tooltip__body--bottom': position === 'bottom',
+    'usa-tooltip__body--right': position === 'right',
+    'usa-tooltip__body--left': position === 'left',
     'is-visible': isVisible,
     'is-set': isVisible,
   })
@@ -36,7 +34,7 @@ export const Tooltip = (
       onMouseLeave={() => {setVisible(false)}}
       >
       {children}
-      <span className={tooltipClasses}>
+      <span className={tooltipClasses} role="tooltip">
         {label}
       </span>
     </span>   // the span that wraps the element with have the tooltip class

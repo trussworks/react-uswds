@@ -16,11 +16,9 @@
   visibility: visible;
 }
 
-/* .usa-tooltip--top, .tooltipText{
-  width: 120px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
+.usa-tooltip__body--top {
+  margin-left: 56.5px;
+  margin-bottom: 61px;
 }
 
 .usa-tooltip--bottom, .tooltipText{
@@ -28,7 +26,7 @@
   top: 100%;
   left: 50%;
   margin-left: -60px;
-} */
+}
 
 .usa-tooltip--right, .tooltipText{
   top: -5px;
