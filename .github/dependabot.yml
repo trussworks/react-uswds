@@ -11,26 +11,30 @@ updates:
       - 'type: dependencies'
       - 'type: automerge'
     allow:
-      - dependency-type: development
+      - dependency-type: direct
     ignore:
       - dependency-name: react
         versions:
-          - '^16.11.0'
+          - '>=18.0.0'
       - dependency-name: react-dom
         versions:
-          - '^16.11.0'
+          - '>=18.0.0'
+      - dependency-name: react-test-renderer
+        versions:
+          - '>=18.0.0'
       - dependency-name: '@types/react'
         versions:
-          - '^16.10.0'
+          - '>=18.0.0'
       - dependency-name: '@types/react-dom'
         versions:
-          - '^16.10.0'
+          - '>=18.0.0'
       - dependency-name: '@storybook/react'
         versions:
-          - '^6.0.21'
+          - '>=7.0.0'
       - dependency-name: '@storybook/addon-essentials'
         versions:
-          - '^6.1.5'
+          - '>=7.0.0'
+      - dependency-name: 'uswds'
 
   - package-ecosystem: npm
     directory: '/example/'
@@ -48,13 +52,13 @@ updates:
     ignore:
       - dependency-name: react
         versions:
-          - '^16.13.1'
+          - '>=18.0.0'
       - dependency-name: react-dom
         versions:
-          - '^16.13.1'
+          - '>=18.0.0'
       - dependency-name: '@types/react'
         versions:
-          - '^16.9.0'
+          - '>=18.0.0'
       - dependency-name: '@types/react-dom'
         versions:
-          - '^16.9.0'
+          - '>=18.0.0'
