@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/trussworks/react-uswds/compare/1.11.0...1.12.0) (2021-02-18)
+
+
+### Features
+
+* DatePicker component ([#803](https://github.com/trussworks/react-uswds/issues/803)) ([ea996c8](https://github.com/trussworks/react-uswds/commit/ea996c81287623110963bcaad3067cfb73d95144))
+
+
+### Bug Fixes
+
+* prevent dependabot version updates (+ husky 5 fixes) ([#867](https://github.com/trussworks/react-uswds/issues/867)) ([4529d89](https://github.com/trussworks/react-uswds/commit/4529d899a6142dea97795f5a53016943ee16e15d))
+
 ## [1.11.0](https://github.com/trussworks/react-uswds/compare/1.10.0...1.11.0) (2021-02-08)
 
 
