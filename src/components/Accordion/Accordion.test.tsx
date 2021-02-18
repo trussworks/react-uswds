@@ -81,6 +81,18 @@ const testItems = [
   },
 ]
 
+describe('multiselectable', () => {
+  //
+  // it.todo(‘default behavior: if an item is open and another item is clicked, the open item should close’)
+  //
+  // it.todo('default behavior: if multiselectable is false')
+  //
+  // it.todo('if multiselectable is set as true, if an item is open and another item is clicked, both items are open')
+  //
+  // it.todo
+  //
+})
+
 describe('Accordion component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<Accordion items={testItems} />)
