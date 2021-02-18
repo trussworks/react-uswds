@@ -12,7 +12,7 @@ interface AccordionItem {
 
 interface AccordionProps {
   bordered?: boolean
-  /* multiselectable: boolean */
+  multiselectable?: boolean
   items: AccordionItem[]
   className?: string
 }
@@ -52,32 +52,44 @@ export const AccordionItem = (props: AccordionItem): React.ReactElement => {
 }
 
 export const Accordion = (props: AccordionProps): React.ReactElement => {
-  const { bordered, items, className /* multiselectable */ } = props
+  const { bordered, items, className, multiselectable } = props
 
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
-  // add multiselectable conditional
 
   const classes = classnames(
     'usa-accordion',
     {
       'usa-accordion--bordered': bordered,
-      // {'aria-multiselectable': multiselectable}
+      'aria-multiselectable': multiselectable,
     },
     className
   )
 
   const toggleItem = (itemId: AccordionItem['id']): void => {
     const newOpenItems = [...openItems]
+    console.log('newOpenItems: ', newOpenItems)
     const itemIndex = openItems.indexOf(itemId)
+    const isMultiselectable = multiselectable
 
     if (itemIndex > -1) {
+      // item is open, it EXISTS in the array, close it by removing it from openItems
       newOpenItems.splice(itemIndex, 1)
     } else {
-      newOpenItems.push(itemId)
+      // item is closed and multiselectable is TRUE
+      // we want to be able to toggle multiple items open
+      // so we open item by adding it to openItems
+      if (isMultiselectable) {
+        newOpenItems.push(itemId)
+      } else {
+        // item is closed and multiselectable is FALSE
+        // so we open item, adding it to openItems
+        newOpenItems.push(itemId)
+        // close all other openItems that are not the current item by removing them from the array
+        // but how
+      }
     }
-
     setOpenState(newOpenItems)
   }
 
