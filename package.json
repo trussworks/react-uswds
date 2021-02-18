@@ -35,7 +35,9 @@
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
     "example:install": "yarn build && cd example/ && yarn",
-    "example:start": "cd example/ && yarn start"
+    "example:start": "cd example/ && yarn start",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable"
   },
   "repository": {
     "type": "git",
@@ -103,6 +105,7 @@
     "jest": "^26.1.0",
     "lint-staged": "^10.0.9",
     "mini-css-extract-plugin": "^1.0.0",
+    "pinst": "^2.1.4",
     "prettier": "^2.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -124,7 +127,7 @@
     "ts-jest": "^26.1.2",
     "typescript": "^3.8.0",
     "url-loader": "^4.0.0",
-    "uswds": "2.8.0",
+    "uswds": "2.9.0",
     "webpack": "^4.41.0",
     "webpack-cli": "^4.0.0"
   },
@@ -132,12 +135,6 @@
     "bl": "^4.0.3",
     "acorn-globals/acorn": "^6.4.1",
     "webpack/acorn": "^6.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged",
-      "pre-push": "yarn danger local -b main --failOnErrors"
-    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,md}": [
