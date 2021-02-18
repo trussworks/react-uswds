@@ -41,7 +41,7 @@ export const StepIndicator = (
     (step) => step.props.status === 'current' || 0
   )
   const currentStep = currentStepIndex + 1
-  const currentStepLabel = children[currentStepIndex].props.label
+  const currentStepLabel = children[currentStepIndex].props.label //TODO: lint warning here
   const totalSteps = children.length
 
   return (

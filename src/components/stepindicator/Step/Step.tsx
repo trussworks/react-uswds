@@ -1,28 +1,21 @@
 import classnames from 'classnames'
 import React from 'react'
-
-enum Status {
-  COMPLETE = 'complete',
-  CURRENT = 'current',
-  INCOMPLETE = 'incomplete',
-}
-
 export interface StepProps {
-  label: string
-  status: Status
-  className: string
+  status?:  'complete' | 'current' | 'incomplete'
+  className?: string,
+  children: React.ReactNode
 }
 
 export const Step = (
   props: StepProps & JSX.IntrinsicElements['li']
 ): React.ReactElement => {
-  const { label, status = Status.INCOMPLETE, className, ...liProps } = props
+  const { status = 'incomplete', className, children, ...liProps } = props
 
   const classes = classnames(
     'usa-step-indicator__segment',
     {
-      'usa-step-indicator__segment--complete': status === Status.COMPLETE,
-      'usa-step-indicator__segment--current': status === Status.CURRENT,
+      'usa-step-indicator__segment--complete': status === 'complete',
+      'usa-step-indicator__segment--current': status === 'current',
     },
     className
   )
@@ -30,18 +23,18 @@ export const Step = (
   return (
     <li
       className={classes}
-      aria-current={status === Status.CURRENT ? 'true' : undefined}
+      aria-current={status === 'current' ? 'true' : undefined}
       {...liProps}>
       <span className="usa-step-indicator__segment-label">
-        {label}
+        {children}
         &nbsp;
         {
-          status === Status.COMPLETE && (
+          status === 'complete' && (
             <span className="usa-sr-only">completed</span>
           ) /*TODO: localize and maybe use map conditional rendering: https://medium.com/@omt66/conditional-rendering-in-react-ts-240526074821*/
         }
         {
-          status === Status.INCOMPLETE && (
+          status === 'incomplete' && (
             <span className="usa-sr-only">not completed</span>
           ) /*TODO: localize*/
         }
