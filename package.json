@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -35,7 +35,9 @@
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
     "example:install": "yarn build && cd example/ && yarn",
-    "example:start": "cd example/ && yarn start"
+    "example:start": "cd example/ && yarn start",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable"
   },
   "repository": {
     "type": "git",
@@ -66,8 +68,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-react": "^7.10.4",
-    "@storybook/addon-docs": "^6.1.5",
-    "@storybook/addon-viewport": "^6.1.5",
+    "@storybook/addon-essentials": "^6.1.5",
     "@storybook/react": "^6.1.5",
     "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/dom": "^7.22.3",
@@ -100,10 +101,11 @@
     "file-loader": "^6.0.0",
     "happo.io": "^6.0.0",
     "happo-plugin-storybook": "^2.5.3",
-    "husky": "^4.2.3",
+    "husky": "^5.0.9",
     "jest": "^26.1.0",
     "lint-staged": "^10.0.9",
     "mini-css-extract-plugin": "^1.0.0",
+    "pinst": "^2.1.4",
     "prettier": "^2.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -119,7 +121,7 @@
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-prettier": "^1.1.1",
     "stylelint-scss": "^3.17.1",
     "ts-jest": "^26.1.2",
@@ -133,12 +135,6 @@
     "bl": "^4.0.3",
     "acorn-globals/acorn": "^6.4.1",
     "webpack/acorn": "^6.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged",
-      "pre-push": "yarn danger local -b main --failOnErrors"
-    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,md}": [
