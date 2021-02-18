@@ -1058,6 +1058,24 @@ describe('ComboBox component', () => {
         'usa-combo-box__list-option--focused'
       )
     })
+
+    it('clears focus when clicking outside of the component', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      userEvent.click(getByTestId('outside'))
+      expect(getByTestId('combo-box-input')).not.toHaveFocus()
+    })
   })
 
   describe('accessibility and internationalization', () => {

@@ -9,6 +9,7 @@ export enum ActionTypes {
   CLOSE_LIST,
   FOCUS_OPTION,
   UPDATE_FILTER,
+  CLEAR_FOCUS,
 }
 
 export type Action =
@@ -33,7 +34,9 @@ export type Action =
       type: ActionTypes.UPDATE_FILTER
       value: string
     }
-
+  | {
+      type: ActionTypes.CLEAR_FOCUS
+    }
 export interface State {
   isOpen: boolean
   selectedOption?: ComboBoxOption
@@ -124,12 +127,28 @@ export const useCombobox = (
           ...state,
           inputValue: '',
           isOpen: false,
-          focusMode: FocusMode.None,
           selectedOption: undefined,
           filter: undefined,
           filteredOptions: optionsList.filter(isPartialMatch('')),
         }
+      case ActionTypes.CLEAR_FOCUS: {
+        const newState = {
+          ...state,
+          isOpen: false,
+          focusMode: FocusMode.None,
+          focusedOption: undefined,
+        }
 
+        if (state.filteredOptions.length === 0) {
+          newState.filteredOptions = optionsList.filter(isPartialMatch(''))
+        }
+
+        if (!state.selectedOption) {
+          newState.inputValue = ''
+        }
+
+        return newState
+      }
       default:
         throw new Error()
     }

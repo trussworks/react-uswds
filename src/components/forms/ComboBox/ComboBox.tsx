@@ -145,16 +145,13 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
-    const { target: elementLosingFocus, relatedTarget: newTarget } = event
+    const { relatedTarget: newTarget } = event
     const newTargetIsOutside =
       !newTarget ||
-      (newTarget instanceof Node &&
-        !containerRef.current?.contains(elementLosingFocus))
+      (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
 
-    if (state.selectedOption?.value) {
-      if (newTargetIsOutside) dispatch({ type: ActionTypes.CLOSE_LIST })
-    } else if (newTargetIsOutside) {
-      dispatch({ type: ActionTypes.CLEAR })
+    if (newTargetIsOutside) {
+      dispatch({ type: ActionTypes.CLEAR_FOCUS })
     }
   }
 
@@ -203,7 +200,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       !newTarget ||
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
     ) {
-      dispatch({ type: ActionTypes.CLOSE_LIST })
+      dispatch({ type: ActionTypes.CLEAR_FOCUS })
     }
   }
 
