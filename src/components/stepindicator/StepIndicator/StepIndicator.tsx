@@ -37,12 +37,14 @@ export const StepIndicator = (
     className
   )
 
-  const currentStepIndex = children.findIndex(
-    (step) => step.props.status === 'current' || 0
-  )
-  const currentStep = currentStepIndex + 1
+  const findCurrentStepIndex = (): number => {
+    const i = children.findIndex((step) => step.props.status === 'current')
+    return i === -1 ? 0 : i
+  }
+  const currentStepIndex = findCurrentStepIndex()
+  const currentStepNumber = currentStepIndex + 1
   const currentStepLabel = children[currentStepIndex].props.label //TODO: lint warning here
-  const totalSteps = children.length
+  const totalNumberOfSteps = children.length
 
   return (
     <div className={classes} {...divProps}>
@@ -54,10 +56,10 @@ export const StepIndicator = (
           <span className="usa-step-indicator__heading-counter">
             <span className="usa-sr-only">Step{/*TODO: localize*/}</span>
             <span className="usa-step-indicator__current-step">
-              {currentStep}
+              {currentStepNumber}
             </span>
             <span className="usa-step-indicator__total-steps">{
-              `of ${totalSteps}` /*TODO: localize*/
+              `of ${totalNumberOfSteps}` /*TODO: localize*/
             }</span>
           </span>
           <span className="usa-step-indicator__heading-text">
