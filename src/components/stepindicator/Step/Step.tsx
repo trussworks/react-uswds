@@ -1,15 +1,15 @@
 import classnames from 'classnames'
 import React from 'react'
 export interface StepProps {
-  status?:  'complete' | 'current' | 'incomplete'
-  className?: string,
-  children: React.ReactNode
+  label: string
+  status?: 'complete' | 'current' | 'incomplete'
+  className?: string
 }
 
 export const Step = (
   props: StepProps & JSX.IntrinsicElements['li']
 ): React.ReactElement => {
-  const { status = 'incomplete', className, children, ...liProps } = props
+  const { label, status = 'incomplete', className, ...liProps } = props
 
   const classes = classnames(
     'usa-step-indicator__segment',
@@ -26,7 +26,7 @@ export const Step = (
       aria-current={status === 'current' ? 'true' : undefined}
       {...liProps}>
       <span className="usa-step-indicator__segment-label">
-        {children}
+        {label}
         &nbsp;
         {
           status === 'complete' && (

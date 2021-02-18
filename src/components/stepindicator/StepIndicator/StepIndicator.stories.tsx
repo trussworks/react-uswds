@@ -17,10 +17,50 @@ export default {
 
 export const defaultStepIndicator = (): React.ReactElement => (
   <StepIndicator>
-    <Step status="complete">Personal information</Step>
-    <Step status="complete">Household status</Step>
-    <Step status="current">Supporting documents</Step>
-    <Step>Signature</Step>
-    <Step>Review and submit</Step>
+    <Step label="Personal information" status="complete" />
+    <Step label="Household status" status="complete" />
+    <Step label="Supporting documents" status="current" />
+    <Step label="Signature" />
+    <Step label="Review and submit" />
+  </StepIndicator>
+)
+
+export const noLabels = (): React.ReactElement => (
+  <StepIndicator showLabels={false}>
+    <Step label="Personal information" status="complete" />
+    <Step label="Household status" status="complete" />
+    <Step label="Supporting documents" status="current" />
+    <Step label="Signature" />
+    <Step label="Review and submit" />
+  </StepIndicator>
+)
+
+export const centered = (): React.ReactElement => (
+  <StepIndicator centered>
+    <Step label="Personal information" status="complete" />
+    <Step label="Household status" status="complete" />
+    <Step label="Supporting documents" status="current" />
+    <Step label="Signature" />
+    <Step label="Review and submit" />
+  </StepIndicator>
+)
+
+export const counters = (): React.ReactElement => (
+  <StepIndicator counters>
+    <Step label="Personal information" status="complete" />
+    <Step label="Household status" status="complete" />
+    <Step label="Supporting documents" status="current" />
+    <Step label="Signature" />
+    <Step label="Review and submit" />
+  </StepIndicator>
+)
+
+export const smallCounters = (): React.ReactElement => (
+  <StepIndicator counters="small">
+    <Step label="Personal information" status="complete" />
+    <Step label="Household status" status="complete" />
+    <Step label="Supporting documents" status="current" />
+    <Step label="Signature" />
+    <Step label="Review and submit" />
   </StepIndicator>
 )
