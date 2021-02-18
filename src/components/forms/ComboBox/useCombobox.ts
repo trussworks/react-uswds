@@ -127,6 +127,7 @@ export const useCombobox = (
           ...state,
           inputValue: '',
           isOpen: false,
+          focusMode: FocusMode.Input,
           selectedOption: undefined,
           filter: undefined,
           filteredOptions: optionsList.filter(isPartialMatch('')),

@@ -482,6 +482,25 @@ describe('ComboBox component', () => {
       fireEvent.blur(getByTestId('combo-box-clear-button'))
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
+
+    it('focuses the input after clearing when the when FocusMode is None', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'b')
+      userEvent.click(getByTestId('outside'))
+      userEvent.click(getByTestId('combo-box-clear-button'))
+      expect(getByTestId('combo-box-input')).toHaveFocus()
+    })
   })
 
   it('clears input value and closes list when an incomplete item is remaining on blur', () => {
