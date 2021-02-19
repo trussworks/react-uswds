@@ -152,7 +152,7 @@ describe('Accordion component', () => {
   })
 
   describe('if multiselectable is true', () => {
-    it('when an item is open and another item is clicked, both items are open', () => {
+    it('when an item is opened, previously open items remain open', () => {
       const { getByText, getByTestId } = render(
         <Accordion items={testItems} multiselectable={true} />
       )

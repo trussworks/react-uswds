@@ -68,7 +68,7 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
   )
 
   const toggleItem = (itemId: AccordionItem['id']): void => {
-    let newOpenItems = [...openItems]
+    const newOpenItems = [...openItems]
     const itemIndex = openItems.indexOf(itemId)
     const isMultiselectable = multiselectable
 
@@ -78,7 +78,7 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
       if (isMultiselectable) {
         newOpenItems.push(itemId)
       } else {
-        newOpenItems = []
+        newOpenItems.splice(0, newOpenItems.length)
         newOpenItems.push(itemId)
       }
     }
