@@ -31,7 +31,7 @@
     "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t ''",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn test && yarn lint",
+    "prepublishOnly": "yarn test && yarn lint && pinst --disable",
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
     "example:install": "yarn build && cd example/ && yarn",
