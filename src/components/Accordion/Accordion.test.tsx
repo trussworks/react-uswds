@@ -81,18 +81,6 @@ const testItems = [
   },
 ]
 
-describe('multiselectable', () => {
-  //
-  // it.todo(‘default behavior: if an item is open and another item is clicked, the open item should close’)
-  //
-  // it.todo('default behavior: if multiselectable is false')
-  //
-  // it.todo('if multiselectable is set as true, if an item is open and another item is clicked, both items are open')
-  //
-  // it.todo
-  //
-})
-
 describe('Accordion component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<Accordion items={testItems} />)
@@ -160,6 +148,47 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+    })
+  })
+
+  describe('if multiselectable is true', () => {
+    it('when an item is open and another item is clicked, both items are open', () => {
+      const { getByText, getByTestId } = render(
+        <Accordion items={testItems} multiselectable={true} />
+      )
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+
+      fireEvent.click(getByText(testItems[0].title))
+      fireEvent.click(getByText(testItems[1].title))
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+
+      fireEvent.click(getByText(testItems[0].title))
+      fireEvent.click(getByText(testItems[3].title))
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+
+      fireEvent.click(getByText(testItems[2].title))
+      fireEvent.click(getByText(testItems[4].title))
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).toBeVisible()
     })
   })
 
