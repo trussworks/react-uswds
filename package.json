@@ -35,9 +35,7 @@
     "happo": "happo",
     "happo-ci": "happo-ci-circleci",
     "example:install": "yarn build && cd example/ && yarn",
-    "example:start": "cd example/ && yarn start",
-    "postinstall": "husky install",
-    "postpublish": "pinst --enable"
+    "example:start": "cd example/ && yarn start"
   },
   "repository": {
     "type": "git",
@@ -99,17 +97,16 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
     "file-loader": "^6.0.0",
-    "happo.io": "^6.0.0",
     "happo-plugin-storybook": "^2.5.3",
-    "husky": "^5.0.9",
+    "happo.io": "^6.0.0",
+    "husky": "^4.3.8",
     "jest": "^26.1.0",
     "lint-staged": "^10.0.9",
     "mini-css-extract-plugin": "^1.0.0",
-    "pinst": "^2.1.4",
     "prettier": "^2.0.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "react-docgen-typescript-loader": "^3.7.2",
+    "react-dom": "^17.0.1",
     "react-test-renderer": "^17.0.1",
     "sass": "^1.26.0",
     "sass-loader": "^10.0.2",
@@ -135,6 +132,12 @@
     "bl": "^4.0.3",
     "acorn-globals/acorn": "^6.4.1",
     "webpack/acorn": "^6.4.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged",
+      "pre-push": "yarn danger local -b main --failOnErrors"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,md}": [
