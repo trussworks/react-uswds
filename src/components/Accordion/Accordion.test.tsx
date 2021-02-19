@@ -151,7 +151,37 @@ describe('Accordion component', () => {
     })
   })
 
-  describe('if multiselectable is true', () => {
+  describe('when multiselectable is false (default behavior)', () => {
+    it('when an item is opened, clicking a different item closes the previously opened item', () => {
+      const { getByText, getByTestId } = render(<Accordion items={testItems} />)
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+
+      fireEvent.click(getByText(testItems[3].title))
+      fireEvent.click(getByText(testItems[1].title))
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+
+      fireEvent.click(getByText(testItems[4].title))
+      fireEvent.click(getByText(testItems[2].title))
+
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
+    })
+  })
+
+  describe('when multiselectable is true', () => {
     it('when an item is opened, previously open items remain open', () => {
       const { getByText, getByTestId } = render(
         <Accordion items={testItems} multiselectable={true} />
