@@ -2,8 +2,6 @@ import React from 'react'
 import classnames from 'classnames'
 import { StepProps } from '../StepIndicatorStep/StepIndicatorStep'
 
-//TODO: Localizations
-
 interface StepIndicatorProps {
   showLabels?: boolean
   counters?: true | false | 'small'
