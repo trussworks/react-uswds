@@ -5,7 +5,7 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Forms/CharacterCount',
+  title: 'Components/Form controls/CharacterCount',
   parameters: {
     info: `
 USWDS 2.0 Character count component
@@ -54,7 +54,7 @@ export const textarea = (): React.ReactElement => (
   </Form>
 )
 
-export const withCustomCharacterCount = (): React.ReactElement => {
+const withCustomCharacterCount = (): React.ReactElement => {
   const customEmojiCharacterCount = (text: string): number => {
     const starCount = (text.match(/⭐️/g) || []).length
     return Array.from(text).length - starCount * 2
@@ -96,3 +96,6 @@ export const withCustomCharacterCount = (): React.ReactElement => {
     </Form>
   )
 }
+
+withCustomCharacterCount.parameters = { happo: { delay: 100 } }
+export { withCustomCharacterCount }

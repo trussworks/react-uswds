@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from './Link'
 
 export default {
-  title: 'Link',
+  title: 'Components/Typography/Link',
   component: Link,
   parameters: {
     info: `Link component
@@ -41,6 +41,15 @@ export const ExternalLink = (): React.ReactElement => (
       external website
     </Link>
     .
+  </p>
+)
+
+export const NavLink = (): React.ReactElement => (
+  <p>
+    This is a&nbsp;
+    <Link variant="nav" href={'#'}>
+      NavLink
+    </Link>
   </p>
 )
 

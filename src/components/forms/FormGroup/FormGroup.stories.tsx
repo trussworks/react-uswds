@@ -6,7 +6,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 export default {
-  title: 'Forms/FormGroup',
+  title: 'Components/Form elements/FormGroup',
   component: FormGroup,
   parameters: {
     info: `

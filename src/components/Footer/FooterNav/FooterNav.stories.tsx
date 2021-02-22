@@ -5,7 +5,7 @@ import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'
 
 export default {
-  title: 'Footer/FooterNav',
+  title: 'Components/Footer/FooterNav',
   component: FooterNav,
   parameters: {
     info: `

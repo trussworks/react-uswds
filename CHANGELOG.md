@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/trussworks/react-uswds/compare/1.12.1...1.12.2) (2021-02-22)
+
+
+### Bug Fixes
+
+* add ActionType.CLEAR_FOCUS to indicate a user has left the field ([#902](https://github.com/trussworks/react-uswds/issues/902)) ([58159d7](https://github.com/trussworks/react-uswds/commit/58159d7430016bb88ab2fba33ab1984e0aebed66))
+
+### [1.12.1](https://github.com/trussworks/react-uswds/compare/1.12.0...1.12.1) (2021-02-22)
+
+
+### Bug Fixes
+
+* Revert husky to V4 ([#923](https://github.com/trussworks/react-uswds/issues/923)) ([e934ff7](https://github.com/trussworks/react-uswds/commit/e934ff76a58cdbc523eef0a3c496fe2d20c02c73))
+
+## [1.12.0](https://github.com/trussworks/react-uswds/compare/1.11.0...1.12.0) (2021-02-18)
+
+
+### Features
+
+* DatePicker component ([#803](https://github.com/trussworks/react-uswds/issues/803)) ([ea996c8](https://github.com/trussworks/react-uswds/commit/ea996c81287623110963bcaad3067cfb73d95144))
+
+
+### Bug Fixes
+
+* prevent dependabot version updates (+ husky 5 fixes) ([#867](https://github.com/trussworks/react-uswds/issues/867)) ([4529d89](https://github.com/trussworks/react-uswds/commit/4529d899a6142dea97795f5a53016943ee16e15d))
+
+## [1.11.0](https://github.com/trussworks/react-uswds/compare/1.10.0...1.11.0) (2021-02-08)
+
+
+### Features
+
+* Add Modal deprecation warnings (non-breaking deprecation) ([#825](https://github.com/trussworks/react-uswds/issues/825)) ([41d7e8e](https://github.com/trussworks/react-uswds/commit/41d7e8e7f0be0ced8e077e51fe60f21320e79cfb))
+* Add nav variant to Link component ([#846](https://github.com/trussworks/react-uswds/issues/846)) ([c92159e](https://github.com/trussworks/react-uswds/commit/c92159e08eb4b3975859942bca0378f12241e28c))
+* New Component: Breadcrumb ([#804](https://github.com/trussworks/react-uswds/issues/804)) ([1a804d3](https://github.com/trussworks/react-uswds/commit/1a804d3984b6d5b4fc8cf48426e84b651587730e))
+* Update GovBanner to match USWDS 2.8.0 release ([#782](https://github.com/trussworks/react-uswds/issues/782)) ([3d61f78](https://github.com/trussworks/react-uswds/commit/3d61f78eb0414fe77eba2b7c424560c2f4563721))
+* Upgrade to React 17 ([#826](https://github.com/trussworks/react-uswds/issues/826)) ([9f75909](https://github.com/trussworks/react-uswds/commit/9f7590917f58f3e33f3c3cef9d78bc0e6dcb812a))
+
+
+### Documentation & Examples
+
+* Add request for implementation issue template ([#726](https://github.com/trussworks/react-uswds/issues/726)) ([93300e8](https://github.com/trussworks/react-uswds/commit/93300e80fac8c951b3fee71fed331d283cdadd56))
+* cleanup storybook examples and clear warnings ([#736](https://github.com/trussworks/react-uswds/issues/736)) ([4b0f7aa](https://github.com/trussworks/react-uswds/commit/4b0f7aa7f101d43cd279da124da31cfa6e87ad5b))
+* Reorganize Storybook sidebar nav to better reflect USWDS docs ([#785](https://github.com/trussworks/react-uswds/issues/785)) ([a9ff49f](https://github.com/trussworks/react-uswds/commit/a9ff49ffdbc91c96a6c674f9864cb99327dedde5))
+* Update license to 2021 ([#767](https://github.com/trussworks/react-uswds/issues/767)) ([82329da](https://github.com/trussworks/react-uswds/commit/82329da7390a60f122225286c39ae101b699348c))
+
 ## [1.10.0](https://github.com/trussworks/react-uswds/compare/1.9.3...1.10.0) (2020-12-29)
 
 

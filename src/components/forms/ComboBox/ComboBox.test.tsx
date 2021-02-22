@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, prettyDOM } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox } from './ComboBox'
@@ -480,6 +480,25 @@ describe('ComboBox component', () => {
 
       userEvent.click(getByTestId('combo-box-clear-button'))
       fireEvent.blur(getByTestId('combo-box-clear-button'))
+      expect(getByTestId('combo-box-input')).toHaveFocus()
+    })
+
+    it('focuses the input after clearing when the when FocusMode is None', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'b')
+      userEvent.click(getByTestId('outside'))
+      userEvent.click(getByTestId('combo-box-clear-button'))
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
   })
@@ -1057,6 +1076,24 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-yuzu')).toHaveClass(
         'usa-combo-box__list-option--focused'
       )
+    })
+
+    it('clears focus when clicking outside of the component', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      userEvent.click(getByTestId('outside'))
+      expect(getByTestId('combo-box-input')).not.toHaveFocus()
     })
   })
 

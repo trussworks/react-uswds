@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default {
-  title: 'Type',
+  title: 'Components/Typography/Type Styles',
 }
 
-export const Typography = (): React.ReactElement => (
+export const TypeStyles = (): React.ReactElement => (
   <div className="grid-container">
     <h1>Typography</h1>
     <h2>Headers</h2>

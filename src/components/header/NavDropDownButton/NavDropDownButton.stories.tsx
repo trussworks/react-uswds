@@ -4,7 +4,7 @@ import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
 export default {
-  title: 'Header/NavDropDownButton',
+  title: 'Components/Header/NavDropDownButton',
   component: NavDropDownButton,
   parameters: {
     info: `

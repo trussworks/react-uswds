@@ -22,6 +22,7 @@ export { Checkbox } from './components/forms/Checkbox/Checkbox'
 export { ComboBox } from './components/forms/ComboBox/ComboBox'
 export { DateInput } from './components/forms/DateInput/DateInput'
 export { DateInputGroup } from './components/forms/DateInputGroup/DateInputGroup'
+export { DatePicker } from './components/forms/DatePicker/DatePicker'
 export { Dropdown } from './components/forms/Dropdown/Dropdown'
 export { ErrorMessage } from './components/forms/ErrorMessage/ErrorMessage'
 export { Fieldset } from './components/forms/Fieldset/Fieldset'
@@ -62,6 +63,11 @@ export { CardHeader } from './components/card/CardHeader/CardHeader'
 export { CardMedia } from './components/card/CardMedia/CardMedia'
 export { CardBody } from './components/card/CardBody/CardBody'
 export { CardFooter } from './components/card/CardFooter/CardFooter'
+
+/** Breadcrumb components */
+export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
+export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
+export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
 
 export { Search } from './components/Search/Search'
 
