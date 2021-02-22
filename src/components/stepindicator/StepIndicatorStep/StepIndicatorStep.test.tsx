@@ -1,11 +1,11 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Step } from '../Step/Step'
+import { StepIndicatorStep } from './StepIndicatorStep'
 
 describe('Step component', () => {
   it('renders without errors', () => {
     const { getByRole, queryByText } = render(
-      <Step label="Test Step" />
+      <StepIndicatorStep label="Test Step" />
     )
     expect(queryByText('Test Step')).toBeInTheDocument()
     expect(getByRole('listitem')).toHaveClass('usa-step-indicator__segment')
@@ -13,7 +13,7 @@ describe('Step component', () => {
 
   it('renders with incomplete status', () => {
     const { getByRole, queryByText } = render(
-      <Step label="Test Step" status="incomplete" />
+      <StepIndicatorStep label="Test Step" status="incomplete" />
     )
     expect(queryByText('Test Step')).toBeInTheDocument()
     expect(getByRole('listitem')).toHaveClass('usa-step-indicator__segment')
@@ -21,17 +21,21 @@ describe('Step component', () => {
 
   it('renders with current status', () => {
     const { getByRole, queryByText } = render(
-      <Step label="Test Step" status="current" />
+      <StepIndicatorStep label="Test Step" status="current" />
     )
     expect(queryByText('Test Step')).toBeInTheDocument()
-    expect(getByRole('listitem')).toHaveClass('usa-step-indicator__segment usa-step-indicator__segment--current')
+    expect(getByRole('listitem')).toHaveClass(
+      'usa-step-indicator__segment usa-step-indicator__segment--current'
+    )
   })
 
   it('renders with complete status', () => {
     const { getByRole, queryByText } = render(
-      <Step label="Test Step" status="complete" />
+      <StepIndicatorStep label="Test Step" status="complete" />
     )
     expect(queryByText('Test Step')).toBeInTheDocument()
-    expect(getByRole('listitem')).toHaveClass('usa-step-indicator__segment usa-step-indicator__segment--complete')
+    expect(getByRole('listitem')).toHaveClass(
+      'usa-step-indicator__segment usa-step-indicator__segment--complete'
+    )
   })
 })

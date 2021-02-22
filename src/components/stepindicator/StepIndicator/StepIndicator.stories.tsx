@@ -1,5 +1,5 @@
 import React from 'react'
-import { Step } from '../Step/Step'
+import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
 
 export default {
@@ -17,50 +17,50 @@ export default {
 
 export const defaultStepIndicator = (): React.ReactElement => (
   <StepIndicator>
-    <Step label="Personal information" status="complete" />
-    <Step label="Household status" status="complete" />
-    <Step label="Supporting documents" status="current" />
-    <Step label="Signature" />
-    <Step label="Review and submit" />
+    <StepIndicatorStep label="Personal information" status="complete" />
+    <StepIndicatorStep label="Household status" status="complete" />
+    <StepIndicatorStep label="Supporting documents" status="current" />
+    <StepIndicatorStep label="Signature" />
+    <StepIndicatorStep label="Review and submit" />
   </StepIndicator>
 )
 
 export const noLabels = (): React.ReactElement => (
   <StepIndicator showLabels={false}>
-    <Step label="Personal information" status="complete" />
-    <Step label="Household status" status="complete" />
-    <Step label="Supporting documents" status="current" />
-    <Step label="Signature" />
-    <Step label="Review and submit" />
+    <StepIndicatorStep label="Personal information" status="complete" />
+    <StepIndicatorStep label="Household status" status="complete" />
+    <StepIndicatorStep label="Supporting documents" status="current" />
+    <StepIndicatorStep label="Signature" />
+    <StepIndicatorStep label="Review and submit" />
   </StepIndicator>
 )
 
 export const centered = (): React.ReactElement => (
   <StepIndicator centered>
-    <Step label="Personal information" status="complete" />
-    <Step label="Household status" status="complete" />
-    <Step label="Supporting documents" status="current" />
-    <Step label="Signature" />
-    <Step label="Review and submit" />
+    <StepIndicatorStep label="Personal information" status="complete" />
+    <StepIndicatorStep label="Household status" status="complete" />
+    <StepIndicatorStep label="Supporting documents" status="current" />
+    <StepIndicatorStep label="Signature" />
+    <StepIndicatorStep label="Review and submit" />
   </StepIndicator>
 )
 
 export const counters = (): React.ReactElement => (
   <StepIndicator counters>
-    <Step label="Personal information" status="complete" />
-    <Step label="Household status" status="complete" />
-    <Step label="Supporting documents" status="current" />
-    <Step label="Signature" />
-    <Step label="Review and submit" />
+    <StepIndicatorStep label="Personal information" status="complete" />
+    <StepIndicatorStep label="Household status" status="complete" />
+    <StepIndicatorStep label="Supporting documents" status="current" />
+    <StepIndicatorStep label="Signature" />
+    <StepIndicatorStep label="Review and submit" />
   </StepIndicator>
 )
 
 export const smallCounters = (): React.ReactElement => (
   <StepIndicator counters="small">
-    <Step label="Personal information" status="complete" />
-    <Step label="Household status" status="complete" />
-    <Step label="Supporting documents" status="current" />
-    <Step label="Signature" />
-    <Step label="Review and submit" />
+    <StepIndicatorStep label="Personal information" status="complete" />
+    <StepIndicatorStep label="Household status" status="complete" />
+    <StepIndicatorStep label="Supporting documents" status="current" />
+    <StepIndicatorStep label="Signature" />
+    <StepIndicatorStep label="Review and submit" />
   </StepIndicator>
 )

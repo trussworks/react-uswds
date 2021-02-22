@@ -71,7 +71,7 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 
 /** StepIndicator components */
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
-export { Step } from './components/stepindicator/Step/Step'
+export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
 export { Search } from './components/Search/Search'
 

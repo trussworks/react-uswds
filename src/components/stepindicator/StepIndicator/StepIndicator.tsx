@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { StepProps } from '../Step/Step'
+import { StepProps } from '../StepIndicatorStep/StepIndicatorStep'
 
 //TODO: Localizations
 
