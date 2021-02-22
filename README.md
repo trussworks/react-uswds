@@ -1,6 +1,6 @@
 # @trussworks/react-uswds
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -153,6 +153,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/duncan-truss"><img src="https://avatars.githubusercontent.com/u/52669884?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Duncan</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=duncan-truss" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/SirenaBorracha"><img src="https://avatars.githubusercontent.com/u/16230705?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arianna Kellogg</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=SirenaBorracha" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/christopherhuii"><img src="https://avatars.githubusercontent.com/u/8367504?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Hui</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=christopherhuii" title="Code">💻</a></td>
+    <td align="center"><a href="http://pandasguide.com/"><img src="https://avatars.githubusercontent.com/u/3331?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jim Benton</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jim" title="Code">💻</a></td>
   </tr>
 </table>
 
