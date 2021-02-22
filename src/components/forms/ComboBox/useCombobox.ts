@@ -9,7 +9,7 @@ export enum ActionTypes {
   CLOSE_LIST,
   FOCUS_OPTION,
   UPDATE_FILTER,
-  CLEAR_FOCUS,
+  BLUR,
 }
 
 export type Action =
@@ -35,7 +35,7 @@ export type Action =
       value: string
     }
   | {
-      type: ActionTypes.CLEAR_FOCUS
+      type: ActionTypes.BLUR
     }
 export interface State {
   isOpen: boolean
@@ -132,7 +132,7 @@ export const useCombobox = (
           filter: undefined,
           filteredOptions: optionsList.filter(isPartialMatch('')),
         }
-      case ActionTypes.CLEAR_FOCUS: {
+      case ActionTypes.BLUR: {
         const newState = {
           ...state,
           isOpen: false,

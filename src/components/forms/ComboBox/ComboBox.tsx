@@ -151,7 +151,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
 
     if (newTargetIsOutside) {
-      dispatch({ type: ActionTypes.CLEAR_FOCUS })
+      dispatch({ type: ActionTypes.BLUR })
     }
   }
 
@@ -200,7 +200,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       !newTarget ||
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
     ) {
-      dispatch({ type: ActionTypes.CLEAR_FOCUS })
+      dispatch({ type: ActionTypes.BLUR })
     }
   }
 
