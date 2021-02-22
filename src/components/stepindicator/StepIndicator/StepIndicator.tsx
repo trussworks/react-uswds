@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
-import { StepProps } from '../StepIndicatorStep/StepIndicatorStep'
+import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 
 interface StepIndicatorProps {
   showLabels?: boolean
   counters?: true | false | 'small'
   centered?: boolean
-  children: React.ReactElement<StepProps>[]
+  children: React.ReactElement<StepIndicatorStepProps>[]
   className?: string
   divProps?: JSX.IntrinsicElements['div']
   listProps?: JSX.IntrinsicElements['ol']
