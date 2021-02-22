@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/trussworks/react-uswds/compare/1.12.1...1.12.2) (2021-02-22)
+
+
+### Bug Fixes
+
+* add ActionType.CLEAR_FOCUS to indicate a user has left the field ([#902](https://github.com/trussworks/react-uswds/issues/902)) ([58159d7](https://github.com/trussworks/react-uswds/commit/58159d7430016bb88ab2fba33ab1984e0aebed66))
+
 ### [1.12.1](https://github.com/trussworks/react-uswds/compare/1.12.0...1.12.1) (2021-02-22)
 
 
