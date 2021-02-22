@@ -16,6 +16,7 @@ describe('Step component', () => {
       <StepIndicatorStep label="Test Step" status="incomplete" />
     )
     expect(queryByText('Test Step')).toBeInTheDocument()
+    expect(queryByText('not completed')).toHaveClass('usa-sr-only')
     expect(getByRole('listitem')).toHaveClass('usa-step-indicator__segment')
   })
 
@@ -34,6 +35,7 @@ describe('Step component', () => {
       <StepIndicatorStep label="Test Step" status="complete" />
     )
     expect(queryByText('Test Step')).toBeInTheDocument()
+    expect(queryByText('completed')).toHaveClass('usa-sr-only')
     expect(getByRole('listitem')).toHaveClass(
       'usa-step-indicator__segment usa-step-indicator__segment--complete'
     )
