@@ -54,13 +54,11 @@ export const StepIndicator = (
       <div className="usa-step-indicator__header">
         <h2 className="usa-step-indicator__heading">
           <span className="usa-step-indicator__heading-counter">
-            <span className="usa-sr-only">Step{/*TODO: localize*/}</span>
+            <span className="usa-sr-only">Step</span>
             <span className="usa-step-indicator__current-step">
               {currentStepNumber}
             </span>
-            <span className="usa-step-indicator__total-steps">{
-              `of ${totalNumberOfSteps}` /*TODO: localize*/
-            }</span>
+            <span className="usa-step-indicator__total-steps">{`of ${totalNumberOfSteps}`}</span>
           </span>
           <span className="usa-step-indicator__heading-text">
             {currentStepLabel}
