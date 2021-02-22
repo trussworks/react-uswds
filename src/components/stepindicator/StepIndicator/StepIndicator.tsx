@@ -47,7 +47,7 @@ export const StepIndicator = (
   const totalNumberOfSteps = children.length
 
   return (
-    <div className={classes} {...divProps}>
+    <div className={classes} data-testid="step-indicator" {...divProps}>
       <ol className="usa-step-indicator__segments" {...listProps}>
         {children}
       </ol>
