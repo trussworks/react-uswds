@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.12.1](https://github.com/trussworks/react-uswds/compare/1.12.0...1.12.1) (2021-02-22)
 
+
+### Bug Fixes
+
+* Revert husky to V4 ([#923](https://github.com/trussworks/react-uswds/issues/923)) ([e934ff7](https://github.com/trussworks/react-uswds/commit/e934ff76a58cdbc523eef0a3c496fe2d20c02c73))
+
 ## [1.12.0](https://github.com/trussworks/react-uswds/compare/1.11.0...1.12.0) (2021-02-18)
 
 
