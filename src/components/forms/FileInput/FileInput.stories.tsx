@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 
 import { FileInput } from './FileInput'
 import { FormGroup } from '../FormGroup/FormGroup'
@@ -8,6 +8,10 @@ import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 export default {
   title: 'Components/Form controls/File input',
   component: FileInput,
+  argTypes: {
+    onChange: { action: 'changed' },
+    onDrop: { action: 'dropped' },
+  },
   parameters: {
     docs: {
       description: {
@@ -103,3 +107,38 @@ export const disabled = (): React.ReactElement => (
     <FileInput id="file-input-disabled" name="file-input-disabled" disabled />
   </FormGroup>
 )
+
+export const withCustomHandlers = (argTypes): React.ReactElement => {
+  const [files, setFiles] = useState<FileList>()
+  const fileInputRef = useRef<HTMLInputElement>()
+
+  const handleChange = (e: React.ChangeEvent): void => {
+    argTypes.onChange(e)
+    setFiles(fileInputRef.current.files)
+  }
+
+  const fileList = []
+  for (let i = 0; i < files?.length; i++) {
+    fileList.push(<li key={`file_${i}`}>{files[i].name}</li>)
+  }
+
+  return (
+    <>
+      <FormGroup>
+        <Label htmlFor="file-input-async">
+          Input implements custom handlers
+        </Label>
+        <FileInput
+          id="file-input-async"
+          name="file-input-async"
+          multiple
+          onChange={handleChange}
+          onDrop={argTypes.onDrop}
+          inputRef={fileInputRef}
+        />
+      </FormGroup>
+      <p>{files?.length || 0} files added:</p>
+      <ul>{fileList}</ul>
+    </>
+  )
+}

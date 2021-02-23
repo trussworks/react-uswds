@@ -308,4 +308,32 @@ describe('FileInput component', () => {
       expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
     })
   })
+
+  it('implements an onChange handler when passed as a prop', () => {
+    const mockOnChange = jest.fn()
+    const { getByTestId } = render(
+      <FileInput {...testProps} onChange={mockOnChange} />
+    )
+
+    const inputEl = getByTestId('file-input-input') as HTMLInputElement
+    userEvent.upload(inputEl, TEST_PNG_FILE)
+
+    expect(mockOnChange).toHaveBeenCalled()
+  })
+
+  it('implements an onDrop handler when passed as a prop', () => {
+    const mockOnDrop = jest.fn()
+    const { getByTestId } = render(
+      <FileInput {...testProps} onDrop={mockOnDrop} />
+    )
+
+    const targetEl = getByTestId('file-input-droptarget')
+    fireEvent.drop(targetEl, {
+      dataTransfer: {
+        files: [TEST_PDF_FILE],
+      },
+    })
+
+    expect(mockOnDrop).toHaveBeenCalled()
+  })
 })

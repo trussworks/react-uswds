@@ -10,6 +10,9 @@ interface FileInputProps {
   disabled?: boolean
   multiple?: boolean
   accept?: string
+  onChange?: (e: React.ChangeEvent) => void
+  onDrop?: (e: React.DragEvent) => void
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 export const FileInput = (
@@ -22,6 +25,9 @@ export const FileInput = (
     multiple,
     className,
     accept,
+    onChange,
+    onDrop,
+    inputRef,
     ...inputProps
   } = props
   const [isDragging, setIsDragging] = useState(false)
@@ -105,11 +111,13 @@ export const FileInput = (
   const handleDrop = (e: React.DragEvent): void => {
     preventInvalidFiles(e)
     setIsDragging(false)
+    if (onDrop) onDrop(e)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setShowError(false)
     setFiles(e.target?.files)
+    if (onChange) onChange(e)
   }
 
   return (
@@ -153,6 +161,7 @@ export const FileInput = (
         )}
         <input
           {...inputProps}
+          ref={inputRef}
           type="file"
           data-testid="file-input-input"
           name={name}
