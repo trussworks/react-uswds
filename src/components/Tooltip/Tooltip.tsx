@@ -15,6 +15,7 @@ interface TooltipProps {
 
 const TRIANGLE_SIZE = 5
 const SPACER = 2
+const tooltipID = `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
 
 function isElementInViewport(
   el: HTMLElement,
@@ -51,9 +52,6 @@ export const Tooltip = (
     'is-visible': isVisible,
   })
 
-  // try useEffect
-  // https://erikmartinjordan.com/parent-child-height-width-react-hooks
-
   useEffect(() => {
     if (
       triggerElementRef.current &&
@@ -63,6 +61,9 @@ export const Tooltip = (
       const tooltipTrigger = triggerElementRef.current
       const tooltipBody = tooltipBodyRef.current
       const wrapper = wrapperRef.current
+      tooltipTrigger.setAttribute('aria-describedby', tooltipID)
+      tooltipBody.setAttribute('id', tooltipID)
+
       // Calculate sizing and adjustments for positioning
       const tooltipWidth = tooltipTrigger.offsetWidth
       const tooltipHeight = tooltipTrigger.offsetHeight
@@ -152,6 +153,7 @@ export const Tooltip = (
           offsetForBottomMargin
         }px`
       }
+
       /**
        * We try to set the position based on the
        * original intention, but make adjustments
