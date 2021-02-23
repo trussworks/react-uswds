@@ -10,10 +10,13 @@ import {
   TEST_PNG_FILE,
 } from './constants'
 
+/*
+// THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 export default {
   title: 'Components/Form controls/File input/File preview',
   component: FilePreview,
 }
+*/
 
 const testProps = {
   imageId: 'testImageId_12345',

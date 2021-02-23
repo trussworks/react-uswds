@@ -11,45 +11,6 @@ import {
 } from './constants'
 
 /**
- * TEST CASES
- * - single file - DONE
- * - restrict file types - DONE
- * - accepts images
- * - accepts multiple files - DONE
- * - error
- * - disabled/enabled - DONE
- * - other input props (required, aria-describedby)
- *
- * renders:
- * - wrapper - DONE
- * - input - DONE
- * - droptarget - DONE
- * - box - DONE
- * - instructions - DONE
- *
- * features:
- * - makeSafeForID util fn - DONE
- * - modify drop instructions for IE11/Edge - DONE
- * - removeOldPreviews:
- *  - reset previews/heading/error message
- * - prevent invalid files:
- *  - reset invalid class
- *  - if accepted files, check if all files are allowed
- *  - if any files are not allowed:
- *      - remove old previews
- *      - reset value and display error UI, stop event
- * - onChange handler:
- *  - remove old previews - reset error
- *  - FileReader, onloadstart/onloadend events to show previews - DONE
- *  - display heading - DONE
- *
- * event handlers:
- * - drag class added on drag over - DONE
- * - drag class removed on drag leave - DONE
- * - drop handler prevents invalid files
- * - drop handler removes drag class - DONE
- * - on change event handler - DONE
- *
  * other examples:
  * - custom handlers
  * - async upload? onDrop/onChange prop
@@ -276,6 +237,61 @@ describe('FileInput component', () => {
       fireEvent.drop(targetEl, {
         dataTransfer: {
           files: [TEST_PNG_FILE],
+        },
+      })
+
+      expect(getByTestId('file-input-error')).toHaveTextContent(
+        'This is not a valid file type'
+      )
+      expect(getByTestId('file-input-error')).toHaveClass(
+        'usa-file-input__accepted-files-message'
+      )
+      expect(getByTestId('file-input-droptarget')).toHaveClass(
+        'has-invalid-file'
+      )
+
+      expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('when it only accepts image files', () => {
+    // TODO - try to make this testing better when adding custom drop/change handlers
+    it('accepts an image file', () => {
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept="image/*" />
+      )
+
+      const inputEl = getByTestId('file-input-input') as HTMLInputElement
+      expect(inputEl).toHaveAttribute('accept', 'image/*')
+
+      const targetEl = getByTestId('file-input-droptarget')
+      fireEvent.drop(targetEl, {
+        dataTransfer: {
+          files: [TEST_PNG_FILE],
+        },
+      })
+      // For some reason the simulated drop event does not trigger an onChange event
+      userEvent.upload(inputEl, TEST_PNG_FILE)
+
+      expect(queryByTestId('file-input-error')).not.toBeInTheDocument()
+      expect(getByTestId('file-input-droptarget')).not.toHaveClass(
+        'has-invalid-file'
+      )
+      expect(getByTestId('file-input-preview')).toBeInTheDocument()
+    })
+
+    it('shows an error and clears the input if any files are not images', () => {
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept="image/*" />
+      )
+
+      const inputEl = getByTestId('file-input-input') as HTMLInputElement
+      expect(inputEl).toHaveAttribute('accept', 'image/*')
+
+      const targetEl = getByTestId('file-input-droptarget')
+      fireEvent.drop(targetEl, {
+        dataTransfer: {
+          files: [TEST_PDF_FILE],
         },
       })
 

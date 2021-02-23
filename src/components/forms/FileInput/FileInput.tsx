@@ -50,10 +50,14 @@ export const FileInput = (
   const filePreviews = []
   if (files) {
     for (let i = 0; i < files?.length; i++) {
-      const imageId = makeSafeForID(files[i].name)
+      const imageId = makeSafeForID(files[parseInt(`${i}`)].name)
       const key = `filePreview_${imageId}`
       filePreviews.push(
-        <FilePreview key={key} imageId={imageId} file={files[i]} />
+        <FilePreview
+          key={key}
+          imageId={imageId}
+          file={files[parseInt(`${i}`)]}
+        />
       )
     }
   }
@@ -74,10 +78,10 @@ export const FileInput = (
       const acceptedTypes = accept.split(',')
       let allFilesAllowed = true
       for (let i = 0; i < e.dataTransfer.files.length; i += 1) {
-        const file = e.dataTransfer.files[i]
+        const file = e.dataTransfer.files[parseInt(`${i}`)]
         if (allFilesAllowed) {
           for (let j = 0; j < acceptedTypes.length; j += 1) {
-            const fileType = acceptedTypes[j]
+            const fileType = acceptedTypes[parseInt(`${j}`)]
             allFilesAllowed =
               file.name.indexOf(fileType) > 0 ||
               file.type.includes(fileType.replace(/\*/g, ''))
