@@ -200,6 +200,7 @@ export const Tooltip = (
 
   return (
     <span
+      data-testid="tooltip"
       ref={wrapperRef}
       className="usa-tooltip"
       {...spanProps}
@@ -210,7 +211,11 @@ export const Tooltip = (
         setVisible(false)
       }}>
       {tooltipTrigger}
-      <span ref={tooltipBodyRef} className={tooltipClasses} role="tooltip">
+      <span
+        data-testid="tooltipBody"
+        ref={tooltipBodyRef}
+        className={tooltipClasses}
+        role="tooltip">
         {label}
       </span>
     </span> // the span that wraps the element with have the tooltip class
