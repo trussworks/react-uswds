@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/trussworks/react-uswds/compare/1.12.1...1.12.2) (2021-02-22)
+
+
+### Bug Fixes
+
+* add ActionType.CLEAR_FOCUS to indicate a user has left the field ([#902](https://github.com/trussworks/react-uswds/issues/902)) ([58159d7](https://github.com/trussworks/react-uswds/commit/58159d7430016bb88ab2fba33ab1984e0aebed66))
+
+### [1.12.1](https://github.com/trussworks/react-uswds/compare/1.12.0...1.12.1) (2021-02-22)
+
+
+### Bug Fixes
+
+* Revert husky to V4 ([#923](https://github.com/trussworks/react-uswds/issues/923)) ([e934ff7](https://github.com/trussworks/react-uswds/commit/e934ff76a58cdbc523eef0a3c496fe2d20c02c73))
+
+## [1.12.0](https://github.com/trussworks/react-uswds/compare/1.11.0...1.12.0) (2021-02-18)
+
+
+### Features
+
+* DatePicker component ([#803](https://github.com/trussworks/react-uswds/issues/803)) ([ea996c8](https://github.com/trussworks/react-uswds/commit/ea996c81287623110963bcaad3067cfb73d95144))
+
+
+### Bug Fixes
+
+* prevent dependabot version updates (+ husky 5 fixes) ([#867](https://github.com/trussworks/react-uswds/issues/867)) ([4529d89](https://github.com/trussworks/react-uswds/commit/4529d899a6142dea97795f5a53016943ee16e15d))
+
 ## [1.11.0](https://github.com/trussworks/react-uswds/compare/1.10.0...1.11.0) (2021-02-08)
 
 

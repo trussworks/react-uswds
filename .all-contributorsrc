@@ -1,0 +1,133 @@
+{
+  "projectName": "react-uswds",
+  "projectOwner": "trussworks",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "suzubara",
+      "name": "Suzanne Rozier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2723066?v=4",
+      "profile": "https://github.com/suzubara",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "haworku",
+      "name": "haworku",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10750442?v=4",
+      "profile": "https://github.com/haworku",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ahobson",
+      "name": "Andrew Hobson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21983?v=4",
+      "profile": "https://github.com/ahobson",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "gidjin",
+      "name": "John Gedeon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/940173?v=4",
+      "profile": "https://github.com/gidjin",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "eamahanna",
+      "name": "Emily Mahanna",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56279459?v=4",
+      "profile": "https://github.com/eamahanna",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "brandonlenz",
+      "name": "Brandon Lenz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15805554?v=4",
+      "profile": "https://github.com/brandonlenz",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sojeri",
+      "name": "Jeri Sommers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10818509?v=4",
+      "profile": "https://github.com/sojeri",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "tinyels",
+      "name": "Erin Stanfill",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3142631?v=4",
+      "profile": "https://github.com/tinyels",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "esacteksab",
+      "name": "Barry Morrison",
+      "avatar_url": "https://avatars.githubusercontent.com/u/689591?v=4",
+      "profile": "http://www.barrymorrison.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "duncan-truss",
+      "name": "Duncan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52669884?v=4",
+      "profile": "https://github.com/duncan-truss",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "SirenaBorracha",
+      "name": "Arianna Kellogg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16230705?v=4",
+      "profile": "https://github.com/SirenaBorracha",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "christopherhuii",
+      "name": "Christopher Hui",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8367504?v=4",
+      "profile": "https://github.com/christopherhuii",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jim",
+      "name": "Jim Benton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3331?v=4",
+      "profile": "http://pandasguide.com/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
