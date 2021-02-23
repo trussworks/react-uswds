@@ -91,7 +91,7 @@ export const Tooltip = (
         10
       )
       const leftOffset = tooltipTrigger.offsetLeft
-      const tooltipBodyWidth = tooltipBodyRef.current.offsetWidth
+      const tooltipBodyWidth = tooltipBody.offsetWidth
       const adjustHorizontalCenter = tooltipWidth / 2 + leftOffset
       const adjustToEdgeX = tooltipWidth + TRIANGLE_SIZE + SPACER
       const adjustToEdgeY = tooltipHeight + TRIANGLE_SIZE + SPACER
