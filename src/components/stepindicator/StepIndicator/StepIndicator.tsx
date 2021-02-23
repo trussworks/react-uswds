@@ -56,7 +56,9 @@ export const StepIndicator = (
             <span className="usa-step-indicator__current-step">
               {currentStepNumber}
             </span>
+            &nbsp;
             <span className="usa-step-indicator__total-steps">{`of ${totalNumberOfSteps}`}</span>
+            &nbsp;
           </span>
           <span className="usa-step-indicator__heading-text">
             {currentStepLabel}
