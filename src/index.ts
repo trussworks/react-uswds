@@ -10,6 +10,7 @@ export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { Link } from './components/Link/Link'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
+export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
 
 /** Grid components */
