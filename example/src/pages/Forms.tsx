@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -12,6 +12,7 @@ import {
   ValidationChecklist,
   ValidationItem,
   DatePicker,
+  FileInput,
 } from '@trussworks/react-uswds'
 
 type FormValues = {
@@ -44,6 +45,8 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 const FormsPage = (): React.ReactElement => {
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
   return (
     <>
       <h1>Forms Examples</h1>
@@ -55,12 +58,14 @@ const FormsPage = (): React.ReactElement => {
             password: '',
             fruit: 'avocado',
             appointmentDate: '1/20/2021',
+            file: '',
+            attachments: [],
           }}
           validationSchema={FormSchema}
           onSubmit={(values, { setSubmitting }) => {
+            console.log('Submit form data:', values)
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2))
-
+              console.log('Submit complete!')
               setSubmitting(false)
             }, 400)
           }}>
@@ -148,6 +153,44 @@ const FormsPage = (): React.ReactElement => {
                   onChange={(val: string) =>
                     setFieldValue('appointmentDate', val, true)
                   }
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="file">File input (single)</Label>
+                <FileInput
+                  id="file"
+                  name="file"
+                  onChange={(e: React.ChangeEvent): void => {
+                    const event = e as React.ChangeEvent<HTMLInputElement>
+
+                    if (event.target.files?.length) {
+                      setFieldValue('file', event.target.files[0])
+                    }
+                  }}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="attachments">File input (multiple)</Label>
+                <FileInput
+                  id="attachments"
+                  name="attachments"
+                  multiple
+                  onChange={(e: React.ChangeEvent): void => {
+                    const event = e as React.ChangeEvent<HTMLInputElement>
+                    const files = []
+                    if (event.target.files?.length) {
+                      for (let i = 0; i < event.target.files?.length; i++) {
+                        files.push(event.target.files[i])
+                      }
+                    }
+                    setFieldValue('attachments', files)
+                  }}
+                  onDrop={(e: React.DragEvent): void => {
+                    console.log('handle drop', e)
+                  }}
+                  inputRef={fileInputRef}
                 />
               </FormGroup>
 

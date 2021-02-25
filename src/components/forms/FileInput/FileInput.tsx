@@ -10,7 +10,7 @@ interface FileInputProps {
   disabled?: boolean
   multiple?: boolean
   accept?: string
-  onChange?: (e: React.ChangeEvent) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onDrop?: (e: React.DragEvent) => void
   inputRef?: React.RefObject<HTMLInputElement>
 }
