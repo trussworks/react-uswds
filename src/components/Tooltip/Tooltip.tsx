@@ -5,12 +5,33 @@ import React, {
   useState,
 } from 'react'
 import classnames from 'classnames'
-interface TooltipProps {
+
+type TooltipProps<T> = {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right'
   className?: string
   children: React.ReactNode
+} & T
+
+interface WithDefaultButtonProps {
+  type: string
 }
+interface WithCustomTooltipProps<T> {
+  asCustom: React.FunctionComponent<T>
+}
+
+export type DefaultTooltipProps = TooltipProps<JSX.IntrinsicElements['button']> &
+WithDefaultButtonProps
+
+export type CustomTooltipProps<T> = TooltipProps<T> & WithCustomTooltipProps<T>
+
+export function isCustomProps<T>(
+  props: DefaultTooltipProps | CustomTooltipProps<T>
+): props is CustomTooltipProps<T> {
+  return 'asCustom' in props
+}
+
+
 const tooltipID = `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
 const TRIANGLE_SIZE = 5
 const SPACER = 2
@@ -28,9 +49,40 @@ function isElementInViewport(
     rect.right <= (win.innerWidth || docEl.clientWidth)
   )
 }
+export function Tooltip(props: DefaultTooltipProps): React.ReactElement
+export function Tooltip<T>(props: CustomTooltipProps<T>): React.ReactElement
+export function Tooltip<FCProps = DefaultTooltipProps>(
+  props: DefaultTooltipProps | CustomTooltipProps<FCProps>
+): React.ReactElement {
+  if (isCustomProps(props)) {
+    const {label, position, className, asCustom, children, ...remainingProps } = props
+    // 1. We know props is AsCustomProps<FCProps>
+    // 2. We know AsCustomProps<FCProps> is
+    //    FCProps & { variant: ..., className: ..., children: ..., asCustom: ... }
+    // 3. Therefore we know that removing those props leaves us
+    //    with FCProps
+    //
+    const linkProps: FCProps = (remainingProps as unknown) as FCProps
+    return React.createElement(
+      asCustom,
+      {
+        ...linkProps,
+      },
+      children
+    )
+  } else {
+    const { children, className, label, position, ...linkProps } = props
+
+    return (
+      <a className={className} {...linkProps}>
+        {children}
+      </a>
+    )
+  }
+}
 
 export const Tooltip = (
-  props: TooltipProps & JSX.IntrinsicElements['span']
+  props: DefaultTooltipProps
 ): React.ReactElement => {
   const { label, position, children, ...spanProps } = props
   const wrapperRef = useRef<HTMLElement>(null)
