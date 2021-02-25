@@ -1,5 +1,4 @@
 import React, {
-  Children,
   ReactElement,
   useEffect,
   useRef,
@@ -10,12 +9,11 @@ interface TooltipProps {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right'
   className?: string
-  children: ReactElement
+  children: React.ReactNode
 }
-
+const tooltipID = `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
 const TRIANGLE_SIZE = 5
 const SPACER = 2
-const tooltipID = `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
 
 function isElementInViewport(
   el: HTMLElement,
@@ -36,11 +34,9 @@ export const Tooltip = (
 ): React.ReactElement => {
   const { label, position, children, ...spanProps } = props
   const wrapperRef = useRef<HTMLElement>(null)
-  const triggerElementRef = useRef<HTMLElement>(null)
+  const triggerElementRef = useRef<HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
-  const tooltipTrigger = React.cloneElement(Children.only(children), {
-    ref: triggerElementRef,
-  })
+
   const [isVisible, setVisible] = useState(false)
 
   const tooltipClasses = classnames('usa-tooltip__body', {
@@ -52,7 +48,16 @@ export const Tooltip = (
     'is-visible': isVisible,
   })
 
+  const activateTooltip = (): void => {
+    setVisible(true)
+  }
+  const deactivateTooltip = (): void  => {
+    setVisible(false)
+  }
+
   useEffect(() => {
+    let tooltipPosition = position
+
     if (
       triggerElementRef.current &&
       tooltipBodyRef.current &&
@@ -61,8 +66,6 @@ export const Tooltip = (
       const tooltipTrigger = triggerElementRef.current
       const tooltipBody = tooltipBodyRef.current
       const wrapper = wrapperRef.current
-      tooltipTrigger.setAttribute('aria-describedby', tooltipID)
-      tooltipBody.setAttribute('id', tooltipID)
 
       // Calculate sizing and adjustments for positioning
       const tooltipWidth = tooltipTrigger.offsetWidth
@@ -95,6 +98,21 @@ export const Tooltip = (
       const adjustHorizontalCenter = tooltipWidth / 2 + leftOffset
       const adjustToEdgeX = tooltipWidth + TRIANGLE_SIZE + SPACER
       const adjustToEdgeY = tooltipHeight + TRIANGLE_SIZE + SPACER
+      /**
+       * Position the tooltip body when the trigger is hovered
+       * Removes old positioning classnames and reapplies. This allows
+       * positioning to change in case the user resizes browser or DOM manipulation
+       * causes tooltip to get clipped from viewport
+       *
+       * @param {string} setPos - can be "top", "bottom", "right", "left"
+       */
+      const setPositionClass = (
+        setPos: 'top' | 'bottom' | 'left' | 'right'
+      ) => {
+        tooltipBody.classList.remove(`usa-tooltip__body--${tooltipPosition}`)
+        tooltipPosition = setPos
+        tooltipBody.classList.add(`usa-tooltip__body--${setPos}`)
+      }
 
       /**
        * Positions tooltip at the top
@@ -103,11 +121,12 @@ export const Tooltip = (
        * @param {HTMLElement} e - this is the tooltip body
        */
       const positionTop = (e: HTMLElement): void => {
+        setPositionClass('top')
         e.style.marginLeft = `${adjustHorizontalCenter}px`
         if (!isElementInViewport(e)) {
           e.classList.add('usa-tooltip__body--wrap')
         }
-        e.style.marginBottom = `${adjustToEdgeY + offsetForBottomMargin}px`
+        e.style.marginBottom = `${adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding}px`
       }
       /**
        * Positions tooltip at the bottom
@@ -115,21 +134,23 @@ export const Tooltip = (
        * need to constrain the width
        */
       const positionBottom = (e: HTMLElement): void => {
+        setPositionClass('bottom')
         e.style.marginLeft = `${adjustHorizontalCenter}px`
         if (!isElementInViewport(e)) {
           e.classList.add('usa-tooltip__body--wrap')
         }
-        e.style.marginTop = `${adjustToEdgeY + offsetForTopMargin}px`
+        e.style.marginTop = `${adjustToEdgeY + offsetForTopMargin + offsetForTopPadding}px`
       }
       /**
        * Positions tooltip at the right
        */
       const positionRight = (e: HTMLElement): void => {
+        setPositionClass('right')
         e.style.marginBottom = '0'
         e.style.marginLeft = `${adjustToEdgeX + leftOffset}px`
         e.style.bottom = `${
           (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-          offsetForBottomMargin
+          offsetForBottomMargin + offsetForBottomPadding
         }px`
       }
 
@@ -138,6 +159,7 @@ export const Tooltip = (
        * @param {HTMLElement} e - this is the tooltip body
        */
       const positionLeft = (e: HTMLElement): void => {
+        setPositionClass('left')
         e.style.marginBottom = '0'
         if (leftOffset > tooltipBodyWidth) {
           e.style.marginLeft = `${
@@ -150,7 +172,7 @@ export const Tooltip = (
         }
         e.style.bottom = `${
           (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-          offsetForBottomMargin
+          offsetForBottomMargin + offsetForBottomPadding
         }px`
       }
 
@@ -204,15 +226,23 @@ export const Tooltip = (
       ref={wrapperRef}
       className="usa-tooltip"
       {...spanProps}
-      onMouseEnter={() => {
-        setVisible(true)
-      }}
-      onMouseLeave={() => {
-        setVisible(false)
-      }}>
-      {tooltipTrigger}
+      onMouseEnter={activateTooltip}
+      onMouseOver={activateTooltip}
+      onFocus={activateTooltip}
+      onMouseLeave={deactivateTooltip}
+      onBlur={deactivateTooltip}
+      onKeyDown={deactivateTooltip}>
+      <button
+        ref={triggerElementRef}
+        aria-describedby={tooltipID}
+        type="button"
+        className="usa-button usa-tooltip__trigger"
+        title={label}>
+        {children}
+      </button>
       <span
         data-testid="tooltipBody"
+        id={tooltipID}
         ref={tooltipBodyRef}
         className={tooltipClasses}
         role="tooltip">

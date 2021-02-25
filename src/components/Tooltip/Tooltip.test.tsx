@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Tooltip } from './Tooltip'
 
@@ -12,6 +13,25 @@ describe('Tooltip component', () => {
     )
     expect(queryByTestId('tooltip')).toBeInTheDocument()
     expect(queryByTestId('tooltipBody')).toBeInTheDocument()
+  })
+
+  it('hides tooltip by default', () => {
+    const { getByTestId } = render(
+      <Tooltip label="Click me">
+        <button>My Tooltip</button>
+      </Tooltip>
+    )
+    expect(getByTestId('tooltipBody')).not.toHaveClass('is-visible')
+  })
+
+  it('shows tooltip with mouse event', () => {
+    const { getByTestId } = render(
+      <Tooltip label="Click me">
+        <button>My Tooltip</button>
+      </Tooltip>
+    )
+    userEvent.hover(getByTestId('tooltip'))
+    expect(getByTestId('tooltipBody')).toHaveClass('is-visible')
   })
 
   describe('with a position prop', () => {

@@ -10,64 +10,43 @@ export default {
 
     Source: https://designsystem.digital.gov/components/tooltip/
     `,
-    viewport: {
-      defaultViewport: 'xs',
-    },
   },
 }
 
+// export const CustomComponentTooltip = (): React.ReactElement => {
+//   type MockTooltipProps = React.PropsWithChildren<{
+//     title: string
+//     className: string
+//   }> & JSX.IntrinsicElements['span']
+
+//   const CustomTooltip: React.FunctionComponent<MockTooltipProps> = ({}
+//   : MockTooltipProps): React.ReactElement => {
+
+//   }
+// }
+
 export const tooltipDefault = (): React.ReactElement => (
-  <Tooltip label="Default">
-    <button
-      style={{ margin: '40px' }}
-      type="button"
-      className="usa-button usa-tooltip__trigger"
-      title="Bottom">
-      Show default
-    </button>
-  </Tooltip>
+  <div className="margin-4">
+    <Tooltip label="Default">Default</Tooltip>
+  </div>
 )
 export const tooltipTop = (): React.ReactElement => (
-  <Tooltip position="top" label="Top">
-    <button
-      style={{ margin: '40px' }}
-      type="button"
-      className="usa-button usa-tooltip__trigger"
-      title="Top">
-      Show on top
-    </button>
-  </Tooltip>
+  <div className="margin-4">
+    <Tooltip position="top" label="Top">Show on top</Tooltip>
+  </div>
 )
 export const tooltipBottom = (): React.ReactElement => (
-  <Tooltip position="bottom" label="Bottom">
-    <button
-      style={{ margin: '40px' }}
-      type="button"
-      className="usa-button usa-tooltip__trigger"
-      title="Bottom">
-      Show on bottom
-    </button>
-  </Tooltip>
+  <div className="margin-4">
+   <Tooltip position="bottom" label="Bottom">Show on bottom</Tooltip>
+  </div>
 )
 export const tooltipRight = (): React.ReactElement => (
-  <Tooltip position="right" label="Right">
-    <button
-      style={{ margin: '40px' }}
-      type="button"
-      className="usa-button usa-tooltip__trigger"
-      title="Right">
-      Show on right
-    </button>
-  </Tooltip>
+  <div className="margin-4">
+    <Tooltip position="right" label="Right">Show on right</Tooltip>
+  </div>
 )
 export const tooltipLeft = (): React.ReactElement => (
-  <Tooltip position="left" label="Left">
-    <button
-      style={{ margin: '40px' }}
-      type="button"
-      className="usa-button usa-tooltip__trigger"
-      title="Left">
-      Show on left
-    </button>
-  </Tooltip>
+  <div className="margin-4">
+    <Tooltip position="left" label="Left">Show on left</Tooltip>
+  </div>
 )
