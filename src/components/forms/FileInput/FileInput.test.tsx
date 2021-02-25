@@ -10,12 +10,6 @@ import {
   TEST_PDF_FILE,
 } from './constants'
 
-/**
- * other examples:
- * - custom handlers
- * - async upload? onDrop/onChange prop
- */
-
 describe('FileInput component', () => {
   const testProps = {
     id: 'testFile',
