@@ -76,7 +76,8 @@ export const CustomComponent = (): React.ReactElement => {
     return (
       <p>
         <Tooltip<MockLinkProps>
-          className="abc"
+          label="Custom Link"
+          className="usa-tooltip__trigger"
           asCustom={CustomLink}
           to="http://www.truss.works">
           This
