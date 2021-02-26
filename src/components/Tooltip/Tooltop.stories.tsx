@@ -1,4 +1,4 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import { Tooltip } from './Tooltip'
 
 export default {
@@ -61,7 +61,6 @@ export const CustomComponent = (): React.ReactElement => {
     className?: string
   }> &
     JSX.IntrinsicElements['a'] & React.RefAttributes<HTMLAnchorElement>
-
     const CustomLink: React.ForwardRefExoticComponent<MockTooltipProps> = React.forwardRef((
       {
         to,
@@ -72,13 +71,11 @@ export const CustomComponent = (): React.ReactElement => {
       <a ref={ref} href={to} className={className} {...tooltipProps}>
         {children}
       </a>
-    )
-    )
+    ))
     return (
       <div className="margin-4">
         <p>
           <Tooltip<MockTooltipProps>
-            position="right"
             label="Custom Link"
             asCustom={CustomLink}
             to="http://www.truss.works">
