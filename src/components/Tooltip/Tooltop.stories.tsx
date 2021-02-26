@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Ref } from 'react'
 import { Tooltip } from './Tooltip'
 
 export default {
@@ -56,33 +56,36 @@ export const tooltipLeft = (): React.ReactElement => (
 )
 
 export const CustomComponent = (): React.ReactElement => {
-  type MockLinkProps = React.PropsWithChildren<{
+  type MockTooltipProps = React.PropsWithChildren<{
     to: string
-    className: string
+    className?: string
   }> &
-    JSX.IntrinsicElements['a']
+    JSX.IntrinsicElements['a'] & React.RefAttributes<HTMLAnchorElement>
 
-    const CustomLink: React.FunctionComponent<MockLinkProps> = ({
-      to,
-      className,
-      children,
-      ...linkProps
-    }: MockLinkProps): React.ReactElement => (
-      <a href={to} className={className} {...linkProps}>
+    const CustomLink: React.ForwardRefExoticComponent<MockTooltipProps> = React.forwardRef((
+      {
+        to,
+        className,
+        children,
+        ...tooltipProps
+      }: MockTooltipProps, ref) => (
+      <a ref={ref} href={to} className={className} {...tooltipProps}>
         {children}
       </a>
     )
-  
+    )
     return (
-      <p>
-        <Tooltip<MockLinkProps>
-          label="Custom Link"
-          className="usa-tooltip__trigger"
-          asCustom={CustomLink}
-          to="http://www.truss.works">
-          This
-        </Tooltip>
-        &nbsp;is a custom component link.
-      </p>
+      <div className="margin-4">
+        <p>
+          <Tooltip<MockTooltipProps>
+            position="right"
+            label="Custom Link"
+            asCustom={CustomLink}
+            to="http://www.truss.works">
+            This
+          </Tooltip>
+          &nbsp;is a custom component link.
+        </p>
+      </div>
     )
 }

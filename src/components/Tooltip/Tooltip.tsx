@@ -14,7 +14,7 @@ type TooltipProps<T> = {
 } & T
 
 interface WithCustomTooltipProps<T> {
-  asCustom: React.FunctionComponent<T>
+  asCustom: React.ForwardRefExoticComponent<T>
 }
 
 export type DefaultTooltipProps = TooltipProps<JSX.IntrinsicElements['button']>
@@ -248,10 +248,15 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     const triggerElement = React.createElement(
       asCustom,
       {
+        ref: triggerElementRef,
         ...customProps,
       },
       children
       )
+
+      // .forwardRef on the 'triggerElement'?  
+
+      console.log(triggerElement)
     
       return (
         <span
