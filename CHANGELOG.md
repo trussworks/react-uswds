@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/trussworks/react-uswds/compare/1.12.2...1.13.0) (2021-02-26)
+
+
+### Features
+
+* File Input component ([#900](https://github.com/trussworks/react-uswds/issues/900)) ([e1ccbcd](https://github.com/trussworks/react-uswds/commit/e1ccbcd0b0c0cc3ec80cd8f0fa38afd09b29ecfa))
+
+
+### Documentation & Examples
+
+* Add All-Contributors section to README ([#954](https://github.com/trussworks/react-uswds/issues/954)) ([fe23df1](https://github.com/trussworks/react-uswds/commit/fe23df1acb2de244ac45ee5f1f797a1229203822))
+
 ### [1.12.2](https://github.com/trussworks/react-uswds/compare/1.12.1...1.12.2) (2021-02-22)
 
 
