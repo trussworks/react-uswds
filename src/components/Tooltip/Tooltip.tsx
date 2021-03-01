@@ -157,7 +157,6 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 
         /**
          * Positions tooltip at the left
-         * @param {HTMLElement} e - this is the tooltip body
          */
         const positionLeft = (e: HTMLElement): void => {
           setPositionClass('left')
@@ -337,3 +336,5 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 Tooltip.defaultProps = {
   position: 'top',
 }
+
+Tooltip.DisplayName = 'Tooltip'
