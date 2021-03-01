@@ -24,20 +24,21 @@ import {
 } from './utils'
 import { Calendar } from './Calendar'
 
-interface DatePickerProps {
+export interface DatePickerProps {
   id: string
   name: string
   className?: string
   disabled?: boolean
   required?: boolean
   defaultValue?: string
-  minDate: string
+  minDate?: string
   maxDate?: string
   rangeDate?: string
   onChange?: (val?: string) => void
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
   ) => void
+  inputProps?: JSX.IntrinsicElements['input']
 }
 
 export enum FocusMode {
@@ -46,7 +47,7 @@ export enum FocusMode {
 }
 
 export const DatePicker = (
-  props: DatePickerProps & JSX.IntrinsicElements['input']
+  props: DatePickerProps
 ): React.ReactElement => {
   const {
     id,
@@ -59,7 +60,7 @@ export const DatePicker = (
     rangeDate,
     onChange,
     onBlur,
-    ...inputProps
+    inputProps
   } = props
 
   const datePickerEl = useRef<HTMLDivElement>(null)
