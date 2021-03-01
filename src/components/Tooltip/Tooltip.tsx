@@ -1,9 +1,4 @@
-import React, {
-  ReactElement,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 
 type TooltipProps<T> = {
@@ -49,20 +44,22 @@ export function Tooltip<T>(props: CustomTooltipProps<T>): React.ReactElement
 export function Tooltip<FCProps = DefaultTooltipProps>(
   props: DefaultTooltipProps | CustomTooltipProps<FCProps>
 ): React.ReactElement {
-
   const wrapperRef = useRef<HTMLElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const [isVisible, setVisible] = useState(false)
 
-  const useTooltip = (triggerElementRef: React.RefObject<HTMLElement>, position:  'top' | 'bottom' | 'left' | 'right' | undefined): void => {
+  const useTooltip = (
+    triggerElementRef: React.RefObject<HTMLElement>,
+    position: 'top' | 'bottom' | 'left' | 'right' | undefined
+  ): void => {
     useEffect(() => {
       let tooltipPosition = position
-      
+
       if (
         triggerElementRef.current &&
         tooltipBodyRef.current &&
         wrapperRef.current
-        ) {
+      ) {
         const tooltipTrigger = triggerElementRef.current
         const tooltipBody = tooltipBodyRef.current
         const wrapper = wrapperRef.current
@@ -71,7 +68,9 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         const tooltipWidth = tooltipTrigger.offsetWidth
         const tooltipHeight = tooltipTrigger.offsetHeight
         const offsetForTopMargin = Number.parseInt(
-          window.getComputedStyle(tooltipTrigger).getPropertyValue('margin-top'),
+          window
+            .getComputedStyle(tooltipTrigger)
+            .getPropertyValue('margin-top'),
           10
         )
         const offsetForBottomMargin = Number.parseInt(
@@ -126,7 +125,9 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           if (!isElementInViewport(e)) {
             e.classList.add('usa-tooltip__body--wrap')
           }
-          e.style.marginBottom = `${adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding}px`
+          e.style.marginBottom = `${
+            adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding
+          }px`
         }
         /**
          * Positions tooltip at the bottom
@@ -139,7 +140,9 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           if (!isElementInViewport(e)) {
             e.classList.add('usa-tooltip__body--wrap')
           }
-          e.style.marginTop = `${adjustToEdgeY + offsetForTopMargin + offsetForTopPadding}px`
+          e.style.marginTop = `${
+            adjustToEdgeY + offsetForTopMargin + offsetForTopPadding
+          }px`
         }
         /**
          * Positions tooltip at the right
@@ -150,7 +153,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           e.style.marginLeft = `${adjustToEdgeX + leftOffset}px`
           e.style.bottom = `${
             (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-            offsetForBottomMargin + offsetForBottomPadding
+            offsetForBottomMargin +
+            offsetForBottomPadding
           }px`
         }
 
@@ -172,7 +176,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           }
           e.style.bottom = `${
             (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-            offsetForBottomMargin + offsetForBottomPadding
+            offsetForBottomMargin +
+            offsetForBottomPadding
           }px`
         }
 
@@ -237,7 +242,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     const activateTooltip = (): void => {
       setVisible(true)
     }
-    const deactivateTooltip = (): void  => {
+    const deactivateTooltip = (): void => {
       setVisible(false)
     }
 
@@ -247,35 +252,35 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       asCustom,
       {
         ref: triggerElementRef,
+        onMouseEnter: () => activateTooltip(),
+        onMouseOver: () => activateTooltip(),
+        onFocus: () => activateTooltip(),
+        onMouseLeave: () => deactivateTooltip(),
+        onBlur: () => deactivateTooltip(),
+        onKeyDown: () => deactivateTooltip(),
         ...customProps,
       },
       children
-      )
-    
-      return (
-        <span
-          data-testid="tooltipWrapper"
-          ref={wrapperRef}
-          className="usa-tooltip"
-          {...customProps}
-          onMouseEnter={activateTooltip}
-          onMouseOver={activateTooltip}
-          onFocus={activateTooltip}
-          onMouseLeave={deactivateTooltip}
-          onBlur={deactivateTooltip}
-          onKeyDown={deactivateTooltip}>
+    )
+
+    return (
+      <span
+        data-testid="tooltipWrapper"
+        ref={wrapperRef}
+        className="usa-tooltip"
+        {...customProps}
+        role="tooltip">
         {triggerElement}
         <span
           data-testid="tooltipBody"
           title={label}
           id={tooltipID}
           ref={tooltipBodyRef}
-          className={tooltipClasses}
-          role="tooltip">
+          className={tooltipClasses}>
           {label}
         </span>
       </span>
-      )
+    )
   } else {
     const triggerElementRef = useRef<HTMLButtonElement>(null)
     const { label, position, children, ...spanProps } = props
@@ -287,11 +292,11 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       'usa-tooltip__body--left': position === 'left',
       'is-visible': isVisible,
     })
-  
+
     const activateTooltip = (): void => {
       setVisible(true)
     }
-    const deactivateTooltip = (): void  => {
+    const deactivateTooltip = (): void => {
       setVisible(false)
     }
 
@@ -303,18 +308,19 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         ref={wrapperRef}
         className="usa-tooltip"
         {...spanProps}
-        onMouseEnter={activateTooltip}
-        onMouseOver={activateTooltip}
-        onFocus={activateTooltip}
-        onMouseLeave={deactivateTooltip}
-        onBlur={deactivateTooltip}
-        onKeyDown={deactivateTooltip}>
+        role="tooltip">
         <button
           ref={triggerElementRef}
           aria-describedby={tooltipID}
           type="button"
           className="usa-button usa-tooltip__trigger"
-          title={label}>
+          title={label}
+          onMouseEnter={activateTooltip}
+          onMouseOver={activateTooltip}
+          onFocus={activateTooltip}
+          onMouseLeave={deactivateTooltip}
+          onBlur={deactivateTooltip}
+          onKeyDown={deactivateTooltip}>
           {children}
         </button>
         <span
@@ -322,8 +328,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           title={label}
           id={tooltipID}
           ref={tooltipBodyRef}
-          className={tooltipClasses}
-          role="tooltip">
+          className={tooltipClasses}>
           {label}
         </span>
       </span> // the span that wraps the element with have the tooltip class
