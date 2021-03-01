@@ -1,15 +1,17 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react'
+import React, { createElement, ForwardRefExoticComponent, ReactElement, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
+import { isElementInViewport } from './utils'
+
 
 type TooltipProps<T> = {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   className?: string
-  children: React.ReactNode
+  children: ReactNode
 } & T
 
 interface WithCustomTooltipProps<T> {
-  asCustom: React.ForwardRefExoticComponent<T>
+  asCustom: ForwardRefExoticComponent<T>
 }
 
 export type DefaultTooltipProps = TooltipProps<JSX.IntrinsicElements['button']>
@@ -26,30 +28,17 @@ const tooltipID = `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
 const TRIANGLE_SIZE = 5
 const SPACER = 2
 
-function isElementInViewport(
-  el: HTMLElement,
-  win = window,
-  docEl = document.documentElement
-): boolean {
-  const rect = el.getBoundingClientRect()
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (win.innerHeight || docEl.clientHeight) &&
-    rect.right <= (win.innerWidth || docEl.clientWidth)
-  )
-}
-export function Tooltip(props: DefaultTooltipProps): React.ReactElement
-export function Tooltip<T>(props: CustomTooltipProps<T>): React.ReactElement
+export function Tooltip(props: DefaultTooltipProps): ReactElement
+export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
 export function Tooltip<FCProps = DefaultTooltipProps>(
   props: DefaultTooltipProps | CustomTooltipProps<FCProps>
-): React.ReactElement {
+): ReactElement {
   const wrapperRef = useRef<HTMLElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const [isVisible, setVisible] = useState(false)
 
   const useTooltip = (
-    triggerElementRef: React.RefObject<HTMLElement>,
+    triggerElementRef: RefObject<HTMLElement>,
     position: 'top' | 'bottom' | 'left' | 'right' | undefined
   ): void => {
     useEffect(() => {
@@ -248,7 +237,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 
     useTooltip(triggerElementRef, position)
 
-    const triggerElement = React.createElement(
+    const triggerElement = createElement(
       asCustom,
       {
         ref: triggerElementRef,

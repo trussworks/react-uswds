@@ -13,18 +13,6 @@ export default {
   },
 }
 
-// export const CustomComponentTooltip = (): React.ReactElement => {
-//   type MockTooltipProps = React.PropsWithChildren<{
-//     title: string
-//     className: string
-//   }> & JSX.IntrinsicElements['span']
-
-//   const CustomTooltip: React.FunctionComponent<MockTooltipProps> = ({}
-//   : MockTooltipProps): React.ReactElement => {
-
-//   }
-// }
-
 export const tooltipDefault = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip label="Default">Default</Tooltip>
@@ -68,15 +56,16 @@ export const CustomComponent = (): React.ReactElement => {
         children,
         ...tooltipProps
       }: MockTooltipProps, ref) => (
-      <a ref={ref} href={to} className={className} {...tooltipProps}>
+        <a ref={ref} href={to} className={className} {...tooltipProps}>
         {children}
       </a>
     ))
+    // eslint-disable-next-line react/display-name
     return (
       <div className="margin-4">
         <p>
           <Tooltip<MockTooltipProps>
-            label="Custom Link"
+            label="Follow Link"
             asCustom={CustomLink}
             to="http://www.truss.works">
             This
