@@ -11,7 +11,8 @@ describe('Tooltip component', () => {
         <button>My Tooltip</button>
       </Tooltip>
     )
-    expect(queryByTestId('tooltip')).toBeInTheDocument()
+    expect(queryByTestId('tooltipWrapper')).toBeInTheDocument()
+    expect(queryByTestId('triggerElement')).toBeInTheDocument()
     expect(queryByTestId('tooltipBody')).toBeInTheDocument()
   })
 
@@ -30,7 +31,7 @@ describe('Tooltip component', () => {
         <button>My Tooltip</button>
       </Tooltip>
     )
-    userEvent.hover(getByTestId('tooltip'))
+    userEvent.hover(getByTestId('triggerElement'))
     expect(getByTestId('tooltipBody')).toHaveClass('is-visible')
   })
 
@@ -66,7 +67,7 @@ describe('Tooltip component', () => {
           <button>My Tooltip</button>
         </Tooltip>
       )
-      expect(getByTestId('tooltip')).toHaveClass(`${customClass}`)
+      expect(getByTestId('tooltipWrapper')).toHaveClass(`${customClass}`)
     })
   })
 })

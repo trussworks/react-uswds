@@ -1,7 +1,15 @@
-import React, { createElement, ForwardRefExoticComponent, ReactElement, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
+import React, {
+  createElement,
+  ForwardRefExoticComponent,
+  ReactElement,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import classnames from 'classnames'
 import { isElementInViewport } from './utils'
-
 
 type TooltipProps<T> = {
   label: string
@@ -241,6 +249,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       asCustom,
       {
         ref: triggerElementRef,
+        'data-testid': 'triggerElement',
         onMouseEnter: () => activateTooltip(),
         onMouseOver: () => activateTooltip(),
         onFocus: () => activateTooltip(),
@@ -299,6 +308,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         {...spanProps}
         role="tooltip">
         <button
+          data-testid="triggerElement"
           ref={triggerElementRef}
           aria-describedby={tooltipID}
           type="button"
