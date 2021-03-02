@@ -48,6 +48,6 @@ export const completeDateRangePicker = (argTypes): React.ReactElement => (
         name: "event-date-end",
         disabled: argTypes.endDatePickerDisabled
       }}
-      />
+    />
   </Form> 
 )

@@ -59,7 +59,7 @@ export const DateRangePicker = (
   const classes = classnames(className, 'usa-date-range-picker')
   
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="date-range-picker">
       <div className="usa-form-group">
         {startDateLabel && 
         <label 
@@ -74,10 +74,11 @@ export const DateRangePicker = (
           id={`${startDatePickerProps.id}-hint`}>
           {startDateHint}
         </div>}
-        <DatePicker 
+        <DatePicker
           rangeDate={endDateInternalValue} 
           { ...startDatePickerProps } 
-          onChange={startDatePickerOnChange} />
+          onChange={startDatePickerOnChange} 
+        />
       </div>
 
       <div className="usa-form-group">
@@ -94,7 +95,11 @@ export const DateRangePicker = (
           id={`${endDatePickerProps.id}-hint`}>
           {endDateHint}
         </div>}
-        <DatePicker rangeDate={startDateInternalValue} { ...endDatePickerProps } onChange={endDatePickerOnChange} />
+        <DatePicker 
+          rangeDate={startDateInternalValue} 
+          { ...endDatePickerProps } 
+          onChange={endDatePickerOnChange}
+        />
       </div>
     </div>
   )
