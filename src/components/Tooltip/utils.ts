@@ -1,4 +1,3 @@
-
 export const isElementInViewport = (
   el: HTMLElement,
   win = window,
