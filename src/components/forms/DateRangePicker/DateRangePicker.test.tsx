@@ -1,7 +1,8 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { getAllByTestId, render } from '@testing-library/react'
 
 import { DateRangePicker } from './DateRangePicker'
+import userEvent from '@testing-library/user-event'
 
 const startDatePickerTestProps = {
   id: 'start-date',
@@ -74,5 +75,76 @@ describe("DateRangePicker component", () => {
     const endDateLabel = queryByText("end date format: mm/dd/yyyy")
     expect(endDateLabel).toBeInTheDocument()
     expect(endDateLabel).toHaveClass('usa-hint')
+  })
+
+  it('allows a date range to be selected by using both date pickers to pick start and end dates', () => {
+    const mockStartDatePickerOnChange = jest.fn()
+    const mockEndDatePickerOnChange = jest.fn()
+    const { getAllByTestId, getByText } = render(
+      <DateRangePicker 
+        startDatePickerProps={{ 
+          ...startDatePickerTestProps, 
+          defaultValue: "2021-01-20",
+          onChange: mockStartDatePickerOnChange
+        }} 
+        endDatePickerProps={{ 
+          ...endDatePickerTestProps,
+          defaultValue: "2021-01-25",
+          onChange: mockEndDatePickerOnChange
+        }}
+      />
+    )
+    
+    const datePickerButtons = getAllByTestId('date-picker-button')
+    const startDatePickerButton = datePickerButtons[0]
+    const endDatePickerButton = datePickerButtons[1]
+    
+    const calendars = getAllByTestId('date-picker-calendar')
+    const startDatePickerCalendar = calendars[0]
+    const endDatePickerCalendar = calendars[1]
+    
+    const internalInputs = getAllByTestId('date-picker-internal-input')
+    const startDatePickerInternalInput = internalInputs[0]
+    const endDatePickerInternalInput = internalInputs[1]
+
+    const externalInputs = getAllByTestId('date-picker-external-input')
+    const startDatePickerExternalInput = externalInputs[0]
+    const endDatePickerExternalInput = externalInputs[1]
+
+    // Select the start date from the first date picker:
+    userEvent.click(startDatePickerButton)
+    expect(startDatePickerCalendar).toBeVisible()
+    const defaultSelectedStartDate = getByText('20')
+    expect(defaultSelectedStartDate).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--selected usa-date-picker__calendar__date--range-date-start'
+    )
+    const newStartDateButton = getByText('21')
+    expect(newStartDateButton).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--within-range'
+    )
+    userEvent.click(newStartDateButton)
+    expect(startDatePickerExternalInput).toHaveValue('01/21/2021')
+    expect(startDatePickerInternalInput).toHaveValue('2021-01-21')
+    expect(startDatePickerExternalInput).toHaveFocus()
+    expect(startDatePickerCalendar).not.toBeVisible()
+    expect(mockStartDatePickerOnChange).toHaveBeenCalledWith('01/21/2021')
+
+    // Select the end date from the second date picker
+    userEvent.click(endDatePickerButton)
+    expect(endDatePickerCalendar).toBeVisible()
+    const defaultSelectedEndDate = getByText('25')
+    expect(defaultSelectedEndDate).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--selected usa-date-picker__calendar__date--range-date-end'
+    )
+    const newEndDateButton = getByText('24')
+    expect(newEndDateButton).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--within-range'
+    )
+    userEvent.click(newEndDateButton)
+    expect(endDatePickerExternalInput).toHaveValue('01/24/2021')
+    expect(endDatePickerInternalInput).toHaveValue('2021-01-24')
+    expect(endDatePickerExternalInput).toHaveFocus()
+    expect(endDatePickerCalendar).not.toBeVisible()
+    expect(mockEndDatePickerOnChange).toHaveBeenCalledWith('01/24/2021')
   })
 })
