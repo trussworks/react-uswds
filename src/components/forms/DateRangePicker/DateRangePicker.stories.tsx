@@ -51,24 +51,3 @@ export const completeDateRangePicker = (argTypes): React.ReactElement => (
       />
   </Form> 
 )
-
-export const withRangeDates = (argTypes): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <DateRangePicker 
-      startDateLabel="Event start date"
-      startDateHint="mm/dd/yyyy"
-      startDatePickerProps={{
-        id: "event-date-start",
-        name: "event-date-start",
-        disabled: argTypes.startDatePickerDisabled
-      }}
-      endDateLabel="Event end date"
-      endDateHint="mm/dd/yyyy"
-      endDatePickerProps={{
-        id: "event-date-end",
-        name: "event-date-end",
-        disabled: argTypes.endDatePickerDisabled
-      }}
-      />
-  </Form> 
-)
