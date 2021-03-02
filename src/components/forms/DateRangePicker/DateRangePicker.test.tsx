@@ -129,7 +129,7 @@ describe("DateRangePicker component", () => {
     expect(startDatePickerCalendar).not.toBeVisible()
     expect(mockStartDatePickerOnChange).toHaveBeenCalledWith('01/21/2021')
 
-    // Select the end date from the second date picker
+    // Select the end date from the second date picker:
     userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).toBeVisible()
     const defaultSelectedEndDate = getByText('25')
