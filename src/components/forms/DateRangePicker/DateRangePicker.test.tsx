@@ -147,4 +147,71 @@ describe("DateRangePicker component", () => {
     expect(endDatePickerCalendar).not.toBeVisible()
     expect(mockEndDatePickerOnChange).toHaveBeenCalledWith('01/24/2021')
   })
+
+  it('prevents the selection of a date range where the end date is before the start date', () => {
+    const mockStartDatePickerOnChange = jest.fn()
+    const mockEndDatePickerOnChange = jest.fn()
+    const { getAllByTestId, getByText } = render(
+      <DateRangePicker 
+        startDatePickerProps={{ 
+          ...startDatePickerTestProps, 
+          defaultValue: "2021-01-20",
+          onChange: mockStartDatePickerOnChange
+        }} 
+        endDatePickerProps={{ 
+          ...endDatePickerTestProps,
+          defaultValue: "2021-01-25",
+          onChange: mockEndDatePickerOnChange
+        }}
+      />
+    )
+    
+    const datePickerButtons = getAllByTestId('date-picker-button')
+    const startDatePickerButton = datePickerButtons[0]
+    const endDatePickerButton = datePickerButtons[1]
+    
+    const calendars = getAllByTestId('date-picker-calendar')
+    const startDatePickerCalendar = calendars[0]
+    const endDatePickerCalendar = calendars[1]
+
+    // Try to select an start date before the end date:
+    userEvent.click(startDatePickerButton)
+    expect(startDatePickerCalendar).toBeVisible()
+    const defaultSelectedStartDate = getByText('20')
+    expect(defaultSelectedStartDate).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--selected usa-date-picker__calendar__date--range-date-start'
+    )
+    const startDatePickerRangeEnd = getByText('25')
+    expect(startDatePickerRangeEnd).toHaveClass(
+      'usa-date-picker__calendar__date  usa-date-picker__calendar__date--range-date-end'
+    )
+    const invalidStartDateButton = getByText('26')
+    expect(invalidStartDateButton).toHaveClass(
+      'usa-date-picker__calendar__date'
+    )
+    expect(invalidStartDateButton).toBeDisabled()
+    userEvent.click(invalidStartDateButton)
+    expect(startDatePickerCalendar).toBeVisible()
+    expect(mockEndDatePickerOnChange).not.toHaveBeenCalledWith("2021-01-26")
+    
+    // Try to select an end date before the start date:
+    userEvent.click(endDatePickerButton)
+    expect(endDatePickerCalendar).toBeVisible()
+    const endDatePickerRangeStart = getByText('20')
+    expect(endDatePickerRangeStart).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--range-date-start'
+    )
+    const defaultSelectedEndDate = getByText('25')
+    expect(defaultSelectedEndDate).toHaveClass(
+      'usa-date-picker__calendar__date usa-date-picker__calendar__date--selected usa-date-picker__calendar__date--range-date-end'
+    )
+    const invalidEndDateButton = getByText('19')
+    expect(invalidEndDateButton).toHaveClass(
+      'usa-date-picker__calendar__date'
+    )
+    expect(invalidEndDateButton).toBeDisabled()
+    userEvent.click(invalidEndDateButton)
+    expect(endDatePickerCalendar).toBeVisible()
+    expect(mockEndDatePickerOnChange).not.toHaveBeenCalledWith("2021-01-19")
+  })
 })
