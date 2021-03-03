@@ -61,7 +61,7 @@ export const withDefaultValues = (argTypes): React.ReactElement => (
       startDatePickerProps={{
         id: "event-date-start",
         name: "event-date-start",
-        defaultValue: formatDate(new Date()),
+        defaultValue: "2021-01-20",
         disabled: argTypes.startDatePickerDisabled
       }}
       endDateLabel="Event end date"
@@ -69,7 +69,32 @@ export const withDefaultValues = (argTypes): React.ReactElement => (
       endDatePickerProps={{
         id: "event-date-end",
         name: "event-date-end",
-        defaultValue: formatDate(addDays(new Date(), 5)),
+        defaultValue: "2021-01-25",
+        disabled: argTypes.endDatePickerDisabled
+      }}
+    />
+  </Form> 
+)
+
+export const withAllowableRanges = (argTypes): React.ReactElement => (
+  <Form onSubmit={argTypes.onSubmit}>
+    <DateRangePicker 
+      startDateLabel="Event start date"
+      startDateHint="mm/dd/yyyy"
+      startDatePickerProps={{
+        id: "event-date-start",
+        name: "event-date-start",
+        minDate: "2021-01-01",
+        maxDate: "2021-01-20",
+        disabled: argTypes.startDatePickerDisabled
+      }}
+      endDateLabel="Event end date"
+      endDateHint="mm/dd/yyyy"
+      endDatePickerProps={{
+        id: "event-date-end",
+        name: "event-date-end",
+        minDate: "2021-01-20",
+        maxDate: "2021-01-25",
         disabled: argTypes.endDatePickerDisabled
       }}
     />

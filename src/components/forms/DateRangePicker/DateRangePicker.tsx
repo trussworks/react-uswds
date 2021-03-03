@@ -31,11 +31,11 @@ export const DateRangePicker = (
   const [
     startDateInternalValue,
     setStartDateInternalValue
-  ] = useState<string | undefined>(startDatePickerProps.defaultValue);
+  ] = useState<string | undefined>(startDatePickerProps.defaultValue)
   const [
     endDateInternalValue,
     setEndDateInternalValue
-  ] = useState<string | undefined>(endDatePickerProps.defaultValue);
+  ] = useState<string | undefined>(endDatePickerProps.defaultValue)
   
   const startDatePickerOnChange = (externallyFormattedValue: string | undefined): void => {
     const parsedValue = 
@@ -59,7 +59,7 @@ export const DateRangePicker = (
 
   const getMaxStartDate = (): string | undefined => {
     const { maxDate: maxStartDate } = startDatePickerProps
-    const parsedMaxStartDate = maxStartDate && parseDateString(maxStartDate, DEFAULT_EXTERNAL_DATE_FORMAT)
+    const parsedMaxStartDate = maxStartDate && parseDateString(maxStartDate)
     const parsedCurrentEndDate = endDateInternalValue && parseDateString(endDateInternalValue)
 
     if (parsedCurrentEndDate && parsedMaxStartDate) {
@@ -77,7 +77,7 @@ export const DateRangePicker = (
 
   const getMinEndDate = (): string | undefined => {
     const { minDate: minEndDate } = endDatePickerProps
-    const parsedMinEndDate = minEndDate && parseDateString(minEndDate, DEFAULT_EXTERNAL_DATE_FORMAT)
+    const parsedMinEndDate = minEndDate && parseDateString(minEndDate)
     const parsedCurrentStartDate = startDateInternalValue && parseDateString(startDateInternalValue)
 
     if (parsedCurrentStartDate && parsedMinEndDate) {
