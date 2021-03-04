@@ -38,6 +38,11 @@ interface DatePickerProps {
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
   ) => void
+  statusTranslations?: string[]
+  selectedDateTranslation?: string
+  dayOfWeekTranslations?: string[]
+  dayOfWeekShortTranslations?: string[]
+  monthTranslations?: string[]
 }
 
 export enum FocusMode {
@@ -59,6 +64,11 @@ export const DatePicker = (
     rangeDate,
     onChange,
     onBlur,
+    statusTranslations,
+    selectedDateTranslation,
+    dayOfWeekTranslations,
+    dayOfWeekShortTranslations,
+    monthTranslations,
     ...inputProps
   } = props
 
@@ -185,7 +195,7 @@ export const DatePicker = (
       setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
 
-      const statuses = [
+      const statuses = statusTranslations || [
         'You can navigate by day using left and right arrows',
         'Weeks by using up and down arrows',
         'Months by using page up and page down keys',
@@ -195,7 +205,8 @@ export const DatePicker = (
 
       const selectedDate = parseDateString(internalValue)
       if (selectedDate && isSameDay(selectedDate, addDays(displayDate, 0))) {
-        statuses.unshift('Selected date')
+        const selectedDateText = selectedDateTranslation || 'Selected date'
+        statuses.unshift(selectedDateText)
       }
 
       setStatuses(statuses)
@@ -318,6 +329,9 @@ export const DatePicker = (
               selectedDate={parseDateString(internalValue)}
               setStatuses={setStatuses}
               focusMode={focusMode}
+              dayOfWeekTranslations={dayOfWeekTranslations}
+              dayOfWeekShortTranslations={dayOfWeekShortTranslations}
+              monthTranslations={monthTranslations}
             />
           )}
         </div>

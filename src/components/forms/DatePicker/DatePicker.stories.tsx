@@ -108,3 +108,34 @@ export const withRangeDate = (): React.ReactElement => (
     rangeDate="2021-01-08"
   />
 )
+
+export const withLocalizations = (): React.ReactElement => (
+  <DatePicker
+    id="birthdate"
+    name="birthdate"
+    dayOfWeekTranslations={[
+      'domingo',
+      'lunes',
+      'martes',
+      'miércoles',
+      'jueves',
+      'viernes',
+      'sábado',
+    ]}
+    dayOfWeekShortTranslations={['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']}
+    monthTranslations={[
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre',
+    ]}
+  />
+)

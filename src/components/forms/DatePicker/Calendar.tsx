@@ -52,6 +52,9 @@ export const Calendar = ({
   rangeDate,
   setStatuses,
   focusMode,
+  dayOfWeekTranslations,
+  dayOfWeekShortTranslations,
+  monthTranslations,
 }: {
   date?: Date
   selectedDate?: Date
@@ -61,6 +64,9 @@ export const Calendar = ({
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
   focusMode: FocusMode
+  dayOfWeekTranslations?: string[]
+  dayOfWeekShortTranslations?: string[]
+  monthTranslations?: string[]
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
@@ -97,7 +103,9 @@ export const Calendar = ({
   const focusedMonth = dateToDisplay.getMonth()
   const focusedYear = dateToDisplay.getFullYear()
 
-  const monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
+  let monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
+  if (monthTranslations)
+    monthLabel = monthTranslations[parseInt(`${focusedMonth}`)]
 
   useEffect(() => {
     calendarWasHidden = false
@@ -330,6 +338,10 @@ export const Calendar = ({
     dateIterator = addDays(dateIterator, 1)
   }
 
+  const dayOfWeekShortLabels =
+    dayOfWeekShortTranslations || DAY_OF_WEEK_SHORT_LABELS
+  const dayOfWeekLabels = dayOfWeekTranslations || DAY_OF_WEEK_LABELS
+
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
     // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1042)
@@ -413,11 +425,11 @@ export const Calendar = ({
       <table className="usa-date-picker__calendar__table" role="presentation">
         <thead>
           <tr>
-            {DAY_OF_WEEK_SHORT_LABELS.map((d, i) => (
+            {dayOfWeekShortLabels.map((d, i) => (
               <th
                 className="usa-date-picker__calendar__day-of-week"
                 scope="col"
-                aria-label={DAY_OF_WEEK_LABELS[parseInt(`${i}`)]}
+                aria-label={dayOfWeekLabels[parseInt(`${i}`)]}
                 key={`day-of-week-${d}-${i}`}>
                 {d}
               </th>
