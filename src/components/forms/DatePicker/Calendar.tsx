@@ -158,6 +158,7 @@ export const Calendar = ({
         minDate={minDate}
         maxDate={maxDate}
         handleSelectMonth={handleSelectMonth}
+        monthTranslations={monthTranslations}
       />
     )
   } else if (mode === CalendarModes.YEAR_PICKER) {
@@ -333,6 +334,8 @@ export const Calendar = ({
             withinRangeEndDate
           )
         }
+        dayOfWeekTranslations={dayOfWeekTranslations}
+        monthTranslations={monthTranslations}
       />
     )
     dateIterator = addDays(dateIterator, 1)

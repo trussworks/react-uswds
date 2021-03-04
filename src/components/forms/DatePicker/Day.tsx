@@ -22,6 +22,8 @@ export const Day = forwardRef(
       isRangeStart = false,
       isRangeEnd = false,
       isWithinRange = false,
+      dayOfWeekTranslations,
+      monthTranslations,
     }: {
       date: Date
       onClick: (value: string) => void
@@ -38,6 +40,8 @@ export const Day = forwardRef(
       isRangeStart?: boolean
       isRangeEnd?: boolean
       isWithinRange?: boolean
+      dayOfWeekTranslations?: string[]
+      monthTranslations?: string[]
     },
     ref: React.ForwardedRef<HTMLButtonElement>
   ): React.ReactElement => {
@@ -62,8 +66,12 @@ export const Day = forwardRef(
       'usa-date-picker__calendar__date--within-range': isWithinRange,
     })
 
-    const monthStr = MONTH_LABELS[parseInt(`${month}`)]
-    const dayStr = DAY_OF_WEEK_LABELS[parseInt(`${dayOfWeek}`)]
+    let monthStr = MONTH_LABELS[parseInt(`${month}`)]
+    if (monthTranslations) monthStr = monthTranslations[parseInt(`${month}`)]
+
+    let dayStr = DAY_OF_WEEK_LABELS[parseInt(`${dayOfWeek}`)]
+    if (dayOfWeekTranslations)
+      dayStr = dayOfWeekTranslations[parseInt(`${dayOfWeek}`)]
 
     const handleClick = (): void => {
       onClick(formattedDate)

@@ -17,11 +17,13 @@ export const MonthPicker = ({
   minDate,
   maxDate,
   handleSelectMonth,
+  monthTranslations,
 }: {
   date: Date
   minDate: Date
   maxDate?: Date
   handleSelectMonth: (value: number) => void
+  monthTranslations?: string[]
 }): React.ReactElement => {
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
@@ -92,7 +94,9 @@ export const MonthPicker = ({
     event.preventDefault()
   }
 
-  const months = MONTH_LABELS.map((month, index) => {
+  const monthArr = monthTranslations || MONTH_LABELS
+
+  const months = monthArr.map((month, index) => {
     const monthToCheck = setMonth(date, index)
     const isDisabled = isDatesMonthOutsideMinOrMax(
       monthToCheck,
