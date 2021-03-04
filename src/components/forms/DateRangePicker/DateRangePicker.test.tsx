@@ -268,7 +268,7 @@ describe("DateRangePicker component", () => {
     userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).not.toBeVisible()
 
-    // Clear the start picker input
+    // Clear the start picker input:
     userEvent.clear(startDatePickerExternalInput)
 
     // Verify an end date before the previously selected start date can be selected:
