@@ -36,26 +36,6 @@ export const DateRangePicker = (
     endDateInternalValue,
     setEndDateInternalValue
   ] = useState<string | undefined>(endDatePickerProps.defaultValue)
-  
-  const startDatePickerOnChange = (externallyFormattedValue: string | undefined): void => {
-    const parsedValue = 
-      externallyFormattedValue && parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
-    const internallyFormattedValue = 
-      parsedValue && formatDate(parsedValue)
-    
-    if (parsedValue) setStartDateInternalValue(internallyFormattedValue)
-    if (startDatePickerProps.onChange) startDatePickerProps.onChange(externallyFormattedValue)
-  }
-
-  const endDatePickerOnChange = (externallyFormattedValue: string | undefined): void => {
-    const parsedValue = 
-      externallyFormattedValue && parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
-    const internallyFormattedValue = 
-      parsedValue && formatDate(parsedValue)
-    
-    if (parsedValue) setEndDateInternalValue(internallyFormattedValue)
-    if (endDatePickerProps.onChange) endDatePickerProps.onChange(externallyFormattedValue)
-  }
 
   const getMaxStartDate = (): string | undefined => {
     const { maxDate: maxStartDate } = startDatePickerProps
@@ -93,8 +73,43 @@ export const DateRangePicker = (
     }
   }
 
-  const classes = classnames(className, 'usa-date-range-picker')
+  const getDatePickerOnChangeFn = (
+    originalOnChangeFn: ((val?: string | undefined) => void) | undefined,
+    setStateInternalValueFn: React.Dispatch<React.SetStateAction<string | undefined>>
+  ): (val?: string | undefined) => void => {
+    return (externallyFormattedValue?: string | undefined): void => {
+      const parsedValue = 
+        externallyFormattedValue && parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
+      
+      if (parsedValue) {
+        // The externally input and formatted value is a valid date.
+        // Convert to internal format and set the internal state to
+        // the selected date.
+        const internallyFormattedValue = formatDate(parsedValue)
+        setStateInternalValueFn(internallyFormattedValue)
+      } else {
+        // Externally input and formatted value is not a valid date.
+        // Do not attempt to convert to internal date format. 
+        // Simply update internal state with the input value as received.
+        setStateInternalValueFn(externallyFormattedValue)
+      }
+
+      if (originalOnChangeFn) originalOnChangeFn()
+    }
+  }
+
+  const startDatePickerOnChange = getDatePickerOnChangeFn(
+    startDatePickerProps.onChange, 
+    setStartDateInternalValue
+  )
   
+  const endDatePickerOnChange = getDatePickerOnChangeFn(
+    endDatePickerProps.onChange,
+    setEndDateInternalValue
+  )
+  
+  const classes = classnames(className, 'usa-date-range-picker')
+
   return (
     <div className={classes} data-testid="date-range-picker">
       <div className="usa-form-group">
