@@ -94,7 +94,7 @@ export const DateRangePicker = (
         setStateInternalValueFn(externallyFormattedValue)
       }
 
-      if (originalOnChangeFn) originalOnChangeFn()
+      if (originalOnChangeFn) originalOnChangeFn(externallyFormattedValue)
     }
   }
 
@@ -102,7 +102,7 @@ export const DateRangePicker = (
     startDatePickerProps.onChange, 
     setStartDateInternalValue
   )
-  
+
   const endDatePickerOnChange = getDatePickerOnChangeFn(
     endDatePickerProps.onChange,
     setEndDateInternalValue
