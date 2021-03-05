@@ -55,6 +55,7 @@ export const Calendar = ({
   dayOfWeekTranslations,
   dayOfWeekShortTranslations,
   monthTranslations,
+  selectedDateTranslation,
 }: {
   date?: Date
   selectedDate?: Date
@@ -67,6 +68,7 @@ export const Calendar = ({
   dayOfWeekTranslations?: string[]
   dayOfWeekShortTranslations?: string[]
   monthTranslations?: string[]
+  selectedDateTranslation?: string
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
@@ -145,8 +147,10 @@ export const Calendar = ({
 
     if (calendarWasHidden) {
       const newStatuses = [`${monthLabel} ${focusedYear}`]
-      if (selectedDate && isSameDay(focusedDate, selectedDate))
-        newStatuses.unshift('Selected date')
+      if (selectedDate && isSameDay(focusedDate, selectedDate)) {
+        const selectedDateText = selectedDateTranslation || 'Selected date'
+        newStatuses.unshift(selectedDateText)
+      }
       setStatuses(newStatuses)
     }
   }, [dateToDisplay])
