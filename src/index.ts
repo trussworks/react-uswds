@@ -56,7 +56,7 @@ export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
 
-/** Card Components */
+/** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
 export { Card } from './components/card/Card/Card'
 export { CardHeader } from './components/card/CardHeader/CardHeader'
@@ -68,6 +68,10 @@ export { CardFooter } from './components/card/CardFooter/CardFooter'
 export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
 export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
 export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
+
+/** StepIndicator components */
+export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
+export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
 export { Search } from './components/Search/Search'
 
