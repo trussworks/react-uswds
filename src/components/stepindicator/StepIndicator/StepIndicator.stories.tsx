@@ -46,7 +46,7 @@ export const centered = (): React.ReactElement => (
 )
 
 export const counters = (): React.ReactElement => (
-  <StepIndicator counters>
+  <StepIndicator counters="default">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />

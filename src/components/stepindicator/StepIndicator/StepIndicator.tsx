@@ -4,7 +4,7 @@ import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 
 interface StepIndicatorProps {
   showLabels?: boolean
-  counters?: true | false | 'small'
+  counters?: 'none' | 'default' | 'small'
   centered?: boolean
   children: React.ReactElement<StepIndicatorStepProps>[]
   className?: string
@@ -16,7 +16,7 @@ export const StepIndicator = (
 ): React.ReactElement => {
   const {
     showLabels = true,
-    counters = false,
+    counters = 'none',
     centered = false,
     children,
     className,
@@ -28,7 +28,7 @@ export const StepIndicator = (
     'usa-step-indicator',
     {
       'usa-step-indicator--no-labels': !showLabels,
-      'usa-step-indicator--counters': counters === true,
+      'usa-step-indicator--counters': counters === 'default',
       'usa-step-indicator--counters-sm': counters === 'small',
       'usa-step-indicator--center': centered,
     },
@@ -45,7 +45,11 @@ export const StepIndicator = (
   const totalNumberOfSteps = children.length
 
   return (
-    <div className={classes} data-testid="step-indicator" {...divProps}>
+    <div
+      className={classes}
+      data-testid="step-indicator"
+      aria-label="progress"
+      {...divProps}>
       <ol className="usa-step-indicator__segments" {...listProps}>
         {children}
       </ol>

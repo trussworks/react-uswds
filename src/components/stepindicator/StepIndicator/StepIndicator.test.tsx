@@ -50,7 +50,7 @@ describe('StepIndicator component', () => {
 
   it('renders properly with counters', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
-      <StepIndicator counters>
+      <StepIndicator counters="default">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
