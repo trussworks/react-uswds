@@ -120,6 +120,18 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     }
   })
 
+  // If the focused element (activeElement) is outside of the combo box,
+  // make sure the focusMode is BLUR
+  useEffect(() => {
+    if (state.focusMode !== FocusMode.None) {
+      if (!containerRef.current?.contains(window.document.activeElement)) {
+        dispatch({
+          type: ActionTypes.BLUR,
+        })
+      }
+    }
+  })
+
   const handleInputKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
       dispatch({ type: ActionTypes.CLOSE_LIST })
