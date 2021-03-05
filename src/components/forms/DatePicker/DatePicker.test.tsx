@@ -376,6 +376,48 @@ describe('DatePicker component', () => {
     })
   })
 
+  describe('with localization props', () => {
+    const esDaysAbbreviations = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+    const esMonths = [
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre',
+    ]
+
+    it('displays abbreviated translations for days of the week', () => {
+      const { getByText, getByTestId } = render(
+        <DatePicker
+          {...testProps}
+          dayOfWeekShortTranslations={esDaysAbbreviations}
+        />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      esDaysAbbreviations.forEach((translation) => {
+        expect(getByText(translation)).toBeInTheDocument()
+      })
+    })
+    it('displays translation for month', () => {
+      const { getByText, getByTestId } = render(
+        <DatePicker
+          {...testProps}
+          monthTranslations={esMonths}
+          defaultValue="2020-02-01"
+        />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByText('febrero')).toBeInTheDocument()
+    })
+  })
+
   describe('selecting a date', () => {
     it('clicking a date button selects that date and closes the calendar and focuses the external input', () => {
       const mockOnChange = jest.fn()

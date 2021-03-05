@@ -94,9 +94,9 @@ export const MonthPicker = ({
     event.preventDefault()
   }
 
-  const monthArr = monthTranslations || MONTH_LABELS
+  const monthNames = monthTranslations || MONTH_LABELS
 
-  const months = monthArr.map((month, index) => {
+  const months = monthNames.map((month, index) => {
     const monthToCheck = setMonth(date, index)
     const isDisabled = isDatesMonthOutsideMinOrMax(
       monthToCheck,

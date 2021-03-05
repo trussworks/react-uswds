@@ -212,4 +212,34 @@ describe('MonthPicker', () => {
       expect(getByText('January')).toHaveFocus()
     })
   })
+
+  describe('with localization props', () => {
+    const esMonths = [
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre',
+    ]
+
+    it('displays month translations', () => {
+      const { getByText } = render(
+        <MonthPicker
+          {...testProps}
+          date={new Date('January 20 2021')}
+          monthTranslations={esMonths}
+        />
+      )
+      esMonths.forEach((translation) => {
+        expect(getByText(translation)).toBeInTheDocument()
+      })
+    })
+  })
 })
