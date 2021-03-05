@@ -332,6 +332,7 @@ export const DatePicker = (
               dayOfWeekTranslations={dayOfWeekTranslations}
               dayOfWeekShortTranslations={dayOfWeekShortTranslations}
               monthTranslations={monthTranslations}
+              selectedDateTranslation={selectedDateTranslation}
             />
           )}
         </div>
