@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import { format } from 'prettier'
 import React, { useState } from 'react'
 import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from '../DatePicker/constants'
 import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker'
@@ -74,9 +73,9 @@ export const DateRangePicker = (
   }
 
   const getDatePickerOnChangeFn = (
-    originalOnChangeFn: ((val?: string | undefined) => void) | undefined,
+    originalOnChangeFn: ((val?: string) => void) | undefined,
     setStateInternalValueFn: React.Dispatch<React.SetStateAction<string | undefined>>
-  ): (val?: string | undefined) => void => {
+  ): (val?: string) => void => {
     return (externallyFormattedValue?: string | undefined): void => {
       const parsedValue = 
         externallyFormattedValue && parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
