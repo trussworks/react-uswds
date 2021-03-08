@@ -120,6 +120,18 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     }
   })
 
+  // If the focused element (activeElement) is outside of the combo box,
+  // make sure the focusMode is BLUR
+  useEffect(() => {
+    if (state.focusMode !== FocusMode.None) {
+      if (!containerRef.current?.contains(window.document.activeElement)) {
+        dispatch({
+          type: ActionTypes.BLUR,
+        })
+      }
+    }
+  })
+
   const handleInputKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
       dispatch({ type: ActionTypes.CLOSE_LIST })
@@ -145,16 +157,13 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
-    const { target: elementLosingFocus, relatedTarget: newTarget } = event
+    const { relatedTarget: newTarget } = event
     const newTargetIsOutside =
       !newTarget ||
-      (newTarget instanceof Node &&
-        !containerRef.current?.contains(elementLosingFocus))
+      (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
 
-    if (state.selectedOption?.value) {
-      if (newTargetIsOutside) dispatch({ type: ActionTypes.CLOSE_LIST })
-    } else if (newTargetIsOutside) {
-      dispatch({ type: ActionTypes.CLEAR })
+    if (newTargetIsOutside) {
+      dispatch({ type: ActionTypes.BLUR })
     }
   }
 
@@ -203,7 +212,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
       !newTarget ||
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
     ) {
-      dispatch({ type: ActionTypes.CLOSE_LIST })
+      dispatch({ type: ActionTypes.BLUR })
     }
   }
 

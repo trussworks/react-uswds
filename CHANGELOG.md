@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/trussworks/react-uswds/compare/1.12.2...1.13.0) (2021-02-26)
+
+
+### Features
+
+* File Input component ([#900](https://github.com/trussworks/react-uswds/issues/900)) ([e1ccbcd](https://github.com/trussworks/react-uswds/commit/e1ccbcd0b0c0cc3ec80cd8f0fa38afd09b29ecfa))
+
+
+### Documentation & Examples
+
+* Add All-Contributors section to README ([#954](https://github.com/trussworks/react-uswds/issues/954)) ([fe23df1](https://github.com/trussworks/react-uswds/commit/fe23df1acb2de244ac45ee5f1f797a1229203822))
+
+### [1.12.2](https://github.com/trussworks/react-uswds/compare/1.12.1...1.12.2) (2021-02-22)
+
+
+### Bug Fixes
+
+* add ActionType.CLEAR_FOCUS to indicate a user has left the field ([#902](https://github.com/trussworks/react-uswds/issues/902)) ([58159d7](https://github.com/trussworks/react-uswds/commit/58159d7430016bb88ab2fba33ab1984e0aebed66))
+
+### [1.12.1](https://github.com/trussworks/react-uswds/compare/1.12.0...1.12.1) (2021-02-22)
+
+
+### Bug Fixes
+
+* Revert husky to V4 ([#923](https://github.com/trussworks/react-uswds/issues/923)) ([e934ff7](https://github.com/trussworks/react-uswds/commit/e934ff76a58cdbc523eef0a3c496fe2d20c02c73))
+
 ## [1.12.0](https://github.com/trussworks/react-uswds/compare/1.11.0...1.12.0) (2021-02-18)
 
 
