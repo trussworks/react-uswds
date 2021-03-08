@@ -62,7 +62,6 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
     'usa-accordion',
     {
       'usa-accordion--bordered': bordered,
-      'aria-multiselectable': multiselectable,
     },
     className
   )
@@ -86,7 +85,10 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
   }
 
   return (
-    <div className={classes} data-testid="accordion">
+    <div
+      className={classes}
+      data-testid="accordion"
+      aria-multiselectable={multiselectable}>
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
