@@ -127,7 +127,7 @@
     "typescript": "^3.8.0",
     "url-loader": "^4.0.0",
     "uswds": "2.8.1",
-    "webpack": "^4.41.0",
+    "webpack": "^5.24.3",
     "webpack-cli": "^4.0.0"
   },
   "resolutions": {
