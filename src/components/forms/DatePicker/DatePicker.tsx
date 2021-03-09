@@ -46,17 +46,17 @@ export enum FocusMode {
 }
 
 export const DatePicker = ({
-    id,
-    name,
-    defaultValue,
-    disabled,
-    required,
-    minDate = DEFAULT_MIN_DATE,
-    maxDate,
-    rangeDate,
-    onChange,
-    onBlur,
-    ...inputProps
+  id,
+  name,
+  defaultValue,
+  disabled,
+  required,
+  minDate = DEFAULT_MIN_DATE,
+  maxDate,
+  rangeDate,
+  onChange,
+  onBlur,
+  ...inputProps
 }: DatePickerProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
