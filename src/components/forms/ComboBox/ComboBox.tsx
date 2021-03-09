@@ -118,7 +118,7 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     ) {
       itemRef.current.focus()
     }
-  })
+  }, [state.focusMode, state.focusedOption])
 
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
