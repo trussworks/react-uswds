@@ -7,9 +7,7 @@ import { Tooltip } from './Tooltip'
 describe('Tooltip component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
-      <Tooltip label="Click me">
-        <button>My Tooltip</button>
-      </Tooltip>
+      <Tooltip label="Click me">My Tooltip</Tooltip>
     )
     expect(queryByTestId('tooltipWrapper')).toBeInTheDocument()
     expect(queryByTestId('triggerElement')).toBeInTheDocument()
@@ -18,18 +16,14 @@ describe('Tooltip component', () => {
 
   it('hides tooltip by default', () => {
     const { getByTestId } = render(
-      <Tooltip label="Click me">
-        <button>My Tooltip</button>
-      </Tooltip>
+      <Tooltip label="Click me">My Tooltip</Tooltip>
     )
     expect(getByTestId('tooltipBody')).not.toHaveClass('is-visible')
   })
 
   it('shows tooltip with mouse event', () => {
     const { getByTestId } = render(
-      <Tooltip label="Click me">
-        <button>My Tooltip</button>
-      </Tooltip>
+      <Tooltip label="Click me">My Tooltip</Tooltip>
     )
     userEvent.hover(getByTestId('triggerElement'))
     expect(getByTestId('tooltipBody')).toHaveClass('is-visible')
@@ -38,9 +32,7 @@ describe('Tooltip component', () => {
   describe('with a position prop', () => {
     it('applies the default tooltip position', () => {
       const { getByTestId } = render(
-        <Tooltip label="Click me">
-          <button>My Tooltip</button>
-        </Tooltip>
+        <Tooltip label="Click me">My Tooltip</Tooltip>
       )
       expect(getByTestId('tooltipBody')).toHaveClass(
         `usa-tooltip__body usa-tooltip__body--top`
@@ -50,7 +42,7 @@ describe('Tooltip component', () => {
     it('applies the correct tooltip position when position prop is defined', () => {
       const { getByTestId } = render(
         <Tooltip position="bottom" label="Click me">
-          <button>My Tooltip</button>
+          My Tooltip
         </Tooltip>
       )
       expect(getByTestId('tooltipBody')).toHaveClass(
@@ -64,7 +56,7 @@ describe('Tooltip component', () => {
       const customClass = 'custom-class'
       const { getByTestId } = render(
         <Tooltip className={customClass} position="left" label="Click me">
-          <button>My Tooltip</button>
+          My Tooltip
         </Tooltip>
       )
       expect(getByTestId('tooltipWrapper')).toHaveClass(`${customClass}`)
