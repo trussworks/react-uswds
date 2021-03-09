@@ -88,7 +88,7 @@ export const Accordion = (props: AccordionProps): React.ReactElement => {
     <div
       className={classes}
       data-testid="accordion"
-      aria-multiselectable={multiselectable}>
+      aria-multiselectable={multiselectable || undefined}>
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
