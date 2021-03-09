@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/trussworks/react-uswds/compare/1.13.0...1.13.1) (2021-03-08)
+
+
+### Bug Fixes
+
+* set CombBox focusMode to BLUR when focus is outside of the component ([#989](https://github.com/trussworks/react-uswds/issues/989)) ([fa468a0](https://github.com/trussworks/react-uswds/commit/fa468a00275c9646d43ff55fb50468c033d25ad5))
+
 ## [1.13.0](https://github.com/trussworks/react-uswds/compare/1.12.2...1.13.0) (2021-02-26)
 
 
