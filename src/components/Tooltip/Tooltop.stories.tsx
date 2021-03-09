@@ -51,6 +51,17 @@ export const tooltipLeft = (): React.ReactElement => (
   </div>
 )
 
+export const tooltipWithUtilityClass = (): React.ReactElement => (
+  <div className="margin-4">
+    <Tooltip
+      dataClasses="width-full tablet:width-auto"
+      position="right"
+      label="Right">
+      Show on right
+    </Tooltip>
+  </div>
+)
+
 export const CustomComponent = (): React.ReactElement => {
   type CustomLinkProps = React.PropsWithChildren<{
     to: string

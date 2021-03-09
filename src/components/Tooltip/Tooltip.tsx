@@ -15,6 +15,7 @@ type TooltipProps<T> = {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   className?: string
+  dataClasses?: string
   children: ReactNode
 } & T
 
@@ -108,6 +109,12 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           tooltipBody.classList.remove(`usa-tooltip__body--${tooltipPosition}`)
           tooltipPosition = setPos
           tooltipBody.classList.add(`usa-tooltip__body--${setPos}`)
+        }
+
+        // Apply additional class names to wrapper element
+        if (props.dataClasses) {
+          const classesArray = props.dataClasses.split(' ')
+          classesArray.forEach((classname) => wrapper.classList.add(classname))
         }
 
         /**
