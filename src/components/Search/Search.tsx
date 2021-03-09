@@ -25,21 +25,18 @@ interface SearchInputProps {
   placeholder?: string
 }
 
-export const Search = (
-  props: SearchInputProps & OptionalFormProps
-): React.ReactElement => {
-  const {
-    onSubmit,
-    inputId = 'search-field',
-    inputName = 'search',
-    size,
-    big,
-    small,
-    label = 'Search',
-    className,
-    placeholder,
-    ...formProps
-  } = props
+export const Search = ({
+  onSubmit,
+  inputId = 'search-field',
+  inputName = 'search',
+  size,
+  big,
+  small,
+  label = 'Search',
+  className,
+  placeholder,
+  ...formProps
+}: SearchInputProps & OptionalFormProps): React.ReactElement => {
   if (big) {
     deprecationWarning('Search property big is deprecated.  Use size')
   }

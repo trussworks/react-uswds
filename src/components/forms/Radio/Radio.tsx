@@ -14,11 +14,9 @@ interface RadioProps {
     | undefined
 }
 
-export const Radio = (
-  props: RadioProps & JSX.IntrinsicElements['input']
-): React.ReactElement => {
-  const { id, name, className, label, inputRef, ...inputProps } = props
-
+export const Radio = ({ 
+  id, name, className, label, inputRef, ...inputProps 
+}: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-radio', className)
 
   return (

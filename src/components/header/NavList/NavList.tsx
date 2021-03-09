@@ -29,19 +29,17 @@ interface CustomNavListProps {
 
 export type NavListProps = CustomNavListProps & JSX.IntrinsicElements['ul']
 
-export const NavList = (props: NavListProps): React.ReactElement => {
-  const {
-    items,
-    type,
-    primary,
-    secondary,
-    subnav,
-    megamenu,
-    footerSecondary,
-    className,
-    ...ulProps
-  } = props
-
+export const NavList = ({
+  items,
+  type,
+  primary,
+  secondary,
+  subnav,
+  megamenu,
+  footerSecondary,
+  className,
+  ...ulProps
+}: NavListProps): React.ReactElement => {
   if (primary) {
     deprecationWarning('NavList property primary is deprecated.  Use type')
   }

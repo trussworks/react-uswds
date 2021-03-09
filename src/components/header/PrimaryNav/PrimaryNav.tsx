@@ -12,18 +12,14 @@ type PrimaryNavProps = {
   mobileExpanded?: boolean
 }
 
-export const PrimaryNav = (
-  props: PrimaryNavProps & JSX.IntrinsicElements['nav']
-): React.ReactElement => {
-  const {
-    items,
-    onToggleMobileNav,
-    mobileExpanded,
-    children,
-    className,
-    ...navProps
-  } = props
-
+export const PrimaryNav = ({
+  items,
+  onToggleMobileNav,
+  mobileExpanded,
+  children,
+  className,
+  ...navProps
+}: PrimaryNavProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
   const classes = classnames(
     'usa-nav',
     {
