@@ -1,5 +1,5 @@
-import React from 'react'
-import { render } from '@testing-library/react'
+import React, { ReactNode } from 'react'
+import { fireEvent, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Tooltip } from './Tooltip'
@@ -25,8 +25,32 @@ describe('Tooltip component', () => {
     const { getByTestId } = render(
       <Tooltip label="Click me">My Tooltip</Tooltip>
     )
-    userEvent.hover(getByTestId('triggerElement'))
+    fireEvent.mouseEnter(getByTestId('triggerElement'))
     expect(getByTestId('tooltipBody')).toHaveClass('is-visible')
+  })
+
+  it('hides tooltip with mouse event', () => {
+    const { getByTestId } = render(
+      <Tooltip label="Click me">My Tooltip</Tooltip>
+    )
+    fireEvent.mouseLeave(getByTestId('triggerElement'))
+    expect(getByTestId('tooltipBody')).not.toHaveClass('is-visible')
+  })
+
+  it('shows tooltip with keyboard event', () => {
+    const { getByTestId } = render(
+      <Tooltip label="Click me">My Tooltip</Tooltip>
+    )
+    fireEvent.focus(getByTestId('triggerElement'))
+    expect(getByTestId('tooltipBody')).toHaveClass('is-visible')
+  })
+
+  it('hides tooltip with keyboard event', () => {
+    const { getByTestId } = render(
+      <Tooltip label="Click me">My Tooltip</Tooltip>
+    )
+    fireEvent.blur(getByTestId('triggerElement'))
+    expect(getByTestId('tooltipBody')).not.toHaveClass('is-visible')
   })
 
   describe('with a position prop', () => {
