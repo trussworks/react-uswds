@@ -615,6 +615,23 @@ describe('ComboBox component', () => {
       expect(onChange).toHaveBeenLastCalledWith('mango')
     })
 
+    it('switches focus when there are no filtered options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'zzz')
+      userEvent.tab()
+
+      expect(comboBoxInput).not.toHaveFocus()
+    })
+
     it('selects the focused option with enter', () => {
       const onChange = jest.fn()
       const { getByTestId } = render(

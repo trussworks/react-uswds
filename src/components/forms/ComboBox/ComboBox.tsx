@@ -144,11 +144,15 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     } else if (event.key === 'Tab') {
       // Clear button is not visible in this case so manually handle focus
       if (state.isOpen && !state.selectedOption) {
-        event.preventDefault()
-        dispatch({
-          type: ActionTypes.FOCUS_OPTION,
-          option: state.filteredOptions[0],
-        })
+        // If there are filtered options, prevent default
+        // If there are "No Results Found", tab over to prevent a keyboard trap
+        if (state.filteredOptions.length > 0) {
+          event.preventDefault()
+          dispatch({
+            type: ActionTypes.FOCUS_OPTION,
+            option: state.filteredOptions[0],
+          })
+        }
       }
     } else if (event.key === 'Enter' && state.inputValue !== '') {
       event.preventDefault()
