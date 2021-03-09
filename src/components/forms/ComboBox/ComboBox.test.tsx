@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox } from './ComboBox'
+import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 /*
@@ -835,6 +836,38 @@ describe('ComboBox component', () => {
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+    })
+
+    it('does not hijack focus while tabbing when another field has focus', () => {
+      const { getByTestId } = render(
+        <>
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+          <TextInput
+            id="input-Text"
+            name="input-Text"
+            type="text"
+            data-testid="input-Text"
+          />
+        </>
+      )
+      const comboBoxInput = getByTestId('combo-box-input')
+      const textInput = getByTestId('input-Text')
+
+      // Fill ComboBox
+      userEvent.type(comboBoxInput, 'Apple{enter}')
+
+      // Tab to next field (Text Input)
+      userEvent.tab()
+
+      // Fill text input
+      userEvent.type(textInput, 'Test 123')
+
+      expect(textInput).toHaveValue('Test 123')
     })
 
     xit('focuses the input when an option is focused and shift-tab is pressed', () => {
