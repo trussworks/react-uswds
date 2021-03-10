@@ -152,7 +152,17 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
             type: ActionTypes.FOCUS_OPTION,
             option: state.filteredOptions[0],
           })
+        } else {
+          dispatch({
+            type: ActionTypes.BLUR,
+          })
         }
+      }
+
+      if (!state.isOpen && state.selectedOption) {
+        dispatch({
+          type: ActionTypes.BLUR,
+        })
       }
     } else if (event.key === 'Enter' && state.inputValue !== '') {
       event.preventDefault()
