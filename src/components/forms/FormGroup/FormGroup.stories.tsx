@@ -9,11 +9,15 @@ export default {
   title: 'Components/Form elements/FormGroup',
   component: FormGroup,
   parameters: {
-    info: `
-USWDS 2.0 FormGroup component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 FormGroup component
 
 Source: https://designsystem.digital.gov/components/form-templates/
 `,
+      },
+    },
   },
 }
 

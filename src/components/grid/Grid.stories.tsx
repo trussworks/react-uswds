@@ -7,11 +7,15 @@ export default {
   title: 'Components/Grid',
   component: Grid,
   parameters: {
-    info: `
-USWDS 2.0 Grid components
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Grid components
 
 Source: https://designsystem.digital.gov/utilities/layout-grid/
 `,
+      },
+    },
   },
 }
 

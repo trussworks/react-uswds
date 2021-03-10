@@ -5,11 +5,15 @@ export default {
   title: 'Components/Header/PrimaryNav',
   component: PrimaryNav,
   parameters: {
-    info: `
-USWDS 2.0 PrimaryNav component used within the Header component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 PrimaryNav component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
+      },
+    },
   },
 }
 const mockToggle = (): void => {

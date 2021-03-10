@@ -6,11 +6,15 @@ export default {
   title: 'Components/Form controls/Range slider',
   component: RangeInput,
   parameters: {
-    info: `
-USWDS 2.0 RangeInput component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 RangeInput component
 
 Source: https://designsystem.digital.gov/components/form-controls/#range
 `,
+      },
+    },
   },
 }
 

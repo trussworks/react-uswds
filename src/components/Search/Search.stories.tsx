@@ -5,11 +5,15 @@ export default {
   title: 'Components/Search',
   component: Search,
   parameters: {
-    info: `
-USWDS 2.0 Search component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Search component
 
 Source: https://designsystem.digital.gov/components/search/
 `,
+      },
+    },
   },
 }
 

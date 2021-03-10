@@ -10,11 +10,15 @@ export default {
   title: 'Components/Form controls/Combo box',
   component: ComboBox,
   parameters: {
-    info: `
-USWDS 2.0 ComboBox component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 ComboBox component
 
 Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
 `,
+      },
+    },
   },
 }
 
