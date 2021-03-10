@@ -887,6 +887,36 @@ describe('ComboBox component', () => {
       expect(textInput).toHaveValue('Test 123')
     })
 
+    it('clears out the input when options list is closed and no matching options is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'a{enter}')
+      expect(comboBoxInput).toHaveValue('')
+    })
+
+    it('selected option if the input matches 100% of the label characters (case insensitive)', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'aPpLe{enter}')
+      expect(comboBoxInput).toHaveValue('Apple')
+    })
+
     xit('focuses the input when an option is focused and shift-tab is pressed', () => {
       const { getByTestId } = render(
         <ComboBox

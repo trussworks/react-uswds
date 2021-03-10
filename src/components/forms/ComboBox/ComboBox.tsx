@@ -164,9 +164,20 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
           type: ActionTypes.BLUR,
         })
       }
-    } else if (event.key === 'Enter' && state.inputValue !== '') {
+    } else if (event.key === 'Enter' && !state.selectedOption) {
       event.preventDefault()
-      dispatch({ type: ActionTypes.CLOSE_LIST })
+      const selectedOption = state.filteredOptions.find(
+        (option) =>
+          option.label.toLowerCase() === state.inputValue.toLowerCase()
+      )
+      if (selectedOption) {
+        dispatch({
+          type: ActionTypes.SELECT_OPTION,
+          option: selectedOption,
+        })
+      } else {
+        dispatch({ type: ActionTypes.CLEAR })
+      }
     }
   }
 
