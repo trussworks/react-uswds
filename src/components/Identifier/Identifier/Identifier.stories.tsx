@@ -1,15 +1,3 @@
-/* 
-
-what Storybook examples do we need?
-- default
-- default (spanish)
-- multiple parents and logos
-- multiple parents and logos (spanish)
-- no logos
-- taxpayer disclaimer
-- taxpayer disclaimer (spanish)
-
-*/
 import React from 'react'
 
 import { Identifier } from './Identifier'
@@ -27,3 +15,14 @@ export default {
 }
 
 export const defaultIdentifier = (): React.ReactElement => <Identifier />
+
+/* 
+what Storybook examples do we need?
+- default
+- default (spanish)
+- multiple parents and logos
+- multiple parents and logos (spanish)
+- no logos
+- taxpayer disclaimer
+- taxpayer disclaimer (spanish)
+*/
