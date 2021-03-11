@@ -21,7 +21,12 @@ import React from 'react'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 export const Identifier = (): React.ReactElement => {
-  return <div data-testid="identifier">Identifier component</div>
+  return (
+    <div data-testid="identifier">
+      Identifier component
+      <IdentifierGov />
+    </div>
+  )
 }
 
 export default Identifier
