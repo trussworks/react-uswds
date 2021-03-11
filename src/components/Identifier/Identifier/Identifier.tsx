@@ -17,3 +17,11 @@ Structure:
         - usagov description
         - visit usa.gov link
 */
+import React from 'react'
+import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
+
+export const Identifier = (): React.ReactElement => {
+  return <div data-testid="identifier">Identifier component</div>
+}
+
+export default Identifier

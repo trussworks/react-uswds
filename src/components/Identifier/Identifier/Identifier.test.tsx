@@ -14,3 +14,14 @@ Storybook examples
 - taxpayer disclaimer (spanish)
 
 */
+import React from 'react'
+import { render } from '@testing-library/react'
+
+import { Identifier } from './Identifier'
+
+describe('Identifier component', () => {
+  it('renders', () => {
+    const { queryByTestId } = render(<Identifier />)
+    expect(queryByTestId('identifier')).toBeInTheDocument()
+  })
+})
