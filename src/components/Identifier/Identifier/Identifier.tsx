@@ -8,7 +8,7 @@ export const Identifier = (): React.ReactElement => {
     <div data-testid="identifier">
       Identifier component
       <IdentifierMasthead />
-      <IdentifierLinks />
+      <IdentifierLinks links={[]} />
       <IdentifierGov />
     </div>
   )

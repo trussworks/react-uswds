@@ -8,4 +8,11 @@ describe('IdentifierLinks component', () => {
     const { queryByTestId } = render(<IdentifierLinks />)
     expect(queryByTestId('identifierLinks')).toBeInTheDocument()
   })
+
+  it('renders nav attributes passed in through props', () => {
+    const { queryByTestId } = render(
+      <IdentifierLinks aria-label="Important links" />
+    )
+    expect(queryByTestId('identifierLinks')).toHaveAttribute('aria-label')
+  })
 })

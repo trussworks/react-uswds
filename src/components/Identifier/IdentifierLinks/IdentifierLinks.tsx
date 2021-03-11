@@ -1,10 +1,36 @@
 import React from 'react'
+import classnames from 'classnames'
 
-export const IdentifierLinks = (): React.ReactElement => {
+type IdentifierLinksProps = {
+  links: React.ReactNode[]
+}
+
+export const IdentifierLinks = (
+  props: IdentifierLinksProps & JSX.IntrinsicElements['div']
+): React.ReactElement => {
+  const { className, links } = props
+  const classes = classnames(
+    'usa-identifier__section usa-identifier__section--required-links',
+    className
+  )
   return (
-    <section>
-      <div data-testid="identifierLinks">identifier links</div>
-    </section>
+    <nav
+      className={classes}
+      data-testid="identifierLinks"
+      aria-label="Important links">
+      <div className="usa-identifier__container">
+        <ul className="usa-identifier__required-links-list">
+          {links.map((link, i) => (
+            <li
+              key={`identifierLink${i}`}
+              className="usa-identifier__required-links-item">
+              {/* <a href="javascript:void(0);" className="usa-identifier__required-link">About &lt;Parent shortname&gt;</a> */}
+              {link}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   )
 }
 
