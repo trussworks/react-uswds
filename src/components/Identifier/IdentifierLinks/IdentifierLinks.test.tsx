@@ -8,7 +8,7 @@ const links = [
     Google
   </a>,
   <a key="identifierLinkOrWhatever" href="www.google.com">
-    Google again
+    google but with a small g
   </a>,
 ]
 
@@ -16,6 +16,15 @@ describe('IdentifierLinks component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<IdentifierLinks links={links} />)
     expect(queryByTestId('identifierLinks')).toBeInTheDocument()
+  })
+
+  it('renders custom styles', () => {
+    const { container } = render(
+      <IdentifierLinks className="custom-class" links={links} />
+    )
+    expect(
+      container.querySelector('.usa-identifier__section--required-links')
+    ).toHaveClass('custom-class')
   })
 
   it('renders nav attributes passed in through props', () => {
