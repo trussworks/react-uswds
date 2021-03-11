@@ -9,3 +9,11 @@ export const IdentifierLinks = (): React.ReactElement => {
 }
 
 export default IdentifierLinks
+
+/*
+- IdentifierLinks  <Nav>
+- Important links (class="usa-identifier__section usa-identifier__section--required-links”)
+    - container
+    - required links list
+        - required links item(s)
+*/
