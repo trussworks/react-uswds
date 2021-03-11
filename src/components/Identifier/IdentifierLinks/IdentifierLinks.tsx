@@ -19,14 +19,13 @@ export const IdentifierLinks = (
       data-testid="identifierLinks"
       aria-label="Important links">
       <div className="usa-identifier__container">
-        <ul className="usa-identifier__required-links-list">
+        <ul className="usa-identifier__required-links-list ">
           {links.map((link, i) => (
-            <li
+            <div
               key={`identifierLink${i}`}
               className="usa-identifier__required-links-item">
-              {/* <a href="javascript:void(0);" className="usa-identifier__required-link">About &lt;Parent shortname&gt;</a> */}
               {link}
-            </li>
+            </div>
           ))}
         </ul>
       </div>
