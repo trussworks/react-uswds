@@ -615,6 +615,23 @@ describe('ComboBox component', () => {
       expect(onChange).toHaveBeenLastCalledWith('mango')
     })
 
+    it('switches focus when there are no filtered options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'zzz')
+      userEvent.tab()
+
+      expect(comboBoxInput).not.toHaveFocus()
+    })
+
     it('selects the focused option with enter', () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
@@ -868,6 +885,36 @@ describe('ComboBox component', () => {
       userEvent.type(textInput, 'Test 123')
 
       expect(textInput).toHaveValue('Test 123')
+    })
+
+    it('clears out the input when options list is closed and no matching options is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'a{enter}')
+      expect(comboBoxInput).toHaveValue('')
+    })
+
+    it('selected option if the input matches 100% of the label characters (case insensitive)', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'aPpLe{enter}')
+      expect(comboBoxInput).toHaveValue('Apple')
     })
 
     xit('focuses the input when an option is focused and shift-tab is pressed', () => {
