@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-// import renderer from 'react-test-renderer'
 
 import { IdentifierGov } from './IdentifierGov'
 
@@ -16,10 +15,3 @@ describe('IdentifierGov component', () => {
     expect(queryByTestId('identifierGov')).toHaveAttribute('aria-label')
   })
 })
-
-// describe('static content', () => {
-//   it('renders consistently with default props', () => {
-//     const tree = renderer.create(<IdentifierGov />).toJSON()
-//     expect(tree).toMatchSnapshot()
-//   })
-// })
