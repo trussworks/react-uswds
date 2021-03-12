@@ -24,7 +24,7 @@ import {
 } from './utils'
 import { Calendar } from './Calendar'
 
-export interface DatePickerProps {
+interface BaseDatePickerProps {
   id: string
   name: string
   className?: string
@@ -38,8 +38,9 @@ export interface DatePickerProps {
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
   ) => void
-  inputProps?: JSX.IntrinsicElements['input']
 }
+
+export type DatePickerProps = BaseDatePickerProps & Omit<JSX.IntrinsicElements['input'], "onChange">
 
 export enum FocusMode {
   None,
@@ -60,7 +61,7 @@ export const DatePicker = (
     rangeDate,
     onChange,
     onBlur,
-    inputProps
+    ...inputProps
   } = props
 
   const datePickerEl = useRef<HTMLDivElement>(null)
