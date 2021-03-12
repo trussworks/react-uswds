@@ -8,6 +8,7 @@ describe('IdentifierGov component', () => {
     const { queryByTestId } = render(<IdentifierGov />)
     expect(queryByTestId('identifierGov')).toBeInTheDocument()
   })
+
   it('renders section attributes passed in through props', () => {
     const { queryByTestId } = render(
       <IdentifierGov aria-label="U.S. government information and services" />

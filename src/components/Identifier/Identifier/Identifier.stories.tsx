@@ -8,7 +8,7 @@ export default {
   component: Identifier,
   parameters: {
     info: `
-  USWDS 2.0 Identifier component
+  USWDS 2.9 Identifier component
   
   Source: https://designsystem.digital.gov/components/identifier/
   `,

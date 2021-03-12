@@ -1,10 +1,18 @@
 import React from 'react'
 import classnames from 'classnames'
 
+type Language = 'english' | 'spanish'
+
+// interface IdentifierGovCopy {usagov-description, usa-link}
+
+interface IdentifierGovProps {
+  language?: Language
+}
+
 export const IdentifierGov = (
-  props: JSX.IntrinsicElements['section']
+  props: IdentifierGovProps & JSX.IntrinsicElements['section']
 ): React.ReactElement => {
-  const { className, ...sectionProps } = props
+  const { language = 'english', className, ...sectionProps } = props
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--usagov',
     className
