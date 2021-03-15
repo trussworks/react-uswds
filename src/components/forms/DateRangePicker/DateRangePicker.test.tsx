@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAllByTestId, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { DateRangePicker } from './DateRangePicker'
 import userEvent from '@testing-library/user-event'
@@ -23,10 +23,18 @@ describe("DateRangePicker component", () => {
       />
     )
 
-    const dateRangePicker = getByTestId('date-range-picker') 
+    const dateRangePicker = getByTestId('date-range-picker')
     expect(dateRangePicker).toBeInTheDocument()
     expect(dateRangePicker).toHaveClass('usa-date-range-picker')
-    expect(getAllByTestId('date-picker')).toHaveLength(2)
+    
+    const datePickers = getAllByTestId('date-picker')
+    expect(datePickers).toHaveLength(2)
+    
+    const startDatePicker = datePickers[0]
+    const endDatePicker = datePickers[1]
+    expect(startDatePicker).toHaveClass('usa-date-range-picker__range-start')
+    expect(endDatePicker).toHaveClass('usa-date-range-picker__range-end')
+    
   })
 
   it('renders labels when specified', () => {
@@ -42,7 +50,14 @@ describe("DateRangePicker component", () => {
     const dateRangePicker = getByTestId('date-range-picker') 
     expect(dateRangePicker).toBeInTheDocument()
     expect(dateRangePicker).toHaveClass('usa-date-range-picker')
-    expect(getAllByTestId('date-picker')).toHaveLength(2)
+    
+    const datePickers = getAllByTestId('date-picker')
+    expect(datePickers).toHaveLength(2)
+    
+    const startDatePicker = datePickers[0]
+    const endDatePicker = datePickers[1]
+    expect(startDatePicker).toHaveClass('usa-date-range-picker__range-start')
+    expect(endDatePicker).toHaveClass('usa-date-range-picker__range-end')
     
     const startDateLabel = queryByText("Start Date")
     expect(startDateLabel).toBeInTheDocument()
@@ -65,7 +80,7 @@ describe("DateRangePicker component", () => {
 
     const dateRangePicker = getByTestId('date-range-picker') 
     expect(dateRangePicker).toBeInTheDocument()
-    expect(dateRangePicker).toHaveClass('usa-date-range-picker')
+    expect(dateRangePicker).toHaveClass('usa-date-range-picker ')
     expect(getAllByTestId('date-picker')).toHaveLength(2)
     
     const startDateLabel = queryByText("start date format: mm/dd/yyyy")

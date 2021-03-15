@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { DEFAULT_EXTERNAL_DATE_FORMAT } from '../DatePicker/constants'
 import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker'
 import { formatDate, parseDateString } from '../DatePicker/utils'
+import { FormGroup } from '../FormGroup/FormGroup'
+import { Label } from '../Label/Label'
 
 interface DateRangePickerProps {
   startDateLabel?: string
@@ -108,17 +110,18 @@ export const DateRangePicker = (
   )
   
   const classes = classnames(className, 'usa-date-range-picker')
+  const startDatePickerClasses = classnames(startDatePickerProps.className, 'usa-date-range-picker__range-start')
+  const endDatePickerClasses = classnames(endDatePickerProps.className, 'usa-date-range-picker__range-end')
 
   return (
     <div className={classes} data-testid="date-range-picker">
-      <div className="usa-form-group">
+      <FormGroup>
         {startDateLabel && 
-        <label 
-          className="usa-label" 
+        <Label 
           id={`${startDatePickerProps.id}-label`} 
           htmlFor={startDatePickerProps.id}>
           {startDateLabel}
-        </label>}
+        </Label>}
         {startDateHint && 
         <div 
           className="usa-hint" 
@@ -126,21 +129,21 @@ export const DateRangePicker = (
           {startDateHint}
         </div>}
         <DatePicker
+          className={startDatePickerClasses}
           rangeDate={endDateInternalValue} 
           { ...startDatePickerProps } 
           onChange={startDatePickerOnChange} 
           maxDate={getMaxStartDate()}
         />
-      </div>
+      </FormGroup>
 
-      <div className="usa-form-group">
+      <FormGroup>
         {endDateLabel && 
-        <label 
-          className="usa-label" 
+        <Label
           id={`${endDatePickerProps.id}-label`} 
           htmlFor={endDatePickerProps.id}>
           {endDateLabel}
-        </label>}
+        </Label>}
         {endDateHint && 
         <div 
           className="usa-hint" 
@@ -148,12 +151,13 @@ export const DateRangePicker = (
           {endDateHint}
         </div>}
         <DatePicker 
+          className={endDatePickerClasses}
           rangeDate={startDateInternalValue} 
           { ...endDatePickerProps } 
           onChange={endDatePickerOnChange}
           minDate={getMinEndDate()}
         />
-      </div>
+      </FormGroup>
     </div>
   )
 }

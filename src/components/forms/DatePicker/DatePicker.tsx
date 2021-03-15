@@ -53,6 +53,7 @@ export const DatePicker = (
   const {
     id,
     name,
+    className,
     defaultValue,
     disabled,
     required,
@@ -242,7 +243,8 @@ export const DatePicker = (
     'usa-date-picker--initialized',
     {
       'usa-date-picker--active': showCalendar,
-    }
+    },
+    className
   )
 
   return (
