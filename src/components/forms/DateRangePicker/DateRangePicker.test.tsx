@@ -80,7 +80,7 @@ describe("DateRangePicker component", () => {
 
     const dateRangePicker = getByTestId('date-range-picker') 
     expect(dateRangePicker).toBeInTheDocument()
-    expect(dateRangePicker).toHaveClass('usa-date-range-picker ')
+    expect(dateRangePicker).toHaveClass('usa-date-range-picker')
     expect(getAllByTestId('date-picker')).toHaveLength(2)
     
     const startDateLabel = queryByText("start date format: mm/dd/yyyy")
