@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox } from './ComboBox'
+import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 /*
@@ -482,6 +483,25 @@ describe('ComboBox component', () => {
       fireEvent.blur(getByTestId('combo-box-clear-button'))
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
+
+    it('focuses the input after clearing when the when FocusMode is None', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'b')
+      userEvent.click(getByTestId('outside'))
+      userEvent.click(getByTestId('combo-box-clear-button'))
+      expect(getByTestId('combo-box-input')).toHaveFocus()
+    })
   })
 
   it('clears input value and closes list when an incomplete item is remaining on blur', () => {
@@ -593,6 +613,23 @@ describe('ComboBox component', () => {
 
       expect(getByTestId('combo-box-input')).toHaveValue('Mango')
       expect(onChange).toHaveBeenLastCalledWith('mango')
+    })
+
+    it('switches focus when there are no filtered options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'zzz')
+      userEvent.tab()
+
+      expect(comboBoxInput).not.toHaveFocus()
     })
 
     it('selects the focused option with enter', () => {
@@ -816,6 +853,68 @@ describe('ComboBox component', () => {
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+    })
+
+    it('does not hijack focus while tabbing when another field has focus', () => {
+      const { getByTestId } = render(
+        <>
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+          <TextInput
+            id="input-Text"
+            name="input-Text"
+            type="text"
+            data-testid="input-Text"
+          />
+        </>
+      )
+      const comboBoxInput = getByTestId('combo-box-input')
+      const textInput = getByTestId('input-Text')
+
+      // Fill ComboBox
+      userEvent.type(comboBoxInput, 'Apple{enter}')
+
+      // Tab to next field (Text Input)
+      userEvent.tab()
+
+      // Fill text input
+      userEvent.type(textInput, 'Test 123')
+
+      expect(textInput).toHaveValue('Test 123')
+    })
+
+    it('clears out the input when options list is closed and no matching options is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'a{enter}')
+      expect(comboBoxInput).toHaveValue('')
+    })
+
+    it('selected option if the input matches 100% of the label characters (case insensitive)', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.type(comboBoxInput, 'aPpLe{enter}')
+      expect(comboBoxInput).toHaveValue('Apple')
     })
 
     xit('focuses the input when an option is focused and shift-tab is pressed', () => {
@@ -1057,6 +1156,24 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-yuzu')).toHaveClass(
         'usa-combo-box__list-option--focused'
       )
+    })
+
+    it('clears focus when clicking outside of the component', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      userEvent.click(getByTestId('outside'))
+      expect(getByTestId('combo-box-input')).not.toHaveFocus()
     })
   })
 
