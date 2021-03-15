@@ -20,11 +20,11 @@ const ExamplePage = (): React.ReactElement => (
       </li>
       <li>
         <USWDSLink
-          to="/modals"
+          to="/icons"
           asCustom={Link}
           variant="external"
           target="_blank">
-          Modals
+          Icons
         </USWDSLink>
       </li>
     </ul>
