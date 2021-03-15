@@ -113,25 +113,40 @@ export const DateRangePicker = (
   const startDatePickerClasses = classnames(startDatePickerProps.className, 'usa-date-range-picker__range-start')
   const endDatePickerClasses = classnames(endDatePickerProps.className, 'usa-date-range-picker__range-end')
 
+  const startDatePickerLabelId = `${startDatePickerProps.id}-label`
+  const startDatePickerHintId = `${startDatePickerProps.id}-hint`
+  const startDatePickerAriaDescribedBy = [
+    startDateLabel && startDatePickerLabelId, 
+    startDateHint && startDatePickerHintId
+  ].join(" ").trim() || undefined
+
+  const endDatePickerLabelId = `${endDatePickerProps.id}-label`
+  const endDatePickerHintId = `${endDatePickerProps.id}-hint`
+  const endDatePickerAriaDescribedBy = [
+    endDateLabel && endDatePickerLabelId, 
+    endDateHint && endDatePickerHintId
+  ].join(" ").trim() || undefined
+
   return (
     <div className={classes} data-testid="date-range-picker">
       <FormGroup>
         {startDateLabel && 
-        <Label 
-          id={`${startDatePickerProps.id}-label`} 
+        <Label
+          id={startDatePickerLabelId} 
           htmlFor={startDatePickerProps.id}>
           {startDateLabel}
         </Label>}
         {startDateHint && 
         <div 
           className="usa-hint" 
-          id={`${startDatePickerProps.id}-hint`}>
+          id={startDatePickerHintId}>
           {startDateHint}
         </div>}
         <DatePicker
           className={startDatePickerClasses}
           rangeDate={endDateInternalValue} 
-          { ...startDatePickerProps } 
+          { ...startDatePickerProps }
+          aria-describedby={startDatePickerAriaDescribedBy}
           onChange={startDatePickerOnChange} 
           maxDate={getMaxStartDate()}
         />
@@ -140,20 +155,21 @@ export const DateRangePicker = (
       <FormGroup>
         {endDateLabel && 
         <Label
-          id={`${endDatePickerProps.id}-label`} 
+          id={endDatePickerLabelId} 
           htmlFor={endDatePickerProps.id}>
           {endDateLabel}
         </Label>}
         {endDateHint && 
         <div 
           className="usa-hint" 
-          id={`${endDatePickerProps.id}-hint`}>
+          id={endDatePickerHintId}>
           {endDateHint}
         </div>}
-        <DatePicker 
+        <DatePicker
           className={endDatePickerClasses}
           rangeDate={startDateInternalValue} 
-          { ...endDatePickerProps } 
+          { ...endDatePickerProps }
+          aria-describedby={endDatePickerAriaDescribedBy}
           onChange={endDatePickerOnChange}
           minDate={getMinEndDate()}
         />
