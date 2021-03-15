@@ -106,13 +106,7 @@ export const withOtherFields = (): React.ReactElement => {
   return (
     <Form onSubmit={noop}>
       <Label htmlFor="fruit">Select a Fruit</Label>
-      <ComboBox
-        id="fruit"
-        name="fruit"
-        options={fruitList}
-        onChange={noop}
-        defaultValue="avocado"
-      />
+      <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
       <Label htmlFor="fruitDescription">Description</Label>
       <TextInput id="fruitDescription" name="fruitDescription" type="text" />
     </Form>

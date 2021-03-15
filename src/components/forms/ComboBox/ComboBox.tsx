@@ -115,7 +115,7 @@ export const ComboBox = ({
     ) {
       itemRef.current.focus()
     }
-  })
+  }, [state.focusMode, state.focusedOption])
 
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
@@ -141,15 +141,40 @@ export const ComboBox = ({
     } else if (event.key === 'Tab') {
       // Clear button is not visible in this case so manually handle focus
       if (state.isOpen && !state.selectedOption) {
-        event.preventDefault()
+        // If there are filtered options, prevent default
+        // If there are "No Results Found", tab over to prevent a keyboard trap
+        if (state.filteredOptions.length > 0) {
+          event.preventDefault()
+          dispatch({
+            type: ActionTypes.FOCUS_OPTION,
+            option: state.filteredOptions[0],
+          })
+        } else {
+          dispatch({
+            type: ActionTypes.BLUR,
+          })
+        }
+      }
+
+      if (!state.isOpen && state.selectedOption) {
         dispatch({
-          type: ActionTypes.FOCUS_OPTION,
-          option: state.filteredOptions[0],
+          type: ActionTypes.BLUR,
         })
       }
-    } else if (event.key === 'Enter' && state.inputValue !== '') {
+    } else if (event.key === 'Enter' && !state.selectedOption) {
       event.preventDefault()
-      dispatch({ type: ActionTypes.CLOSE_LIST })
+      const selectedOption = state.filteredOptions.find(
+        (option) =>
+          option.label.toLowerCase() === state.inputValue.toLowerCase()
+      )
+      if (selectedOption) {
+        dispatch({
+          type: ActionTypes.SELECT_OPTION,
+          option: selectedOption,
+        })
+      } else {
+        dispatch({ type: ActionTypes.CLEAR })
+      }
     }
   }
 
