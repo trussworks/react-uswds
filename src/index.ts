@@ -71,15 +71,3 @@ export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
 export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
 
 export { Search } from './components/Search/Search'
-
-/** Truss-designed components */
-export {
-  Modal,
-  Overlay,
-  ModalContainer,
-  connectModal,
-  useModal,
-} from './components/Modal/Modal'
-
-// Types and interfaces should be exported separately
-export type { ConnectedModalProps, ModalHook } from './components/Modal/Modal'
