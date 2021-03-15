@@ -42,6 +42,14 @@ describe("DateRangePicker component", () => {
     const endDatePickerInternalInput = internalInputs[1]
     expect(startDatePickerInternalInput).not.toHaveAttribute("aria-describedby")
     expect(endDatePickerInternalInput).not.toHaveAttribute("aria-describedby")
+
+    const externalInputs = getAllByTestId('date-picker-external-input')
+    expect(externalInputs).toHaveLength(2)
+
+    const startDatePickerExternalInput = externalInputs[0]
+    const endDatePickerExternalInput = externalInputs[1]
+    expect(startDatePickerExternalInput).not.toHaveAttribute("aria-describedby")
+    expect(endDatePickerExternalInput).not.toHaveAttribute("aria-describedby")
   })
 
   it('renders labels when specified', () => {
@@ -81,6 +89,14 @@ describe("DateRangePicker component", () => {
     const endDatePickerInternalInput = internalInputs[1]
     expect(startDatePickerInternalInput).toHaveAttribute("aria-describedby", "start-date-label")
     expect(endDatePickerInternalInput).toHaveAttribute("aria-describedby", "end-date-label")
+
+    const externalInputs = getAllByTestId('date-picker-external-input')
+    expect(externalInputs).toHaveLength(2)
+
+    const startDatePickerExternalInput = externalInputs[0]
+    const endDatePickerExternalInput = externalInputs[1]
+    expect(startDatePickerExternalInput).toHaveAttribute("aria-describedby", "start-date-label")
+    expect(endDatePickerExternalInput).toHaveAttribute("aria-describedby", "end-date-label")
   })
 
   it('renders hints when specified', () => {
@@ -113,6 +129,14 @@ describe("DateRangePicker component", () => {
     const endDatePickerInternalInput = internalInputs[1]
     expect(startDatePickerInternalInput).toHaveAttribute("aria-describedby", "start-date-hint")
     expect(endDatePickerInternalInput).toHaveAttribute("aria-describedby", "end-date-hint")
+
+    const externalInputs = getAllByTestId('date-picker-external-input')
+    expect(externalInputs).toHaveLength(2)
+
+    const startDatePickerExternalInput = externalInputs[0]
+    const endDatePickerExternalInput = externalInputs[1]
+    expect(startDatePickerExternalInput).toHaveAttribute("aria-describedby", "start-date-hint")
+    expect(endDatePickerExternalInput).toHaveAttribute("aria-describedby", "end-date-hint")
   })
 
   it('renders labels and hints simultaneously, properly populating the aria-describedby property on each DatePicker', () => {
@@ -155,6 +179,14 @@ describe("DateRangePicker component", () => {
     const endDatePickerInternalInput = internalInputs[1]
     expect(startDatePickerInternalInput).toHaveAttribute("aria-describedby", "start-date-label start-date-hint")
     expect(endDatePickerInternalInput).toHaveAttribute("aria-describedby", "end-date-label end-date-hint")
+
+    const externalInputs = getAllByTestId('date-picker-external-input')
+    expect(externalInputs).toHaveLength(2)
+
+    const startDatePickerExternalInput = externalInputs[0]
+    const endDatePickerExternalInput = externalInputs[1]
+    expect(startDatePickerExternalInput).toHaveAttribute("aria-describedby", "start-date-label start-date-hint")
+    expect(endDatePickerExternalInput).toHaveAttribute("aria-describedby", "end-date-label end-date-hint")
   })
 
   it('allows a date range to be selected by using both date pickers to pick start and end dates', () => {
