@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import content from './content'
 
 type Language = 'english' | 'spanish'
 
@@ -21,7 +22,7 @@ export const IdentifierGov = (
     <section data-testid="identifierGov" className={classes} {...sectionProps}>
       <div className="usa-identifier__container">
         <div className="usa-identifier__usagov-description">
-          Looking for U.S. government information and services?
+          {content.en.usaGovDescription}
           <a href="https://www.usa.gov/" className="usa-link">
             Visit USA.gov
           </a>
