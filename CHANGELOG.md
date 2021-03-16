@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.2](https://github.com/trussworks/react-uswds/compare/1.13.1...1.13.2) (2021-03-11)
+
+
+### Bug Fixes
+
+* ComboBox "keyboard trap" and misc bugs ([#1010](https://github.com/trussworks/react-uswds/issues/1010)) ([50aef22](https://github.com/trussworks/react-uswds/commit/50aef22b3dcccad7da165e023bb05fe921e0af98))
+
 ### [1.13.1](https://github.com/trussworks/react-uswds/compare/1.13.0...1.13.1) (2021-03-08)
 
 

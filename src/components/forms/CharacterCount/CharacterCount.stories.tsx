@@ -7,11 +7,15 @@ import { Label } from '../Label/Label'
 export default {
   title: 'Components/Form controls/CharacterCount',
   parameters: {
-    info: `
-USWDS 2.0 Character count component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Character count component
 
 Source: https://designsystem.digital.gov/components/form-controls/#character-count
 `,
+      },
+    },
   },
 }
 const mockSubmit = (): void => {

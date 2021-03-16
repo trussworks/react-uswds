@@ -12,19 +12,15 @@ type NavDropDownButtonProps = {
   isCurrent?: boolean
 }
 
-export const NavDropDownButton = (
-  props: NavDropDownButtonProps & JSX.IntrinsicElements['button']
-): React.ReactElement => {
-  const {
-    label,
-    menuId,
-    isOpen,
-    onToggle,
-    isCurrent,
-    className,
-    ...buttonProps
-  } = props
-
+export const NavDropDownButton = ({
+  label,
+  menuId,
+  isOpen,
+  onToggle,
+  isCurrent,
+  className,
+  ...buttonProps
+}: NavDropDownButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
   const classes = classnames(
     'usa-accordion__button',
     'usa-nav__link',

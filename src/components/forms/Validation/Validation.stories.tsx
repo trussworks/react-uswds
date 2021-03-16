@@ -13,11 +13,15 @@ export default {
   component: ValidationChecklist,
   subcomponents: { ValidationItem },
   parameters: {
-    info: `
-USWDS 2.0 Validation component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Validation component
 
 Source: https://designsystem.digital.gov/components/form-controls/#validation
 `,
+      },
+    },
   },
 }
 

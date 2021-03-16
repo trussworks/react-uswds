@@ -5,9 +5,13 @@ export default {
   title: 'Components/Typography/Link',
   component: Link,
   parameters: {
-    info: `Link component
-
-    Based on Typography guide: https://designsystem.digital.gov/components/typography/#links`,
+    docs: {
+      description: {
+        component: `
+Based on Typography guide: https://designsystem.digital.gov/components/typography/#links
+`,
+      },
+    },
   },
 }
 

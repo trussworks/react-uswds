@@ -5,11 +5,15 @@ export default {
   title: 'Components/Form controls/Textarea',
   component: Textarea,
   parameters: {
-    info: `
-USWDS 2.0 Textarea component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Textarea component
 
 Source: https://designsystem.digital.gov/components/form-controls/#text-input
 `,
+      },
+    },
   },
 }
 

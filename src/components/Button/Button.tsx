@@ -26,10 +26,7 @@ interface ButtonProps {
   unstyled?: boolean
 }
 
-export const Button = (
-  props: ButtonProps & JSX.IntrinsicElements['button']
-): React.ReactElement => {
-  const {
+export const Button = ({
     type,
     children,
     secondary,
@@ -45,7 +42,7 @@ export const Button = (
     onClick,
     className,
     ...defaultProps
-  } = props
+  }: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
 
   if (big) {
     deprecationWarning('Button property big is deprecated.  Use size')

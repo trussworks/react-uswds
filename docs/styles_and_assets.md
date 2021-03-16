@@ -76,7 +76,9 @@ $theme-hero-image: '~uswds/src/img/hero.png';
 
 ### Icons
 
-[USWDS recommends using Font Awesome](https://designsystem.digital.gov/components/icons/), and that project [provides a package for use with React](https://github.com/FortAwesome/react-fontawesome).
+> **NOTE:** Newer USWDS versions have implemented [icons as a part of the USWDS](https://designsystem.digital.gov/components/icons/). These are on the `react-uswds` road map via [#992](https://github.com/trussworks/react-uswds/issues/992). This documentation will be updated once the `react-uswds` implementation is complete.
+
+USWDS previously recommended using [Font Awesome](https://fontawesome.com/), which [provides a package for use with React](https://github.com/FortAwesome/react-fontawesome).
 
 To add this to your project, install react-font-awesome and at least one style of icon:
 

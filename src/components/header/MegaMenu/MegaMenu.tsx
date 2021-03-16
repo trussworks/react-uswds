@@ -8,10 +8,9 @@ type MegaMenuProps = {
   isOpen: boolean
 }
 
-export const MegaMenu = (
-  props: MegaMenuProps & NavListProps
-): React.ReactElement => {
-  const { items, isOpen, className, ...navListProps } = props
+export const MegaMenu = ({ 
+  items, isOpen, className, ...navListProps 
+}: MegaMenuProps & NavListProps): React.ReactElement => {
   const classes = classnames('usa-nav__submenu usa-megamenu', className)
 
   return (
