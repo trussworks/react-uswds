@@ -4,10 +4,9 @@ import content from './content'
 
 type Language = 'english' | 'spanish'
 
-// interface IdentifierGovCopy {usagov-description, usa-link}
-
 interface IdentifierGovProps {
   language?: Language
+  className?: string
 }
 
 export const IdentifierGov = (
@@ -18,13 +17,20 @@ export const IdentifierGov = (
     'usa-identifier__section usa-identifier__section--usagov',
     className
   )
+  const { en, es } = content
+
   return (
     <section data-testid="identifierGov" className={classes} {...sectionProps}>
       <div className="usa-identifier__container">
-        <div className="usa-identifier__usagov-description">
-          {content.en.usaGovDescription}
-          <a href="https://www.usa.gov/" className="usa-link">
-            Visit USA.gov
+        <div
+          data-testid="identifierGov-description"
+          className="usa-identifier__usagov-description">
+          {en.usaGovDescription}
+          <a
+            data-testid="identifierGov-link"
+            href={en.visitGovUrl}
+            className="usa-link">
+            {en.visitGovCopy}
           </a>
         </div>
       </div>
@@ -33,11 +39,3 @@ export const IdentifierGov = (
 }
 
 export default IdentifierGov
-
-/*
-- IdentifierGov  <Section>
-- U.S gov’t info and services (class="usa-identifier__section usa-identifier__section--usagov”)
-    - container
-        - usagov description
-        - visit usa.gov link
-*/

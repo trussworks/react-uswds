@@ -17,38 +17,40 @@ export default {
 
 export const identifierDefault = (): React.ReactElement => <Identifier />
 
-/* 
-what Storybook examples do we need?
-
-- default
-**export const identifierEnglish = (): React.ReactElement => <Identifier />
-
-
-- default (spanish)
 export const identifierSpanish = (): React.ReactElement => <Identifier />
 
+export const identifierMultipleLogosEnglish = (): React.ReactElement => (
+  <Identifier />
+)
+
+export const identifierMultipleLogosSpanish = (): React.ReactElement => (
+  <Identifier />
+)
+
+export const identifierNoLogosEnglish = (): React.ReactElement => <Identifier />
+
+export const identifierNoLogosSpanish = (): React.ReactElement => <Identifier />
+
+export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
+  <Identifier />
+)
+
+export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
+  <Identifier />
+)
+
+/* 
+USWDS STORYBOOK EXAMPLES
+
+- default
+- default (spanish)
 
 - multiple parents and logos
-export const identifierMultipleEnglish = (): React.ReactElement => (
-  <Identifier />
-)
-
-
 - multiple parents and logos (spanish)
-export const identifierMultipleSpanish = (): React.ReactElement => (
-  <Identifier />
-)
 
-
-- no logos
-export const identifierNoLogoEnglish = (): React.ReactElement => <Identifier />
-**export const identifierNoLogoSpanish = (): React.ReactElement => <Identifier />
-
+- no logos 
+// does not have an example for spanish
 
 - taxpayer disclaimer
-export const identifierDisclaimerEnglish = (): React.ReactElement => <Identifier />
-
-
 - taxpayer disclaimer (spanish)
-export const identifierDisclaimerSpanish = (): React.ReactElement => <Identifier />
 */
