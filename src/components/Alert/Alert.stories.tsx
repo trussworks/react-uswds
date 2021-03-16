@@ -7,11 +7,15 @@ export default {
   title: 'Components/Alert',
   component: Alert,
   parameters: {
-    info: `
-USWDS 2.0 Alert component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Alert component
 
 Source: https://designsystem.digital.gov/components/alert/
 `,
+      },
+    },
   },
 }
 

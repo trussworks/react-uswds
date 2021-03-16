@@ -16,11 +16,15 @@ export default {
   title: 'Components/Form templates',
   component: Form,
   parameters: {
-    info: `
-USWDS 2.0 Form component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Form component
 
 Source: https://designsystem.digital.gov/components/form-templates/
 `,
+      },
+    },
   },
 }
 

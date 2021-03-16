@@ -10,16 +10,13 @@ interface BreadcrumbBarProps {
   listProps?: JSX.IntrinsicElements['ol']
 }
 
-export const BreadcrumbBar = (
-  props: BreadcrumbBarProps
-): React.ReactElement => {
-  const {
-    variant = 'default',
-    children,
-    className,
-    navProps,
-    listProps,
-  } = props
+export const BreadcrumbBar = ({
+  variant = 'default',
+  children,
+  className,
+  navProps,
+  listProps,
+}: BreadcrumbBarProps): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb',
     {

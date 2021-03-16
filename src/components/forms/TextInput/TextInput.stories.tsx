@@ -5,11 +5,15 @@ export default {
   title: 'Components/Form controls/Text input',
   component: TextInput,
   parameters: {
-    info: `
-USWDS 2.0 TextInput component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 TextInput component
 
 Source: https://designsystem.digital.gov/components/form-controls/#text-input
 `,
+      },
+    },
   },
 }
 

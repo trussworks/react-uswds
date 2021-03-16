@@ -8,18 +8,14 @@ interface HeaderProps {
   children: React.ReactNode
 }
 
-export const Header = (
-  props: HeaderProps & JSX.IntrinsicElements['header']
-): React.ReactElement => {
-  const {
-    basic,
-    extended,
-    basicWithMegaMenu,
-    children,
-    className,
-    ...headerProps
-  } = props
-
+export const Header = ({
+  basic,
+  extended,
+  basicWithMegaMenu,
+  children,
+  className,
+  ...headerProps
+}: HeaderProps & JSX.IntrinsicElements['header']): React.ReactElement => {
   const classes = classnames(
     'usa-header',
     {

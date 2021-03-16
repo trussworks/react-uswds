@@ -10,11 +10,15 @@ export default {
   title: 'Components/Form controls/Combo box',
   component: ComboBox,
   parameters: {
-    info: `
-USWDS 2.0 ComboBox component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 ComboBox component
 
 Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
 `,
+      },
+    },
   },
 }
 
@@ -102,13 +106,7 @@ export const withOtherFields = (): React.ReactElement => {
   return (
     <Form onSubmit={noop}>
       <Label htmlFor="fruit">Select a Fruit</Label>
-      <ComboBox
-        id="fruit"
-        name="fruit"
-        options={fruitList}
-        onChange={noop}
-        defaultValue="avocado"
-      />
+      <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
       <Label htmlFor="fruitDescription">Description</Label>
       <TextInput id="fruitDescription" name="fruitDescription" type="text" />
     </Form>

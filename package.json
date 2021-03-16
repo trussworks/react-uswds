@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.13.0",
+  "version": "1.13.2",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -119,7 +119,7 @@
     "stylelint": "^13.3.0",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^8.0.1",
-    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended": "^4.0.0",
     "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-prettier": "^1.1.1",
     "stylelint-scss": "^3.17.1",

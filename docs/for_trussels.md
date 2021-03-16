@@ -30,7 +30,7 @@ Regardless of whether you are on client work or Reserve, it is _up to each indiv
 
 Typically any security alerts we receive will be related to third-party dependencies. This repo is currently configured so that Dependabot will automatically open PRs that fix dependency vulnerabilities, so ideally most of the time manual intervention is not needed. There may also be periods of time during which an alert is issued, but the related dependencies have not yet updated -- in this case, we usually choose to accept the risk of waiting until the updates have been released. However, if an exceptional case comes up -- such as a high severity vulnerability or even a vulnerability within this library -- and you aren't sure how to handle it, you can ask for help in one of the following Truss Slack channels (in order of relevance): #react-uswds, #g-frontend, #infrasec, #engineering
 
-### Merging External PRS
+### Merging External PRs
 
 Currently our CI cannot run on external PRs (work from outside the Truss organization) and this prevents merge. Instead, we pull PRs into a separate branch that a CODEOWNER creates [using this script](https://github.com/jklukas/git-push-fork-to-upstream-branch). We then close the external contribution PR [with a comment](https://github.com/trussworks/react-uswds/pull/375#issuecomment-668116811) explaining what's going. This allows automation to run properly. This is temporary solution.
 

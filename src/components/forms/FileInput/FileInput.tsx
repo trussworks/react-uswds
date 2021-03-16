@@ -15,21 +15,18 @@ interface FileInputProps {
   inputRef?: React.RefObject<HTMLInputElement>
 }
 
-export const FileInput = (
-  props: FileInputProps & JSX.IntrinsicElements['input']
-): React.ReactElement => {
-  const {
-    name,
-    id,
-    disabled,
-    multiple,
-    className,
-    accept,
-    onChange,
-    onDrop,
-    inputRef,
-    ...inputProps
-  } = props
+export const FileInput = ({
+  name,
+  id,
+  disabled,
+  multiple,
+  className,
+  accept,
+  onChange,
+  onDrop,
+  inputRef,
+  ...inputProps
+}: FileInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
   const [files, setFiles] = useState<FileList | null>(null)

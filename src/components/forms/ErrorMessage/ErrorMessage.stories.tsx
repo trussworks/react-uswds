@@ -5,11 +5,15 @@ export default {
   title: 'Components/Form elements/ErrorMessage',
   component: ErrorMessage,
   parameters: {
-    info: `
-USWDS 2.0 ErrorMessage component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 ErrorMessage component
 
 Source: https://designsystem.digital.gov/components/form-controls/
 `,
+      },
+    },
   },
 }
 

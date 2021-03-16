@@ -5,11 +5,15 @@ export default {
   title: 'Components/Tag',
   component: Tag,
   parameters: {
-    info: `
-USWDS 2.0 Tag component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Tag component
 
 Source: https://designsystem.digital.gov/components/tag/
 `,
+      },
+    },
   },
 }
 
