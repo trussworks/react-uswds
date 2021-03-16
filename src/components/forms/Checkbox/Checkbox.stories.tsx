@@ -5,11 +5,15 @@ export default {
   title: 'Components/Form controls/Checkbox',
   component: Checkbox,
   parameters: {
-    info: `
-USWDS 2.0 Checkbox component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Checkbox component
 
 Source: https://designsystem.digital.gov/components/form-controls/#checkbox
 `,
+      },
+    },
   },
 }
 

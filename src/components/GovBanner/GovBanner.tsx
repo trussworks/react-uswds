@@ -101,15 +101,12 @@ interface GovBannerProps {
   language?: Language
 }
 
-export const GovBanner = (
-  props: GovBannerProps & JSX.IntrinsicElements['section']
-): React.ReactElement => {
-  const {
-    tld = '.gov',
-    language = 'english',
-    className,
-    ...sectionProps
-  } = props
+export const GovBanner = ({
+  tld = '.gov',
+  language = 'english',
+  className,
+  ...sectionProps
+}: GovBannerProps & JSX.IntrinsicElements['section']): React.ReactElement => {
   const [isOpen, setOpenState] = useState(false)
 
   const classes = classnames('usa-banner', className)
