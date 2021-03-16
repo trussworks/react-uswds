@@ -19,20 +19,16 @@ export interface TextareaProps {
   inputRef?: TextareaRef
 }
 
-export const Textarea = (
-  props: TextareaProps & JSX.IntrinsicElements['textarea']
-): React.ReactElement => {
-  const {
-    id,
-    name,
-    className,
-    error,
-    success,
-    children,
-    inputRef,
-    ...inputProps
-  } = props
-
+export const Textarea = ({
+  id,
+  name,
+  className,
+  error,
+  success,
+  children,
+  inputRef,
+  ...inputProps
+}: TextareaProps & JSX.IntrinsicElements['textarea']): React.ReactElement => {
   const classes = classnames(
     'usa-textarea',
     {

@@ -18,11 +18,15 @@ export default {
   title: 'Components/Footer',
   component: Footer,
   parameters: {
-    info: `
-  USWDS 2.0 Footer component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Footer component
 
-  Source: https://designsystem.digital.gov/components/form-controls/#footer
-    `,
+Source: https://designsystem.digital.gov/components/form-controls/#footer
+`,
+      },
+    },
   },
 }
 

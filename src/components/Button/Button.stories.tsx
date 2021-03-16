@@ -5,11 +5,15 @@ export default {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    info: `
-USWDS 2.0 Button component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Button component
 
 Source: https://designsystem.digital.gov/components/button/
 `,
+      },
+    },
   },
 }
 

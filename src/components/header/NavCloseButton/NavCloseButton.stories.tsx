@@ -5,11 +5,15 @@ export default {
   title: 'Components/Header/NavCloseButton',
   component: NavCloseButton,
   parameters: {
-    info: `
-USWDS 2.0 NavCloseButton Component used within the Header component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 NavCloseButton Component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
+      },
+    },
   },
 }
 

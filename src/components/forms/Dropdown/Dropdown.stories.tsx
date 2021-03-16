@@ -7,11 +7,15 @@ export default {
   title: 'Components/Form controls/Dropdown',
   component: Dropdown,
   parameters: {
-    info: `
-USWDS 2.0 Dropdown component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Dropdown component
 
 Source: https://designsystem.digital.gov/components/form-controls/#dropdown
 `,
+      },
+    },
   },
 }
 

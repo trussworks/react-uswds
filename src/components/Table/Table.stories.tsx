@@ -5,11 +5,15 @@ export default {
   title: 'Components/Table',
   component: Table,
   parameters: {
-    info: `
-USWDS 2.0 Table component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Table component
 
 Source: https://designsystem.digital.gov/components/table/
 `,
+      },
+    },
   },
 }
 

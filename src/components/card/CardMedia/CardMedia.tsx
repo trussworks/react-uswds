@@ -8,18 +8,14 @@ interface CardMediaProps {
   children: React.ReactNode
 }
 
-export const CardMedia = (
-  props: CardMediaProps & JSX.IntrinsicElements['div']
-): React.ReactElement => {
-  const {
-    exdent,
-    inset,
-    imageClass,
-    children,
-    className,
-    ...mediaProps
-  } = props
-
+export const CardMedia = ({
+  exdent,
+  inset,
+  imageClass,
+  children,
+  className,
+  ...mediaProps
+}: CardMediaProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-card__media',
     {
