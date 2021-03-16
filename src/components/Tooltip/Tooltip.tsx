@@ -15,6 +15,7 @@ type TooltipProps<T> = {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   wrapperclasses?: string
+  className?: string
   children: ReactNode
 } & T
 
@@ -117,6 +118,13 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         if (props.wrapperclasses) {
           const classesArray = props.wrapperclasses.split(' ')
           classesArray.forEach((classname) => wrapper.classList.add(classname))
+        }
+
+        if (props.className) {
+          const classesArray = props.className.split(' ')
+          classesArray.forEach((classname) =>
+            tooltipTrigger.classList.add(classname)
+          )
         }
 
         /**

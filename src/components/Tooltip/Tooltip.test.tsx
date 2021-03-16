@@ -79,11 +79,11 @@ describe('Tooltip component', () => {
     it('applies the className', () => {
       const customClass = 'custom-class'
       const { getByTestId } = render(
-        <Tooltip wrapperclasses={customClass} position="left" label="Click me">
+        <Tooltip className={customClass} position="left" label="Click me">
           My Tooltip
         </Tooltip>
       )
-      expect(getByTestId('tooltipWrapper')).toHaveClass(`${customClass}`)
+      expect(getByTestId('triggerElement')).toHaveClass(`${customClass}`)
     })
   })
 })
