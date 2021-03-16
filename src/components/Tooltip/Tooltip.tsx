@@ -14,7 +14,6 @@ import { isElementInViewport } from './utils'
 type TooltipProps<T> = {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
-  className?: string
   wrapperclasses?: string
   children: ReactNode
 } & T

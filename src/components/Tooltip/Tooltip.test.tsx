@@ -79,7 +79,7 @@ describe('Tooltip component', () => {
     it('applies the className', () => {
       const customClass = 'custom-class'
       const { getByTestId } = render(
-        <Tooltip className={customClass} position="left" label="Click me">
+        <Tooltip wrapperclasses={customClass} position="left" label="Click me">
           My Tooltip
         </Tooltip>
       )
