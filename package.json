@@ -189,5 +189,6 @@
         "hidden": true
       }
     ]
-  }
+  },
+  "dependencies": {}
 }
