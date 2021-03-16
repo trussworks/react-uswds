@@ -60,7 +60,7 @@ export const DatePicker = ({
   onChange,
   onBlur,
   ...inputProps
-}: DatePickerProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
