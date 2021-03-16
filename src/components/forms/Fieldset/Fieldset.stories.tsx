@@ -10,11 +10,15 @@ export default {
   title: 'Components/Form elements/Fieldset',
   component: Fieldset,
   parameters: {
-    info: `
-USWDS 2.0 Fieldset component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Fieldset component
 
 Source: https://designsystem.digital.gov/components/form-controls/
 `,
+      },
+    },
   },
 }
 

@@ -7,11 +7,15 @@ export default {
   title: 'Components/Button groups',
   component: ButtonGroup,
   parameters: {
-    info: `
-USWDS 2.0 ButtonGroup component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 ButtonGroup component
 
 Source: https://designsystem.digital.gov/components/button-groups/
 `,
+      },
+    },
   },
 }
 
