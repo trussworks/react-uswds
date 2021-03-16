@@ -15,7 +15,7 @@ type TooltipProps<T> = {
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   className?: string
-  dataClasses?: string
+  wrapperclasses?: string
   children: ReactNode
 } & T
 
@@ -33,7 +33,6 @@ export function isCustomProps<T>(
   return 'asCustom' in props
 }
 
-const tooltipID = `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
 const TRIANGLE_SIZE = 5
 const SPACER = 2
 
@@ -44,6 +43,10 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 ): ReactElement {
   const wrapperRef = useRef<HTMLElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
+  const tooltipID = useRef(
+    `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
+  )
+
   const [isVisible, setVisible] = useState(false)
 
   const useTooltip = (
@@ -112,8 +115,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         }
 
         // Apply additional class names to wrapper element
-        if (props.dataClasses) {
-          const classesArray = props.dataClasses.split(' ')
+        if (props.wrapperclasses) {
+          const classesArray = props.wrapperclasses.split(' ')
           classesArray.forEach((classname) => wrapper.classList.add(classname))
         }
 
@@ -272,13 +275,12 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         data-testid="tooltipWrapper"
         ref={wrapperRef}
         className="usa-tooltip"
-        {...customProps}
         role="tooltip">
         {triggerElement}
         <span
           data-testid="tooltipBody"
           title={label}
-          id={tooltipID}
+          id={tooltipID.current}
           ref={tooltipBodyRef}
           className={tooltipClasses}>
           {label}
@@ -287,7 +289,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     )
   } else {
     const triggerElementRef = useRef<HTMLButtonElement>(null)
-    const { label, position, children, ...spanProps } = props
+    const { label, position, children, ...remainingProps } = props
     const tooltipClasses = classnames('usa-tooltip__body', {
       'is-set': isVisible,
       'usa-tooltip__body--top': position === 'top',
@@ -305,18 +307,17 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     }
 
     useTooltip(triggerElementRef, position)
-
     return (
       <span
         data-testid="tooltipWrapper"
         ref={wrapperRef}
         className="usa-tooltip"
-        {...spanProps}
         role="tooltip">
         <button
+          {...remainingProps}
           data-testid="triggerElement"
           ref={triggerElementRef}
-          aria-describedby={tooltipID}
+          aria-describedby={tooltipID.current}
           type="button"
           className="usa-button usa-tooltip__trigger"
           title={label}
@@ -331,7 +332,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         <span
           data-testid="tooltipBody"
           title={label}
-          id={tooltipID}
+          id={tooltipID.current}
           ref={tooltipBodyRef}
           className={tooltipClasses}>
           {label}

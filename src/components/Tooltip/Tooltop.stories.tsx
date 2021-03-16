@@ -54,7 +54,7 @@ export const tooltipLeft = (): React.ReactElement => (
 export const tooltipWithUtilityClass = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip
-      dataClasses="width-full tablet:width-auto"
+      wrapperclasses="width-full tablet:width-auto"
       position="right"
       label="Right">
       Show on right
