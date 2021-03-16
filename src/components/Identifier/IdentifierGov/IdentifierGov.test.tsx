@@ -15,4 +15,14 @@ describe('IdentifierGov component', () => {
     )
     expect(queryByTestId('identifierGov')).toHaveAttribute('aria-label')
   })
+
+  it('renders appropriate copy when passed Spanish for language prop', () => {
+    const { queryByTestId } = render(<IdentifierGov language="spanish" />)
+    expect(queryByTestId('identifierGov-description')).toHaveTextContent(
+      '¿Necesita información y servicios del Gobierno?'
+    )
+  })
+
+  // test for correct passed in link
+  // data-testid="identifierGov-link"
 })
