@@ -1,4 +1,4 @@
-# Allow parallel development
+# Document and support branching strategy for allowing parallel development when development dependencies exist
 
 * Status: proposed
 * Deciders: [Codeowners](../../CODEOWNERS)
@@ -76,7 +76,7 @@ Standard development flow using `main` as the single develop branch.
 * Good , because breaking changes can be worked on, reviewed, and approved, without immediately blocking `main` or requiring a breaking release.
 * Good, because maintainers have more control over when to release potentially breaking changes without needing to be concerned about which individual issues are blocked.
 * Good, because it opens the door for a multitude of more dynamic release and versioning strategies.
-Good, because (once defined) a greater level of autonomy is achieved in line with creating a robust support structure for the project in an active, open-source community.
+* Good, because (once defined) a greater level of autonomy is achieved in line with creating a robust support structure for the project in an active, open-source community.
 * Bad, because documentation of the process must be created/maintained.
 * Bad, because, while minor, process overhead is not ideal when limited time is available.
 * Bad, because without the addition of automation to [sync develop branches with `main`](https://github.com/trussworks/react-uswds/issues/1011) there is additional manual overhead in keeping these branches updated with main.
