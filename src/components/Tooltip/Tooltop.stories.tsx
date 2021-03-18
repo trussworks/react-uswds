@@ -5,11 +5,15 @@ export default {
   title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
-    info: `
-    USWDS 2.0 Tooltip component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Tooltip component
 
-    Source: https://designsystem.digital.gov/components/tooltip/
-    `,
+Source: https://designsystem.digital.gov/components/tooltip/
+`,
+      },
+    },
   },
 }
 
