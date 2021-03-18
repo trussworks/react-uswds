@@ -48,11 +48,64 @@ These should all be run from within the project directory.
 
 ## Development
 
-### Before You Start
+### Before You Start: Commit Guidelines
 
-Make sure you understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)** This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
+Make sure you understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)**. This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
 
-### Pull Requests
+The format for PR titles is:
+
+```
+<type>(scope): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+#### `type`:
+
+Required, must be one of the following:
+
+- `build`: Changes that affect the build system or external dependencies (example scopes: webpack, npm)
+- `chore`: Completing a task that has no effective code changes, such as updating the version and changelog for a release
+- `ci`: Changes to our CI configuration files and scripts (example scopes: Circle, Github actions/workflows)
+- `docs`: Documentation only changes
+- `feat`: A new feature
+- `fix`: A bug fix
+- `perf`: A code change that improves performance
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `revert`: If the commit reverts a previous commit, it should begin with `revert:` , followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- `test`: Adding missing tests or correcting existing tests
+
+#### `scope`:
+
+Optional, can be one of the following:
+
+- `deps`: Updating a package listed in dependencies
+- `deps-dev`: Updating a package listed in devDependencies
+- `release`: Releasing a new version
+- `circleci`: Changes to CircleCI config and/or scripts
+- `example`: Changes to the Example App only
+- `storybook`: Changes to Storybook or stories files only
+
+#### `body`:
+
+Will default to a list of included commits since PRs are all squashed when merging. You can also add additional context to the body if needed.
+
+#### `footer`:
+
+Should link the PR to any issues it closes (see: ["Linking a pull request to an issue"](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue)).
+
+Example:
+
+```
+Closes #123
+```
+
+Should also include `BREAKING CHANGE:` if the commit includes any breaking changes. This will make sure the major version is automatically bumped when this commit is released.
+
+### Working on an issue
 
 To begin working on an issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress.". If there isn't an issue yet for what you want to work on, [please create one](https://github.com/trussworks/react-uswds/issues/new/choose).
 
@@ -66,7 +119,7 @@ When your branch is ready for review, open a PR into `main` and request reviews 
 
 > Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
 
-### Guidelines
+### General Guidelines
 
 - Encourage a strict separation of concerns, focusing on UI (rendered HTML and CSS) rather than any application logic.
 - Expose the necessary props for composability and extensibility, such as event handlers, custom CSS classes, etc.
