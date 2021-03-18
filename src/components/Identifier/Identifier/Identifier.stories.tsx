@@ -1,5 +1,4 @@
 import React from 'react'
-// import IdentifierGov from '../IdentifierGov/IdentifierGov'
 
 import { Identifier } from './Identifier'
 // import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
