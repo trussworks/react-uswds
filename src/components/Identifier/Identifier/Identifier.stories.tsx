@@ -2,6 +2,7 @@ import React from 'react'
 // import IdentifierGov from '../IdentifierGov/IdentifierGov'
 
 import { Identifier } from './Identifier'
+import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 export default {
   title: 'Components/Identifier',
@@ -18,6 +19,12 @@ export default {
 export const identifierDefault = (): React.ReactElement => <Identifier />
 
 export const identifierSpanish = (): React.ReactElement => <Identifier />
+
+// export const identifierSpanish = (): React.ReactElement => (
+//   <Identifier>
+//     <IdentifierGov language="spanish" />
+//   </Identifier>
+// )
 
 export const identifierMultipleLogosEnglish = (): React.ReactElement => (
   <Identifier />

@@ -12,6 +12,9 @@ const links = [
   </a>,
 ]
 
+/* footer's primary section has the FooterNav and the Address components
+   footer's secondary section has the Logo */
+
 export const Identifier = (): React.ReactElement => {
   return (
     <div data-testid="identifier">
