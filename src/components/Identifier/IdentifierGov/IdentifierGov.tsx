@@ -1,9 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
-import content from './content'
+import copyMap from './content'
+
+type Language = 'english' | 'spanish'
 
 interface IdentifierGovProps {
-  language?: 'english' | 'spanish'
+  language?: Language
   className?: string
 }
 
@@ -15,7 +17,8 @@ export const IdentifierGov = (
     'usa-identifier__section usa-identifier__section--usagov',
     className
   )
-  const copyMap = content[language]
+
+  const copy = copyMap[`${language}` as 'english' | 'spanish']
 
   return (
     <section data-testid="identifierGov" className={classes} {...sectionProps}>
@@ -23,12 +26,12 @@ export const IdentifierGov = (
         <div
           data-testid="identifierGov-description"
           className="usa-identifier__usagov-description">
-          {copyMap.usaGovDescription}
+          {copy.usaGovDescription}
           <a
             data-testid="identifierGov-link"
-            href={copyMap.visitGovUrl}
+            href={copy.visitGovUrl}
             className="usa-link">
-            {copyMap.visitGovCopy}
+            {copy.visitGovCopy}
           </a>
         </div>
       </div>
