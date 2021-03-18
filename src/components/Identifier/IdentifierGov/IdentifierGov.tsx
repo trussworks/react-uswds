@@ -2,10 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import content from './content'
 
-// type Language = 'english' | 'spanish'
-
 interface IdentifierGovProps {
-  language?: string
+  language?: 'english' | 'spanish'
   className?: string
 }
 
@@ -17,36 +15,20 @@ export const IdentifierGov = (
     'usa-identifier__section usa-identifier__section--usagov',
     className
   )
-  const { en, es } = content
+  const copyMap = content[language]
 
-  return language === 'english' ? (
+  return (
     <section data-testid="identifierGov" className={classes} {...sectionProps}>
       <div className="usa-identifier__container">
         <div
           data-testid="identifierGov-description"
           className="usa-identifier__usagov-description">
-          {en.usaGovDescription}
+          {copyMap.usaGovDescription}
           <a
             data-testid="identifierGov-link"
-            href={en.visitGovUrl}
+            href={copyMap.visitGovUrl}
             className="usa-link">
-            {en.visitGovCopy}
-          </a>
-        </div>
-      </div>
-    </section>
-  ) : (
-    <section data-testid="identifierGov" className={classes} {...sectionProps}>
-      <div className="usa-identifier__container">
-        <div
-          data-testid="identifierGov-description"
-          className="usa-identifier__usagov-description">
-          {es.usaGovDescription}
-          <a
-            data-testid="identifierGov-link"
-            href={es.visitGovUrl}
-            className="usa-link">
-            {es.visitGovCopy}
+            {copyMap.visitGovCopy}
           </a>
         </div>
       </div>
