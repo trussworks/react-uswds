@@ -89,19 +89,3 @@ export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
     <IdentifierGov language="spanish" />
   </Identifier>
 )
-
-/* 
-USWDS STORYBOOK EXAMPLES
-
-- default
-- default (spanish)
-
-- multiple parents and logos
-- multiple parents and logos (spanish)
-
-- no logos 
-// does not have an example for spanish
-
-- taxpayer disclaimer
-- taxpayer disclaimer (spanish)
-*/
