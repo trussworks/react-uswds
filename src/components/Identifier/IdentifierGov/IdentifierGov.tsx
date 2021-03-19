@@ -20,22 +20,27 @@ export const IdentifierGov = ({
     className
   )
 
-  const copy = copyMap[`${language}` as 'english' | 'spanish']
+  const copy = copyMap[`${language}` as Language]
 
   return (
-    <section data-testid="identifierGov" className={classes} {...sectionProps}>
+    <section
+      data-testid="identifierGov"
+      aria-label={copy.ariaLabel}
+      className={classes}
+      {...sectionProps}>
       <div className="usa-identifier__container">
         <div
           data-testid="identifierGov-description"
           className="usa-identifier__usagov-description">
           {copy.usaGovDescription}
-          <a
-            data-testid="identifierGov-link"
-            href={copy.visitGovUrl}
-            className="usa-link">
-            {copy.visitGovCopy}
-          </a>
         </div>
+        &nbsp;
+        <a
+          data-testid="identifierGov-link"
+          href={copy.visitGovUrl}
+          className="usa-link">
+          {copy.visitGovCopy}
+        </a>
       </div>
     </section>
   )
