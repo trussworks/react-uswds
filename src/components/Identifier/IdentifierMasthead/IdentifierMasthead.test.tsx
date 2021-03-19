@@ -8,4 +8,10 @@ describe('IdentifierMasthead component', () => {
     const { queryByTestId } = render(<IdentifierMasthead />)
     expect(queryByTestId('identifierMasthead')).toBeInTheDocument()
   })
+  it('renders section attributes passed in by props', () => {
+    const { queryByTestId } = render(
+      <IdentifierMasthead aria-label="Agency identifier" />
+    )
+    expect(queryByTestId('identifierMasthead')).toHaveAttribute('aria-label')
+  })
 })

@@ -1,9 +1,25 @@
 import React from 'react'
+import classnames from 'classnames'
 
-export const IdentifierMasthead = (): React.ReactElement => {
+interface IdentifierMastheadProps {
+  className?: string
+}
+
+export const IdentifierMasthead = (
+  props: IdentifierMastheadProps & JSX.IntrinsicElements['section']
+): React.ReactElement => {
+  const { className, ...sectionProps } = props
+  const classes = classnames(
+    'usa-identifier__section usa-identifier__section--masthead',
+    className
+  )
+
   return (
-    <section>
-      <div data-testid="identifierMasthead">identifier masthead</div>
+    <section
+      data-testid="identifierMasthead"
+      className={classes}
+      {...sectionProps}>
+      <div>identifier masthead</div>
     </section>
   )
 }
