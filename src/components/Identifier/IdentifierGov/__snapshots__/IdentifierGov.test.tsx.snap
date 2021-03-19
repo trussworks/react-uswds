@@ -27,33 +27,6 @@ exports[`IdentifierGov component renders consistently in English (default) when 
 </section>
 `;
 
-exports[`IdentifierGov component renders consistently in Spanish when passed Spangish for language prop 1`] = `
-<section
-  aria-label="Información y servicios del Gobierno de EE. UU."
-  className="usa-identifier__section usa-identifier__section--usagov"
-  data-testid="identifierGov"
->
-  <div
-    className="usa-identifier__container"
-  >
-    <div
-      className="usa-identifier__usagov-description"
-      data-testid="identifierGov-description"
-    >
-      ¿Necesita información y servicios del Gobierno?
-    </div>
-     
-    <a
-      className="usa-link"
-      data-testid="identifierGov-link"
-      href="https://www.usa.gov/espanol/"
-    >
-      Visite USAGov en Español
-    </a>
-  </div>
-</section>
-`;
-
 exports[`IdentifierGov component renders consistently in Spanish when passed Spanish for language prop 1`] = `
 <section
   aria-label="Información y servicios del Gobierno de EE. UU."
