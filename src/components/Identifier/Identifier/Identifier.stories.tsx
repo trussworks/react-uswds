@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { Identifier } from './Identifier'
-// import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
+import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 export default {
   title: 'Components/Identifier',
   component: Identifier,
   parameters: {
     info: `
-  USWDS 2.9 Identifier component
+  USWDS 2.0 Identifier component
   
   Source: https://designsystem.digital.gov/components/identifier/
   `,
@@ -17,13 +17,13 @@ export default {
 
 export const identifierDefault = (): React.ReactElement => <Identifier />
 
-export const identifierSpanish = (): React.ReactElement => <Identifier />
+// export const identifierSpanish = (): React.ReactElement => <Identifier />
 
-// export const identifierSpanish = (): React.ReactElement => (
-//   <Identifier>
-//     <IdentifierGov language="spanish" />
-//   </Identifier>
-// )
+export const identifierSpanish = (): React.ReactElement => (
+  <Identifier>
+    <IdentifierGov language="spanish" />
+  </Identifier>
+)
 
 export const identifierMultipleLogosEnglish = (): React.ReactElement => (
   <Identifier />
