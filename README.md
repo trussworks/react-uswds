@@ -119,8 +119,10 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 
 ### Quick links:
 
-- [Commit Guidelines](./docs/contributing.md#before-you-start:-commit-guidelines)
-- [Adding New Components](./docs/adding_new_components.md)
+- [Yarn scripts](./docs/contributing#available-commands)
+- [Commit guidelines](./docs/contributing.md#before-you-start:-commit-guidelines)
+- [Adding new components](./docs/adding_new_components.md)
+- [Testing in an application](./docs/contributing.md#testing-in-an-application)
 - [Releasing](./docs/releasing.md)
 
 ## License
