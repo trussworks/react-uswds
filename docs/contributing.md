@@ -9,10 +9,10 @@ We welcome contributions in the form of comments, issues, or pull requests with 
 - [Environment setup](#environment-setup)
   - [Available commands](#available-commands)
 - [Development](#development)
-  - [Commit guidelines](#before-you-start:-commit-guidelines)
+  - [Commit guidelines](#before-you-start-commit-guidelines)
   - [Working on an issue](#working-on-an-issue)
   - [General guidelines](#general-guidelines)
-  - [Linting, formatting, & automated tests](#linting-formatting-&-automated-tests)
+  - [Linting, formatting, & automated tests](#linting-formatting--automated-tests)
   - [Testing in an application](#testing-in-an-application)
 
 ## Environment setup
