@@ -9,10 +9,12 @@ interface IdentifierGovProps {
   className?: string
 }
 
-export const IdentifierGov = (
-  props: IdentifierGovProps & JSX.IntrinsicElements['section']
-): React.ReactElement => {
-  const { language = 'english', className, ...sectionProps } = props
+export const IdentifierGov = ({
+  language = 'english',
+  className,
+  ...sectionProps
+}: IdentifierGovProps &
+  JSX.IntrinsicElements['section']): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--usagov',
     className
