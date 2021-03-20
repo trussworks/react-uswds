@@ -8,10 +8,23 @@ describe('IdentifierMasthead component', () => {
     const { queryByTestId } = render(<IdentifierMasthead />)
     expect(queryByTestId('identifierMasthead')).toBeInTheDocument()
   })
+
   it('renders section attributes passed in by props', () => {
     const { queryByTestId } = render(
       <IdentifierMasthead aria-label="Agency identifier" />
     )
     expect(queryByTestId('identifierMasthead')).toHaveAttribute('aria-label')
   })
+
+  it('renders with a custom className passed in', () => {
+    const { queryByTestId } = render(
+      <IdentifierMasthead className="usa-identifier__custom-class-name" />
+    )
+    expect(queryByTestId('identifierMasthead')).toHaveClass(
+      'usa-identifier__section usa-identifier__section--masthead usa-identifier__custom-class-name'
+    )
+  })
+  // renders with a custom logo passed in
+  // renders without any logos
+  // renders without any logos
 })
