@@ -5,10 +5,10 @@ import { IdentifierLinks } from './IdentifierLinks'
 
 const links = [
   <a key="identifierLinkGoogle" href="www.google.com">
-    Google
+    identifierLinkGoogle
   </a>,
-  <a key="identifierLinkOrWhatever" href="www.google.com">
-    google but with a small g
+  <a key="identifierLinkGoogleAgain" href="www.google.com">
+    identifierLinkGoogleAgain
   </a>,
 ]
 

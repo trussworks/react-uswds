@@ -11,9 +11,12 @@ describe('IdentifierMasthead component', () => {
 
   it('renders section attributes passed in by props', () => {
     const { queryByTestId } = render(
-      <IdentifierMasthead aria-label="Agency identifier" />
+      <IdentifierMasthead aria-label="custom aria-label value" />
     )
-    expect(queryByTestId('identifierMasthead')).toHaveAttribute('aria-label')
+    expect(queryByTestId('identifierMasthead')).toHaveAttribute(
+      'aria-label',
+      'custom aria-label value'
+    )
   })
 
   it('renders with a custom className passed in', () => {
@@ -24,7 +27,11 @@ describe('IdentifierMasthead component', () => {
       'usa-identifier__section usa-identifier__section--masthead usa-identifier__custom-class-name'
     )
   })
-  // renders with a custom logo passed in
+
+  // renders with a logo passed in // use snapshot?
+  // renders in spanish with a logo and spanish passed in as props // use snapshot?
+  // renders with multiple custom logos passed in // use snapshot?
+  // renders in spanish  with multiple custom logos and spanish passed in as props // use snapshot?
   // renders without any logos
-  // renders without any logos
+  // renders in spanish without any logos
 })

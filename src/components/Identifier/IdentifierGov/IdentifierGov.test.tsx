@@ -20,11 +20,11 @@ describe('IdentifierGov component', () => {
 
   it('renders section attributes passed in through props', () => {
     const { queryByTestId } = render(
-      <IdentifierGov aria-label="test aria-label value" />
+      <IdentifierGov aria-label="custom aria-label value" />
     )
     expect(queryByTestId('identifierGov')).toHaveAttribute(
       'aria-label',
-      'test aria-label value'
+      'custom aria-label value'
     )
   })
 

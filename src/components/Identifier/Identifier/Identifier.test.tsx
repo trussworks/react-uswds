@@ -2,10 +2,28 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { Identifier } from './Identifier'
+import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
+import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
+import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
+
+const links = [
+  <a key="identifierLinkGoogle" href="www.google.com">
+    identifierLinkGoogle
+  </a>,
+  <a key="identifierLinkGoogleAgain" href="www.google.com">
+    identifierLinkGoogleAgain
+  </a>,
+]
 
 describe('Identifier component', () => {
   it('renders', () => {
-    const { queryByTestId } = render(<Identifier />)
+    const { queryByTestId } = render(
+      <Identifier>
+        <IdentifierMasthead />
+        <IdentifierLinks links={links} />
+        <IdentifierGov />
+      </Identifier>
+    )
     expect(queryByTestId('identifier')).toBeInTheDocument()
   })
 })

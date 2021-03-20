@@ -18,6 +18,7 @@ export const IdentifierMasthead = (
     <section
       data-testid="identifierMasthead"
       className={classes}
+      aria-label="Agency identifier"
       {...sectionProps}>
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
@@ -29,6 +30,15 @@ export const IdentifierMasthead = (
               alt="&lt;Parent agency&gt; logo"
             />
           </a>
+        </div>
+        <div
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            An official website of the{' '}
+            <a href="www.google.com">&lt;Parent agency&gt;</a>
+          </p>
         </div>
       </div>
     </section>
@@ -48,25 +58,24 @@ export default IdentifierMasthead
 
 <div class="usa-identifier">
   <section
-    class="usa-identifier__section usa-identifier__section--masthead"
-    aria-label="Agency identifier">
-    <div class="usa-identifier__container">
-    <div class="usa-identifier__logos">
-        <a href="javascript:void(0);" class="usa-identifier__logo">
-          <img
-            class="usa-identifier__logo-img"
-            
+    // class="usa-identifier__section usa-identifier__section--masthead"
+    // aria-label="Agency identifier">
+    // <div class="usa-identifier__container"
+      // <div class="usa-identifier__logos">
+        <a 
+          href="javascript:void(0);" 
+          // class="usa-identifier__logo"
+        >
+          // <img
+            // class="usa-identifier__logo-img"
             src="/assets/img/circle-gray-20.svg"
-            
-            
             alt="&lt;Parent agency&gt; logo"
-            
             role="img">
-        </a>
-        </div>
-        <div class="usa-identifier__identity" aria-label="Agency description">
-        <p class="usa-identifier__identity-domain">domain.gov</p>
-        <p class="usa-identifier__identity-disclaimer">An official website of the <a href="javascript:void(0);">&lt;Parent agency&gt;</a></p>
+        // </a>
+        // </div>
+        // <div class="usa-identifier__identity" aria-label="Agency description">
+          <p class="usa-identifier__identity-domain">domain.gov</p>
+          <p class="usa-identifier__identity-disclaimer">An official website of the <a href="javascript:void(0);">&lt;Parent agency&gt;</a></p>
       </div>
     </div>
   </section>
