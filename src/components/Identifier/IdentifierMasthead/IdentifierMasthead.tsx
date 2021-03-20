@@ -43,6 +43,7 @@ export const IdentifierMasthead = ({
     'usa-identifier__section usa-identifier__section--masthead',
     className
   )
+
   const copy = copyMap[`${language}` as Language]
 
   return (
@@ -68,6 +69,7 @@ export const IdentifierMasthead = ({
           <p className="usa-identifier__identity-domain">{plaintextDomain}</p>
           <p className="usa-identifier__identity-disclaimer">
             {copy.identityDisclaimer}
+            &nbsp;
             <a href={parentAgencyUrl}>{parentAgencyName}</a>
           </p>
         </div>

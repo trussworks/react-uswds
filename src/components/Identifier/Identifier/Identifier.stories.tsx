@@ -25,10 +25,15 @@ const links = [
     identifierLinkGoogleAgain
   </a>,
 ]
+const identifierMastheadProps = {
+  plaintextDomain: 'aGovDomain.gov',
+  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
+  parentAgencyName: 'Test Parent Agency Name',
+}
 
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov />
   </Identifier>
@@ -36,7 +41,7 @@ export const identifierDefault = (): React.ReactElement => (
 
 export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov language="spanish" />
   </Identifier>
@@ -44,7 +49,7 @@ export const identifierSpanish = (): React.ReactElement => (
 
 export const identifierMultipleLogosEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov />
   </Identifier>
@@ -52,7 +57,7 @@ export const identifierMultipleLogosEnglish = (): React.ReactElement => (
 
 export const identifierMultipleLogosSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov language="spanish" />
   </Identifier>
@@ -60,7 +65,7 @@ export const identifierMultipleLogosSpanish = (): React.ReactElement => (
 
 export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov />
   </Identifier>
@@ -68,7 +73,7 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
 
 export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov language="spanish" />
   </Identifier>
@@ -76,7 +81,7 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
 
 export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov />
   </Identifier>
@@ -84,7 +89,7 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
 
 export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead />
+    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov language="spanish" />
   </Identifier>

@@ -19,7 +19,6 @@ export const Identifier = ({
   const classes = classnames('usa-identifier', className)
   return (
     <div data-testid="identifier" className={classes}>
-      Identifier component
       {children}
     </div>
   )
