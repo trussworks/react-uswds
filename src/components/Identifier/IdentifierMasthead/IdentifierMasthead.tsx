@@ -78,7 +78,7 @@ export const IdentifierMasthead = ({
             {hasSecondLogo ? (
               <a href="www.google.com" className="usa-identifier__logo">
                 <img
-                  data-testid="identifierMasthead-logo"
+                  data-testid="identifierMasthead-second-logo"
                   className="usa-identifier__logo-img"
                   src={dotGovIcon}
                   alt={`${otherAgencyName} logo`}
@@ -108,3 +108,15 @@ export const IdentifierMasthead = ({
 }
 
 export default IdentifierMasthead
+
+/*
+Is it possible to have more than two logos? 
+
+USWDS only accounts for two, a Parent Agency and a Child Agency:
+
+MULTIPLE PARENTS AND LOGOS
+<< Display multiple parents and logos in hierarchical order. If a site has
+more than one parent agency, you may display a reference and a logo for
+each parent in hierarchical order, highest first. For example,”An
+official website of [Grandparent Department] and [Parent Agency]”. >>
+*/
