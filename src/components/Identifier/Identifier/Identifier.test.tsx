@@ -16,9 +16,9 @@ const links = [
 ]
 
 const identifierMastheadProps = {
-  plaintextDomain: '',
-  parentAgencyUrl: '',
-  parentAgencyName: '',
+  plaintextDomain: 'aGovDomain.gov',
+  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
+  parentAgencyName: 'Test Parent Agency Name',
 }
 
 describe('Identifier component', () => {
