@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import renderer from 'react-test-renderer'
 
 import { IdentifierMasthead } from './IdentifierMasthead'
 
@@ -17,6 +18,13 @@ describe('IdentifierMasthead component', () => {
       'aria-label',
       'custom aria-label value'
     )
+  })
+
+  it('renders consistently in Spanish when passed Spanish for language prop', () => {
+    const tree = renderer
+      .create(<IdentifierMasthead language="spanish" />)
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 
   it('renders with a custom className passed in', () => {
