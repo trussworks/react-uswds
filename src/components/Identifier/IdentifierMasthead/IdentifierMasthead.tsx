@@ -1,6 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
+// test assets
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+// import flagImg from 'uswds/src/img/us_flag_small.png'
+
 type Language = 'english' | 'spanish'
 
 interface IdentifierMastheadCopyMap {
@@ -25,17 +29,25 @@ const copyMap: Record<Language, IdentifierMastheadCopyMap> = {
 interface IdentifierMastheadProps {
   language?: Language
   className?: string
+  hasLogo?: boolean
+  hasSecondLogo?: boolean
+  // agencyLogo?: type?
+  // agencyLogos?: type?
   plaintextDomain: string
   parentAgencyUrl: string
   parentAgencyName: string
+  otherAgencyName?: string
 }
 
 export const IdentifierMasthead = ({
   language = 'english',
+  hasLogo = true,
+  hasSecondLogo = false,
   className,
   plaintextDomain,
   parentAgencyUrl,
   parentAgencyName,
+  otherAgencyName,
   ...sectionProps
 }: IdentifierMastheadProps &
   JSX.IntrinsicElements['section']): React.ReactElement => {
@@ -53,17 +65,34 @@ export const IdentifierMasthead = ({
       aria-label={copy.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
-        <div className="usa-identifier__logos">
-          <a href="www.google.com" className="usa-identifier__logo">
-            <img
-              className="usa-identifier__logo-img"
-              // src="/assets/img/circle-gray-20.svg"
-
-              alt={`${parentAgencyName} logo`}
-            />
-          </a>
-        </div>
+        {hasLogo ? (
+          <div className="usa-identifier__logos">
+            <a href="www.google.com" className="usa-identifier__logo">
+              <img
+                data-testid="identifierMasthead-logo"
+                className="usa-identifier__logo-img"
+                src={dotGovIcon}
+                alt={`${parentAgencyName} logo`}
+              />
+            </a>
+            {hasSecondLogo ? (
+              <a href="www.google.com" className="usa-identifier__logo">
+                <img
+                  data-testid="identifierMasthead-logo"
+                  className="usa-identifier__logo-img"
+                  src={dotGovIcon}
+                  alt={`${otherAgencyName} logo`}
+                />
+              </a>
+            ) : (
+              <></>
+            )}
+          </div>
+        ) : (
+          <></>
+        )}
         <div
+          data-testid="identifierMasthead-agency-description"
           className="usa-identifier__identity"
           aria-label={copy.ariaLabelAgencyDescription}>
           <p className="usa-identifier__identity-domain">{plaintextDomain}</p>

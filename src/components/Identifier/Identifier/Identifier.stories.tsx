@@ -49,7 +49,11 @@ export const identifierSpanish = (): React.ReactElement => (
 
 export const identifierMultipleLogosEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead {...identifierMastheadProps} />
+    <IdentifierMasthead
+      hasSecondLogo={true}
+      otherAgencyName={'Other Agency'}
+      {...identifierMastheadProps}
+    />
     <IdentifierLinks links={links} />
     <IdentifierGov />
   </Identifier>
@@ -65,7 +69,7 @@ export const identifierMultipleLogosSpanish = (): React.ReactElement => (
 
 export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead {...identifierMastheadProps} />
+    <IdentifierMasthead hasLogo={false} {...identifierMastheadProps} />
     <IdentifierLinks links={links} />
     <IdentifierGov />
   </Identifier>
@@ -73,7 +77,11 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
 
 export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
+    <IdentifierMasthead
+      language="spanish"
+      hasLogo={false}
+      {...identifierMastheadProps}
+    />
     <IdentifierLinks links={links} />
     <IdentifierGov language="spanish" />
   </Identifier>

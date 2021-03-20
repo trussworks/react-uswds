@@ -10,6 +10,13 @@ const testProps = {
   parentAgencyName: 'Test Parent Agency Name',
 }
 
+const multipleLogosTestProps = {
+  plaintextDomain: 'aGovDomain.gov',
+  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
+  parentAgencyName: 'Test Parent Agency Name',
+  otherAgencyName: 'Second Agency Name',
+}
+
 describe('IdentifierMasthead component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<IdentifierMasthead {...testProps} />)
@@ -38,11 +45,32 @@ describe('IdentifierMasthead component', () => {
     )
   })
 
+  it('renders with a logo passed in', () => {
+    const { queryByTestId } = render(<IdentifierMasthead {...testProps} />)
+    expect(queryByTestId('identifierMasthead-logo')).toBeInTheDocument
+  })
+
+  it('renders without a logo passed in', () => {
+    const { queryByTestId } = render(
+      <IdentifierMasthead hasLogo={false} {...testProps} />
+    )
+    expect(queryByTestId('identifierMasthead-logo')).not.toBeInTheDocument()
+  })
+
   it('renders consistently in Spanish when passed Spanish for language prop', () => {
     const tree = renderer
       .create(<IdentifierMasthead language="spanish" {...testProps} />)
       .toJSON()
     expect(tree).toMatchSnapshot()
+  })
+
+  it('renders with multiple logos passed in', () => {
+    const { queryByTestId } = render(
+      <IdentifierMasthead {...multipleLogosTestProps} />
+    )
+    expect(
+      queryByTestId('identifierMasthead-logo identifierMasthead-second-logo')
+    ).toBeInTheDocument
   })
 
   // renders with a logo passed in // use snapshot?
