@@ -4,15 +4,21 @@ import renderer from 'react-test-renderer'
 
 import { IdentifierMasthead } from './IdentifierMasthead'
 
+const testProps = {
+  plaintextDomain: 'aGovDomain.gov',
+  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
+  parentAgencyName: 'Test Parent Agency Name',
+}
+
 describe('IdentifierMasthead component', () => {
   it('renders without errors', () => {
-    const { queryByTestId } = render(<IdentifierMasthead />)
+    const { queryByTestId } = render(<IdentifierMasthead {...testProps} />)
     expect(queryByTestId('identifierMasthead')).toBeInTheDocument()
   })
 
   it('renders section attributes passed in by props', () => {
     const { queryByTestId } = render(
-      <IdentifierMasthead aria-label="custom aria-label value" />
+      <IdentifierMasthead aria-label="custom aria-label value" {...testProps} />
     )
     expect(queryByTestId('identifierMasthead')).toHaveAttribute(
       'aria-label',
@@ -20,20 +26,23 @@ describe('IdentifierMasthead component', () => {
     )
   })
 
-  it('renders consistently in Spanish when passed Spanish for language prop', () => {
-    const tree = renderer
-      .create(<IdentifierMasthead language="spanish" />)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
   it('renders with a custom className passed in', () => {
     const { queryByTestId } = render(
-      <IdentifierMasthead className="usa-identifier__custom-class-name" />
+      <IdentifierMasthead
+        className="usa-identifier__custom-class-name"
+        {...testProps}
+      />
     )
     expect(queryByTestId('identifierMasthead')).toHaveClass(
       'usa-identifier__section usa-identifier__section--masthead usa-identifier__custom-class-name'
     )
+  })
+
+  it('renders consistently in Spanish when passed Spanish for language prop', () => {
+    const tree = renderer
+      .create(<IdentifierMasthead language="spanish" {...testProps} />)
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 
   // renders with a logo passed in // use snapshot?

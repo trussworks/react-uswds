@@ -15,11 +15,17 @@ const links = [
   </a>,
 ]
 
+const identifierMastheadProps = {
+  plaintextDomain: '',
+  parentAgencyUrl: '',
+  parentAgencyName: '',
+}
+
 describe('Identifier component', () => {
   it('renders', () => {
     const { queryByTestId } = render(
       <Identifier>
-        <IdentifierMasthead />
+        <IdentifierMasthead {...identifierMastheadProps} />
         <IdentifierLinks links={links} />
         <IdentifierGov />
       </Identifier>

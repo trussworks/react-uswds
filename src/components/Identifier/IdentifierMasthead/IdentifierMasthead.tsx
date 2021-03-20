@@ -1,24 +1,55 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface IdentifierMastheadProps {
-  className?: string
+type Language = 'english' | 'spanish'
+
+interface IdentifierMastheadCopyMap {
+  ariaLabelAgencyIdentifier: string
+  ariaLabelAgencyDescription: string
+  identityDisclaimer: string
 }
 
-export const IdentifierMasthead = (
-  props: IdentifierMastheadProps & JSX.IntrinsicElements['section']
-): React.ReactElement => {
-  const { className, ...sectionProps } = props
+const copyMap: Record<Language, IdentifierMastheadCopyMap> = {
+  english: {
+    ariaLabelAgencyIdentifier: 'Agency identifier',
+    ariaLabelAgencyDescription: 'Agency description',
+    identityDisclaimer: 'An official website of the ',
+  },
+  spanish: {
+    ariaLabelAgencyIdentifier: 'Identificador de la agencia',
+    ariaLabelAgencyDescription: 'Descripción de la agencia',
+    identityDisclaimer: 'Un sitio web oficial de ',
+  },
+}
+
+interface IdentifierMastheadProps {
+  language?: Language
+  className?: string
+  plaintextDomain: string
+  parentAgencyUrl: string
+  parentAgencyName: string
+}
+
+export const IdentifierMasthead = ({
+  language = 'english',
+  className,
+  plaintextDomain,
+  parentAgencyUrl,
+  parentAgencyName,
+  ...sectionProps
+}: IdentifierMastheadProps &
+  JSX.IntrinsicElements['section']): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--masthead',
     className
   )
+  const copy = copyMap[`${language}` as Language]
 
   return (
     <section
       data-testid="identifierMasthead"
       className={classes}
-      aria-label="Agency identifier"
+      aria-label={copy.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
@@ -27,17 +58,17 @@ export const IdentifierMasthead = (
               className="usa-identifier__logo-img"
               // src="/assets/img/circle-gray-20.svg"
 
-              alt="&lt;Parent agency&gt; logo"
+              alt={`${parentAgencyName} logo`}
             />
           </a>
         </div>
         <div
           className="usa-identifier__identity"
-          aria-label="Agency description">
-          <p className="usa-identifier__identity-domain">domain.gov</p>
+          aria-label={copy.ariaLabelAgencyDescription}>
+          <p className="usa-identifier__identity-domain">{plaintextDomain}</p>
           <p className="usa-identifier__identity-disclaimer">
-            An official website of the{' '}
-            <a href="www.google.com">&lt;Parent agency&gt;</a>
+            An official website of the {/* copy.identityDisclaimer */}
+            <a href={parentAgencyUrl}>{parentAgencyName}</a>
           </p>
         </div>
       </div>
