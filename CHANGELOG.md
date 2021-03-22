@@ -7,13 +7,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* Add DateRangePicker Component ([#983](https://github.com/trussworks/react-uswds/issues/983)) ([69d34ed](https://github.com/trussworks/react-uswds/commit/69d34ed8f78ae22e29c270d877c081fe5335325c))
-* Create Tooltip component   ([#871](https://github.com/trussworks/react-uswds/issues/871)) ([92ea5f0](https://github.com/trussworks/react-uswds/commit/92ea5f07f7212370165423ec09ed35eec3aa7e58))
+* DateRangePicker Component ([#983](https://github.com/trussworks/react-uswds/issues/983)) ([69d34ed](https://github.com/trussworks/react-uswds/commit/69d34ed8f78ae22e29c270d877c081fe5335325c))
+* Tooltip component   ([#871](https://github.com/trussworks/react-uswds/issues/871)) ([92ea5f0](https://github.com/trussworks/react-uswds/commit/92ea5f07f7212370165423ec09ed35eec3aa7e58))
 
 
 ### Documentation & Examples
 
-* Documentation Audit changes ([#1008](https://github.com/trussworks/react-uswds/issues/1008)) ([a8d267f](https://github.com/trussworks/react-uswds/commit/a8d267f6f7db8c9d3dc1c8477fe1ee6b98f9b914))
+* Update documentation. Show component description and prop defaults in storybook ([#1008](https://github.com/trussworks/react-uswds/issues/1008)) ([a8d267f](https://github.com/trussworks/react-uswds/commit/a8d267f6f7db8c9d3dc1c8477fe1ee6b98f9b914))
 
 ### [1.13.2](https://github.com/trussworks/react-uswds/compare/1.13.1...1.13.2) (2021-03-11)
 
