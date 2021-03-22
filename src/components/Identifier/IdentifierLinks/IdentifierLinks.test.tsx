@@ -14,7 +14,7 @@ const links = [
 
 describe('IdentifierLinks component', () => {
   it('renders without errors', () => {
-    const { queryByTestId } = render(<IdentifierLinks links={links} />)
+    const { queryByTestId } = render(<IdentifierLinks></IdentifierLinks>)
     expect(queryByTestId('identifierLinks')).toBeInTheDocument()
   })
 
