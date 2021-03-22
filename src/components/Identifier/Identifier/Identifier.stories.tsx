@@ -61,7 +61,12 @@ export const identifierMultipleLogosEnglish = (): React.ReactElement => (
 
 export const identifierMultipleLogosSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
+    <IdentifierMasthead
+      language="spanish"
+      hasSecondLogo={true}
+      otherAgencyName={'Other Agency'}
+      {...identifierMastheadProps}
+    />
     <IdentifierLinks links={links} />
     <IdentifierGov language="spanish" />
   </Identifier>
