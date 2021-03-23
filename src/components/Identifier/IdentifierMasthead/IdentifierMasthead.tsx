@@ -65,6 +65,7 @@ export const IdentifierMasthead = ({
       aria-label={copy.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
+        {/* Logo will likely be its own component based on convention set in Footer */}
         {hasLogo ? (
           <div className="usa-identifier__logos">
             <a href="www.google.com" className="usa-identifier__logo">
