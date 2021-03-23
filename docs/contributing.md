@@ -2,18 +2,18 @@
 
 We are glad you are interested to contribute to this project! Please make sure you've seen the [README](../README.md) and [license](../README.md#license) for this project before continuing further. If you work for Truss, check out the [guide for Trussels](./for_trussels.md) as well.
 
-We welcome contributions in the form of comments, issues, or pull requests with code changes. If you see an error, have a question, or want to share feedback open an issue to discuss. This repository is governed by the [Contributor Covenant](../CODE_OF_CONDUCT.md)
+We welcome contributions in the form of comments, issues, or pull requests with code changes. If you see an error, have a question, or want to share feedback open an issue to discuss. This repository is governed by the [Contributor Covenant](../CODE_OF_CONDUCT.md).
 
 **Table of Contents**
 
 - [Environment setup](#environment-setup)
   - [Available commands](#available-commands)
 - [Development](#development)
-  - [Commit guidelines](#before-you-start-commit-guidelines)
   - [Working on an issue](#working-on-an-issue)
   - [General guidelines](#general-guidelines)
   - [Linting, formatting, & automated tests](#linting-formatting--automated-tests)
   - [Testing in an application](#testing-in-an-application)
+  - [Opening & merging pull requests](#opening--merging-pull-requests)
 
 ## Environment setup
 
@@ -48,76 +48,17 @@ These should all be run from within the project directory.
 
 ## Development
 
-### Before you start: commit guidelines
-
-Make sure you understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)**. This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
-
-The format for PR titles is:
-
-```
-<type>(scope): <subject>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
-```
-
-#### `type`:
-
-Required, must be one of the following:
-
-- `build`: Changes that affect the build system or external dependencies (example scopes: webpack, npm)
-- `chore`: Completing a task that has no effective code changes, such as updating the version and changelog for a release
-- `ci`: Changes to our CI configuration files and scripts (example scopes: Circle, Github actions/workflows)
-- `docs`: Documentation only changes
-- `feat`: A new feature
-- `fix`: A bug fix
-- `perf`: A code change that improves performance
-- `refactor`: A code change that neither fixes a bug nor adds a feature
-- `revert`: If the commit reverts a previous commit, it should begin with `revert:` , followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
-- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- `test`: Adding missing tests or correcting existing tests
-
-#### `scope`:
-
-Optional, can be one of the following:
-
-- `deps`: Updating a package listed in dependencies
-- `deps-dev`: Updating a package listed in devDependencies
-- `release`: Releasing a new version
-- `circleci`: Changes to CircleCI config and/or scripts
-- `example`: Changes to the Example App only
-- `storybook`: Changes to Storybook or stories files only
-
-#### `body`:
-
-Will default to a list of included commits since PRs are all squashed when merging. You can also add additional context to the body if needed.
-
-#### `footer`:
-
-Should link the PR to any issues it closes (see: ["Linking a pull request to an issue"](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue)).
-
-Example:
-
-```
-Closes #123
-```
-
-Should also include `BREAKING CHANGE:` if the commit includes any breaking changes. This will make sure the major version is automatically bumped when this commit is released.
-
 ### Working on an issue
 
 To begin working on an issue, make sure you've assigned yourself to the issue in Github and marked it as "In Progress.". If there isn't an issue yet for what you want to work on, [please create one](https://github.com/trussworks/react-uswds/issues/new/choose).
 
-Create a new branch off `main` using the naming convention:
+Some issues are tagged with the [needs requirements](https://github.com/trussworks/react-uswds/issues?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+needs+requirements%22) label, which usually indicates there is some ongoing discussion about the issue and it may not be ready to start development on yet.
+
+Once you have an issue to work on, create a new branch off `main` using the naming convention:
 
 `{your initials or username}-{summary}-{issue #}`
 
-For example: `hw-accordion-component-112`, `hw-accordion-component-112`
-
-When your branch is ready for review, open a PR into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once the work is approved, it will be merged with **squash & merge**.
-
-> Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
+For example: `hw-accordion-component-112`
 
 ### General guidelines
 
@@ -221,3 +162,64 @@ The important thing to note here is that `resolved` is pointing to the Github re
 The downside of this method is that if you need to make changes to ReactUSWDS, you will have to commit and push up the branch, and then run `yarn upgrade @trussworks/react-uswds` to install the newest changes in your application. If you're ever not sure if your application code is referencing the right version, you can always verify against the SHA shown in the `yarn.lock` file.
 
 You can commit this change to your application code if you want to use a branch of ReactUSWDS for some time, but make sure to switch back to a released version once the branch is merged and released!
+
+### Opening & merging pull requests
+
+When your branch is ready for review, open a new pull request into `main` and request reviews from relevant team members. Reviews from codeowners will automatically be requested. Address any failing tests, lint errors, PR feedback, etc. Once the work is approved, it will be merged with **squash & merge**.
+
+When opening the pull request, it's important to understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)**. This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
+
+> Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
+
+The format for PR commits is:
+
+```
+<type>(scope): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+#### `type`:
+
+Required, must be one of the following:
+
+- `build`: Changes that affect the build system or external dependencies (example scopes: webpack, npm)
+- `chore`: Completing a task that has no effective code changes, such as updating the version and changelog for a release
+- `ci`: Changes to our CI configuration files and scripts (example scopes: Circle, Github actions/workflows)
+- `docs`: Documentation only changes
+- `feat`: A new feature
+- `fix`: A bug fix
+- `perf`: A code change that improves performance
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `revert`: If the commit reverts a previous commit, it should begin with `revert:` , followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- `test`: Adding missing tests or correcting existing tests
+
+#### `scope`:
+
+Optional, can be one of the following:
+
+- `deps`: Updating a package listed in dependencies
+- `deps-dev`: Updating a package listed in devDependencies
+- `release`: Releasing a new version
+- `circleci`: Changes to CircleCI config and/or scripts
+- `example`: Changes to the Example App only
+- `storybook`: Changes to Storybook or stories files only
+
+#### `body`:
+
+Will default to a list of included commits since PRs are all squashed when merging. You can also add additional context to the body if needed.
+
+#### `footer`:
+
+Should link the PR to any issues it closes (see: ["Linking a pull request to an issue"](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue)).
+
+Example:
+
+```
+Closes #123
+```
+
+Should also include `BREAKING CHANGE:` if the commit includes any breaking changes. This will make sure the major version is automatically bumped when this commit is released.
