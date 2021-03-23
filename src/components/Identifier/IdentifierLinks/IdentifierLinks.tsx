@@ -4,8 +4,8 @@ import { IdentifierLinkItemProps } from '../IdentifierLinkItem/IdentifierLinkIte
 
 interface IdentifierLinksProps {
   children:
-    | ReactElement<IdentifierLinksProps>
-    | ReactElement<IdentifierLinksProps>[]
+    | ReactElement<IdentifierLinkItemProps>
+    | ReactElement<IdentifierLinkItemProps>[]
   className?: string
   navProps?: JSX.IntrinsicElements['nav']
   listProps?: JSX.IntrinsicElements['ul']
@@ -21,17 +21,11 @@ export const IdentifierLinks = ({
     'usa-identifier__section usa-identifier__section--required-links',
     className
   )
+
   return (
-    <nav
-      className={classes}
-      data-testid="identifierLinks"
-      {...navProps}
-      aria-label="Important links">
+    <nav className={classes} {...navProps} aria-label="Important links">
       <div className="usa-identifier__container">
-        <ul
-          data-testid="identifierLinks-list"
-          className="usa-identifier__required-links-list"
-          {...listProps}>
+        <ul className="usa-identifier__required-links-list" {...listProps}>
           {children}
         </ul>
       </div>

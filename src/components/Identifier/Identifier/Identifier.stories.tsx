@@ -1,8 +1,10 @@
 import React from 'react'
-
+/*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
 import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
 import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
+import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
+import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 export default {
@@ -17,14 +19,12 @@ export default {
   },
 }
 
-const links = [
-  <a key="identifierLinkGoogle" href="www.google.com">
-    identifierLinkGoogle
-  </a>,
-  <a key="identifierLinkGoogleAgain" href="www.google.com">
-    identifierLinkGoogleAgain
-  </a>,
-]
+const links = Array(8).fill(
+  <a className="usa-identifier__required-link" href="#">
+    required link
+  </a>
+)
+
 const identifierMastheadProps = {
   plaintextDomain: 'aGovDomain.gov',
   parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
@@ -34,7 +34,11 @@ const identifierMastheadProps = {
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead {...identifierMastheadProps} />
-    <IdentifierLinks links={links} />
+    <IdentifierLinks links={links}>
+      <IdentifierLinkItem>
+        <IdentifierLink />
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov />
   </Identifier>
 )

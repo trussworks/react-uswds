@@ -1,33 +1,19 @@
+/*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
+
 import React from 'react'
 import { render } from '@testing-library/react'
 
 import { IdentifierLinks } from './IdentifierLinks'
-import { Link } from '../../Link/Link'
-import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 
-const testPageName = 'Test Page'
+const links = Array(8).fill(
+  <a className="usa-identifier__required-link" href="#">
+    required link
+  </a>
+)
 
 describe('IdentifierLinks component', () => {
   it('renders without errors', () => {
-    const { getByRole, queryByText } = render(
-      <IdentifierLinks>{testPageName}</IdentifierLinks>
-    )
-    expect(queryByText(testPageName)).toBeInTheDocument()
+    const { getByRole } = render(<IdentifierLinks links={links} />)
+    expect(getByRole('navigation')).toBeInTheDocument()
   })
-
-  // it('renders custom styles', () => {
-  //   const { container } = render(
-  //     <IdentifierLinks className="custom-class" links={links} />
-  //   )
-  //   expect(
-  //     container.querySelector('.usa-identifier__section--required-links')
-  //   ).toHaveClass('custom-class')
-  // })
-
-  // it('renders nav attributes passed in through props', () => {
-  //   const { queryByTestId } = render(
-  //     <IdentifierLinks links={links} aria-label="Important links" />
-  //   )
-  //   expect(queryByTestId('identifierLinks')).toHaveAttribute('aria-label')
-  // })
 })
