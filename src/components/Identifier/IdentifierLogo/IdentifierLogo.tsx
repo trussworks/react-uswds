@@ -5,13 +5,14 @@ import classnames from 'classnames'
 // type limits the shape of what can be passed in
 // what's the benefit to what over the other?
 
-type LogoProps = {
+type IdentifierLogoProps = {
   image: React.ReactNode
 }
-export const Logo = ({
+export const IdentifierLogo = ({
   image,
   ...elementAttributes
-}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement => {
+}: IdentifierLogoProps &
+  React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__logos',
     elementAttributes.className
@@ -20,11 +21,15 @@ export const Logo = ({
   //  <img className="usa-identifier__logo-img" >
   // </a>
 
-  // should Logo handle multiple logos? I assume yes
+  // should IdentifierLogo handle multiple logos? I assume yes
   return (
-    <div className="">
+    <div className={classes}>
       <>
-        <div className="">{image}</div>
+        <div className="">
+          <a href="www.google.com" className="usa-identifier__logo">
+            {image}
+          </a>
+        </div>
       </>
     </div>
   )
