@@ -65,6 +65,7 @@ export const IdentifierMasthead = ({
     return agency.logo
   })
 
+  // 'usa-identifier__logos'
   return (
     <section
       data-testid="identifierMasthead"

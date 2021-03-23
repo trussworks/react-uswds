@@ -2,41 +2,41 @@ import React from 'react'
 import classnames from 'classnames'
 
 export interface IdentifierLogoProps {
-  image: React.ReactNode
+  src: string
+  agencyUrl: string
+  agencyName: string
+  anchorProps?: JSX.IntrinsicElements['a']
+  imgProps?: JSX.IntrinsicElements['img']
+  className?: string
+  anchorClassName?: string
+  imgClassName?: string
 }
 
 export const IdentifierLogo = ({
-  image,
-  ...elementAttributes
-}: IdentifierLogoProps &
-  React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement => {
-  const classes = classnames(
-    'usa-identifier__logos',
-    elementAttributes.className
+  src,
+  agencyUrl,
+  agencyName,
+  anchorProps,
+  imgProps,
+  className,
+  anchorClassName,
+  imgClassName,
+}: IdentifierLogoProps): React.ReactElement => {
+  const anchorClasses = classnames(
+    'usa-identifier__logo',
+    className,
+    anchorClassName
+    // should anchorClasses include both className and anchorClassName?
   )
-  // <a className="usa-identifier__logo" >
-  //  <img className="usa-identifier__logo-img" >
-  // </a>
-
-  // should IdentifierLogo handle multiple logos?
-  // no, use a map or something if multipleLogos
-
-  /*
-  Display multiple parents and logos in hierarchical order. 
-  If a site has more than one parent agency, you may
-  display a reference and a logo for each parent in
-  hierarchical order, highest first. For example,”An official
-  website of [Grandparent Department] and [Parent Agency]”.
-   */
+  const imgClasses = classnames('usa-identifier__logo-img', imgClassName)
   return (
-    <div className={classes}>
-      <>
-        <div className="">
-          <a href="www.google.com" className="usa-identifier__logo">
-            {image}
-          </a>
-        </div>
-      </>
-    </div>
+    <a href={agencyUrl} className={anchorClasses} {...anchorProps}>
+      <img
+        src={src}
+        className={imgClasses}
+        alt={`${agencyName} logo`}
+        {...imgProps}
+      />
+    </a>
   )
 }

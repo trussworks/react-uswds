@@ -1,16 +1,32 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+
 import { IdentifierLogo } from './IdentifierLogo'
 
 describe('IdentifierLogo component', () => {
   it('renders without errors', () => {
-    /*
-    https://testing-library.com/docs/queries/byrole/
-    https://www.tpgi.com/what-is-an-accessible-name/
-    
-    When an image is the only content of a link, the image’s
-    alt attribute gives the link its accessible name.
-    */
+    const { getByRole } = render(
+      <IdentifierLogo
+        src={dotGovIcon}
+        agencyUrl="#"
+        agencyName="Test Agency Name"
+      />
+    )
+    expect(getByRole('link')).toHaveClass('usa-identifier__logo')
+    expect(getByRole('img')).toHaveClass('usa-identifier__logo-img')
+  })
+
+  it('passes properties properly to the respective elements', () => {
+    const { getByRole } = render(
+      <IdentifierLogo
+        src={dotGovIcon}
+        agencyUrl="#"
+        agencyName="Test Agency Name"
+      />
+    )
+    expect(getByRole('img')).toHaveProperty('alt', 'Test Agency Name logo')
+    expect(getByRole('link')).toHaveProperty('href')
   })
 })
