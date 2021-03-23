@@ -1,6 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 // test assets
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 // import flagImg from 'uswds/src/img/us_flag_small.png'

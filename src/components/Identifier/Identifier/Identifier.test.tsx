@@ -26,7 +26,7 @@ describe('Identifier component', () => {
     const { queryByTestId } = render(
       <Identifier>
         <IdentifierMasthead {...identifierMastheadProps} />
-        <IdentifierLinks links={links} />
+        <IdentifierLinks>{links}</IdentifierLinks>
         <IdentifierGov />
       </Identifier>
     )
