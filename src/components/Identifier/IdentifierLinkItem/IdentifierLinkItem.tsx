@@ -14,10 +14,7 @@ export const IdentifierLinkItem = ({
   JSX.IntrinsicElements['li']): React.ReactElement => {
   const classes = classnames('usa-identifier__required-links-item', className)
   return (
-    <li
-      data-testid="identifierLinks-list-item"
-      className={classes}
-      {...listItemProps}>
+    <li className={classes} {...listItemProps}>
       {children}
     </li>
   )

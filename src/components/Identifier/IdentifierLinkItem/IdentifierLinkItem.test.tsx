@@ -1,30 +1,32 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { IdentifierLinkItem } from './IdentifierLinkItem'
+import { Link } from '../../Link/Link'
+import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
+import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
 
-describe('IdentifierLinkItem', () => {
-  it('renders a list item', () => {
-    const { getByRole } = render(
-      <IdentifierLinkItem>
-        <div>renders list item</div>
-      </IdentifierLinkItem>
+const testPageName = 'Test Page'
+
+describe('IdentifierLinkItem component', () => {
+  it('renders without errors', () => {
+    const { getByRole, queryByText } = render(
+      <IdentifierLinkItem>{testPageName}</IdentifierLinkItem>
     )
-    // getAllByRole( ‘heading’, {name: ‘My heading’} )
-    expect(getByRole('listitem')).toBeInTheDocument()
+    expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('listitem')).toHaveClass(
       'usa-identifier__required-links-item'
     )
   })
 
-  it('renders its children', () => {
-    const { getByTestId } = render(
+  it('renders properly with IdentifierLink', () => {
+    const { getByRole, queryByText } = render(
       <IdentifierLinkItem>
-        {/* <IdentifierLink /> */}
-        {/* <a href="www.google.com">some text</a> */}
-        <div>renders its children</div>
+        <IdentifierLink href="#">{testPageName}</IdentifierLink>
       </IdentifierLinkItem>
     )
-    expect(getByTestId('identifierLinks-list-item-a')).toBeInTheDocument()
+    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(getByRole('listitem')).toHaveClass(
+      'usa-identifier__required-links-item'
+    )
   })
 })
