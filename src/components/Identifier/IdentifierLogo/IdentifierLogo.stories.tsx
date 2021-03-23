@@ -3,7 +3,6 @@ import React from 'react'
 import { IdentifierLogo } from './IdentifierLogo'
 
 // assets
-// import logoImg from 'uswds/src/img/logo-img.png'
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 export default {

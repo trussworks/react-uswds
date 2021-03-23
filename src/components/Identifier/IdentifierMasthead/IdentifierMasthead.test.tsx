@@ -57,12 +57,12 @@ describe('IdentifierMasthead component', () => {
     expect(queryByTestId('identifierMasthead-logo')).not.toBeInTheDocument()
   })
 
-  it('renders consistently in Spanish when passed Spanish for language prop', () => {
-    const tree = renderer
-      .create(<IdentifierMasthead language="spanish" {...testProps} />)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
+  // it('renders consistently in Spanish when passed Spanish for language prop', () => {
+  //   const tree = renderer
+  //     .create(<IdentifierMasthead language="spanish" {...testProps} />)
+  //     .toJSON()
+  //   expect(tree).toMatchSnapshot()
+  // })
 
   it('renders with multiple logos passed in', () => {
     const { queryByTestId } = render(

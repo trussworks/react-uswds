@@ -4,8 +4,11 @@ import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
 import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
+// import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 // import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
 // import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
+
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 export default {
   title: 'Components/Identifier',
@@ -25,30 +28,18 @@ const links = Array(8).fill(
   </a>
 )
 
-const identifierMastheadProps = {
-  plaintextDomain: 'aGovDomain.gov',
-  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
-  parentAgencyName: 'Test Parent Agency Name',
+const testParentAgency = {
+  url: 'https://www.parentAgencyExampleUrl.gov/',
+  name: 'Test Parent Agency Name',
+  logo: dotGovIcon,
 }
-
-/*
-current structure
-<Identifier>
-  <IdentifierMasthead>
-    <IdentifierLogo />
-  </IdentifierMasthead>
-  <IdentifierLinks>
-    <IdentifierLinkItem>
-      <IdentifierLink />
-    </IdentifierLinkItem>
-  </IdentifierLinks>
-  <IdentifierGov />
-</Identifier>
-*/
 
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead {...identifierMastheadProps} />
+    <IdentifierMasthead
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
+    />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov />
   </Identifier>
@@ -56,7 +47,11 @@ export const identifierDefault = (): React.ReactElement => (
 
 export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
+    <IdentifierMasthead
+      language="spanish"
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
+    />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov language="spanish" />
   </Identifier>
@@ -65,9 +60,8 @@ export const identifierSpanish = (): React.ReactElement => (
 export const identifierMultipleLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      hasSecondLogo={true}
-      otherAgencyName={'Other Agency'}
-      {...identifierMastheadProps}
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
     />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov />
@@ -78,9 +72,8 @@ export const identifierMultipleLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       language="spanish"
-      hasSecondLogo={true}
-      otherAgencyName={'Other Agency'}
-      {...identifierMastheadProps}
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
     />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov language="spanish" />
@@ -89,7 +82,10 @@ export const identifierMultipleLogosSpanish = (): React.ReactElement => (
 
 export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead hasLogo={false} {...identifierMastheadProps} />
+    <IdentifierMasthead
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
+    />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov />
   </Identifier>
@@ -99,8 +95,8 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       language="spanish"
-      hasLogo={false}
-      {...identifierMastheadProps}
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
     />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov language="spanish" />
@@ -109,7 +105,10 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
 
 export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead {...identifierMastheadProps} />
+    <IdentifierMasthead
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
+    />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov />
   </Identifier>
@@ -117,7 +116,11 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
 
 export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead language="spanish" {...identifierMastheadProps} />
+    <IdentifierMasthead
+      language="spanish"
+      domain="domain.gov.mil.edu"
+      parentAgencies={[testParentAgency]}
+    />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov language="spanish" />
   </Identifier>

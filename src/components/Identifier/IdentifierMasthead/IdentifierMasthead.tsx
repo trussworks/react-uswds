@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
-// test assets
-import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
-// import flagImg from 'uswds/src/img/us_flag_small.png'
+import {
+  IdentifierLogo,
+  IdentifierLogoProps,
+} from '../IdentifierLogo/IdentifierLogo'
 
 type Language = 'english' | 'spanish'
 
@@ -19,36 +19,36 @@ const copyMap: Record<Language, IdentifierMastheadCopyMap> = {
     ariaLabelAgencyIdentifier: 'Agency identifier',
     ariaLabelAgencyDescription: 'Agency description',
     identityDisclaimer: 'An official website of the',
+    // taxpayerDisclaimer: 'Produced and published at taxpayer expense.'
   },
   spanish: {
     ariaLabelAgencyIdentifier: 'Identificador de la agencia',
     ariaLabelAgencyDescription: 'Descripción de la agencia',
     identityDisclaimer: 'Un sitio web oficial de',
+    // taxpayerDisclaimer: 'Producido y publicado con dinero de los contribuyentes de impuestos.'
   },
 }
 
+interface ParentAgency {
+  url: string
+  name: string
+  logo?: ReactElement<IdentifierLogoProps>
+}
+
 interface IdentifierMastheadProps {
+  taxpayerDisclaimer?: string
+  parentAgencies: ParentAgency[]
+  domain: string
   language?: Language
   className?: string
-  hasLogo?: boolean
-  hasSecondLogo?: boolean
-  // agencyLogo?: type?
-  // agencyLogos?: type?
-  plaintextDomain: string
-  parentAgencyUrl: string
-  parentAgencyName: string
-  otherAgencyName?: string
 }
 
 export const IdentifierMasthead = ({
+  taxpayerDisclaimer,
+  parentAgencies,
+  domain,
   language = 'english',
-  hasLogo = true,
-  hasSecondLogo = false,
   className,
-  plaintextDomain,
-  parentAgencyUrl,
-  parentAgencyName,
-  otherAgencyName,
   ...sectionProps
 }: IdentifierMastheadProps &
   JSX.IntrinsicElements['section']): React.ReactElement => {
@@ -59,6 +59,12 @@ export const IdentifierMasthead = ({
 
   const copy = copyMap[`${language}` as Language]
 
+  const identityDisclaimerCopy = 'placeholder text'
+
+  const logos = parentAgencies.map((agency) => {
+    return agency.logo
+  })
+
   return (
     <section
       data-testid="identifierMasthead"
@@ -66,43 +72,22 @@ export const IdentifierMasthead = ({
       aria-label={copy.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
-        {/* Logo will likely be its own component based on convention set in Footer */}
-        {hasLogo ? (
-          <div className="usa-identifier__logos">
-            <a href="www.google.com" className="usa-identifier__logo">
-              <img
-                data-testid="identifierMasthead-logo"
-                className="usa-identifier__logo-img"
-                src={dotGovIcon}
-                alt={`${parentAgencyName} logo`}
-              />
-            </a>
-            {hasSecondLogo ? (
-              <a href="www.google.com" className="usa-identifier__logo">
-                <img
-                  data-testid="identifierMasthead-second-logo"
-                  className="usa-identifier__logo-img"
-                  src={dotGovIcon}
-                  alt={`${otherAgencyName} logo`}
-                />
-              </a>
-            ) : (
-              <></>
-            )}
-          </div>
-        ) : (
-          <></>
-        )}
+        {/* <IdentifierLogo />  */}
         <div
           data-testid="identifierMasthead-agency-description"
           className="usa-identifier__identity"
           aria-label={copy.ariaLabelAgencyDescription}>
-          <p className="usa-identifier__identity-domain">{plaintextDomain}</p>
-          <p className="usa-identifier__identity-disclaimer">
-            {copy.identityDisclaimer}
-            &nbsp;
-            <a href={parentAgencyUrl}>{parentAgencyName}</a>
-          </p>
+          <p className="usa-identifier__identity-domain">{domain}</p>
+          {/* {parentAgencies.map((agency) => (
+            <>
+              <p className="usa-identifier__identity-disclaimer">
+                {copy.identityDisclaimer}
+                &nbsp;
+                <a href={agency.url}>{agency.name}</a>
+              </p>
+            </>
+          ))} */}
+          {identityDisclaimerCopy}
         </div>
       </div>
     </section>
@@ -110,15 +95,3 @@ export const IdentifierMasthead = ({
 }
 
 export default IdentifierMasthead
-
-/*
-Is it possible to have more than two logos? 
-
-USWDS only accounts for two, a Parent Agency and a Child Agency:
-
-MULTIPLE PARENTS AND LOGOS
-<< Display multiple parents and logos in hierarchical order. If a site has
-more than one parent agency, you may display a reference and a logo for
-each parent in hierarchical order, highest first. For example,”An
-official website of [Grandparent Department] and [Parent Agency]”. >>
-*/

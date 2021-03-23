@@ -13,12 +13,4 @@ describe('IdentifierLogo component', () => {
     alt attribute gives the link its accessible name.
     */
   })
-
-  it('renders multiple logos', () => {
-    /*
-    do I test this here or in Identifier.stories ?
-    depends if IdentifierLogo should handle multiple logos
-    or if that's managed by IdentifierMasthead
-    */
-  })
 })
