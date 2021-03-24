@@ -108,6 +108,7 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
     <IdentifierMasthead
       domain="domain.gov.mil.edu"
       parentAgencies={[testParentAgency]}
+      taxpayerDisclaimer="Produced and published at taxpayer expense."
     />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov />
@@ -120,6 +121,7 @@ export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
       language="spanish"
       domain="domain.gov.mil.edu"
       parentAgencies={[testParentAgency]}
+      taxpayerDisclaimer="Producido y publicado con dinero de los contribuyentes de impuestos."
     />
     <IdentifierLinks>{links}</IdentifierLinks>
     <IdentifierGov language="spanish" />

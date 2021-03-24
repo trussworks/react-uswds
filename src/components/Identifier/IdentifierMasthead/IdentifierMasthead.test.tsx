@@ -1,20 +1,20 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import renderer from 'react-test-renderer'
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 import { IdentifierMasthead } from './IdentifierMasthead'
 
-const testProps = {
-  plaintextDomain: 'aGovDomain.gov',
-  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
-  parentAgencyName: 'Test Parent Agency Name',
+const testParentAgency = {
+  url: 'https://www.parentAgencyExampleUrl.gov/',
+  name: 'Test Parent Agency Name',
+  logo: dotGovIcon,
 }
 
-const multipleLogosTestProps = {
-  plaintextDomain: 'aGovDomain.gov',
-  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
-  parentAgencyName: 'Test Parent Agency Name',
-  otherAgencyName: 'Second Agency Name',
+const agenciesList = [testParentAgency, testParentAgency]
+const testProps = {
+  domain: 'aGovDomain.gov',
+  parentAgencies: agenciesList,
 }
 
 describe('IdentifierMasthead component', () => {
@@ -51,9 +51,7 @@ describe('IdentifierMasthead component', () => {
   })
 
   it('renders without a logo passed in', () => {
-    const { queryByTestId } = render(
-      <IdentifierMasthead hasLogo={false} {...testProps} />
-    )
+    const { queryByTestId } = render(<IdentifierMasthead {...testProps} />)
     expect(queryByTestId('identifierMasthead-logo')).not.toBeInTheDocument()
   })
 
@@ -65,9 +63,7 @@ describe('IdentifierMasthead component', () => {
   // })
 
   it('renders with multiple logos passed in', () => {
-    const { queryByTestId } = render(
-      <IdentifierMasthead {...multipleLogosTestProps} />
-    )
+    const { queryByTestId } = render(<IdentifierMasthead {...testProps} />)
     expect(
       queryByTestId('identifierMasthead-logo identifierMasthead-second-logo')
     ).toBeInTheDocument

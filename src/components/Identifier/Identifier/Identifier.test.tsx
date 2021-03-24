@@ -6,6 +6,8 @@ import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
 import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+
 const links = [
   <a key="identifierLinkGoogle" href="www.google.com">
     identifierLinkGoogle
@@ -15,17 +17,20 @@ const links = [
   </a>,
 ]
 
-const identifierMastheadProps = {
-  plaintextDomain: 'aGovDomain.gov',
-  parentAgencyUrl: 'https://www.parentAgencyExampleUrl.gov/',
-  parentAgencyName: 'Test Parent Agency Name',
+const testParentAgency = {
+  url: 'https://www.parentAgencyExampleUrl.gov/',
+  name: 'Test Parent Agency Name',
+  logo: dotGovIcon,
 }
 
 describe('Identifier component', () => {
   it('renders', () => {
     const { queryByTestId } = render(
       <Identifier>
-        <IdentifierMasthead {...identifierMastheadProps} />
+        <IdentifierMasthead
+          domain="domain.gov.mil.edu"
+          parentAgencies={[testParentAgency]}
+        />
         <IdentifierLinks>{links}</IdentifierLinks>
         <IdentifierGov />
       </Identifier>

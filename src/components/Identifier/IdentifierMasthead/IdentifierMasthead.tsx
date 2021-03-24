@@ -19,13 +19,11 @@ const copyMap: Record<Language, IdentifierMastheadCopyMap> = {
     ariaLabelAgencyIdentifier: 'Agency identifier',
     ariaLabelAgencyDescription: 'Agency description',
     identityDisclaimer: 'An official website of the',
-    // taxpayerDisclaimer: 'Produced and published at taxpayer expense.'
   },
   spanish: {
     ariaLabelAgencyIdentifier: 'Identificador de la agencia',
     ariaLabelAgencyDescription: 'Descripción de la agencia',
     identityDisclaimer: 'Un sitio web oficial de',
-    // taxpayerDisclaimer: 'Producido y publicado con dinero de los contribuyentes de impuestos.'
   },
 }
 
@@ -36,18 +34,18 @@ interface ParentAgency {
 }
 
 interface IdentifierMastheadProps {
-  taxpayerDisclaimer?: string
   parentAgencies: ParentAgency[]
   domain: string
   language?: Language
+  taxpayerDisclaimer?: string
   className?: string
 }
 
 export const IdentifierMasthead = ({
-  taxpayerDisclaimer,
   parentAgencies,
   domain,
   language = 'english',
+  taxpayerDisclaimer,
   className,
   ...sectionProps
 }: IdentifierMastheadProps &
@@ -61,11 +59,10 @@ export const IdentifierMasthead = ({
 
   const identityDisclaimerCopy = 'placeholder text'
 
-  const logos = parentAgencies.map((agency) => {
-    return agency.logo
-  })
+  // const logos = parentAgencies.map((agency) => {
+  //   return agency.logo
+  // })
 
-  // 'usa-identifier__logos'
   return (
     <section
       data-testid="identifierMasthead"
@@ -73,22 +70,29 @@ export const IdentifierMasthead = ({
       aria-label={copy.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
-        {/* <IdentifierLogo />  */}
-        <div
-          data-testid="identifierMasthead-agency-description"
-          className="usa-identifier__identity"
-          aria-label={copy.ariaLabelAgencyDescription}>
-          <p className="usa-identifier__identity-domain">{domain}</p>
-          {/* {parentAgencies.map((agency) => (
-            <>
-              <p className="usa-identifier__identity-disclaimer">
-                {copy.identityDisclaimer}
-                &nbsp;
-                <a href={agency.url}>{agency.name}</a>
-              </p>
-            </>
-          ))} */}
-          {identityDisclaimerCopy}
+        <div className="usa-identifier__logos">
+          {/* <IdentifierLogo />  */}
+          <div
+            data-testid="identifierMasthead-agency-description"
+            className="usa-identifier__identity"
+            aria-label={copy.ariaLabelAgencyDescription}>
+            {identityDisclaimerCopy}
+            <p className="usa-identifier__identity-domain">{domain}</p>
+            {parentAgencies ? (
+              parentAgencies.map((agency) => (
+                <>
+                  <p className="usa-identifier__identity-disclaimer">
+                    {copy.identityDisclaimer}
+                    &nbsp;
+                    <a href={agency.url}>{agency.name}</a>
+                  </p>
+                </>
+              ))
+            ) : (
+              <></>
+            )}
+            {taxpayerDisclaimer}
+          </div>
         </div>
       </div>
     </section>
