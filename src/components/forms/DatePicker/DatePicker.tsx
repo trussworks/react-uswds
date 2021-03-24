@@ -24,14 +24,14 @@ import {
 } from './utils'
 import { Calendar } from './Calendar'
 
-interface DatePickerProps {
+interface BaseDatePickerProps {
   id: string
   name: string
   className?: string
   disabled?: boolean
   required?: boolean
   defaultValue?: string
-  minDate: string
+  minDate?: string
   maxDate?: string
   rangeDate?: string
   onChange?: (val?: string) => void
@@ -40,28 +40,27 @@ interface DatePickerProps {
   ) => void
 }
 
+export type DatePickerProps = BaseDatePickerProps & Omit<JSX.IntrinsicElements['input'], "onChange">
+
 export enum FocusMode {
   None,
   Input,
 }
 
-export const DatePicker = (
-  props: DatePickerProps & JSX.IntrinsicElements['input']
-): React.ReactElement => {
-  const {
-    id,
-    name,
-    defaultValue,
-    disabled,
-    required,
-    minDate = DEFAULT_MIN_DATE,
-    maxDate,
-    rangeDate,
-    onChange,
-    onBlur,
-    ...inputProps
-  } = props
-
+export const DatePicker = ({
+  id,
+  name,
+  className,
+  defaultValue,
+  disabled,
+  required,
+  minDate = DEFAULT_MIN_DATE,
+  maxDate,
+  rangeDate,
+  onChange,
+  onBlur,
+  ...inputProps
+}: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
@@ -240,7 +239,8 @@ export const DatePicker = (
     'usa-date-picker--initialized',
     {
       'usa-date-picker--active': showCalendar,
-    }
+    },
+    className
   )
 
   return (

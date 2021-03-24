@@ -5,11 +5,15 @@ export default {
   title: 'Components/Form controls/Radio buttons',
   component: Radio,
   parameters: {
-    info: `
-USWDS 2.0 Radio component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Radio component
 
 Source: https://designsystem.digital.gov/components/form-controls/#radio-buttons
 `,
+      },
+    },
   },
 }
 

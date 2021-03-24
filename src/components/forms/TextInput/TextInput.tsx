@@ -43,21 +43,20 @@ export type OptionalTextInputProps = CustomTextInputProps &
 
 export type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
 
-export const TextInput = (props: TextInputProps): React.ReactElement => {
-  const {
-    id,
-    name,
-    type,
-    className,
-    validationStatus,
-    error,
-    success,
-    inputSize,
-    small,
-    medium,
-    inputRef,
-    ...inputProps
-  } = props
+export const TextInput = ({
+  id,
+  name,
+  type,
+  className,
+  validationStatus,
+  error,
+  success,
+  inputSize,
+  small,
+  medium,
+  inputRef,
+  ...inputProps
+}: TextInputProps): React.ReactElement => {
   if (error) {
     deprecationWarning(
       'TextInput property error is deprecated.  Use validationStatus'

@@ -1,7 +1,21 @@
 import React from 'react'
 import { GovBanner } from './GovBanner'
 
-export default { title: 'Components/Banner', component: GovBanner }
+export default { 
+  title: 'Components/Banner',
+  component: GovBanner,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Banner component
+
+Source: https://designsystem.digital.gov/components/banner/
+`,
+      },
+    },
+  },
+}
 
 export const govBannerDefault = (): React.ReactElement => (
   <GovBanner aria-label="Official government website" />

@@ -25,9 +25,13 @@ import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
 export default {
   title: 'Page Templates/Landing Page',
   parameters: {
-    info: `
+    docs: {
+      description: {
+        component: `
 Page templates
 `,
+      },
+    },
   },
 }
 

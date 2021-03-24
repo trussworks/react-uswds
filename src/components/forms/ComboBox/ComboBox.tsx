@@ -43,10 +43,9 @@ interface InputProps {
   focused: boolean
 }
 
-const Input = (
-  props: InputProps & JSX.IntrinsicElements['input']
-): React.ReactElement => {
-  const { focused, ...inputProps } = props
+const Input = ({ 
+  focused, ...inputProps 
+}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (focused && inputRef.current) {
@@ -67,21 +66,19 @@ const Input = (
   )
 }
 
-export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
-  const {
-    id,
-    name,
-    className,
-    options,
-    defaultValue,
-    disabled,
-    onChange,
-    assistiveHint,
-    noResults,
-    selectProps,
-    inputProps,
-  } = props
-
+export const ComboBox = ({
+  id,
+  name,
+  className,
+  options,
+  defaultValue,
+  disabled,
+  onChange,
+  assistiveHint,
+  noResults,
+  selectProps,
+  inputProps,
+}: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
 
   let defaultOption

@@ -5,11 +5,15 @@ export default {
   title: 'Components/Form elements/Label',
   component: Label,
   parameters: {
-    info: `
-USWDS 2.0 Label component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Label component
 
 Source: https://designsystem.digital.gov/components/form-controls/
 `,
+      },
+    },
   },
 }
 

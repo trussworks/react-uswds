@@ -5,11 +5,15 @@ export default {
   title: 'Components/Accordion',
   component: Accordion,
   parameters: {
-    info: `
-USWDS 2.0 Accordion component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Accordion component
 
 Source: https://designsystem.digital.gov/components/accordion/
 `,
+      },
+    },
   },
 }
 
