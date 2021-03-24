@@ -14,18 +14,15 @@ export function IdentifierLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
 }: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
-  const classes = classnames(
-    className,
-    'usa-identifier__required-link usa-link'
-  )
+  const classes = classnames(className, 'usa-identifier__required-link')
   const linkProps = {
     ...passThroughProps,
     className: classes,
   } as DefaultLinkProps | CustomLinkProps<FCProps>
 
   if (isCustomProps(linkProps)) {
-    return <Link<FCProps> {...linkProps} variant="unstyled" />
+    return <Link<FCProps> {...linkProps} />
   }
 
-  return <Link {...linkProps} variant="unstyled" />
+  return <Link {...linkProps} />
 }
