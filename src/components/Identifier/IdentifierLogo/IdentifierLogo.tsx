@@ -26,7 +26,6 @@ export const IdentifierLogo = ({
     'usa-identifier__logo',
     className,
     anchorClassName
-    // should anchorClasses include both className and anchorClassName?
   )
   const imgClasses = classnames('usa-identifier__logo-img', imgClassName)
   return (

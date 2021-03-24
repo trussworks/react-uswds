@@ -9,7 +9,7 @@ import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 
 describe('IdentifierLinks component', () => {
   it('renders without errors', () => {
-    const { getByRole } = render(
+    const { getByRole, getByText } = render(
       <IdentifierLinks>
         <IdentifierLinkItem>
           <IdentifierLink href="#">Test Agency Name</IdentifierLink>
@@ -17,5 +17,6 @@ describe('IdentifierLinks component', () => {
       </IdentifierLinks>
     )
     expect(getByRole('listitem')).toBeInTheDocument()
+    expect(getByText('Test Agency Name')).toBeInTheDocument()
   })
 })

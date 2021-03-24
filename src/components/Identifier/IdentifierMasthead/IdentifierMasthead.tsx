@@ -1,10 +1,7 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-import {
-  IdentifierLogo,
-  IdentifierLogoProps,
-} from '../IdentifierLogo/IdentifierLogo'
+import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
 type Language = 'english' | 'spanish'
 
@@ -30,11 +27,11 @@ const copyMap: Record<Language, IdentifierMastheadCopyMap> = {
 interface ParentAgency {
   url: string
   name: string
-  logo?: ReactElement<IdentifierLogoProps>
+  logo?: string
 }
 
 interface IdentifierMastheadProps {
-  parentAgencies: ParentAgency[]
+  parentAgency: ParentAgency
   domain: string
   language?: Language
   taxpayerDisclaimer?: string
@@ -42,7 +39,7 @@ interface IdentifierMastheadProps {
 }
 
 export const IdentifierMasthead = ({
-  parentAgencies,
+  parentAgency,
   domain,
   language = 'english',
   taxpayerDisclaimer,
@@ -59,10 +56,6 @@ export const IdentifierMasthead = ({
 
   const identityDisclaimerCopy = 'placeholder text'
 
-  // const logos = parentAgencies.map((agency) => {
-  //   return agency.logo
-  // })
-
   return (
     <section
       data-testid="identifierMasthead"
@@ -71,26 +64,24 @@ export const IdentifierMasthead = ({
       {...sectionProps}>
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          {/* <IdentifierLogo />  */}
+          {parentAgency.logo && (
+            <IdentifierLogo
+              agencyUrl={parentAgency.url}
+              agencyName={parentAgency.name}
+              src={parentAgency.logo}
+            />
+          )}
           <div
             data-testid="identifierMasthead-agency-description"
             className="usa-identifier__identity"
             aria-label={copy.ariaLabelAgencyDescription}>
             {identityDisclaimerCopy}
             <p className="usa-identifier__identity-domain">{domain}</p>
-            {parentAgencies ? (
-              parentAgencies.map((agency) => (
-                <>
-                  <p className="usa-identifier__identity-disclaimer">
-                    {copy.identityDisclaimer}
-                    &nbsp;
-                    <a href={agency.url}>{agency.name}</a>
-                  </p>
-                </>
-              ))
-            ) : (
-              <></>
-            )}
+            <p className="usa-identifier__identity-disclaimer">
+              {copy.identityDisclaimer}
+              &nbsp;
+              <a href={parentAgency.url}>{parentAgency.name}</a>
+            </p>
             {taxpayerDisclaimer}
           </div>
         </div>
