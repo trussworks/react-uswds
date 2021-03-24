@@ -10,8 +10,9 @@ describe('IdentifierLink component', () => {
       <IdentifierLink href="#">{testPageName}</IdentifierLink>
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
-    expect(getByRole('link')).toHaveClass('usa-identifier__required-link')
-    expect(getByRole('link')).not.toHaveClass('usa-link')
+    expect(getByRole('link')).toHaveClass(
+      'usa-identifier__required-link usa-link'
+    )
   })
   it('renders with a custom component', () => {
     type CustomLinkProps = React.PropsWithChildren<{
@@ -41,8 +42,7 @@ describe('IdentifierLink component', () => {
     )
     expect(queryByText(testPageName)).toBeInTheDocument()
     expect(getByRole('link')).toHaveClass(
-      'custom-class usa-identifier__required-link'
+      'custom-class usa-identifier__required-link usa-link'
     )
-    expect(getByRole('link')).not.toHaveClass('usa-link')
   })
 })

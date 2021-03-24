@@ -14,7 +14,10 @@ export function IdentifierLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
 }: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
-  const classes = classnames(className, 'usa-identifier__required-link')
+  const classes = classnames(
+    className,
+    'usa-identifier__required-link usa-link'
+  )
   const linkProps = {
     ...passThroughProps,
     className: classes,
