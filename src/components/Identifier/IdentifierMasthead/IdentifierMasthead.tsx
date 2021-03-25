@@ -54,8 +54,6 @@ export const IdentifierMasthead = ({
 
   const copy = copyMap[`${language}` as Language]
 
-  const identityDisclaimerCopy = 'placeholder text'
-
   return (
     <section
       data-testid="identifierMasthead"
@@ -75,14 +73,15 @@ export const IdentifierMasthead = ({
             data-testid="identifierMasthead-agency-description"
             className="usa-identifier__identity"
             aria-label={copy.ariaLabelAgencyDescription}>
-            {identityDisclaimerCopy}
             <p className="usa-identifier__identity-domain">{domain}</p>
             <p className="usa-identifier__identity-disclaimer">
               {copy.identityDisclaimer}
               &nbsp;
-              <a href={parentAgency.url}>{parentAgency.name}</a>
+              <a href={parentAgency.url}>
+                {parentAgency.name}
+                {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
+              </a>
             </p>
-            {taxpayerDisclaimer}
           </div>
         </div>
       </div>

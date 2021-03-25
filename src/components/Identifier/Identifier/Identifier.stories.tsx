@@ -4,9 +4,8 @@ import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
 import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
-// import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
-// import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
-// import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
+import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
+import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
@@ -22,14 +21,8 @@ export default {
   },
 }
 
-const links = Array(8).fill(
-  <a className="usa-identifier__required-link" href="#">
-    Example Link
-  </a>
-)
-
 const testParentAgency = {
-  url: 'https://www.parentAgencyExampleUrl.gov/',
+  url: '#',
   name: 'Test Parent Agency Name',
   logo: dotGovIcon,
 }
@@ -37,10 +30,34 @@ const testParentAgency = {
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
+      domain="domain.edu.mil.gov"
+      parentAgency={testParentAgency}
     />
-    <IdentifierLinks>{links}</IdentifierLinks>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Accessibility support</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">FOIA requests</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Office of the Inspector General
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Performance reports</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Privacy policy</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov />
   </Identifier>
 )
@@ -49,33 +66,34 @@ export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       language="spanish"
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
+      domain="domain.edu.mil.gov"
+      parentAgency={testParentAgency}
     />
-    <IdentifierLinks>{links}</IdentifierLinks>
-    <IdentifierGov language="spanish" />
-  </Identifier>
-)
-
-export const identifierMultipleLogosEnglish = (): React.ReactElement => (
-  <Identifier>
-    <IdentifierMasthead
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
-    />
-    <IdentifierLinks>{links}</IdentifierLinks>
-    <IdentifierGov />
-  </Identifier>
-)
-
-export const identifierMultipleLogosSpanish = (): React.ReactElement => (
-  <Identifier>
-    <IdentifierMasthead
-      language="spanish"
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
-    />
-    <IdentifierLinks>{links}</IdentifierLinks>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Acerca de &lt;Parent shortname&gt;
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov language="spanish" />
   </Identifier>
 )
@@ -83,10 +101,34 @@ export const identifierMultipleLogosSpanish = (): React.ReactElement => (
 export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
+      domain="domain.edu.mil.gov"
+      parentAgency={testParentAgency}
     />
-    <IdentifierLinks>{links}</IdentifierLinks>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Accessibility support</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">FOIA requests</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Office of the Inspector General
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Performance reports</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Privacy policy</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov />
   </Identifier>
 )
@@ -95,10 +137,34 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       language="spanish"
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
+      domain="domain.edu.mil.gov"
+      parentAgency={testParentAgency}
     />
-    <IdentifierLinks>{links}</IdentifierLinks>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Acerca de &lt;Parent shortname&gt;
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov language="spanish" />
   </Identifier>
 )
@@ -106,11 +172,35 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
 export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
+      domain="domain.edu.mil.gov"
+      parentAgency={testParentAgency}
       taxpayerDisclaimer="Produced and published at taxpayer expense."
     />
-    <IdentifierLinks>{links}</IdentifierLinks>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Accessibility support</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">FOIA requests</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Office of the Inspector General
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Performance reports</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Privacy policy</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov />
   </Identifier>
 )
@@ -119,11 +209,35 @@ export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       language="spanish"
-      domain="domain.gov.mil.edu"
-      parentAgencies={[testParentAgency]}
+      domain="domain.edu.mil.gov"
+      parentAgency={testParentAgency}
       taxpayerDisclaimer="Producido y publicado con dinero de los contribuyentes de impuestos."
     />
-    <IdentifierLinks>{links}</IdentifierLinks>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Acerca de &lt;Parent shortname&gt;
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
     <IdentifierGov language="spanish" />
   </Identifier>
 )
