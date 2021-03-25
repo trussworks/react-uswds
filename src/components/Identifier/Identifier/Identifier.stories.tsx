@@ -27,6 +27,11 @@ const testParentAgency = {
   logo: dotGovIcon,
 }
 
+const testParentAgencyNoLogos = {
+  url: '#',
+  name: 'Test Parent Agency Name',
+}
+
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
@@ -102,7 +107,7 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgency}
+      parentAgency={testParentAgencyNoLogos}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -138,7 +143,7 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
     <IdentifierMasthead
       language="spanish"
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgency}
+      parentAgency={testParentAgencyNoLogos}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
