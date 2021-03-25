@@ -77,10 +77,8 @@ export const IdentifierMasthead = ({
             <p className="usa-identifier__identity-disclaimer">
               {copy.identityDisclaimer}
               &nbsp;
-              <a href={parentAgency.url}>
-                {parentAgency.name}
-                {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
-              </a>
+              <a href={parentAgency.url}>{parentAgency.name}</a>
+              {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
             </p>
           </div>
         </div>
