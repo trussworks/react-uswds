@@ -69,18 +69,18 @@ export const IdentifierMasthead = ({
               src={parentAgency.logo}
             />
           )}
-          <div
-            data-testid="identifierMasthead-agency-description"
-            className="usa-identifier__identity"
-            aria-label={copy.ariaLabelAgencyDescription}>
-            <p className="usa-identifier__identity-domain">{domain}</p>
-            <p className="usa-identifier__identity-disclaimer">
-              {copy.identityDisclaimer}
-              &nbsp;
-              <a href={parentAgency.url}>{parentAgency.name}</a>
-              {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
-            </p>
-          </div>
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label={copy.ariaLabelAgencyDescription}>
+          <p className="usa-identifier__identity-domain">{domain}</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {copy.identityDisclaimer}
+            &nbsp;
+            <a href={parentAgency.url}>{parentAgency.name}</a>
+            {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
+          </p>
         </div>
       </div>
     </section>

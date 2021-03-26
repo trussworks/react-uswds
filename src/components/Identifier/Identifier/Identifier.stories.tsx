@@ -1,5 +1,4 @@
 import React from 'react'
-/*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
 import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
 import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
@@ -13,11 +12,15 @@ export default {
   title: 'Components/Identifier',
   component: Identifier,
   parameters: {
-    info: `
-  USWDS 2.0 Identifier component
-  
-  Source: https://designsystem.digital.gov/components/identifier/
-  `,
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Identifier component
+        
+Source: https://designsystem.digital.gov/components/identifier/
+`,
+      },
+    },
   },
 }
 
