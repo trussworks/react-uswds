@@ -8,8 +8,11 @@ interface FieldsetProps {
   className?: string
 }
 
-export const Fieldset = ({ 
-  children, legend, className, legendSrOnly 
+export const Fieldset = ({
+  children,
+  legend,
+  className,
+  legendSrOnly,
 }: FieldsetProps): React.ReactElement => {
   const classes = classnames('usa-fieldset', className)
 

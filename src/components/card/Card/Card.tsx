@@ -17,7 +17,9 @@ export const Card = ({
   gridLayout,
   containerProps,
   ...liProps
-}: CardProps & JSX.IntrinsicElements['li'] & GridLayoutProp): React.ReactElement => {
+}: CardProps &
+  JSX.IntrinsicElements['li'] &
+  GridLayoutProp): React.ReactElement => {
   const { className: containerClass, ...restContainerProps } =
     containerProps || {}
 
