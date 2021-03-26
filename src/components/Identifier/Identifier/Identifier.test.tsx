@@ -10,15 +10,30 @@ import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
-const testParentAgency = {
-  url: 'https://www.parentAgencyExampleUrl.gov/',
-  name: 'Test Parent Agency Name',
+const testAgency = {
+  url: '#', // prob can pass url directly
+  name: 'Test Agency Name', // prob can pass name directly
+  ariaLabelAgencyIdentifier: 'Agency identifier',
+  ariaLabelAgencyDescription: 'Agency description',
+  identityDisclaimer: 'An official website of the',
+  logo: dotGovIcon, // prob can pass logo directly
+}
+
+const testAgencySpanish = {
+  url: '#',
+  name: 'Test Agency Name Spanish',
+  ariaLabelAgencyIdentifier: 'Identificador de la agencia',
+  ariaLabelAgencyDescription: 'Descripción de la agencia',
+  identityDisclaimer: 'Un sitio web oficial de',
   logo: dotGovIcon,
 }
 
-const testParentAgencyNoLogo = {
-  url: 'https://www.parentAgencyExampleUrl.gov/',
-  name: 'Test Parent Agency No Logo Name',
+const testAgencyNoLogos = {
+  url: '#',
+  name: 'Test Parent Agency Name',
+  ariaLabelAgencyIdentifier: 'Agency identifier',
+  ariaLabelAgencyDescription: 'Agency description',
+  identityDisclaimer: 'An official website of the',
 }
 
 describe('Identifier component', () => {
@@ -27,7 +42,7 @@ describe('Identifier component', () => {
       <Identifier>
         <IdentifierMasthead
           domain="domain.gov.mil.edu"
-          parentAgency={testParentAgency}
+          agencyInfo={testAgency}
         />
         <IdentifierLinks>
           <IdentifierLinkItem>
@@ -67,9 +82,8 @@ describe('Identifier component', () => {
     const { getAllByRole, queryByText } = render(
       <Identifier>
         <IdentifierMasthead
-          language="spanish"
           domain="domain.edu.mil.gov"
-          parentAgency={testParentAgency}
+          agencyInfo={testAgency}
         />
         <IdentifierLinks>
           <IdentifierLinkItem>
@@ -112,7 +126,7 @@ describe('Identifier component', () => {
       <Identifier>
         <IdentifierMasthead
           domain="domain.gov.mil.edu"
-          parentAgency={testParentAgencyNoLogo}
+          agencyInfo={testAgencyNoLogos}
         />
         <IdentifierLinks>
           <IdentifierLinkItem>

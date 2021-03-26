@@ -50,9 +50,17 @@ const testAgencyNoLogos = {
   identityDisclaimer: 'An official website of the',
 }
 
+const testAgencyNoLogosSpanish = {
+  url: '#',
+  name: 'Test Agency Name Spanish',
+  ariaLabelAgencyIdentifier: 'Identificador de la agencia',
+  ariaLabelAgencyDescription: 'Descripción de la agencia',
+  identityDisclaimer: 'Un sitio web oficial de',
+}
+
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead domain="domain.edu.mil.gov" parentAgency={testAgency} />
+    <IdentifierMasthead domain="domain.edu.mil.gov" agencyInfo={testAgency} />
     <IdentifierLinks>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
@@ -86,7 +94,7 @@ export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testAgencySpanish}
+      agencyInfo={testAgencySpanish}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -121,7 +129,7 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testAgencyNoLogos}
+      agencyInfo={testAgencyNoLogos}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -156,7 +164,7 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testAgencySpanish}
+      agencyInfo={testAgencyNoLogosSpanish}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -191,7 +199,7 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testAgency}
+      agencyInfo={testAgency}
       taxpayerDisclaimer="Produced and published at taxpayer expense."
     />
     <IdentifierLinks>
@@ -227,7 +235,7 @@ export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testAgencySpanish}
+      agencyInfo={testAgencySpanish}
       taxpayerDisclaimer="Producido y publicado con dinero de los contribuyentes de impuestos."
     />
     <IdentifierLinks>

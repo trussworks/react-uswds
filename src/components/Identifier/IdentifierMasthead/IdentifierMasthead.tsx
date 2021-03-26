@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
-interface ParentAgency {
+interface AgencyInfo {
   url: string
   name: string
   ariaLabelAgencyIdentifier: string
@@ -13,14 +13,14 @@ interface ParentAgency {
 }
 
 interface IdentifierMastheadProps {
-  parentAgency: ParentAgency
+  agencyInfo: AgencyInfo
   domain: string
   taxpayerDisclaimer?: string
   className?: string
 }
 
 export const IdentifierMasthead = ({
-  parentAgency,
+  agencyInfo,
   domain,
   taxpayerDisclaimer,
   className,
@@ -36,27 +36,27 @@ export const IdentifierMasthead = ({
     <section
       data-testid="identifierMasthead"
       className={classes}
-      aria-label={parentAgency.ariaLabelAgencyIdentifier}
+      aria-label={agencyInfo.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          {parentAgency.logo && (
+          {agencyInfo.logo && (
             <IdentifierLogo
-              agencyUrl={parentAgency.url}
-              agencyName={parentAgency.name}
-              src={parentAgency.logo}
+              agencyUrl={agencyInfo.url}
+              agencyName={agencyInfo.name}
+              src={agencyInfo.logo}
             />
           )}
         </div>
         <div
           data-testid="identifierMasthead-agency-description"
           className="usa-identifier__identity"
-          aria-label={parentAgency.ariaLabelAgencyDescription}>
+          aria-label={agencyInfo.ariaLabelAgencyDescription}>
           <p className="usa-identifier__identity-domain">{domain}</p>
           <p className="usa-identifier__identity-disclaimer">
-            {parentAgency.identityDisclaimer}
+            {agencyInfo.identityDisclaimer}
             &nbsp;
-            <a href={parentAgency.url}>{parentAgency.name}</a>
+            <a href={agencyInfo.url}>{agencyInfo.name}</a>
             {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
           </p>
         </div>

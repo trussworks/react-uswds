@@ -6,22 +6,46 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import { IdentifierMasthead } from './IdentifierMasthead'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
-const testParentAgency = {
+// const testParentAgency = {
+//   url: '#',
+//   name: 'Test Parent Agency Name',
+//   logo: dotGovIcon,
+// }
+
+const testAgency = {
+  url: '#', // prob can pass url directly
+  name: 'Test Agency Name', // prob can pass name directly
+  ariaLabelAgencyIdentifier: 'Agency identifier',
+  ariaLabelAgencyDescription: 'Agency description',
+  identityDisclaimer: 'An official website of the',
+  logo: dotGovIcon, // prob can pass logo directly
+}
+
+const testAgencySpanish = {
+  url: '#',
+  name: 'Test Agency Name Spanish',
+  ariaLabelAgencyIdentifier: 'Identificador de la agencia',
+  ariaLabelAgencyDescription: 'Descripción de la agencia',
+  identityDisclaimer: 'Un sitio web oficial de',
+  logo: dotGovIcon,
+}
+
+const testAgencyNoLogos = {
   url: '#',
   name: 'Test Parent Agency Name',
-  logo: dotGovIcon,
+  ariaLabelAgencyIdentifier: 'Agency identifier',
+  ariaLabelAgencyDescription: 'Agency description',
+  identityDisclaimer: 'An official website of the',
 }
 
 describe('IdentifierMasthead component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
-      <IdentifierMasthead
-        domain="aGovDomain.gov"
-        parentAgency={testParentAgency}>
+      <IdentifierMasthead domain="aGovDomain.gov" agencyInfo={testAgency}>
         <IdentifierLogo
-          agencyUrl={testParentAgency.url}
-          agencyName={testParentAgency.name}
-          src={testParentAgency.logo}
+          agencyUrl={testAgency.url}
+          agencyName={testAgency.name}
+          src={testAgency.logo}
         />
       </IdentifierMasthead>
     )
@@ -33,11 +57,11 @@ describe('IdentifierMasthead component', () => {
       <IdentifierMasthead
         aria-label="custom aria-label value"
         domain="aGovDomain.gov"
-        parentAgency={testParentAgency}>
+        agencyInfo={testAgency}>
         <IdentifierLogo
-          agencyUrl={testParentAgency.url}
-          agencyName={testParentAgency.name}
-          src={testParentAgency.logo}
+          agencyUrl={testAgency.url}
+          agencyName={testAgency.name}
+          src={testAgency.logo}
         />
       </IdentifierMasthead>
     )
@@ -52,11 +76,11 @@ describe('IdentifierMasthead component', () => {
       <IdentifierMasthead
         className="usa-identifier__custom-class-name"
         domain="aGovDomain.gov"
-        parentAgency={testParentAgency}>
+        agencyInfo={testAgency}>
         <IdentifierLogo
-          agencyUrl={testParentAgency.url}
-          agencyName={testParentAgency.name}
-          src={testParentAgency.logo}
+          agencyUrl={testAgency.url}
+          agencyName={testAgency.name}
+          src={testAgency.logo}
         />
       </IdentifierMasthead>
     )
@@ -67,13 +91,11 @@ describe('IdentifierMasthead component', () => {
 
   it('renders with a logo passed in', () => {
     const { queryByTestId } = render(
-      <IdentifierMasthead
-        domain="aGovDomain.gov"
-        parentAgency={testParentAgency}>
+      <IdentifierMasthead domain="aGovDomain.gov" agencyInfo={testAgency}>
         <IdentifierLogo
-          agencyUrl={testParentAgency.url}
-          agencyName={testParentAgency.name}
-          src={testParentAgency.logo}
+          agencyUrl={testAgency.url}
+          agencyName={testAgency.name}
+          src={testAgency.logo}
         />
       </IdentifierMasthead>
     )
@@ -84,7 +106,7 @@ describe('IdentifierMasthead component', () => {
     const { queryByTestId } = render(
       <IdentifierMasthead
         domain="aGovDomain.gov"
-        parentAgency={testParentAgency}
+        agencyInfo={testAgencyNoLogos}
       />
     )
     expect(queryByTestId('identifierMasthead-logo')).not.toBeInTheDocument()
