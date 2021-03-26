@@ -3,37 +3,18 @@ import classnames from 'classnames'
 
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
-type Language = 'english' | 'spanish'
-
-interface IdentifierMastheadCopyMap {
-  ariaLabelAgencyIdentifier: string
-  ariaLabelAgencyDescription: string
-  identityDisclaimer: string
-}
-
-const copyMap: Record<Language, IdentifierMastheadCopyMap> = {
-  english: {
-    ariaLabelAgencyIdentifier: 'Agency identifier',
-    ariaLabelAgencyDescription: 'Agency description',
-    identityDisclaimer: 'An official website of the',
-  },
-  spanish: {
-    ariaLabelAgencyIdentifier: 'Identificador de la agencia',
-    ariaLabelAgencyDescription: 'Descripción de la agencia',
-    identityDisclaimer: 'Un sitio web oficial de',
-  },
-}
-
 interface ParentAgency {
   url: string
   name: string
+  ariaLabelAgencyIdentifier: string
+  ariaLabelAgencyDescription: string
+  identityDisclaimer: string
   logo?: string
 }
 
 interface IdentifierMastheadProps {
   parentAgency: ParentAgency
   domain: string
-  language?: Language
   taxpayerDisclaimer?: string
   className?: string
 }
@@ -41,7 +22,6 @@ interface IdentifierMastheadProps {
 export const IdentifierMasthead = ({
   parentAgency,
   domain,
-  language = 'english',
   taxpayerDisclaimer,
   className,
   ...sectionProps
@@ -52,13 +32,11 @@ export const IdentifierMasthead = ({
     className
   )
 
-  const copy = copyMap[`${language}` as Language]
-
   return (
     <section
       data-testid="identifierMasthead"
       className={classes}
-      aria-label={copy.ariaLabelAgencyIdentifier}
+      aria-label={parentAgency.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
@@ -73,10 +51,10 @@ export const IdentifierMasthead = ({
         <div
           data-testid="identifierMasthead-agency-description"
           className="usa-identifier__identity"
-          aria-label={copy.ariaLabelAgencyDescription}>
+          aria-label={parentAgency.ariaLabelAgencyDescription}>
           <p className="usa-identifier__identity-domain">{domain}</p>
           <p className="usa-identifier__identity-disclaimer">
-            {copy.identityDisclaimer}
+            {parentAgency.identityDisclaimer}
             &nbsp;
             <a href={parentAgency.url}>{parentAgency.name}</a>
             {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}

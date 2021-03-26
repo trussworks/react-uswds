@@ -24,23 +24,35 @@ Source: https://designsystem.digital.gov/components/identifier/
   },
 }
 
-const testParentAgency = {
+const testAgency = {
+  url: '#', // prob can pass url directly
+  name: 'Test Agency Name', // prob can pass name directly
+  ariaLabelAgencyIdentifier: 'Agency identifier',
+  ariaLabelAgencyDescription: 'Agency description',
+  identityDisclaimer: 'An official website of the',
+  logo: dotGovIcon, // prob can pass logo directly
+}
+
+const testAgencySpanish = {
   url: '#',
-  name: 'Test Parent Agency Name',
+  name: 'Test Agency Name Spanish',
+  ariaLabelAgencyIdentifier: 'Identificador de la agencia',
+  ariaLabelAgencyDescription: 'Descripción de la agencia',
+  identityDisclaimer: 'Un sitio web oficial de',
   logo: dotGovIcon,
 }
 
-const testParentAgencyNoLogos = {
+const testAgencyNoLogos = {
   url: '#',
   name: 'Test Parent Agency Name',
+  ariaLabelAgencyIdentifier: 'Agency identifier',
+  ariaLabelAgencyDescription: 'Agency description',
+  identityDisclaimer: 'An official website of the',
 }
 
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead
-      domain="domain.edu.mil.gov"
-      parentAgency={testParentAgency}
-    />
+    <IdentifierMasthead domain="domain.edu.mil.gov" parentAgency={testAgency} />
     <IdentifierLinks>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
@@ -73,9 +85,8 @@ export const identifierDefault = (): React.ReactElement => (
 export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      language="spanish"
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgency}
+      parentAgency={testAgencySpanish}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -110,7 +121,7 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgencyNoLogos}
+      parentAgency={testAgencyNoLogos}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -144,9 +155,8 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
 export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      language="spanish"
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgencyNoLogos}
+      parentAgency={testAgencySpanish}
     />
     <IdentifierLinks>
       <IdentifierLinkItem>
@@ -181,7 +191,7 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgency}
+      parentAgency={testAgency}
       taxpayerDisclaimer="Produced and published at taxpayer expense."
     />
     <IdentifierLinks>
@@ -216,9 +226,8 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
 export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
-      language="spanish"
       domain="domain.edu.mil.gov"
-      parentAgency={testParentAgency}
+      parentAgency={testAgencySpanish}
       taxpayerDisclaimer="Producido y publicado con dinero de los contribuyentes de impuestos."
     />
     <IdentifierLinks>
