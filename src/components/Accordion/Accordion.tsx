@@ -16,13 +16,13 @@ interface AccordionProps {
   className?: string
 }
 
-export const AccordionItem = ({ 
+export const AccordionItem = ({
   title,
   id,
   content,
   expanded,
   className,
-  handleToggle
+  handleToggle,
 }: AccordionItem): React.ReactElement => {
   const headingClasses = classnames('usa-accordion__heading', className)
   const contentClasses = classnames(
@@ -55,7 +55,11 @@ export const AccordionItem = ({
   )
 }
 
-export const Accordion = ({ bordered, items, className }: AccordionProps): React.ReactElement => {
+export const Accordion = ({
+  bordered,
+  items,
+  className,
+}: AccordionProps): React.ReactElement => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )

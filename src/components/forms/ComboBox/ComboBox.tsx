@@ -43,8 +43,9 @@ interface InputProps {
   focused: boolean
 }
 
-const Input = ({ 
-  focused, ...inputProps 
+const Input = ({
+  focused,
+  ...inputProps
 }: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
