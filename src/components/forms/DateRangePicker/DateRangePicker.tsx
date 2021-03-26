@@ -19,29 +19,28 @@ interface DateRangePickerProps {
 export const DateRangePicker = (
   props: DateRangePickerProps & JSX.IntrinsicElements['div']
 ): React.ReactElement => {
-  const { 
+  const {
     startDateLabel,
     startDateHint,
     startDatePickerProps,
     endDateLabel,
     endDateHint,
     endDatePickerProps,
-    className
+    className,
   } = props
 
-  const [
-    startDateInternalValue,
-    setStartDateInternalValue
-  ] = useState<string | undefined>(startDatePickerProps.defaultValue)
-  const [
-    endDateInternalValue,
-    setEndDateInternalValue
-  ] = useState<string | undefined>(endDatePickerProps.defaultValue)
+  const [startDateInternalValue, setStartDateInternalValue] = useState<
+    string | undefined
+  >(startDatePickerProps.defaultValue)
+  const [endDateInternalValue, setEndDateInternalValue] = useState<
+    string | undefined
+  >(endDatePickerProps.defaultValue)
 
   const getMaxStartDate = (): string | undefined => {
     const { maxDate: maxStartDate } = startDatePickerProps
     const parsedMaxStartDate = maxStartDate && parseDateString(maxStartDate)
-    const parsedCurrentEndDate = endDateInternalValue && parseDateString(endDateInternalValue)
+    const parsedCurrentEndDate =
+      endDateInternalValue && parseDateString(endDateInternalValue)
 
     if (parsedCurrentEndDate && parsedMaxStartDate) {
       if (parsedCurrentEndDate.getTime() < parsedMaxStartDate.getTime()) {
@@ -50,16 +49,19 @@ export const DateRangePicker = (
         return formatDate(parsedMaxStartDate)
       }
     } else {
-      return (parsedCurrentEndDate && formatDate(parsedCurrentEndDate)) 
-        || (parsedMaxStartDate && formatDate(parsedMaxStartDate)) 
-        || undefined
+      return (
+        (parsedCurrentEndDate && formatDate(parsedCurrentEndDate)) ||
+        (parsedMaxStartDate && formatDate(parsedMaxStartDate)) ||
+        undefined
+      )
     }
   }
 
   const getMinEndDate = (): string | undefined => {
     const { minDate: minEndDate } = endDatePickerProps
     const parsedMinEndDate = minEndDate && parseDateString(minEndDate)
-    const parsedCurrentStartDate = startDateInternalValue && parseDateString(startDateInternalValue)
+    const parsedCurrentStartDate =
+      startDateInternalValue && parseDateString(startDateInternalValue)
 
     if (parsedCurrentStartDate && parsedMinEndDate) {
       if (parsedCurrentStartDate.getTime() > parsedMinEndDate.getTime()) {
@@ -68,20 +70,25 @@ export const DateRangePicker = (
         return formatDate(parsedMinEndDate)
       }
     } else {
-      return (parsedCurrentStartDate && formatDate(parsedCurrentStartDate)) 
-        || (parsedMinEndDate && formatDate(parsedMinEndDate)) 
-        || undefined
+      return (
+        (parsedCurrentStartDate && formatDate(parsedCurrentStartDate)) ||
+        (parsedMinEndDate && formatDate(parsedMinEndDate)) ||
+        undefined
+      )
     }
   }
 
   const getDatePickerOnChangeFn = (
     originalOnChangeFn: ((val?: string) => void) | undefined,
-    setStateInternalValueFn: React.Dispatch<React.SetStateAction<string | undefined>>
-  ): (val?: string) => void => {
+    setStateInternalValueFn: React.Dispatch<
+      React.SetStateAction<string | undefined>
+    >
+  ): ((val?: string) => void) => {
     return (externallyFormattedValue?: string | undefined): void => {
-      const parsedValue = 
-        externallyFormattedValue && parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
-      
+      const parsedValue =
+        externallyFormattedValue &&
+        parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
+
       if (parsedValue) {
         // The externally input and formatted value is a valid date.
         // Convert to internal format and set the internal state to
@@ -90,7 +97,7 @@ export const DateRangePicker = (
         setStateInternalValueFn(internallyFormattedValue)
       } else {
         // Externally input and formatted value is not a valid date.
-        // Do not attempt to convert to internal date format. 
+        // Do not attempt to convert to internal date format.
         // Simply update internal state with the input value as received.
         setStateInternalValueFn(externallyFormattedValue)
       }
@@ -100,7 +107,7 @@ export const DateRangePicker = (
   }
 
   const startDatePickerOnChange = getDatePickerOnChangeFn(
-    startDatePickerProps.onChange, 
+    startDatePickerProps.onChange,
     setStartDateInternalValue
   )
 
@@ -108,67 +115,72 @@ export const DateRangePicker = (
     endDatePickerProps.onChange,
     setEndDateInternalValue
   )
-  
+
   const classes = classnames(className, 'usa-date-range-picker')
-  const startDatePickerClasses = classnames(startDatePickerProps.className, 'usa-date-range-picker__range-start')
-  const endDatePickerClasses = classnames(endDatePickerProps.className, 'usa-date-range-picker__range-end')
+  const startDatePickerClasses = classnames(
+    startDatePickerProps.className,
+    'usa-date-range-picker__range-start'
+  )
+  const endDatePickerClasses = classnames(
+    endDatePickerProps.className,
+    'usa-date-range-picker__range-end'
+  )
 
   const startDatePickerLabelId = `${startDatePickerProps.id}-label`
   const startDatePickerHintId = `${startDatePickerProps.id}-hint`
-  const startDatePickerAriaDescribedBy = [
-    startDateLabel && startDatePickerLabelId, 
-    startDateHint && startDatePickerHintId
-  ].join(" ").trim() || undefined
+  const startDatePickerAriaDescribedBy =
+    [
+      startDateLabel && startDatePickerLabelId,
+      startDateHint && startDatePickerHintId,
+    ]
+      .join(' ')
+      .trim() || undefined
 
   const endDatePickerLabelId = `${endDatePickerProps.id}-label`
   const endDatePickerHintId = `${endDatePickerProps.id}-hint`
-  const endDatePickerAriaDescribedBy = [
-    endDateLabel && endDatePickerLabelId, 
-    endDateHint && endDatePickerHintId
-  ].join(" ").trim() || undefined
+  const endDatePickerAriaDescribedBy =
+    [endDateLabel && endDatePickerLabelId, endDateHint && endDatePickerHintId]
+      .join(' ')
+      .trim() || undefined
 
   return (
     <div className={classes} data-testid="date-range-picker">
       <FormGroup>
-        {startDateLabel && 
-        <Label
-          id={startDatePickerLabelId} 
-          htmlFor={startDatePickerProps.id}>
-          {startDateLabel}
-        </Label>}
-        {startDateHint && 
-        <div 
-          className="usa-hint" 
-          id={startDatePickerHintId}>
-          {startDateHint}
-        </div>}
+        {startDateLabel && (
+          <Label id={startDatePickerLabelId} htmlFor={startDatePickerProps.id}>
+            {startDateLabel}
+          </Label>
+        )}
+        {startDateHint && (
+          <div className="usa-hint" id={startDatePickerHintId}>
+            {startDateHint}
+          </div>
+        )}
         <DatePicker
           className={startDatePickerClasses}
-          rangeDate={endDateInternalValue} 
-          { ...startDatePickerProps }
+          rangeDate={endDateInternalValue}
+          {...startDatePickerProps}
           aria-describedby={startDatePickerAriaDescribedBy}
-          onChange={startDatePickerOnChange} 
+          onChange={startDatePickerOnChange}
           maxDate={getMaxStartDate()}
         />
       </FormGroup>
 
       <FormGroup>
-        {endDateLabel && 
-        <Label
-          id={endDatePickerLabelId} 
-          htmlFor={endDatePickerProps.id}>
-          {endDateLabel}
-        </Label>}
-        {endDateHint && 
-        <div 
-          className="usa-hint" 
-          id={endDatePickerHintId}>
-          {endDateHint}
-        </div>}
+        {endDateLabel && (
+          <Label id={endDatePickerLabelId} htmlFor={endDatePickerProps.id}>
+            {endDateLabel}
+          </Label>
+        )}
+        {endDateHint && (
+          <div className="usa-hint" id={endDatePickerHintId}>
+            {endDateHint}
+          </div>
+        )}
         <DatePicker
           className={endDatePickerClasses}
-          rangeDate={startDateInternalValue} 
-          { ...endDatePickerProps }
+          rangeDate={startDateInternalValue}
+          {...endDatePickerProps}
           aria-describedby={endDatePickerAriaDescribedBy}
           onChange={endDatePickerOnChange}
           minDate={getMinEndDate()}

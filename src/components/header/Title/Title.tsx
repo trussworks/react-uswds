@@ -5,8 +5,10 @@ interface TitleProps {
   children: React.ReactNode
 }
 
-export const Title = ({ 
-  className, children, ...divProps 
+export const Title = ({
+  className,
+  children,
+  ...divProps
 }: TitleProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-logo', className)
 
