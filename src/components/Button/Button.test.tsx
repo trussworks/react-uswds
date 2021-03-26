@@ -74,6 +74,16 @@ describe('Button component', () => {
       expect(deprecationWarning).toHaveBeenCalledTimes(0)
     })
 
+    it('shows a deprecation warning for prop \'accent\'', () => {
+      const { queryByTestId } = render(
+        <Button type="button" accent>
+          Click Me
+        </Button>
+      )
+      expect(queryByTestId('button')).toHaveClass('usa-button--accent-cool')
+      expect(deprecationWarning).toHaveBeenCalledTimes(1)
+    })
+
   })
 
   it('implements an onClick handler', () => {
@@ -86,17 +96,6 @@ describe('Button component', () => {
 
     fireEvent.click(getByText('Click Me'))
     expect(onClickFn).toHaveBeenCalledTimes(1)
-  })
-
-  it('shows a deprecation warning for prop \'accent\'', () => {
-    const onClickFn = jest.fn()
-    const { getByText } = render(
-      <Button type="button" accent>
-        Click Me
-      </Button>
-    )
-
-    expect(deprecationWarning).toHaveBeenCalledTimes(1)
   })
 
   it('accepts additional custom class names', () => {
