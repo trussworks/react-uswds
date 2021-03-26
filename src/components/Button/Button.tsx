@@ -8,7 +8,7 @@ interface ButtonProps {
   secondary?: boolean
   base?: boolean
   /**
-   * @deprecated since 1.14.0, use accentStyle
+   * @deprecated since 1.15.0, use accentStyle
    */
   accent?: boolean
   accentStyle?: 'none' | 'cool' | 'warm'
