@@ -25,6 +25,40 @@ Source: https://designsystem.digital.gov/components/identifier/
   },
 }
 
+const testIdentifierGovContent = [
+  <div className="usa-identifier__container" key="one">
+    <div
+      data-testid="identifierGov-description"
+      className="usa-identifier__usagov-description">
+      Looking for U.S. government information and services?
+    </div>
+    &nbsp;
+    <a
+      data-testid="identifierGov-link"
+      href="https://www.usa.gov/"
+      className="usa-link">
+      Visit USA.gov
+    </a>
+  </div>,
+]
+
+const testIdentifierGovContentSpanish = [
+  <div className="usa-identifier__container" key="two">
+    <div
+      data-testid="identifierGov-description"
+      className="usa-identifier__usagov-description">
+      ¿Necesita información y servicios del Gobierno?
+    </div>
+    &nbsp;
+    <a
+      data-testid="identifierGov-link"
+      href="https://www.usa.gov/espanol/"
+      className="usa-link">
+      Visite USAGov en Español
+    </a>
+  </div>,
+]
+
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
@@ -73,7 +107,9 @@ export const identifierDefault = (): React.ReactElement => (
         <IdentifierLink href="#">Privacy policy</IdentifierLink>
       </IdentifierLinkItem>
     </IdentifierLinks>
-    <IdentifierGov />
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
+    </IdentifierGov>
   </Identifier>
 )
 
@@ -125,7 +161,9 @@ export const identifierSpanish = (): React.ReactElement => (
         <IdentifierLink href="#">Política de privacidad</IdentifierLink>
       </IdentifierLinkItem>
     </IdentifierLinks>
-    <IdentifierGov language="spanish" />
+    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+      {testIdentifierGovContentSpanish}
+    </IdentifierGov>
   </Identifier>
 )
 
@@ -170,7 +208,9 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
         <IdentifierLink href="#">Privacy policy</IdentifierLink>
       </IdentifierLinkItem>
     </IdentifierLinks>
-    <IdentifierGov />
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
+    </IdentifierGov>
   </Identifier>
 )
 
@@ -215,7 +255,9 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
         <IdentifierLink href="#">Política de privacidad</IdentifierLink>
       </IdentifierLinkItem>
     </IdentifierLinks>
-    <IdentifierGov language="spanish" />
+    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+      {testIdentifierGovContentSpanish}
+    </IdentifierGov>
   </Identifier>
 )
 
@@ -268,7 +310,9 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
         <IdentifierLink href="#">Privacy policy</IdentifierLink>
       </IdentifierLinkItem>
     </IdentifierLinks>
-    <IdentifierGov />
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
+    </IdentifierGov>
   </Identifier>
 )
 
@@ -321,6 +365,8 @@ export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
         <IdentifierLink href="#">Política de privacidad</IdentifierLink>
       </IdentifierLinkItem>
     </IdentifierLinks>
-    <IdentifierGov language="spanish" />
+    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+      {testIdentifierGovContentSpanish}
+    </IdentifierGov>
   </Identifier>
 )
