@@ -6,20 +6,14 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import { IdentifierMasthead } from './IdentifierMasthead'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
-const testAgency = {
-  url: '#',
-  name: 'Test Agency Name',
-  logo: dotGovIcon,
-}
-
 describe('IdentifierMasthead component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
       <IdentifierMasthead>
         <IdentifierLogo
-          agencyUrl={testAgency.url}
-          agencyName={testAgency.name}
-          src={testAgency.logo}
+          agencyUrl="#"
+          agencyName="Test Agency Name"
+          src={dotGovIcon}
         />
       </IdentifierMasthead>
     )
@@ -30,9 +24,9 @@ describe('IdentifierMasthead component', () => {
     const { queryByTestId } = render(
       <IdentifierMasthead aria-label="custom aria-label value">
         <IdentifierLogo
-          agencyUrl={testAgency.url}
-          agencyName={testAgency.name}
-          src={testAgency.logo}
+          agencyUrl="#"
+          agencyName="Test Agency Name"
+          src={dotGovIcon}
         />
       </IdentifierMasthead>
     )
@@ -46,9 +40,9 @@ describe('IdentifierMasthead component', () => {
     const { queryByTestId } = render(
       <IdentifierMasthead className="usa-identifier__custom-class-name">
         <IdentifierLogo
-          agencyUrl={testAgency.url}
-          agencyName={testAgency.name}
-          src={testAgency.logo}
+          agencyUrl="#"
+          agencyName="Test Agency Name"
+          src={dotGovIcon}
         />
       </IdentifierMasthead>
     )
@@ -61,9 +55,9 @@ describe('IdentifierMasthead component', () => {
     const { queryByTestId } = render(
       <IdentifierMasthead>
         <IdentifierLogo
-          agencyUrl={testAgency.url}
-          agencyName={testAgency.name}
-          src={testAgency.logo}
+          agencyUrl="#"
+          agencyName="Test Agency Name"
+          src={dotGovIcon}
         />
       </IdentifierMasthead>
     )
