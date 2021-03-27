@@ -1,15 +1,12 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
-
 interface AgencyInfo {
   url: string
   name: string
   ariaLabelAgencyIdentifier: string
   ariaLabelAgencyDescription: string
   identityDisclaimer: string
-  logo?: string
 }
 
 interface IdentifierMastheadProps {
@@ -17,6 +14,7 @@ interface IdentifierMastheadProps {
   domain: string
   taxpayerDisclaimer?: string
   className?: string
+  children?: React.ReactNode
 }
 
 export const IdentifierMasthead = ({
@@ -24,6 +22,7 @@ export const IdentifierMasthead = ({
   domain,
   taxpayerDisclaimer,
   className,
+  children,
   ...sectionProps
 }: IdentifierMastheadProps &
   JSX.IntrinsicElements['section']): React.ReactElement => {
@@ -39,15 +38,7 @@ export const IdentifierMasthead = ({
       aria-label={agencyInfo.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
-        {agencyInfo.logo && (
-          <div className="usa-identifier__logos">
-            <IdentifierLogo
-              agencyUrl={agencyInfo.url}
-              agencyName={agencyInfo.name}
-              src={agencyInfo.logo}
-            />
-          </div>
-        )}
+        {children}
         <div
           data-testid="identifierMasthead-agency-description"
           className="usa-identifier__identity"

@@ -5,6 +5,7 @@ import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
 import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
+import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
@@ -60,7 +61,15 @@ const testAgencyNoLogosSpanish = {
 
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead domain="domain.edu.mil.gov" agencyInfo={testAgency} />
+    <IdentifierMasthead domain="domain.edu.mil.gov" agencyInfo={testAgency}>
+      <div className="usa-identifier__logos">
+        <IdentifierLogo
+          agencyUrl={testAgency.url}
+          agencyName={testAgency.name}
+          src={testAgency.logo}
+        />
+      </div>
+    </IdentifierMasthead>
     <IdentifierLinks>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
@@ -94,8 +103,15 @@ export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
-      agencyInfo={testAgencySpanish}
-    />
+      agencyInfo={testAgencySpanish}>
+      <div className="usa-identifier__logos">
+        <IdentifierLogo
+          agencyUrl={testAgencySpanish.url}
+          agencyName={testAgencySpanish.name}
+          src={testAgencySpanish.logo}
+        />
+      </div>
+    </IdentifierMasthead>
     <IdentifierLinks>
       <IdentifierLinkItem>
         <IdentifierLink href="#">
@@ -200,8 +216,15 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
       agencyInfo={testAgency}
-      taxpayerDisclaimer="Produced and published at taxpayer expense."
-    />
+      taxpayerDisclaimer="Produced and published at taxpayer expense.">
+      <div className="usa-identifier__logos">
+        <IdentifierLogo
+          agencyUrl={testAgency.url}
+          agencyName={testAgency.name}
+          src={testAgency.logo}
+        />
+      </div>
+    </IdentifierMasthead>
     <IdentifierLinks>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
@@ -236,8 +259,15 @@ export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
     <IdentifierMasthead
       domain="domain.edu.mil.gov"
       agencyInfo={testAgencySpanish}
-      taxpayerDisclaimer="Producido y publicado con dinero de los contribuyentes de impuestos."
-    />
+      taxpayerDisclaimer="Producido y publicado con dinero de los contribuyentes de impuestos.">
+      <div className="usa-identifier__logos">
+        <IdentifierLogo
+          agencyUrl={testAgencySpanish.url}
+          agencyName={testAgencySpanish.name}
+          src={testAgencySpanish.logo}
+        />
+      </div>
+    </IdentifierMasthead>
     <IdentifierLinks>
       <IdentifierLinkItem>
         <IdentifierLink href="#">
