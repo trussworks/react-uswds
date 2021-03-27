@@ -39,15 +39,15 @@ export const IdentifierMasthead = ({
       aria-label={agencyInfo.ariaLabelAgencyIdentifier}
       {...sectionProps}>
       <div className="usa-identifier__container">
-        <div className="usa-identifier__logos">
-          {agencyInfo.logo && (
+        {agencyInfo.logo && (
+          <div className="usa-identifier__logos">
             <IdentifierLogo
               agencyUrl={agencyInfo.url}
               agencyName={agencyInfo.name}
               src={agencyInfo.logo}
             />
-          )}
-        </div>
+          </div>
+        )}
         <div
           data-testid="identifierMasthead-agency-description"
           className="usa-identifier__identity"
