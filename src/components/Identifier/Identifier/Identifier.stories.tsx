@@ -27,7 +27,7 @@ Source: https://designsystem.digital.gov/components/identifier/
 
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead ariaLabel="Agency identifier">
+    <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
           <IdentifierLogo
@@ -79,7 +79,7 @@ export const identifierDefault = (): React.ReactElement => (
 
 export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead ariaLabel="Identificador de la agencia">
+    <IdentifierMasthead aria-label="Identificador de la agencia">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
           <IdentifierLogo
@@ -131,7 +131,7 @@ export const identifierSpanish = (): React.ReactElement => (
 
 export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead ariaLabel="Agency identifier">
+    <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
         <div
           data-testid="identifierMasthead-agency-description"
@@ -176,7 +176,7 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
 
 export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead ariaLabel="Identificador de la agencia">
+    <IdentifierMasthead aria-label="Identificador de la agencia">
       <div className="usa-identifier__container">
         <div
           data-testid="identifierMasthead-agency-description"
@@ -221,7 +221,7 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
 
 export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead ariaLabel="Agency identifier">
+    <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
           <IdentifierLogo
@@ -274,7 +274,7 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
 
 export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
-    <IdentifierMasthead ariaLabel="Identificador de la agencia">
+    <IdentifierMasthead aria-label="Identificador de la agencia">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
           <IdentifierLogo
