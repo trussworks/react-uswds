@@ -28,22 +28,24 @@ Source: https://designsystem.digital.gov/components/identifier/
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead ariaLabel="Agency identifier">
-      <div className="usa-identifier__logos">
-        <IdentifierLogo
-          agencyUrl="#"
-          agencyName="Test Agency Name"
-          src={dotGovIcon}
-        />
-      </div>
-      <div
-        data-testid="identifierMasthead-agency-description"
-        className="usa-identifier__identity"
-        aria-label="Agency description">
-        <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="testlink">Test Agency Name</a>
-        </p>
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo
+            agencyUrl="#"
+            agencyName="Test Agency Name"
+            src={dotGovIcon}
+          />
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`An official website of the `}
+            <a href="testlink">Test Agency Name</a>
+          </p>
+        </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks>
@@ -78,22 +80,24 @@ export const identifierDefault = (): React.ReactElement => (
 export const identifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead ariaLabel="Identificador de la agencia">
-      <div className="usa-identifier__logos">
-        <IdentifierLogo
-          agencyUrl="#"
-          agencyName="Test Agency Name Spanish"
-          src={dotGovIcon}
-        />
-      </div>
-      <div
-        data-testid="identifierMasthead-agency-description"
-        className="usa-identifier__identity"
-        aria-label="Descripción de la agencia">
-        <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="testlink">Test Agency Name Spanish</a>
-        </p>
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo
+            agencyUrl="#"
+            agencyName="Test Agency Name Spanish"
+            src={dotGovIcon}
+          />
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Descripción de la agencia">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`Un sitio web oficial de `}
+            <a href="testlink">Test Agency Name Spanish</a>
+          </p>
+        </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks>
@@ -128,15 +132,17 @@ export const identifierSpanish = (): React.ReactElement => (
 export const identifierNoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead ariaLabel="Agency identifier">
-      <div
-        data-testid="identifierMasthead-agency-description"
-        className="usa-identifier__identity"
-        aria-label="Agency description">
-        <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="testlink">Test Agency Name</a>
-        </p>
+      <div className="usa-identifier__container">
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`An official website of the `}
+            <a href="testlink">Test Agency Name</a>
+          </p>
+        </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks>
@@ -171,15 +177,17 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
 export const identifierNoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead ariaLabel="Identificador de la agencia">
-      <div
-        data-testid="identifierMasthead-agency-description"
-        className="usa-identifier__identity"
-        aria-label="Descripción de la agencia">
-        <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="testlink">Test Agency Name Spanish</a>
-        </p>
+      <div className="usa-identifier__container">
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Descripción de la agencia">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`Un sitio web oficial de `}
+            <a href="testlink">Test Agency Name Spanish</a>
+          </p>
+        </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks>
@@ -214,23 +222,25 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
 export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead ariaLabel="Agency identifier">
-      <div className="usa-identifier__logos">
-        <IdentifierLogo
-          agencyUrl="#"
-          agencyName="Test Agency Name"
-          src={dotGovIcon}
-        />
-      </div>
-      <div
-        data-testid="identifierMasthead-agency-description"
-        className="usa-identifier__identity"
-        aria-label="Agency description">
-        <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="testlink">Test Agency Name</a>
-          {`. Produced and published at taxpayer expense.`}
-        </p>
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo
+            agencyUrl="#"
+            agencyName="Test Agency Name"
+            src={dotGovIcon}
+          />
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`An official website of the `}
+            <a href="testlink">Test Agency Name</a>
+            {`. Produced and published at taxpayer expense.`}
+          </p>
+        </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks>
@@ -265,23 +275,25 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
 export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead ariaLabel="Identificador de la agencia">
-      <div className="usa-identifier__logos">
-        <IdentifierLogo
-          agencyUrl="#"
-          agencyName="Test Agency Name Spanish"
-          src={dotGovIcon}
-        />
-      </div>
-      <div
-        data-testid="identifierMasthead-agency-description"
-        className="usa-identifier__identity"
-        aria-label="Descripción de la agencia">
-        <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="testlink">Test Agency Name Spanish</a>
-          {`. Producido y publicado con dinero de los contribuyentes de impuestos.`}
-        </p>
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo
+            agencyUrl="#"
+            agencyName="Test Agency Name Spanish"
+            src={dotGovIcon}
+          />
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Descripción de la agencia">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`Un sitio web oficial de `}
+            <a href="testlink">Test Agency Name Spanish</a>
+            {`. Producido y publicado con dinero de los contribuyentes de impuestos.`}
+          </p>
+        </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks>

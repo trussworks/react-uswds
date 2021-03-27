@@ -1,14 +1,6 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-// interface AgencyInfo {
-//   // url: string
-//   // name: string
-//   ariaLabelAgencyIdentifier: string
-//   // ariaLabelAgencyDescription: string
-//   // identityDisclaimer: string
-// }
-
 interface IdentifierMastheadProps {
   ariaLabel: string
 
@@ -34,7 +26,7 @@ export const IdentifierMasthead = ({
       className={classes}
       aria-label={ariaLabel}
       {...sectionProps}>
-      <div className="usa-identifier__container">{children}</div>
+      {children}
     </section>
   )
 }
