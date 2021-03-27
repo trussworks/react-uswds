@@ -83,7 +83,7 @@ describe('Identifier component', () => {
       <Identifier>
         <IdentifierMasthead
           domain="domain.edu.mil.gov"
-          agencyInfo={testAgency}
+          agencyInfo={testAgencySpanish}
         />
         <IdentifierLinks>
           <IdentifierLinkItem>
@@ -116,7 +116,7 @@ describe('Identifier component', () => {
       </Identifier>
     )
 
-    expect(queryByText('Política de privacidad')).toBeInTheDocument()
+    expect(queryByText('Un sitio web oficial de')).toBeInTheDocument()
     expect(queryByText('Visite USAGov en Español')).toBeInTheDocument()
     expect(getAllByRole('link')).toHaveLength(10)
   })

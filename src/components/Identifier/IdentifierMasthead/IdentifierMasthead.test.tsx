@@ -6,12 +6,6 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import { IdentifierMasthead } from './IdentifierMasthead'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 
-// const testParentAgency = {
-//   url: '#',
-//   name: 'Test Parent Agency Name',
-//   logo: dotGovIcon,
-// }
-
 const testAgency = {
   url: '#', // prob can pass url directly
   name: 'Test Agency Name', // prob can pass name directly
@@ -19,15 +13,6 @@ const testAgency = {
   ariaLabelAgencyDescription: 'Agency description',
   identityDisclaimer: 'An official website of the',
   logo: dotGovIcon, // prob can pass logo directly
-}
-
-const testAgencySpanish = {
-  url: '#',
-  name: 'Test Agency Name Spanish',
-  ariaLabelAgencyIdentifier: 'Identificador de la agencia',
-  ariaLabelAgencyDescription: 'Descripción de la agencia',
-  identityDisclaimer: 'Un sitio web oficial de',
-  logo: dotGovIcon,
 }
 
 const testAgencyNoLogos = {
