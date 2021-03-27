@@ -1,26 +1,23 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-interface AgencyInfo {
-  url: string
-  name: string
-  ariaLabelAgencyIdentifier: string
-  ariaLabelAgencyDescription: string
-  identityDisclaimer: string
-}
+// interface AgencyInfo {
+//   // url: string
+//   // name: string
+//   ariaLabelAgencyIdentifier: string
+//   // ariaLabelAgencyDescription: string
+//   // identityDisclaimer: string
+// }
 
 interface IdentifierMastheadProps {
-  agencyInfo: AgencyInfo
-  domain: string
-  taxpayerDisclaimer?: string
+  ariaLabel: string
+
   className?: string
   children?: React.ReactNode
 }
 
 export const IdentifierMasthead = ({
-  agencyInfo,
-  domain,
-  taxpayerDisclaimer,
+  ariaLabel,
   className,
   children,
   ...sectionProps
@@ -35,23 +32,9 @@ export const IdentifierMasthead = ({
     <section
       data-testid="identifierMasthead"
       className={classes}
-      aria-label={agencyInfo.ariaLabelAgencyIdentifier}
+      aria-label={ariaLabel}
       {...sectionProps}>
-      <div className="usa-identifier__container">
-        {children}
-        <div
-          data-testid="identifierMasthead-agency-description"
-          className="usa-identifier__identity"
-          aria-label={agencyInfo.ariaLabelAgencyDescription}>
-          <p className="usa-identifier__identity-domain">{domain}</p>
-          <p className="usa-identifier__identity-disclaimer">
-            {agencyInfo.identityDisclaimer}
-            &nbsp;
-            <a href={agencyInfo.url}>{agencyInfo.name}</a>
-            {taxpayerDisclaimer && `. ${taxpayerDisclaimer}`}
-          </p>
-        </div>
-      </div>
+      <div className="usa-identifier__container">{children}</div>
     </section>
   )
 }
