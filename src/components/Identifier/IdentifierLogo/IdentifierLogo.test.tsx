@@ -5,42 +5,53 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 import { IdentifierLogo } from './IdentifierLogo'
 
-const testIdentifierLogo = (
-  <img
-    src={dotGovIcon}
-    className="usa-identifier__logo-img"
-    alt="Test Agency Name logo"
-  />
-)
-
-const testIdentifierLogoSpanish = (
-  <img
-    src={dotGovIcon}
-    className="usa-identifier__logo-img"
-    alt="Logo de Test Agency Name"
-  />
-)
-
 describe('IdentifierLogo component', () => {
   it('renders without errors', () => {
     const { getByRole } = render(
-      <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+      <IdentifierLogo agencyUrl="#">
+        <img
+          src={dotGovIcon}
+          className="usa-identifier__logo-img"
+          alt="Test Agency Name logo"
+        />
+      </IdentifierLogo>
     )
+
     expect(getByRole('link')).toHaveClass('usa-identifier__logo')
     expect(getByRole('img')).toHaveClass('usa-identifier__logo-img')
   })
 
-  it('passes properties properly to the respective elements', () => {
+  it('renders with a custom className', () => {
     const { getByRole } = render(
       <IdentifierLogo
         agencyUrl="#"
         className="usa-identifier__logo-custom-class-name">
-        {testIdentifierLogo}
+        <img
+          src={dotGovIcon}
+          className="usa-identifier__logo-img"
+          alt="Test Agency Name logo"
+        />
       </IdentifierLogo>
     )
+
     expect(getByRole('img')).toHaveProperty('alt', 'Test Agency Name logo')
+    expect(getByRole('link')).toHaveClass(
+      'usa-identifier__logo-custom-class-name'
+    )
     expect(getByRole('link')).toHaveProperty('href')
   })
 
-  // it('renders ')
+  it('renders a logo in Spanish', () => {
+    const { getByRole } = render(
+      <IdentifierLogo agencyUrl="#">
+        <img
+          src={dotGovIcon}
+          className="usa-identifier__logo-img"
+          alt="Logo de Test Agency Name"
+        />
+      </IdentifierLogo>
+    )
+
+    expect(getByRole('img')).toHaveProperty('alt', 'Logo de Test Agency Name')
+  })
 })
