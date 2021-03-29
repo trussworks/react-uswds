@@ -157,16 +157,24 @@
     },
     "types": [
       {
+        "type": "build",
+        "hidden": true
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "ci",
+        "hidden": true
+      },
+      {
         "type": "feat",
         "section": "Features"
       },
       {
         "type": "fix",
         "section": "Bug Fixes"
-      },
-      {
-        "type": "chore",
-        "hidden": true
       },
       {
         "type": "docs",
@@ -182,7 +190,7 @@
       },
       {
         "type": "perf",
-        "hidden": true
+        "section": "Performance Improvements"
       },
       {
         "type": "test",

@@ -17,9 +17,8 @@ Provide secondary navigation to help users understand where they are in a websit
     
 Source: https://designsystem.digital.gov/components/breadcrumb/
         `,
-    
-      }
-    }
+      },
+    },
   },
 }
 

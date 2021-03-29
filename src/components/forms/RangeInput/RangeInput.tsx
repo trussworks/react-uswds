@@ -12,8 +12,10 @@ interface RangeInputProps {
     | undefined
 }
 
-export const RangeInput = ({ 
-  className, inputRef, ...inputProps 
+export const RangeInput = ({
+  className,
+  inputRef,
+  ...inputProps
 }: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   // Range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
 
