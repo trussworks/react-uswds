@@ -31,24 +31,23 @@ interface ButtonProps {
 }
 
 export const Button = ({
-    type,
-    children,
-    secondary,
-    base,
-    accent,
-    accentStyle = 'none',
-    outline,
-    inverse,
-    size,
-    big,
-    small,
-    icon,
-    unstyled,
-    onClick,
-    className,
-    ...defaultProps
-  }: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
-
+  type,
+  children,
+  secondary,
+  base,
+  accent,
+  accentStyle = 'none',
+  outline,
+  inverse,
+  size,
+  big,
+  small,
+  icon,
+  unstyled,
+  onClick,
+  className,
+  ...defaultProps
+}: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
   if (big) {
     deprecationWarning('Button property big is deprecated.  Use size.')
   }

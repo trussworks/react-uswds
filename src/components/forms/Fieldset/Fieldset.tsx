@@ -13,13 +13,19 @@ interface FieldsetProps {
   className?: string
 }
 
-export const Fieldset = ({ 
-  children, legend, legendStyle='default', className, legendSrOnly 
+export const Fieldset = ({
+  children,
+  legend,
+  className,
+  legendSrOnly,
+  legendStyle = 'default',
 }: FieldsetProps): React.ReactElement => {
   const classes = classnames('usa-fieldset', className)
 
   if (legendSrOnly) {
-    deprecationWarning('Fieldset property legendSrOnly is deprecated. Use legendStyle = \'srOnly\'.')
+    deprecationWarning(
+      "Fieldset property legendSrOnly is deprecated. Use legendStyle = 'srOnly'."
+    )
   }
 
   const legendClasses = classnames({

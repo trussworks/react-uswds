@@ -9,7 +9,7 @@ import {
 
 export function BreadcrumbLink(props: DefaultLinkProps): React.ReactElement
 export function BreadcrumbLink<T>(props: CustomLinkProps<T>): React.ReactElement
-export function BreadcrumbLink<FCProps = DefaultLinkProps>({ 
+export function BreadcrumbLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
 }: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
@@ -17,7 +17,7 @@ export function BreadcrumbLink<FCProps = DefaultLinkProps>({
 
   const linkProps = {
     ...passThroughProps,
-    className: classes
+    className: classes,
   } as DefaultLinkProps | CustomLinkProps<FCProps>
 
   if (isCustomProps(linkProps)) {

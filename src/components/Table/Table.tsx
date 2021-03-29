@@ -11,8 +11,12 @@ interface TableProps {
   fixed?: boolean
 }
 
-export const Table = ({ 
-  bordered, caption, children, fullWidth, fixed 
+export const Table = ({
+  bordered,
+  caption,
+  children,
+  fullWidth,
+  fixed,
 }: TableProps): React.ReactElement => {
   const classes = classnames('usa-table', {
     'usa-table--borderless': !bordered,

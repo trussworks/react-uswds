@@ -14,9 +14,14 @@ interface DropdownProps {
     | undefined
 }
 
-export const Dropdown = ({ 
-  id, name, className, inputRef, children, ...inputProps 
-} : DropdownProps & JSX.IntrinsicElements['select']): React.ReactElement => {
+export const Dropdown = ({
+  id,
+  name,
+  className,
+  inputRef,
+  children,
+  ...inputProps
+}: DropdownProps & JSX.IntrinsicElements['select']): React.ReactElement => {
   const classes = classnames('usa-select', className)
 
   return (
