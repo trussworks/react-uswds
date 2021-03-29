@@ -27,7 +27,7 @@ Source: https://designsystem.digital.gov/components/identifier/
 
 const testIdentifierLogo = [
   <img
-    key="three"
+    key="one"
     src={dotGovIcon}
     className="usa-identifier__logo-img"
     alt="Test Agency Name logo"
@@ -36,7 +36,7 @@ const testIdentifierLogo = [
 
 const testIdentifierLogoSpanish = [
   <img
-    key="four"
+    key="two"
     src={dotGovIcon}
     className="usa-identifier__logo-img"
     alt="Logo de Test Agency Name"
