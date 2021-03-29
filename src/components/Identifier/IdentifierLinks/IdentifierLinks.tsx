@@ -23,7 +23,7 @@ export const IdentifierLinks = ({
   )
 
   return (
-    <nav className={classes} {...navProps} aria-label="Important links">
+    <nav className={classes} {...navProps}>
       <div className="usa-identifier__container">
         <ul className="usa-identifier__required-links-list" {...listProps}>
           {children}

@@ -98,7 +98,7 @@ export const identifierDefault = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
       </IdentifierLinkItem>
@@ -150,7 +150,7 @@ export const identifierSpanish = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">
           Acerca de &lt;Parent shortname&gt;
@@ -203,7 +203,7 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
       </IdentifierLinkItem>
@@ -307,7 +307,7 @@ export const noLogosEnglish = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
       </IdentifierLinkItem>
@@ -354,7 +354,7 @@ export const noLogosSpanish = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">
           Acerca de &lt;Parent shortname&gt;
@@ -405,7 +405,7 @@ export const taxDisclaimerEnglish = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
       </IdentifierLinkItem>
@@ -458,7 +458,7 @@ export const taxDisclaimerSpanish = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
+    <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
       <IdentifierLinkItem>
         <IdentifierLink href="#">
           Acerca de &lt;Parent shortname&gt;
