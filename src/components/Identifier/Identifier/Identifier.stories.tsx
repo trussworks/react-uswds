@@ -59,16 +59,32 @@ const testIdentifierGovContentSpanish = [
   </div>,
 ]
 
+const testIdentifierLogo = [
+  <img
+    key="three"
+    src={dotGovIcon}
+    className="usa-identifier__logo-img"
+    alt="Test Agency Name logo"
+  />,
+]
+
+const testIdentifierLogoSpanish = [
+  <img
+    key="four"
+    src={dotGovIcon}
+    className="usa-identifier__logo-img"
+    alt="Logo de Test Agency Name"
+  />,
+]
+
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          <IdentifierLogo
-            agencyUrl="#"
-            agencyName="Test Agency Name"
-            src={dotGovIcon}
-          />
+          <IdentifierLogo agencyUrl="#" className="custom-class-name">
+            {testIdentifierLogo}
+          </IdentifierLogo>
         </div>
         <div
           data-testid="identifierMasthead-agency-description"
@@ -118,11 +134,9 @@ export const identifierSpanish = (): React.ReactElement => (
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          <IdentifierLogo
-            agencyUrl="#"
-            agencyName="Test Agency Name Spanish"
-            src={dotGovIcon}
-          />
+          <IdentifierLogo agencyUrl="#">
+            {testIdentifierLogoSpanish}
+          </IdentifierLogo>
         </div>
         <div
           data-testid="identifierMasthead-agency-description"

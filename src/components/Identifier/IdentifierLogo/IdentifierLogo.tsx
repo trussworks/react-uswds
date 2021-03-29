@@ -2,40 +2,28 @@ import React from 'react'
 import classnames from 'classnames'
 
 export interface IdentifierLogoProps {
-  src: string
   agencyUrl: string
-  agencyName: string
+  children: React.ReactNode
   anchorProps?: JSX.IntrinsicElements['a']
-  imgProps?: JSX.IntrinsicElements['img']
   className?: string
   anchorClassName?: string
-  imgClassName?: string
 }
 
 export const IdentifierLogo = ({
-  src,
   agencyUrl,
-  agencyName,
+  children,
   anchorProps,
-  imgProps,
   className,
   anchorClassName,
-  imgClassName,
 }: IdentifierLogoProps): React.ReactElement => {
   const anchorClasses = classnames(
     'usa-identifier__logo',
     className,
     anchorClassName
   )
-  const imgClasses = classnames('usa-identifier__logo-img', imgClassName)
   return (
     <a href={agencyUrl} className={anchorClasses} {...anchorProps}>
-      <img
-        src={src}
-        className={imgClasses}
-        alt={`${agencyName} logo`}
-        {...imgProps}
-      />
+      {children}
     </a>
   )
 }
