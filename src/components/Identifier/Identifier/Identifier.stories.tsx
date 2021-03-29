@@ -291,6 +291,62 @@ export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
+export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
+  <Identifier>
+    <IdentifierMasthead aria-label="Agency identifier">
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`An official website of the `}
+            <a href="testlink">Test Agency Name</a>
+            {`, `}
+            <a href="secondTestLink">Second Test Agency Name</a>
+            {`, and the `}
+            <a href="secondTestLink">Third Test Agency Name</a>
+          </p>
+        </div>
+      </div>
+    </IdentifierMasthead>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Accessibility support</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">FOIA requests</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Office of the Inspector General
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Performance reports</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Privacy policy</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
+    </IdentifierGov>
+  </Identifier>
+)
+
 export const noLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
@@ -485,6 +541,60 @@ export const taxDisclaimerSpanish = (): React.ReactElement => (
     </IdentifierLinks>
     <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
       {testIdentifierGovContentSpanish}
+    </IdentifierGov>
+  </Identifier>
+)
+
+export const taxDisclaimerAndMultipleParentsAndLogos = (): React.ReactElement => (
+  <Identifier>
+    <IdentifierMasthead aria-label="Agency identifier">
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`An official website of the `}
+            <a href="testlink">Test Agency Name</a>
+            {` and the `}
+            <a href="secondTestLink">Other Test Agency Name</a>
+            {`. Produced and published at taxpayer expense.`}
+          </p>
+        </div>
+      </div>
+    </IdentifierMasthead>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Accessibility support</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">FOIA requests</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Office of the Inspector General
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Performance reports</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Privacy policy</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
     </IdentifierGov>
   </Identifier>
 )
