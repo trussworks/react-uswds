@@ -11,23 +11,21 @@ import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
-const testIdentifierLogo = [
+const testIdentifierLogo = (
   <img
-    key="three"
     src={dotGovIcon}
     className="usa-identifier__logo-img"
     alt="Test Agency Name logo"
-  />,
-]
+  />
+)
 
-const testIdentifierLogoSpanish = [
+const testIdentifierLogoSpanish = (
   <img
-    key="four"
     src={dotGovIcon}
     className="usa-identifier__logo-img"
     alt="Logo de Test Agency Name"
-  />,
-]
+  />
+)
 
 const testLinks = [
   <IdentifierLinkItem key="one">

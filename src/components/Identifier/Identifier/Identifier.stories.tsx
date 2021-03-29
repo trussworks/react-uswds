@@ -25,23 +25,21 @@ Source: https://designsystem.digital.gov/components/identifier/
   },
 }
 
-const testIdentifierLogo = [
+const testIdentifierLogo = (
   <img
-    key="one"
     src={dotGovIcon}
     className="usa-identifier__logo-img"
     alt="Test Agency Name logo"
-  />,
-]
+  />
+)
 
-const testIdentifierLogoSpanish = [
+const testIdentifierLogoSpanish = (
   <img
-    key="two"
     src={dotGovIcon}
     className="usa-identifier__logo-img"
     alt="Logo de Test Agency Name"
-  />,
-]
+  />
+)
 
 const testLinks = [
   <IdentifierLinkItem key="one">
@@ -130,7 +128,9 @@ export const identifierDefault = (): React.ReactElement => (
     <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          <IdentifierLogo agencyUrl="#" className="custom-class-name">
+          <IdentifierLogo
+            agencyUrl="#"
+            className="usa-identifier__logo-custom-class-name">
             {testIdentifierLogo}
           </IdentifierLogo>
         </div>
