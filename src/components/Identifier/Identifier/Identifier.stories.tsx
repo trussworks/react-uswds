@@ -181,7 +181,117 @@ export const identifierSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const identifierNoLogosEnglish = (): React.ReactElement => (
+export const multipleParentsAndLogos = (): React.ReactElement => (
+  <Identifier>
+    <IdentifierMasthead aria-label="Agency identifier">
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Agency description">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`An official website of the `}
+            <a href="testlink">Test Agency Name</a>
+            {` and the `}
+            <a href="secondTestLink">Other Test Agency Name</a>
+          </p>
+        </div>
+      </div>
+    </IdentifierMasthead>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Accessibility support</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">FOIA requests</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Office of the Inspector General
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Performance reports</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Privacy policy</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
+    </IdentifierGov>
+  </Identifier>
+)
+
+export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
+  <Identifier>
+    <IdentifierMasthead aria-label="Identificador de la agencia">
+      <div className="usa-identifier__container">
+        <div className="usa-identifier__logos">
+          <IdentifierLogo agencyUrl="#">
+            {testIdentifierLogoSpanish}
+          </IdentifierLogo>
+          <IdentifierLogo agencyUrl="#">
+            {testIdentifierLogoSpanish}
+          </IdentifierLogo>
+        </div>
+        <div
+          data-testid="identifierMasthead-agency-description"
+          className="usa-identifier__identity"
+          aria-label="Descripción de la agencia">
+          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
+          <p className="usa-identifier__identity-disclaimer">
+            {`Un sitio web oficial de `}
+            <a href="testlink">Test Agency Name</a>
+            {` y `}
+            <a href="secondTestLink">Other Test Agency Name</a>
+          </p>
+        </div>
+      </div>
+    </IdentifierMasthead>
+    <IdentifierLinks>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">
+          Acerca de &lt;Parent shortname&gt;
+        </IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+      </IdentifierLinkItem>
+      <IdentifierLinkItem>
+        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+      </IdentifierLinkItem>
+    </IdentifierLinks>
+    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+      {testIdentifierGovContentSpanish}
+    </IdentifierGov>
+  </Identifier>
+)
+
+export const noLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
@@ -228,7 +338,7 @@ export const identifierNoLogosEnglish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const identifierNoLogosSpanish = (): React.ReactElement => (
+export const noLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <div className="usa-identifier__container">
@@ -275,16 +385,12 @@ export const identifierNoLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
+export const taxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          <IdentifierLogo
-            agencyUrl="#"
-            agencyName="Test Agency Name"
-            src={dotGovIcon}
-          />
+          <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
         </div>
         <div
           data-testid="identifierMasthead-agency-description"
@@ -330,16 +436,14 @@ export const identifierTaxDisclaimerEnglish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const identifierTaxDisclaimerSpanish = (): React.ReactElement => (
+export const taxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <div className="usa-identifier__container">
         <div className="usa-identifier__logos">
-          <IdentifierLogo
-            agencyUrl="#"
-            agencyName="Test Agency Name Spanish"
-            src={dotGovIcon}
-          />
+          <IdentifierLogo agencyUrl="#">
+            {testIdentifierLogoSpanish}
+          </IdentifierLogo>
         </div>
         <div
           data-testid="identifierMasthead-agency-description"
