@@ -1,8 +1,9 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { queryByText, render } from '@testing-library/react'
 
 import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
+import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 import { IdentifierLinks } from '../IdentifierLinks/IdentifierLinks'
 import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
@@ -10,109 +11,177 @@ import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
-const testAgency = {
-  url: '#', // prob can pass url directly
-  name: 'Test Agency Name', // prob can pass name directly
-  ariaLabelAgencyIdentifier: 'Agency identifier',
-  ariaLabelAgencyDescription: 'Agency description',
-  identityDisclaimer: 'An official website of the',
-  logo: dotGovIcon, // prob can pass logo directly
-}
+const testIdentifierLogo = [
+  <img
+    key="three"
+    src={dotGovIcon}
+    className="usa-identifier__logo-img"
+    alt="Test Agency Name logo"
+  />,
+]
 
-const testAgencySpanish = {
-  url: '#',
-  name: 'Test Agency Name Spanish',
-  ariaLabelAgencyIdentifier: 'Identificador de la agencia',
-  ariaLabelAgencyDescription: 'Descripción de la agencia',
-  identityDisclaimer: 'Un sitio web oficial de',
-  logo: dotGovIcon,
-}
+const testIdentifierLogoSpanish = [
+  <img
+    key="four"
+    src={dotGovIcon}
+    className="usa-identifier__logo-img"
+    alt="Logo de Test Agency Name"
+  />,
+]
 
-const testAgencyNoLogos = {
-  url: '#',
-  name: 'Test Parent Agency Name',
-  ariaLabelAgencyIdentifier: 'Agency identifier',
-  ariaLabelAgencyDescription: 'Agency description',
-  identityDisclaimer: 'An official website of the',
-}
+const testLinks = [
+  <IdentifierLinkItem key="one">
+    <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="two">
+    <IdentifierLink href="#">Accessibility support</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="three">
+    <IdentifierLink href="#">FOIA requests</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="four">
+    <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="five">
+    <IdentifierLink href="#">Office of the Inspector General</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="six">
+    <IdentifierLink href="#">Performance reports</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="seven">
+    <IdentifierLink href="#">Privacy policy</IdentifierLink>
+  </IdentifierLinkItem>,
+]
+
+const testLinksSpanish = [
+  <IdentifierLinkItem key="one">
+    <IdentifierLink href="#">Acerca de &lt;Parent shortname&gt;</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="two">
+    <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="three">
+    <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="four">
+    <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="five">
+    <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="six">
+    <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="seven">
+    <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+  </IdentifierLinkItem>,
+]
+
+const testIdentifierGovContent = [
+  <div className="usa-identifier__container" key="one">
+    <div
+      data-testid="identifierGov-description"
+      className="usa-identifier__usagov-description">
+      Looking for U.S. government information and services?
+    </div>
+    &nbsp;
+    <a
+      data-testid="identifierGov-link"
+      href="https://www.usa.gov/"
+      className="usa-link">
+      Visit USA.gov
+    </a>
+  </div>,
+]
+
+const testIdentifierGovContentSpanish = [
+  <div className="usa-identifier__container" key="two">
+    <div
+      data-testid="identifierGov-description"
+      className="usa-identifier__usagov-description">
+      ¿Necesita información y servicios del Gobierno?
+    </div>
+    &nbsp;
+    <a
+      data-testid="identifierGov-link"
+      href="https://www.usa.gov/espanol/"
+      className="usa-link">
+      Visite USAGov en Español
+    </a>
+  </div>,
+]
 
 describe('Identifier component', () => {
   it('renders without errors', () => {
-    const { getAllByRole, queryByTestId } = render(
+    const { getByRole, getAllByRole, queryByTestId } = render(
       <Identifier>
-        <IdentifierMasthead
-          domain="domain.gov.mil.edu"
-          agencyInfo={testAgency}
-        />
-        <IdentifierLinks>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              About &lt;Parent shortname&gt;
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Accessibility support</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">FOIA requests</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              Office of the Inspector General
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Performance reports</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Privacy policy</IdentifierLink>
-          </IdentifierLinkItem>
+        <IdentifierMasthead aria-label="Agency identifier">
+          <div className="usa-identifier__container">
+            <div className="usa-identifier__logos">
+              <IdentifierLogo agencyUrl="#" className="custom-class-name">
+                {testIdentifierLogo}
+              </IdentifierLogo>
+            </div>
+            <div
+              data-testid="identifierMasthead-agency-description"
+              className="usa-identifier__identity"
+              aria-label="Agency description">
+              <p className="usa-identifier__identity-domain">
+                domain.edu.mil.gov
+              </p>
+              <p className="usa-identifier__identity-disclaimer">
+                {`An official website of the `}
+                <a href="testlink">Test Agency Name</a>
+              </p>
+            </div>
+          </div>
+        </IdentifierMasthead>
+        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+          {testLinks}
         </IdentifierLinks>
-        <IdentifierGov />
+        <IdentifierGov aria-label="U.S. government information and services">
+          {testIdentifierGovContent}
+        </IdentifierGov>
       </Identifier>
     )
+
     expect(queryByTestId('identifier')).toBeInTheDocument()
+    expect(queryByTestId('identifierMasthead')).toBeInTheDocument()
+    expect(queryByTestId('identifierGov')).toBeInTheDocument()
     expect(getAllByRole('link')).toHaveLength(10)
+    expect(getByRole('navigation')).toBeInTheDocument()
   })
 
   it('renders in Spanish', () => {
     const { getAllByRole, queryByText } = render(
       <Identifier>
-        <IdentifierMasthead
-          domain="domain.edu.mil.gov"
-          agencyInfo={testAgencySpanish}
-        />
-        <IdentifierLinks>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              Acerca de &lt;Parent shortname&gt;
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              Oficina del Inspector General
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Política de privacidad</IdentifierLink>
-          </IdentifierLinkItem>
+        <IdentifierMasthead aria-label="Identificador de la agencia">
+          <div className="usa-identifier__container">
+            <div className="usa-identifier__logos">
+              <IdentifierLogo agencyUrl="#">
+                {testIdentifierLogoSpanish}
+              </IdentifierLogo>
+            </div>
+            <div
+              data-testid="identifierMasthead-agency-description"
+              className="usa-identifier__identity"
+              aria-label="Descripción de la agencia">
+              <p className="usa-identifier__identity-domain">
+                domain.edu.mil.gov
+              </p>
+              <p className="usa-identifier__identity-disclaimer">
+                {`Un sitio web oficial de `}
+                <a href="testlink">Test Agency Name Spanish</a>
+              </p>
+            </div>
+          </div>
+        </IdentifierMasthead>
+        <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
+          {testLinksSpanish}
         </IdentifierLinks>
-        <IdentifierGov language="spanish" />
+        <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+          {testIdentifierGovContentSpanish}
+        </IdentifierGov>
       </Identifier>
     )
 
@@ -122,43 +191,124 @@ describe('Identifier component', () => {
   })
 
   it('renders without logos', () => {
-    const { getAllByRole, queryByText } = render(
+    const { getAllByRole, getByTestId, queryByText } = render(
       <Identifier>
-        <IdentifierMasthead
-          domain="domain.gov.mil.edu"
-          agencyInfo={testAgencyNoLogos}
-        />
-        <IdentifierLinks>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              About &lt;Parent shortname&gt;
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Accessibility support</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">FOIA requests</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              Office of the Inspector General
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Performance reports</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Privacy policy</IdentifierLink>
-          </IdentifierLinkItem>
+        <IdentifierMasthead aria-label="Agency identifier">
+          <div className="usa-identifier__container">
+            <div
+              data-testid="identifierMasthead-agency-description"
+              className="usa-identifier__identity"
+              aria-label="Agency description">
+              <p className="usa-identifier__identity-domain">
+                domain.edu.mil.gov
+              </p>
+              <p className="usa-identifier__identity-disclaimer">
+                {`An official website of the `}
+                <a href="testlink">Test Agency Name</a>
+              </p>
+            </div>
+          </div>
+        </IdentifierMasthead>
+        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+          {testLinks}
         </IdentifierLinks>
-        <IdentifierGov />
+        <IdentifierGov aria-label="U.S. government information and services">
+          {testIdentifierGovContent}
+        </IdentifierGov>
       </Identifier>
+    )
+
+    expect(getByTestId('identifierMasthead-agency-description')).not.toContain(
+      'img'
     )
     expect(getAllByRole('link')).toHaveLength(9)
     expect(queryByText('Privacy policy')).toBeInTheDocument()
+  })
+
+  it('renders more than two parent agencies', () => {
+    const { getAllByRole, queryByText } = render(
+      <Identifier>
+        <IdentifierMasthead aria-label="Agency identifier">
+          <div className="usa-identifier__container">
+            <div className="usa-identifier__logos">
+              <IdentifierLogo agencyUrl="#">
+                {testIdentifierLogo}
+              </IdentifierLogo>
+              <IdentifierLogo agencyUrl="#">
+                {testIdentifierLogo}
+              </IdentifierLogo>
+              <IdentifierLogo agencyUrl="#">
+                {testIdentifierLogo}
+              </IdentifierLogo>
+            </div>
+            <div
+              data-testid="identifierMasthead-agency-description"
+              className="usa-identifier__identity"
+              aria-label="Agency description">
+              <p className="usa-identifier__identity-domain">
+                domain.edu.mil.gov
+              </p>
+              <p className="usa-identifier__identity-disclaimer">
+                {`An official website of the `}
+                <a href="testlink">Test Agency Name</a>
+                {`, `}
+                <a href="secondTestLink">Second Test Agency Name</a>
+                {`, and the `}
+                <a href="ThirdTestLink">Third Test Agency Name</a>
+              </p>
+            </div>
+          </div>
+        </IdentifierMasthead>
+        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+          {testLinks}
+        </IdentifierLinks>
+        <IdentifierGov aria-label="U.S. government information and services">
+          {testIdentifierGovContent}
+        </IdentifierGov>
+      </Identifier>
+    )
+
+    expect(getAllByRole('img')).toHaveLength(3)
+    expect(getAllByRole('link')).toHaveLength(14)
+    expect(queryByText('Third Test Agency Name')).toBeInTheDocument()
+  })
+
+  it('renders tax disclaimer', () => {
+    const { getByTestId } = render(
+      <Identifier>
+        <IdentifierMasthead aria-label="Agency identifier">
+          <div className="usa-identifier__container">
+            <div className="usa-identifier__logos">
+              <IdentifierLogo agencyUrl="#">
+                {testIdentifierLogo}
+              </IdentifierLogo>
+            </div>
+            <div
+              data-testid="identifierMasthead-agency-description"
+              className="usa-identifier__identity"
+              aria-label="Agency description">
+              <p className="usa-identifier__identity-domain">
+                domain.edu.mil.gov
+              </p>
+              <p className="usa-identifier__identity-disclaimer">
+                {`An official website of the `}
+                <a href="testlink">Test Agency Name</a>
+                {`. Produced and published at taxpayer expense.`}
+              </p>
+            </div>
+          </div>
+        </IdentifierMasthead>
+        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+          {testLinks}
+        </IdentifierLinks>
+        <IdentifierGov aria-label="U.S. government information and services">
+          {testIdentifierGovContent}
+        </IdentifierGov>
+      </Identifier>
+    )
+
+    expect(
+      getByTestId('identifierMasthead-agency-description')
+    ).toHaveTextContent('Produced and published at taxpayer expense.')
   })
 })

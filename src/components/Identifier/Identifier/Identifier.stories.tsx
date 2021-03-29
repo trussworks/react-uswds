@@ -25,6 +25,72 @@ Source: https://designsystem.digital.gov/components/identifier/
   },
 }
 
+const testIdentifierLogo = [
+  <img
+    key="three"
+    src={dotGovIcon}
+    className="usa-identifier__logo-img"
+    alt="Test Agency Name logo"
+  />,
+]
+
+const testIdentifierLogoSpanish = [
+  <img
+    key="four"
+    src={dotGovIcon}
+    className="usa-identifier__logo-img"
+    alt="Logo de Test Agency Name"
+  />,
+]
+
+const testLinks = [
+  <IdentifierLinkItem key="one">
+    <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="two">
+    <IdentifierLink href="#">Accessibility support</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="three">
+    <IdentifierLink href="#">FOIA requests</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="four">
+    <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="five">
+    <IdentifierLink href="#">Office of the Inspector General</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="six">
+    <IdentifierLink href="#">Performance reports</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="seven">
+    <IdentifierLink href="#">Privacy policy</IdentifierLink>
+  </IdentifierLinkItem>,
+]
+
+const testLinksSpanish = [
+  <IdentifierLinkItem key="one">
+    <IdentifierLink href="#">Acerca de &lt;Parent shortname&gt;</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="two">
+    <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="three">
+    <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="four">
+    <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="five">
+    <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="six">
+    <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+  </IdentifierLinkItem>,
+  <IdentifierLinkItem key="seven">
+    <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+  </IdentifierLinkItem>,
+]
+
 const testIdentifierGovContent = [
   <div className="usa-identifier__container" key="one">
     <div
@@ -59,24 +125,6 @@ const testIdentifierGovContentSpanish = [
   </div>,
 ]
 
-const testIdentifierLogo = [
-  <img
-    key="three"
-    src={dotGovIcon}
-    className="usa-identifier__logo-img"
-    alt="Test Agency Name logo"
-  />,
-]
-
-const testIdentifierLogoSpanish = [
-  <img
-    key="four"
-    src={dotGovIcon}
-    className="usa-identifier__logo-img"
-    alt="Logo de Test Agency Name"
-  />,
-]
-
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
@@ -99,29 +147,7 @@ export const identifierDefault = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Accessibility support</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">FOIA requests</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Office of the Inspector General
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Performance reports</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Privacy policy</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinks}
     </IdentifierLinks>
     <IdentifierGov aria-label="U.S. government information and services">
       {testIdentifierGovContent}
@@ -151,29 +177,7 @@ export const identifierSpanish = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Acerca de &lt;Parent shortname&gt;
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinksSpanish}
     </IdentifierLinks>
     <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
       {testIdentifierGovContentSpanish}
@@ -204,29 +208,7 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Accessibility support</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">FOIA requests</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Office of the Inspector General
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Performance reports</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Privacy policy</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinks}
     </IdentifierLinks>
     <IdentifierGov aria-label="U.S. government information and services">
       {testIdentifierGovContent}
@@ -260,31 +242,7 @@ export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
         </div>
       </div>
     </IdentifierMasthead>
-    <IdentifierLinks>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Acerca de &lt;Parent shortname&gt;
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
-      </IdentifierLinkItem>
-    </IdentifierLinks>
+    <IdentifierLinks>{testLinksSpanish}</IdentifierLinks>
     <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
       {testIdentifierGovContentSpanish}
     </IdentifierGov>
@@ -311,35 +269,13 @@ export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
             {`, `}
             <a href="secondTestLink">Second Test Agency Name</a>
             {`, and the `}
-            <a href="secondTestLink">Third Test Agency Name</a>
+            <a href="thirdTestLink">Third Test Agency Name</a>
           </p>
         </div>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Accessibility support</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">FOIA requests</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Office of the Inspector General
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Performance reports</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Privacy policy</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinks}
     </IdentifierLinks>
     <IdentifierGov aria-label="U.S. government information and services">
       {testIdentifierGovContent}
@@ -364,29 +300,7 @@ export const noLogosEnglish = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Accessibility support</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">FOIA requests</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Office of the Inspector General
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Performance reports</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Privacy policy</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinks}
     </IdentifierLinks>
     <IdentifierGov aria-label="U.S. government information and services">
       {testIdentifierGovContent}
@@ -411,29 +325,7 @@ export const noLogosSpanish = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Acerca de &lt;Parent shortname&gt;
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinksSpanish}
     </IdentifierLinks>
     <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
       {testIdentifierGovContentSpanish}
@@ -462,29 +354,7 @@ export const taxDisclaimerEnglish = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Accessibility support</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">FOIA requests</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Office of the Inspector General
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Performance reports</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Privacy policy</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinks}
     </IdentifierLinks>
     <IdentifierGov aria-label="U.S. government information and services">
       {testIdentifierGovContent}
@@ -515,29 +385,7 @@ export const taxDisclaimerSpanish = (): React.ReactElement => (
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Acerca de &lt;Parent shortname&gt;
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Política de privacidad</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinksSpanish}
     </IdentifierLinks>
     <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
       {testIdentifierGovContentSpanish}
@@ -569,29 +417,7 @@ export const taxDisclaimerAndMultipleParentsAndLogos = (): React.ReactElement =>
       </div>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Accessibility support</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">FOIA requests</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">
-          Office of the Inspector General
-        </IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Performance reports</IdentifierLink>
-      </IdentifierLinkItem>
-      <IdentifierLinkItem>
-        <IdentifierLink href="#">Privacy policy</IdentifierLink>
-      </IdentifierLinkItem>
+      {testLinks}
     </IdentifierLinks>
     <IdentifierGov aria-label="U.S. government information and services">
       {testIdentifierGovContent}
