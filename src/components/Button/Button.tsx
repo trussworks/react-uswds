@@ -11,7 +11,7 @@ interface ButtonProps {
    * @deprecated since 1.15.0, use accentStyle
    */
   accent?: boolean
-  accentStyle?: 'none' | 'cool' | 'warm'
+  accentStyle?: 'cool' | 'warm'
   outline?: boolean
   inverse?: boolean
   size?: 'big' | 'small' // small is deprecated
@@ -36,7 +36,7 @@ export const Button = ({
   secondary,
   base,
   accent,
-  accentStyle = 'none',
+  accentStyle,
   outline,
   inverse,
   size,
