@@ -32,7 +32,7 @@ describe('IdentifierMasthead component', () => {
         aria-label="Agency identifier">
         <div className="usa-identifier__container">
           <div className="usa-identifier__logos">
-            <IdentifierLogo agencyUrl="#" className="custom-class-name">
+            <IdentifierLogo href="#" className="custom-class-name">
               {testIdentifierLogo}
             </IdentifierLogo>
           </div>
@@ -77,9 +77,9 @@ describe('IdentifierMasthead component', () => {
       <IdentifierMasthead aria-label="Agency identifier">
         <div className="usa-identifier__container">
           <div className="usa-identifier__logos">
-            <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
-            <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
-            <IdentifierLogo agencyUrl="#">{testIdentifierLogo}</IdentifierLogo>
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
           </div>
           <div
             data-testid="identifierMasthead-agency-description"

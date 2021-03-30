@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 export interface IdentifierLogoProps {
-  agencyUrl: string
+  href: string
   children: React.ReactNode
   anchorProps?: JSX.IntrinsicElements['a']
   className?: string
@@ -10,7 +10,7 @@ export interface IdentifierLogoProps {
 }
 
 export const IdentifierLogo = ({
-  agencyUrl,
+  href,
   children,
   anchorProps,
   className,
@@ -22,7 +22,7 @@ export const IdentifierLogo = ({
     anchorClassName
   )
   return (
-    <a href={agencyUrl} className={anchorClasses} {...anchorProps}>
+    <a href={href} className={anchorClasses} {...anchorProps}>
       {children}
     </a>
   )

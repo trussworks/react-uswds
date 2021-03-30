@@ -116,7 +116,7 @@ describe('Identifier component', () => {
         <IdentifierMasthead aria-label="Agency identifier">
           <div className="usa-identifier__container">
             <div className="usa-identifier__logos">
-              <IdentifierLogo agencyUrl="#" className="custom-class-name">
+              <IdentifierLogo href="#" className="custom-class-name">
                 {testIdentifierLogo}
               </IdentifierLogo>
             </div>
@@ -156,7 +156,7 @@ describe('Identifier component', () => {
         <IdentifierMasthead aria-label="Identificador de la agencia">
           <div className="usa-identifier__container">
             <div className="usa-identifier__logos">
-              <IdentifierLogo agencyUrl="#">
+              <IdentifierLogo href="#">
                 {testIdentifierLogoSpanish}
               </IdentifierLogo>
             </div>
@@ -229,15 +229,9 @@ describe('Identifier component', () => {
         <IdentifierMasthead aria-label="Agency identifier">
           <div className="usa-identifier__container">
             <div className="usa-identifier__logos">
-              <IdentifierLogo agencyUrl="#">
-                {testIdentifierLogo}
-              </IdentifierLogo>
-              <IdentifierLogo agencyUrl="#">
-                {testIdentifierLogo}
-              </IdentifierLogo>
-              <IdentifierLogo agencyUrl="#">
-                {testIdentifierLogo}
-              </IdentifierLogo>
+              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
             </div>
             <div
               data-testid="identifierMasthead-agency-description"
@@ -277,9 +271,7 @@ describe('Identifier component', () => {
         <IdentifierMasthead aria-label="Agency identifier">
           <div className="usa-identifier__container">
             <div className="usa-identifier__logos">
-              <IdentifierLogo agencyUrl="#">
-                {testIdentifierLogo}
-              </IdentifierLogo>
+              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
             </div>
             <div
               data-testid="identifierMasthead-agency-description"

@@ -8,7 +8,7 @@ import { IdentifierLogo } from './IdentifierLogo'
 describe('IdentifierLogo component', () => {
   it('renders without errors', () => {
     const { getByRole } = render(
-      <IdentifierLogo agencyUrl="#">
+      <IdentifierLogo href="#">
         <img
           src={dotGovIcon}
           className="usa-identifier__logo-img"
@@ -24,7 +24,7 @@ describe('IdentifierLogo component', () => {
   it('renders with a custom className', () => {
     const { getByRole } = render(
       <IdentifierLogo
-        agencyUrl="#"
+        href="#"
         className="usa-identifier__logo-custom-class-name">
         <img
           src={dotGovIcon}
@@ -43,7 +43,7 @@ describe('IdentifierLogo component', () => {
 
   it('renders a logo in Spanish', () => {
     const { getByRole } = render(
-      <IdentifierLogo agencyUrl="#">
+      <IdentifierLogo href="#">
         <img
           src={dotGovIcon}
           className="usa-identifier__logo-img"
