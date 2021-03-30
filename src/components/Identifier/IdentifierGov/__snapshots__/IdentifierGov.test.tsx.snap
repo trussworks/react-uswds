@@ -1,35 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IdentifierGov component renders consistently in English (default) when not passed a language prop 1`] = `
+exports[`IdentifierGov component renders consistently in Spanish 1`] = `
 <section
-  aria-label="U.S. government information and services"
-  className="usa-identifier__section usa-identifier__section--usagov"
-  data-testid="identifierGov"
->
-  <div
-    className="usa-identifier__container"
-  >
-    <div
-      className="usa-identifier__usagov-description"
-      data-testid="identifierGov-description"
-    >
-      Looking for U.S. government information and services?
-    </div>
-     
-    <a
-      className="usa-link"
-      data-testid="identifierGov-link"
-      href="https://www.usa.gov/"
-    >
-      Visit USA.gov
-    </a>
-  </div>
-</section>
-`;
-
-exports[`IdentifierGov component renders consistently in Spanish when passed Spanish for language prop 1`] = `
-<section
-  aria-label="Información y servicios del Gobierno de EE. UU."
   className="usa-identifier__section usa-identifier__section--usagov"
   data-testid="identifierGov"
 >

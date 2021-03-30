@@ -7,43 +7,41 @@ import { IdentifierGov } from './IdentifierGov'
 describe('IdentifierGov component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<IdentifierGov />)
-    const identifierGov = queryByTestId('identifierGov')
-    expect(identifierGov).toBeInTheDocument()
-    expect(identifierGov).toHaveClass(
-      'usa-identifier__section usa-identifier__section--usagov'
-    )
-    expect(queryByTestId('identifierGov-description')).toHaveClass(
-      'usa-identifier__usagov-description'
-    )
-    expect(queryByTestId('identifierGov-link')).toHaveClass('usa-link')
+    expect(queryByTestId('identifierGov')).toBeInTheDocument()
   })
 
   it('renders section attributes passed in through props', () => {
     const { queryByTestId } = render(
       <IdentifierGov aria-label="custom aria-label value" />
     )
+
     expect(queryByTestId('identifierGov')).toHaveAttribute(
       'aria-label',
       'custom aria-label value'
     )
   })
 
-  it('renders with a custom className passed in', () => {
-    const { queryByTestId } = render(
-      <IdentifierGov className="usa-identifier__custom-class-name" />
-    )
-    expect(queryByTestId('identifierGov')).toHaveClass(
-      'usa-identifier__section usa-identifier__section--usagov usa-identifier__custom-class-name'
-    )
-  })
-
-  it('renders consistently in English (default) when not passed a language prop', () => {
-    const tree = renderer.create(<IdentifierGov />).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
-  it('renders consistently in Spanish when passed Spanish for language prop', () => {
-    const tree = renderer.create(<IdentifierGov language="spanish" />).toJSON()
+  it('renders consistently in Spanish', () => {
+    const tree = renderer
+      .create(
+        <IdentifierGov>
+          <div className="usa-identifier__container">
+            <div
+              data-testid="identifierGov-description"
+              className="usa-identifier__usagov-description">
+              ¿Necesita información y servicios del Gobierno?
+            </div>
+            &nbsp;
+            <a
+              data-testid="identifierGov-link"
+              href="https://www.usa.gov/espanol/"
+              className="usa-link">
+              Visite USAGov en Español
+            </a>
+          </div>
+        </IdentifierGov>
+      )
+      .toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
