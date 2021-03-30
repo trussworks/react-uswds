@@ -1,8 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const CardFooter = ({ 
-  exdent, children, className, ...footerProps 
+export const CardFooter = ({
+  exdent,
+  children,
+  className,
+  ...footerProps
 }: { exdent?: boolean } & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-card__footer',

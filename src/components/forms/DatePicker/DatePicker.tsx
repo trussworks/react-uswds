@@ -40,7 +40,8 @@ interface BaseDatePickerProps {
   ) => void
 }
 
-export type DatePickerProps = BaseDatePickerProps & Omit<JSX.IntrinsicElements['input'], "onChange">
+export type DatePickerProps = BaseDatePickerProps &
+  Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
 export enum FocusMode {
   None,

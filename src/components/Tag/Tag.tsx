@@ -6,10 +6,12 @@ interface TagProps {
   background?: string
 }
 
-export const Tag = ({ 
-  children, background, className, ...spanProps 
+export const Tag = ({
+  children,
+  background,
+  className,
+  ...spanProps
 }: TagProps & JSX.IntrinsicElements['span']): React.ReactElement => {
-
   const style: React.CSSProperties = {}
   if (background) {
     style.background = background
