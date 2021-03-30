@@ -1,10 +1,9 @@
 import {
   DEFAULT_MAX_TIME_MINUTES,
-  DEFAULT_MIN_TIME,
   DEFAULT_MIN_TIME_MINUTES,
   DEFAULT_STEP,
 } from './constants'
-import { getTimeOptions } from './utils'
+import { getTimeOptions, parseTimeString } from './utils'
 
 describe('getTimeOptions', () => {
   it('returns the expected list of default times options', () => {
@@ -208,5 +207,114 @@ describe('getTimeOptions', () => {
         label: '11:30pm',
       },
     ])
+  })
+
+  it('returns the expected list of times options with a custom step size', () => {
+    const fourHoursInMinutes = 4 * 60
+    const timeOptions = getTimeOptions(
+      DEFAULT_MIN_TIME_MINUTES,
+      DEFAULT_MAX_TIME_MINUTES,
+      fourHoursInMinutes
+    )
+
+    expect(timeOptions).toEqual([
+      {
+        value: '00:00',
+        label: '12:00am',
+      },
+      {
+        value: '04:00',
+        label: '4:00am',
+      },
+      {
+        value: '08:00',
+        label: '8:00am',
+      },
+      {
+        value: '12:00',
+        label: '12:00pm',
+      },
+      {
+        value: '16:00',
+        label: '4:00pm',
+      },
+      {
+        value: '20:00',
+        label: '8:00pm',
+      },
+    ])
+  })
+
+  it('returns the expected list of times options with custom min and max times', () => {
+    const nineAM = parseTimeString('09:00') as number
+    const fivePM = parseTimeString('17:00') as number
+    const oneHourInMinutes = 60
+    const timeOptions = getTimeOptions(nineAM, fivePM, oneHourInMinutes)
+
+    expect(timeOptions).toEqual([
+      {
+        value: '09:00',
+        label: '9:00am',
+      },
+      {
+        value: '10:00',
+        label: '10:00am',
+      },
+      {
+        value: '11:00',
+        label: '11:00am',
+      },
+      {
+        value: '12:00',
+        label: '12:00pm',
+      },
+      {
+        value: '13:00',
+        label: '1:00pm',
+      },
+      {
+        value: '14:00',
+        label: '2:00pm',
+      },
+      {
+        value: '15:00',
+        label: '3:00pm',
+      },
+      {
+        value: '16:00',
+        label: '4:00pm',
+      },
+      {
+        value: '17:00',
+        label: '5:00pm',
+      },
+    ])
+  })
+})
+
+describe('parseTimeString', () => {
+  it('successfully parses valid values', () => {
+    const midnight = '00:00'
+    const sixThirtyAM = '06:30'
+    const noon = '12:00'
+    const fiveThirtyPM = '17:30'
+
+    const midnightParsed = parseTimeString(midnight)
+    const sixThirtyAMParsed = parseTimeString(sixThirtyAM)
+    const noonParsed = parseTimeString(noon)
+    const fiveThirtyPMParsed = parseTimeString(fiveThirtyPM)
+
+    expect(midnightParsed).toEqual(0)
+    expect(sixThirtyAMParsed).toEqual(6.5 * 60)
+    expect(noonParsed).toEqual(12 * 60)
+    expect(fiveThirtyPMParsed).toEqual(17.5 * 60)
+  })
+
+  it('successfully returns undefined for invalid values', () => {
+    const badFormat = 'abc:123'
+
+    const badFormatParsed = parseTimeString(badFormat)
+
+    expect(badFormatParsed).toBeUndefined()
   })
 })
