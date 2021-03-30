@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Form } from '../Form/Form'
+import TextInput from '../TextInput/TextInput'
 import { TimePicker } from './TimePicker'
 
 export default {
@@ -27,8 +28,47 @@ const noop = (): void => {
   return
 }
 
+export const completeTimePicker = (argTypes): React.ReactElement => (
+  <Form onSubmit={argTypes.onSubmit}>
+    <TimePicker
+      id="appointment-time"
+      name="appointment-time"
+      label="Appointment Time"
+      hint="hh:mm"
+      onChange={noop}
+    />
+  </Form>
+)
+
 export const defaultTimePicker = (argTypes): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
-    <TimePicker id="" label="" onChange={noop} />
+    <TimePicker id="appointment-time" name="appointment-time" onChange={noop} />
+  </Form>
+)
+
+export const withMinAndMaxTimes = (argTypes): React.ReactElement => (
+  <Form onSubmit={argTypes.onSubmit}>
+    <TimePicker
+      id="appointment-time"
+      name="appointment-time"
+      label="Appointment Time"
+      hint="hh:mm (9:00am - 5:00pm)"
+      minTime="9:00"
+      maxTime="17:00"
+      onChange={noop}
+    />
+  </Form>
+)
+
+export const withDefaultValue = (argTypes): React.ReactElement => (
+  <Form onSubmit={argTypes.onSubmit}>
+    <TimePicker
+      id="appointment-time"
+      name="appointment-time"
+      label="Appointment Time"
+      hint="hh:mm"
+      defaultValue="12:00"
+      onChange={noop}
+    />
   </Form>
 )

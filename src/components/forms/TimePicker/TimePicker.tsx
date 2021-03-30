@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { ComboBox } from '../ComboBox/ComboBox'
-import { getTimes, parseTimeString } from './utils'
+import { getTimeOptions, parseTimeString } from './utils'
 import {
   DEFAULT_MAX_TIME,
   DEFAULT_MAX_TIME_MINUTES,
@@ -15,8 +15,9 @@ import {
 
 interface BaseTimePickerProps {
   id: string
-  label: string
+  name: string
   onChange: (val?: string) => void
+  label?: string
   defaultValue?: string
   disabled?: boolean
   minTime?: string
@@ -31,8 +32,9 @@ type TimePickerProps = BaseTimePickerProps &
 
 export const TimePicker = ({
   id,
-  label,
+  name,
   onChange,
+  label,
   defaultValue,
   disabled,
   minTime = DEFAULT_MIN_TIME,
@@ -47,30 +49,32 @@ export const TimePicker = ({
   const parsedMaxTime = parseTimeString(maxTime) || DEFAULT_MAX_TIME_MINUTES
   const validStep = step < MIN_STEP ? MIN_STEP : step
   const timeOptions = useMemo(
-    () => getTimes(parsedMinTime, parsedMaxTime, validStep),
+    () => getTimeOptions(parsedMinTime, parsedMaxTime, validStep),
     [minTime, maxTime, step]
   )
 
+  const labelId = `${name}-label`
+  const hintId = `${name}-hint`
+
   return (
     <FormGroup>
-      <Label className="usa-label" id="TOOD" htmlFor={id}>
+      <Label className="usa-label" id={labelId} htmlFor={id}>
         {label}
       </Label>
       {hint && (
-        <div className="usa-hint" id="TODO">
+        <div className="usa-hint" id={hintId}>
           {hint}
         </div>
       )}
-      <div className={classes}>
-        <ComboBox
-          id={id}
-          name="timepickernameTODO"
-          onChange={onChange}
-          defaultValue={defaultValue}
-          options={timeOptions}
-          disabled={disabled}
-        />
-      </div>
+      <ComboBox
+        id={id}
+        name={name}
+        className={classes}
+        onChange={onChange}
+        defaultValue={defaultValue}
+        options={timeOptions}
+        disabled={disabled}
+      />
     </FormGroup>
   )
 }

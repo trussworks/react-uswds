@@ -50,12 +50,12 @@ const padZeros = (value: number, length: number): string => {
   return `0000${value}`.slice(-length)
 }
 
-export const getTimes = (
+export const getTimeOptions = (
   minTimeMinutes: number,
   maxTimeMinutes: number,
   step: number
 ): ComboBoxOption[] => {
-  const times: ComboBoxOption[] = []
+  const timeOptions: ComboBoxOption[] = []
 
   for (
     let minutes = minTimeMinutes;
@@ -64,11 +64,11 @@ export const getTimes = (
   ) {
     const { minute, hour24, hour12, ampm } = getTimeContext(minutes)
 
-    times.push({
+    timeOptions.push({
       value: `${padZeros(hour24, 2)}:${padZeros(minute, 2)}`,
       label: `${hour12}:${padZeros(minute, 2)}${ampm}`,
     })
   }
 
-  return times
+  return timeOptions
 }
