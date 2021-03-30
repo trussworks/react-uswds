@@ -1,5 +1,3 @@
-/*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
-
 import React from 'react'
 import { render } from '@testing-library/react'
 
@@ -67,7 +65,7 @@ describe('IdentifierLinks component', () => {
         </IdentifierLinkItem>
       </IdentifierLinks>
     )
-    expect(queryByText(testPageName)).toBeInTheDocument()
+    expect(queryByText('Test Page')).toBeInTheDocument()
     expect(getByRole('link')).toBeInTheDocument()
     expect(getByRole('list')).toBeInTheDocument()
   })
