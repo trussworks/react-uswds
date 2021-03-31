@@ -19,41 +19,41 @@ describe('Fieldset component', () => {
   describe('renders uswds classes', () => {
     it('renders legend with class usa-legend by default', () => {
       const { queryByTestId, getByText } = render(
-        <Fieldset legend="Legend">
-          My Fieldset
-        </Fieldset>
+        <Fieldset legend="Legend">My Fieldset</Fieldset>
       )
       expect(queryByTestId('fieldset')).toBeInTheDocument()
       expect(getByText('Legend')).toHaveClass('usa-legend')
     })
-  
+
     it('renders legend with class usa-legend--large when specified', () => {
       const { queryByTestId, getByText } = render(
-        <Fieldset legend="Legend" legendStyle='large'>
+        <Fieldset legend="Legend" legendStyle="large">
           My Fieldset
         </Fieldset>
       )
       expect(queryByTestId('fieldset')).toBeInTheDocument()
       expect(getByText('Legend')).toHaveClass('usa-legend--large')
     })
-  
+
     it('renders legend with class usa-sr-only when specified', () => {
       const { queryByTestId, getByText } = render(
-        <Fieldset legend="Legend" legendStyle='srOnly'>
+        <Fieldset legend="Legend" legendStyle="srOnly">
           My Fieldset
         </Fieldset>
       )
       expect(queryByTestId('fieldset')).toBeInTheDocument()
       expect(getByText('Legend')).toHaveClass('usa-sr-only')
     })
-    
+
     it('shows a deprecation warning when using deprecated legendSrOnly prop', () => {
-      const { queryByTestId, getByText } = render(<Fieldset legend="Legend" legendSrOnly>My Fieldset</Fieldset>)
+      const { queryByTestId, getByText } = render(
+        <Fieldset legend="Legend" legendSrOnly>
+          My Fieldset
+        </Fieldset>
+      )
       expect(queryByTestId('fieldset')).toBeInTheDocument()
       expect(getByText('Legend')).toHaveClass('usa-sr-only')
       expect(deprecationWarning).toBeCalledTimes(1)
     })
-
   })
-
 })

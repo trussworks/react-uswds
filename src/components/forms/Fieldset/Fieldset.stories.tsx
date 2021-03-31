@@ -40,7 +40,7 @@ export const nameFieldset = (): React.ReactElement => (
 )
 
 export const checkboxFieldset = (): React.ReactElement => (
-  <Fieldset legend="Historical figures 1" legendStyle='srOnly'>
+  <Fieldset legend="Historical figures 1" legendStyle="srOnly">
     <Checkbox
       id="truth"
       name="historical-figures-1"
@@ -100,7 +100,7 @@ export const checkboxFieldsetWithDefaultLegend = (): React.ReactElement => (
 )
 
 export const radioFieldset = (): React.ReactElement => (
-  <Fieldset legend="Historical figures 2" legendStyle='srOnly'>
+  <Fieldset legend="Historical figures 2" legendStyle="srOnly">
     <Radio
       id="stanton"
       name="historical-figures-2"
