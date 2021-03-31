@@ -10,6 +10,7 @@ import {
   DEFAULT_MIN_TIME,
   DEFAULT_MIN_TIME_MINUTES,
   DEFAULT_STEP,
+  FILTER_DATASET,
   MIN_STEP,
 } from './constants'
 
@@ -74,6 +75,11 @@ export const TimePicker = ({
         defaultValue={defaultValue}
         options={timeOptions}
         disabled={disabled}
+        data-filter={FILTER_DATASET.filter}
+        data-ap-query-filter={FILTER_DATASET.apQueryFilter}
+        data-hour-query-filter={FILTER_DATASET.hourQueryFilter}
+        data-minute-query-filter={FILTER_DATASET.minuteQueryFilter}
+        data-disable-filtering="true"
       />
     </FormGroup>
   )
