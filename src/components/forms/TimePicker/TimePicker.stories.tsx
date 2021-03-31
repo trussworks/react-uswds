@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Form } from '../Form/Form'
-import TextInput from '../TextInput/TextInput'
 import { TimePicker } from './TimePicker'
 
 export default {
