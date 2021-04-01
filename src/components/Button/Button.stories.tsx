@@ -28,13 +28,13 @@ export const secondary = (): React.ReactElement => (
 )
 
 export const accentCool = (): React.ReactElement => (
-  <Button type="button" accentStyle='cool'>
+  <Button type="button" accentStyle="cool">
     Click Me
   </Button>
 )
 
 export const accentWarm = (): React.ReactElement => (
-  <Button type="button" accentStyle='warm'>
+  <Button type="button" accentStyle="warm">
     Click Me
   </Button>
 )
