@@ -43,6 +43,8 @@ import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
 import { FocusMode } from './DatePicker'
 
+import type { DatePickerLocalization } from './DatePicker'
+
 export const Calendar = ({
   date,
   selectedDate,
@@ -52,10 +54,7 @@ export const Calendar = ({
   rangeDate,
   setStatuses,
   focusMode,
-  dayOfWeekTranslations,
-  dayOfWeekShortTranslations,
-  monthTranslations,
-  selectedDateTranslation,
+  localization,
 }: {
   date?: Date
   selectedDate?: Date
@@ -65,10 +64,7 @@ export const Calendar = ({
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
   focusMode: FocusMode
-  dayOfWeekTranslations?: string[]
-  dayOfWeekShortTranslations?: string[]
-  monthTranslations?: string[]
-  selectedDateTranslation?: string
+  localization?: DatePickerLocalization
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
@@ -106,8 +102,8 @@ export const Calendar = ({
   const focusedYear = dateToDisplay.getFullYear()
 
   let monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
-  if (monthTranslations)
-    monthLabel = monthTranslations[parseInt(`${focusedMonth}`)]
+  if (localization)
+    monthLabel = localization.months[parseInt(`${focusedMonth}`)]
 
   useEffect(() => {
     calendarWasHidden = false
@@ -148,7 +144,7 @@ export const Calendar = ({
     if (calendarWasHidden) {
       const newStatuses = [`${monthLabel} ${focusedYear}`]
       if (selectedDate && isSameDay(focusedDate, selectedDate)) {
-        const selectedDateText = selectedDateTranslation || 'Selected date'
+        const selectedDateText = localization?.selectedDate || 'Selected date'
         newStatuses.unshift(selectedDateText)
       }
       setStatuses(newStatuses)
@@ -162,7 +158,7 @@ export const Calendar = ({
         minDate={minDate}
         maxDate={maxDate}
         handleSelectMonth={handleSelectMonth}
-        monthTranslations={monthTranslations}
+        localization={localization}
       />
     )
   } else if (mode === CalendarModes.YEAR_PICKER) {
@@ -338,16 +334,15 @@ export const Calendar = ({
             withinRangeEndDate
           )
         }
-        dayOfWeekTranslations={dayOfWeekTranslations}
-        monthTranslations={monthTranslations}
+        localization={localization}
       />
     )
     dateIterator = addDays(dateIterator, 1)
   }
 
   const dayOfWeekShortLabels =
-    dayOfWeekShortTranslations || DAY_OF_WEEK_SHORT_LABELS
-  const dayOfWeekLabels = dayOfWeekTranslations || DAY_OF_WEEK_LABELS
+    localization?.daysOfWeekShort || DAY_OF_WEEK_SHORT_LABELS
+  const dayOfWeekLabels = localization?.daysOfWeek || DAY_OF_WEEK_LABELS
 
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."

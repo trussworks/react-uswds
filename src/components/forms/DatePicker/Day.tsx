@@ -4,6 +4,8 @@ import classnames from 'classnames'
 import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
 import { formatDate, isIosDevice } from './utils'
 
+import type { DatePickerLocalization } from './DatePicker'
+
 export const Day = forwardRef(
   (
     {
@@ -22,8 +24,7 @@ export const Day = forwardRef(
       isRangeStart = false,
       isRangeEnd = false,
       isWithinRange = false,
-      dayOfWeekTranslations,
-      monthTranslations,
+      localization,
     }: {
       date: Date
       onClick: (value: string) => void
@@ -40,8 +41,7 @@ export const Day = forwardRef(
       isRangeStart?: boolean
       isRangeEnd?: boolean
       isWithinRange?: boolean
-      dayOfWeekTranslations?: string[]
-      monthTranslations?: string[]
+      localization?: DatePickerLocalization
     },
     ref: React.ForwardedRef<HTMLButtonElement>
   ): React.ReactElement => {
@@ -67,11 +67,12 @@ export const Day = forwardRef(
     })
 
     let monthStr = MONTH_LABELS[parseInt(`${month}`)]
-    if (monthTranslations) monthStr = monthTranslations[parseInt(`${month}`)]
+    if (localization?.months)
+      monthStr = localization.months[parseInt(`${month}`)]
 
     let dayStr = DAY_OF_WEEK_LABELS[parseInt(`${dayOfWeek}`)]
-    if (dayOfWeekTranslations)
-      dayStr = dayOfWeekTranslations[parseInt(`${dayOfWeek}`)]
+    if (localization?.daysOfWeek)
+      dayStr = localization.daysOfWeek[parseInt(`${dayOfWeek}`)]
 
     const handleClick = (): void => {
       onClick(formattedDate)

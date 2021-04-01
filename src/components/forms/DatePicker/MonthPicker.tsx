@@ -12,18 +12,20 @@ import {
   isIosDevice,
 } from './utils'
 
+import type { DatePickerLocalization } from './DatePicker'
+
 export const MonthPicker = ({
   date,
   minDate,
   maxDate,
   handleSelectMonth,
-  monthTranslations,
+  localization,
 }: {
   date: Date
   minDate: Date
   maxDate?: Date
   handleSelectMonth: (value: number) => void
-  monthTranslations?: string[]
+  localization?: DatePickerLocalization
 }): React.ReactElement => {
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
@@ -94,7 +96,7 @@ export const MonthPicker = ({
     event.preventDefault()
   }
 
-  const monthNames = monthTranslations || MONTH_LABELS
+  const monthNames = localization?.months || MONTH_LABELS
 
   const months = monthNames.map((month, index) => {
     const monthToCheck = setMonth(date, index)

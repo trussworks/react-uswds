@@ -38,11 +38,15 @@ interface DatePickerProps {
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
   ) => void
-  statusTranslations?: string[]
-  selectedDateTranslation?: string
-  dayOfWeekTranslations?: string[]
-  dayOfWeekShortTranslations?: string[]
-  monthTranslations?: string[]
+  localization?: DatePickerLocalization
+}
+
+export interface DatePickerLocalization {
+  months: string[]
+  daysOfWeek: string[]
+  daysOfWeekShort: string[]
+  statuses: string[]
+  selectedDate: string
 }
 
 export enum FocusMode {
@@ -64,11 +68,7 @@ export const DatePicker = (
     rangeDate,
     onChange,
     onBlur,
-    statusTranslations,
-    selectedDateTranslation,
-    dayOfWeekTranslations,
-    dayOfWeekShortTranslations,
-    monthTranslations,
+    localization,
     ...inputProps
   } = props
 
@@ -195,7 +195,7 @@ export const DatePicker = (
       setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
 
-      const statuses = statusTranslations || [
+      const statuses = localization?.statuses || [
         'You can navigate by day using left and right arrows',
         'Weeks by using up and down arrows',
         'Months by using page up and page down keys',
@@ -205,7 +205,7 @@ export const DatePicker = (
 
       const selectedDate = parseDateString(internalValue)
       if (selectedDate && isSameDay(selectedDate, addDays(displayDate, 0))) {
-        const selectedDateText = selectedDateTranslation || 'Selected date'
+        const selectedDateText = localization?.selectedDate || 'Selected date'
         statuses.unshift(selectedDateText)
       }
 
@@ -329,10 +329,7 @@ export const DatePicker = (
               selectedDate={parseDateString(internalValue)}
               setStatuses={setStatuses}
               focusMode={focusMode}
-              dayOfWeekTranslations={dayOfWeekTranslations}
-              dayOfWeekShortTranslations={dayOfWeekShortTranslations}
-              monthTranslations={monthTranslations}
-              selectedDateTranslation={selectedDateTranslation}
+              localization={localization}
             />
           )}
         </div>
