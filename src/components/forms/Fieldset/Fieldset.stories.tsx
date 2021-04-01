@@ -23,7 +23,7 @@ Source: https://designsystem.digital.gov/components/form-controls/
 }
 
 export const nameFieldset = (): React.ReactElement => (
-  <Fieldset legend="Name">
+  <Fieldset legend="Name" legendStyle="large">
     <Label htmlFor="title" hint=" (optional)">
       Title
     </Label>
@@ -40,7 +40,37 @@ export const nameFieldset = (): React.ReactElement => (
 )
 
 export const checkboxFieldset = (): React.ReactElement => (
-  <Fieldset legend="Historical figures 1" legendSrOnly>
+  <Fieldset legend="Historical figures 1" legendStyle="srOnly">
+    <Checkbox
+      id="truth"
+      name="historical-figures-1"
+      value="truth"
+      defaultChecked
+      label="Sojourner Truth"
+    />
+    <Checkbox
+      id="douglass"
+      name="historical-figures-1"
+      value="douglass"
+      label="Frederick Douglass"
+    />
+    <Checkbox
+      id="washington"
+      name="historical-figures-1"
+      value="washington"
+      label="Booker T. Washington"
+    />
+    <Checkbox
+      id="carver"
+      name="historical-figures-1"
+      label="George Washington Carver"
+      disabled
+    />
+  </Fieldset>
+)
+
+export const checkboxFieldsetWithDefaultLegend = (): React.ReactElement => (
+  <Fieldset legend="Historical figures 1">
     <Checkbox
       id="truth"
       name="historical-figures-1"
@@ -70,7 +100,38 @@ export const checkboxFieldset = (): React.ReactElement => (
 )
 
 export const radioFieldset = (): React.ReactElement => (
-  <Fieldset legend="Historical figures 2" legendSrOnly>
+  <Fieldset legend="Historical figures 2" legendStyle="srOnly">
+    <Radio
+      id="stanton"
+      name="historical-figures-2"
+      defaultChecked
+      label="Elizabeth Cady Stanton"
+      value="stanton"
+    />
+    <Radio
+      id="anthony"
+      name="historical-figures-2"
+      label="Susan B. Anthony"
+      value="anthony"
+    />
+    <Radio
+      id="tubman"
+      name="historical-figures-2"
+      label="Harriet Tubman"
+      value="tubman"
+    />
+    <Radio
+      id="invalid"
+      name="historical-figures-2"
+      label="Invalid option"
+      value="invalid"
+      disabled
+    />
+  </Fieldset>
+)
+
+export const radioFieldsetWithDefaultLegend = (): React.ReactElement => (
+  <Fieldset legend="Historical figures 2">
     <Radio
       id="stanton"
       name="historical-figures-2"
