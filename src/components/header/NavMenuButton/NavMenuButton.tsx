@@ -4,11 +4,12 @@ interface NavMenuButtonProps {
   label: React.ReactNode
 }
 
-export const NavMenuButton = (
-  props: NavMenuButtonProps & JSX.IntrinsicElements['button']
-): React.ReactElement => {
-  const { label, onClick, ...buttonProps } = props
-
+export const NavMenuButton = ({
+  label,
+  onClick,
+  ...buttonProps
+}: NavMenuButtonProps &
+  JSX.IntrinsicElements['button']): React.ReactElement => {
   return (
     <button
       className="usa-menu-btn"

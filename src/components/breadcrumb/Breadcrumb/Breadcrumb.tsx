@@ -6,10 +6,12 @@ export interface BreadcrumbProps {
   current?: boolean
 }
 
-export const Breadcrumb = (
-  props: BreadcrumbProps & JSX.IntrinsicElements['li']
-): React.ReactElement => {
-  const { children, current = false, className, ...listItemProps } = props
+export const Breadcrumb = ({
+  children,
+  current = false,
+  className,
+  ...listItemProps
+}: BreadcrumbProps & JSX.IntrinsicElements['li']): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb__list-item',
     {

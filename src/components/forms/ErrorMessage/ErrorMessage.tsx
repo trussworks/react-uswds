@@ -7,9 +7,11 @@ interface ErrorMessageProps {
   className?: string
 }
 
-export const ErrorMessage = (props: ErrorMessageProps): React.ReactElement => {
-  const { children, className, id } = props
-
+export const ErrorMessage = ({
+  children,
+  className,
+  id,
+}: ErrorMessageProps): React.ReactElement => {
   const classes = classnames('usa-error-message', className)
 
   return (

@@ -1,11 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const DateInputGroup = (
-  props: JSX.IntrinsicElements['div']
-): React.ReactElement => {
-  const { children, className, ...divAttributes } = props
-
+export const DateInputGroup = ({
+  children,
+  className,
+  ...divAttributes
+}: JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-memorable-date', className)
 
   return (

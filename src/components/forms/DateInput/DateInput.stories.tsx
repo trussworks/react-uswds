@@ -7,11 +7,15 @@ export default {
   title: 'Components/Form controls/Date input',
   component: DateInput,
   parameters: {
-    info: `
-USWDS 2.0 DateInput component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 DateInput component
 
 Source: https://designsystem.digital.gov/components/form-controls/#date-input
 `,
+      },
+    },
   },
 }
 

@@ -6,9 +6,12 @@ type MenuProps = {
   isOpen: boolean
 }
 
-export const Menu = (props: MenuProps & NavListProps): React.ReactElement => {
-  const { className, items, isOpen, ...navListProps } = props
-
+export const Menu = ({
+  className,
+  items,
+  isOpen,
+  ...navListProps
+}: MenuProps & NavListProps): React.ReactElement => {
   return (
     <NavList
       className={className}

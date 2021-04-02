@@ -12,11 +12,15 @@ export default {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    info: `
-USWDS 2.0 Card components
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Card components
 
 Source: https://designsystem.digital.gov/components/card/
 `,
+      },
+    },
   },
 }
 

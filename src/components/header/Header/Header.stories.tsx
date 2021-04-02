@@ -14,11 +14,15 @@ export default {
   title: 'Components/Header',
   component: Header,
   parameters: {
-    info: `
-USWDS 2.0 Header component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,
+      },
+    },
   },
 }
 

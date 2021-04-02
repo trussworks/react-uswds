@@ -5,11 +5,15 @@ export default {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    info: `
-USWDS 2.0 Button component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Button component
 
 Source: https://designsystem.digital.gov/components/button/
 `,
+      },
+    },
   },
 }
 
@@ -23,8 +27,14 @@ export const secondary = (): React.ReactElement => (
   </Button>
 )
 
-export const accent = (): React.ReactElement => (
-  <Button type="button" accent>
+export const accentCool = (): React.ReactElement => (
+  <Button type="button" accentStyle="cool">
+    Click Me
+  </Button>
+)
+
+export const accentWarm = (): React.ReactElement => (
+  <Button type="button" accentStyle="warm">
     Click Me
   </Button>
 )

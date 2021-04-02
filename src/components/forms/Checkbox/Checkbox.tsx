@@ -14,11 +14,14 @@ interface CheckboxProps {
     | undefined
 }
 
-export const Checkbox = (
-  props: CheckboxProps & JSX.IntrinsicElements['input']
-): React.ReactElement => {
-  const { id, name, className, label, inputRef, ...inputProps } = props
-
+export const Checkbox = ({
+  id,
+  name,
+  className,
+  label,
+  inputRef,
+  ...inputProps
+}: CheckboxProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-checkbox', className)
 
   return (

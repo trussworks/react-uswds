@@ -9,19 +9,17 @@ interface CardProps {
   containerProps?: React.HTMLAttributes<HTMLDivElement>
 }
 
-export const Card = (
-  props: CardProps & JSX.IntrinsicElements['li'] & GridLayoutProp
-): React.ReactElement => {
-  const {
-    layout = 'standardDefault',
-    headerFirst,
-    children,
-    className,
-    gridLayout,
-    containerProps,
-    ...liProps
-  } = props
-
+export const Card = ({
+  layout = 'standardDefault',
+  headerFirst,
+  children,
+  className,
+  gridLayout,
+  containerProps,
+  ...liProps
+}: CardProps &
+  JSX.IntrinsicElements['li'] &
+  GridLayoutProp): React.ReactElement => {
   const { className: containerClass, ...restContainerProps } =
     containerProps || {}
 

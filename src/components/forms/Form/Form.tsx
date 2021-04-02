@@ -16,9 +16,14 @@ export type OptionalFormProps = CustomFormProps & JSX.IntrinsicElements['form']
 
 type FormProps = RequiredFormProps & OptionalFormProps
 
-export const Form = (props: FormProps): React.ReactElement => {
-  const { onSubmit, children, className, large, search, ...formProps } = props
-
+export const Form = ({
+  onSubmit,
+  children,
+  className,
+  large,
+  search,
+  ...formProps
+}: FormProps): React.ReactElement => {
   const classes = classnames(
     {
       'usa-form': !search,

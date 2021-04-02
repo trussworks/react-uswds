@@ -6,10 +6,10 @@ type SocialLinksProps = {
   links: React.ReactNode[]
 }
 
-export const SocialLinks = (
-  props: SocialLinksProps & JSX.IntrinsicElements['div']
-): React.ReactElement => {
-  const { className, links } = props
+export const SocialLinks = ({
+  className,
+  links,
+}: SocialLinksProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-footer__social-links grid-row grid-gap-1',
     className

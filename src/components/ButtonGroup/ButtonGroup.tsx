@@ -7,9 +7,12 @@ type ButtonGroupProps = {
   type?: 'default' | 'segmented'
 } & JSX.IntrinsicElements['ul']
 
-export const ButtonGroup = (props: ButtonGroupProps): React.ReactElement => {
-  const { className, children, type = 'default', ...restProps } = props
-
+export const ButtonGroup = ({
+  className,
+  children,
+  type = 'default',
+  ...restProps
+}: ButtonGroupProps): React.ReactElement => {
   const classes = classnames(
     'usa-button-group',
     {

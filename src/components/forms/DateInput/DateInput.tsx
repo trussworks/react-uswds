@@ -14,20 +14,16 @@ interface DateInputElementProps {
   minLength?: number
 }
 
-export const DateInput = (
-  props: DateInputElementProps & OptionalTextInputProps
-): React.ReactElement => {
-  const {
-    id,
-    name,
-    label,
-    unit,
-    maxLength,
-    minLength,
-    className,
-    ...inputProps
-  } = props
-
+export const DateInput = ({
+  id,
+  name,
+  label,
+  unit,
+  maxLength,
+  minLength,
+  className,
+  ...inputProps
+}: DateInputElementProps & OptionalTextInputProps): React.ReactElement => {
   const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',

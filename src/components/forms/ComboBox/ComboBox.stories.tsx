@@ -3,18 +3,22 @@ import React from 'react'
 import { ComboBox } from './ComboBox'
 import { Form } from '../Form/Form'
 import { Label } from '../Label/Label'
-
+import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 export default {
   title: 'Components/Form controls/Combo box',
   component: ComboBox,
   parameters: {
-    info: `
-USWDS 2.0 ComboBox component
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 ComboBox component
 
 Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
 `,
+      },
+    },
   },
 }
 
@@ -89,6 +93,22 @@ export const disabled = (): React.ReactElement => {
         onChange={noop}
         disabled
       />
+    </Form>
+  )
+}
+
+export const withOtherFields = (): React.ReactElement => {
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="fruit">Select a Fruit</Label>
+      <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
+      <Label htmlFor="fruitDescription">Description</Label>
+      <TextInput id="fruitDescription" name="fruitDescription" type="text" />
     </Form>
   )
 }

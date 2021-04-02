@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/trussworks/react-uswds/compare/1.13.2...1.14.0) (2021-03-22)
+
+
+### Features
+
+* DateRangePicker Component ([#983](https://github.com/trussworks/react-uswds/issues/983)) ([69d34ed](https://github.com/trussworks/react-uswds/commit/69d34ed8f78ae22e29c270d877c081fe5335325c))
+* Tooltip component   ([#871](https://github.com/trussworks/react-uswds/issues/871)) ([92ea5f0](https://github.com/trussworks/react-uswds/commit/92ea5f07f7212370165423ec09ed35eec3aa7e58))
+
+
+### Documentation & Examples
+
+* Update documentation. Show component description and prop defaults in storybook ([#1008](https://github.com/trussworks/react-uswds/issues/1008)) ([a8d267f](https://github.com/trussworks/react-uswds/commit/a8d267f6f7db8c9d3dc1c8477fe1ee6b98f9b914))
+
+### [1.13.2](https://github.com/trussworks/react-uswds/compare/1.13.1...1.13.2) (2021-03-11)
+
+
+### Bug Fixes
+
+* ComboBox "keyboard trap" and misc bugs ([#1010](https://github.com/trussworks/react-uswds/issues/1010)) ([50aef22](https://github.com/trussworks/react-uswds/commit/50aef22b3dcccad7da165e023bb05fe921e0af98))
+
+### [1.13.1](https://github.com/trussworks/react-uswds/compare/1.13.0...1.13.1) (2021-03-08)
+
+
+### Bug Fixes
+
+* set CombBox focusMode to BLUR when focus is outside of the component ([#989](https://github.com/trussworks/react-uswds/issues/989)) ([fa468a0](https://github.com/trussworks/react-uswds/commit/fa468a00275c9646d43ff55fb50468c033d25ad5))
+
 ## [1.13.0](https://github.com/trussworks/react-uswds/compare/1.12.2...1.13.0) (2021-02-26)
 
 

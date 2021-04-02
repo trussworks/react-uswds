@@ -7,9 +7,11 @@ interface FormGroupProps {
   error?: boolean
 }
 
-export const FormGroup = (props: FormGroupProps): React.ReactElement => {
-  const { children, className, error } = props
-
+export const FormGroup = ({
+  children,
+  className,
+  error,
+}: FormGroupProps): React.ReactElement => {
   const classes = classnames(
     'usa-form-group',
     { 'usa-form-group--error': error },

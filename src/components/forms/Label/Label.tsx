@@ -10,19 +10,15 @@ interface LabelProps {
   srOnly?: boolean
 }
 
-export const Label = (
-  props: LabelProps & JSX.IntrinsicElements['label']
-): React.ReactElement => {
-  const {
-    children,
-    htmlFor,
-    className,
-    error,
-    hint,
-    srOnly,
-    ...labelProps
-  } = props
-
+export const Label = ({
+  children,
+  htmlFor,
+  className,
+  error,
+  hint,
+  srOnly,
+  ...labelProps
+}: LabelProps & JSX.IntrinsicElements['label']): React.ReactElement => {
   const classes = classnames(
     {
       'usa-label': !srOnly,

@@ -43,10 +43,10 @@ interface InputProps {
   focused: boolean
 }
 
-const Input = (
-  props: InputProps & JSX.IntrinsicElements['input']
-): React.ReactElement => {
-  const { focused, ...inputProps } = props
+const Input = ({
+  focused,
+  ...inputProps
+}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (focused && inputRef.current) {
@@ -67,21 +67,19 @@ const Input = (
   )
 }
 
-export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
-  const {
-    id,
-    name,
-    className,
-    options,
-    defaultValue,
-    disabled,
-    onChange,
-    assistiveHint,
-    noResults,
-    selectProps,
-    inputProps,
-  } = props
-
+export const ComboBox = ({
+  id,
+  name,
+  className,
+  options,
+  defaultValue,
+  disabled,
+  onChange,
+  assistiveHint,
+  noResults,
+  selectProps,
+  inputProps,
+}: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
 
   let defaultOption
@@ -118,6 +116,18 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     ) {
       itemRef.current.focus()
     }
+  }, [state.focusMode, state.focusedOption])
+
+  // If the focused element (activeElement) is outside of the combo box,
+  // make sure the focusMode is BLUR
+  useEffect(() => {
+    if (state.focusMode !== FocusMode.None) {
+      if (!containerRef.current?.contains(window.document.activeElement)) {
+        dispatch({
+          type: ActionTypes.BLUR,
+        })
+      }
+    }
   })
 
   const handleInputKeyDown = (event: KeyboardEvent): void => {
@@ -132,15 +142,40 @@ export const ComboBox = (props: ComboBoxProps): React.ReactElement => {
     } else if (event.key === 'Tab') {
       // Clear button is not visible in this case so manually handle focus
       if (state.isOpen && !state.selectedOption) {
-        event.preventDefault()
+        // If there are filtered options, prevent default
+        // If there are "No Results Found", tab over to prevent a keyboard trap
+        if (state.filteredOptions.length > 0) {
+          event.preventDefault()
+          dispatch({
+            type: ActionTypes.FOCUS_OPTION,
+            option: state.filteredOptions[0],
+          })
+        } else {
+          dispatch({
+            type: ActionTypes.BLUR,
+          })
+        }
+      }
+
+      if (!state.isOpen && state.selectedOption) {
         dispatch({
-          type: ActionTypes.FOCUS_OPTION,
-          option: state.filteredOptions[0],
+          type: ActionTypes.BLUR,
         })
       }
-    } else if (event.key === 'Enter' && state.inputValue !== '') {
+    } else if (event.key === 'Enter' && !state.selectedOption) {
       event.preventDefault()
-      dispatch({ type: ActionTypes.CLOSE_LIST })
+      const selectedOption = state.filteredOptions.find(
+        (option) =>
+          option.label.toLowerCase() === state.inputValue.toLowerCase()
+      )
+      if (selectedOption) {
+        dispatch({
+          type: ActionTypes.SELECT_OPTION,
+          option: selectedOption,
+        })
+      } else {
+        dispatch({ type: ActionTypes.CLEAR })
+      }
     }
   }
 

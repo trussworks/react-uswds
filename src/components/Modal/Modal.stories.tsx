@@ -8,7 +8,15 @@ export default {
   title: 'Other/Modal',
   component: Modal,
   parameters: {
-    info: `Truss-designed component`,
+    docs: {
+      description: {
+        component: `
+Truss-designed component
+
+**Note:** This component has been deprecated and is scheduled for removal.
+`,
+      },
+    },
   },
 }
 

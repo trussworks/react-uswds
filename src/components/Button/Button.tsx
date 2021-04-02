@@ -7,7 +7,11 @@ interface ButtonProps {
   children: React.ReactNode
   secondary?: boolean
   base?: boolean
+  /**
+   * @deprecated since 1.15.0, use accentStyle
+   */
   accent?: boolean
+  accentStyle?: 'cool' | 'warm'
   outline?: boolean
   inverse?: boolean
   size?: 'big' | 'small' // small is deprecated
@@ -26,33 +30,34 @@ interface ButtonProps {
   unstyled?: boolean
 }
 
-export const Button = (
-  props: ButtonProps & JSX.IntrinsicElements['button']
-): React.ReactElement => {
-  const {
-    type,
-    children,
-    secondary,
-    base,
-    accent,
-    outline,
-    inverse,
-    size,
-    big,
-    small,
-    icon,
-    unstyled,
-    onClick,
-    className,
-    ...defaultProps
-  } = props
-
+export const Button = ({
+  type,
+  children,
+  secondary,
+  base,
+  accent,
+  accentStyle,
+  outline,
+  inverse,
+  size,
+  big,
+  small,
+  icon,
+  unstyled,
+  onClick,
+  className,
+  ...defaultProps
+}: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
   if (big) {
-    deprecationWarning('Button property big is deprecated.  Use size')
+    deprecationWarning('Button property big is deprecated.  Use size.')
   }
 
   if (icon) {
     deprecationWarning('Button property icon is deprecated.')
+  }
+
+  if (accent) {
+    deprecationWarning('Button property accent is deprecated. Use accentStyle.')
   }
 
   const isBig = size ? size === 'big' : big
@@ -69,7 +74,8 @@ export const Button = (
     {
       'usa-button--secondary': secondary,
       'usa-button--base': base,
-      'usa-button--accent-cool': accent,
+      'usa-button--accent-cool': accent || accentStyle === 'cool',
+      'usa-button--accent-warm': accentStyle === 'warm',
       'usa-button--outline': outline,
       'usa-button--inverse': inverse,
       'usa-button--big': isBig,

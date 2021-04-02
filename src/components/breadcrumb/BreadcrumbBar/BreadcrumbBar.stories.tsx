@@ -6,12 +6,19 @@ import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
 export default {
   title: 'Components/Breadcrumb',
   component: BreadcrumbBar,
+  subcomponents: { Breadcrumb, BreadcrumbLink },
   parameters: {
-    info: `
-    Provide secondary navigation to help users understand where they are in a website.
+    docs: {
+      description: {
+        component: `
+### USWDS 2.0 Breadcrumb component
 
-    Source: https://designsystem.digital.gov/components/breadcrumb/
-    `,
+Provide secondary navigation to help users understand where they are in a website.
+    
+Source: https://designsystem.digital.gov/components/breadcrumb/
+        `,
+      },
+    },
   },
 }
 
