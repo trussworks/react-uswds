@@ -102,8 +102,25 @@ export const Calendar = ({
   const focusedYear = dateToDisplay.getFullYear()
 
   let monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
-  if (localization)
+  let dayOfWeekShortLabels = DAY_OF_WEEK_SHORT_LABELS
+  let dayOfWeekLabels = DAY_OF_WEEK_LABELS
+  let backOneYear = 'Navigate back one year'
+  let backOneMonth = 'Navigate back one month'
+  let clickToSelectMonth = `${monthLabel}. Click to select month`
+  let clickToSelectYear = `${focusedYear}. Click to select year`
+  let forwardOneMonth = 'Navigate forward one month'
+  let forwardOneYear = 'Navigate forward one year'
+  if (localization) {
     monthLabel = localization.months[parseInt(`${focusedMonth}`)]
+    dayOfWeekShortLabels = localization.daysOfWeekShort
+    dayOfWeekLabels = localization.daysOfWeek
+    backOneYear = localization.backOneYear
+    backOneMonth = localization.backOneMonth
+    clickToSelectMonth = `${monthLabel}. ${localization.clickToSelectMonth}`
+    clickToSelectYear = `${focusedYear}. ${localization.clickToSelectYear}`
+    forwardOneMonth = localization.forwardOneMonth
+    forwardOneYear = localization.forwardOneYear
+  }
 
   useEffect(() => {
     calendarWasHidden = false
@@ -291,7 +308,8 @@ export const Calendar = ({
 
   const handleToggleMonthSelection = (): void => {
     setMode(CalendarModes.MONTH_PICKER)
-    setStatuses(['Select a month.'])
+    const selectAMonth = localization?.selectAMonth || 'Select a month.'
+    setStatuses([selectAMonth])
   }
 
   const handleToggleYearSelection = (): void => {
@@ -340,10 +358,6 @@ export const Calendar = ({
     dateIterator = addDays(dateIterator, 1)
   }
 
-  const dayOfWeekShortLabels =
-    localization?.daysOfWeekShort || DAY_OF_WEEK_SHORT_LABELS
-  const dayOfWeekLabels = localization?.daysOfWeek || DAY_OF_WEEK_LABELS
-
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
     // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1042)
@@ -362,7 +376,7 @@ export const Calendar = ({
             onClick={handlePreviousYearClick}
             ref={prevYearEl}
             className="usa-date-picker__calendar__previous-year"
-            aria-label="Navigate back one year"
+            aria-label={backOneYear}
             disabled={prevButtonsDisabled}>
             &nbsp;
           </button>
@@ -374,7 +388,7 @@ export const Calendar = ({
             onClick={handlePreviousMonthClick}
             ref={prevMonthEl}
             className="usa-date-picker__calendar__previous-month"
-            aria-label="Navigate back one month"
+            aria-label={backOneMonth}
             disabled={prevButtonsDisabled}>
             &nbsp;
           </button>
@@ -386,7 +400,7 @@ export const Calendar = ({
             onClick={handleToggleMonthSelection}
             ref={selectMonthEl}
             className="usa-date-picker__calendar__month-selection"
-            aria-label={`${monthLabel}. Click to select month`}>
+            aria-label={clickToSelectMonth}>
             {monthLabel}
           </button>
           <button
@@ -395,7 +409,7 @@ export const Calendar = ({
             onClick={handleToggleYearSelection}
             ref={selectYearEl}
             className="usa-date-picker__calendar__year-selection"
-            aria-label={`${focusedYear}. Click to select year`}>
+            aria-label={clickToSelectYear}>
             {focusedYear}
           </button>
         </div>
@@ -406,7 +420,7 @@ export const Calendar = ({
             onClick={handleNextMonthClick}
             ref={nextMonthEl}
             className="usa-date-picker__calendar__next-month"
-            aria-label="Navigate forward one month"
+            aria-label={forwardOneMonth}
             disabled={nextButtonsDisabled}>
             &nbsp;
           </button>
@@ -418,7 +432,7 @@ export const Calendar = ({
             onClick={handleNextYearClick}
             ref={nextYearEl}
             className="usa-date-picker__calendar__next-year"
-            aria-label="Navigate forward one year"
+            aria-label={forwardOneYear}
             disabled={nextButtonsDisabled}>
             &nbsp;
           </button>

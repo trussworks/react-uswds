@@ -10,6 +10,49 @@ import {
   VALIDATION_MESSAGE,
 } from './constants'
 
+export const sampleLocalization = {
+  months: [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre',
+  ],
+  daysOfWeek: [
+    'domingo',
+    'lunes',
+    'martes',
+    'miércoles',
+    'jueves',
+    'viernes',
+    'sábado',
+  ],
+  daysOfWeekShort: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+  statuses: [
+    'Puede navegar por día usando las flechas izquierda y derecha',
+    'Semanas usando flechas hacia arriba y hacia abajo',
+    'Meses usando las teclas de avance y retroceso de página',
+    'Años usando shift plus page up y shift plus page down',
+    'Las teclas de inicio y finalización navegan hasta el principio y el final de una semana',
+  ],
+  selectedDate: 'Fecha seleccionada',
+  selectAMonth: 'Selecciona un mes.',
+  toggleCalendar: 'Alternar calendario',
+  backOneYear: 'Navegar hacia atrás un año',
+  backOneMonth: 'Navegar hacia atrás un mes',
+  forwardOneYear: 'Navegar hacia adelante un año',
+  forwardOneMonth: 'Navegar hacia adelante un mes',
+  clickToSelectMonth: 'Haga clic para seleccionar el mes',
+  clickToSelectYear: 'Haga clic para seleccionar el año',
+}
+
 describe('DatePicker component', () => {
   const testProps = {
     id: 'birthdate',
@@ -377,31 +420,12 @@ describe('DatePicker component', () => {
   })
 
   describe('with localization props', () => {
-    const esDaysAbbreviations = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
-    const esMonths = [
-      'enero',
-      'febrero',
-      'marzo',
-      'abril',
-      'mayo',
-      'junio',
-      'julio',
-      'agosto',
-      'septiembre',
-      'octubre',
-      'noviembre',
-      'diciembre',
-    ]
-
     it('displays abbreviated translations for days of the week', () => {
       const { getByText, getByTestId } = render(
-        <DatePicker
-          {...testProps}
-          dayOfWeekShortTranslations={esDaysAbbreviations}
-        />
+        <DatePicker {...testProps} localization={sampleLocalization} />
       )
       userEvent.click(getByTestId('date-picker-button'))
-      esDaysAbbreviations.forEach((translation) => {
+      sampleLocalization.daysOfWeekShort.forEach((translation) => {
         expect(getByText(translation)).toBeInTheDocument()
       })
     })
@@ -409,7 +433,7 @@ describe('DatePicker component', () => {
       const { getByText, getByTestId } = render(
         <DatePicker
           {...testProps}
-          monthTranslations={esMonths}
+          localization={sampleLocalization}
           defaultValue="2020-02-01"
         />
       )

@@ -47,6 +47,14 @@ export interface DatePickerLocalization {
   daysOfWeekShort: string[]
   statuses: string[]
   selectedDate: string
+  selectAMonth: string
+  toggleCalendar: string
+  backOneYear: string
+  backOneMonth: string
+  clickToSelectMonth: string
+  clickToSelectYear: string
+  forwardOneYear: string
+  forwardOneMonth: string
 }
 
 export enum FocusMode {
@@ -254,6 +262,8 @@ export const DatePicker = (
     }
   )
 
+  const toggleCalendar = localization?.toggleCalendar || 'Toggle calendar'
+
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
     // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L828)
@@ -302,7 +312,7 @@ export const DatePicker = (
           type="button"
           className="usa-date-picker__button"
           aria-haspopup={true}
-          aria-label="Toggle calendar"
+          aria-label={toggleCalendar}
           disabled={disabled}
           onClick={handleToggleClick}>
           &nbsp;

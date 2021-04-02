@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { DatePicker } from './DatePicker'
+import { sampleLocalization } from './DatePicker.test'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
@@ -109,40 +110,10 @@ export const withRangeDate = (): React.ReactElement => (
   />
 )
 
-const localization = {
-  months: [
-    'enero',
-    'febrero',
-    'marzo',
-    'abril',
-    'mayo',
-    'junio',
-    'julio',
-    'agosto',
-    'septiembre',
-    'octubre',
-    'noviembre',
-    'diciembre',
-  ],
-  daysOfWeek: [
-    'domingo',
-    'lunes',
-    'martes',
-    'miércoles',
-    'jueves',
-    'viernes',
-    'sábado',
-  ],
-  daysOfWeekShort: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-  statuses: [
-    'Puede navegar por día usando las flechas izquierda y derecha',
-    'Semanas usando flechas hacia arriba y hacia abajo',
-    'Meses usando las teclas de avance y retroceso de página',
-    'Años usando shift plus page up y shift plus page down',
-    'Las teclas de inicio y finalización navegan hasta el principio y el final de una semana',
-  ],
-  selectedDate: 'Fecha seleccionada',
-}
 export const withLocalizations = (): React.ReactElement => (
-  <DatePicker id="birthdate" name="birthdate" localization={localization} />
+  <DatePicker
+    id="birthdate"
+    name="birthdate"
+    localization={sampleLocalization}
+  />
 )

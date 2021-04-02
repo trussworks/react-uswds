@@ -67,12 +67,11 @@ export const Day = forwardRef(
     })
 
     let monthStr = MONTH_LABELS[parseInt(`${month}`)]
-    if (localization?.months)
-      monthStr = localization.months[parseInt(`${month}`)]
-
     let dayStr = DAY_OF_WEEK_LABELS[parseInt(`${dayOfWeek}`)]
-    if (localization?.daysOfWeek)
+    if (localization) {
+      monthStr = localization.months[parseInt(`${month}`)]
       dayStr = localization.daysOfWeek[parseInt(`${dayOfWeek}`)]
+    }
 
     const handleClick = (): void => {
       onClick(formattedDate)
