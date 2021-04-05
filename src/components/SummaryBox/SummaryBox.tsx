@@ -7,6 +7,7 @@ interface SummaryBoxProps {
   children?: React.ReactNode
   className?: string
 }
+
 export const SummaryBox = ({
   heading,
   children,
