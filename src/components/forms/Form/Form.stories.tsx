@@ -78,7 +78,7 @@ export const textInputForm = (): React.ReactElement => (
 
 export const nameForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
-    <Fieldset legend="Name">
+    <Fieldset legend="Name" legendStyle="large">
       <Label htmlFor="title" hint=" (optional)">
         Title
       </Label>
@@ -97,7 +97,7 @@ export const nameForm = (): React.ReactElement => (
 
 export const addressForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit} large>
-    <Fieldset legend="Mailing address">
+    <Fieldset legend="Mailing address" legendStyle="large">
       <Label htmlFor="mailing-address-1">Street address 1</Label>
       <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
 
@@ -193,7 +193,7 @@ export const signInForm = (): React.ReactElement => {
 
   return (
     <Form onSubmit={mockSubmit} large>
-      <Fieldset legend="Sign In">
+      <Fieldset legend="Sign In" legendStyle="large">
         <span>
           or <a href="javascript:void(0);">create an account</a>
         </span>
@@ -244,7 +244,7 @@ export const passwordResetForm = (): React.ReactElement => {
 
   return (
     <Form onSubmit={mockSubmit} large>
-      <Fieldset legend="Reset password">
+      <Fieldset legend="Reset password" legendStyle="large">
         <span>Please enter your new password</span>
         <Alert type="info" heading="Password information">
           Length requirements
