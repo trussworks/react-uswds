@@ -20,7 +20,7 @@ export default {
 ### USWDS 2.0 Header component
 
 Source: https://designsystem.digital.gov/components/header/
-`, 
+`,
       },
     },
   },

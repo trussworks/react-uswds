@@ -1,6 +1,9 @@
 # @trussworks/react-uswds
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -113,6 +116,14 @@ Interested in contributing? See our [guidelines and dev setup here](./docs/contr
 Are you a Trussel and new to this project? Check out our [on & offboarding guide](./docs/for_trussels.md) made just for you!
 
 This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
+
+### Quick links:
+
+- [Yarn scripts](./docs/contributing#available-commands)
+- [PR commit guidelines](./docs/contributing.md#opening--merging-pull-requests)
+- [Adding new components](./docs/adding_new_components.md)
+- [Testing in an application](./docs/contributing.md#testing-in-an-application)
+- [Releasing](./docs/releasing.md)
 
 ## License
 

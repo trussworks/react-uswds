@@ -53,6 +53,36 @@ describe('Button component', () => {
       expect(queryByTestId('button')).toHaveClass('usa-button--big')
       expect(deprecationWarning).toHaveBeenCalledTimes(0)
     })
+
+    it('renders uswds class for cool accent style', () => {
+      const { queryByTestId } = render(
+        <Button type="button" accentStyle="cool">
+          Click Me
+        </Button>
+      )
+      expect(queryByTestId('button')).toHaveClass('usa-button--accent-cool')
+      expect(deprecationWarning).toHaveBeenCalledTimes(0)
+    })
+
+    it('renders uswds class for warm accent style', () => {
+      const { queryByTestId } = render(
+        <Button type="button" accentStyle="warm">
+          Click Me
+        </Button>
+      )
+      expect(queryByTestId('button')).toHaveClass('usa-button--accent-warm')
+      expect(deprecationWarning).toHaveBeenCalledTimes(0)
+    })
+
+    it("shows a deprecation warning for prop 'accent'", () => {
+      const { queryByTestId } = render(
+        <Button type="button" accent>
+          Click Me
+        </Button>
+      )
+      expect(queryByTestId('button')).toHaveClass('usa-button--accent-cool')
+      expect(deprecationWarning).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('implements an onClick handler', () => {

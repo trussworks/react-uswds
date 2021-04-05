@@ -3,8 +3,10 @@ import classnames from 'classnames'
 // assets
 import closeImg from 'uswds/src/img/close.svg'
 
-export const NavCloseButton = ({ 
-  onClick, className, ...buttonProps 
+export const NavCloseButton = ({
+  onClick,
+  className,
+  ...buttonProps
 }: JSX.IntrinsicElements['button']): React.ReactElement => {
   const classes = classnames('usa-nav__close', className)
 
