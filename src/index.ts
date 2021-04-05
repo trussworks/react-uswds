@@ -51,6 +51,15 @@ export { NavDropDownButton } from './components/header/NavDropDownButton/NavDrop
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
+/** Identifier Components */
+export { Identifier } from './components/Identifier/Identifier/Identifier'
+export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
+export { IdentifierLink } from './components/Identifier/IdentifierLink/IdentifierLink'
+export { IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
+export { IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
+export { IdentifierLogo } from './components/Identifier/IdentifierLogo/IdentifierLogo'
+export { IdentifierMasthead } from './components/Identifier/IdentifierMasthead/IdentifierMasthead'
+
 /** Footer components */
 export { Address } from './components/Footer/Address/Address'
 export { Footer } from './components/Footer/Footer/Footer'
