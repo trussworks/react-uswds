@@ -63,8 +63,3 @@ export const SummaryBoxDefault = (): React.ReactElement => (
     </div>
   </SummaryBox>
 )
-
-/*
-
-
-*/
