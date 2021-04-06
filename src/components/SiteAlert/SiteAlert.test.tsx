@@ -1,3 +1,4 @@
+/*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
 import React from 'react'
 import { render } from '@testing-library/react'
 
@@ -6,7 +7,7 @@ import { SiteAlert } from './SiteAlert'
 const testChildren = (
   <p className="usa-alert__text">
     some default text{' '}
-    <a className="usa-link" href="#link">
+    <a className="usa-link" href="#">
       with a link
     </a>
     .
@@ -22,13 +23,13 @@ const testChildrenWithList = (
   <ul>
     <li>
       some default text{' '}
-      <a className="usa-link" href="#link">
+      <a className="usa-link" href="#">
         with a link{' '}
       </a>
     </li>
     <li>
       another list item{' '}
-      <a className="usa-link" href="#link">
+      <a className="usa-link" href="#">
         with a link{' '}
       </a>
     </li>
