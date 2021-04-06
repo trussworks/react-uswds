@@ -83,7 +83,7 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 
 export { Search } from './components/Search/Search'
 
-// export { SummaryBox } from './components/SummaryBox/SummaryBox'
+export { SummaryBox } from './components/SummaryBox/SummaryBox'
 
 /** Truss-designed components */
 export {
