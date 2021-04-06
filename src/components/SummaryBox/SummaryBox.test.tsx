@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { SummaryBox } from './SummaryBox'
 
-const exampleSummaryContent = (
+const testSummaryBoxContent = (
   <div className="usa-summary-box__text">
     <ul className="usa-list">
       <li>
@@ -54,21 +54,31 @@ const customProps = {
 
 describe('SummaryBox component', () => {
   it('renders without errors', () => {
-    const { getByRole, getAllByRole } = render(
-      <SummaryBox heading="Key information">{exampleSummaryContent}</SummaryBox>
+    const { getByRole } = render(
+      <SummaryBox heading="Key information">{testSummaryBoxContent}</SummaryBox>
     )
 
     expect(getByRole('heading')).toBeInTheDocument()
+  })
+
+  it('renders passed in children', () => {
+    const { getAllByRole } = render(
+      <SummaryBox heading="Example heading">{testSummaryBoxContent}</SummaryBox>
+    )
+
+    expect(getAllByRole('listitem')).toHaveLength(4)
     expect(getAllByRole('link')).toHaveLength(6)
   })
 
   it('renders attributes passed in through props', () => {
-    const { getByRole } = render(
-      <SummaryBox {...customProps}>{exampleSummaryContent}</SummaryBox>
+    const { queryByText, queryByTestId } = render(
+      <SummaryBox {...customProps}>{testSummaryBoxContent}</SummaryBox>
     )
 
-    expect(getByRole('complementary')).toHaveClass(
-      'usa-summary-box custom-class-name'
+    expect(queryByText('Example heading')).toBeInTheDocument()
+    expect(queryByTestId('summary-box')).toHaveAttribute(
+      'role',
+      'complementary'
     )
   })
 })
