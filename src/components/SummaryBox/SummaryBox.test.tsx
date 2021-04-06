@@ -46,6 +46,12 @@ const exampleSummaryContent = (
   </div>
 )
 
+const customProps = {
+  role: 'complementary',
+  className: 'custom-class-name',
+  heading: 'Example heading',
+}
+
 describe('SummaryBox component', () => {
   it('renders without errors', () => {
     const { getByRole, getAllByRole } = render(
@@ -58,12 +64,7 @@ describe('SummaryBox component', () => {
 
   it('renders attributes passed in through props', () => {
     const { getByRole } = render(
-      <SummaryBox
-        role="complementary"
-        className="custom-class-name"
-        heading="Example heading">
-        {exampleSummaryContent}
-      </SummaryBox>
+      <SummaryBox {...customProps}>{exampleSummaryContent}</SummaryBox>
     )
 
     expect(getByRole('complementary')).toHaveClass(

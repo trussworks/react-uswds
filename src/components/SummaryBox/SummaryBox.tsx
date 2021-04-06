@@ -15,10 +15,9 @@ export const SummaryBox = ({
   ...props
 }: SummaryBoxProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-summary-box', className)
-  const bodyClasses = classnames('usa-summary-box__body')
   return (
-    <div className={classes} role="complementary" {...props}>
-      <div className={bodyClasses}>
+    <div className={classes} {...props}>
+      <div className="usa-summary-box__body">
         <h3 className="usa-summary-box__heading">{heading}</h3>
         {children}
       </div>
