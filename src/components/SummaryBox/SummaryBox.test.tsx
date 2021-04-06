@@ -15,7 +15,7 @@ const testSummaryBoxContent = (
       </li>
       <li>
         Sign up for&nbsp;
-        <a className="usa-summary-box__link" href="#usa-anchor-warning-system">
+        <a className="usa-summary-box__link" href="#">
           your community’s warning system
         </a>
         .
