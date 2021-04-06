@@ -43,7 +43,7 @@ const testEmergencyChildren = (
 )
 
 const testChildrenWithList = (
-  <ul>
+  <ul className="usa-list">
     <li>
       The primary emergency message and{` `}
       <a className="usa-link" href="#">
@@ -88,9 +88,9 @@ export const standardEmergencySiteAlert = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const siteAlertNoHeader = (): React.ReactElement => (
+export const siteAlertWithNoHeader = (): React.ReactElement => (
   <SiteAlert aria-label="Site alert" variant="emergency">
-    {testEmergencyChildren}
+    {testShortAlert}
   </SiteAlert>
 )
 

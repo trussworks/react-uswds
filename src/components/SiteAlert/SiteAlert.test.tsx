@@ -3,25 +3,47 @@ import { render } from '@testing-library/react'
 
 import { SiteAlert } from './SiteAlert'
 
-const testChildren = <p>some default text</p>
-const testChildrenWithLink = (
+const testChildren = (
   <p className="usa-alert__text">
-    some default text <a href="#link">with a link</a>.
+    some default text{' '}
+    <a className="usa-link" href="#link">
+      with a link
+    </a>
+    .
   </p>
 )
+
 const testDefaultProps = {
   heading: 'test heading',
   children: testChildren,
 }
 
+const testChildrenWithList = (
+  <ul>
+    <li>
+      some default text{' '}
+      <a className="usa-link" href="#link">
+        with a link{' '}
+      </a>
+    </li>
+    <li>
+      another list item{' '}
+      <a className="usa-link" href="#link">
+        with a link{' '}
+      </a>
+    </li>
+    <li>another list item, no link</li>
+  </ul>
+)
+
 describe('SiteAlert component', () => {
   it('renders without errors', () => {
-    const { getByTestId, queryByText } = render(
+    const { getByTestId, getByRole } = render(
       <SiteAlert variant="info" {...testDefaultProps} />
     )
 
     expect(getByTestId('siteAlert')).toBeInTheDocument()
-    expect(queryByText('some default text')).toBeInTheDocument()
+    expect(getByRole('link')).toBeInTheDocument()
   })
 
   it('renders a passed in heading', () => {
@@ -37,16 +59,25 @@ describe('SiteAlert component', () => {
       <SiteAlert variant="emergency" {...testDefaultProps} />
     )
 
+    expect
     expect(getByTestId('siteAlert')).toHaveClass(
       'usa-site-alert usa-site-alert--emergency'
     )
   })
 
-  it('renders passed in links', () => {
+  it('renders passed in link', () => {
     const { getByRole } = render(
-      <SiteAlert variant="info">{testChildrenWithLink}</SiteAlert>
+      <SiteAlert variant="info">{testChildren}</SiteAlert>
     )
 
     expect(getByRole('link')).toBeInTheDocument()
+    expect(getByRole('link')).toHaveClass('usa-link')
+  })
+
+  it('renders a passed in list', () => {
+    const { getAllByRole } = render(
+      <SiteAlert variant="emergency">{testChildrenWithList}</SiteAlert>
+    )
+    expect(getAllByRole('link')).toHaveLength(2)
   })
 })
