@@ -22,14 +22,14 @@ export const summaryBoxDefault = (): React.ReactElement => (
     <div className="usa-summary-box__text">
       <ul className="usa-list">
         <li>
-          If you are under a winter storm warning, &nbsp;
+          If you are under a winter storm warning,&nbsp;
           <a className="usa-summary-box__link" href="#usa-anchor-find-shelter">
             find shelter
           </a>
-          &nbsp; right away.
+          &nbsp;right away.
         </li>
         <li>
-          Sign up for &nbsp;
+          Sign up for&nbsp;
           <a
             className="usa-summary-box__link"
             href="#usa-anchor-warning-system">
@@ -38,22 +38,22 @@ export const summaryBoxDefault = (): React.ReactElement => (
           .
         </li>
         <li>
-          Learn the signs of, and basic treatments for, &nbsp;
+          Learn the signs of, and basic treatments for,&nbsp;
           <a className="usa-summary-box__link" href="#usa-anchor-frostbite">
             frostbite
           </a>
-          &nbsp; and &nbsp;
+          &nbsp;and&nbsp;
           <a className="usa-summary-box__link" href="#usa-anchor-hypothermia">
             hypothermia
           </a>
           .
         </li>
         <li>
-          Gather emergency supplies for your &nbsp;
+          Gather emergency supplies for your&nbsp;
           <a className="usa-summary-box__link" href="#usa-anchor-home">
             home
           </a>
-          &nbsp; and your &nbsp;
+          &nbsp;and your&nbsp;
           <a className="usa-summary-box__link" href="#usa-anchor-car">
             car
           </a>
