@@ -6,7 +6,7 @@ import { SiteAlert } from './SiteAlert'
 
 const testChildren = (
   <p className="usa-alert__text">
-    some default text{' '}
+    some default text&nbsp;
     <a className="usa-link" href="#">
       with a link
     </a>
@@ -22,15 +22,15 @@ const testDefaultProps = {
 const testChildrenWithList = (
   <ul>
     <li>
-      some default text{' '}
+      some default text&nbsp;
       <a className="usa-link" href="#">
         with a link{' '}
       </a>
     </li>
     <li>
-      another list item{' '}
+      another list item&nbsp;
       <a className="usa-link" href="#">
-        with a link{' '}
+        with a link
       </a>
     </li>
     <li>another list item, no link</li>
@@ -80,5 +80,20 @@ describe('SiteAlert component', () => {
       <SiteAlert variant="emergency">{testChildrenWithList}</SiteAlert>
     )
     expect(getAllByRole('link')).toHaveLength(2)
+  })
+
+  it('renders slim and no icon when passed both', () => {
+    const { getByTestId } = render(
+      <SiteAlert
+        variant="info"
+        slim={true}
+        showIcon={false}
+        aria-label="Site alert">
+        {testChildren}
+      </SiteAlert>
+    )
+    expect(getByTestId('siteAlert')).toHaveClass(
+      'usa-site-alert usa-site-alert--info usa-site-alert--no-heading usa-site-alert--no-icon usa-site-alert--slim'
+    )
   })
 })

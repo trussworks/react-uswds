@@ -24,8 +24,8 @@ export const SiteAlert = ({
     {
       'usa-site-alert--info': variant === 'info',
       'usa-site-alert--emergency': variant === 'emergency',
-      'usa-site-alert--no-heading': heading === undefined && !slim,
-      'usa-site-alert--no-icon': showIcon === false,
+      'usa-site-alert--no-heading': heading === undefined || slim,
+      'usa-site-alert--no-icon': !showIcon,
       'usa-site-alert--slim': slim,
     },
     className

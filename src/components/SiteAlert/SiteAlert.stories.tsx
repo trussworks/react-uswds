@@ -20,8 +20,9 @@ Source: http://designsystem.digital.gov/components/site-alert
   },
 }
 
-const testHeading = 'Short alert message'
-const testChildren = (
+const infoHeading = 'Short alert message'
+
+const additionalContext = (
   <p className="usa-alert__text">
     Additional context and followup information including{' '}
     <a className="usa-link" href="#">
@@ -31,18 +32,9 @@ const testChildren = (
   </p>
 )
 
-const testEmergencyHeading = 'Emergency alert message'
-const testEmergencyChildren = (
-  <p className="usa-alert__text">
-    Additional context and followup information including{' '}
-    <a className="usa-link" href="#">
-      a link
-    </a>
-    .
-  </p>
-)
+const emergencyHeading = 'Emergency alert message'
 
-const testChildrenWithList = (
+const alertWithList = (
   <ul className="usa-list">
     <li>
       The primary emergency message and{` `}
@@ -62,7 +54,7 @@ const testChildrenWithList = (
   </ul>
 )
 
-const testShortAlert = (
+const shortAlert = (
   <p className="usa-alert__text">
     <strong>Short alert message.</strong>
     &nbsp;Additional context and followup information including&nbsp;
@@ -74,43 +66,86 @@ const testShortAlert = (
 )
 
 export const standardInformationalSiteAlert = (): React.ReactElement => (
-  <SiteAlert variant="info" heading={testHeading} aria-label="Site alert">
-    {testChildren}
+  <SiteAlert variant="info" heading={infoHeading} aria-label="Site alert">
+    {additionalContext}
   </SiteAlert>
 )
 
 export const standardEmergencySiteAlert = (): React.ReactElement => (
   <SiteAlert
     variant="emergency"
-    heading={testEmergencyHeading}
+    heading={emergencyHeading}
     aria-label="Site alert">
-    {testEmergencyChildren}
+    {additionalContext}
   </SiteAlert>
 )
 
-export const siteAlertWithNoHeader = (): React.ReactElement => (
+export const infoAlertWithNoHeader = (): React.ReactElement => (
+  <SiteAlert aria-label="Site alert" variant="info">
+    {shortAlert}
+  </SiteAlert>
+)
+
+export const emergencyAlertWithNoHeader = (): React.ReactElement => (
   <SiteAlert aria-label="Site alert" variant="emergency">
-    {testShortAlert}
+    {shortAlert}
   </SiteAlert>
 )
 
-export const siteAlertWithList = (): React.ReactElement => (
+export const infoAlertWithList = (): React.ReactElement => (
+  <SiteAlert variant="info" heading={emergencyHeading} aria-label="Site alert">
+    {alertWithList}
+  </SiteAlert>
+)
+
+export const emergencyAlertWithList = (): React.ReactElement => (
   <SiteAlert
     variant="emergency"
-    heading={testEmergencyHeading}
+    heading={emergencyHeading}
     aria-label="Site alert">
-    {testChildrenWithList}
+    {alertWithList}
   </SiteAlert>
 )
 
-export const slimSiteAlert = (): React.ReactElement => (
-  <SiteAlert variant="emergency" slim={true} aria-label="Site alert">
-    {testShortAlert}
+export const informationalAlertNoIcon = (): React.ReactElement => (
+  <SiteAlert variant="info" showIcon={false} aria-label="Site alert">
+    {shortAlert}
   </SiteAlert>
 )
-
-export const siteAlertNoIcon = (): React.ReactElement => (
+export const emergencyAlertNoIcon = (): React.ReactElement => (
   <SiteAlert variant="emergency" showIcon={false} aria-label="Site alert">
-    {testShortAlert}
+    {shortAlert}
+  </SiteAlert>
+)
+
+export const slimInformationalAlertNoIconAlert = (): React.ReactElement => (
+  <SiteAlert variant="info" slim={true} aria-label="Site alert">
+    {shortAlert}
+  </SiteAlert>
+)
+
+export const slimEmergencyAlert = (): React.ReactElement => (
+  <SiteAlert variant="emergency" slim={true} aria-label="Site alert">
+    {shortAlert}
+  </SiteAlert>
+)
+
+export const slimInformationalAlertNoIcon = (): React.ReactElement => (
+  <SiteAlert
+    variant="info"
+    slim={true}
+    showIcon={false}
+    aria-label="Site alert">
+    {shortAlert}
+  </SiteAlert>
+)
+
+export const slimEmergencyAlertNoIcon = (): React.ReactElement => (
+  <SiteAlert
+    variant="emergency"
+    slim={true}
+    showIcon={false}
+    aria-label="Site alert">
+    {shortAlert}
   </SiteAlert>
 )
