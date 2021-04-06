@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/summary-box
   },
 }
 
-export const SummaryBoxDefault = (): React.ReactElement => (
+export const summaryBoxDefault = (): React.ReactElement => (
   <SummaryBox heading="Key information">
     <div className="usa-summary-box__text">
       <ul className="usa-list">
