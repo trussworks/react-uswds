@@ -23,7 +23,10 @@ Source: http://designsystem.digital.gov/components/site-alert
 const testHeading = 'Short alert message'
 const testChildren = (
   <p className="usa-alert__text">
-    Additional context and followup information including <a href="#">a link</a>
+    Additional context and followup information including{' '}
+    <a className="usa-link" href="#">
+      a link
+    </a>
     .
   </p>
 )
@@ -31,7 +34,10 @@ const testChildren = (
 const testEmergencyHeading = 'Emergency alert message'
 const testEmergencyChildren = (
   <p className="usa-alert__text">
-    Additional context and followup information including <a href="#">a link</a>
+    Additional context and followup information including{' '}
+    <a className="usa-link" href="#">
+      a link
+    </a>
     .
   </p>
 )
@@ -40,12 +46,17 @@ const testChildrenWithList = (
   <ul>
     <li>
       The primary emergency message and{` `}
-      <a href="#">a link</a>
+      <a className="usa-link" href="#">
+        a link
+      </a>
       {` `}for supporting context.
     </li>
     <li>
       Another message,{` `}
-      <a href="#">and another link</a>.
+      <a className="usa-link" href="#">
+        and another link
+      </a>
+      .
     </li>
     <li>A final emergency message.</li>
   </ul>
@@ -55,7 +66,10 @@ const testShortAlert = (
   <p className="usa-alert__text">
     <strong>Short alert message.</strong>
     &nbsp;Additional context and followup information including&nbsp;
-    <a href="#">a link</a>.
+    <a className="usa-link" href="#">
+      a link
+    </a>
+    .
   </p>
 )
 
