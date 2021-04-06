@@ -28,7 +28,7 @@ const testChildren = (
   </p>
 )
 
-const testEmergencyHeading = 'Emergency Alert Message'
+const testEmergencyHeading = 'Emergency alert message'
 const testEmergencyChildren = (
   <p className="usa-alert__text">
     Additional context and followup information including <a href="#">a link</a>
@@ -51,7 +51,7 @@ const testChildrenWithList = (
   </ul>
 )
 
-const testChildrenSlimAlert = (
+const testShortAlert = (
   <p className="usa-alert__text">
     <strong>Short alert message.</strong>
     &nbsp;Additional context and followup information including&nbsp;
@@ -91,16 +91,12 @@ export const siteAlertWithList = (): React.ReactElement => (
 
 export const slimSiteAlert = (): React.ReactElement => (
   <SiteAlert variant="emergency" slim={true} aria-label="Site alert">
-    {testChildrenSlimAlert}
+    {testShortAlert}
   </SiteAlert>
 )
 
 export const siteAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert
-    variant="emergency"
-    heading={testEmergencyHeading}
-    showIcon={false}
-    aria-label="Site alert">
-    {testEmergencyChildren}
+  <SiteAlert variant="emergency" showIcon={false} aria-label="Site alert">
+    {testShortAlert}
   </SiteAlert>
 )
