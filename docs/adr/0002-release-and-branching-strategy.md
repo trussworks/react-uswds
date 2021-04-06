@@ -1,4 +1,4 @@
-# Document and support branching strategy for allowing parallel development when development dependencies exist
+# Release and Branching Strategy
 
 * Status: proposed
 * Deciders: [Codeowners](../../CODEOWNERS)
