@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { SummaryBox } from './SummaryBox'
 
@@ -23,7 +24,7 @@ export const summaryBoxDefault = (): React.ReactElement => (
       <ul className="usa-list">
         <li>
           If you are under a winter storm warning,&nbsp;
-          <a className="usa-summary-box__link" href="#usa-anchor-find-shelter">
+          <a className="usa-summary-box__link" href="#">
             find shelter
           </a>
           &nbsp;right away.
@@ -39,22 +40,22 @@ export const summaryBoxDefault = (): React.ReactElement => (
         </li>
         <li>
           Learn the signs of, and basic treatments for,&nbsp;
-          <a className="usa-summary-box__link" href="#usa-anchor-frostbite">
+          <a className="usa-summary-box__link" href="#">
             frostbite
           </a>
           &nbsp;and&nbsp;
-          <a className="usa-summary-box__link" href="#usa-anchor-hypothermia">
+          <a className="usa-summary-box__link" href="#">
             hypothermia
           </a>
           .
         </li>
         <li>
           Gather emergency supplies for your&nbsp;
-          <a className="usa-summary-box__link" href="#usa-anchor-home">
+          <a className="usa-summary-box__link" href="#">
             home
           </a>
           &nbsp;and your&nbsp;
-          <a className="usa-summary-box__link" href="#usa-anchor-car">
+          <a className="usa-summary-box__link" href="#">
             car
           </a>
           .
