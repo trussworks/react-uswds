@@ -1,33 +1,31 @@
 import React from 'react'
 import classnames from 'classnames'
 
-// import {Link} from '../Link/Link'
-
 interface SiteAlertProps {
-  heading?: string
   variant: 'info' | 'emergency'
+  children: React.ReactNode
+  heading?: string
   showIcon?: boolean
   slim?: boolean
   className?: string
-  children: React.ReactNode
 }
 
 export const SiteAlert = ({
-  heading,
   variant,
+  children,
+  heading,
   showIcon,
   slim = false,
   className,
-  children,
   ...props
 }: SiteAlertProps & JSX.IntrinsicElements['section']): React.ReactElement => {
   const classes = classnames(
     'usa-site-alert',
     {
-      'usa-site-alert--no-heading': !!heading,
-      'usa-site-alert-info': variant === 'info',
-      'usa-site-alert-emergency': variant === 'emergency',
-      'usa-site-alert--no-icon': !!showIcon,
+      'usa-site-alert--info': variant === 'info',
+      'usa-site-alert--emergency': variant === 'emergency',
+      'usa-site-alert--no-heading': heading === undefined,
+      'usa-site-alert--no-icon': showIcon === false,
       'usa-site-alert--slim': slim,
     },
     className
