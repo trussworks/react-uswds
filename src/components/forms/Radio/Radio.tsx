@@ -25,14 +25,14 @@ export const Radio = ({
   ...inputProps
 }: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-radio', className)
-  const radioClass = classnames('usa-radio__input', {
+  const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,
   })
 
   return (
     <div data-testid="radio" className={classes}>
       <input
-        className={radioClass}
+        className={radioClasses}
         id={id}
         type="radio"
         name={name}
