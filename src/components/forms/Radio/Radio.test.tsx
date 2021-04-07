@@ -10,4 +10,13 @@ describe('Radio component', () => {
     )
     expect(queryByTestId('radio')).toBeInTheDocument()
   })
+
+  it('renders tiled radio buttons', () => {
+    const { queryByLabelText } = render(
+      <Radio id="input-radio" name="input-radio" label="My radio button" tile />
+    )
+    expect(queryByLabelText('My radio button')).toHaveClass(
+      'usa-radio__input usa-radio__input--tile'
+    )
+  })
 })

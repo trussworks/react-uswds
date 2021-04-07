@@ -33,3 +33,7 @@ export const selected = (): React.ReactElement => (
 export const disabled = (): React.ReactElement => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
 )
+
+export const tile = (): React.ReactElement => (
+  <Radio id="input-radio" name="input-radio" label="My Radio Button" tile />
+)

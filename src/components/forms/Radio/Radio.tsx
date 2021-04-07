@@ -12,6 +12,7 @@ interface RadioProps {
     | React.RefObject<HTMLInputElement>
     | null
     | undefined
+  tile?: boolean
 }
 
 export const Radio = ({
@@ -20,14 +21,18 @@ export const Radio = ({
   className,
   label,
   inputRef,
+  tile,
   ...inputProps
 }: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-radio', className)
+  const radioClass = classnames('usa-radio__input', {
+    'usa-radio__input--tile': tile,
+  })
 
   return (
     <div data-testid="radio" className={classes}>
       <input
-        className="usa-radio__input"
+        className={radioClass}
         id={id}
         type="radio"
         name={name}
