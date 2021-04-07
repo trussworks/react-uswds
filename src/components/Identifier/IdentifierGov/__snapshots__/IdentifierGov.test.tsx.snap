@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IdentifierGov component renders consistently in Spanish 1`] = `
+<section
+  className="usa-identifier__section usa-identifier__section--usagov"
+  data-testid="identifierGov"
+>
+  <div
+    className="usa-identifier__container"
+  >
+    <div
+      className="usa-identifier__usagov-description"
+      data-testid="identifierGov-description"
+    >
+      ¿Necesita información y servicios del Gobierno?
+    </div>
+     
+    <a
+      className="usa-link"
+      data-testid="identifierGov-link"
+      href="https://www.usa.gov/espanol/"
+    >
+      Visite USAGov en Español
+    </a>
+  </div>
+</section>
+`;
