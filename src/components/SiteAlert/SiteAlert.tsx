@@ -17,7 +17,7 @@ export const SiteAlert = ({
   showIcon = true,
   slim = false,
   className,
-  ...props
+  ...sectionProps
 }: SiteAlertProps & JSX.IntrinsicElements['section']): React.ReactElement => {
   const classes = classnames(
     'usa-site-alert',
@@ -31,7 +31,11 @@ export const SiteAlert = ({
     className
   )
   return (
-    <section data-testid="siteAlert" className={classes} {...props}>
+    <section
+      data-testid="siteAlert"
+      className={classes}
+      aria-label="Site alert"
+      {...sectionProps}>
       <div className="usa-alert">
         <div className="usa-alert__body">
           {heading && <h3 className="usa-alert__heading">{heading}</h3>}

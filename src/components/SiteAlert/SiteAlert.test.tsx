@@ -61,6 +61,21 @@ describe('SiteAlert component', () => {
     )
   })
 
+  it('accepts a custom aria-label', () => {
+    const { getByTestId } = render(
+      <SiteAlert
+        variant="emergency"
+        aria-label="custom aria label"
+        {...testDefaultProps}
+      />
+    )
+
+    expect(getByTestId('siteAlert')).toHaveAttribute(
+      'aria-label',
+      'custom aria label'
+    )
+  })
+
   it('renders a passed in heading', () => {
     const { getByRole } = render(
       <SiteAlert variant="info" {...testDefaultProps} />
@@ -98,11 +113,7 @@ describe('SiteAlert component', () => {
 
   it('renders slim and no icon when passed both', () => {
     const { getByTestId } = render(
-      <SiteAlert
-        variant="info"
-        slim={true}
-        showIcon={false}
-        aria-label="Site alert">
+      <SiteAlert variant="info" slim={true} showIcon={false}>
         {testChildren}
       </SiteAlert>
     )

@@ -1,4 +1,4 @@
-/*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
+/*  eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react'
 
@@ -74,7 +74,7 @@ const emergencyWithList = (
   </ul>
 )
 
-const shortAlert = (
+const shortAlertContent = (
   <p className="usa-alert__text">
     <strong>Short alert message.</strong>
     &nbsp;Additional context and followup information including&nbsp;
@@ -86,34 +86,27 @@ const shortAlert = (
 )
 
 export const standardInformationalSiteAlert = (): React.ReactElement => (
-  <SiteAlert variant="info" heading={infoHeading} aria-label="Site alert">
+  <SiteAlert variant="info" heading={infoHeading}>
     {additionalContext}
   </SiteAlert>
 )
 
 export const standardEmergencySiteAlert = (): React.ReactElement => (
-  <SiteAlert
-    variant="emergency"
-    heading={emergencyHeading}
-    aria-label="Site alert">
+  <SiteAlert variant="emergency" heading={emergencyHeading}>
     {additionalContext}
   </SiteAlert>
 )
 
 export const informationalAlertWithNoHeader = (): React.ReactElement => (
-  <SiteAlert aria-label="Site alert" variant="info">
-    {shortAlert}
-  </SiteAlert>
+  <SiteAlert variant="info">{shortAlertContent}</SiteAlert>
 )
 
 export const emergencyAlertWithNoHeader = (): React.ReactElement => (
-  <SiteAlert aria-label="Site alert" variant="emergency">
-    {shortAlert}
-  </SiteAlert>
+  <SiteAlert variant="emergency">{shortAlertContent}</SiteAlert>
 )
 
 export const informationalAlertWithList = (): React.ReactElement => (
-  <SiteAlert variant="info" heading={infoHeading} aria-label="Site alert">
+  <SiteAlert variant="info" heading={infoHeading}>
     {infoWithList}
   </SiteAlert>
 )
@@ -128,44 +121,36 @@ export const emergencyAlertWithList = (): React.ReactElement => (
 )
 
 export const informationalAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert variant="info" showIcon={false} aria-label="Site alert">
-    {shortAlert}
+  <SiteAlert variant="info" showIcon={false}>
+    {shortAlertContent}
   </SiteAlert>
 )
 export const emergencyAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert variant="emergency" showIcon={false} aria-label="Site alert">
-    {shortAlert}
+  <SiteAlert variant="emergency" showIcon={false}>
+    {shortAlertContent}
   </SiteAlert>
 )
 
 export const slimInformationalAlert = (): React.ReactElement => (
-  <SiteAlert variant="info" slim={true} aria-label="Site alert">
-    {shortAlert}
+  <SiteAlert variant="info" slim>
+    {shortAlertContent}
   </SiteAlert>
 )
 
 export const slimEmergencyAlert = (): React.ReactElement => (
-  <SiteAlert variant="emergency" slim={true} aria-label="Site alert">
-    {shortAlert}
+  <SiteAlert variant="emergency" slim>
+    {shortAlertContent}
   </SiteAlert>
 )
 
 export const slimInformationalAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert
-    variant="info"
-    slim={true}
-    showIcon={false}
-    aria-label="Site alert">
-    {shortAlert}
+  <SiteAlert variant="info" slim showIcon={false}>
+    {shortAlertContent}
   </SiteAlert>
 )
 
 export const slimEmergencyAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert
-    variant="emergency"
-    slim={true}
-    showIcon={false}
-    aria-label="Site alert">
-    {shortAlert}
+  <SiteAlert variant="emergency" slim showIcon={false}>
+    {shortAlertContent}
   </SiteAlert>
 )
