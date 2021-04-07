@@ -34,7 +34,27 @@ const additionalContext = (
 
 const emergencyHeading = 'Emergency alert message'
 
-const alertWithList = (
+const infoWithList = (
+  <ul className="usa-list">
+    <li>
+      The primary informational message and{` `}
+      <a className="usa-link" href="#">
+        a link
+      </a>
+      {` `}for supporting context.
+    </li>
+    <li>
+      Another message,{` `}
+      <a className="usa-link" href="#">
+        and another link
+      </a>
+      .
+    </li>
+    <li>A final informational message.</li>
+  </ul>
+)
+
+const emergencyWithList = (
   <ul className="usa-list">
     <li>
       The primary emergency message and{` `}
@@ -93,8 +113,8 @@ export const emergencyAlertWithNoHeader = (): React.ReactElement => (
 )
 
 export const informationalAlertWithList = (): React.ReactElement => (
-  <SiteAlert variant="info" heading={emergencyHeading} aria-label="Site alert">
-    {alertWithList}
+  <SiteAlert variant="info" heading={infoHeading} aria-label="Site alert">
+    {infoWithList}
   </SiteAlert>
 )
 
@@ -103,7 +123,7 @@ export const emergencyAlertWithList = (): React.ReactElement => (
     variant="emergency"
     heading={emergencyHeading}
     aria-label="Site alert">
-    {alertWithList}
+    {emergencyWithList}
   </SiteAlert>
 )
 
