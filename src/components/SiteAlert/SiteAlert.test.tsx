@@ -24,7 +24,7 @@ const testChildrenWithList = (
     <li>
       some default text&nbsp;
       <a className="usa-link" href="#">
-        with a link{' '}
+        with a link&nbsp;
       </a>
     </li>
     <li>
@@ -47,12 +47,27 @@ describe('SiteAlert component', () => {
     expect(getByRole('link')).toBeInTheDocument()
   })
 
+  it('accepts a className', () => {
+    const { getByTestId } = render(
+      <SiteAlert
+        variant="info"
+        className="custom-class-name"
+        {...testDefaultProps}
+      />
+    )
+
+    expect(getByTestId('siteAlert')).toHaveClass(
+      'usa-site-alert usa-site-alert--info custom-class-name'
+    )
+  })
+
   it('renders a passed in heading', () => {
     const { getByRole } = render(
       <SiteAlert variant="info" {...testDefaultProps} />
     )
 
     expect(getByRole('heading')).toBeInTheDocument()
+    expect(getByRole('heading')).toHaveClass('usa-alert__heading')
   })
 
   it('renders emergency site alert without errors', () => {
@@ -60,7 +75,6 @@ describe('SiteAlert component', () => {
       <SiteAlert variant="emergency" {...testDefaultProps} />
     )
 
-    expect
     expect(getByTestId('siteAlert')).toHaveClass(
       'usa-site-alert usa-site-alert--emergency'
     )
