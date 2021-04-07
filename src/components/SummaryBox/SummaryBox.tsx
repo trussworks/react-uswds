@@ -12,14 +12,14 @@ export const SummaryBox = ({
   heading,
   children,
   className,
-  ...props
+  ...divProps
 }: SummaryBoxProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-summary-box', className)
   return (
-    <div className={classes} data-testid="summary-box" {...props}>
+    <div className={classes} data-testid="summary-box" {...divProps}>
       <div className="usa-summary-box__body">
         <h3 className="usa-summary-box__heading">{heading}</h3>
-        {children}
+        <div className="usa-summary-box__text">{children}</div>
       </div>
     </div>
   )
