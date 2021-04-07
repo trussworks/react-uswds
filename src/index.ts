@@ -83,6 +83,8 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 
 export { Search } from './components/Search/Search'
 
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
 /** Truss-designed components */
 export {
   Modal,
