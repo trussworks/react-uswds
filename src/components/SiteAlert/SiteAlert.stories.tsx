@@ -80,7 +80,7 @@ export const standardEmergencySiteAlert = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const infoAlertWithNoHeader = (): React.ReactElement => (
+export const informationalAlertWithNoHeader = (): React.ReactElement => (
   <SiteAlert aria-label="Site alert" variant="info">
     {shortAlert}
   </SiteAlert>
@@ -92,7 +92,7 @@ export const emergencyAlertWithNoHeader = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const infoAlertWithList = (): React.ReactElement => (
+export const informationalAlertWithList = (): React.ReactElement => (
   <SiteAlert variant="info" heading={emergencyHeading} aria-label="Site alert">
     {alertWithList}
   </SiteAlert>
@@ -118,7 +118,7 @@ export const emergencyAlertNoIcon = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const slimInformationalAlertNoIconAlert = (): React.ReactElement => (
+export const slimInformationalAlert = (): React.ReactElement => (
   <SiteAlert variant="info" slim={true} aria-label="Site alert">
     {shortAlert}
   </SiteAlert>

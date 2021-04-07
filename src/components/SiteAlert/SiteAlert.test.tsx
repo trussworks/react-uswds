@@ -93,7 +93,7 @@ describe('SiteAlert component', () => {
       </SiteAlert>
     )
     expect(getByTestId('siteAlert')).toHaveClass(
-      'usa-site-alert usa-site-alert--info usa-site-alert--no-heading usa-site-alert--no-icon usa-site-alert--slim'
+      'usa-site-alert usa-site-alert--info usa-site-alert--no-icon usa-site-alert--slim'
     )
   })
 })
