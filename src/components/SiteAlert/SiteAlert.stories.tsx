@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { SiteAlert } from './SiteAlert'
+import { Link } from '../Link/Link'
 
 export default {
   title: 'Components/SiteAlert',
@@ -25,9 +26,9 @@ const infoHeading = 'Short alert message'
 const additionalContext = (
   <p className="usa-alert__text">
     Additional context and followup information including{' '}
-    <a className="usa-link" href="#">
+    <Link className="usa-link" href="#">
       a link
-    </a>
+    </Link>
     .
   </p>
 )
@@ -38,16 +39,16 @@ const infoWithList = (
   <ul className="usa-list">
     <li>
       The primary informational message and{` `}
-      <a className="usa-link" href="#">
+      <Link className="usa-link" href="#">
         a link
-      </a>
+      </Link>
       {` `}for supporting context.
     </li>
     <li>
       Another message,{` `}
-      <a className="usa-link" href="#">
+      <Link className="usa-link" href="#">
         and another link
-      </a>
+      </Link>
       .
     </li>
     <li>A final informational message.</li>
@@ -58,16 +59,16 @@ const emergencyWithList = (
   <ul className="usa-list">
     <li>
       The primary emergency message and{` `}
-      <a className="usa-link" href="#">
+      <Link className="usa-link" href="#">
         a link
-      </a>
+      </Link>
       {` `}for supporting context.
     </li>
     <li>
       Another message,{` `}
-      <a className="usa-link" href="#">
+      <Link className="usa-link" href="#">
         and another link
-      </a>
+      </Link>
       .
     </li>
     <li>A final emergency message.</li>
@@ -78,9 +79,9 @@ const shortAlertContent = (
   <p className="usa-alert__text">
     <strong>Short alert message.</strong>
     &nbsp;Additional context and followup information including&nbsp;
-    <a className="usa-link" href="#">
+    <Link className="usa-link" href="#">
       a link
-    </a>
+    </Link>
     .
   </p>
 )
