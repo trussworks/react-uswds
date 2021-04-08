@@ -19,14 +19,25 @@ Source: http://designsystem.digital.gov/components/site-alert
       },
     },
   },
-  // argTypes: {
-  //   slim: {
-  //     control: {
-  //       type: 'radio',
-  //       options: [true, false],
-  //     },
-  //   },
-  // },
+  argTypes: {
+    slim: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    showIcon: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: ['info', 'emergency'],
+      },
+      defaultValue: 'info',
+    },
+  },
 }
 
 const infoHeading = 'Short alert message'
@@ -129,37 +140,23 @@ export const emergencyAlertWithList = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const informationalAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert variant="info" showIcon={false}>
-    {shortAlertContent}
-  </SiteAlert>
-)
-export const emergencyAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert variant="emergency" showIcon={false}>
-    {shortAlertContent}
-  </SiteAlert>
-)
-
-export const slimInformationalAlert = (): React.ReactElement => (
-  <SiteAlert variant="info" slim>
-    {shortAlertContent}
-  </SiteAlert>
-)
-
 export const slimEmergencyAlert = (): React.ReactElement => (
-  <SiteAlert variant="emergency" slim>
+  <SiteAlert slim variant="emergency">
     {shortAlertContent}
   </SiteAlert>
 )
 
-export const slimInformationalAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert variant="info" slim showIcon={false}>
+export const emergencyAlertNoIcon = (): React.ReactElement => (
+  <SiteAlert showIcon={false} variant="emergency">
     {shortAlertContent}
   </SiteAlert>
 )
 
-export const slimEmergencyAlertNoIcon = (): React.ReactElement => (
-  <SiteAlert variant="emergency" slim showIcon={false}>
+export const alertWithCustomControls = (argTypes): React.ReactElement => (
+  <SiteAlert
+    slim={argTypes.slim}
+    showIcon={argTypes.showIcon}
+    variant={argTypes.variant}>
     {shortAlertContent}
   </SiteAlert>
 )
