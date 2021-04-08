@@ -155,7 +155,7 @@ export const DocumentationPage = (): React.ReactElement => {
         <Logo
           medium
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
-          heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
+          heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
           <SocialLinks
