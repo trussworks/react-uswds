@@ -13945,10 +13945,10 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-uswds@2.10.2:
-  version "2.10.2"
-  resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.10.2.tgz#27e3dba2861902701e5d4c11367fd2c52d094de7"
-  integrity sha512-xH6QRd0LZ5BWSjRYZq1wdEM6LcUbmvkRMWRrPMXod0uUekBzxrbkNJvejsfBOiDo9tt9FLic60f/WoZAWZb45w==
+uswds@2.10.3:
+  version "2.10.3"
+  resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.10.3.tgz#16d34cee81897762d6d69d3ac83aa55129826fa6"
+  integrity sha512-krNRzx1jRzOJpuH/qtmQhd5zxnXTaDVqrPNYT99sJbxzWUqjb1zZHh3jFNo+xKDpNuiO0XMPwZwlaSp2YdZ3Ag==
   dependencies:
     classlist-polyfill "^1.0.3"
     del "^6.0.0"
