@@ -11,3 +11,17 @@ describe('Checkbox component', () => {
     expect(queryByTestId('checkbox')).toBeInTheDocument()
   })
 })
+
+it('renders tiled checkbox', () => {
+  const { queryByLabelText } = render(
+    <Checkbox
+      id="input-checkbox"
+      name="input-checkbox"
+      label="My checkbox"
+      tile
+    />
+  )
+  expect(queryByLabelText('My checkbox')).toHaveClass(
+    'usa-checkbox__input usa-checkbox__input--tile'
+  )
+})

@@ -12,6 +12,7 @@ interface CheckboxProps {
     | React.RefObject<HTMLInputElement>
     | null
     | undefined
+  tile?: boolean
 }
 
 export const Checkbox = ({
@@ -20,14 +21,18 @@ export const Checkbox = ({
   className,
   label,
   inputRef,
+  tile,
   ...inputProps
 }: CheckboxProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-checkbox', className)
+  const checkboxClasses = classnames('usa-checkbox__input', {
+    'usa-checkbox__input--tile': tile,
+  })
 
   return (
     <div data-testid="checkbox" className={classes}>
       <input
-        className="usa-checkbox__input"
+        className={checkboxClasses}
         id={id}
         type="checkbox"
         name={name}
