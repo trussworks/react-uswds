@@ -77,12 +77,14 @@ describe('SiteAlert component', () => {
   })
 
   it('renders a passed in heading', () => {
-    const { getByRole } = render(
+    const { getByRole, queryByText } = render(
       <SiteAlert variant="info" {...testDefaultProps} />
     )
 
-    expect(getByRole('heading')).toBeInTheDocument()
-    expect(getByRole('heading')).toHaveClass('usa-alert__heading')
+    const heading = getByRole('heading')
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveClass('usa-alert__heading')
+    expect(queryByText('test heading')).toBeInTheDocument()
   })
 
   it('renders emergency site alert without errors', () => {
