@@ -58,17 +58,12 @@ const infoWithList = (
   <ul className="usa-list">
     <li>
       The primary informational message and{` `}
-      <Link className="usa-link" href="#">
-        a link
-      </Link>
+      <Link href="#">a link</Link>
       {` `}for supporting context.
     </li>
     <li>
       Another message,{` `}
-      <Link className="usa-link" href="#">
-        and another link
-      </Link>
-      .
+      <Link href="#">and another link</Link>.
     </li>
     <li>A final informational message.</li>
   </ul>
@@ -78,17 +73,12 @@ const emergencyWithList = (
   <ul className="usa-list">
     <li>
       The primary emergency message and{` `}
-      <Link className="usa-link" href="#">
-        a link
-      </Link>
+      <Link href="#">a link</Link>
       {` `}for supporting context.
     </li>
     <li>
       Another message,{` `}
-      <Link className="usa-link" href="#">
-        and another link
-      </Link>
-      .
+      <Link href="#">and another link</Link>.
     </li>
     <li>A final emergency message.</li>
   </ul>
@@ -98,10 +88,7 @@ const shortAlertContent = (
   <p className="usa-alert__text">
     <strong>Short alert message.</strong>
     &nbsp;Additional context and followup information including&nbsp;
-    <Link className="usa-link" href="#">
-      a link
-    </Link>
-    .
+    <Link href="#">a link</Link>.
   </p>
 )
 

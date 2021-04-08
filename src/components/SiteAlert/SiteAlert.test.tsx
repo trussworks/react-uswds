@@ -2,15 +2,14 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
+import { Link } from '../Link/Link'
+
 import { SiteAlert } from './SiteAlert'
 
 const testChildren = (
   <p className="usa-alert__text">
     some default text&nbsp;
-    <a className="usa-link" href="#">
-      with a link
-    </a>
-    .
+    <Link href="#">with a link</Link>.
   </p>
 )
 
@@ -23,15 +22,11 @@ const testChildrenWithList = (
   <ul>
     <li>
       some default text&nbsp;
-      <a className="usa-link" href="#">
-        with a link&nbsp;
-      </a>
+      <Link href="#">with a link&nbsp;</Link>
     </li>
     <li>
       another list item&nbsp;
-      <a className="usa-link" href="#">
-        with a link
-      </a>
+      <Link href="#">with a link</Link>
     </li>
     <li>another list item, no link</li>
   </ul>
@@ -113,7 +108,7 @@ describe('SiteAlert component', () => {
     expect(getAllByRole('link')).toHaveLength(2)
   })
 
-  it('renders slim and no icon when passed both', () => {
+  it('renders slim and no icon when passed both, and does not apply no-header class', () => {
     const { getByTestId } = render(
       <SiteAlert variant="info" slim={true} showIcon={false}>
         {testChildren}
@@ -121,6 +116,9 @@ describe('SiteAlert component', () => {
     )
     expect(getByTestId('siteAlert')).toHaveClass(
       'usa-site-alert usa-site-alert--info usa-site-alert--no-icon usa-site-alert--slim'
+    )
+    expect(getByTestId('siteAlert')).not.toHaveClass(
+      'usa-site-alert--no-heading'
     )
   })
 })
