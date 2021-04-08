@@ -19,6 +19,14 @@ Source: http://designsystem.digital.gov/components/site-alert
       },
     },
   },
+  // argTypes: {
+  //   slim: {
+  //     control: {
+  //       type: 'radio',
+  //       options: [true, false],
+  //     },
+  //   },
+  // },
 }
 
 const infoHeading = 'Short alert message'
