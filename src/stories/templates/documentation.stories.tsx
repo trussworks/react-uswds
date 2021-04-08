@@ -179,6 +179,12 @@ export const DocumentationPage = (): React.ReactElement => {
                 <span>YouTube</span>
               </a>,
               <a
+                key="instagram"
+                className="usa-social-link usa-social-link--instagram"
+                href="#">
+                <span>Instagram</span>
+              </a>,
+              <a
                 key="rss"
                 className="usa-social-link usa-social-link--rss"
                 href="javascript:void(0);">
