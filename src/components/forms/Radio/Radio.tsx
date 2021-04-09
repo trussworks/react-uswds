@@ -13,6 +13,7 @@ interface RadioProps {
     | null
     | undefined
   tile?: boolean
+  labelDescription?: React.ReactNode
 }
 
 export const Radio = ({
@@ -22,12 +23,19 @@ export const Radio = ({
   label,
   inputRef,
   tile,
+  labelDescription,
   ...inputProps
 }: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-radio', className)
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,
   })
+  const description =
+    labelDescription != null ? (
+      <span className="usa-checkbox__label-description">
+        {labelDescription}
+      </span>
+    ) : null
 
   return (
     <div data-testid="radio" className={classes}>
@@ -41,6 +49,7 @@ export const Radio = ({
       />
       <label className="usa-radio__label" htmlFor={id}>
         {label}
+        {description}
       </label>
     </div>
   )

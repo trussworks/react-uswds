@@ -19,4 +19,19 @@ describe('Radio component', () => {
       'usa-radio__input usa-radio__input--tile'
     )
   })
+
+  it('renders label description', () => {
+    const { queryByText } = render(
+      <Radio
+        id="input-radio"
+        name="input-radio"
+        label="My radio button"
+        labelDescription="Label description"
+        tile
+      />
+    )
+    expect(queryByText('Label description')).toHaveClass(
+      'usa-checkbox__label-description'
+    )
+  })
 })
