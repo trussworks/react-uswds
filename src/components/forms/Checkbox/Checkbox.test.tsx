@@ -25,3 +25,18 @@ it('renders tiled checkbox', () => {
     'usa-checkbox__input usa-checkbox__input--tile'
   )
 })
+
+it('renders label description', () => {
+  const { queryByText } = render(
+    <Checkbox
+      id="input-checkbox"
+      name="input-checkbox"
+      label="My checkbox"
+      labelDescription="Label description"
+      tile
+    />
+  )
+  expect(queryByText('Label description')).toHaveClass(
+    'usa-checkbox__label-description'
+  )
+})

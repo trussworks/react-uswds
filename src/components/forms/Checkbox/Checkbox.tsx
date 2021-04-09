@@ -13,6 +13,7 @@ interface CheckboxProps {
     | null
     | undefined
   tile?: boolean
+  labelDescription?: React.ReactNode
 }
 
 export const Checkbox = ({
@@ -22,12 +23,19 @@ export const Checkbox = ({
   label,
   inputRef,
   tile,
+  labelDescription,
   ...inputProps
 }: CheckboxProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-checkbox', className)
   const checkboxClasses = classnames('usa-checkbox__input', {
     'usa-checkbox__input--tile': tile,
   })
+  const description =
+    labelDescription != null ? (
+      <span className="usa-checkbox__label-description">
+        {labelDescription}
+      </span>
+    ) : null
 
   return (
     <div data-testid="checkbox" className={classes}>
@@ -41,6 +49,7 @@ export const Checkbox = ({
       />
       <label className="usa-checkbox__label" htmlFor={id}>
         {label}
+        {description}
       </label>
     </div>
   )

@@ -37,6 +37,25 @@ export const withRichLabel = (): React.ReactElement => (
   />
 )
 
+export const WithLabelDescription = (): React.ReactElement => (
+  <Checkbox
+    id="checkbox"
+    name="checkbox"
+    label="My Checkbox"
+    labelDescription="Optional label description"
+  />
+)
+
 export const tile = (): React.ReactElement => (
   <Checkbox id="checkbox" name="checkbox" label="My Checkbox" tile />
+)
+
+export const tileWithLabelDescription = (): React.ReactElement => (
+  <Checkbox
+    id="checkbox"
+    name="checkbox"
+    label="My Checkbox"
+    labelDescription="Optional label description"
+    tile
+  />
 )
