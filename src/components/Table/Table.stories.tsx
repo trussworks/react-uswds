@@ -198,13 +198,19 @@ export const compact = (): React.ReactElement => (
 )
 
 export const stacked = (): React.ReactElement => (
-  <Table stackedStyle="default" caption="This is a stacked table">
-    {testContent}
-  </Table>
+  <div className="width-mobile">
+    <Table stackedStyle="default" caption="This is a stacked table">
+      {testContent}
+    </Table>
+  </div>
 )
 
 export const stackedHeader = (): React.ReactElement => (
-  <Table stackedStyle="headers" caption="This is a table with a stacked header">
-    {testContent}
-  </Table>
+  <div className="width-mobile">
+    <Table
+      stackedStyle="headers"
+      caption="This is a table with a stacked header">
+      {testContent}
+    </Table>
+  </div>
 )

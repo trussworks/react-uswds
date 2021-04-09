@@ -31,7 +31,7 @@ export const Table = ({
     [`${styles.fullwidth}`]: fullWidth,
     [`${styles.fixed}`]: fixed,
     'usa-table--striped': striped,
-    'usa-table--compact': compact,
+    'usa-table--compact': compact && stackedStyle === 'none',
     'usa-table--stacked': stackedStyle === 'default',
     'usa-table--stacked-header': stackedStyle === 'headers',
   })
