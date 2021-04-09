@@ -54,4 +54,23 @@ describe('Table component', () => {
     const { queryByTestId } = render(<Table>{testContent}</Table>)
     expect(queryByTestId('table')).toBeInTheDocument()
   })
+
+  it('renders striped table', () => {
+    const { getByRole } = render(<Table striped={true}>{testContent}</Table>)
+    expect(getByRole('table')).toHaveClass('usa-table usa-table--striped')
+  })
+
+  it('renders compact table', () => {
+    const { getByRole } = render(<Table compact={true}>{testContent}</Table>)
+    expect(getByRole('table')).toHaveClass('usa-table usa-table--compact')
+  })
+
+  it('renders scrollable table', () => {
+    const { queryByTestId } = render(
+      <Table scrollable={true}>{testContent}</Table>
+    )
+    expect(queryByTestId('scrollable-table')).toHaveClass(
+      'usa-table-container--scrollable'
+    )
+  })
 })
