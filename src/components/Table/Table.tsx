@@ -35,11 +35,10 @@ export const Table = ({
     'usa-table--stacked': stackedStyle === 'default',
     'usa-table--stacked-header': stackedStyle === 'headers',
   })
-  const isScrollable = scrollable
 
   return (
     <>
-      {isScrollable ? (
+      {scrollable ? (
         <div
           data-testid="scrollable-table"
           className="usa-table-container--scrollable">
