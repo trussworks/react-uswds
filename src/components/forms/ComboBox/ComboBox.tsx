@@ -79,6 +79,7 @@ export const ComboBox = ({
   noResults,
   selectProps,
   inputProps,
+  ...customProps
 }: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
 
@@ -270,7 +271,8 @@ export const ComboBox = ({
       data-testid="combo-box"
       className={containerClasses}
       id={id}
-      ref={containerRef}>
+      ref={containerRef}
+      {...customProps}>
       <select
         className="usa-select usa-sr-only usa-combo-box__select"
         name={name}
