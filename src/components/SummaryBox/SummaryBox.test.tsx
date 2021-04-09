@@ -73,10 +73,9 @@ describe('SummaryBox component', () => {
       <SummaryBox {...customProps}>{testSummaryBoxContent}</SummaryBox>
     )
 
+    const qByTestId = queryByTestId('summary-box')
     expect(queryByText('Example heading')).toBeInTheDocument()
-    expect(queryByTestId('summary-box')).toHaveAttribute(
-      'role',
-      'complementary'
-    )
+    expect(qByTestId).toHaveAttribute('role', 'complementary')
+    expect(qByTestId).toHaveClass('usa-summary-box custom-class-name')
   })
 })
