@@ -9,10 +9,10 @@ interface TableProps {
   children: React.ReactNode
   fullWidth?: boolean
   fixed?: boolean
-  scrollable?: boolean //default false
-  striped?: boolean //default false
-  compact?: boolean // used w scrollable & striped - "not suitable for use with stacked variants"
-  stackedStyle?: 'none' | 'default' | 'headers' // default 'none'
+  scrollable?: boolean
+  striped?: boolean
+  compact?: boolean
+  stackedStyle?: 'none' | 'default' | 'headers'
 }
 
 export const Table = ({
@@ -21,9 +21,9 @@ export const Table = ({
   children,
   fullWidth,
   fixed,
-  scrollable = false, // default false -- adds usa-table-container--scrollable
-  striped = false, // default false usa-table--striped
-  compact = false, // default false
+  scrollable = false,
+  striped = false,
+  compact = false,
   stackedStyle = 'none',
 }: TableProps): React.ReactElement => {
   const classes = classnames('usa-table', {
@@ -32,6 +32,8 @@ export const Table = ({
     [`${styles.fixed}`]: fixed,
     'usa-table--striped': striped,
     'usa-table--compact': compact,
+    'usa-table--stacked': stackedStyle === 'default',
+    'usa-table--stacked-header': stackedStyle === 'headers',
   })
   const isScrollable = scrollable
 

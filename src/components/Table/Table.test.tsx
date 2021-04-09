@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { getByTestId, render } from '@testing-library/react'
 
 import { Table } from './Table'
 
@@ -71,6 +71,24 @@ describe('Table component', () => {
     )
     expect(queryByTestId('scrollable-table')).toHaveClass(
       'usa-table-container--scrollable'
+    )
+  })
+
+  it('renders stacked table', () => {
+    const { getByRole } = render(
+      <Table stackedStyle="default">{testContent}</Table>
+    )
+
+    expect(getByRole('table')).toHaveClass('usa-table usa-table--stacked')
+  })
+
+  it('renders stacked table with headers', () => {
+    const { getByRole } = render(
+      <Table stackedStyle="headers">{testContent}</Table>
+    )
+
+    expect(getByRole('table')).toHaveClass(
+      'usa-table usa-table--stacked-header'
     )
   })
 })

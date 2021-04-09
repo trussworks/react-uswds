@@ -197,19 +197,14 @@ export const compact = (): React.ReactElement => (
   </Table>
 )
 
-/*
-use Storybook controls for these instead of individual stories?
-what's shown on the USWDS site?
-
 export const stacked = (): React.ReactElement => (
-  <Table caption="This is a stacked table">
+  <Table stackedStyle="default" caption="This is a stacked table">
     {testContent}
   </Table>
 )
 
 export const stackedHeader = (): React.ReactElement => (
-  <Table compact={true} caption="This is a table with a stacked header">
+  <Table stackedStyle="headers" caption="This is a table with a stacked header">
     {testContent}
   </Table>
 )
-*/
