@@ -15,6 +15,20 @@ Source: https://designsystem.digital.gov/components/table/
       },
     },
   },
+  argTypes: {
+    bordered: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    stackedStyle: {
+      control: {
+        type: 'select',
+        options: ['default', 'headers'],
+      },
+      defaultValue: 'default',
+    },
+  },
 }
 
 const testContent = (
@@ -197,20 +211,41 @@ export const compact = (): React.ReactElement => (
   </Table>
 )
 
-export const stacked = (): React.ReactElement => (
-  <div className="width-mobile">
-    <Table stackedStyle="default" caption="This is a stacked table">
-      {testContent}
-    </Table>
-  </div>
-)
-
-export const stackedHeader = (): React.ReactElement => (
+export const stackedStylesDemo = (argTypes): React.ReactElement => (
   <div className="width-mobile">
     <Table
-      stackedStyle="headers"
-      caption="This is a table with a stacked header">
-      {testContent}
+      bordered={argTypes.bordered}
+      stackedStyle={argTypes.stackedStyle}
+      caption="This is a stacked table (when on a mobile-width screen)">
+      <thead>
+        <tr>
+          <th scope="col">Document title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-label="Document title" scope="row">
+            Declaration of Independence
+          </th>
+          <td data-label="Description">
+            Statement adopted by the Continental Congress declaring independence
+            from the British Empire.
+          </td>
+          <td data-label="Year">1776</td>
+        </tr>
+        <tr>
+          <th data-label="Document title" scope="row">
+            Bill of Rights
+          </th>
+          <td data-label="Description">
+            The first ten amendments of the U.S. Constitution guaranteeing
+            rights and freedoms.
+          </td>
+          <td data-label="Year">1791</td>
+        </tr>
+      </tbody>
     </Table>
   </div>
 )
