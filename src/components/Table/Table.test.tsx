@@ -1,5 +1,5 @@
 import React from 'react'
-import { getByTestId, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { Table } from './Table'
 
@@ -51,17 +51,20 @@ const testContent = (
 
 describe('Table component', () => {
   it('renders without errors', () => {
-    const { queryByTestId } = render(<Table>{testContent}</Table>)
-    expect(queryByTestId('table')).toBeInTheDocument()
+    const { getByRole } = render(<Table>{testContent}</Table>)
+
+    expect(getByRole('table')).toBeInTheDocument()
   })
 
   it('renders striped table', () => {
     const { getByRole } = render(<Table striped={true}>{testContent}</Table>)
+
     expect(getByRole('table')).toHaveClass('usa-table usa-table--striped')
   })
 
   it('renders compact table', () => {
     const { getByRole } = render(<Table compact={true}>{testContent}</Table>)
+
     expect(getByRole('table')).toHaveClass('usa-table usa-table--compact')
   })
 
@@ -69,22 +72,27 @@ describe('Table component', () => {
     const { queryByTestId } = render(
       <Table scrollable={true}>{testContent}</Table>
     )
+
     expect(queryByTestId('scrollable-table')).toHaveClass(
       'usa-table-container--scrollable'
     )
   })
 
-  it('renders stacked table', () => {
+  it('renders borderless stacked table', () => {
     const { getByRole } = render(
       <Table stackedStyle="default">{testContent}</Table>
     )
 
-    expect(getByRole('table')).toHaveClass('usa-table usa-table--stacked')
+    expect(getByRole('table')).toHaveClass(
+      'usa-table usa-table--borderless usa-table--stacked'
+    )
   })
 
-  it('renders stacked table with headers', () => {
+  it('renders stacked table with border and headers', () => {
     const { getByRole } = render(
-      <Table stackedStyle="headers">{testContent}</Table>
+      <Table stackedStyle="headers" bordered={true}>
+        {testContent}
+      </Table>
     )
 
     expect(getByRole('table')).toHaveClass(

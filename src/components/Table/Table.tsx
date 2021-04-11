@@ -48,7 +48,7 @@ export const Table = ({
           </table>
         </div>
       ) : (
-        <table className={classes} data-testid="table">
+        <table className={classes}>
           {caption && <caption>{caption}</caption>}
           {children}
         </table>
