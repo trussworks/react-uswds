@@ -21,9 +21,9 @@ export const Table = ({
   children,
   fullWidth,
   fixed,
-  scrollable = false,
-  striped = false,
-  compact = false,
+  scrollable,
+  striped,
+  compact,
   stackedStyle = 'none',
 }: TableProps): React.ReactElement => {
   const classes = classnames('usa-table', {
