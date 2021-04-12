@@ -15,7 +15,7 @@ export default {
         component: `
 ### USWDS 2.0 ComboBox component
 
-Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
+Source: https://designsystem.digital.gov/components/combo-box
 `,
       },
     },

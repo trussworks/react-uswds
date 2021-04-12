@@ -12,7 +12,7 @@ export default {
         component: `
 ### USWDS 2.0 DateInput component
 
-Source: https://designsystem.digital.gov/components/form-controls/#date-input
+Source: https://designsystem.digital.gov/components/date-input
 `,
       },
     },

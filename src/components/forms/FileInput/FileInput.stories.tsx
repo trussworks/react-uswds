@@ -17,7 +17,7 @@ export default {
       description: {
         component: `
 ### USWDS 2.0 FileInput component
-Source: https://designsystem.digital.gov/components/form-controls/#file-input
+Source: https://designsystem.digital.gov/components/file-input
 `,
       },
     },

@@ -12,7 +12,7 @@ export default {
         component: `
 ### USWDS 2.0 Dropdown component
 
-Source: https://designsystem.digital.gov/components/form-controls/#dropdown
+Source: https://designsystem.digital.gov/components/dropdown
 `,
       },
     },

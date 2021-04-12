@@ -19,7 +19,7 @@ export default {
         component: `
 ### USWDS 2.0 DatePicker component
 
-Source: https://designsystem.digital.gov/components/form-controls/#DatePicker
+Source: https://designsystem.digital.gov/components/date-picker
 
 **Note:** There is one small difference in functionality between this component and the USWDS implementation, related to validating the input. The USWDS implementation validates when:
 - setting the initial value based on the default value passed in

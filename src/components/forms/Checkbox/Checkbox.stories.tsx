@@ -10,7 +10,7 @@ export default {
         component: `
 ### USWDS 2.0 Checkbox component
 
-Source: https://designsystem.digital.gov/components/form-controls/#checkbox
+Source: https://designsystem.digital.gov/components/checkbox
 `,
       },
     },

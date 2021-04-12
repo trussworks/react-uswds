@@ -11,7 +11,7 @@ export default {
         component: `
 ### USWDS 2.0 RangeInput component
 
-Source: https://designsystem.digital.gov/components/form-controls/#range
+Source: https://designsystem.digital.gov/components/range-slider
 `,
       },
     },

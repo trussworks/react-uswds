@@ -12,7 +12,7 @@ export default {
         component: `
 ### USWDS 2.0 Character count component
 
-Source: https://designsystem.digital.gov/components/form-controls/#character-count
+Source: https://designsystem.digital.gov/components/character-count
 `,
       },
     },

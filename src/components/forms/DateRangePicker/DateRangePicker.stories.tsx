@@ -25,7 +25,7 @@ export default {
       description: {
         component: `
   ### USWDS 2.0 Date Range Picker component
-  Source: https://designsystem.digital.gov/components/form-controls/#date-range-picker
+  Source: https://designsystem.digital.gov/components/date-range-picker
         `,
       },
     },
