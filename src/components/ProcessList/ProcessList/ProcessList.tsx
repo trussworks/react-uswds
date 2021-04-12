@@ -14,11 +14,9 @@ export const ProcessList = ({
 }: ProcessListProps & JSX.IntrinsicElements['ol']): React.ReactElement => {
   const classes = classnames('usa-process-list', className)
   return (
-    <>
-      <ol className={classes} {...listProps}>
-        {children}
-      </ol>
-    </>
+    <ol className={classes} {...listProps}>
+      {children}
+    </ol>
   )
 }
 
