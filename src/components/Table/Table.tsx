@@ -36,22 +36,23 @@ export const Table = ({
     'usa-table--stacked-header': stackedStyle === 'headers',
   })
 
+  const table = (
+    <table className={classes} data-testid="table">
+      {caption && <caption>{caption}</caption>}
+      {children}
+    </table>
+  )
+
   return (
     <>
       {scrollable ? (
         <div
           data-testid="scrollable-table"
           className="usa-table-container--scrollable">
-          <table className={classes} data-testid="table">
-            {caption && <caption>{caption}</caption>}
-            {children}
-          </table>
+          {table}
         </div>
       ) : (
-        <table className={classes}>
-          {caption && <caption>{caption}</caption>}
-          {children}
-        </table>
+        table
       )}
     </>
   )
