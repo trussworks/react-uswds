@@ -1,6 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
-import { CollectionBody } from './CollectionBody'
+import { CollectionItemBody } from './CollectionItemBody'
 
 interface Topic {
   type: 'new' | 'default'
@@ -26,7 +25,7 @@ export const CollectionItem = ({
 }: CollectionItemProps): React.ReactElement => {
   return (
     <li className="usa-collection__item">
-      <CollectionBody
+      <CollectionItemBody
         heading={heading}
         href={href}
         description={description}

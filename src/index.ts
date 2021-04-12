@@ -13,6 +13,13 @@ export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
 
+/** Collection components */
+export { Collection } from './components/Collection/Collection'
+export { CollectionItem } from './components/Collection/CollectionItem'
+export { CalendarCollectionItem } from './components/Collection/CalendarCollectionItem'
+export { HeadingCollectionItem } from './components/Collection/HeadingCollectionItem'
+export { ThumbnailCollectionItem } from './components/Collection/ThumbnailCollectionItem'
+
 /** Grid components */
 export { GridContainer } from './components/grid/GridContainer/GridContainer'
 export { Grid } from './components/grid/Grid/Grid'

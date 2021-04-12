@@ -1,5 +1,5 @@
 import React from 'react'
-import { CollectionBody } from './CollectionBody'
+import { CollectionItemBody } from './CollectionItemBody'
 
 interface Topic {
   type: 'new' | 'default'
@@ -37,7 +37,7 @@ export const ThumbnailCollectionItem = ({
         src={thumbnail.src}
         alt={thumbnail.alt}
       />
-      <CollectionBody
+      <CollectionItemBody
         heading={heading}
         href={href}
         description={description}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CollectionBody } from './CollectionBody'
+import { CollectionItemBody } from './CollectionItemBody'
 
 interface CalendarCollectionItemProps {
   heading: string
@@ -42,7 +42,11 @@ export const CalendarCollectionItem = ({
           </span>
         </time>
       </div>
-      <CollectionBody heading={heading} description={description} href={href} />
+      <CollectionItemBody
+        heading={heading}
+        description={description}
+        href={href}
+      />
     </li>
   )
 }

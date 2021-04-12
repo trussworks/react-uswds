@@ -6,7 +6,7 @@ interface Topic {
   label: string
 }
 
-export interface CollectionBodyProps {
+export interface CollectionItemBodyProps {
   heading: string
   href: string
   description?: string
@@ -30,14 +30,14 @@ const MONTH_LABELS = [
   'December',
 ]
 
-export const CollectionBody = ({
+export const CollectionItemBody = ({
   heading,
   href,
   description,
   authors = [],
   dateTime = '',
   topics = [],
-}: CollectionBodyProps): React.ReactElement => {
+}: CollectionItemBodyProps): React.ReactElement => {
   const authorsList = [
     authors.slice(0, -1).join(', '),
     authors.slice(-1)[0],
