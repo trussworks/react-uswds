@@ -7,7 +7,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 export default {
-  title: 'Components/Form controls/Combo box',
+  title: 'Components/Combo box',
   component: ComboBox,
   parameters: {
     docs: {

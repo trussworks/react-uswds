@@ -5,7 +5,7 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Form controls/CharacterCount',
+  title: 'Components/CharacterCount',
   parameters: {
     docs: {
       description: {

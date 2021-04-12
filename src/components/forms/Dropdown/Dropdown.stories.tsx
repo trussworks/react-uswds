@@ -4,7 +4,7 @@ import { Dropdown } from './Dropdown'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Form controls/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {

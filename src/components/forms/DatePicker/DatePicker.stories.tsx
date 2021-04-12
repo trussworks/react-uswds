@@ -7,7 +7,7 @@ import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
 
 export default {
-  title: 'Components/Form controls/Date picker',
+  title: 'Components/Date picker',
   component: DatePicker,
   argTypes: {
     onSubmit: { action: 'submitted' },

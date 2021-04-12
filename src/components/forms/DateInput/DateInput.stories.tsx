@@ -4,7 +4,7 @@ import { DateInputGroup } from '../DateInputGroup/DateInputGroup'
 import { Fieldset } from '../Fieldset/Fieldset'
 
 export default {
-  title: 'Components/Form controls/Date input',
+  title: 'Components/Date input',
   component: DateInput,
   parameters: {
     docs: {

@@ -5,7 +5,7 @@ import { Form } from '../Form/Form'
 import { addDays, formatDate } from '../DatePicker/utils'
 
 export default {
-  title: 'Components/Form controls/Date range picker',
+  title: 'Components/Date range picker',
   component: DateRangePicker,
   argTypes: {
     onSubmit: {
