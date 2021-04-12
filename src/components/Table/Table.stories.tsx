@@ -282,7 +282,7 @@ export const fixed = (): React.ReactElement => (
 )
 
 export const scrollable = (): React.ReactElement => (
-  <Table scrollable={true} caption="This is a scrollable table">
+  <Table bordered scrollable caption="This is a scrollable table">
     {scrollableTestContent}
   </Table>
 )
