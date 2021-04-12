@@ -57,23 +57,21 @@ describe('Table component', () => {
   })
 
   it('renders striped table', () => {
-    const { getByRole } = render(<Table striped={true}>{testContent}</Table>)
+    const { getByRole } = render(<Table striped>{testContent}</Table>)
 
     expect(getByRole('table')).toHaveClass('usa-table usa-table--striped')
   })
 
   it('renders compact table', () => {
-    const { getByRole } = render(<Table compact={true}>{testContent}</Table>)
+    const { getByRole } = render(<Table compact>{testContent}</Table>)
 
     expect(getByRole('table')).toHaveClass('usa-table usa-table--compact')
   })
 
   it('renders scrollable table', () => {
-    const { queryByTestId } = render(
-      <Table scrollable={true}>{testContent}</Table>
-    )
+    const { queryByTestId } = render(<Table scrollable>{testContent}</Table>)
 
-    expect(queryByTestId('scrollable-table')).toHaveClass(
+    expect(queryByTestId('scrollable-table-container')).toHaveClass(
       'usa-table-container--scrollable'
     )
   })
@@ -90,7 +88,7 @@ describe('Table component', () => {
 
   it('renders stacked table with border and headers', () => {
     const { getByRole } = render(
-      <Table stackedStyle="headers" bordered={true}>
+      <Table stackedStyle="headers" bordered>
         {testContent}
       </Table>
     )

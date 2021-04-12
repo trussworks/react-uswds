@@ -47,7 +47,7 @@ export const Table = ({
     <>
       {scrollable ? (
         <div
-          data-testid="scrollable-table"
+          data-testid="scrollable-table-container"
           className="usa-table-container--scrollable">
           {table}
         </div>

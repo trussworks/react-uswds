@@ -77,8 +77,98 @@ const testContent = (
   </>
 )
 
+const scrollableTestContent = (
+  <>
+    <thead>
+      <tr>
+        <th>Federal Budget Baseline Projections</th>
+        <th>2017</th>
+        <th>2018</th>
+        <th>2019</th>
+        <th>2020</th>
+        <th>2021</th>
+        <th>Hist. Avg.</th>
+      </tr>
+      <tr>
+        <th scope="col">%GDP</th>
+        <th scope="col">USD*</th>
+        <th scope="col">%GDP</th>
+        <th scope="col">USD*</th>
+        <th scope="col">%GDP</th>
+        <th scope="col">USD*</th>
+        <th scope="col">%GDP</th>
+        <th scope="col">USD*</th>
+        <th scope="col">%GDP</th>
+        <th scope="col">USD*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Revenue</th>
+        <td>17.2%</td>
+        <td>3,316</td>
+        <td>16.4%</td>
+        <td>3,338</td>
+        <td>16.3%</td>
+        <td>3,490</td>
+        <td>16.7%</td>
+        <td>3,678</td>
+        <td>16.7%</td>
+        <td>3,827</td>
+        <td>17.4%</td>
+        <td>3,381</td>
+      </tr>
+      <tr>
+        <th scope="row">Outlays</th>
+        <td>20.6%</td>
+        <td>3,982</td>
+        <td>20.2%</td>
+        <td>4,142</td>
+        <td>21.0%</td>
+        <td>4,470</td>
+        <td>21.3%</td>
+        <td>4,685</td>
+        <td>21.6%</td>
+        <td>4,949</td>
+        <td>20.3%</td>
+        <td>4,198</td>
+      </tr>
+      <tr>
+        <th scope="row">Budget Deficit</th>
+        <td>-3.5%</td>
+        <td>-665</td>
+        <td>-3.8%</td>
+        <td>-804</td>
+        <td>-4.6%</td>
+        <td>-981</td>
+        <td>-4.6%</td>
+        <td>-1,008</td>
+        <td>-4.9%</td>
+        <td>-1,123</td>
+        <td>-2.9%</td>
+        <td>-483</td>
+      </tr>
+      <tr>
+        <th scope="row">Debt Held by Public</th>
+        <td>76.0%</td>
+        <td>14,665</td>
+        <td>77.4%</td>
+        <td>15,688</td>
+        <td>79.2%</td>
+        <td>16,762</td>
+        <td>80.9%</td>
+        <td>17,872</td>
+        <td>83.1%</td>
+        <td>18,998</td>
+        <td>41.7%</td>
+        <td>8,065</td>
+      </tr>
+    </tbody>
+  </>
+)
+
 export const bordered = (): React.ReactElement => (
-  <Table bordered={true}>{testContent}</Table>
+  <Table bordered>{testContent}</Table>
 )
 
 export const borderless = (): React.ReactElement => (
@@ -98,9 +188,7 @@ export const borderlessWithCaption = (): React.ReactElement => (
 )
 
 export const contentWidth = (): React.ReactElement => (
-  <Table
-    bordered={true}
-    caption="This table demonstrates the default layout (width)">
+  <Table bordered caption="This table demonstrates the default layout (width)">
     <thead>
       <tr>
         <th scope="col">Document title</th>
@@ -130,9 +218,9 @@ export const contentWidth = (): React.ReactElement => (
 
 export const fullWidth = (): React.ReactElement => (
   <Table
-    bordered={true}
+    bordered
     caption="This table uses the fullWidth prop to increase to 100% width"
-    fullWidth={true}>
+    fullWidth>
     <thead>
       <tr>
         <th scope="col">Document title</th>
@@ -162,10 +250,10 @@ export const fullWidth = (): React.ReactElement => (
 
 export const fixed = (): React.ReactElement => (
   <Table
-    bordered={true}
+    bordered
     caption="This table uses the fixed prop to force equal width columns"
-    fullWidth={true}
-    fixed={true}>
+    fullWidth
+    fixed>
     <thead>
       <tr>
         <th scope="col">Document title</th>
@@ -195,18 +283,18 @@ export const fixed = (): React.ReactElement => (
 
 export const scrollable = (): React.ReactElement => (
   <Table scrollable={true} caption="This is a scrollable table">
-    {testContent}
+    {scrollableTestContent}
   </Table>
 )
 
 export const striped = (): React.ReactElement => (
-  <Table striped={true} caption="This is a striped table">
+  <Table striped caption="This is a striped table">
     {testContent}
   </Table>
 )
 
 export const compact = (): React.ReactElement => (
-  <Table compact={true} caption="This is a compact table">
+  <Table compact caption="This is a compact table">
     {testContent}
   </Table>
 )
