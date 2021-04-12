@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* Identifier component MVP ([#1044](https://github.com/trussworks/react-uswds/issues/1044)) ([e79bc87](https://github.com/trussworks/react-uswds/commit/e79bc8773a3ff7d9096b8b65a9f6cb58f7d3a28a))
-* New Component: Step indicator ([#1047](https://github.com/trussworks/react-uswds/issues/1047)) ([d61988e](https://github.com/trussworks/react-uswds/commit/d61988eb90646d35e57b17c00bd392e4ce3c200e))
+* Identifier component ([#1044](https://github.com/trussworks/react-uswds/issues/1044)) ([e79bc87](https://github.com/trussworks/react-uswds/commit/e79bc8773a3ff7d9096b8b65a9f6cb58f7d3a28a))
+* StepIndicator component ([#1047](https://github.com/trussworks/react-uswds/issues/1047)) ([d61988e](https://github.com/trussworks/react-uswds/commit/d61988eb90646d35e57b17c00bd392e4ce3c200e))
 * TimePicker component ([#1082](https://github.com/trussworks/react-uswds/issues/1082)) ([c7bfdee](https://github.com/trussworks/react-uswds/commit/c7bfdee95bda8c357f8b56e600e0c03be9ff922f))
 * Update to USWDS 2.9.0 ([#1048](https://github.com/trussworks/react-uswds/issues/1048)) ([3859eea](https://github.com/trussworks/react-uswds/commit/3859eeaca8505403bd3bb149b12b13fb950fc082))
 
