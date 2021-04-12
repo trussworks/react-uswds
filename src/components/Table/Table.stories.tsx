@@ -81,15 +81,17 @@ const scrollableTestContent = (
   <>
     <thead>
       <tr>
-        <th>Federal Budget Baseline Projections</th>
-        <th>2017</th>
-        <th>2018</th>
-        <th>2019</th>
-        <th>2020</th>
-        <th>2021</th>
-        <th>Hist. Avg.</th>
+        <th rowSpan={2}>Federal Budget Baseline Projections</th>
+        <th colSpan={2}>2017</th>
+        <th colSpan={2}>2018</th>
+        <th colSpan={2}>2019</th>
+        <th colSpan={2}>2020</th>
+        <th colSpan={2}>2021</th>
+        <th colSpan={2}>Hist. Avg.</th>
       </tr>
       <tr>
+        <th scope="col">%GDP</th>
+        <th scope="col">USD*</th>
         <th scope="col">%GDP</th>
         <th scope="col">USD*</th>
         <th scope="col">%GDP</th>
