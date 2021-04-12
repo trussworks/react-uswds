@@ -47,17 +47,21 @@ Chosen option: **Bump the ReactUSWDS version with the same release type as USWDS
 
 We made this decision because we want to be able to take some direction around relase type from USWDS itself, and in theory any updates in ReactUSWDS that result from a USWDS update should be similarly sized to the new USWDS version.
 
+This decision also implies that work to implement USWDS features should be completed in sequential order of when that feature was released. For example, we should make sure ReactUSWDS has released a version that implements _all_ USWDS 2.9 components _before_ releasing any USWDS 2.10 components.
+
 The discussion around this ADR resulted in another, more prevalent decision, which is that **updating USWDS versions should always be done as a discrete issue & PR, and _never_ coupled with other work.**
 
 ### Positive Consequences
 
 - We don't have to worry about deciding what kind of update to release when updating our USWDS dependency to a new version.
 - Most of the time, USWDS versions _should_ indicate how significant a change is.
+- End users should be able to determine which version of ReactUSWDS includes which USWDS features because they will be released in the same order.
 
 ### Negative Consequences
 
 - Since we'll be tying our versions somewhat to USWDS versions, we won't necessarily be able to easily release patches for previous versions of USWDS if needed.
 - Sometimes USWDS release types don’t always seem to accurately indicate what kind of update it is (i.e., whether something is actually breaking or not), and this could result in our versions not accurately following the semantic versioning standard.
+- We may occasionally block ourselves by requiring USWDS features be implemented and released in the same order they were released in USWDS (this can be mitigated by maintaining multiple develop branches for USWDS versions - see [the in-progress ADR about branching](https://github.com/trussworks/react-uswds/pull/1026)).
 
 Ultimately, this decision is easily changed if we try this approach but discover it has unforeseen shortcomings. For example, if a USWDS patch or minor release somehow results in what feel like breaking changes for ReactUSWDS, where end users need to modify their code in order to maintain functionality, we should feel able to revisit this decision.
 
@@ -95,5 +99,9 @@ When updating the USWDS dependency in this project, we’ll decide what kind of 
 
 - Good, because it will result in intentional updates to ReactUSWDS code whenever the USWDS version is updated
 - Bad, because it may decrease consistency in how we handle USWDS updates
+
+## Links <!-- optional -->
+
+- Release and Branching strategy - [ADR-0002](https://github.com/trussworks/react-uswds/pull/1026)
 
 <!-- markdownlint-disable-file MD013 -->
