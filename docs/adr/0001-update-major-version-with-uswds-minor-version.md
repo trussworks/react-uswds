@@ -1,8 +1,8 @@
 # Increase ReactUSWDS version when updating USWDS version
 
-- Status: proposed
+- Status: Accepted
 - Deciders: Maintainers
-- Date: 2021-03-21
+- Date: 2021-04-12
 
 ## Context and Problem Statement
 
@@ -43,21 +43,25 @@ For reference, USWDS does mention semantic versioning in [their own release proc
 
 ## Decision Outcome
 
-TK
+Chosen option: **Bump the ReactUSWDS version with the same release type as USWDS _and_ always treat updating USWDS as its own issue.**
 
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+We made this decision because we want to be able to take some direction around relase type from USWDS itself, and in theory any updates in ReactUSWDS that result from a USWDS update should be similarly sized to the new USWDS version.
 
-### Positive Consequences <!-- optional -->
+The discussion around this ADR resulted in another, more prevalent decision, which is that **updating USWDS versions should always be done as a discrete issue & PR, and _never_ coupled with other work.**
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- …
+### Positive Consequences
 
-### Negative Consequences <!-- optional -->
+- We don't have to worry about deciding what kind of update to release when updating our USWDS dependency to a new version.
+- Most of the time, USWDS versions _should_ indicate how significant a change is.
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- …
+### Negative Consequences
 
-## Pros and Cons of the Options <!-- optional -->
+- Since we'll be tying our versions somewhat to USWDS versions, we won't necessarily be able to easily release patches for previous versions of USWDS if needed.
+- Sometimes USWDS release types don’t always seem to accurately indicate what kind of update it is (i.e., whether something is actually breaking or not), and this could result in our versions not accurately following the semantic versioning standard.
+
+Ultimately, this decision is easily changed if we try this approach but discover it has unforeseen shortcomings. For example, if a USWDS patch or minor release somehow results in what feel like breaking changes for ReactUSWDS, where end users need to modify their code in order to maintain functionality, we should feel able to revisit this decision.
+
+## Pros and Cons of the Options
 
 ### Bump the ReactUSWDS major version when updating USWDS minor & major versions
 
@@ -91,10 +95,5 @@ When updating the USWDS dependency in this project, we’ll decide what kind of 
 
 - Good, because it will result in intentional updates to ReactUSWDS code whenever the USWDS version is updated
 - Bad, because it may decrease consistency in how we handle USWDS updates
-
-## Links <!-- optional -->
-
-- [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
-- … <!-- numbers of links can vary -->
 
 <!-- markdownlint-disable-file MD013 -->
