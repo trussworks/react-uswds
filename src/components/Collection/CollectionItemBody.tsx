@@ -64,8 +64,11 @@ export const CollectionItemBody = ({
           {description}
         </p>
       )}
-      {authors.length > 0 && formattedDate && (
-        <ul className="usa-collection__meta" aria-label="More Information">
+      {(authors.length > 0 || formattedDate) && (
+        <ul
+          className="usa-collection__meta"
+          aria-label="More Information"
+          data-testid="collection-more-info">
           {authors.length > 0 && (
             <li
               className="usa-collection__meta-item"
@@ -83,7 +86,10 @@ export const CollectionItemBody = ({
         </ul>
       )}
       {topics.length > 0 && (
-        <ul className="usa-collection__meta" aria-label="Topics">
+        <ul
+          className="usa-collection__meta"
+          aria-label="Topics"
+          data-testid="collection-topics">
           {topics.map((tag) => (
             <li
               key={tag.label}
