@@ -31,10 +31,16 @@ export const Table = ({
     [`${styles.fullwidth}`]: fullWidth,
     [`${styles.fixed}`]: fixed,
     'usa-table--striped': striped,
-    'usa-table--compact': compact && stackedStyle === 'none',
+    'usa-table--compact': compact,
     'usa-table--stacked': stackedStyle === 'default',
     'usa-table--stacked-header': stackedStyle === 'headers',
   })
+
+  if (compact && stackedStyle !== 'none') {
+    console.warn(
+      'USWDS states that compact styling is not suitable for use with stacked variants. See USWDS Table component, Table variants for more information: https://designsystem.digital.gov/components/table'
+    )
+  }
 
   const table = (
     <table className={classes} data-testid="table">

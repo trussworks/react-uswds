@@ -21,6 +21,11 @@ Source: https://designsystem.digital.gov/components/table/
         type: 'boolean',
       },
     },
+    striped: {
+      control: {
+        type: 'boolean',
+      },
+    },
     stackedStyle: {
       control: {
         type: 'select',
@@ -84,7 +89,7 @@ const scrollableTestContent = (
         <th rowSpan={2}>
           Federal Budget <br /> Baseline Projections
         </th>
-        <th colSpan={2} scope="col" className="text-center">
+        <th colSpan={2} className="text-center">
           2017
         </th>
         <th colSpan={2} className="text-center">
@@ -321,9 +326,13 @@ export const fixed = (): React.ReactElement => (
   </Table>
 )
 
-export const scrollable = (): React.ReactElement => (
+export const scrollable = (argTypes): React.ReactElement => (
   <>
-    <Table bordered scrollable caption="This is a scrollable table">
+    <Table
+      scrollable
+      bordered={argTypes.bordered}
+      striped={argTypes.striped}
+      caption="This is a scrollable table">
       {scrollableTestContent}
     </Table>
     <p>* in billions of dollars. Data for illustration purposes only.</p>
@@ -331,13 +340,13 @@ export const scrollable = (): React.ReactElement => (
 )
 
 export const striped = (argTypes): React.ReactElement => (
-  <Table bordered={argTypes.bordered} striped caption="This is a striped table">
+  <Table striped bordered={argTypes.bordered} caption="This is a striped table">
     {testContent}
   </Table>
 )
 
-export const compact = (): React.ReactElement => (
-  <Table compact caption="This is a compact table">
+export const compact = (argTypes): React.ReactElement => (
+  <Table compact striped={argTypes.striped} caption="This is a compact table">
     {testContent}
   </Table>
 )
