@@ -84,7 +84,7 @@ const scrollableTestContent = (
         <th rowSpan={2}>
           Federal Budget <br /> Baseline Projections
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="col" className="text-center">
           2017
         </th>
         <th colSpan={2} className="text-center">
@@ -322,13 +322,16 @@ export const fixed = (): React.ReactElement => (
 )
 
 export const scrollable = (): React.ReactElement => (
-  <Table bordered scrollable caption="This is a scrollable table">
-    {scrollableTestContent}
-  </Table>
+  <>
+    <Table bordered scrollable caption="This is a scrollable table">
+      {scrollableTestContent}
+    </Table>
+    <p>* in billions of dollars. Data for illustration purposes only.</p>
+  </>
 )
 
-export const striped = (): React.ReactElement => (
-  <Table striped caption="This is a striped table">
+export const striped = (argTypes): React.ReactElement => (
+  <Table bordered={argTypes.bordered} striped caption="This is a striped table">
     {testContent}
   </Table>
 )
