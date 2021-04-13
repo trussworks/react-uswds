@@ -47,9 +47,10 @@ export interface State {
   inputValue: string
 }
 
-export const useCombobox = (
+export const useComboBox = (
   initialState: State,
-  optionsList: ComboBoxOption[]
+  optionsList: ComboBoxOption[],
+  disableFiltering = false
 ): [State, React.Dispatch<Action>] => {
   const isPartialMatch = (
     needle: string
@@ -58,7 +59,10 @@ export const useCombobox = (
       option.label.toLowerCase().includes(needle.toLowerCase())
   }
 
-  function reducer(state: State, action: Action): State {
+  const filterOptions = (needle: string): ComboBoxOption[] =>
+    disableFiltering ? optionsList : optionsList.filter(isPartialMatch(needle))
+
+  const reducer = (state: State, action: Action): State => {
     switch (action.type) {
       case ActionTypes.SELECT_OPTION:
         return {
@@ -68,14 +72,14 @@ export const useCombobox = (
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
           filter: undefined,
-          filteredOptions: optionsList.filter(isPartialMatch('')),
+          filteredOptions: filterOptions(''),
         }
       case ActionTypes.UPDATE_FILTER: {
         const newState = {
           ...state,
           isOpen: true,
           filter: action.value,
-          filteredOptions: optionsList.filter(isPartialMatch(action.value)),
+          filteredOptions: filterOptions(action.value),
           inputValue: action.value,
         }
 
@@ -104,7 +108,7 @@ export const useCombobox = (
         }
 
         if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = optionsList.filter(isPartialMatch(''))
+          newState.filteredOptions = filterOptions('')
           newState.inputValue = ''
         }
 
@@ -130,7 +134,7 @@ export const useCombobox = (
           focusMode: FocusMode.Input,
           selectedOption: undefined,
           filter: undefined,
-          filteredOptions: optionsList.filter(isPartialMatch('')),
+          filteredOptions: filterOptions(''),
         }
       case ActionTypes.BLUR: {
         const newState = {
@@ -141,7 +145,7 @@ export const useCombobox = (
         }
 
         if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = optionsList.filter(isPartialMatch(''))
+          newState.filteredOptions = filterOptions('')
         }
 
         if (!state.selectedOption) {

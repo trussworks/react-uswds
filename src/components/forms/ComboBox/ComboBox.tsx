@@ -1,7 +1,7 @@
 import React, { KeyboardEvent, FocusEvent, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
-import { ActionTypes, Action, State, useCombobox } from './useCombobox'
+import { ActionTypes, Action, State, useComboBox } from './useComboBox'
 
 /*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
     The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
@@ -37,6 +37,7 @@ interface ComboBoxProps {
   noResults?: string
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
+  disableFiltering?: boolean
 }
 
 interface InputProps {
@@ -79,7 +80,7 @@ export const ComboBox = ({
   noResults,
   selectProps,
   inputProps,
-  ...customProps
+  disableFiltering = false,
 }: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
 
@@ -100,7 +101,7 @@ export const ComboBox = ({
     inputValue: defaultOption ? defaultOption.label : '',
   }
 
-  const [state, dispatch] = useCombobox(initialState, options)
+  const [state, dispatch] = useComboBox(initialState, options, disableFiltering)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const itemRef = useRef<HTMLLIElement>(null)
@@ -271,8 +272,7 @@ export const ComboBox = ({
       data-testid="combo-box"
       className={containerClasses}
       id={id}
-      ref={containerRef}
-      {...customProps}>
+      ref={containerRef}>
       <select
         className="usa-select usa-sr-only usa-combo-box__select"
         name={name}
