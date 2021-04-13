@@ -30,12 +30,6 @@ export const Checkbox = ({
   const checkboxClasses = classnames('usa-checkbox__input', {
     'usa-checkbox__input--tile': tile,
   })
-  const description =
-    labelDescription != null ? (
-      <span className="usa-checkbox__label-description">
-        {labelDescription}
-      </span>
-    ) : null
 
   return (
     <div data-testid="checkbox" className={classes}>
@@ -49,12 +43,11 @@ export const Checkbox = ({
       />
       <label className="usa-checkbox__label" htmlFor={id}>
         {label}
-        {
-          labelDescription && 
-            <span className="usa-checkbox__label-description">
-              {labelDescription}
-            </span>
-        }
+        {labelDescription && (
+          <span className="usa-checkbox__label-description">
+            {labelDescription}
+          </span>
+        )}
       </label>
     </div>
   )
