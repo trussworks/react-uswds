@@ -139,7 +139,7 @@ export const ComboBox = ({
       event.preventDefault()
       dispatch({
         type: ActionTypes.FOCUS_OPTION,
-        option: state.filteredOptions[0],
+        option: state.selectedOption || state.filteredOptions[0],
       })
     } else if (event.key === 'Tab') {
       // Clear button is not visible in this case so manually handle focus
