@@ -72,7 +72,7 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
           filter: undefined,
-          filteredOptions: filterOptions(''),
+          filteredOptions: optionsList,
         }
       case ActionTypes.UPDATE_FILTER: {
         const newState = {
@@ -108,7 +108,7 @@ export const useComboBox = (
         }
 
         if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = filterOptions('')
+          newState.filteredOptions = optionsList
           newState.inputValue = ''
         }
 
@@ -134,7 +134,7 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           selectedOption: undefined,
           filter: undefined,
-          filteredOptions: filterOptions(''),
+          filteredOptions: optionsList,
         }
       case ActionTypes.BLUR: {
         const newState = {
@@ -145,7 +145,7 @@ export const useComboBox = (
         }
 
         if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = filterOptions('')
+          newState.filteredOptions = optionsList
         }
 
         if (!state.selectedOption) {
