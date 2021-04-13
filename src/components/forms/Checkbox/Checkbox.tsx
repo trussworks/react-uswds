@@ -49,7 +49,12 @@ export const Checkbox = ({
       />
       <label className="usa-checkbox__label" htmlFor={id}>
         {label}
-        {description}
+        {
+          labelDescription && 
+            <span className="usa-checkbox__label-description">
+              {labelDescription}
+            </span>
+        }
       </label>
     </div>
   )
