@@ -120,6 +120,12 @@ export const ComboBox = ({
     }
   }, [state.focusMode, state.focusedOption])
 
+  useEffect(() => {
+    if (state.isOpen && state.selectedOption && itemRef.current) {
+      itemRef.current.scrollIntoView()
+    }
+  }, [state.isOpen])
+
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
   useEffect(() => {
