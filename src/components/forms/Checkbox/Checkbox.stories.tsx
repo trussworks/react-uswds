@@ -42,7 +42,7 @@ export const WithLabelDescription = (): React.ReactElement => (
     id="checkbox"
     name="checkbox"
     label="My Checkbox"
-    labelDescription="Optional label description"
+    labelDescription="This is optional text that can be used to describe the label in more detail."
   />
 )
 
@@ -55,7 +55,7 @@ export const tileWithLabelDescription = (): React.ReactElement => (
     id="checkbox"
     name="checkbox"
     label="My Checkbox"
-    labelDescription="Optional label description"
+    labelDescription="This is optional text that can be used to describe the label in more detail."
     tile
   />
 )
