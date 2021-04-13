@@ -16,9 +16,13 @@ export { SideNav } from './components/SideNav/SideNav'
 /** Collection components */
 export { Collection } from './components/Collection/Collection'
 export { CollectionItem } from './components/Collection/CollectionItem'
-export { CalendarCollectionItem } from './components/Collection/CalendarCollectionItem'
-export { HeadingCollectionItem } from './components/Collection/HeadingCollectionItem'
-export { ThumbnailCollectionItem } from './components/Collection/ThumbnailCollectionItem'
+export { CollectionHeading } from './components/Collection/CollectionHeading'
+export { CollectionDescription } from './components/Collection/CollectionDescription'
+export { CollectionMeta } from './components/Collection/CollectionMeta'
+export { CollectionMetaItem } from './components/Collection/CollectionMetaItem'
+export { CollectionMetaItemTag } from './components/Collection/CollectionMetaItemTag'
+export { CollectionThumbnail } from './components/Collection/CollectionThumbnail'
+export { CollectionCalendarDate } from './components/Collection/CollectionCalendarDate'
 
 /** Grid components */
 export { GridContainer } from './components/grid/GridContainer/GridContainer'

@@ -1,38 +1,22 @@
 import React from 'react'
-import { CollectionItemBody } from './CollectionItemBody'
-
-interface Topic {
-  type: 'new' | 'default'
-  label: string
-}
+import classnames from 'classnames'
 
 interface CollectionItemProps {
-  heading: string
-  href: string
-  description: string
-  authors: string[]
-  dateTime: string
-  topics: Topic[]
+  variantComponent?: React.ReactNode
 }
 
 export const CollectionItem = ({
-  heading,
-  href,
-  description,
-  authors,
-  dateTime,
-  topics,
-}: CollectionItemProps): React.ReactElement => {
+  className,
+  children,
+  variantComponent,
+  ...props
+}: CollectionItemProps & JSX.IntrinsicElements['li']): React.ReactElement => {
+  const classes = classnames('usa-collection__item', className)
+
   return (
-    <li className="usa-collection__item">
-      <CollectionItemBody
-        heading={heading}
-        href={href}
-        description={description}
-        authors={authors}
-        dateTime={dateTime}
-        topics={topics}
-      />
+    <li className={classes} {...props}>
+      {variantComponent}
+      <div className="usa-collection__body">{children}</div>
     </li>
   )
 }
