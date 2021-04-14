@@ -349,7 +349,9 @@ export const ComboBox = ({
         role="listbox"
         hidden={!state.isOpen}>
         {state.filteredOptions.map((option, index) => {
-          const focused = option === state.focusedOption
+          const focused =
+            option === state.focusedOption ||
+            (!state.focusedOption && option === options[0])
           const selected = option === state.selectedOption
           const itemClasses = classnames('usa-combo-box__list-option', {
             'usa-combo-box__list-option--focused': focused,

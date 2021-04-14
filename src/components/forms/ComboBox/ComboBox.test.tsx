@@ -18,6 +18,8 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 describe('ComboBox component', () => {
+  window.HTMLElement.prototype.scrollIntoView = jest.fn()
+
   it('renders without errors', () => {
     const { getByTestId } = render(
       <ComboBox
@@ -1260,5 +1262,24 @@ describe('ComboBox component', () => {
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveTextContent('NOTHING')
     })
+  })
+
+  it('applies the focus class to the first item in the list when opened and no item is selected', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        onChange={jest.fn()}
+      />
+    )
+
+    const firstItem = getByTestId('combo-box-option-list').children[0]
+
+    userEvent.click(getByTestId('combo-box-toggle'))
+
+    expect(firstItem).toBeVisible()
+    expect(firstItem).not.toHaveFocus()
+    expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
   })
 })
