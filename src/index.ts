@@ -59,6 +59,7 @@ export { IdentifierLink } from './components/Identifier/IdentifierLink/Identifie
 export { IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
 export { IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
 export { IdentifierLogo } from './components/Identifier/IdentifierLogo/IdentifierLogo'
+export { IdentifierLogos } from './components/Identifier/IdentifierLogos/IdentifierLogos'
 export { IdentifierMasthead } from './components/Identifier/IdentifierMasthead/IdentifierMasthead'
 
 /** Footer components */

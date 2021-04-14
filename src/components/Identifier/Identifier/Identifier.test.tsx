@@ -76,7 +76,7 @@ const testLinksSpanish = [
 ]
 
 const testIdentifierGovContent = [
-  <div className="usa-identifier__container" key="one">
+  <>
     <div
       data-testid="identifierGov-description"
       className="usa-identifier__usagov-description">
@@ -89,11 +89,11 @@ const testIdentifierGovContent = [
       className="usa-link">
       Visit USA.gov
     </a>
-  </div>,
+  </>,
 ]
 
 const testIdentifierGovContentSpanish = [
-  <div className="usa-identifier__container" key="two">
+  <>
     <div
       data-testid="identifierGov-description"
       className="usa-identifier__usagov-description">
@@ -106,7 +106,7 @@ const testIdentifierGovContentSpanish = [
       className="usa-link">
       Visite USAGov en Español
     </a>
-  </div>,
+  </>,
 ]
 
 describe('Identifier component', () => {
