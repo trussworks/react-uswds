@@ -70,9 +70,13 @@ export const useComboBox = (
       regex.test(option.label.toLowerCase())
     )
 
+    const closestMatch =
+      filteredOptions.length > 0 ? filteredOptions[0] : optionsList[0]
+    const optionsToDisplay = disableFiltering ? optionsList : filteredOptions
+
     return {
-      closestMatch: filteredOptions[0],
-      optionsToDisplay: disableFiltering ? optionsList : filteredOptions,
+      closestMatch: closestMatch,
+      optionsToDisplay: optionsToDisplay,
     }
   }
 
