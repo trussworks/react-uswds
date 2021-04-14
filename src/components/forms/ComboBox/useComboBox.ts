@@ -111,7 +111,11 @@ export const useComboBox = (
         if (disableFiltering || !state.selectedOption) {
           newState.closestMatch = closestMatch
         } else if (state.selectedOption) {
-          newState.closestMatch = state.selectedOption
+          if (newState.filteredOptions.includes(state.selectedOption)) {
+            newState.closestMatch = state.selectedOption
+          } else {
+            newState.closestMatch = closestMatch
+          }
         }
 
         return newState
