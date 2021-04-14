@@ -114,12 +114,11 @@ describe('Identifier component', () => {
     const { getByRole, getAllByRole, queryByTestId } = render(
       <Identifier>
         <IdentifierMasthead aria-label="Agency identifier">
-          <div className="usa-identifier__container">
-            <div className="usa-identifier__logos">
-              <IdentifierLogo href="#" className="custom-class-name">
-                {testIdentifierLogo}
-              </IdentifierLogo>
-            </div>
+          <div className="usa-identifier__logos">
+            <IdentifierLogo href="#" className="custom-class-name">
+              {testIdentifierLogo}
+            </IdentifierLogo>
+
             <div
               data-testid="identifierMasthead-agency-description"
               className="usa-identifier__identity"
@@ -154,12 +153,11 @@ describe('Identifier component', () => {
     const { getAllByRole, queryByText } = render(
       <Identifier>
         <IdentifierMasthead aria-label="Identificador de la agencia">
-          <div className="usa-identifier__container">
-            <div className="usa-identifier__logos">
-              <IdentifierLogo href="#">
-                {testIdentifierLogoSpanish}
-              </IdentifierLogo>
-            </div>
+          <div className="usa-identifier__logos">
+            <IdentifierLogo href="#">
+              {testIdentifierLogoSpanish}
+            </IdentifierLogo>
+
             <div
               data-testid="identifierMasthead-agency-description"
               className="usa-identifier__identity"
@@ -192,19 +190,17 @@ describe('Identifier component', () => {
     const { getAllByRole, getByTestId, queryByText } = render(
       <Identifier>
         <IdentifierMasthead aria-label="Agency identifier">
-          <div className="usa-identifier__container">
-            <div
-              data-testid="identifierMasthead-agency-description"
-              className="usa-identifier__identity"
-              aria-label="Agency description">
-              <p className="usa-identifier__identity-domain">
-                domain.edu.mil.gov
-              </p>
-              <p className="usa-identifier__identity-disclaimer">
-                {`An official website of the `}
-                <a href="testlink">Test Agency Name</a>
-              </p>
-            </div>
+          <div
+            data-testid="identifierMasthead-agency-description"
+            className="usa-identifier__identity"
+            aria-label="Agency description">
+            <p className="usa-identifier__identity-domain">
+              domain.edu.mil.gov
+            </p>
+            <p className="usa-identifier__identity-disclaimer">
+              {`An official website of the `}
+              <a href="testlink">Test Agency Name</a>
+            </p>
           </div>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -227,28 +223,26 @@ describe('Identifier component', () => {
     const { getAllByRole, queryByText } = render(
       <Identifier>
         <IdentifierMasthead aria-label="Agency identifier">
-          <div className="usa-identifier__container">
-            <div className="usa-identifier__logos">
-              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-            </div>
-            <div
-              data-testid="identifierMasthead-agency-description"
-              className="usa-identifier__identity"
-              aria-label="Agency description">
-              <p className="usa-identifier__identity-domain">
-                domain.edu.mil.gov
-              </p>
-              <p className="usa-identifier__identity-disclaimer">
-                {`An official website of the `}
-                <a href="testlink">Test Agency Name</a>
-                {`, `}
-                <a href="secondTestLink">Second Test Agency Name</a>
-                {`, and the `}
-                <a href="ThirdTestLink">Third Test Agency Name</a>
-              </p>
-            </div>
+          <div className="usa-identifier__logos">
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          </div>
+          <div
+            data-testid="identifierMasthead-agency-description"
+            className="usa-identifier__identity"
+            aria-label="Agency description">
+            <p className="usa-identifier__identity-domain">
+              domain.edu.mil.gov
+            </p>
+            <p className="usa-identifier__identity-disclaimer">
+              {`An official website of the `}
+              <a href="testlink">Test Agency Name</a>
+              {`, `}
+              <a href="secondTestLink">Second Test Agency Name</a>
+              {`, and the `}
+              <a href="ThirdTestLink">Third Test Agency Name</a>
+            </p>
           </div>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -269,23 +263,21 @@ describe('Identifier component', () => {
     const { getByTestId } = render(
       <Identifier>
         <IdentifierMasthead aria-label="Agency identifier">
-          <div className="usa-identifier__container">
-            <div className="usa-identifier__logos">
-              <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-            </div>
-            <div
-              data-testid="identifierMasthead-agency-description"
-              className="usa-identifier__identity"
-              aria-label="Agency description">
-              <p className="usa-identifier__identity-domain">
-                domain.edu.mil.gov
-              </p>
-              <p className="usa-identifier__identity-disclaimer">
-                {`An official website of the `}
-                <a href="testlink">Test Agency Name</a>
-                {`. Produced and published at taxpayer expense.`}
-              </p>
-            </div>
+          <div className="usa-identifier__logos">
+            <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          </div>
+          <div
+            data-testid="identifierMasthead-agency-description"
+            className="usa-identifier__identity"
+            aria-label="Agency description">
+            <p className="usa-identifier__identity-domain">
+              domain.edu.mil.gov
+            </p>
+            <p className="usa-identifier__identity-disclaimer">
+              {`An official website of the `}
+              <a href="testlink">Test Agency Name</a>
+              {`. Produced and published at taxpayer expense.`}
+            </p>
           </div>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
