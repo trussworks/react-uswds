@@ -71,7 +71,7 @@ export const withLabel = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select A Fruit</Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
     </Form>
   )
