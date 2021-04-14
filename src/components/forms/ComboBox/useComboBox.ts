@@ -77,9 +77,6 @@ export const useComboBox = (
   }
 
   const reducer = (state: State, action: Action): State => {
-    console.log(ActionTypes[action.type], action)
-    console.log('State:', state)
-
     switch (action.type) {
       case ActionTypes.SELECT_OPTION:
         return {
@@ -101,7 +98,12 @@ export const useComboBox = (
           isOpen: true,
           filteredOptions: optionsToDisplay,
           inputValue: action.value,
-          closestMatch: closestMatch,
+        }
+
+        if (disableFiltering || !state.selectedOption) {
+          newState.closestMatch = closestMatch
+        } else if (state.selectedOption) {
+          newState.closestMatch = state.selectedOption
         }
 
         return newState

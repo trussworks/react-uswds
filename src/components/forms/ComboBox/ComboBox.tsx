@@ -373,7 +373,6 @@ export const ComboBox = ({
         className="usa-combo-box__list"
         role="listbox"
         hidden={!state.isOpen}>
-        {console.log('Rendering Options', state)}
         {state.filteredOptions.map((option, index) => {
           const focused = option === state.focusedOption
           const closestMatch = option === state.closestMatch
