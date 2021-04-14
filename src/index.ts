@@ -55,6 +55,7 @@ export { Title } from './components/header/Title/Title'
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'
 export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
+export { IdentifierIdentity } from './components/Identifier/IdentifierIdentity/IdentifierIdentity'
 export { IdentifierLink } from './components/Identifier/IdentifierLink/IdentifierLink'
 export { IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
 export { IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
