@@ -390,6 +390,26 @@ describe('ComboBox component', () => {
       expect(input).toHaveTextContent('')
       expect(optionsList.children.length).toEqual(fruitOptions.length)
     })
+
+    it('does not hide items when disableFiltering is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          disableFiltering
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.click(input)
+      userEvent.type(input, 'zzzzzzzzzz')
+
+      expect(getByTestId('combo-box-option-list').children.length).toBe(
+        fruitOptions.length
+      )
+    })
   })
 
   describe('clear button', () => {
