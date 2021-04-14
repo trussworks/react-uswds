@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { render } from '@testing-library/react'
-
 import { IdentifierLogos } from './IdentifierLogos'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
@@ -14,14 +12,6 @@ const testIdentifierLogo = (
   />
 )
 
-// const testIdentifierLogoSpanish = (
-//   <img
-//     src={dotGovIcon}
-//     className="usa-identifier__logo-img"
-//     alt="Logo de Test Agency Name"
-//   />
-// )
-
 describe('IdentifierLogos component', () => {
   it('renders without errors', () => {
     const { getByRole } = render(
@@ -31,15 +21,15 @@ describe('IdentifierLogos component', () => {
     expect(getByRole('img')).toBeInTheDocument()
   })
 
-  it('accepts a custom class name', () => {
+  it('can apply attributes passed in as props', () => {
     const { queryByTestId } = render(
-      <IdentifierLogos className="custom-class">
+      <IdentifierLogos aria-label="Test aria label" className="custom-class">
         {testIdentifierLogo}
       </IdentifierLogos>
     )
 
-    expect(queryByTestId('identifierLogos')).toHaveClass(
-      'usa-identifier__logos custom-class'
-    )
+    const testIdQuery = queryByTestId('identifierLogos')
+    expect(testIdQuery).toHaveClass('usa-identifier__logos custom-class')
+    expect(testIdQuery).toHaveAttribute('aria-label', 'Test aria label')
   })
 })

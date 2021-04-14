@@ -118,9 +118,7 @@ describe('Identifier component', () => {
             <IdentifierLogo href="#" className="custom-class-name">
               {testIdentifierLogo}
             </IdentifierLogo>
-
             <div
-              data-testid="identifierMasthead-agency-description"
               className="usa-identifier__identity"
               aria-label="Agency description">
               <p className="usa-identifier__identity-domain">
