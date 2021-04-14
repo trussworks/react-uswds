@@ -9,9 +9,14 @@ interface IdentifierLogosProps {
 export const IdentifierLogos = ({
   children,
   className,
+  ...divProps
 }: IdentifierLogosProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-identifier__logos', className)
-  return <div className={classes}>{children}</div>
+  return (
+    <div data-testid="identifierLogos" className={classes} {...divProps}>
+      {children}
+    </div>
+  )
 }
 
 export default IdentifierLogos

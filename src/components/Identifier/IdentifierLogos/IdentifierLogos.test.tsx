@@ -30,4 +30,16 @@ describe('IdentifierLogos component', () => {
 
     expect(getByRole('img')).toBeInTheDocument()
   })
+
+  it('accepts a custom class name', () => {
+    const { queryByTestId } = render(
+      <IdentifierLogos className="custom-class">
+        {testIdentifierLogo}
+      </IdentifierLogos>
+    )
+
+    expect(queryByTestId('identifierLogos')).toHaveClass(
+      'usa-identifier__logos custom-class'
+    )
+  })
 })
