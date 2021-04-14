@@ -157,7 +157,7 @@ export const ComboBox = ({
         })
       }
     }
-  })
+  }, [state.focusMode])
 
   const handleInputKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
@@ -176,14 +176,14 @@ export const ComboBox = ({
       if (state.isOpen && !state.selectedOption) {
         // If there are filtered options, prevent default
         // If there are "No Results Found", tab over to prevent a keyboard trap
-        if (state.filteredOptions.length > 0) {
+        const optionToFocus = disableFiltering
+          ? state.closestMatch
+          : state.selectedOption || state.closestMatch
+        if (optionToFocus) {
           event.preventDefault()
-          const option = disableFiltering
-            ? state.closestMatch
-            : state.selectedOption || state.closestMatch
           dispatch({
             type: ActionTypes.FOCUS_OPTION,
-            option: option,
+            option: optionToFocus,
           })
         } else {
           dispatch({
@@ -220,7 +220,7 @@ export const ComboBox = ({
       !newTarget ||
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
 
-    if (newTargetIsOutside) {
+    if (newTargetIsOutside && state.focusMode !== FocusMode.None) {
       dispatch({ type: ActionTypes.BLUR })
     }
   }
@@ -279,13 +279,13 @@ export const ComboBox = ({
       dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (event.key === 'Tab' || event.key === 'Enter') {
       event.preventDefault()
-      const option = disableFiltering
+      const optionToSelect = disableFiltering
         ? state.closestMatch
         : state.focusedOption || state.closestMatch
-      if (state.focusedOption) {
+      if (optionToSelect) {
         dispatch({
           type: ActionTypes.SELECT_OPTION,
-          option: option,
+          option: optionToSelect,
         })
       }
     } else if (event.key === 'ArrowDown' || event.key === 'Down') {

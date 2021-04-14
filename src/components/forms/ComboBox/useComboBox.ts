@@ -46,7 +46,7 @@ export interface State {
   focusMode: FocusMode
   filteredOptions: ComboBoxOption[]
   inputValue: string
-  closestMatch: ComboBoxOption
+  closestMatch?: ComboBoxOption
 }
 
 interface FilterResults {
@@ -70,13 +70,17 @@ export const useComboBox = (
       regex.test(option.label.toLowerCase())
     )
 
-    const closestMatch =
-      filteredOptions.length > 0 ? filteredOptions[0] : optionsList[0]
-    const optionsToDisplay = disableFiltering ? optionsList : filteredOptions
+    if (disableFiltering) {
+      return {
+        closestMatch:
+          filteredOptions.length > 0 ? filteredOptions[0] : optionsList[0],
+        optionsToDisplay: optionsList,
+      }
+    }
 
     return {
-      closestMatch: closestMatch,
-      optionsToDisplay: optionsToDisplay,
+      closestMatch: filteredOptions[0],
+      optionsToDisplay: filteredOptions,
     }
   }
 
