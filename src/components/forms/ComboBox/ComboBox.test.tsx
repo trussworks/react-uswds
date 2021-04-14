@@ -599,6 +599,27 @@ describe('ComboBox component', () => {
       )
     })
 
+    it('does reverts to the selected option when there is no input and enter is pressed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          defaultValue="avocado"
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+
+      userEvent.type(input, 'zzz{enter}')
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(input).toHaveValue('Avocado')
+      expect(input).toHaveFocus()
+      expect(getByTestId('combo-box-clear-button')).toBeVisible()
+    })
+
     it('focuses the first filtered option with tab', () => {
       const { getByTestId } = render(
         <ComboBox
@@ -886,7 +907,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          defaultValue={'avocado'}
+          defaultValue="avocado"
           onChange={jest.fn()}
         />
       )

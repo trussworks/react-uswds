@@ -197,19 +197,27 @@ export const ComboBox = ({
           type: ActionTypes.BLUR,
         })
       }
-    } else if (event.key === 'Enter' && !state.selectedOption) {
-      event.preventDefault()
-      const selectedOption = state.filteredOptions.find(
-        (option) =>
-          option.label.toLowerCase() === state.inputValue.toLowerCase()
-      )
-      if (selectedOption) {
-        dispatch({
-          type: ActionTypes.SELECT_OPTION,
-          option: selectedOption,
-        })
-      } else {
-        dispatch({ type: ActionTypes.CLEAR })
+    } else if (event.key === 'Enter') {
+      if (state.isOpen) {
+        event.preventDefault()
+        const exactMatch = state.filteredOptions.find(
+          (option) =>
+            option.label.toLowerCase() === state.inputValue.toLowerCase()
+        )
+        if (exactMatch) {
+          dispatch({
+            type: ActionTypes.SELECT_OPTION,
+            option: exactMatch,
+          })
+        } else {
+          if (state.selectedOption) {
+            dispatch({
+              type: ActionTypes.CLOSE_LIST,
+            })
+          } else {
+            dispatch({ type: ActionTypes.CLEAR })
+          }
+        }
       }
     }
   }
