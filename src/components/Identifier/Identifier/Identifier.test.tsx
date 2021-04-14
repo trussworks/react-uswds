@@ -77,16 +77,11 @@ const testLinksSpanish = [
 
 const testIdentifierGovContent = [
   <>
-    <div
-      data-testid="identifierGov-description"
-      className="usa-identifier__usagov-description">
+    <div className="usa-identifier__usagov-description">
       Looking for U.S. government information and services?
     </div>
     &nbsp;
-    <a
-      data-testid="identifierGov-link"
-      href="https://www.usa.gov/"
-      className="usa-link">
+    <a href="https://www.usa.gov/" className="usa-link">
       Visit USA.gov
     </a>
   </>,
@@ -94,16 +89,11 @@ const testIdentifierGovContent = [
 
 const testIdentifierGovContentSpanish = [
   <>
-    <div
-      data-testid="identifierGov-description"
-      className="usa-identifier__usagov-description">
+    <div className="usa-identifier__usagov-description">
       ¿Necesita información y servicios del Gobierno?
     </div>
     &nbsp;
-    <a
-      data-testid="identifierGov-link"
-      href="https://www.usa.gov/espanol/"
-      className="usa-link">
+    <a href="https://www.usa.gov/espanol/" className="usa-link">
       Visite USAGov en Español
     </a>
   </>,
@@ -157,7 +147,6 @@ describe('Identifier component', () => {
             </IdentifierLogo>
 
             <div
-              data-testid="identifierMasthead-agency-description"
               className="usa-identifier__identity"
               aria-label="Descripción de la agencia">
               <p className="usa-identifier__identity-domain">
@@ -227,7 +216,6 @@ describe('Identifier component', () => {
             <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
           </div>
           <div
-            data-testid="identifierMasthead-agency-description"
             className="usa-identifier__identity"
             aria-label="Agency description">
             <p className="usa-identifier__identity-domain">
