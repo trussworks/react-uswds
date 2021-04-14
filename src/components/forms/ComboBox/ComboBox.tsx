@@ -9,6 +9,9 @@ import { ActionTypes, Action, State, useComboBox } from './useComboBox'
     There is the ability to pass in custom props directly to the select and input.
     This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
 */
+
+const DEFAULT_FILTER = '.*{{query}}.*'
+
 export interface ComboBoxOption {
   value: string
   label: string
@@ -25,6 +28,11 @@ export enum FocusMode {
   Item,
 }
 
+export interface CustomizableFilter {
+  filter: string
+  extras?: Record<string, string>
+}
+
 interface ComboBoxProps {
   id: string
   name: string
@@ -37,6 +45,7 @@ interface ComboBoxProps {
   noResults?: string
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
+  customFilter?: CustomizableFilter
   disableFiltering?: boolean
 }
 
@@ -80,6 +89,7 @@ export const ComboBox = ({
   noResults,
   selectProps,
   inputProps,
+  customFilter,
   disableFiltering = false,
 }: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
@@ -91,17 +101,25 @@ export const ComboBox = ({
     })
   }
 
+  const filter: CustomizableFilter = customFilter
+    ? customFilter
+    : { filter: DEFAULT_FILTER }
+
   const initialState: State = {
     isOpen: false,
     selectedOption: defaultOption ? defaultOption : undefined,
     focusedOption: undefined,
     focusMode: FocusMode.None,
     filteredOptions: options,
-    filter: undefined,
     inputValue: defaultOption ? defaultOption.label : '',
   }
 
-  const [state, dispatch] = useComboBox(initialState, options, disableFiltering)
+  const [state, dispatch] = useComboBox(
+    initialState,
+    options,
+    disableFiltering,
+    filter
+  )
 
   const containerRef = useRef<HTMLDivElement>(null)
   const itemRef = useRef<HTMLLIElement>(null)

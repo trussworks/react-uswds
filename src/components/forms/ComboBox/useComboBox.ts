@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
-import type { ComboBoxOption } from './ComboBox'
+import type { ComboBoxOption, CustomizableFilter } from './ComboBox'
 import { FocusMode } from './ComboBox'
+import { generateDynamicRegExp } from './utils'
 
 export enum ActionTypes {
   SELECT_OPTION,
@@ -42,7 +43,6 @@ export interface State {
   selectedOption?: ComboBoxOption
   focusedOption?: ComboBoxOption
   focusMode: FocusMode
-  filter?: string
   filteredOptions: ComboBoxOption[]
   inputValue: string
 }
@@ -50,17 +50,19 @@ export interface State {
 export const useComboBox = (
   initialState: State,
   optionsList: ComboBoxOption[],
-  disableFiltering = false
+  disableFiltering: boolean,
+  customizableFilter: CustomizableFilter
 ): [State, React.Dispatch<Action>] => {
-  const isPartialMatch = (
-    needle: string
-  ): ((event: ComboBoxOption) => boolean) => {
-    return (option: ComboBoxOption): boolean =>
-      option.label.toLowerCase().includes(needle.toLowerCase())
+  const filterOptions = (needle: string): ComboBoxOption[] => {
+    const regex = generateDynamicRegExp(
+      customizableFilter.filter,
+      needle,
+      customizableFilter.extras
+    )
+    return optionsList.filter((option) =>
+      regex.test(option.label.toLowerCase())
+    )
   }
-
-  const filterOptions = (needle: string): ComboBoxOption[] =>
-    disableFiltering ? optionsList : optionsList.filter(isPartialMatch(needle))
 
   const reducer = (state: State, action: Action): State => {
     switch (action.type) {
@@ -71,14 +73,12 @@ export const useComboBox = (
           selectedOption: action.option,
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
-          filter: undefined,
           filteredOptions: optionsList,
         }
       case ActionTypes.UPDATE_FILTER: {
         const newState = {
           ...state,
           isOpen: true,
-          filter: action.value,
           filteredOptions: filterOptions(action.value),
           inputValue: action.value,
         }
@@ -133,7 +133,6 @@ export const useComboBox = (
           isOpen: false,
           focusMode: FocusMode.Input,
           selectedOption: undefined,
-          filter: undefined,
           filteredOptions: optionsList,
         }
       case ActionTypes.BLUR: {
@@ -142,10 +141,7 @@ export const useComboBox = (
           isOpen: false,
           focusMode: FocusMode.None,
           focusedOption: undefined,
-        }
-
-        if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = optionsList
+          filteredOptions: optionsList,
         }
 
         if (!state.selectedOption) {
