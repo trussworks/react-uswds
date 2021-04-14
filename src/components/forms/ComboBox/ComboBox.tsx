@@ -122,7 +122,7 @@ export const ComboBox = ({
 
   useEffect(() => {
     if (state.isOpen && state.selectedOption && itemRef.current) {
-      itemRef.current.scrollIntoView()
+      itemRef.current.scrollIntoView(false)
     }
   }, [state.isOpen])
 
