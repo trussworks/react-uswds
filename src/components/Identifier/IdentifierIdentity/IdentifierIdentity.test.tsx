@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { queryByTestId, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { IdentifierIdentity } from './IdentifierIdentity'
 
 const testData = [
   <p className="usa-identifier__identity-disclaimer" key="one">
     {`An official website of the `}
-    <a href="#slsf">Test Agency Name</a>
+    <a href="#">Test Agency Name</a>
   </p>,
 ]
 describe('IdentifierIdentity component', () => {
