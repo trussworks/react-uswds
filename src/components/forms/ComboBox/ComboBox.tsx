@@ -140,10 +140,9 @@ export const ComboBox = ({
     }
   }, [state.focusMode, state.focusedOption])
 
-  // When opened, the list should scroll to the closest match.
+  // When opened, the list should scroll to the closest match
   useEffect(() => {
     if (state.isOpen && state.closestMatch && closestMatchRef.current) {
-      console.log('scrolling...')
       closestMatchRef.current.scrollIntoView(false)
     }
   }, [state.isOpen, state.closestMatch])
@@ -167,7 +166,10 @@ export const ComboBox = ({
       event.preventDefault()
       dispatch({
         type: ActionTypes.FOCUS_OPTION,
-        option: state.selectedOption || state.filteredOptions[0],
+        option:
+          state.selectedOption ||
+          state.closestMatch ||
+          state.filteredOptions[0],
       })
     } else if (event.key === 'Tab') {
       // Clear button is not visible in this case so manually handle focus
@@ -176,9 +178,12 @@ export const ComboBox = ({
         // If there are "No Results Found", tab over to prevent a keyboard trap
         if (state.filteredOptions.length > 0) {
           event.preventDefault()
+          const option = disableFiltering
+            ? state.closestMatch
+            : state.selectedOption || state.closestMatch
           dispatch({
             type: ActionTypes.FOCUS_OPTION,
-            option: state.filteredOptions[0],
+            option: option,
           })
         } else {
           dispatch({
@@ -274,10 +279,13 @@ export const ComboBox = ({
       dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (event.key === 'Tab' || event.key === 'Enter') {
       event.preventDefault()
+      const option = disableFiltering
+        ? state.closestMatch
+        : state.focusedOption || state.closestMatch
       if (state.focusedOption) {
         dispatch({
           type: ActionTypes.SELECT_OPTION,
-          option: state.focusedOption,
+          option: option,
         })
       }
     } else if (event.key === 'ArrowDown' || event.key === 'Down') {

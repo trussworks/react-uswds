@@ -46,7 +46,7 @@ export interface State {
   focusMode: FocusMode
   filteredOptions: ComboBoxOption[]
   inputValue: string
-  closestMatch?: ComboBoxOption
+  closestMatch: ComboBoxOption
 }
 
 interface FilterResults {
@@ -151,7 +151,7 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           selectedOption: undefined,
           filteredOptions: optionsList,
-          closestMatch: undefined,
+          closestMatch: optionsList[0],
         }
       case ActionTypes.BLUR: {
         const newState = {
