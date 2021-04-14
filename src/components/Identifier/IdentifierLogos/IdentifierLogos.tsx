@@ -1,7 +1,17 @@
 import React from 'react'
+import classnames from 'classnames'
 
-export const IdentifierLogos = (): React.ReactElement => {
-  return <div>logos text</div>
+interface IdentifierLogosProps {
+  children: React.ReactNode
+  className?: string
+}
+
+export const IdentifierLogos = ({
+  children,
+  className,
+}: IdentifierLogosProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+  const classes = classnames('usa-identifier__logos', className)
+  return <div className={classes}>{children}</div>
 }
 
 export default IdentifierLogos

@@ -8,6 +8,7 @@ import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
 import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
+import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
 
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
@@ -128,9 +129,9 @@ const testIdentifierGovContentSpanish = [
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
-      <div className="usa-identifier__logos">
+      <IdentifierLogos>
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </div>
+      </IdentifierLogos>
       <div
         data-testid="identifierMasthead-agency-description"
         className="usa-identifier__identity"
