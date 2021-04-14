@@ -38,6 +38,7 @@ export type Action =
   | {
       type: ActionTypes.BLUR
     }
+
 export interface State {
   isOpen: boolean
   selectedOption?: ComboBoxOption
@@ -45,6 +46,12 @@ export interface State {
   focusMode: FocusMode
   filteredOptions: ComboBoxOption[]
   inputValue: string
+  closestMatch?: ComboBoxOption
+}
+
+interface FilterResults {
+  closestMatch: ComboBoxOption
+  optionsToDisplay: ComboBoxOption[]
 }
 
 export const useComboBox = (
@@ -53,18 +60,26 @@ export const useComboBox = (
   disableFiltering: boolean,
   customizableFilter: CustomizableFilter
 ): [State, React.Dispatch<Action>] => {
-  const filterOptions = (needle: string): ComboBoxOption[] => {
+  const getPotentialMatches = (needle: string): FilterResults => {
     const regex = generateDynamicRegExp(
       customizableFilter.filter,
       needle,
       customizableFilter.extras
     )
-    return optionsList.filter((option) =>
+    const filteredOptions = optionsList.filter((option) =>
       regex.test(option.label.toLowerCase())
     )
+
+    return {
+      closestMatch: filteredOptions[0],
+      optionsToDisplay: disableFiltering ? optionsList : filteredOptions,
+    }
   }
 
   const reducer = (state: State, action: Action): State => {
+    console.log(ActionTypes[action.type], action)
+    console.log('State:', state)
+
     switch (action.type) {
       case ActionTypes.SELECT_OPTION:
         return {
@@ -74,20 +89,19 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
           filteredOptions: optionsList,
+          closestMatch: action.option,
         }
       case ActionTypes.UPDATE_FILTER: {
+        const { closestMatch, optionsToDisplay } = getPotentialMatches(
+          action.value
+        )
+
         const newState = {
           ...state,
           isOpen: true,
-          filteredOptions: filterOptions(action.value),
+          filteredOptions: optionsToDisplay,
           inputValue: action.value,
-        }
-
-        if (
-          state.selectedOption &&
-          state.selectedOption.label !== action.value
-        ) {
-          newState.selectedOption = undefined
+          closestMatch: closestMatch,
         }
 
         return newState
@@ -125,6 +139,7 @@ export const useComboBox = (
           isOpen: true,
           focusedOption: action.option,
           focusMode: FocusMode.Item,
+          closestMatch: action.option,
         }
       case ActionTypes.CLEAR:
         return {
@@ -134,6 +149,7 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           selectedOption: undefined,
           filteredOptions: optionsList,
+          closestMatch: undefined,
         }
       case ActionTypes.BLUR: {
         const newState = {
@@ -146,6 +162,10 @@ export const useComboBox = (
 
         if (!state.selectedOption) {
           newState.inputValue = ''
+          newState.closestMatch = optionsList[0]
+        } else {
+          newState.inputValue = state.selectedOption.label
+          newState.closestMatch = state.selectedOption
         }
 
         return newState

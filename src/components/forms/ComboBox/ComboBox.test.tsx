@@ -127,8 +127,7 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-option-list')).toBeVisible()
   })
 
-  xit('highlights the first option when opening the menu, when no default value exists', () => {
-    // TODO: 🐛 right now highlights nothing
+  it('highlights the first option when opening the menu, when no default value exists', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -138,12 +137,13 @@ describe('ComboBox component', () => {
       />
     )
 
-    userEvent.click(getByTestId('combo-box-input'))
+    const firstItem = getByTestId('combo-box-option-list').children[0]
 
-    expect(getByTestId('combo-box-option-apple')).toHaveAttribute(
-      'aria-selected',
-      'true'
-    )
+    userEvent.click(getByTestId('combo-box-toggle'))
+
+    expect(firstItem).toBeVisible()
+    expect(firstItem).not.toHaveFocus()
+    expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
   })
 
   it('highlights the default value when opening the menu, when one exists', () => {
@@ -368,6 +368,27 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(
         fruitOptions.length
       )
+    })
+
+    it('resets the list of items if filtered then blurred without selecting an element', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      const optionsList = getByTestId('combo-box-option-list')
+
+      userEvent.type(input, 'apple')
+      expect(optionsList.children.length).toBeLessThan(fruitOptions.length)
+
+      fireEvent.blur(input)
+      expect(input).toHaveTextContent('')
+      expect(optionsList.children.length).toEqual(fruitOptions.length)
     })
   })
 
@@ -839,7 +860,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('deselects option when pressing delete inside input', () => {
+    it('hides the clear button when typing in the input, but does not clear the selection', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -855,6 +876,9 @@ describe('ComboBox component', () => {
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+
+      fireEvent.blur(input)
+      expect
     })
 
     it('does not hijack focus while tabbing when another field has focus', () => {
@@ -1262,24 +1286,5 @@ describe('ComboBox component', () => {
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveTextContent('NOTHING')
     })
-  })
-
-  it('applies the focus class to the first item in the list when opened and no item is selected', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-
-    const firstItem = getByTestId('combo-box-option-list').children[0]
-
-    userEvent.click(getByTestId('combo-box-toggle'))
-
-    expect(firstItem).toBeVisible()
-    expect(firstItem).not.toHaveFocus()
-    expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
   })
 })

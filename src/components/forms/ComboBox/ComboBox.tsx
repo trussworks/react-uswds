@@ -112,6 +112,7 @@ export const ComboBox = ({
     focusMode: FocusMode.None,
     filteredOptions: options,
     inputValue: defaultOption ? defaultOption.label : '',
+    closestMatch: defaultOption ? defaultOption : options[0],
   }
 
   const [state, dispatch] = useComboBox(
@@ -122,7 +123,8 @@ export const ComboBox = ({
   )
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const itemRef = useRef<HTMLLIElement>(null)
+  const focusedItemRef = useRef<HTMLLIElement>(null)
+  const closestMatchRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
     onChange && onChange(state.selectedOption?.value || undefined)
@@ -132,17 +134,19 @@ export const ComboBox = ({
     if (
       state.focusMode === FocusMode.Item &&
       state.focusedOption &&
-      itemRef.current
+      focusedItemRef.current
     ) {
-      itemRef.current.focus()
+      focusedItemRef.current.focus()
     }
   }, [state.focusMode, state.focusedOption])
 
+  // When opened, the list should scroll to the closest match.
   useEffect(() => {
-    if (state.isOpen && state.selectedOption && itemRef.current) {
-      itemRef.current.scrollIntoView(false)
+    if (state.isOpen && state.closestMatch && closestMatchRef.current) {
+      console.log('scrolling...')
+      closestMatchRef.current.scrollIntoView(false)
     }
-  }, [state.isOpen])
+  }, [state.isOpen, state.closestMatch])
 
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
@@ -285,8 +289,11 @@ export const ComboBox = ({
     }
   }
 
+  const isPristine =
+    state.selectedOption && state.selectedOption.label === state.inputValue
+
   const containerClasses = classnames('usa-combo-box', className, {
-    'usa-combo-box--pristine': state.selectedOption,
+    'usa-combo-box--pristine': isPristine,
   })
   const listID = `combobox-${name}-list`
   const assistiveHintID = `combobox-${name}-assistive-hint`
@@ -336,7 +343,7 @@ export const ComboBox = ({
           onClick={(): void => dispatch({ type: ActionTypes.CLEAR })}
           data-testid="combo-box-clear-button"
           onKeyDown={handleClearKeyDown}
-          hidden={!state.selectedOption}>
+          hidden={!isPristine}>
           &nbsp;
         </button>
       </span>
@@ -366,19 +373,21 @@ export const ComboBox = ({
         className="usa-combo-box__list"
         role="listbox"
         hidden={!state.isOpen}>
+        {console.log('Rendering Options', state)}
         {state.filteredOptions.map((option, index) => {
-          const focused =
-            option === state.focusedOption ||
-            (!state.focusedOption && option === options[0])
+          const focused = option === state.focusedOption
+          const closestMatch = option === state.closestMatch
           const selected = option === state.selectedOption
           const itemClasses = classnames('usa-combo-box__list-option', {
-            'usa-combo-box__list-option--focused': focused,
+            'usa-combo-box__list-option--focused': focused || closestMatch,
             'usa-combo-box__list-option--selected': selected,
           })
 
           return (
             <li
-              ref={focused ? itemRef : null}
+              ref={
+                focused ? focusedItemRef : closestMatch ? closestMatchRef : null
+              }
               value={option.value}
               key={option.value}
               className={itemClasses}
@@ -391,7 +400,7 @@ export const ComboBox = ({
               onKeyDown={handleListItemKeyDown}
               onBlur={handleListItemBlur}
               data-testid={`combo-box-option-${option.value}`}
-              onMouseMove={(): void =>
+              onMouseEnter={(): void =>
                 dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
               }
               onClick={(): void => {

@@ -5,6 +5,8 @@ import { TimePicker } from './TimePicker'
 import userEvent from '@testing-library/user-event'
 
 describe('TimePicker Component', () => {
+  window.HTMLElement.prototype.scrollIntoView = jest.fn()
+
   beforeEach(() => {
     jest.clearAllMocks()
   })
