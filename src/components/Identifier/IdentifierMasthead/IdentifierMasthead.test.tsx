@@ -36,7 +36,6 @@ describe('IdentifierMasthead component', () => {
           </IdentifierLogo>
         </div>
         <div
-          data-testid="identifier__identity"
           className="usa-identifier__identity"
           aria-label="Agency description">
           <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
@@ -76,9 +75,7 @@ describe('IdentifierMasthead component', () => {
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
         </div>
-        <div
-          className="usa-identifier__identity"
-          aria-label="Agency description">
+        <div aria-label="Agency description">
           <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
           <p className="usa-identifier__identity-disclaimer">
             {`An official website of the `}
