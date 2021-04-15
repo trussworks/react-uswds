@@ -599,7 +599,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('reverts to the selected option when there is no input and enter is pressed', () => {
+    it('reverts to the selected option when there is not an exact match and enter is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
