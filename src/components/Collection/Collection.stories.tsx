@@ -211,6 +211,69 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
   </div>
 )
 
+export const collectionWithHeadingItems = (): React.ReactElement => (
+  <div className="tablet:grid-col-6">
+    <Collection>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://digital.gov/guides/mobile-principles/?dg">
+            The eight principles of mobile-friendliness
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>Digital.gov</CollectionMetaItem>
+        </CollectionMeta>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://designsystem.digital.gov/maturity-model/">
+            The USWDS maturity model
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>U.S. Web Design System</CollectionMetaItem>
+        </CollectionMeta>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a className="usa-link" href="https://truss.works">
+            A news item that’s on our own site
+          </a>
+        </CollectionHeading>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
+            The key role of product owners in federated data projects
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>18F</CollectionMetaItem>
+        </CollectionMeta>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
+            Progress on Cross-Agency Priority (CAP) goals and Agency Priority
+            Goals (APGs)
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>Performance.gov</CollectionMetaItem>
+        </CollectionMeta>
+      </CollectionItem>
+    </Collection>
+  </div>
+)
+
 export const collectionWithMixedItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
@@ -242,6 +305,18 @@ export const collectionWithMixedItems = (): React.ReactElement => (
           <CollectionMetaItemTag>OMB</CollectionMetaItemTag>
         </CollectionMeta>
       </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://digital.gov/guides/mobile-principles/?dg">
+            The eight principles of mobile-friendliness
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>Digital.gov</CollectionMetaItem>
+        </CollectionMeta>
+      </CollectionItem>
       <CollectionItem
         variantComponent={
           <CollectionThumbnail
@@ -268,6 +343,18 @@ export const collectionWithMixedItems = (): React.ReactElement => (
         </CollectionMeta>
         <CollectionMeta aria-label="Topics">
           <CollectionMetaItemTag>SBA</CollectionMetaItemTag>
+        </CollectionMeta>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://designsystem.digital.gov/maturity-model/">
+            The USWDS maturity model
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>U.S. Web Design System</CollectionMetaItem>
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem
@@ -299,6 +386,38 @@ export const collectionWithMixedItems = (): React.ReactElement => (
           <CollectionMetaItemTag>APG</CollectionMetaItemTag>
           <CollectionMetaItemTag>PMA</CollectionMetaItemTag>
           <CollectionMetaItemTag>Success Story</CollectionMetaItemTag>
+        </CollectionMeta>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a className="usa-link" href="https://truss.works">
+            A news item that’s on our own site
+          </a>
+        </CollectionHeading>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
+            The key role of product owners in federated data projects
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>18F</CollectionMetaItem>
+        </CollectionMeta>
+      </CollectionItem>
+      <CollectionItem>
+        <CollectionHeading>
+          <a
+            className="usa-link"
+            href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
+            Progress on Cross-Agency Priority (CAP) goals and Agency Priority
+            Goals (APGs)
+          </a>
+        </CollectionHeading>
+        <CollectionMeta aria-label="More Information">
+          <CollectionMetaItem>Performance.gov</CollectionMetaItem>
         </CollectionMeta>
       </CollectionItem>
     </Collection>
