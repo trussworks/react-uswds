@@ -109,40 +109,40 @@ const scrollableTestContent = (
         </th>
       </tr>
       <tr>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           %GDP
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           USD*
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           %GDP
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           USD*
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           %GDP
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           USD*
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           %GDP
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           USD*
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           %GDP
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           USD*
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           %GDP
         </th>
-        <th scope="col" className="font-mono-sm text-tabular text-right">
+        <th scope="col" className="text-right">
           USD*
         </th>
       </tr>
