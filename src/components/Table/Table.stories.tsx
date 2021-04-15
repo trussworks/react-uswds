@@ -89,22 +89,22 @@ const scrollableTestContent = (
         <th rowSpan={2}>
           Federal Budget <br /> Baseline Projections
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="colgroup" className="text-center">
           2017
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="colgroup" className="text-center">
           2018
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="colgroup" className="text-center">
           2019
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="colgroup" className="text-center">
           2020
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="colgroup" className="text-center">
           2021
         </th>
-        <th colSpan={2} className="text-center">
+        <th colSpan={2} scope="colgroup" className="text-center">
           Hist. Avg.
         </th>
       </tr>
@@ -326,13 +326,9 @@ export const fixed = (): React.ReactElement => (
   </Table>
 )
 
-export const scrollable = (argTypes): React.ReactElement => (
+export const scrollable = (): React.ReactElement => (
   <>
-    <Table
-      scrollable
-      bordered={argTypes.bordered}
-      striped={argTypes.striped}
-      caption="This is a scrollable table">
+    <Table scrollable bordered striped caption="This is a scrollable table">
       {scrollableTestContent}
     </Table>
     <p>* in billions of dollars. Data for illustration purposes only.</p>
@@ -346,46 +342,53 @@ export const striped = (argTypes): React.ReactElement => (
 )
 
 export const compact = (argTypes): React.ReactElement => (
-  <Table compact striped={argTypes.striped} caption="This is a compact table">
+  <Table
+    compact
+    bordered={argTypes.bordered}
+    striped={argTypes.striped}
+    caption="This is a compact table">
     {testContent}
   </Table>
 )
 
 export const stackedStylesDemo = (argTypes): React.ReactElement => (
-  <div className="width-mobile">
-    <Table
-      bordered={argTypes.bordered}
-      stackedStyle={argTypes.stackedStyle}
-      caption="This is a stacked table (when on a mobile-width screen)">
-      <thead>
-        <tr>
-          <th scope="col">Document title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Year</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th data-label="Document title" scope="row">
-            Declaration of Independence
-          </th>
-          <td data-label="Description">
-            Statement adopted by the Continental Congress declaring independence
-            from the British Empire.
-          </td>
-          <td data-label="Year">1776</td>
-        </tr>
-        <tr>
-          <th data-label="Document title" scope="row">
-            Bill of Rights
-          </th>
-          <td data-label="Description">
-            The first ten amendments of the U.S. Constitution guaranteeing
-            rights and freedoms.
-          </td>
-          <td data-label="Year">1791</td>
-        </tr>
-      </tbody>
-    </Table>
-  </div>
+  <Table
+    bordered={argTypes.bordered}
+    stackedStyle={argTypes.stackedStyle}
+    caption="This is a stacked table (when on a mobile-width screen)">
+    <thead>
+      <tr>
+        <th scope="col">Document title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th data-label="Document title" scope="row">
+          Declaration of Independence
+        </th>
+        <td data-label="Description">
+          Statement adopted by the Continental Congress declaring independence
+          from the British Empire.
+        </td>
+        <td data-label="Year">1776</td>
+      </tr>
+      <tr>
+        <th data-label="Document title" scope="row">
+          Bill of Rights
+        </th>
+        <td data-label="Description">
+          The first ten amendments of the U.S. Constitution guaranteeing rights
+          and freedoms.
+        </td>
+        <td data-label="Year">1791</td>
+      </tr>
+    </tbody>
+  </Table>
 )
+stackedStylesDemo.parameters = {
+  viewport: {
+    defaultViewport: 'iphone6',
+  },
+}
