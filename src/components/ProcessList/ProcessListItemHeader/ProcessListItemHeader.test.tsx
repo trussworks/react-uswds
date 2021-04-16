@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { ProcessListItemHeader } from './ProcessListItemHeader'
 
-const testChildren = <h4>ProcessListItemHeader h4</h4>
+const testChildren = 'ProcessListItemHeader test children'
 
 describe('ProcessListItemHeader component', () => {
   it('renders without errors', () => {
