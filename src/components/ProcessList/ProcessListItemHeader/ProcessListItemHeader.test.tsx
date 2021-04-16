@@ -5,23 +5,29 @@ import { ProcessListItemHeader } from './ProcessListItemHeader'
 const testChildren = <h4>ProcessListItemHeader h4</h4>
 
 describe('ProcessListItemHeader component', () => {
-  // it('renders without errors', () => {
-  //   const { getByRole } = render(
-  //     <ProcessListItemHeader>{testChildren}</ProcessListItemHeader>
-  //   )
-  //   expect(getByRole('heading')).toBeInTheDocument()
-  // })
-
-  it('applies attributes passed in as props', () => {
+  it('renders without errors', () => {
     const { queryByTestId } = render(
-      <ProcessListItemHeader aria-label="Process list item header">
+      <ProcessListItemHeader headerType="h4">
         {testChildren}
       </ProcessListItemHeader>
     )
+    expect(queryByTestId('listItemHeader')).toBeInTheDocument()
+  })
 
-    expect(queryByTestId('listItemHeader')).toHaveAttribute(
+  it('applies attributes passed in as props', () => {
+    const { queryByTestId } = render(
+      <ProcessListItemHeader
+        headerType="h4"
+        className="custom-class"
+        aria-label="Process list item header">
+        {testChildren}
+      </ProcessListItemHeader>
+    )
+    const testIdQuery = queryByTestId('listItemHeader')
+    expect(testIdQuery).toHaveAttribute(
       'aria-label',
       'Process list item header'
     )
+    expect(testIdQuery).toHaveClass('usa-process-list__heading custom-class')
   })
 })

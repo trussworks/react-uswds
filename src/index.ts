@@ -91,6 +91,7 @@ export { Search } from './components/Search/Search'
 /** ProcessList components */
 export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
 export { ProcessListItem } from './components/ProcessList/ProcessListItem/ProcessListItem'
+export { ProcessListItemHeader } from './components/ProcessList/ProcessListItemHeader/ProcessListItemHeader'
 
 /** Truss-designed components */
 export {
