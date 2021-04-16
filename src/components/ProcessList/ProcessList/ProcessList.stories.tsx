@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ProcessList } from './ProcessList'
 import { ProcessListItem } from '../ProcessListItem/ProcessListItem'
+import { ProcessListItemHeader } from '../ProcessListItemHeader/ProcessListItemHeader'
 
 export default {
   title: 'Components/ProcessList',
@@ -22,7 +23,7 @@ Source: https://designsystem.digital.gov/components/process-list
 export const processListDefault = (): React.ReactElement => (
   <ProcessList>
     <ProcessListItem>
-      <h4 className="usa-process-list__heading">Start a process</h4>
+      <ProcessListItemHeader>Start a process</ProcessListItemHeader>
       <p className="margin-top-05">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
         ipsum sed pharetra gravida, orci magna rhoncus neque.
@@ -66,9 +67,12 @@ export const processListDefault = (): React.ReactElement => (
 export const processListNoTextCustomSizing = (): React.ReactElement => (
   <ProcessList>
     <ProcessListItem className="padding-bottom-4">
-      <p className="usa-process-list__heading font-sans-xl line-height-sans-1">
+      {/* <p className="usa-process-list__heading font-sans-xl line-height-sans-1">
         Start a process.
-      </p>
+      </p> */}
+      <ProcessListItemHeader className="font-sans-xl line-height-sans-1">
+        Start a process
+      </ProcessListItemHeader>
     </ProcessListItem>
     <ProcessListItem className="padding-bottom-4">
       <p className="usa-process-list__heading font-sans-xl line-height-sans-1">
