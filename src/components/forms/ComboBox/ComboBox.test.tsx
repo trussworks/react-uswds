@@ -356,7 +356,39 @@ describe('ComboBox component', () => {
       )
     })
 
-    //TODO clears filters when cleared
+    it('clears filters when ComboBox is un-focused and no option was selected (implicitly clearing the ComboBox)', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      const list = getByTestId('combo-box-option-list')
+      const input = getByTestId('combo-box-input')
+
+      // Filter the list
+      userEvent.type(input, 'Av')
+      expect(list.children.length).toEqual(2) // Avocado and Guava
+
+      // Click somewhere else
+      userEvent.click(getByTestId('outside'))
+      expect(input).toHaveTextContent('')
+      expect(list.children.length).toEqual(fruitOptions.length)
+
+      // Return the combo box
+      userEvent.click(input)
+      expect(input).toHaveTextContent('')
+      expect(list.children.length).toEqual(fruitOptions.length)
+      expect(list.children[0]).toHaveClass(
+        'usa-combo-box__list-option--focused'
+      )
+    })
 
     it('shows no results message when there is no match', () => {
       const { getByTestId } = render(
