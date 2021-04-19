@@ -142,8 +142,15 @@ export const ComboBox = ({
 
   // When opened, the list should scroll to the closest match
   useEffect(() => {
-    if (state.isOpen && state.closestMatch && closestMatchRef.current) {
-      closestMatchRef.current.scrollIntoView(false)
+    if (state.isOpen && state.closestMatch) {
+      if (closestMatchRef.current) {
+        closestMatchRef.current.scrollIntoView(false)
+      } else if (
+        focusedItemRef.current &&
+        state.focusMode === FocusMode.Input
+      ) {
+        focusedItemRef.current.scrollIntoView(false)
+      }
     }
   }, [state.isOpen, state.closestMatch])
 
@@ -406,7 +413,7 @@ export const ComboBox = ({
               value={option.value}
               key={option.value}
               className={itemClasses}
-              tabIndex={focused ? 0 : -1}
+              tabIndex={focused || closestMatch ? 0 : -1}
               role="option"
               aria-selected={selected}
               aria-setsize={64}

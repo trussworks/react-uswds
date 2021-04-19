@@ -18,7 +18,8 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 describe('ComboBox component', () => {
-  window.HTMLElement.prototype.scrollIntoView = jest.fn()
+  const scrollFunction = jest.fn()
+  window.HTMLElement.prototype.scrollIntoView = scrollFunction
 
   it('renders without errors', () => {
     const { getByTestId } = render(
@@ -243,6 +244,27 @@ describe('ComboBox component', () => {
     'scrolls options list to the very top when the menu opens if nothing is selected'
   )
 
+  it('scrolls to the selected option when the list is opened', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        onChange={jest.fn()}
+        defaultValue={'mango'}
+      />
+    )
+
+    const mango = getByTestId('combo-box-option-mango')
+
+    jest.clearAllMocks()
+    userEvent.click(getByTestId('combo-box-toggle'))
+    expect(mango).toHaveClass(
+      'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
+    )
+    expect(scrollFunction).toHaveBeenCalledTimes(1)
+  })
+
   describe('filtering', () => {
     it('shows all options on initial load when no default value exists', () => {
       const { getByTestId } = render(
@@ -333,6 +355,8 @@ describe('ComboBox component', () => {
         fruitOptions.length
       )
     })
+
+    //TODO clears filters when cleared
 
     it('shows no results message when there is no match', () => {
       const { getByTestId } = render(
@@ -1270,8 +1294,7 @@ describe('ComboBox component', () => {
   })
 
   describe('accessibility and internationalization', () => {
-    xit('adds correct aria attributes to options when no item selected', () => {
-      // TODO: 🐛 Currently no item focused, should highlighting first item in list in this case
+    it('adds correct aria attributes to options when no item selected', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
