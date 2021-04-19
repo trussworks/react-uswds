@@ -2449,7 +2449,7 @@
     "@babel/runtime" "^7.12.5"
 
 "@trussworks/react-uswds@file:./..":
-  version "1.14.0"
+  version "1.15.0"
 
 "@types/anymatch@*":
   version "1.3.1"
@@ -4434,9 +4434,9 @@ core-js-compat@^3.6.2, core-js-compat@^3.8.0:
     semver "7.0.0"
 
 core-js-pure@^3.0.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.9.0.tgz#326cc74e1fef8b7443a6a793ddb0adfcd81f9efb"
-  integrity sha512-3pEcmMZC9Cq0D4ZBh3pe2HLtqxpGNJBLXF/kZ2YzK17RbKp94w0HFbdbSx8H8kAlZG5k76hvLrkPm57Uyef+kg==
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.10.1.tgz#28642697dfcf02e0fd9f4d9891bd03a22df28ecf"
+  integrity sha512-PeyJH2SE0KuxY5eCGNWA+W+CeDpB6M1PN3S7Am7jSv/Ttuxz2SnWbIiVQOn/TDaGaGtxo8CRWHkXwJscbUHtVw==
 
 core-js@^2.4.0:
   version "2.6.12"
