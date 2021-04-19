@@ -1,10 +1,9 @@
 import React, { forwardRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
-import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
 import { formatDate, isIosDevice } from './utils'
 
-import type { DatePickerLocalization } from './i18n'
+import { DatePickerLocalization, EN_US } from './i18n'
 
 export const Day = forwardRef(
   (
@@ -24,7 +23,7 @@ export const Day = forwardRef(
       isRangeStart = false,
       isRangeEnd = false,
       isWithinRange = false,
-      localization,
+      localization = EN_US,
     }: {
       date: Date
       onClick: (value: string) => void
@@ -41,7 +40,7 @@ export const Day = forwardRef(
       isRangeStart?: boolean
       isRangeEnd?: boolean
       isWithinRange?: boolean
-      localization: DatePickerLocalization
+      localization?: DatePickerLocalization
     },
     ref: React.ForwardedRef<HTMLButtonElement>
   ): React.ReactElement => {
@@ -66,12 +65,8 @@ export const Day = forwardRef(
       'usa-date-picker__calendar__date--within-range': isWithinRange,
     })
 
-    let monthStr = MONTH_LABELS[parseInt(`${month}`)]
-    let dayStr = DAY_OF_WEEK_LABELS[parseInt(`${dayOfWeek}`)]
-    if (localization) {
-      monthStr = localization.months[parseInt(`${month}`)]
-      dayStr = localization.daysOfWeek[parseInt(`${dayOfWeek}`)]
-    }
+    const monthStr = localization.months[parseInt(`${month}`)]
+    const dayStr = localization.daysOfWeek[parseInt(`${dayOfWeek}`)]
 
     const handleClick = (): void => {
       onClick(formattedDate)

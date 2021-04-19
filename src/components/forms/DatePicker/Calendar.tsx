@@ -1,11 +1,6 @@
 import React, { useState, useRef, useEffect, KeyboardEvent } from 'react'
 
 import {
-  DAY_OF_WEEK_LABELS,
-  DAY_OF_WEEK_SHORT_LABELS,
-  MONTH_LABELS,
-} from './constants'
-import {
   today,
   addDays,
   subMonths,
@@ -43,7 +38,7 @@ import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
 import { FocusMode } from './DatePicker'
 
-import type { DatePickerLocalization } from './i18n'
+import { DatePickerLocalization, EN_US } from './i18n'
 
 export const Calendar = ({
   date,
@@ -54,7 +49,7 @@ export const Calendar = ({
   rangeDate,
   setStatuses,
   focusMode,
-  localization,
+  localization = EN_US,
 }: {
   date?: Date
   selectedDate?: Date
@@ -64,7 +59,7 @@ export const Calendar = ({
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
   focusMode: FocusMode
-  localization: DatePickerLocalization
+  localization?: DatePickerLocalization
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
@@ -101,26 +96,15 @@ export const Calendar = ({
   const focusedMonth = dateToDisplay.getMonth()
   const focusedYear = dateToDisplay.getFullYear()
 
-  let monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
-  let dayOfWeekShortLabels = DAY_OF_WEEK_SHORT_LABELS
-  let dayOfWeekLabels = DAY_OF_WEEK_LABELS
-  let backOneYear = 'Navigate back one year'
-  let backOneMonth = 'Navigate back one month'
-  let clickToSelectMonth = `${monthLabel}. Click to select month`
-  let clickToSelectYear = `${focusedYear}. Click to select year`
-  let forwardOneMonth = 'Navigate forward one month'
-  let forwardOneYear = 'Navigate forward one year'
-  if (localization) {
-    monthLabel = localization.months[parseInt(`${focusedMonth}`)]
-    dayOfWeekShortLabels = localization.daysOfWeekShort
-    dayOfWeekLabels = localization.daysOfWeek
-    backOneYear = localization.backOneYear
-    backOneMonth = localization.backOneMonth
-    clickToSelectMonth = `${monthLabel}. ${localization.clickToSelectMonth}`
-    clickToSelectYear = `${focusedYear}. ${localization.clickToSelectYear}`
-    forwardOneMonth = localization.forwardOneMonth
-    forwardOneYear = localization.forwardOneYear
-  }
+  const monthLabel = localization.months[parseInt(`${focusedMonth}`)]
+  const dayOfWeekShortLabels = localization.daysOfWeekShort
+  const dayOfWeekLabels = localization.daysOfWeek
+  const backOneYear = localization.backOneYear
+  const backOneMonth = localization.backOneMonth
+  const clickToSelectMonth = `${monthLabel}. ${localization.clickToSelectMonth}`
+  const clickToSelectYear = `${focusedYear}. ${localization.clickToSelectYear}`
+  const forwardOneMonth = localization.forwardOneMonth
+  const forwardOneYear = localization.forwardOneYear
 
   useEffect(() => {
     calendarWasHidden = false
@@ -161,7 +145,7 @@ export const Calendar = ({
     if (calendarWasHidden) {
       const newStatuses = [`${monthLabel} ${focusedYear}`]
       if (selectedDate && isSameDay(focusedDate, selectedDate)) {
-        const selectedDateText = localization?.selectedDate || 'Selected date'
+        const selectedDateText = localization.selectedDate
         newStatuses.unshift(selectedDateText)
       }
       setStatuses(newStatuses)
@@ -308,7 +292,7 @@ export const Calendar = ({
 
   const handleToggleMonthSelection = (): void => {
     setMode(CalendarModes.MONTH_PICKER)
-    const selectAMonth = localization?.selectAMonth || 'Select a month.'
+    const selectAMonth = localization.selectAMonth
     setStatuses([selectAMonth])
   }
 

@@ -13,7 +13,7 @@ import {
   VALIDATION_MESSAGE,
   DEFAULT_MIN_DATE,
 } from './constants'
-import { DatePickerLocalization, defaultLocalization } from './i18n'
+import { DatePickerLocalization, EN_US } from './i18n'
 import {
   formatDate,
   parseDateString,
@@ -62,7 +62,7 @@ export const DatePicker = ({
   rangeDate,
   onChange,
   onBlur,
-  localization = defaultLocalization,
+  localization = EN_US,
   ...inputProps
 }: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
@@ -188,17 +188,11 @@ export const DatePicker = ({
       setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
 
-      const statuses = localization?.statuses || [
-        'You can navigate by day using left and right arrows',
-        'Weeks by using up and down arrows',
-        'Months by using page up and page down keys',
-        'Years by using shift plus page up and shift plus page down',
-        'Home and end keys navigate to the beginning and end of a week',
-      ]
+      const statuses = localization.statuses
 
       const selectedDate = parseDateString(internalValue)
       if (selectedDate && isSameDay(selectedDate, addDays(displayDate, 0))) {
-        const selectedDateText = localization?.selectedDate || 'Selected date'
+        const selectedDateText = localization.selectedDate
         statuses.unshift(selectedDateText)
       }
 
@@ -248,7 +242,7 @@ export const DatePicker = ({
     className
   )
 
-  const toggleCalendar = localization?.toggleCalendar || 'Toggle calendar'
+  const toggleCalendar = localization.toggleCalendar
 
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."

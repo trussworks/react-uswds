@@ -20,7 +20,7 @@ export interface DatePickerLocalization {
   forwardOneMonth: string
 }
 
-export const defaultLocalization = {
+export const EN_US = {
   months: MONTH_LABELS,
   daysOfWeek: DAY_OF_WEEK_LABELS,
   daysOfWeekShort: DAY_OF_WEEK_SHORT_LABELS,

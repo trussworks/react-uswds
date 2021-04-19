@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
-import { MONTH_LABELS } from './constants'
 import {
   isDatesMonthOutsideMinOrMax,
   isSameMonth,
@@ -12,20 +11,20 @@ import {
   isIosDevice,
 } from './utils'
 
-import type { DatePickerLocalization } from './i18n'
+import { DatePickerLocalization, EN_US } from './i18n'
 
 export const MonthPicker = ({
   date,
   minDate,
   maxDate,
   handleSelectMonth,
-  localization,
+  localization = EN_US,
 }: {
   date: Date
   minDate: Date
   maxDate?: Date
   handleSelectMonth: (value: number) => void
-  localization: DatePickerLocalization
+  localization?: DatePickerLocalization
 }): React.ReactElement => {
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
@@ -96,7 +95,7 @@ export const MonthPicker = ({
     event.preventDefault()
   }
 
-  const monthNames = localization?.months || MONTH_LABELS
+  const monthNames = localization.months
 
   const months = monthNames.map((month, index) => {
     const monthToCheck = setMonth(date, index)
