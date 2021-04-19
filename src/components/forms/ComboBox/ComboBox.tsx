@@ -290,11 +290,10 @@ export const ComboBox = ({
       dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (event.key === 'Tab' || event.key === 'Enter') {
       event.preventDefault()
-      const optionToSelect = state.focusedOption
-      if (optionToSelect) {
+      if (state.focusedOption) {
         dispatch({
           type: ActionTypes.SELECT_OPTION,
-          option: optionToSelect,
+          option: state.focusedOption,
         })
       }
     } else if (event.key === 'ArrowDown' || event.key === 'Down') {
