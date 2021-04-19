@@ -154,7 +154,7 @@ Chosen option: **1.C** Formulate releases ad-hoc, supported via Modified Gitflow
   * Good, because it is suitable for small project with limited time available.
   * Good, because, as the standard/out-of-the-box branching strategies for new git projects, it should be familiar to developers of all skill levels.
   * Bad, because it does not scale well when development dependencies exist and a large number of people are actively contributing.
-  * Bad, because it does not provide clear direction for navigating development dependencies.
+  * Bad, because it does not provide clear direction for navigating changes to development dependencies.
 
 #### Standard [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 * Characteristics
