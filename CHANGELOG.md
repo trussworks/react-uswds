@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/trussworks/react-uswds/compare/1.14.0...1.15.0) (2021-04-12)
+
+
+### Features
+
+* Identifier component ([#1044](https://github.com/trussworks/react-uswds/issues/1044)) ([e79bc87](https://github.com/trussworks/react-uswds/commit/e79bc8773a3ff7d9096b8b65a9f6cb58f7d3a28a))
+* StepIndicator component ([#1047](https://github.com/trussworks/react-uswds/issues/1047)) ([d61988e](https://github.com/trussworks/react-uswds/commit/d61988eb90646d35e57b17c00bd392e4ce3c200e))
+* TimePicker component ([#1082](https://github.com/trussworks/react-uswds/issues/1082)) ([c7bfdee](https://github.com/trussworks/react-uswds/commit/c7bfdee95bda8c357f8b56e600e0c03be9ff922f))
+* Update to USWDS 2.9.0 ([#1048](https://github.com/trussworks/react-uswds/issues/1048)) ([3859eea](https://github.com/trussworks/react-uswds/commit/3859eeaca8505403bd3bb149b12b13fb950fc082))
+
+
+### Documentation & Examples
+
+* Add guidance for PR titles and testing in an application ([#1028](https://github.com/trussworks/react-uswds/issues/1028)) ([be3bed4](https://github.com/trussworks/react-uswds/commit/be3bed41eb973ba9bdc69c69d168ef7a13d17ccf))
+
 ## [1.14.0](https://github.com/trussworks/react-uswds/compare/1.13.2...1.14.0) (2021-03-22)
 
 
