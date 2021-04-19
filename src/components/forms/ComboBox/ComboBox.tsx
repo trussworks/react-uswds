@@ -112,7 +112,6 @@ export const ComboBox = ({
     focusMode: FocusMode.None,
     filteredOptions: options,
     inputValue: defaultOption ? defaultOption.label : '',
-    closestMatch: defaultOption ? defaultOption : options[0],
   }
 
   const [state, dispatch] = useComboBox(
@@ -124,7 +123,6 @@ export const ComboBox = ({
 
   const containerRef = useRef<HTMLDivElement>(null)
   const focusedItemRef = useRef<HTMLLIElement>(null)
-  const closestMatchRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
     onChange && onChange(state.selectedOption?.value || undefined)
@@ -142,17 +140,15 @@ export const ComboBox = ({
 
   // When opened, the list should scroll to the closest match
   useEffect(() => {
-    if (state.isOpen && state.closestMatch) {
-      if (closestMatchRef.current) {
-        closestMatchRef.current.scrollIntoView(false)
-      } else if (
-        focusedItemRef.current &&
-        state.focusMode === FocusMode.Input
-      ) {
-        focusedItemRef.current.scrollIntoView(false)
-      }
+    if (
+      state.isOpen &&
+      state.focusedOption &&
+      focusedItemRef.current &&
+      state.focusMode === FocusMode.Input
+    ) {
+      focusedItemRef.current.scrollIntoView(false)
     }
-  }, [state.isOpen, state.closestMatch])
+  }, [state.isOpen, state.focusedOption])
 
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
@@ -175,7 +171,7 @@ export const ComboBox = ({
         type: ActionTypes.FOCUS_OPTION,
         option:
           state.selectedOption ||
-          state.closestMatch ||
+          state.focusedOption ||
           state.filteredOptions[0],
       })
     } else if (event.key === 'Tab') {
@@ -184,8 +180,8 @@ export const ComboBox = ({
         // If there are filtered options, prevent default
         // If there are "No Results Found", tab over to prevent a keyboard trap
         const optionToFocus = disableFiltering
-          ? state.closestMatch
-          : state.selectedOption || state.closestMatch
+          ? state.focusedOption
+          : state.selectedOption || state.focusedOption
         if (optionToFocus) {
           event.preventDefault()
           dispatch({
@@ -294,9 +290,7 @@ export const ComboBox = ({
       dispatch({ type: ActionTypes.CLOSE_LIST })
     } else if (event.key === 'Tab' || event.key === 'Enter') {
       event.preventDefault()
-      const optionToSelect = disableFiltering
-        ? state.closestMatch
-        : state.focusedOption || state.closestMatch
+      const optionToSelect = state.focusedOption
       if (optionToSelect) {
         dispatch({
           type: ActionTypes.SELECT_OPTION,
@@ -398,22 +392,19 @@ export const ComboBox = ({
         hidden={!state.isOpen}>
         {state.filteredOptions.map((option, index) => {
           const focused = option === state.focusedOption
-          const closestMatch = option === state.closestMatch
           const selected = option === state.selectedOption
           const itemClasses = classnames('usa-combo-box__list-option', {
-            'usa-combo-box__list-option--focused': focused || closestMatch,
+            'usa-combo-box__list-option--focused': focused,
             'usa-combo-box__list-option--selected': selected,
           })
 
           return (
             <li
-              ref={
-                focused ? focusedItemRef : closestMatch ? closestMatchRef : null
-              }
+              ref={focused ? focusedItemRef : null}
               value={option.value}
               key={option.value}
               className={itemClasses}
-              tabIndex={focused || closestMatch ? 0 : -1}
+              tabIndex={focused ? 0 : -1}
               role="option"
               aria-selected={selected}
               aria-setsize={64}

@@ -46,7 +46,6 @@ export interface State {
   focusMode: FocusMode
   filteredOptions: ComboBoxOption[]
   inputValue: string
-  closestMatch?: ComboBoxOption
 }
 
 interface FilterResults {
@@ -94,7 +93,7 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
           filteredOptions: optionsList,
-          closestMatch: action.option,
+          focusedOption: action.option,
         }
       case ActionTypes.UPDATE_FILTER: {
         const { closestMatch, optionsToDisplay } = getPotentialMatches(
@@ -109,12 +108,12 @@ export const useComboBox = (
         }
 
         if (disableFiltering || !state.selectedOption) {
-          newState.closestMatch = closestMatch
+          newState.focusedOption = closestMatch
         } else if (state.selectedOption) {
           if (newState.filteredOptions.includes(state.selectedOption)) {
-            newState.closestMatch = state.selectedOption
+            newState.focusedOption = state.selectedOption
           } else {
-            newState.closestMatch = closestMatch
+            newState.focusedOption = closestMatch
           }
         }
 
@@ -125,7 +124,8 @@ export const useComboBox = (
           ...state,
           isOpen: true,
           focusMode: FocusMode.Input,
-          focusedOption: state.selectedOption,
+          focusedOption:
+            state.selectedOption || state.focusedOption || optionsList[0],
         }
       case ActionTypes.CLOSE_LIST: {
         const newState = {
@@ -153,7 +153,6 @@ export const useComboBox = (
           isOpen: true,
           focusedOption: action.option,
           focusMode: FocusMode.Item,
-          closestMatch: action.option,
         }
       case ActionTypes.CLEAR:
         return {
@@ -163,23 +162,22 @@ export const useComboBox = (
           focusMode: FocusMode.Input,
           selectedOption: undefined,
           filteredOptions: optionsList,
-          closestMatch: optionsList[0],
+          focusedOption: optionsList[0],
         }
       case ActionTypes.BLUR: {
         const newState = {
           ...state,
           isOpen: false,
           focusMode: FocusMode.None,
-          focusedOption: undefined,
           filteredOptions: optionsList,
         }
 
         if (!state.selectedOption) {
           newState.inputValue = ''
-          newState.closestMatch = optionsList[0]
+          newState.focusedOption = optionsList[0]
         } else {
           newState.inputValue = state.selectedOption.label
-          newState.closestMatch = state.selectedOption
+          newState.focusedOption = state.selectedOption
         }
 
         return newState
