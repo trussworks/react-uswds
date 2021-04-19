@@ -380,7 +380,7 @@ describe('DatePicker component', () => {
   describe('with localization props', () => {
     it('displays abbreviated translations for days of the week', () => {
       const { getByText, getByTestId } = render(
-        <DatePicker {...testProps} localization={sampleLocalization} />
+        <DatePicker {...testProps} i18n={sampleLocalization} />
       )
       userEvent.click(getByTestId('date-picker-button'))
       sampleLocalization.daysOfWeekShort.forEach((translation) => {
@@ -391,7 +391,7 @@ describe('DatePicker component', () => {
       const { getByText, getByTestId } = render(
         <DatePicker
           {...testProps}
-          localization={sampleLocalization}
+          i18n={sampleLocalization}
           defaultValue="2020-02-01"
         />
       )

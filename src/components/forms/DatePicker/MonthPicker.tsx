@@ -18,13 +18,13 @@ export const MonthPicker = ({
   minDate,
   maxDate,
   handleSelectMonth,
-  localization = EN_US,
+  i18n = EN_US,
 }: {
   date: Date
   minDate: Date
   maxDate?: Date
   handleSelectMonth: (value: number) => void
-  localization?: DatePickerLocalization
+  i18n?: DatePickerLocalization
 }): React.ReactElement => {
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
@@ -95,7 +95,7 @@ export const MonthPicker = ({
     event.preventDefault()
   }
 
-  const monthNames = localization.months
+  const monthNames = i18n.months
 
   const months = monthNames.map((month, index) => {
     const monthToCheck = setMonth(date, index)

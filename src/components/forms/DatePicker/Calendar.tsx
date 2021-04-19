@@ -49,7 +49,7 @@ export const Calendar = ({
   rangeDate,
   setStatuses,
   focusMode,
-  localization = EN_US,
+  i18n = EN_US,
 }: {
   date?: Date
   selectedDate?: Date
@@ -59,7 +59,7 @@ export const Calendar = ({
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
   focusMode: FocusMode
-  localization?: DatePickerLocalization
+  i18n?: DatePickerLocalization
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
@@ -96,15 +96,15 @@ export const Calendar = ({
   const focusedMonth = dateToDisplay.getMonth()
   const focusedYear = dateToDisplay.getFullYear()
 
-  const monthLabel = localization.months[parseInt(`${focusedMonth}`)]
-  const dayOfWeekShortLabels = localization.daysOfWeekShort
-  const dayOfWeekLabels = localization.daysOfWeek
-  const backOneYear = localization.backOneYear
-  const backOneMonth = localization.backOneMonth
-  const clickToSelectMonth = `${monthLabel}. ${localization.clickToSelectMonth}`
-  const clickToSelectYear = `${focusedYear}. ${localization.clickToSelectYear}`
-  const forwardOneMonth = localization.forwardOneMonth
-  const forwardOneYear = localization.forwardOneYear
+  const monthLabel = i18n.months[parseInt(`${focusedMonth}`)]
+  const dayOfWeekShortLabels = i18n.daysOfWeekShort
+  const dayOfWeekLabels = i18n.daysOfWeek
+  const backOneYear = i18n.backOneYear
+  const backOneMonth = i18n.backOneMonth
+  const clickToSelectMonth = `${monthLabel}. ${i18n.clickToSelectMonth}`
+  const clickToSelectYear = `${focusedYear}. ${i18n.clickToSelectYear}`
+  const forwardOneMonth = i18n.forwardOneMonth
+  const forwardOneYear = i18n.forwardOneYear
 
   useEffect(() => {
     calendarWasHidden = false
@@ -145,7 +145,7 @@ export const Calendar = ({
     if (calendarWasHidden) {
       const newStatuses = [`${monthLabel} ${focusedYear}`]
       if (selectedDate && isSameDay(focusedDate, selectedDate)) {
-        const selectedDateText = localization.selectedDate
+        const selectedDateText = i18n.selectedDate
         newStatuses.unshift(selectedDateText)
       }
       setStatuses(newStatuses)
@@ -159,7 +159,7 @@ export const Calendar = ({
         minDate={minDate}
         maxDate={maxDate}
         handleSelectMonth={handleSelectMonth}
-        localization={localization}
+        i18n={i18n}
       />
     )
   } else if (mode === CalendarModes.YEAR_PICKER) {
@@ -292,7 +292,7 @@ export const Calendar = ({
 
   const handleToggleMonthSelection = (): void => {
     setMode(CalendarModes.MONTH_PICKER)
-    const selectAMonth = localization.selectAMonth
+    const selectAMonth = i18n.selectAMonth
     setStatuses([selectAMonth])
   }
 
@@ -336,7 +336,7 @@ export const Calendar = ({
             withinRangeEndDate
           )
         }
-        localization={localization}
+        i18n={i18n}
       />
     )
     dateIterator = addDays(dateIterator, 1)

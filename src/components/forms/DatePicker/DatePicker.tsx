@@ -39,7 +39,7 @@ interface BaseDatePickerProps {
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
   ) => void
-  localization?: DatePickerLocalization
+  i18n?: DatePickerLocalization
 }
 
 export type DatePickerProps = BaseDatePickerProps &
@@ -62,7 +62,7 @@ export const DatePicker = ({
   rangeDate,
   onChange,
   onBlur,
-  localization = EN_US,
+  i18n = EN_US,
   ...inputProps
 }: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
@@ -188,11 +188,11 @@ export const DatePicker = ({
       setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
 
-      const statuses = localization.statuses
+      const statuses = i18n.statuses
 
       const selectedDate = parseDateString(internalValue)
       if (selectedDate && isSameDay(selectedDate, addDays(displayDate, 0))) {
-        const selectedDateText = localization.selectedDate
+        const selectedDateText = i18n.selectedDate
         statuses.unshift(selectedDateText)
       }
 
@@ -242,7 +242,7 @@ export const DatePicker = ({
     className
   )
 
-  const toggleCalendar = localization.toggleCalendar
+  const toggleCalendar = i18n.toggleCalendar
 
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
@@ -319,7 +319,7 @@ export const DatePicker = ({
               selectedDate={parseDateString(internalValue)}
               setStatuses={setStatuses}
               focusMode={focusMode}
-              localization={localization}
+              i18n={i18n}
             />
           )}
         </div>

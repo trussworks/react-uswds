@@ -220,7 +220,7 @@ describe('MonthPicker', () => {
         <MonthPicker
           {...testProps}
           date={new Date('January 20 2021')}
-          localization={sampleLocalization}
+          i18n={sampleLocalization}
         />
       )
       sampleLocalization.months.forEach((translation) => {

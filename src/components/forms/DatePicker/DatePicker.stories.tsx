@@ -112,9 +112,5 @@ export const withRangeDate = (): React.ReactElement => (
 )
 
 export const withLocalizations = (): React.ReactElement => (
-  <DatePicker
-    id="birthdate"
-    name="birthdate"
-    localization={sampleLocalization}
-  />
+  <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />
 )
