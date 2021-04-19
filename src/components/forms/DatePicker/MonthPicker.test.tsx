@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { MonthPicker } from './MonthPicker'
 import { MONTH_LABELS } from './constants'
 import { parseDateString } from './utils'
-import { sampleLocalization } from './DatePicker.test'
+import { sampleLocalization } from './i18n'
 
 describe('MonthPicker', () => {
   const testProps = {

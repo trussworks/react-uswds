@@ -13,6 +13,7 @@ import {
   VALIDATION_MESSAGE,
   DEFAULT_MIN_DATE,
 } from './constants'
+import { DatePickerLocalization, defaultLocalization } from './i18n'
 import {
   formatDate,
   parseDateString,
@@ -41,22 +42,6 @@ interface BaseDatePickerProps {
   localization?: DatePickerLocalization
 }
 
-export interface DatePickerLocalization {
-  months: string[]
-  daysOfWeek: string[]
-  daysOfWeekShort: string[]
-  statuses: string[]
-  selectedDate: string
-  selectAMonth: string
-  toggleCalendar: string
-  backOneYear: string
-  backOneMonth: string
-  clickToSelectMonth: string
-  clickToSelectYear: string
-  forwardOneYear: string
-  forwardOneMonth: string
-}
-
 export type DatePickerProps = BaseDatePickerProps &
   Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
@@ -77,7 +62,7 @@ export const DatePicker = ({
   rangeDate,
   onChange,
   onBlur,
-  localization,
+  localization = defaultLocalization,
   ...inputProps
 }: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)

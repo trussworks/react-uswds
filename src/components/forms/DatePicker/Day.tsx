@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { DAY_OF_WEEK_LABELS, MONTH_LABELS } from './constants'
 import { formatDate, isIosDevice } from './utils'
 
-import type { DatePickerLocalization } from './DatePicker'
+import type { DatePickerLocalization } from './i18n'
 
 export const Day = forwardRef(
   (
@@ -41,7 +41,7 @@ export const Day = forwardRef(
       isRangeStart?: boolean
       isRangeEnd?: boolean
       isWithinRange?: boolean
-      localization?: DatePickerLocalization
+      localization: DatePickerLocalization
     },
     ref: React.ForwardedRef<HTMLButtonElement>
   ): React.ReactElement => {

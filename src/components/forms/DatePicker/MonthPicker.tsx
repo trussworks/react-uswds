@@ -12,7 +12,7 @@ import {
   isIosDevice,
 } from './utils'
 
-import type { DatePickerLocalization } from './DatePicker'
+import type { DatePickerLocalization } from './i18n'
 
 export const MonthPicker = ({
   date,
@@ -25,7 +25,7 @@ export const MonthPicker = ({
   minDate: Date
   maxDate?: Date
   handleSelectMonth: (value: number) => void
-  localization?: DatePickerLocalization
+  localization: DatePickerLocalization
 }): React.ReactElement => {
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)

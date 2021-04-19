@@ -43,7 +43,7 @@ import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
 import { FocusMode } from './DatePicker'
 
-import type { DatePickerLocalization } from './DatePicker'
+import type { DatePickerLocalization } from './i18n'
 
 export const Calendar = ({
   date,
@@ -64,7 +64,7 @@ export const Calendar = ({
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
   focusMode: FocusMode
-  localization?: DatePickerLocalization
+  localization: DatePickerLocalization
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)

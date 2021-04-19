@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { DatePicker } from './DatePicker'
-import { sampleLocalization } from './DatePicker.test'
+import { sampleLocalization } from './i18n'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'

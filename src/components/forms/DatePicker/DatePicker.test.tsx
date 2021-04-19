@@ -3,55 +3,13 @@ import { render, fireEvent, createEvent } from '@testing-library/react'
 import userEvent, { specialChars } from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
+import { sampleLocalization } from './i18n'
 import { today } from './utils'
 import {
   DAY_OF_WEEK_LABELS,
   MONTH_LABELS,
   VALIDATION_MESSAGE,
 } from './constants'
-
-export const sampleLocalization = {
-  months: [
-    'enero',
-    'febrero',
-    'marzo',
-    'abril',
-    'mayo',
-    'junio',
-    'julio',
-    'agosto',
-    'septiembre',
-    'octubre',
-    'noviembre',
-    'diciembre',
-  ],
-  daysOfWeek: [
-    'domingo',
-    'lunes',
-    'martes',
-    'miércoles',
-    'jueves',
-    'viernes',
-    'sábado',
-  ],
-  daysOfWeekShort: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-  statuses: [
-    'Puede navegar por día usando las flechas izquierda y derecha',
-    'Semanas usando flechas hacia arriba y hacia abajo',
-    'Meses usando las teclas de avance y retroceso de página',
-    'Años usando shift plus page up y shift plus page down',
-    'Las teclas de inicio y finalización navegan hasta el principio y el final de una semana',
-  ],
-  selectedDate: 'Fecha seleccionada',
-  selectAMonth: 'Selecciona un mes.',
-  toggleCalendar: 'Alternar calendario',
-  backOneYear: 'Navegar hacia atrás un año',
-  backOneMonth: 'Navegar hacia atrás un mes',
-  forwardOneYear: 'Navegar hacia adelante un año',
-  forwardOneMonth: 'Navegar hacia adelante un mes',
-  clickToSelectMonth: 'Haga clic para seleccionar el mes',
-  clickToSelectYear: 'Haga clic para seleccionar el año',
-}
 
 describe('DatePicker component', () => {
   const testProps = {
