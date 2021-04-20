@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { MonthPicker } from './MonthPicker'
 import { MONTH_LABELS } from './constants'
 import { parseDateString } from './utils'
+import { sampleLocalization } from './i18n'
 
 describe('MonthPicker', () => {
   const testProps = {
@@ -210,6 +211,21 @@ describe('MonthPicker', () => {
       expect(getByText('January')).toHaveFocus()
       userEvent.tab()
       expect(getByText('January')).toHaveFocus()
+    })
+  })
+
+  describe('with localization props', () => {
+    it('displays month translations', () => {
+      const { getByText } = render(
+        <MonthPicker
+          {...testProps}
+          date={new Date('January 20 2021')}
+          i18n={sampleLocalization}
+        />
+      )
+      sampleLocalization.months.forEach((translation) => {
+        expect(getByText(translation)).toBeInTheDocument()
+      })
     })
   })
 })
