@@ -20,8 +20,7 @@ Source: https://designsystem.digital.gov/components/process-list
   },
 }
 
-type CustomHeadingProps = React.PropsWithChildren<{}> &
-  JSX.IntrinsicElements['p']
+type CustomHeadingProps = JSX.IntrinsicElements['p']
 
 const CustomHeading: React.FunctionComponent<CustomHeadingProps> = ({
   children,

@@ -17,8 +17,7 @@ describe('ProcessListHeading component', () => {
   })
 
   describe('with custom ProcessListHeading component', () => {
-    type CustomHeadingProps = React.PropsWithChildren<{}> &
-      JSX.IntrinsicElements['p']
+    type CustomHeadingProps = JSX.IntrinsicElements['p']
 
     const CustomHeading: React.FunctionComponent<CustomHeadingProps> = ({
       children,
