@@ -3,22 +3,20 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { IdentifierIdentity } from './IdentifierIdentity'
+import { Link } from '../../Link/Link'
 
-const testData = [
-  <p className="usa-identifier__identity-disclaimer" key="one">
-    {`An official website of the `}
-    <a href="#">Test Agency Name</a>
-  </p>,
-]
 describe('IdentifierIdentity component', () => {
   it('renders without errors', () => {
-    const { queryByText } = render(
+    const { queryByTestId } = render(
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        {testData}
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     )
 
-    expect(queryByText('Test Agency Name')).toBeInTheDocument()
+    const testIdQuery = queryByTestId('identifierIdentity')
+    expect(testIdQuery).toBeInTheDocument()
+    expect(testIdQuery).toHaveClass('usa-identifier__identity')
   })
 
   it('can apply attributes passed in as props', () => {
@@ -27,7 +25,8 @@ describe('IdentifierIdentity component', () => {
         className="custom-class"
         aria-label="Test aria label"
         domain="a.domain">
-        {testData}
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     )
     const testIdQuery = queryByTestId('identifierIdentity')

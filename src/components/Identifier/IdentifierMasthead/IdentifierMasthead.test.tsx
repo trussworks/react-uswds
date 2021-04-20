@@ -5,6 +5,9 @@ import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 import { IdentifierMasthead } from './IdentifierMasthead'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
+import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
+import { IdentifierIdentity } from '../IdentifierIdentity/IdentifierIdentity'
+import { Link } from '../../Link/Link'
 
 const testIdentifierLogo = [
   <img
@@ -30,20 +33,15 @@ describe('IdentifierMasthead component', () => {
       <IdentifierMasthead
         className="usa-identifier__custom-class-name"
         aria-label="Agency identifier">
-        <div className="usa-identifier__logos">
+        <IdentifierLogos>
           <IdentifierLogo href="#" className="custom-class-name">
             {testIdentifierLogo}
           </IdentifierLogo>
-        </div>
-        <div
-          className="usa-identifier__identity"
-          aria-label="Agency description">
-          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-          <p className="usa-identifier__identity-disclaimer">
-            {`An official website of the `}
-            <a href="testlink">Test Agency Name</a>
-          </p>
-        </div>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`An official website of the `}
+          <Link href="#">Test Agency Name</Link>
+        </IdentifierIdentity>
       </IdentifierMasthead>
     )
 
@@ -70,22 +68,19 @@ describe('IdentifierMasthead component', () => {
   it('renders with more than two logos passed in', () => {
     const { getAllByRole, queryByText } = render(
       <IdentifierMasthead aria-label="Agency identifier">
-        <div className="usa-identifier__logos">
+        <IdentifierLogos>
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        </div>
-        <div aria-label="Agency description">
-          <p className="usa-identifier__identity-domain">domain.edu.mil.gov</p>
-          <p className="usa-identifier__identity-disclaimer">
-            {`An official website of the `}
-            <a href="testlink">Test Agency Name</a>
-            {`, `}
-            <a href="secondTestLink">Second Test Agency Name</a>
-            {`, and the `}
-            <a href="thirdTestLink">Third Test Agency Name</a>
-          </p>
-        </div>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`An official website of the `}
+          <Link href="#">Test Agency Name</Link>
+          {`, `}
+          <Link href="#">Second Test Agency Name</Link>
+          {`, and the `}
+          <Link href="#">Third Test Agency Name</Link>
+        </IdentifierIdentity>
       </IdentifierMasthead>
     )
     expect(getAllByRole('img')).toHaveLength(3)

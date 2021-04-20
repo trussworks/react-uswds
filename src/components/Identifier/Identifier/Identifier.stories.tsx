@@ -11,6 +11,8 @@ import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
 import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
 
+import { Link } from '../../Link/Link'
+
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 export default {
@@ -99,9 +101,9 @@ const testIdentifierGovContent = [
       Looking for U.S. government information and services?
     </div>
     &nbsp;
-    <a href="https://www.usa.gov/" className="usa-link">
+    <Link href="https://www.usa.gov/" className="usa-link">
       Visit USA.gov
-    </a>
+    </Link>
   </>,
 ]
 
@@ -111,9 +113,9 @@ const testIdentifierGovContentSpanish = [
       ¿Necesita información y servicios del Gobierno?
     </div>
     &nbsp;
-    <a href="https://www.usa.gov/espanol/" className="usa-link">
+    <Link href="https://www.usa.gov/espanol/" className="usa-link">
       Visite USAGov en Español
-    </a>
+    </Link>
   </>,
 ]
 
@@ -124,10 +126,8 @@ export const identifierDefault = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="#">Test Agency Name</a>
-        </p>
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -146,10 +146,8 @@ export const identifierSpanish = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="#">Test Agency Name Spanish</a>
-        </p>
+        {`Un sitio web oficial de `}
+        <Link href="#">Test Agency Name Spanish</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
@@ -169,12 +167,10 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="#">Test Agency Name</a>
-          {` and the `}
-          <a href="#">Other Test Agency Name</a>
-        </p>
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
+        {` and the `}
+        <Link href="#">Other Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -194,12 +190,10 @@ export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="#">Test Agency Name</a>
-          {` y `}
-          <a href="#">Other Test Agency Name</a>
-        </p>
+        {`Un sitio web oficial de `}
+        <Link href="#">Test Agency Name</Link>
+        {` y `}
+        <Link href="#">Other Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks>{testLinksSpanish}</IdentifierLinks>
@@ -218,14 +212,12 @@ export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="#">Test Agency Name</a>
-          {`, `}
-          <a href="#">Second Test Agency Name</a>
-          {`, and the `}
-          <a href="#">Third Test Agency Name</a>
-        </p>
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
+        {`, `}
+        <Link href="#">Second Test Agency Name</Link>
+        {`, and the `}
+        <Link href="#">Third Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -241,10 +233,8 @@ export const noLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="#">Test Agency Name</a>
-        </p>
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -260,10 +250,8 @@ export const noLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="#">Test Agency Name Spanish</a>
-        </p>
+        {`Un sitio web oficial de `}
+        <Link href="#">Test Agency Name Spanish</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
@@ -282,11 +270,9 @@ export const taxDisclaimerEnglish = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="#">Test Agency Name</a>
-          {`. Produced and published at taxpayer expense.`}
-        </p>
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
+        {`. Produced and published at taxpayer expense.`}
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
@@ -305,11 +291,9 @@ export const taxDisclaimerSpanish = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`Un sitio web oficial de `}
-          <a href="#">Test Agency Name Spanish</a>
-          {`. Producido y publicado con dinero de los contribuyentes de impuestos.`}
-        </p>
+        {`Un sitio web oficial de `}
+        <Link href="#">Test Agency Name Spanish</Link>
+        {`. Producido y publicado con dinero de los contribuyentes de impuestos.`}
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
@@ -329,13 +313,11 @@ export const taxDisclaimerAndMultipleParentsAndLogos = (): React.ReactElement =>
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <p className="usa-identifier__identity-disclaimer">
-          {`An official website of the `}
-          <a href="#">Test Agency Name</a>
-          {` and the `}
-          <a href="#">Other Test Agency Name</a>
-          {`. Produced and published at taxpayer expense.`}
-        </p>
+        {`An official website of the `}
+        <Link href="#">Test Agency Name</Link>
+        {` and the `}
+        <Link href="#">Other Test Agency Name</Link>
+        {`. Produced and published at taxpayer expense.`}
       </IdentifierIdentity>
     </IdentifierMasthead>
     <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>

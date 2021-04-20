@@ -18,7 +18,7 @@ export const IdentifierIdentity = ({
   return (
     <div data-testid="identifierIdentity" className={classes} {...divProps}>
       <p className="usa-identifier__identity-domain">{domain}</p>
-      {children}
+      <p className="usa-identifier__identity-disclaimer">{children}</p>
     </div>
   )
 }
