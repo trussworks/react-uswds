@@ -1,11 +1,6 @@
 import React, { useState, useRef, useEffect, KeyboardEvent } from 'react'
 
 import {
-  DAY_OF_WEEK_LABELS,
-  DAY_OF_WEEK_SHORT_LABELS,
-  MONTH_LABELS,
-} from './constants'
-import {
   today,
   addDays,
   subMonths,
@@ -43,6 +38,8 @@ import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
 import { FocusMode } from './DatePicker'
 
+import { DatePickerLocalization, EN_US } from './i18n'
+
 export const Calendar = ({
   date,
   selectedDate,
@@ -52,6 +49,7 @@ export const Calendar = ({
   rangeDate,
   setStatuses,
   focusMode,
+  i18n = EN_US,
 }: {
   date?: Date
   selectedDate?: Date
@@ -61,6 +59,7 @@ export const Calendar = ({
   rangeDate?: Date
   setStatuses: (statuses: string[]) => void
   focusMode: FocusMode
+  i18n?: DatePickerLocalization
 }): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
@@ -97,7 +96,15 @@ export const Calendar = ({
   const focusedMonth = dateToDisplay.getMonth()
   const focusedYear = dateToDisplay.getFullYear()
 
-  const monthLabel = MONTH_LABELS[parseInt(`${focusedMonth}`)]
+  const monthLabel = i18n.months[parseInt(`${focusedMonth}`)]
+  const dayOfWeekShortLabels = i18n.daysOfWeekShort
+  const dayOfWeekLabels = i18n.daysOfWeek
+  const backOneYear = i18n.backOneYear
+  const backOneMonth = i18n.backOneMonth
+  const clickToSelectMonth = `${monthLabel}. ${i18n.clickToSelectMonth}`
+  const clickToSelectYear = `${focusedYear}. ${i18n.clickToSelectYear}`
+  const forwardOneMonth = i18n.forwardOneMonth
+  const forwardOneYear = i18n.forwardOneYear
 
   useEffect(() => {
     calendarWasHidden = false
@@ -137,8 +144,10 @@ export const Calendar = ({
 
     if (calendarWasHidden) {
       const newStatuses = [`${monthLabel} ${focusedYear}`]
-      if (selectedDate && isSameDay(focusedDate, selectedDate))
-        newStatuses.unshift('Selected date')
+      if (selectedDate && isSameDay(focusedDate, selectedDate)) {
+        const selectedDateText = i18n.selectedDate
+        newStatuses.unshift(selectedDateText)
+      }
       setStatuses(newStatuses)
     }
   }, [dateToDisplay])
@@ -150,6 +159,7 @@ export const Calendar = ({
         minDate={minDate}
         maxDate={maxDate}
         handleSelectMonth={handleSelectMonth}
+        i18n={i18n}
       />
     )
   } else if (mode === CalendarModes.YEAR_PICKER) {
@@ -282,7 +292,8 @@ export const Calendar = ({
 
   const handleToggleMonthSelection = (): void => {
     setMode(CalendarModes.MONTH_PICKER)
-    setStatuses(['Select a month.'])
+    const selectAMonth = i18n.selectAMonth
+    setStatuses([selectAMonth])
   }
 
   const handleToggleYearSelection = (): void => {
@@ -325,6 +336,7 @@ export const Calendar = ({
             withinRangeEndDate
           )
         }
+        i18n={i18n}
       />
     )
     dateIterator = addDays(dateIterator, 1)
@@ -348,7 +360,7 @@ export const Calendar = ({
             onClick={handlePreviousYearClick}
             ref={prevYearEl}
             className="usa-date-picker__calendar__previous-year"
-            aria-label="Navigate back one year"
+            aria-label={backOneYear}
             disabled={prevButtonsDisabled}>
             &nbsp;
           </button>
@@ -360,7 +372,7 @@ export const Calendar = ({
             onClick={handlePreviousMonthClick}
             ref={prevMonthEl}
             className="usa-date-picker__calendar__previous-month"
-            aria-label="Navigate back one month"
+            aria-label={backOneMonth}
             disabled={prevButtonsDisabled}>
             &nbsp;
           </button>
@@ -372,7 +384,7 @@ export const Calendar = ({
             onClick={handleToggleMonthSelection}
             ref={selectMonthEl}
             className="usa-date-picker__calendar__month-selection"
-            aria-label={`${monthLabel}. Click to select month`}>
+            aria-label={clickToSelectMonth}>
             {monthLabel}
           </button>
           <button
@@ -381,7 +393,7 @@ export const Calendar = ({
             onClick={handleToggleYearSelection}
             ref={selectYearEl}
             className="usa-date-picker__calendar__year-selection"
-            aria-label={`${focusedYear}. Click to select year`}>
+            aria-label={clickToSelectYear}>
             {focusedYear}
           </button>
         </div>
@@ -392,7 +404,7 @@ export const Calendar = ({
             onClick={handleNextMonthClick}
             ref={nextMonthEl}
             className="usa-date-picker__calendar__next-month"
-            aria-label="Navigate forward one month"
+            aria-label={forwardOneMonth}
             disabled={nextButtonsDisabled}>
             &nbsp;
           </button>
@@ -404,7 +416,7 @@ export const Calendar = ({
             onClick={handleNextYearClick}
             ref={nextYearEl}
             className="usa-date-picker__calendar__next-year"
-            aria-label="Navigate forward one year"
+            aria-label={forwardOneYear}
             disabled={nextButtonsDisabled}>
             &nbsp;
           </button>
@@ -413,11 +425,11 @@ export const Calendar = ({
       <table className="usa-date-picker__calendar__table" role="presentation">
         <thead>
           <tr>
-            {DAY_OF_WEEK_SHORT_LABELS.map((d, i) => (
+            {dayOfWeekShortLabels.map((d, i) => (
               <th
                 className="usa-date-picker__calendar__day-of-week"
                 scope="col"
-                aria-label={DAY_OF_WEEK_LABELS[parseInt(`${i}`)]}
+                aria-label={dayOfWeekLabels[parseInt(`${i}`)]}
                 key={`day-of-week-${d}-${i}`}>
                 {d}
               </th>
