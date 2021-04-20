@@ -154,6 +154,7 @@ export const GovBanner = ({
               <img
                 className="usa-banner__icon usa-media-block__img"
                 src={dotGovIcon}
+                role="img"
                 alt=""
                 aria-hidden="true"
               />
@@ -169,6 +170,7 @@ export const GovBanner = ({
               <img
                 className="usa-banner__icon usa-media-block__img"
                 src={httpsIcon}
+                role="img"
                 alt=""
                 aria-hidden="true"
               />
