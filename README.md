@@ -7,7 +7,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
-[![CircleCI](https://img.shields.io/circleci/build/github/trussworks/react-uswds/develop)](https://circleci.com/gh/trussworks/react-uswds)
+[![uswds version](https://img.shields.io/github/package-json/dependency-version/trussworks/react-uswds/dev/uswds)](https://www.npmjs.com/package/uswds)
+
+[![CircleCI](https://img.shields.io/circleci/build/github/trussworks/react-uswds/main)](https://circleci.com/gh/trussworks/react-uswds)
 [![npm downloads](https://img.shields.io/npm/dm/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
 
 **ReactUSWDS Component Library**
@@ -20,25 +22,14 @@ An example application, built with React-USWDS, can be found in the `/example` f
 
 **Table of Contents**
 
-- [@trussworks/react-uswds](#trussworksreact-uswds)
-  - [Background](#background)
-    - [Non-Goals](#non-goals)
-  - [Install](#install)
-    - [Pre-Release](#pre-release)
-  - [Usage](#usage)
-  - [Maintainers](#maintainers)
-  - [Contributing](#contributing)
-  - [License](#license)
-
-## Background
-
-The primary deliverable is a published npm package that can be included as a dependency in other projects that use USWDS with React. In order for these components to be useful, they should follow best practices for accessible, semantic, markup; be well-tested across browsers and devices; and allow for an appropriate level of customization. We adhere to a set of [development guidelines](./docs/contributing.md#guidelines) as much as possible and use automation to enforce tests, linting, and other standards.
-
-### Non-Goals
-
-This is not meant to be a one-size-fits-all front end solution, We are starting off with the opinionated decision to cater towards projects that use the U.S. Design System 2.0, and encapsulate these specific styles and markup in React components.
-
-In the process, we expect to gain learnings around how to best abstract out UI code from implementation; how to better standardize and document front end code practices; and how to develop, maintain, and distribute a shared JS library in alignment with our [company values at Truss](https://truss.works/values).
+- [Install](#install)
+  - [Pre-Release](#pre-release)
+- [Usage](#usage)
+- [Background](#background)
+  - [Non-Goals](#non-goals)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Install
 
@@ -56,7 +47,7 @@ npm i @trussworks/react-uswds
 
 ### Pre-Release
 
-Pre-release packages are published to GitHub Packages. To use, you
+Pre-release packages are published to GitHub Packages every time code is pushed to the `main` branch. To use, you
 will need a [GitHub access
 token](https://docs.github.com/en/packages/publishing-and-managing-packages/about-github-packages#about-tokens)
 with the `read:packages` scope.
@@ -84,13 +75,15 @@ for more detailed information.
 
 ## Usage
 
+It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using. A version mismatch may result in unexpected markup & CSS combinations.
+
 You can import ReactUSWDS components using ES6 syntax:
 
 ```
 import { Alert } from '@trussworks/react-uswds'
 ```
 
-> **Warning:** Do _not_ include the full USWDS JS in your project alongside this library, as that will result in some components that use JS (such as the ComboBox) to initialize twice.
+> **Warning:** Do _not_ include USWDS JS in your project alongside this library (i.e., using `import 'uswds'`), as that will result in some components that use JS (such as the ComboBox) to initialize twice.
 
 Also make sure to include the following in order to import the compiled CSS from this project:
 
@@ -101,6 +94,16 @@ Also make sure to include the following in order to import the compiled CSS from
 If you aren't already using USWDS as a dependency, you also need to import USWDS styles. **[Read more info about using USWDS styles and assets here](./docs/styles_and_assets.md)**
 
 Having issues? See [FAQs](./docs/faqs.md).
+
+## Background
+
+The primary deliverable is a published npm package that can be included as a dependency in other projects that use USWDS with React. In order for these components to be useful, they should follow best practices for accessible, semantic, markup; be well-tested across browsers and devices; and allow for an appropriate level of customization. We adhere to a set of [development guidelines](./docs/contributing.md#guidelines) as much as possible and use automation to enforce tests, linting, and other standards.
+
+### Non-Goals
+
+This is not meant to be a one-size-fits-all front end solution, We are starting off with the opinionated decision to cater towards projects that use the U.S. Design System 2.0, and encapsulate these specific styles and markup in React components.
+
+In the process, we expect to gain learnings around how to best abstract out UI code from implementation; how to better standardize and document front end code practices; and how to develop, maintain, and distribute a shared JS library in alignment with our [company values at Truss](https://truss.works/values).
 
 ## Maintainers
 
