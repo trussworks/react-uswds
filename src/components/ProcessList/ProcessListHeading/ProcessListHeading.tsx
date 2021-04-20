@@ -4,7 +4,7 @@ import classnames from 'classnames'
 type ProcessListHeadingProps<T> = {
   className?: string
   children?: React.ReactNode
-}
+} & T
 
 interface WithCustomHeadingProps<T> {
   asCustom: React.FunctionComponent<T>
