@@ -239,12 +239,26 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     }, [isVisible])
   }
 
+  const activateTooltip = (): void => {
+    setVisible(true)
+  }
+  const deactivateTooltip = (): void => {
+    setVisible(false)
+  }
+
   if (isCustomProps(props)) {
     const triggerElementRef = useRef<HTMLElement>(null)
-    const { label, position, asCustom, children, ...remainingProps } = props
+    const {
+      label,
+      position,
+      asCustom,
+      children,
+      className,
+      ...remainingProps
+    } = props
     const customProps: FCProps = (remainingProps as unknown) as FCProps
 
-    const tooltipClasses = classnames('usa-tooltip__body', {
+    const tooltipBodyClasses = classnames('usa-tooltip__body', {
       'is-set': isVisible,
       'usa-tooltip__body--top': position === 'top',
       'usa-tooltip__body--bottom': position === 'bottom',
@@ -252,27 +266,27 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       'usa-tooltip__body--left': position === 'left',
       'is-visible': isVisible,
     })
-    const activateTooltip = (): void => {
-      setVisible(true)
-    }
-    const deactivateTooltip = (): void => {
-      setVisible(false)
-    }
 
     useTooltip(triggerElementRef, position)
+
+    const triggerClasses = classnames('usa-tooltip__trigger', className)
 
     const triggerElement = createElement(
       asCustom,
       {
+        ...customProps,
         ref: triggerElementRef,
         'data-testid': 'triggerElement',
+        'aria-describedby': tooltipID.current,
+        tabIndex: 0,
+        title: '',
         onMouseEnter: () => activateTooltip(),
         onMouseOver: () => activateTooltip(),
         onFocus: () => activateTooltip(),
         onMouseLeave: () => deactivateTooltip(),
         onBlur: () => deactivateTooltip(),
         onKeyDown: () => deactivateTooltip(),
-        ...customProps,
+        className: triggerClasses,
       },
       children
     )
@@ -281,23 +295,24 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       <span
         data-testid="tooltipWrapper"
         ref={wrapperRef}
-        className="usa-tooltip"
-        role="tooltip">
+        className="usa-tooltip">
         {triggerElement}
         <span
           data-testid="tooltipBody"
           title={label}
           id={tooltipID.current}
           ref={tooltipBodyRef}
-          className={tooltipClasses}>
+          className={tooltipBodyClasses}
+          role="tooltip"
+          aria-hidden={!isVisible}>
           {label}
         </span>
       </span>
     )
   } else {
     const triggerElementRef = useRef<HTMLButtonElement>(null)
-    const { label, position, children, ...remainingProps } = props
-    const tooltipClasses = classnames('usa-tooltip__body', {
+    const { label, position, children, className, ...remainingProps } = props
+    const tooltipBodyClasses = classnames('usa-tooltip__body', {
       'is-set': isVisible,
       'usa-tooltip__body--top': position === 'top',
       'usa-tooltip__body--bottom': position === 'bottom',
@@ -306,28 +321,27 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       'is-visible': isVisible,
     })
 
-    const activateTooltip = (): void => {
-      setVisible(true)
-    }
-    const deactivateTooltip = (): void => {
-      setVisible(false)
-    }
+    const triggerClasses = classnames(
+      'usa-button',
+      'usa-tooltip__trigger',
+      className
+    )
 
     useTooltip(triggerElementRef, position)
     return (
       <span
         data-testid="tooltipWrapper"
         ref={wrapperRef}
-        className="usa-tooltip"
-        role="tooltip">
+        className="usa-tooltip">
         <button
           {...remainingProps}
           data-testid="triggerElement"
           ref={triggerElementRef}
           aria-describedby={tooltipID.current}
+          tabIndex={0}
           type="button"
-          className="usa-button usa-tooltip__trigger"
-          title={label}
+          className={triggerClasses}
+          title=""
           onMouseEnter={activateTooltip}
           onMouseOver={activateTooltip}
           onFocus={activateTooltip}
@@ -341,15 +355,18 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           title={label}
           id={tooltipID.current}
           ref={tooltipBodyRef}
-          className={tooltipClasses}>
+          className={tooltipBodyClasses}
+          role="tooltip"
+          aria-hidden={!isVisible}>
           {label}
         </span>
       </span> // the span that wraps the element with have the tooltip class
     )
   }
 }
+
 Tooltip.defaultProps = {
   position: 'top',
 }
 
-Tooltip.DisplayName = 'Tooltip'
+Tooltip.displayName = 'Tooltip'
