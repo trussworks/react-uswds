@@ -3,6 +3,7 @@ import { render, fireEvent, createEvent } from '@testing-library/react'
 import userEvent, { specialChars } from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
+import { sampleLocalization } from './i18n'
 import { today } from './utils'
 import {
   DAY_OF_WEEK_LABELS,
@@ -373,6 +374,29 @@ describe('DatePicker component', () => {
       )
 
       expect(getByTestId('date-picker-external-input')).toBeInvalid()
+    })
+  })
+
+  describe('with localization props', () => {
+    it('displays abbreviated translations for days of the week', () => {
+      const { getByText, getByTestId } = render(
+        <DatePicker {...testProps} i18n={sampleLocalization} />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      sampleLocalization.daysOfWeekShort.forEach((translation) => {
+        expect(getByText(translation)).toBeInTheDocument()
+      })
+    })
+    it('displays translation for month', () => {
+      const { getByText, getByTestId } = render(
+        <DatePicker
+          {...testProps}
+          i18n={sampleLocalization}
+          defaultValue="2020-02-01"
+        />
+      )
+      userEvent.click(getByTestId('date-picker-button'))
+      expect(getByText('febrero')).toBeInTheDocument()
     })
   })
 
