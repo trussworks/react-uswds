@@ -23,7 +23,14 @@ interface GovBannerCopy {
 const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   const lock = (
     <span className="icon-lock">
-      <img src={lockIcon} className="usa-banner__lock-image" alt="lock" />
+      {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+      <img
+        src={lockIcon}
+        className="usa-banner__lock-image"
+        alt="lock"
+        title="Lock"
+        role="img"
+      />
     </span>
   )
 
@@ -154,7 +161,9 @@ export const GovBanner = ({
               <img
                 className="usa-banner__icon usa-media-block__img"
                 src={dotGovIcon}
-                alt="Dot gov"
+                role="img"
+                alt=""
+                aria-hidden="true"
               />
               <div className="usa-media-block__body">
                 <p>
@@ -168,7 +177,9 @@ export const GovBanner = ({
               <img
                 className="usa-banner__icon usa-media-block__img"
                 src={httpsIcon}
-                alt="Https"
+                role="img"
+                alt=""
+                aria-hidden="true"
               />
               <div className="usa-media-block__body">
                 <p>
