@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { DatePicker } from './DatePicker'
+import { sampleLocalization } from './i18n'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
@@ -108,4 +109,8 @@ export const withRangeDate = (): React.ReactElement => (
     defaultValue="2021-01-20"
     rangeDate="2021-01-08"
   />
+)
+
+export const withLocalizations = (): React.ReactElement => (
+  <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />
 )
