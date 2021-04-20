@@ -155,7 +155,7 @@ export const DocumentationPage = (): React.ReactElement => {
         <Logo
           medium
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
-          heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
+          heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
           <SocialLinks
@@ -177,6 +177,12 @@ export const DocumentationPage = (): React.ReactElement => {
                 className="usa-social-link usa-social-link--youtube"
                 href="javascript:void(0);">
                 <span>YouTube</span>
+              </a>,
+              <a
+                key="instagram"
+                className="usa-social-link usa-social-link--instagram"
+                href="#">
+                <span>Instagram</span>
               </a>,
               <a
                 key="rss"

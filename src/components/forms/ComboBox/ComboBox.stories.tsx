@@ -71,8 +71,16 @@ export const withLabel = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select A Fruit</Label>
-      <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
+      <Label id="fruit-label" htmlFor="fruit">
+        Select A Fruit
+      </Label>
+      <ComboBox
+        id="fruit"
+        name="fruit"
+        options={fruitList}
+        onChange={noop}
+        ulProps={{ 'aria-labelledby': 'fruit-label' }}
+      />
     </Form>
   )
 }
