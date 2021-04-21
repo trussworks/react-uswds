@@ -5,7 +5,7 @@ jest.mock('../../../deprecation')
 import { deprecationWarning } from '../../../deprecation'
 import { Logo } from './Logo'
 
-const heading = <h3 className="usa-footer__logo-heading">Swoosh Branding</h3>
+const heading = <p className="usa-footer__logo-heading">Swoosh Branding</p>
 const logoImage = (
   <img
     className="usa-footer__logo-img"
