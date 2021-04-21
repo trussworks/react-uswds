@@ -60,7 +60,7 @@ describe('Tooltip component', () => {
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
   })
 
-  it('shows tooltip body with mouse event', () => {
+  it('shows tooltip body on mouse enter', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -70,19 +70,20 @@ describe('Tooltip component', () => {
     expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
   })
 
-  it('hides tooltip with mouse event', () => {
+  it('hides tooltip on mouse leave', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
-    fireEvent.mouseLeave(screen.getByTestId('triggerElement'))
-
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+
+    fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
+    expect(bodyEl).toHaveClass('is-visible')
+    expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
+
+    fireEvent.mouseLeave(screen.getByTestId('triggerElement'))
     expect(bodyEl).not.toHaveClass('is-visible')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
-
-    // Can't test this because USWDS CSS is not present in the render environment
-    // expect(bodyEl).not.toBeVisible()
   })
 
-  it('shows tooltip with keyboard event', () => {
+  it('shows tooltip on focus', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     fireEvent.focus(screen.getByTestId('triggerElement'))
 
@@ -92,16 +93,32 @@ describe('Tooltip component', () => {
     expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
   })
 
-  it('hides tooltip with keyboard event', () => {
+  it('hides tooltip on blur', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
+    const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+
+    fireEvent.focus(screen.getByTestId('triggerElement'))
+    expect(bodyEl).toHaveClass('is-visible')
+    expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
+
     fireEvent.blur(screen.getByTestId('triggerElement'))
 
-    const bodyEl = screen.queryByRole('tooltip', { hidden: true })
     expect(bodyEl).not.toHaveClass('is-visible')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
+  })
 
-    // Can't test this because USWDS CSS is not present in the render environment
-    // expect(bodyEl).not.toBeVisible()
+  it('hides tooltip on keydown after focus', () => {
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
+    const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+
+    fireEvent.focus(screen.getByTestId('triggerElement'))
+    expect(bodyEl).toHaveClass('is-visible')
+    expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
+
+    fireEvent.keyDown(screen.getByTestId('triggerElement'), { key: 'Escape' })
+
+    expect(bodyEl).not.toHaveClass('is-visible')
+    expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
   })
 
   it('applies custom classes to the wrapper element', () => {

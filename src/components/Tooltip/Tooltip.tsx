@@ -52,6 +52,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     'top' | 'bottom' | 'left' | 'right' | undefined
   >(undefined)
   const [wrapTooltip, setWrapTooltip] = useState(false)
+  const [positionStyles, setPositionStyles] = useState({})
 
   const { position, wrapperclasses, className } = props
 
@@ -113,65 +114,58 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         const adjustHorizontalCenter = tooltipWidth / 2 + leftOffset
         const adjustToEdgeX = tooltipWidth + TRIANGLE_SIZE + SPACER
         const adjustToEdgeY = tooltipHeight + TRIANGLE_SIZE + SPACER
-        /**
-         * Positions tooltip at the top
-         * We check if the element is in the viewport so we know whether or not we
-         * need to constrain the width
-         * @param {HTMLElement} e - this is the tooltip body
-         */
-        const positionTop = (e: HTMLElement): void => {
+
+        const positionTop = (): void => {
           setEffectivePosition('top')
-          e.style.marginLeft = `${adjustHorizontalCenter}px`
-          e.style.marginBottom = `${
-            adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding
-          }px`
-        }
-        /**
-         * Positions tooltip at the bottom
-         * We check if the element is in theviewport so we know whether or not we
-         * need to constrain the width
-         */
-        const positionBottom = (e: HTMLElement): void => {
-          setEffectivePosition('bottom')
-          e.style.marginLeft = `${adjustHorizontalCenter}px`
-          e.style.marginTop = `${
-            adjustToEdgeY + offsetForTopMargin + offsetForTopPadding
-          }px`
-        }
-        /**
-         * Positions tooltip at the right
-         */
-        const positionRight = (e: HTMLElement): void => {
-          setEffectivePosition('right')
-          e.style.marginBottom = '0'
-          e.style.marginLeft = `${adjustToEdgeX + leftOffset}px`
-          e.style.bottom = `${
-            (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-            offsetForBottomMargin +
-            offsetForBottomPadding
-          }px`
+          setPositionStyles({
+            marginLeft: `${adjustHorizontalCenter}px`,
+            marginBottom: `${
+              adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding
+            }px`,
+          })
         }
 
-        /**
-         * Positions tooltip at the left
-         */
-        const positionLeft = (e: HTMLElement): void => {
+        const positionBottom = (): void => {
+          setEffectivePosition('bottom')
+          setPositionStyles({
+            marginLeft: `${adjustHorizontalCenter}px`,
+            marginTop: `${
+              adjustToEdgeY + offsetForTopMargin + offsetForTopPadding
+            }px`,
+          })
+        }
+
+        const positionRight = (): void => {
+          setEffectivePosition('right')
+          setPositionStyles({
+            marginBottom: '0',
+            marginLeft: `${adjustToEdgeX + leftOffset}px`,
+            bottom: `${
+              (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
+              offsetForBottomMargin +
+              offsetForBottomPadding
+            }px`,
+          })
+        }
+
+        const positionLeft = (): void => {
           setEffectivePosition('left')
-          e.style.marginBottom = '0'
-          if (leftOffset > tooltipBodyWidth) {
-            e.style.marginLeft = `${
-              leftOffset - tooltipBodyWidth - (TRIANGLE_SIZE + SPACER)
-            }px`
-          } else {
-            e.style.marginLeft = `-${
-              tooltipBodyWidth - leftOffset + (TRIANGLE_SIZE + SPACER)
-            }px`
-          }
-          e.style.bottom = `${
-            (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-            offsetForBottomMargin +
-            offsetForBottomPadding
-          }px`
+          setPositionStyles({
+            marginBottom: '0',
+            marginLeft:
+              leftOffset > tooltipBodyWidth
+                ? `${
+                    leftOffset - tooltipBodyWidth - (TRIANGLE_SIZE + SPACER)
+                  }px`
+                : `-${
+                    tooltipBodyWidth - leftOffset + (TRIANGLE_SIZE + SPACER)
+                  }px`,
+            bottom: `${
+              (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
+              offsetForBottomMargin +
+              offsetForBottomPadding
+            }px`,
+          })
         }
 
         /**
@@ -181,32 +175,32 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
          */
         switch (position) {
           case 'top':
-            positionTop(tooltipBody)
+            positionTop()
             if (!isElementInViewport(tooltipBody)) {
-              positionBottom(tooltipBody)
+              positionBottom()
             }
             break
           case 'bottom':
-            positionBottom(tooltipBody)
+            positionBottom()
             if (!isElementInViewport(tooltipBody)) {
-              positionTop(tooltipBody)
+              positionTop()
             }
             break
           case 'right':
-            positionRight(tooltipBody)
+            positionRight()
             if (!isElementInViewport(tooltipBody)) {
-              positionLeft(tooltipBody)
+              positionLeft()
               if (!isElementInViewport(tooltipBody)) {
-                positionTop(tooltipBody)
+                positionTop()
               }
             }
             break
           case 'left':
-            positionLeft(tooltipBody)
+            positionLeft()
             if (!isElementInViewport(tooltipBody)) {
-              positionRight(tooltipBody)
+              positionRight()
               if (!isElementInViewport(tooltipBody)) {
-                positionTop(tooltipBody)
+                positionTop()
               }
             }
             break
@@ -277,7 +271,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"
-          aria-hidden={!isVisible}>
+          aria-hidden={!isVisible}
+          style={positionStyles}>
           {label}
         </span>
       </span>
@@ -320,7 +315,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"
-          aria-hidden={!isVisible}>
+          aria-hidden={!isVisible}
+          style={positionStyles}>
           {label}
         </span>
       </span> // the span that wraps the element with have the tooltip class
