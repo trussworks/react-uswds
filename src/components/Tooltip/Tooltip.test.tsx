@@ -229,9 +229,6 @@ describe('Tooltip component', () => {
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--top')
         expect(bodyEl).toHaveStyle('margin-left: 275px')
-
-        // TODO
-        // expect(bodyEl).toHaveStyle('margin-bottom: 257px')
       })
 
       it('adds the wrap class if the width is outside the viewport', () => {
@@ -255,9 +252,6 @@ describe('Tooltip component', () => {
         expect(bodyEl).toHaveClass('usa-tooltip__body--bottom')
         expect(bodyEl).toHaveClass('usa-tooltip__body--wrap')
         expect(bodyEl).toHaveStyle('margin-left: 275px')
-
-        // TODO
-        // expect(bodyEl).toHaveStyle('margin-top: 257px')
       })
     })
 
@@ -283,9 +277,6 @@ describe('Tooltip component', () => {
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--bottom')
         expect(bodyEl).toHaveStyle('margin-left: 275px')
-
-        // TODO
-        // expect(bodyEl).toHaveStyle('margin-top: 257px')
       })
 
       it('adds the wrap class if the width is outside the viewport', () => {
@@ -309,9 +300,6 @@ describe('Tooltip component', () => {
         expect(bodyEl).toHaveClass('usa-tooltip__body--top')
         expect(bodyEl).toHaveClass('usa-tooltip__body--wrap')
         expect(bodyEl).toHaveStyle('margin-left: 275px')
-
-        // TODO
-        // expect(bodyEl).toHaveStyle('margin-bottom: 257px')
       })
     })
 
@@ -380,8 +368,6 @@ describe('Tooltip component', () => {
         jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(150)
       })
 
-      // TODO when offset is greater than width
-
       it('positions on the left', () => {
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -389,8 +375,6 @@ describe('Tooltip component', () => {
         expect(bodyEl).toHaveClass('usa-tooltip__body--left')
         expect(bodyEl).toHaveStyle('margin-bottom: 0px')
         expect(bodyEl).toHaveStyle('margin-left: -57px')
-
-        // expect(bodyEl).toHaveStyle('bottom: ')
       })
 
       it('positions to the right if the width is outside the viewport', () => {
