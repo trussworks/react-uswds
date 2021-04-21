@@ -50,66 +50,62 @@ export const defaultContainer = (): React.ReactElement => (
 )
 
 export const customContainer = (): React.ReactElement => (
-  <>
-    <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
-      <li>
-        <Grid row>
-          <Grid col={1}>{testContent}</Grid>
-          <Grid col={11}>{testContent}</Grid>
-        </Grid>
-      </li>
-      <li>
-        {' '}
-        <Grid row>
-          <Grid col={2}>{testContent}</Grid>
-          <Grid col={10}>{testContent}</Grid>
-        </Grid>
-      </li>
-      <li>
-        {' '}
-        <Grid row>
-          <Grid col={3}>{testContent}</Grid>
-          <Grid col={9}>{testContent}</Grid>
-        </Grid>
-      </li>
-      <li>
-        {' '}
-        <Grid row>
-          <Grid col={4}>{testContent}</Grid>
-          <Grid col={8}>{testContent}</Grid>
-        </Grid>
-      </li>
-    </GridContainer>
-    <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
-      <li>
-        {' '}
-        <Grid row>
-          <Grid col={4}>{testContent}</Grid>
-          <Grid col={8}>{testContent}</Grid>
-        </Grid>
-      </li>
-      <li>
-        {' '}
-        <Grid row>
-          <Grid col={3}>{testContent}</Grid>
-          <Grid col={9}>{testContent}</Grid>
-        </Grid>
-      </li>
-      <li>
-        {' '}
-        <Grid row>
-          <Grid col={2}>{testContent}</Grid>
-          <Grid col={10}>{testContent}</Grid>
-        </Grid>
-      </li>
-      <li>
-        <Grid row>
-          <Grid col={1}>{testContent}</Grid>
-          <Grid col={11}>{testContent}</Grid>
-        </Grid>
-      </li>
-    </GridContainer>
-  </>
+  <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
+    <li>
+      <Grid row>
+        <Grid col={1}>{testContent}</Grid>
+        <Grid col={11}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={2}>{testContent}</Grid>
+        <Grid col={10}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={3}>{testContent}</Grid>
+        <Grid col={9}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={4}>{testContent}</Grid>
+        <Grid col={8}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={5}>{testContent}</Grid>
+        <Grid col={7}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={4}>{testContent}</Grid>
+        <Grid col={8}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={3}>{testContent}</Grid>
+        <Grid col={9}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={2}>{testContent}</Grid>
+        <Grid col={10}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid row>
+        <Grid col={1}>{testContent}</Grid>
+        <Grid col={11}>{testContent}</Grid>
+      </Grid>
+    </li>
+  </GridContainer>
 )
 
 export const columnSpans = (): React.ReactElement => (
