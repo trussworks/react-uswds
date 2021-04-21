@@ -1,8 +1,8 @@
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { FileInput } from './FileInput'
+import { FileInput, FileInputRef } from './FileInput'
 import {
   TEST_TEXT_FILE,
   TEST_PNG_FILE,
@@ -329,5 +329,38 @@ describe('FileInput component', () => {
     })
 
     expect(mockOnDrop).toHaveBeenCalled()
+  })
+
+  it('exposes a ref that can be used to clear the input', () => {
+    const fileInputRef = React.createRef<FileInputRef>()
+    const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
+
+    render(
+      <>
+        <FileInput {...testProps} ref={fileInputRef} />
+        <button onClick={handleClearFiles}>Clear files</button>
+      </>
+    )
+
+    const inputEl = screen.getByTestId('file-input-input')
+    userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
+
+    // Upload a file
+    let previews = screen.getAllByTestId('file-input-preview')
+    const previewHeading = screen.getByTestId('file-input-preview-heading')
+
+    userEvent.upload(inputEl, [TEST_XLS_FILE])
+    previews = screen.getAllByTestId('file-input-preview')
+    expect(previews).toHaveLength(1)
+    expect(previews[0]).toHaveTextContent(TEST_XLS_FILE.name)
+    expect(previewHeading).toHaveTextContent('Selected file Change file')
+
+    // Clear the input
+    fireEvent.click(screen.getByText('Clear files'))
+    expect(screen.queryByTestId('file-input-preview')).not.toBeInTheDocument()
+    expect(previewHeading).not.toBeInTheDocument()
+    expect(screen.getByTestId('file-input-instructions')).not.toHaveClass(
+      'display-none'
+    )
   })
 })

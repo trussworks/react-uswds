@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef, useRef, useImperativeHandle } from 'react'
 import classnames from 'classnames'
 
 import { FilePreview } from './FilePreview'
@@ -12,164 +12,184 @@ interface FileInputProps {
   accept?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onDrop?: (e: React.DragEvent) => void
-  inputRef?: React.RefObject<HTMLInputElement>
 }
 
-export const FileInput = ({
-  name,
-  id,
-  disabled,
-  multiple,
-  className,
-  accept,
-  onChange,
-  onDrop,
-  inputRef,
-  ...inputProps
-}: FileInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
-  const [isDragging, setIsDragging] = useState(false)
-  const [showError, setShowError] = useState(false)
-  const [files, setFiles] = useState<FileList | null>(null)
+export type FileInputRef = {
+  clearFiles: () => void
+  input: HTMLInputElement | null
+}
 
-  const fileInputClasses = classnames(
-    'usa-file-input',
+export const FileInput = forwardRef(
+  (
     {
-      'usa-file-input--disabled': disabled,
-    },
-    className
-  )
+      name,
+      id,
+      disabled,
+      multiple,
+      className,
+      accept,
+      onChange,
+      onDrop,
+      ...inputProps
+    }: FileInputProps & JSX.IntrinsicElements['input'],
+    ref: React.Ref<FileInputRef | null>
+  ): React.ReactElement => {
+    const internalRef = useRef<HTMLInputElement>(null)
+    const [isDragging, setIsDragging] = useState(false)
+    const [showError, setShowError] = useState(false)
+    const [files, setFiles] = useState<FileList | null>(null)
 
-  const targetClasses = classnames('usa-file-input__target', {
-    'usa-file-input--drag': isDragging,
-    'has-invalid-file': showError,
-  })
+    useImperativeHandle(
+      ref,
+      () => ({
+        input: internalRef.current,
+        clearFiles: (): void => setFiles(null),
+      }),
+      []
+    )
 
-  const hideDragText =
-    /rv:11.0/i.test(navigator.userAgent) ||
-    /Edge\/\d./i.test(navigator.userAgent)
+    const fileInputClasses = classnames(
+      'usa-file-input',
+      {
+        'usa-file-input--disabled': disabled,
+      },
+      className
+    )
 
-  const dragText = multiple ? 'Drag files here or ' : 'Drag file here or '
+    const targetClasses = classnames('usa-file-input__target', {
+      'usa-file-input--drag': isDragging,
+      'has-invalid-file': showError,
+    })
 
-  const filePreviews = []
-  if (files) {
-    for (let i = 0; i < files?.length; i++) {
-      const imageId = makeSafeForID(files[parseInt(`${i}`)].name)
-      const key = `filePreview_${imageId}`
-      filePreviews.push(
-        <FilePreview
-          key={key}
-          imageId={imageId}
-          file={files[parseInt(`${i}`)]}
-        />
-      )
-    }
-  }
+    const hideDragText =
+      /rv:11.0/i.test(navigator.userAgent) ||
+      /Edge\/\d./i.test(navigator.userAgent)
 
-  const instructionClasses = classnames('usa-file-input__instructions', {
-    'display-none': filePreviews.length > 0,
-  })
+    const dragText = multiple ? 'Drag files here or ' : 'Drag file here or '
 
-  const previewHeaderText =
-    filePreviews.length > 1
-      ? `${filePreviews.length} files selected`
-      : 'Selected file'
-
-  const preventInvalidFiles = (e: React.DragEvent): void => {
-    setShowError(false)
-
-    if (accept) {
-      const acceptedTypes = accept.split(',')
-      let allFilesAllowed = true
-      for (let i = 0; i < e.dataTransfer.files.length; i += 1) {
-        const file = e.dataTransfer.files[parseInt(`${i}`)]
-        if (allFilesAllowed) {
-          for (let j = 0; j < acceptedTypes.length; j += 1) {
-            const fileType = acceptedTypes[parseInt(`${j}`)]
-            allFilesAllowed =
-              file.name.indexOf(fileType) > 0 ||
-              file.type.includes(fileType.replace(/\*/g, ''))
-            if (allFilesAllowed) break
-          }
-        } else break
-      }
-
-      if (!allFilesAllowed) {
-        setFiles(null)
-        setShowError(true)
-        e.preventDefault()
-        e.stopPropagation()
+    const filePreviews = []
+    if (files) {
+      for (let i = 0; i < files?.length; i++) {
+        const imageId = makeSafeForID(files[parseInt(`${i}`)].name)
+        const key = `filePreview_${imageId}`
+        filePreviews.push(
+          <FilePreview
+            key={key}
+            imageId={imageId}
+            file={files[parseInt(`${i}`)]}
+          />
+        )
       }
     }
-  }
 
-  // Event handlers
-  const handleDragOver = (): void => setIsDragging(true)
-  const handleDragLeave = (): void => setIsDragging(false)
-  const handleDrop = (e: React.DragEvent): void => {
-    preventInvalidFiles(e)
-    setIsDragging(false)
-    if (onDrop) onDrop(e)
-  }
+    const instructionClasses = classnames('usa-file-input__instructions', {
+      'display-none': filePreviews.length > 0,
+    })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setShowError(false)
-    setFiles(e.target?.files)
-    if (onChange) onChange(e)
-  }
+    const previewHeaderText =
+      filePreviews.length > 1
+        ? `${filePreviews.length} files selected`
+        : 'Selected file'
 
-  return (
-    <div
-      data-testid="file-input"
-      className={fileInputClasses}
-      aria-disabled={disabled}>
+    const preventInvalidFiles = (e: React.DragEvent): void => {
+      setShowError(false)
+
+      if (accept) {
+        const acceptedTypes = accept.split(',')
+        let allFilesAllowed = true
+        for (let i = 0; i < e.dataTransfer.files.length; i += 1) {
+          const file = e.dataTransfer.files[parseInt(`${i}`)]
+          if (allFilesAllowed) {
+            for (let j = 0; j < acceptedTypes.length; j += 1) {
+              const fileType = acceptedTypes[parseInt(`${j}`)]
+              allFilesAllowed =
+                file.name.indexOf(fileType) > 0 ||
+                file.type.includes(fileType.replace(/\*/g, ''))
+              if (allFilesAllowed) break
+            }
+          } else break
+        }
+
+        if (!allFilesAllowed) {
+          setFiles(null)
+          setShowError(true)
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      }
+    }
+
+    // Event handlers
+    const handleDragOver = (): void => setIsDragging(true)
+    const handleDragLeave = (): void => setIsDragging(false)
+    const handleDrop = (e: React.DragEvent): void => {
+      preventInvalidFiles(e)
+      setIsDragging(false)
+      if (onDrop) onDrop(e)
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+      setShowError(false)
+      setFiles(e.target?.files)
+      if (onChange) onChange(e)
+    }
+
+    return (
       <div
-        data-testid="file-input-droptarget"
-        className={targetClasses}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}>
-        {filePreviews.length > 0 && (
-          <div
-            data-testid="file-input-preview-heading"
-            className="usa-file-input__preview-heading">
-            {previewHeaderText}{' '}
-            <span className="usa-file-input__choose">
-              Change file{filePreviews.length > 1 && 's'}
-            </span>
-          </div>
-        )}
+        data-testid="file-input"
+        className={fileInputClasses}
+        aria-disabled={disabled}>
         <div
-          data-testid="file-input-instructions"
-          className={instructionClasses}
-          aria-hidden="true">
-          {!hideDragText && (
-            <span className="usa-file-input__drag-text">{dragText}</span>
+          data-testid="file-input-droptarget"
+          className={targetClasses}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}>
+          {filePreviews.length > 0 && (
+            <div
+              data-testid="file-input-preview-heading"
+              className="usa-file-input__preview-heading">
+              {previewHeaderText}{' '}
+              <span className="usa-file-input__choose">
+                Change file{filePreviews.length > 1 && 's'}
+              </span>
+            </div>
           )}
-          <span className="usa-file-input__choose">choose from folder</span>
-        </div>
-        {filePreviews}
-        <div data-testid="file-input-box" className="usa-file-input__box"></div>
-        {showError && (
           <div
-            data-testid="file-input-error"
-            className="usa-file-input__accepted-files-message">
-            This is not a valid file type.
+            data-testid="file-input-instructions"
+            className={instructionClasses}
+            aria-hidden="true">
+            {!hideDragText && (
+              <span className="usa-file-input__drag-text">{dragText}</span>
+            )}
+            <span className="usa-file-input__choose">choose from folder</span>
           </div>
-        )}
-        <input
-          {...inputProps}
-          ref={inputRef}
-          type="file"
-          data-testid="file-input-input"
-          name={name}
-          id={id}
-          className="usa-file-input__input"
-          disabled={disabled}
-          onChange={handleChange}
-          multiple={multiple}
-          accept={accept}
-        />
+          {filePreviews}
+          <div
+            data-testid="file-input-box"
+            className="usa-file-input__box"></div>
+          {showError && (
+            <div
+              data-testid="file-input-error"
+              className="usa-file-input__accepted-files-message">
+              This is not a valid file type.
+            </div>
+          )}
+          <input
+            {...inputProps}
+            ref={internalRef}
+            type="file"
+            data-testid="file-input-input"
+            name={name}
+            id={id}
+            className="usa-file-input__input"
+            disabled={disabled}
+            onChange={handleChange}
+            multiple={multiple}
+            accept={accept}
+          />
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)
