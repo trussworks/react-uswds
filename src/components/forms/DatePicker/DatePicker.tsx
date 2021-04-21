@@ -13,6 +13,7 @@ import {
   VALIDATION_MESSAGE,
   DEFAULT_MIN_DATE,
 } from './constants'
+import { DatePickerLocalization, EN_US } from './i18n'
 import {
   formatDate,
   parseDateString,
@@ -38,6 +39,7 @@ interface BaseDatePickerProps {
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLDivElement>
   ) => void
+  i18n?: DatePickerLocalization
 }
 
 export type DatePickerProps = BaseDatePickerProps &
@@ -60,6 +62,7 @@ export const DatePicker = ({
   rangeDate,
   onChange,
   onBlur,
+  i18n = EN_US,
   ...inputProps
 }: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
@@ -185,17 +188,12 @@ export const DatePicker = ({
       setCalendarDisplayValue(displayDate)
       setCalendarPosY(datePickerEl?.current?.offsetHeight)
 
-      const statuses = [
-        'You can navigate by day using left and right arrows',
-        'Weeks by using up and down arrows',
-        'Months by using page up and page down keys',
-        'Years by using shift plus page up and shift plus page down',
-        'Home and end keys navigate to the beginning and end of a week',
-      ]
+      const statuses = i18n.statuses
 
       const selectedDate = parseDateString(internalValue)
       if (selectedDate && isSameDay(selectedDate, addDays(displayDate, 0))) {
-        statuses.unshift('Selected date')
+        const selectedDateText = i18n.selectedDate
+        statuses.unshift(selectedDateText)
       }
 
       setStatuses(statuses)
@@ -243,6 +241,8 @@ export const DatePicker = ({
     },
     className
   )
+
+  const toggleCalendar = i18n.toggleCalendar
 
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
@@ -292,7 +292,7 @@ export const DatePicker = ({
           type="button"
           className="usa-date-picker__button"
           aria-haspopup={true}
-          aria-label="Toggle calendar"
+          aria-label={toggleCalendar}
           disabled={disabled}
           onClick={handleToggleClick}>
           &nbsp;
@@ -319,6 +319,7 @@ export const DatePicker = ({
               selectedDate={parseDateString(internalValue)}
               setStatuses={setStatuses}
               focusMode={focusMode}
+              i18n={i18n}
             />
           )}
         </div>
