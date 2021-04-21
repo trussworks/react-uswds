@@ -3,7 +3,6 @@ import React, {
   ForwardRefExoticComponent,
   ReactElement,
   ReactNode,
-  RefObject,
   useEffect,
   useRef,
   useState,
@@ -42,20 +41,36 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   props: DefaultTooltipProps | CustomTooltipProps<FCProps>
 ): ReactElement {
   const wrapperRef = useRef<HTMLElement>(null)
+  const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
     `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
   )
 
   const [isVisible, setVisible] = useState(false)
+  const [effectivePosition, setEffectivePosition] = useState<
+    'top' | 'bottom' | 'left' | 'right' | undefined
+  >(undefined)
+  const [wrapTooltip, setWrapTooltip] = useState(false)
 
-  const useTooltip = (
-    triggerElementRef: RefObject<HTMLElement>,
-    position: 'top' | 'bottom' | 'left' | 'right' | undefined
-  ): void => {
-    useEffect(() => {
-      let tooltipPosition = position
+  const { position, wrapperclasses, className } = props
 
+  useEffect(() => {
+    if (effectivePosition === 'top' || effectivePosition === 'bottom') {
+      if (
+        tooltipBodyRef.current &&
+        !isElementInViewport(tooltipBodyRef.current)
+      ) {
+        setWrapTooltip(true)
+      }
+    }
+  }, [effectivePosition])
+
+  useEffect(() => {
+    if (!isVisible) {
+      // Hide tooltip
+      setWrapTooltip(false)
+    } else {
       if (
         triggerElementRef.current &&
         tooltipBodyRef.current &&
@@ -99,46 +114,14 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         const adjustToEdgeX = tooltipWidth + TRIANGLE_SIZE + SPACER
         const adjustToEdgeY = tooltipHeight + TRIANGLE_SIZE + SPACER
         /**
-         * Position the tooltip body when the trigger is hovered
-         * Removes old positioning classnames and reapplies. This allows
-         * positioning to change in case the user resizes browser or DOM manipulation
-         * causes tooltip to get clipped from viewport
-         *
-         * @param {string} setPos - can be "top", "bottom", "right", "left"
-         */
-        const setPositionClass = (
-          setPos: 'top' | 'bottom' | 'left' | 'right'
-        ): void => {
-          tooltipBody.classList.remove(`usa-tooltip__body--${tooltipPosition}`)
-          tooltipPosition = setPos
-          tooltipBody.classList.add(`usa-tooltip__body--${setPos}`)
-        }
-
-        // Apply additional class names to wrapper element
-        if (props.wrapperclasses) {
-          const classesArray = props.wrapperclasses.split(' ')
-          classesArray.forEach((classname) => wrapper.classList.add(classname))
-        }
-
-        if (props.className) {
-          const classesArray = props.className.split(' ')
-          classesArray.forEach((classname) =>
-            tooltipTrigger.classList.add(classname)
-          )
-        }
-
-        /**
          * Positions tooltip at the top
          * We check if the element is in the viewport so we know whether or not we
          * need to constrain the width
          * @param {HTMLElement} e - this is the tooltip body
          */
         const positionTop = (e: HTMLElement): void => {
-          setPositionClass('top')
+          setEffectivePosition('top')
           e.style.marginLeft = `${adjustHorizontalCenter}px`
-          if (!isElementInViewport(e)) {
-            e.classList.add('usa-tooltip__body--wrap')
-          }
           e.style.marginBottom = `${
             adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding
           }px`
@@ -149,11 +132,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
          * need to constrain the width
          */
         const positionBottom = (e: HTMLElement): void => {
-          setPositionClass('bottom')
+          setEffectivePosition('bottom')
           e.style.marginLeft = `${adjustHorizontalCenter}px`
-          if (!isElementInViewport(e)) {
-            e.classList.add('usa-tooltip__body--wrap')
-          }
           e.style.marginTop = `${
             adjustToEdgeY + offsetForTopMargin + offsetForTopPadding
           }px`
@@ -162,7 +142,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
          * Positions tooltip at the right
          */
         const positionRight = (e: HTMLElement): void => {
-          setPositionClass('right')
+          setEffectivePosition('right')
           e.style.marginBottom = '0'
           e.style.marginLeft = `${adjustToEdgeX + leftOffset}px`
           e.style.bottom = `${
@@ -176,7 +156,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
          * Positions tooltip at the left
          */
         const positionLeft = (e: HTMLElement): void => {
-          setPositionClass('left')
+          setEffectivePosition('left')
           e.style.marginBottom = '0'
           if (leftOffset > tooltipBodyWidth) {
             e.style.marginLeft = `${
@@ -236,8 +216,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
             break
         }
       }
-    }, [isVisible])
-  }
+    }
+  }, [isVisible])
 
   const activateTooltip = (): void => {
     setVisible(true)
@@ -246,28 +226,21 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     setVisible(false)
   }
 
+  const wrapperClasses = classnames('usa-tooltip', wrapperclasses)
+
+  const tooltipBodyClasses = classnames('usa-tooltip__body', {
+    'is-set': isVisible,
+    'usa-tooltip__body--top': effectivePosition === 'top',
+    'usa-tooltip__body--bottom': effectivePosition === 'bottom',
+    'usa-tooltip__body--right': effectivePosition === 'right',
+    'usa-tooltip__body--left': effectivePosition === 'left',
+    'is-visible': isVisible,
+    'usa-tooltip__body--wrap': isVisible && wrapTooltip,
+  })
+
   if (isCustomProps(props)) {
-    const triggerElementRef = useRef<HTMLElement>(null)
-    const {
-      label,
-      position,
-      asCustom,
-      children,
-      className,
-      ...remainingProps
-    } = props
+    const { label, asCustom, children, ...remainingProps } = props
     const customProps: FCProps = (remainingProps as unknown) as FCProps
-
-    const tooltipBodyClasses = classnames('usa-tooltip__body', {
-      'is-set': isVisible,
-      'usa-tooltip__body--top': position === 'top',
-      'usa-tooltip__body--bottom': position === 'bottom',
-      'usa-tooltip__body--right': position === 'right',
-      'usa-tooltip__body--left': position === 'left',
-      'is-visible': isVisible,
-    })
-
-    useTooltip(triggerElementRef, position)
 
     const triggerClasses = classnames('usa-tooltip__trigger', className)
 
@@ -295,7 +268,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       <span
         data-testid="tooltipWrapper"
         ref={wrapperRef}
-        className="usa-tooltip">
+        className={wrapperClasses}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -310,16 +283,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       </span>
     )
   } else {
-    const triggerElementRef = useRef<HTMLButtonElement>(null)
-    const { label, position, children, className, ...remainingProps } = props
-    const tooltipBodyClasses = classnames('usa-tooltip__body', {
-      'is-set': isVisible,
-      'usa-tooltip__body--top': position === 'top',
-      'usa-tooltip__body--bottom': position === 'bottom',
-      'usa-tooltip__body--right': position === 'right',
-      'usa-tooltip__body--left': position === 'left',
-      'is-visible': isVisible,
-    })
+    const { label, children, ...remainingProps } = props
 
     const triggerClasses = classnames(
       'usa-button',
@@ -327,12 +291,11 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       className
     )
 
-    useTooltip(triggerElementRef, position)
     return (
       <span
         data-testid="tooltipWrapper"
         ref={wrapperRef}
-        className="usa-tooltip">
+        className={wrapperClasses}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
