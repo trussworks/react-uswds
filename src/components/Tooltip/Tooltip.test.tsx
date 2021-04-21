@@ -39,6 +39,8 @@ describe('Tooltip component', () => {
 
   it('defaults the position to top if no position prop is given', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
+
+    fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
     expect(screen.getByTestId('tooltipBody')).toHaveClass(
       `usa-tooltip__body--top`
     )
@@ -121,6 +123,8 @@ describe('Tooltip component', () => {
           My Tooltip
         </Tooltip>
       )
+
+      fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
       expect(getByTestId('tooltipBody')).toHaveClass(
         `usa-tooltip__body--bottom`
       )
@@ -187,28 +191,35 @@ describe('Tooltip component', () => {
 
   describe('positioning the tooltip', () => {
     describe('when position is top', () => {
-      it('positions on the top', () => {
+      beforeEach(() => {
+        jest.clearAllMocks()
+
         render(
           <Tooltip label="Click me" position="top">
             My Tooltip
           </Tooltip>
         )
+
+        const triggerEl = screen.getByTestId('triggerElement')
+        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+      })
+
+      it('positions on the top', () => {
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--top')
-        // TODO - marginLeft & marginBottom
+        expect(bodyEl).toHaveStyle('margin-left: 275px')
+
+        // TODO
+        // expect(bodyEl).toHaveStyle('margin-bottom: 257px')
       })
 
       it('adds the wrap class if the width is outside the viewport', () => {
         mockedIsElementInViewport.mockReturnValueOnce(true)
         mockedIsElementInViewport.mockReturnValueOnce(false)
-
-        render(
-          <Tooltip label="Click me" position="top">
-            My Tooltip
-          </Tooltip>
-        )
 
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -221,44 +232,48 @@ describe('Tooltip component', () => {
         mockedIsElementInViewport.mockReturnValueOnce(false)
         mockedIsElementInViewport.mockReturnValueOnce(false)
 
-        render(
-          <Tooltip label="Click me" position="top">
-            My Tooltip
-          </Tooltip>
-        )
-
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--bottom')
         expect(bodyEl).toHaveClass('usa-tooltip__body--wrap')
-        // TODO - marginLeft & marginBottom
+        expect(bodyEl).toHaveStyle('margin-left: 275px')
+
+        // TODO
+        // expect(bodyEl).toHaveStyle('margin-top: 257px')
       })
     })
 
     describe('when position is bottom', () => {
-      it('positions on the bottom', () => {
+      beforeEach(() => {
+        jest.clearAllMocks()
+
         render(
           <Tooltip label="Click me" position="bottom">
             My Tooltip
           </Tooltip>
         )
+
+        const triggerEl = screen.getByTestId('triggerElement')
+        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+      })
+
+      it('positions on the bottom', () => {
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--bottom')
-        // TODO - marginLeft & marginTop
+        expect(bodyEl).toHaveStyle('margin-left: 275px')
+
+        // TODO
+        // expect(bodyEl).toHaveStyle('margin-top: 257px')
       })
 
       it('adds the wrap class if the width is outside the viewport', () => {
         mockedIsElementInViewport.mockReturnValueOnce(true)
         mockedIsElementInViewport.mockReturnValueOnce(false)
-
-        render(
-          <Tooltip label="Click me" position="bottom">
-            My Tooltip
-          </Tooltip>
-        )
 
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -271,44 +286,47 @@ describe('Tooltip component', () => {
         mockedIsElementInViewport.mockReturnValueOnce(false)
         mockedIsElementInViewport.mockReturnValueOnce(false)
 
-        render(
-          <Tooltip label="Click me" position="bottom">
-            My Tooltip
-          </Tooltip>
-        )
-
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--top')
         expect(bodyEl).toHaveClass('usa-tooltip__body--wrap')
-        // TODO - marginLeft & marginTop
+        expect(bodyEl).toHaveStyle('margin-left: 275px')
+
+        // TODO
+        // expect(bodyEl).toHaveStyle('margin-bottom: 257px')
       })
     })
 
     describe('when position is right', () => {
-      it('positions on the right', () => {
+      beforeEach(() => {
+        jest.clearAllMocks()
+
         render(
           <Tooltip label="Click me" position="right">
             My Tooltip
           </Tooltip>
         )
+
+        const triggerEl = screen.getByTestId('triggerElement')
+        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+      })
+
+      it('positions on the right', () => {
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--right')
         expect(bodyEl).toHaveStyle('margin-bottom: 0px')
-        // TODO - marginLeft & bottom pos
+        expect(bodyEl).toHaveStyle('margin-left: 457px')
+
+        // expect(bodyEl).toHaveStyle('bottom: ')
       })
 
       it('positions to the left if the width is outside the viewport', () => {
         mockedIsElementInViewport.mockReturnValueOnce(false)
-
-        render(
-          <Tooltip label="Click me" position="right">
-            My Tooltip
-          </Tooltip>
-        )
 
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -319,12 +337,6 @@ describe('Tooltip component', () => {
       it('positions to the top if the width is still outside the viewport', () => {
         mockedIsElementInViewport.mockReturnValueOnce(false)
         mockedIsElementInViewport.mockReturnValueOnce(false)
-
-        render(
-          <Tooltip label="Click me" position="right">
-            My Tooltip
-          </Tooltip>
-        )
 
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -334,28 +346,38 @@ describe('Tooltip component', () => {
     })
 
     describe('when position is left', () => {
-      it('positions on the left', () => {
+      beforeEach(() => {
+        jest.clearAllMocks()
+
         render(
           <Tooltip label="Click me" position="left">
             My Tooltip
           </Tooltip>
         )
+
+        const triggerEl = screen.getByTestId('triggerElement')
+        const bodyEl = screen.getByRole('tooltip', { hidden: true })
+        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+        jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(150)
+      })
+
+      // TODO when offset is greater than width
+
+      it('positions on the left', () => {
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
         const bodyEl = screen.queryByRole('tooltip')
         expect(bodyEl).toHaveClass('usa-tooltip__body--left')
         expect(bodyEl).toHaveStyle('margin-bottom: 0px')
-        // TODO - marginLeft & bottom pos
+        expect(bodyEl).toHaveStyle('margin-left: -57px')
+
+        // expect(bodyEl).toHaveStyle('bottom: ')
       })
 
       it('positions to the right if the width is outside the viewport', () => {
         mockedIsElementInViewport.mockReturnValueOnce(false)
-
-        render(
-          <Tooltip label="Click me" position="left">
-            My Tooltip
-          </Tooltip>
-        )
 
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
@@ -366,12 +388,6 @@ describe('Tooltip component', () => {
       it('positions to the top if the width is still outside the viewport', () => {
         mockedIsElementInViewport.mockReturnValueOnce(false)
         mockedIsElementInViewport.mockReturnValueOnce(false)
-
-        render(
-          <Tooltip label="Click me" position="left">
-            My Tooltip
-          </Tooltip>
-        )
 
         fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
