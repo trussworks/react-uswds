@@ -8,8 +8,27 @@ export type GridProps = GridItemProps &
     [P in BreakpointKeys]?: GridItemProps
   }
 
+export type GridComponentProps<T> = GridProps & { className?: string } & T
+
 export type GridLayoutProp = {
   gridLayout?: GridProps
+}
+
+interface WithCustomGridProps<T> {
+  asCustom: React.FunctionComponent<T>
+}
+
+export type DefaultGridProps = GridComponentProps<JSX.IntrinsicElements['div']>
+
+export type CustomGridProps<T> = GridComponentProps<
+  React.PropsWithChildren<T>
+> &
+  WithCustomGridProps<React.PropsWithChildren<T>>
+
+export function isCustomProps<T>(
+  props: DefaultGridProps | CustomGridProps<T>
+): props is CustomGridProps<T> {
+  return 'asCustom' in props
 }
 
 export const getGridClasses = (
@@ -47,12 +66,14 @@ export const applyGridClasses = (gridLayout: GridProps): string => {
   return classes
 }
 
-export const Grid = ({
-  children,
-  className,
-  ...props
-}: GridProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
+export function Grid(props: DefaultGridProps): React.ReactElement
+export function Grid<T>(props: CustomGridProps<T>): React.ReactElement
+export function Grid<FCProps = DefaultGridProps>(
+  props: DefaultGridProps | CustomGridProps<FCProps>
+): React.ReactElement {
   const {
+    children,
+    className,
     row,
     col,
     gap,
@@ -83,6 +104,7 @@ export const Grid = ({
     desktopLg,
     widescreen,
   }
+
   let classes = getGridClasses(itemProps)
 
   Object.keys(breakpoints).forEach((b) => {
@@ -94,12 +116,24 @@ export const Grid = ({
     }
   })
 
-  // Pass in any custom classes
-  classes = classnames(classes, className)
+  if (isCustomProps(props)) {
+    const { asCustom, ...remainingProps } = props
+    classes = classnames(classes, className)
 
-  return (
-    <div className={classes} data-testid="grid" {...otherProps}>
-      {children}
-    </div>
-  )
+    const gridProps: FCProps = (remainingProps as unknown) as FCProps
+    return React.createElement(
+      asCustom,
+      {
+        className: classes,
+        ...gridProps,
+      },
+      children
+    )
+  } else {
+    return (
+      <div className={classes} data-testid="grid" {...otherProps}>
+        {children}
+      </div>
+    )
+  }
 }

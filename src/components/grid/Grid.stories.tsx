@@ -27,6 +27,18 @@ const exampleStyles = {
 
 const testContent = <div style={exampleStyles}>Content</div>
 
+type CustomGridProps = JSX.IntrinsicElements['section']
+
+const CustomGrid: React.FunctionComponent<CustomGridProps> = ({
+  children,
+  className,
+  ...sectionProps
+}: CustomGridProps): React.ReactElement => (
+  <section className={className} {...sectionProps}>
+    {children}
+  </section>
+)
+
 type CustomGridContainerProps = JSX.IntrinsicElements['ul']
 
 const CustomGridContainer: React.FunctionComponent<CustomGridContainerProps> = ({
@@ -105,6 +117,27 @@ export const customContainer = (): React.ReactElement => (
         <Grid col={11}>{testContent}</Grid>
       </Grid>
     </li>
+  </GridContainer>
+)
+
+export const customGrid = (): React.ReactElement => (
+  <GridContainer>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={1}>{testContent}</Grid>
+      <Grid col={11}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={2}>{testContent}</Grid>
+      <Grid col={10}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={10}>{testContent}</Grid>
+      <Grid col={2}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={11}>{testContent}</Grid>
+      <Grid col={1}>{testContent}</Grid>
+    </Grid>
   </GridContainer>
 )
 
