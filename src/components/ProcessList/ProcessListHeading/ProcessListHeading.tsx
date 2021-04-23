@@ -1,64 +1,42 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type ProcessListHeadingProps<T> = {
+interface BaseProcessListHeadingProps {
+  type: string
   className?: string
   children?: React.ReactNode
-} & T
-
-interface WithCustomHeadingProps<T> {
-  asCustom: React.FunctionComponent<T>
 }
 
-export type DefaultProcessListHeadingProps = ProcessListHeadingProps<
-  JSX.IntrinsicElements['h4']
->
-
-export type CustomHeadingProps<T> = ProcessListHeadingProps<T> &
-  WithCustomHeadingProps<T>
-
-export function isCustomProps<T>(
-  props: DefaultProcessListHeadingProps | CustomHeadingProps<T>
-): props is CustomHeadingProps<T> {
-  return 'asCustom' in props
+interface HeadingProcessListHeadingProps extends BaseProcessListHeadingProps {
+  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
-function headingClasses<T>(
-  className: ProcessListHeadingProps<T>['className']
-): string | undefined {
-  return classnames('usa-process-list__heading', className)
+interface ParagraphProcessListHeadingProps extends BaseProcessListHeadingProps {
+  type: 'p'
 }
 
-export function ProcessListHeading(
-  props: DefaultProcessListHeadingProps
-): React.ReactElement
-export function ProcessListHeading<T>(
-  props: CustomHeadingProps<T>
-): React.ReactElement
-export function ProcessListHeading<FCProps = DefaultProcessListHeadingProps>(
-  props: DefaultProcessListHeadingProps | CustomHeadingProps<FCProps>
-): React.ReactElement {
-  if (isCustomProps(props)) {
-    const { className, asCustom, children, ...remainingProps } = props
+type ProcessListHeadingProps = HeadingProcessListHeadingProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
 
-    const headingProps: FCProps = (remainingProps as unknown) as FCProps
-    const classes = headingClasses(className)
-    return React.createElement(
-      asCustom,
-      {
-        className: classes,
-        ...headingProps,
-      },
-      children
-    )
-  } else {
-    const { children, className, ...headingProps } = props
+type ProcessListParagraphHeadingProps = ParagraphProcessListHeadingProps &
+  JSX.IntrinsicElements['p']
 
-    const classes = headingClasses(className)
-    return (
-      <h4 className={classes} {...headingProps}>
-        {children}
-      </h4>
-    )
-  }
+export const ProcessListHeading = ({
+  type,
+  className,
+  children,
+  ...headingProps
+}:
+  | ProcessListParagraphHeadingProps
+  | ProcessListHeadingProps): React.ReactElement => {
+  const classes = classnames('usa-process-list__heading', className)
+  const Tag = type
+  return (
+    <Tag data-testid="processListHeading" className={classes} {...headingProps}>
+      {children}
+    </Tag>
+  )
 }

@@ -42,18 +42,18 @@ describe('ProcessList component', () => {
     const { getAllByRole } = render(
       <ProcessList>
         <ProcessListItem>
-          <ProcessListHeading>item 1</ProcessListHeading>
+          <ProcessListHeading type="h4">item 1</ProcessListHeading>
           item 1
         </ProcessListItem>
         <ProcessListItem>
-          <ProcessListHeading>item 2</ProcessListHeading>item 2
+          <ProcessListHeading type="h4">item 2</ProcessListHeading>item 2
         </ProcessListItem>
         <ProcessListItem>
-          <ProcessListHeading>item 3</ProcessListHeading>
+          <ProcessListHeading type="h4">item 3</ProcessListHeading>
           <a href="#">item 3</a>
         </ProcessListItem>
         <ProcessListItem>
-          <ProcessListHeading>item 4</ProcessListHeading>
+          <ProcessListHeading type="h4">item 4</ProcessListHeading>
           <ul>{testListItems}</ul>
         </ProcessListItem>
       </ProcessList>

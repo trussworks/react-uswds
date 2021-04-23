@@ -20,22 +20,10 @@ Source: https://designsystem.digital.gov/components/process-list
   },
 }
 
-type CustomHeadingProps = JSX.IntrinsicElements['p']
-
-const CustomHeading: React.FunctionComponent<CustomHeadingProps> = ({
-  children,
-  className,
-  ...props
-}: CustomHeadingProps): React.ReactElement => (
-  <p className={className} {...props}>
-    {children}
-  </p>
-)
-
 export const processListDefault = (): React.ReactElement => (
   <ProcessList>
     <ProcessListItem>
-      <ProcessListHeading>Start a process</ProcessListHeading>
+      <ProcessListHeading type="h4">Start a process</ProcessListHeading>
       <p className="margin-top-05">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
         ipsum sed pharetra gravida, orci magna rhoncus neque.
@@ -54,7 +42,9 @@ export const processListDefault = (): React.ReactElement => (
       </ul>
     </ProcessListItem>
     <ProcessListItem>
-      <ProcessListHeading>Proceed to the second step</ProcessListHeading>
+      <ProcessListHeading type="h4">
+        Proceed to the second step
+      </ProcessListHeading>
       <p>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
         ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -64,7 +54,9 @@ export const processListDefault = (): React.ReactElement => (
       </p>
     </ProcessListItem>
     <ProcessListItem>
-      <ProcessListHeading>Complete the step-by-step process</ProcessListHeading>
+      <ProcessListHeading type="h4">
+        Complete the step-by-step process
+      </ProcessListHeading>
       <p>
         Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat
         condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi.
@@ -77,23 +69,17 @@ export const processListDefault = (): React.ReactElement => (
 export const processListNoTextCustomSizing = (): React.ReactElement => (
   <ProcessList>
     <ProcessListItem className="padding-bottom-4">
-      <ProcessListHeading<CustomHeadingProps>
-        className="font-sans-xl line-height-sans-1"
-        asCustom={CustomHeading}>
+      <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
         Start a process.
       </ProcessListHeading>
     </ProcessListItem>
     <ProcessListItem className="padding-bottom-4">
-      <ProcessListHeading<CustomHeadingProps>
-        className="font-sans-xl line-height-sans-1"
-        asCustom={CustomHeading}>
+      <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
         Proceed to the second step.
       </ProcessListHeading>
     </ProcessListItem>
     <ProcessListItem>
-      <ProcessListHeading<CustomHeadingProps>
-        className="font-sans-xl line-height-sans-1"
-        asCustom={CustomHeading}>
+      <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
         Complete the step-by-step process.
       </ProcessListHeading>
     </ProcessListItem>
@@ -103,7 +89,7 @@ export const processListNoTextCustomSizing = (): React.ReactElement => (
 export const processListCustomSizing = (): React.ReactElement => (
   <ProcessList>
     <ProcessListItem className="padding-bottom-4">
-      <ProcessListHeading className="font-sans-xl line-height-sans-1">
+      <ProcessListHeading type="h4" className="font-sans-xl line-height-sans-1">
         Start a process
       </ProcessListHeading>
 
@@ -113,7 +99,7 @@ export const processListCustomSizing = (): React.ReactElement => (
       </p>
     </ProcessListItem>
     <ProcessListItem className="padding-bottom-4">
-      <ProcessListHeading className="font-sans-xl line-height-sans-1">
+      <ProcessListHeading type="h4" className="font-sans-xl line-height-sans-1">
         Proceed to the second step.
       </ProcessListHeading>
       <p className="font-sans-lg margin-top-1 text-light">
@@ -122,7 +108,7 @@ export const processListCustomSizing = (): React.ReactElement => (
       </p>
     </ProcessListItem>
     <ProcessListItem>
-      <ProcessListHeading className="font-sans-xl line-height-sans-1">
+      <ProcessListHeading type="h4" className="font-sans-xl line-height-sans-1">
         Complete the step-by-step process.
       </ProcessListHeading>
       <p className="font-sans-lg margin-top-1 text-light">
