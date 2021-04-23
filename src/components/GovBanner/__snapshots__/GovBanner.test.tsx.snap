@@ -65,8 +65,10 @@ exports[`GovBanner component static content renders consistently in English for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Dot gov"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -89,8 +91,10 @@ exports[`GovBanner component static content renders consistently in English for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Https"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -110,7 +114,9 @@ exports[`GovBanner component static content renders consistently in English for 
                   <img
                     alt="lock"
                     className="usa-banner__lock-image"
+                    role="img"
                     src="test-file-stub"
+                    title="Lock"
                   />
                 </span>
                 )
@@ -196,8 +202,10 @@ exports[`GovBanner component static content renders consistently in English for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Dot gov"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -220,8 +228,10 @@ exports[`GovBanner component static content renders consistently in English for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Https"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -241,7 +251,9 @@ exports[`GovBanner component static content renders consistently in English for 
                   <img
                     alt="lock"
                     className="usa-banner__lock-image"
+                    role="img"
                     src="test-file-stub"
+                    title="Lock"
                   />
                 </span>
                 )
@@ -327,8 +339,10 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Dot gov"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -351,8 +365,10 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Https"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -372,7 +388,9 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                   <img
                     alt="lock"
                     className="usa-banner__lock-image"
+                    role="img"
                     src="test-file-stub"
+                    title="Lock"
                   />
                 </span>
                 )
@@ -459,8 +477,10 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Dot gov"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -483,8 +503,10 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Https"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -504,7 +526,9 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                   <img
                     alt="lock"
                     className="usa-banner__lock-image"
+                    role="img"
                     src="test-file-stub"
+                    title="Lock"
                   />
                 </span>
                 )
@@ -591,8 +615,10 @@ exports[`GovBanner component static content renders consistently with default pr
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Dot gov"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -615,8 +641,10 @@ exports[`GovBanner component static content renders consistently with default pr
           className="usa-banner__guidance tablet:grid-col-6"
         >
           <img
-            alt="Https"
+            alt=""
+            aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
+            role="img"
             src="test-file-stub"
           />
           <div
@@ -636,7 +664,9 @@ exports[`GovBanner component static content renders consistently with default pr
                   <img
                     alt="lock"
                     className="usa-banner__lock-image"
+                    role="img"
                     src="test-file-stub"
+                    title="Lock"
                   />
                 </span>
                 )
