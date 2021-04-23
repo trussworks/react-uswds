@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/trussworks/react-uswds/compare/1.15.0...1.16.0) (2021-04-22)
+
+
+### Features
+
+* Add i18n support to DatePicker component ([#990](https://github.com/trussworks/react-uswds/issues/990)) ([2000b9c](https://github.com/trussworks/react-uswds/commit/2000b9cd1e98ab85841d448a58b41105a17a7bb4))
+* Update to USWDS 2.10.3 ([#1106](https://github.com/trussworks/react-uswds/issues/1106)) ([c9f71d7](https://github.com/trussworks/react-uswds/commit/c9f71d7d7989fb9c7ab2e264d1af26436dcb66c3))
+* Implement Identifier subcomponents ([#1100](https://github.com/trussworks/react-uswds/issues/1100)) ([703a60d](https://github.com/trussworks/react-uswds/commit/703a60dadc326c822748bbf50aec735e35421c60))
+
+
+### Documentation & Examples
+
+* **adr:** Increase ReactUSWDS version when updating USWDS version ([#1045](https://github.com/trussworks/react-uswds/issues/1045)) ([59f6720](https://github.com/trussworks/react-uswds/commit/59f6720ad023d102d71e00ad9447edc47c1d0a55))
+
 ## [1.15.0](https://github.com/trussworks/react-uswds/compare/1.14.0...1.15.0) (2021-04-12)
 
 
