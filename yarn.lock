@@ -13945,16 +13945,24 @@ use@^3.1.0:
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 uswds@2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.10.0.tgz#c7ecb779c82302fa189b36ca3eefe59dfde7f782"
   integrity sha512-A6HjL42ryf9pdfbm6JrGxZywKzCZraHO4v3Ve21uFDqoA3ijoNjiSYME+3SG86CIgC6zRasrbQVuI3bvd3Xv2w==
 =======
+=======
+
+>>>>>>> fc36dbd77f8c8665eb25297a28c56e1fd6b4a7ff
 uswds@2.10.3:
   version "2.10.3"
   resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.10.3.tgz#16d34cee81897762d6d69d3ac83aa55129826fa6"
   integrity sha512-krNRzx1jRzOJpuH/qtmQhd5zxnXTaDVqrPNYT99sJbxzWUqjb1zZHh3jFNo+xKDpNuiO0XMPwZwlaSp2YdZ3Ag==
+<<<<<<< HEAD
 >>>>>>> main
+=======
+
+>>>>>>> fc36dbd77f8c8665eb25297a28c56e1fd6b4a7ff
   dependencies:
     classlist-polyfill "^1.0.3"
     del "^6.0.0"
