@@ -17,6 +17,7 @@ interface FileInputProps {
 export type FileInputRef = {
   clearFiles: () => void
   input: HTMLInputElement | null
+  files: FileList | []
 }
 
 export const FileInput = forwardRef(
@@ -37,15 +38,16 @@ export const FileInput = forwardRef(
     const internalRef = useRef<HTMLInputElement>(null)
     const [isDragging, setIsDragging] = useState(false)
     const [showError, setShowError] = useState(false)
-    const [files, setFiles] = useState<FileList | null>(null)
+    const [files, setFiles] = useState<FileList | []>([])
 
     useImperativeHandle(
       ref,
       () => ({
         input: internalRef.current,
-        clearFiles: (): void => setFiles(null),
+        clearFiles: (): void => setFiles([]),
+        files,
       }),
-      []
+      [files]
     )
 
     const fileInputClasses = classnames(
@@ -111,7 +113,7 @@ export const FileInput = forwardRef(
         }
 
         if (!allFilesAllowed) {
-          setFiles(null)
+          setFiles([])
           setShowError(true)
           e.preventDefault()
           e.stopPropagation()
@@ -130,7 +132,7 @@ export const FileInput = forwardRef(
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       setShowError(false)
-      setFiles(e.target?.files)
+      setFiles(e.target?.files || [])
       if (onChange) onChange(e)
     }
 

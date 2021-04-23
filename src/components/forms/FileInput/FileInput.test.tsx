@@ -331,36 +331,56 @@ describe('FileInput component', () => {
     expect(mockOnDrop).toHaveBeenCalled()
   })
 
-  it('exposes a ref that can be used to clear the input', () => {
-    const fileInputRef = React.createRef<FileInputRef>()
-    const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
+  describe('exposed ref', () => {
+    it('can be used to access the files', async () => {
+      const fileInputRef = React.createRef<FileInputRef>()
 
-    render(
-      <>
-        <FileInput {...testProps} ref={fileInputRef} />
-        <button onClick={handleClearFiles}>Clear files</button>
-      </>
-    )
+      render(<FileInput {...testProps} ref={fileInputRef} />)
 
-    const inputEl = screen.getByTestId('file-input-input')
-    userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
+      // Upload a file
+      const inputEl = screen.getByTestId('file-input-input')
+      userEvent.upload(inputEl, [TEST_PNG_FILE])
 
-    // Upload a file
-    let previews = screen.getAllByTestId('file-input-preview')
-    const previewHeading = screen.getByTestId('file-input-preview-heading')
+      expect(fileInputRef.current?.input?.files).toHaveLength(1)
+      expect(fileInputRef.current?.files).toHaveLength(1)
+    })
 
-    userEvent.upload(inputEl, [TEST_XLS_FILE])
-    previews = screen.getAllByTestId('file-input-preview')
-    expect(previews).toHaveLength(1)
-    expect(previews[0]).toHaveTextContent(TEST_XLS_FILE.name)
-    expect(previewHeading).toHaveTextContent('Selected file Change file')
+    it('can be used to clear the files', () => {
+      const fileInputRef = React.createRef<FileInputRef>()
+      const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
 
-    // Clear the input
-    fireEvent.click(screen.getByText('Clear files'))
-    expect(screen.queryByTestId('file-input-preview')).not.toBeInTheDocument()
-    expect(previewHeading).not.toBeInTheDocument()
-    expect(screen.getByTestId('file-input-instructions')).not.toHaveClass(
-      'display-none'
-    )
+      render(
+        <>
+          <FileInput {...testProps} ref={fileInputRef} />
+          <button onClick={handleClearFiles}>Clear files</button>
+        </>
+      )
+
+      // Upload files
+      const inputEl = screen.getByTestId('file-input-input')
+      userEvent.upload(inputEl, [TEST_XLS_FILE])
+
+      const previews = screen.getAllByTestId('file-input-preview')
+      const previewHeading = screen.getByTestId('file-input-preview-heading')
+      expect(previews).toHaveLength(1)
+      expect(previews[0]).toHaveTextContent(TEST_XLS_FILE.name)
+      expect(previewHeading).toHaveTextContent('Selected file Change file')
+
+      expect(fileInputRef.current?.input?.files).toHaveLength(1)
+      expect(fileInputRef.current?.files).toHaveLength(1)
+
+      // Clear the input
+      fireEvent.click(screen.getByText('Clear files'))
+      expect(screen.queryByTestId('file-input-preview')).not.toBeInTheDocument()
+      expect(previewHeading).not.toBeInTheDocument()
+      expect(screen.getByTestId('file-input-instructions')).not.toHaveClass(
+        'display-none'
+      )
+
+      // Notice how input.files still exist because we can't programmatically set the value
+      expect(fileInputRef.current?.input?.files).toHaveLength(1)
+      // But the files state of the React "input" is cleared out
+      expect(fileInputRef.current?.files).toHaveLength(0)
+    })
   })
 })
