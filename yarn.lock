@@ -13948,7 +13948,6 @@ uswds@2.10.3:
   version "2.10.3"
   resolved "https://registry.yarnpkg.com/uswds/-/uswds-2.10.3.tgz#16d34cee81897762d6d69d3ac83aa55129826fa6"
   integrity sha512-krNRzx1jRzOJpuH/qtmQhd5zxnXTaDVqrPNYT99sJbxzWUqjb1zZHh3jFNo+xKDpNuiO0XMPwZwlaSp2YdZ3Ag==
-
   dependencies:
     classlist-polyfill "^1.0.3"
     del "^6.0.0"
