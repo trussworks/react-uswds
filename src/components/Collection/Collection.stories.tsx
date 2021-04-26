@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from './../Link/Link'
 import { Collection } from './Collection'
 import { CollectionItem } from './CollectionItem'
 import { CollectionHeading } from './CollectionHeading'
@@ -28,11 +29,9 @@ export const collectionWithDefaultItems = (): React.ReactElement => (
     <Collection>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/presidents-winners-press-release/">
+          <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, the Administration announces the winners of the Gears of
@@ -47,20 +46,16 @@ export const collectionWithDefaultItems = (): React.ReactElement => (
           <CollectionMetaItem>September 30, 2020</CollectionMetaItem>
         </CollectionMeta>
         <CollectionMeta aria-label="Topics">
-          <CollectionMetaItemTag className="usa-tag--new">
-            New
-          </CollectionMetaItemTag>
+          <CollectionMetaItemTag tagStyle="new">New</CollectionMetaItemTag>
           <CollectionMetaItemTag>PMA</CollectionMetaItemTag>
           <CollectionMetaItemTag>OMB</CollectionMetaItemTag>
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           In honor of National Women’s Small Business Month, we’ve partnered
@@ -78,12 +73,10 @@ export const collectionWithDefaultItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, we published progress updates for both Cross-Agency Priority
@@ -119,11 +112,9 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
           />
         }>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/presidents-winners-press-release/">
+          <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, the Administration announces the winners of the Gears of
@@ -138,9 +129,7 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
           <CollectionMetaItem>September 30, 2020</CollectionMetaItem>
         </CollectionMeta>
         <CollectionMeta aria-label="Topics">
-          <CollectionMetaItemTag className="usa-tag--new">
-            New
-          </CollectionMetaItemTag>
+          <CollectionMetaItemTag tagStyle="new">New</CollectionMetaItemTag>
           <CollectionMetaItemTag>PMA</CollectionMetaItemTag>
           <CollectionMetaItemTag>OMB</CollectionMetaItemTag>
         </CollectionMeta>
@@ -153,11 +142,9 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
           />
         }>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           In honor of National Women’s Small Business Month, we’ve partnered
@@ -181,12 +168,10 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
           />
         }>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, we published progress updates for both Cross-Agency Priority
@@ -216,11 +201,9 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
     <Collection>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://digital.gov/guides/mobile-principles/?dg">
+          <Link href="https://digital.gov/guides/mobile-principles/?dg">
             The eight principles of mobile-friendliness
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>Digital.gov</CollectionMetaItem>
@@ -228,11 +211,9 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://designsystem.digital.gov/maturity-model/">
+          <Link href="https://designsystem.digital.gov/maturity-model/">
             The USWDS maturity model
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>U.S. Web Design System</CollectionMetaItem>
@@ -240,18 +221,16 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a className="usa-link" href="https://truss.works">
+          <Link href="https://truss.works">
             A news item that’s on our own site
-          </a>
+          </Link>
         </CollectionHeading>
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
+          <Link href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
             The key role of product owners in federated data projects
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>18F</CollectionMetaItem>
@@ -259,12 +238,10 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
+          <Link href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
             Progress on Cross-Agency Priority (CAP) goals and Agency Priority
             Goals (APGs)
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>Performance.gov</CollectionMetaItem>
@@ -279,11 +256,9 @@ export const collectionWithMixedItems = (): React.ReactElement => (
     <Collection>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/presidents-winners-press-release/">
+          <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, the Administration announces the winners of the Gears of
@@ -298,20 +273,16 @@ export const collectionWithMixedItems = (): React.ReactElement => (
           <CollectionMetaItem>September 30, 2020</CollectionMetaItem>
         </CollectionMeta>
         <CollectionMeta aria-label="Topics">
-          <CollectionMetaItemTag className="usa-tag--new">
-            New
-          </CollectionMetaItemTag>
+          <CollectionMetaItemTag tagStyle="new">New</CollectionMetaItemTag>
           <CollectionMetaItemTag>PMA</CollectionMetaItemTag>
           <CollectionMetaItemTag>OMB</CollectionMetaItemTag>
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://digital.gov/guides/mobile-principles/?dg">
+          <Link href="https://digital.gov/guides/mobile-principles/?dg">
             The eight principles of mobile-friendliness
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>Digital.gov</CollectionMetaItem>
@@ -325,11 +296,9 @@ export const collectionWithMixedItems = (): React.ReactElement => (
           />
         }>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           In honor of National Women’s Small Business Month, we’ve partnered
@@ -347,11 +316,9 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://designsystem.digital.gov/maturity-model/">
+          <Link href="https://designsystem.digital.gov/maturity-model/">
             The USWDS maturity model
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>U.S. Web Design System</CollectionMetaItem>
@@ -362,12 +329,10 @@ export const collectionWithMixedItems = (): React.ReactElement => (
           <CollectionCalendarDate datetime="2020-09-17T12:00:00+01:00" />
         }>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, we published progress updates for both Cross-Agency Priority
@@ -390,18 +355,16 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a className="usa-link" href="https://truss.works">
+          <Link href="https://truss.works">
             A news item that’s on our own site
-          </a>
+          </Link>
         </CollectionHeading>
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
+          <Link href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
             The key role of product owners in federated data projects
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>18F</CollectionMetaItem>
@@ -409,12 +372,10 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
+          <Link href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
             Progress on Cross-Agency Priority (CAP) goals and Agency Priority
             Goals (APGs)
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionMeta aria-label="More Information">
           <CollectionMetaItem>Performance.gov</CollectionMetaItem>
@@ -429,11 +390,9 @@ export const condensedCollection = (): React.ReactElement => (
     <Collection condensed>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/presidents-winners-press-release/">
+          <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, the Administration announces the winners of the Gears of
@@ -448,20 +407,16 @@ export const condensedCollection = (): React.ReactElement => (
           <CollectionMetaItem>September 30, 2020</CollectionMetaItem>
         </CollectionMeta>
         <CollectionMeta aria-label="Topics">
-          <CollectionMetaItemTag className="usa-tag--new">
-            New
-          </CollectionMetaItemTag>
+          <CollectionMetaItemTag tagStyle="new">New</CollectionMetaItemTag>
           <CollectionMetaItemTag>PMA</CollectionMetaItemTag>
           <CollectionMetaItemTag>OMB</CollectionMetaItemTag>
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           In honor of National Women’s Small Business Month, we’ve partnered
@@ -479,12 +434,10 @@ export const condensedCollection = (): React.ReactElement => (
       </CollectionItem>
       <CollectionItem>
         <CollectionHeading>
-          <a
-            className="usa-link"
-            href="https://www.performance.gov/sba-wosb-dashboard/">
+          <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
-          </a>
+          </Link>
         </CollectionHeading>
         <CollectionDescription>
           Today, we published progress updates for both Cross-Agency Priority
