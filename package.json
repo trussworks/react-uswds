@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -62,7 +62,7 @@
   "peerDependencies": {
     "react": "^16.x || ^17.x",
     "react-dom": "^16.x || ^17.x",
-    "uswds": "2.9.0"
+    "uswds": "2.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -74,7 +74,7 @@
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^11.0.2",
     "@testing-library/react-hooks": "^5.0.0",
-    "@testing-library/user-event": "^12.1.1",
+    "@testing-library/user-event": "^13.1.5",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^26.0.0",
     "@types/react": "^17.0.0",
@@ -126,7 +126,7 @@
     "ts-jest": "^26.1.2",
     "typescript": "^3.8.0",
     "url-loader": "^4.0.0",
-    "uswds": "2.9.0",
+    "uswds": "2.10.3",
     "webpack": "^4.41.0",
     "webpack-cli": "^4.0.0"
   },

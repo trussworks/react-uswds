@@ -37,6 +37,7 @@ interface ComboBoxProps {
   noResults?: string
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
+  ulProps?: JSX.IntrinsicElements['ul']
 }
 
 interface InputProps {
@@ -79,6 +80,7 @@ export const ComboBox = ({
   noResults,
   selectProps,
   inputProps,
+  ulProps,
   ...customProps
 }: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
@@ -341,7 +343,8 @@ export const ComboBox = ({
         id={listID}
         className="usa-combo-box__list"
         role="listbox"
-        hidden={!state.isOpen}>
+        hidden={!state.isOpen}
+        {...ulProps}>
         {state.filteredOptions.map((option, index) => {
           const focused = option === state.focusedOption
           const selected = option === state.selectedOption
