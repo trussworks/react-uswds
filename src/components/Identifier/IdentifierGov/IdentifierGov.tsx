@@ -19,7 +19,7 @@ export const IdentifierGov = ({
 
   return (
     <section data-testid="identifierGov" className={classes} {...sectionProps}>
-      {children}
+      <div className="usa-identifier__container">{children}</div>
     </section>
   )
 }
