@@ -25,20 +25,13 @@ describe('IdentifierGov component', () => {
     const tree = renderer
       .create(
         <IdentifierGov>
-          <div className="usa-identifier__container">
-            <div
-              data-testid="identifierGov-description"
-              className="usa-identifier__usagov-description">
-              ¿Necesita información y servicios del Gobierno?
-            </div>
-            &nbsp;
-            <a
-              data-testid="identifierGov-link"
-              href="https://www.usa.gov/espanol/"
-              className="usa-link">
-              Visite USAGov en Español
-            </a>
+          <div className="usa-identifier__usagov-description">
+            ¿Necesita información y servicios del Gobierno?
           </div>
+          &nbsp;
+          <a href="https://www.usa.gov/espanol/" className="usa-link">
+            Visite USAGov en Español
+          </a>
         </IdentifierGov>
       )
       .toJSON()

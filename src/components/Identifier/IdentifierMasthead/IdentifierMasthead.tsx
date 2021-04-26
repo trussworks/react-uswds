@@ -22,7 +22,7 @@ export const IdentifierMasthead = ({
       data-testid="identifierMasthead"
       className={classes}
       {...sectionProps}>
-      {children}
+      <div className="usa-identifier__container">{children}</div>
     </section>
   )
 }
