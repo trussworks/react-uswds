@@ -89,3 +89,4 @@ export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndi
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
 export { Search } from './components/Search/Search'
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
