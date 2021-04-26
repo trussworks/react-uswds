@@ -35,13 +35,19 @@ export const completeTimePicker = (argTypes): React.ReactElement => (
       label="Appointment Time"
       hint="hh:mm"
       onChange={noop}
+      disabled={argTypes.disabled}
     />
   </Form>
 )
 
 export const defaultTimePicker = (argTypes): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
-    <TimePicker id="appointment-time" name="appointment-time" onChange={noop} />
+    <TimePicker
+      id="appointment-time"
+      name="appointment-time"
+      onChange={noop}
+      disabled={argTypes.disabled}
+    />
   </Form>
 )
 
@@ -55,6 +61,7 @@ export const withMinAndMaxTimes = (argTypes): React.ReactElement => (
       minTime="9:00"
       maxTime="17:00"
       onChange={noop}
+      disabled={argTypes.disabled}
     />
   </Form>
 )
@@ -68,6 +75,7 @@ export const withDefaultValue = (argTypes): React.ReactElement => (
       hint="hh:mm"
       defaultValue="12:00"
       onChange={noop}
+      disabled={argTypes.disabled}
     />
   </Form>
 )
