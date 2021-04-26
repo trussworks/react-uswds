@@ -90,6 +90,8 @@ export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/
 
 export { Search } from './components/Search/Search'
 
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
 /** Truss-designed components */
 export {
   Modal,
