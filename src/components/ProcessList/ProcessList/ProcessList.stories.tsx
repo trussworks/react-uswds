@@ -90,7 +90,7 @@ export const processListCustomSizing = (): React.ReactElement => (
   <ProcessList>
     <ProcessListItem className="padding-bottom-4">
       <ProcessListHeading type="h4" className="font-sans-xl line-height-sans-1">
-        Start a process
+        Start a process.
       </ProcessListHeading>
 
       <p className="font-sans-lg margin-top-1 text-light">
