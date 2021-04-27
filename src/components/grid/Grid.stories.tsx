@@ -27,16 +27,16 @@ const exampleStyles = {
 
 const testContent = <div style={exampleStyles}>Content</div>
 
-type CustomGridProps = JSX.IntrinsicElements['section']
+type CustomGridProps = JSX.IntrinsicElements['li']
 
 const CustomGrid: React.FunctionComponent<CustomGridProps> = ({
   children,
   className,
-  ...sectionProps
+  ...liProps
 }: CustomGridProps): React.ReactElement => (
-  <section className={className} {...sectionProps}>
+  <li className={className} {...liProps}>
     {children}
-  </section>
+  </li>
 )
 
 type CustomGridContainerProps = JSX.IntrinsicElements['ul']
@@ -61,83 +61,73 @@ export const defaultContainer = (): React.ReactElement => (
   </GridContainer>
 )
 
-export const customContainer = (): React.ReactElement => (
+export const customElements = (): React.ReactElement => (
   <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
     <li>
-      <Grid row>
-        <Grid col={1}>{testContent}</Grid>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
         <Grid col={11}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid row>
         <Grid col={2}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
         <Grid col={10}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid row>
         <Grid col={3}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
         <Grid col={9}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid row>
         <Grid col={4}>{testContent}</Grid>
-        <Grid col={8}>{testContent}</Grid>
       </Grid>
     </li>
     <li>
-      <Grid row>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={8}>{testContent}</Grid>
         <Grid col={5}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={7}>{testContent}</Grid>
+        <Grid col={6}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={5}>{testContent}</Grid>
+      </Grid>
+    </li>
+    <li>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={6}>{testContent}</Grid>
         <Grid col={7}>{testContent}</Grid>
       </Grid>
     </li>
     <li>
-      <Grid row>
-        <Grid col={4}>{testContent}</Grid>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={5}>{testContent}</Grid>
         <Grid col={8}>{testContent}</Grid>
       </Grid>
     </li>
     <li>
-      <Grid row>
-        <Grid col={3}>{testContent}</Grid>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={4}>{testContent}</Grid>
         <Grid col={9}>{testContent}</Grid>
       </Grid>
     </li>
     <li>
-      <Grid row>
-        <Grid col={2}>{testContent}</Grid>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={3}>{testContent}</Grid>
         <Grid col={10}>{testContent}</Grid>
       </Grid>
     </li>
     <li>
-      <Grid row>
-        <Grid col={1}>{testContent}</Grid>
+      <Grid<CustomGridProps> asCustom={CustomGrid}>
+        <Grid col={2}>{testContent}</Grid>
         <Grid col={11}>{testContent}</Grid>
       </Grid>
     </li>
-  </GridContainer>
-)
-
-export const customGrid = (): React.ReactElement => (
-  <GridContainer>
-    <Grid<CustomGridProps> asCustom={CustomGrid}>
-      <Grid col={1}>{testContent}</Grid>
-      <Grid col={11}>{testContent}</Grid>
-    </Grid>
-    <Grid<CustomGridProps> asCustom={CustomGrid}>
-      <Grid col={2}>{testContent}</Grid>
-      <Grid col={10}>{testContent}</Grid>
-    </Grid>
-    <Grid<CustomGridProps> asCustom={CustomGrid}>
-      <Grid col={10}>{testContent}</Grid>
-      <Grid col={2}>{testContent}</Grid>
-    </Grid>
-    <Grid<CustomGridProps> asCustom={CustomGrid}>
-      <Grid col={11}>{testContent}</Grid>
-      <Grid col={1}>{testContent}</Grid>
-    </Grid>
   </GridContainer>
 )
 
