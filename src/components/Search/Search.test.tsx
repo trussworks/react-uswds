@@ -32,6 +32,16 @@ describe('Search component', () => {
     )
   })
 
+  it('renders a label', () => {
+    const mockSubmit = jest.fn()
+    const spanishLabel = 'Buscar'
+    const { queryByLabelText } = render(
+      <Search onSubmit={mockSubmit} label={spanishLabel}></Search>
+    )
+
+    expect(queryByLabelText('Buscar')).toBeInTheDocument()
+  })
+
   describe('renders size classes', () => {
     beforeEach(() => {
       jest.clearAllMocks()

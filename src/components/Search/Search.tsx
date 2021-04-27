@@ -73,7 +73,7 @@ export const Search = ({
       />
       <Button type="submit">
         <span className={isSmall ? 'usa-sr-only' : 'usa-search__submit-text'}>
-          Search
+          {label}
         </span>
       </Button>
     </Form>

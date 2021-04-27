@@ -36,3 +36,20 @@ export const smallSearch = (): React.ReactElement => (
     onSubmit={mockSubmit}
   />
 )
+
+export const defaultSpanishSearch = (): React.ReactElement => (
+  <Search onSubmit={mockSubmit} label="Buscar" />
+)
+
+export const bigSpanishSearch = (): React.ReactElement => (
+  <Search size="big" onSubmit={mockSubmit} label="Buscar" />
+)
+
+export const smallSpanishSearch = (): React.ReactElement => (
+  <Search
+    placeholder="(Optional) Spanish Placeholder Text"
+    size="small"
+    onSubmit={mockSubmit}
+    label="Buscar"
+  />
+)
