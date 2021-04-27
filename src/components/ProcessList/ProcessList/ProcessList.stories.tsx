@@ -92,7 +92,6 @@ export const processListCustomSizing = (): React.ReactElement => (
       <ProcessListHeading type="h4" className="font-sans-xl line-height-sans-1">
         Start a process
       </ProcessListHeading>
-
       <p className="font-sans-lg margin-top-1 text-light">
         Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat
         condimentum.
