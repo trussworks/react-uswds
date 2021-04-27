@@ -90,6 +90,12 @@ export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/
 
 export { Search } from './components/Search/Search'
 
+/** ProcessList components */
+export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
+export { ProcessListItem } from './components/ProcessList/ProcessListItem/ProcessListItem'
+
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
 /** Truss-designed components */
 export {
   Modal,
