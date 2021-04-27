@@ -33,3 +33,26 @@ export const selected = (): React.ReactElement => (
 export const disabled = (): React.ReactElement => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
 )
+
+export const WithLabelDescription = (): React.ReactElement => (
+  <Radio
+    id="input-radio"
+    name="input-radio"
+    label="My Radio Button"
+    labelDescription="This is optional text that can be used to describe the label in more detail."
+  />
+)
+
+export const tile = (): React.ReactElement => (
+  <Radio id="input-radio" name="input-radio" label="My Radio Button" tile />
+)
+
+export const tileWithLabelDescription = (): React.ReactElement => (
+  <Radio
+    id="input-radio"
+    name="input-radio"
+    label="My Radio Button"
+    labelDescription="This is optional text that can be used to describe the label in more detail."
+    tile
+  />
+)
