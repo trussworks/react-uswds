@@ -4,6 +4,7 @@ import { render } from '@testing-library/react'
 
 import { ProcessList } from '../ProcessList/ProcessList'
 import { ProcessListItem } from '../ProcessListItem/ProcessListItem'
+import { ProcessListHeading } from '../ProcessListHeading/ProcessListHeading'
 
 const testListItems = [
   <li key="one">some text</li>,
@@ -37,15 +38,22 @@ describe('ProcessList component', () => {
     expect(getByRole('list')).toHaveAttribute('aria-label', 'Process list')
   })
 
-  it('renders when passed ProcessListItem', () => {
+  it('renders when passed ProcessListItem and ProcessListHeading', () => {
     const { getAllByRole } = render(
       <ProcessList>
-        <ProcessListItem>item 1</ProcessListItem>
-        <ProcessListItem>item 2</ProcessListItem>
         <ProcessListItem>
+          <ProcessListHeading type="h4">item 1</ProcessListHeading>
+          item 1
+        </ProcessListItem>
+        <ProcessListItem>
+          <ProcessListHeading type="h4">item 2</ProcessListHeading>item 2
+        </ProcessListItem>
+        <ProcessListItem>
+          <ProcessListHeading type="h4">item 3</ProcessListHeading>
           <a href="#">item 3</a>
         </ProcessListItem>
         <ProcessListItem>
+          <ProcessListHeading type="h4">item 4</ProcessListHeading>
           <ul>{testListItems}</ul>
         </ProcessListItem>
       </ProcessList>
