@@ -92,6 +92,8 @@ export { Search } from './components/Search/Search'
 
 export { SummaryBox } from './components/SummaryBox/SummaryBox'
 
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
 /** Truss-designed components */
 export {
   Modal,
