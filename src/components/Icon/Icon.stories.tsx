@@ -16,6 +16,11 @@ Source: https://designsystem.digital.gov/components/icon/
       },
     },
   },
+  // argTypes: {}
 }
 
-export const defaultIcon = (): React.ReactElement => <Icon />
+export const announcementIcon = (): React.ReactElement => (
+  <Icon name="announcement" />
+)
+
+export const dotGovIcon = (): React.ReactElement => <Icon name="icon-dot-gov" />
