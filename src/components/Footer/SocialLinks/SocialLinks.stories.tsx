@@ -37,6 +37,12 @@ const links = [
     href="#">
     <span>YouTube</span>
   </a>,
+  <a
+    key="instagram"
+    className="usa-social-link usa-social-link--instagram"
+    href="#">
+    <span>Instagram</span>
+  </a>,
   <a key="rss" className="usa-social-link usa-social-link--rss" href="#">
     <span>RSS</span>
   </a>,

@@ -55,10 +55,12 @@ export { Title } from './components/header/Title/Title'
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'
 export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
+export { IdentifierIdentity } from './components/Identifier/IdentifierIdentity/IdentifierIdentity'
 export { IdentifierLink } from './components/Identifier/IdentifierLink/IdentifierLink'
 export { IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
 export { IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
 export { IdentifierLogo } from './components/Identifier/IdentifierLogo/IdentifierLogo'
+export { IdentifierLogos } from './components/Identifier/IdentifierLogos/IdentifierLogos'
 export { IdentifierMasthead } from './components/Identifier/IdentifierMasthead/IdentifierMasthead'
 
 /** Footer components */
@@ -69,7 +71,7 @@ export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
 
-/** Card Components */
+/** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
 export { Card } from './components/card/Card/Card'
 export { CardHeader } from './components/card/CardHeader/CardHeader'
@@ -82,7 +84,13 @@ export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbB
 export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
 export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
 
+/** StepIndicator components */
+export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
+export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
+
 export { Search } from './components/Search/Search'
+
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
 
 /** Truss-designed components */
 export {
