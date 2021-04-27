@@ -89,4 +89,9 @@ export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndi
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
 export { Search } from './components/Search/Search'
+
+/** ProcessList components */
+export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
+export { ProcessListItem } from './components/ProcessList/ProcessListItem/ProcessListItem'
+
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
