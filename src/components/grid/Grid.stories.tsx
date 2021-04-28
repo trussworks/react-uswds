@@ -4,7 +4,7 @@ import { GridContainer } from './GridContainer/GridContainer'
 import { Grid } from './Grid/Grid'
 
 export default {
-  title: 'Components/Grid',
+  title: 'Components / Grid',
   component: Grid,
   parameters: {
     docs: {
@@ -63,71 +63,49 @@ export const defaultContainer = (): React.ReactElement => (
 
 export const customElements = (): React.ReactElement => (
   <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={11}>{testContent}</Grid>
-        <Grid col={2}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={10}>{testContent}</Grid>
-        <Grid col={3}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={9}>{testContent}</Grid>
-        <Grid col={4}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={8}>{testContent}</Grid>
-        <Grid col={5}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={7}>{testContent}</Grid>
-        <Grid col={6}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={5}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={6}>{testContent}</Grid>
-        <Grid col={7}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={5}>{testContent}</Grid>
-        <Grid col={8}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={4}>{testContent}</Grid>
-        <Grid col={9}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={3}>{testContent}</Grid>
-        <Grid col={10}>{testContent}</Grid>
-      </Grid>
-    </li>
-    <li>
-      <Grid<CustomGridProps> asCustom={CustomGrid}>
-        <Grid col={2}>{testContent}</Grid>
-        <Grid col={11}>{testContent}</Grid>
-      </Grid>
-    </li>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={11}>{testContent}</Grid>
+      <Grid col={2}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={10}>{testContent}</Grid>
+      <Grid col={3}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={9}>{testContent}</Grid>
+      <Grid col={4}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={8}>{testContent}</Grid>
+      <Grid col={5}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={7}>{testContent}</Grid>
+      <Grid col={6}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={5}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={6}>{testContent}</Grid>
+      <Grid col={7}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={5}>{testContent}</Grid>
+      <Grid col={8}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={4}>{testContent}</Grid>
+      <Grid col={9}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={3}>{testContent}</Grid>
+      <Grid col={10}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={2}>{testContent}</Grid>
+      <Grid col={11}>{testContent}</Grid>
+    </Grid>
   </GridContainer>
 )
 
