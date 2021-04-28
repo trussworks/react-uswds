@@ -116,9 +116,10 @@ export function Grid<FCProps = DefaultGridProps>(
     }
   })
 
+  classes = classnames(classes, className)
+
   if (isCustomProps(props)) {
     const { asCustom, ...remainingProps } = props
-    classes = classnames(classes, className)
 
     const gridProps: FCProps = (remainingProps as unknown) as FCProps
     return React.createElement(
