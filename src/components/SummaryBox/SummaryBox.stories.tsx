@@ -3,7 +3,7 @@ import React from 'react'
 import { SummaryBox } from './SummaryBox'
 
 export default {
-  title: 'Components / SummaryBox',
+  title: 'Components/Summary box',
   component: SummaryBox,
   parameters: {
     docs: {
