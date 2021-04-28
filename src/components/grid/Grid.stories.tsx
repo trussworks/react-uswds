@@ -4,7 +4,7 @@ import { GridContainer } from './GridContainer/GridContainer'
 import { Grid } from './Grid/Grid'
 
 export default {
-  title: 'Components / Grid',
+  title: 'Components/Grid',
   component: Grid,
   parameters: {
     docs: {
