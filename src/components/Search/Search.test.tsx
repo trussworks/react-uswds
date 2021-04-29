@@ -5,6 +5,10 @@ jest.mock('../../deprecation')
 import { deprecationWarning } from '../../deprecation'
 import { Search } from './Search'
 
+const sampleLocalization = {
+  buttonText: 'Buscar',
+}
+
 describe('Search component', () => {
   it('renders without errors', () => {
     const mockSubmit = jest.fn()
@@ -34,9 +38,11 @@ describe('Search component', () => {
 
   it('renders a label', () => {
     const mockSubmit = jest.fn()
-    const spanishLabel = 'Buscar'
     const { queryByLabelText } = render(
-      <Search onSubmit={mockSubmit} label={spanishLabel}></Search>
+      <Search
+        onSubmit={mockSubmit}
+        label="Buscar"
+        i18n={sampleLocalization}></Search>
     )
 
     expect(queryByLabelText('Buscar')).toBeInTheDocument()

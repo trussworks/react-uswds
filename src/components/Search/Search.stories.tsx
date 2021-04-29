@@ -21,6 +21,10 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
+const sampleLocalization = {
+  buttonText: 'Buscar',
+}
+
 export const defaultSearch = (): React.ReactElement => (
   <Search onSubmit={mockSubmit} />
 )
@@ -38,11 +42,11 @@ export const smallSearch = (): React.ReactElement => (
 )
 
 export const defaultSpanishSearch = (): React.ReactElement => (
-  <Search onSubmit={mockSubmit} label="Buscar" />
+  <Search onSubmit={mockSubmit} i18n={sampleLocalization} />
 )
 
 export const bigSpanishSearch = (): React.ReactElement => (
-  <Search size="big" onSubmit={mockSubmit} label="Buscar" />
+  <Search size="big" onSubmit={mockSubmit} i18n={sampleLocalization} />
 )
 
 export const smallSpanishSearch = (): React.ReactElement => (
@@ -50,6 +54,6 @@ export const smallSpanishSearch = (): React.ReactElement => (
     placeholder="(Optional) Spanish Placeholder Text"
     size="small"
     onSubmit={mockSubmit}
-    label="Buscar"
+    i18n={sampleLocalization}
   />
 )
