@@ -26,7 +26,39 @@ export type CustomGridProps<T> = GridComponentProps<
   WithCustomGridProps<React.PropsWithChildren<T>>
 
 export function isCustomProps<T>(
-  props: DefaultGridProps | CustomGridProps<T>
+  props:
+    | Omit<
+        DefaultGridProps,
+        | 'mobile'
+        | 'tablet'
+        | 'desktop'
+        | 'widescreen'
+        | 'mobileLg'
+        | 'tabletLg'
+        | 'desktopLg'
+        | 'children'
+        | 'className'
+        | 'row'
+        | 'col'
+        | 'gap'
+        | 'offset'
+      >
+    | Omit<
+        CustomGridProps<T>,
+        | 'mobile'
+        | 'tablet'
+        | 'desktop'
+        | 'widescreen'
+        | 'mobileLg'
+        | 'tabletLg'
+        | 'desktopLg'
+        | 'children'
+        | 'className'
+        | 'row'
+        | 'col'
+        | 'gap'
+        | 'offset'
+      >
 ): props is CustomGridProps<T> {
   return 'asCustom' in props
 }
@@ -118,8 +150,8 @@ export function Grid<FCProps = DefaultGridProps>(
 
   classes = classnames(classes, className)
 
-  if (isCustomProps(props)) {
-    const { asCustom, ...remainingProps } = props
+  if (isCustomProps(otherProps)) {
+    const { asCustom, ...remainingProps } = otherProps
 
     const gridProps: FCProps = (remainingProps as unknown) as FCProps
     return React.createElement(
