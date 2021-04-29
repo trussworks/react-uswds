@@ -20,12 +20,7 @@ export const Icon = ({
 
   return (
     <>
-      <SvgIconDotGov
-        data-testid="iconComponent"
-        className={classes}
-        height={size}
-        {...iconProps}
-      />
+      <SvgIconDotGov className={classes} height={size} {...iconProps} />
       <svg
         data-testid="iconComponent"
         className={classes}
