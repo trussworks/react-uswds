@@ -25,41 +25,26 @@ export type CustomGridProps<T> = GridComponentProps<
 > &
   WithCustomGridProps<React.PropsWithChildren<T>>
 
+type omittedProps =
+  | 'mobile'
+  | 'tablet'
+  | 'desktop'
+  | 'widescreen'
+  | 'mobileLg'
+  | 'tabletLg'
+  | 'desktopLg'
+  | 'children'
+  | 'className'
+  | 'row'
+  | 'col'
+  | 'gap'
+  | 'offset'
+
 export function isCustomProps<T>(
   props:
-    | Omit<
-        DefaultGridProps,
-        | 'mobile'
-        | 'tablet'
-        | 'desktop'
-        | 'widescreen'
-        | 'mobileLg'
-        | 'tabletLg'
-        | 'desktopLg'
-        | 'children'
-        | 'className'
-        | 'row'
-        | 'col'
-        | 'gap'
-        | 'offset'
-      >
-    | Omit<
-        CustomGridProps<T>,
-        | 'mobile'
-        | 'tablet'
-        | 'desktop'
-        | 'widescreen'
-        | 'mobileLg'
-        | 'tabletLg'
-        | 'desktopLg'
-        | 'children'
-        | 'className'
-        | 'row'
-        | 'col'
-        | 'gap'
-        | 'offset'
-      >
-): props is CustomGridProps<T> {
+    | Omit<DefaultGridProps, omittedProps>
+    | Omit<CustomGridProps<T>, omittedProps>
+): props is Omit<CustomGridProps<T>, omittedProps> {
   return 'asCustom' in props
 }
 
