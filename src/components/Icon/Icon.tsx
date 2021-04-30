@@ -1,6 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import accessibilityNew from 'uswds/src/img/usa-icons/accessibility_new.svg'
+
 import SvgIconDotGov from './icon-dot-gov-TEST'
 
 interface IconProps {
@@ -14,22 +16,12 @@ export const Icon = ({
   className,
   ...iconProps
 }: IconProps & JSX.IntrinsicElements['svg']): React.ReactElement => {
-  const filePath = `uswds/src/img/${name}.svg`
+  // const filePath = `uswds/src/img/${name}.svg`
 
   const classes = classnames('usa-icon', className)
 
-  return (
-    <>
-      <SvgIconDotGov className={classes} height={size} {...iconProps} />
-      <svg
-        data-testid="iconComponent"
-        className={classes}
-        height={size}
-        {...iconProps}>
-        <use xlinkHref={filePath}></use>
-      </svg>
-    </>
-  )
+  return <SvgIconDotGov className={classes} height={size} {...iconProps} />
+
   // return (
   //     <svg
   //       data-testid="iconComponent"
