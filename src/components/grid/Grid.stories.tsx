@@ -27,12 +27,84 @@ const exampleStyles = {
 
 const testContent = <div style={exampleStyles}>Content</div>
 
+type CustomGridProps = JSX.IntrinsicElements['li']
+
+const CustomGrid: React.FunctionComponent<CustomGridProps> = ({
+  children,
+  className,
+  ...liProps
+}: CustomGridProps): React.ReactElement => (
+  <li className={className} {...liProps}>
+    {children}
+  </li>
+)
+
+type CustomGridContainerProps = JSX.IntrinsicElements['ul']
+
+const CustomGridContainer: React.FunctionComponent<CustomGridContainerProps> = ({
+  children,
+  className,
+  ...ulProps
+}: CustomGridContainerProps): React.ReactElement => (
+  <ul className={className} {...ulProps}>
+    {children}
+  </ul>
+)
+
 export const defaultContainer = (): React.ReactElement => (
   <GridContainer>
     <Grid row>
       <Grid tablet={{ col: true }}>{testContent}</Grid>
       <Grid tablet={{ col: true }}>{testContent}</Grid>
       <Grid tablet={{ col: true }}>{testContent}</Grid>
+    </Grid>
+  </GridContainer>
+)
+
+export const customElements = (): React.ReactElement => (
+  <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={11}>{testContent}</Grid>
+      <Grid col={2}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={10}>{testContent}</Grid>
+      <Grid col={3}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={9}>{testContent}</Grid>
+      <Grid col={4}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={8}>{testContent}</Grid>
+      <Grid col={5}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={7}>{testContent}</Grid>
+      <Grid col={6}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={5}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={6}>{testContent}</Grid>
+      <Grid col={7}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={5}>{testContent}</Grid>
+      <Grid col={8}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={4}>{testContent}</Grid>
+      <Grid col={9}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={3}>{testContent}</Grid>
+      <Grid col={10}>{testContent}</Grid>
+    </Grid>
+    <Grid<CustomGridProps> asCustom={CustomGrid}>
+      <Grid col={2}>{testContent}</Grid>
+      <Grid col={11}>{testContent}</Grid>
     </Grid>
   </GridContainer>
 )
