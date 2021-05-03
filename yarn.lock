@@ -5924,9 +5924,9 @@ eslint-plugin-jsx-a11y@^6.2.3:
     language-tags "^1.0.5"
 
 eslint-plugin-no-only-tests@^2.3.1:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.5.0.tgz#df949256f366b3111b69d65ffa590d136b5ecb17"
-  integrity sha512-kwETpAyBrWpB75UdncTCXFRLFVMNWvdIC0xCNReW5A1W3r2T/RYopxc3aA22ZPq5el1mAo6BmP3/8jiwhSSjnw==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.6.0.tgz#19f6c9620bda02b9b9221b436c5f070e42628d76"
+  integrity sha512-T9SmE/g6UV1uZo1oHAqOvL86XWl7Pl2EpRpnLI8g/bkJu+h7XBCB+1LnubRZ2CUQXj805vh4/CYZdnqtVaEo2Q==
 
 eslint-plugin-react-hooks@^4.0.0:
   version "4.2.0"
@@ -7154,9 +7154,9 @@ happo-plugin-storybook@^2.7.0:
     rimraf "^2.6.3"
 
 happo.io@^6.0.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.4.0.tgz#32e81af3c8e8ccc9905e0aef10db268928a2d90f"
-  integrity sha512-ki2bZu7rSASR5Dpg3HkrOf37MXDZoBImVKOY8+XEWFLQvaM3uioVFKD+txD/lOUeZJGD6dJZ1R62sWwXljosow==
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.5.0.tgz#3d55804c1ee5bd031747533e389033d655257ca6"
+  integrity sha512-/jftn5yr1tJKuRuguw0Mqj6nZif7hvuIz8xXMeFpfEOynw0jAWExWsaTaNlIr5Fpq5vm97/koGTy3/T53elmew==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@babel/preset-react" "^7.12.1"
@@ -9666,9 +9666,9 @@ min-indent@^1.0.0:
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
 mini-css-extract-plugin@^1.0.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-1.5.0.tgz#69bee3b273d2d4ee8649a2eb409514b7df744a27"
-  integrity sha512-SIbuLMv6jsk1FnLIU5OUG/+VMGUprEjM1+o2trOAx8i5KOKMrhyezb1dJ4Ugsykb8Jgq8/w5NEopy6escV9G7g==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-1.6.0.tgz#b4db2525af2624899ed64a23b0016e0036411893"
+  integrity sha512-nPFKI7NSy6uONUo9yn2hIfb9vyYvkFu95qki0e21DQ9uaqNKDP15DGpK0KnV6wDroWxPHtExrdEwx/yDQ8nVRw==
   dependencies:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
@@ -12073,9 +12073,9 @@ sass-resources-loader@^2.0.1:
     loader-utils "^2.0.0"
 
 sass@^1.26.0:
-  version "1.32.11"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.11.tgz#b236b3ea55c76602c2ef2bd0445f0db581baa218"
-  integrity sha512-O9tRcob/fegUVSIV1ihLLZcftIOh0AF1VpKgusUfLqnb2jQ0GLDwI5ivv1FYWivGv8eZ/AwntTyTzjcHu0c/qw==
+  version "1.32.12"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.12.tgz#a2a47ad0f1c168222db5206444a30c12457abb9f"
+  integrity sha512-zmXn03k3hN0KaiVTjohgkg98C3UowhL1/VSGdj4/VAAiMKGQOE80PFPxFP2Kyq0OUskPKcY5lImkhBKEHlypJA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
@@ -12927,15 +12927,15 @@ stylelint-scss@^3.17.1, stylelint-scss@^3.18.0:
     postcss-value-parser "^4.1.0"
 
 stylelint@^13.3.0:
-  version "13.13.0"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.13.0.tgz#1a33bffde765920ac985f16ae6250ff914b27804"
-  integrity sha512-jvkM1iuH88vAvjdKPwPm6abiMP2/D/1chbfb+4GVONddOOskHuCXc0loyrLdxO1AwwH6jdnjYskkTKHQD7cXwQ==
+  version "13.13.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.13.1.tgz#fca9c9f5de7990ab26a00f167b8978f083a18f3c"
+  integrity sha512-Mv+BQr5XTUrKqAXmpqm6Ddli6Ief+AiPZkRsIrAoUKFuq/ElkUh9ZMYxXD0iQNZ5ADghZKLOWz1h7hTClB7zgQ==
   dependencies:
     "@stylelint/postcss-css-in-js" "^0.37.2"
     "@stylelint/postcss-markdown" "^0.36.2"
     autoprefixer "^9.8.6"
     balanced-match "^2.0.0"
-    chalk "^4.1.0"
+    chalk "^4.1.1"
     cosmiconfig "^7.0.0"
     debug "^4.3.1"
     execall "^2.0.0"
@@ -12976,7 +12976,7 @@ stylelint@^13.3.0:
     style-search "^0.1.0"
     sugarss "^2.0.0"
     svg-tags "^1.0.0"
-    table "^6.5.1"
+    table "^6.6.0"
     v8-compile-cache "^2.3.0"
     write-file-atomic "^3.0.3"
 
@@ -13054,7 +13054,7 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-table@^6.5.1:
+table@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/table/-/table-6.6.0.tgz#905654b79df98d9e9a973de1dd58682532c40e8e"
   integrity sha512-iZMtp5tUvcnAdtHpZTWLPF0M7AgiQsURR2DwmxnJwSy8I3+cY+ozzVvYha3BOLG2TB+L0CqjIz+91htuj6yCXg==
