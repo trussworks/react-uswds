@@ -1,9 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import sprite from 'uswds/src/img/sprite.svg'
+
 import accessibilityNew from 'uswds/src/img/usa-icons/accessibility_new.svg'
 
 import SvgIconDotGov from './icon-dot-gov-TEST'
+
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 interface IconProps {
   name: string
@@ -18,9 +22,9 @@ export const Icon = ({
 }: IconProps & JSX.IntrinsicElements['svg']): React.ReactElement => {
   // const filePath = `uswds/src/img/${name}.svg`
 
-  const classes = classnames('usa-icon', className)
+  // const classes = classnames('usa-icon', className)
 
-  return <SvgIconDotGov className={classes} height={size} {...iconProps} />
+  // return <SvgIconDotGov className={classes} height={size} {...iconProps} />
 
   // return (
   //     <svg
@@ -32,5 +36,14 @@ export const Icon = ({
   //       </use>
   //     </svg>
   // )
+  return (
+    <img
+      className="usa-banner__icon usa-media-block__img"
+      src={sprite}
+      role="img"
+      alt=""
+      aria-hidden="true"
+    />
+  )
 }
 export default Icon
