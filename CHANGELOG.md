@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * Checkbox Tile Variant ([#1104](https://github.com/trussworks/react-uswds/issues/1104)) ([9936c4a](https://github.com/trussworks/react-uswds/commit/9936c4ad6d53cd49f52fb6b7a0f52b752eb15317))
-* implement ProcessListHeading subcomponent ([#1162](https://github.com/trussworks/react-uswds/issues/1162)) ([964e34c](https://github.com/trussworks/react-uswds/commit/964e34cb831554f5951973a62a5d4959357daff3))
+* Implement ProcessListHeading subcomponent ([#1162](https://github.com/trussworks/react-uswds/issues/1162)) ([964e34c](https://github.com/trussworks/react-uswds/commit/964e34cb831554f5951973a62a5d4959357daff3))
 * New Component ProcessList MVP ([#1107](https://github.com/trussworks/react-uswds/issues/1107)) ([1bc0f93](https://github.com/trussworks/react-uswds/commit/1bc0f93f916ce46470230b34406fef57c3e44a16))
 * New Component SiteAlert ([#1099](https://github.com/trussworks/react-uswds/issues/1099)) ([c1e88e0](https://github.com/trussworks/react-uswds/commit/c1e88e0e5fcdcd8c1612943d6808c8ec5ff2efd5))
 * New Component SummaryBox ([#1098](https://github.com/trussworks/react-uswds/issues/1098)) ([b2279b4](https://github.com/trussworks/react-uswds/commit/b2279b4fa178ee3bcf1e4e81fa209e4f04d66ac3))
