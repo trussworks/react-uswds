@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/trussworks/react-uswds/compare/1.16.0...1.17.0) (2021-05-05)
+
+
+### Features
+
+* Checkbox Tile Variant ([#1104](https://github.com/trussworks/react-uswds/issues/1104)) ([9936c4a](https://github.com/trussworks/react-uswds/commit/9936c4ad6d53cd49f52fb6b7a0f52b752eb15317))
+* implement ProcessListHeading subcomponent ([#1162](https://github.com/trussworks/react-uswds/issues/1162)) ([964e34c](https://github.com/trussworks/react-uswds/commit/964e34cb831554f5951973a62a5d4959357daff3))
+* New Component ProcessList MVP ([#1107](https://github.com/trussworks/react-uswds/issues/1107)) ([1bc0f93](https://github.com/trussworks/react-uswds/commit/1bc0f93f916ce46470230b34406fef57c3e44a16))
+* New Component SiteAlert ([#1099](https://github.com/trussworks/react-uswds/issues/1099)) ([c1e88e0](https://github.com/trussworks/react-uswds/commit/c1e88e0e5fcdcd8c1612943d6808c8ec5ff2efd5))
+* New Component SummaryBox ([#1098](https://github.com/trussworks/react-uswds/issues/1098)) ([b2279b4](https://github.com/trussworks/react-uswds/commit/b2279b4fa178ee3bcf1e4e81fa209e4f04d66ac3))
+* Radio Button Tile Variant ([#1101](https://github.com/trussworks/react-uswds/issues/1101)) ([a2f40a0](https://github.com/trussworks/react-uswds/commit/a2f40a0c727a4621909e1da610f5fd16e1bb38c6))
+* Update Grid components to render any type of element ([#1166](https://github.com/trussworks/react-uswds/issues/1166)) ([07468c8](https://github.com/trussworks/react-uswds/commit/07468c8a68d0b7706ea2f5978982ff4658bb5ade)), closes [#1194](https://github.com/trussworks/react-uswds/issues/1194)
+* Update Search component to support i18n ([#1192](https://github.com/trussworks/react-uswds/issues/1192)) ([5241d15](https://github.com/trussworks/react-uswds/commit/5241d156592407178f609280802cefcb6a3ed0c7))
+* Update Table to 2.10.0 implementation  ([#1110](https://github.com/trussworks/react-uswds/issues/1110)) ([117a6c7](https://github.com/trussworks/react-uswds/commit/117a6c7060e1a4b8a2246b0e1b2bef1ac1a73e07))
+
 ## [1.16.0](https://github.com/trussworks/react-uswds/compare/1.15.0...1.16.0) (2021-04-22)
 
 
