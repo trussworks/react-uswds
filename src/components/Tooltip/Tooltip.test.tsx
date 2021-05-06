@@ -326,8 +326,6 @@ describe('Tooltip component', () => {
         expect(bodyEl).toHaveClass('usa-tooltip__body--right')
         expect(bodyEl).toHaveStyle('margin-bottom: 0px')
         expect(bodyEl).toHaveStyle('margin-left: 457px')
-
-        // expect(bodyEl).toHaveStyle('bottom: ')
       })
 
       it('positions to the left if the width is outside the viewport', () => {
