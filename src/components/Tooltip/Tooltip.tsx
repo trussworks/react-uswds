@@ -48,6 +48,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   )
 
   const [isVisible, setVisible] = useState(false)
+  const [isShown, setIsShown] = useState(false)
   const [effectivePosition, setEffectivePosition] = useState<
     'top' | 'bottom' | 'left' | 'right' | undefined
   >(undefined)
@@ -68,8 +69,13 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   }, [effectivePosition])
 
   useEffect(() => {
+    if (isVisible) setIsShown(true)
+  }, [effectivePosition, positionStyles])
+
+  useEffect(() => {
     if (!isVisible) {
       // Hide tooltip
+      setIsShown(false)
       setWrapTooltip(false)
     } else {
       if (
@@ -213,10 +219,10 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     }
   }, [isVisible])
 
-  const activateTooltip = (): void => {
+  const showTooltip = (): void => {
     setVisible(true)
   }
-  const deactivateTooltip = (): void => {
+  const hideTooltip = (): void => {
     setVisible(false)
   }
 
@@ -228,7 +234,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     'usa-tooltip__body--bottom': effectivePosition === 'bottom',
     'usa-tooltip__body--right': effectivePosition === 'right',
     'usa-tooltip__body--left': effectivePosition === 'left',
-    'is-visible': isVisible,
+    'is-visible': isShown, // isShown is set after positioning updated, to prevent jitter when position changes
     'usa-tooltip__body--wrap': isVisible && wrapTooltip,
   })
 
@@ -247,12 +253,12 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         'aria-describedby': tooltipID.current,
         tabIndex: 0,
         title: '',
-        onMouseEnter: () => activateTooltip(),
-        onMouseOver: () => activateTooltip(),
-        onFocus: () => activateTooltip(),
-        onMouseLeave: () => deactivateTooltip(),
-        onBlur: () => deactivateTooltip(),
-        onKeyDown: () => deactivateTooltip(),
+        onMouseEnter: showTooltip,
+        onMouseOver: showTooltip,
+        onFocus: showTooltip,
+        onMouseLeave: hideTooltip,
+        onBlur: hideTooltip,
+        onKeyDown: hideTooltip,
         className: triggerClasses,
       },
       children
@@ -300,12 +306,12 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           type="button"
           className={triggerClasses}
           title=""
-          onMouseEnter={activateTooltip}
-          onMouseOver={activateTooltip}
-          onFocus={activateTooltip}
-          onMouseLeave={deactivateTooltip}
-          onBlur={deactivateTooltip}
-          onKeyDown={deactivateTooltip}>
+          onMouseEnter={showTooltip}
+          onMouseOver={showTooltip}
+          onFocus={showTooltip}
+          onMouseLeave={hideTooltip}
+          onBlur={hideTooltip}
+          onKeyDown={hideTooltip}>
           {children}
         </button>
         <span
