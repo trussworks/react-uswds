@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import sprite from 'uswds/src/img/sprite.svg'
-import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+// import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
 // import { icons, IconKeys } from './icons'
 
@@ -21,9 +21,9 @@ export const Icon = ({
   className,
   ...iconProps
 }: IconProps & JSX.IntrinsicElements['svg']): React.ReactElement => {
-  const filePath = `${sprite}#${name}`
+  const pathToSprite = `uswds/src/img/sprite.svg#${name}`
 
-  console.log('filepath is borked: ', filePath)
+  console.log('filepath is borked: ', pathToSprite)
 
   const classes = classnames('usa-icon', className)
 
@@ -36,7 +36,7 @@ export const Icon = ({
         role={role}
         height={size}
         {...iconProps}>
-        <use xlinkHref={`uswds/src/img/sprite.svg#${name}`}></use>
+        <use xlinkHref={pathToSprite}></use>
       </svg>
       <img
         className="usa-banner__icon usa-media-block__img"

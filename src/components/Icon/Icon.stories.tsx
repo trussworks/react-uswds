@@ -20,16 +20,14 @@ Source: https://designsystem.digital.gov/components/icon/
   // argTypes: {}
 }
 
-export const dotGovIconWith = (): React.ReactElement => (
+export const dotGovIcon = (): React.ReactElement => (
   <Icon name="icon-dot-gov">
     <SvgIconDotGov />
   </Icon>
 )
 
-export const dotGovIconWithout = (): React.ReactElement => (
-  <Icon name="icon-dot-gov"></Icon>
-)
+export const generatedDotGovIcon = (): React.ReactElement => <SvgIconDotGov />
 
-export const iconPassedInName = (): React.ReactElement => (
+export const accessibilityNew = (): React.ReactElement => (
   <Icon name="accessibility_new"></Icon>
 )
