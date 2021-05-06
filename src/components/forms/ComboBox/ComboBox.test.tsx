@@ -1014,14 +1014,16 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
+      const clearButton = getByTestId('combo-box-clear-button')
       userEvent.type(input, '{backspace}')
 
-      expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
+      expect(clearButton).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
 
       fireEvent.blur(input)
 
       expect(input).toHaveValue('Avocado')
+      expect(clearButton).toBeVisible()
     })
 
     it('does not hijack focus while tabbing when another field has focus', () => {
