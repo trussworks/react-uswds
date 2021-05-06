@@ -16,12 +16,19 @@ export default {
 }
 */
 
+type StorybookArguments = {
+  handleSelectYear: (year: number) => void
+  setStatuses: (statuses: string[]) => void
+}
+
 const testProps = {
   date: new Date('January 20 2021'),
   minDate: parseDateString('0000-01-01') as Date,
 }
 
-export const yearPicker = (argTypes): React.ReactElement => (
+export const yearPicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <YearPicker
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
@@ -29,7 +36,9 @@ export const yearPicker = (argTypes): React.ReactElement => (
   />
 )
 
-export const withMinAndMaxInCurrentChunk = (argTypes): React.ReactElement => (
+export const withMinAndMaxInCurrentChunk = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <YearPicker
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
@@ -39,7 +48,9 @@ export const withMinAndMaxInCurrentChunk = (argTypes): React.ReactElement => (
   />
 )
 
-export const withMinInCurrentChunk = (argTypes): React.ReactElement => (
+export const withMinInCurrentChunk = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <YearPicker
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
@@ -48,7 +59,9 @@ export const withMinInCurrentChunk = (argTypes): React.ReactElement => (
   />
 )
 
-export const withMaxInCurrentChunk = (argTypes): React.ReactElement => (
+export const withMaxInCurrentChunk = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <YearPicker
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
