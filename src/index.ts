@@ -110,3 +110,4 @@ export {
 
 // Types and interfaces should be exported separately
 export type { ConnectedModalProps, ModalHook } from './components/Modal/Modal'
+export type { FileInputRef } from './components/forms/FileInput/FileInput'
