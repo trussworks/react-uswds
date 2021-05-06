@@ -1020,7 +1020,8 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
 
       fireEvent.blur(input)
-      expect
+
+      expect(input).toHaveValue('Avocado')
     })
 
     it('does not hijack focus while tabbing when another field has focus', () => {
