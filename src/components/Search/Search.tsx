@@ -7,10 +7,12 @@ import { Form, OptionalFormProps } from '../forms/Form/Form'
 import { Label } from '../forms/Label/Label'
 import { TextInput } from '../forms/TextInput/TextInput'
 
+interface SearchLocalization {
+  buttonText: string
+}
+
 interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-  inputId?: string
-  inputName?: string
   size?: 'big' | 'small'
   /**
    * @deprecated since 1.6.0, use size
@@ -20,21 +22,25 @@ interface SearchInputProps {
    * @deprecated since 1.6.0, use size
    */
   small?: boolean
-  label?: React.ReactNode
   className?: string
+  inputName?: string
+  inputId?: string
   placeholder?: string
+  label?: React.ReactNode
+  i18n?: SearchLocalization
 }
 
 export const Search = ({
   onSubmit,
-  inputId = 'search-field',
-  inputName = 'search',
   size,
   big,
   small,
-  label = 'Search',
   className,
   placeholder,
+  inputName = 'search',
+  label = 'Search',
+  inputId = 'search-field',
+  i18n,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
   if (big) {
@@ -43,6 +49,8 @@ export const Search = ({
   if (small) {
     deprecationWarning('Search property small is deprecated.  Use size')
   }
+
+  const buttonText = i18n?.buttonText || 'Search'
 
   const isBig = size ? size === 'big' : big
   const isSmall = size ? size === 'small' : small
@@ -73,7 +81,7 @@ export const Search = ({
       />
       <Button type="submit">
         <span className={isSmall ? 'usa-sr-only' : 'usa-search__submit-text'}>
-          Search
+          {buttonText}
         </span>
       </Button>
     </Form>

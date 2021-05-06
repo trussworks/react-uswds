@@ -13,6 +13,17 @@ export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
 
+/** Collection components */
+export { Collection } from './components/Collection/Collection'
+export { CollectionItem } from './components/Collection/CollectionItem'
+export { CollectionHeading } from './components/Collection/CollectionHeading'
+export { CollectionDescription } from './components/Collection/CollectionDescription'
+export { CollectionMeta } from './components/Collection/CollectionMeta'
+export { CollectionMetaItem } from './components/Collection/CollectionMetaItem'
+export { CollectionMetaItemTag } from './components/Collection/CollectionMetaItemTag'
+export { CollectionThumbnail } from './components/Collection/CollectionThumbnail'
+export { CollectionCalendarDate } from './components/Collection/CollectionCalendarDate'
+
 /** Grid components */
 export { GridContainer } from './components/grid/GridContainer/GridContainer'
 export { Grid } from './components/grid/Grid/Grid'
@@ -55,10 +66,12 @@ export { Title } from './components/header/Title/Title'
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'
 export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
+export { IdentifierIdentity } from './components/Identifier/IdentifierIdentity/IdentifierIdentity'
 export { IdentifierLink } from './components/Identifier/IdentifierLink/IdentifierLink'
 export { IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
 export { IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
 export { IdentifierLogo } from './components/Identifier/IdentifierLogo/IdentifierLogo'
+export { IdentifierLogos } from './components/Identifier/IdentifierLogos/IdentifierLogos'
 export { IdentifierMasthead } from './components/Identifier/IdentifierMasthead/IdentifierMasthead'
 
 /** Footer components */
@@ -87,6 +100,15 @@ export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndi
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
 export { Search } from './components/Search/Search'
+
+export { SummaryBox } from './components/SummaryBox/SummaryBox'
+
+/** ProcessList components */
+export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
+export { ProcessListItem } from './components/ProcessList/ProcessListItem/ProcessListItem'
+export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/ProcessListHeading'
+
+export { SiteAlert } from './components/SiteAlert/SiteAlert'
 
 /** Truss-designed components */
 export {
