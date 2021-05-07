@@ -2,9 +2,10 @@ import React from 'react'
 import classnames from 'classnames'
 
 import sprite from 'uswds/src/img/sprite.svg'
-import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 
-import accessibilityNew from 'uswds/src/img/usa-icons/accessibility_new.svg'
+// import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+
+// import accessibilityNew from 'uswds/src/img/usa-icons/accessibility_new.svg'
 
 // import SvgIconDotGov from './icon-dot-gov-TEST'
 
@@ -25,66 +26,24 @@ export const Icon = ({
   className,
   ...iconProps
 }: IconProps & JSX.IntrinsicElements['svg']): React.ReactElement => {
-  console.log('🎉🎉🎉 access 🎉🎉🎉: ', accessibilityNew)
+  // apply size variant to classes ie usa-icon--size-3
+  const classes = classnames('usa-icon', className)
 
-  const pathToSprite = `uswds/src/img/sprite.svg#${name}`
-
-  console.log('🎉🎉🎉 filepath 🎉🎉🎉: ', pathToSprite)
-
-  // apply size to classes
-  const classes = classnames('usa-icon--size-3', className)
+  const pathToSvg = sprite`#${name}`
 
   return (
-    <img
-      className="usa-banner__icon usa-media-block__img"
-      src={accessibilityNew}
-      role="img"
-      alt=""
-      aria-hidden="true"
-    />
+    <>
+      <svg
+        data-testid="iconComponent"
+        className={classes}
+        focusable={focusable}
+        role={role}
+        viewBox={'0 0 100 100'}
+        height={size}
+        {...iconProps}>
+        <use href={pathToSvg}></use>
+      </svg>
+    </>
   )
-  // return (
-  //   <>
-
-  //     // <svg
-  //     //   data-testid="iconComponent"
-  //     //   className={classes}
-  //     //   focusable={focusable}
-  //     //   role={role}
-  //     //   viewBox={'0 0 100 100'}
-  //     //   // height={size}
-  //     //   {...iconProps}>
-  //     //   <use href={accessibilityNew}></use>
-  //     // </svg>
-  //   </>
-  // )
 }
 export default Icon
-
-// import accessibilityNew from 'uswds/src/img/usa-icons/accessibility_new.svg'
-
-// import SvgIconDotGov from './icon-dot-gov-TEST'
-
-// const filePath = sprite`#${name}`
-
-// return <SvgIconDotGov className={classes} height={size} {...iconProps} />
-// console.log('what is sprite anyways: ', sprite)
-// what is sprite anyways:  static/media/node_modules/uswds/src/img/sprite.svg
-// return (
-//   <svg
-//     data-testid="iconComponent"
-//     className={classes}
-//     height={size}
-//     {...iconProps}>
-//     <use xlinkHref={filePath}></use>
-//   </svg>
-// )
-// return (
-//   <img
-//     className="usa-banner__icon usa-media-block__img"
-//     src={sprite}
-//     role="img"
-//     alt=""
-//     aria-hidden="true"
-//   />
-// )
