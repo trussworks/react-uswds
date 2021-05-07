@@ -1904,7 +1904,13 @@
   dependencies:
     core-js "^3.8.2"
     ts-dedent "^2.0.0"
+    url-loader "^4.1.1"
     util-deprecate "^1.0.2"
+    webpack "4"
+    webpack-dev-middleware "^3.7.3"
+    webpack-filter-warnings-plugin "^1.2.1"
+    webpack-hot-middleware "^2.25.0"
+    webpack-virtual-modules "^0.2.2"
 
 "@storybook/client-api@6.2.9":
   version "6.2.9"
