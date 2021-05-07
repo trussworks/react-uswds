@@ -2,7 +2,11 @@ import React from 'react'
 import classnames from 'classnames'
 
 import sprite from 'uswds/src/img/sprite.svg'
-// import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+
+import accessibilityNew from 'uswds/src/img/usa-icons/accessibility_new.svg'
+
+// import SvgIconDotGov from './icon-dot-gov-TEST'
 
 // import { icons, IconKeys } from './icons'
 
@@ -21,32 +25,39 @@ export const Icon = ({
   className,
   ...iconProps
 }: IconProps & JSX.IntrinsicElements['svg']): React.ReactElement => {
+  console.log('🎉🎉🎉 access 🎉🎉🎉: ', accessibilityNew)
+
   const pathToSprite = `uswds/src/img/sprite.svg#${name}`
 
-  console.log('filepath is borked: ', pathToSprite)
+  console.log('🎉🎉🎉 filepath 🎉🎉🎉: ', pathToSprite)
 
-  const classes = classnames('usa-icon', className)
+  // apply size to classes
+  const classes = classnames('usa-icon--size-3', className)
 
   return (
-    <>
-      <svg
-        data-testid="iconComponent"
-        className={classes}
-        focusable={focusable}
-        role={role}
-        height={size}
-        {...iconProps}>
-        <use xlinkHref={pathToSprite}></use>
-      </svg>
-      <img
-        className="usa-banner__icon usa-media-block__img"
-        src={sprite}
-        role="img"
-        alt=""
-        aria-hidden="true"
-      />
-    </>
+    <img
+      className="usa-banner__icon usa-media-block__img"
+      src={accessibilityNew}
+      role="img"
+      alt=""
+      aria-hidden="true"
+    />
   )
+  // return (
+  //   <>
+
+  //     // <svg
+  //     //   data-testid="iconComponent"
+  //     //   className={classes}
+  //     //   focusable={focusable}
+  //     //   role={role}
+  //     //   viewBox={'0 0 100 100'}
+  //     //   // height={size}
+  //     //   {...iconProps}>
+  //     //   <use href={accessibilityNew}></use>
+  //     // </svg>
+  //   </>
+  // )
 }
 export default Icon
 
