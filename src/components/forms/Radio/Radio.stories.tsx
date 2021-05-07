@@ -39,7 +39,7 @@ export const WithLabelDescription = (): React.ReactElement => (
     id="input-radio"
     name="input-radio"
     label="My Radio Button"
-    labelDescription="Optional label description"
+    labelDescription="This is optional text that can be used to describe the label in more detail."
   />
 )
 
@@ -52,7 +52,7 @@ export const tileWithLabelDescription = (): React.ReactElement => (
     id="input-radio"
     name="input-radio"
     label="My Radio Button"
-    labelDescription="Optional label description"
+    labelDescription="This is optional text that can be used to describe the label in more detail."
     tile
   />
 )

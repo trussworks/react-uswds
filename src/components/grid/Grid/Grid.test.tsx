@@ -71,53 +71,79 @@ describe('applyGridClasses function', () => {
 })
 
 describe('Grid component', () => {
-  it('renders without errors', () => {
-    const { queryByTestId } = render(<Grid />)
-    expect(queryByTestId('grid')).toBeInTheDocument()
+  describe('with default component', () => {
+    it('renders without errors', () => {
+      const { queryByTestId } = render(<Grid />)
+      expect(queryByTestId('grid')).toBeInTheDocument()
+    })
+
+    it('renders its children', () => {
+      const { queryByText } = render(<Grid>My Content</Grid>)
+      expect(queryByText('My Content')).toBeInTheDocument()
+    })
+
+    it('implements the col prop', () => {
+      const { getByTestId } = render(<Grid col={5}>My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-col-5')
+    })
+
+    it('implements the col auto prop', () => {
+      const { getByTestId } = render(<Grid col="auto">My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-col-auto')
+    })
+
+    it('implements the col fill prop', () => {
+      const { getByTestId } = render(<Grid col="fill">My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-col-fill')
+    })
+
+    it('implements the offset prop', () => {
+      const { getByTestId } = render(<Grid offset={4}>My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-offset-4')
+    })
+
+    it('implements the row prop', () => {
+      const { getByTestId } = render(<Grid row>My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-row')
+    })
+
+    it('implements the gap prop', () => {
+      const { getByTestId } = render(<Grid gap>My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-gap')
+    })
+
+    it('implements the gap size prop', () => {
+      const { getByTestId } = render(<Grid gap="sm">My Content</Grid>)
+      expect(getByTestId('grid')).toHaveClass('grid-gap-sm')
+    })
+
+    it('implements breakpoint props', () => {
+      const { getByTestId } = render(
+        <Grid tablet={{ col: 8 }}>My Content</Grid>
+      )
+      expect(getByTestId('grid')).toHaveClass('tablet:grid-col-8')
+    })
   })
 
-  it('renders its children', () => {
-    const { queryByText } = render(<Grid>My Content</Grid>)
-    expect(queryByText('My Content')).toBeInTheDocument()
-  })
+  describe('with custom component', () => {
+    type CustomGridProps = JSX.IntrinsicElements['section']
 
-  it('implements the col prop', () => {
-    const { getByTestId } = render(<Grid col={5}>My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-col-5')
-  })
+    const CustomGrid: React.FunctionComponent<CustomGridProps> = ({
+      children,
+      className,
+      ...sectionProps
+    }: CustomGridProps): React.ReactElement => (
+      <section role="grid" className={className} {...sectionProps}>
+        {children}
+      </section>
+    )
 
-  it('implements the col auto prop', () => {
-    const { getByTestId } = render(<Grid col="auto">My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-col-auto')
-  })
+    it('renders without errors', () => {
+      const { getByRole } = render(
+        <Grid<CustomGridProps> asCustom={CustomGrid}>something</Grid>
+      )
 
-  it('implements the col fill prop', () => {
-    const { getByTestId } = render(<Grid col="fill">My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-col-fill')
-  })
-
-  it('implements the offset prop', () => {
-    const { getByTestId } = render(<Grid offset={4}>My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-offset-4')
-  })
-
-  it('implements the row prop', () => {
-    const { getByTestId } = render(<Grid row>My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-row')
-  })
-
-  it('implements the gap prop', () => {
-    const { getByTestId } = render(<Grid gap>My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-gap')
-  })
-
-  it('implements the gap size prop', () => {
-    const { getByTestId } = render(<Grid gap="sm">My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('grid-gap-sm')
-  })
-
-  it('implements breakpoint props', () => {
-    const { getByTestId } = render(<Grid tablet={{ col: 8 }}>My Content</Grid>)
-    expect(getByTestId('grid')).toHaveClass('tablet:grid-col-8')
+      expect(getByRole('grid')).toBeInTheDocument()
+    })
   })
 })

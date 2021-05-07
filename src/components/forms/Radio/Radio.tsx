@@ -30,12 +30,6 @@ export const Radio = ({
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,
   })
-  const description =
-    labelDescription != null ? (
-      <span className="usa-checkbox__label-description">
-        {labelDescription}
-      </span>
-    ) : null
 
   return (
     <div data-testid="radio" className={classes}>
@@ -49,7 +43,11 @@ export const Radio = ({
       />
       <label className="usa-radio__label" htmlFor={id}>
         {label}
-        {description}
+        {labelDescription && (
+          <span className="usa-checkbox__label-description">
+            {labelDescription}
+          </span>
+        )}
       </label>
     </div>
   )

@@ -1,7 +1,7 @@
 import React, { KeyboardEvent, FocusEvent, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
-import { ActionTypes, Action, State, useCombobox } from './useCombobox'
+import { ActionTypes, Action, State, useComboBox } from './useComboBox'
 
 /*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
     The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
@@ -9,6 +9,9 @@ import { ActionTypes, Action, State, useCombobox } from './useCombobox'
     There is the ability to pass in custom props directly to the select and input.
     This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
 */
+
+const DEFAULT_FILTER = '.*{{query}}.*'
+
 export interface ComboBoxOption {
   value: string
   label: string
@@ -25,6 +28,11 @@ export enum FocusMode {
   Item,
 }
 
+export interface CustomizableFilter {
+  filter: string
+  extras?: Record<string, string>
+}
+
 interface ComboBoxProps {
   id: string
   name: string
@@ -37,6 +45,9 @@ interface ComboBoxProps {
   noResults?: string
   inputProps?: JSX.IntrinsicElements['input']
   selectProps?: JSX.IntrinsicElements['select']
+  ulProps?: JSX.IntrinsicElements['ul']
+  customFilter?: CustomizableFilter
+  disableFiltering?: boolean
 }
 
 interface InputProps {
@@ -79,6 +90,9 @@ export const ComboBox = ({
   noResults,
   selectProps,
   inputProps,
+  ulProps,
+  customFilter,
+  disableFiltering = false,
 }: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
 
@@ -89,20 +103,28 @@ export const ComboBox = ({
     })
   }
 
+  const filter: CustomizableFilter = customFilter
+    ? customFilter
+    : { filter: DEFAULT_FILTER }
+
   const initialState: State = {
     isOpen: false,
     selectedOption: defaultOption ? defaultOption : undefined,
     focusedOption: undefined,
     focusMode: FocusMode.None,
     filteredOptions: options,
-    filter: undefined,
     inputValue: defaultOption ? defaultOption.label : '',
   }
 
-  const [state, dispatch] = useCombobox(initialState, options)
+  const [state, dispatch] = useComboBox(
+    initialState,
+    options,
+    disableFiltering,
+    filter
+  )
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const itemRef = useRef<HTMLLIElement>(null)
+  const focusedItemRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
     onChange && onChange(state.selectedOption?.value || undefined)
@@ -112,11 +134,23 @@ export const ComboBox = ({
     if (
       state.focusMode === FocusMode.Item &&
       state.focusedOption &&
-      itemRef.current
+      focusedItemRef.current
     ) {
-      itemRef.current.focus()
+      focusedItemRef.current.focus()
     }
   }, [state.focusMode, state.focusedOption])
+
+  // When opened, the list should scroll to the closest match
+  useEffect(() => {
+    if (
+      state.isOpen &&
+      state.focusedOption &&
+      focusedItemRef.current &&
+      state.focusMode === FocusMode.Input
+    ) {
+      focusedItemRef.current.scrollIntoView(false)
+    }
+  }, [state.isOpen, state.focusedOption])
 
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
@@ -128,7 +162,7 @@ export const ComboBox = ({
         })
       }
     }
-  })
+  }, [state.focusMode])
 
   const handleInputKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
@@ -137,18 +171,24 @@ export const ComboBox = ({
       event.preventDefault()
       dispatch({
         type: ActionTypes.FOCUS_OPTION,
-        option: state.filteredOptions[0],
+        option:
+          state.selectedOption ||
+          state.focusedOption ||
+          state.filteredOptions[0],
       })
     } else if (event.key === 'Tab') {
       // Clear button is not visible in this case so manually handle focus
       if (state.isOpen && !state.selectedOption) {
         // If there are filtered options, prevent default
         // If there are "No Results Found", tab over to prevent a keyboard trap
-        if (state.filteredOptions.length > 0) {
+        const optionToFocus = disableFiltering
+          ? state.focusedOption
+          : state.selectedOption || state.focusedOption
+        if (optionToFocus) {
           event.preventDefault()
           dispatch({
             type: ActionTypes.FOCUS_OPTION,
-            option: state.filteredOptions[0],
+            option: optionToFocus,
           })
         } else {
           dispatch({
@@ -162,19 +202,27 @@ export const ComboBox = ({
           type: ActionTypes.BLUR,
         })
       }
-    } else if (event.key === 'Enter' && !state.selectedOption) {
-      event.preventDefault()
-      const selectedOption = state.filteredOptions.find(
-        (option) =>
-          option.label.toLowerCase() === state.inputValue.toLowerCase()
-      )
-      if (selectedOption) {
-        dispatch({
-          type: ActionTypes.SELECT_OPTION,
-          option: selectedOption,
-        })
-      } else {
-        dispatch({ type: ActionTypes.CLEAR })
+    } else if (event.key === 'Enter') {
+      if (state.isOpen) {
+        event.preventDefault()
+        const exactMatch = state.filteredOptions.find(
+          (option) =>
+            option.label.toLowerCase() === state.inputValue.toLowerCase()
+        )
+        if (exactMatch) {
+          dispatch({
+            type: ActionTypes.SELECT_OPTION,
+            option: exactMatch,
+          })
+        } else {
+          if (state.selectedOption) {
+            dispatch({
+              type: ActionTypes.CLOSE_LIST,
+            })
+          } else {
+            dispatch({ type: ActionTypes.CLEAR })
+          }
+        }
       }
     }
   }
@@ -185,7 +233,7 @@ export const ComboBox = ({
       !newTarget ||
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
 
-    if (newTargetIsOutside) {
+    if (newTargetIsOutside && state.focusMode !== FocusMode.None) {
       dispatch({ type: ActionTypes.BLUR })
     }
   }
@@ -259,8 +307,11 @@ export const ComboBox = ({
     }
   }
 
+  const isPristine =
+    state.selectedOption && state.selectedOption.label === state.inputValue
+
   const containerClasses = classnames('usa-combo-box', className, {
-    'usa-combo-box--pristine': state.selectedOption,
+    'usa-combo-box--pristine': isPristine,
   })
   const listID = `combobox-${name}-list`
   const assistiveHintID = `combobox-${name}-assistive-hint`
@@ -310,7 +361,7 @@ export const ComboBox = ({
           onClick={(): void => dispatch({ type: ActionTypes.CLEAR })}
           data-testid="combo-box-clear-button"
           onKeyDown={handleClearKeyDown}
-          hidden={!state.selectedOption}>
+          hidden={!isPristine}>
           &nbsp;
         </button>
       </span>
@@ -339,7 +390,8 @@ export const ComboBox = ({
         id={listID}
         className="usa-combo-box__list"
         role="listbox"
-        hidden={!state.isOpen}>
+        hidden={!state.isOpen}
+        {...ulProps}>
         {state.filteredOptions.map((option, index) => {
           const focused = option === state.focusedOption
           const selected = option === state.selectedOption
@@ -350,7 +402,7 @@ export const ComboBox = ({
 
           return (
             <li
-              ref={focused ? itemRef : null}
+              ref={focused ? focusedItemRef : null}
               value={option.value}
               key={option.value}
               className={itemClasses}
@@ -363,7 +415,7 @@ export const ComboBox = ({
               onKeyDown={handleListItemKeyDown}
               onBlur={handleListItemBlur}
               data-testid={`combo-box-option-${option.value}`}
-              onMouseMove={(): void =>
+              onMouseEnter={(): void =>
                 dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
               }
               onClick={(): void => {

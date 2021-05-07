@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/trussworks/react-uswds/compare/1.16.0...1.17.0) (2021-05-05)
+
+
+### Features
+
+* Checkbox Tile Variant ([#1104](https://github.com/trussworks/react-uswds/issues/1104)) ([9936c4a](https://github.com/trussworks/react-uswds/commit/9936c4ad6d53cd49f52fb6b7a0f52b752eb15317))
+* Implement ProcessListHeading subcomponent ([#1162](https://github.com/trussworks/react-uswds/issues/1162)) ([964e34c](https://github.com/trussworks/react-uswds/commit/964e34cb831554f5951973a62a5d4959357daff3))
+* New Component ProcessList MVP ([#1107](https://github.com/trussworks/react-uswds/issues/1107)) ([1bc0f93](https://github.com/trussworks/react-uswds/commit/1bc0f93f916ce46470230b34406fef57c3e44a16))
+* New Component SiteAlert ([#1099](https://github.com/trussworks/react-uswds/issues/1099)) ([c1e88e0](https://github.com/trussworks/react-uswds/commit/c1e88e0e5fcdcd8c1612943d6808c8ec5ff2efd5))
+* New Component SummaryBox ([#1098](https://github.com/trussworks/react-uswds/issues/1098)) ([b2279b4](https://github.com/trussworks/react-uswds/commit/b2279b4fa178ee3bcf1e4e81fa209e4f04d66ac3))
+* Radio Button Tile Variant ([#1101](https://github.com/trussworks/react-uswds/issues/1101)) ([a2f40a0](https://github.com/trussworks/react-uswds/commit/a2f40a0c727a4621909e1da610f5fd16e1bb38c6))
+* Update Grid components to render any type of element ([#1166](https://github.com/trussworks/react-uswds/issues/1166)) ([07468c8](https://github.com/trussworks/react-uswds/commit/07468c8a68d0b7706ea2f5978982ff4658bb5ade)), closes [#1194](https://github.com/trussworks/react-uswds/issues/1194)
+* Update Search component to support i18n ([#1192](https://github.com/trussworks/react-uswds/issues/1192)) ([5241d15](https://github.com/trussworks/react-uswds/commit/5241d156592407178f609280802cefcb6a3ed0c7))
+* Update Table to 2.10.0 implementation  ([#1110](https://github.com/trussworks/react-uswds/issues/1110)) ([117a6c7](https://github.com/trussworks/react-uswds/commit/117a6c7060e1a4b8a2246b0e1b2bef1ac1a73e07))
+
+## [1.16.0](https://github.com/trussworks/react-uswds/compare/1.15.0...1.16.0) (2021-04-22)
+
+
+### Features
+
+* Add i18n support to DatePicker component ([#990](https://github.com/trussworks/react-uswds/issues/990)) ([2000b9c](https://github.com/trussworks/react-uswds/commit/2000b9cd1e98ab85841d448a58b41105a17a7bb4))
+* Update to USWDS 2.10.3 ([#1106](https://github.com/trussworks/react-uswds/issues/1106)) ([c9f71d7](https://github.com/trussworks/react-uswds/commit/c9f71d7d7989fb9c7ab2e264d1af26436dcb66c3))
+* Implement Identifier subcomponents ([#1100](https://github.com/trussworks/react-uswds/issues/1100)) ([703a60d](https://github.com/trussworks/react-uswds/commit/703a60dadc326c822748bbf50aec735e35421c60))
+
+
+### Documentation & Examples
+
+* **adr:** Increase ReactUSWDS version when updating USWDS version ([#1045](https://github.com/trussworks/react-uswds/issues/1045)) ([59f6720](https://github.com/trussworks/react-uswds/commit/59f6720ad023d102d71e00ad9447edc47c1d0a55))
+
+## [1.15.0](https://github.com/trussworks/react-uswds/compare/1.14.0...1.15.0) (2021-04-12)
+
+
+### Features
+
+* Identifier component ([#1044](https://github.com/trussworks/react-uswds/issues/1044)) ([e79bc87](https://github.com/trussworks/react-uswds/commit/e79bc8773a3ff7d9096b8b65a9f6cb58f7d3a28a))
+* StepIndicator component ([#1047](https://github.com/trussworks/react-uswds/issues/1047)) ([d61988e](https://github.com/trussworks/react-uswds/commit/d61988eb90646d35e57b17c00bd392e4ce3c200e))
+* TimePicker component ([#1082](https://github.com/trussworks/react-uswds/issues/1082)) ([c7bfdee](https://github.com/trussworks/react-uswds/commit/c7bfdee95bda8c357f8b56e600e0c03be9ff922f))
+* Update to USWDS 2.9.0 ([#1048](https://github.com/trussworks/react-uswds/issues/1048)) ([3859eea](https://github.com/trussworks/react-uswds/commit/3859eeaca8505403bd3bb149b12b13fb950fc082))
+
+
+### Documentation & Examples
+
+* Add guidance for PR titles and testing in an application ([#1028](https://github.com/trussworks/react-uswds/issues/1028)) ([be3bed4](https://github.com/trussworks/react-uswds/commit/be3bed41eb973ba9bdc69c69d168ef7a13d17ccf))
+
 ## [1.14.0](https://github.com/trussworks/react-uswds/compare/1.13.2...1.14.0) (2021-03-22)
 
 

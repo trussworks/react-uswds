@@ -28,7 +28,7 @@ export const Slim = (): React.ReactElement => (
       image={
         <img className="usa-footer__logo-img" src={logoImg} alt="Mock logo" />
       }
-      heading={<h3 className="usa-footer__logo-heading">Name of Agency</h3>}
+      heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
     />
   </div>
 )

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@trussworks/react-uswds": "file:./../",
     "formik": "^2.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.2",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "yup": "^0.32.9"
@@ -36,20 +36,20 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.0.16",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.23",
     "@types/node": "^14.14.31",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/yup": "^0.29.11",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.8",
     "react-scripts": "^4.0.3",
-    "typescript": "~4.2.3"
+    "typescript": "~4.2.4"
   },
   "jest": {
     "moduleNameMapper": {
