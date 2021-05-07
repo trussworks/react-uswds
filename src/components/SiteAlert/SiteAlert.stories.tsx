@@ -147,3 +147,15 @@ export const alertWithCustomControls = (argTypes): React.ReactElement => (
     {shortAlertContent}
   </SiteAlert>
 )
+
+export const alertWithStringContent = (): React.ReactElement => (
+  <SiteAlert variant="info">Short alert content</SiteAlert>
+)
+
+export const alertWithMultipleChildContent = (): React.ReactElement => (
+  <SiteAlert variant="info">
+    <p className="usa-alert__text">Alert content</p>
+    <em>which includes</em> <strong>formatting tags</strong> and{' '}
+    <Link href="#">links</Link>.
+  </SiteAlert>
+)
