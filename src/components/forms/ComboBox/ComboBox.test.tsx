@@ -18,6 +18,9 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 describe('ComboBox component', () => {
+  const scrollFunction = jest.fn()
+  window.HTMLElement.prototype.scrollIntoView = scrollFunction
+
   it('renders without errors', () => {
     const { getByTestId } = render(
       <ComboBox
@@ -125,8 +128,7 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-option-list')).toBeVisible()
   })
 
-  xit('highlights the first option when opening the menu, when no default value exists', () => {
-    // TODO: 🐛 right now highlights nothing
+  it('highlights the first option when opening the menu, when no default value exists', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -136,12 +138,13 @@ describe('ComboBox component', () => {
       />
     )
 
-    userEvent.click(getByTestId('combo-box-input'))
+    const firstItem = getByTestId('combo-box-option-list').children[0]
 
-    expect(getByTestId('combo-box-option-apple')).toHaveAttribute(
-      'aria-selected',
-      'true'
-    )
+    userEvent.click(getByTestId('combo-box-toggle'))
+
+    expect(firstItem).toBeVisible()
+    expect(firstItem).not.toHaveFocus()
+    expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
   })
 
   it('highlights the default value when opening the menu, when one exists', () => {
@@ -260,6 +263,27 @@ describe('ComboBox component', () => {
     'scrolls options list to the very top when the menu opens if nothing is selected'
   )
 
+  it('scrolls to the selected option when the list is opened', () => {
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        onChange={jest.fn()}
+        defaultValue={'mango'}
+      />
+    )
+
+    const mango = getByTestId('combo-box-option-mango')
+
+    jest.clearAllMocks()
+    userEvent.click(getByTestId('combo-box-toggle'))
+    expect(mango).toHaveClass(
+      'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
+    )
+    expect(scrollFunction).toHaveBeenCalledTimes(1)
+  })
+
   describe('filtering', () => {
     it('shows all options on initial load when no default value exists', () => {
       const { getByTestId } = render(
@@ -351,6 +375,40 @@ describe('ComboBox component', () => {
       )
     })
 
+    it('clears filters when ComboBox is un-focused and no option was selected (implicitly clearing the ComboBox)', () => {
+      const { getByTestId } = render(
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
+      )
+
+      const list = getByTestId('combo-box-option-list')
+      const input = getByTestId('combo-box-input')
+
+      // Filter the list
+      userEvent.type(input, 'Av')
+      expect(list.children.length).toEqual(2) // Avocado and Guava
+
+      // Click somewhere else
+      userEvent.click(getByTestId('outside'))
+      expect(input).toHaveTextContent('')
+      expect(list.children.length).toEqual(fruitOptions.length)
+
+      // Return the combo box
+      userEvent.click(input)
+      expect(input).toHaveTextContent('')
+      expect(list.children.length).toEqual(fruitOptions.length)
+      expect(list.children[0]).toHaveClass(
+        'usa-combo-box__list-option--focused'
+      )
+    })
+
     it('shows no results message when there is no match', () => {
       const { getByTestId } = render(
         <ComboBox
@@ -383,6 +441,47 @@ describe('ComboBox component', () => {
       userEvent.type(input, 'apple')
       userEvent.clear(input)
       expect(getByTestId('combo-box-option-list').children.length).toEqual(
+        fruitOptions.length
+      )
+    })
+
+    it('resets the list of items if filtered then blurred without selecting an element', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      const optionsList = getByTestId('combo-box-option-list')
+
+      userEvent.type(input, 'apple')
+      expect(optionsList.children.length).toBeLessThan(fruitOptions.length)
+
+      fireEvent.blur(input)
+      expect(input).toHaveTextContent('')
+      expect(optionsList.children.length).toEqual(fruitOptions.length)
+    })
+
+    it('does not hide items when disableFiltering is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          disableFiltering
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.click(input)
+      userEvent.type(input, 'zzzzzzzzzz')
+
+      expect(getByTestId('combo-box-option-list').children.length).toBe(
         fruitOptions.length
       )
     })
@@ -571,6 +670,52 @@ describe('ComboBox component', () => {
       const comboBoxOptionList = getByTestId('combo-box-option-list')
       expect(comboBoxOptionList).not.toBeVisible()
       expect(comboBoxOptionList.children.length).toBe(fruitOptions.length)
+    })
+
+    it('reverts to the selected option when there is not an exact match and enter is pressed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          defaultValue="avocado"
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+
+      userEvent.type(input, 'zzz{enter}')
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(input).toHaveValue('Avocado')
+      expect(input).toHaveFocus()
+      expect(getByTestId('combo-box-clear-button')).toBeVisible()
+    })
+
+    it('selects the exactly matching option when an item was previously selected and enter is pressed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          defaultValue="avocado"
+          onChange={jest.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+
+      for (let i = 0; i < 'avocado'.length; i++) {
+        userEvent.type(input, '{backspace}')
+      }
+
+      userEvent.type(input, 'Banana{enter}')
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(input).toHaveValue('Banana')
+      expect(input).toHaveFocus()
+      expect(getByTestId('combo-box-clear-button')).toBeVisible()
     })
 
     it('focuses the first filtered option with tab', () => {
@@ -857,22 +1002,28 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('deselects option when pressing delete inside input', () => {
+    it('hides the clear button when typing in the input, but does not clear the selection', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          defaultValue={'avocado'}
+          defaultValue="avocado"
           onChange={jest.fn()}
         />
       )
 
       const input = getByTestId('combo-box-input')
+      const clearButton = getByTestId('combo-box-clear-button')
       userEvent.type(input, '{backspace}')
 
-      expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
+      expect(clearButton).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
+
+      fireEvent.blur(input)
+
+      expect(input).toHaveValue('Avocado')
+      expect(clearButton).toBeVisible()
     })
 
     it('does not hijack focus while tabbing when another field has focus', () => {
@@ -1194,8 +1345,7 @@ describe('ComboBox component', () => {
   })
 
   describe('accessibility and internationalization', () => {
-    xit('adds correct aria attributes to options when no item selected', () => {
-      // TODO: 🐛 Currently no item focused, should highlighting first item in list in this case
+    it('adds correct aria attributes to options when no item selected', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
