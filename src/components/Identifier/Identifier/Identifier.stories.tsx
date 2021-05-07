@@ -47,55 +47,61 @@ const testIdentifierLogoSpanish = (
   />
 )
 
-const testLinks = [
-  <IdentifierLinkItem key="one">
-    <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="two">
-    <IdentifierLink href="#">Accessibility support</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="three">
-    <IdentifierLink href="#">FOIA requests</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="four">
-    <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="five">
-    <IdentifierLink href="#">Office of the Inspector General</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="six">
-    <IdentifierLink href="#">Performance reports</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="seven">
-    <IdentifierLink href="#">Privacy policy</IdentifierLink>
-  </IdentifierLinkItem>,
-]
+const testLinks = (
+  <>
+    <IdentifierLinkItem key="one">
+      <IdentifierLink href="#">About &lt;Parent shortname&gt;</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="two">
+      <IdentifierLink href="#">Accessibility support</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="three">
+      <IdentifierLink href="#">FOIA requests</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="four">
+      <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="five">
+      <IdentifierLink href="#">Office of the Inspector General</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="six">
+      <IdentifierLink href="#">Performance reports</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="seven">
+      <IdentifierLink href="#">Privacy policy</IdentifierLink>
+    </IdentifierLinkItem>
+  </>
+)
 
-const testLinksSpanish = [
-  <IdentifierLinkItem key="one">
-    <IdentifierLink href="#">Acerca de &lt;Parent shortname&gt;</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="two">
-    <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="three">
-    <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="four">
-    <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="five">
-    <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="six">
-    <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
-  </IdentifierLinkItem>,
-  <IdentifierLinkItem key="seven">
-    <IdentifierLink href="#">Política de privacidad</IdentifierLink>
-  </IdentifierLinkItem>,
-]
+const testLinksSpanish = (
+  <>
+    <IdentifierLinkItem key="one">
+      <IdentifierLink href="#">
+        Acerca de &lt;Parent shortname&gt;
+      </IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="two">
+      <IdentifierLink href="#">Soporte de accesibilidad</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="three">
+      <IdentifierLink href="#">Solicitud a través de FOIA</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="four">
+      <IdentifierLink href="#">Datos de la ley No FEAR</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="five">
+      <IdentifierLink href="#">Oficina del Inspector General</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="six">
+      <IdentifierLink href="#">Informes de desempeño</IdentifierLink>
+    </IdentifierLinkItem>
+    <IdentifierLinkItem key="seven">
+      <IdentifierLink href="#">Política de privacidad</IdentifierLink>
+    </IdentifierLinkItem>
+  </>
+)
 
-const testIdentifierGovContent = [
+const testIdentifierGovContent = (
   <>
     <div className="usa-identifier__usagov-description">
       Looking for U.S. government information and services?
@@ -104,10 +110,10 @@ const testIdentifierGovContent = [
     <Link href="https://www.usa.gov/" className="usa-link">
       Visit USA.gov
     </Link>
-  </>,
-]
+  </>
+)
 
-const testIdentifierGovContentSpanish = [
+const testIdentifierGovContentSpanish = (
   <>
     <div className="usa-identifier__usagov-description">
       ¿Necesita información y servicios del Gobierno?
@@ -116,8 +122,8 @@ const testIdentifierGovContentSpanish = [
     <Link href="https://www.usa.gov/espanol/" className="usa-link">
       Visite USAGov en Español
     </Link>
-  </>,
-]
+  </>
+)
 
 export const identifierDefault = (): React.ReactElement => (
   <Identifier>
