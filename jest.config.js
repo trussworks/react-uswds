@@ -12,4 +12,12 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',
   },
   setupFilesAfterEnv: ['./src/setupTests.ts'],
+  coverageThreshold: {
+    global: {
+      statements: 96,
+      branches: 87,
+      functions: 94,
+      lines: 96,
+    },
+  },
 }

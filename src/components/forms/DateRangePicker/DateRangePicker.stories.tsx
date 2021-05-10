@@ -5,7 +5,7 @@ import { Form } from '../Form/Form'
 import { addDays, formatDate } from '../DatePicker/utils'
 
 export default {
-  title: 'Components/Form controls/Date range picker',
+  title: 'Components/Date range picker',
   component: DateRangePicker,
   argTypes: {
     onSubmit: {
@@ -25,7 +25,7 @@ export default {
       description: {
         component: `
   ### USWDS 2.0 Date Range Picker component
-  Source: https://designsystem.digital.gov/components/form-controls/#date-range-picker
+  Source: https://designsystem.digital.gov/components/date-range-picker
         `,
       },
     },
