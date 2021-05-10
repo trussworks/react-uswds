@@ -4,7 +4,7 @@ import { DateInputGroup } from '../DateInputGroup/DateInputGroup'
 import { Fieldset } from '../Fieldset/Fieldset'
 
 export default {
-  title: 'Components/Form controls/Date input',
+  title: 'Components/Date input',
   component: DateInput,
   parameters: {
     docs: {
@@ -12,7 +12,7 @@ export default {
         component: `
 ### USWDS 2.0 DateInput component
 
-Source: https://designsystem.digital.gov/components/form-controls/#date-input
+Source: https://designsystem.digital.gov/components/date-input
 `,
       },
     },
