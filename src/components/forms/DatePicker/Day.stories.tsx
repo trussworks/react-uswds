@@ -5,7 +5,7 @@ import { Day } from './Day'
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 export default {
-  title: 'Components/Form controls/Date picker/Day',
+  title: 'Components/Date picker/Day',
   component: Day,
   argTypes: {
     onClick: { action: 'on click' },

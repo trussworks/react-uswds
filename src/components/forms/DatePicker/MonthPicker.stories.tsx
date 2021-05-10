@@ -7,7 +7,7 @@ import { parseDateString } from './utils'
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 
 export default {
-  title: 'Components/Form controls/Date picker/Month picker',
+  title: 'Components/Date picker/Month picker',
   component: MonthPicker,
   argTypes: { handleSelectMonth: { action: 'handle select month' } },
 }
