@@ -6,7 +6,7 @@ import { Label } from '../Label/Label'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 export default {
-  title: 'Components/Form controls/File input',
+  title: 'Components/File input',
   component: FileInput,
   argTypes: {
     onChange: { action: 'changed' },
@@ -17,7 +17,7 @@ export default {
       description: {
         component: `
 ### USWDS 2.0 FileInput component
-Source: https://designsystem.digital.gov/components/form-controls/#file-input
+Source: https://designsystem.digital.gov/components/file-input
 `,
       },
     },

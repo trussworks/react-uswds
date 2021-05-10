@@ -2,7 +2,7 @@ import React from 'react'
 import { Textarea } from './Textarea'
 
 export default {
-  title: 'Components/Form controls/Textarea',
+  title: 'Components/Textarea',
   component: Textarea,
   parameters: {
     docs: {
@@ -10,7 +10,7 @@ export default {
         component: `
 ### USWDS 2.0 Textarea component
 
-Source: https://designsystem.digital.gov/components/form-controls/#text-input
+Source: https://designsystem.digital.gov/components/text-input
 `,
       },
     },

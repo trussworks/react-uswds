@@ -9,7 +9,7 @@ import { ValidationChecklist } from './ValidationChecklist'
 import { ValidationItem } from './ValidationItem'
 
 export default {
-  title: 'Components/Form controls/Validation',
+  title: 'Components/Validation',
   component: ValidationChecklist,
   subcomponents: { ValidationItem },
   parameters: {
@@ -18,7 +18,7 @@ export default {
         component: `
 ### USWDS 2.0 Validation component
 
-Source: https://designsystem.digital.gov/components/form-controls/#validation
+Source: https://designsystem.digital.gov/components/validation
 `,
       },
     },

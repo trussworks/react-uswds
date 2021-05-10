@@ -3,7 +3,7 @@ import { RangeInput } from './RangeInput'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Form controls/Range slider',
+  title: 'Components/Range slider',
   component: RangeInput,
   parameters: {
     docs: {
@@ -11,7 +11,7 @@ export default {
         component: `
 ### USWDS 2.0 RangeInput component
 
-Source: https://designsystem.digital.gov/components/form-controls/#range
+Source: https://designsystem.digital.gov/components/range-slider
 `,
       },
     },
