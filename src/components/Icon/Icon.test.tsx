@@ -5,7 +5,7 @@ import { Icon } from './Icon'
 
 describe('Icon component', () => {
   it('renders without errors', () => {
-    const { queryByTestId } = render(<Icon name="icon-dot-gov" />)
+    const { queryByTestId } = render(<Icon name="icon-dot-gov" size={8} />)
     expect(queryByTestId('iconComponent')).toBeInTheDocument()
   })
 })
