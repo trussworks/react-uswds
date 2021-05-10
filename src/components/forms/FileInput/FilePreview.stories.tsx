@@ -13,7 +13,7 @@ import {
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 export default {
-  title: 'Components/Form controls/File input/File preview',
+  title: 'Components/File input/File preview',
   component: FilePreview,
 }
 */
