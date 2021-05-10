@@ -36,6 +36,12 @@ Source: https://designsystem.digital.gov/components/table/
   },
 }
 
+type StorybookArguments = {
+  bordered: boolean
+  striped: boolean
+  stackedStyle: 'default' | 'headers'
+}
+
 const testContent = (
   <>
     <thead>
@@ -335,13 +341,13 @@ export const scrollable = (): React.ReactElement => (
   </>
 )
 
-export const striped = (argTypes): React.ReactElement => (
+export const striped = (argTypes: StorybookArguments): React.ReactElement => (
   <Table striped bordered={argTypes.bordered} caption="This is a striped table">
     {testContent}
   </Table>
 )
 
-export const compact = (argTypes): React.ReactElement => (
+export const compact = (argTypes: StorybookArguments): React.ReactElement => (
   <Table
     compact
     bordered={argTypes.bordered}
@@ -351,7 +357,9 @@ export const compact = (argTypes): React.ReactElement => (
   </Table>
 )
 
-export const stackedStylesDemo = (argTypes): React.ReactElement => (
+export const stackedStylesDemo = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Table
     bordered={argTypes.bordered}
     stackedStyle={argTypes.stackedStyle}
