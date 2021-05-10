@@ -7,7 +7,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 export default {
-  title: 'Components/Form controls/Combo box',
+  title: 'Components/Combo box',
   component: ComboBox,
   parameters: {
     docs: {
@@ -15,7 +15,7 @@ export default {
         component: `
 ### USWDS 2.0 ComboBox component
 
-Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
+Source: https://designsystem.digital.gov/components/combo-box
 `,
       },
     },

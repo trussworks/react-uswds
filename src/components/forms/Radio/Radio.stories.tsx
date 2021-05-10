@@ -2,7 +2,7 @@ import React from 'react'
 import { Radio } from './Radio'
 
 export default {
-  title: 'Components/Form controls/Radio buttons',
+  title: 'Components/Radio buttons',
   component: Radio,
   parameters: {
     docs: {
@@ -10,7 +10,7 @@ export default {
         component: `
 ### USWDS 2.0 Radio component
 
-Source: https://designsystem.digital.gov/components/form-controls/#radio-buttons
+Source: https://designsystem.digital.gov/components/radio-buttons
 `,
       },
     },

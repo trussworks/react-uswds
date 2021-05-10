@@ -10,7 +10,7 @@ export default {
         component: `
 Display address items (most likely links or simple text) in a row, wrapped in address tag.  Used in USWDS 2.0 Footer component.
 
-Source: https://designsystem.digital.gov/components/form-controls/#footer
+Source: https://designsystem.digital.gov/components/footer
 `,
       },
     },

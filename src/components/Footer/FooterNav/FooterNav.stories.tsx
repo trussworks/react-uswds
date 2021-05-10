@@ -13,7 +13,7 @@ export default {
         component: `
 Display single list of nav items, or grouped nav items in an extended nav. Used in USWDS 2.0 Footer component.
 
-Source: https://designsystem.digital.gov/components/form-controls/#footer
+Source: https://designsystem.digital.gov/components/footer
 `,
       },
     },
