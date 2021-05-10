@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
+import { icons, IconKeys } from './icons'
 import { Icon } from './Icon'
 
 describe('Icon component', () => {
