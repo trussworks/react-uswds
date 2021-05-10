@@ -122,14 +122,14 @@ describe('FooterExtendedNavList component', () => {
     describe('when client window width is less than mobile threshold', () => {
       beforeEach(() => {
         // Mobile width is less than 480
-        //eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        //eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         window.innerWidth = 479
       })
 
       afterEach(() => {
         // Return to JSDOM default
-        //eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        //eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         window.innerWidth = 1024
       })

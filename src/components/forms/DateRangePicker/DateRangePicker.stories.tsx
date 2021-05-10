@@ -2,7 +2,6 @@ import React from 'react'
 
 import { DateRangePicker } from './DateRangePicker'
 import { Form } from '../Form/Form'
-import { addDays, formatDate } from '../DatePicker/utils'
 
 export default {
   title: 'Components/Date range picker',
@@ -32,7 +31,15 @@ export default {
   },
 }
 
-export const completeDateRangePicker = (argTypes): React.ReactElement => (
+type StorybookArguments = {
+  onSubmit: React.FormEventHandler<HTMLFormElement>
+  startDatePickerDisabled: boolean
+  endDatePickerDisabled: boolean
+}
+
+export const completeDateRangePicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <DateRangePicker
       startDateLabel="Event start date"
@@ -53,7 +60,9 @@ export const completeDateRangePicker = (argTypes): React.ReactElement => (
   </Form>
 )
 
-export const withDefaultValues = (argTypes): React.ReactElement => (
+export const withDefaultValues = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <DateRangePicker
       startDateLabel="Event start date"
@@ -76,7 +85,9 @@ export const withDefaultValues = (argTypes): React.ReactElement => (
   </Form>
 )
 
-export const withAllowableRanges = (argTypes): React.ReactElement => (
+export const withAllowableRanges = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <DateRangePicker
       startDateLabel="Event start date"

@@ -24,6 +24,11 @@ Source: https://designsystem.digital.gov/components/file-input
   },
 }
 
+type StorybookArguments = {
+  onChange: (event: React.ChangeEvent<Element>) => void
+  onDrop: React.DragEventHandler<Element>
+}
+
 export const singleFileInput = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-single">Input accepts a single file</Label>
@@ -108,7 +113,9 @@ export const disabled = (): React.ReactElement => (
   </FormGroup>
 )
 
-export const withCustomHandlers = (argTypes): React.ReactElement => {
+export const withCustomHandlers = (
+  argTypes: StorybookArguments
+): React.ReactElement => {
   const [files, setFiles] = useState<FileList>()
   const fileInputRef = useRef<HTMLInputElement>()
 
@@ -119,7 +126,7 @@ export const withCustomHandlers = (argTypes): React.ReactElement => {
 
   const fileList = []
   for (let i = 0; i < files?.length; i++) {
-    fileList.push(<li key={`file_${i}`}>{files[i].name}</li>)
+    fileList.push(<li key={`file_${i}`}>{files[Number(i)].name}</li>)
   }
 
   return (
