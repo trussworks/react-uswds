@@ -56,6 +56,7 @@ export const icons = {
   deviceThermostat: 'device_thermostat',
   directions: 'directions',
   directionsBike: 'directions_bike',
+  directionsBus: 'directions_bus',
   directionsCar: 'directions_car',
   directionsWalk: 'directions_walk',
   doNotDisturb: 'do_not_disturb',

@@ -5,7 +5,7 @@ import { icons, IconKeys } from './icons'
 import sprite from 'uswds/src/img/sprite.svg'
 
 interface IconProps {
-  name: string
+  name: IconKeys
   focusable?: boolean
   role?: string
   size?: 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -19,14 +19,21 @@ export const Icon = ({
   className,
   ...iconProps
 }: IconProps & JSX.IntrinsicElements['svg']): React.ReactElement => {
-  // use size variant in classes ie usa-icon--size-3
   const classes = classnames(
     'usa-icon',
-    // {
-    //   sizeClass: size,
-    // },
+    {
+      [`usa-icon--size-${size}`]: size !== undefined,
+    },
     className
   )
+
+  // eslint-disable-next-line security/detect-object-injection
+  if (icons[name] === undefined) {
+    console.warn('The icon name entered does not match a known USWDS Icon')
+  }
+
+  // eslint-disable-next-line security/detect-object-injection
+  const pathToSvg = `${sprite}#${icons[name]}`
 
   return (
     <>
@@ -36,7 +43,7 @@ export const Icon = ({
         focusable={focusable}
         role={role}
         {...iconProps}>
-        <use href={`${sprite}#${name}`}></use>
+        <use href={pathToSvg}></use>
       </svg>
     </>
   )
