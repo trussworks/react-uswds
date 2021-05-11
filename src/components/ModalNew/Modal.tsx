@@ -11,7 +11,7 @@ export const ModalNew = ({
   className,
   children,
   isLarge = false,
-  ...props
+  ...divProps
 }: ModalProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-modal',
@@ -21,7 +21,7 @@ export const ModalNew = ({
     className
   )
   return (
-    <div data-testid="modal" className={classes} {...props}>
+    <div data-testid="modal" className={classes} {...divProps}>
       {children}
     </div>
   )
