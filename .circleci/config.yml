@@ -2,10 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-    - auth:
-        password: $DOCKER_PASSWORD
-        username: $DOCKER_USERNAME
-      image: circleci/node:14.15.3
+      - auth:
+          password: $DOCKER_PASSWORD
+          username: $DOCKER_USERNAME
+        image: circleci/node:14.15.3
     working_directory: ~/react-uswds
     steps:
       - checkout
@@ -21,7 +21,7 @@ jobs:
             - ~/.cache/yarn
           key: v1-yarn-{{ checksum "yarn.lock" }}
 
-      - run: yarn test -w 1
+      - run: yarn test:coverage -w 1
 
       - run:
           name: 'Happo'
@@ -54,5 +54,4 @@ workflows:
     jobs:
       - build:
           context:
-          - org-global
-      
+            - org-global
