@@ -63,6 +63,8 @@ export { NavDropDownButton } from './components/header/NavDropDownButton/NavDrop
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
+export { Icon } from './components/Icon/Icon'
+
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'
 export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
