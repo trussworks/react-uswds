@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { DetailedHTMLProps } from 'react'
+import classnames from 'classnames'
 
-export const ModalHeading = (): React.ReactElement => {
-  return <div data-testid="modalHeading">modal heading</div>
+interface ModalHeadingProps {
+  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  className?: string
+  children?: React.ReactNode
+}
+
+type HeadingModalHeadingProps = ModalHeadingProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadElement>,
+    HTMLHeadingElement
+  >
+
+export const ModalHeading = ({
+  type,
+  className,
+  children,
+  ...headingProps
+}: HeadingModalHeadingProps): React.ReactElement => {
+  const classes = classnames('usa-modal__heading', className)
+  const Tag = type
+  return (
+    <Tag className={classes} data-testid="modalHeading">
+      modal heading
+    </Tag>
+  )
 }
 
 export default ModalHeading

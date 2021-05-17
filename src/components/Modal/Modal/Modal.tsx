@@ -22,11 +22,9 @@ export const Modal = ({
     className
   )
   return (
-    <>
-      <div data-testid="modal" className={classes} {...divProps}>
-        <div className="usa-modal__content">{children}</div>
-      </div>
-    </>
+    <div data-testid="modal" className={classes} {...divProps}>
+      {children}
+    </div>
   )
 }
 

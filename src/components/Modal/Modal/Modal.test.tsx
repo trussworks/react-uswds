@@ -11,7 +11,7 @@ describe('Modal component', () => {
     expect(getByTestId('modal')).toBeInTheDocument()
   })
 
-  it('renders large model when passed isLarge', () => {
+  it('renders large modal when passed isLarge', () => {
     const { getByTestId } = render(<Modal isLarge>some children</Modal>)
 
     expect(getByTestId('modal')).toHaveClass('usa-modal--lg')
@@ -19,12 +19,12 @@ describe('Modal component', () => {
 
   it('accepts attributes passed in through props', () => {
     const { getByTestId } = render(
-      <Modal aria-label="aria-label-model">some children</Modal>
+      <Modal aria-label="aria-label-modal">some children</Modal>
     )
 
     expect(getByTestId('modal')).toHaveAttribute(
       'aria-label',
-      'aria-label-model'
+      'aria-label-modal'
     )
   })
 

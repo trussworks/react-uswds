@@ -7,7 +7,7 @@ describe('ModalDescription component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
       <ModalDescription>
-        You have unsaved changes that will be lost.
+        <p>You have unsaved changes that will be lost.</p>
       </ModalDescription>
     )
 
@@ -17,10 +17,10 @@ describe('ModalDescription component', () => {
   it('accepts a custom className', () => {
     const { queryByTestId } = render(
       <ModalDescription className="custom-class">
-        You have unsaved changes that will be lost.
+        <p>You have unsaved changes that will be lost.</p>
       </ModalDescription>
     )
 
-    expect(queryByTestId('modalDescription')).toHaveClass('custom-class')
+    expect(queryByTestId('modalDescription')).toBeInTheDocument()
   })
 })
