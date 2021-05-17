@@ -133,6 +133,7 @@
   "resolutions": {
     "bl": "^4.0.3",
     "acorn-globals/acorn": "^6.4.1",
+    "@babel/preset-env": "7.13.15",
     "webpack/acorn": "^6.4.1"
   },
   "husky": {
