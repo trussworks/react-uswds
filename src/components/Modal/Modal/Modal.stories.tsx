@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { Modal } from './Modal'
-import close from 'uswds/src/img/close.svg'
+import { ModalDescription } from '../ModalDescription/ModalDescription'
+// import close from 'uswds/src/img/close.svg'
 
 export default {
   title: 'Components/Modal',
