@@ -96,9 +96,6 @@ export const modalWithForcedAction = (): React.ReactElement => (
           </ButtonGroup>
         </ModalFooter>
       </ModalMain>
-      <ModalCloseButton>
-        <img src={close} alt="Close this window" />
-      </ModalCloseButton>
     </ModalContent>
   </Modal>
 )
