@@ -23,7 +23,7 @@ export const ModalHeading = ({
   const Tag = type
   return (
     <Tag className={classes} data-testid="modalHeading">
-      modal heading
+      {children}
     </Tag>
   )
 }
