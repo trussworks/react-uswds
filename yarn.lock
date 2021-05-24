@@ -7168,9 +7168,9 @@ happo-plugin-storybook@^2.7.0:
     rimraf "^2.6.3"
 
 happo.io@^6.0.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.5.0.tgz#3d55804c1ee5bd031747533e389033d655257ca6"
-  integrity sha512-/jftn5yr1tJKuRuguw0Mqj6nZif7hvuIz8xXMeFpfEOynw0jAWExWsaTaNlIr5Fpq5vm97/koGTy3/T53elmew==
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.6.0.tgz#01465aca0c170e6a3bf828736ea2c0d94c1a5b0b"
+  integrity sha512-sI2v7rTt00qA32PZ9AvFnH0S2iaEzUc+d0jM0hLEZwJbtc4Uv5ccGaeK5haDbf9Ok1gT8V11VBXHsLUajNsIqQ==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@babel/preset-react" "^7.12.1"
