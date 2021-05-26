@@ -65,6 +65,8 @@ export { Title } from './components/header/Title/Title'
 
 export { Icon } from './components/Icon/Icon'
 
+export { IconList } from './components/IconList/IconList'
+
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'
 export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
