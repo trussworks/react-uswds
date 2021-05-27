@@ -6,12 +6,14 @@ interface IconListProps {
   // children: React.ReactElement<IconListItemProps>[]
   children: React.ReactNode
   className?: string
+  size?: string
   themeColor?: string
 }
 
 export const IconList = ({
   className,
   children,
+  size,
   themeColor,
   ...props
 }: IconListProps & JSX.IntrinsicElements['ul']): React.ReactElement => {
@@ -19,6 +21,7 @@ export const IconList = ({
     'usa-icon-list',
     {
       [`usa-icon-list--${themeColor}`]: themeColor !== undefined,
+      [`usa-icon-list--size-${size}`]: size !== undefined,
     },
     className
   )
