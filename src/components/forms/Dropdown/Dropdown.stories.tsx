@@ -4,7 +4,7 @@ import { Dropdown } from './Dropdown'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Form controls/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {
@@ -12,7 +12,7 @@ export default {
         component: `
 ### USWDS 2.0 Dropdown component
 
-Source: https://designsystem.digital.gov/components/form-controls/#dropdown
+Source: https://designsystem.digital.gov/components/dropdown
 `,
       },
     },

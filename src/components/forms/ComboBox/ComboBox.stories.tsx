@@ -7,7 +7,7 @@ import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 export default {
-  title: 'Components/Form controls/Combo box',
+  title: 'Components/Combo box',
   component: ComboBox,
   parameters: {
     docs: {
@@ -15,7 +15,7 @@ export default {
         component: `
 ### USWDS 2.0 ComboBox component
 
-Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
+Source: https://designsystem.digital.gov/components/combo-box
 `,
       },
     },
@@ -71,9 +71,7 @@ export const withLabel = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label id="fruit-label" htmlFor="fruit">
-        Select A Fruit
-      </Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
