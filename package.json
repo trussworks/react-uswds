@@ -24,6 +24,7 @@
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "start-storybook -p 9009",
     "storybook:deploy": "storybook-to-ghpages",
     "build": "webpack --progress",
