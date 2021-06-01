@@ -6958,9 +6958,9 @@ is-negative-zero@^2.0.1:
   integrity sha512-2z6JzQvZRa9A2Y7xC6dQQm4FSTSTNWjKIYYTt4246eMTJmIo0Q+ZyOsU66X8lxK1AbB92dFeglPLrhwpeRKO6w==
 
 is-number-object@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/is-number-object/-/is-number-object-1.0.4.tgz#36ac95e741cf18b283fc1ddf5e83da798e3ec197"
-  integrity sha512-zohwelOAur+5uXtk8O3GPQ1eAcu4ZX3UwxQhUlfFFMNpUd83gXgjbhJh6HmB6LUNV/ieOLQuDwJO3dWJosUeMw==
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/is-number-object/-/is-number-object-1.0.5.tgz#6edfaeed7950cff19afedce9fbfca9ee6dd289eb"
+  integrity sha512-RU0lI/n95pMoUKu9v1BZP5MBcZuNSVJkMkAG2dJqC4z2GlkGUNeH68SuHuBKBD/XFe+LHZ+f9BKkLET60Niedw==
 
 is-number@^3.0.0:
   version "3.0.0"
