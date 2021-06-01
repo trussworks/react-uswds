@@ -85,7 +85,7 @@
     "all-contributors-cli": "^6.20.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^26.1.0",
+    "babel-jest": "^27.0.2",
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
     "css-loader": "^5.0.0",
