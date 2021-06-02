@@ -534,8 +534,9 @@ describe('DatePicker component', () => {
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
-      userEvent.type(externalInput, '')
+      userEvent.type(externalInput, '{space}{backspace}')
       externalInput.blur()
+      expect(externalInput).toHaveTextContent('')
       expect(externalInput).toBeValid()
       expect(externalInput.validationMessage).toEqual('')
     })

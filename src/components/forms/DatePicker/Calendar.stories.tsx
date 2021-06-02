@@ -8,7 +8,7 @@ import { parseDateString } from './utils'
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 
 export default {
-  title: 'Components/Form controls/Date picker/Calendar',
+  title: 'Components/Date picker/Calendar',
   component: Calendar,
   argTypes: {
     handleSelectDate: { action: 'select date' },

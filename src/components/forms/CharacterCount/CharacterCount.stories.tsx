@@ -5,14 +5,14 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Form controls/CharacterCount',
+  title: 'Components/CharacterCount',
   parameters: {
     docs: {
       description: {
         component: `
 ### USWDS 2.0 Character count component
 
-Source: https://designsystem.digital.gov/components/form-controls/#character-count
+Source: https://designsystem.digital.gov/components/character-count
 `,
       },
     },

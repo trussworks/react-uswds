@@ -7,7 +7,7 @@ import { parseDateString } from './utils'
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 
 export default {
-  title: 'Components/Form controls/Date picker/Year picker',
+  title: 'Components/Date picker/Year picker',
   component: YearPicker,
   argTypes: {
     handleSelectYear: { action: 'handle select year' },

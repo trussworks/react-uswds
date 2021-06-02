@@ -2,7 +2,7 @@ import React from 'react'
 import { Checkbox } from './Checkbox'
 
 export default {
-  title: 'Components/Form controls/Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
   parameters: {
     docs: {
@@ -10,7 +10,7 @@ export default {
         component: `
 ### USWDS 2.0 Checkbox component
 
-Source: https://designsystem.digital.gov/components/form-controls/#checkbox
+Source: https://designsystem.digital.gov/components/checkbox
 `,
       },
     },

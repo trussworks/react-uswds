@@ -11,7 +11,7 @@ export default {
         component: `
 Display social links in styled row. Used in USWDS 2.0 Footer component.
 
-Source: https://designsystem.digital.gov/components/form-controls/#footer
+Source: https://designsystem.digital.gov/components/footer
 `,
       },
     },
