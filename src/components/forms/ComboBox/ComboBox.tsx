@@ -182,7 +182,8 @@ export const ComboBox = forwardRef(
     useImperativeHandle(
       ref,
       () => ({
-        clearSelection: (): void => dispatch({ type: ActionTypes.CLEAR }),
+        clearSelection: (): void =>
+          dispatch({ type: ActionTypes.CLEAR_SELECTION }),
       }),
       []
     )
