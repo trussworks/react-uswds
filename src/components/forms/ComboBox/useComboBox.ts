@@ -191,9 +191,10 @@ export const useComboBox = (
           ...state,
           inputValue: '',
           isOpen: false,
+          focusMode: FocusMode.None,
           selectedOption: undefined,
           filteredOptions: optionsList,
-          focusedOption: optionsList[0],
+          focusedOption: undefined,
         }
       }
       default:
