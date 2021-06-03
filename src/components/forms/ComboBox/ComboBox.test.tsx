@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { ComboBox } from './ComboBox'
+import { ComboBox, ComboBoxRef } from './ComboBox'
 import { TextInput } from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
@@ -1425,6 +1425,44 @@ describe('ComboBox component', () => {
       userEvent.type(getByTestId('combo-box-input'), 'zzz')
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveTextContent('NOTHING')
+    })
+  })
+
+  describe('exposed ref', () => {
+    it('can be used to clear the selected value', () => {
+      const comboRef = React.createRef<ComboBoxRef>()
+      const onChange = jest.fn()
+      const handleClearSelection = (): void =>
+        comboRef.current?.clearSelection()
+
+      const { getByTestId } = render(
+        <>
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={onChange}
+            ref={comboRef}
+          />
+          <button data-testid="clear-button" onClick={handleClearSelection}>
+            Clear
+          </button>
+        </>
+      )
+
+      const input = getByTestId('combo-box-input')
+      fireEvent.click(getByTestId('combo-box-toggle'))
+      fireEvent.click(getByTestId('combo-box-option-apple'))
+
+      expect(onChange).toHaveBeenLastCalledWith('apple')
+      expect(input).toHaveDisplayValue('Apple')
+      expect(input).toHaveValue('Apple')
+
+      fireEvent.click(getByTestId('clear-button'))
+
+      expect(onChange).toHaveBeenLastCalledWith(undefined)
+      expect(input).toHaveDisplayValue('')
+      expect(input).toHaveValue('')
     })
   })
 })
