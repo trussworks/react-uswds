@@ -6,7 +6,7 @@ import { Label } from '../Label/Label'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 export default {
-  title: 'Components/Form controls/File input',
+  title: 'Components/File input',
   component: FileInput,
   argTypes: {
     onChange: { action: 'changed' },
@@ -17,11 +17,16 @@ export default {
       description: {
         component: `
 ### USWDS 2.0 FileInput component
-Source: https://designsystem.digital.gov/components/form-controls/#file-input
+Source: https://designsystem.digital.gov/components/file-input
 `,
       },
     },
   },
+}
+
+type StorybookArguments = {
+  onChange: (event: React.ChangeEvent<Element>) => void
+  onDrop: React.DragEventHandler<Element>
 }
 
 export const singleFileInput = (): React.ReactElement => (
@@ -108,7 +113,9 @@ export const disabled = (): React.ReactElement => (
   </FormGroup>
 )
 
-export const withRefAndCustomHandlers = (argTypes): React.ReactElement => {
+export const withRefAndCustomHandlers = (
+  argTypes: StorybookArguments
+): React.ReactElement => {
   const [files, setFiles] = useState<FileList>()
   const fileInputRef = useRef<FileInputRef>()
 
@@ -121,7 +128,7 @@ export const withRefAndCustomHandlers = (argTypes): React.ReactElement => {
 
   const fileList = []
   for (let i = 0; i < files?.length; i++) {
-    fileList.push(<li key={`file_${i}`}>{files[i].name}</li>)
+    fileList.push(<li key={`file_${i}`}>{files[Number(i)].name}</li>)
   }
 
   return (

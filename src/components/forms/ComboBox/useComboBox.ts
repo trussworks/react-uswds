@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
-import type { ComboBoxOption } from './ComboBox'
+import type { ComboBoxOption, CustomizableFilter } from './ComboBox'
 import { FocusMode } from './ComboBox'
+import { generateDynamicRegExp } from './utils'
 
 export enum ActionTypes {
   SELECT_OPTION,
@@ -10,6 +11,7 @@ export enum ActionTypes {
   FOCUS_OPTION,
   UPDATE_FILTER,
   BLUR,
+  CLEAR_SELECTION,
 }
 
 export type Action =
@@ -37,28 +39,55 @@ export type Action =
   | {
       type: ActionTypes.BLUR
     }
+  | {
+      type: ActionTypes.CLEAR_SELECTION
+    }
+
 export interface State {
   isOpen: boolean
   selectedOption?: ComboBoxOption
   focusedOption?: ComboBoxOption
   focusMode: FocusMode
-  filter?: string
   filteredOptions: ComboBoxOption[]
   inputValue: string
 }
 
-export const useCombobox = (
+interface FilterResults {
+  closestMatch: ComboBoxOption
+  optionsToDisplay: ComboBoxOption[]
+}
+
+export const useComboBox = (
   initialState: State,
-  optionsList: ComboBoxOption[]
+  optionsList: ComboBoxOption[],
+  disableFiltering: boolean,
+  customizableFilter: CustomizableFilter
 ): [State, React.Dispatch<Action>] => {
-  const isPartialMatch = (
-    needle: string
-  ): ((event: ComboBoxOption) => boolean) => {
-    return (option: ComboBoxOption): boolean =>
-      option.label.toLowerCase().includes(needle.toLowerCase())
+  const getPotentialMatches = (needle: string): FilterResults => {
+    const regex = generateDynamicRegExp(
+      customizableFilter.filter,
+      needle,
+      customizableFilter.extras
+    )
+    const filteredOptions = optionsList.filter((option) =>
+      regex.test(option.label.toLowerCase())
+    )
+
+    if (disableFiltering) {
+      return {
+        closestMatch:
+          filteredOptions.length > 0 ? filteredOptions[0] : optionsList[0],
+        optionsToDisplay: optionsList,
+      }
+    }
+
+    return {
+      closestMatch: filteredOptions[0],
+      optionsToDisplay: filteredOptions,
+    }
   }
 
-  function reducer(state: State, action: Action): State {
+  const reducer = (state: State, action: Action): State => {
     switch (action.type) {
       case ActionTypes.SELECT_OPTION:
         return {
@@ -67,23 +96,29 @@ export const useCombobox = (
           selectedOption: action.option,
           focusMode: FocusMode.Input,
           inputValue: action.option.label,
-          filter: undefined,
-          filteredOptions: optionsList.filter(isPartialMatch('')),
+          filteredOptions: optionsList,
+          focusedOption: action.option,
         }
       case ActionTypes.UPDATE_FILTER: {
+        const { closestMatch, optionsToDisplay } = getPotentialMatches(
+          action.value
+        )
+
         const newState = {
           ...state,
           isOpen: true,
-          filter: action.value,
-          filteredOptions: optionsList.filter(isPartialMatch(action.value)),
+          filteredOptions: optionsToDisplay,
           inputValue: action.value,
         }
 
-        if (
-          state.selectedOption &&
-          state.selectedOption.label !== action.value
-        ) {
-          newState.selectedOption = undefined
+        if (disableFiltering || !state.selectedOption) {
+          newState.focusedOption = closestMatch
+        } else if (state.selectedOption) {
+          if (newState.filteredOptions.includes(state.selectedOption)) {
+            newState.focusedOption = state.selectedOption
+          } else {
+            newState.focusedOption = closestMatch
+          }
         }
 
         return newState
@@ -93,7 +128,8 @@ export const useCombobox = (
           ...state,
           isOpen: true,
           focusMode: FocusMode.Input,
-          focusedOption: state.selectedOption,
+          focusedOption:
+            state.selectedOption || state.focusedOption || optionsList[0],
         }
       case ActionTypes.CLOSE_LIST: {
         const newState = {
@@ -104,7 +140,7 @@ export const useCombobox = (
         }
 
         if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = optionsList.filter(isPartialMatch(''))
+          newState.filteredOptions = optionsList
           newState.inputValue = ''
         }
 
@@ -129,26 +165,37 @@ export const useCombobox = (
           isOpen: false,
           focusMode: FocusMode.Input,
           selectedOption: undefined,
-          filter: undefined,
-          filteredOptions: optionsList.filter(isPartialMatch('')),
+          filteredOptions: optionsList,
+          focusedOption: optionsList[0],
         }
       case ActionTypes.BLUR: {
         const newState = {
           ...state,
           isOpen: false,
           focusMode: FocusMode.None,
-          focusedOption: undefined,
-        }
-
-        if (state.filteredOptions.length === 0) {
-          newState.filteredOptions = optionsList.filter(isPartialMatch(''))
+          filteredOptions: optionsList,
         }
 
         if (!state.selectedOption) {
           newState.inputValue = ''
+          newState.focusedOption = optionsList[0]
+        } else {
+          newState.inputValue = state.selectedOption.label
+          newState.focusedOption = state.selectedOption
         }
 
         return newState
+      }
+      case ActionTypes.CLEAR_SELECTION: {
+        return {
+          ...state,
+          inputValue: '',
+          isOpen: false,
+          focusMode: FocusMode.None,
+          selectedOption: undefined,
+          filteredOptions: optionsList,
+          focusedOption: undefined,
+        }
       }
       default:
         throw new Error()

@@ -110,15 +110,4 @@ export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
 
-/** Truss-designed components */
-export {
-  Modal,
-  Overlay,
-  ModalContainer,
-  connectModal,
-  useModal,
-} from './components/Modal/Modal'
-
-// Types and interfaces should be exported separately
-export type { ConnectedModalProps, ModalHook } from './components/Modal/Modal'
 export type { FileInputRef } from './components/forms/FileInput/FileInput'

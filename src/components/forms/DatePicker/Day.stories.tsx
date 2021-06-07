@@ -5,7 +5,7 @@ import { Day } from './Day'
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 export default {
-  title: 'Components/Form controls/Date picker/Day',
+  title: 'Components/Date picker/Day',
   component: Day,
   argTypes: {
     onClick: { action: 'on click' },
@@ -15,13 +15,21 @@ export default {
 }
 */
 
+type StorybookArguments = {
+  onClick: (value: string) => void
+  onKeyDown: (event: React.KeyboardEvent<Element>) => void
+  onMouseMove: (hoverDate: Date) => void
+}
+
 const testDate = new Date('January 20 2021')
 
 const defaultProps = {
   date: testDate,
 }
 
-export const defaultDay = (argTypes): React.ReactElement => (
+export const defaultDay = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -30,7 +38,7 @@ export const defaultDay = (argTypes): React.ReactElement => (
   />
 )
 
-export const disabled = (argTypes): React.ReactElement => (
+export const disabled = (argTypes: StorybookArguments): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -39,7 +47,7 @@ export const disabled = (argTypes): React.ReactElement => (
     isDisabled
   />
 )
-export const selected = (argTypes): React.ReactElement => (
+export const selected = (argTypes: StorybookArguments): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -48,7 +56,7 @@ export const selected = (argTypes): React.ReactElement => (
     isSelected
   />
 )
-export const focused = (argTypes): React.ReactElement => (
+export const focused = (argTypes: StorybookArguments): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -57,7 +65,9 @@ export const focused = (argTypes): React.ReactElement => (
     isFocused
   />
 )
-export const previousMonth = (argTypes): React.ReactElement => (
+export const previousMonth = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -66,7 +76,7 @@ export const previousMonth = (argTypes): React.ReactElement => (
     isPrevMonth
   />
 )
-export const sameMonth = (argTypes): React.ReactElement => (
+export const sameMonth = (argTypes: StorybookArguments): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -75,7 +85,7 @@ export const sameMonth = (argTypes): React.ReactElement => (
     isFocusedMonth
   />
 )
-export const nextMonth = (argTypes): React.ReactElement => (
+export const nextMonth = (argTypes: StorybookArguments): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -84,7 +94,7 @@ export const nextMonth = (argTypes): React.ReactElement => (
     isNextMonth
   />
 )
-export const today = (argTypes): React.ReactElement => (
+export const today = (argTypes: StorybookArguments): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -94,7 +104,9 @@ export const today = (argTypes): React.ReactElement => (
   />
 )
 
-export const isRangeDate = (argTypes): React.ReactElement => (
+export const isRangeDate = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -104,7 +116,9 @@ export const isRangeDate = (argTypes): React.ReactElement => (
   />
 )
 
-export const isRangeStart = (argTypes): React.ReactElement => (
+export const isRangeStart = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -113,7 +127,9 @@ export const isRangeStart = (argTypes): React.ReactElement => (
     isRangeStart
   />
 )
-export const isRangeEnd = (argTypes): React.ReactElement => (
+export const isRangeEnd = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}
@@ -122,7 +138,9 @@ export const isRangeEnd = (argTypes): React.ReactElement => (
     isRangeEnd
   />
 )
-export const isWithinRange = (argTypes): React.ReactElement => (
+export const isWithinRange = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Day
     {...defaultProps}
     onClick={argTypes.onClick}

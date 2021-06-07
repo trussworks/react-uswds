@@ -12,6 +12,7 @@ interface AccordionItem {
 
 interface AccordionProps {
   bordered?: boolean
+  multiselectable?: boolean
   items: AccordionItem[]
   className?: string
 }
@@ -59,6 +60,7 @@ export const Accordion = ({
   bordered,
   items,
   className,
+  multiselectable = false,
 }: AccordionProps): React.ReactElement => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
@@ -75,18 +77,26 @@ export const Accordion = ({
   const toggleItem = (itemId: AccordionItem['id']): void => {
     const newOpenItems = [...openItems]
     const itemIndex = openItems.indexOf(itemId)
+    const isMultiselectable = multiselectable
 
     if (itemIndex > -1) {
       newOpenItems.splice(itemIndex, 1)
     } else {
-      newOpenItems.push(itemId)
+      if (isMultiselectable) {
+        newOpenItems.push(itemId)
+      } else {
+        newOpenItems.splice(0, newOpenItems.length)
+        newOpenItems.push(itemId)
+      }
     }
-
     setOpenState(newOpenItems)
   }
 
   return (
-    <div className={classes} data-testid="accordion">
+    <div
+      className={classes}
+      data-testid="accordion"
+      aria-multiselectable={multiselectable || undefined}>
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}

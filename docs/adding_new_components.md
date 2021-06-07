@@ -68,7 +68,7 @@ There is a significant difference between thinking about the component props in 
 ### Common Components in `react-uswds`
 
 - Components that apply uswds styles to a standard HTMLElement - `Button`, `Table`
-- Components that encapsulate user interaction flows - `Accordion`, `Modal`
+- Components that encapsulate user interaction flows - `Accordion`
 - Components for a common gov tech use case - `Search`, `SocialLinks`
 - Components that render children - `Card`, `Header`, `Footer`
 - Components related to forms, especially form inputs - `DateInput`, `TextInput` `Checkbox`, `Label`

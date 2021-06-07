@@ -8,7 +8,7 @@ import { parseDateString } from './utils'
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY
 
 export default {
-  title: 'Components/Form controls/Date picker/Calendar',
+  title: 'Components/Date picker/Calendar',
   component: Calendar,
   argTypes: {
     handleSelectDate: { action: 'select date' },
@@ -17,12 +17,19 @@ export default {
 }
 */
 
+type StorybookArguments = {
+  handleSelectDate: (value: string) => void
+  setStatuses: (statuses: string[]) => void
+}
+
 const defaultProps = {
   minDate: new Date('0000-01-01'),
   focusMode: FocusMode.None,
 }
 
-export const defaultCalendar = (argTypes): React.ReactElement => (
+export const defaultCalendar = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}
@@ -30,7 +37,7 @@ export const defaultCalendar = (argTypes): React.ReactElement => (
   />
 )
 
-export const givenDate = (argTypes): React.ReactElement => (
+export const givenDate = (argTypes: StorybookArguments): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}
@@ -39,7 +46,9 @@ export const givenDate = (argTypes): React.ReactElement => (
   />
 )
 
-export const selectedDate = (argTypes): React.ReactElement => (
+export const selectedDate = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}
@@ -48,7 +57,7 @@ export const selectedDate = (argTypes): React.ReactElement => (
   />
 )
 
-export const minAndMax = (argTypes): React.ReactElement => (
+export const minAndMax = (argTypes: StorybookArguments): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}
@@ -59,7 +68,7 @@ export const minAndMax = (argTypes): React.ReactElement => (
   />
 )
 
-export const rangeDate = (argTypes): React.ReactElement => (
+export const rangeDate = (argTypes: StorybookArguments): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}

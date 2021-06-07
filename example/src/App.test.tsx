@@ -5,5 +5,5 @@ import App from './App';
 // TODO Add additional app testing
 test('renders the app without error', () => {
   const { getByText } = render(<App />)
-  expect(getByText('Modals')).toBeInTheDocument()
+  expect(getByText('Examples')).toBeInTheDocument()
 })

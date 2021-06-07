@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-import { ComboBox } from './ComboBox'
+import { ComboBox, ComboBoxRef } from './ComboBox'
 import { Form } from '../Form/Form'
 import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
+import { Button } from '../../Button/Button'
 import { fruits } from './fruits'
 
 export default {
-  title: 'Components/Form controls/Combo box',
+  title: 'Components/Combo box',
   component: ComboBox,
   parameters: {
     docs: {
@@ -15,7 +16,7 @@ export default {
         component: `
 ### USWDS 2.0 ComboBox component
 
-Source: https://designsystem.digital.gov/components/form-controls/#ComboBox
+Source: https://designsystem.digital.gov/components/combo-box
 `,
       },
     },
@@ -71,9 +72,7 @@ export const withLabel = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label id="fruit-label" htmlFor="fruit">
-        Select A Fruit
-      </Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
@@ -117,6 +116,33 @@ export const withOtherFields = (): React.ReactElement => {
       <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
       <Label htmlFor="fruitDescription">Description</Label>
       <TextInput id="fruitDescription" name="fruitDescription" type="text" />
+    </Form>
+  )
+}
+
+export const externalClearSelection = (): React.ReactElement => {
+  const ref = useRef<ComboBoxRef>()
+
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  const handleClearSelection = (): void => ref.current.clearSelection()
+
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="fruit">Select a Fruit</Label>
+      <ComboBox
+        id="fruit"
+        name="fruit"
+        options={fruitList}
+        onChange={noop}
+        ref={ref}
+      />
+      <Button type="reset" onClick={handleClearSelection}>
+        Clear Selected Value
+      </Button>
     </Form>
   )
 }
