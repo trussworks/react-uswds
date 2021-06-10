@@ -16,6 +16,7 @@ import {
   NavMenuButton,
   PrimaryNav,
   GridContainer,
+  Icon,
 } from '@trussworks/react-uswds'
 
 import HomePage from './pages/Home'
@@ -54,6 +55,7 @@ const App = () => {
           <div className="usa-navbar">
             <Title>
               <Link to={HOME_PAGE}>Example Application</Link>
+              <Icon name="add" size={9} />
             </Title>
             <NavMenuButton
               label="Menu"
