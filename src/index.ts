@@ -109,3 +109,5 @@ export { ProcessListItem } from './components/ProcessList/ProcessListItem/Proces
 export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/ProcessListHeading'
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
+export type { FileInputRef } from './components/forms/FileInput/FileInput'
