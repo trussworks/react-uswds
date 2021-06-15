@@ -21,6 +21,8 @@ export const Modal = ({
     },
     className
   )
+
+  // needs a unique ID
   return (
     <div data-testid="modal" className={classes} {...divProps}>
       {children}

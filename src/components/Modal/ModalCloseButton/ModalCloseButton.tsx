@@ -16,7 +16,7 @@ export const ModalCloseButton = ({
   const classes = classnames('usa-modal__close', className)
 
   return (
-    <Button className={classes} type="button" {...buttonProps}>
+    <Button className={classes} type="button" data-close-modal {...buttonProps}>
       {children}
     </Button>
   )
