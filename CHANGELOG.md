@@ -10,8 +10,8 @@ All notable changes to this project will be documented in this file. See [standa
 * Expose FileInput component ref with a clearFiles method (#1165)
 * Expose ComboBox component ref with a clearSelection method (#1236)
 * **deps-dev:** Update Typescript to 4.0+ (#1214)
-* The Modal component has been removed. The USWDS Modal will be added when reaching parity with USWDS 2.11.x
-* To continue to use the multiselectable behavior, use the multiselectable prop
+* Modal component has been removed. The USWDS Modal will be added when reaching parity with USWDS 2.11.x
+* Accordion component default behavior was updated to match USWDS. To continue to use the multiselectable behavior, use the multiselectable prop.
 
 ### Features
 
