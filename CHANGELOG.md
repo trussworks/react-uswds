@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/trussworks/react-uswds/compare/1.17.0...2.0.0) (2021-06-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Expose FileInput component ref with a clearFiles method (#1165)
+* Expose ComboBox component ref with a clearSelection method (#1236)
+* **deps-dev:** Update Typescript to 4.0+ (#1214)
+* The Modal component has been removed. The USWDS Modal will be added when reaching parity with USWDS 2.11.x
+* To continue to use the multiselectable behavior, use the multiselectable prop
+
+### Features
+
+* Collection Component ([#1133](https://github.com/trussworks/react-uswds/issues/1133)) ([cdc200f](https://github.com/trussworks/react-uswds/commit/cdc200f5e084c5d63723ce4cf5dbb40252d6b2f5))
+* Deprecate the Modal component ([#956](https://github.com/trussworks/react-uswds/issues/956)) ([7ae4e30](https://github.com/trussworks/react-uswds/commit/7ae4e30cf240af917fc66128e6dc8a047271c6de))
+* Expose ComboBox component ref with a clearSelection method ([#1236](https://github.com/trussworks/react-uswds/issues/1236)) ([e90e4df](https://github.com/trussworks/react-uswds/commit/e90e4df9bdb55a217174e551dabb9e6535c384b8))
+* Expose FileInput component ref with a clearFiles method ([#1165](https://github.com/trussworks/react-uswds/issues/1165)) ([0bc0b54](https://github.com/trussworks/react-uswds/commit/0bc0b54a2d38e789554d9ba4af57b9f854f002fc))
+* Update Accordion component default behavior to match USWDS ([#922](https://github.com/trussworks/react-uswds/issues/922)) ([c063047](https://github.com/trussworks/react-uswds/commit/c063047a86551539bba3664d2ceb591e1d50971f))
+
+
+### Bug Fixes
+
+* Fix TimePicker filter behavior. Misc ComboBox Fixes ([#1139](https://github.com/trussworks/react-uswds/issues/1139)) ([c684844](https://github.com/trussworks/react-uswds/commit/c68484418a3e53d3b4ed98c5eb66e3522f81a475))
+* Update storybook form control organization and SWDS URLs ([#1136](https://github.com/trussworks/react-uswds/issues/1136)) ([bfd7344](https://github.com/trussworks/react-uswds/commit/bfd73443732e78fd06841bf5d36a2e83fdb08bd2))
+* Use embedded images for storybook ([#1265](https://github.com/trussworks/react-uswds/issues/1265)) ([#1266](https://github.com/trussworks/react-uswds/issues/1266)) ([61abd79](https://github.com/trussworks/react-uswds/commit/61abd7933a3ed9fa7fedeba6857e1417c0c51770))
+
+
+* **deps-dev:** Update Typescript to 4.0+ ([#1214](https://github.com/trussworks/react-uswds/issues/1214)) ([f632744](https://github.com/trussworks/react-uswds/commit/f632744b566a4da8e7f27499af51ee18e55516b8))
+
 ## [1.17.0](https://github.com/trussworks/react-uswds/compare/1.16.0...1.17.0) (2021-05-05)
 
 
