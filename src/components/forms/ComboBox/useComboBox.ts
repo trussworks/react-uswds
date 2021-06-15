@@ -11,6 +11,7 @@ export enum ActionTypes {
   FOCUS_OPTION,
   UPDATE_FILTER,
   BLUR,
+  CLEAR_SELECTION,
 }
 
 export type Action =
@@ -37,6 +38,9 @@ export type Action =
     }
   | {
       type: ActionTypes.BLUR
+    }
+  | {
+      type: ActionTypes.CLEAR_SELECTION
     }
 
 export interface State {
@@ -181,6 +185,17 @@ export const useComboBox = (
         }
 
         return newState
+      }
+      case ActionTypes.CLEAR_SELECTION: {
+        return {
+          ...state,
+          inputValue: '',
+          isOpen: false,
+          focusMode: FocusMode.None,
+          selectedOption: undefined,
+          filteredOptions: optionsList,
+          focusedOption: undefined,
+        }
       }
       default:
         throw new Error()

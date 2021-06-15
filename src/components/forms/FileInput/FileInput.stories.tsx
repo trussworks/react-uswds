@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-import { FileInput } from './FileInput'
+import { FileInput, FileInputRef } from './FileInput'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
@@ -22,6 +22,11 @@ Source: https://designsystem.digital.gov/components/file-input
       },
     },
   },
+}
+
+type StorybookArguments = {
+  onChange: (event: React.ChangeEvent<Element>) => void
+  onDrop: React.DragEventHandler<Element>
 }
 
 export const singleFileInput = (): React.ReactElement => (
@@ -108,18 +113,22 @@ export const disabled = (): React.ReactElement => (
   </FormGroup>
 )
 
-export const withCustomHandlers = (argTypes): React.ReactElement => {
+export const withRefAndCustomHandlers = (
+  argTypes: StorybookArguments
+): React.ReactElement => {
   const [files, setFiles] = useState<FileList>()
-  const fileInputRef = useRef<HTMLInputElement>()
+  const fileInputRef = useRef<FileInputRef>()
 
-  const handleChange = (e: React.ChangeEvent): void => {
+  const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     argTypes.onChange(e)
-    setFiles(fileInputRef.current.files)
+    setFiles(e.target?.files)
   }
 
   const fileList = []
   for (let i = 0; i < files?.length; i++) {
-    fileList.push(<li key={`file_${i}`}>{files[i].name}</li>)
+    fileList.push(<li key={`file_${i}`}>{files[Number(i)].name}</li>)
   }
 
   return (
@@ -134,9 +143,14 @@ export const withCustomHandlers = (argTypes): React.ReactElement => {
           multiple
           onChange={handleChange}
           onDrop={argTypes.onDrop}
-          inputRef={fileInputRef}
+          ref={fileInputRef}
         />
       </FormGroup>
+
+      <button type="button" onClick={handleClearFiles}>
+        Clear files
+      </button>
+
       <p>{files?.length || 0} files added:</p>
       <ul>{fileList}</ul>
     </>
