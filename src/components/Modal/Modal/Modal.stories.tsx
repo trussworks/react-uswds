@@ -7,6 +7,7 @@ import { ModalDescription } from '../ModalDescription/ModalDescription'
 import { ModalFooter } from '../ModalFooter/ModalFooter'
 import { ModalHeading } from '../ModalHeading/ModalHeading'
 import { ModalMain } from '../ModalMain/ModalMain'
+import { ModalWrapper } from '../ModalWrapper/ModalWrapper'
 
 import { Button } from '../../Button/Button'
 import { ButtonGroup } from '../../ButtonGroup/ButtonGroup'
@@ -28,6 +29,10 @@ Source: http://designsystem.digital.gov/components/modal
     },
   },
 }
+
+export const modalWrapper = (): React.ReactElement => (
+  <ModalWrapper>some children</ModalWrapper>
+)
 
 export const defaultModal = (): React.ReactElement => (
   <Modal>
