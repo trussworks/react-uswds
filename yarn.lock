@@ -12261,9 +12261,9 @@ sass-loader@^10.0.2:
     semver "^7.3.2"
 
 sass-resources-loader@^2.0.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/sass-resources-loader/-/sass-resources-loader-2.2.1.tgz#d7dbc36ccb25b2d8ffa508b1b8630b987df1e5c3"
-  integrity sha512-WlofxbWOVnxad874IHZdWbP9eW1pbyqsTJKBsMbeB+YELvLSrZQNDTpH70s6F19BwtanR3NEFnyGwJ9WyotJTQ==
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/sass-resources-loader/-/sass-resources-loader-2.2.2.tgz#a3d40a317c7f1863080b72233b49dbe34f380c92"
+  integrity sha512-D+BxTcWouyp0ZLN1D5QUbdvJIVgq3eBHrgsLudsO8dD0JaUG6PgoEzu3Hi3A1jVMBUoxd4gF44/h90Zy1guPbA==
   dependencies:
     async "^3.2.0"
     chalk "^4.1.0"
