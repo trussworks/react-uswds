@@ -31,7 +31,7 @@ Source: http://designsystem.digital.gov/components/modal
 }
 
 export const modalWrapper = (): React.ReactElement => (
-  <ModalWrapper>some children</ModalWrapper>
+  <ModalWrapper isVisible>some children</ModalWrapper>
 )
 
 export const defaultModal = (): React.ReactElement => (
