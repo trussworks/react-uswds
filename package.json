@@ -77,7 +77,7 @@
     "@testing-library/react-hooks": "^7.0.0",
     "@testing-library/user-event": "^13.1.5",
     "@types/classnames": "^2.2.9",
-    "@types/jest": "^26.0.0",
+    "@types/jest": "^27.0.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
