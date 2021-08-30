@@ -2646,10 +2646,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/node@*", "@types/node@^16.4.3":
-  version "16.4.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.3.tgz#c01c1a215721f6dec71b47d88b4687463601ba48"
-  integrity sha512-GKM4FLMkWDc0sfx7tXqPWkM6NBow1kge0fgQh0bOnlqo4iT1kvTvMEKE0c1RtUGnbLlGRXiAA8SumE//90uKAg==
+"@types/node@*", "@types/node@^16.7.6":
+  version "16.7.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.6.tgz#8666478db8095aa66e25b7e469f3e7b53ea2855e"
+  integrity sha512-VESVNFoa/ahYA62xnLBjo5ur6gPsgEE5cNRy8SrdnkZ2nwJSW0kJ4ufbFr2zuU9ALtHM8juY53VcRoTA7htXSg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -5109,9 +5109,9 @@ domexception@^2.0.1:
     webidl-conversions "^5.0.0"
 
 domhandler@^4.0.0, domhandler@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-4.2.0.tgz#f9768a5f034be60a89a27c2e4d0f74eba0d8b059"
-  integrity sha512-zk7sgt970kzPks2Bf+dwT/PLzghLnsivb9CcxkvR8Mzr66Olr0Ofd8neSbglHJHaHa2MadfoSdNlKYAaafmWfA==
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-4.2.2.tgz#e825d721d19a86b8c201a35264e226c678ee755f"
+  integrity sha512-PzE9aBMsdZO8TK4BnuJwH0QT41wgMbRzuZrHUcpYncEjmQazq8QEaBWgLG7ZyC/DAZKEgglpIA6j4Qn/HmxS3w==
   dependencies:
     domelementtype "^2.2.0"
 
@@ -8456,12 +8456,7 @@ node-notifier@^8.0.0:
     uuid "^8.3.0"
     which "^2.0.2"
 
-node-releases@^1.1.61:
-  version "1.1.73"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.73.tgz#dd4e81ddd5277ff846b80b52bb40c49edf7a7b20"
-  integrity sha512-uW7fodD6pyW2FZNZnp/Z3hvWKeEW1Y8R1+1CnErE8cXFXzl5blBOoVB41CvMer6P6Q0S5FXDwcHgFd1Wj0U9zg==
-
-node-releases@^1.1.75:
+node-releases@^1.1.61, node-releases@^1.1.75:
   version "1.1.75"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.75.tgz#6dd8c876b9897a1b8e5a02de26afa79bb54ebbfe"
   integrity sha512-Qe5OUajvqrqDSy6wrWFmMwfJ0jVgwiw4T3KqmbTcZ62qW0gQkheXYhcFM1+lOVcGUoRxcEcfyvFMAnDgaF1VWw==
@@ -11592,9 +11587,9 @@ ts-pnp@1.2.0, ts-pnp@^1.1.6:
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
 tsconfig-paths@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.9.0.tgz#098547a6c4448807e8fcb8eae081064ee9a3c90b"
-  integrity sha512-dRcuzokWhajtZWkQsDVKbWyY+jgcLC5sqJhg2PSgf4ZkH2aHPvaOY8YWGhmjb68b5qqTfasSsDO9k7RUiEmZAw==
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.11.0.tgz#954c1fe973da6339c78e06b03ce2e48810b65f36"
+  integrity sha512-7ecdYDnIdmv639mmDwslG6KQg1Z9STTz1j7Gcz0xa+nshh/gKDAHcPxRbWOsA3SPp0tXP2leTcY9Kw+NAkfZzA==
   dependencies:
     "@types/json5" "^0.0.29"
     json5 "^1.0.1"
