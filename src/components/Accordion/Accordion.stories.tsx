@@ -103,6 +103,10 @@ export const bordered = (): React.ReactElement => (
   <Accordion bordered={true} items={testItems} />
 )
 
+export const multiselectable = (): React.ReactElement => (
+  <Accordion items={testItems} multiselectable={true} />
+)
+
 const customTestItems = [
   {
     title: (
