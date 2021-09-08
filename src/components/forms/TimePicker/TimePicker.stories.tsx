@@ -23,11 +23,18 @@ https://designsystem.digital.gov/components/time-picker/
   },
 }
 
+type StorybookArguments = {
+  onSubmit: () => void
+  disabled: boolean
+}
+
 const noop = (): void => {
   return
 }
 
-export const completeTimePicker = (argTypes): React.ReactElement => (
+export const completeTimePicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
@@ -40,7 +47,9 @@ export const completeTimePicker = (argTypes): React.ReactElement => (
   </Form>
 )
 
-export const defaultTimePicker = (argTypes): React.ReactElement => (
+export const defaultTimePicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
@@ -51,7 +60,9 @@ export const defaultTimePicker = (argTypes): React.ReactElement => (
   </Form>
 )
 
-export const withMinAndMaxTimes = (argTypes): React.ReactElement => (
+export const withMinAndMaxTimes = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
@@ -66,7 +77,9 @@ export const withMinAndMaxTimes = (argTypes): React.ReactElement => (
   </Form>
 )
 
-export const withDefaultValue = (argTypes): React.ReactElement => (
+export const withDefaultValue = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"

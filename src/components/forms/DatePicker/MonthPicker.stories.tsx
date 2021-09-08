@@ -13,16 +13,24 @@ export default {
 }
 */
 
+type StorybookArguments = {
+  handleSelectMonth: (value: number) => void
+}
+
 const testProps = {
   date: new Date('January 20 2021'),
   minDate: parseDateString('0000-01-01') as Date,
 }
 
-export const monthPicker = (argTypes): React.ReactElement => (
+export const monthPicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <MonthPicker {...testProps} handleSelectMonth={argTypes.handleSelectMonth} />
 )
 
-export const withMinAndMax = (argTypes): React.ReactElement => (
+export const withMinAndMax = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <MonthPicker
     {...testProps}
     handleSelectMonth={argTypes.handleSelectMonth}

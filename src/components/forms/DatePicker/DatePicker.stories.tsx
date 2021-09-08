@@ -42,7 +42,14 @@ We may find that we want to expose props for custom event handlers or even a ref
   },
 }
 
-export const completeDatePicker = (argTypes): React.ReactElement => (
+type StorybookArguments = {
+  onSubmit: React.FormEventHandler<HTMLFormElement>
+  disabled?: boolean
+}
+
+export const completeDatePicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <FormGroup>
       <Label id="appointment-date-label" htmlFor="appointment-date">

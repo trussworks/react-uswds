@@ -40,6 +40,12 @@ Source: http://designsystem.digital.gov/components/site-alert
   },
 }
 
+type StorybookArguments = {
+  slim: boolean
+  showIcon: boolean
+  variant: 'info' | 'emergency'
+}
+
 const infoHeading = 'Short alert message'
 
 const additionalContext = (
@@ -139,7 +145,9 @@ export const emergencyAlertNoIcon = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const alertWithCustomControls = (argTypes): React.ReactElement => (
+export const alertWithCustomControls = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <SiteAlert
     slim={argTypes.slim}
     showIcon={argTypes.showIcon}
