@@ -1,7 +1,6 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-
 import { Tooltip } from './Tooltip'
 import { isElementInViewport } from './utils'
 
@@ -18,8 +17,7 @@ describe('Tooltip component', () => {
   it('renders without errors', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
 
-    const wrapperEl = 
-          .queryByTestId('tooltipWrapper')
+    const wrapperEl = screen.queryByTestId('tooltipWrapper')
     expect(wrapperEl).toBeInTheDocument()
     expect(wrapperEl).toHaveClass('usa-tooltip')
 
