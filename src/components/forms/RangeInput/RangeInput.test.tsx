@@ -28,7 +28,7 @@ describe('RangeInput component', () => {
       <RangeInput
         id="range-slider-id"
         name="rangeName"
-        min={-10}
+        min={-15}
         max={60}
         step={15}
         defaultValue={45}
@@ -37,9 +37,9 @@ describe('RangeInput component', () => {
 
     const rangeElement = queryByTestId('range')
 
-    expect(rangeElement).toHaveAttribute('min', '-10')
+    expect(rangeElement).toHaveAttribute('min', '-15')
     expect(rangeElement).toHaveAttribute('max', '60')
-    expect(rangeElement).toHaveAttribute('aria-valuemin', '-10')
+    expect(rangeElement).toHaveAttribute('aria-valuemin', '-15')
     expect(rangeElement).toHaveAttribute('aria-valuemax', '60')
     expect(rangeElement).toHaveAttribute('step', '15')
     expect(rangeElement).toHaveAttribute('value', '45')
