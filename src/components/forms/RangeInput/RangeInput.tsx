@@ -4,6 +4,8 @@ import classnames from 'classnames'
 interface RangeInputProps {
   id: string
   name: string
+  min?: number
+  max?: number
   inputRef?:
     | string
     | ((instance: HTMLInputElement | null) => void)
@@ -20,7 +22,7 @@ export const RangeInput = ({
   // Range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
 
   const classes = classnames('usa-range', className)
-
+  const { min } = inputProps
   return (
     <input
       data-testid="range"
@@ -28,6 +30,7 @@ export const RangeInput = ({
       ref={inputRef}
       type="range"
       {...inputProps}
+      aria-valuemin={min || 0}
     />
   )
 }

@@ -17,6 +17,7 @@ describe('RangeInput component', () => {
     expect(rangeElement).toBeInTheDocument()
     expect(rangeElement).toHaveAttribute('id', 'range-slider-id')
     expect(rangeElement).toHaveAttribute('name', 'rangeName')
+    expect(rangeElement).toHaveAttribute('aria-valuemin', '0')
     expect(rangeElement).toHaveClass('usa-range')
     expect(rangeElement).toHaveClass('additional-class')
   })
@@ -26,13 +27,13 @@ describe('RangeInput component', () => {
       <RangeInput
         id="range-slider-id"
         name="rangeName"
-        min={0}
+        min={-10}
         max={60}
         step={15}
         defaultValue={45}
       />
     )
-    expect(queryByTestId('range')).toHaveAttribute('min', '0')
+    expect(queryByTestId('range')).toHaveAttribute('min', '-10')
     expect(queryByTestId('range')).toHaveAttribute('max', '60')
     expect(queryByTestId('range')).toHaveAttribute('step', '15')
     expect(queryByTestId('range')).toHaveAttribute('value', '45')
