@@ -22,7 +22,7 @@ export const RangeInput = ({
   // Range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
 
   const classes = classnames('usa-range', className)
-  const { min } = inputProps
+  const { min, max } = inputProps
   return (
     <input
       data-testid="range"
@@ -31,6 +31,7 @@ export const RangeInput = ({
       type="range"
       {...inputProps}
       aria-valuemin={min || 0}
+      aria-valuemax={max || 100}
     />
   )
 }

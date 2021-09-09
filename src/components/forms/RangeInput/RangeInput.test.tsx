@@ -18,6 +18,7 @@ describe('RangeInput component', () => {
     expect(rangeElement).toHaveAttribute('id', 'range-slider-id')
     expect(rangeElement).toHaveAttribute('name', 'rangeName')
     expect(rangeElement).toHaveAttribute('aria-valuemin', '0')
+    expect(rangeElement).toHaveAttribute('aria-valuemax', '100')
     expect(rangeElement).toHaveClass('usa-range')
     expect(rangeElement).toHaveClass('additional-class')
   })
@@ -33,10 +34,15 @@ describe('RangeInput component', () => {
         defaultValue={45}
       />
     )
-    expect(queryByTestId('range')).toHaveAttribute('min', '-10')
-    expect(queryByTestId('range')).toHaveAttribute('max', '60')
-    expect(queryByTestId('range')).toHaveAttribute('step', '15')
-    expect(queryByTestId('range')).toHaveAttribute('value', '45')
+
+    const rangeElement = queryByTestId('range')
+
+    expect(rangeElement).toHaveAttribute('min', '-10')
+    expect(rangeElement).toHaveAttribute('max', '60')
+    expect(rangeElement).toHaveAttribute('aria-valuemin', '-10')
+    expect(rangeElement).toHaveAttribute('aria-valuemax', '60')
+    expect(rangeElement).toHaveAttribute('step', '15')
+    expect(rangeElement).toHaveAttribute('value', '45')
   })
 
   it('renders with step attribute set to value any', () => {
