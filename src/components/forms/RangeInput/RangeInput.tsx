@@ -20,9 +20,25 @@ export const RangeInput = ({
   ...inputProps
 }: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   // Range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
+  const defaultMin = 0
+  const defaultMax = 100
+  const { min, max, value, defaultValue } = inputProps
+  const ariaMin = min || defaultMin
+  const ariaMax = max || defaultMax
+
+  let ariaValue: number | undefined
+  if (typeof value === 'number') {
+    ariaValue = value
+  } else if (typeof value === 'undefined') {
+    if (typeof defaultValue === 'undefined') {
+      ariaValue = ariaMax / 2
+    } else if (typeof defaultValue === 'number') {
+      ariaValue = defaultValue
+    }
+  }
 
   const classes = classnames('usa-range', className)
-  const { min, max } = inputProps
+
   return (
     <input
       data-testid="range"
@@ -30,8 +46,9 @@ export const RangeInput = ({
       ref={inputRef}
       type="range"
       {...inputProps}
-      aria-valuemin={min || 0}
-      aria-valuemax={max || 100}
+      aria-valuemin={ariaMin}
+      aria-valuemax={ariaMax}
+      aria-valuenow={ariaValue}
     />
   )
 }
