@@ -68,6 +68,7 @@ lib/
 
 # editor config
 .vscode
+.idea
 
 # happo output directory
 .out
