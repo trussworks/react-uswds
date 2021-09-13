@@ -19,25 +19,30 @@ export const RangeInput = ({
   inputRef,
   ...inputProps
 }: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
-  // Range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
+  const classes = classnames('usa-range', className)
+  // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0
   const defaultMax = 100
-  const { min, max, value, defaultValue } = inputProps
+  const { min, max, defaultValue } = inputProps
   const ariaMin = min || defaultMin
   const ariaMax = max || defaultMax
-
-  let ariaValue: number | undefined
-  if (typeof value === 'number') {
-    ariaValue = value
-  } else if (typeof value === 'undefined') {
-    if (typeof defaultValue === 'undefined') {
-      ariaValue = ariaMax / 2
-    } else if (typeof defaultValue === 'number') {
-      ariaValue = defaultValue
+  const calculatedDefaultValue =
+    defaultValue ||
+    (ariaMax < ariaMin ? ariaMin : ariaMin + ariaMax - ariaMax / 2)
+  const convertValueType = (
+    value: string | number | readonly string[]
+  ): number | undefined => {
+    if (typeof value === 'number' || typeof value === 'string') {
+      return Number(value)
     }
+    return undefined
   }
-
-  const classes = classnames('usa-range', className)
+  const [ariaValue, setAriaValue] = React.useState<number | undefined>(
+    convertValueType(calculatedDefaultValue)
+  )
+  const onValueChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setAriaValue(e.target.valueAsNumber)
+  }
 
   return (
     <input
@@ -49,6 +54,7 @@ export const RangeInput = ({
       aria-valuemin={ariaMin}
       aria-valuemax={ariaMax}
       aria-valuenow={ariaValue}
+      onChange={(e) => onValueChange(e)}
     />
   )
 }
