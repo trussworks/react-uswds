@@ -25,14 +25,15 @@ describe('RangeInput component', () => {
   })
 
   it('renders with custom range values', () => {
+    const min = -15
+    const max = 60
     const { queryByTestId } = render(
       <RangeInput
         id="range-slider-id"
         name="rangeName"
-        min={-15}
-        max={60}
+        min={min}
+        max={max}
         step={15}
-        defaultValue={45}
       />
     )
 
@@ -40,11 +41,37 @@ describe('RangeInput component', () => {
 
     expect(rangeElement).toHaveAttribute('min', '-15')
     expect(rangeElement).toHaveAttribute('max', '60')
-    expect(rangeElement).toHaveAttribute('aria-valuemin', '-15')
-    expect(rangeElement).toHaveAttribute('aria-valuemax', '60')
-    expect(rangeElement).toHaveAttribute('aria-valuenow', '45')
+    expect(rangeElement).toHaveAttribute('aria-valuemin', String(min))
+    expect(rangeElement).toHaveAttribute('aria-valuemax', String(max))
+    expect(rangeElement).toHaveAttribute(
+      'aria-valuenow',
+      String(min + max - max / 2)
+    )
     expect(rangeElement).toHaveAttribute('step', '15')
-    expect(rangeElement).toHaveAttribute('value', '45')
+  })
+
+  it('renders with default value set', () => {
+    const { queryByTestId } = render(
+      <RangeInput id="range-slider-id" name="rangeName" defaultValue={75} />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute('aria-valuenow', '75')
+  })
+
+  it('renders with aria values set', () => {
+    const { queryByTestId } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        ariaValueMin={12}
+        ariaValueMax={58}
+        ariaValueNow={23}
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute('aria-valuemin', '12')
+    expect(queryByTestId('range')).toHaveAttribute('aria-valuemax', '58')
+    expect(queryByTestId('range')).toHaveAttribute('aria-valuenow', '23')
   })
 
   it('renders with step attribute set to value any', () => {

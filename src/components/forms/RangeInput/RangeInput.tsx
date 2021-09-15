@@ -6,6 +6,9 @@ interface RangeInputProps {
   name: string
   min?: number
   max?: number
+  ariaValueMin?: number
+  ariaValueMax?: number
+  ariaValueNow?: number
   inputRef?:
     | string
     | ((instance: HTMLInputElement | null) => void)
@@ -23,12 +26,15 @@ export const RangeInput = ({
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0
   const defaultMax = 100
-  const { min, max, defaultValue } = inputProps
-  const ariaMin = min || defaultMin
-  const ariaMax = max || defaultMax
+  const { min, max, defaultValue, ariaValueMin, ariaValueMax, ariaValueNow } =
+    inputProps
+  const rangeMin = min || defaultMin
+  const rangeMax = max || defaultMax
+  const ariaMin = ariaValueMin || rangeMin
+  const ariaMax = ariaValueMax || rangeMax
   const calculatedDefaultValue =
     defaultValue ||
-    (ariaMax < ariaMin ? ariaMin : ariaMin + ariaMax - ariaMax / 2)
+    (rangeMin > rangeMax ? rangeMin : rangeMin + rangeMax - rangeMax / 2)
   const convertValueType = (
     value: string | number | readonly string[]
   ): number | undefined => {
@@ -41,7 +47,7 @@ export const RangeInput = ({
     convertValueType(calculatedDefaultValue)
   )
   const onValueChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setAriaValue(e.target.valueAsNumber)
+    if (!ariaValueNow) setAriaValue(e.target.valueAsNumber)
   }
 
   return (
@@ -53,7 +59,7 @@ export const RangeInput = ({
       {...inputProps}
       aria-valuemin={ariaMin}
       aria-valuemax={ariaMax}
-      aria-valuenow={ariaValue}
+      aria-valuenow={ariaValueNow || ariaValue}
       onChange={(e) => onValueChange(e)}
     />
   )
