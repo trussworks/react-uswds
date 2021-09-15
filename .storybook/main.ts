@@ -1,6 +1,8 @@
 const path = require('path')
 
 const webpackConfig = (config) => {
+  config.resolve.alias.uswds = path.resolve(__dirname, '../node_modules/uswds')
+
   config.module.rules = config.module.rules.filter(
     (rule) => rule.test.toString() !== '/\\.css$/'
   )
@@ -38,6 +40,9 @@ const webpackConfig = (config) => {
 }
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials'],
   typescript: {

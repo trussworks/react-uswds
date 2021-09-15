@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -13,13 +13,8 @@ import {
   ValidationItem,
   DatePicker,
   FileInput,
+  FileInputRef,
 } from '@trussworks/react-uswds'
-
-type FormValues = {
-  email?: string
-  password?: string
-  fruit?: string
-}
 
 const FormSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -45,7 +40,7 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 const FormsPage = (): React.ReactElement => {
-  const fileInputRef = useRef<HTMLInputElement>(null)
+  const fileInputRef = React.createRef<FileInputRef>()
 
   return (
     <>
@@ -190,7 +185,7 @@ const FormsPage = (): React.ReactElement => {
                   onDrop={(e: React.DragEvent): void => {
                     console.log('handle drop', e)
                   }}
-                  inputRef={fileInputRef}
+                  ref={fileInputRef}
                 />
               </FormGroup>
 
