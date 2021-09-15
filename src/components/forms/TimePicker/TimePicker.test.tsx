@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 
 import { TimePicker } from './TimePicker'
 import userEvent from '@testing-library/user-event'
@@ -45,8 +45,6 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList).toBeVisible()
 
     // Select a time
-    jest.clearAllMocks()
-
     userEvent.hover(elementToSelect)
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
 
@@ -55,6 +53,7 @@ describe('TimePicker Component', () => {
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )
+
     expect(comboBoxTextInput).toHaveAttribute('aria-expanded', 'false')
     expect(comboBoxDropdownList).not.toBeVisible()
     expect(comboBoxTextInput).toHaveValue(elementToSelect.textContent)
@@ -110,23 +109,22 @@ describe('TimePicker Component', () => {
 
     // Click on the TimePicker input
     userEvent.click(comboBoxTextInput)
+
     expect(comboBoxTextInput).toHaveAttribute('aria-expanded', 'true')
     expect(comboBoxDropdownList).toBeVisible()
 
     // Select a time
-    jest.clearAllMocks()
-
     userEvent.type(comboBoxTextInput, '5:3p')
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).not.toHaveFocus()
-    expect(scrollFunction).toHaveBeenCalledTimes(3)
+    expect(scrollFunction).toHaveBeenCalledTimes(4) // 4 times: open, type: 5, 3, p
 
     fireEvent.keyDown(comboBoxTextInput, { key: 'ArrowDown' })
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).toHaveFocus()
 
     userEvent.type(elementToSelect, '{enter}')
-    expect(testProps.onChange).toHaveBeenCalledTimes(1)
+    expect(testProps.onChange).toHaveBeenNthCalledWith(2, '17:30') // called twice, first time on mount
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )
@@ -156,28 +154,26 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList).toBeVisible()
     expect(comboBoxDropdownList.children.length).toEqual(48)
 
-    jest.clearAllMocks()
-
     // Start typing to filter by hour
     userEvent.type(comboBoxTextInput, '5')
     expect(fiveAm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveAm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
-    expect(scrollFunction).toHaveBeenCalledTimes(1)
+    expect(scrollFunction).toHaveBeenCalledTimes(2)
 
     // Continue typing to filter by half hour
     userEvent.type(comboBoxTextInput, ':3')
     expect(fiveThirtyAm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyAm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
-    expect(scrollFunction).toHaveBeenCalledTimes(2)
+    expect(scrollFunction).toHaveBeenCalledTimes(3)
 
     // Continue typing to filter by am/pm
     userEvent.type(comboBoxTextInput, 'p')
     expect(fiveThirtyPm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyPm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
-    expect(scrollFunction).toHaveBeenCalledTimes(3)
+    expect(scrollFunction).toHaveBeenCalledTimes(4)
 
     // Focus the element by pressing the down key
     fireEvent.keyDown(comboBoxTextInput, { key: 'ArrowDown' })
@@ -186,7 +182,7 @@ describe('TimePicker Component', () => {
 
     // Select the element by pressing enter
     userEvent.type(fiveThirtyPm, '{enter}')
-    expect(testProps.onChange).toHaveBeenCalledTimes(1)
+    expect(testProps.onChange).toHaveBeenNthCalledWith(2, '17:30')
     expect(fiveThirtyPm).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )
@@ -196,7 +192,7 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).toBeVisible()
   })
 
-  it('allows the user to clear the input', () => {
+  it('allows the user to clear the input', async () => {
     const { getByTestId } = render(
       <TimePicker {...testProps} defaultValue="00:00" />
     )
@@ -208,11 +204,11 @@ describe('TimePicker Component', () => {
     expect(comboBoxTextInput).toHaveValue('12:00am')
 
     // Clear the input
-    jest.clearAllMocks()
-
     userEvent.click(comboBoxClearButton)
-    expect(testProps.onChange).toHaveBeenCalledTimes(1)
     expect(comboBoxClearButton).not.toBeVisible()
     expect(comboBoxTextInput).not.toHaveValue()
+    await waitFor(() => {
+      expect(testProps.onChange).toHaveBeenCalledTimes(2)
+    })
   })
 })
