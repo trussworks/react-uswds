@@ -45,7 +45,7 @@ describe('RangeInput component', () => {
     expect(rangeElement).toHaveAttribute('aria-valuemax', String(max))
     expect(rangeElement).toHaveAttribute(
       'aria-valuenow',
-      String(min + max - max / 2)
+      String(min + (max - min) / 2)
     )
     expect(rangeElement).toHaveAttribute('step', '15')
   })

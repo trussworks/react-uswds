@@ -34,7 +34,7 @@ export const RangeInput = ({
   const ariaMax = ariaValueMax || rangeMax
   const calculatedDefaultValue =
     defaultValue ||
-    (rangeMin > rangeMax ? rangeMin : rangeMin + rangeMax - rangeMax / 2)
+    (rangeMax < rangeMin ? rangeMin : rangeMin + (rangeMax - rangeMin) / 2)
   const convertValueType = (
     value: string | number | readonly string[]
   ): number | undefined => {
