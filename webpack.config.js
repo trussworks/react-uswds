@@ -13,7 +13,6 @@ module.exports = {
     libraryTarget: 'umd',
     globalObject: 'this',
   },
-  target: ['web', 'es5'], // IE11 support
   externals: {
     react: {
       root: 'React',
