@@ -1,5 +1,6 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import { RangeInput } from './RangeInput'
 
@@ -50,7 +51,7 @@ describe('RangeInput component', () => {
     expect(rangeElement).toHaveAttribute('step', '15')
   })
 
-  it('renders with default value set', () => {
+  it('renders with default value', () => {
     const { queryByTestId } = render(
       <RangeInput id="range-slider-id" name="rangeName" defaultValue={75} />
     )
@@ -58,20 +59,27 @@ describe('RangeInput component', () => {
     expect(queryByTestId('range')).toHaveAttribute('aria-valuenow', '75')
   })
 
-  it('renders with aria values set', () => {
-    const { queryByTestId } = render(
+  it('renders with custom aria values and updates aria-valuenow on keyboard actions', () => {
+    render(
       <RangeInput
         id="range-slider-id"
         name="rangeName"
-        ariaValueMin={12}
-        ariaValueMax={58}
-        ariaValueNow={23}
+        aria-valuemin={12}
+        aria-valuemax={58}
+        aria-valuenow={23}
       />
     )
+    const rangeInput = screen.getByTestId('range')
+    expect(rangeInput).toHaveAttribute('aria-valuemin', '12')
+    expect(rangeInput).toHaveAttribute('aria-valuemax', '58')
+    expect(rangeInput).toHaveAttribute('aria-valuenow', '23')
 
-    expect(queryByTestId('range')).toHaveAttribute('aria-valuemin', '12')
-    expect(queryByTestId('range')).toHaveAttribute('aria-valuemax', '58')
-    expect(queryByTestId('range')).toHaveAttribute('aria-valuenow', '23')
+    userEvent.type(rangeInput, '{arrowright}')
+
+    waitFor(() => expect(rangeInput).toHaveAttribute('aria-valuenow', '24'))
+    userEvent.type(rangeInput, '{arrowleft}')
+    userEvent.type(rangeInput, '{arrowleft}')
+    waitFor(() => expect(rangeInput).toHaveAttribute('aria-valuenow', '22'))
   })
 
   it('renders with step attribute set to value any', () => {
