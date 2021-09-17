@@ -49,7 +49,7 @@ describe('TimePicker Component', () => {
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
 
     userEvent.click(elementToSelect)
-    expect(testProps.onChange).toHaveBeenCalledTimes(1)
+    expect(testProps.onChange).toHaveBeenCalledTimes(2) // once on mount, twice on select
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )
@@ -78,14 +78,12 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList).toBeVisible()
 
     // Select a time
-    jest.clearAllMocks()
-
     userEvent.type(comboBoxTextInput, '5:30pm')
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).not.toHaveFocus()
 
     userEvent.type(comboBoxTextInput, '{enter}')
-    expect(testProps.onChange).toHaveBeenCalledTimes(1)
+    expect(testProps.onChange).toHaveBeenCalledTimes(2)
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )
