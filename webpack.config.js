@@ -9,7 +9,6 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: '[name].js',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
     globalObject: 'this',
@@ -36,6 +35,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      uswds: path.resolve(__dirname, './node_modules/uswds'),
+    },
   },
   module: {
     rules: [
@@ -65,7 +67,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentName: '[path][name]__[local]--[contenthash:base64:5]',
               },
             },
           },
@@ -85,13 +87,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
-            outputPath: 'assets',
-          },
-        },
+        type: 'asset',
       },
     ],
   },
