@@ -121,4 +121,51 @@ describe('SiteAlert component', () => {
       'usa-site-alert--no-heading'
     )
   })
+
+  it('wraps a child string in a <p> tag', () => {
+    const { getByText } = render(
+      <SiteAlert variant="info">Test alert text</SiteAlert>
+    )
+
+    expect(getByText('Test alert text')).toHaveClass('usa-alert__text')
+    expect(getByText('Test alert text').tagName).toEqual('P')
+  })
+
+  it('does not wrap a single child element', () => {
+    const { getByText } = render(
+      <SiteAlert variant="info">
+        <strong className="test-element-class-name">Test alert text</strong>
+      </SiteAlert>
+    )
+
+    const childElement = getByText('Test alert text')
+    const parentElement = childElement.parentElement
+
+    expect(childElement).not.toHaveClass('usa-alert__text')
+    expect(childElement).toHaveClass('test-element-class-name')
+    expect(parentElement).not.toHaveClass('usa-alert__text')
+    expect(parentElement).toHaveClass('usa-alert__body')
+  })
+
+  it('renders, but does not wrap, multiple child elements', () => {
+    const { getByText } = render(
+      <SiteAlert variant="info">
+        {[
+          <strong key={0} className="test-main-class-name">
+            Test alert text
+          </strong>,
+          <em key={1} className="test-subtext-class-name">
+            Test alert subtext
+          </em>,
+        ]}
+      </SiteAlert>
+    )
+
+    const childElement = getByText('Test alert subtext')
+    const parentElement = childElement.parentElement
+
+    expect(childElement).not.toHaveClass('usa-alert__text')
+    expect(parentElement?.childNodes.length).toEqual(2)
+    expect(parentElement).not.toHaveClass('usa-alert__text')
+  })
 })

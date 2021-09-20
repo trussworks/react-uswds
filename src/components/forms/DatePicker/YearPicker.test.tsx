@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { YearPicker } from './YearPicker'
@@ -17,18 +17,7 @@ describe('YearPicker', () => {
     const { getByText } = render(<YearPicker {...testProps} />)
 
     const years = [
-      2016,
-      2017,
-      2018,
-      2019,
-      2020,
-      2021,
-      2022,
-      2023,
-      2024,
-      2025,
-      2026,
-      2027,
+      2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
     ]
 
     years.forEach((year) => {
@@ -45,18 +34,7 @@ describe('YearPicker', () => {
     )
 
     const years = [
-      2016,
-      2017,
-      2018,
-      2019,
-      2020,
-      2021,
-      2022,
-      2023,
-      2024,
-      2025,
-      2026,
-      2027,
+      2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
     ]
 
     years.forEach((year) => {
@@ -120,18 +98,7 @@ describe('YearPicker', () => {
       />
     )
     const years = [
-      2016,
-      2017,
-      2018,
-      2019,
-      2020,
-      2021,
-      2022,
-      2023,
-      2024,
-      2025,
-      2026,
-      2027,
+      2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
     ]
 
     years.forEach((year, index) => {
@@ -149,18 +116,7 @@ describe('YearPicker', () => {
       userEvent.click(getByTestId('previous-year-chunk'))
 
       const years = [
-        2004,
-        2005,
-        2006,
-        2007,
-        2008,
-        2009,
-        2010,
-        2011,
-        2012,
-        2013,
-        2014,
-        2015,
+        2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
       ]
 
       years.forEach((year) => {
@@ -172,7 +128,7 @@ describe('YearPicker', () => {
       expect(getByTestId('previous-year-chunk')).toHaveFocus()
     })
 
-    it('clicking previous year chunk focuses on the year picker if the previous year chunk becomes disabled', () => {
+    it('clicking previous year chunk focuses on the year picker if the previous year chunk becomes disabled', async () => {
       const { getByTestId, getByText } = render(
         <YearPicker
           {...testProps}
@@ -182,18 +138,7 @@ describe('YearPicker', () => {
       userEvent.click(getByTestId('previous-year-chunk'))
 
       const years = [
-        2004,
-        2005,
-        2006,
-        2007,
-        2008,
-        2009,
-        2010,
-        2011,
-        2012,
-        2013,
-        2014,
-        2015,
+        2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
       ]
 
       years.forEach((year) => {
@@ -203,7 +148,10 @@ describe('YearPicker', () => {
       })
 
       expect(getByTestId('previous-year-chunk')).toBeDisabled()
-      expect(getByTestId('calendar-year-picker')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('calendar-year-picker')).toHaveFocus()
+      })
     })
 
     it('clicking next year chunk navigates the year picker forward one chunk', () => {
@@ -211,18 +159,7 @@ describe('YearPicker', () => {
       userEvent.click(getByTestId('next-year-chunk'))
 
       const years = [
-        2028,
-        2029,
-        2030,
-        2031,
-        2032,
-        2033,
-        2034,
-        2035,
-        2036,
-        2037,
-        2038,
-        2039,
+        2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039,
       ]
 
       years.forEach((year) => {
@@ -234,7 +171,7 @@ describe('YearPicker', () => {
       expect(getByTestId('next-year-chunk')).toHaveFocus()
     })
 
-    it('clicking next year chunk focuses on the year picker if the next year chunk becomes disabled', () => {
+    it('clicking next year chunk focuses on the year picker if the next year chunk becomes disabled', async () => {
       const { getByTestId, getByText } = render(
         <YearPicker
           {...testProps}
@@ -244,18 +181,7 @@ describe('YearPicker', () => {
       userEvent.click(getByTestId('next-year-chunk'))
 
       const years = [
-        2028,
-        2029,
-        2030,
-        2031,
-        2032,
-        2033,
-        2034,
-        2035,
-        2036,
-        2037,
-        2038,
-        2039,
+        2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039,
       ]
 
       years.forEach((year) => {
@@ -265,7 +191,10 @@ describe('YearPicker', () => {
       })
 
       expect(getByTestId('next-year-chunk')).toBeDisabled()
-      expect(getByTestId('calendar-year-picker')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('calendar-year-picker')).toHaveFocus()
+      })
     })
   })
 

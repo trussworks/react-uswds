@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 interface SiteAlertProps {
   variant: 'info' | 'emergency'
-  children: React.ReactNode
+  children: string | React.ReactNode | React.ReactNode[]
   heading?: string
   showIcon?: boolean
   slim?: boolean
@@ -30,6 +30,12 @@ export const SiteAlert = ({
     },
     className
   )
+
+  let content = children
+  if (typeof children === 'string') {
+    content = <p className="usa-alert__text">{children}</p>
+  }
+
   return (
     <section
       data-testid="siteAlert"
@@ -39,7 +45,7 @@ export const SiteAlert = ({
       <div className="usa-alert">
         <div className="usa-alert__body">
           {heading && <h3 className="usa-alert__heading">{heading}</h3>}
-          {children}
+          {content}
         </div>
       </div>
     </section>

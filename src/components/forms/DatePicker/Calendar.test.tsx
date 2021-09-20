@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Calendar } from './Calendar'
@@ -77,26 +77,7 @@ describe('Calendar', () => {
     )
 
     const disabledDates = [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
     ]
     const enabledDates = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     disabledDates.forEach((date) => {
@@ -200,7 +181,7 @@ describe('Calendar', () => {
       expect(getByTestId('previous-year')).toHaveFocus()
     })
 
-    it('clicking previous year focuses the date picker if previous year becomes disabled', () => {
+    it('clicking previous year focuses the date picker if previous year becomes disabled', async () => {
       const { getByTestId } = render(
         <Calendar
           {...testProps}
@@ -212,7 +193,10 @@ describe('Calendar', () => {
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
       expect(getByTestId('previous-year')).toBeDisabled()
-      expect(getByTestId('calendar-date-picker')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('calendar-date-picker')).toHaveFocus()
+      })
     })
 
     it('clicking next year navigates the calendar forward one year', () => {
@@ -225,7 +209,7 @@ describe('Calendar', () => {
       expect(getByTestId('next-year')).toHaveFocus()
     })
 
-    it('clicking next year focuses the date picker if next year becomes disabled', () => {
+    it('clicking next year focuses the date picker if next year becomes disabled', async () => {
       const { getByTestId } = render(
         <Calendar
           {...testProps}
@@ -237,7 +221,10 @@ describe('Calendar', () => {
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2022')
       expect(getByTestId('next-year')).toBeDisabled()
-      expect(getByTestId('calendar-date-picker')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('calendar-date-picker')).toHaveFocus()
+      })
     })
 
     it('clicking previous month navigates the calendar back one month', () => {
@@ -250,7 +237,7 @@ describe('Calendar', () => {
       expect(getByTestId('previous-month')).toHaveFocus()
     })
 
-    it('clicking previous month focuses the date picker if previous month becomes disabled', () => {
+    it('clicking previous month focuses the date picker if previous month becomes disabled', async () => {
       const { getByTestId } = render(
         <Calendar
           {...testProps}
@@ -262,7 +249,10 @@ describe('Calendar', () => {
       expect(getByTestId('select-month')).toHaveTextContent('December')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
       expect(getByTestId('previous-month')).toBeDisabled()
-      expect(getByTestId('calendar-date-picker')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('calendar-date-picker')).toHaveFocus()
+      })
     })
 
     it('clicking next month navigates the calendar forward one month', () => {
@@ -275,7 +265,7 @@ describe('Calendar', () => {
       expect(getByTestId('next-month')).toHaveFocus()
     })
 
-    it('clicking next month focuses the date picker if next month becomes disabled', () => {
+    it('clicking next month focuses the date picker if next month becomes disabled', async () => {
       const { getByTestId } = render(
         <Calendar
           {...testProps}
@@ -287,7 +277,10 @@ describe('Calendar', () => {
       expect(getByTestId('select-month')).toHaveTextContent('February')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('next-month')).toBeDisabled()
-      expect(getByTestId('calendar-date-picker')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('calendar-date-picker')).toHaveFocus()
+      })
     })
   })
 
@@ -528,7 +521,7 @@ describe('Calendar', () => {
       expect(getByTestId('calendar-month-picker')).toBeInTheDocument()
     })
 
-    it('clicking a select month button selects that month and hides month selection', () => {
+    it('clicking a select month button selects that month and hides month selection', async () => {
       const { getByTestId, queryByTestId, getByText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
@@ -538,7 +531,10 @@ describe('Calendar', () => {
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
       expect(queryByTestId('calendar-month-picker')).not.toBeInTheDocument()
-      expect(getByText('20')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByText('20')).toHaveFocus()
+      })
     })
   })
 
@@ -550,7 +546,7 @@ describe('Calendar', () => {
       expect(getByTestId('calendar-year-picker')).toBeInTheDocument()
     })
 
-    it('clicking a select year button selects that year and hides year selection', () => {
+    it('clicking a select year button selects that year and hides year selection', async () => {
       const { getByTestId, queryByTestId, getByText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
@@ -560,7 +556,10 @@ describe('Calendar', () => {
       expect(getByTestId('select-year')).toHaveTextContent('2017')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
       expect(queryByTestId('calendar-year-picker')).not.toBeInTheDocument()
-      expect(getByText('20')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByText('20')).toHaveFocus()
+      })
     })
   })
 })

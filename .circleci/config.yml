@@ -23,6 +23,8 @@ jobs:
 
       - run: yarn test:coverage -w 1
 
+      - run: yarn test:serverside
+
       - run:
           name: 'Happo'
           command: 'yarn happo-ci'

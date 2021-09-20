@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 
-import { SPACER_GIF } from './constants'
+/** Moving the SPACER_GIF definition here instead of the constants.ts file,
+ * as webpack was exporting that entire file, including use of the File
+ * WebAPI; this was causing server-side site generators to break (#1250). */
+
+const SPACER_GIF =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
 export const FilePreview = ({
   imageId,
