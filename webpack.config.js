@@ -9,6 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
+    publicPath: '/lib/',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
     globalObject: 'this',
