@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
@@ -18,8 +18,16 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 describe('ComboBox component', () => {
-  const scrollFunction = jest.fn()
-  window.HTMLElement.prototype.scrollIntoView = scrollFunction
+  let scrollSpy: jest.Mock
+
+  beforeAll(() => {
+    scrollSpy = jest.fn()
+    window.HTMLElement.prototype.scrollIntoView = scrollSpy
+  })
+
+  beforeEach(() => {
+    scrollSpy.mockReset()
+  })
 
   it('renders without errors', () => {
     const { getByTestId } = render(
@@ -263,7 +271,7 @@ describe('ComboBox component', () => {
     'scrolls options list to the very top when the menu opens if nothing is selected'
   )
 
-  it('scrolls to the selected option when the list is opened', () => {
+  it('scrolls to the selected option when the list is opened', async () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -276,12 +284,14 @@ describe('ComboBox component', () => {
 
     const mango = getByTestId('combo-box-option-mango')
 
-    jest.clearAllMocks()
     userEvent.click(getByTestId('combo-box-toggle'))
     expect(mango).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )
-    expect(scrollFunction).toHaveBeenCalledTimes(1)
+
+    await waitFor(() => {
+      expect(scrollSpy).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('filtering', () => {
@@ -577,7 +587,10 @@ describe('ComboBox component', () => {
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-input')).toHaveValue('')
+
+      expect(onChange).toHaveBeenCalledTimes(2)
       expect(onChange).toHaveBeenNthCalledWith(2, undefined)
+
       const comboBoxOptionList = getByTestId('combo-box-option-list')
       expect(comboBoxOptionList).not.toBeVisible()
       expect(comboBoxOptionList.children.length).toBe(fruitOptions.length)
@@ -598,13 +611,16 @@ describe('ComboBox component', () => {
 
       userEvent.click(getByTestId('combo-box-clear-button'))
       fireEvent.blur(getByTestId('combo-box-clear-button'))
+
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
 
-    it('focuses the input after clearing when the when FocusMode is None', () => {
+    it('focuses the input after clearing when the when FocusMode is None', async () => {
       const { getByTestId } = render(
         <>
-          <div data-testid="outside" />
+          <button type="button" data-testid="outside">
+            Testing
+          </button>
           <ComboBox
             id="favorite-fruit"
             name="favorite-fruit"
@@ -617,7 +633,10 @@ describe('ComboBox component', () => {
       userEvent.type(getByTestId('combo-box-input'), 'b')
       userEvent.click(getByTestId('outside'))
       userEvent.click(getByTestId('combo-box-clear-button'))
-      expect(getByTestId('combo-box-input')).toHaveFocus()
+
+      await waitFor(() => {
+        expect(getByTestId('combo-box-input')).toHaveFocus()
+      })
     })
   })
 
@@ -1328,7 +1347,9 @@ describe('ComboBox component', () => {
     it('clears focus when clicking outside of the component', () => {
       const { getByTestId } = render(
         <>
-          <div data-testid="outside" />
+          <button type="button" data-testid="outside">
+            Testing
+          </button>
           <ComboBox
             id="favorite-fruit"
             name="favorite-fruit"
@@ -1340,6 +1361,7 @@ describe('ComboBox component', () => {
 
       userEvent.click(getByTestId('combo-box-toggle'))
       userEvent.click(getByTestId('outside'))
+
       expect(getByTestId('combo-box-input')).not.toHaveFocus()
     })
   })
