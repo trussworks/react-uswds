@@ -2,4 +2,4 @@
 * @suzubara @gidjin @tinyels @sarboc @haworku @ahobson @brandonlenz @sirenaborracha
 
 # Owners for Dependabot PRs (and PRs that only change dependency versions)
-package.json yarn.lock @suzubara @ahobson @brandonlenz @haworku
+package.json yarn.lock
