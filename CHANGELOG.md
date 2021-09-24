@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/trussworks/react-uswds/compare/2.0.0...2.1.0) (2021-09-24)
+
+
+### Features
+
+* Add aria attributes to RangeInput ([#1560](https://github.com/trussworks/react-uswds/issues/1560)) ([0034835](https://github.com/trussworks/react-uswds/commit/00348350ced514bf33c9a1795270838e2df33a24))
+
 ## [2.0.0](https://github.com/trussworks/react-uswds/compare/1.17.0...2.0.0) (2021-06-15)
 
 
