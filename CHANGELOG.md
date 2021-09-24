@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
+* SiteAlert child enhancement([#1215](https://github.com/trussworks/react-uswds/issues/1215)) ([3cd70f9 ](https://github.com/trussworks/react-uswds/commit/3cd70f95d04eab23e3ad6b1f31634d3b507b3692))
 * Add aria attributes to RangeInput ([#1560](https://github.com/trussworks/react-uswds/issues/1560)) ([0034835](https://github.com/trussworks/react-uswds/commit/00348350ced514bf33c9a1795270838e2df33a24))
 
 ## [2.0.0](https://github.com/trussworks/react-uswds/compare/1.17.0...2.0.0) (2021-06-15)
