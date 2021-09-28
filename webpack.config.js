@@ -87,19 +87,19 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
-        include: path.resolve(
-          __dirname,
-          './node_modules/uswds/dist/img/usa-icons'
-        ),
+        oneOf: [
+          {
+            issuer: /\.[jt]sx?$/,
+            use: ['@svgr/webpack'],
+          },
+          {
+            type: 'asset',
+          },
+        ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.(png|jpe?g|gif|eot|ttf|woff|woff2)$/i,
         type: 'asset',
-        exclude: path.resolve(
-          __dirname,
-          './node_modules/uswds/dist/img/usa-icons'
-        ),
       },
     ],
   },
