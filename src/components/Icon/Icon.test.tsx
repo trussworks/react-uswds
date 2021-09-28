@@ -1,29 +1,31 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { Icon } from './Icon'
+import { AccessibilityNew } from './Icon'
 
 describe('Icon component', () => {
   it('renders without errors', () => {
-    const { queryByTestId } = render(<Icon name="add" />)
+    render(<AccessibilityNew />)
 
-    expect(queryByTestId('iconComponent')).toBeInTheDocument()
+    expect(screen.getByRole('img')).toBeInTheDocument()
+  })
+
+  it('accepts a size prop', () => {
+    render(<AccessibilityNew size={7} />)
+
+    expect(screen.getByRole('img')).toHaveClass('usa-icon--size-7')
   })
 
   it('accepts a className', () => {
-    const { queryByRole } = render(
-      <Icon name="localLaundryService" className="custom-class" />
-    )
+    render(<AccessibilityNew className="custom-class" />)
 
-    expect(queryByRole('img')).toHaveClass('custom-class')
+    expect(screen.getByRole('img')).toHaveClass('custom-class')
   })
 
   it('accepts an aria-label', () => {
-    const { queryByRole } = render(
-      <Icon name="build" aria-label="build icon component" />
-    )
+    render(<AccessibilityNew aria-label="build icon component" />)
 
-    expect(queryByRole('img')).toHaveAttribute(
+    expect(screen.getByRole('img')).toHaveAttribute(
       'aria-label',
       'build icon component'
     )

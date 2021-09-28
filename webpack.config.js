@@ -9,7 +9,6 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
-    publicPath: '/lib/',
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
     globalObject: 'this',
@@ -87,8 +86,14 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+        include: path.resolve(__dirname, './node_modules/uswds/dist/img'),
+      },
+      {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
         type: 'asset',
+        exclude: path.resolve(__dirname, './node_modules/uswds/dist/img'),
       },
     ],
   },
