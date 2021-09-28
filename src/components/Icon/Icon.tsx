@@ -1,9 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 
-// Import individual SVGs
-import AccessibilityNewSvg from 'uswds/dist/img/usa-icons/accessibility_new.svg?react'
-
 interface USWDSIconProps {
   focusable?: boolean
   role?: string
@@ -11,10 +8,10 @@ interface USWDSIconProps {
   className?: string
 }
 
-type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
+export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
 
-function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
-  return (props: IconProps) => {
+export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
+  return (props: IconProps): JSX.Element => {
     const {
       size,
       className,
@@ -41,6 +38,3 @@ function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
     return <Component {...finalProps} />
   }
 }
-
-export const AccessibilityNew: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AccessibilityNewSvg)

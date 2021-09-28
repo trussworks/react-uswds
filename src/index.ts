@@ -64,7 +64,7 @@ export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
 // Icons
-export * from './components/Icon/Icon'
+export * from './components/Icon/Icons'
 
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'

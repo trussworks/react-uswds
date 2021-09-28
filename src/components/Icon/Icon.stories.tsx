@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AccessibilityNew } from './Icon'
+import { IconAccessibilityNew } from './Icons'
 
 export default {
   title: 'Components/Icons',
@@ -26,5 +26,5 @@ Source: https://designsystem.digital.gov/components/icon/
 }
 
 export const accessibilityNew = (argTypes): React.ReactElement => (
-  <AccessibilityNew size={argTypes.size} />
+  <IconAccessibilityNew size={argTypes.size} />
 )

@@ -2,7 +2,10 @@ import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
-import { AccessibilityNew } from '@trussworks/react-uswds'
+import {
+  IconAccessibilityNew,
+  IconAccessibleForward,
+} from '@trussworks/react-uswds'
 
 const IconsPage = (): React.ReactElement => (
   <section>
@@ -15,7 +18,8 @@ const IconsPage = (): React.ReactElement => (
       for projects that need icons.
     </p>
     <FontAwesomeIcon icon={faUpload} /> Upload Image
-    <AccessibilityNew size={4} focusable={false} />
+    <IconAccessibilityNew size={4} focusable={false} />
+    <IconAccessibleForward size={9} />
   </section>
 )
 

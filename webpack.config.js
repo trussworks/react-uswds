@@ -91,7 +91,15 @@ module.exports = {
           {
             issuer: /\.[jt]sx?$/,
             resourceQuery: /react/,
-            use: ['@svgr/webpack'],
+            use: [
+              {
+                loader: '@svgr/webpack',
+                options: {
+                  icon: true,
+                  memo: true,
+                },
+              },
+            ],
           },
           {
             type: 'asset',

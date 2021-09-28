@@ -47,7 +47,14 @@ const webpackConfig = (config) => {
       {
         issuer: /\.[jt]sx?$/,
         resourceQuery: /react/,
-        use: ['@svgr/webpack'],
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              icon: true,
+            },
+          },
+        ],
       },
       {
         type: 'asset',
