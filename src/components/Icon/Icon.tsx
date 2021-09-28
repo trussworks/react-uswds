@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 // Import individual SVGs
-import AccessibilityNewSvg from 'uswds/dist/img/usa-icons/accessibility_new.svg'
+import AccessibilityNewSvg from 'uswds/dist/img/usa-icons/accessibility_new.svg?react'
 
 interface USWDSIconProps {
   focusable?: boolean

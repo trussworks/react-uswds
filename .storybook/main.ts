@@ -46,6 +46,7 @@ const webpackConfig = (config) => {
     oneOf: [
       {
         issuer: /\.[jt]sx?$/,
+        resourceQuery: /react/,
         use: ['@svgr/webpack'],
       },
       {

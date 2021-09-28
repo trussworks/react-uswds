@@ -7,7 +7,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^react$': '<rootDir>/node_modules/react',
-    '^uswds/dist/img/usa-icons/(.*).svg$': '<rootDir>/__mocks__/svgrMock.js',
+    '\\.svg\\?react$': '<rootDir>/__mocks__/svgrMock.js',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|svg|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',
