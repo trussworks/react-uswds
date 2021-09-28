@@ -36,6 +36,24 @@ const webpackConfig = (config) => {
     ],
   })
 
+  const fileLoaderRule = config.module.rules.find(
+    (rule) => rule.test && rule.test.test('.svg')
+  )
+  fileLoaderRule.exclude = path.resolve(
+    __dirname,
+    '../node_modules/uswds/dist/img/usa-icons'
+  )
+
+  config.module.rules.unshift({
+    test: /\.svg$/,
+    enforce: 'pre',
+    loader: require.resolve('@svgr/webpack'),
+    include: path.resolve(
+      __dirname,
+      '../node_modules/uswds/dist/img/usa-icons'
+    ),
+  })
+
   return config
 }
 

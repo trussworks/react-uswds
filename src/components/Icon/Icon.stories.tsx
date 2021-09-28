@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { icons } from './icons'
-import { Icon } from './Icon'
+import { AccessibilityNew } from './Icon'
 
 export default {
-  title: 'Components/Icon',
-  component: Icon,
+  title: 'Components/Icons',
   parameters: {
     docs: {
       description: {
@@ -22,18 +20,11 @@ Source: https://designsystem.digital.gov/components/icon/
         type: 'select',
         options: [3, 4, 5, 6, 7, 8, 9, undefined],
       },
-      defaultValue: undefined,
-    },
-    name: {
-      control: {
-        type: 'select',
-        options: Object.keys(icons),
-      },
-      defaultValue: 'accessibilityNew',
+      defaultValue: 4,
     },
   },
 }
 
-export const iconWithControls = (argTypes): React.ReactElement => (
-  <Icon name={argTypes.name} size={argTypes.size} />
+export const accessibilityNew = (argTypes): React.ReactElement => (
+  <AccessibilityNew size={argTypes.size} />
 )

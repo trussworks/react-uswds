@@ -88,12 +88,18 @@ module.exports = {
       {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-        include: path.resolve(__dirname, './node_modules/uswds/dist/img'),
+        include: path.resolve(
+          __dirname,
+          './node_modules/uswds/dist/img/usa-icons'
+        ),
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
         type: 'asset',
-        exclude: path.resolve(__dirname, './node_modules/uswds/dist/img'),
+        exclude: path.resolve(
+          __dirname,
+          './node_modules/uswds/dist/img/usa-icons'
+        ),
       },
     ],
   },
