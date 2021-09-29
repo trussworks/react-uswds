@@ -3,7 +3,7 @@ declare module '*.png' {
   export default content
 }
 
-declare module '*.svg?react' {
+declare module '*.svg?svgr' {
   const content: any
   export default content
 }

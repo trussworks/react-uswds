@@ -90,7 +90,7 @@ module.exports = {
         oneOf: [
           {
             issuer: /\.[jt]sx?$/,
-            resourceQuery: /react/,
+            resourceQuery: /svgr/,
             use: [
               {
                 loader: '@svgr/webpack',
