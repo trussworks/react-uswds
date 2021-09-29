@@ -76,33 +76,4 @@ $theme-hero-image: '~uswds/src/img/hero.png';
 
 ### Icons
 
-> **NOTE:** Newer USWDS versions have implemented [icons as a part of the USWDS](https://designsystem.digital.gov/components/icons/). These are on the `react-uswds` road map via [#992](https://github.com/trussworks/react-uswds/issues/992). This documentation will be updated once the `react-uswds` implementation is complete.
-
-USWDS previously recommended using [Font Awesome](https://fontawesome.com/), which [provides a package for use with React](https://github.com/FortAwesome/react-fontawesome).
-
-To add this to your project, install react-font-awesome and at least one style of icon:
-
-```
-yarn add @fortawesome/fontawesome-svg-core \
-         @fortawesome/free-solid-svg-icons \
-         @fortawesome/react-fontawesome
-```
-
-You can then add Font Awesome icons to your projects using the `FontAwesome` component:
-
-```jsx
-import ReactDOM from 'react-dom'
-import { Button } from '@trussworks/react-uswds'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave } from '@fortawesome/free-solid-svg-icons'
-
-const button = (
-  <Button type="button">
-    <FontAwesomeIcon icon={faSave} /> Save Changes
-  </Button>
-)
-
-ReactDOM.render(button, document.body)
-```
-
-For more information on working with and configuring react-fontawesome, please see [that project's documentation](https://github.com/FortAwesome/react-fontawesome#installation). To find specific icons for your project, [search on the Font Awesome site](https://fontawesome.com/icons).
+USWDS now includes a defined [set of icons](<(https://designsystem.digital.gov/components/icons/)>). We have implemented these as React components using [React SVGR](https://react-svgr.com/), so that each icon can be rendered using inline SVG instead of loading a sprite file (which is what USWDS does).
