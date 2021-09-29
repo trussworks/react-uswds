@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/trussworks/react-uswds/compare/2.0.0...2.1.0) (2021-09-29)
+
+
+### Features
+
+* Add aria attributes to RangeInput ([#1560](https://github.com/trussworks/react-uswds/issues/1560)) ([0034835](https://github.com/trussworks/react-uswds/commit/00348350ced514bf33c9a1795270838e2df33a24))
+* Icon component using SVGR ([#1609](https://github.com/trussworks/react-uswds/issues/1609)) ([317c859](https://github.com/trussworks/react-uswds/commit/317c859ebae503194eb9005244957392caf302dd))
+
 ## [2.0.0](https://github.com/trussworks/react-uswds/compare/1.17.0...2.0.0) (2021-06-15)
 
 
