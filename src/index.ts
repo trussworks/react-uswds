@@ -86,7 +86,9 @@ export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
 
 /** Modal components */
-export { ModalWindow } from './components/Modal/ModalWindow/ModalWindow'
+export { Modal } from './components/Modal/Modal'
+export { ModalOpenButton } from './components/Modal/ModalOpenButton'
+export { useModal } from './components/Modal/utils'
 export { ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
 export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
 

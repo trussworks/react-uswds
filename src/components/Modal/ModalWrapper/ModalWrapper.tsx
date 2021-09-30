@@ -7,6 +7,10 @@ interface ModalWrapperProps {
   className?: string
 }
 
+// Copy attributes from Modal
+// Render into a portal
+// Toggle body classes
+
 export const ModalWrapper = ({
   children,
   isVisible,
@@ -23,8 +27,8 @@ export const ModalWrapper = ({
   )
 
   return (
-    <div className={classes} data-testid="modalWrapper" {...divProps}>
-      {children}
+    <div {...divProps} className={classes} role="dialog">
+      <div className="usa-modal-overlay">{children}</div>
     </div>
   )
 }

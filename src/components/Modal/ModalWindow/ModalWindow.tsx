@@ -4,15 +4,19 @@ import classnames from 'classnames'
 import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'
 
 interface ModalWindowProps {
+  modalId: string
   children: React.ReactNode
+  handleClose: () => void
   className?: string
   isLarge?: boolean
   forceAction?: boolean
 }
 
 export const ModalWindow = ({
+  modalId,
   className,
   children,
+  handleClose,
   isLarge = false,
   forceAction = false,
   ...divProps
@@ -25,10 +29,6 @@ export const ModalWindow = ({
     className
   )
 
-  const handleClose = () => {
-    /* */
-  }
-
   // needs a unique ID
   return (
     <div
@@ -38,7 +38,9 @@ export const ModalWindow = ({
       data-force-action={forceAction}>
       <div className="usa-modal__content">
         <div className="usa-modal__main">{children}</div>
-        {!forceAction && <ModalCloseButton handleClose={handleClose} />}
+        {!forceAction && (
+          <ModalCloseButton aria-controls={modalId} handleClose={handleClose} />
+        )}
       </div>
     </div>
   )
