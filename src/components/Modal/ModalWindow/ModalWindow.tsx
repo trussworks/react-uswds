@@ -32,7 +32,7 @@ export const ModalWindow = ({
   // needs a unique ID
   return (
     <div
-      data-testid="modal"
+      data-testid="modalWindow"
       className={classes}
       {...divProps}
       data-force-action={forceAction}>

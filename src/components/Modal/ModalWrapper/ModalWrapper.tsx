@@ -28,7 +28,9 @@ export const ModalWrapper = ({
 
   return (
     <div {...divProps} className={classes} role="dialog">
-      <div className="usa-modal-overlay">{children}</div>
+      <div data-testid="modalOverlay" className="usa-modal-overlay">
+        {children}
+      </div>
     </div>
   )
 }

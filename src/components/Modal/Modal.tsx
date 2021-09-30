@@ -25,7 +25,7 @@ export const Modal = ({
   forceAction = false,
   ...divProps
 }: ModalProps &
-  ModalHook &
+  Pick<ModalHook, 'isOpen' | 'closeModal'> &
   JSX.IntrinsicElements['div']): React.ReactElement => {
   const ariaLabelledBy = divProps['aria-labelledby']
   const ariaDescribedBy = divProps['aria-describedby']
