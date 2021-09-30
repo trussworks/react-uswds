@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Modal } from './Modal'
-import { ModalFooter } from '../ModalFooter/ModalFooter'
-import { ModalHeading } from '../ModalHeading/ModalHeading'
-import { ModalWrapper } from '../ModalWrapper/ModalWrapper'
+import { ModalFooter } from './ModalFooter/ModalFooter'
+import { ModalHeading } from './ModalHeading/ModalHeading'
+import { ModalWrapper } from './ModalWrapper/ModalWrapper'
 
-import { Button } from '../../Button/Button'
-import { ButtonGroup } from '../../ButtonGroup/ButtonGroup'
+import { Button } from '../Button/Button'
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 
 export default {
   title: 'Components/Modal',

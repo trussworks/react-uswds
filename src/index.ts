@@ -86,9 +86,9 @@ export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
 
 /** Modal components */
-export { Modal } from './components/Modal/Modal/Modal'
-export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
+export { Modal } from './components/Modal/Modal'
 export { ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
+export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
 
 /** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'

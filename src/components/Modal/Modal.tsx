@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'
+import { ModalCloseButton } from './ModalCloseButton/ModalCloseButton'
 
 interface ModalProps {
   children: React.ReactNode

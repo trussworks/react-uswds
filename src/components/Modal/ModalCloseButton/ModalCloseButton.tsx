@@ -6,6 +6,8 @@ interface ModalCloseButtonProps {
   handleClose: () => void
 }
 
+// TODO - accept custom aria-label
+
 export const ModalCloseButton = ({
   handleClose,
   ...buttonProps
