@@ -1,23 +1,25 @@
 import React from 'react'
-
-import classnames from 'classnames'
+import { IconClose } from '../../Icon/Icons'
 import { Button } from '../../Button/Button'
 
 interface ModalCloseButtonProps {
-  children: React.ReactNode
-  className?: string
+  handleClose: () => void
 }
+
 export const ModalCloseButton = ({
-  children,
-  className,
+  handleClose,
   ...buttonProps
 }: ModalCloseButtonProps &
   JSX.IntrinsicElements['button']): React.ReactElement => {
-  const classes = classnames('usa-modal__close', className)
-
   return (
-    <Button className={classes} type="button" data-close-modal {...buttonProps}>
-      {children}
+    <Button
+      className="usa-modal__close"
+      aria-label="Close this window"
+      onClick={handleClose}
+      data-close-modal
+      type="button"
+      {...buttonProps}>
+      <IconClose aria-hidden="true" />
     </Button>
   )
 }

@@ -1,24 +1,22 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { ModalCloseButton } from './ModalCloseButton'
 
 describe('ModalCloseButton component', () => {
   it('renders without errors', () => {
-    const { queryByRole } = render(
-      <ModalCloseButton>close button</ModalCloseButton>
-    )
+    render(<ModalCloseButton handleClose={jest.fn()} />)
 
-    expect(queryByRole('button')).toBeInTheDocument()
+    expect(screen.queryByRole('button')).toBeInTheDocument()
   })
 
-  it('accepts a custom className', () => {
-    const { queryByRole } = render(
-      <ModalCloseButton className="custom-class">close button</ModalCloseButton>
-    )
+  it('implements the close handler', () => {
+    const mockHandleClose = jest.fn()
 
-    expect(queryByRole('button')).toHaveClass(
-      'usa-button usa-modal__close custom-class'
-    )
+    render(<ModalCloseButton handleClose={mockHandleClose} />)
+
+    userEvent.click(screen.getByRole('button'))
+    expect(mockHandleClose).toHaveBeenCalled()
   })
 })
