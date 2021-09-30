@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { Modal } from './Modal'
+import { ModalWindow } from './ModalWindow'
 
 import { render, screen } from '@testing-library/react'
 
 describe('Modal component', () => {
   it('renders without errors', () => {
-    render(<Modal>some children</Modal>)
+    render(<ModalWindow>some children</ModalWindow>)
     expect(screen.queryByTestId('modal')).toBeInTheDocument()
     expect(screen.queryByText('some children')).toBeInTheDocument()
     expect(
@@ -15,12 +15,14 @@ describe('Modal component', () => {
   })
 
   it('renders large modal when passed isLarge', () => {
-    render(<Modal isLarge>some children</Modal>)
+    render(<ModalWindow isLarge>some children</ModalWindow>)
     expect(screen.getByTestId('modal')).toHaveClass('usa-modal--lg')
   })
 
   it('accepts attributes passed in through props', () => {
-    render(<Modal aria-label="aria-label-modal">some children</Modal>)
+    render(
+      <ModalWindow aria-label="aria-label-modal">some children</ModalWindow>
+    )
 
     expect(screen.getByTestId('modal')).toHaveAttribute(
       'aria-label',
@@ -29,13 +31,13 @@ describe('Modal component', () => {
   })
 
   it('accepts a custom className', () => {
-    render(<Modal className="custom-class">some children</Modal>)
+    render(<ModalWindow className="custom-class">some children</ModalWindow>)
 
     expect(screen.getByTestId('modal')).toHaveClass('usa-modal custom-class')
   })
 
   it('does not render a close button if forceAction is true', () => {
-    render(<Modal forceAction>some children</Modal>)
+    render(<ModalWindow forceAction>some children</ModalWindow>)
     expect(
       screen.queryByRole('button', { name: 'Close this window' })
     ).not.toBeInTheDocument()

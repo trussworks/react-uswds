@@ -19,5 +19,3 @@ export const ModalFooter = ({
     </div>
   )
 }
-
-export default ModalFooter

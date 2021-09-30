@@ -25,5 +25,3 @@ export const ModalCloseButton = ({
     </Button>
   )
 }
-
-export default ModalCloseButton

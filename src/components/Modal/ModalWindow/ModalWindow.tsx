@@ -1,22 +1,22 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { ModalCloseButton } from './ModalCloseButton/ModalCloseButton'
+import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'
 
-interface ModalProps {
+interface ModalWindowProps {
   children: React.ReactNode
   className?: string
   isLarge?: boolean
   forceAction?: boolean
 }
 
-export const Modal = ({
+export const ModalWindow = ({
   className,
   children,
   isLarge = false,
   forceAction = false,
   ...divProps
-}: ModalProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: ModalWindowProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-modal',
     {
@@ -43,5 +43,3 @@ export const Modal = ({
     </div>
   )
 }
-
-export default Modal
