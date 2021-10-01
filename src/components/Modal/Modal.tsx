@@ -4,13 +4,18 @@ import { ModalHook } from './utils'
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalWrapper } from './ModalWrapper/ModalWrapper'
 
-interface ModalProps {
+interface ModalComponentProps {
   id: string
   children: React.ReactNode
   className?: string
   isLarge?: boolean
   forceAction?: boolean
+  modalRoot?: string
 }
+
+export type ModalProps = ModalComponentProps &
+  Pick<ModalHook, 'isOpen' | 'closeModal'> &
+  JSX.IntrinsicElements['div']
 
 // isOpen effect
 // modal toggle button (A, button)
@@ -19,9 +24,6 @@ interface ModalProps {
 // createPortal / default to document.body.appendChild?
 // handle body padding
 
-const NON_MODALS = `body > *:not(.usa-modal-wrapper):not([aria-hidden])`
-const NON_MODALS_HIDDEN = `[data-modal-hidden]`
-
 export const Modal = ({
   id,
   children,
@@ -29,11 +31,15 @@ export const Modal = ({
   closeModal,
   isLarge = false,
   forceAction = false,
+  modalRoot = '.usa-modal-wrapper',
   ...divProps
-}: ModalProps &
-  Pick<ModalHook, 'isOpen' | 'closeModal'> &
-  JSX.IntrinsicElements['div']): React.ReactElement => {
+}: ModalProps): React.ReactElement => {
   const [mounted, setMounted] = useState(false)
+
+  const modalRootSelector = modalRoot || '.usa-modal-wrapper'
+
+  const NON_MODALS = `body > *:not(${modalRootSelector}):not([aria-hidden])`
+  const NON_MODALS_HIDDEN = `[data-modal-hidden]`
 
   useEffect(() => {
     setMounted(true)
@@ -44,10 +50,8 @@ export const Modal = ({
       const { body } = document
 
       if (isOpen === true) {
-        console.log('OPEN MODAL')
         body.classList.add('usa-js-modal--active')
         document.querySelectorAll(NON_MODALS).forEach((el) => {
-          console.log('el', el.getAttribute('data-testid'))
           el.setAttribute('aria-hidden', 'true')
           el.setAttribute('data-modal-hidden', '')
         })
@@ -56,7 +60,6 @@ export const Modal = ({
           body.classList.add('usa-js-no-click')
         }
       } else if (isOpen === false) {
-        console.log('CLOSE MODAL')
         body.classList.remove('usa-js-modal--active')
         body.classList.remove('usa-js-no-click')
 
@@ -68,7 +71,6 @@ export const Modal = ({
     }
 
     return () => {
-      console.log('UNMOUNT MODAL')
       const { body } = document
 
       body.classList.remove('usa-js-modal--active')

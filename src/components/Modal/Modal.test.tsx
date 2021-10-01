@@ -163,19 +163,24 @@ describe('Modal component', () => {
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
     })
 
-    // TODO
-    it.skip('hides other elements from screen readers', () => {
-      const closeModal = jest.fn()
+    it('hides other elements from screen readers', () => {
+      const modalProps = {
+        id: 'testModal',
+        closeModal: jest.fn(),
+      }
       const { rerender } = render(
         <>
           <p data-testid="nonhidden">Some other element</p>
           <div data-testid="hidden" aria-hidden="true">
             Element that is normally hidden
           </div>
-          <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+          <Modal {...modalProps} isOpen={false}>
             Test modal
           </Modal>
-        </>
+        </>,
+        {
+          container: document.body,
+        }
       )
 
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
@@ -191,7 +196,7 @@ describe('Modal component', () => {
           <div data-testid="hidden" aria-hidden="true">
             Element that is normally hidden
           </div>
-          <Modal id="testModal" isOpen={true} closeModal={closeModal}>
+          <Modal {...modalProps} isOpen={true}>
             Test modal
           </Modal>
         </>
@@ -201,6 +206,98 @@ describe('Modal component', () => {
       expect(screen.getByTestId('nonhidden')).toHaveAttribute(
         'data-modal-hidden'
       )
+      expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+
+      rerender(
+        <>
+          <p data-testid="nonhidden">Some other element</p>
+          <div data-testid="hidden" aria-hidden="true">
+            Element that is normally hidden
+          </div>
+          <Modal {...modalProps} isOpen={false}>
+            Test modal
+          </Modal>
+        </>
+      )
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
+        'data-modal-hidden'
+      )
+
+      expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+    })
+
+    it('hides other elements from screen readers with a custom modal root', () => {
+      const modalProps = {
+        id: 'testModal',
+        closeModal: jest.fn(),
+        modalRoot: '#modal-root',
+      }
+
+      const { rerender } = render(
+        <>
+          <p data-testid="nonhidden">Some other element</p>
+          <div data-testid="hidden" aria-hidden="true">
+            Element that is normally hidden
+          </div>
+          <div id="#modal-root">
+            <Modal {...modalProps} isOpen={false}>
+              Test modal
+            </Modal>
+          </div>
+        </>,
+        {
+          container: document.body,
+        }
+      )
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
+        'data-modal-hidden'
+      )
+
+      expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+
+      rerender(
+        <>
+          <p data-testid="nonhidden">Some other element</p>
+          <div data-testid="hidden" aria-hidden="true">
+            Element that is normally hidden
+          </div>
+          <div id="#modal-root">
+            <Modal {...modalProps} isOpen={true}>
+              Test modal
+            </Modal>
+          </div>
+        </>
+      )
+
+      expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
+      expect(screen.getByTestId('nonhidden')).toHaveAttribute(
+        'data-modal-hidden'
+      )
+      expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+
+      rerender(
+        <>
+          <p data-testid="nonhidden">Some other element</p>
+          <div data-testid="hidden" aria-hidden="true">
+            Element that is normally hidden
+          </div>
+          <div id="#modal-root">
+            <Modal {...modalProps} isOpen={false}>
+              Test modal
+            </Modal>
+          </div>
+        </>
+      )
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
+        'data-modal-hidden'
+      )
+
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
     })
 
