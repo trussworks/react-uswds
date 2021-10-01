@@ -133,4 +133,116 @@ describe('Modal component', () => {
       })
     ).not.toBeInTheDocument()
   })
+
+  describe('toggling', () => {
+    it('styles the body element', () => {
+      // TODO - body padding
+      const closeModal = jest.fn()
+      const { rerender, baseElement } = render(
+        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+
+      rerender(
+        <Modal id="testModal" isOpen={true} closeModal={closeModal}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).toHaveClass('usa-js-modal--active')
+
+      rerender(
+        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+    })
+
+    // TODO
+    it.skip('hides other elements from screen readers', () => {
+      const closeModal = jest.fn()
+      const { rerender } = render(
+        <>
+          <p data-testid="nonhidden">Some other element</p>
+          <div data-testid="hidden" aria-hidden="true">
+            Element that is normally hidden
+          </div>
+          <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+            Test modal
+          </Modal>
+        </>
+      )
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
+        'data-modal-hidden'
+      )
+
+      expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+
+      rerender(
+        <>
+          <p data-testid="nonhidden">Some other element</p>
+          <div data-testid="hidden" aria-hidden="true">
+            Element that is normally hidden
+          </div>
+          <Modal id="testModal" isOpen={true} closeModal={closeModal}>
+            Test modal
+          </Modal>
+        </>
+      )
+
+      expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
+      expect(screen.getByTestId('nonhidden')).toHaveAttribute(
+        'data-modal-hidden'
+      )
+      expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+    })
+
+    describe('if forceAction is true', () => {
+      it('styles the body element', () => {
+        const closeModal = jest.fn()
+        const { rerender, baseElement } = render(
+          <Modal
+            id="testModal"
+            isOpen={false}
+            closeModal={closeModal}
+            forceAction>
+            Test modal
+          </Modal>
+        )
+
+        expect(baseElement).not.toHaveClass('usa-js-no-click')
+
+        rerender(
+          <Modal
+            id="testModal"
+            isOpen={true}
+            closeModal={closeModal}
+            forceAction>
+            Test modal
+          </Modal>
+        )
+
+        expect(baseElement).toHaveClass('usa-js-no-click')
+
+        rerender(
+          <Modal
+            id="testModal"
+            isOpen={false}
+            closeModal={closeModal}
+            forceAction>
+            Test modal
+          </Modal>
+        )
+
+        expect(baseElement).not.toHaveClass('usa-js-no-click')
+      })
+    })
+  })
 })

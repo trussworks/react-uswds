@@ -9,6 +9,7 @@ export type ModalHook = {
 export const useModal = (): ModalHook => {
   const [isOpen, setIsOpen] = useState(false)
 
+  // TODO - set opener element to return focus to
   // TODO - useEffect on body element
 
   const openModal = (): void => setIsOpen(true)
