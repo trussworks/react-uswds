@@ -42,12 +42,11 @@ describe('Modal component', () => {
     expect(modalWindow).toHaveAttribute('tabindex', '-1')
     expect(modalWindow).toHaveTextContent('Test modal')
 
-    const closeButton = screen.getByRole('button', {
-      name: 'Close this window',
-    })
-    expect(closeButton).toBeInTheDocument()
-    userEvent.click(closeButton)
-    expect(modalState.closeModal).toHaveBeenCalled()
+    expect(
+      screen.getByRole('button', {
+        name: 'Close this window',
+      })
+    ).toBeInTheDocument()
   })
 
   it('passes aria props to the modal wrapper', () => {
@@ -97,6 +96,47 @@ describe('Modal component', () => {
     const modalWrapper = screen.getByRole('dialog')
     expect(modalWrapper).not.toHaveClass('is-hidden')
     expect(modalWrapper).toHaveClass('is-visible')
+  })
+
+  it('can click on the close button to close', () => {
+    const modalState = {
+      isOpen: true,
+      closeModal: jest.fn(),
+    }
+
+    const testModalId = 'testModal'
+
+    render(
+      <Modal id={testModalId} {...modalState}>
+        Test modal
+      </Modal>
+    )
+
+    const closeButton = screen.getByRole('button', {
+      name: 'Close this window',
+    })
+    expect(closeButton).toBeInTheDocument()
+    userEvent.click(closeButton)
+    expect(modalState.closeModal).toHaveBeenCalled()
+  })
+
+  it('can click on the overlay to close', () => {
+    const modalState = {
+      isOpen: true,
+      closeModal: jest.fn(),
+    }
+
+    const testModalId = 'testModal'
+
+    render(
+      <Modal id={testModalId} {...modalState}>
+        Test modal
+      </Modal>
+    )
+
+    const overlay = screen.getByTestId('modalOverlay')
+    userEvent.click(overlay)
+    expect(modalState.closeModal).toHaveBeenCalled()
   })
 
   it('renders a large modalWindow isLarge is true', () => {
@@ -344,6 +384,31 @@ describe('Modal component', () => {
     })
 
     describe('if forceAction is true', () => {
+      it('renders with no close button', () => {
+        const modalState = {
+          isOpen: false,
+          closeModal: jest.fn(),
+        }
+
+        const testModalId = 'testModal'
+
+        render(
+          <Modal id={testModalId} {...modalState} forceAction>
+            Test modal
+          </Modal>
+        )
+
+        // Modal wrapper
+        const modalWrapper = screen.getByRole('dialog')
+        expect(modalWrapper).toHaveAttribute('data-force-action', 'true')
+
+        expect(
+          screen.queryByRole('button', {
+            name: 'Close this window',
+          })
+        ).not.toBeInTheDocument()
+      })
+
       it('styles the body element', () => {
         const closeModal = jest.fn()
         const { rerender, baseElement } = render(
@@ -381,6 +446,25 @@ describe('Modal component', () => {
         )
 
         expect(baseElement).not.toHaveClass('usa-js-no-click')
+      })
+
+      it('cannot click on the overlay to close', () => {
+        const modalState = {
+          isOpen: true,
+          closeModal: jest.fn(),
+        }
+
+        const testModalId = 'testModal'
+
+        render(
+          <Modal id={testModalId} {...modalState} forceAction>
+            Test modal
+          </Modal>
+        )
+
+        const overlay = screen.getByTestId('modalOverlay')
+        userEvent.click(overlay)
+        expect(modalState.closeModal).not.toHaveBeenCalled()
       })
     })
   })

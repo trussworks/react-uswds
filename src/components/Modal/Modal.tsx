@@ -119,7 +119,9 @@ export const Modal = ({
       aria-labelledby={ariaLabelledBy}
       aria-describedby={ariaDescribedBy}
       data-force-action={forceAction}
-      isVisible={isOpen}>
+      isVisible={isOpen}
+      handleClose={closeModal}
+      forceAction={forceAction}>
       <ModalWindow
         modalId={id}
         {...divProps}

@@ -1,14 +1,20 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { ModalWrapper } from './ModalWrapper'
 
 describe('ModalWrapper component', () => {
   it('renders without errors', () => {
-    const { getByTestId } = render(
-      <ModalWrapper isVisible>children</ModalWrapper>
+    render(
+      <ModalWrapper
+        id="testModal"
+        isVisible={false}
+        forceAction={false}
+        handleClose={jest.fn()}>
+        children
+      </ModalWrapper>
     )
 
-    expect(getByTestId('modalWrapper')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 })

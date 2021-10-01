@@ -2,19 +2,21 @@ import React from 'react'
 import classnames from 'classnames'
 
 interface ModalWrapperProps {
+  id: string
   children: React.ReactNode
   isVisible: boolean
+  forceAction: boolean
+  handleClose: () => void
   className?: string
 }
 
-// Copy attributes from Modal
-// Render into a portal
-// Toggle body classes
-
 export const ModalWrapper = ({
+  id,
   children,
   isVisible,
+  forceAction,
   className,
+  handleClose,
   ...divProps
 }: ModalWrapperProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
@@ -26,9 +28,15 @@ export const ModalWrapper = ({
     className
   )
 
+  /* eslint-disable jsx-a11y/click-events-have-key-events */
+  /* eslint-disable jsx-a11y/no-static-element-interactions */
   return (
-    <div {...divProps} className={classes} role="dialog">
-      <div data-testid="modalOverlay" className="usa-modal-overlay">
+    <div {...divProps} id={id} className={classes} role="dialog">
+      <div
+        data-testid="modalOverlay"
+        className="usa-modal-overlay"
+        onClick={forceAction ? undefined : handleClose}
+        aria-controls={id}>
         {children}
       </div>
     </div>
