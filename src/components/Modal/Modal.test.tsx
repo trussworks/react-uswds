@@ -3,6 +3,14 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Modal } from './Modal'
+import { getScrollbarWidth } from './utils'
+
+jest.mock('./utils')
+
+const mockedGetScrollbarWidth = getScrollbarWidth as jest.MockedFunction<
+  typeof getScrollbarWidth
+>
+mockedGetScrollbarWidth.mockReturnValue('15px')
 
 describe('Modal component', () => {
   it('renders its children inside a modal wrapper', () => {
@@ -136,7 +144,6 @@ describe('Modal component', () => {
 
   describe('toggling', () => {
     it('styles the body element', () => {
-      // TODO - body padding
       const closeModal = jest.fn()
       const { rerender, baseElement } = render(
         <Modal id="testModal" isOpen={false} closeModal={closeModal}>
@@ -145,6 +152,7 @@ describe('Modal component', () => {
       )
 
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).not.toHaveStyle('padding-right: 0px')
 
       rerender(
         <Modal id="testModal" isOpen={true} closeModal={closeModal}>
@@ -153,6 +161,7 @@ describe('Modal component', () => {
       )
 
       expect(baseElement).toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 15px')
 
       rerender(
         <Modal id="testModal" isOpen={false} closeModal={closeModal}>
@@ -161,6 +170,39 @@ describe('Modal component', () => {
       )
 
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
+    })
+
+    it('styles the body element when it already has padding right', () => {
+      const closeModal = jest.fn()
+      document.body.style.paddingRight = '20px'
+
+      const { rerender, baseElement } = render(
+        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 20px')
+
+      rerender(
+        <Modal id="testModal" isOpen={true} closeModal={closeModal}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 35px')
+
+      rerender(
+        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 20px')
     })
 
     it('hides other elements from screen readers', () => {

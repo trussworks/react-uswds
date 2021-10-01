@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
-import { ModalHook } from './utils'
+import { ModalHook, getScrollbarWidth } from './utils'
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalWrapper } from './ModalWrapper/ModalWrapper'
 
@@ -21,8 +21,6 @@ export type ModalProps = ModalComponentProps &
 // modal toggle button (A, button)
 //  - aria-controls=modal ID
 // focus trap
-// createPortal / default to document.body.appendChild?
-// handle body padding
 
 export const Modal = ({
   id,
@@ -35,6 +33,8 @@ export const Modal = ({
   ...divProps
 }: ModalProps): React.ReactElement => {
   const [mounted, setMounted] = useState(false)
+  const initialPaddingRef = useRef<string>()
+  const tempPaddingRef = useRef<string>()
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'
 
@@ -42,6 +42,20 @@ export const Modal = ({
   const NON_MODALS_HIDDEN = `[data-modal-hidden]`
 
   useEffect(() => {
+    const SCROLLBAR_WIDTH = getScrollbarWidth()
+    const INITIAL_PADDING =
+      window
+        .getComputedStyle(document.body)
+        .getPropertyValue('padding-right') || '0px'
+
+    const TEMPORARY_PADDING = `${
+      parseInt(INITIAL_PADDING.replace(/px/, ''), 10) +
+      parseInt(SCROLLBAR_WIDTH.replace(/px/, ''), 10)
+    }px`
+
+    initialPaddingRef.current = INITIAL_PADDING
+    tempPaddingRef.current = TEMPORARY_PADDING
+
     setMounted(true)
   }, [])
 
@@ -49,8 +63,17 @@ export const Modal = ({
     if (mounted) {
       const { body } = document
 
+      const INITIAL_PADDING = initialPaddingRef.current
+      const TEMPORARY_PADDING = tempPaddingRef.current
+
+      body.style.paddingRight =
+        (body.style.paddingRight === TEMPORARY_PADDING
+          ? INITIAL_PADDING
+          : TEMPORARY_PADDING) || ''
+
       if (isOpen === true) {
         body.classList.add('usa-js-modal--active')
+
         document.querySelectorAll(NON_MODALS).forEach((el) => {
           el.setAttribute('aria-hidden', 'true')
           el.setAttribute('data-modal-hidden', '')
