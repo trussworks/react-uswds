@@ -20,13 +20,18 @@ export const ModalOpenButton = ({
   JSX.IntrinsicElements['a']): React.ReactElement<HTMLAnchorElement> => {
   const classes = classnames('usa-button', className)
 
+  const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault()
+    handleOpen()
+  }
+
   return (
     <a
       {...props}
       className={classes}
       role="button"
       data-open-modal
-      onClick={handleOpen}>
+      onClick={handleClick}>
       {children}
     </a>
   )

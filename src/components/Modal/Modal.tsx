@@ -17,10 +17,10 @@ export type ModalProps = ModalComponentProps &
   Pick<ModalHook, 'isOpen' | 'closeModal'> &
   JSX.IntrinsicElements['div']
 
-// isOpen effect
 // modal toggle button (A, button)
 //  - aria-controls=modal ID
 // focus trap
+// click on overlay to close
 
 export const Modal = ({
   id,
