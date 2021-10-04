@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import FocusTrap from 'focus-trap-react'
 
 import { ModalHook, getScrollbarWidth } from './utils'
 import { ModalWindow } from './ModalWindow/ModalWindow'
@@ -17,10 +18,9 @@ export type ModalProps = ModalComponentProps &
   Pick<ModalHook, 'isOpen' | 'closeModal'> &
   JSX.IntrinsicElements['div']
 
-// modal toggle button (A, button)
+// TODO:
+// decide how to handle modal toggle button (anchor, button)
 //  - aria-controls=modal ID
-// focus trap
-// click on overlay to close
 
 export const Modal = ({
   id,
@@ -35,6 +35,8 @@ export const Modal = ({
   const [mounted, setMounted] = useState(false)
   const initialPaddingRef = useRef<string>()
   const tempPaddingRef = useRef<string>()
+  const modalEl = useRef<HTMLDivElement>(null)
+  const closeButtonEl = useRef<HTMLButtonElement>(null)
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'
 
@@ -112,26 +114,48 @@ export const Modal = ({
   delete divProps['aria-labelledby']
   delete divProps['aria-describedby']
 
+  const initialFocus = () => {
+    const focusEl = modalEl.current?.querySelector('[data-focus]') as
+      | HTMLElement
+      | SVGElement
+
+    return focusEl ? focusEl : modalEl.current || false
+  }
+
+  const focusTrapOptions = {
+    initialFocus,
+    escapeDeactivates: (): boolean => {
+      if (forceAction) return false
+
+      closeModal()
+      return true
+    },
+  }
+
   return (
-    <ModalWrapper
-      role="dialog"
-      id={id}
-      aria-labelledby={ariaLabelledBy}
-      aria-describedby={ariaDescribedBy}
-      data-force-action={forceAction}
-      isVisible={isOpen}
-      handleClose={closeModal}
-      forceAction={forceAction}>
-      <ModalWindow
-        modalId={id}
-        {...divProps}
-        isLarge={isLarge}
-        forceAction={forceAction}
-        tabIndex={-1}
-        handleClose={closeModal}>
-        {children}
-      </ModalWindow>
-    </ModalWrapper>
+    <FocusTrap active={isOpen} focusTrapOptions={focusTrapOptions}>
+      <ModalWrapper
+        role="dialog"
+        id={id}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        data-force-action={forceAction}
+        isVisible={isOpen}
+        handleClose={closeModal}
+        forceAction={forceAction}>
+        <ModalWindow
+          modalId={id}
+          {...divProps}
+          ref={modalEl}
+          closeButtonRef={closeButtonEl}
+          isLarge={isLarge}
+          forceAction={forceAction}
+          tabIndex={-1}
+          handleClose={closeModal}>
+          {children}
+        </ModalWindow>
+      </ModalWrapper>
+    </FocusTrap>
   )
 }
 

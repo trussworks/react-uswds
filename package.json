@@ -103,6 +103,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
+    "focus-trap-react": "^8.8.1",
     "happo-plugin-storybook": "^2.7.0",
     "happo.io": "^6.0.0",
     "husky": "^4.3.8",

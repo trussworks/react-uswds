@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'
@@ -10,38 +10,49 @@ interface ModalWindowProps {
   className?: string
   isLarge?: boolean
   forceAction?: boolean
+  closeButtonRef: React.ForwardedRef<HTMLButtonElement>
 }
 
-export const ModalWindow = ({
-  modalId,
-  className,
-  children,
-  handleClose,
-  isLarge = false,
-  forceAction = false,
-  ...divProps
-}: ModalWindowProps & JSX.IntrinsicElements['div']): React.ReactElement => {
-  const classes = classnames(
-    'usa-modal',
+export const ModalWindow = forwardRef(
+  (
     {
-      'usa-modal--lg': isLarge,
-    },
-    className
-  )
+      modalId,
+      className,
+      children,
+      handleClose,
+      isLarge = false,
+      forceAction = false,
+      closeButtonRef,
+      ...divProps
+    }: ModalWindowProps & JSX.IntrinsicElements['div'],
+    ref: React.ForwardedRef<HTMLDivElement>
+  ): React.ReactElement => {
+    const classes = classnames(
+      'usa-modal',
+      {
+        'usa-modal--lg': isLarge,
+      },
+      className
+    )
 
-  // needs a unique ID
-  return (
-    <div
-      data-testid="modalWindow"
-      className={classes}
-      {...divProps}
-      data-force-action={forceAction}>
-      <div className="usa-modal__content">
-        <div className="usa-modal__main">{children}</div>
-        {!forceAction && (
-          <ModalCloseButton aria-controls={modalId} handleClose={handleClose} />
-        )}
+    return (
+      <div
+        {...divProps}
+        data-testid="modalWindow"
+        className={classes}
+        ref={ref}
+        data-force-action={forceAction}>
+        <div className="usa-modal__content">
+          <div className="usa-modal__main">{children}</div>
+          {!forceAction && (
+            <ModalCloseButton
+              aria-controls={modalId}
+              handleClose={handleClose}
+              ref={closeButtonRef}
+            />
+          )}
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)

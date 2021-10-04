@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 type ModalOpenButtonProps = {
-  handleOpen: () => void
+  handleOpen: (e: React.MouseEvent) => void
 }
 
 // TODO - support <a> or <button> element
@@ -22,7 +22,7 @@ export const ModalOpenButton = ({
 
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     e.preventDefault()
-    handleOpen()
+    handleOpen(e)
   }
 
   return (

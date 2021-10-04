@@ -166,3 +166,53 @@ export const forceActionModal = (): React.ReactElement => {
     </>
   )
 }
+
+export const customFocusElementModal = (): React.ReactElement => {
+  const { isOpen, openModal, closeModal } = useModal()
+
+  return (
+    <>
+      <ModalOpenButton
+        handleOpen={openModal}
+        href="#example-modal-1"
+        aria-controls="example-modal-1"
+        onClick={(e) => e.preventDefault()}>
+        Open modal with custom initial focus element
+      </ModalOpenButton>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        id="example-modal-1"
+        aria-labelledby="modal-1-heading"
+        aria-describedby="modal-1-description">
+        <ModalHeading id="modal-1-heading">
+          Are you sure you want to continue?
+        </ModalHeading>
+        <div className="usa-prose">
+          <p id="modal-1-description">
+            You have unsaved changes that will be lost.
+          </p>
+          <button type="button">Decoy button</button>
+          <button type="button" data-focus="true">
+            Focus me first
+          </button>
+        </div>
+        <ModalFooter>
+          <ButtonGroup>
+            <Button type="button" data-close-modal onClick={closeModal}>
+              Continue without saving
+            </Button>
+            <Button
+              type="button"
+              data-close-modal
+              unstyled
+              className="padding-105 text-center"
+              onClick={closeModal}>
+              Go back
+            </Button>
+          </ButtonGroup>
+        </ModalFooter>
+      </Modal>
+    </>
+  )
+}

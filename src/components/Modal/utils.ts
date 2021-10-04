@@ -1,18 +1,37 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export type ModalHook = {
   isOpen: boolean
-  openModal: () => void
+  openModal: (e?: React.MouseEvent) => boolean
   closeModal: () => void
 }
 
 export const useModal = (): ModalHook => {
   const [isOpen, setIsOpen] = useState(false)
 
-  // TODO - set opener element to return focus to
-  // TODO - useEffect on body element
+  const openModal = (e?: React.MouseEvent): boolean => {
+    const clickedElement = e?.target as Element
 
-  const openModal = (): void => setIsOpen(true)
+    if (e && clickedElement) {
+      if (clickedElement.closest('.usa-modal')) {
+        // Element is inside a modal
+        if (
+          clickedElement.hasAttribute('[data-close-modal]') ||
+          clickedElement.closest('[data-close-modal]')
+        ) {
+          // Element is a close button - proceed
+        } else {
+          // Don't allow opening a modal from within a modal
+          e.stopPropagation()
+          return false
+        }
+      }
+    }
+
+    setIsOpen(true)
+    return true
+  }
+
   const closeModal = (): void => setIsOpen(false)
 
   return { isOpen, openModal, closeModal }

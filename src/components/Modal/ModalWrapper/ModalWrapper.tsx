@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 interface ModalWrapperProps {
@@ -10,37 +10,42 @@ interface ModalWrapperProps {
   className?: string
 }
 
-export const ModalWrapper = ({
-  id,
-  children,
-  isVisible,
-  forceAction,
-  className,
-  handleClose,
-  ...divProps
-}: ModalWrapperProps & JSX.IntrinsicElements['div']): React.ReactElement => {
-  const classes = classnames(
-    'usa-modal-wrapper',
+export const ModalWrapper = forwardRef(
+  (
     {
-      'is-visible': isVisible,
-      'is-hidden': !isVisible,
-    },
-    className
-  )
+      id,
+      children,
+      isVisible,
+      forceAction,
+      className,
+      handleClose,
+      ...divProps
+    }: ModalWrapperProps & JSX.IntrinsicElements['div'],
+    ref: React.ForwardedRef<HTMLDivElement>
+  ): React.ReactElement => {
+    const classes = classnames(
+      'usa-modal-wrapper',
+      {
+        'is-visible': isVisible,
+        'is-hidden': !isVisible,
+      },
+      className
+    )
 
-  /* eslint-disable jsx-a11y/click-events-have-key-events */
-  /* eslint-disable jsx-a11y/no-static-element-interactions */
-  return (
-    <div {...divProps} id={id} className={classes} role="dialog">
-      <div
-        data-testid="modalOverlay"
-        className="usa-modal-overlay"
-        onClick={forceAction ? undefined : handleClose}
-        aria-controls={id}>
-        {children}
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    return (
+      <div {...divProps} ref={ref} id={id} className={classes} role="dialog">
+        <div
+          data-testid="modalOverlay"
+          className="usa-modal-overlay"
+          onClick={forceAction ? undefined : handleClose}
+          aria-controls={id}>
+          {children}
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)
 
 export default ModalWrapper

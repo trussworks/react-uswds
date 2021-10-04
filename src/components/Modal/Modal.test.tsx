@@ -1,16 +1,183 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Modal } from './Modal'
-import { getScrollbarWidth } from './utils'
+import { useModal } from './utils'
+import { ModalHeading } from './ModalHeading/ModalHeading'
+import { ModalFooter } from './ModalFooter/ModalFooter'
+import { ModalOpenButton } from './ModalOpenButton'
+import { Button } from '../Button/Button'
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 
-jest.mock('./utils')
+jest.mock('./utils', () => {
+  const utils = jest.requireActual('./utils')
 
-const mockedGetScrollbarWidth = getScrollbarWidth as jest.MockedFunction<
-  typeof getScrollbarWidth
->
-mockedGetScrollbarWidth.mockReturnValue('15px')
+  return {
+    __esModule: true,
+    ...utils,
+    getScrollbarWidth: jest.fn().mockReturnValue('15px'),
+  }
+})
+
+const ExampleModal = ({
+  forceAction = false,
+}: {
+  forceAction?: boolean
+}): React.ReactElement => {
+  const { isOpen, openModal, closeModal } = useModal()
+
+  return (
+    <>
+      <ModalOpenButton
+        handleOpen={openModal}
+        href="#example-modal-1"
+        aria-controls="example-modal-1"
+        onClick={(e) => e.preventDefault()}>
+        Open default modal
+      </ModalOpenButton>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        id="example-modal-1"
+        aria-labelledby="modal-1-heading"
+        aria-describedby="modal-1-description"
+        forceAction={forceAction}>
+        <ModalHeading id="modal-1-heading">
+          Are you sure you want to continue?
+        </ModalHeading>
+        <div className="usa-prose">
+          <p id="modal-1-description">
+            You have unsaved changes that will be lost.
+          </p>
+        </div>
+        <ModalFooter>
+          <ButtonGroup>
+            <Button type="button" data-close-modal onClick={closeModal}>
+              Continue without saving
+            </Button>
+            <Button
+              type="button"
+              data-close-modal
+              unstyled
+              className="padding-105 text-center"
+              onClick={closeModal}>
+              Go back
+            </Button>
+          </ButtonGroup>
+        </ModalFooter>
+      </Modal>
+    </>
+  )
+}
+
+const ExampleModalWithDoubleOpen = ({
+  openCallback,
+}: {
+  openCallback: () => void
+}): React.ReactElement => {
+  const { isOpen, openModal, closeModal } = useModal()
+
+  const handleDoubleOpen = (e: React.MouseEvent) => {
+    if (openModal(e)) {
+      openCallback()
+    }
+  }
+
+  return (
+    <>
+      <ModalOpenButton
+        handleOpen={openModal}
+        href="#example-modal-1"
+        aria-controls="example-modal-1"
+        onClick={(e) => e.preventDefault()}>
+        Open default modal
+      </ModalOpenButton>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        id="example-modal-1"
+        aria-labelledby="modal-1-heading"
+        aria-describedby="modal-1-description">
+        <ModalHeading id="modal-1-heading">
+          Are you sure you want to continue?
+        </ModalHeading>
+        <div className="usa-prose">
+          <p id="modal-1-description">
+            You have unsaved changes that will be lost.
+          </p>
+          <button type="button" onClick={handleDoubleOpen}>
+            This button should not do anything
+          </button>
+        </div>
+        <ModalFooter>
+          <ButtonGroup>
+            <Button type="button" data-close-modal onClick={closeModal}>
+              Continue without saving
+            </Button>
+            <Button
+              type="button"
+              data-close-modal
+              unstyled
+              className="padding-105 text-center"
+              onClick={closeModal}>
+              Go back
+            </Button>
+          </ButtonGroup>
+        </ModalFooter>
+      </Modal>
+    </>
+  )
+}
+
+const ExampleModalWithFocusElement = (): React.ReactElement => {
+  const { isOpen, openModal, closeModal } = useModal()
+
+  return (
+    <>
+      <ModalOpenButton
+        handleOpen={openModal}
+        href="#example-modal-1"
+        aria-controls="example-modal-1"
+        onClick={(e) => e.preventDefault()}>
+        Open default modal
+      </ModalOpenButton>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        id="example-modal-1"
+        aria-labelledby="modal-1-heading"
+        aria-describedby="modal-1-description">
+        <ModalHeading id="modal-1-heading">
+          Are you sure you want to continue?
+        </ModalHeading>
+        <div className="usa-prose">
+          <p id="modal-1-description">
+            You have unsaved changes that will be lost.
+          </p>
+          <button type="button" data-focus="true">
+            Focus me first
+          </button>
+        </div>
+        <ModalFooter>
+          <ButtonGroup>
+            <Button type="button" data-close-modal onClick={closeModal}>
+              Continue without saving
+            </Button>
+            <Button
+              type="button"
+              data-close-modal
+              unstyled
+              className="padding-105 text-center"
+              onClick={closeModal}>
+              Go back
+            </Button>
+          </ButtonGroup>
+        </ModalFooter>
+      </Modal>
+    </>
+  )
+}
 
 describe('Modal component', () => {
   it('renders its children inside a modal wrapper', () => {
@@ -383,31 +550,154 @@ describe('Modal component', () => {
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
     })
 
-    describe('if forceAction is true', () => {
-      it('renders with no close button', () => {
-        const modalState = {
-          isOpen: false,
-          closeModal: jest.fn(),
-        }
+    it('stops event propagation if toggle modal is called from within a modal', () => {
+      const mockOpenCallback = jest.fn()
 
-        const testModalId = 'testModal'
+      render(<ExampleModalWithDoubleOpen openCallback={mockOpenCallback} />, {
+        container: document.body,
+      })
 
-        render(
-          <Modal id={testModalId} {...modalState} forceAction>
-            Test modal
-          </Modal>
+      const openButton = screen.getByRole('button', {
+        name: 'Open default modal',
+      })
+
+      userEvent.click(openButton)
+
+      userEvent.click(
+        screen.getByRole('button', {
+          name: 'This button should not do anything',
+        })
+      )
+
+      expect(mockOpenCallback).not.toHaveBeenCalled()
+    })
+
+    describe('focusing', () => {
+      it('activates a focus trap', async () => {
+        render(<ExampleModal />, {
+          container: document.body,
+        })
+
+        const openButton = screen.getByRole('button', {
+          name: 'Open default modal',
+        })
+
+        userEvent.click(openButton)
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+        })
+
+        userEvent.tab()
+        expect(
+          screen.getByRole('button', { name: 'Continue without saving' })
+        ).toHaveFocus()
+
+        userEvent.tab()
+        expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
+
+        userEvent.tab()
+        expect(
+          screen.getByRole('button', { name: 'Close this window' })
+        ).toHaveFocus()
+
+        userEvent.tab()
+        expect(
+          screen.getByRole('button', { name: 'Continue without saving' })
+        ).toHaveFocus()
+      })
+
+      it('returns focus to the opener element on close', async () => {
+        render(<ExampleModal />, {
+          container: document.body,
+        })
+
+        const openButton = screen.getByRole('button', {
+          name: 'Open default modal',
+        })
+
+        userEvent.click(openButton)
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+        })
+
+        userEvent.tab()
+        expect(
+          screen.getByRole('button', {
+            name: 'Continue without saving',
+          })
+        ).toHaveFocus()
+
+        userEvent.click(
+          screen.getByRole('button', { name: 'Close this window' })
         )
 
-        // Modal wrapper
-        const modalWrapper = screen.getByRole('dialog')
-        expect(modalWrapper).toHaveAttribute('data-force-action', 'true')
-
         expect(
-          screen.queryByRole('button', {
-            name: 'Close this window',
+          screen.getByRole('button', {
+            name: 'Open default modal',
           })
-        ).not.toBeInTheDocument()
+        ).toHaveFocus()
       })
+
+      it('the escape key closes the modal', async () => {
+        render(<ExampleModal />, {
+          container: document.body,
+        })
+
+        const openButton = screen.getByRole('button', {
+          name: 'Open default modal',
+        })
+
+        userEvent.click(openButton)
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+        })
+
+        fireEvent.keyDown(screen.getByTestId('modalWindow'), { key: 'Escape' })
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).not.toHaveClass('is-visible')
+
+          expect(
+            screen.getByRole('button', {
+              name: 'Open default modal',
+            })
+          ).toHaveFocus()
+        })
+      })
+
+      it('can pass in a custom onFocus element', async () => {
+        render(<ExampleModalWithFocusElement />, {
+          container: document.body,
+        })
+
+        const openButton = screen.getByRole('button', {
+          name: 'Open default modal',
+        })
+
+        userEvent.click(openButton)
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(
+            screen.getByRole('button', { name: 'Focus me first' })
+          ).toHaveFocus()
+        })
+      })
+    })
+
+    describe('if forceAction is true', () => {
+      const testModalChildren = (
+        <div>
+          <p>Test modal</p>
+          <a href="#test">Focus target</a>
+        </div>
+      )
 
       it('styles the body element', () => {
         const closeModal = jest.fn()
@@ -417,7 +707,7 @@ describe('Modal component', () => {
             isOpen={false}
             closeModal={closeModal}
             forceAction>
-            Test modal
+            {testModalChildren}
           </Modal>
         )
 
@@ -429,7 +719,7 @@ describe('Modal component', () => {
             isOpen={true}
             closeModal={closeModal}
             forceAction>
-            Test modal
+            {testModalChildren}
           </Modal>
         )
 
@@ -441,7 +731,7 @@ describe('Modal component', () => {
             isOpen={false}
             closeModal={closeModal}
             forceAction>
-            Test modal
+            {testModalChildren}
           </Modal>
         )
 
@@ -458,13 +748,37 @@ describe('Modal component', () => {
 
         render(
           <Modal id={testModalId} {...modalState} forceAction>
-            Test modal
+            {testModalChildren}
           </Modal>
         )
 
         const overlay = screen.getByTestId('modalOverlay')
         userEvent.click(overlay)
         expect(modalState.closeModal).not.toHaveBeenCalled()
+      })
+
+      it('the escape key does not close the modal', async () => {
+        render(<ExampleModal forceAction />, {
+          container: document.body,
+        })
+
+        const openButton = screen.getByRole('button', {
+          name: 'Open default modal',
+        })
+
+        userEvent.click(openButton)
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+        })
+
+        fireEvent.keyDown(screen.getByTestId('modalWindow'), { key: 'Escape' })
+
+        await waitFor(() => {
+          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+        })
       })
     })
   })
