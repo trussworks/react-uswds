@@ -36,7 +36,6 @@ export const Modal = ({
   const initialPaddingRef = useRef<string>()
   const tempPaddingRef = useRef<string>()
   const modalEl = useRef<HTMLDivElement>(null)
-  const closeButtonEl = useRef<HTMLButtonElement>(null)
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'
 
@@ -147,7 +146,6 @@ export const Modal = ({
           modalId={id}
           {...divProps}
           ref={modalEl}
-          closeButtonRef={closeButtonEl}
           isLarge={isLarge}
           forceAction={forceAction}
           tabIndex={-1}

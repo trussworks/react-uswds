@@ -10,7 +10,6 @@ interface ModalWindowProps {
   className?: string
   isLarge?: boolean
   forceAction?: boolean
-  closeButtonRef: React.ForwardedRef<HTMLButtonElement>
 }
 
 export const ModalWindow = forwardRef(
@@ -22,7 +21,6 @@ export const ModalWindow = forwardRef(
       handleClose,
       isLarge = false,
       forceAction = false,
-      closeButtonRef,
       ...divProps
     }: ModalWindowProps & JSX.IntrinsicElements['div'],
     ref: React.ForwardedRef<HTMLDivElement>
@@ -48,7 +46,6 @@ export const ModalWindow = forwardRef(
             <ModalCloseButton
               aria-controls={modalId}
               handleClose={handleClose}
-              ref={closeButtonRef}
             />
           )}
         </div>
