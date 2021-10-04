@@ -33,8 +33,7 @@ export const defaultModal = (): React.ReactElement => {
       <ModalOpenButton
         handleOpen={openModal}
         href="#example-modal-1"
-        aria-controls="example-modal-1"
-        onClick={(e) => e.preventDefault()}>
+        aria-controls="example-modal-1">
         Open default modal
       </ModalOpenButton>
       <Modal
@@ -79,8 +78,7 @@ export const largeModal = (): React.ReactElement => {
       <ModalOpenButton
         handleOpen={openModal}
         href="#example-modal-2"
-        aria-controls="example-modal-2"
-        onClick={(e) => e.preventDefault()}>
+        aria-controls="example-modal-2">
         Open large modal
       </ModalOpenButton>
       <Modal
@@ -126,8 +124,7 @@ export const forceActionModal = (): React.ReactElement => {
       <ModalOpenButton
         handleOpen={openModal}
         href="#example-modal-3"
-        aria-controls="example-modal-3"
-        onClick={(e) => e.preventDefault()}>
+        aria-controls="example-modal-3">
         Open modal with forced action
       </ModalOpenButton>
       <Modal
@@ -175,8 +172,7 @@ export const customFocusElementModal = (): React.ReactElement => {
       <ModalOpenButton
         handleOpen={openModal}
         href="#example-modal-1"
-        aria-controls="example-modal-1"
-        onClick={(e) => e.preventDefault()}>
+        aria-controls="example-modal-1">
         Open modal with custom initial focus element
       </ModalOpenButton>
       <Modal

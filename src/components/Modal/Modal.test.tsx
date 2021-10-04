@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { renderHook } from '@testing-library/react-hooks'
 
 import { Modal } from './Modal'
 import { useModal } from './utils'
@@ -50,65 +51,6 @@ const ExampleModal = ({
           <p id="modal-1-description">
             You have unsaved changes that will be lost.
           </p>
-        </div>
-        <ModalFooter>
-          <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
-              Continue without saving
-            </Button>
-            <Button
-              type="button"
-              data-close-modal
-              unstyled
-              className="padding-105 text-center"
-              onClick={closeModal}>
-              Go back
-            </Button>
-          </ButtonGroup>
-        </ModalFooter>
-      </Modal>
-    </>
-  )
-}
-
-const ExampleModalWithDoubleOpen = ({
-  openCallback,
-}: {
-  openCallback: () => void
-}): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
-
-  const handleDoubleOpen = (e: React.MouseEvent) => {
-    if (openModal(e)) {
-      openCallback()
-    }
-  }
-
-  return (
-    <>
-      <ModalOpenButton
-        handleOpen={openModal}
-        href="#example-modal-1"
-        aria-controls="example-modal-1"
-        onClick={(e) => e.preventDefault()}>
-        Open default modal
-      </ModalOpenButton>
-      <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        id="example-modal-1"
-        aria-labelledby="modal-1-heading"
-        aria-describedby="modal-1-description">
-        <ModalHeading id="modal-1-heading">
-          Are you sure you want to continue?
-        </ModalHeading>
-        <div className="usa-prose">
-          <p id="modal-1-description">
-            You have unsaved changes that will be lost.
-          </p>
-          <button type="button" onClick={handleDoubleOpen}>
-            This button should not do anything
-          </button>
         </div>
         <ModalFooter>
           <ButtonGroup>
@@ -306,7 +248,7 @@ describe('Modal component', () => {
     expect(modalState.closeModal).toHaveBeenCalled()
   })
 
-  it('renders a large modalWindow isLarge is true', () => {
+  it('renders a large modal window when isLarge is true', () => {
     const modalState = {
       isOpen: false,
       closeModal: jest.fn(),
@@ -551,25 +493,20 @@ describe('Modal component', () => {
     })
 
     it('stops event propagation if toggle modal is called from within a modal', () => {
-      const mockOpenCallback = jest.fn()
+      const { result } = renderHook(() => useModal())
 
-      render(<ExampleModalWithDoubleOpen openCallback={mockOpenCallback} />, {
-        container: document.body,
-      })
+      const closeSpy = jest.spyOn(result.current, 'closeModal')
 
-      const openButton = screen.getByRole('button', {
-        name: 'Open default modal',
-      })
+      const testModalId = 'testModal'
 
-      userEvent.click(openButton)
-
-      userEvent.click(
-        screen.getByRole('button', {
-          name: 'This button should not do anything',
-        })
+      render(
+        <Modal id={testModalId} {...result.current}>
+          Test modal
+        </Modal>
       )
 
-      expect(mockOpenCallback).not.toHaveBeenCalled()
+      userEvent.click(screen.getByText('Test modal'))
+      expect(closeSpy).toHaveLastReturnedWith(false)
     })
 
     describe('focusing', () => {
