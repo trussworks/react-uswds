@@ -1,10 +1,14 @@
-import React from 'react'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import React, { createRef, useRef } from 'react'
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  RenderOptions,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderHook } from '@testing-library/react-hooks'
 
-import { Modal } from './Modal'
-import { useModal } from './utils'
+import { Modal, ModalRef } from './Modal'
 import { ModalHeading } from './ModalHeading/ModalHeading'
 import { ModalFooter } from './ModalFooter/ModalFooter'
 import { ModalOpenButton } from './ModalOpenButton'
@@ -21,29 +25,41 @@ jest.mock('./utils', () => {
   }
 })
 
+const renderWithModalRoot = (
+  ui: React.ReactElement,
+  options: RenderOptions = {}
+) => {
+  const modalContainer = document.createElement('div')
+  modalContainer.setAttribute('id', 'modal-root')
+
+  return render(ui, {
+    ...options,
+    container: document.body.appendChild(modalContainer),
+  })
+}
+
 const ExampleModal = ({
   forceAction = false,
 }: {
   forceAction?: boolean
 }): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const modalRef = useRef<ModalRef>(null)
 
   return (
     <>
       <ModalOpenButton
-        handleOpen={openModal}
+        handleOpen={(e) => modalRef.current?.toggleModal(e, true)}
         href="#example-modal-1"
-        aria-controls="example-modal-1"
-        onClick={(e) => e.preventDefault()}>
+        aria-controls="example-modal-1">
         Open default modal
       </ModalOpenButton>
       <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
+        ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
-        forceAction={forceAction}>
+        forceAction={forceAction}
+        modalRoot="#modal-root">
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -54,7 +70,10 @@ const ExampleModal = ({
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
+            <Button
+              type="button"
+              data-close-modal
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Continue without saving
             </Button>
             <Button
@@ -62,7 +81,7 @@ const ExampleModal = ({
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={closeModal}>
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Go back
             </Button>
           </ButtonGroup>
@@ -73,23 +92,22 @@ const ExampleModal = ({
 }
 
 const ExampleModalWithFocusElement = (): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const modalRef = useRef<ModalRef>(null)
 
   return (
     <>
       <ModalOpenButton
-        handleOpen={openModal}
+        handleOpen={(e) => modalRef.current?.toggleModal(e, true)}
         href="#example-modal-1"
-        aria-controls="example-modal-1"
-        onClick={(e) => e.preventDefault()}>
+        aria-controls="example-modal-1">
         Open default modal
       </ModalOpenButton>
       <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
+        ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
-        aria-describedby="modal-1-description">
+        aria-describedby="modal-1-description"
+        modalRoot="#modal-root">
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -103,7 +121,10 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
+            <Button
+              type="button"
+              data-close-modal
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Continue without saving
             </Button>
             <Button
@@ -111,7 +132,7 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={closeModal}>
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Go back
             </Button>
           </ButtonGroup>
@@ -122,19 +143,14 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
 }
 
 describe('Modal component', () => {
-  it('renders its children inside a modal wrapper', () => {
-    const modalState = {
-      isOpen: false,
-      closeModal: jest.fn(),
-    }
+  beforeEach(() => {
+    document.body.style.paddingRight = '0px'
+  })
 
+  it('renders its children inside a modal wrapper', () => {
     const testModalId = 'testModal'
 
-    render(
-      <Modal id={testModalId} {...modalState}>
-        Test modal
-      </Modal>
-    )
+    render(<Modal id={testModalId}>Test modal</Modal>)
 
     // Modal wrapper
     const modalWrapper = screen.getByRole('dialog')
@@ -159,17 +175,11 @@ describe('Modal component', () => {
   })
 
   it('passes aria props to the modal wrapper', () => {
-    const modalState = {
-      isOpen: false,
-      closeModal: jest.fn(),
-    }
-
     const testModalId = 'testModal'
 
     render(
       <Modal
         id={testModalId}
-        {...modalState}
         aria-labelledby="modal-label"
         aria-describedby="modal-description">
         Test modal
@@ -188,76 +198,72 @@ describe('Modal component', () => {
     expect(modalWindow).not.toHaveAttribute('aria-describedby')
   })
 
-  it('renders the visible state when open', () => {
-    const modalState = {
-      isOpen: true,
-      closeModal: jest.fn(),
-    }
+  it('renders the visible state when open', async () => {
+    const modalRef = createRef<ModalRef>()
+    const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
     const testModalId = 'testModal'
 
-    render(
-      <Modal id={testModalId} {...modalState}>
+    renderWithModalRoot(
+      <Modal id={testModalId} ref={modalRef} modalRoot="#modal-root">
         Test modal
       </Modal>
     )
 
+    await waitFor(() => handleOpen())
+
+    expect(modalRef.current?.modalIsOpen).toBe(true)
     const modalWrapper = screen.getByRole('dialog')
     expect(modalWrapper).not.toHaveClass('is-hidden')
     expect(modalWrapper).toHaveClass('is-visible')
   })
 
-  it('can click on the close button to close', () => {
-    const modalState = {
-      isOpen: true,
-      closeModal: jest.fn(),
-    }
-
+  it('can click on the close button to close', async () => {
     const testModalId = 'testModal'
+    const modalRef = createRef<ModalRef>()
+    const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
-    render(
-      <Modal id={testModalId} {...modalState}>
+    renderWithModalRoot(
+      <Modal id={testModalId} ref={modalRef} modalRoot="#modal-root">
         Test modal
       </Modal>
     )
 
+    await waitFor(() => handleOpen())
+
+    expect(modalRef.current?.modalIsOpen).toBe(true)
     const closeButton = screen.getByRole('button', {
       name: 'Close this window',
     })
     expect(closeButton).toBeInTheDocument()
     userEvent.click(closeButton)
-    expect(modalState.closeModal).toHaveBeenCalled()
+    expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
-  it('can click on the overlay to close', () => {
-    const modalState = {
-      isOpen: true,
-      closeModal: jest.fn(),
-    }
-
+  it('can click on the overlay to close', async () => {
     const testModalId = 'testModal'
+    const modalRef = createRef<ModalRef>()
+    const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
     render(
-      <Modal id={testModalId} {...modalState}>
+      <Modal id={testModalId} ref={modalRef}>
         Test modal
       </Modal>
     )
 
+    await waitFor(() => handleOpen())
+
+    expect(modalRef.current?.modalIsOpen).toBe(true)
     const overlay = screen.getByTestId('modalOverlay')
     userEvent.click(overlay)
-    expect(modalState.closeModal).toHaveBeenCalled()
+    expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
   it('renders a large modal window when isLarge is true', () => {
-    const modalState = {
-      isOpen: false,
-      closeModal: jest.fn(),
-    }
-
     const testModalId = 'testModal'
 
     render(
-      <Modal id={testModalId} {...modalState} isLarge>
+      <Modal id={testModalId} isLarge>
         Test modal
       </Modal>
     )
@@ -266,15 +272,10 @@ describe('Modal component', () => {
   })
 
   it('does not render a close button when forceAction is true', () => {
-    const modalState = {
-      isOpen: false,
-      closeModal: jest.fn(),
-    }
-
     const testModalId = 'testModal'
 
     render(
-      <Modal id={testModalId} {...modalState} forceAction>
+      <Modal id={testModalId} forceAction>
         Test modal
       </Modal>
     )
@@ -292,42 +293,39 @@ describe('Modal component', () => {
   })
 
   describe('toggling', () => {
-    it('styles the body element', () => {
-      const closeModal = jest.fn()
-      const { rerender, baseElement } = render(
-        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
-          Test modal
-        </Modal>
-      )
+    it('styles the body element', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+      const handleClose = () => modalRef.current?.toggleModal(undefined, false)
 
-      expect(baseElement).not.toHaveClass('usa-js-modal--active')
-      expect(baseElement).not.toHaveStyle('padding-right: 0px')
-
-      rerender(
-        <Modal id="testModal" isOpen={true} closeModal={closeModal}>
-          Test modal
-        </Modal>
-      )
-
-      expect(baseElement).toHaveClass('usa-js-modal--active')
-      expect(baseElement).toHaveStyle('padding-right: 15px')
-
-      rerender(
-        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+      const { baseElement } = render(
+        <Modal id="testModal" ref={modalRef}>
           Test modal
         </Modal>
       )
 
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 0px')
+
+      await waitFor(() => handleOpen())
+
+      expect(baseElement).toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 15px')
+
+      await waitFor(() => handleClose())
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
     })
 
-    it('styles the body element when it already has padding right', () => {
-      const closeModal = jest.fn()
+    it('styles the body element when it already has padding right', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+      const handleClose = () => modalRef.current?.toggleModal(undefined, false)
       document.body.style.paddingRight = '20px'
 
-      const { rerender, baseElement } = render(
-        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
+      const { baseElement } = render(
+        <Modal id="testModal" ref={modalRef}>
           Test modal
         </Modal>
       )
@@ -335,39 +333,34 @@ describe('Modal component', () => {
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 20px')
 
-      rerender(
-        <Modal id="testModal" isOpen={true} closeModal={closeModal}>
-          Test modal
-        </Modal>
-      )
+      await waitFor(() => handleOpen())
 
       expect(baseElement).toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 35px')
 
-      rerender(
-        <Modal id="testModal" isOpen={false} closeModal={closeModal}>
-          Test modal
-        </Modal>
-      )
+      await waitFor(() => handleClose())
 
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 20px')
     })
 
-    it('hides other elements from screen readers', () => {
+    it('hides other elements from screen readers', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+      const handleClose = () => modalRef.current?.toggleModal(undefined, false)
+
       const modalProps = {
+        ref: modalRef,
         id: 'testModal',
-        closeModal: jest.fn(),
       }
-      const { rerender } = render(
+
+      render(
         <>
           <p data-testid="nonhidden">Some other element</p>
           <div data-testid="hidden" aria-hidden="true">
             Element that is normally hidden
           </div>
-          <Modal {...modalProps} isOpen={false}>
-            Test modal
-          </Modal>
+          <Modal {...modalProps}>Test modal</Modal>
         </>,
         {
           container: document.body,
@@ -381,17 +374,7 @@ describe('Modal component', () => {
 
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      rerender(
-        <>
-          <p data-testid="nonhidden">Some other element</p>
-          <div data-testid="hidden" aria-hidden="true">
-            Element that is normally hidden
-          </div>
-          <Modal {...modalProps} isOpen={true}>
-            Test modal
-          </Modal>
-        </>
-      )
+      await waitFor(() => handleOpen())
 
       expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('nonhidden')).toHaveAttribute(
@@ -399,17 +382,7 @@ describe('Modal component', () => {
       )
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      rerender(
-        <>
-          <p data-testid="nonhidden">Some other element</p>
-          <div data-testid="hidden" aria-hidden="true">
-            Element that is normally hidden
-          </div>
-          <Modal {...modalProps} isOpen={false}>
-            Test modal
-          </Modal>
-        </>
-      )
+      await waitFor(() => handleClose())
 
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
@@ -419,23 +392,25 @@ describe('Modal component', () => {
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
     })
 
-    it('hides other elements from screen readers with a custom modal root', () => {
+    it('hides other elements from screen readers with a custom modal root', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+      const handleClose = () => modalRef.current?.toggleModal(undefined, false)
+
       const modalProps = {
+        ref: modalRef,
         id: 'testModal',
-        closeModal: jest.fn(),
         modalRoot: '#modal-root',
       }
 
-      const { rerender } = render(
+      render(
         <>
           <p data-testid="nonhidden">Some other element</p>
           <div data-testid="hidden" aria-hidden="true">
             Element that is normally hidden
           </div>
           <div id="#modal-root">
-            <Modal {...modalProps} isOpen={false}>
-              Test modal
-            </Modal>
+            <Modal {...modalProps}>Test modal</Modal>
           </div>
         </>,
         {
@@ -450,19 +425,7 @@ describe('Modal component', () => {
 
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      rerender(
-        <>
-          <p data-testid="nonhidden">Some other element</p>
-          <div data-testid="hidden" aria-hidden="true">
-            Element that is normally hidden
-          </div>
-          <div id="#modal-root">
-            <Modal {...modalProps} isOpen={true}>
-              Test modal
-            </Modal>
-          </div>
-        </>
-      )
+      await waitFor(() => handleOpen())
 
       expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('nonhidden')).toHaveAttribute(
@@ -470,19 +433,7 @@ describe('Modal component', () => {
       )
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      rerender(
-        <>
-          <p data-testid="nonhidden">Some other element</p>
-          <div data-testid="hidden" aria-hidden="true">
-            Element that is normally hidden
-          </div>
-          <div id="#modal-root">
-            <Modal {...modalProps} isOpen={false}>
-              Test modal
-            </Modal>
-          </div>
-        </>
-      )
+      await waitFor(() => handleClose())
 
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
@@ -492,28 +443,26 @@ describe('Modal component', () => {
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
     })
 
-    it('stops event propagation if toggle modal is called from within a modal', () => {
-      const { result } = renderHook(() => useModal())
-
-      const closeSpy = jest.spyOn(result.current, 'closeModal')
-
-      const testModalId = 'testModal'
+    it('stops event propagation if toggle modal is called from within a modal', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
       render(
-        <Modal id={testModalId} {...result.current}>
+        <Modal id="testModal" ref={modalRef}>
           Test modal
         </Modal>
       )
 
+      expect(modalRef.current?.modalIsOpen).toBe(false)
+      await waitFor(() => handleOpen())
+      expect(modalRef.current?.modalIsOpen).toBe(true)
       userEvent.click(screen.getByText('Test modal'))
-      expect(closeSpy).toHaveLastReturnedWith(false)
+      expect(modalRef.current?.modalIsOpen).toBe(true)
     })
 
     describe('focusing', () => {
       it('activates a focus trap', async () => {
-        render(<ExampleModal />, {
-          container: document.body,
-        })
+        renderWithModalRoot(<ExampleModal />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
@@ -546,9 +495,7 @@ describe('Modal component', () => {
       })
 
       it('returns focus to the opener element on close', async () => {
-        render(<ExampleModal />, {
-          container: document.body,
-        })
+        renderWithModalRoot(<ExampleModal />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
@@ -580,9 +527,7 @@ describe('Modal component', () => {
       })
 
       it('the escape key closes the modal', async () => {
-        render(<ExampleModal />, {
-          container: document.body,
-        })
+        renderWithModalRoot(<ExampleModal />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
@@ -609,9 +554,7 @@ describe('Modal component', () => {
       })
 
       it('can pass in a custom onFocus element', async () => {
-        render(<ExampleModalWithFocusElement />, {
-          container: document.body,
-        })
+        renderWithModalRoot(<ExampleModalWithFocusElement />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
@@ -636,68 +579,51 @@ describe('Modal component', () => {
         </div>
       )
 
-      it('styles the body element', () => {
-        const closeModal = jest.fn()
-        const { rerender, baseElement } = render(
-          <Modal
-            id="testModal"
-            isOpen={false}
-            closeModal={closeModal}
-            forceAction>
+      it('styles the body element', async () => {
+        const modalRef = createRef<ModalRef>()
+        const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+        const handleClose = () =>
+          modalRef.current?.toggleModal(undefined, false)
+
+        const { baseElement } = render(
+          <Modal id="testModal" ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>
         )
 
         expect(baseElement).not.toHaveClass('usa-js-no-click')
 
-        rerender(
-          <Modal
-            id="testModal"
-            isOpen={true}
-            closeModal={closeModal}
-            forceAction>
-            {testModalChildren}
-          </Modal>
-        )
+        await waitFor(() => handleOpen())
 
         expect(baseElement).toHaveClass('usa-js-no-click')
 
-        rerender(
-          <Modal
-            id="testModal"
-            isOpen={false}
-            closeModal={closeModal}
-            forceAction>
-            {testModalChildren}
-          </Modal>
-        )
+        await waitFor(() => handleClose())
 
         expect(baseElement).not.toHaveClass('usa-js-no-click')
       })
 
-      it('cannot click on the overlay to close', () => {
-        const modalState = {
-          isOpen: true,
-          closeModal: jest.fn(),
-        }
+      it('cannot click on the overlay to close', async () => {
+        const modalRef = createRef<ModalRef>()
+        const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
         const testModalId = 'testModal'
 
         render(
-          <Modal id={testModalId} {...modalState} forceAction>
+          <Modal id={testModalId} ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>
         )
 
+        await waitFor(() => handleOpen())
+        expect(modalRef.current?.modalIsOpen).toBe(true)
+
         const overlay = screen.getByTestId('modalOverlay')
         userEvent.click(overlay)
-        expect(modalState.closeModal).not.toHaveBeenCalled()
+        expect(modalRef.current?.modalIsOpen).toBe(true)
       })
 
       it('the escape key does not close the modal', async () => {
-        render(<ExampleModal forceAction />, {
-          container: document.body,
-        })
+        renderWithModalRoot(<ExampleModal forceAction />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',

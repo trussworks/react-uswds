@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-import { Modal } from './Modal'
+import { Modal, ModalRef } from './Modal'
 import { ModalHeading } from './ModalHeading/ModalHeading'
 import { ModalFooter } from './ModalFooter/ModalFooter'
 import { ModalOpenButton } from './ModalOpenButton'
 
 import { Button } from '../Button/Button'
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
-import { useModal } from './utils'
 
 export default {
   title: 'Components/Modal',
@@ -26,19 +25,21 @@ Source: http://designsystem.digital.gov/components/modal
 }
 
 export const defaultModal = (): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const modalRef = useRef<ModalRef>()
+
+  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
+  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
 
   return (
     <>
       <ModalOpenButton
-        handleOpen={openModal}
+        handleOpen={handleOpen}
         href="#example-modal-1"
         aria-controls="example-modal-1">
         Open default modal
       </ModalOpenButton>
       <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
+        ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description">
@@ -52,7 +53,7 @@ export const defaultModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
+            <Button type="button" data-close-modal onClick={handleClose}>
               Continue without saving
             </Button>
             <Button
@@ -60,7 +61,7 @@ export const defaultModal = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={closeModal}>
+              onClick={handleClose}>
               Go back
             </Button>
           </ButtonGroup>
@@ -71,19 +72,21 @@ export const defaultModal = (): React.ReactElement => {
 }
 
 export const largeModal = (): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const modalRef = useRef<ModalRef>()
+
+  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
+  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
 
   return (
     <>
       <ModalOpenButton
-        handleOpen={openModal}
+        handleOpen={handleOpen}
         href="#example-modal-2"
         aria-controls="example-modal-2">
         Open large modal
       </ModalOpenButton>
       <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
+        ref={modalRef}
         isLarge
         aria-labelledby="modal-2-heading"
         aria-describedby="modal-2-description"
@@ -98,7 +101,7 @@ export const largeModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
+            <Button type="button" data-close-modal onClick={handleClose}>
               Continue without saving
             </Button>
             <Button
@@ -106,7 +109,7 @@ export const largeModal = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={closeModal}>
+              onClick={handleClose}>
               Go back
             </Button>
           </ButtonGroup>
@@ -117,19 +120,21 @@ export const largeModal = (): React.ReactElement => {
 }
 
 export const forceActionModal = (): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const modalRef = useRef<ModalRef>()
+
+  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
+  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
 
   return (
     <>
       <ModalOpenButton
-        handleOpen={openModal}
+        handleOpen={handleOpen}
         href="#example-modal-3"
         aria-controls="example-modal-3">
         Open modal with forced action
       </ModalOpenButton>
       <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
+        ref={modalRef}
         forceAction
         aria-labelledby="modal-3-heading"
         aria-describedby="modal-3-description"
@@ -146,7 +151,7 @@ export const forceActionModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
+            <Button type="button" data-close-modal onClick={handleClose}>
               Yes, stay signed in
             </Button>
             <Button
@@ -154,7 +159,7 @@ export const forceActionModal = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={closeModal}>
+              onClick={handleClose}>
               Sign out
             </Button>
           </ButtonGroup>
@@ -165,19 +170,21 @@ export const forceActionModal = (): React.ReactElement => {
 }
 
 export const customFocusElementModal = (): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const modalRef = useRef<ModalRef>()
+
+  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
+  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
 
   return (
     <>
       <ModalOpenButton
-        handleOpen={openModal}
+        handleOpen={handleOpen}
         href="#example-modal-1"
         aria-controls="example-modal-1">
         Open modal with custom initial focus element
       </ModalOpenButton>
       <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
+        ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description">
@@ -195,7 +202,7 @@ export const customFocusElementModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={closeModal}>
+            <Button type="button" data-close-modal onClick={handleClose}>
               Continue without saving
             </Button>
             <Button
@@ -203,7 +210,7 @@ export const customFocusElementModal = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={closeModal}>
+              onClick={handleClose}>
               Go back
             </Button>
           </ButtonGroup>

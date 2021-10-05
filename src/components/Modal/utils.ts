@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 export type ModalHook = {
   isOpen: boolean
   openModal: (e?: React.MouseEvent) => boolean
-  closeModal: () => void
+  closeModal: (e?: React.MouseEvent) => boolean
+  toggleModal: (e?: React.MouseEvent, open?: boolean) => boolean
 }
 
 export const useModal = (): ModalHook => {
@@ -51,7 +52,23 @@ export const useModal = (): ModalHook => {
     return true
   }
 
-  return { isOpen, openModal, closeModal }
+  const toggleModal = (e?: React.MouseEvent, open?: boolean): boolean => {
+    // console.log('TOGGLE MODAL', e, open)
+    if (e && !allowToggle(e)) {
+      e.stopPropagation()
+      return false
+    }
+
+    if (open === true) setIsOpen(true)
+    else if (open === false) setIsOpen(false)
+    else {
+      setIsOpen((state) => !state)
+    }
+
+    return true
+  }
+
+  return { isOpen, toggleModal, openModal, closeModal }
 }
 
 export const getScrollbarWidth = (): string => {
