@@ -42,7 +42,7 @@ export const Alert = ({
   return (
     <div className={classes} data-testid="alert" {...props}>
       <div className="usa-alert__body">
-        {heading && <h3 className="usa-alert__heading">{heading}</h3>}
+        {heading && <h4 className="usa-alert__heading">{heading}</h4>}
         {children &&
           (validation ? (
             children
