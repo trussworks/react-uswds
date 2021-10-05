@@ -9,29 +9,6 @@ describe('the useModal hook', () => {
     expect(result.current.isOpen).toEqual(false)
   })
 
-  it('openModal sets isOpen to true', () => {
-    const { result } = renderHook(() => useModal())
-
-    act(() => {
-      result.current.openModal()
-    })
-    expect(result.current.isOpen).toEqual(true)
-  })
-
-  it('closeModal sets isOpen to false', () => {
-    const { result } = renderHook(() => useModal())
-
-    act(() => {
-      result.current.openModal()
-    })
-    expect(result.current.isOpen).toEqual(true)
-
-    act(() => {
-      result.current.closeModal()
-    })
-    expect(result.current.isOpen).toEqual(false)
-  })
-
   describe('toggleModal', () => {
     it('with no parameters sets isOpen to its opposite', () => {
       const { result } = renderHook(() => useModal())

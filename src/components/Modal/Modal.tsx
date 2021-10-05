@@ -40,7 +40,7 @@ export const Modal = forwardRef(
     }: ModalProps,
     ref: React.Ref<ModalRef>
   ): React.ReactElement => {
-    const { isOpen, closeModal, toggleModal } = useModal()
+    const { isOpen, toggleModal } = useModal()
     const [mounted, setMounted] = useState(false)
     const initialPaddingRef = useRef<string>()
     const tempPaddingRef = useRef<string>()
@@ -50,6 +50,10 @@ export const Modal = forwardRef(
 
     const NON_MODALS = `body > *:not(${modalRootSelector}):not([aria-hidden])`
     const NON_MODALS_HIDDEN = `[data-modal-hidden]`
+
+    const closeModal = (e?: React.MouseEvent) => {
+      toggleModal(e, false)
+    }
 
     useImperativeHandle(
       ref,
