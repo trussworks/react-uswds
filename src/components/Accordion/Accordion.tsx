@@ -34,7 +34,7 @@ export const AccordionItem = ({
 
   return (
     <>
-      <h2 className={headingClasses}>
+      <h4 className={headingClasses}>
         <button
           type="button"
           className="usa-accordion__button"
@@ -44,7 +44,7 @@ export const AccordionItem = ({
           onClick={handleToggle}>
           {title}
         </button>
-      </h2>
+      </h4>
       <div
         id={id}
         data-testid={`accordionItem_${id}`}
