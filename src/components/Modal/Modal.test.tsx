@@ -11,7 +11,7 @@ import userEvent from '@testing-library/user-event'
 import { Modal, ModalRef } from './Modal'
 import { ModalHeading } from './ModalHeading/ModalHeading'
 import { ModalFooter } from './ModalFooter/ModalFooter'
-import { ModalOpenButton } from './ModalOpenButton'
+import { ModalToggleButton } from './ModalToggleButton'
 import { Button } from '../Button/Button'
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 
@@ -47,12 +47,9 @@ const ExampleModal = ({
 
   return (
     <>
-      <ModalOpenButton
-        handleOpen={(e) => modalRef.current?.toggleModal(e, true)}
-        href="#example-modal-1"
-        aria-controls="example-modal-1">
+      <ModalToggleButton modalRef={modalRef} opener>
         Open default modal
-      </ModalOpenButton>
+      </ModalToggleButton>
       <Modal
         ref={modalRef}
         id="example-modal-1"
@@ -96,12 +93,9 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
 
   return (
     <>
-      <ModalOpenButton
-        handleOpen={(e) => modalRef.current?.toggleModal(e, true)}
-        href="#example-modal-1"
-        aria-controls="example-modal-1">
+      <ModalToggleButton modalRef={modalRef} opener>
         Open default modal
-      </ModalOpenButton>
+      </ModalToggleButton>
       <Modal
         ref={modalRef}
         id="example-modal-1"

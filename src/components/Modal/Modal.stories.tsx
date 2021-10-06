@@ -3,9 +3,8 @@ import React, { useRef } from 'react'
 import { Modal, ModalRef } from './Modal'
 import { ModalHeading } from './ModalHeading/ModalHeading'
 import { ModalFooter } from './ModalFooter/ModalFooter'
-import { ModalOpenButton } from './ModalOpenButton'
+import { ModalToggleButton } from './ModalToggleButton'
 
-import { Button } from '../Button/Button'
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 
 export default {
@@ -18,6 +17,27 @@ export default {
 ### USWDS 2.0 Modal component
 
 Source: http://designsystem.digital.gov/components/modal
+
+To use this component, you will need to create a ref and pass it into the rendered Modal component. This ref will expose several properties (also described by the exported ModalRef type):
+
+- modalId: string
+  - the value of the id attribute given to the modal
+- modalIsOpen: boolean
+  - true if the modal is currently open, otherwise false
+- toggleModal: (e?: React.MouseEvent, open?: boolean) => boolean
+  - use this function to open or close the modal.
+  - if attached to an event handler, pass the event in
+  - if the second argument is provided, it will explicitly open the modal if true, or explicitly close it if false
+  - returns true if the toggle operation was successful, false if the event was prevented.
+
+Follow the [USWDS](https://designsystem.digital.gov/components/modal/) guidance for using modals:
+
+- Pass a unique ID into each modal component.
+- Any component that opens the modal should be a button or anchor element, have the [data-open-modal] attribute, and [aria-controls] attribute with the value of the modal ID.
+- Any component that closes the modal should be a button element, and have the [data-close-modal] attribute, and [aria-controls] attribute with the value of the modal ID.
+- Use the forceAction prop on the modal component if the user should be forced to take an action before closing the modal.
+
+You can also use the provided ModalToggleButton and/or ModalOpenLink components, which will adhere to the above guidelines for convenience.
 `,
       },
     },
@@ -27,17 +47,11 @@ Source: http://designsystem.digital.gov/components/modal
 export const defaultModal = (): React.ReactElement => {
   const modalRef = useRef<ModalRef>()
 
-  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
-  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
-
   return (
     <>
-      <ModalOpenButton
-        handleOpen={handleOpen}
-        href="#example-modal-1"
-        aria-controls="example-modal-1">
+      <ModalToggleButton modalRef={modalRef} opener>
         Open default modal
-      </ModalOpenButton>
+      </ModalToggleButton>
       <Modal
         ref={modalRef}
         id="example-modal-1"
@@ -53,17 +67,16 @@ export const defaultModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={handleClose}>
+            <ModalToggleButton modalRef={modalRef} closer>
               Continue without saving
-            </Button>
-            <Button
-              type="button"
-              data-close-modal
+            </ModalToggleButton>
+            <ModalToggleButton
+              modalRef={modalRef}
+              closer
               unstyled
-              className="padding-105 text-center"
-              onClick={handleClose}>
+              className="padding-105 text-center">
               Go back
-            </Button>
+            </ModalToggleButton>
           </ButtonGroup>
         </ModalFooter>
       </Modal>
@@ -74,17 +87,11 @@ export const defaultModal = (): React.ReactElement => {
 export const largeModal = (): React.ReactElement => {
   const modalRef = useRef<ModalRef>()
 
-  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
-  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
-
   return (
     <>
-      <ModalOpenButton
-        handleOpen={handleOpen}
-        href="#example-modal-2"
-        aria-controls="example-modal-2">
+      <ModalToggleButton modalRef={modalRef} opener>
         Open large modal
-      </ModalOpenButton>
+      </ModalToggleButton>
       <Modal
         ref={modalRef}
         isLarge
@@ -101,17 +108,16 @@ export const largeModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={handleClose}>
+            <ModalToggleButton modalRef={modalRef} closer>
               Continue without saving
-            </Button>
-            <Button
-              type="button"
-              data-close-modal
+            </ModalToggleButton>
+            <ModalToggleButton
+              modalRef={modalRef}
+              closer
               unstyled
-              className="padding-105 text-center"
-              onClick={handleClose}>
+              className="padding-105 text-center">
               Go back
-            </Button>
+            </ModalToggleButton>
           </ButtonGroup>
         </ModalFooter>
       </Modal>
@@ -122,17 +128,11 @@ export const largeModal = (): React.ReactElement => {
 export const forceActionModal = (): React.ReactElement => {
   const modalRef = useRef<ModalRef>()
 
-  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
-  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
-
   return (
     <>
-      <ModalOpenButton
-        handleOpen={handleOpen}
-        href="#example-modal-3"
-        aria-controls="example-modal-3">
+      <ModalToggleButton modalRef={modalRef} opener>
         Open modal with forced action
-      </ModalOpenButton>
+      </ModalToggleButton>
       <Modal
         ref={modalRef}
         forceAction
@@ -151,17 +151,16 @@ export const forceActionModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={handleClose}>
+            <ModalToggleButton modalRef={modalRef} closer>
               Yes, stay signed in
-            </Button>
-            <Button
-              type="button"
-              data-close-modal
+            </ModalToggleButton>
+            <ModalToggleButton
+              modalRef={modalRef}
+              closer
               unstyled
-              className="padding-105 text-center"
-              onClick={handleClose}>
+              className="padding-105 text-center">
               Sign out
-            </Button>
+            </ModalToggleButton>
           </ButtonGroup>
         </ModalFooter>
       </Modal>
@@ -172,17 +171,11 @@ export const forceActionModal = (): React.ReactElement => {
 export const customFocusElementModal = (): React.ReactElement => {
   const modalRef = useRef<ModalRef>()
 
-  const handleOpen = (e) => modalRef.current?.toggleModal(e, true)
-  const handleClose = (e) => modalRef.current?.toggleModal(e, false)
-
   return (
     <>
-      <ModalOpenButton
-        handleOpen={handleOpen}
-        href="#example-modal-1"
-        aria-controls="example-modal-1">
+      <ModalToggleButton modalRef={modalRef} opener>
         Open modal with custom initial focus element
-      </ModalOpenButton>
+      </ModalToggleButton>
       <Modal
         ref={modalRef}
         id="example-modal-1"
@@ -202,17 +195,16 @@ export const customFocusElementModal = (): React.ReactElement => {
         </div>
         <ModalFooter>
           <ButtonGroup>
-            <Button type="button" data-close-modal onClick={handleClose}>
+            <ModalToggleButton modalRef={modalRef} closer>
               Continue without saving
-            </Button>
-            <Button
-              type="button"
-              data-close-modal
+            </ModalToggleButton>
+            <ModalToggleButton
+              modalRef={modalRef}
+              closer
               unstyled
-              className="padding-105 text-center"
-              onClick={handleClose}>
+              className="padding-105 text-center">
               Go back
-            </Button>
+            </ModalToggleButton>
           </ButtonGroup>
         </ModalFooter>
       </Modal>
