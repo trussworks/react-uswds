@@ -47,7 +47,7 @@ describe('ModalOpenLink', () => {
     expect(consoleSpy).toHaveBeenCalledWith('ModalRef is required')
   })
 
-  it('toggles the modal when clicked', () => {
+  it('opens the modal when clicked', () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
@@ -66,6 +66,6 @@ describe('ModalOpenLink', () => {
 
     const button = screen.getByRole('button', { name: 'Open modal' })
     userEvent.click(button)
-    expect(mockRef.toggleModal).toHaveBeenCalled()
+    expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
   })
 })
