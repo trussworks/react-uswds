@@ -68,4 +68,50 @@ describe('ModalOpenLink', () => {
     userEvent.click(button)
     expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
   })
+
+  it('renders with a custom component', () => {
+    type CustomLinkProps = React.PropsWithChildren<{
+      to: string
+      className?: string
+    }> &
+      JSX.IntrinsicElements['a']
+
+    const CustomLink: React.FunctionComponent<CustomLinkProps> = ({
+      to,
+      children,
+      className,
+      ...linkProps
+    }: CustomLinkProps): React.ReactElement => (
+      <a href={to} className={className} {...linkProps}>
+        {children}
+      </a>
+    )
+
+    const mockRef: ModalRef = {
+      modalIsOpen: false,
+      modalId: 'testModal',
+      toggleModal: jest.fn().mockReturnValue(true),
+    }
+
+    const modalRef: React.RefObject<ModalRef> = {
+      current: mockRef,
+    }
+
+    render(
+      <ModalOpenLink<CustomLinkProps>
+        to="#testModal"
+        asCustom={CustomLink}
+        modalRef={modalRef}>
+        Open modal
+      </ModalOpenLink>
+    )
+
+    const button = screen.getByRole('button', { name: 'Open modal' })
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveAttribute('aria-controls', mockRef.modalId)
+    expect(button).toHaveAttribute('data-open-modal')
+    expect(button).toHaveAttribute('href', '#testModal')
+    userEvent.click(button)
+    expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
+  })
 })
