@@ -11,10 +11,14 @@ type StorybookArguments = {
   handleClose: () => void
 }
 
+const noop = (): void => {
+  return
+}
+
 export default {
   title: 'Components/Modal/Open states',
   argTypes: {
-    handleClose: { action: 'Close modal' },
+    handleClose: noop,
   },
   parameters: {
     docs: {
