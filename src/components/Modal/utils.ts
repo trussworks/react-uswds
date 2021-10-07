@@ -31,7 +31,6 @@ export const useModal = (): ModalHook => {
   }
 
   const toggleModal = (e?: React.MouseEvent, open?: boolean): boolean => {
-    // console.log('TOGGLE MODAL', e, open)
     if (e && !allowToggle(e)) {
       e.stopPropagation()
       return false
