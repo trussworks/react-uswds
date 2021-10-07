@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { deprecationWarning } from '../../deprecation'
 
-interface ButtonProps {
+export interface ButtonProps {
   type: 'button' | 'submit' | 'reset'
   children: React.ReactNode
   secondary?: boolean
