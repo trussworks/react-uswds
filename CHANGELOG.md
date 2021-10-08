@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/trussworks/react-uswds/compare/2.1.0...2.2.0) (2021-10-08)
+
+
+### Features
+
+* Modal component ([#1622](https://github.com/trussworks/react-uswds/issues/1622)) ([2b76a7a](https://github.com/trussworks/react-uswds/commit/2b76a7a250f5885329d44a09711d856bd133f39c))
+
 ## [2.1.0](https://github.com/trussworks/react-uswds/compare/2.0.0...2.1.0) (2021-09-29)
 
 
