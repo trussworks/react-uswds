@@ -54,7 +54,7 @@ export const StepIndicator = (
         {children}
       </ol>
       <div className="usa-step-indicator__header">
-        <h2 className="usa-step-indicator__heading">
+        <h4 className="usa-step-indicator__heading">
           <span className="usa-step-indicator__heading-counter">
             <span className="usa-sr-only">Step</span>
             <span className="usa-step-indicator__current-step">
@@ -67,7 +67,7 @@ export const StepIndicator = (
           <span className="usa-step-indicator__heading-text">
             {currentStepLabel}
           </span>
-        </h2>
+        </h4>
       </div>
     </div>
   )

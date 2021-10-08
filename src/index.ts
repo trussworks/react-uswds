@@ -85,6 +85,13 @@ export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
 
+/** Modal components */
+export { Modal, ModalProps, ModalRef } from './components/Modal/Modal'
+export { ModalToggleButton } from './components/Modal/ModalToggleButton'
+export { ModalOpenLink } from './components/Modal/ModalOpenLink'
+export { ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
+export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
+
 /** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
 export { Card } from './components/card/Card/Card'
