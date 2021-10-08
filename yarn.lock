@@ -8984,9 +8984,9 @@ happo-plugin-storybook@^2.7.0:
     rimraf "^2.6.3"
 
 happo.io@^6.0.0:
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.7.0.tgz#cea50b61c1cb116ce0e2e1214963fcb79a622864"
-  integrity sha512-wCXBMuqnTi8vo769uckSqgBhxsNvX6dN7wIFhxrv4O69uY2WKkxNbWVRcajfztGqLpk3VMNDZvwGIhUrW2pYGQ==
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.8.0.tgz#304b332ec99a812497b4b694a58329a26065f229"
+  integrity sha512-VdEwxWf29d/BSSgBZT4mgGUXNM2SvyKjm3Kugt4QJH3yucdAp04bnAICULpeXP1cEO0PwB3ofuyMAwJg+7nnhA==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@babel/preset-react" "^7.12.1"
@@ -8998,7 +8998,6 @@ happo.io@^6.0.0:
     jsdom "^16.4.0"
     jsonwebtoken "^8.2.1"
     lcs-image-diff "^2.0.0"
-    mkdirp "^0.5.1"
     parse-srcset "^1.0.2"
     pngjs "^3.4.0"
     request "^2.85.0"
@@ -11688,9 +11687,9 @@ min-indent@^1.0.0:
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
 mini-css-extract-plugin@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.3.0.tgz#87515f185533752944d753ac7216fc876779dafe"
-  integrity sha512-uzWaOwC+gJrnKbr23J1ZRWx/Wd9W9Ce1mKPlsBGBV/r8zG7/G7oKMxGmxbI65pVGbae2cR7CUx9Ulk0HQt8BfQ==
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.4.2.tgz#b3508191ea479388a4715018c99dd3e6dd40d2d2"
+  integrity sha512-ZmqShkn79D36uerdED+9qdo1ZYG8C1YsWvXu0UMJxurZnSdgz7gQKO2EGv8T55MhDqG3DYmGtizZNpM/UbTlcA==
   dependencies:
     schema-utils "^3.1.0"
 
