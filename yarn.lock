@@ -9047,9 +9047,9 @@ happo-plugin-storybook@^2.7.0:
     rimraf "^2.6.3"
 
 happo.io@^6.0.0:
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.7.0.tgz#cea50b61c1cb116ce0e2e1214963fcb79a622864"
-  integrity sha512-wCXBMuqnTi8vo769uckSqgBhxsNvX6dN7wIFhxrv4O69uY2WKkxNbWVRcajfztGqLpk3VMNDZvwGIhUrW2pYGQ==
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-6.8.0.tgz#304b332ec99a812497b4b694a58329a26065f229"
+  integrity sha512-VdEwxWf29d/BSSgBZT4mgGUXNM2SvyKjm3Kugt4QJH3yucdAp04bnAICULpeXP1cEO0PwB3ofuyMAwJg+7nnhA==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@babel/preset-react" "^7.12.1"
@@ -9061,7 +9061,6 @@ happo.io@^6.0.0:
     jsdom "^16.4.0"
     jsonwebtoken "^8.2.1"
     lcs-image-diff "^2.0.0"
-    mkdirp "^0.5.1"
     parse-srcset "^1.0.2"
     pngjs "^3.4.0"
     request "^2.85.0"
