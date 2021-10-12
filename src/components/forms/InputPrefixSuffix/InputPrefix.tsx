@@ -1,11 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
-import { InputAffixProps } from './types'
+import { InputPrefixSuffixProps } from './types'
 
 export const InputPrefix = ({
   className,
   children,
-}: InputAffixProps): React.ReactElement => {
+}: InputPrefixSuffixProps): React.ReactElement => {
   const classes = classnames('usa-input-prefix', className)
 
   return (
