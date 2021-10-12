@@ -248,7 +248,25 @@ describe('ComboBox component', () => {
     expect(comboBoxInput).toHaveAttribute('role', 'testing')
   })
 
-  it('renders input with custom props if passed in', () => {
+  it('allows a custom input onChange handler to be called', () => {
+    const mockOnInputChange = jest.fn()
+
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        onChange={jest.fn()}
+        inputProps={{ onChange: mockOnInputChange }}
+      />
+    )
+
+    const input = getByTestId('combo-box-input')
+    userEvent.type(input, 'x')
+    expect(mockOnInputChange).toHaveBeenCalled()
+  })
+
+  it('renders list with custom props if passed in', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"

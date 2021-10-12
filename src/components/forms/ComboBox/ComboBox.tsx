@@ -75,9 +75,9 @@ const Input = ({
   return (
     <input
       type="text"
+      {...inputProps}
       className="usa-combo-box__input"
       data-testid="combo-box-input"
-      {...inputProps}
       autoCapitalize="off"
       autoComplete="off"
       ref={inputRef}
@@ -349,14 +349,14 @@ export const ComboBox = forwardRef(
         id={id}
         ref={containerRef}>
         <select
+          {...selectProps}
           className="usa-select usa-sr-only usa-combo-box__select"
           name={name}
           aria-hidden
           tabIndex={-1}
           defaultValue={state.selectedOption?.value}
           data-testid="combo-box-select"
-          disabled={isDisabled}
-          {...selectProps}>
+          disabled={isDisabled}>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -364,20 +364,25 @@ export const ComboBox = forwardRef(
           ))}
         </select>
         <Input
-          onChange={(e): void =>
+          role="combobox"
+          {...inputProps}
+          onChange={(e): void => {
+            if (inputProps?.onChange) {
+              // Allow a custom input onChange handler
+              inputProps?.onChange(e)
+            }
+
             dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value })
-          }
+          }}
           onClick={(): void => dispatch({ type: ActionTypes.OPEN_LIST })}
           onBlur={handleInputBlur}
           onKeyDown={handleInputKeyDown}
           value={state.inputValue}
           focused={state.focusMode === FocusMode.Input}
-          role="combobox"
           aria-owns={listID}
           aria-describedby={assistiveHintID}
           aria-expanded={state.isOpen}
           disabled={isDisabled}
-          {...inputProps}
         />
         <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
           <button
@@ -411,13 +416,13 @@ export const ComboBox = forwardRef(
           </button>
         </span>
         <ul
+          {...ulProps}
           data-testid="combo-box-option-list"
           tabIndex={-1}
           id={listID}
           className="usa-combo-box__list"
           role="listbox"
-          hidden={!state.isOpen}
-          {...ulProps}>
+          hidden={!state.isOpen}>
           {state.filteredOptions.map((option, index) => {
             const focused = option === state.focusedOption
             const selected = option === state.selectedOption
