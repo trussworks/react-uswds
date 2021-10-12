@@ -228,7 +228,7 @@ import {
   IconUploadFile,
   IconVerified,
   IconVerifiedUser,
-  IconVisiblity,
+  IconVisibility,
   IconVisibilityOff,
   IconVolumeOff,
   IconWarning,
@@ -497,7 +497,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <IconUploadFile {...args} />
     <IconVerified {...args} />
     <IconVerifiedUser {...args} />
-    <IconVisiblity {...args} />
+    <IconVisibility {...args} />
     <IconVisibilityOff {...args} />
     <IconVolumeOff {...args} />
     <IconWarning {...args} />

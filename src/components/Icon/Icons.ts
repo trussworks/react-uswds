@@ -226,7 +226,7 @@ import UpdateSvg from 'uswds/dist/img/usa-icons/update.svg?svgr'
 import UploadFileSvg from 'uswds/dist/img/usa-icons/upload_file.svg?svgr'
 import VerifiedSvg from 'uswds/dist/img/usa-icons/verified.svg?svgr'
 import VerifiedUserSvg from 'uswds/dist/img/usa-icons/verified_user.svg?svgr'
-import VisiblitySvg from 'uswds/dist/img/usa-icons/visibility.svg?svgr'
+import VisibilitySvg from 'uswds/dist/img/usa-icons/visibility.svg?svgr'
 import VisibilityOffSvg from 'uswds/dist/img/usa-icons/visibility_off.svg?svgr'
 import VolumeOffSvg from 'uswds/dist/img/usa-icons/volume_off.svg?svgr'
 import WarningSvg from 'uswds/dist/img/usa-icons/warning.svg?svgr'
@@ -240,6 +240,7 @@ import ZoomOutSvg from 'uswds/dist/img/usa-icons/zoom_out.svg?svgr'
 
 import { makeUSWDSIcon, IconProps } from './Icon'
 import React from 'react'
+import { withDeprecationWarning } from '../hoc/withDeprecationWarning'
 
 export const IconAccessibilityNew: React.ComponentType<IconProps> =
   makeUSWDSIcon(AccessibilityNewSvg)
@@ -312,133 +313,204 @@ export const IconBathtub: React.ComponentType<IconProps> =
 
 export const IconBedding: React.ComponentType<IconProps> =
   makeUSWDSIcon(BeddingSvg)
+
 export const IconBookmark: React.ComponentType<IconProps> =
   makeUSWDSIcon(BookmarkSvg)
+
 export const IconBugReport: React.ComponentType<IconProps> =
   makeUSWDSIcon(BugReportSvg)
+
 export const IconBuild: React.ComponentType<IconProps> = makeUSWDSIcon(BuildSvg)
+
 export const IconCalendarToday: React.ComponentType<IconProps> =
   makeUSWDSIcon(CalendarTodaySvg)
+
 export const IconCampaign: React.ComponentType<IconProps> =
   makeUSWDSIcon(CampaignSvg)
+
 export const IconCamping: React.ComponentType<IconProps> =
   makeUSWDSIcon(CampingSvg)
+
 export const IconCancel: React.ComponentType<IconProps> =
   makeUSWDSIcon(CancelSvg)
+
 export const IconChat: React.ComponentType<IconProps> = makeUSWDSIcon(ChatSvg)
+
 export const IconCheck: React.ComponentType<IconProps> = makeUSWDSIcon(CheckSvg)
+
 export const IconCheckBoxOutlineBlank: React.ComponentType<IconProps> =
   makeUSWDSIcon(CheckBoxOutlineBlankSvg)
+
 export const IconCheckCircle: React.ComponentType<IconProps> =
   makeUSWDSIcon(CheckCircleSvg)
+
 export const IconCheckCircleOutline: React.ComponentType<IconProps> =
   makeUSWDSIcon(CheckCircleOutlineSvg)
+
 export const IconCheckroom: React.ComponentType<IconProps> =
   makeUSWDSIcon(CheckroomSvg)
+
 export const IconCleanHands: React.ComponentType<IconProps> =
   makeUSWDSIcon(CleanHandsSvg)
+
 export const IconClothes: React.ComponentType<IconProps> =
   makeUSWDSIcon(ClothesSvg)
+
 export const IconClose: React.ComponentType<IconProps> = makeUSWDSIcon(CloseSvg)
+
 export const IconClosedCaption: React.ComponentType<IconProps> =
   makeUSWDSIcon(ClosedCaptionSvg)
+
 export const IconCloud: React.ComponentType<IconProps> = makeUSWDSIcon(CloudSvg)
+
 export const IconCode: React.ComponentType<IconProps> = makeUSWDSIcon(CodeSvg)
+
 export const IconComment: React.ComponentType<IconProps> =
   makeUSWDSIcon(CommentSvg)
+
 export const IconConnectWithoutContact: React.ComponentType<IconProps> =
   makeUSWDSIcon(ConnectWithoutContactSvg)
+
 export const IconConstruction: React.ComponentType<IconProps> =
   makeUSWDSIcon(ConstructionSvg)
+
 export const IconConstructionWorker: React.ComponentType<IconProps> =
   makeUSWDSIcon(ConstructionWorkerSvg)
+
 export const IconContactPage: React.ComponentType<IconProps> =
   makeUSWDSIcon(ContactPageSvg)
+
 export const IconContentCopy: React.ComponentType<IconProps> =
   makeUSWDSIcon(ContentCopySvg)
+
 export const IconCoronavirus: React.ComponentType<IconProps> =
   makeUSWDSIcon(CoronavirusSvg)
+
 export const IconCreditCard: React.ComponentType<IconProps> =
   makeUSWDSIcon(CreditCardSvg)
+
 export const IconDeck: React.ComponentType<IconProps> = makeUSWDSIcon(DeckSvg)
+
 export const IconDelete: React.ComponentType<IconProps> =
   makeUSWDSIcon(DeleteSvg)
+
 export const IconDeviceThermostat: React.ComponentType<IconProps> =
   makeUSWDSIcon(DeviceThermostatSvg)
+
 export const IconDirections: React.ComponentType<IconProps> =
   makeUSWDSIcon(DirectionsSvg)
+
 export const IconDirectionsBike: React.ComponentType<IconProps> =
   makeUSWDSIcon(DirectionsBikeSvg)
+
 export const IconDirectionsBus: React.ComponentType<IconProps> =
   makeUSWDSIcon(DirectionsBusSvg)
+
 export const IconDirectionsCar: React.ComponentType<IconProps> =
   makeUSWDSIcon(DirectionsCarSvg)
+
 export const IconDirectionsWalk: React.ComponentType<IconProps> =
   makeUSWDSIcon(DirectionsWalkSvg)
+
 export const IconDoNotDisturb: React.ComponentType<IconProps> =
   makeUSWDSIcon(DoNotDisturbSvg)
+
 export const IconDoNotTouch: React.ComponentType<IconProps> =
   makeUSWDSIcon(DoNotTouchSvg)
+
 export const IconDragHandle: React.ComponentType<IconProps> =
   makeUSWDSIcon(DragHandleSvg)
+
 export const IconEco: React.ComponentType<IconProps> = makeUSWDSIcon(EcoSvg)
+
 export const IconEdit: React.ComponentType<IconProps> = makeUSWDSIcon(EditSvg)
+
 export const IconElectricalServices: React.ComponentType<IconProps> =
   makeUSWDSIcon(ElectricalServicesSvg)
+
 export const IconEmojiEvents: React.ComponentType<IconProps> =
   makeUSWDSIcon(EmojiEventsSvg)
+
 export const IconError: React.ComponentType<IconProps> = makeUSWDSIcon(ErrorSvg)
+
 export const IconErrorOutline: React.ComponentType<IconProps> =
   makeUSWDSIcon(ErrorOutlineSvg)
+
 export const IconEvent: React.ComponentType<IconProps> = makeUSWDSIcon(EventSvg)
+
 export const IconExpandLess: React.ComponentType<IconProps> =
   makeUSWDSIcon(ExpandLessSvg)
+
 export const IconExpandMore: React.ComponentType<IconProps> =
   makeUSWDSIcon(ExpandMoreSvg)
+
 export const IconFacebook: React.ComponentType<IconProps> =
   makeUSWDSIcon(FacebookSvg)
+
 export const IconFastForward: React.ComponentType<IconProps> =
   makeUSWDSIcon(FastForwardSvg)
+
 export const IconFastRewind: React.ComponentType<IconProps> =
   makeUSWDSIcon(FastRewindSvg)
+
 export const IconFavorite: React.ComponentType<IconProps> =
   makeUSWDSIcon(FavoriteSvg)
+
 export const IconFavoriteBorder: React.ComponentType<IconProps> =
   makeUSWDSIcon(FavoriteBorderSvg)
+
 export const IconFileDownload: React.ComponentType<IconProps> =
   makeUSWDSIcon(FileDownloadSvg)
+
 export const IconFilePresent: React.ComponentType<IconProps> =
   makeUSWDSIcon(FilePresentSvg)
+
 export const IconFileUpload: React.ComponentType<IconProps> =
   makeUSWDSIcon(FileUploadSvg)
+
 export const IconFilterAlt: React.ComponentType<IconProps> =
   makeUSWDSIcon(FilterAltSvg)
+
 export const IconFilterList: React.ComponentType<IconProps> =
   makeUSWDSIcon(FilterListSvg)
+
 export const IconFingerprint: React.ComponentType<IconProps> =
   makeUSWDSIcon(FingerprintSvg)
+
 export const IconFirstPage: React.ComponentType<IconProps> =
   makeUSWDSIcon(FirstPageSvg)
+
 export const IconFlag: React.ComponentType<IconProps> = makeUSWDSIcon(FlagSvg)
+
 export const IconFlickr: React.ComponentType<IconProps> =
   makeUSWDSIcon(FlickrSvg)
+
 export const IconFlight: React.ComponentType<IconProps> =
   makeUSWDSIcon(FlightSvg)
+
 export const IconFlooding: React.ComponentType<IconProps> =
   makeUSWDSIcon(FloodingSvg)
+
 export const IconFolder: React.ComponentType<IconProps> =
   makeUSWDSIcon(FolderSvg)
+
 export const IconFolderOpen: React.ComponentType<IconProps> =
   makeUSWDSIcon(FolderOpenSvg)
+
 export const IconFormatQuote: React.ComponentType<IconProps> =
   makeUSWDSIcon(FormatQuoteSvg)
+
 export const IconFormatSize: React.ComponentType<IconProps> =
   makeUSWDSIcon(FormatSizeSvg)
+
 export const IconForum: React.ComponentType<IconProps> = makeUSWDSIcon(ForumSvg)
+
 export const IconGithub: React.ComponentType<IconProps> =
   makeUSWDSIcon(GithubSvg)
+
 export const IconGridView: React.ComponentType<IconProps> =
   makeUSWDSIcon(GridViewSvg)
+
 export const IconGroupAdd: React.ComponentType<IconProps> =
   makeUSWDSIcon(GroupAddSvg)
 
@@ -509,214 +581,339 @@ export const IconLightbulbOutline: React.ComponentType<IconProps> =
   makeUSWDSIcon(LightbulbOutlineSvg)
 
 export const IconLink: React.ComponentType<IconProps> = makeUSWDSIcon(LinkSvg)
+
 export const IconLinkOff: React.ComponentType<IconProps> =
   makeUSWDSIcon(LinkOffSvg)
+
 export const IconList: React.ComponentType<IconProps> = makeUSWDSIcon(ListSvg)
+
 export const IconLocalCafe: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalCafeSvg)
+
 export const IconLocalFireDepartment: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalFireDepartmentSvg)
+
 export const IconLocalGasStation: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalGasStationSvg)
+
 export const IconLocalGroceryStore: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalGroceryStoreSvg)
+
 export const IconLocalHospital: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalHospitalSvg)
+
 export const IconLocalLaundryService: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalLaundryServiceSvg)
+
 export const IconLocalLibrary: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalLibrarySvg)
+
 export const IconLocalOffer: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalOfferSvg)
+
 export const IconLocalParking: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalParkingSvg)
+
 export const IconLocalPharmacy: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalPharmacySvg)
+
 export const IconLocalPolice: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalPoliceSvg)
+
 export const IconLocalTaxi: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocalTaxiSvg)
+
 export const IconLocationCity: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocationCitySvg)
+
 export const IconLocationOn: React.ComponentType<IconProps> =
   makeUSWDSIcon(LocationOnSvg)
+
 export const IconLock: React.ComponentType<IconProps> = makeUSWDSIcon(LockSvg)
+
 export const IconLockOpen: React.ComponentType<IconProps> =
   makeUSWDSIcon(LockOpenSvg)
+
 export const IconLockOutline: React.ComponentType<IconProps> =
   makeUSWDSIcon(LockOutlineSvg)
+
 export const IconLogin: React.ComponentType<IconProps> = makeUSWDSIcon(LoginSvg)
+
 export const IconLogout: React.ComponentType<IconProps> =
   makeUSWDSIcon(LogoutSvg)
+
 export const IconLoop: React.ComponentType<IconProps> = makeUSWDSIcon(LoopSvg)
+
 export const IconMail: React.ComponentType<IconProps> = makeUSWDSIcon(MailSvg)
+
 export const IconMailOutline: React.ComponentType<IconProps> =
   makeUSWDSIcon(MailOutlineSvg)
+
 export const IconMap: React.ComponentType<IconProps> = makeUSWDSIcon(MapSvg)
+
 export const IconMasks: React.ComponentType<IconProps> = makeUSWDSIcon(MasksSvg)
+
 export const IconMedicalServices: React.ComponentType<IconProps> =
   makeUSWDSIcon(MedicalServicesSvg)
+
 export const IconMenu: React.ComponentType<IconProps> = makeUSWDSIcon(MenuSvg)
+
 export const IconMilitaryTech: React.ComponentType<IconProps> =
   makeUSWDSIcon(MilitaryTechSvg)
+
 export const IconMoreHoriz: React.ComponentType<IconProps> =
   makeUSWDSIcon(MoreHorizSvg)
+
 export const IconMoreVert: React.ComponentType<IconProps> =
   makeUSWDSIcon(MoreVertSvg)
+
 export const IconMyLocation: React.ComponentType<IconProps> =
   makeUSWDSIcon(MyLocationSvg)
+
 export const IconNavigateBefore: React.ComponentType<IconProps> =
   makeUSWDSIcon(NavigateBeforeSvg)
+
 export const IconNavigateNext: React.ComponentType<IconProps> =
   makeUSWDSIcon(NavigateNextSvg)
+
 export const IconNavigateFarBefore: React.ComponentType<IconProps> =
   makeUSWDSIcon(NavigateFarBeforeSvg)
+
 export const IconNavigateFarNext: React.ComponentType<IconProps> =
   makeUSWDSIcon(NavigateFarNextSvg)
+
 export const IconNearMe: React.ComponentType<IconProps> =
   makeUSWDSIcon(NearMeSvg)
+
 export const IconNotifications: React.ComponentType<IconProps> =
   makeUSWDSIcon(NotificationsSvg)
+
 export const IconNotificationsActive: React.ComponentType<IconProps> =
   makeUSWDSIcon(NotificationsActiveSvg)
+
 export const IconNotificationsNone: React.ComponentType<IconProps> =
   makeUSWDSIcon(NotificationsNoneSvg)
+
 export const IconNotificationsOff: React.ComponentType<IconProps> =
   makeUSWDSIcon(NotificationsOffSvg)
+
 export const IconPark: React.ComponentType<IconProps> = makeUSWDSIcon(ParkSvg)
+
 export const IconPeople: React.ComponentType<IconProps> =
   makeUSWDSIcon(PeopleSvg)
+
 export const IconPerson: React.ComponentType<IconProps> =
   makeUSWDSIcon(PersonSvg)
+
 export const IconPets: React.ComponentType<IconProps> = makeUSWDSIcon(PetsSvg)
+
 export const IconPhone: React.ComponentType<IconProps> = makeUSWDSIcon(PhoneSvg)
+
 export const IconPhotoCamera: React.ComponentType<IconProps> =
   makeUSWDSIcon(PhotoCameraSvg)
+
 export const IconPrint: React.ComponentType<IconProps> = makeUSWDSIcon(PrintSvg)
+
 export const IconPriorityHigh: React.ComponentType<IconProps> =
   makeUSWDSIcon(PriorityHighSvg)
+
 export const IconPublic: React.ComponentType<IconProps> =
   makeUSWDSIcon(PublicSvg)
+
 export const IconPushPin: React.ComponentType<IconProps> =
   makeUSWDSIcon(PushPinSvg)
+
 export const IconRadioButtonUnchecked: React.ComponentType<IconProps> =
   makeUSWDSIcon(RadioButtonUncheckedSvg)
+
 export const IconRain: React.ComponentType<IconProps> = makeUSWDSIcon(RainSvg)
+
 export const IconReduceCapacity: React.ComponentType<IconProps> =
   makeUSWDSIcon(ReduceCapacitySvg)
+
 export const IconRemove: React.ComponentType<IconProps> =
   makeUSWDSIcon(RemoveSvg)
+
 export const IconReport: React.ComponentType<IconProps> =
   makeUSWDSIcon(ReportSvg)
+
 export const IconRestaurant: React.ComponentType<IconProps> =
   makeUSWDSIcon(RestaurantSvg)
+
 export const IconRssFeed: React.ComponentType<IconProps> =
   makeUSWDSIcon(RssFeedSvg)
+
 export const IconSafetyDivider: React.ComponentType<IconProps> =
   makeUSWDSIcon(SafetyDividerSvg)
+
 export const IconSanitizer: React.ComponentType<IconProps> =
   makeUSWDSIcon(SanitizerSvg)
+
 export const IconSaveAlt: React.ComponentType<IconProps> =
   makeUSWDSIcon(SaveAltSvg)
+
 export const IconSevereWeather: React.ComponentType<IconProps> =
   makeUSWDSIcon(SevereWeatherSvg)
+
 export const IconSchedule: React.ComponentType<IconProps> =
   makeUSWDSIcon(ScheduleSvg)
+
 export const IconSchool: React.ComponentType<IconProps> =
   makeUSWDSIcon(SchoolSvg)
+
 export const IconScience: React.ComponentType<IconProps> =
   makeUSWDSIcon(ScienceSvg)
+
 export const IconSearch: React.ComponentType<IconProps> =
   makeUSWDSIcon(SearchSvg)
+
 export const IconSecurity: React.ComponentType<IconProps> =
   makeUSWDSIcon(SecuritySvg)
+
 export const IconSend: React.ComponentType<IconProps> = makeUSWDSIcon(SendSvg)
+
 export const IconSentimentDissatisfied: React.ComponentType<IconProps> =
   makeUSWDSIcon(SentimentDissatisfiedSvg)
+
 export const IconSentimentNeutral: React.ComponentType<IconProps> =
   makeUSWDSIcon(SentimentNeutralSvg)
+
 export const IconSentimentSatisfied: React.ComponentType<IconProps> =
   makeUSWDSIcon(SentimentSatisfiedSvg)
+
 export const IconSentimentSatisfiedAlt: React.ComponentType<IconProps> =
   makeUSWDSIcon(SentimentSatisfiedAltSvg)
+
 export const IconSentimentVeryDissatisfied: React.ComponentType<IconProps> =
   makeUSWDSIcon(SentimentVeryDissatisfiedSvg)
+
 export const IconSettings: React.ComponentType<IconProps> =
   makeUSWDSIcon(SettingsSvg)
+
 export const IconShare: React.ComponentType<IconProps> = makeUSWDSIcon(ShareSvg)
+
 export const IconShield: React.ComponentType<IconProps> =
   makeUSWDSIcon(ShieldSvg)
+
 export const IconShoppingBasket: React.ComponentType<IconProps> =
   makeUSWDSIcon(ShoppingBasketSvg)
+
 export const IconSnow: React.ComponentType<IconProps> = makeUSWDSIcon(SnowSvg)
+
 export const IconSoap: React.ComponentType<IconProps> = makeUSWDSIcon(SoapSvg)
+
 export const IconSocialDistance: React.ComponentType<IconProps> =
   makeUSWDSIcon(SocialDistanceSvg)
+
 export const IconSortArrow: React.ComponentType<IconProps> =
   makeUSWDSIcon(SortArrowSvg)
+
 export const IconSpellcheck: React.ComponentType<IconProps> =
   makeUSWDSIcon(SpellcheckSvg)
+
 export const IconStar: React.ComponentType<IconProps> = makeUSWDSIcon(StarSvg)
+
 export const IconStarHalf: React.ComponentType<IconProps> =
   makeUSWDSIcon(StarHalfSvg)
+
 export const IconStarOutline: React.ComponentType<IconProps> =
   makeUSWDSIcon(StarOutlineSvg)
+
 export const IconStore: React.ComponentType<IconProps> = makeUSWDSIcon(StoreSvg)
+
 export const IconSupport: React.ComponentType<IconProps> =
   makeUSWDSIcon(SupportSvg)
+
 export const IconSupportAgent: React.ComponentType<IconProps> =
   makeUSWDSIcon(SupportAgentSvg)
+
 export const IconTextFields: React.ComponentType<IconProps> =
   makeUSWDSIcon(TextFieldsSvg)
+
 export const IconThumbDownAlt: React.ComponentType<IconProps> =
   makeUSWDSIcon(ThumbDownAltSvg)
+
 export const IconThumbUpAlt: React.ComponentType<IconProps> =
   makeUSWDSIcon(ThumbUpAltSvg)
+
 export const IconTimer: React.ComponentType<IconProps> = makeUSWDSIcon(TimerSvg)
+
 export const IconToggleOff: React.ComponentType<IconProps> =
   makeUSWDSIcon(ToggleOffSvg)
+
 export const IconToggleOn: React.ComponentType<IconProps> =
   makeUSWDSIcon(ToggleOnSvg)
+
 export const IconTopic: React.ComponentType<IconProps> = makeUSWDSIcon(TopicSvg)
+
 export const IconTornado: React.ComponentType<IconProps> =
   makeUSWDSIcon(TornadoSvg)
+
 export const IconTranslate: React.ComponentType<IconProps> =
   makeUSWDSIcon(TranslateSvg)
+
 export const IconTrendingDown: React.ComponentType<IconProps> =
   makeUSWDSIcon(TrendingDownSvg)
+
 export const IconTrendingUp: React.ComponentType<IconProps> =
   makeUSWDSIcon(TrendingUpSvg)
+
 export const IconTwitter: React.ComponentType<IconProps> =
   makeUSWDSIcon(TwitterSvg)
+
 export const IconUndo: React.ComponentType<IconProps> = makeUSWDSIcon(UndoSvg)
+
 export const IconUnfoldLess: React.ComponentType<IconProps> =
   makeUSWDSIcon(UnfoldLessSvg)
+
 export const IconUnfoldMore: React.ComponentType<IconProps> =
   makeUSWDSIcon(UnfoldMoreSvg)
+
 export const IconUpdate: React.ComponentType<IconProps> =
   makeUSWDSIcon(UpdateSvg)
+
 export const IconUploadFile: React.ComponentType<IconProps> =
   makeUSWDSIcon(UploadFileSvg)
+
 export const IconVerified: React.ComponentType<IconProps> =
   makeUSWDSIcon(VerifiedSvg)
+
 export const IconVerifiedUser: React.ComponentType<IconProps> =
   makeUSWDSIcon(VerifiedUserSvg)
+
+export const IconVisibility: React.ComponentType<IconProps> =
+  makeUSWDSIcon(VisibilitySvg)
+
+/** @deprecated, use IconVisibility */
 export const IconVisiblity: React.ComponentType<IconProps> =
-  makeUSWDSIcon(VisiblitySvg)
+  withDeprecationWarning(
+    IconVisibility,
+    '`IconVisiblity` is deprecated and will be removed in the next major release. Please use `IconVisibility`.'
+  )
+
 export const IconVisibilityOff: React.ComponentType<IconProps> =
   makeUSWDSIcon(VisibilityOffSvg)
+
 export const IconVolumeOff: React.ComponentType<IconProps> =
   makeUSWDSIcon(VolumeOffSvg)
+
 export const IconWarning: React.ComponentType<IconProps> =
   makeUSWDSIcon(WarningSvg)
+
 export const IconWash: React.ComponentType<IconProps> = makeUSWDSIcon(WashSvg)
+
 export const IconWifi: React.ComponentType<IconProps> = makeUSWDSIcon(WifiSvg)
+
 export const IconWork: React.ComponentType<IconProps> = makeUSWDSIcon(WorkSvg)
+
 export const IconYoutube: React.ComponentType<IconProps> =
   makeUSWDSIcon(YoutubeSvg)
+
 export const IconZoomIn: React.ComponentType<IconProps> =
   makeUSWDSIcon(ZoomInSvg)
+
 export const IconZoomOutMap: React.ComponentType<IconProps> =
   makeUSWDSIcon(ZoomOutMapSvg)
+
 export const IconZoomOut: React.ComponentType<IconProps> =
   makeUSWDSIcon(ZoomOutSvg)
