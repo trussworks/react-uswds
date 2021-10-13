@@ -146,3 +146,39 @@ export const externalClearSelection = (): React.ReactElement => {
     </Form>
   )
 }
+
+export const customInputChangeHandler = (): React.ReactElement => {
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  const options = [...fruitList]
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+
+    if (value && fruitList.findIndex((f) => f.value === value) < 0) {
+      if (options.length === fruitList.length) {
+        // Add new option to end of list
+        options.push({ value, label: value })
+      } else {
+        // Rewrite the new option
+        options[options.length - 1] = { value, label: `Add new: ${value}` }
+      }
+    }
+  }
+
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="fruit">Select a Fruit</Label>
+      <ComboBox
+        id="fruit"
+        name="fruit"
+        options={options}
+        onChange={noop}
+        inputProps={{ onChange: handleInputChange }}
+      />
+    </Form>
+  )
+}
