@@ -364,8 +364,8 @@ export const ComboBox = forwardRef(
           ))}
         </select>
         <Input
-          role="combobox"
           {...inputProps}
+          role="combobox"
           onChange={(e): void => {
             if (inputProps?.onChange) {
               // Allow a custom input onChange handler

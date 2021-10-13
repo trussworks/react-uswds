@@ -282,13 +282,13 @@ describe('ComboBox component', () => {
         name="favorite-fruit"
         options={fruitOptions}
         onChange={jest.fn()}
-        inputProps={{ required: true, role: 'testing' }}
+        inputProps={{ required: true, type: 'url' }}
       />
     )
 
     const comboBoxInput = getByTestId('combo-box-input')
     expect(comboBoxInput).toHaveAttribute('required')
-    expect(comboBoxInput).toHaveAttribute('role', 'testing')
+    expect(comboBoxInput).toHaveAttribute('type', 'url')
   })
 
   it('allows a custom input onChange handler to be called', () => {
