@@ -339,14 +339,15 @@ export const ComboBox = forwardRef(
     const containerClasses = classnames('usa-combo-box', className, {
       'usa-combo-box--pristine': isPristine,
     })
-    const listID = `combobox-${name}-list`
-    const assistiveHintID = `combobox-${name}-assistive-hint`
+
+    const listID = `${id}--list`
+    const assistiveHintID = `${id}--assistiveHint`
 
     return (
       <div
         data-testid="combo-box"
+        data-enhanced="true"
         className={containerClasses}
-        id={id}
         ref={containerRef}>
         <select
           {...selectProps}
@@ -355,8 +356,7 @@ export const ComboBox = forwardRef(
           aria-hidden
           tabIndex={-1}
           defaultValue={state.selectedOption?.value}
-          data-testid="combo-box-select"
-          disabled={isDisabled}>
+          data-testid="combo-box-select">
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -380,8 +380,10 @@ export const ComboBox = forwardRef(
           value={state.inputValue}
           focused={state.focusMode === FocusMode.Input}
           aria-owns={listID}
+          aria-autocomplete="list"
           aria-describedby={assistiveHintID}
           aria-expanded={state.isOpen}
+          id={id}
           disabled={isDisabled}
         />
         <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
@@ -392,7 +394,8 @@ export const ComboBox = forwardRef(
             onClick={(): void => dispatch({ type: ActionTypes.CLEAR })}
             data-testid="combo-box-clear-button"
             onKeyDown={handleClearKeyDown}
-            hidden={!isPristine}>
+            hidden={!isPristine || isDisabled}
+            disabled={isDisabled}>
             &nbsp;
           </button>
         </span>
@@ -440,12 +443,13 @@ export const ComboBox = forwardRef(
                 tabIndex={focused ? 0 : -1}
                 role="option"
                 aria-selected={selected}
-                aria-setsize={64}
+                aria-setsize={state.filteredOptions.length}
                 aria-posinset={index + 1}
                 id={listID + `--option-${index}`}
                 onKeyDown={handleListItemKeyDown}
                 onBlur={handleListItemBlur}
                 data-testid={`combo-box-option-${option.value}`}
+                data-value={option.value}
                 onMouseEnter={(): void =>
                   dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
                 }
