@@ -63,6 +63,11 @@ export { NavDropDownButton } from './components/header/NavDropDownButton/NavDrop
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
+// IconList
+export { IconList as IconListCONFLICT } from './components/IconList/IconList'
+export { IconListItem } from './components/IconList/IconListItem/IconListItem'
+export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
+
 // Icons
 export * from './components/Icon/Icons'
 
