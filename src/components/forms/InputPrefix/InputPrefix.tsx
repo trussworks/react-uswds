@@ -1,11 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
-import { InputPrefixSuffixProps } from './types'
+
+type InputPrefixProps = {
+  className?: string
+  children: React.ReactNode
+} & JSX.IntrinsicElements['div']
 
 export const InputPrefix = ({
   className,
   children,
-}: InputPrefixSuffixProps): React.ReactElement => {
+}: InputPrefixProps): React.ReactElement => {
   const classes = classnames('usa-input-prefix', className)
 
   return (
