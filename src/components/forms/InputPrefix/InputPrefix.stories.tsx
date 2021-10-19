@@ -29,6 +29,15 @@ export const InputWithTextInputPrefix = (): React.ReactElement => (
   </FormGroup>
 )
 
+export const InputWithTextInputPrefixError = (): React.ReactElement => (
+  <FormGroup>
+    <div className="usa-input-group usa-input-group--error">
+      <InputPrefix>cvc</InputPrefix>
+      <TextInput id="cvc" name="cvc" type="text" validationStatus="error" />
+    </div>
+  </FormGroup>
+)
+
 export const InputWithIconInputPrefix = (): React.ReactElement => (
   <FormGroup>
     <div className="usa-input-group">

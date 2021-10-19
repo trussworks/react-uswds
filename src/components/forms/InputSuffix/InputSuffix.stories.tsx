@@ -31,6 +31,22 @@ export const InputWithIconInputSuffix = (): React.ReactElement => (
   </FormGroup>
 )
 
+export const InputWithIconInputSuffixError = (): React.ReactElement => (
+  <FormGroup>
+    <div className="usa-input-group usa-input-group--error">
+      <TextInput
+        id="search"
+        name="search"
+        type="search"
+        validationStatus="error"
+      />
+      <InputSuffix>
+        <IconSearch />
+      </InputSuffix>
+    </div>
+  </FormGroup>
+)
+
 export const InputWithTextInputSuffix = (): React.ReactElement => (
   <FormGroup>
     <div className="usa-input-group usa-input-group--sm">
