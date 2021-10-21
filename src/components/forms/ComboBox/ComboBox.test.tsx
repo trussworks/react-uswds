@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
@@ -29,8 +29,8 @@ describe('ComboBox component', () => {
     scrollSpy.mockReset()
   })
 
-  it('renders without errors', () => {
-    const { getByTestId } = render(
+  it('renders the expected markup without errors', () => {
+    render(
       <ComboBox
         id="favorite-fruit"
         name="favorite-fruit"
@@ -38,125 +38,43 @@ describe('ComboBox component', () => {
         onChange={jest.fn()}
       />
     )
-    expect(getByTestId('combo-box')).toBeInTheDocument()
-  })
 
-  it('renders hidden select element on load', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-        defaultValue="apple"
-      />
-    )
-    const comboBoxSelect = getByTestId('combo-box-select')
+    const comboBoxContainer = screen.getByTestId('combo-box')
+    expect(comboBoxContainer).toBeInTheDocument()
+    expect(comboBoxContainer).toHaveClass('usa-combo-box')
+    expect(comboBoxContainer).not.toHaveClass('usa-combo-box--pristine')
+    expect(comboBoxContainer).toHaveAttribute('data-enhanced', 'true')
+
+    const comboBoxSelect = screen.getByTestId('combo-box-select')
     expect(comboBoxSelect).toBeInstanceOf(HTMLSelectElement)
     expect(comboBoxSelect).toHaveAttribute('aria-hidden', 'true')
-    expect(comboBoxSelect).toHaveClass('usa-sr-only')
+    expect(comboBoxSelect).toHaveClass(
+      'usa-select usa-sr-only usa-combo-box__select'
+    )
+
+    const comboBoxInput = screen.getByRole('combobox')
+    expect(comboBoxInput).toBeInTheDocument()
+    expect(comboBoxInput).toBeInstanceOf(HTMLInputElement)
+    expect(comboBoxInput).toHaveAttribute('aria-owns', 'favorite-fruit--list')
+    expect(comboBoxInput).toHaveAttribute('aria-autocomplete', 'list')
+    expect(comboBoxInput).toHaveAttribute(
+      'aria-describedby',
+      'favorite-fruit--assistiveHint'
+    )
+    expect(comboBoxInput).toHaveAttribute('aria-expanded', 'false')
+    expect(comboBoxInput).toHaveAttribute('autocapitalize', 'off')
+    expect(comboBoxInput).toHaveAttribute('autocomplete', 'off')
+    expect(comboBoxInput).toHaveAttribute('type', 'text')
+
+    const comboBoxList = screen.getByTestId('combo-box-option-list')
+    expect(comboBoxList).toBeInstanceOf(HTMLUListElement)
+    expect(comboBoxList).toHaveAttribute('id', 'favorite-fruit--list')
+    expect(comboBoxList).toHaveAttribute('role', 'listbox')
+    expect(comboBoxList).not.toBeVisible()
   })
 
-  it('renders input element', () => {
-    const { getByRole } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-
-    const comboBox = getByRole('combobox')
-    expect(comboBox).toBeInTheDocument()
-    expect(comboBox).toBeInstanceOf(HTMLInputElement)
-  })
-
-  it('renders hidden options list on load', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-    expect(getByTestId('combo-box-option-list')).toBeInstanceOf(
-      HTMLUListElement
-    )
-    expect(getByTestId('combo-box-input')).toHaveAttribute(
-      'aria-expanded',
-      'false'
-    )
-    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
-  })
-
-  it('shows options list when input toggle clicked', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-
-    userEvent.click(getByTestId('combo-box-toggle'))
-
-    expect(getByTestId('combo-box-option-list')).toBeVisible()
-  })
-
-  it('shows list when input is clicked', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-
-    userEvent.click(getByTestId('combo-box-input'))
-
-    expect(getByTestId('combo-box-option-list')).toBeVisible()
-  })
-
-  it('shows list when input is typed into', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-
-    userEvent.type(getByTestId('combo-box-input'), 'b')
-
-    expect(getByTestId('combo-box-option-list')).toBeVisible()
-  })
-
-  it('highlights the first option when opening the menu, when no default value exists', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
-    )
-
-    const firstItem = getByTestId('combo-box-option-list').children[0]
-
-    userEvent.click(getByTestId('combo-box-toggle'))
-
-    expect(firstItem).toBeVisible()
-    expect(firstItem).not.toHaveFocus()
-    expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
-  })
-
-  it('highlights the default value when opening the menu, when one exists', () => {
-    const { getByTestId } = render(
+  it('renders the expected markup with a default value', () => {
+    render(
       <ComboBox
         id="favorite-fruit"
         name="favorite-fruit"
@@ -166,26 +84,151 @@ describe('ComboBox component', () => {
       />
     )
 
-    userEvent.click(getByTestId('combo-box-input'))
+    const comboBoxContainer = screen.getByTestId('combo-box')
+    expect(comboBoxContainer).toHaveClass('usa-combo-box--pristine')
 
-    expect(getByTestId('combo-box-option-avocado')).toHaveAttribute(
-      'aria-selected',
-      'true'
-    )
+    const comboBoxSelect = screen.getByTestId('combo-box-select')
+    expect(comboBoxSelect).toHaveValue('avocado')
+
+    const comboBoxInput = screen.getByRole('combobox')
+    expect(comboBoxInput).toHaveValue('Avocado')
+  })
+
+  describe('toggling the list', () => {
+    it('renders all options when the list is open', () => {
+      const fruitAbridged = fruitOptions.slice(0, 3)
+
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitAbridged}
+          onChange={jest.fn()}
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      expect(screen.getAllByRole('option')).toHaveLength(fruitAbridged.length)
+
+      fruitAbridged.forEach((item, index) => {
+        const optionEl = screen.getByRole('option', { name: item.label })
+        expect(optionEl).toBeInTheDocument()
+        expect(optionEl).toHaveAttribute('value', item.value)
+        expect(optionEl).toHaveAttribute(
+          'aria-setsize',
+          `${fruitAbridged.length}`
+        )
+        expect(optionEl).toHaveAttribute('aria-posinset', `${index + 1}`)
+        expect(optionEl).toHaveAttribute(
+          'id',
+          `favorite-fruit--list--option-${index}`
+        )
+      })
+    })
+
+    it('shows options list when input toggle clicked', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+
+      expect(getByTestId('combo-box-option-list')).toBeVisible()
+    })
+
+    it('shows list when input is clicked', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-input'))
+
+      expect(getByTestId('combo-box-option-list')).toBeVisible()
+    })
+
+    it('shows list when input is typed into', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      userEvent.type(getByTestId('combo-box-input'), 'b')
+      expect(getByTestId('combo-box-option-list')).toBeVisible()
+    })
+
+    it('highlights the first option when opening the menu, when no default value exists', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const firstItem = getByTestId('combo-box-option-list').children[0]
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+
+      expect(firstItem).toBeVisible()
+      expect(firstItem).not.toHaveFocus()
+      expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
+    })
+
+    it('highlights the default value when opening the menu, when one exists', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          defaultValue="avocado"
+        />
+      )
+
+      userEvent.click(getByTestId('combo-box-input'))
+
+      expect(getByTestId('combo-box-option-avocado')).toHaveAttribute(
+        'aria-selected',
+        'true'
+      )
+    })
   })
 
   it('can be disabled', () => {
-    const { getByTestId } = render(
+    render(
       <ComboBox
         id="favorite-fruit"
         name="favorite-fruit"
-        options={fruitOptions}
+        options={[]}
         onChange={jest.fn()}
         disabled={true}
       />
     )
-    expect(getByTestId('combo-box-input')).toBeDisabled()
-    expect(getByTestId('combo-box-select')).toBeDisabled()
+
+    expect(screen.getByLabelText('Clear the select contents')).toBeDisabled()
+    expect(screen.getByLabelText('Clear the select contents')).not.toBeVisible()
+
+    expect(screen.getByRole('combobox')).toBeDisabled()
+    expect(
+      screen.getByRole('button', { name: 'Toggle the dropdown list' })
+    ).toBeDisabled()
+
+    expect(screen.getByTestId('combo-box-select')).not.toBeDisabled()
   })
 
   it('does not show the list when clicking the disabled component', () => {
@@ -239,16 +282,34 @@ describe('ComboBox component', () => {
         name="favorite-fruit"
         options={fruitOptions}
         onChange={jest.fn()}
-        inputProps={{ required: true, role: 'testing' }}
+        inputProps={{ required: true, type: 'url' }}
       />
     )
 
     const comboBoxInput = getByTestId('combo-box-input')
     expect(comboBoxInput).toHaveAttribute('required')
-    expect(comboBoxInput).toHaveAttribute('role', 'testing')
+    expect(comboBoxInput).toHaveAttribute('type', 'url')
   })
 
-  it('renders input with custom props if passed in', () => {
+  it('allows a custom input onChange handler to be called', () => {
+    const mockOnInputChange = jest.fn()
+
+    const { getByTestId } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        onChange={jest.fn()}
+        inputProps={{ onChange: mockOnInputChange }}
+      />
+    )
+
+    const input = getByTestId('combo-box-input')
+    userEvent.type(input, 'x')
+    expect(mockOnInputChange).toHaveBeenCalled()
+  })
+
+  it('renders list with custom props if passed in', () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
