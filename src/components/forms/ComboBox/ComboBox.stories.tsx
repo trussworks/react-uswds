@@ -58,7 +58,7 @@ export const withDefaultValue = (): React.ReactElement => {
         name="input-ComboBox"
         options={fruitList}
         onChange={noop}
-        defaultValue="avocado"
+        defaultValue="mango"
       />
     </Form>
   )
