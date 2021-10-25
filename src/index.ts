@@ -69,7 +69,7 @@ export { IconListItem } from './components/IconList/IconListItem/IconListItem'
 export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
 
 // Icons
-export * from './components/Icon/Icons'
+export { Icon } from './components/Icon/Icons'
 
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'

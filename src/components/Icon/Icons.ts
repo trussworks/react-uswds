@@ -240,680 +240,676 @@ import ZoomOutSvg from 'uswds/dist/img/usa-icons/zoom_out.svg?svgr'
 
 import { makeUSWDSIcon, IconProps } from './Icon'
 import React from 'react'
-import { withDeprecationWarning } from '../hoc/withDeprecationWarning'
 
-export const IconAccessibilityNew: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AccessibilityNewSvg)
+export class Icon {
+  public static AccessibilityNew: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AccessibilityNewSvg)
 
-export const IconAccessibleForward: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AccessibleForwardSvg)
+  public static AccessibleForward: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AccessibleForwardSvg)
 
-export const IconAccountBalance: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AccountBalanceSvg)
+  public static AccountBalance: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AccountBalanceSvg)
 
-export const IconAccountBox: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AccountBoxSvg)
+  public static AccountBox: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AccountBoxSvg)
 
-export const IconAccountCircle: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AccountCircleSvg)
+  public static AccountCircle: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AccountCircleSvg)
 
-export const IconAdd: React.ComponentType<IconProps> = makeUSWDSIcon(AddSvg)
+  public static Add: React.ComponentType<IconProps> = makeUSWDSIcon(AddSvg)
 
-export const IconAddCircle: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AddCircleSvg)
+  public static AddCircle: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AddCircleSvg)
 
-export const IconAddCircleOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AddCircleOutlineSvg)
+  public static AddCircleOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AddCircleOutlineSvg)
 
-export const IconAlarm: React.ComponentType<IconProps> = makeUSWDSIcon(AlarmSvg)
+  public static Alarm: React.ComponentType<IconProps> = makeUSWDSIcon(AlarmSvg)
 
-export const IconAlternateEmail: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AlternateEmailSvg)
+  public static AlternateEmail: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AlternateEmailSvg)
 
-export const IconAnnouncement: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AnnouncementSvg)
+  public static Announcement: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AnnouncementSvg)
 
-export const IconArrowBack: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ArrowBackSvg)
+  public static ArrowBack: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ArrowBackSvg)
 
-export const IconArrowDownward: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ArrowDownwardSvg)
+  public static ArrowDownward: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ArrowDownwardSvg)
 
-export const IconArrowDropDown: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ArrowDropDownSvg)
+  public static ArrowDropDown: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ArrowDropDownSvg)
 
-export const IconArrowDropUp: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ArrowDropUpSvg)
+  public static ArrowDropUp: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ArrowDropUpSvg)
 
-export const IconArrowForward: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ArrowForwardSvg)
+  public static ArrowForward: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ArrowForwardSvg)
 
-export const IconArrowUpward: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ArrowUpwardSvg)
+  public static ArrowUpward: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ArrowUpwardSvg)
 
-export const IconApi: React.ComponentType<IconProps> = makeUSWDSIcon(ApiSvg)
+  public static Api: React.ComponentType<IconProps> = makeUSWDSIcon(ApiSvg)
 
-export const IconAssessment: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AssessmentSvg)
+  public static Assessment: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AssessmentSvg)
 
-export const IconAttachFile: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AttachFileSvg)
+  public static AttachFile: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AttachFileSvg)
 
-export const IconAttachMoney: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AttachMoneySvg)
+  public static AttachMoney: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AttachMoneySvg)
 
-export const IconAutorenew: React.ComponentType<IconProps> =
-  makeUSWDSIcon(AutorenewSvg)
+  public static Autorenew: React.ComponentType<IconProps> =
+    makeUSWDSIcon(AutorenewSvg)
 
-export const IconBackpack: React.ComponentType<IconProps> =
-  makeUSWDSIcon(BackpackSvg)
+  public static Backpack: React.ComponentType<IconProps> =
+    makeUSWDSIcon(BackpackSvg)
 
-export const IconBathtub: React.ComponentType<IconProps> =
-  makeUSWDSIcon(BathtubSvg)
+  public static Bathtub: React.ComponentType<IconProps> =
+    makeUSWDSIcon(BathtubSvg)
 
-export const IconBedding: React.ComponentType<IconProps> =
-  makeUSWDSIcon(BeddingSvg)
+  public static Bedding: React.ComponentType<IconProps> =
+    makeUSWDSIcon(BeddingSvg)
 
-export const IconBookmark: React.ComponentType<IconProps> =
-  makeUSWDSIcon(BookmarkSvg)
+  public static Bookmark: React.ComponentType<IconProps> =
+    makeUSWDSIcon(BookmarkSvg)
 
-export const IconBugReport: React.ComponentType<IconProps> =
-  makeUSWDSIcon(BugReportSvg)
+  public static BugReport: React.ComponentType<IconProps> =
+    makeUSWDSIcon(BugReportSvg)
 
-export const IconBuild: React.ComponentType<IconProps> = makeUSWDSIcon(BuildSvg)
+  public static Build: React.ComponentType<IconProps> = makeUSWDSIcon(BuildSvg)
 
-export const IconCalendarToday: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CalendarTodaySvg)
+  public static CalendarToday: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CalendarTodaySvg)
 
-export const IconCampaign: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CampaignSvg)
+  public static Campaign: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CampaignSvg)
 
-export const IconCamping: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CampingSvg)
+  public static Camping: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CampingSvg)
 
-export const IconCancel: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CancelSvg)
+  public static Cancel: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CancelSvg)
 
-export const IconChat: React.ComponentType<IconProps> = makeUSWDSIcon(ChatSvg)
+  public static Chat: React.ComponentType<IconProps> = makeUSWDSIcon(ChatSvg)
 
-export const IconCheck: React.ComponentType<IconProps> = makeUSWDSIcon(CheckSvg)
+  public static Check: React.ComponentType<IconProps> = makeUSWDSIcon(CheckSvg)
 
-export const IconCheckBoxOutlineBlank: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CheckBoxOutlineBlankSvg)
+  public static CheckBoxOutlineBlank: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CheckBoxOutlineBlankSvg)
 
-export const IconCheckCircle: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CheckCircleSvg)
+  public static CheckCircle: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CheckCircleSvg)
 
-export const IconCheckCircleOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CheckCircleOutlineSvg)
+  public static CheckCircleOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CheckCircleOutlineSvg)
 
-export const IconCheckroom: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CheckroomSvg)
+  public static Checkroom: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CheckroomSvg)
 
-export const IconCleanHands: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CleanHandsSvg)
+  public static CleanHands: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CleanHandsSvg)
 
-export const IconClothes: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ClothesSvg)
+  public static Clothes: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ClothesSvg)
 
-export const IconClose: React.ComponentType<IconProps> = makeUSWDSIcon(CloseSvg)
+  public static Close: React.ComponentType<IconProps> = makeUSWDSIcon(CloseSvg)
 
-export const IconClosedCaption: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ClosedCaptionSvg)
+  public static ClosedCaption: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ClosedCaptionSvg)
 
-export const IconCloud: React.ComponentType<IconProps> = makeUSWDSIcon(CloudSvg)
+  public static Cloud: React.ComponentType<IconProps> = makeUSWDSIcon(CloudSvg)
 
-export const IconCode: React.ComponentType<IconProps> = makeUSWDSIcon(CodeSvg)
+  public static Code: React.ComponentType<IconProps> = makeUSWDSIcon(CodeSvg)
 
-export const IconComment: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CommentSvg)
+  public static Comment: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CommentSvg)
 
-export const IconConnectWithoutContact: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ConnectWithoutContactSvg)
+  public static ConnectWithoutContact: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ConnectWithoutContactSvg)
 
-export const IconConstruction: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ConstructionSvg)
+  public static Construction: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ConstructionSvg)
 
-export const IconConstructionWorker: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ConstructionWorkerSvg)
+  public static ConstructionWorker: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ConstructionWorkerSvg)
 
-export const IconContactPage: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ContactPageSvg)
+  public static ContactPage: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ContactPageSvg)
 
-export const IconContentCopy: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ContentCopySvg)
+  public static ContentCopy: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ContentCopySvg)
 
-export const IconCoronavirus: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CoronavirusSvg)
+  public static Coronavirus: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CoronavirusSvg)
 
-export const IconCreditCard: React.ComponentType<IconProps> =
-  makeUSWDSIcon(CreditCardSvg)
+  public static CreditCard: React.ComponentType<IconProps> =
+    makeUSWDSIcon(CreditCardSvg)
 
-export const IconDeck: React.ComponentType<IconProps> = makeUSWDSIcon(DeckSvg)
+  public static Deck: React.ComponentType<IconProps> = makeUSWDSIcon(DeckSvg)
 
-export const IconDelete: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DeleteSvg)
+  public static Delete: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DeleteSvg)
 
-export const IconDeviceThermostat: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DeviceThermostatSvg)
+  public static DeviceThermostat: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DeviceThermostatSvg)
 
-export const IconDirections: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DirectionsSvg)
+  public static Directions: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DirectionsSvg)
 
-export const IconDirectionsBike: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DirectionsBikeSvg)
+  public static DirectionsBike: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DirectionsBikeSvg)
 
-export const IconDirectionsBus: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DirectionsBusSvg)
+  public static DirectionsBus: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DirectionsBusSvg)
 
-export const IconDirectionsCar: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DirectionsCarSvg)
+  public static DirectionsCar: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DirectionsCarSvg)
 
-export const IconDirectionsWalk: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DirectionsWalkSvg)
+  public static DirectionsWalk: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DirectionsWalkSvg)
 
-export const IconDoNotDisturb: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DoNotDisturbSvg)
+  public static DoNotDisturb: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DoNotDisturbSvg)
 
-export const IconDoNotTouch: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DoNotTouchSvg)
+  public static DoNotTouch: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DoNotTouchSvg)
 
-export const IconDragHandle: React.ComponentType<IconProps> =
-  makeUSWDSIcon(DragHandleSvg)
+  public static DragHandle: React.ComponentType<IconProps> =
+    makeUSWDSIcon(DragHandleSvg)
 
-export const IconEco: React.ComponentType<IconProps> = makeUSWDSIcon(EcoSvg)
+  public static Eco: React.ComponentType<IconProps> = makeUSWDSIcon(EcoSvg)
 
-export const IconEdit: React.ComponentType<IconProps> = makeUSWDSIcon(EditSvg)
+  public static Edit: React.ComponentType<IconProps> = makeUSWDSIcon(EditSvg)
 
-export const IconElectricalServices: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ElectricalServicesSvg)
+  public static ElectricalServices: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ElectricalServicesSvg)
 
-export const IconEmojiEvents: React.ComponentType<IconProps> =
-  makeUSWDSIcon(EmojiEventsSvg)
+  public static EmojiEvents: React.ComponentType<IconProps> =
+    makeUSWDSIcon(EmojiEventsSvg)
 
-export const IconError: React.ComponentType<IconProps> = makeUSWDSIcon(ErrorSvg)
+  public static Error: React.ComponentType<IconProps> = makeUSWDSIcon(ErrorSvg)
 
-export const IconErrorOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ErrorOutlineSvg)
+  public static ErrorOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ErrorOutlineSvg)
 
-export const IconEvent: React.ComponentType<IconProps> = makeUSWDSIcon(EventSvg)
+  public static Event: React.ComponentType<IconProps> = makeUSWDSIcon(EventSvg)
 
-export const IconExpandLess: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ExpandLessSvg)
+  public static ExpandLess: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ExpandLessSvg)
 
-export const IconExpandMore: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ExpandMoreSvg)
+  public static ExpandMore: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ExpandMoreSvg)
 
-export const IconFacebook: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FacebookSvg)
+  public static Facebook: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FacebookSvg)
 
-export const IconFastForward: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FastForwardSvg)
+  public static FastForward: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FastForwardSvg)
 
-export const IconFastRewind: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FastRewindSvg)
+  public static FastRewind: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FastRewindSvg)
 
-export const IconFavorite: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FavoriteSvg)
+  public static Favorite: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FavoriteSvg)
 
-export const IconFavoriteBorder: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FavoriteBorderSvg)
+  public static FavoriteBorder: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FavoriteBorderSvg)
 
-export const IconFileDownload: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FileDownloadSvg)
+  public static FileDownload: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FileDownloadSvg)
 
-export const IconFilePresent: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FilePresentSvg)
+  public static FilePresent: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FilePresentSvg)
 
-export const IconFileUpload: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FileUploadSvg)
+  public static FileUpload: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FileUploadSvg)
 
-export const IconFilterAlt: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FilterAltSvg)
+  public static FilterAlt: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FilterAltSvg)
 
-export const IconFilterList: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FilterListSvg)
+  public static FilterList: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FilterListSvg)
 
-export const IconFingerprint: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FingerprintSvg)
+  public static Fingerprint: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FingerprintSvg)
 
-export const IconFirstPage: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FirstPageSvg)
+  public static FirstPage: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FirstPageSvg)
 
-export const IconFlag: React.ComponentType<IconProps> = makeUSWDSIcon(FlagSvg)
+  public static Flag: React.ComponentType<IconProps> = makeUSWDSIcon(FlagSvg)
 
-export const IconFlickr: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FlickrSvg)
+  public static Flickr: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FlickrSvg)
 
-export const IconFlight: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FlightSvg)
+  public static Flight: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FlightSvg)
 
-export const IconFlooding: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FloodingSvg)
+  public static Flooding: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FloodingSvg)
 
-export const IconFolder: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FolderSvg)
+  public static Folder: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FolderSvg)
 
-export const IconFolderOpen: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FolderOpenSvg)
+  public static FolderOpen: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FolderOpenSvg)
 
-export const IconFormatQuote: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FormatQuoteSvg)
+  public static FormatQuote: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FormatQuoteSvg)
 
-export const IconFormatSize: React.ComponentType<IconProps> =
-  makeUSWDSIcon(FormatSizeSvg)
+  public static FormatSize: React.ComponentType<IconProps> =
+    makeUSWDSIcon(FormatSizeSvg)
 
-export const IconForum: React.ComponentType<IconProps> = makeUSWDSIcon(ForumSvg)
+  public static Forum: React.ComponentType<IconProps> = makeUSWDSIcon(ForumSvg)
 
-export const IconGithub: React.ComponentType<IconProps> =
-  makeUSWDSIcon(GithubSvg)
+  public static Github: React.ComponentType<IconProps> =
+    makeUSWDSIcon(GithubSvg)
 
-export const IconGridView: React.ComponentType<IconProps> =
-  makeUSWDSIcon(GridViewSvg)
+  public static GridView: React.ComponentType<IconProps> =
+    makeUSWDSIcon(GridViewSvg)
 
-export const IconGroupAdd: React.ComponentType<IconProps> =
-  makeUSWDSIcon(GroupAddSvg)
+  public static GroupAdd: React.ComponentType<IconProps> =
+    makeUSWDSIcon(GroupAddSvg)
 
-export const IconGroups: React.ComponentType<IconProps> =
-  makeUSWDSIcon(GroupsSvg)
+  public static Groups: React.ComponentType<IconProps> =
+    makeUSWDSIcon(GroupsSvg)
 
-export const IconHearing: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HearingSvg)
+  public static Hearing: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HearingSvg)
 
-export const IconHelp: React.ComponentType<IconProps> = makeUSWDSIcon(HelpSvg)
+  public static Help: React.ComponentType<IconProps> = makeUSWDSIcon(HelpSvg)
 
-export const IconHelpOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HelpOutlineSvg)
+  public static HelpOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HelpOutlineSvg)
 
-export const IconHighlightOff: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HighlightOffSvg)
+  public static HighlightOff: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HighlightOffSvg)
 
-export const IconHistory: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HistorySvg)
+  public static History: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HistorySvg)
 
-export const IconHome: React.ComponentType<IconProps> = makeUSWDSIcon(HomeSvg)
+  public static Home: React.ComponentType<IconProps> = makeUSWDSIcon(HomeSvg)
 
-export const IconHospital: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HospitalSvg)
+  public static Hospital: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HospitalSvg)
 
-export const IconHotel: React.ComponentType<IconProps> = makeUSWDSIcon(HotelSvg)
+  public static Hotel: React.ComponentType<IconProps> = makeUSWDSIcon(HotelSvg)
 
-export const IconHourglassEmpty: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HourglassEmptySvg)
+  public static HourglassEmpty: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HourglassEmptySvg)
 
-export const IconHurricane: React.ComponentType<IconProps> =
-  makeUSWDSIcon(HurricaneSvg)
+  public static Hurricane: React.ComponentType<IconProps> =
+    makeUSWDSIcon(HurricaneSvg)
 
-export const IconIdentification: React.ComponentType<IconProps> =
-  makeUSWDSIcon(IdentificationSvg)
+  public static Identification: React.ComponentType<IconProps> =
+    makeUSWDSIcon(IdentificationSvg)
 
-export const IconImage: React.ComponentType<IconProps> = makeUSWDSIcon(ImageSvg)
+  public static Image: React.ComponentType<IconProps> = makeUSWDSIcon(ImageSvg)
 
-export const IconInfo: React.ComponentType<IconProps> = makeUSWDSIcon(InfoSvg)
+  public static Info: React.ComponentType<IconProps> = makeUSWDSIcon(InfoSvg)
 
-export const IconInfoOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(InfoOutlineSvg)
+  public static InfoOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(InfoOutlineSvg)
 
-export const IconInsights: React.ComponentType<IconProps> =
-  makeUSWDSIcon(InsightsSvg)
+  public static Insights: React.ComponentType<IconProps> =
+    makeUSWDSIcon(InsightsSvg)
 
-export const IconInstagram: React.ComponentType<IconProps> =
-  makeUSWDSIcon(InstagramSvg)
+  public static Instagram: React.ComponentType<IconProps> =
+    makeUSWDSIcon(InstagramSvg)
 
-export const IconKeyboard: React.ComponentType<IconProps> =
-  makeUSWDSIcon(KeyboardSvg)
+  public static Keyboard: React.ComponentType<IconProps> =
+    makeUSWDSIcon(KeyboardSvg)
 
-export const IconLabel: React.ComponentType<IconProps> = makeUSWDSIcon(LabelSvg)
+  public static Label: React.ComponentType<IconProps> = makeUSWDSIcon(LabelSvg)
 
-export const IconLanguage: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LanguageSvg)
+  public static Language: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LanguageSvg)
 
-export const IconLastPage: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LastPageSvg)
+  public static LastPage: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LastPageSvg)
 
-export const IconLaunch: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LaunchSvg)
+  public static Launch: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LaunchSvg)
 
-export const IconLightbulb: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LightbulbSvg)
+  public static Lightbulb: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LightbulbSvg)
 
-export const IconLightbulbOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LightbulbOutlineSvg)
+  public static LightbulbOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LightbulbOutlineSvg)
 
-export const IconLink: React.ComponentType<IconProps> = makeUSWDSIcon(LinkSvg)
+  public static Link: React.ComponentType<IconProps> = makeUSWDSIcon(LinkSvg)
 
-export const IconLinkOff: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LinkOffSvg)
+  public static LinkOff: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LinkOffSvg)
 
-export const IconList: React.ComponentType<IconProps> = makeUSWDSIcon(ListSvg)
+  public static List: React.ComponentType<IconProps> = makeUSWDSIcon(ListSvg)
 
-export const IconLocalCafe: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalCafeSvg)
+  public static LocalCafe: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalCafeSvg)
 
-export const IconLocalFireDepartment: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalFireDepartmentSvg)
+  public static LocalFireDepartment: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalFireDepartmentSvg)
 
-export const IconLocalGasStation: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalGasStationSvg)
+  public static LocalGasStation: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalGasStationSvg)
 
-export const IconLocalGroceryStore: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalGroceryStoreSvg)
+  public static LocalGroceryStore: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalGroceryStoreSvg)
 
-export const IconLocalHospital: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalHospitalSvg)
+  public static LocalHospital: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalHospitalSvg)
 
-export const IconLocalLaundryService: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalLaundryServiceSvg)
+  public static LocalLaundryService: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalLaundryServiceSvg)
 
-export const IconLocalLibrary: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalLibrarySvg)
+  public static LocalLibrary: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalLibrarySvg)
 
-export const IconLocalOffer: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalOfferSvg)
+  public static LocalOffer: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalOfferSvg)
 
-export const IconLocalParking: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalParkingSvg)
+  public static LocalParking: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalParkingSvg)
 
-export const IconLocalPharmacy: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalPharmacySvg)
+  public static LocalPharmacy: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalPharmacySvg)
 
-export const IconLocalPolice: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalPoliceSvg)
+  public static LocalPolice: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalPoliceSvg)
 
-export const IconLocalTaxi: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocalTaxiSvg)
+  public static LocalTaxi: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocalTaxiSvg)
 
-export const IconLocationCity: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocationCitySvg)
+  public static LocationCity: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocationCitySvg)
 
-export const IconLocationOn: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LocationOnSvg)
+  public static LocationOn: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LocationOnSvg)
 
-export const IconLock: React.ComponentType<IconProps> = makeUSWDSIcon(LockSvg)
+  public static Lock: React.ComponentType<IconProps> = makeUSWDSIcon(LockSvg)
 
-export const IconLockOpen: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LockOpenSvg)
+  public static LockOpen: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LockOpenSvg)
 
-export const IconLockOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LockOutlineSvg)
+  public static LockOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LockOutlineSvg)
 
-export const IconLogin: React.ComponentType<IconProps> = makeUSWDSIcon(LoginSvg)
+  public static Login: React.ComponentType<IconProps> = makeUSWDSIcon(LoginSvg)
 
-export const IconLogout: React.ComponentType<IconProps> =
-  makeUSWDSIcon(LogoutSvg)
+  public static Logout: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LogoutSvg)
 
-export const IconLoop: React.ComponentType<IconProps> = makeUSWDSIcon(LoopSvg)
+  public static Loop: React.ComponentType<IconProps> = makeUSWDSIcon(LoopSvg)
 
-export const IconMail: React.ComponentType<IconProps> = makeUSWDSIcon(MailSvg)
+  public static Mail: React.ComponentType<IconProps> = makeUSWDSIcon(MailSvg)
 
-export const IconMailOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(MailOutlineSvg)
+  public static MailOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(MailOutlineSvg)
 
-export const IconMap: React.ComponentType<IconProps> = makeUSWDSIcon(MapSvg)
+  public static Map: React.ComponentType<IconProps> = makeUSWDSIcon(MapSvg)
 
-export const IconMasks: React.ComponentType<IconProps> = makeUSWDSIcon(MasksSvg)
+  public static Masks: React.ComponentType<IconProps> = makeUSWDSIcon(MasksSvg)
 
-export const IconMedicalServices: React.ComponentType<IconProps> =
-  makeUSWDSIcon(MedicalServicesSvg)
+  public static MedicalServices: React.ComponentType<IconProps> =
+    makeUSWDSIcon(MedicalServicesSvg)
 
-export const IconMenu: React.ComponentType<IconProps> = makeUSWDSIcon(MenuSvg)
+  public static Menu: React.ComponentType<IconProps> = makeUSWDSIcon(MenuSvg)
 
-export const IconMilitaryTech: React.ComponentType<IconProps> =
-  makeUSWDSIcon(MilitaryTechSvg)
+  public static MilitaryTech: React.ComponentType<IconProps> =
+    makeUSWDSIcon(MilitaryTechSvg)
 
-export const IconMoreHoriz: React.ComponentType<IconProps> =
-  makeUSWDSIcon(MoreHorizSvg)
+  public static MoreHoriz: React.ComponentType<IconProps> =
+    makeUSWDSIcon(MoreHorizSvg)
 
-export const IconMoreVert: React.ComponentType<IconProps> =
-  makeUSWDSIcon(MoreVertSvg)
+  public static MoreVert: React.ComponentType<IconProps> =
+    makeUSWDSIcon(MoreVertSvg)
 
-export const IconMyLocation: React.ComponentType<IconProps> =
-  makeUSWDSIcon(MyLocationSvg)
+  public static MyLocation: React.ComponentType<IconProps> =
+    makeUSWDSIcon(MyLocationSvg)
 
-export const IconNavigateBefore: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NavigateBeforeSvg)
+  public static NavigateBefore: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NavigateBeforeSvg)
 
-export const IconNavigateNext: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NavigateNextSvg)
+  public static NavigateNext: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NavigateNextSvg)
 
-export const IconNavigateFarBefore: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NavigateFarBeforeSvg)
+  public static NavigateFarBefore: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NavigateFarBeforeSvg)
 
-export const IconNavigateFarNext: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NavigateFarNextSvg)
+  public static NavigateFarNext: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NavigateFarNextSvg)
 
-export const IconNearMe: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NearMeSvg)
+  public static NearMe: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NearMeSvg)
 
-export const IconNotifications: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NotificationsSvg)
+  public static Notifications: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NotificationsSvg)
 
-export const IconNotificationsActive: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NotificationsActiveSvg)
+  public static NotificationsActive: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NotificationsActiveSvg)
 
-export const IconNotificationsNone: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NotificationsNoneSvg)
+  public static NotificationsNone: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NotificationsNoneSvg)
 
-export const IconNotificationsOff: React.ComponentType<IconProps> =
-  makeUSWDSIcon(NotificationsOffSvg)
+  public static NotificationsOff: React.ComponentType<IconProps> =
+    makeUSWDSIcon(NotificationsOffSvg)
 
-export const IconPark: React.ComponentType<IconProps> = makeUSWDSIcon(ParkSvg)
+  public static Park: React.ComponentType<IconProps> = makeUSWDSIcon(ParkSvg)
 
-export const IconPeople: React.ComponentType<IconProps> =
-  makeUSWDSIcon(PeopleSvg)
+  public static People: React.ComponentType<IconProps> =
+    makeUSWDSIcon(PeopleSvg)
 
-export const IconPerson: React.ComponentType<IconProps> =
-  makeUSWDSIcon(PersonSvg)
+  public static Person: React.ComponentType<IconProps> =
+    makeUSWDSIcon(PersonSvg)
 
-export const IconPets: React.ComponentType<IconProps> = makeUSWDSIcon(PetsSvg)
+  public static Pets: React.ComponentType<IconProps> = makeUSWDSIcon(PetsSvg)
 
-export const IconPhone: React.ComponentType<IconProps> = makeUSWDSIcon(PhoneSvg)
+  public static Phone: React.ComponentType<IconProps> = makeUSWDSIcon(PhoneSvg)
 
-export const IconPhotoCamera: React.ComponentType<IconProps> =
-  makeUSWDSIcon(PhotoCameraSvg)
+  public static PhotoCamera: React.ComponentType<IconProps> =
+    makeUSWDSIcon(PhotoCameraSvg)
 
-export const IconPrint: React.ComponentType<IconProps> = makeUSWDSIcon(PrintSvg)
+  public static Print: React.ComponentType<IconProps> = makeUSWDSIcon(PrintSvg)
 
-export const IconPriorityHigh: React.ComponentType<IconProps> =
-  makeUSWDSIcon(PriorityHighSvg)
+  public static PriorityHigh: React.ComponentType<IconProps> =
+    makeUSWDSIcon(PriorityHighSvg)
 
-export const IconPublic: React.ComponentType<IconProps> =
-  makeUSWDSIcon(PublicSvg)
+  public static Public: React.ComponentType<IconProps> =
+    makeUSWDSIcon(PublicSvg)
 
-export const IconPushPin: React.ComponentType<IconProps> =
-  makeUSWDSIcon(PushPinSvg)
+  public static PushPin: React.ComponentType<IconProps> =
+    makeUSWDSIcon(PushPinSvg)
 
-export const IconRadioButtonUnchecked: React.ComponentType<IconProps> =
-  makeUSWDSIcon(RadioButtonUncheckedSvg)
+  public static RadioButtonUnchecked: React.ComponentType<IconProps> =
+    makeUSWDSIcon(RadioButtonUncheckedSvg)
 
-export const IconRain: React.ComponentType<IconProps> = makeUSWDSIcon(RainSvg)
+  public static Rain: React.ComponentType<IconProps> = makeUSWDSIcon(RainSvg)
 
-export const IconReduceCapacity: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ReduceCapacitySvg)
+  public static ReduceCapacity: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ReduceCapacitySvg)
 
-export const IconRemove: React.ComponentType<IconProps> =
-  makeUSWDSIcon(RemoveSvg)
+  public static Remove: React.ComponentType<IconProps> =
+    makeUSWDSIcon(RemoveSvg)
 
-export const IconReport: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ReportSvg)
+  public static Report: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ReportSvg)
 
-export const IconRestaurant: React.ComponentType<IconProps> =
-  makeUSWDSIcon(RestaurantSvg)
+  public static Restaurant: React.ComponentType<IconProps> =
+    makeUSWDSIcon(RestaurantSvg)
 
-export const IconRssFeed: React.ComponentType<IconProps> =
-  makeUSWDSIcon(RssFeedSvg)
+  public static RssFeed: React.ComponentType<IconProps> =
+    makeUSWDSIcon(RssFeedSvg)
 
-export const IconSafetyDivider: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SafetyDividerSvg)
+  public static SafetyDivider: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SafetyDividerSvg)
 
-export const IconSanitizer: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SanitizerSvg)
+  public static Sanitizer: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SanitizerSvg)
 
-export const IconSaveAlt: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SaveAltSvg)
+  public static SaveAlt: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SaveAltSvg)
 
-export const IconSevereWeather: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SevereWeatherSvg)
+  public static SevereWeather: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SevereWeatherSvg)
 
-export const IconSchedule: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ScheduleSvg)
+  public static Schedule: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ScheduleSvg)
 
-export const IconSchool: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SchoolSvg)
+  public static School: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SchoolSvg)
 
-export const IconScience: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ScienceSvg)
+  public static Science: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ScienceSvg)
 
-export const IconSearch: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SearchSvg)
+  public static Search: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SearchSvg)
 
-export const IconSecurity: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SecuritySvg)
+  public static Security: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SecuritySvg)
 
-export const IconSend: React.ComponentType<IconProps> = makeUSWDSIcon(SendSvg)
+  public static Send: React.ComponentType<IconProps> = makeUSWDSIcon(SendSvg)
 
-export const IconSentimentDissatisfied: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SentimentDissatisfiedSvg)
+  public static SentimentDissatisfied: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SentimentDissatisfiedSvg)
 
-export const IconSentimentNeutral: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SentimentNeutralSvg)
+  public static SentimentNeutral: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SentimentNeutralSvg)
 
-export const IconSentimentSatisfied: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SentimentSatisfiedSvg)
+  public static SentimentSatisfied: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SentimentSatisfiedSvg)
 
-export const IconSentimentSatisfiedAlt: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SentimentSatisfiedAltSvg)
+  public static SentimentSatisfiedAlt: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SentimentSatisfiedAltSvg)
 
-export const IconSentimentVeryDissatisfied: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SentimentVeryDissatisfiedSvg)
+  public static SentimentVeryDissatisfied: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SentimentVeryDissatisfiedSvg)
 
-export const IconSettings: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SettingsSvg)
+  public static Settings: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SettingsSvg)
 
-export const IconShare: React.ComponentType<IconProps> = makeUSWDSIcon(ShareSvg)
+  public static Share: React.ComponentType<IconProps> = makeUSWDSIcon(ShareSvg)
 
-export const IconShield: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ShieldSvg)
+  public static Shield: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ShieldSvg)
 
-export const IconShoppingBasket: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ShoppingBasketSvg)
+  public static ShoppingBasket: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ShoppingBasketSvg)
 
-export const IconSnow: React.ComponentType<IconProps> = makeUSWDSIcon(SnowSvg)
+  public static Snow: React.ComponentType<IconProps> = makeUSWDSIcon(SnowSvg)
 
-export const IconSoap: React.ComponentType<IconProps> = makeUSWDSIcon(SoapSvg)
+  public static Soap: React.ComponentType<IconProps> = makeUSWDSIcon(SoapSvg)
 
-export const IconSocialDistance: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SocialDistanceSvg)
+  public static SocialDistance: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SocialDistanceSvg)
 
-export const IconSortArrow: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SortArrowSvg)
+  public static SortArrow: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SortArrowSvg)
 
-export const IconSpellcheck: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SpellcheckSvg)
+  public static Spellcheck: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SpellcheckSvg)
 
-export const IconStar: React.ComponentType<IconProps> = makeUSWDSIcon(StarSvg)
+  public static Star: React.ComponentType<IconProps> = makeUSWDSIcon(StarSvg)
 
-export const IconStarHalf: React.ComponentType<IconProps> =
-  makeUSWDSIcon(StarHalfSvg)
+  public static StarHalf: React.ComponentType<IconProps> =
+    makeUSWDSIcon(StarHalfSvg)
 
-export const IconStarOutline: React.ComponentType<IconProps> =
-  makeUSWDSIcon(StarOutlineSvg)
+  public static StarOutline: React.ComponentType<IconProps> =
+    makeUSWDSIcon(StarOutlineSvg)
 
-export const IconStore: React.ComponentType<IconProps> = makeUSWDSIcon(StoreSvg)
+  public static Store: React.ComponentType<IconProps> = makeUSWDSIcon(StoreSvg)
 
-export const IconSupport: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SupportSvg)
+  public static Support: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SupportSvg)
 
-export const IconSupportAgent: React.ComponentType<IconProps> =
-  makeUSWDSIcon(SupportAgentSvg)
+  public static SupportAgent: React.ComponentType<IconProps> =
+    makeUSWDSIcon(SupportAgentSvg)
 
-export const IconTextFields: React.ComponentType<IconProps> =
-  makeUSWDSIcon(TextFieldsSvg)
+  public static TextFields: React.ComponentType<IconProps> =
+    makeUSWDSIcon(TextFieldsSvg)
 
-export const IconThumbDownAlt: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ThumbDownAltSvg)
+  public static ThumbDownAlt: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ThumbDownAltSvg)
 
-export const IconThumbUpAlt: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ThumbUpAltSvg)
+  public static ThumbUpAlt: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ThumbUpAltSvg)
 
-export const IconTimer: React.ComponentType<IconProps> = makeUSWDSIcon(TimerSvg)
+  public static Timer: React.ComponentType<IconProps> = makeUSWDSIcon(TimerSvg)
 
-export const IconToggleOff: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ToggleOffSvg)
+  public static ToggleOff: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ToggleOffSvg)
 
-export const IconToggleOn: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ToggleOnSvg)
+  public static ToggleOn: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ToggleOnSvg)
 
-export const IconTopic: React.ComponentType<IconProps> = makeUSWDSIcon(TopicSvg)
+  public static Topic: React.ComponentType<IconProps> = makeUSWDSIcon(TopicSvg)
 
-export const IconTornado: React.ComponentType<IconProps> =
-  makeUSWDSIcon(TornadoSvg)
+  public static Tornado: React.ComponentType<IconProps> =
+    makeUSWDSIcon(TornadoSvg)
 
-export const IconTranslate: React.ComponentType<IconProps> =
-  makeUSWDSIcon(TranslateSvg)
+  public static Translate: React.ComponentType<IconProps> =
+    makeUSWDSIcon(TranslateSvg)
 
-export const IconTrendingDown: React.ComponentType<IconProps> =
-  makeUSWDSIcon(TrendingDownSvg)
+  public static TrendingDown: React.ComponentType<IconProps> =
+    makeUSWDSIcon(TrendingDownSvg)
 
-export const IconTrendingUp: React.ComponentType<IconProps> =
-  makeUSWDSIcon(TrendingUpSvg)
+  public static TrendingUp: React.ComponentType<IconProps> =
+    makeUSWDSIcon(TrendingUpSvg)
 
-export const IconTwitter: React.ComponentType<IconProps> =
-  makeUSWDSIcon(TwitterSvg)
+  public static Twitter: React.ComponentType<IconProps> =
+    makeUSWDSIcon(TwitterSvg)
 
-export const IconUndo: React.ComponentType<IconProps> = makeUSWDSIcon(UndoSvg)
+  public static Undo: React.ComponentType<IconProps> = makeUSWDSIcon(UndoSvg)
 
-export const IconUnfoldLess: React.ComponentType<IconProps> =
-  makeUSWDSIcon(UnfoldLessSvg)
+  public static UnfoldLess: React.ComponentType<IconProps> =
+    makeUSWDSIcon(UnfoldLessSvg)
 
-export const IconUnfoldMore: React.ComponentType<IconProps> =
-  makeUSWDSIcon(UnfoldMoreSvg)
+  public static UnfoldMore: React.ComponentType<IconProps> =
+    makeUSWDSIcon(UnfoldMoreSvg)
 
-export const IconUpdate: React.ComponentType<IconProps> =
-  makeUSWDSIcon(UpdateSvg)
+  public static Update: React.ComponentType<IconProps> =
+    makeUSWDSIcon(UpdateSvg)
 
-export const IconUploadFile: React.ComponentType<IconProps> =
-  makeUSWDSIcon(UploadFileSvg)
+  public static UploadFile: React.ComponentType<IconProps> =
+    makeUSWDSIcon(UploadFileSvg)
 
-export const IconVerified: React.ComponentType<IconProps> =
-  makeUSWDSIcon(VerifiedSvg)
+  public static Verified: React.ComponentType<IconProps> =
+    makeUSWDSIcon(VerifiedSvg)
 
-export const IconVerifiedUser: React.ComponentType<IconProps> =
-  makeUSWDSIcon(VerifiedUserSvg)
+  public static VerifiedUser: React.ComponentType<IconProps> =
+    makeUSWDSIcon(VerifiedUserSvg)
 
-export const IconVisibility: React.ComponentType<IconProps> =
-  makeUSWDSIcon(VisibilitySvg)
+  public static Visibility: React.ComponentType<IconProps> =
+    makeUSWDSIcon(VisibilitySvg)
 
-/** @deprecated, use IconVisibility */
-export const IconVisiblity: React.ComponentType<IconProps> =
-  withDeprecationWarning(
-    IconVisibility,
-    '`IconVisiblity` is deprecated and will be removed in the next major release. Please use `IconVisibility`.'
-  )
+  public static VisibilityOff: React.ComponentType<IconProps> =
+    makeUSWDSIcon(VisibilityOffSvg)
 
-export const IconVisibilityOff: React.ComponentType<IconProps> =
-  makeUSWDSIcon(VisibilityOffSvg)
+  public static VolumeOff: React.ComponentType<IconProps> =
+    makeUSWDSIcon(VolumeOffSvg)
 
-export const IconVolumeOff: React.ComponentType<IconProps> =
-  makeUSWDSIcon(VolumeOffSvg)
+  public static Warning: React.ComponentType<IconProps> =
+    makeUSWDSIcon(WarningSvg)
 
-export const IconWarning: React.ComponentType<IconProps> =
-  makeUSWDSIcon(WarningSvg)
+  public static Wash: React.ComponentType<IconProps> = makeUSWDSIcon(WashSvg)
 
-export const IconWash: React.ComponentType<IconProps> = makeUSWDSIcon(WashSvg)
+  public static Wifi: React.ComponentType<IconProps> = makeUSWDSIcon(WifiSvg)
 
-export const IconWifi: React.ComponentType<IconProps> = makeUSWDSIcon(WifiSvg)
+  public static Work: React.ComponentType<IconProps> = makeUSWDSIcon(WorkSvg)
 
-export const IconWork: React.ComponentType<IconProps> = makeUSWDSIcon(WorkSvg)
+  public static Youtube: React.ComponentType<IconProps> =
+    makeUSWDSIcon(YoutubeSvg)
 
-export const IconYoutube: React.ComponentType<IconProps> =
-  makeUSWDSIcon(YoutubeSvg)
+  public static ZoomIn: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ZoomInSvg)
 
-export const IconZoomIn: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ZoomInSvg)
+  public static ZoomOutMap: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ZoomOutMapSvg)
 
-export const IconZoomOutMap: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ZoomOutMapSvg)
+  public static ZoomOut: React.ComponentType<IconProps> =
+    makeUSWDSIcon(ZoomOutSvg)
+}
 
-export const IconZoomOut: React.ComponentType<IconProps> =
-  makeUSWDSIcon(ZoomOutSvg)
+export default Icon
