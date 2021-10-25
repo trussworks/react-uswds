@@ -1,11 +1,5 @@
 import React, { ReactElement } from 'react'
-import {
-  IconAttachMoney,
-  IconCancel,
-  IconCheckCircle,
-  IconHelp,
-  IconThumbUpAlt,
-} from '../Icon/Icons'
+import { Icon } from '../Icon/Icons'
 import { IconList } from './IconList'
 import { IconListItem } from './IconListItem/IconListItem'
 import { IconListTitle } from './IconListTitle/IconListTitle'
@@ -26,13 +20,13 @@ Source: https://designsystem.digital.gov/components/icon-list/
 
 export const Default = (): ReactElement => (
   <IconList>
-    <IconListItem icon={IconCheckCircle} iconDivClassName="text-green">
+    <IconListItem icon={Icon.CheckCircle} iconDivClassName="text-green">
       Wash your hands for 20 seconds with soap
     </IconListItem>
-    <IconListItem icon={IconCheckCircle} iconDivClassName="text-green">
+    <IconListItem icon={Icon.CheckCircle} iconDivClassName="text-green">
       Stay six feet away from others
     </IconListItem>
-    <IconListItem icon={IconCancel} iconDivClassName="text-red">
+    <IconListItem icon={Icon.Cancel} iconDivClassName="text-red">
       Avoid large gatherings
     </IconListItem>
   </IconList>
@@ -42,21 +36,21 @@ export const SimpleContent = (): ReactElement => (
   <>
     <p className="margin-bottom-2">Benefits of joining Global Entry program:</p>
     <IconList className="usa-icon-list--primary">
-      <IconListItem icon={IconThumbUpAlt}>No processing lines</IconListItem>
-      <IconListItem icon={IconThumbUpAlt}>
+      <IconListItem icon={Icon.ThumbUpAlt}>No processing lines</IconListItem>
+      <IconListItem icon={Icon.ThumbUpAlt}>
         Access to expedited entry benefits in other countries
       </IconListItem>
-      <IconListItem icon={IconThumbUpAlt}>
+      <IconListItem icon={Icon.ThumbUpAlt}>
         Available at major U.S. airports
       </IconListItem>
-      <IconListItem icon={IconThumbUpAlt}>Reduced wait times</IconListItem>
+      <IconListItem icon={Icon.ThumbUpAlt}>Reduced wait times</IconListItem>
     </IconList>
   </>
 )
 
 export const RichContent = (): ReactElement => (
   <IconList>
-    <IconListItem icon={IconCheckCircle} iconDivClassName="text-ink">
+    <IconListItem icon={Icon.CheckCircle} iconDivClassName="text-ink">
       <IconListTitle type="h3">Donate cash when possible.</IconListTitle>
       <p>
         Financial contributions to recognized disaster relief organizations are
@@ -66,7 +60,7 @@ export const RichContent = (): ReactElement => (
         businesses local to the disaster, which supports economic recovery.
       </p>
     </IconListItem>
-    <IconListItem icon={IconCheckCircle} iconDivClassName="text-ink">
+    <IconListItem icon={Icon.CheckCircle} iconDivClassName="text-ink">
       <IconListTitle type="h3">
         Confirm what donations are needed.
       </IconListTitle>
@@ -76,7 +70,7 @@ export const RichContent = (): ReactElement => (
         transportation and warehouse space.
       </p>
     </IconListItem>
-    <IconListItem icon={IconCheckCircle} iconDivClassName="text-ink">
+    <IconListItem icon={Icon.CheckCircle} iconDivClassName="text-ink">
       <IconListTitle type="h3">
         Talk to trusted organizations about volunteering.
       </IconListTitle>
@@ -98,7 +92,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
       spending more time at home.
     </p>
     <IconList className="usa-icon-list--size-lg">
-      <IconListItem icon={IconAttachMoney} iconDivClassName="text-green">
+      <IconListItem icon={Icon.AttachMoney} iconDivClassName="text-green">
         <IconListTitle type="h3">Let the sun shine.</IconListTitle>
         <p>
           On sunny days, open your curtains to allow the sun to naturally warm
@@ -107,7 +101,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
           your curtains to help keep your house cool.
         </p>
       </IconListItem>
-      <IconListItem icon={IconAttachMoney} iconDivClassName="text-green">
+      <IconListItem icon={Icon.AttachMoney} iconDivClassName="text-green">
         <IconListTitle type="h3">Adjust your schedule.</IconListTitle>
         <p>
           Instead of running high-energy-use appliances such as dishwashers and
@@ -116,7 +110,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
           at off-peak times, which will help reduce your costs.
         </p>
       </IconListItem>
-      <IconListItem icon={IconAttachMoney} iconDivClassName="text-green">
+      <IconListItem icon={Icon.AttachMoney} iconDivClassName="text-green">
         <IconListTitle type="h3">Fill it up.</IconListTitle>
         <p>
           Wash full loads, whether it’s clothes or dishes. Washing multiple
@@ -131,15 +125,15 @@ export const CustomSizeWithRichContent = (): ReactElement => (
 
 export const CustomSize = (): ReactElement => (
   <IconList className="usa-icon-list--size-lg">
-    <IconListItem icon={IconHelp} iconDivClassName="text-blue">
+    <IconListItem icon={Icon.Help} iconDivClassName="text-blue">
       <span className="text-bold">Timing.</span> Is now the right time to start
       a business?
     </IconListItem>
-    <IconListItem icon={IconHelp} iconDivClassName="text-blue">
+    <IconListItem icon={Icon.Help} iconDivClassName="text-blue">
       <span className="text-bold">Funding.</span> Do I have enough money to
       launch a business?
     </IconListItem>
-    <IconListItem icon={IconHelp} iconDivClassName="text-blue">
+    <IconListItem icon={Icon.Help} iconDivClassName="text-blue">
       <span className="text-bold">Need.</span> Will this business fill a real
       need for my customers?
     </IconListItem>
