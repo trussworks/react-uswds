@@ -5,9 +5,6 @@ import { TimePicker } from './TimePicker'
 import userEvent from '@testing-library/user-event'
 
 describe('TimePicker Component', () => {
-  const scrollFunction = jest.fn()
-  window.HTMLElement.prototype.scrollIntoView = scrollFunction
-
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -115,7 +112,6 @@ describe('TimePicker Component', () => {
     userEvent.type(comboBoxTextInput, '5:3p')
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).not.toHaveFocus()
-    expect(scrollFunction).toHaveBeenCalledTimes(4) // 4 times: open, type: 5, 3, p
 
     fireEvent.keyDown(comboBoxTextInput, { key: 'ArrowDown' })
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
@@ -157,21 +153,18 @@ describe('TimePicker Component', () => {
     expect(fiveAm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveAm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
-    expect(scrollFunction).toHaveBeenCalledTimes(2)
 
     // Continue typing to filter by half hour
     userEvent.type(comboBoxTextInput, ':3')
     expect(fiveThirtyAm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyAm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
-    expect(scrollFunction).toHaveBeenCalledTimes(3)
 
     // Continue typing to filter by am/pm
     userEvent.type(comboBoxTextInput, 'p')
     expect(fiveThirtyPm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyPm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
-    expect(scrollFunction).toHaveBeenCalledTimes(4)
 
     // Focus the element by pressing the down key
     fireEvent.keyDown(comboBoxTextInput, { key: 'ArrowDown' })

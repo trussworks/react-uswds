@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/trussworks/react-uswds/compare/2.2.0...2.3.0) (2021-10-19)
+
+
+### Features
+
+* Add input onChange handler to ComboBox ([#1689](https://github.com/trussworks/react-uswds/issues/1689)) ([47be106](https://github.com/trussworks/react-uswds/commit/47be1062e4a54472235f8652978a0c69057ff236))
+
+
+### Documentation & Examples
+
+* Update ADR-0001 name to match it's title/outcome ([#1652](https://github.com/trussworks/react-uswds/issues/1652)) ([d3bd12c](https://github.com/trussworks/react-uswds/commit/d3bd12c54186bb1cfc333bc3b99c6ca7370be720))
+
 ## [2.2.0](https://github.com/trussworks/react-uswds/compare/2.1.0...2.2.0) (2021-10-08)
 
 

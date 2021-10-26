@@ -75,9 +75,9 @@ const Input = ({
   return (
     <input
       type="text"
+      {...inputProps}
       className="usa-combo-box__input"
       data-testid="combo-box-input"
-      {...inputProps}
       autoCapitalize="off"
       autoComplete="off"
       ref={inputRef}
@@ -139,6 +139,7 @@ export const ComboBox = forwardRef(
     )
 
     const containerRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLUListElement>(null)
     const focusedItemRef = useRef<HTMLLIElement>(null)
 
     useEffect(() => {
@@ -161,9 +162,22 @@ export const ComboBox = forwardRef(
         state.isOpen &&
         state.focusedOption &&
         focusedItemRef.current &&
+        listRef.current &&
         state.focusMode === FocusMode.Input
       ) {
-        focusedItemRef.current.scrollIntoView(false)
+        const optionBottom =
+          focusedItemRef.current.offsetTop + focusedItemRef.current.offsetHeight
+        const currentBottom =
+          listRef.current.scrollTop + listRef.current.offsetHeight
+
+        if (optionBottom > currentBottom) {
+          listRef.current.scrollTop =
+            optionBottom - listRef.current.offsetHeight
+        }
+
+        if (focusedItemRef.current.offsetTop < listRef.current.scrollTop) {
+          listRef.current.scrollTop = focusedItemRef.current.offsetTop
+        }
       }
     }, [state.isOpen, state.focusedOption])
 
@@ -301,6 +315,7 @@ export const ComboBox = forwardRef(
         }
       }
     }
+
     const handleListItemBlur = (event: FocusEvent<HTMLLIElement>): void => {
       const { relatedTarget: newTarget } = event
 
@@ -339,24 +354,24 @@ export const ComboBox = forwardRef(
     const containerClasses = classnames('usa-combo-box', className, {
       'usa-combo-box--pristine': isPristine,
     })
-    const listID = `combobox-${name}-list`
-    const assistiveHintID = `combobox-${name}-assistive-hint`
+
+    const listID = `${id}--list`
+    const assistiveHintID = `${id}--assistiveHint`
 
     return (
       <div
         data-testid="combo-box"
+        data-enhanced="true"
         className={containerClasses}
-        id={id}
         ref={containerRef}>
         <select
+          {...selectProps}
           className="usa-select usa-sr-only usa-combo-box__select"
           name={name}
           aria-hidden
           tabIndex={-1}
           defaultValue={state.selectedOption?.value}
-          data-testid="combo-box-select"
-          disabled={isDisabled}
-          {...selectProps}>
+          data-testid="combo-box-select">
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -364,20 +379,27 @@ export const ComboBox = forwardRef(
           ))}
         </select>
         <Input
-          onChange={(e): void =>
+          {...inputProps}
+          role="combobox"
+          onChange={(e): void => {
+            if (inputProps?.onChange) {
+              // Allow a custom input onChange handler
+              inputProps?.onChange(e)
+            }
+
             dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value })
-          }
+          }}
           onClick={(): void => dispatch({ type: ActionTypes.OPEN_LIST })}
           onBlur={handleInputBlur}
           onKeyDown={handleInputKeyDown}
           value={state.inputValue}
           focused={state.focusMode === FocusMode.Input}
-          role="combobox"
           aria-owns={listID}
+          aria-autocomplete="list"
           aria-describedby={assistiveHintID}
           aria-expanded={state.isOpen}
+          id={id}
           disabled={isDisabled}
-          {...inputProps}
         />
         <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
           <button
@@ -387,7 +409,8 @@ export const ComboBox = forwardRef(
             onClick={(): void => dispatch({ type: ActionTypes.CLEAR })}
             data-testid="combo-box-clear-button"
             onKeyDown={handleClearKeyDown}
-            hidden={!isPristine}>
+            hidden={!isPristine || isDisabled}
+            disabled={isDisabled}>
             &nbsp;
           </button>
         </span>
@@ -411,13 +434,14 @@ export const ComboBox = forwardRef(
           </button>
         </span>
         <ul
+          {...ulProps}
           data-testid="combo-box-option-list"
           tabIndex={-1}
           id={listID}
           className="usa-combo-box__list"
           role="listbox"
-          hidden={!state.isOpen}
-          {...ulProps}>
+          ref={listRef}
+          hidden={!state.isOpen}>
           {state.filteredOptions.map((option, index) => {
             const focused = option === state.focusedOption
             const selected = option === state.selectedOption
@@ -435,12 +459,13 @@ export const ComboBox = forwardRef(
                 tabIndex={focused ? 0 : -1}
                 role="option"
                 aria-selected={selected}
-                aria-setsize={64}
+                aria-setsize={state.filteredOptions.length}
                 aria-posinset={index + 1}
                 id={listID + `--option-${index}`}
                 onKeyDown={handleListItemKeyDown}
                 onBlur={handleListItemBlur}
                 data-testid={`combo-box-option-${option.value}`}
+                data-value={option.value}
                 onMouseEnter={(): void =>
                   dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
                 }
