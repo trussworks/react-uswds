@@ -31,7 +31,11 @@ export const IconListTitle = ({
 }: IconListParagraphTitleProps | IconListHeadingTitleProps): ReactElement => {
   const classes = classnames(className, 'usa-icon-list__title')
   const Tag = type
-  return <Tag className={classes}>{children}</Tag>
+  return (
+    <Tag className={classes} data-testid="iconListTitle">
+      {children}
+    </Tag>
+  )
 }
 
 export default IconListTitle

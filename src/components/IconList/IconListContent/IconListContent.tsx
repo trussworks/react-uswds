@@ -9,10 +9,15 @@ interface IconListContentProps {
 export const IconListContent = ({
   className,
   children,
+  ...divProps
 }: IconListContentProps & JSX.IntrinsicElements['div']): ReactElement => {
   const classes = classnames(className, 'usa-icon-list__content')
 
-  return <div className={classes}>{children}</div>
+  return (
+    <div className={classes} {...divProps} data-testid="iconListContent">
+      {children}
+    </div>
+  )
 }
 
 export default IconListContent

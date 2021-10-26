@@ -13,7 +13,11 @@ export const IconList = ({
 }: IconListProps & JSX.IntrinsicElements['ul']): ReactElement => {
   const classes = classnames(className, 'usa-icon-list')
 
-  return <ul className={classes}>{children}</ul>
+  return (
+    <ul className={classes} data-testid="iconList">
+      {children}
+    </ul>
+  )
 }
 
 export default IconList
