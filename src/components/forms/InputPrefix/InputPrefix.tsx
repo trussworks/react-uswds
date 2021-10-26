@@ -9,11 +9,17 @@ type InputPrefixProps = {
 export const InputPrefix = ({
   className,
   children,
+  ...divProps
 }: InputPrefixProps): React.ReactElement => {
   const classes = classnames('usa-input-prefix', className)
 
   return (
-    <div className={classes} aria-hidden="true" data-testid="InputPrefix">
+    <div
+      className={classes}
+      aria-hidden="true"
+      {...divProps}
+      data-testid="InputPrefix"
+    >
       {children}
     </div>
   )
