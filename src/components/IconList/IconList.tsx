@@ -1,9 +1,8 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-// TODO: Size, Color?
 interface IconListProps {
-  children: React.ReactNode // TODO: Constrain further?
+  children: React.ReactNode
   className?: string
 }
 
