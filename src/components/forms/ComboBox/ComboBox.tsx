@@ -129,6 +129,7 @@ export const ComboBox = forwardRef(
       focusMode: FocusMode.None,
       filteredOptions: options,
       inputValue: defaultOption ? defaultOption.label : '',
+      statusText: '',
     }
 
     const [state, dispatch] = useComboBox(
@@ -139,6 +140,7 @@ export const ComboBox = forwardRef(
     )
 
     const containerRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLUListElement>(null)
     const focusedItemRef = useRef<HTMLLIElement>(null)
 
     useEffect(() => {
@@ -161,9 +163,22 @@ export const ComboBox = forwardRef(
         state.isOpen &&
         state.focusedOption &&
         focusedItemRef.current &&
+        listRef.current &&
         state.focusMode === FocusMode.Input
       ) {
-        focusedItemRef.current.scrollIntoView(false)
+        const optionBottom =
+          focusedItemRef.current.offsetTop + focusedItemRef.current.offsetHeight
+        const currentBottom =
+          listRef.current.scrollTop + listRef.current.offsetHeight
+
+        if (optionBottom > currentBottom) {
+          listRef.current.scrollTop =
+            optionBottom - listRef.current.offsetHeight
+        }
+
+        if (focusedItemRef.current.offsetTop < listRef.current.scrollTop) {
+          listRef.current.scrollTop = focusedItemRef.current.offsetTop
+        }
       }
     }, [state.isOpen, state.focusedOption])
 
@@ -288,9 +303,7 @@ export const ComboBox = forwardRef(
         dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption })
       } else {
         const newIndex = currentIndex + change
-        if (newIndex < 0 && state.selectedOption) {
-          dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption })
-        } else if (newIndex < 0) {
+        if (newIndex < 0) {
           dispatch({ type: ActionTypes.CLOSE_LIST })
         } else if (newIndex >= state.filteredOptions.length) {
           dispatch({ type: ActionTypes.FOCUS_OPTION, option: lastOption })
@@ -301,6 +314,7 @@ export const ComboBox = forwardRef(
         }
       }
     }
+
     const handleListItemBlur = (event: FocusEvent<HTMLLIElement>): void => {
       const { relatedTarget: newTarget } = event
 
@@ -343,6 +357,12 @@ export const ComboBox = forwardRef(
     const listID = `${id}--list`
     const assistiveHintID = `${id}--assistiveHint`
 
+    const focusedItemIndex = state.focusedOption
+      ? state.filteredOptions.findIndex((i) => i === state.focusedOption)
+      : -1
+    const focusedItemId =
+      focusedItemIndex > -1 && `${listID}--option-${focusedItemIndex}`
+
     return (
       <div
         data-testid="combo-box"
@@ -383,6 +403,7 @@ export const ComboBox = forwardRef(
           aria-autocomplete="list"
           aria-describedby={assistiveHintID}
           aria-expanded={state.isOpen}
+          aria-activedescendant={(state.isOpen && focusedItemId) || ''}
           id={id}
           disabled={isDisabled}
         />
@@ -425,6 +446,7 @@ export const ComboBox = forwardRef(
           id={listID}
           className="usa-combo-box__list"
           role="listbox"
+          ref={listRef}
           hidden={!state.isOpen}>
           {state.filteredOptions.map((option, index) => {
             const focused = option === state.focusedOption
@@ -467,7 +489,9 @@ export const ComboBox = forwardRef(
           ) : null}
         </ul>
 
-        <div className="usa-combo-box__status usa-sr-only" role="status"></div>
+        <div className="usa-combo-box__status usa-sr-only" role="status">
+          {state.statusText}
+        </div>
         <span
           id={assistiveHintID}
           className="usa-sr-only"

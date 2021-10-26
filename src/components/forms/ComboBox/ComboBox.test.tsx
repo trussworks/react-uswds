@@ -18,17 +18,6 @@ const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
 }))
 
 describe('ComboBox component', () => {
-  let scrollSpy: jest.Mock
-
-  beforeAll(() => {
-    scrollSpy = jest.fn()
-    window.HTMLElement.prototype.scrollIntoView = scrollSpy
-  })
-
-  beforeEach(() => {
-    scrollSpy.mockReset()
-  })
-
   it('renders the expected markup without errors', () => {
     render(
       <ComboBox
@@ -181,12 +170,14 @@ describe('ComboBox component', () => {
       )
 
       const firstItem = getByTestId('combo-box-option-list').children[0]
+      const inputEl = getByTestId('combo-box-input')
 
       userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(firstItem).toBeVisible()
       expect(firstItem).not.toHaveFocus()
       expect(firstItem).toHaveClass('usa-combo-box__list-option--focused')
+      expect(inputEl).toHaveAttribute('aria-activedescendant', firstItem.id)
     })
 
     it('highlights the default value when opening the menu, when one exists', () => {
@@ -260,98 +251,147 @@ describe('ComboBox component', () => {
     expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
-  it('renders select with custom props if passed in', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-        selectProps={{ required: true, role: 'testing' }}
-      />
-    )
-    const comboBoxSelect = getByTestId('combo-box-select')
-    expect(comboBoxSelect).toHaveAttribute('required')
-    expect(comboBoxSelect).toHaveAttribute('role', 'testing')
+  describe('with custom props', () => {
+    it('renders select with custom props if passed in', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          selectProps={{ required: true, role: 'testing' }}
+        />
+      )
+      const comboBoxSelect = getByTestId('combo-box-select')
+      expect(comboBoxSelect).toHaveAttribute('required')
+      expect(comboBoxSelect).toHaveAttribute('role', 'testing')
+    })
+
+    it('renders input with custom props if passed in', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          inputProps={{ required: true, type: 'url' }}
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      expect(comboBoxInput).toHaveAttribute('required')
+      expect(comboBoxInput).toHaveAttribute('type', 'url')
+    })
+
+    it('allows a custom input onChange handler to be called', () => {
+      const mockOnInputChange = jest.fn()
+
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          inputProps={{ onChange: mockOnInputChange }}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'x')
+      expect(mockOnInputChange).toHaveBeenCalled()
+    })
+
+    it('renders list with custom props if passed in', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          ulProps={{ 'aria-labelledby': 'test-label-id' }}
+        />
+      )
+
+      const comboBoxOptionList = getByTestId('combo-box-option-list')
+      expect(comboBoxOptionList).toHaveAttribute(
+        'aria-labelledby',
+        'test-label-id'
+      )
+    })
   })
 
-  it('renders input with custom props if passed in', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-        inputProps={{ required: true, type: 'url' }}
-      />
-    )
+  describe('scrolling to a focused option', () => {
+    it('scrolls options list to the very top when the menu opens if nothing is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
 
-    const comboBoxInput = getByTestId('combo-box-input')
-    expect(comboBoxInput).toHaveAttribute('required')
-    expect(comboBoxInput).toHaveAttribute('type', 'url')
-  })
+      const listEl = getByTestId('combo-box-option-list')
+      jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
+      listEl.scrollTop = 2000 // Scroll list 2000px down
 
-  it('allows a custom input onChange handler to be called', () => {
-    const mockOnInputChange = jest.fn()
+      userEvent.click(getByTestId('combo-box-toggle'))
 
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-        inputProps={{ onChange: mockOnInputChange }}
-      />
-    )
+      expect(listEl.scrollTop).toEqual(0)
+    })
 
-    const input = getByTestId('combo-box-input')
-    userEvent.type(input, 'x')
-    expect(mockOnInputChange).toHaveBeenCalled()
-  })
+    it('scrolls down to the selected option when the list is opened', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          defaultValue={'mango'}
+        />
+      )
 
-  it('renders list with custom props if passed in', () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-        ulProps={{ 'aria-labelledby': 'test-label-id' }}
-      />
-    )
+      const mango = getByTestId('combo-box-option-mango')
+      const listEl = getByTestId('combo-box-option-list')
 
-    const comboBoxOptionList = getByTestId('combo-box-option-list')
-    expect(comboBoxOptionList).toHaveAttribute(
-      'aria-labelledby',
-      'test-label-id'
-    )
-  })
+      jest.spyOn(mango, 'offsetTop', 'get').mockReturnValue(1365)
+      jest.spyOn(mango, 'offsetHeight', 'get').mockReturnValue(39)
+      jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
+      listEl.scrollTop = 0 // Scroll list to the top
 
-  // TODO: ❓ Don't know how to test this
-  it.todo(
-    'scrolls options list to the very top when the menu opens if nothing is selected'
-  )
+      userEvent.click(getByTestId('combo-box-toggle'))
+      expect(mango).toHaveClass(
+        'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
+      )
 
-  it('scrolls to the selected option when the list is opened', async () => {
-    const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-        defaultValue={'mango'}
-      />
-    )
+      expect(listEl.scrollTop).toEqual(1199)
+    })
 
-    const mango = getByTestId('combo-box-option-mango')
+    it('scrolls up to the selected option when the list is opened', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          defaultValue={'mango'}
+        />
+      )
 
-    userEvent.click(getByTestId('combo-box-toggle'))
-    expect(mango).toHaveClass(
-      'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
-    )
+      const mango = getByTestId('combo-box-option-mango')
+      const listEl = getByTestId('combo-box-option-list')
 
-    await waitFor(() => {
-      expect(scrollSpy).toHaveBeenCalledTimes(1)
+      jest.spyOn(mango, 'offsetTop', 'get').mockReturnValue(1365)
+      jest.spyOn(mango, 'offsetHeight', 'get').mockReturnValue(39)
+      jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
+      listEl.scrollTop = 2292 // Scroll list 2292px down
+
+      userEvent.click(getByTestId('combo-box-toggle'))
+      expect(mango).toHaveClass(
+        'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
+      )
+
+      expect(listEl.scrollTop).toEqual(1365)
     })
   })
 
@@ -715,6 +755,11 @@ describe('ComboBox component', () => {
     fireEvent.blur(getByTestId('combo-box-input'))
 
     expect(getByTestId('combo-box-input')).toHaveValue('')
+    expect(getByTestId('combo-box-input')).toHaveAttribute(
+      'aria-activedescendant',
+      ''
+    )
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
   describe('keyboard actions', () => {
@@ -908,7 +953,12 @@ describe('ComboBox component', () => {
         key: 'ArrowDown',
       })
 
-      expect(getByTestId('combo-box-option-apricot')).toHaveFocus()
+      const focusedOption = getByTestId('combo-box-option-apricot')
+      expect(focusedOption).toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-activedescendant',
+        focusedOption.id
+      )
     })
 
     it('focuses the previous option when up arrow is pressed', () => {
@@ -933,7 +983,38 @@ describe('ComboBox component', () => {
         key: 'ArrowUp',
       })
 
-      expect(getByTestId('combo-box-option-apricot')).toHaveFocus()
+      const focusedOption = getByTestId('combo-box-option-apricot')
+      expect(focusedOption).toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-activedescendant',
+        focusedOption.id
+      )
+    })
+
+    it('opens the menu and focuses on the selected option when down arrow is pressed in the input', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          defaultValue="watermelon"
+        />
+      )
+
+      const comboBoxInput = getByTestId('combo-box-input')
+      userEvent.click(comboBoxInput)
+      fireEvent.keyDown(comboBoxInput, {
+        key: 'ArrowDown',
+      })
+
+      expect(getByTestId('combo-box-option-list')).toBeVisible()
+      const focusedOption = getByTestId('combo-box-option-watermelon')
+      expect(focusedOption).toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-activedescendant',
+        focusedOption.id
+      )
     })
 
     it('opens the menu when down arrow is pressed in the input', () => {
@@ -953,7 +1034,12 @@ describe('ComboBox component', () => {
       })
 
       expect(getByTestId('combo-box-option-list')).toBeVisible()
-      expect(getByTestId('combo-box-option-apple')).toHaveFocus()
+      const focusedOption = getByTestId('combo-box-option-apple')
+      expect(focusedOption).toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-activedescendant',
+        focusedOption.id
+      )
     })
 
     it('closes the menu when the first option is focused and arrow up is pressed', () => {
@@ -977,6 +1063,7 @@ describe('ComboBox component', () => {
 
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
       expect(comboBoxInput).toHaveFocus()
+      expect(comboBoxInput).toHaveAttribute('aria-activedescendant', '')
     })
 
     it('does not change focus when last option is focused and down arrow is pressed', () => {
@@ -1056,7 +1143,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-mangosteen')).toHaveFocus()
     })
 
-    it('does not close menu when an option is selected and the first option is focused and up arrow is pressed', () => {
+    it('closes the menu when an option is selected and the first option is focused and up arrow is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1074,12 +1161,12 @@ describe('ComboBox component', () => {
         key: 'ArrowUp',
       })
 
-      expect(appleOption).toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveFocus()
       expect(getByTestId('combo-box-input')).toHaveAttribute(
         'aria-expanded',
-        'true'
+        'false'
       )
-      expect(getByTestId('combo-box-option-list')).toBeVisible()
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
     })
 
     it('hides the clear button when typing in the input, but does not clear the selection', () => {
@@ -1168,7 +1255,8 @@ describe('ComboBox component', () => {
       expect(comboBoxInput).toHaveValue('Apple')
     })
 
-    xit('focuses the input when an option is focused and shift-tab is pressed', () => {
+    // TODO
+    it.skip('focuses the input when an option is focused and shift-tab is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1246,6 +1334,7 @@ describe('ComboBox component', () => {
       fireEvent.blur(input)
 
       expect(input).toHaveAttribute('aria-expanded', 'false')
+      expect(input).toHaveAttribute('aria-activedescendant', '')
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
     })
 
@@ -1268,6 +1357,7 @@ describe('ComboBox component', () => {
       fireEvent.blur(blackberryOption)
 
       expect(input).toHaveAttribute('aria-expanded', 'false')
+      expect(input).toHaveAttribute('aria-activedescendant', '')
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
     })
 
@@ -1291,6 +1381,7 @@ describe('ComboBox component', () => {
       fireEvent.click(getByTestId('combo-box-toggle'))
 
       expect(input).toHaveAttribute('aria-expanded', 'false')
+      expect(input).toHaveAttribute('aria-activedescendant', '')
       expect(optionList).not.toBeVisible()
     })
 
@@ -1390,6 +1481,7 @@ describe('ComboBox component', () => {
 
       const yuzuOption = getByTestId('combo-box-option-yuzu')
       const blackberryOption = getByTestId('combo-box-option-blackberry')
+      const inputEl = getByTestId('combo-box-input')
 
       userEvent.click(getByTestId('combo-box-toggle'))
       userEvent.hover(blackberryOption)
@@ -1397,12 +1489,19 @@ describe('ComboBox component', () => {
       expect(blackberryOption).toHaveClass(
         'usa-combo-box__list-option--focused'
       )
+      expect(blackberryOption).toHaveFocus()
+      expect(inputEl).toHaveAttribute(
+        'aria-activedescendant',
+        blackberryOption.id
+      )
 
       userEvent.hover(yuzuOption)
       expect(blackberryOption).not.toHaveClass(
         'usa-combo-box__list-option--focused'
       )
       expect(yuzuOption).toHaveClass('usa-combo-box__list-option--focused')
+      expect(yuzuOption).toHaveFocus()
+      expect(inputEl).toHaveAttribute('aria-activedescendant', yuzuOption.id)
     })
 
     it('clears focus when clicking outside of the component', () => {
@@ -1424,6 +1523,10 @@ describe('ComboBox component', () => {
       userEvent.click(getByTestId('outside'))
 
       expect(getByTestId('combo-box-input')).not.toHaveFocus()
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-activedescendant',
+        ''
+      )
     })
   })
 
@@ -1478,6 +1581,108 @@ describe('ComboBox component', () => {
         }
         expect(node).toHaveAttribute('role', 'option')
       })
+    })
+
+    it('updates the status text when the list is opened with options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      // open options list
+      fireEvent.click(getByTestId('combo-box-input'))
+
+      expect(status).toHaveTextContent(
+        `${fruitOptions.length} results available.`
+      )
+    })
+
+    it('updates the status text when the list is opened with filtered options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'a')
+
+      expect(status).toHaveTextContent(`43 results available.`)
+    })
+
+    it('updates the status text when the list is opened with no options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={[]}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      // open options list
+      fireEvent.click(getByTestId('combo-box-input'))
+
+      expect(status).toHaveTextContent(`No results.`)
+    })
+
+    it('updates the status text when the list is closed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      // open options list
+      fireEvent.click(getByTestId('combo-box-input'))
+
+      expect(status).toHaveTextContent(
+        `${fruitOptions.length} results available.`
+      )
+
+      fireEvent.blur(getByTestId('combo-box-input'))
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(status).toBeEmptyDOMElement()
+    })
+
+    it('updates the status text when an option is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      userEvent.type(getByTestId('combo-box-input'), 'Banana')
+
+      expect(status).toHaveTextContent(`1 result available.`)
+
+      userEvent.type(getByTestId('combo-box-input'), '{enter}')
+
+      expect(status).toBeEmptyDOMElement()
     })
 
     it('allows the assistive hint to be customized', () => {
