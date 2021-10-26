@@ -139,6 +139,7 @@ export const ComboBox = forwardRef(
     )
 
     const containerRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLUListElement>(null)
     const focusedItemRef = useRef<HTMLLIElement>(null)
 
     useEffect(() => {
@@ -161,9 +162,22 @@ export const ComboBox = forwardRef(
         state.isOpen &&
         state.focusedOption &&
         focusedItemRef.current &&
+        listRef.current &&
         state.focusMode === FocusMode.Input
       ) {
-        focusedItemRef.current.scrollIntoView(false)
+        const optionBottom =
+          focusedItemRef.current.offsetTop + focusedItemRef.current.offsetHeight
+        const currentBottom =
+          listRef.current.scrollTop + listRef.current.offsetHeight
+
+        if (optionBottom > currentBottom) {
+          listRef.current.scrollTop =
+            optionBottom - listRef.current.offsetHeight
+        }
+
+        if (focusedItemRef.current.offsetTop < listRef.current.scrollTop) {
+          listRef.current.scrollTop = focusedItemRef.current.offsetTop
+        }
       }
     }, [state.isOpen, state.focusedOption])
 
@@ -301,6 +315,7 @@ export const ComboBox = forwardRef(
         }
       }
     }
+
     const handleListItemBlur = (event: FocusEvent<HTMLLIElement>): void => {
       const { relatedTarget: newTarget } = event
 
@@ -425,6 +440,7 @@ export const ComboBox = forwardRef(
           id={listID}
           className="usa-combo-box__list"
           role="listbox"
+          ref={listRef}
           hidden={!state.isOpen}>
           {state.filteredOptions.map((option, index) => {
             const focused = option === state.focusedOption
