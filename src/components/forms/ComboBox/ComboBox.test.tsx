@@ -759,6 +759,7 @@ describe('ComboBox component', () => {
       'aria-activedescendant',
       ''
     )
+    expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
 
   describe('keyboard actions', () => {
@@ -1580,6 +1581,108 @@ describe('ComboBox component', () => {
         }
         expect(node).toHaveAttribute('role', 'option')
       })
+    })
+
+    it('updates the status text when the list is opened with options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      // open options list
+      fireEvent.click(getByTestId('combo-box-input'))
+
+      expect(status).toHaveTextContent(
+        `${fruitOptions.length} results available.`
+      )
+    })
+
+    it('updates the status text when the list is opened with filtered options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'a')
+
+      expect(status).toHaveTextContent(`43 results available.`)
+    })
+
+    it('updates the status text when the list is opened with no options', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={[]}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      // open options list
+      fireEvent.click(getByTestId('combo-box-input'))
+
+      expect(status).toHaveTextContent(`No results.`)
+    })
+
+    it('updates the status text when the list is closed', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      // open options list
+      fireEvent.click(getByTestId('combo-box-input'))
+
+      expect(status).toHaveTextContent(
+        `${fruitOptions.length} results available.`
+      )
+
+      fireEvent.blur(getByTestId('combo-box-input'))
+
+      expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+      expect(status).toBeEmptyDOMElement()
+    })
+
+    it('updates the status text when an option is selected', () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      )
+
+      const status = screen.getByRole('status')
+
+      userEvent.type(getByTestId('combo-box-input'), 'Banana')
+
+      expect(status).toHaveTextContent(`1 result available.`)
+
+      userEvent.type(getByTestId('combo-box-input'), '{enter}')
+
+      expect(status).toBeEmptyDOMElement()
     })
 
     it('allows the assistive hint to be customized', () => {

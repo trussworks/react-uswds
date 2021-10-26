@@ -129,6 +129,7 @@ export const ComboBox = forwardRef(
       focusMode: FocusMode.None,
       filteredOptions: options,
       inputValue: defaultOption ? defaultOption.label : '',
+      statusText: '',
     }
 
     const [state, dispatch] = useComboBox(
@@ -488,7 +489,9 @@ export const ComboBox = forwardRef(
           ) : null}
         </ul>
 
-        <div className="usa-combo-box__status usa-sr-only" role="status"></div>
+        <div className="usa-combo-box__status usa-sr-only" role="status">
+          {state.statusText}
+        </div>
         <span
           id={assistiveHintID}
           className="usa-sr-only"
