@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/trussworks/react-uswds/compare/2.3.0...2.4.0) (2021-10-27)
+
+
+### Features
+
+* Add IconPrefix and IconSuffix components ([#1713](https://github.com/trussworks/react-uswds/issues/1713)) ([95ac139](https://github.com/trussworks/react-uswds/commit/95ac13922c522a67c5b85ecf984c4da3b1800498))
+
+
+### Bug Fixes
+
+* Control ComboBox scroll with scrollTop instead of scrollIntoView ([#1715](https://github.com/trussworks/react-uswds/pull/1715)) ([600d53b](https://github.com/trussworks/react-uswds/commit/600d53b108a8c296d8a4fd25b4eaa91bae951484))
+* Add ComboBox status text and aria-activedescendant values ([#1716](https://github.com/trussworks/react-uswds/issues/1716)) ([29919bf](https://github.com/trussworks/react-uswds/commit/29919bff045e29d2b2f70d8af5d8bdcd17fa9e9c))
+
 ## [2.3.0](https://github.com/trussworks/react-uswds/compare/2.2.0...2.3.0) (2021-10-19)
 
 
