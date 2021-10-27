@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { Icon } from '../Icon/Icons'
 import { IconList } from './IconList'
 import { IconListItem } from './IconListItem/IconListItem'
-import { IconListItemIcon } from './IconListIcon/IconListIcon'
+import { IconListIcon } from './IconListIcon/IconListIcon'
 import { IconListTitle } from './IconListTitle/IconListTitle'
 import { IconListContent } from './IconListContent/IconListContent'
 
@@ -23,23 +23,23 @@ Source: https://designsystem.digital.gov/components/icon-list/
 export const Default = (): ReactElement => (
   <IconList>
     <IconListItem>
-      <IconListItemIcon className="text-green">
+      <IconListIcon className="text-green">
         <Icon.CheckCircle />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         Wash your hands for 20 seconds with soap
       </IconListContent>
     </IconListItem>
     <IconListItem>
-      <IconListItemIcon className="text-green">
+      <IconListIcon className="text-green">
         <Icon.CheckCircle />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>Stay six feet away from others</IconListContent>
     </IconListItem>
     <IconListItem>
-      <IconListItemIcon className="text-red">
+      <IconListIcon className="text-red">
         <Icon.Cancel />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>Avoid large gatherings</IconListContent>
     </IconListItem>
   </IconList>
@@ -50,29 +50,29 @@ export const SimpleContent = (): ReactElement => (
     <p className="margin-bottom-2">Benefits of joining Global Entry program:</p>
     <IconList className="usa-icon-list--primary">
       <IconListItem>
-        <IconListItemIcon>
+        <IconListIcon>
           <Icon.ThumbUpAlt />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>No processing lines</IconListContent>
       </IconListItem>
       <IconListItem>
-        <IconListItemIcon>
+        <IconListIcon>
           <Icon.ThumbUpAlt />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>
           Access to expedited entry benefits in other countries
         </IconListContent>
       </IconListItem>
       <IconListItem>
-        <IconListItemIcon>
+        <IconListIcon>
           <Icon.ThumbUpAlt />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>Available at major U.S. airports</IconListContent>
       </IconListItem>
       <IconListItem>
-        <IconListItemIcon>
+        <IconListIcon>
           <Icon.ThumbUpAlt />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>Reduced wait times</IconListContent>
       </IconListItem>
     </IconList>
@@ -82,9 +82,9 @@ export const SimpleContent = (): ReactElement => (
 export const RichContent = (): ReactElement => (
   <IconList>
     <IconListItem>
-      <IconListItemIcon className="text-ink">
+      <IconListIcon className="text-ink">
         <Icon.CheckCircle />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         <IconListTitle type="h3">Donate cash when possible.</IconListTitle>
         <p>
@@ -97,9 +97,9 @@ export const RichContent = (): ReactElement => (
       </IconListContent>
     </IconListItem>
     <IconListItem>
-      <IconListItemIcon className="text-ink">
+      <IconListIcon className="text-ink">
         <Icon.CheckCircle />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         <IconListTitle type="h3">
           Confirm what donations are needed.
@@ -112,9 +112,9 @@ export const RichContent = (): ReactElement => (
       </IconListContent>
     </IconListItem>
     <IconListItem>
-      <IconListItemIcon className="text-ink">
+      <IconListIcon className="text-ink">
         <Icon.CheckCircle />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         <IconListTitle type="h3">
           Talk to trusted organizations about volunteering.
@@ -139,9 +139,9 @@ export const CustomSizeWithRichContent = (): ReactElement => (
     </p>
     <IconList className="usa-icon-list--size-lg">
       <IconListItem>
-        <IconListItemIcon className="text-green">
+        <IconListIcon className="text-green">
           <Icon.AttachMoney />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>
           <IconListTitle type="h3">Let the sun shine.</IconListTitle>
           <p>
@@ -153,9 +153,9 @@ export const CustomSizeWithRichContent = (): ReactElement => (
         </IconListContent>
       </IconListItem>
       <IconListItem>
-        <IconListItemIcon className="text-green">
+        <IconListIcon className="text-green">
           <Icon.AttachMoney />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>
           <IconListTitle type="h3">Adjust your schedule.</IconListTitle>
           <p>
@@ -167,9 +167,9 @@ export const CustomSizeWithRichContent = (): ReactElement => (
         </IconListContent>
       </IconListItem>
       <IconListItem>
-        <IconListItemIcon className="text-green">
+        <IconListIcon className="text-green">
           <Icon.AttachMoney />
-        </IconListItemIcon>
+        </IconListIcon>
         <IconListContent>
           <IconListTitle type="h3">Fill it up.</IconListTitle>
           <p>
@@ -187,27 +187,27 @@ export const CustomSizeWithRichContent = (): ReactElement => (
 export const CustomSize = (): ReactElement => (
   <IconList className="usa-icon-list--size-lg">
     <IconListItem>
-      <IconListItemIcon className="text-blue">
+      <IconListIcon className="text-blue">
         <Icon.Help />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         <span className="text-bold">Timing.</span> Is now the right time to
         start a business?
       </IconListContent>
     </IconListItem>
     <IconListItem>
-      <IconListItemIcon className="text-blue">
+      <IconListIcon className="text-blue">
         <Icon.Help />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         <span className="text-bold">Funding.</span> Do I have enough money to
         launch a business?
       </IconListContent>
     </IconListItem>
     <IconListItem>
-      <IconListItemIcon className="text-blue">
+      <IconListIcon className="text-blue">
         <Icon.Help />
-      </IconListItemIcon>
+      </IconListIcon>
       <IconListContent>
         <span className="text-bold">Need.</span> Will this business fill a real
         need for my customers?
