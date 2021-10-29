@@ -1,0 +1,44 @@
+name: ReactUSWDS CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:   
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+  steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with: 
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+
+    - name: Run Jest tests with coverage
+      run: yarn test:coverage -w 1
+
+    - name: Run node server side tests
+      run: yarn test:serverside
+
+    - name: Lint code
+      run: yarn lint
+
+    - name: Run Danger JS
+      run: yarn danger ci --failOnErrors
+
+    - name: Create Github Deployment
+      run: ./scripts/deployment_start.sh > deployment
+
+    - name: Build Storybook
+      run: yarn run build-storybook
+
+    
