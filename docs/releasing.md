@@ -28,7 +28,8 @@ Steps for a new release (these are in the process of being automated):
 
 5. Once the release PR is approved, complete the release and publish the new version (this should be automated by GH - TODO):
    - Merge the PR and create a new [**release tag**](https://github.com/trussworks/react-uswds/releases) pointed at `main` on Github. Use the same notes as release PR.
-   - Pull down latest `main` locally before publishing - `git pull origin main --tags`
-   - Publish the new package to npm: `npm publish`. You will be prompted for a MFA code.
+   - **Pull down latest**  - `git pull origin main --tags`
+   - **Rebuild app from scratch** - remove `node_modules` and run `yarn` **
+   - **Publish the new package to npm** - `npm publish`. You will be prompted for a MFA code.
      - You may need to `npm login` first.
      - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack.
