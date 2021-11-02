@@ -1,18 +1,18 @@
-name: Publish release to npm
+name: Package release
 
 on:
   pull_request:
-    types: 
-      - closed
+    # types: 
+    #   - closed
     branches: 
       - main
 
 jobs:
-  publish:
+  package-release:
     runs-on: ubuntu-latest
-    if: |
-      startsWith(github.head_ref, 'release-'')
-      && github.event.pull_request.merged
+    # if: |
+    #   startsWith(github.head_ref, 'release-'')
+    #   && github.event.pull_request.merged
       
     steps: 
       - name: Checkout out repository
@@ -30,8 +30,13 @@ jobs:
       
       - name: Run tests
         run: yarn test
-      
-      - name: Publish to npm
-        uses: JS-DevTools/npm-publish@v1
+
+      - name: Package library
+        run: yarn pack
+
+      - name: Upload package
+        uses: actions/upload-artifact@v2
         with:
-          token: ${{ secrets.NPM_AUTOMATION_TOKEN }}
+          path: trussworks-react-uswds-v*.*.*.tgz
+          if-no-files-found: error
+          retention-days: 1 # TODO: Set higher after testing?
