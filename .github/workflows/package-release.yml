@@ -2,17 +2,17 @@ name: Package release
 
 on:
   pull_request:
-    # types: 
-    #   - closed
+    types: 
+      - closed
     branches: 
       - main
 
 jobs:
   package-release:
     runs-on: ubuntu-latest
-    # if: |
-    #   startsWith(github.head_ref, 'release-'')
-    #   && github.event.pull_request.merged
+    if: |
+      startsWith(github.head_ref, 'release-'')
+      && github.event.pull_request.merged
       
     steps: 
       - name: Checkout out repository
@@ -39,4 +39,4 @@ jobs:
         with:
           path: trussworks-react-uswds-v*.*.*.tgz
           if-no-files-found: error
-          retention-days: 1 # TODO: Set higher after testing?
+          retention-days: 5
