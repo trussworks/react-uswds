@@ -38,3 +38,12 @@ Steps for a new release (these are in the process of being automated):
      - You may need to `npm login` first.
      - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack.
      - Note: While it would be desireable (and is very much possible) to automate the publishing step, there are security concerns with setting up an Automation Token for npm that would mandate maintaining a strict key rotation process, which at this time exceeds the commitment that maintainers have available. To keep consumers of React USWDS secure, this step remains manual.
+     <details>
+       <summary>Expand this section for manual publishing steps in the event CI is down.</summary>
+         
+       - **Ensure your working tree is clean** - Make sure there are no changes to your working directory and that no files are staged for commit. Be sure to remove any untracked files from your working directory as well.
+       - **Fetch latest tag list**  - `git fetch --all --tags`
+       - **Checkout the new release tag** - `git checkout 1.1.0` (replacing `1.1.0` with your tag)
+       - **Rebuild app from scratch** - remove `node_modules` and run `yarn`, `yarn build`. If any errors occur, stop here.
+       - **Publish the new package to npm** - `npm publish`.
+     </details>
