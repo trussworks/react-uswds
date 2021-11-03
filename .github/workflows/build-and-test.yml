@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-test:   
+  build-and-test:
     runs-on: ubuntu-latest
 
     # TODO Move these env vars to separate job alongside deployment steps (see TODO below)

@@ -1,9 +1,11 @@
+name: Danger JS
+
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  happo:   
+  danger:   
     runs-on: ubuntu-latest
 
     steps:
