@@ -1,0 +1,26 @@
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  happo:   
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with: 
+        node-version: 12.x
+        cache: 'yarn'
+
+    # The yarn cache is not node_modules
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    
+    - name: Run Danger JS 
+      run: yarn danger ci --failOnErrors
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

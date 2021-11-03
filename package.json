@@ -34,7 +34,7 @@
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo",
-    "happo-ci": "happo-ci-circleci",
+    "happo-ci": "happo-ci-github-actions",
     "example:install": "yarn build && cd example/ && yarn",
     "example:start": "cd example/ && yarn start",
     "contributors:add": "all-contributors add"

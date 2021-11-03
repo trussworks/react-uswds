@@ -1,0 +1,31 @@
+name: Happo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  happo:   
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with: 
+        node-version: 12.x
+        cache: 'yarn'
+
+    # The yarn cache is not node_modules
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+
+    - name: Happo
+      run: yarn happo-ci
+      env: 
+        HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
+        HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
