@@ -33,9 +33,6 @@ jobs:
       - name: Lint code
         run: yarn lint
 
-      - name: Smoke test Storybook
-        run: yarn storybook --ci --smoke-test
-
       # TODO: ephemeral deployment of storybook
       # Should work similarly to CircleCI. Just need to change env secrets in the .sh scripts and upload artifacts properly.
       # Should likely also be a separate job triggered on main only, since the deployment scripts require secrets
