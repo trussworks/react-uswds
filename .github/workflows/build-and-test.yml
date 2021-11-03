@@ -7,52 +7,57 @@ jobs:
   build-and-test:   
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
+    # TODO Move these env vars to separate job alongside deployment steps (see TODO below)
+    env:
+      GITHUB_DEPLOYMENTS_TOKEN = {{ secrets.GITHUB_DEPLOYMENTS_TOKEN }}
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with: 
-        node-version: 12.x
-        cache: 'yarn'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
 
-    # The yarn cache is not node_modules
-    - name: Install dependencies
-      run: yarn --frozen-lockfile
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 12.x
+          cache: 'yarn'
 
-    - name: Run Jest tests with coverage
-      run: yarn test:coverage -w 1
+      # The yarn cache is not node_modules
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
 
-    - name: Run node server side tests
-      run: yarn test:serverside
+      - name: Run Jest tests with coverage
+        run: yarn test:coverage -w 1
 
-    - name: Lint code
-      run: yarn lint
+      - name: Run node server side tests
+        run: yarn test:serverside
 
-    - name: Smoke test Storybook
-      run: yarn storybook --ci --smoke-test
+      - name: Lint code
+        run: yarn lint
 
-    # TODO: ephemeral deployment of storybook
-    # Should work similarly to CircleCI. Just need to change env secrets in the .sh scripts and upload artifacts properly.
-    # Should likely also be a separate job triggered on main only, since the deployment scripts require secrets
-    - name: Create Github Deployment
-      run: ./scripts/deployment_start.sh > deployment
+      - name: Smoke test Storybook
+        run: yarn storybook --ci --smoke-test
 
-    - name: Build Storybook
-      run: yarn run build-storybook
+      # TODO: ephemeral deployment of storybook
+      # Should work similarly to CircleCI. Just need to change env secrets in the .sh scripts and upload artifacts properly.
+      # Should likely also be a separate job triggered on main only, since the deployment scripts require secrets
+      - name: Create Github Deployment
+        run: ./scripts/deployment_start.sh > deployment
 
-    - name: Upload Storybook Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: storybook-static
-        path: storybook-static 
+      - name: Build Storybook
+        run: yarn run build-storybook
 
-    - name: Add GitHub Deployment success status
-      if: ${{ success() }}
-      run: ./scripts/deployment_stop.sh success
+      - name: Upload Storybook Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: storybook-static
+          path: storybook-static
+          retention-days: 30
 
-    - name: Add GitHub Deployment error status
-      if: ${{ failure() }}
-      run: ./scripts/deployment_stop.sh error
+      - name: Add GitHub Deployment success status
+        if: ${{ success() }}
+        run: ./scripts/deployment_stop.sh success
+
+      - name: Add GitHub Deployment error status
+        if: ${{ failure() }}
+        run: ./scripts/deployment_stop.sh error
     
