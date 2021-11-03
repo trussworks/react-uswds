@@ -8,7 +8,7 @@ jobs:
 
     # TODO Move these env vars to separate job alongside deployment steps (see TODO below)
     env:
-      GITHUB_DEPLOYMENTS_TOKEN: {{ secrets.GITHUB_DEPLOYMENTS_TOKEN }}
+      GITHUB_DEPLOYMENTS_TOKEN: ${{ secrets.GITHUB_DEPLOYMENTS_TOKEN }}
 
     steps:
       - name: Check out repository
