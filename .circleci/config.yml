@@ -21,8 +21,6 @@ jobs:
             - ~/.cache/yarn
           key: v1-yarn-{{ checksum "yarn.lock" }}
 
-      - run: yarn lint
-      - run: yarn danger ci --failOnErrors
       - run:
           name: Create GitHub Deployment
           command: ./scripts/deployment_start.sh > deployment
