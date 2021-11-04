@@ -15,7 +15,7 @@ if [ "$1" = "error" ]; then
          -H "Authorization: bearer ${token}" \
          -d "{\"state\": \"error\", \"environment\": \"storybook\"" \
          -H "Content-Type: application/json" \
-         "https://api.github.com/repos/${GITHUB_REPOSITORY}/deployments/${deployment_id}/statuses"
+         "https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/deployments/${deployment_id}/statuses"
     exit 1
 fi
 
@@ -24,7 +24,7 @@ if ! repository=$(curl -s \
                        -H "Authorization: bearer ${token}" \
                        -d "{}" \
                        -H "Content-Type: application/json" \
-                       "https://api.github.com/repos/${GITHUB_REPOSITORY}"); then
+                       "https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"); then
     echo "Could not fetch repository data" 1>&2
     exit 1
 fi
@@ -46,7 +46,7 @@ if ! deployment=$(curl -s \
                        -H "Authorization: bearer ${token}" \
                        -d "{\"state\": \"success\", \"environment\": \"storybook\", \"environment_url\": \"${url}\", \"target_url\": \"${url}\", \"log_url\": \"${url}\"}" \
                        -H "Content-Type: application/json" \
-                       "https://api.github.com/repos/${GITHUB_REPOSITORY}/deployments/${deployment_id}/statuses"); then
+                       "https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/deployments/${deployment_id}/statuses"); then
     echo "POSTing deployment status failed, exiting (not failing build)" 1>&2
     exit 1
 fi

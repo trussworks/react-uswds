@@ -6,10 +6,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    # TODO Move these env vars to separate job alongside deployment steps (see TODO below)
-    # env:
-    #   GITHUB_DEPLOYMENTS_TOKEN: ${{ secrets.GITHUB_DEPLOYMENTS_TOKEN }}
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -37,28 +33,3 @@ jobs:
         run: yarn danger ci --failOnErrors
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # TODO: ephemeral deployment of storybook
-      # Should work similarly to CircleCI. Just need to change env secrets in the .sh scripts and upload artifacts properly.
-      # Should likely also be a separate job triggered on main only, since the deployment scripts require secrets
-      # - name: Create Github Deployment
-      #   run: ./scripts/deployment_start.sh > deployment
-
-      # - name: Build Storybook
-      #   run: yarn run build-storybook
-
-      # - name: Upload Storybook Artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: storybook-static
-      #     path: storybook-static
-      #     retention-days: 30
-
-      # - name: Add GitHub Deployment success status
-      #   if: ${{ success() }}
-      #   run: ./scripts/deployment_stop.sh success
-
-      # - name: Add GitHub Deployment error status
-      #   if: ${{ failure() }}
-      #   run: ./scripts/deployment_stop.sh error
-    
