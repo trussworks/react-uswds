@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  deploy-ephemeral-storybook:
+  build:
     docker:
       - auth:
           password: $DOCKER_PASSWORD
