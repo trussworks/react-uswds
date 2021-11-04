@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # TODO Move these env vars to separate job alongside deployment steps (see TODO below)
-    env:
-      GITHUB_DEPLOYMENTS_TOKEN: ${{ secrets.GITHUB_DEPLOYMENTS_TOKEN }}
+    # env:
+    #   GITHUB_DEPLOYMENTS_TOKEN: ${{ secrets.GITHUB_DEPLOYMENTS_TOKEN }}
 
     steps:
       - name: Check out repository
@@ -32,6 +32,11 @@ jobs:
 
       - name: Lint code
         run: yarn lint
+
+      - name: Run Danger JS 
+        run: yarn danger ci --failOnErrors
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # TODO: ephemeral deployment of storybook
       # Should work similarly to CircleCI. Just need to change env secrets in the .sh scripts and upload artifacts properly.
