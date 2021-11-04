@@ -38,7 +38,6 @@ fi
 # path_to_repo=$(echo "$CIRCLE_WORKING_DIRECTORY" | sed -e
 # "s:~:$HOME:g")
 path_to_repo=""
-# TODO: Need the URL to the artifact in Github. Unfortunately, the upload artifact does not return it, and the URLs are not as predicatbale as Circle.
 url="https://${CIRCLE_BUILD_NUM}-${repository_id}-gh.circle-artifacts.com/0${path_to_repo}/storybook-static/index.html"
 
 if ! deployment=$(curl -s \
