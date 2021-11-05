@@ -31,7 +31,7 @@ export { Grid } from './components/grid/Grid/Grid'
 /** Form components */
 export { CharacterCount } from './components/forms/CharacterCount/CharacterCount'
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
-export { ComboBox } from './components/forms/ComboBox/ComboBox'
+export { ComboBox, ComboBoxOption } from './components/forms/ComboBox/ComboBox'
 export { DateInput } from './components/forms/DateInput/DateInput'
 export { DateInputGroup } from './components/forms/DateInputGroup/DateInputGroup'
 export { DatePicker } from './components/forms/DatePicker/DatePicker'
@@ -42,6 +42,8 @@ export { Fieldset } from './components/forms/Fieldset/Fieldset'
 export { FileInput } from './components/forms/FileInput/FileInput'
 export { Form } from './components/forms/Form/Form'
 export { FormGroup } from './components/forms/FormGroup/FormGroup'
+export { InputPrefix } from './components/forms/InputPrefix/InputPrefix'
+export { InputSuffix } from './components/forms/InputSuffix/InputSuffix'
 export { Label } from './components/forms/Label/Label'
 export { Radio } from './components/forms/Radio/Radio'
 export { RangeInput } from './components/forms/RangeInput/RangeInput'
@@ -84,6 +86,13 @@ export { FooterExtendedNavList } from './components/Footer/FooterExtendedNavList
 export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
 export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
+
+/** Modal components */
+export { Modal, ModalProps, ModalRef } from './components/Modal/Modal'
+export { ModalToggleButton } from './components/Modal/ModalToggleButton'
+export { ModalOpenLink } from './components/Modal/ModalOpenLink'
+export { ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
+export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
 
 /** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
