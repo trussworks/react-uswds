@@ -129,6 +129,7 @@ export const ComboBox = forwardRef(
       focusMode: FocusMode.None,
       filteredOptions: options,
       inputValue: defaultOption ? defaultOption.label : '',
+      statusText: '',
     }
 
     const [state, dispatch] = useComboBox(
@@ -302,9 +303,7 @@ export const ComboBox = forwardRef(
         dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption })
       } else {
         const newIndex = currentIndex + change
-        if (newIndex < 0 && state.selectedOption) {
-          dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption })
-        } else if (newIndex < 0) {
+        if (newIndex < 0) {
           dispatch({ type: ActionTypes.CLOSE_LIST })
         } else if (newIndex >= state.filteredOptions.length) {
           dispatch({ type: ActionTypes.FOCUS_OPTION, option: lastOption })
@@ -358,6 +357,12 @@ export const ComboBox = forwardRef(
     const listID = `${id}--list`
     const assistiveHintID = `${id}--assistiveHint`
 
+    const focusedItemIndex = state.focusedOption
+      ? state.filteredOptions.findIndex((i) => i === state.focusedOption)
+      : -1
+    const focusedItemId =
+      focusedItemIndex > -1 && `${listID}--option-${focusedItemIndex}`
+
     return (
       <div
         data-testid="combo-box"
@@ -398,6 +403,7 @@ export const ComboBox = forwardRef(
           aria-autocomplete="list"
           aria-describedby={assistiveHintID}
           aria-expanded={state.isOpen}
+          aria-activedescendant={(state.isOpen && focusedItemId) || ''}
           id={id}
           disabled={isDisabled}
         />
@@ -483,7 +489,9 @@ export const ComboBox = forwardRef(
           ) : null}
         </ul>
 
-        <div className="usa-combo-box__status usa-sr-only" role="status"></div>
+        <div className="usa-combo-box__status usa-sr-only" role="status">
+          {state.statusText}
+        </div>
         <span
           id={assistiveHintID}
           className="usa-sr-only"
