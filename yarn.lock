@@ -7703,9 +7703,9 @@ flush-write-stream@^1.0.0:
     readable-stream "^2.3.6"
 
 focus-trap-react@^8.8.1:
-  version "8.8.1"
-  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.8.1.tgz#2c7043e748460a191a1c7e2552e7c964f3f9fd46"
-  integrity sha512-Uy7U/l3fozlwLYBSQHP91QjuRUUcAQ9FJ3glAGmwF/fXSiPa/4negTy02zWElLZdZDPIfebC8V14aI1Gzc5V3w==
+  version "8.8.2"
+  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.8.2.tgz#ac374819cddd8937b8687eaf7f351b3c10ed3c34"
+  integrity sha512-YgacIMxeAOytHOEbzBWL7+itBkn4ARMwQhtt6hYVHqHzPUPhmfEyKJ/nqsyMerzOK1DzlDv8Q8phRAY8vpa0rA==
   dependencies:
     focus-trap "^6.7.1"
 
@@ -13455,9 +13455,9 @@ sane@^4.0.3:
     walker "~1.0.5"
 
 sass-loader@^12.1.0:
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-12.1.0.tgz#b73324622231009da6fba61ab76013256380d201"
-  integrity sha512-FVJZ9kxVRYNZTIe2xhw93n3xJNYZADr+q69/s98l9nTCrWASo+DR2Ot0s5xTKQDDEosUkatsGeHxcH4QBp5bSg==
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-12.3.0.tgz#93278981c189c36a58cbfc37d4b9cef0cdc02871"
+  integrity sha512-6l9qwhdOb7qSrtOu96QQ81LVl8v6Dp9j1w3akOm0aWHyrTYtagDt5+kS32N4yq4hHk3M+rdqoRMH+lIdqvW6HA==
   dependencies:
     klona "^2.0.4"
     neo-async "^2.6.2"
