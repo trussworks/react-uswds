@@ -20,6 +20,7 @@ type AddressProps = {
      Contact info items - e.g. anchor tags or text for email, phone, website, etc.
    */
   items: React.ReactNode[]
+  className?: string
 }
 
 export const Address = ({

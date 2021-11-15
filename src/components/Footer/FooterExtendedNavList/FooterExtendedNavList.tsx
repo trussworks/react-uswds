@@ -13,6 +13,7 @@ type FooterExtendedNavListProps = {
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType
+  className?: string
 }
 
 export const FooterExtendedNavList = ({
@@ -62,7 +63,8 @@ export const FooterExtendedNavList = ({
       {nestedLinks.map((links, i) => (
         <div
           key={`linkSection-${i}`}
-          className="mobile-lg:grid-col-6 desktop:grid-col-3">
+          className="mobile-lg:grid-col-6 desktop:grid-col-3"
+        >
           <Section
             onToggle={useMobile ? (): void => onToggle(i) : undefined}
             // eslint-disable-next-line security/detect-object-injection

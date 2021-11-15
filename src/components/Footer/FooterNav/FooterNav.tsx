@@ -32,6 +32,7 @@ type FooterNavProps = {
      FooterExtendedNavList can only be used with multidimensional array (ExtendedNavLinksType) and size="big" prop.
    */
   links: React.ReactNode[] | ExtendedNavLinksType
+  className?: string
 }
 
 export const FooterNav = ({

@@ -7,6 +7,7 @@ interface AlertProps {
   type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
   children?: React.ReactNode
+  className?: string
   cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean

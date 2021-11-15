@@ -1,11 +1,20 @@
 import React from 'react'
 import classnames from 'classnames'
 
+interface ModalHeadingProps {
+  children?: React.ReactNode | string
+  className?: string
+}
+
 export const ModalHeading = ({
-  className,
   children,
+  className,
   ...headingProps
-}: React.HTMLProps<HTMLHeadingElement>): React.ReactElement => {
+}: ModalHeadingProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >): React.ReactElement => {
   const classes = classnames('usa-modal__heading', className)
 
   return (
