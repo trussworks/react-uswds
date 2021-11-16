@@ -59,13 +59,14 @@ interface ComboBoxProps {
 
 interface InputProps {
   focused: boolean
+  inputRef: React.RefObject<HTMLInputElement>
 }
 
 const Input = ({
   focused,
+  inputRef,
   ...inputProps
 }: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
-  const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (focused && inputRef.current) {
       inputRef.current.focus()
@@ -142,6 +143,8 @@ export const ComboBox = forwardRef(
     const containerRef = useRef<HTMLDivElement>(null)
     const listRef = useRef<HTMLUListElement>(null)
     const focusedItemRef = useRef<HTMLLIElement>(null)
+    const inputRef = useRef<HTMLInputElement>(null)
+    const selectRef = useRef<HTMLSelectElement>(null)
 
     useEffect(() => {
       onChange && onChange(state.selectedOption?.value || undefined)
@@ -347,6 +350,21 @@ export const ComboBox = forwardRef(
       }
     }
 
+    const changeElementValue = (
+      el: HTMLInputElement | HTMLSelectElement,
+      value = ''
+    ) => {
+      const elementToChange = el
+      elementToChange.value = value
+
+      const event = new CustomEvent('change', {
+        bubbles: true,
+        cancelable: true,
+        detail: { value },
+      })
+      elementToChange.dispatchEvent(event)
+    }
+
     const isPristine =
       state.selectedOption && state.selectedOption.label === state.inputValue
 
@@ -368,15 +386,18 @@ export const ComboBox = forwardRef(
         data-testid="combo-box"
         data-enhanced="true"
         className={containerClasses}
-        ref={containerRef}>
+        ref={containerRef}
+      >
         <select
           {...selectProps}
+          ref={selectRef}
           className="usa-select usa-sr-only usa-combo-box__select"
           name={name}
           aria-hidden
           tabIndex={-1}
           defaultValue={state.selectedOption?.value}
-          data-testid="combo-box-select">
+          data-testid="combo-box-select"
+        >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -399,6 +420,7 @@ export const ComboBox = forwardRef(
           onKeyDown={handleInputKeyDown}
           value={state.inputValue}
           focused={state.focusMode === FocusMode.Input}
+          inputRef={inputRef}
           aria-owns={listID}
           aria-autocomplete="list"
           aria-describedby={assistiveHintID}
@@ -416,7 +438,8 @@ export const ComboBox = forwardRef(
             data-testid="combo-box-clear-button"
             onKeyDown={handleClearKeyDown}
             hidden={!isPristine || isDisabled}
-            disabled={isDisabled}>
+            disabled={isDisabled}
+          >
             &nbsp;
           </button>
         </span>
@@ -435,7 +458,8 @@ export const ComboBox = forwardRef(
                   : ActionTypes.OPEN_LIST,
               })
             }
-            disabled={isDisabled}>
+            disabled={isDisabled}
+          >
             &nbsp;
           </button>
         </span>
@@ -447,7 +471,8 @@ export const ComboBox = forwardRef(
           className="usa-combo-box__list"
           role="listbox"
           ref={listRef}
-          hidden={!state.isOpen}>
+          hidden={!state.isOpen}
+        >
           {state.filteredOptions.map((option, index) => {
             const focused = option === state.focusedOption
             const selected = option === state.selectedOption
@@ -476,8 +501,13 @@ export const ComboBox = forwardRef(
                   dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
                 }
                 onClick={(): void => {
+                  inputRef.current &&
+                    changeElementValue(inputRef.current, option.value)
+                  selectRef.current &&
+                    changeElementValue(selectRef.current, option.value)
                   dispatch({ type: ActionTypes.SELECT_OPTION, option: option })
-                }}>
+                }}
+              >
                 {option.label}
               </li>
             )
@@ -495,7 +525,8 @@ export const ComboBox = forwardRef(
         <span
           id={assistiveHintID}
           className="usa-sr-only"
-          data-testid="combo-box-assistive-hint">
+          data-testid="combo-box-assistive-hint"
+        >
           {assistiveHint ||
             `When autocomplete results are available use up and down arrows to review
            and enter to select. Touch device users, explore by touch or with swipe
