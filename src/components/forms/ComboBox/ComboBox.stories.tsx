@@ -40,6 +40,8 @@ export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
         name="input-ComboBox"
         options={fruitList}
         onChange={noop}
+        inputProps={{ onChange: (e) => console.log('input') }}
+        selectProps={{ onChange: (e) => console.log('select') }}
       />
     </Form>
   )

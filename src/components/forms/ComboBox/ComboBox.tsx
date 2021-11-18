@@ -206,6 +206,30 @@ export const ComboBox = forwardRef(
       []
     )
 
+    const changeElementValue = (
+      el: HTMLInputElement | HTMLSelectElement,
+      value = ''
+    ) => {
+      const elementToChange = el
+      elementToChange.value = value
+
+      const event = new CustomEvent('change', {
+        bubbles: true,
+        cancelable: true,
+        detail: { value },
+      })
+      elementToChange.dispatchEvent(event)
+    }
+
+    const fireOnChangeAndDispatchSelect = (option: ComboBoxOption) => {
+      inputRef.current && changeElementValue(inputRef.current, option.label)
+      selectRef.current && changeElementValue(selectRef.current, option.value)
+      dispatch({
+        type: ActionTypes.SELECT_OPTION,
+        option: option,
+      })
+    }
+
     const handleInputKeyDown = (event: KeyboardEvent): void => {
       if (event.key === 'Escape') {
         dispatch({ type: ActionTypes.CLOSE_LIST })
@@ -252,10 +276,7 @@ export const ComboBox = forwardRef(
               option.label.toLowerCase() === state.inputValue.toLowerCase()
           )
           if (exactMatch) {
-            dispatch({
-              type: ActionTypes.SELECT_OPTION,
-              option: exactMatch,
-            })
+            fireOnChangeAndDispatchSelect(exactMatch)
           } else {
             if (state.selectedOption) {
               dispatch({
@@ -336,10 +357,7 @@ export const ComboBox = forwardRef(
       } else if (event.key === 'Tab' || event.key === 'Enter') {
         event.preventDefault()
         if (state.focusedOption) {
-          dispatch({
-            type: ActionTypes.SELECT_OPTION,
-            option: state.focusedOption,
-          })
+          fireOnChangeAndDispatchSelect(state.focusedOption)
         }
       } else if (event.key === 'ArrowDown' || event.key === 'Down') {
         event.preventDefault()
@@ -348,21 +366,6 @@ export const ComboBox = forwardRef(
         event.preventDefault()
         focusSibling(dispatch, state, Direction.Previous)
       }
-    }
-
-    const changeElementValue = (
-      el: HTMLInputElement | HTMLSelectElement,
-      value = ''
-    ) => {
-      const elementToChange = el
-      elementToChange.value = value
-
-      const event = new CustomEvent('change', {
-        bubbles: true,
-        cancelable: true,
-        detail: { value },
-      })
-      elementToChange.dispatchEvent(event)
     }
 
     const isPristine =
@@ -501,11 +504,7 @@ export const ComboBox = forwardRef(
                   dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })
                 }
                 onClick={(): void => {
-                  inputRef.current &&
-                    changeElementValue(inputRef.current, option.value)
-                  selectRef.current &&
-                    changeElementValue(selectRef.current, option.value)
-                  dispatch({ type: ActionTypes.SELECT_OPTION, option: option })
+                  fireOnChangeAndDispatchSelect(option)
                 }}
               >
                 {option.label}

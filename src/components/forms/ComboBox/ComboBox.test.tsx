@@ -318,6 +318,25 @@ describe('ComboBox component', () => {
         'test-label-id'
       )
     })
+
+    it('calls a custom input onChange handler when an option is selected', () => {
+      const mockOnInputChange = jest.fn()
+
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+          inputProps={{ onChange: mockOnInputChange }}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      userEvent.type(input, 'y')
+      userEvent.click(getByTestId('combo-box-option-yuzu'))
+      expect(mockOnInputChange).toHaveBeenCalledTimes(2)
+    })
   })
 
   describe('scrolling to a focused option', () => {
