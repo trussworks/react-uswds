@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/trussworks/react-uswds/compare/2.4.1...2.5.0) (2022-01-03)
+
+
+### Features
+
+* Allow intrinsic elements to be passed to Fieldset ([#1862](https://github.com/trussworks/react-uswds/issues/1862)) ([85a0092](https://github.com/trussworks/react-uswds/commit/85a0092bad776357ede2cd4e9aee9a5aa11912fd))
+
 ### [2.4.1](https://github.com/trussworks/react-uswds/compare/2.4.0...2.4.1) (2021-10-29)
 
 - Fix build artifact containing unused type definitions ([#1726](https://github.com/trussworks/react-uswds/issues/1726))
