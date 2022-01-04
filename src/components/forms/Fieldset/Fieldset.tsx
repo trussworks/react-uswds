@@ -19,7 +19,8 @@ export const Fieldset = ({
   className,
   legendSrOnly,
   legendStyle = 'default',
-}: FieldsetProps): React.ReactElement => {
+  ...fieldsetProps
+}: FieldsetProps & JSX.IntrinsicElements['fieldset']): React.ReactElement => {
   const classes = classnames('usa-fieldset', className)
 
   if (legendSrOnly) {
@@ -35,7 +36,7 @@ export const Fieldset = ({
   })
 
   return (
-    <fieldset data-testid="fieldset" className={classes}>
+    <fieldset data-testid="fieldset" className={classes} {...fieldsetProps}>
       {legend && <legend className={legendClasses}>{legend}</legend>}
       {children}
     </fieldset>
