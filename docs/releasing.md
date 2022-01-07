@@ -19,25 +19,32 @@ Steps for a new release (these are in the process of being automated):
 
    - PR title should be `chore(release): <version>`
    - Ask for approvals from stakeholders, perform testing on applications, etc.
-   - Last minute bugfix from testing or PR feedback can be made.
-     - Add bugfix commits on top of the release. Squash and merge the PR as usual.
-     - _For significant bugfix (special case)_
-       - Redo the release. Reset your local release branch, add bugfix commits (use conventional commits syntax). Rerun `yarn release`. The release chore commit should be the last commit on the branch. The fix will be included in the changelog. \_Rebase and merge the PR in this special case.
+ <details>
+       <summary>Expand this section for instructions for last minute bugfix</summary>
+  <ul> 
+  <li>For small bugfix, add commits on top of the release. Squash and merge the PR as usual.</li>
+   
+   <li>For significant bugfix you will need to redo the release. Reset your local release branch, add bugfix commits (use conventional commits syntax). Rerun `yarn release`. The release chore commit should be the last commit on the branch. The fix will be included in the changelog. <i>Rebase and merge the PR </i>in this special case.</li>
+</ul>
+</details>
 
    ![image](./release_PR.png)
 
 5. Once the release PR is approved, complete the release and publish the new version:
-   - Merge the PR and create a new [**release tag**](https://github.com/trussworks/react-uswds/releases) on Github, pointed at the merge commit of the release PR. Use the same notes as release PR.
+   - Merge the PR and create a new [**release**](https://github.com/trussworks/react-uswds/releases) on Github, pointed at the merge commit of the release PR. You should see a `Draft a new release` button. Title your release with the version number. Set the tag to the version number. Use the same  release notes as the release PR.
      - To point the release tag at the release merge commit, select `Recent Commits` from the `Target` dropdown in the Github UI and you should find the `chore(release): ...` commit at or near the top.
    - After merging the release PR, an [Actions workflow](../.github/workflows/package-release.yml) will build and package the release. From the bottom of the workflow run's summary page, [there is a section where the artifact can be downloaded](https://github.com/actions/upload-artifact#where-does-the-upload-go).
      - The `.tgz` will be inside of the `artifact.zip`.
        - Archive Utility by default recursively unzips the `.tgz` file when unzipping the `artifact.zip`. If you wish to change this behavior, disable "Keep expanding if possible" in the Archive Utility preferences.
-       - It may be easiest to use the terminal and run `unzip archive.zip`.
+       - It may be easiest to use the terminal and run `unzip artifact.zip`.
    - [Publish](https://docs.npmjs.com/cli/v6/commands/npm-publish) the new package to npm: `npm publish <tarball>`. You will be prompted for a MFA code.
      - `<tarball>` should point to the `.tgz` obtained in the previous step.
      - You may need to `npm login` first.
      - Publishing access is limited to package owners. If you need access and don't have it, please contact `@npm-admins` on Truss Slack.
      - Note: While it would be desireable (and is very much possible) to automate the publishing step, there are security concerns with setting up an Automation Token for npm that would mandate maintaining a strict key rotation process, which at this time exceeds the commitment that maintainers have available. To keep consumers of React USWDS secure, this step remains manual.
+  
+  ## HELP  
+  
      <details>
        <summary>Expand this section for manual publishing steps in the event CI is down.</summary>
          
