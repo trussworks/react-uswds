@@ -65,7 +65,7 @@ export const smallCounters = (): React.ReactElement => (
   </StepIndicator>
 )
 
-export const heading = (): React.ReactElement => (
+export const customHeadingLevel = (): React.ReactElement => (
   <StepIndicator headingLevel="h2">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
