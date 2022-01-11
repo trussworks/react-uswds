@@ -5,6 +5,12 @@ export default {
   title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
+    happo: {
+      beforeScreenshot: (): void => {
+        const focus = new FocusEvent('focus')
+        document.querySelector('.usa-tooltip__trigger').dispatchEvent(focus)
+      },
+    },
     docs: {
       description: {
         component: `
@@ -73,13 +79,14 @@ export const CustomComponent = (): React.ReactElement => {
   }> &
     JSX.IntrinsicElements['a'] &
     React.RefAttributes<HTMLAnchorElement>
-  const CustomLink: React.ForwardRefExoticComponent<CustomLinkProps> = React.forwardRef(
-    ({ to, className, children, ...tooltipProps }: CustomLinkProps, ref) => (
-      <a ref={ref} href={to} className={className} {...tooltipProps}>
-        {children}
-      </a>
+  const CustomLink: React.ForwardRefExoticComponent<CustomLinkProps> =
+    React.forwardRef(
+      ({ to, className, children, ...tooltipProps }: CustomLinkProps, ref) => (
+        <a ref={ref} href={to} className={className} {...tooltipProps}>
+          {children}
+        </a>
+      )
     )
-  )
 
   CustomLink.displayName = 'custom link'
 
