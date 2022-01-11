@@ -40,6 +40,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: 'yarn'
+
       - name: Happo
         run: yarn happo-ci
         env:
