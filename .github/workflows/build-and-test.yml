@@ -16,7 +16,7 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
-        with: 
+        with:
           node-version: 12.x
           cache: 'yarn'
 
@@ -33,13 +33,20 @@ jobs:
       - name: Lint code
         run: yarn lint
 
+  run-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
       - name: Happo
         run: yarn happo-ci
-        env: 
+        env:
           HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
           HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
 
-      - name: Run Danger JS 
-        run: yarn danger ci --failOnErrors
-        env: 
+      - name: Run Danger JS
+        run: danger/danger-js@9.1.8
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
