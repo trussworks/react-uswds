@@ -86,6 +86,7 @@ const Input = ({
 }
 
 export type ComboBoxRef = {
+  focus: () => void
   clearSelection: () => void
 }
 
@@ -197,6 +198,7 @@ export const ComboBox = forwardRef(
     useImperativeHandle(
       ref,
       () => ({
+        focus: (): void => dispatch({ type: ActionTypes.FOCUS_INPUT }),
         clearSelection: (): void =>
           dispatch({ type: ActionTypes.CLEAR_SELECTION }),
       }),

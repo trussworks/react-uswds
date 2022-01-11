@@ -120,7 +120,7 @@ export const withOtherFields = (): React.ReactElement => {
   )
 }
 
-export const externalClearSelection = (): React.ReactElement => {
+export const exposedRefMethods = (): React.ReactElement => {
   const ref = useRef<ComboBoxRef>()
 
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
@@ -129,6 +129,7 @@ export const externalClearSelection = (): React.ReactElement => {
   }))
 
   const handleClearSelection = (): void => ref.current.clearSelection()
+  const handleFocus = (): void => ref.current.focus()
 
   return (
     <Form onSubmit={noop}>
@@ -142,6 +143,10 @@ export const externalClearSelection = (): React.ReactElement => {
       />
       <Button type="reset" onClick={handleClearSelection}>
         Clear Selected Value
+      </Button>
+
+      <Button type="button" onClick={handleFocus}>
+        Focus on input
       </Button>
     </Form>
   )
