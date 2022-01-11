@@ -30,9 +30,6 @@ jobs:
       - name: Run node server side tests
         run: yarn test:serverside
 
-      - name: Lint code
-        run: yarn lint
-
   run-checks:
     runs-on: ubuntu-latest
 
@@ -46,6 +43,13 @@ jobs:
           node-version: 12.x
           cache: 'yarn'
 
+      # The yarn cache is not node_modules
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Lint code
+        run: yarn lint
+
       - name: Happo
         run: yarn happo-ci
         env:
@@ -53,6 +57,6 @@ jobs:
           HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
 
       - name: Run Danger JS
-        run: danger/danger-js@9.1.8
+        run: yarn danger ci --failOnErrors
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
