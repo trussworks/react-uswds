@@ -7,8 +7,12 @@ export default {
   parameters: {
     happo: {
       beforeScreenshot: (): void => {
-        const focus = new FocusEvent('focus')
-        document.querySelector('.usa-tooltip__trigger').dispatchEvent(focus)
+        const event = new MouseEvent('mouseover', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+        })
+        document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
       },
     },
     docs: {
