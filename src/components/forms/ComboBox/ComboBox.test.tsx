@@ -1717,6 +1717,33 @@ describe('ComboBox component', () => {
   })
 
   describe('exposed ref', () => {
+    it('can be used to focus on the text input', () => {
+      const comboRef = React.createRef<ComboBoxRef>()
+      const onChange = jest.fn()
+      const handleFocus = (): void => comboRef.current?.focus()
+
+      const { getByTestId } = render(
+        <>
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={onChange}
+            ref={comboRef}
+          />
+          <button data-testid="focus-button" onClick={handleFocus}>
+            Focus
+          </button>
+        </>
+      )
+
+      const input = getByTestId('combo-box-input')
+      expect(input).not.toHaveFocus()
+
+      fireEvent.click(getByTestId('focus-button'))
+      expect(input).toHaveFocus()
+    })
+
     it('can be used to clear the selected value', () => {
       const comboRef = React.createRef<ComboBoxRef>()
       const onChange = jest.fn()
