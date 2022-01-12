@@ -8,7 +8,8 @@ import React, {
   useState,
 } from 'react'
 import classnames from 'classnames'
-import { isElementInViewport } from './utils'
+
+import { isElementInViewport, calculateMarginOffset } from './utils'
 
 type TooltipProps<T> = {
   label: string
@@ -33,14 +34,12 @@ export function isCustomProps<T>(
 }
 
 const TRIANGLE_SIZE = 5
-const SPACER = 2
 
 export function Tooltip(props: DefaultTooltipProps): ReactElement
 export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
 export function Tooltip<FCProps = DefaultTooltipProps>(
   props: DefaultTooltipProps | CustomTooltipProps<FCProps>
 ): ReactElement {
-  const wrapperRef = useRef<HTMLElement>(null)
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
@@ -52,163 +51,127 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   const [effectivePosition, setEffectivePosition] = useState<
     'top' | 'bottom' | 'left' | 'right' | undefined
   >(undefined)
+  const [positioningAttempts, setPositionAttempts] = useState(0)
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
 
   const { position, wrapperclasses, className } = props
 
-  useEffect(() => {
-    if (effectivePosition === 'top' || effectivePosition === 'bottom') {
-      if (
-        tooltipBodyRef.current &&
-        !isElementInViewport(tooltipBodyRef.current)
-      ) {
-        setWrapTooltip(true)
-      }
-    }
-  }, [effectivePosition])
+  const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
+    const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
+    const leftMargin = calculateMarginOffset('left', e.offsetWidth, triggerEl)
+
+    setEffectivePosition('top')
+    setPositionStyles({
+      left: `50%`,
+      top: `-${TRIANGLE_SIZE}px`,
+      margin: `-${topMargin}px 0 0 -${leftMargin / 2}px`,
+    })
+  }
+
+  const positionBottom = (e: HTMLElement, triggerEl: HTMLElement): void => {
+    const leftMargin = calculateMarginOffset('left', e.offsetWidth, triggerEl)
+
+    setEffectivePosition('bottom')
+    setPositionStyles({
+      left: `50%`,
+      margin: `${TRIANGLE_SIZE}px 0 0 -${leftMargin / 2}px`,
+    })
+  }
+
+  const positionRight = (e: HTMLElement, triggerEl: HTMLElement): void => {
+    const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
+
+    setEffectivePosition('right')
+    setPositionStyles({
+      top: `50%`,
+      left: `${triggerEl.offsetLeft + triggerEl.offsetWidth + TRIANGLE_SIZE}px`,
+      margin: `-${topMargin / 2}px 0 0 0`,
+    })
+  }
+
+  const positionLeft = (e: HTMLElement, triggerEl: HTMLElement): void => {
+    const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
+    const leftMargin = calculateMarginOffset(
+      'left',
+      triggerEl.offsetLeft > e.offsetWidth
+        ? triggerEl.offsetLeft - e.offsetWidth
+        : e.offsetWidth,
+      triggerEl
+    )
+
+    setEffectivePosition('left')
+    setPositionStyles({
+      top: `50%`,
+      left: `-${TRIANGLE_SIZE}px`,
+      margin: `-${topMargin / 2}px 0 0 ${
+        triggerEl.offsetLeft > e.offsetWidth ? leftMargin : -leftMargin
+      }px`,
+    })
+  }
+
+  const positions = [positionTop, positionBottom, positionRight, positionLeft]
+  const MAX_ATTEMPTS = positions.length
 
   useEffect(() => {
-    if (isVisible) setIsShown(true)
-  }, [effectivePosition, positionStyles])
+    // When position/styles change, check if in viewport
+    if (isVisible && triggerElementRef.current && tooltipBodyRef.current) {
+      const tooltipTrigger = triggerElementRef.current
+      const tooltipBody = tooltipBodyRef.current
+
+      const isInViewport = isElementInViewport(tooltipBody)
+
+      if (isInViewport) {
+        // We're good, show the tooltip
+        setIsShown(true)
+      } else {
+        // Try the next position
+        const attempt = positioningAttempts
+        if (attempt < MAX_ATTEMPTS || wrapTooltip === false) {
+          setPositionAttempts((a) => a + 1)
+
+          if (attempt < MAX_ATTEMPTS) {
+            const pos = positions[parseInt(`${attempt}`)]
+            pos(tooltipBody, tooltipTrigger)
+          } else {
+            // Try wrapping
+            setWrapTooltip(true)
+            setPositionAttempts(0)
+          }
+        } else {
+          // No visible position found - this may mean your tooltip contents is too long!
+          console.warn(
+            'No visible position found - this may mean your tooltip contents is too long!'
+          )
+        }
+      }
+    }
+  }, [effectivePosition, positionStyles, wrapTooltip])
 
   useEffect(() => {
     if (!isVisible) {
       // Hide tooltip
       setIsShown(false)
       setWrapTooltip(false)
+      setPositionAttempts(0)
     } else {
-      if (
-        triggerElementRef.current &&
-        tooltipBodyRef.current &&
-        wrapperRef.current
-      ) {
+      // Show tooltip
+      if (triggerElementRef.current && tooltipBodyRef.current) {
         const tooltipTrigger = triggerElementRef.current
         const tooltipBody = tooltipBodyRef.current
-        const wrapper = wrapperRef.current
 
-        // Calculate sizing and adjustments for positioning
-        const tooltipWidth = tooltipTrigger.offsetWidth
-        const tooltipHeight = tooltipTrigger.offsetHeight
-        const offsetForTopMargin = Number.parseInt(
-          window
-            .getComputedStyle(tooltipTrigger)
-            .getPropertyValue('margin-top'),
-          10
-        )
-        const offsetForBottomMargin = Number.parseInt(
-          window
-            .getComputedStyle(tooltipTrigger)
-            .getPropertyValue('margin-bottom'),
-          10
-        )
-        const offsetForTopPadding = Number.parseInt(
-          window.getComputedStyle(wrapper).getPropertyValue('padding-top'),
-          10
-        )
-        const offsetForBottomPadding = Number.parseInt(
-          window.getComputedStyle(wrapper).getPropertyValue('padding-bottom'),
-          10
-        )
-        // issue dealing with null here
-        const offsetForTooltipBodyHeight = Number.parseInt(
-          window.getComputedStyle(tooltipBody).getPropertyValue('height'),
-          10
-        )
-        const leftOffset = tooltipTrigger.offsetLeft
-        const tooltipBodyWidth = tooltipBody.offsetWidth
-        const adjustHorizontalCenter = tooltipWidth / 2 + leftOffset
-        const adjustToEdgeX = tooltipWidth + TRIANGLE_SIZE + SPACER
-        const adjustToEdgeY = tooltipHeight + TRIANGLE_SIZE + SPACER
-
-        const positionTop = (): void => {
-          setEffectivePosition('top')
-          setPositionStyles({
-            marginLeft: `${adjustHorizontalCenter}px`,
-            marginBottom: `${
-              adjustToEdgeY + offsetForBottomMargin + offsetForBottomPadding
-            }px`,
-          })
-        }
-
-        const positionBottom = (): void => {
-          setEffectivePosition('bottom')
-          setPositionStyles({
-            marginLeft: `${adjustHorizontalCenter}px`,
-            marginTop: `${
-              adjustToEdgeY + offsetForTopMargin + offsetForTopPadding
-            }px`,
-          })
-        }
-
-        const positionRight = (): void => {
-          setEffectivePosition('right')
-          setPositionStyles({
-            marginBottom: '0',
-            marginLeft: `${adjustToEdgeX + leftOffset}px`,
-            bottom: `${
-              (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-              offsetForBottomMargin +
-              offsetForBottomPadding
-            }px`,
-          })
-        }
-
-        const positionLeft = (): void => {
-          setEffectivePosition('left')
-          setPositionStyles({
-            marginBottom: '0',
-            marginLeft:
-              leftOffset > tooltipBodyWidth
-                ? `${
-                    leftOffset - tooltipBodyWidth - (TRIANGLE_SIZE + SPACER)
-                  }px`
-                : `-${
-                    tooltipBodyWidth - leftOffset + (TRIANGLE_SIZE + SPACER)
-                  }px`,
-            bottom: `${
-              (tooltipHeight - offsetForTooltipBodyHeight) / 2 +
-              offsetForBottomMargin +
-              offsetForBottomPadding
-            }px`,
-          })
-        }
-
-        /**
-         * We try to set the position based on the
-         * original intention, but make adjustments
-         * if the element is clipped out of the viewport
-         */
         switch (position) {
           case 'top':
-            positionTop()
-            if (!isElementInViewport(tooltipBody)) {
-              positionBottom()
-            }
+            positionTop(tooltipBody, tooltipTrigger)
             break
           case 'bottom':
-            positionBottom()
-            if (!isElementInViewport(tooltipBody)) {
-              positionTop()
-            }
+            positionBottom(tooltipBody, tooltipTrigger)
             break
           case 'right':
-            positionRight()
-            if (!isElementInViewport(tooltipBody)) {
-              positionLeft()
-              if (!isElementInViewport(tooltipBody)) {
-                positionTop()
-              }
-            }
+            positionRight(tooltipBody, tooltipTrigger)
             break
           case 'left':
-            positionLeft()
-            if (!isElementInViewport(tooltipBody)) {
-              positionRight()
-              if (!isElementInViewport(tooltipBody)) {
-                positionTop()
-              }
-            }
+            positionLeft(tooltipBody, tooltipTrigger)
             break
 
           default:
@@ -240,7 +203,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 
   if (isCustomProps(props)) {
     const { label, asCustom, children, ...remainingProps } = props
-    const customProps: FCProps = (remainingProps as unknown) as FCProps
+    const customProps: FCProps = remainingProps as unknown as FCProps
 
     const triggerClasses = classnames('usa-tooltip__trigger', className)
 
@@ -265,10 +228,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     )
 
     return (
-      <span
-        data-testid="tooltipWrapper"
-        ref={wrapperRef}
-        className={wrapperClasses}>
+      <span data-testid="tooltipWrapper" className={wrapperClasses}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -293,10 +253,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     )
 
     return (
-      <span
-        data-testid="tooltipWrapper"
-        ref={wrapperRef}
-        className={wrapperClasses}>
+      <span data-testid="tooltipWrapper" className={wrapperClasses}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
