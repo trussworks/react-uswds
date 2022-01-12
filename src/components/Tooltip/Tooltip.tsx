@@ -111,7 +111,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   }
 
   const positions = [positionTop, positionBottom, positionRight, positionLeft]
-  const MAX_ATTEMPTS = 4
+  const MAX_ATTEMPTS = positions.length
 
   useEffect(() => {
     // When position/styles change, check if in viewport
@@ -130,32 +130,13 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         if (attempt < MAX_ATTEMPTS || wrapTooltip === false) {
           setPositionAttempts((a) => a + 1)
 
-          if (attempt < positions.length) {
+          if (attempt < MAX_ATTEMPTS) {
             const pos = positions[parseInt(`${attempt}`)]
             pos(tooltipBody, tooltipTrigger)
           } else {
             // Try wrapping
             setWrapTooltip(true)
             setPositionAttempts(0)
-
-            switch (position) {
-              case 'top':
-                positionTop(tooltipBody, tooltipTrigger)
-                break
-              case 'bottom':
-                positionBottom(tooltipBody, tooltipTrigger)
-                break
-              case 'right':
-                positionRight(tooltipBody, tooltipTrigger)
-                break
-              case 'left':
-                positionLeft(tooltipBody, tooltipTrigger)
-                break
-
-              default:
-                // skip default case
-                break
-            }
           }
         } else {
           // No visible position found - this may mean your tooltip contents is too long!
@@ -165,7 +146,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         }
       }
     }
-  }, [effectivePosition, positionStyles])
+  }, [effectivePosition, positionStyles, wrapTooltip])
 
   useEffect(() => {
     if (!isVisible) {
