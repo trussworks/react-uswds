@@ -439,6 +439,7 @@ describe('Tooltip component', () => {
       mockedIsElementInViewport.mockReturnValueOnce(false) // Tried bottom
       mockedIsElementInViewport.mockReturnValueOnce(false) // Tried right
       mockedIsElementInViewport.mockReturnValueOnce(false) // Tried left
+      mockedIsElementInViewport.mockReturnValueOnce(false) // Tried intended again
 
       fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 

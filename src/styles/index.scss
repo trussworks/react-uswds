@@ -2,3 +2,8 @@
 
 @import 'backgrounds';
 @import 'type';
+
+// This should be set by USWDS but isn't
+.usa-tooltip__body {
+  opacity: 0;
+}
