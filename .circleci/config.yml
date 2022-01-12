@@ -21,19 +21,6 @@ jobs:
             - ~/.cache/yarn
           key: v1-yarn-{{ checksum "yarn.lock" }}
 
-      - run: yarn test:coverage -w 1
-
-      - run: yarn test:serverside
-
-      - run:
-          name: 'Happo'
-          command: 'yarn happo-ci'
-          environment:
-            HAPPO_IS_ASYNC: 'true'
-            BASE_BRANCH: 'origin/main'
-
-      - run: yarn lint
-      - run: yarn danger ci --failOnErrors
       - run:
           name: Create GitHub Deployment
           command: ./scripts/deployment_start.sh > deployment
