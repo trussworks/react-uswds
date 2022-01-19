@@ -2,3 +2,9 @@
 
 @import 'backgrounds';
 @import 'type';
+
+// This should be set by USWDS but isn't
+// It can be removed when https://github.com/uswds/uswds/issues/4458 is fixed
+.usa-tooltip__body {
+  opacity: 0;
+}
