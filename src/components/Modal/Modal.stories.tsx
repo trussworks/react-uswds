@@ -48,39 +48,41 @@ export const defaultModal = (): React.ReactElement => {
   const modalRef = useRef<ModalRef>()
 
   return (
-    <>
-      <ModalToggleButton modalRef={modalRef} opener>
-        Open default modal
-      </ModalToggleButton>
-      <Modal
-        ref={modalRef}
-        id="example-modal-1"
-        aria-labelledby="modal-1-heading"
-        aria-describedby="modal-1-description">
-        <ModalHeading id="modal-1-heading">
-          Are you sure you want to continue?
-        </ModalHeading>
-        <div className="usa-prose">
-          <p id="modal-1-description">
-            You have unsaved changes that will be lost.
-          </p>
-        </div>
-        <ModalFooter>
-          <ButtonGroup>
-            <ModalToggleButton modalRef={modalRef} closer>
-              Continue without saving
-            </ModalToggleButton>
-            <ModalToggleButton
-              modalRef={modalRef}
-              closer
-              unstyled
-              className="padding-105 text-center">
-              Go back
-            </ModalToggleButton>
-          </ButtonGroup>
-        </ModalFooter>
-      </Modal>
-    </>
+    <div>
+      <div>
+        <ModalToggleButton modalRef={modalRef} opener>
+          Open default modal
+        </ModalToggleButton>
+        <Modal
+          ref={modalRef}
+          id="example-modal-1"
+          aria-labelledby="modal-1-heading"
+          aria-describedby="modal-1-description">
+          <ModalHeading id="modal-1-heading">
+            Are you sure you want to continue?
+          </ModalHeading>
+          <div className="usa-prose">
+            <p id="modal-1-description">
+              You have unsaved changes that will be lost.
+            </p>
+          </div>
+          <ModalFooter>
+            <ButtonGroup>
+              <ModalToggleButton modalRef={modalRef} closer>
+                Continue without saving
+              </ModalToggleButton>
+              <ModalToggleButton
+                modalRef={modalRef}
+                closer
+                unstyled
+                className="padding-105 text-center">
+                Go back
+              </ModalToggleButton>
+            </ButtonGroup>
+          </ModalFooter>
+        </Modal>
+      </div>
+    </div>
   )
 }
 

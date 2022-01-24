@@ -10,6 +10,7 @@ import FocusTrap from 'focus-trap-react'
 import { useModal, getScrollbarWidth } from './utils'
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalWrapper } from './ModalWrapper/ModalWrapper'
+import ReactDOM from 'react-dom'
 
 interface ModalComponentProps {
   id: string
@@ -18,6 +19,7 @@ interface ModalComponentProps {
   isLarge?: boolean
   forceAction?: boolean
   modalRoot?: string
+  renderToPortal?: boolean
 }
 
 export type ModalProps = ModalComponentProps & JSX.IntrinsicElements['div']
@@ -36,6 +38,7 @@ export const Modal = forwardRef(
       isLarge = false,
       forceAction = false,
       modalRoot = '.usa-modal-wrapper',
+      renderToPortal = true,
       ...divProps
     }: ModalProps,
     ref: React.Ref<ModalRef>
@@ -162,7 +165,7 @@ export const Modal = forwardRef(
       },
     }
 
-    return (
+    const modal = 
       <FocusTrap active={isOpen} focusTrapOptions={focusTrapOptions}>
         <ModalWrapper
           role="dialog"
@@ -185,7 +188,15 @@ export const Modal = forwardRef(
           </ModalWindow>
         </ModalWrapper>
       </FocusTrap>
-    )
+   
+    if (renderToPortal) {
+      return ReactDOM.createPortal(
+        modal,
+        document.body
+      )
+    } else {
+      return modal
+    }
   }
 )
 
