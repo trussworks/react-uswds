@@ -1,5 +1,6 @@
 import React, { createRef, useRef } from 'react'
 import {
+  cleanup,
   render,
   screen,
   waitFor,
@@ -29,12 +30,19 @@ const renderWithModalRoot = (
   ui: React.ReactElement,
   options: RenderOptions = {}
 ) => {
+  const appContainer = document.createElement("div")
+  appContainer.setAttribute("id", "app-root")
+
   const modalContainer = document.createElement('div')
   modalContainer.setAttribute('id', 'modal-root')
 
+  document.body.appendChild(appContainer)
+  document.body.appendChild(modalContainer)
+
   return render(ui, {
     ...options,
-    container: document.body.appendChild(modalContainer),
+    container: appContainer,
+    baseElement: document.body,
   })
 }
 
@@ -138,13 +146,15 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
 
 describe('Modal component', () => {
   beforeEach(() => {
+    cleanup()
+    document.body.innerHTML = ''
     document.body.style.paddingRight = '0px'
   })
 
   it('renders its children inside a modal wrapper', () => {
     const testModalId = 'testModal'
 
-    render(<Modal id={testModalId}>Test modal</Modal>)
+    renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)
 
     // Modal wrapper
     const modalWrapper = screen.getByRole('dialog')
@@ -171,7 +181,7 @@ describe('Modal component', () => {
   it('passes aria props to the modal wrapper', () => {
     const testModalId = 'testModal'
 
-    render(
+    renderWithModalRoot(
       <Modal
         id={testModalId}
         aria-labelledby="modal-label"
@@ -239,7 +249,7 @@ describe('Modal component', () => {
     const modalRef = createRef<ModalRef>()
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
-    render(
+    renderWithModalRoot(
       <Modal id={testModalId} ref={modalRef}>
         Test modal
       </Modal>
@@ -256,7 +266,7 @@ describe('Modal component', () => {
   it('renders a large modal window when isLarge is true', () => {
     const testModalId = 'testModal'
 
-    render(
+    renderWithModalRoot(
       <Modal id={testModalId} isLarge>
         Test modal
       </Modal>
@@ -268,7 +278,7 @@ describe('Modal component', () => {
   it('does not render a close button when forceAction is true', () => {
     const testModalId = 'testModal'
 
-    render(
+    renderWithModalRoot(
       <Modal id={testModalId} forceAction>
         Test modal
       </Modal>
@@ -292,7 +302,7 @@ describe('Modal component', () => {
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
       const handleClose = () => modalRef.current?.toggleModal(undefined, false)
 
-      const { baseElement } = render(
+      const { baseElement } = renderWithModalRoot(
         <Modal id="testModal" ref={modalRef}>
           Test modal
         </Modal>
@@ -318,7 +328,7 @@ describe('Modal component', () => {
       const handleClose = () => modalRef.current?.toggleModal(undefined, false)
       document.body.style.paddingRight = '20px'
 
-      const { baseElement } = render(
+      const { baseElement } = renderWithModalRoot(
         <Modal id="testModal" ref={modalRef}>
           Test modal
         </Modal>
@@ -441,7 +451,7 @@ describe('Modal component', () => {
       const modalRef = createRef<ModalRef>()
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
-      render(
+      renderWithModalRoot(
         <Modal id="testModal" ref={modalRef}>
           Test modal
         </Modal>
@@ -579,7 +589,7 @@ describe('Modal component', () => {
         const handleClose = () =>
           modalRef.current?.toggleModal(undefined, false)
 
-        const { baseElement } = render(
+        const { baseElement } = renderWithModalRoot(
           <Modal id="testModal" ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>
@@ -602,7 +612,7 @@ describe('Modal component', () => {
 
         const testModalId = 'testModal'
 
-        render(
+        renderWithModalRoot(
           <Modal id={testModalId} ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>

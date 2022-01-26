@@ -30,6 +30,12 @@ export type ModalRef = {
   toggleModal: (event?: React.MouseEvent, open?: boolean) => boolean
 }
 
+// Modals are rendered into the document body default. If an element exists with the id
+// `modal-root`, that element will be used as the parent instead.
+// 
+// If you wish to override this behavior, `renderToPortal` to `false` and the modal
+// will render in its normal location in the document. Note that this may cause the modal to
+// be inaccessible due to no longer being in the document's accessbility tree.
 export const Modal = forwardRef(
   (
     {
@@ -188,11 +194,13 @@ export const Modal = forwardRef(
           </ModalWindow>
         </ModalWrapper>
       </FocusTrap>
-   
+  
     if (renderToPortal) {
+      const modalRoot = document.getElementById("modal-root")
+      const target = modalRoot || document.body
       return ReactDOM.createPortal(
         modal,
-        document.body
+        target
       )
     } else {
       return modal
