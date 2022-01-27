@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/trussworks/react-uswds/compare/2.6.0...2.7.0) (2022-01-12)
+
+
+### Features
+
+* Add focus method to ComboBox ref ([#1876](https://github.com/trussworks/react-uswds/issues/1876)) ([c380a94](https://github.com/trussworks/react-uswds/commit/c380a94c3c7dd2ae363fd0f58e80d93aa35cc43b))
+
+
+### Bug Fixes
+
+* Fix Tooltip positioning ([#1878](https://github.com/trussworks/react-uswds/issues/1878)) ([f15fea0](https://github.com/trussworks/react-uswds/commit/f15fea0b2ce037b48b8860e69a074de30aabfa91))
+
+
+### Documentation & Examples
+
+* Add help section to releasing README ([#1867](https://github.com/trussworks/react-uswds/issues/1867)) ([73e9094](https://github.com/trussworks/react-uswds/commit/73e9094a82033bdee643316ff4db91a8460d999b))
+
 ## [2.6.0](https://github.com/trussworks/react-uswds/compare/2.5.0...2.6.0) (2022-01-07)
 
 
