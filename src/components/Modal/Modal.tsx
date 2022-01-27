@@ -10,6 +10,7 @@ import FocusTrap from 'focus-trap-react'
 import { useModal, getScrollbarWidth } from './utils'
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalWrapper } from './ModalWrapper/ModalWrapper'
+import ReactDOM from 'react-dom'
 
 interface ModalComponentProps {
   id: string
@@ -18,6 +19,7 @@ interface ModalComponentProps {
   isLarge?: boolean
   forceAction?: boolean
   modalRoot?: string
+  renderToPortal?: boolean
 }
 
 export type ModalProps = ModalComponentProps & JSX.IntrinsicElements['div']
@@ -28,6 +30,12 @@ export type ModalRef = {
   toggleModal: (event?: React.MouseEvent, open?: boolean) => boolean
 }
 
+// Modals are rendered into the document body default. If an element exists with the id
+// `modal-root`, that element will be used as the parent instead.
+// 
+// If you wish to override this behavior, `renderToPortal` to `false` and the modal
+// will render in its normal location in the document. Note that this may cause the modal to
+// be inaccessible due to no longer being in the document's accessbility tree.
 export const Modal = forwardRef(
   (
     {
@@ -36,6 +44,7 @@ export const Modal = forwardRef(
       isLarge = false,
       forceAction = false,
       modalRoot = '.usa-modal-wrapper',
+      renderToPortal = true,
       ...divProps
     }: ModalProps,
     ref: React.Ref<ModalRef>
@@ -162,7 +171,7 @@ export const Modal = forwardRef(
       },
     }
 
-    return (
+    const modal = 
       <FocusTrap active={isOpen} focusTrapOptions={focusTrapOptions}>
         <ModalWrapper
           role="dialog"
@@ -185,7 +194,17 @@ export const Modal = forwardRef(
           </ModalWindow>
         </ModalWrapper>
       </FocusTrap>
-    )
+  
+    if (renderToPortal) {
+      const modalRoot = document.getElementById("modal-root")
+      const target = modalRoot || document.body
+      return ReactDOM.createPortal(
+        modal,
+        target
+      )
+    } else {
+      return modal
+    }
   }
 )
 
