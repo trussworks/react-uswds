@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.7.1](https://github.com/trussworks/react-uswds/compare/2.7.0...2.7.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* Render modal outside app root by default. ([#1890](https://github.com/trussworks/react-uswds/issues/1890)) ([0828351](https://github.com/trussworks/react-uswds/commit/082835186f8ba7d10941f2425e6db1570c57c9dd))
+
 ## [2.7.0](https://github.com/trussworks/react-uswds/compare/2.6.0...2.7.0) (2022-01-12)
 
 
