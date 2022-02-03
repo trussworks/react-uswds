@@ -1,7 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
-import classNames from 'classnames'
 
 interface StepIndicatorProps {
   showLabels?: boolean
@@ -58,7 +57,7 @@ export const StepIndicator = (
     additionalListClasses
   )
 
-  const headingClasses = classNames(
+  const headingClasses = classnames(
     'usa-step-indicator__heading',
     additionalHeadingClasses
   )
