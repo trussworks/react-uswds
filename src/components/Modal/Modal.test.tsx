@@ -30,8 +30,8 @@ const renderWithModalRoot = (
   ui: React.ReactElement,
   options: RenderOptions = {}
 ) => {
-  const appContainer = document.createElement("div")
-  appContainer.setAttribute("id", "app-root")
+  const appContainer = document.createElement('div')
+  appContainer.setAttribute('id', 'app-root')
 
   const modalContainer = document.createElement('div')
   modalContainer.setAttribute('id', 'modal-root')
@@ -647,6 +647,62 @@ describe('Modal component', () => {
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
       })
+    })
+  })
+
+  describe('unmounting', () => {
+    it('resets the body element if the modal was open', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+
+      const { baseElement, unmount } = renderWithModalRoot(
+        <Modal id="testModal" ref={modalRef}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
+
+      await waitFor(() => handleOpen())
+
+      expect(baseElement).toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 15px')
+
+      await waitFor(() => unmount())
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
+    })
+
+    it('does not reset the body element if the modal was not open', async () => {
+      const modalRef = createRef<ModalRef>()
+      const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+      const handleClose = () => modalRef.current?.toggleModal(undefined, false)
+
+      const { baseElement, unmount } = renderWithModalRoot(
+        <Modal id="testModal" ref={modalRef}>
+          Test modal
+        </Modal>
+      )
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
+
+      await waitFor(() => handleOpen())
+
+      expect(baseElement).toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 15px')
+
+      await waitFor(() => handleClose())
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
+
+      await waitFor(() => unmount())
+
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      expect(baseElement).toHaveStyle('padding-right: 0px')
     })
   })
 })
