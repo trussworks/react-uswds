@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.7.2](https://github.com/trussworks/react-uswds/compare/2.7.1...2.7.2) (2022-02-14)
+
+
+### Bug Fixes
+
+* Fix modal causing body padding to increase when unmounted ([#1899](https://github.com/trussworks/react-uswds/issues/1899)) ([fb46e88](https://github.com/trussworks/react-uswds/commit/fb46e8867f61781edf3393a359236bbcc45c626f))
+
 ### [2.7.1](https://github.com/trussworks/react-uswds/compare/2.7.0...2.7.1) (2022-01-27)
 
 
