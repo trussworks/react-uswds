@@ -32,7 +32,7 @@ export type ModalRef = {
 
 // Modals are rendered into the document body default. If an element exists with the id
 // `modal-root`, that element will be used as the parent instead.
-// 
+//
 // If you wish to override this behavior, `renderToPortal` to `false` and the modal
 // will render in its normal location in the document. Note that this may cause the modal to
 // be inaccessible due to no longer being in the document's accessbility tree.
@@ -74,6 +74,33 @@ export const Modal = forwardRef(
       [id, isOpen]
     )
 
+    const handleOpenEffect = () => {
+      const { body } = document
+      body.style.paddingRight = tempPaddingRef.current || ''
+      body.classList.add('usa-js-modal--active')
+
+      document.querySelectorAll(NON_MODALS).forEach((el) => {
+        el.setAttribute('aria-hidden', 'true')
+        el.setAttribute('data-modal-hidden', '')
+      })
+
+      if (forceAction) {
+        body.classList.add('usa-js-no-click')
+      }
+    }
+
+    const handleCloseEffect = () => {
+      const { body } = document
+      body.style.paddingRight = initialPaddingRef.current || ''
+      body.classList.remove('usa-js-modal--active')
+      body.classList.remove('usa-js-no-click')
+
+      document.querySelectorAll(NON_MODALS_HIDDEN).forEach((el) => {
+        el.removeAttribute('aria-hidden')
+        el.removeAttribute('data-modal-hidden')
+      })
+    }
+
     useEffect(() => {
       const SCROLLBAR_WIDTH = getScrollbarWidth()
       const INITIAL_PADDING =
@@ -92,57 +119,17 @@ export const Modal = forwardRef(
       setMounted(true)
 
       return () => {
-        // On unmount
-        const { body } = document
-        const INITIAL_PADDING = initialPaddingRef.current
-        const TEMPORARY_PADDING = tempPaddingRef.current
-
-        body.classList.remove('usa-js-modal--active')
-        body.classList.remove('usa-js-no-click')
-
-        body.style.paddingRight =
-          (body.style.paddingRight === TEMPORARY_PADDING
-            ? INITIAL_PADDING
-            : TEMPORARY_PADDING) || ''
-
-        document.querySelectorAll(NON_MODALS_HIDDEN).forEach((el) => {
-          el.removeAttribute('aria-hidden')
-          el.removeAttribute('data-modal-hidden')
-        })
+        // Reset as if the modal is being closed
+        handleCloseEffect()
       }
     }, [])
 
     useEffect(() => {
       if (mounted) {
-        const { body } = document
-
-        const INITIAL_PADDING = initialPaddingRef.current
-        const TEMPORARY_PADDING = tempPaddingRef.current
-
-        body.style.paddingRight =
-          (body.style.paddingRight === TEMPORARY_PADDING
-            ? INITIAL_PADDING
-            : TEMPORARY_PADDING) || ''
-
         if (isOpen === true) {
-          body.classList.add('usa-js-modal--active')
-
-          document.querySelectorAll(NON_MODALS).forEach((el) => {
-            el.setAttribute('aria-hidden', 'true')
-            el.setAttribute('data-modal-hidden', '')
-          })
-
-          if (forceAction) {
-            body.classList.add('usa-js-no-click')
-          }
+          handleOpenEffect()
         } else if (isOpen === false) {
-          body.classList.remove('usa-js-modal--active')
-          body.classList.remove('usa-js-no-click')
-
-          document.querySelectorAll(NON_MODALS_HIDDEN).forEach((el) => {
-            el.removeAttribute('aria-hidden')
-            el.removeAttribute('data-modal-hidden')
-          })
+          handleCloseEffect()
         }
       }
     }, [isOpen])
@@ -171,7 +158,7 @@ export const Modal = forwardRef(
       },
     }
 
-    const modal = 
+    const modal = (
       <FocusTrap active={isOpen} focusTrapOptions={focusTrapOptions}>
         <ModalWrapper
           role="dialog"
@@ -194,14 +181,12 @@ export const Modal = forwardRef(
           </ModalWindow>
         </ModalWrapper>
       </FocusTrap>
-  
+    )
+
     if (renderToPortal) {
-      const modalRoot = document.getElementById("modal-root")
+      const modalRoot = document.getElementById('modal-root')
       const target = modalRoot || document.body
-      return ReactDOM.createPortal(
-        modal,
-        target
-      )
+      return ReactDOM.createPortal(modal, target)
     } else {
       return modal
     }
