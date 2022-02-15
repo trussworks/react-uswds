@@ -1,4 +1,4 @@
-# For Maintainer
+# For Maintainers
 
 As of Truss TDR #95, Truss staff will be rotating maintainer responsibilities for ReactUSWDS.
 
