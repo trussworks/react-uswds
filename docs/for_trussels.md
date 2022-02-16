@@ -41,7 +41,7 @@ Please make sure to do the following before you wash your hands of responsibilit
   - [ ] Unassign yourself from any corresponding issues
   - It’s ideal if you are able to help answer any questions that arise from handing off work, but we understand if your new commitments don't allow for it! 
 - [ ] _For Maintainers:_ Open a new PR that removes yourself from the Active Maintainers list in the [readme](../README.md).
-- [] Remove yourself from [CODEOWNERS](../CODEOWNERS) so you don't get PR requests that you won't have time to review.
+- [ ] Remove yourself from [CODEOWNERS](../CODEOWNERS) so you don't get PR requests that you won't have time to review.
 - **_Don't_** remove yourself from `package.json` contributors! You did good work on this project and that should be recognized.
 - [ ] _Optional:_ You don’t need to have npm access revoked, but you can if you want.
 - [ ] _Optional:_ You don’t need to have Happo admin access revoked, but you can if you want.
