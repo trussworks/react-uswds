@@ -37,7 +37,7 @@ Please make sure to do the following before you wash your hands of responsibilit
 - **If you have any in-progress work that you won't be able to complete:**
   - [ ] Make sure all of your commits have been pushed up to a branch so nothing gets lost on your local machine
   - [ ] Open a draft PR for your branch, and use that to annotate any remaining work, TODOs, open questions, etc. as well as the overarching strategy you had in mind. The more documentation you leave, the easier it will be for someone else to finish your work!
-  - [ ] If there is another active maintainers who are planning to pick up your work, comment on the PR and tag them so it's clear who will be picking it up. If there aren't, or you aren't sure, comment on the PR saying the work needs a new assignee or else it will go stale.
+  - [ ] If there is another active maintainer who is planning to pick up your work, comment on the PR and tag them so it's clear who will be picking it up. If there isn't, or you aren't sure, comment on the PR saying the work needs a new assignee or else it will go stale.
   - [ ] Unassign yourself from any corresponding issues
   - It’s ideal if you are able to help answer any questions that arise from handing off work, but we understand if your new commitments don't allow for it! 
 - [ ] _For Maintainers:_ Open a new PR that removes yourself from the Active Maintainers list in the [readme](../README.md).
