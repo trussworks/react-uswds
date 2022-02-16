@@ -18,7 +18,7 @@ First of all, we’re so excited you want to be an active maintainer on this pro
 - [ ] _For Maintainers:_ Add yourself to main project README "Active Maintainers" list.
 - [ ] _For Maintainers:_ Ping in #react-uswds to request access to the npm org so you can publish new releases
 - [ ] _For Maintainers:_ Ping in #react-uswds to request admin privileges to the [Happo Account](https://happo.io/)
-- [ ] _Optional:_ Add yourself to the `contributors` list in the [package.json](../all-contributorsrc.json),
+- [ ] _Optional:_ Add yourself to the `contributors` list in the [contributors file](../all-contributorsrc.json),
 - [ ] _Optional: Add yourself to [CODEOWNERS](../CODEOWNERS) if you'd like to automatically be requested to review PRs.
 
 If you've completed all of the above and are wondering what to do next, here are some ideas!
