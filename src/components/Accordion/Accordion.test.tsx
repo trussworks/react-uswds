@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import { Accordion } from './Accordion'
+import { Accordion, AccordionItemProps } from './Accordion'
 
 const testItems = [
   {
@@ -381,7 +381,7 @@ describe('Accordion component', () => {
   })
   describe('custom headingLevel for AccordionItems', () => {
     it('passes on the headingLevel', () => {
-      const customTestItems = [
+      const customTestItems: AccordionItemProps[] = [
         {
           title: 'First Amendment',
           content: (

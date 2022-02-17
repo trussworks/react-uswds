@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
-interface AccordionItem {
+export interface AccordionItemProps {
   title: React.ReactNode | string
   content: React.ReactNode
   expanded: boolean
@@ -14,7 +14,7 @@ interface AccordionItem {
 interface AccordionProps {
   bordered?: boolean
   multiselectable?: boolean
-  items: AccordionItem[]
+  items: AccordionItemProps[]
   className?: string
 }
 
@@ -26,7 +26,7 @@ export const AccordionItem = ({
   className,
   headingLevel = 'h4',
   handleToggle,
-}: AccordionItem): React.ReactElement => {
+}: AccordionItemProps): React.ReactElement => {
   const headingClasses = classnames('usa-accordion__heading', className)
   const contentClasses = classnames(
     'usa-accordion__content',
@@ -79,7 +79,7 @@ export const Accordion = ({
     className
   )
 
-  const toggleItem = (itemId: AccordionItem['id']): void => {
+  const toggleItem = (itemId: AccordionItemProps['id']): void => {
     const newOpenItems = [...openItems]
     const itemIndex = openItems.indexOf(itemId)
     const isMultiselectable = multiselectable
