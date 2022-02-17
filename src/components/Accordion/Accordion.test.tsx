@@ -379,4 +379,119 @@ describe('Accordion component', () => {
       )
     })
   })
+  describe('custom headingLevel for AccordionItems', () => {
+    it('passes on the headingLevel', () => {
+      const customTestItems = [
+        {
+          title: 'First Amendment',
+          content: (
+            <p>
+              Congress shall make no law respecting an establishment of
+              religion, or prohibiting the free exercise thereof; or abridging
+              the freedom of speech, or of the press; or the right of the people
+              peaceably to assemble, and to petition the Government for a
+              redress of grievances.
+            </p>
+          ),
+          expanded: false,
+          headingLevel: 'h2',
+          id: '123',
+          className: 'myCustomAccordionItem',
+        },
+        {
+          title: 'Second Amendment',
+          content: (
+            <>
+              <p>
+                A well regulated Militia, being necessary to the security of a
+                free State, the right of the people to keep and bear Arms, shall
+                not be infringed.
+              </p>{' '}
+              <ul>
+                <li>This is a list item</li>
+                <li>Another list item</li>
+              </ul>
+            </>
+          ),
+          expanded: false,
+          headingLevel: 'h2',
+
+          id: 'abc',
+        },
+        {
+          title: 'Third Amendment',
+          content: (
+            <p>
+              No Soldier shall, in time of peace be quartered in any house,
+              without the consent of the Owner, nor in time of war, but in a
+              manner to be prescribed by law.
+            </p>
+          ),
+          expanded: false,
+          headingLevel: 'h2',
+          id: 'def',
+        },
+      ]
+
+      const { getAllByRole } = render(<Accordion items={customTestItems} />)
+
+      const headings = getAllByRole('heading', { level: 2 })
+      expect(headings.length).toEqual(customTestItems.length)
+    })
+
+    it('uses headingLevel h4 by default', () => {
+      const testItems = [
+        {
+          title: 'First Amendment',
+          content: (
+            <p>
+              Congress shall make no law respecting an establishment of
+              religion, or prohibiting the free exercise thereof; or abridging
+              the freedom of speech, or of the press; or the right of the people
+              peaceably to assemble, and to petition the Government for a
+              redress of grievances.
+            </p>
+          ),
+          expanded: false,
+          id: '123',
+        },
+        {
+          title: 'Second Amendment',
+          content: (
+            <>
+              <p>
+                A well regulated Militia, being necessary to the security of a
+                free State, the right of the people to keep and bear Arms, shall
+                not be infringed.
+              </p>{' '}
+              <ul>
+                <li>This is a list item</li>
+                <li>Another list item</li>
+              </ul>
+            </>
+          ),
+          expanded: false,
+
+          id: 'abc',
+        },
+        {
+          title: 'Third Amendment',
+          content: (
+            <p>
+              No Soldier shall, in time of peace be quartered in any house,
+              without the consent of the Owner, nor in time of war, but in a
+              manner to be prescribed by law.
+            </p>
+          ),
+          expanded: false,
+          id: 'def',
+        },
+      ]
+
+      const { getAllByRole } = render(<Accordion items={testItems} />)
+
+      const headings = getAllByRole('heading', { level: 4 })
+      expect(headings.length).toEqual(testItems.length)
+    })
+  })
 })
