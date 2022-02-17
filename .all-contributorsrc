@@ -137,6 +137,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "kimallen",
+      "name": "Kim Allen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13249580?v=4",
+      "profile": "https://github.com/kimallen",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
