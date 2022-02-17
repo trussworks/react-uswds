@@ -7,6 +7,7 @@ interface AccordionItem {
   expanded: boolean
   id: string
   className?: string
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -15,6 +16,7 @@ interface AccordionProps {
   multiselectable?: boolean
   items: AccordionItem[]
   className?: string
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 export const AccordionItem = ({
@@ -23,6 +25,7 @@ export const AccordionItem = ({
   content,
   expanded,
   className,
+  headingLevel = 'h4',
   handleToggle,
 }: AccordionItem): React.ReactElement => {
   const headingClasses = classnames('usa-accordion__heading', className)
@@ -31,25 +34,28 @@ export const AccordionItem = ({
     'usa-prose',
     className
   )
+  const Heading = headingLevel
 
   return (
     <>
-      <h4 className={headingClasses}>
+      <Heading className={headingClasses}>
         <button
           type="button"
           className="usa-accordion__button"
           aria-expanded={expanded}
           aria-controls={id}
           data-testid={`accordionButton_${id}`}
-          onClick={handleToggle}>
+          onClick={handleToggle}
+        >
           {title}
         </button>
-      </h4>
+      </Heading>
       <div
         id={id}
         data-testid={`accordionItem_${id}`}
         className={contentClasses}
-        hidden={!expanded}>
+        hidden={!expanded}
+      >
         {content}
       </div>
     </>
@@ -96,7 +102,8 @@ export const Accordion = ({
     <div
       className={classes}
       data-testid="accordion"
-      aria-multiselectable={multiselectable || undefined}>
+      aria-multiselectable={multiselectable || undefined}
+    >
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
