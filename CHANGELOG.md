@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/trussworks/react-uswds/compare/2.7.2...2.8.0) (2022-02-18)
+
+
+### Features
+
+* Accept Accordion headingLevel in items prop  ([#1905](https://github.com/trussworks/react-uswds/issues/1905)) ([5090110](https://github.com/trussworks/react-uswds/commit/509011019e05d6db33dc7269bcb56d57553ebdd0))
+
+
+### Documentation & Examples
+
+* Add maintainer docs as per TDR 95 ([#1903](https://github.com/trussworks/react-uswds/issues/1903)) ([ad9bb44](https://github.com/trussworks/react-uswds/commit/ad9bb440b3099760af92420bec0b3ba6a80f8013))
+* Update All Contributors ([#1906](https://github.com/trussworks/react-uswds/issues/1906)) ([b8b5667](https://github.com/trussworks/react-uswds/commit/b8b5667153fa5d163af6ed2530e8378b3b8222ac))
+
 ### [2.7.2](https://github.com/trussworks/react-uswds/compare/2.7.1...2.7.2) (2022-02-14)
 
 
