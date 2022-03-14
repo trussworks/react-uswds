@@ -26,6 +26,7 @@ export const Pagination = ({
 }: PaginationProps): React.ReactElement => {
   const [selected, setSelected] = useState(initialSelected)
   const pageRangeDisplayed = 3
+  const totalSlots = 7
 
   const paginationClasses = classnames('usa-pagination', className)
   const nextClasses = classnames(
@@ -82,7 +83,7 @@ export const Pagination = ({
   const pagination = () => {
     const paginationItems = []
 
-    if (totalPageCount <= pageRangeDisplayed) {
+    if (totalPageCount <= totalSlots) {
       for (let i = 0; i < totalPageCount; i++) {
         paginationItems.push(getPageElement(i))
       }
