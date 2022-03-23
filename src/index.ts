@@ -113,7 +113,7 @@ export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/
 
 export { Search } from './components/Search/Search'
 
-export { SummaryBox } from './components/SummaryBox/SummaryBox'
+export { SummaryBox } from './components/SummaryBox/SummaryBox/SummaryBox'
 
 /** ProcessList components */
 export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
