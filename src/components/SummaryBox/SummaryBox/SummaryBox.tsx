@@ -1,6 +1,7 @@
 import React from 'react'
 
 import classnames from 'classnames'
+import { SummaryBoxContent } from '../SummaryBoxContent/SummaryBoxContent'
 
 interface SummaryBoxProps {
   heading: string
@@ -27,24 +28,6 @@ export const SummaryBoxHeading = ({
     <Heading className={classes} {...h3Props}>
       {heading}
     </Heading>
-  )
-}
-
-interface SummaryBoxTextProps {
-  children?: React.ReactNode
-  className?: string
-}
-
-export const SummaryBoxContent = ({
-  children,
-  className,
-  ...divProps
-}: SummaryBoxTextProps & JSX.IntrinsicElements['div']): React.ReactElement => {
-  const classes = classnames('usa-summary-box__text', className)
-  return (
-    <div className={classes} {...divProps}>
-      {children}
-    </div>
   )
 }
 
