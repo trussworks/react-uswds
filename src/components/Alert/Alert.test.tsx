@@ -44,9 +44,9 @@ describe('Alert component', () => {
     expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
   })
 
-  it('uses heading level 3 by default', () => {
+  it('uses heading level 4 by default', () => {
     const { getByRole } = render(<Alert type="info" heading="Working Alert" />)
-    expect(getByRole('heading', { level: 3 })).toBeInTheDocument()
+    expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
   })
 
   describe('with a CTA', () => {

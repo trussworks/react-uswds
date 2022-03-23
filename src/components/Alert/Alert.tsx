@@ -17,7 +17,7 @@ interface AlertProps {
 export const Alert = ({
   type,
   heading,
-  headingLevel = 'h3',
+  headingLevel = 'h4',
   cta,
   children,
   slim,
