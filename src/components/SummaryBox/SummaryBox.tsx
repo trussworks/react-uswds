@@ -8,6 +8,46 @@ interface SummaryBoxProps {
   className?: string
 }
 
+interface SummaryBoxHeadingProps {
+  heading: string
+  className?: string
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+}
+
+export const SummaryBoxHeading = ({
+  heading,
+  className,
+  headingLevel,
+  ...h3Props
+}: SummaryBoxHeadingProps &
+  JSX.IntrinsicElements['h3']): React.ReactElement => {
+  const classes = classnames('usa-summary-box__heading', className)
+  const Heading = headingLevel || 'h3'
+  return (
+    <Heading className={classes} {...h3Props}>
+      {heading}
+    </Heading>
+  )
+}
+
+interface SummaryBoxTextProps {
+  children?: React.ReactNode
+  className?: string
+}
+
+export const SummaryBoxContent = ({
+  children,
+  className,
+  ...divProps
+}: SummaryBoxTextProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+  const classes = classnames('usa-summary-box__text', className)
+  return (
+    <div className={classes} {...divProps}>
+      {children}
+    </div>
+  )
+}
+
 export const SummaryBox = ({
   heading,
   children,
@@ -18,8 +58,8 @@ export const SummaryBox = ({
   return (
     <div className={classes} data-testid="summary-box" {...divProps}>
       <div className="usa-summary-box__body">
-        <h3 className="usa-summary-box__heading">{heading}</h3>
-        <div className="usa-summary-box__text">{children}</div>
+        <SummaryBoxHeading heading={heading} />
+        <SummaryBoxContent>{children}</SummaryBoxContent>
       </div>
     </div>
   )
