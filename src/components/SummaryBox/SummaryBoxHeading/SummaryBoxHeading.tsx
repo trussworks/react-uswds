@@ -10,12 +10,12 @@ interface SummaryBoxHeadingProps {
 export const SummaryBoxHeading = ({
   heading,
   className,
-  headingLevel,
+  headingLevel = 'h3',
   ...h3Props
 }: SummaryBoxHeadingProps &
   JSX.IntrinsicElements['h3']): React.ReactElement => {
   const classes = classnames('usa-summary-box__heading', className)
-  const Heading = headingLevel || 'h3'
+  const Heading = headingLevel
   return (
     <Heading className={classes} {...h3Props}>
       {heading}
