@@ -47,16 +47,15 @@ const testSummaryBoxContent = (
 const customProps = {
   role: 'complementary',
   className: 'custom-class-name',
-  heading: 'Example heading',
 }
 
 describe('SummaryBox component', () => {
   it('renders without errors', () => {
-    const { getByRole } = render(
+    const { getByTestId } = render(
       <SummaryBox>{testSummaryBoxContent}</SummaryBox>
     )
 
-    expect(getByRole('heading')).toBeInTheDocument()
+    expect(getByTestId('summary-box')).toBeInTheDocument()
   })
 
   it('renders passed in children', () => {
@@ -69,12 +68,11 @@ describe('SummaryBox component', () => {
   })
 
   it('renders attributes passed in through props', () => {
-    const { queryByText, queryByTestId } = render(
+    const { queryByTestId } = render(
       <SummaryBox {...customProps}>{testSummaryBoxContent}</SummaryBox>
     )
 
     const qByTestId = queryByTestId('summary-box')
-    expect(queryByText('Example heading')).toBeInTheDocument()
     expect(qByTestId).toHaveAttribute('role', 'complementary')
     expect(qByTestId).toHaveClass('usa-summary-box custom-class-name')
   })

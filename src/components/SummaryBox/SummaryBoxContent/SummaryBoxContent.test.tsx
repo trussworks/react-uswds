@@ -21,14 +21,6 @@ describe('SummaryBoxContent component', () => {
     expect(queryByTestId('test-child')).toBeInTheDocument()
   })
 
-  it('renders default heading level', () => {
-    const { getByTestId } = render(
-      <SummaryBoxContent data-testid="collection-heading" />
-    )
-
-    expect(getByTestId('collection-heading').tagName).toEqual('H3')
-  })
-
   it('renders custom class name', () => {
     const { getByTestId } = render(
       <SummaryBoxContent
