@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { SummaryBox } from './SummaryBox'
+import { SummaryBoxHeading } from '../SummaryBoxHeading/SummaryBoxHeading'
+import { SummaryBoxContent } from '../SummaryBoxContent/SummaryBoxContent'
 
 export default {
   title: 'Components/Summary box',
@@ -60,5 +62,8 @@ const summaryBoxContent = (
 )
 
 export const summaryBoxDefault = (): React.ReactElement => (
-  <SummaryBox heading="Key information">{summaryBoxContent}</SummaryBox>
+  <SummaryBox>
+    <SummaryBoxHeading heading="Key information" />
+    <SummaryBoxContent>{summaryBoxContent}</SummaryBoxContent>
+  </SummaryBox>
 )

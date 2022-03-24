@@ -53,7 +53,7 @@ const customProps = {
 describe('SummaryBox component', () => {
   it('renders without errors', () => {
     const { getByRole } = render(
-      <SummaryBox heading="Key information">{testSummaryBoxContent}</SummaryBox>
+      <SummaryBox>{testSummaryBoxContent}</SummaryBox>
     )
 
     expect(getByRole('heading')).toBeInTheDocument()
@@ -61,7 +61,7 @@ describe('SummaryBox component', () => {
 
   it('renders passed in children', () => {
     const { getAllByRole } = render(
-      <SummaryBox heading="Example heading">{testSummaryBoxContent}</SummaryBox>
+      <SummaryBox>{testSummaryBoxContent}</SummaryBox>
     )
 
     expect(getAllByRole('listitem')).toHaveLength(4)
