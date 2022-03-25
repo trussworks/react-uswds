@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes as RouterRoutes,
   Route,
   NavLink,
   Link,
@@ -35,13 +35,13 @@ const App = () => {
   }
 
   const navItems = [
-    <NavLink to={HOME_PAGE} activeClassName="usa-current" exact>
+    <NavLink to={HOME_PAGE} className={(isActive) => isActive && "usa-current"} end>
       Home
     </NavLink>,
-    <NavLink to={EXAMPLES_PAGE} activeClassName="usa-current">
+    <NavLink to={EXAMPLES_PAGE} className={(isActive) => isActive && "usa-current"}>
       Examples
     </NavLink>,
-    <NavLink to={ICONS_PAGE} activeClassName="usa-current">
+    <NavLink to={ICONS_PAGE} className={(isActive) => isActive && "usa-current"}>
       Icons
     </NavLink>,
   ]
@@ -73,20 +73,12 @@ const App = () => {
 
       <section className="usa-section">
         <GridContainer>
-          <Switch>
-            <Route path={EXAMPLES_PAGE}>
-              <ExamplePage />
-            </Route>
-            <Route path={ICONS_PAGE}>
-              <IconsPage />
-            </Route>
-            <Route path={FORMS_PAGE}>
-              <FormsPage />
-            </Route>
-            <Route path={HOME_PAGE}>
-              <HomePage />
-            </Route>
-          </Switch>
+          <RouterRoutes>
+            <Route path={EXAMPLES_PAGE} element={<ExamplePage />} />
+            <Route path={ICONS_PAGE} element={<IconsPage />} />
+            <Route path={FORMS_PAGE} element={<FormsPage />} />
+            <Route path={HOME_PAGE} element={<HomePage />} />
+          </RouterRoutes>
         </GridContainer>
       </section>
     </Router>
