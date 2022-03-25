@@ -13,7 +13,8 @@
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
     "build": "SKIP_PREFLIGHT_CHECK=true react-app-rewired build",
-    "test": "SKIP_PREFLIGHT_CHECK=true react-app-rewired test"
+    "test": "SKIP_PREFLIGHT_CHECK=true react-app-rewired test",
+    "test:ci": "SKIP_PREFLIGHT_CHECK=true CI=true react-app-rewired test"
   },
   "eslintConfig": {
     "extends": "react-app"
