@@ -39,7 +39,7 @@ jobs:
         run: yarn example:install --frozen-lockfile
 
       - name: Run example app Jests tests
-        run: yarn example:test:ci
+        run: yarn example:test-ci
 
   run-checks:
     runs-on: ubuntu-latest
