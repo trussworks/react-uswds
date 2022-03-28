@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import classnames from 'classnames'
 
 interface SummaryBoxHeadingProps {
-  heading: string
+  children: ReactNode
   className?: string
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 export const SummaryBoxHeading = ({
-  heading,
+  children,
   className,
   headingLevel = 'h3',
   ...h3Props
@@ -18,7 +18,7 @@ export const SummaryBoxHeading = ({
   const Heading = headingLevel
   return (
     <Heading className={classes} {...h3Props}>
-      {heading}
+      {children}
     </Heading>
   )
 }

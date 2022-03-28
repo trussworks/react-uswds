@@ -5,7 +5,9 @@ import { SummaryBoxHeading } from './SummaryBoxHeading'
 describe('SummaryBoxHeading component', () => {
   it('renders without errors', () => {
     const { queryByTestId, queryByText } = render(
-      <SummaryBoxHeading data-testid="collection-heading" heading="test text" />
+      <SummaryBoxHeading data-testid="collection-heading">
+        test text
+      </SummaryBoxHeading>
     )
 
     expect(queryByTestId('collection-heading')).toBeInTheDocument()
@@ -14,7 +16,9 @@ describe('SummaryBoxHeading component', () => {
 
   it('renders default heading level', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading data-testid="collection-heading" heading="test text" />
+      <SummaryBoxHeading data-testid="collection-heading">
+        test text
+      </SummaryBoxHeading>
     )
 
     expect(getByTestId('collection-heading').tagName).toEqual('H3')
@@ -22,11 +26,9 @@ describe('SummaryBoxHeading component', () => {
 
   it('renders custom level', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading
-        data-testid="collection-heading"
-        headingLevel="h6"
-        heading="test text"
-      />
+      <SummaryBoxHeading data-testid="collection-heading" headingLevel="h6">
+        test text{' '}
+      </SummaryBoxHeading>
     )
 
     expect(getByTestId('collection-heading').tagName).toEqual('H6')
@@ -37,8 +39,9 @@ describe('SummaryBoxHeading component', () => {
       <SummaryBoxHeading
         data-testid="collection-heading"
         className="custom-class"
-        heading="test text"
-      />
+      >
+        test text{' '}
+      </SummaryBoxHeading>
     )
 
     expect(getByTestId('collection-heading')).toHaveClass('custom-class')
@@ -46,11 +49,9 @@ describe('SummaryBoxHeading component', () => {
 
   it('renders custom heading attributes', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading
-        data-testid="collection-heading"
-        aria-label="Hello"
-        heading="test text"
-      />
+      <SummaryBoxHeading data-testid="collection-heading" aria-label="Hello">
+        test text{' '}
+      </SummaryBoxHeading>
     )
 
     expect(getByTestId('collection-heading')).toHaveAttribute(
