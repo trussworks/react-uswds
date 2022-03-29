@@ -152,17 +152,20 @@ export const FileInput = forwardRef(
       <div
         data-testid="file-input"
         className={fileInputClasses}
-        aria-disabled={disabled}>
+        aria-disabled={disabled}
+      >
         <div
           data-testid="file-input-droptarget"
           className={targetClasses}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
-          onDrop={handleDrop}>
+          onDrop={handleDrop}
+        >
           {filePreviews.length > 0 && (
             <div
               data-testid="file-input-preview-heading"
-              className="usa-file-input__preview-heading">
+              className="usa-file-input__preview-heading"
+            >
               {previewHeaderText}{' '}
               <span className="usa-file-input__choose">
                 Change file{filePreviews.length > 1 && 's'}
@@ -172,7 +175,8 @@ export const FileInput = forwardRef(
           <div
             data-testid="file-input-instructions"
             className={instructionClasses}
-            aria-hidden="true">
+            aria-hidden="true"
+          >
             {!hideDragText && (
               <span className="usa-file-input__drag-text">{dragText}</span>
             )}
@@ -181,11 +185,13 @@ export const FileInput = forwardRef(
           {filePreviews}
           <div
             data-testid="file-input-box"
-            className="usa-file-input__box"></div>
+            className="usa-file-input__box"
+          ></div>
           {showError && (
             <div
               data-testid="file-input-error"
-              className="usa-file-input__accepted-files-message">
+              className="usa-file-input__accepted-files-message"
+            >
               This is not a valid file type.
             </div>
           )}
@@ -207,3 +213,5 @@ export const FileInput = forwardRef(
     )
   }
 )
+
+FileInput.displayName = 'FileInput'
