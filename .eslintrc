@@ -59,6 +59,7 @@
     "plugin:security/recommended"
   ],
   "rules": {
-    "no-only-tests/no-only-tests": "error"
+    "no-only-tests/no-only-tests": "error",
+    "react/prop-types": "off"
   }
 }

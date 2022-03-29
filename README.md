@@ -1,7 +1,9 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -20,14 +22,17 @@ An example application, built with React-USWDS, can be found in the `/example` f
 
 **Table of Contents**
 
-- [Install](#install)
-  - [Pre-Release](#pre-release)
-- [Usage](#usage)
-- [Background](#background)
-  - [Non-Goals](#non-goals)
-- [Maintainers](#maintainers)
-- [Contributing](#contributing)
-- [License](#license)
+- [@trussworks/react-uswds](#trussworksreact-uswds)
+  - [Install](#install)
+  - [Usage](#usage)
+    - [Pre-Release](#pre-release)
+  - [Background](#background)
+    - [Non-Goals](#non-goals)
+  - [Active Maintainers](#active-maintainers)
+  - [Contributing](#contributing)
+    - [Quick links:](#quick-links)
+  - [License](#license)
+  - [Contributors ✨](#contributors-)
 
 ## Install
 
@@ -42,34 +47,6 @@ or
 ```
 npm i @trussworks/react-uswds
 ```
-
-### Pre-Release
-
-Pre-release packages are published to GitHub Packages every time code is pushed to the `main` branch. To use, you
-will need a [GitHub access
-token](https://docs.github.com/en/packages/publishing-and-managing-packages/about-github-packages#about-tokens)
-with the `read:packages` scope.
-
-1. Create an `.npmrc` with
-
-```
-//npm.pkg.github.com/:_authToken=YOUR_TOKEN_GOES_HERE
-@trussworks:registry=https://npm.pkg.github.com
-```
-
-or
-
-Create a `.yarnrc` file with
-
-```
-"@trussworks:registry" "https://npm.pkg.github.com"
-```
-
-2. In your `package.json`, use `"@trussworks/react-uswds": "next"`
-
-See [GitHub Packages with npm
-docs](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages)
-for more detailed information.
 
 ## Usage
 
@@ -93,6 +70,10 @@ If you aren't already using USWDS as a dependency, you also need to import USWDS
 
 Having issues? See [FAQs](./docs/faqs.md).
 
+### Pre-Release
+
+See [prelease.md](docs/prerelease.md)
+
 ## Background
 
 The primary deliverable is a published npm package that can be included as a dependency in other projects that use USWDS with React. In order for these components to be useful, they should follow best practices for accessible, semantic, markup; be well-tested across browsers and devices; and allow for an appropriate level of customization. We adhere to a set of [development guidelines](./docs/contributing.md#guidelines) as much as possible and use automation to enforce tests, linting, and other standards.
@@ -103,12 +84,11 @@ This is not meant to be a one-size-fits-all front end solution, We are starting 
 
 In the process, we expect to gain learnings around how to best abstract out UI code from implementation; how to better standardize and document front end code practices; and how to develop, maintain, and distribute a shared JS library in alignment with our [company values at Truss](https://truss.works/values).
 
-## Maintainers
+## Active Maintainers
 
-- [@suzubara](https://github.com/suzubara)
-- [@haworku](https://github.com/haworku)
-- [@brandonlenz](https://github.com/brandonlenz)
-- [@sirenaborracha](https://github.com/sirenaborracha)
+- [Kyle Hill](https://github.com/kylehilltruss)
+
+We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
 ## Contributing
 
@@ -152,7 +132,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/suzubara"><img src="https://avatars.githubusercontent.com/u/2723066?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Suzanne Rozier</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=suzubara" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=suzubara" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/haworku"><img src="https://avatars.githubusercontent.com/u/10750442?v=4?s=100" width="100px;" alt=""/><br /><sub><b>haworku</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/haworku"><img src="https://avatars.githubusercontent.com/u/10750442?v=4?s=100" width="100px;" alt=""/><br /><sub><b>haworku</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/ahobson"><img src="https://avatars.githubusercontent.com/u/21983?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Hobson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ahobson" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/gidjin"><img src="https://avatars.githubusercontent.com/u/940173?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Gedeon</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=gidjin" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/eamahanna"><img src="https://avatars.githubusercontent.com/u/56279459?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Emily Mahanna</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=eamahanna" title="Code">💻</a></td>
@@ -167,6 +147,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/christopherhuii"><img src="https://avatars.githubusercontent.com/u/8367504?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Hui</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=christopherhuii" title="Code">💻</a></td>
     <td align="center"><a href="http://pandasguide.com/"><img src="https://avatars.githubusercontent.com/u/3331?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jim Benton</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jim" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jenbutongit"><img src="https://avatars.githubusercontent.com/u/22080510?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jen Duong</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jenbutongit" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/kimallen"><img src="https://avatars.githubusercontent.com/u/13249580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kim Allen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kimallen" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kylehilltruss"><img src="https://avatars.githubusercontent.com/u/83614364?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Hill</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kylehilltruss" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rswerve"><img src="https://avatars.githubusercontent.com/u/8964335?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mazdak Atighi</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rswerve" title="Code">💻</a></td>
   </tr>
 </table>
 
