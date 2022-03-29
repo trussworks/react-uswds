@@ -39,7 +39,8 @@ export const ModalWindow = forwardRef(
         data-testid="modalWindow"
         className={classes}
         ref={ref}
-        data-force-action={forceAction}>
+        data-force-action={forceAction}
+      >
         <div className="usa-modal__content">
           <div className="usa-modal__main">{children}</div>
           {!forceAction && (
@@ -53,3 +54,5 @@ export const ModalWindow = forwardRef(
     )
   }
 )
+
+ModalWindow.displayName = 'ModalWindow'

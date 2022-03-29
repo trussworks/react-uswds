@@ -40,12 +40,15 @@ export const ModalWrapper = forwardRef(
           data-testid="modalOverlay"
           className="usa-modal-overlay"
           onClick={forceAction ? undefined : handleClose}
-          aria-controls={id}>
+          aria-controls={id}
+        >
           {children}
         </div>
       </div>
     )
   }
 )
+
+ModalWrapper.displayName = 'ModalWrapper'
 
 export default ModalWrapper
