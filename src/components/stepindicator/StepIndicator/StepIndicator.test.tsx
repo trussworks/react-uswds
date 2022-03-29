@@ -110,4 +110,34 @@ describe('StepIndicator component', () => {
     expect(queryByText(step3)).toBeInTheDocument()
     expect(getByRole('list')).toHaveClass('usa-step-indicator__segments')
   })
+
+  it('renders properly with a passed in heading level', () => {
+    const { getByRole, queryByTestId } = render(
+      <StepIndicator headingLevel="h2">
+        <StepIndicatorStep label={step1} status="complete" />
+        <StepIndicatorStep label={step2} status="current" />
+        <StepIndicatorStep label={step3} status="incomplete" />
+      </StepIndicator>
+    )
+
+    const stepIndicator = queryByTestId('step-indicator')
+
+    expect(stepIndicator).toBeInTheDocument()
+    expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
+  })
+
+  it('renders properly with a default heading level', () => {
+    const { getByRole, queryByTestId } = render(
+      <StepIndicator>
+        <StepIndicatorStep label={step1} status="complete" />
+        <StepIndicatorStep label={step2} status="current" />
+        <StepIndicatorStep label={step3} status="incomplete" />
+      </StepIndicator>
+    )
+
+    const stepIndicator = queryByTestId('step-indicator')
+
+    expect(stepIndicator).toBeInTheDocument()
+    expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
+  })
 })

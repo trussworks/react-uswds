@@ -123,3 +123,4 @@ export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
 
 export type { FileInputRef } from './components/forms/FileInput/FileInput'
+export type { ComboBoxRef } from './components/forms/ComboBox/ComboBox'

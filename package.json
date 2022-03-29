@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "2.4.1",
+  "version": "2.8.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -17,7 +17,7 @@
     "lib"
   ],
   "engines": {
-    "node": "10.x - 14.x"
+    "node": "10.x - 16.x"
   },
   "scripts": {
     "test": "jest",
@@ -34,7 +34,7 @@
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo",
-    "happo-ci": "happo-ci-circleci",
+    "happo-ci": "happo-ci-github-actions",
     "example:install": "yarn build && cd example/ && yarn",
     "example:start": "cd example/ && yarn start",
     "contributors:add": "all-contributors add"
@@ -92,7 +92,7 @@
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
     "css-loader": "^6.2.0",
-    "danger": "^10.0.0",
+    "danger": "^11.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^6.3.0",
