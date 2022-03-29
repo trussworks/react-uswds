@@ -128,10 +128,44 @@ You can then run `yarn build:watch` in ReactUSWDS and your application's compile
 
 > **Warning:** Make sure to **unlink** the package once you're done making changes! It can be easy to forget you're using a linked package in your application, and commit changes without switching back to a released version of ReactUSWDS.
 
+> If you get errors about invalid hook calls, you may also need to link the `react` & `react-dom` packages:
+>
+> ```
+> ➜ cd /path/to/react-uswds
+> ➜ yarn link
+> ➜ yarn install
+>
+> ➜ cd node_modules/react
+> ➜ yarn link
+>
+> ➜ cd ../../node_modules/react-dom
+> ➜ yarn link
+>
+> ➜ cd /path/to/your/application
+> ➜ yarn link @trussworks/react-uswds
+> ➜ yarn link react
+> ➜ yarn link react-dom
+> ```
+
+> If you still get errors about invalid hook calls, and your application is built on NextJS, you may need to add this to your Webpack config (in next.config.js):
+>
+> ```
+> webpack: (config, options) => {
+>   if (options.isServer) {
+>     config.externals = ['react', ...config.externals]
+>   }
+>
+>   config.resolve.alias['react'] = path.resolve(__dirname, '.', 'node_modules', 'react')
+>
+>   return config
+> },
+> ```
+
 To unlink the package from your application code (you don't need to unlink your local ReactUSWDS code)
 :
 
 ```
+
 cd /path/to/your/application
 ➜ yarn unlink @trussworks/react-uswds
 yarn unlink v1.22.4
@@ -139,6 +173,7 @@ success Removed linked package "@trussworks/react-uswds".
 info You will need to run `yarn install --force` to re-install the package that was linked.
 
 ➜ yarn install --force
+
 ```
 
 #### Install from a ReactUSWDS branch
@@ -146,15 +181,19 @@ info You will need to run `yarn install --force` to re-install the package that 
 Another option is to install a specific branch of ReactUSWDS to your application that hasn't been released yet. To do that, you will need to change the reference in your application's `package.json` file:
 
 ```
+
 "@trussworks/react-uswds": "https://github.com/trussworks/react-uswds#name-of-branch",
+
 ```
 
 After making that change, run `yarn install` to install that version of the package. This will also build the ReactUSWDS code so it can be used in your application as if it were being installed from NPM. You can verify the source of the package by looking in your application's `yarn.lock` file:
 
 ```
+
 "@trussworks/react-uswds@https://github.com/trussworks/react-uswds":
-  version "1.13.2"
-  resolved "https://github.com/trussworks/react-uswds#92ea5f07f7212370165423ec09ed35eec3aa7e58"
+version "1.13.2"
+resolved "https://github.com/trussworks/react-uswds#92ea5f07f7212370165423ec09ed35eec3aa7e58"
+
 ```
 
 The important thing to note here is that `resolved` is pointing to the Github repo instead of the package registry, and the SHA should match the last commit of the branch you're using.
@@ -174,8 +213,10 @@ When opening the pull request, it's important to understand the [Conventional Co
 The format for PR commits is:
 
 ```
+
 <type>(scope): <subject>
 <BLANK LINE>
+
 <body>
 <BLANK LINE>
 <footer>
