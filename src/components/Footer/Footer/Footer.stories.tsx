@@ -135,31 +135,36 @@ export const MediumFooter = (): React.ReactElement => (
               <a
                 key="facebook"
                 className="usa-social-link usa-social-link--facebook"
-                href="#">
+                href="#"
+              >
                 <span>Facebook</span>
               </a>,
               <a
                 key="twitter"
                 className="usa-social-link usa-social-link--twitter"
-                href="#">
+                href="#"
+              >
                 <span>Twitter</span>
               </a>,
               <a
                 key="youtube"
                 className="usa-social-link usa-social-link--youtube"
-                href="#">
+                href="#"
+              >
                 <span>YouTube</span>
               </a>,
               <a
                 key="instagram"
                 className="usa-social-link usa-social-link--instagram"
-                href="#">
+                href="#"
+              >
                 <span>Instagram</span>
               </a>,
               <a
                 key="rss"
                 className="usa-social-link usa-social-link--rss"
-                href="#">
+                href="#"
+              >
                 <span>RSS</span>
               </a>,
             ]}
@@ -254,31 +259,36 @@ export const BigFooter = (): React.ReactElement => (
               <a
                 key="facebook"
                 className="usa-social-link usa-social-link--facebook"
-                href="#">
+                href="#"
+              >
                 <span>Facebook</span>
               </a>,
               <a
                 key="twitter"
                 className="usa-social-link usa-social-link--twitter"
-                href="#">
+                href="#"
+              >
                 <span>Twitter</span>
               </a>,
               <a
                 key="youtube"
                 className="usa-social-link usa-social-link--youtube"
-                href="#">
+                href="#"
+              >
                 <span>YouTube</span>
               </a>,
               <a
                 key="instagram"
                 className="usa-social-link usa-social-link--instagram"
-                href="#">
+                href="#"
+              >
                 <span>Instagram</span>
               </a>,
               <a
                 key="rss"
                 className="usa-social-link usa-social-link--rss"
-                href="#">
+                href="#"
+              >
                 <span>RSS</span>
               </a>,
             ]}
@@ -300,3 +310,7 @@ export const BigFooter = (): React.ReactElement => (
     }
   />
 )
+
+BigFooter.parameters = {
+  happo: { waitFor: () => document.querySelector("[data-testid='navList']") },
+}
