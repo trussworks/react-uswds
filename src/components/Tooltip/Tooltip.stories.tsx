@@ -5,6 +5,16 @@ export default {
   title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
+    happo: {
+      beforeScreenshot: (): void => {
+        const event = new MouseEvent('mouseover', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+        })
+        document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
+      },
+    },
     docs: {
       description: {
         component: `
@@ -60,7 +70,8 @@ export const tooltipWithUtilityClass = (): React.ReactElement => (
     <Tooltip
       wrapperclasses="width-full tablet:width-auto"
       position="right"
-      label="Right">
+      label="Right"
+    >
       Show on right
     </Tooltip>
   </div>
@@ -73,13 +84,14 @@ export const CustomComponent = (): React.ReactElement => {
   }> &
     JSX.IntrinsicElements['a'] &
     React.RefAttributes<HTMLAnchorElement>
-  const CustomLink: React.ForwardRefExoticComponent<CustomLinkProps> = React.forwardRef(
-    ({ to, className, children, ...tooltipProps }: CustomLinkProps, ref) => (
-      <a ref={ref} href={to} className={className} {...tooltipProps}>
-        {children}
-      </a>
+  const CustomLink: React.ForwardRefExoticComponent<CustomLinkProps> =
+    React.forwardRef(
+      ({ to, className, children, ...tooltipProps }: CustomLinkProps, ref) => (
+        <a ref={ref} href={to} className={className} {...tooltipProps}>
+          {children}
+        </a>
+      )
     )
-  )
 
   CustomLink.displayName = 'custom link'
 
@@ -89,7 +101,8 @@ export const CustomComponent = (): React.ReactElement => {
         <Tooltip<CustomLinkProps>
           label="Follow Link"
           asCustom={CustomLink}
-          to="http://www.truss.works">
+          to="http://www.truss.works"
+        >
           This
         </Tooltip>
         &nbsp;is a custom component link.
@@ -97,3 +110,44 @@ export const CustomComponent = (): React.ReactElement => {
     </div>
   )
 }
+
+export const tooltipTopLeftWrap = (): React.ReactElement => (
+  <div style={{ marginTop: '32px' }}>
+    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+      Default
+    </Tooltip>
+  </div>
+)
+
+export const tooltipBottomLeftWrap = (): React.ReactElement => (
+  <div style={{ position: 'absolute', bottom: '32px' }}>
+    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+      Default
+    </Tooltip>
+  </div>
+)
+
+export const tooltipTopRightWrap = (): React.ReactElement => (
+  <div style={{ marginTop: '32px', textAlign: 'right' }}>
+    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+      Default
+    </Tooltip>
+  </div>
+)
+
+export const tooltipBottomRightWrap = (): React.ReactElement => (
+  <div
+    style={{
+      position: 'absolute',
+      bottom: '32px',
+      width: '100%',
+      left: '0',
+      paddingRight: '32px',
+      textAlign: 'right',
+    }}
+  >
+    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+      Default
+    </Tooltip>
+  </div>
+)

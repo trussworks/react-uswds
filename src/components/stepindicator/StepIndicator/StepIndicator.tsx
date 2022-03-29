@@ -10,6 +10,7 @@ interface StepIndicatorProps {
   className?: string
   divProps?: JSX.IntrinsicElements['div']
   listProps?: JSX.IntrinsicElements['ol']
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 export const StepIndicator = (
   props: StepIndicatorProps
@@ -22,7 +23,10 @@ export const StepIndicator = (
     className,
     divProps,
     listProps,
+    headingLevel = 'h4',
   } = props
+
+  const Heading = headingLevel
 
   const classes = classnames(
     'usa-step-indicator',
@@ -54,7 +58,7 @@ export const StepIndicator = (
         {children}
       </ol>
       <div className="usa-step-indicator__header">
-        <h4 className="usa-step-indicator__heading">
+        <Heading className="usa-step-indicator__heading">
           <span className="usa-step-indicator__heading-counter">
             <span className="usa-sr-only">Step</span>
             <span className="usa-step-indicator__current-step">
@@ -67,7 +71,7 @@ export const StepIndicator = (
           <span className="usa-step-indicator__heading-text">
             {currentStepLabel}
           </span>
-        </h4>
+        </Heading>
       </div>
     </div>
   )
