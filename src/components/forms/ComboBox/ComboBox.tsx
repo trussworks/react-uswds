@@ -370,7 +370,8 @@ export const ComboBox = forwardRef(
         data-testid="combo-box"
         data-enhanced="true"
         className={containerClasses}
-        ref={containerRef}>
+        ref={containerRef}
+      >
         <select
           {...selectProps}
           className="usa-select usa-sr-only usa-combo-box__select"
@@ -378,7 +379,8 @@ export const ComboBox = forwardRef(
           aria-hidden
           tabIndex={-1}
           defaultValue={state.selectedOption?.value}
-          data-testid="combo-box-select">
+          data-testid="combo-box-select"
+        >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -418,7 +420,8 @@ export const ComboBox = forwardRef(
             data-testid="combo-box-clear-button"
             onKeyDown={handleClearKeyDown}
             hidden={!isPristine || isDisabled}
-            disabled={isDisabled}>
+            disabled={isDisabled}
+          >
             &nbsp;
           </button>
         </span>
@@ -437,7 +440,8 @@ export const ComboBox = forwardRef(
                   : ActionTypes.OPEN_LIST,
               })
             }
-            disabled={isDisabled}>
+            disabled={isDisabled}
+          >
             &nbsp;
           </button>
         </span>
@@ -449,7 +453,8 @@ export const ComboBox = forwardRef(
           className="usa-combo-box__list"
           role="listbox"
           ref={listRef}
-          hidden={!state.isOpen}>
+          hidden={!state.isOpen}
+        >
           {state.filteredOptions.map((option, index) => {
             const focused = option === state.focusedOption
             const selected = option === state.selectedOption
@@ -479,7 +484,8 @@ export const ComboBox = forwardRef(
                 }
                 onClick={(): void => {
                   dispatch({ type: ActionTypes.SELECT_OPTION, option: option })
-                }}>
+                }}
+              >
                 {option.label}
               </li>
             )
@@ -497,7 +503,8 @@ export const ComboBox = forwardRef(
         <span
           id={assistiveHintID}
           className="usa-sr-only"
-          data-testid="combo-box-assistive-hint">
+          data-testid="combo-box-assistive-hint"
+        >
           {assistiveHint ||
             `When autocomplete results are available use up and down arrows to review
            and enter to select. Touch device users, explore by touch or with swipe
@@ -507,5 +514,7 @@ export const ComboBox = forwardRef(
     )
   }
 )
+
+ComboBox.displayName = 'ComboBox'
 
 export default ComboBox
