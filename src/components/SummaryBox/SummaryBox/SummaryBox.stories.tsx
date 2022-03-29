@@ -63,7 +63,7 @@ const summaryBoxContent = (
 
 export const summaryBoxDefault = (): React.ReactElement => (
   <SummaryBox>
-    <SummaryBoxHeading>Key Information</SummaryBoxHeading>
+    <SummaryBoxHeading headingLevel="h3">Key Information</SummaryBoxHeading>
     <SummaryBoxContent>{summaryBoxContent}</SummaryBoxContent>
   </SummaryBox>
 )

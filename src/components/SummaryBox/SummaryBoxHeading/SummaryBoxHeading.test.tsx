@@ -5,7 +5,7 @@ import { SummaryBoxHeading } from './SummaryBoxHeading'
 describe('SummaryBoxHeading component', () => {
   it('renders without errors', () => {
     const { queryByTestId, queryByText } = render(
-      <SummaryBoxHeading data-testid="collection-heading">
+      <SummaryBoxHeading headingLevel="h3" data-testid="collection-heading">
         test text
       </SummaryBoxHeading>
     )
@@ -16,7 +16,7 @@ describe('SummaryBoxHeading component', () => {
 
   it('renders default heading level', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading data-testid="collection-heading">
+      <SummaryBoxHeading headingLevel="h3" data-testid="collection-heading">
         test text
       </SummaryBoxHeading>
     )
@@ -39,6 +39,7 @@ describe('SummaryBoxHeading component', () => {
       <SummaryBoxHeading
         data-testid="collection-heading"
         className="custom-class"
+        headingLevel="h3"
       >
         test text{' '}
       </SummaryBoxHeading>
@@ -49,7 +50,11 @@ describe('SummaryBoxHeading component', () => {
 
   it('renders custom heading attributes', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading data-testid="collection-heading" aria-label="Hello">
+      <SummaryBoxHeading
+        data-testid="collection-heading"
+        aria-label="Hello"
+        headingLevel="h3"
+      >
         test text{' '}
       </SummaryBoxHeading>
     )

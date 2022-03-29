@@ -7,7 +7,7 @@ import { SummaryBoxContent } from '../SummaryBoxContent/SummaryBoxContent'
 
 const testSummaryBoxContent = (
   <>
-    <SummaryBoxHeading>My heading</SummaryBoxHeading>
+    <SummaryBoxHeading headingLevel="h3">My heading</SummaryBoxHeading>
     <SummaryBoxContent>
       <ul className="usa-list">
         <li>

@@ -4,13 +4,13 @@ import classnames from 'classnames'
 interface SummaryBoxHeadingProps {
   children: ReactNode
   className?: string
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 export const SummaryBoxHeading = ({
   children,
   className,
-  headingLevel = 'h3',
+  headingLevel,
   ...h3Props
 }: SummaryBoxHeadingProps &
   JSX.IntrinsicElements['h3']): React.ReactElement => {
