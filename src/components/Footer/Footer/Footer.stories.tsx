@@ -201,7 +201,7 @@ export const BigFooter = (): React.ReactElement => (
                 [
                   'Topic',
                   ...Array(2).fill(<a href="#">Secondary link</a>),
-                  <a key="4" href="#">
+                  <a key="4" href="#" data-testid="happo">
                     Secondary link that is a bit longer than most of the others
                   </a>,
                   <a key="5" href="#">
@@ -312,5 +312,5 @@ export const BigFooter = (): React.ReactElement => (
 )
 
 BigFooter.parameters = {
-  happo: { waitFor: () => document.querySelector("[data-testid='navList']") },
+  happo: { waitFor: () => document.querySelector("[data-testid='happo']") },
 }

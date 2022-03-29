@@ -83,7 +83,7 @@ export const NavList = ({
   })
 
   return (
-    <ul className={ulClasses} {...ulProps} data-testid="navList">
+    <ul className={ulClasses} {...ulProps}>
       {items.map((item, i) => (
         <li key={`item_${i}`} className={liClasses}>
           {item}
