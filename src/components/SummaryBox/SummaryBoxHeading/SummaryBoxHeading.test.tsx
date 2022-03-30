@@ -5,61 +5,47 @@ import { SummaryBoxHeading } from './SummaryBoxHeading'
 describe('SummaryBoxHeading component', () => {
   it('renders without errors', () => {
     const { queryByTestId, queryByText } = render(
-      <SummaryBoxHeading headingLevel="h3" data-testid="collection-heading">
-        test text
-      </SummaryBoxHeading>
+      <SummaryBoxHeading headingLevel="h3">test text</SummaryBoxHeading>
     )
 
-    expect(queryByTestId('collection-heading')).toBeInTheDocument()
+    expect(queryByTestId('summaryBoxHeading')).toBeInTheDocument()
     expect(queryByText('test text')).toBeInTheDocument()
   })
 
   it('renders default heading level', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading headingLevel="h3" data-testid="collection-heading">
-        test text
-      </SummaryBoxHeading>
+      <SummaryBoxHeading headingLevel="h3">test text</SummaryBoxHeading>
     )
 
-    expect(getByTestId('collection-heading').tagName).toEqual('H3')
+    expect(getByTestId('summaryBoxHeading').tagName).toEqual('H3')
   })
 
   it('renders custom level', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading data-testid="collection-heading" headingLevel="h6">
-        test text{' '}
-      </SummaryBoxHeading>
+      <SummaryBoxHeading headingLevel="h6">test text </SummaryBoxHeading>
     )
 
-    expect(getByTestId('collection-heading').tagName).toEqual('H6')
+    expect(getByTestId('summaryBoxHeading').tagName).toEqual('H6')
   })
 
   it('renders custom class name', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading
-        data-testid="collection-heading"
-        className="custom-class"
-        headingLevel="h3"
-      >
+      <SummaryBoxHeading className="custom-class" headingLevel="h3">
         test text{' '}
       </SummaryBoxHeading>
     )
 
-    expect(getByTestId('collection-heading')).toHaveClass('custom-class')
+    expect(getByTestId('summaryBoxHeading')).toHaveClass('custom-class')
   })
 
   it('renders custom heading attributes', () => {
     const { getByTestId } = render(
-      <SummaryBoxHeading
-        data-testid="collection-heading"
-        aria-label="Hello"
-        headingLevel="h3"
-      >
+      <SummaryBoxHeading aria-label="Hello" headingLevel="h3">
         test text{' '}
       </SummaryBoxHeading>
     )
 
-    expect(getByTestId('collection-heading')).toHaveAttribute(
+    expect(getByTestId('summaryBoxHeading')).toHaveAttribute(
       'aria-label',
       'Hello'
     )
