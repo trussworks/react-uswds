@@ -66,10 +66,11 @@ describe('SummaryBox component', () => {
   })
 
   it('renders passed in children', () => {
-    const { getAllByRole } = render(
+    const { getAllByRole, getByTestId } = render(
       <SummaryBox>{testSummaryBoxContent}</SummaryBox>
     )
 
+    expect(getByTestId('summaryBoxHeading')).toBeInTheDocument()
     expect(getAllByRole('listitem')).toHaveLength(4)
     expect(getAllByRole('link')).toHaveLength(6)
   })

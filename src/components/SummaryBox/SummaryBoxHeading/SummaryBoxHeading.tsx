@@ -17,7 +17,7 @@ export const SummaryBoxHeading = ({
   const classes = classnames('usa-summary-box__heading', className)
   const Heading = headingLevel
   return (
-    <Heading className={classes} {...h3Props}>
+    <Heading className={classes} {...h3Props} data-testid="summaryBoxHeading">
       {children}
     </Heading>
   )
