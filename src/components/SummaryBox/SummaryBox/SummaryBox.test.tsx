@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { render } from '@testing-library/react'
+import { getByRole, render } from '@testing-library/react'
 import { SummaryBox } from './SummaryBox'
 import { SummaryBoxHeading } from '../SummaryBoxHeading/SummaryBoxHeading'
 import { SummaryBoxContent } from '../SummaryBoxContent/SummaryBoxContent'
@@ -66,11 +66,11 @@ describe('SummaryBox component', () => {
   })
 
   it('renders passed in children', () => {
-    const { getAllByRole, getByTestId } = render(
+    const { getAllByRole, getByRole } = render(
       <SummaryBox>{testSummaryBoxContent}</SummaryBox>
     )
 
-    expect(getByTestId('summaryBoxHeading')).toBeInTheDocument()
+    expect(getByRole('heading')).toBeInTheDocument()
     expect(getAllByRole('listitem')).toHaveLength(4)
     expect(getAllByRole('link')).toHaveLength(6)
   })
