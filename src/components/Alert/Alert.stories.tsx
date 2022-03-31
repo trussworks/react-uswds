@@ -101,6 +101,14 @@ export const slimNoIcon = (): React.ReactElement => (
   </>
 )
 
+export const headingLevels = (): React.ReactElement => (
+  <>
+    <h1>Heading Level 1</h1>
+    <Alert type="info" heading="Heading level 2" headingLevel="h2">
+      {testText}
+    </Alert>
+  </>
+)
 export const withCTA = (): React.ReactElement => (
   <Alert
     type="warning"
@@ -109,7 +117,8 @@ export const withCTA = (): React.ReactElement => (
       <Button type="button" outline>
         Click here
       </Button>
-    }>
+    }
+  >
     {testText}
   </Alert>
 )
