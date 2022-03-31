@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
+import { deprecationWarning } from '../../../deprecation'
 
 const step1 = 'Step 1'
 const step2 = 'Step 2'
@@ -10,7 +11,7 @@ const step3 = 'Step 3'
 describe('StepIndicator component', () => {
   it('renders without errors', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
-      <StepIndicator>
+      <StepIndicator headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
@@ -29,7 +30,7 @@ describe('StepIndicator component', () => {
 
   it('renders properly with no labels', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
-      <StepIndicator showLabels={false}>
+      <StepIndicator showLabels={false} headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
@@ -50,7 +51,7 @@ describe('StepIndicator component', () => {
 
   it('renders properly with counters', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
-      <StepIndicator counters="default">
+      <StepIndicator counters="default" headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
@@ -71,7 +72,7 @@ describe('StepIndicator component', () => {
 
   it('renders properly with small counters', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
-      <StepIndicator counters="small">
+      <StepIndicator counters="small" headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
@@ -92,7 +93,7 @@ describe('StepIndicator component', () => {
 
   it('renders properly with centered labels', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
-      <StepIndicator centered>
+      <StepIndicator centered headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
@@ -126,7 +127,7 @@ describe('StepIndicator component', () => {
     expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
   })
 
-  it('renders properly with a default heading level', () => {
+  it('renders properly with a default heading level and warns deprecation', () => {
     const { getByRole, queryByTestId } = render(
       <StepIndicator>
         <StepIndicatorStep label={step1} status="complete" />
@@ -139,5 +140,6 @@ describe('StepIndicator component', () => {
 
     expect(stepIndicator).toBeInTheDocument()
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
+    expect(deprecationWarning).toHaveBeenCalledTimes(1)
   })
 })
