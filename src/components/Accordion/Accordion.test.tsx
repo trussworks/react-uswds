@@ -2,8 +2,9 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import { Accordion, AccordionItemProps } from './Accordion'
+import { deprecationWarning } from '../../deprecation'
 
-const testItems = [
+const testItems: AccordionItemProps[] = [
   {
     title: 'First Amendment',
     content: (
@@ -16,6 +17,7 @@ const testItems = [
     ),
     expanded: false,
     id: '123',
+    headingLevel: 'h4',
   },
   {
     title: 'Second Amendment',
@@ -34,6 +36,7 @@ const testItems = [
     ),
     expanded: false,
     id: 'abc',
+    headingLevel: 'h4',
   },
   {
     title: 'Third Amendment',
@@ -46,6 +49,7 @@ const testItems = [
     ),
     expanded: false,
     id: 'def',
+    headingLevel: 'h4',
   },
   {
     title: 'Fourth Amendment',
@@ -60,6 +64,7 @@ const testItems = [
     ),
     expanded: false,
     id: '456',
+    headingLevel: 'h4',
   },
   {
     title: 'Fifth Amendment',
@@ -78,6 +83,7 @@ const testItems = [
     ),
     expanded: false,
     id: '789',
+    headingLevel: 'h4',
   },
 ]
 
@@ -223,7 +229,7 @@ describe('Accordion component', () => {
   })
 
   describe('with expanded items on mount', () => {
-    const testExpandedItems = [
+    const testExpandedItems: AccordionItemProps[] = [
       {
         title: 'First Amendment',
         content: (
@@ -237,6 +243,7 @@ describe('Accordion component', () => {
         ),
         expanded: false,
         id: '123',
+        headingLevel: 'h4',
       },
       {
         title: 'Second Amendment',
@@ -255,6 +262,7 @@ describe('Accordion component', () => {
         ),
         expanded: true,
         id: 'abc',
+        headingLevel: 'h4',
       },
       {
         title: 'Third Amendment',
@@ -282,6 +290,7 @@ describe('Accordion component', () => {
         ),
         expanded: true,
         id: '456',
+        headingLevel: 'h4',
       },
       {
         title: 'Fifth Amendment',
@@ -300,6 +309,7 @@ describe('Accordion component', () => {
         ),
         expanded: true,
         id: '789',
+        headingLevel: 'h4',
       },
     ]
 
@@ -324,7 +334,7 @@ describe('Accordion component', () => {
   })
 
   describe('with custom classNames for Accordion Items', () => {
-    const customTestItems = [
+    const customTestItems: AccordionItemProps[] = [
       {
         title: 'First Amendment',
         content: (
@@ -339,6 +349,7 @@ describe('Accordion component', () => {
         expanded: false,
         id: '123',
         className: 'myCustomAccordionItem',
+        headingLevel: 'h4',
       },
       {
         title: 'Second Amendment',
@@ -357,6 +368,7 @@ describe('Accordion component', () => {
         ),
         expanded: false,
         id: 'abc',
+        headingLevel: 'h4',
       },
       {
         title: 'Third Amendment',
@@ -369,6 +381,7 @@ describe('Accordion component', () => {
         ),
         expanded: false,
         id: 'def',
+        headingLevel: 'h4',
       },
     ]
 
@@ -444,6 +457,64 @@ describe('Accordion component', () => {
 
       const headings = getAllByRole('heading', { level: 4 })
       expect(headings.length).toEqual(testItems.length)
+    })
+  })
+
+  describe('default headingLevel for AccordionItems', () => {
+    it('uses the default headingLevel and warns deprecation', () => {
+      const customTestItems: AccordionItemProps[] = [
+        {
+          title: 'First Amendment',
+          content: (
+            <p>
+              Congress shall make no law respecting an establishment of
+              religion, or prohibiting the free exercise thereof; or abridging
+              the freedom of speech, or of the press; or the right of the people
+              peaceably to assemble, and to petition the Government for a
+              redress of grievances.
+            </p>
+          ),
+          expanded: false,
+          id: '123',
+          className: 'myCustomAccordionItem',
+        },
+        {
+          title: 'Second Amendment',
+          content: (
+            <>
+              <p>
+                A well regulated Militia, being necessary to the security of a
+                free State, the right of the people to keep and bear Arms, shall
+                not be infringed.
+              </p>{' '}
+              <ul>
+                <li>This is a list item</li>
+                <li>Another list item</li>
+              </ul>
+            </>
+          ),
+          expanded: false,
+          id: 'abc',
+        },
+        {
+          title: 'Third Amendment',
+          content: (
+            <p>
+              No Soldier shall, in time of peace be quartered in any house,
+              without the consent of the Owner, nor in time of war, but in a
+              manner to be prescribed by law.
+            </p>
+          ),
+          expanded: false,
+          id: 'def',
+        },
+      ]
+
+      const { getAllByRole } = render(<Accordion items={customTestItems} />)
+
+      const headings = getAllByRole('heading', { level: 4 })
+      expect(headings.length).toEqual(customTestItems.length)
+      expect(deprecationWarning).toHaveBeenCalledTimes(customTestItems.length)
     })
   })
 })

@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { Alert } from './Alert'
+import { deprecationWarning } from '../../deprecation'
 
 describe('Alert component', () => {
   it('renders without errors', () => {
@@ -44,9 +45,10 @@ describe('Alert component', () => {
     expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
   })
 
-  it('uses heading level 4 by default', () => {
+  it('uses heading level 4 by default and warns deprecation', () => {
     const { getByRole } = render(<Alert type="info" heading="Working Alert" />)
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
+    expect(deprecationWarning).toHaveBeenCalledTimes(1)
   })
 
   describe('with a CTA', () => {

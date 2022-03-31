@@ -45,7 +45,7 @@ export const Alert = ({
   let Heading = headingLevel
   if (!Heading) {
     deprecationWarning(
-      'Default headingLevel h4 has been deprecated. Please specify a heading level.'
+      'Default headingLevel h4 has been deprecated. If you are including a heading, specify a headingLevel.'
     )
     Heading = 'h4'
   }
