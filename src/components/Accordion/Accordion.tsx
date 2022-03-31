@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
+import { deprecationWarning } from '../../deprecation'
 
 export interface AccordionItemProps {
   title: React.ReactNode | string
@@ -24,7 +25,7 @@ export const AccordionItem = ({
   content,
   expanded,
   className,
-  headingLevel = 'h4',
+  headingLevel,
   handleToggle,
 }: AccordionItemProps): React.ReactElement => {
   const headingClasses = classnames('usa-accordion__heading', className)
@@ -33,7 +34,13 @@ export const AccordionItem = ({
     'usa-prose',
     className
   )
-  const Heading = headingLevel
+  let Heading = headingLevel
+  if (!Heading) {
+    deprecationWarning(
+      'Default headingLevel h4 has been deprecated. Please specify a heading level.'
+    )
+    Heading = 'h4'
+  }
 
   return (
     <>
