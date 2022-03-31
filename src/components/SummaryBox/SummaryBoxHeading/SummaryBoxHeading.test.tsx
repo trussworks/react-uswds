@@ -1,5 +1,5 @@
 import React from 'react'
-import { getByRole, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { SummaryBoxHeading } from './SummaryBoxHeading'
 
 describe('SummaryBoxHeading component', () => {
