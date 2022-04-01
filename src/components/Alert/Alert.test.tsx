@@ -37,6 +37,18 @@ describe('Alert component', () => {
     expect(queryByTestId('alert')).toHaveClass('myClass')
   })
 
+  it('accepts a headingLevel', () => {
+    const { getByRole } = render(
+      <Alert type="success" headingLevel="h2" heading="Working Alert" />
+    )
+    expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
+  })
+
+  it('uses heading level 4 by default', () => {
+    const { getByRole } = render(<Alert type="info" heading="Working Alert" />)
+    expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
+  })
+
   describe('with a CTA', () => {
     it('renders the CTA', () => {
       const testCTA = <button type="button">Click Here</button>
