@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
+jest.mock('../../../deprecation')
 import { deprecationWarning } from '../../../deprecation'
 
 const step1 = 'Step 1'
@@ -9,6 +10,10 @@ const step2 = 'Step 2'
 const step3 = 'Step 3'
 
 describe('StepIndicator component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('renders without errors', () => {
     const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
       <StepIndicator headingLevel="h4">

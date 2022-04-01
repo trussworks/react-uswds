@@ -1,9 +1,15 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { CollectionHeading } from './CollectionHeading'
+jest.mock('../../deprecation')
+
 import { deprecationWarning } from '../../deprecation'
 
 describe('CollectionHeading component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('renders without errors', () => {
     const { queryByTestId } = render(
       <CollectionHeading data-testid="collection-heading" headingLevel="h3" />

@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 
 import { Accordion, AccordionItemProps } from './Accordion'
 import { deprecationWarning } from '../../deprecation'
+jest.mock('../../deprecation')
 
 const testItems: AccordionItemProps[] = [
   {
@@ -88,6 +89,10 @@ const testItems: AccordionItemProps[] = [
 ]
 
 describe('Accordion component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('renders without errors', () => {
     const { queryByTestId } = render(<Accordion items={testItems} />)
     expect(queryByTestId('accordion')).toBeInTheDocument()
@@ -119,7 +124,7 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[1].title))
+      fireEvent.click(getByText(testItems[1].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
@@ -139,7 +144,7 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[0].title))
+      fireEvent.click(getByText(testItems[0].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
@@ -147,7 +152,7 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[0].title))
+      fireEvent.click(getByText(testItems[0].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
@@ -167,8 +172,8 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[3].title))
-      fireEvent.click(getByText(testItems[1].title))
+      fireEvent.click(getByText(testItems[3].title as string))
+      fireEvent.click(getByText(testItems[1].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
@@ -176,8 +181,8 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[4].title))
-      fireEvent.click(getByText(testItems[2].title))
+      fireEvent.click(getByText(testItems[4].title as string))
+      fireEvent.click(getByText(testItems[2].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
@@ -199,8 +204,8 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[0].title))
-      fireEvent.click(getByText(testItems[1].title))
+      fireEvent.click(getByText(testItems[0].title as string))
+      fireEvent.click(getByText(testItems[1].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
@@ -208,8 +213,8 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[0].title))
-      fireEvent.click(getByText(testItems[3].title))
+      fireEvent.click(getByText(testItems[0].title as string))
+      fireEvent.click(getByText(testItems[3].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
@@ -217,8 +222,8 @@ describe('Accordion component', () => {
       expect(getByTestId(`accordionItem_${testItems[3].id}`)).toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[4].id}`)).not.toBeVisible()
 
-      fireEvent.click(getByText(testItems[2].title))
-      fireEvent.click(getByText(testItems[4].title))
+      fireEvent.click(getByText(testItems[2].title as string))
+      fireEvent.click(getByText(testItems[4].title as string))
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()

@@ -3,8 +3,13 @@ import { render } from '@testing-library/react'
 
 import { Alert } from './Alert'
 import { deprecationWarning } from '../../deprecation'
+jest.mock('../../deprecation')
 
 describe('Alert component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('renders without errors', () => {
     const { queryByTestId } = render(<Alert type="success" />)
     expect(queryByTestId('alert')).toBeInTheDocument()
