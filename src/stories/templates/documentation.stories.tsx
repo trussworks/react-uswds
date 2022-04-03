@@ -291,7 +291,7 @@ export const DocumentationPage = (): React.ReactElement => {
               </p>
 
               <p>
-                Read the full documentatino on our side navigation on the
+                Read the full documentation on our side navigation on the
                 component page.
               </p>
             </main>
