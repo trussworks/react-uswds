@@ -6,6 +6,7 @@ import styles from './Alert.module.css'
 interface AlertProps {
   type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   children?: React.ReactNode
   cta?: React.ReactNode
   slim?: boolean
@@ -16,6 +17,7 @@ interface AlertProps {
 export const Alert = ({
   type,
   heading,
+  headingLevel = 'h4',
   cta,
   children,
   slim,
@@ -39,10 +41,11 @@ export const Alert = ({
     className
   )
 
+  const Heading = headingLevel
   return (
     <div className={classes} data-testid="alert" {...props}>
       <div className="usa-alert__body">
-        {heading && <h4 className="usa-alert__heading">{heading}</h4>}
+        {heading && <Heading className="usa-alert__heading">{heading}</Heading>}
         {children &&
           (validation ? (
             children

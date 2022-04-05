@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "2.7.2",
+  "version": "2.8.0",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -68,10 +68,10 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-react": "^7.10.4",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/builder-webpack5": "^6.3.8",
-    "@storybook/manager-webpack5": "^6.3.8",
-    "@storybook/react": "^6.2.9",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/builder-webpack5": "^6.4.19",
+    "@storybook/manager-webpack5": "^6.4.19",
+    "@storybook/react": "^6.4.19",
     "@storybook/storybook-deployer": "^2.8.6",
     "@svgr/webpack": "^6.0.0",
     "@testing-library/dom": "^8.2.0",
@@ -92,7 +92,7 @@
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
     "css-loader": "^6.2.0",
-    "danger": "^10.0.0",
+    "danger": "^11.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^6.3.0",
