@@ -212,6 +212,8 @@ When opening the pull request, it's important to understand the [Conventional Co
 
 Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR. We will always ensure that attribution for your work will be associated with your account.
 
+#### Formatting your commits
+
 The format for PR commits is:
 
 ```
