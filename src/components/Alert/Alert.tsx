@@ -42,13 +42,12 @@ export const Alert = ({
     className
   )
 
-  let Heading = headingLevel
-  if (!Heading) {
+  if (!headingLevel) {
     deprecationWarning(
       'Default headingLevel h4 has been deprecated. If you are including a heading, specify a headingLevel.'
     )
-    Heading = 'h4'
   }
+  const Heading = headingLevel || 'h4'
 
   return (
     <div className={classes} data-testid="alert" {...props}>

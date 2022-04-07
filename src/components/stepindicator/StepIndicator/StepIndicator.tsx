@@ -27,13 +27,12 @@ export const StepIndicator = (
     headingLevel,
   } = props
 
-  let Heading = headingLevel
-  if (!Heading) {
+  if (!headingLevel) {
     deprecationWarning(
       'Default headingLevel h4 has been deprecated. Please specify a heading level.'
     )
-    Heading = 'h4'
   }
+  const Heading = headingLevel || 'h4'
 
   const classes = classnames(
     'usa-step-indicator',

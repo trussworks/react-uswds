@@ -34,13 +34,13 @@ export const AccordionItem = ({
     'usa-prose',
     className
   )
-  let Heading = headingLevel
-  if (!Heading) {
+
+  if (!headingLevel) {
     deprecationWarning(
       'Default headingLevel h4 has been deprecated. Please specify a heading level.'
     )
-    Heading = 'h4'
   }
+  const Heading = headingLevel || 'h4'
 
   return (
     <>

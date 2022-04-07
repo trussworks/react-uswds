@@ -11,13 +11,12 @@ export const CollectionHeading = ({
   ...props
 }: CollectionHeadingProps &
   JSX.IntrinsicElements['h3']): React.ReactElement => {
-  let Heading = headingLevel
-  if (!Heading) {
+  if (!headingLevel) {
     deprecationWarning(
       'Default headingLevel h3 has been deprecated. Please specify a heading level.'
     )
-    Heading = 'h3'
   }
+  const Heading = headingLevel || 'h3'
 
   const classes = classnames('usa-collection__heading', className)
   return (
