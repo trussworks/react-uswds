@@ -147,4 +147,26 @@ describe('StepIndicator component', () => {
     expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
     expect(deprecationWarning).toHaveBeenCalledTimes(1)
   })
+
+  it('allows props to be passed through to the heading element', () => {
+    const { queryByRole, queryByTestId } = render(
+      <StepIndicator
+        headingProps={{ id: 'my-id', className: 'my-custom-className' }}
+      >
+        <StepIndicatorStep label={step1} status="complete" />
+        <StepIndicatorStep label={step2} status="current" />
+        <StepIndicatorStep label={step3} status="incomplete" />
+      </StepIndicator>
+    )
+
+    const stepIndicator = queryByTestId('step-indicator')
+    const heading = queryByRole('heading', { level: 4 })
+
+    expect(stepIndicator).toBeInTheDocument()
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveAttribute('id', 'my-id')
+    expect(heading).toHaveClass(
+      'usa-step-indicator__heading my-custom-className'
+    )
+  })
 })
