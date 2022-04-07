@@ -5,8 +5,8 @@ export type ModalHook = {
   toggleModal: (e?: React.MouseEvent, open?: boolean) => boolean
 }
 
-export const useModal = (): ModalHook => {
-  const [isOpen, setIsOpen] = useState(false)
+export const useModal = (isInitiallyOpen: boolean | undefined): ModalHook => {
+  const [isOpen, setIsOpen] = useState(isInitiallyOpen || false)
 
   const allowToggle = (e: React.MouseEvent): boolean => {
     const clickedElement = e.target as Element
@@ -14,16 +14,13 @@ export const useModal = (): ModalHook => {
     if (e && clickedElement) {
       if (clickedElement.closest('.usa-modal')) {
         // Element is inside a modal
-        if (
+
+        // Element is a close button - proceed
+        // Don't allow opening a modal from within a modal
+        return (
           clickedElement.hasAttribute('[data-close-modal]') ||
-          clickedElement.closest('[data-close-modal]')
-        ) {
-          // Element is a close button - proceed
-          return true
-        } else {
-          // Don't allow opening a modal from within a modal
-          return false
-        }
+          !!clickedElement.closest('[data-close-modal]')
+        )
       }
     }
 
