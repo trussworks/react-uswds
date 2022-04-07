@@ -40,6 +40,18 @@ import { FocusMode } from './DatePicker'
 
 import { DatePickerLocalization, EN_US } from './i18n'
 
+interface CalendarProps {
+  date?: Date
+  selectedDate?: Date
+  handleSelectDate: (value: string) => void
+  minDate: Date
+  maxDate?: Date
+  rangeDate?: Date
+  setStatuses: (statuses: string[]) => void
+  focusMode: FocusMode
+  i18n?: DatePickerLocalization
+}
+
 export const Calendar = ({
   date,
   selectedDate,
@@ -50,17 +62,7 @@ export const Calendar = ({
   setStatuses,
   focusMode,
   i18n = EN_US,
-}: {
-  date?: Date
-  selectedDate?: Date
-  handleSelectDate: (value: string) => void
-  minDate: Date
-  maxDate?: Date
-  rangeDate?: Date
-  setStatuses: (statuses: string[]) => void
-  focusMode: FocusMode
-  i18n?: DatePickerLocalization
-}): React.ReactElement => {
+}: CalendarProps): React.ReactElement => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
   const nextMonthEl = useRef<HTMLButtonElement>(null)
@@ -351,7 +353,8 @@ export const Calendar = ({
       className="usa-date-picker__calendar__date-picker"
       data-testid="calendar-date-picker"
       ref={datePickerEl}
-      onKeyDown={handleDatePickerTab}>
+      onKeyDown={handleDatePickerTab}
+    >
       <div className="usa-date-picker__calendar__row">
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__cell--center-items">
           <button
@@ -361,7 +364,8 @@ export const Calendar = ({
             ref={prevYearEl}
             className="usa-date-picker__calendar__previous-year"
             aria-label={backOneYear}
-            disabled={prevButtonsDisabled}>
+            disabled={prevButtonsDisabled}
+          >
             &nbsp;
           </button>
         </div>
@@ -373,7 +377,8 @@ export const Calendar = ({
             ref={prevMonthEl}
             className="usa-date-picker__calendar__previous-month"
             aria-label={backOneMonth}
-            disabled={prevButtonsDisabled}>
+            disabled={prevButtonsDisabled}
+          >
             &nbsp;
           </button>
         </div>
@@ -384,7 +389,8 @@ export const Calendar = ({
             onClick={handleToggleMonthSelection}
             ref={selectMonthEl}
             className="usa-date-picker__calendar__month-selection"
-            aria-label={clickToSelectMonth}>
+            aria-label={clickToSelectMonth}
+          >
             {monthLabel}
           </button>
           <button
@@ -393,7 +399,8 @@ export const Calendar = ({
             onClick={handleToggleYearSelection}
             ref={selectYearEl}
             className="usa-date-picker__calendar__year-selection"
-            aria-label={clickToSelectYear}>
+            aria-label={clickToSelectYear}
+          >
             {focusedYear}
           </button>
         </div>
@@ -405,7 +412,8 @@ export const Calendar = ({
             ref={nextMonthEl}
             className="usa-date-picker__calendar__next-month"
             aria-label={forwardOneMonth}
-            disabled={nextButtonsDisabled}>
+            disabled={nextButtonsDisabled}
+          >
             &nbsp;
           </button>
         </div>
@@ -417,7 +425,8 @@ export const Calendar = ({
             ref={nextYearEl}
             className="usa-date-picker__calendar__next-year"
             aria-label={forwardOneYear}
-            disabled={nextButtonsDisabled}>
+            disabled={nextButtonsDisabled}
+          >
             &nbsp;
           </button>
         </div>
@@ -430,7 +439,8 @@ export const Calendar = ({
                 className="usa-date-picker__calendar__day-of-week"
                 scope="col"
                 aria-label={dayOfWeekLabels[parseInt(`${i}`)]}
-                key={`day-of-week-${d}-${i}`}>
+                key={`day-of-week-${d}-${i}`}
+              >
                 {d}
               </th>
             ))}
@@ -441,5 +451,3 @@ export const Calendar = ({
     </div>
   )
 }
-
-Calendar.displayName = 'Calendar'
