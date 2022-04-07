@@ -172,19 +172,15 @@ describe('Tooltip component', () => {
       JSX.IntrinsicElements['a'] &
       React.RefAttributes<HTMLAnchorElement>
 
-    const CustomLink: React.ForwardRefExoticComponent<CustomLinkProps> =
-      React.forwardRef(
-        (
-          { to, className, children, ...tooltipProps }: CustomLinkProps,
-          ref
-        ) => (
-          <a ref={ref} href={to} className={className} {...tooltipProps}>
-            {children}
-          </a>
-        )
-      )
-
-    CustomLink.displayName = 'custom link'
+    const CustomLinkForwardRef: React.ForwardRefRenderFunction<
+      HTMLAnchorElement,
+      CustomLinkProps
+    > = ({ to, className, children, ...tooltipProps }, ref) => (
+      <a ref={ref} href={to} className={className} {...tooltipProps}>
+        {children}
+      </a>
+    )
+    const CustomLink = React.forwardRef(CustomLinkForwardRef)
 
     it('renders the custom component as the trigger element', () => {
       render(
@@ -192,7 +188,8 @@ describe('Tooltip component', () => {
           label="Click me"
           asCustom={CustomLink}
           to="http://www.truss.works"
-          className="customTriggerClass">
+          className="customTriggerClass"
+        >
           This is a custom link tooltip
         </Tooltip>
       )
