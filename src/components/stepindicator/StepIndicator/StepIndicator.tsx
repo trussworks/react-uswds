@@ -10,6 +10,10 @@ interface StepIndicatorProps {
   className?: string
   divProps?: JSX.IntrinsicElements['div']
   listProps?: JSX.IntrinsicElements['ol']
+  headingProps?: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 export const StepIndicator = (
@@ -23,12 +27,20 @@ export const StepIndicator = (
     className,
     divProps,
     listProps,
+    headingProps,
     headingLevel = 'h4',
   } = props
 
   const Heading = headingLevel
 
-  const classes = classnames(
+  const { className: additionalDivClasses, ...remainingDivProps } =
+    divProps || {}
+  const { className: additionalListClasses, ...remainingListProps } =
+    listProps || {}
+  const { className: additionalHeadingClasses, ...remainingHeadingProps } =
+    headingProps || {}
+
+  const divClasses = classnames(
     'usa-step-indicator',
     {
       'usa-step-indicator--no-labels': !showLabels,
@@ -36,7 +48,18 @@ export const StepIndicator = (
       'usa-step-indicator--counters-sm': counters === 'small',
       'usa-step-indicator--center': centered,
     },
-    className
+    className,
+    additionalDivClasses
+  )
+
+  const listClasses = classnames(
+    'usa-step-indicator__segments',
+    additionalListClasses
+  )
+
+  const headingClasses = classnames(
+    'usa-step-indicator__heading',
+    additionalHeadingClasses
   )
 
   const findCurrentStepIndex = (): number => {
@@ -50,15 +73,16 @@ export const StepIndicator = (
 
   return (
     <div
-      className={classes}
+      className={divClasses}
       data-testid="step-indicator"
       aria-label="progress"
-      {...divProps}>
-      <ol className="usa-step-indicator__segments" {...listProps}>
+      {...remainingDivProps}
+    >
+      <ol className={listClasses} {...remainingListProps}>
         {children}
       </ol>
       <div className="usa-step-indicator__header">
-        <Heading className="usa-step-indicator__heading">
+        <Heading className={headingClasses} {...remainingHeadingProps}>
           <span className="usa-step-indicator__heading-counter">
             <span className="usa-sr-only">Step</span>
             <span className="usa-step-indicator__current-step">
