@@ -321,7 +321,7 @@ describe('ComboBox component', () => {
   })
 
   describe('scrolling to a focused option', () => {
-    it('scrolls options list to the very top when the menu opens if nothing is selected', () => {
+    it('scrolls options list to the very top when the menu opens if nothing is selected', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -335,12 +335,12 @@ describe('ComboBox component', () => {
       jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
       listEl.scrollTop = 2000 // Scroll list 2000px down
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(listEl.scrollTop).toEqual(0)
     })
 
-    it('scrolls down to the selected option when the list is opened', () => {
+    it('scrolls down to the selected option when the list is opened', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -359,7 +359,7 @@ describe('ComboBox component', () => {
       jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
       listEl.scrollTop = 0 // Scroll list to the top
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
       expect(mango).toHaveClass(
         'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
       )
@@ -367,7 +367,7 @@ describe('ComboBox component', () => {
       expect(listEl.scrollTop).toEqual(1199)
     })
 
-    it('scrolls up to the selected option when the list is opened', () => {
+    it('scrolls up to the selected option when the list is opened', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -386,7 +386,7 @@ describe('ComboBox component', () => {
       jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
       listEl.scrollTop = 2292 // Scroll list 2292px down
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
       expect(mango).toHaveClass(
         'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
       )
@@ -431,7 +431,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('filters the options list after a character is typed', () => {
+    it('filters the options list after a character is typed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -442,12 +442,12 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'a')
+      await userEvent.type(input, 'a')
 
       expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
     })
 
-    it('persists filter options if dropdown is closed and open without selection', () => {
+    it('persists filter options if dropdown is closed and open without selection', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -458,12 +458,12 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'yu')
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.type(input, 'yu')
+      await userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
     })
 
@@ -486,7 +486,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('clears filters when ComboBox is un-focused and no option was selected (implicitly clearing the ComboBox)', () => {
+    it('clears filters when ComboBox is un-focused and no option was selected (implicitly clearing the ComboBox)', async () => {
       const { getByTestId } = render(
         <>
           <div data-testid="outside" />
@@ -503,16 +503,16 @@ describe('ComboBox component', () => {
       const input = getByTestId('combo-box-input')
 
       // Filter the list
-      userEvent.type(input, 'Av')
+      await userEvent.type(input, 'Av')
       expect(list.children.length).toEqual(2) // Avocado and Guava
 
       // Click somewhere else
-      userEvent.click(getByTestId('outside'))
+      await userEvent.click(getByTestId('outside'))
       expect(input).toHaveTextContent('')
       expect(list.children.length).toEqual(fruitOptions.length)
 
       // Return the combo box
-      userEvent.click(input)
+      await userEvent.click(input)
       expect(input).toHaveTextContent('')
       expect(list.children.length).toEqual(fruitOptions.length)
       expect(list.children[0]).toHaveClass(
@@ -520,7 +520,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('shows no results message when there is no match', () => {
+    it('shows no results message when there is no match', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -530,7 +530,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'zz')
+      await userEvent.type(getByTestId('combo-box-input'), 'zz')
 
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).not.toHaveFocus()
@@ -556,7 +556,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('resets the list of items if filtered then blurred without selecting an element', () => {
+    it('resets the list of items if filtered then blurred without selecting an element', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -569,7 +569,7 @@ describe('ComboBox component', () => {
       const input = getByTestId('combo-box-input')
       const optionsList = getByTestId('combo-box-option-list')
 
-      userEvent.type(input, 'apple')
+      await userEvent.type(input, 'apple')
       expect(optionsList.children.length).toBeLessThan(fruitOptions.length)
 
       fireEvent.blur(input)
@@ -697,7 +697,7 @@ describe('ComboBox component', () => {
       expect(comboBoxOptionList.children.length).toBe(fruitOptions.length)
     })
 
-    it('remains focused on the input after click', () => {
+    it('remains focused on the input after click', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -707,10 +707,10 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'b')
+      await userEvent.type(getByTestId('combo-box-input'), 'b')
       expect(getByTestId('combo-box-input')).toHaveFocus()
 
-      userEvent.click(getByTestId('combo-box-clear-button'))
+      await userEvent.click(getByTestId('combo-box-clear-button'))
       fireEvent.blur(getByTestId('combo-box-clear-button'))
 
       expect(getByTestId('combo-box-input')).toHaveFocus()
@@ -763,7 +763,7 @@ describe('ComboBox component', () => {
   })
 
   describe('keyboard actions', () => {
-    it('clears input when there is no match and enter is pressed', () => {
+    it('clears input when there is no match and enter is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -773,7 +773,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'zzz{enter}')
+      await userEvent.type(getByTestId('combo-box-input'), 'zzz{enter}')
 
       const comboBoxInput = getByTestId('combo-box-input')
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
@@ -797,7 +797,7 @@ describe('ComboBox component', () => {
       expect(comboBoxOptionList.children.length).toBe(fruitOptions.length)
     })
 
-    it('reverts to the selected option when there is not an exact match and enter is pressed', () => {
+    it('reverts to the selected option when there is not an exact match and enter is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -810,7 +810,7 @@ describe('ComboBox component', () => {
 
       const input = getByTestId('combo-box-input')
 
-      userEvent.type(input, 'zzz{enter}')
+      await userEvent.type(input, 'zzz{enter}')
 
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
       expect(input).toHaveValue('Avocado')
@@ -818,7 +818,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-clear-button')).toBeVisible()
     })
 
-    it('selects the exactly matching option when an item was previously selected and enter is pressed', () => {
+    it('selects the exactly matching option when an item was previously selected and enter is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -832,10 +832,10 @@ describe('ComboBox component', () => {
       const input = getByTestId('combo-box-input')
 
       for (let i = 0; i < 'avocado'.length; i++) {
-        userEvent.type(input, '{backspace}')
+        await userEvent.type(input, '{backspace}')
       }
 
-      userEvent.type(input, 'Banana{enter}')
+      await userEvent.type(input, 'Banana{enter}')
 
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
       expect(input).toHaveValue('Banana')
