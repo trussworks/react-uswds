@@ -84,7 +84,7 @@ describe('ComboBox component', () => {
   })
 
   describe('toggling the list', () => {
-    it('renders all options when the list is open', () => {
+    it('renders all options when the list is open', async () => {
       const fruitAbridged = fruitOptions.slice(0, 3)
 
       const { getByTestId } = render(
@@ -96,7 +96,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
       expect(screen.getAllByRole('option')).toHaveLength(fruitAbridged.length)
 
       fruitAbridged.forEach((item, index) => {
