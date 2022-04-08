@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent, createEvent, waitFor } from '@testing-library/react'
-import userEvent, { specialChars } from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
 import { sampleLocalization } from './i18n'
@@ -554,7 +554,7 @@ describe('DatePicker component', () => {
       expect(externalInput).toBeValid()
       userEvent.type(externalInput, '05/16/1988')
       expect(externalInput).toBeValid()
-      userEvent.type(externalInput, specialChars.enter)
+      userEvent.type(externalInput, '{enter}')
       expect(externalInput).toBeInvalid()
     })
   })
@@ -694,9 +694,9 @@ describe('DatePicker component', () => {
       const { getByTestId } = render(
         <DatePicker {...testProps} defaultValue="2021-01-20" />
       )
-      userEvent.click(getByTestId('date-picker-button'))
-      userEvent.click(getByTestId('select-year'))
-      userEvent.click(getByTestId('next-year-chunk'))
+      await userEvent.click(getByTestId('date-picker-button'))
+      await userEvent.click(getByTestId('select-year'))
+      await userEvent.click(getByTestId('next-year-chunk'))
 
       await waitFor(() => {
         expect(getByTestId('date-picker-status')).toHaveTextContent(
