@@ -115,7 +115,7 @@ describe('ComboBox component', () => {
       })
     })
 
-    it('shows options list when input toggle clicked', () => {
+    it('shows options list when input toggle clicked', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -125,12 +125,12 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('shows list when input is clicked', () => {
+    it('shows list when input is clicked', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -140,12 +140,12 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('shows list when input is typed into', () => {
+    it('shows list when input is typed into', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -155,11 +155,11 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'b')
+      await userEvent.type(getByTestId('combo-box-input'), 'b')
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('highlights the first option when opening the menu, when no default value exists', () => {
+    it('highlights the first option when opening the menu, when no default value exists', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -172,7 +172,7 @@ describe('ComboBox component', () => {
       const firstItem = getByTestId('combo-box-option-list').children[0]
       const inputEl = getByTestId('combo-box-input')
 
-      userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(firstItem).toBeVisible()
       expect(firstItem).not.toHaveFocus()
@@ -283,7 +283,7 @@ describe('ComboBox component', () => {
       expect(comboBoxInput).toHaveAttribute('type', 'url')
     })
 
-    it('allows a custom input onChange handler to be called', () => {
+    it('allows a custom input onChange handler to be called', async () => {
       const mockOnInputChange = jest.fn()
 
       const { getByTestId } = render(
@@ -297,7 +297,7 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'x')
+      await userEvent.type(input, 'x')
       expect(mockOnInputChange).toHaveBeenCalled()
     })
 
