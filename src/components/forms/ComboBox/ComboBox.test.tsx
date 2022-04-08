@@ -1272,7 +1272,7 @@ describe('ComboBox component', () => {
       userEvent.hover(apricotOption)
       fireEvent.keyDown(apricotOption, {
         key: 'tab',
-        keyCode: 9,
+        code: 9,
         shiftKey: true,
       })
 

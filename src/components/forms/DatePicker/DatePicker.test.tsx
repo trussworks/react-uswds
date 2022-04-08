@@ -99,7 +99,7 @@ describe('DatePicker component', () => {
     const keyUpEvent = createEvent.keyUp(calendarEl, {
       key: 'Enter',
       bubbles: true,
-      keyCode: 13,
+      code: 13,
     })
     const preventDefaultSpy = jest.spyOn(keyUpEvent, 'preventDefault')
     fireEvent(calendarEl, keyUpEvent)
