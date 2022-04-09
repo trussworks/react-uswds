@@ -1744,7 +1744,7 @@ describe('ComboBox component', () => {
       expect(input).toHaveFocus()
     })
 
-    it('can be used to clear the selected value', () => {
+    it('can be used to clear the selected value', async () => {
       const comboRef = React.createRef<ComboBoxRef>()
       const onChange = jest.fn()
       const handleClearSelection = (): void =>
@@ -1766,14 +1766,18 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      fireEvent.click(getByTestId('combo-box-toggle'))
-      fireEvent.click(getByTestId('combo-box-option-apple'))
+
+      await userEvent.click(getByTestId('combo-box-toggle'))
+      await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
+      await userEvent.click(getByTestId('combo-box-option-apple'))
+      await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
 
       expect(onChange).toHaveBeenLastCalledWith('apple')
       expect(input).toHaveDisplayValue('Apple')
       expect(input).toHaveValue('Apple')
 
-      fireEvent.click(getByTestId('clear-button'))
+      await userEvent.click(getByTestId('clear-button'))
+      await waitFor(() => expect(onChange).toHaveBeenCalledTimes(3))
 
       expect(onChange).toHaveBeenLastCalledWith(undefined)
       expect(input).toHaveDisplayValue('')
