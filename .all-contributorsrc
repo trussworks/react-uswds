@@ -193,16 +193,6 @@
         "code",
       ]
     },
-    {
-      "login": "haworku",
-      "name": "Hana Worku",
-      "avatar_url": "https://avatars.githubusercontent.com/u/10750442?v=4",
-      "profile": "https://github.com/haworku",
-      "contributions": [
-        "code",
-        "docs",
-      ]
-    },
   ],
   "contributorsPerLine": 7
 }
