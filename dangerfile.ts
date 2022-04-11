@@ -136,17 +136,15 @@ const checkContributorsJSON: () => void = () => {
         return sdiff.chunks.every((chunk) => {
           return chunk.changes
             .filter((change) => {
-              return change.type === 'add'
+              return change.type === 'add' // Filter on additive changes
             })
             .every((change) => {
               return change.content.match(/"contributors":/)
             })
         })
       })
-      .then((onlyContributorsChanges) => {
-        // If the only thing that changed is the version, it is ok if
-        // yarn.lock didn't change
-        if (!onlyContributorsChanges) {
+      .then((contributorsChanges) => {
+        if (contributorsChanges) {
           const message =
             'Do not make changes to package.json around contributors.'
           const idea =
