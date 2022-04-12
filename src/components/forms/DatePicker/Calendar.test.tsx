@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Calendar } from './Calendar'
@@ -119,27 +119,27 @@ describe('Calendar', () => {
   })
 
   describe('focusing on hover', () => {
-    it('focuses on a date in the current month when hovered over', () => {
+    it('focuses on a date in the current month when hovered over', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
-      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      await userEvent.hover(getByLabelText(/^13 January 2021/))
       expect(getByLabelText(/^13 January 2021/)).toHaveFocus()
     })
 
-    it('does not focus on a date not in the current month when hovered over', () => {
+    it('does not focus on a date not in the current month when hovered over', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
-      fireEvent.mouseMove(getByLabelText(/^2 February 2021/))
+      await userEvent.hover(getByLabelText(/^2 February 2021/))
       expect(getByLabelText(/^2 February 2021/)).not.toHaveFocus()
     })
 
-    it('does not focus on a disabled date in the current month when hovered over', () => {
+    it('does not focus on a disabled date in the current month when hovered over', async () => {
       const { getByLabelText } = render(
         <Calendar
           {...testProps}
@@ -150,11 +150,11 @@ describe('Calendar', () => {
 
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
       expect(getByLabelText(/^13 January 2021/)).toBeDisabled()
-      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      await userEvent.hover(getByLabelText(/^13 January 2021/))
       expect(getByLabelText(/^13 January 2021/)).not.toHaveFocus()
     })
 
-    it('does not focus on a date when hovered over if on an iOS device', () => {
+    it('does not focus on a date when hovered over if on an iOS device', async () => {
       jest
         .spyOn(navigator, 'userAgent', 'get')
         .mockImplementation(() => 'iPhone')
@@ -164,18 +164,18 @@ describe('Calendar', () => {
       )
 
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
-      fireEvent.mouseMove(getByLabelText(/^13 January 2021/))
+      await userEvent.hover(getByLabelText(/^13 January 2021/))
       expect(getByLabelText(/^13 January 2021/)).not.toHaveFocus()
       jest.restoreAllMocks()
     })
   })
 
   describe('navigation', () => {
-    it('clicking previous year navigates the calendar back one year', () => {
+    it('clicking previous year navigates the calendar back one year', async () => {
       const { getByTestId } = render(
         <Calendar {...testProps} date={new Date('January 2021')} />
       )
-      userEvent.click(getByTestId('previous-year'))
+      await userEvent.click(getByTestId('previous-year'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
       expect(getByTestId('previous-year')).toHaveFocus()
@@ -189,7 +189,7 @@ describe('Calendar', () => {
           date={new Date('January 2021')}
         />
       )
-      userEvent.click(getByTestId('previous-year'))
+      await userEvent.click(getByTestId('previous-year'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
       expect(getByTestId('previous-year')).toBeDisabled()
@@ -199,11 +199,11 @@ describe('Calendar', () => {
       })
     })
 
-    it('clicking next year navigates the calendar forward one year', () => {
+    it('clicking next year navigates the calendar forward one year', async () => {
       const { getByTestId } = render(
         <Calendar {...testProps} date={new Date('January 2021')} />
       )
-      userEvent.click(getByTestId('next-year'))
+      await userEvent.click(getByTestId('next-year'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2022')
       expect(getByTestId('next-year')).toHaveFocus()
@@ -217,7 +217,7 @@ describe('Calendar', () => {
           date={new Date('January 2021')}
         />
       )
-      userEvent.click(getByTestId('next-year'))
+      await userEvent.click(getByTestId('next-year'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2022')
       expect(getByTestId('next-year')).toBeDisabled()
@@ -227,11 +227,11 @@ describe('Calendar', () => {
       })
     })
 
-    it('clicking previous month navigates the calendar back one month', () => {
+    it('clicking previous month navigates the calendar back one month', async () => {
       const { getByTestId } = render(
         <Calendar {...testProps} date={new Date('January 2021')} />
       )
-      userEvent.click(getByTestId('previous-month'))
+      await userEvent.click(getByTestId('previous-month'))
       expect(getByTestId('select-month')).toHaveTextContent('December')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
       expect(getByTestId('previous-month')).toHaveFocus()
@@ -245,7 +245,7 @@ describe('Calendar', () => {
           date={new Date('January 2021')}
         />
       )
-      userEvent.click(getByTestId('previous-month'))
+      await userEvent.click(getByTestId('previous-month'))
       expect(getByTestId('select-month')).toHaveTextContent('December')
       expect(getByTestId('select-year')).toHaveTextContent('2020')
       expect(getByTestId('previous-month')).toBeDisabled()
@@ -255,11 +255,11 @@ describe('Calendar', () => {
       })
     })
 
-    it('clicking next month navigates the calendar forward one month', () => {
+    it('clicking next month navigates the calendar forward one month', async () => {
       const { getByTestId } = render(
         <Calendar {...testProps} date={new Date('January 2021')} />
       )
-      userEvent.click(getByTestId('next-month'))
+      await userEvent.click(getByTestId('next-month'))
       expect(getByTestId('select-month')).toHaveTextContent('February')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('next-month')).toHaveFocus()
@@ -273,7 +273,7 @@ describe('Calendar', () => {
           date={new Date('January 2021')}
         />
       )
-      userEvent.click(getByTestId('next-month'))
+      await userEvent.click(getByTestId('next-month'))
       expect(getByTestId('select-month')).toHaveTextContent('February')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('next-month')).toBeDisabled()
@@ -285,209 +285,192 @@ describe('Calendar', () => {
   })
 
   describe('keyboard navigation', () => {
-    it('pressing the up arrow key from a day navigates to the same day in the previous week', () => {
+    it('pressing the up arrow key from a day navigates to the same day in the previous week', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'ArrowUp',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{ArrowUp}')
+
       expect(getByLabelText(/^13 January 2021/)).toHaveFocus()
     })
 
-    it('pressing the down arrow key from a day navigates to the same day in the next week', () => {
+    it('pressing the down arrow key from a day navigates to the same day in the next week', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'ArrowDown',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{ArrowDown}')
       expect(getByLabelText(/^27 January 2021/)).toHaveFocus()
     })
 
-    it('pressing the left arrow key from a day navigates to the previous day', () => {
+    it('pressing the left arrow key from a day navigates to the previous day', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'ArrowLeft',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{ArrowLeft}')
       expect(getByLabelText(/^19 January 2021/)).toHaveFocus()
     })
 
-    it('pressing the right arrow key from a day navigates to the next day', () => {
+    it('pressing the right arrow key from a day navigates to the next day', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'ArrowRight',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{ArrowRight}')
       expect(getByLabelText(/^21 January 2021/)).toHaveFocus()
     })
 
-    it('pressing the home key from a day navigates to the first day of the selected week', () => {
+    it('pressing the home key from a day navigates to the first day of the selected week', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'Home',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{Home}')
       expect(getByLabelText(/^17 January 2021/)).toHaveFocus()
     })
 
-    it('pressing the end key from a day navigates to the last day of the selected week', () => {
+    it('pressing the end key from a day navigates to the last day of the selected week', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'End',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{End}')
       expect(getByLabelText(/^23 January 2021/)).toHaveFocus()
     })
 
-    it('pressing the page down key from a day navigates to the same day in the next month', () => {
+    it('pressing the page down key from a day navigates to the same day in the next month', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'PageDown',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{PageDown}')
       expect(getByLabelText(/^20 February 2021/)).toHaveFocus()
     })
 
-    it('pressing the page down key from the last day of a longer month navigates to the last day in the shorter next month', () => {
+    it('pressing the page down key from the last day of a longer month navigates to the last day in the shorter next month', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 31 2020')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^31 January 2020/), {
-        key: 'PageDown',
-      })
+      await userEvent.hover(getByLabelText(/^31 January 2020/))
+      await userEvent.keyboard('{PageDown}')
       expect(getByLabelText(/^29 February 2020/)).toHaveFocus()
     })
 
-    it('pressing the page up key from a day navigates to the same day in the previous month', () => {
+    it('pressing the page up key from a day navigates to the same day in the previous month', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'PageUp',
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{PageUp}')
       expect(getByLabelText(/^20 December 2020/)).toHaveFocus()
     })
 
-    it('pressing the page up key from the last day of a longer month navigates to the last day in the shorter previous month', () => {
+    it('pressing the page up key from the last day of a longer month navigates to the last day in the shorter previous month', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('December 31 2019')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^31 December 2019/), {
-        key: 'PageUp',
-      })
+      await userEvent.hover(getByLabelText(/^31 December 2019/))
+      await userEvent.keyboard('{PageUp}')
       expect(getByLabelText(/^30 November 2019/)).toHaveFocus()
     })
 
-    it('pressing the shift + page down keys from a day navigates to the same day in the next year', () => {
+    it('pressing the shift + page down keys from a day navigates to the same day in the next year', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'PageDown',
-        shiftKey: true,
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{Shift>}{PageDown}{/Shift}')
       expect(getByLabelText(/^20 January 2022/)).toHaveFocus()
     })
 
-    it('pressing the shift + page down keys from February 29th of a leap year navigates to February 28th in the next year', () => {
+    it('pressing the shift + page down keys from February 29th of a leap year navigates to February 28th in the next year', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('February 29 2020')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^29 February 2020/), {
-        key: 'PageDown',
-        shiftKey: true,
-      })
+      await userEvent.hover(getByLabelText(/^29 February 2020/))
+      await userEvent.keyboard('{Shift>}{PageDown}{/Shift}')
       expect(getByLabelText(/^28 February 2021/)).toHaveFocus()
     })
 
-    it('pressing the shift + page up keys from a day navigates to the same day in the previous year', () => {
+    it('pressing the shift + page up keys from a day navigates to the same day in the previous year', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^20 January 2021/), {
-        key: 'PageUp',
-        shiftKey: true,
-      })
+      await userEvent.hover(getByLabelText(/^20 January 2021/))
+      await userEvent.keyboard('{Shift>}{PageUp}{/Shift}')
       expect(getByLabelText(/^20 January 2020/)).toHaveFocus()
     })
 
-    it('pressing the shift + page up keys from February 29th of a leap year navigates to February 28th in the previous year', () => {
+    it('pressing the shift + page up keys from February 29th of a leap year navigates to February 28th in the previous year', async () => {
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('February 29 2020')} />
       )
 
-      fireEvent.keyDown(getByLabelText(/^29 February 2020/), {
-        key: 'PageUp',
-        shiftKey: true,
-      })
+      await userEvent.hover(getByLabelText(/^29 February 2020/))
+      await userEvent.keyboard('{Shift>}{PageUp}{/Shift}')
       expect(getByLabelText(/^28 February 2019/)).toHaveFocus()
     })
 
-    it('pressing tab cycles through the focusable elements within the date picker', () => {
+    it('pressing tab cycles through the focusable elements within the date picker', async () => {
       const { getByLabelText, getByTestId } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('previous-year')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('previous-month')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('select-month')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('select-year')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('next-month')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('next-year')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
     })
 
-    it('pressing tab+shift cycles backwards through the focusable elements within the date picker', () => {
+    it('pressing tab+shift cycles backwards through the focusable elements within the date picker', async () => {
       const { getByLabelText, getByTestId } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
 
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('next-year')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('next-month')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('select-year')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('select-month')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('previous-month')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('previous-year')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
     })
 
-    it('pressing tab only cycles through elements that are not disabled', () => {
+    it('pressing tab only cycles through elements that are not disabled', async () => {
       const { getByLabelText, getByTestId } = render(
         <Calendar
           {...testProps}
@@ -500,23 +483,24 @@ describe('Calendar', () => {
       expect(getByTestId('previous-year')).toBeDisabled()
       expect(getByTestId('previous-month')).toBeDisabled()
 
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('select-month')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('select-year')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('next-month')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('next-year')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
     })
   })
 
   describe('month selection', () => {
-    it('clicking the selected month shows month selection', () => {
+    it('clicking the selected month shows month selection', async () => {
       const { queryByTestId, getByTestId } = render(<Calendar {...testProps} />)
-      userEvent.click(getByTestId('select-month'))
+
+      await userEvent.click(getByTestId('select-month'))
       expect(queryByTestId('calendar-date-picker')).not.toBeInTheDocument()
       expect(getByTestId('calendar-month-picker')).toBeInTheDocument()
     })
@@ -525,8 +509,8 @@ describe('Calendar', () => {
       const { getByTestId, queryByTestId, getByText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
-      userEvent.click(getByTestId('select-month'))
-      userEvent.click(getByText('May'))
+      await userEvent.click(getByTestId('select-month'))
+      await userEvent.click(getByText('May'))
       expect(getByTestId('select-month')).toHaveTextContent('May')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
@@ -539,9 +523,10 @@ describe('Calendar', () => {
   })
 
   describe('year selection', () => {
-    it('clicking the selected year shows year selection', () => {
+    it('clicking the selected year shows year selection', async () => {
       const { queryByTestId, getByTestId } = render(<Calendar {...testProps} />)
-      userEvent.click(getByTestId('select-year'))
+
+      await userEvent.click(getByTestId('select-year'))
       expect(queryByTestId('calendar-date-picker')).not.toBeInTheDocument()
       expect(getByTestId('calendar-year-picker')).toBeInTheDocument()
     })
@@ -550,8 +535,8 @@ describe('Calendar', () => {
       const { getByTestId, queryByTestId, getByText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
       )
-      userEvent.click(getByTestId('select-year'))
-      userEvent.click(getByText('2017'))
+      await userEvent.click(getByTestId('select-year'))
+      await userEvent.click(getByText('2017'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2017')
       expect(getByTestId('calendar-date-picker')).toBeInTheDocument()
