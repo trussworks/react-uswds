@@ -25,18 +25,20 @@ describe('MonthPicker', () => {
     })
   })
 
-  it('each button implements an onClick handler to select the month', () => {
+  it('each button implements an onClick handler to select the month', async () => {
     const mockSelectMonth = jest.fn()
     const { getByText } = render(
       <MonthPicker {...testProps} handleSelectMonth={mockSelectMonth} />
     )
 
-    MONTH_LABELS.forEach((month, index) => {
+    await MONTH_LABELS.reduce(async (previous, month, index) => {
+      await previous
+
       const button = getByText(month)
       expect(button).toBeInstanceOf(HTMLButtonElement)
-      userEvent.click(button)
+      await userEvent.click(button)
       expect(mockSelectMonth).toHaveBeenCalledWith(index)
-    })
+    }, Promise.resolve())
   })
 
   it('the currently displayed month has the selected class', () => {
@@ -203,13 +205,13 @@ describe('MonthPicker', () => {
       expect(getByText('January')).toHaveFocus()
     })
 
-    it('pressing tab cycles through the focusable elements within the month picker', () => {
+    it('pressing tab cycles through the focusable elements within the month picker', async () => {
       const { getByText } = render(
         <MonthPicker {...testProps} date={new Date('January 20 2021')} />
       )
 
       expect(getByText('January')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByText('January')).toHaveFocus()
     })
   })
