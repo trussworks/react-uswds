@@ -14,7 +14,6 @@ export default {
         })
         document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
       },
-      waitFor: (): Element => document.querySelector('.usa-tooltip__body'),
     },
     docs: {
       description: {
@@ -118,6 +117,14 @@ export const tooltipTopLeftWrap = (): React.ReactElement => (
     </Tooltip>
   </div>
 )
+tooltipTopLeftWrap.parameters = {
+  happo: {
+    waitFor: () =>
+      document.querySelector(
+        '.usa-tooltip__body.usa-tooltip__body--right.usa-tooltip__body--wrap.is-visible.is-set'
+      ),
+  },
+}
 
 export const tooltipBottomLeftWrap = (): React.ReactElement => (
   <div style={{ position: 'absolute', bottom: '32px' }}>
@@ -126,6 +133,14 @@ export const tooltipBottomLeftWrap = (): React.ReactElement => (
     </Tooltip>
   </div>
 )
+tooltipBottomLeftWrap.parameters = {
+  happo: {
+    waitFor: () =>
+      document.querySelector(
+        '.usa-tooltip__body.usa-tooltip__body--right.usa-tooltip__body--wrap.is-visible.is-set'
+      ),
+  },
+}
 
 export const tooltipTopRightWrap = (): React.ReactElement => (
   <div style={{ marginTop: '32px', textAlign: 'right' }}>
@@ -134,6 +149,14 @@ export const tooltipTopRightWrap = (): React.ReactElement => (
     </Tooltip>
   </div>
 )
+tooltipTopRightWrap.parameters = {
+  happo: {
+    waitFor: () =>
+      document.querySelector(
+        '.usa-tooltip__body.usa-tooltip__body--left.usa-tooltip__body--wrap.is-visible.is-set'
+      ),
+  },
+}
 
 export const tooltipBottomRightWrap = (): React.ReactElement => (
   <div
@@ -151,3 +174,11 @@ export const tooltipBottomRightWrap = (): React.ReactElement => (
     </Tooltip>
   </div>
 )
+tooltipBottomRightWrap.parameters = {
+  happo: {
+    waitFor: () =>
+      document.querySelector(
+        '.usa-tooltip__body.usa-tooltip__body--left.usa-tooltip__body--wrap.is-visible.is-set'
+      ),
+  },
+}
