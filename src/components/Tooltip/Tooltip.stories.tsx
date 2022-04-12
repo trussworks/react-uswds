@@ -119,10 +119,7 @@ export const tooltipTopLeftWrap = (): React.ReactElement => (
 )
 tooltipTopLeftWrap.parameters = {
   happo: {
-    waitFor: () =>
-      document.querySelector(
-        '.usa-tooltip__body.usa-tooltip__body--right.usa-tooltip__body--wrap.is-visible.is-set'
-      ),
+    delay: 1000,
   },
 }
 
@@ -135,10 +132,7 @@ export const tooltipBottomLeftWrap = (): React.ReactElement => (
 )
 tooltipBottomLeftWrap.parameters = {
   happo: {
-    waitFor: () =>
-      document.querySelector(
-        '.usa-tooltip__body.usa-tooltip__body--right.usa-tooltip__body--wrap.is-visible.is-set'
-      ),
+    delay: 1000,
   },
 }
 
@@ -151,10 +145,7 @@ export const tooltipTopRightWrap = (): React.ReactElement => (
 )
 tooltipTopRightWrap.parameters = {
   happo: {
-    waitFor: () =>
-      document.querySelector(
-        '.usa-tooltip__body.usa-tooltip__body--left.usa-tooltip__body--wrap.is-visible.is-set'
-      ),
+    delay: 1000,
   },
 }
 
@@ -176,9 +167,6 @@ export const tooltipBottomRightWrap = (): React.ReactElement => (
 )
 tooltipBottomRightWrap.parameters = {
   happo: {
-    waitFor: () =>
-      document.querySelector(
-        '.usa-tooltip__body.usa-tooltip__body--left.usa-tooltip__body--wrap.is-visible.is-set'
-      ),
+    delay: 1000,
   },
 }
