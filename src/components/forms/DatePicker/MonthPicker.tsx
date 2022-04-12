@@ -140,7 +140,8 @@ export const MonthPicker = ({
         disabled={isDisabled}
         onClick={onClick}
         onKeyDown={handleKeyDownFromMonth}
-        onMouseMove={handleMouseMoveFromMonth}>
+        onMouseMove={handleMouseMoveFromMonth}
+      >
         {month}
       </button>
     )
@@ -155,12 +156,11 @@ export const MonthPicker = ({
       data-testid="calendar-month-picker"
       className="usa-date-picker__calendar__month-picker"
       ref={monthPickerEl}
-      onKeyDown={handleMonthPickerTab}>
+      onKeyDown={handleMonthPickerTab}
+    >
       <table className="usa-date-picker__calendar__table" role="presentation">
         <tbody>{listToTable(months, 3)}</tbody>
       </table>
     </div>
   )
 }
-
-MonthPicker.displayName = 'MonthPicker'
