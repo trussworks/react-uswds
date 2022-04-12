@@ -11,12 +11,12 @@ describe('ModalCloseButton component', () => {
     expect(screen.queryByRole('button')).toBeInTheDocument()
   })
 
-  it('implements the close handler', () => {
+  it('implements the close handler', async () => {
     const mockHandleClose = jest.fn()
 
     render(<ModalCloseButton handleClose={mockHandleClose} />)
 
-    userEvent.click(screen.getByRole('button'))
+    await userEvent.click(screen.getByRole('button'))
     expect(mockHandleClose).toHaveBeenCalled()
   })
 })
