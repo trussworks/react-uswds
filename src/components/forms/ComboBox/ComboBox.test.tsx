@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  screen,
-  render,
-  fireEvent,
-  waitFor,
-  getAllByRole,
-} from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
@@ -643,7 +637,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('calls onChange prop with undefined on click', () => {
+    it('calls onChange prop with undefined on click', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -654,7 +648,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      fireEvent.click(getByTestId('combo-box-clear-button'))
+      await userEvent.click(getByTestId('combo-box-clear-button'))
 
       expect(onChange).toHaveBeenCalledWith(undefined)
     })
@@ -1058,7 +1052,7 @@ describe('ComboBox component', () => {
       expect(comboBoxInput).toHaveAttribute('aria-activedescendant', '')
     })
 
-    it('does not change focus when last option is focused and down arrow is pressed', () => {
+    it('does not change focus when last option is focused and down arrow is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1069,11 +1063,9 @@ describe('ComboBox component', () => {
       )
 
       const yuzuOption = getByTestId('combo-box-option-yuzu')
-      fireEvent.click(getByTestId('combo-box-input'))
-      userEvent.hover(yuzuOption)
-      fireEvent.keyDown(yuzuOption, {
-        key: 'ArrowDown',
-      })
+      await userEvent.click(getByTestId('combo-box-input'))
+      await userEvent.hover(yuzuOption)
+      await userEvent.keyboard('{ArrowDown}')
 
       expect(yuzuOption).toHaveFocus()
     })
@@ -1251,7 +1243,7 @@ describe('ComboBox component', () => {
       await waitFor(() => expect(comboBoxInput).toHaveValue('Apple'))
     })
 
-    it('focuses the input when an option is focused and shift-tab is pressed', () => {
+    it('focuses the input when an option is focused and shift-tab is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1263,20 +1255,16 @@ describe('ComboBox component', () => {
       const input = getByTestId('combo-box-input')
       const apricotOption = getByTestId('combo-box-option-apricot')
 
-      userEvent.tab()
-      userEvent.hover(apricotOption)
-      fireEvent.keyDown(apricotOption, {
-        key: 'tab',
-        code: 9,
-        shiftKey: true,
-      })
+      await userEvent.tab()
+      await userEvent.hover(apricotOption)
+      await userEvent.tab({ shift: true })
 
       expect(input).toHaveFocus()
     })
   })
 
   describe('mouse actions', () => {
-    it('displays options list when input is clicked', () => {
+    it('displays options list when input is clicked', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1288,7 +1276,7 @@ describe('ComboBox component', () => {
       const input = getByTestId('combo-box-input')
       const optionList = getByTestId('combo-box-option-list')
 
-      fireEvent.click(input)
+      await userEvent.click(input)
 
       expect(input).toHaveAttribute('aria-expanded', 'true')
       expect(optionList).toBeVisible()
@@ -1362,7 +1350,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
     })
 
-    it('shows and hides options list when toggle is clicked', () => {
+    it('shows and hides options list when toggle is clicked', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1374,12 +1362,12 @@ describe('ComboBox component', () => {
 
       const input = getByTestId('combo-box-input')
       const optionList = getByTestId('combo-box-option-list')
-      fireEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(input).toHaveAttribute('aria-expanded', 'true')
       expect(optionList).toBeVisible()
 
-      fireEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
 
       expect(input).toHaveAttribute('aria-expanded', 'false')
       expect(input).toHaveAttribute('aria-activedescendant', '')
@@ -1533,7 +1521,7 @@ describe('ComboBox component', () => {
   })
 
   describe('accessibility and internationalization', () => {
-    it('adds correct aria attributes to options when no item selected', () => {
+    it('adds correct aria attributes to options when no item selected', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1545,7 +1533,7 @@ describe('ComboBox component', () => {
       const list = getByTestId('combo-box-option-list')
 
       // open options list
-      fireEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       Object.values(list.children).forEach((node, index) => {
         if (index == 0) {
@@ -1558,7 +1546,7 @@ describe('ComboBox component', () => {
       })
     })
 
-    it('adds correct aria attributes on options when an item is selected', () => {
+    it('adds correct aria attributes on options when an item is selected', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1571,7 +1559,7 @@ describe('ComboBox component', () => {
       const list = getByTestId('combo-box-option-list')
 
       // open options list
-      fireEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       Object.values(list.children).forEach((node) => {
         if (node === getByTestId('combo-box-option-apricot')) {
@@ -1623,7 +1611,7 @@ describe('ComboBox component', () => {
       expect(status).toHaveTextContent(`43 results available.`)
     })
 
-    it('updates the status text when the list is opened with no options', () => {
+    it('updates the status text when the list is opened with no options', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1636,7 +1624,7 @@ describe('ComboBox component', () => {
       const status = screen.getByRole('status')
 
       // open options list
-      fireEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(status).toHaveTextContent(`No results.`)
     })
@@ -1671,7 +1659,7 @@ describe('ComboBox component', () => {
     })
 
     it('updates the status text when an option is selected', async () => {
-      const { getByTestId, getByRole, getAllByRole } = render(
+      const { getByTestId, getByRole } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
