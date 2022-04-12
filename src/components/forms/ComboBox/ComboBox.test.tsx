@@ -1,5 +1,11 @@
 import React from 'react'
-import { screen, render, fireEvent, waitFor } from '@testing-library/react'
+import {
+  screen,
+  render,
+  fireEvent,
+  waitFor,
+  getAllByRole,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
@@ -467,7 +473,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
     })
 
-    it('clears filter when item selected', () => {
+    it('clears filter when item selected', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -478,8 +484,8 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'yu')
-      userEvent.click(getByTestId('combo-box-option-yuzu'))
+      await userEvent.type(input, 'yu')
+      await userEvent.click(getByTestId('combo-box-option-yuzu'))
 
       expect(getByTestId('combo-box-option-list').children.length).toEqual(
         fruitOptions.length
@@ -558,12 +564,15 @@ describe('ComboBox component', () => {
 
     it('resets the list of items if filtered then blurred without selecting an element', async () => {
       const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          onChange={jest.fn()}
-        />
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
       )
 
       const input = getByTestId('combo-box-input')
@@ -572,12 +581,12 @@ describe('ComboBox component', () => {
       await userEvent.type(input, 'apple')
       expect(optionsList.children.length).toBeLessThan(fruitOptions.length)
 
-      fireEvent.blur(input)
+      await userEvent.click(getByTestId('outside'))
       expect(input).toHaveTextContent('')
       expect(optionsList.children.length).toEqual(fruitOptions.length)
     })
 
-    it('does not hide items when disableFiltering is selected', () => {
+    it('does not hide items when disableFiltering is selected', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -589,8 +598,8 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.click(input)
-      userEvent.type(input, 'zzzzzzzzzz')
+      await userEvent.click(input)
+      await userEvent.type(input, 'zzzzzzzzzz')
 
       expect(getByTestId('combo-box-option-list').children.length).toBe(
         fruitOptions.length
@@ -599,7 +608,7 @@ describe('ComboBox component', () => {
   })
 
   describe('clear button', () => {
-    it('is visible when input has content', () => {
+    it('is visible when input has content', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -609,12 +618,8 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'app')
-
-      // We are sure the first child exists
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const firstItem = getByTestId('combo-box-option-list').firstChild!
-      fireEvent.click(firstItem)
+      await userEvent.type(getByTestId('combo-box-input'), 'app')
+      await userEvent.click(getByTestId('combo-box-option-apple'))
 
       expect(getByTestId('combo-box-clear-button')).toBeVisible()
     })
@@ -671,7 +676,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-input')).toHaveValue('')
     })
 
-    it('works as expected when input is loaded with default value', () => {
+    it('works as expected when input is loaded with default value', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -684,12 +689,12 @@ describe('ComboBox component', () => {
       )
       expect(getByTestId('combo-box-clear-button')).toBeVisible()
 
-      fireEvent.click(getByTestId('combo-box-clear-button'))
+      await userEvent.click(getByTestId('combo-box-clear-button'))
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-input')).toHaveValue('')
 
-      expect(onChange).toHaveBeenCalledTimes(2)
+      await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
       expect(onChange).toHaveBeenNthCalledWith(2, undefined)
 
       const comboBoxOptionList = getByTestId('combo-box-option-list')
@@ -711,8 +716,6 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-input')).toHaveFocus()
 
       await userEvent.click(getByTestId('combo-box-clear-button'))
-      fireEvent.blur(getByTestId('combo-box-clear-button'))
-
       expect(getByTestId('combo-box-input')).toHaveFocus()
     })
 
@@ -731,9 +734,9 @@ describe('ComboBox component', () => {
         </>
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'b')
-      userEvent.click(getByTestId('outside'))
-      userEvent.click(getByTestId('combo-box-clear-button'))
+      await userEvent.type(getByTestId('combo-box-input'), 'b')
+      await userEvent.click(getByTestId('outside'))
+      await userEvent.click(getByTestId('combo-box-clear-button'))
 
       await waitFor(() => {
         expect(getByTestId('combo-box-input')).toHaveFocus()
@@ -743,16 +746,20 @@ describe('ComboBox component', () => {
 
   it('clears input value and closes list when an incomplete item is remaining on blur', () => {
     const { getByTestId } = render(
-      <ComboBox
-        id="favorite-fruit"
-        name="favorite-fruit"
-        options={fruitOptions}
-        onChange={jest.fn()}
-      />
+      <>
+        <div data-testid="outside" />
+
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={jest.fn()}
+        />
+      </>
     )
 
     userEvent.type(getByTestId('combo-box-input'), 'a')
-    fireEvent.blur(getByTestId('combo-box-input'))
+    userEvent.click(getByTestId('outside'))
 
     expect(getByTestId('combo-box-input')).toHaveValue('')
     expect(getByTestId('combo-box-input')).toHaveAttribute(
@@ -843,7 +850,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-clear-button')).toBeVisible()
     })
 
-    it('focuses the first filtered option with tab', () => {
+    it('focuses the first filtered option with tab', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -853,15 +860,15 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'a')
-      userEvent.tab()
+      await userEvent.type(getByTestId('combo-box-input'), 'a')
+      await userEvent.tab()
 
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveFocus()
       expect(firstItem).toHaveAttribute('tabindex', '0')
     })
 
-    it('focuses the first option with tab', () => {
+    it('focuses the first option with tab', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -871,15 +878,15 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-input')) // open menu
-      userEvent.tab()
+      await userEvent.click(getByTestId('combo-box-input')) // open menu
+      await userEvent.tab()
 
       const appleOption = getByTestId('combo-box-option-apple')
       expect(appleOption).toHaveFocus()
       expect(appleOption).toHaveAttribute('tabindex', '0')
     })
 
-    it('selects the focused option with tab', () => {
+    it('selects the focused option with tab', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -890,17 +897,17 @@ describe('ComboBox component', () => {
         />
       )
       // focus mango
-      userEvent.type(getByTestId('combo-box-input'), 'mang')
-      userEvent.tab()
+      await userEvent.type(getByTestId('combo-box-input'), 'mang')
+      await userEvent.tab()
 
       // select mango
-      userEvent.tab()
+      await userEvent.tab()
 
       expect(getByTestId('combo-box-input')).toHaveValue('Mango')
       expect(onChange).toHaveBeenLastCalledWith('mango')
     })
 
-    it('switches focus when there are no filtered options', () => {
+    it('switches focus when there are no filtered options', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -911,13 +918,13 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.type(comboBoxInput, 'zzz')
-      userEvent.tab()
+      await userEvent.type(comboBoxInput, 'zzz')
+      await userEvent.tab()
 
       expect(comboBoxInput).not.toHaveFocus()
     })
 
-    it('selects the focused option with enter', () => {
+    it('selects the focused option with enter', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -929,15 +936,15 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.type(comboBoxInput, 'apri')
-      userEvent.tab()
-      userEvent.type(getByTestId('combo-box-option-apricot'), '{enter}')
+      await userEvent.type(comboBoxInput, 'apri')
+      await userEvent.tab()
+      await userEvent.type(getByTestId('combo-box-option-apricot'), '{enter}')
 
       expect(comboBoxInput).toHaveValue('Apricot')
       expect(onChange).toHaveBeenLastCalledWith('apricot')
     })
 
-    it('focuses the next option when down arrow is pressed', () => {
+    it('focuses the next option when down arrow is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -947,11 +954,9 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'a')
-      userEvent.tab()
-      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
-        key: 'ArrowDown',
-      })
+      await userEvent.type(getByTestId('combo-box-input'), 'a')
+      await userEvent.tab()
+      await userEvent.keyboard('{ArrowDown}')
 
       const focusedOption = getByTestId('combo-box-option-apricot')
       expect(focusedOption).toHaveFocus()
@@ -961,7 +966,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('focuses the previous option when up arrow is pressed', () => {
+    it('focuses the previous option when up arrow is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -971,17 +976,11 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'a')
-      userEvent.tab()
-      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
-        key: 'ArrowDown',
-      })
-      fireEvent.keyDown(getByTestId('combo-box-option-apricot'), {
-        key: 'ArrowDown',
-      })
-      fireEvent.keyDown(getByTestId('combo-box-option-avocado'), {
-        key: 'ArrowUp',
-      })
+      await userEvent.type(getByTestId('combo-box-input'), 'a')
+      await userEvent.tab()
+      await userEvent.keyboard('{ArrowDown}')
+      await userEvent.keyboard('{ArrowDown}')
+      await userEvent.keyboard('{ArrowUp}')
 
       const focusedOption = getByTestId('combo-box-option-apricot')
       expect(focusedOption).toHaveFocus()
@@ -991,7 +990,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('opens the menu and focuses on the selected option when down arrow is pressed in the input', () => {
+    it('opens the menu and focuses on the selected option when down arrow is pressed in the input', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1003,10 +1002,8 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.click(comboBoxInput)
-      fireEvent.keyDown(comboBoxInput, {
-        key: 'ArrowDown',
-      })
+      await userEvent.click(comboBoxInput)
+      await userEvent.keyboard('{ArrowDown}')
 
       expect(getByTestId('combo-box-option-list')).toBeVisible()
       const focusedOption = getByTestId('combo-box-option-watermelon')
@@ -1017,7 +1014,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('opens the menu when down arrow is pressed in the input', () => {
+    it('opens the menu when down arrow is pressed in the input', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1028,10 +1025,8 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.click(comboBoxInput)
-      fireEvent.keyDown(comboBoxInput, {
-        key: 'ArrowDown',
-      })
+      await userEvent.click(comboBoxInput)
+      await userEvent.keyboard('{ArrowDown}')
 
       expect(getByTestId('combo-box-option-list')).toBeVisible()
       const focusedOption = getByTestId('combo-box-option-apple')
@@ -1042,7 +1037,7 @@ describe('ComboBox component', () => {
       )
     })
 
-    it('closes the menu when the first option is focused and arrow up is pressed', () => {
+    it('closes the menu when the first option is focused and arrow up is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1053,13 +1048,10 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.click(comboBoxInput)
-      fireEvent.keyDown(comboBoxInput, {
-        key: 'ArrowDown',
-      })
-      fireEvent.keyDown(getByTestId('combo-box-option-apple'), {
-        key: 'ArrowUp',
-      })
+      await userEvent.click(comboBoxInput)
+      await userEvent.keyboard('{ArrowDown}')
+
+      await userEvent.keyboard('{ArrowUp}')
 
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
       expect(comboBoxInput).toHaveFocus()
@@ -1104,7 +1096,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-clear-button')).toHaveFocus()
     })
 
-    it('pressing tab twice in an input with a default value, when options list is open, focuses the selected option', () => {
+    it('pressing tab twice in an input with a default value, when options list is open, focuses the selected option', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1114,17 +1106,17 @@ describe('ComboBox component', () => {
           onChange={jest.fn()}
         />
       )
-      userEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('combo-box-clear-button')).toHaveFocus()
 
-      userEvent.tab()
+      await userEvent.tab()
 
       expect(getByTestId('combo-box-option-banana')).toHaveFocus()
     })
 
-    it('focuses the next option when an option is selected and down arrow is pressed', () => {
+    it('focuses the next option when an option is selected and down arrow is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1135,15 +1127,18 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-input'))
-      fireEvent.keyDown(getByTestId('combo-box-option-mango'), {
-        key: 'ArrowDown',
-      })
+      await userEvent.click(getByTestId('combo-box-input'))
+      // This one moves focus from the input to the options
+      await userEvent.keyboard('{ArrowDown}')
+      // This one moves to the next option
+      await userEvent.keyboard('{ArrowDown}')
 
-      expect(getByTestId('combo-box-option-mangosteen')).toHaveFocus()
+      await waitFor(() =>
+        expect(getByTestId('combo-box-option-mangosteen')).toHaveFocus()
+      )
     })
 
-    it('closes the menu when an option is selected and the first option is focused and up arrow is pressed', () => {
+    it('closes the menu when an option is selected and the first option is focused and up arrow is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1156,10 +1151,8 @@ describe('ComboBox component', () => {
 
       // Apple is the item at top of list
       const appleOption = getByTestId('combo-box-option-apple')
-      userEvent.hover(appleOption)
-      fireEvent.keyDown(appleOption, {
-        key: 'ArrowUp',
-      })
+      await userEvent.hover(appleOption)
+      await userEvent.keyboard('{ArrowUp}')
 
       expect(getByTestId('combo-box-input')).toHaveFocus()
       expect(getByTestId('combo-box-input')).toHaveAttribute(
@@ -1169,31 +1162,34 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
     })
 
-    it('hides the clear button when typing in the input, but does not clear the selection', () => {
+    it('hides the clear button when typing in the input, but does not clear the selection', async () => {
       const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          defaultValue="avocado"
-          onChange={jest.fn()}
-        />
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            defaultValue="avocado"
+            onChange={jest.fn()}
+          />
+        </>
       )
 
       const input = getByTestId('combo-box-input')
       const clearButton = getByTestId('combo-box-clear-button')
-      userEvent.type(input, '{backspace}')
+      await userEvent.type(input, '{backspace}')
 
       expect(clearButton).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toEqual(1)
 
-      fireEvent.blur(input)
+      await userEvent.click(getByTestId('outside'))
 
       expect(input).toHaveValue('Avocado')
       expect(clearButton).toBeVisible()
     })
 
-    it('does not hijack focus while tabbing when another field has focus', () => {
+    it('does not hijack focus while tabbing when another field has focus', async () => {
       const { getByTestId } = render(
         <>
           <ComboBox
@@ -1214,18 +1210,18 @@ describe('ComboBox component', () => {
       const textInput = getByTestId('input-Text')
 
       // Fill ComboBox
-      userEvent.type(comboBoxInput, 'Apple{enter}')
+      await userEvent.type(comboBoxInput, 'Apple{enter}')
 
       // Tab to next field (Text Input)
-      userEvent.tab()
+      await userEvent.tab()
 
       // Fill text input
-      userEvent.type(textInput, 'Test 123')
+      await userEvent.type(textInput, 'Test 123')
 
       expect(textInput).toHaveValue('Test 123')
     })
 
-    it('clears out the input when options list is closed and no matching options is selected', () => {
+    it('clears out the input when options list is closed and no matching options is selected', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1236,11 +1232,11 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.type(comboBoxInput, 'a{enter}')
+      await userEvent.type(comboBoxInput, 'a{enter}')
       expect(comboBoxInput).toHaveValue('')
     })
 
-    it('selected option if the input matches 100% of the label characters (case insensitive)', () => {
+    it('selected option if the input matches 100% of the label characters (case insensitive)', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1251,8 +1247,8 @@ describe('ComboBox component', () => {
       )
 
       const comboBoxInput = getByTestId('combo-box-input')
-      userEvent.type(comboBoxInput, 'aPpLe{enter}')
-      expect(comboBoxInput).toHaveValue('Apple')
+      await userEvent.type(comboBoxInput, 'aPpLe{enter}')
+      await waitFor(() => expect(comboBoxInput).toHaveValue('Apple'))
     })
 
     // TODO
@@ -1300,7 +1296,7 @@ describe('ComboBox component', () => {
       expect(optionList.childElementCount).toEqual(fruitOptions.length)
     })
 
-    it('displays options list when input is clicked twice', () => {
+    it('displays options list when input is clicked twice', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1310,7 +1306,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.dblClick(getByTestId('combo-box-input'))
+      await userEvent.dblClick(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-input')).toHaveAttribute(
         'aria-expanded',
@@ -1319,42 +1315,48 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list')).toBeVisible()
     })
 
-    it('hides options list when clicking away and input has focus', () => {
+    it('hides options list when clicking away and input has focus', async () => {
       const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          onChange={jest.fn()}
-        />
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
       )
 
       const input = getByTestId('combo-box-input')
-      fireEvent.click(input)
-      fireEvent.blur(input)
+      await userEvent.click(input)
+      await userEvent.click(getByTestId('outside'))
 
       expect(input).toHaveAttribute('aria-expanded', 'false')
       expect(input).toHaveAttribute('aria-activedescendant', '')
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
     })
 
-    it('hides options list when clicking away and a specific option has focus', () => {
+    it('hides options list when clicking away and a specific option has focus', async () => {
       const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          onChange={jest.fn()}
-        />
+        <>
+          <div data-testid="outside" />
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
       )
 
       const input = getByTestId('combo-box-input')
       const blackberryOption = getByTestId('combo-box-option-blackberry')
 
-      fireEvent.click(input)
+      await userEvent.click(input)
 
-      userEvent.hover(blackberryOption)
-      fireEvent.blur(blackberryOption)
+      await userEvent.hover(blackberryOption)
+      await userEvent.click(getByTestId('outside'))
 
       expect(input).toHaveAttribute('aria-expanded', 'false')
       expect(input).toHaveAttribute('aria-activedescendant', '')
@@ -1385,7 +1387,7 @@ describe('ComboBox component', () => {
       expect(optionList).not.toBeVisible()
     })
 
-    it('selects an item by clicking on an option', () => {
+    it('selects an item by clicking on an option', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -1397,15 +1399,15 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      fireEvent.click(getByTestId('combo-box-toggle'))
-      fireEvent.click(getByTestId('combo-box-option-apple'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-option-apple'))
 
       expect(onChange).toHaveBeenLastCalledWith('apple')
       expect(input).toHaveDisplayValue('Apple')
       expect(input).toHaveValue('Apple')
     })
 
-    it('persists input text when items list is blurred', () => {
+    it('persists input text when items list is blurred', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <>
@@ -1420,16 +1422,17 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.click(getByTestId('combo-box-toggle'))
-      userEvent.click(getByTestId('combo-box-option-apple'))
-      fireEvent.blur(input)
+      await userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('combo-box-option-apple'))
+      // effectively, blur
+      await userEvent.click(getByTestId('outside'))
 
       expect(onChange).toHaveBeenLastCalledWith('apple')
       expect(input).toHaveDisplayValue('Apple')
       expect(input).toHaveValue('Apple')
     })
 
-    it('persists input text if dropdown is closed and open without selection', () => {
+    it('persists input text if dropdown is closed and open without selection', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1441,16 +1444,16 @@ describe('ComboBox component', () => {
 
       const input = getByTestId('combo-box-input')
       const toggle = getByTestId('combo-box-toggle')
-      userEvent.type(input, 'yu')
+      await userEvent.type(input, 'yu')
 
-      userEvent.click(toggle)
+      await userEvent.click(toggle)
       expect(input).toHaveValue('yu')
 
-      userEvent.click(toggle)
+      await userEvent.click(toggle)
       expect(input).toHaveValue('yu')
     })
 
-    it('updates input with item selected on click', () => {
+    it('updates input with item selected on click', async () => {
       const onChange = jest.fn()
       const { getByTestId } = render(
         <ComboBox
@@ -1462,14 +1465,14 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'yu')
-      fireEvent.click(getByTestId('combo-box-option-yuzu'))
+      await userEvent.type(input, 'yu')
+      await userEvent.click(getByTestId('combo-box-option-yuzu'))
 
       expect(input).toHaveValue('Yuzu')
       expect(onChange).toHaveBeenLastCalledWith('yuzu')
     })
 
-    it('focuses an option on hover', () => {
+    it('focuses an option on hover', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1483,8 +1486,8 @@ describe('ComboBox component', () => {
       const blackberryOption = getByTestId('combo-box-option-blackberry')
       const inputEl = getByTestId('combo-box-input')
 
-      userEvent.click(getByTestId('combo-box-toggle'))
-      userEvent.hover(blackberryOption)
+      await userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.hover(blackberryOption)
 
       expect(blackberryOption).toHaveClass(
         'usa-combo-box__list-option--focused'
@@ -1495,7 +1498,7 @@ describe('ComboBox component', () => {
         blackberryOption.id
       )
 
-      userEvent.hover(yuzuOption)
+      await userEvent.hover(yuzuOption)
       expect(blackberryOption).not.toHaveClass(
         'usa-combo-box__list-option--focused'
       )
@@ -1583,7 +1586,7 @@ describe('ComboBox component', () => {
       })
     })
 
-    it('updates the status text when the list is opened with options', () => {
+    it('updates the status text when the list is opened with options', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1596,14 +1599,14 @@ describe('ComboBox component', () => {
       const status = screen.getByRole('status')
 
       // open options list
-      fireEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(status).toHaveTextContent(
         `${fruitOptions.length} results available.`
       )
     })
 
-    it('updates the status text when the list is opened with filtered options', () => {
+    it('updates the status text when the list is opened with filtered options', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1616,7 +1619,7 @@ describe('ComboBox component', () => {
       const status = screen.getByRole('status')
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'a')
+      await userEvent.type(input, 'a')
 
       expect(status).toHaveTextContent(`43 results available.`)
     })
@@ -1639,33 +1642,37 @@ describe('ComboBox component', () => {
       expect(status).toHaveTextContent(`No results.`)
     })
 
-    it('updates the status text when the list is closed', () => {
+    it('updates the status text when the list is closed', async () => {
       const { getByTestId } = render(
-        <ComboBox
-          id="favorite-fruit"
-          name="favorite-fruit"
-          options={fruitOptions}
-          onChange={jest.fn()}
-        />
+        <>
+          <div data-testid="outside" />
+
+          <ComboBox
+            id="favorite-fruit"
+            name="favorite-fruit"
+            options={fruitOptions}
+            onChange={jest.fn()}
+          />
+        </>
       )
 
       const status = screen.getByRole('status')
 
       // open options list
-      fireEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(status).toHaveTextContent(
         `${fruitOptions.length} results available.`
       )
 
-      fireEvent.blur(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('outside'))
 
       expect(getByTestId('combo-box-option-list')).not.toBeVisible()
       expect(status).toBeEmptyDOMElement()
     })
 
-    it('updates the status text when an option is selected', () => {
-      const { getByTestId } = render(
+    it('updates the status text when an option is selected', async () => {
+      const { getByTestId, getByRole, getAllByRole } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
@@ -1674,13 +1681,25 @@ describe('ComboBox component', () => {
         />
       )
 
-      const status = screen.getByRole('status')
+      const status = getByRole('status')
 
-      userEvent.type(getByTestId('combo-box-input'), 'Banana')
+      await waitFor(() =>
+        expect(getByTestId('combo-box-select').children.length).toBeGreaterThan(
+          0
+        )
+      )
 
-      expect(status).toHaveTextContent(`1 result available.`)
+      await userEvent.type(getByTestId('combo-box-input'), 'Banana')
 
-      userEvent.type(getByTestId('combo-box-input'), '{enter}')
+      await waitFor(() =>
+        expect(getByTestId('combo-box-input')).toHaveValue('Banana')
+      )
+
+      await waitFor(() =>
+        expect(status).toHaveTextContent(`1 result available.`)
+      )
+
+      await userEvent.type(getByTestId('combo-box-input'), '{enter}')
 
       expect(status).toBeEmptyDOMElement()
     })
@@ -1700,7 +1719,7 @@ describe('ComboBox component', () => {
       expect(node).toHaveTextContent('Customized assistive hint')
     })
 
-    it('allows no results message to be customized', () => {
+    it('allows no results message to be customized', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1710,14 +1729,14 @@ describe('ComboBox component', () => {
           noResults="NOTHING"
         />
       )
-      userEvent.type(getByTestId('combo-box-input'), 'zzz')
+      await userEvent.type(getByTestId('combo-box-input'), 'zzz')
       const firstItem = getByTestId('combo-box-option-list').children[0]
       expect(firstItem).toHaveTextContent('NOTHING')
     })
   })
 
   describe('exposed ref', () => {
-    it('can be used to focus on the text input', () => {
+    it('can be used to focus on the text input', async () => {
       const comboRef = React.createRef<ComboBoxRef>()
       const onChange = jest.fn()
       const handleFocus = (): void => comboRef.current?.focus()
@@ -1740,8 +1759,8 @@ describe('ComboBox component', () => {
       const input = getByTestId('combo-box-input')
       expect(input).not.toHaveFocus()
 
-      fireEvent.click(getByTestId('focus-button'))
-      expect(input).toHaveFocus()
+      await userEvent.click(getByTestId('focus-button'))
+      await waitFor(expect(input).toHaveFocus)
     })
 
     it('can be used to clear the selected value', async () => {
@@ -1772,6 +1791,7 @@ describe('ComboBox component', () => {
       await userEvent.click(getByTestId('combo-box-option-apple'))
       await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
 
+      //This check is flaky and sometimes returns 'banana'.
       expect(onChange).toHaveBeenLastCalledWith('apple')
       expect(input).toHaveDisplayValue('Apple')
       expect(input).toHaveValue('Apple')
