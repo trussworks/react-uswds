@@ -14,6 +14,7 @@ export default {
         })
         document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
       },
+      waitFor: (): Element => document.querySelector('.usa-tooltip__body'),
     },
     docs: {
       description: {
@@ -84,16 +85,15 @@ export const CustomComponent = (): React.ReactElement => {
   }> &
     JSX.IntrinsicElements['a'] &
     React.RefAttributes<HTMLAnchorElement>
-  const CustomLink: React.ForwardRefExoticComponent<CustomLinkProps> =
-    React.forwardRef(
-      ({ to, className, children, ...tooltipProps }: CustomLinkProps, ref) => (
-        <a ref={ref} href={to} className={className} {...tooltipProps}>
-          {children}
-        </a>
-      )
-    )
-
-  CustomLink.displayName = 'custom link'
+  const CustomLinkForwardRef: React.ForwardRefRenderFunction<
+    HTMLAnchorElement,
+    CustomLinkProps
+  > = ({ to, className, children, ...tooltipProps }: CustomLinkProps, ref) => (
+    <a ref={ref} href={to} className={className} {...tooltipProps}>
+      {children}
+    </a>
+  )
+  const CustomLink = React.forwardRef(CustomLinkForwardRef)
 
   return (
     <div className="margin-4">
