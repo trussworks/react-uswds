@@ -1251,8 +1251,7 @@ describe('ComboBox component', () => {
       await waitFor(() => expect(comboBoxInput).toHaveValue('Apple'))
     })
 
-    // TODO
-    it.skip('focuses the input when an option is focused and shift-tab is pressed', () => {
+    it('focuses the input when an option is focused and shift-tab is pressed', () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
