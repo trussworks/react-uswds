@@ -43,23 +43,23 @@ describe('Day', () => {
     expect(button).toHaveAttribute('aria-selected', 'false')
   })
 
-  it('can be clicked to select the date', () => {
+  it('can be clicked to select the date', async () => {
     const mockSelectDate = jest.fn()
     const { getByTestId } = render(
       <Day {...testProps} onClick={mockSelectDate} />
     )
     const button = getByTestId('select-date')
-    userEvent.click(button)
+    await userEvent.click(button)
     expect(mockSelectDate).toHaveBeenCalledWith('2021-01-20')
   })
 
-  it('implements the onKeyDown handler', () => {
+  it('implements the onKeyDown handler', async () => {
     const mockKeyDown = jest.fn()
     const { getByTestId } = render(
       <Day {...testProps} onKeyDown={mockKeyDown} />
     )
     const button = getByTestId('select-date')
-    userEvent.click(button)
+    await userEvent.click(button)
     fireEvent.keyDown(button)
     expect(mockKeyDown).toHaveBeenCalled()
   })
@@ -89,13 +89,13 @@ describe('Day', () => {
       expect(button).toHaveAttribute('disabled')
     })
 
-    it('cannot be clicked to select the date', () => {
+    it('cannot be clicked to select the date', async () => {
       const mockSelectDate = jest.fn()
       const { getByTestId } = render(
         <Day {...testProps} onClick={mockSelectDate} isDisabled />
       )
       const button = getByTestId('select-date')
-      userEvent.click(button)
+      await userEvent.click(button)
       expect(mockSelectDate).not.toHaveBeenCalled()
     })
   })
