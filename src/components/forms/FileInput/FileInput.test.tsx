@@ -130,34 +130,34 @@ describe('FileInput component', () => {
   })
 
   describe('uploading files', () => {
-    it('renders a preview and header text when a single file is chosen', () => {
+    it('renders a preview and header text when a single file is chosen', async () => {
       const { getByTestId } = render(<FileInput {...testProps} />)
       const inputEl = getByTestId('file-input-input')
-      userEvent.upload(inputEl, TEST_PNG_FILE)
+      await userEvent.upload(inputEl, TEST_PNG_FILE)
       expect(getByTestId('file-input-preview')).toBeInTheDocument()
       expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
       const previewHeading = getByTestId('file-input-preview-heading')
       expect(previewHeading).toHaveTextContent('Selected file Change file')
     })
 
-    it('renders a preview for each file and header text when multiple files are chosen', () => {
+    it('renders a preview for each file and header text when multiple files are chosen', async () => {
       const { getByTestId, getAllByTestId } = render(
         <FileInput {...testProps} multiple={true} />
       )
       const inputEl = getByTestId('file-input-input')
-      userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
+      await userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
       expect(getAllByTestId('file-input-preview')).toHaveLength(2)
       expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
       const previewHeading = getByTestId('file-input-preview-heading')
       expect(previewHeading).toHaveTextContent('2 files selected Change files')
     })
 
-    it('only shows previews for the most recently selected files if files are selected multiple times', () => {
+    it('only shows previews for the most recently selected files if files are selected multiple times', async () => {
       const { getByTestId, getAllByTestId, queryByTestId } = render(
         <FileInput {...testProps} multiple={true} />
       )
       const inputEl = getByTestId('file-input-input')
-      userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
+      await userEvent.upload(inputEl, [TEST_PNG_FILE, TEST_TEXT_FILE])
       let previews = getAllByTestId('file-input-preview')
       expect(previews).toHaveLength(2)
       expect(previews[0]).toHaveTextContent(TEST_PNG_FILE.name)
@@ -166,14 +166,14 @@ describe('FileInput component', () => {
       expect(previewHeading).toHaveTextContent('2 files selected Change files')
 
       // Change to 1 file
-      userEvent.upload(inputEl, [TEST_XLS_FILE])
+      await userEvent.upload(inputEl, [TEST_XLS_FILE])
       previews = getAllByTestId('file-input-preview')
       expect(previews).toHaveLength(1)
       expect(previews[0]).toHaveTextContent(TEST_XLS_FILE.name)
       expect(previewHeading).toHaveTextContent('Selected file Change file')
 
       // Change to no files
-      userEvent.upload(inputEl, [])
+      await userEvent.upload(inputEl, [])
       expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
       expect(previewHeading).not.toBeInTheDocument()
       expect(getByTestId('file-input-instructions')).not.toHaveClass(
@@ -195,7 +195,7 @@ describe('FileInput component', () => {
 
   describe('when it only accepts certain file types', () => {
     // TODO - try to make this testing better when adding custom drop/change handlers
-    it('accepts an uploaded file of an accepted type', () => {
+    it('accepts an uploaded file of an accepted type', async () => {
       const { getByTestId, queryByTestId } = render(
         <FileInput {...testProps} accept=".pdf,.txt" />
       )
@@ -210,7 +210,7 @@ describe('FileInput component', () => {
         },
       })
       // For some reason the simulated drop event does not trigger an onChange event
-      userEvent.upload(inputEl, TEST_PDF_FILE)
+      await userEvent.upload(inputEl, TEST_PDF_FILE)
 
       expect(queryByTestId('file-input-error')).not.toBeInTheDocument()
       expect(getByTestId('file-input-droptarget')).not.toHaveClass(
@@ -250,7 +250,7 @@ describe('FileInput component', () => {
 
   describe('when it only accepts image files', () => {
     // TODO - try to make this testing better when adding custom drop/change handlers
-    it('accepts an image file', () => {
+    it('accepts an image file', async () => {
       const { getByTestId, queryByTestId } = render(
         <FileInput {...testProps} accept="image/*" />
       )
@@ -265,7 +265,7 @@ describe('FileInput component', () => {
         },
       })
       // For some reason the simulated drop event does not trigger an onChange event
-      userEvent.upload(inputEl, TEST_PNG_FILE)
+      await userEvent.upload(inputEl, TEST_PNG_FILE)
 
       expect(queryByTestId('file-input-error')).not.toBeInTheDocument()
       expect(getByTestId('file-input-droptarget')).not.toHaveClass(
@@ -303,14 +303,14 @@ describe('FileInput component', () => {
     })
   })
 
-  it('implements an onChange handler when passed as a prop', () => {
+  it('implements an onChange handler when passed as a prop', async () => {
     const mockOnChange = jest.fn()
     const { getByTestId } = render(
       <FileInput {...testProps} onChange={mockOnChange} />
     )
 
     const inputEl = getByTestId('file-input-input') as HTMLInputElement
-    userEvent.upload(inputEl, TEST_PNG_FILE)
+    await userEvent.upload(inputEl, TEST_PNG_FILE)
 
     expect(mockOnChange).toHaveBeenCalled()
   })
@@ -339,13 +339,13 @@ describe('FileInput component', () => {
 
       // Upload a file
       const inputEl = screen.getByTestId('file-input-input')
-      userEvent.upload(inputEl, [TEST_PNG_FILE])
+      await userEvent.upload(inputEl, [TEST_PNG_FILE])
 
       expect(fileInputRef.current?.input?.files).toHaveLength(1)
       expect(fileInputRef.current?.files).toHaveLength(1)
     })
 
-    it('can be used to clear the files', () => {
+    it('can be used to clear the files', async () => {
       const fileInputRef = React.createRef<FileInputRef>()
       const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
 
@@ -358,7 +358,7 @@ describe('FileInput component', () => {
 
       // Upload files
       const inputEl = screen.getByTestId('file-input-input')
-      userEvent.upload(inputEl, [TEST_XLS_FILE])
+      await userEvent.upload(inputEl, [TEST_XLS_FILE])
 
       const previews = screen.getAllByTestId('file-input-preview')
       const previewHeading = screen.getByTestId('file-input-preview-heading')
@@ -370,7 +370,7 @@ describe('FileInput component', () => {
       expect(fileInputRef.current?.files).toHaveLength(1)
 
       // Clear the input
-      fireEvent.click(screen.getByText('Clear files'))
+      await userEvent.click(screen.getByText('Clear files'))
       expect(screen.queryByTestId('file-input-preview')).not.toBeInTheDocument()
       expect(previewHeading).not.toBeInTheDocument()
       expect(screen.getByTestId('file-input-instructions')).not.toHaveClass(
