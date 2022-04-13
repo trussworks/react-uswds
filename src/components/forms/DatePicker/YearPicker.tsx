@@ -12,19 +12,21 @@ import {
   isIosDevice,
 } from './utils'
 
+interface YearPickerProps {
+  date: Date
+  minDate: Date
+  maxDate?: Date
+  handleSelectYear: (year: number) => void
+  setStatuses: (statuses: string[]) => void
+}
+
 export const YearPicker = ({
   date,
   minDate,
   maxDate,
   handleSelectYear,
   setStatuses,
-}: {
-  date: Date
-  minDate: Date
-  maxDate?: Date
-  handleSelectYear: (year: number) => void
-  setStatuses: (statuses: string[]) => void
-}): React.ReactElement => {
+}: YearPickerProps): React.ReactElement => {
   const prevYearChunkEl = useRef<HTMLButtonElement>(null)
   const nextYearChunkEl = useRef<HTMLButtonElement>(null)
   const focusedYearEl = useRef<HTMLButtonElement>(null)
@@ -194,7 +196,8 @@ export const YearPicker = ({
         disabled={isDisabled}
         onClick={onClick}
         onKeyDown={handleKeyDownFromYear}
-        onMouseMove={handleMouseMoveFromYear}>
+        onMouseMove={handleMouseMoveFromYear}
+      >
         {yearIterator}
       </button>
     )
@@ -231,7 +234,8 @@ export const YearPicker = ({
       className="usa-date-picker__calendar__year-picker"
       data-testid="calendar-year-picker"
       ref={yearPickerEl}
-      onKeyDown={handleYearPickerTab}>
+      onKeyDown={handleYearPickerTab}
+    >
       <table className="usa-date-picker__calendar__table" role="presentation">
         <tbody>
           <tr>
@@ -243,14 +247,16 @@ export const YearPicker = ({
                 aria-label={`Navigate back ${YEAR_CHUNK} years`}
                 disabled={prevYearChunkDisabled}
                 onClick={handlePreviousYearChunkClick}
-                ref={prevYearChunkEl}>
+                ref={prevYearChunkEl}
+              >
                 &nbsp;
               </button>
             </td>
             <td colSpan={3}>
               <table
                 className="usa-date-picker__calendar__table"
-                role="presentation">
+                role="presentation"
+              >
                 <tbody>{listToTable(years, 3)}</tbody>
               </table>
             </td>
@@ -262,7 +268,8 @@ export const YearPicker = ({
                 aria-label={`Navigate forward ${YEAR_CHUNK} years`}
                 disabled={nextYearChunkDisabled}
                 onClick={handleNextYearChunkClick}
-                ref={nextYearChunkEl}>
+                ref={nextYearChunkEl}
+              >
                 &nbsp;
               </button>
             </td>
@@ -272,5 +279,3 @@ export const YearPicker = ({
     </div>
   )
 }
-
-YearPicker.displayName = 'YearPicker'
