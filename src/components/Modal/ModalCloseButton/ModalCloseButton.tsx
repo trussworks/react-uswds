@@ -24,5 +24,3 @@ export const ModalCloseButton = ({
     </Button>
   )
 }
-
-ModalCloseButton.displayName = 'ModalCloseButton'

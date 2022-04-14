@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import { ModalRef } from './Modal'
 import { ModalOpenLink } from './ModalOpenLink'
@@ -29,7 +29,7 @@ describe('ModalOpenLink', () => {
     expect(button).toHaveAttribute('data-open-modal')
   })
 
-  it('throws an error if clicked when the modal ref is null', () => {
+  it('throws an error if clicked when the modal ref is null', async () => {
     const consoleSpy = jest.spyOn(console, 'error')
 
     const modalRef: React.RefObject<ModalRef> = {
@@ -43,11 +43,13 @@ describe('ModalOpenLink', () => {
     )
 
     const button = screen.getByRole('button', { name: 'Open modal' })
-    userEvent.click(button)
-    expect(consoleSpy).toHaveBeenCalledWith('ModalRef is required')
+    await userEvent.click(button)
+    await waitFor(() =>
+      expect(consoleSpy).toHaveBeenCalledWith('ModalRef is required')
+    )
   })
 
-  it('opens the modal when clicked', () => {
+  it('opens the modal when clicked', async () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
@@ -65,11 +67,11 @@ describe('ModalOpenLink', () => {
     )
 
     const button = screen.getByRole('button', { name: 'Open modal' })
-    userEvent.click(button)
+    await userEvent.click(button)
     expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
   })
 
-  it('renders with a custom component', () => {
+  it('renders with a custom component', async () => {
     type CustomLinkProps = React.PropsWithChildren<{
       to: string
       className?: string
@@ -101,7 +103,8 @@ describe('ModalOpenLink', () => {
       <ModalOpenLink<CustomLinkProps>
         to="#testModal"
         asCustom={CustomLink}
-        modalRef={modalRef}>
+        modalRef={modalRef}
+      >
         Open modal
       </ModalOpenLink>
     )
@@ -111,7 +114,7 @@ describe('ModalOpenLink', () => {
     expect(button).toHaveAttribute('aria-controls', mockRef.modalId)
     expect(button).toHaveAttribute('data-open-modal')
     expect(button).toHaveAttribute('href', '#testModal')
-    userEvent.click(button)
+    await userEvent.click(button)
     expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
   })
 })

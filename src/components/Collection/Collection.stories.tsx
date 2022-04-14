@@ -37,7 +37,7 @@ export const collectionWithDefaultItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
           </Link>
@@ -61,7 +61,7 @@ export const collectionWithDefaultItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
           </Link>
@@ -81,7 +81,7 @@ export const collectionWithDefaultItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
@@ -116,8 +116,9 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={gearsImage} alt="Alt text" />
-        }>
-        <CollectionHeading>
+        }
+      >
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
           </Link>
@@ -143,8 +144,9 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={wosb1Image} alt="Alt text" />
-        }>
-        <CollectionHeading>
+        }
+      >
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
           </Link>
@@ -166,8 +168,9 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={septImage} alt="Alt text" />
-        }>
-        <CollectionHeading>
+        }
+      >
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
@@ -200,7 +203,7 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://digital.gov/guides/mobile-principles/?dg">
             The eight principles of mobile-friendliness
           </Link>
@@ -210,7 +213,7 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://designsystem.digital.gov/maturity-model/">
             The USWDS maturity model
           </Link>
@@ -220,14 +223,14 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://truss.works">
             A news item that’s on our own site
           </Link>
         </CollectionHeading>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
             The key role of product owners in federated data projects
           </Link>
@@ -237,7 +240,7 @@ export const collectionWithHeadingItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
             Progress on Cross-Agency Priority (CAP) goals and Agency Priority
             Goals (APGs)
@@ -255,7 +258,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
           </Link>
@@ -279,7 +282,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://digital.gov/guides/mobile-principles/?dg">
             The eight principles of mobile-friendliness
           </Link>
@@ -291,8 +294,9 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={wosb1Image} alt="Alt text" />
-        }>
-        <CollectionHeading>
+        }
+      >
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
           </Link>
@@ -312,7 +316,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://designsystem.digital.gov/maturity-model/">
             The USWDS maturity model
           </Link>
@@ -324,8 +328,9 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionCalendarDate datetime="2020-09-17T12:00:00+01:00" />
-        }>
-        <CollectionHeading>
+        }
+      >
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals
@@ -351,14 +356,14 @@ export const collectionWithMixedItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://truss.works">
             A news item that’s on our own site
           </Link>
         </CollectionHeading>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://18f.gsa.gov/2020/11/24/the-key-role-of-product-owners-in-federated-data-projects/">
             The key role of product owners in federated data projects
           </Link>
@@ -368,7 +373,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/September-2020-Updates-Show-Progress/">
             Progress on Cross-Agency Priority (CAP) goals and Agency Priority
             Goals (APGs)
@@ -386,7 +391,7 @@ export const condensedCollection = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection condensed>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
           </Link>
@@ -410,7 +415,7 @@ export const condensedCollection = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
           </Link>
@@ -430,7 +435,7 @@ export const condensedCollection = (): React.ReactElement => (
         </CollectionMeta>
       </CollectionItem>
       <CollectionItem>
-        <CollectionHeading>
+        <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
             priority goals

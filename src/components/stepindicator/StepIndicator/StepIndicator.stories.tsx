@@ -16,7 +16,7 @@ export default {
 }
 
 export const defaultStepIndicator = (): React.ReactElement => (
-  <StepIndicator>
+  <StepIndicator headingLevel="h4">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -26,7 +26,7 @@ export const defaultStepIndicator = (): React.ReactElement => (
 )
 
 export const noLabels = (): React.ReactElement => (
-  <StepIndicator showLabels={false}>
+  <StepIndicator showLabels={false} headingLevel="h4">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -36,7 +36,7 @@ export const noLabels = (): React.ReactElement => (
 )
 
 export const centered = (): React.ReactElement => (
-  <StepIndicator centered>
+  <StepIndicator centered headingLevel="h4">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -46,7 +46,7 @@ export const centered = (): React.ReactElement => (
 )
 
 export const counters = (): React.ReactElement => (
-  <StepIndicator counters="default">
+  <StepIndicator counters="default" headingLevel="h4">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -56,7 +56,17 @@ export const counters = (): React.ReactElement => (
 )
 
 export const smallCounters = (): React.ReactElement => (
-  <StepIndicator counters="small">
+  <StepIndicator counters="small" headingLevel="h4">
+    <StepIndicatorStep label="Personal information" status="complete" />
+    <StepIndicatorStep label="Household status" status="complete" />
+    <StepIndicatorStep label="Supporting documents" status="current" />
+    <StepIndicatorStep label="Signature" />
+    <StepIndicatorStep label="Review and submit" />
+  </StepIndicator>
+)
+
+export const differentHeadingLevel = (): React.ReactElement => (
+  <StepIndicator headingLevel="h2">
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />

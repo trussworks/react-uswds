@@ -2,6 +2,72 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/trussworks/react-uswds/compare/2.8.0...2.9.0) (2022-04-14)
+
+
+### Features
+
+* Add ability to pass through StepIndicator heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
+* Adds headingLevel prop for Alert component ([#1928](https://github.com/trussworks/react-uswds/issues/1928)) ([ce6de61](https://github.com/trussworks/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
+* Deprecate default heading levels ([#1947](https://github.com/trussworks/react-uswds/issues/1947)) ([512a901](https://github.com/trussworks/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
+
+
+### Bug Fixes
+
+* **docs:** Fix typo in Storybook documentation template [#1914](https://github.com/trussworks/react-uswds/issues/1914) ([#1949](https://github.com/trussworks/react-uswds/issues/1949)) ([#1967](https://github.com/trussworks/react-uswds/issues/1967)) ([7438640](https://github.com/trussworks/react-uswds/commit/743864068823f8317a8bca2cab0c62cf8f6f4209))
+* **docs:** Fix typo in storybook file name ([#1934](https://github.com/trussworks/react-uswds/issues/1934)) ([7514689](https://github.com/trussworks/react-uswds/commit/7514689da58cbd9df0ce65cb3306cdd9eba2e30b))
+
+## [2.8.0](https://github.com/trussworks/react-uswds/compare/2.7.2...2.8.0) (2022-02-18)
+
+
+### Features
+
+* Accept Accordion headingLevel in items prop  ([#1905](https://github.com/trussworks/react-uswds/issues/1905)) ([5090110](https://github.com/trussworks/react-uswds/commit/509011019e05d6db33dc7269bcb56d57553ebdd0))
+
+
+### Documentation & Examples
+
+* Add maintainer docs as per TDR 95 ([#1903](https://github.com/trussworks/react-uswds/issues/1903)) ([ad9bb44](https://github.com/trussworks/react-uswds/commit/ad9bb440b3099760af92420bec0b3ba6a80f8013))
+* Update All Contributors ([#1906](https://github.com/trussworks/react-uswds/issues/1906)) ([b8b5667](https://github.com/trussworks/react-uswds/commit/b8b5667153fa5d163af6ed2530e8378b3b8222ac))
+
+### [2.7.2](https://github.com/trussworks/react-uswds/compare/2.7.1...2.7.2) (2022-02-14)
+
+
+### Bug Fixes
+
+* Fix modal causing body padding to increase when unmounted ([#1899](https://github.com/trussworks/react-uswds/issues/1899)) ([fb46e88](https://github.com/trussworks/react-uswds/commit/fb46e8867f61781edf3393a359236bbcc45c626f))
+
+### [2.7.1](https://github.com/trussworks/react-uswds/compare/2.7.0...2.7.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* Render modal outside app root by default. ([#1890](https://github.com/trussworks/react-uswds/issues/1890)) ([0828351](https://github.com/trussworks/react-uswds/commit/082835186f8ba7d10941f2425e6db1570c57c9dd))
+
+## [2.7.0](https://github.com/trussworks/react-uswds/compare/2.6.0...2.7.0) (2022-01-12)
+
+
+### Features
+
+* Add focus method to ComboBox ref ([#1876](https://github.com/trussworks/react-uswds/issues/1876)) ([c380a94](https://github.com/trussworks/react-uswds/commit/c380a94c3c7dd2ae363fd0f58e80d93aa35cc43b))
+
+
+### Bug Fixes
+
+* Fix Tooltip positioning ([#1878](https://github.com/trussworks/react-uswds/issues/1878)) ([f15fea0](https://github.com/trussworks/react-uswds/commit/f15fea0b2ce037b48b8860e69a074de30aabfa91))
+
+
+### Documentation & Examples
+
+* Add help section to releasing README ([#1867](https://github.com/trussworks/react-uswds/issues/1867)) ([73e9094](https://github.com/trussworks/react-uswds/commit/73e9094a82033bdee643316ff4db91a8460d999b))
+
+## [2.6.0](https://github.com/trussworks/react-uswds/compare/2.5.0...2.6.0) (2022-01-07)
+
+
+### Features
+
+* accept prop for heading level ([#1751](https://github.com/trussworks/react-uswds/issues/1751)) ([#1865](https://github.com/trussworks/react-uswds/issues/1865)) ([464756f](https://github.com/trussworks/react-uswds/commit/464756fb1e189509bde02848cc09f992357d7e1c))
+
 ## [2.5.0](https://github.com/trussworks/react-uswds/compare/2.4.1...2.5.0) (2022-01-03)
 
 

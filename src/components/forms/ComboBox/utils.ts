@@ -1,4 +1,4 @@
-/* eslint-disable security/detect-non-literal-regexp */
+/* eslint-disable security/detect-non-literal-regexp, security/detect-object-injection */
 /**
  * Generate a dynamic regular expression based off of a replaceable and possibly filtered value.
  *
