@@ -27,25 +27,25 @@ const testText = (
 )
 
 export const success = (): React.ReactElement => (
-  <Alert type="success" heading="Success status">
+  <Alert type="success" heading="Success status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const warning = (): React.ReactElement => (
-  <Alert type="warning" heading="Warning status">
+  <Alert type="warning" heading="Warning status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const error = (): React.ReactElement => (
-  <Alert type="error" heading="Error status">
+  <Alert type="error" heading="Error status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const info = (): React.ReactElement => (
-  <Alert type="info" heading="Informative status">
+  <Alert type="info" heading="Informative status" headingLevel="h4">
     {testText}
   </Alert>
 )
