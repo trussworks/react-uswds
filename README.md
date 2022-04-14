@@ -86,7 +86,7 @@ In the process, we expect to gain learnings around how to best abstract out UI c
 
 ## Active Maintainers
 
-- [Kyle Hill](https://github.com/kylehilltruss)
+- [Roger Steve Ruiz](https://github.com/rogeruiz)
 
 We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
