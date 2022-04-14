@@ -42,10 +42,7 @@
         "warnOnUnsupportedTypeScriptVersion": true
       },
       "plugins": ["@typescript-eslint"],
-      "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint"
-      ]
+      "extends": ["plugin:@typescript-eslint/recommended", "prettier"]
     }
   ],
   "extends": [
