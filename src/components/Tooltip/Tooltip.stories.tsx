@@ -14,7 +14,8 @@ export default {
         })
         document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
       },
-      waitFor: (): Element => document.querySelector('.usa-tooltip__body'),
+      waitFor: () =>
+        document.querySelector('.usa-tooltip__body.is-visible.is-set'),
     },
     docs: {
       description: {
