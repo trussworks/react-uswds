@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* Add ability to pass through heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
+* Add ability to pass through StepIndicator heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
 * Adds headingLevel prop for Alert component ([#1928](https://github.com/trussworks/react-uswds/issues/1928)) ([ce6de61](https://github.com/trussworks/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
 * Deprecate default heading levels ([#1947](https://github.com/trussworks/react-uswds/issues/1947)) ([512a901](https://github.com/trussworks/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
 
