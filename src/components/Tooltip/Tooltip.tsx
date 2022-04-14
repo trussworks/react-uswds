@@ -238,7 +238,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           className={tooltipBodyClasses}
           role="tooltip"
           aria-hidden={!isVisible}
-          style={positionStyles}>
+          style={positionStyles}
+        >
           {label}
         </span>
       </span>
@@ -268,7 +269,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           onFocus={showTooltip}
           onMouseLeave={hideTooltip}
           onBlur={hideTooltip}
-          onKeyDown={hideTooltip}>
+          onKeyDown={hideTooltip}
+        >
           {children}
         </button>
         <span
@@ -279,7 +281,8 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           className={tooltipBodyClasses}
           role="tooltip"
           aria-hidden={!isVisible}
-          style={positionStyles}>
+          style={positionStyles}
+        >
           {label}
         </span>
       </span> // the span that wraps the element with have the tooltip class
@@ -290,5 +293,3 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 Tooltip.defaultProps = {
   position: 'top',
 }
-
-Tooltip.displayName = 'Tooltip'

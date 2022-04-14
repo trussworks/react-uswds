@@ -12,44 +12,45 @@ interface ModalWindowProps {
   forceAction?: boolean
 }
 
-export const ModalWindow = forwardRef(
-  (
+export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  ModalWindowProps & JSX.IntrinsicElements['div']
+> = (
+  {
+    modalId,
+    className,
+    children,
+    handleClose,
+    isLarge = false,
+    forceAction = false,
+    ...divProps
+  },
+  ref
+): React.ReactElement => {
+  const classes = classnames(
+    'usa-modal',
     {
-      modalId,
-      className,
-      children,
-      handleClose,
-      isLarge = false,
-      forceAction = false,
-      ...divProps
-    }: ModalWindowProps & JSX.IntrinsicElements['div'],
-    ref: React.ForwardedRef<HTMLDivElement>
-  ): React.ReactElement => {
-    const classes = classnames(
-      'usa-modal',
-      {
-        'usa-modal--lg': isLarge,
-      },
-      className
-    )
+      'usa-modal--lg': isLarge,
+    },
+    className
+  )
 
-    return (
-      <div
-        {...divProps}
-        data-testid="modalWindow"
-        className={classes}
-        ref={ref}
-        data-force-action={forceAction}>
-        <div className="usa-modal__content">
-          <div className="usa-modal__main">{children}</div>
-          {!forceAction && (
-            <ModalCloseButton
-              aria-controls={modalId}
-              handleClose={handleClose}
-            />
-          )}
-        </div>
+  return (
+    <div
+      {...divProps}
+      data-testid="modalWindow"
+      className={classes}
+      ref={ref}
+      data-force-action={forceAction}
+    >
+      <div className="usa-modal__content">
+        <div className="usa-modal__main">{children}</div>
+        {!forceAction && (
+          <ModalCloseButton aria-controls={modalId} handleClose={handleClose} />
+        )}
       </div>
-    )
-  }
-)
+    </div>
+  )
+}
+
+export const ModalWindow = forwardRef(ModalWindowForwardRef)

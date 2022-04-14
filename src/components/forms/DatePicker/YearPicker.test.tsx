@@ -27,7 +27,7 @@ describe('YearPicker', () => {
     })
   })
 
-  it('each button implements an onClick handler to select the year', () => {
+  it('each button implements an onClick handler to select the year', async () => {
     const mockSelectYear = jest.fn()
     const { getByText } = render(
       <YearPicker {...testProps} handleSelectYear={mockSelectYear} />
@@ -37,12 +37,14 @@ describe('YearPicker', () => {
       2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
     ]
 
-    years.forEach((year) => {
+    await years.reduce(async (previous, year) => {
+      await previous
+
       const button = getByText(year)
       expect(button).toBeInstanceOf(HTMLButtonElement)
-      userEvent.click(button)
+      await userEvent.click(button)
       expect(mockSelectYear).toHaveBeenCalledWith(year)
-    })
+    }, Promise.resolve())
   })
 
   it('renders a button to navigate to the previous and next chunks of years', () => {
@@ -111,9 +113,9 @@ describe('YearPicker', () => {
   })
 
   describe('navigation', () => {
-    it('clicking previous year chunk navigates the year picker back one chunk', () => {
+    it('clicking previous year chunk navigates the year picker back one chunk', async () => {
       const { getByTestId, getByText } = render(<YearPicker {...testProps} />)
-      userEvent.click(getByTestId('previous-year-chunk'))
+      await userEvent.click(getByTestId('previous-year-chunk'))
 
       const years = [
         2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
@@ -135,7 +137,7 @@ describe('YearPicker', () => {
           minDate={parseDateString('2004-01-01') as Date}
         />
       )
-      userEvent.click(getByTestId('previous-year-chunk'))
+      await userEvent.click(getByTestId('previous-year-chunk'))
 
       const years = [
         2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
@@ -154,9 +156,9 @@ describe('YearPicker', () => {
       })
     })
 
-    it('clicking next year chunk navigates the year picker forward one chunk', () => {
+    it('clicking next year chunk navigates the year picker forward one chunk', async () => {
       const { getByTestId, getByText } = render(<YearPicker {...testProps} />)
-      userEvent.click(getByTestId('next-year-chunk'))
+      await userEvent.click(getByTestId('next-year-chunk'))
 
       const years = [
         2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039,
@@ -178,7 +180,7 @@ describe('YearPicker', () => {
           maxDate={parseDateString('2039-01-01') as Date}
         />
       )
-      userEvent.click(getByTestId('next-year-chunk'))
+      await userEvent.click(getByTestId('next-year-chunk'))
 
       const years = [
         2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039,
@@ -305,31 +307,31 @@ describe('YearPicker', () => {
       expect(getByText('2009')).toHaveFocus()
     })
 
-    it('pressing tab cycles through the focusable elements within the year picker', () => {
+    it('pressing tab cycles through the focusable elements within the year picker', async () => {
       const { getByText, getByTestId } = render(<YearPicker {...testProps} />)
 
       expect(getByText('2021')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('next-year-chunk')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('previous-year-chunk')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByText('2021')).toHaveFocus()
     })
 
-    it('pressing tab+shift cycles backwards through the focusable elements within the year picker', () => {
+    it('pressing tab+shift cycles backwards through the focusable elements within the year picker', async () => {
       const { getByText, getByTestId } = render(<YearPicker {...testProps} />)
 
       expect(getByText('2021')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('previous-year-chunk')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByTestId('next-year-chunk')).toHaveFocus()
-      userEvent.tab({ shift: true })
+      await userEvent.tab({ shift: true })
       expect(getByText('2021')).toHaveFocus()
     })
 
-    it('pressing tab only cycles through elements that are not disabled', () => {
+    it('pressing tab only cycles through elements that are not disabled', async () => {
       const { getByText, getByTestId } = render(
         <YearPicker
           {...testProps}
@@ -340,9 +342,9 @@ describe('YearPicker', () => {
 
       expect(getByText('2021')).toHaveFocus()
       expect(getByTestId('next-year-chunk')).toBeDisabled()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByTestId('previous-year-chunk')).toHaveFocus()
-      userEvent.tab()
+      await userEvent.tab()
       expect(getByText('2021')).toHaveFocus()
     })
   })
