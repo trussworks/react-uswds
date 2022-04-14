@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/trussworks/react-uswds/compare/2.8.0...2.9.0) (2022-04-14)
+
+
+### Features
+
+* Add ability to pass through heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
+* Adds headingLevel prop for Alert component ([#1928](https://github.com/trussworks/react-uswds/issues/1928)) ([ce6de61](https://github.com/trussworks/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
+* Deprecate default heading levels ([#1947](https://github.com/trussworks/react-uswds/issues/1947)) ([512a901](https://github.com/trussworks/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
+
+
+### Bug Fixes
+
+* **docs:** Fix typo in Storybook documentation template [#1914](https://github.com/trussworks/react-uswds/issues/1914) ([#1949](https://github.com/trussworks/react-uswds/issues/1949)) ([#1967](https://github.com/trussworks/react-uswds/issues/1967)) ([7438640](https://github.com/trussworks/react-uswds/commit/743864068823f8317a8bca2cab0c62cf8f6f4209))
+* **docs:** Fix typo in storybook file name ([#1934](https://github.com/trussworks/react-uswds/issues/1934)) ([7514689](https://github.com/trussworks/react-uswds/commit/7514689da58cbd9df0ce65cb3306cdd9eba2e30b))
+
 ## [2.8.0](https://github.com/trussworks/react-uswds/compare/2.7.2...2.8.0) (2022-02-18)
 
 
