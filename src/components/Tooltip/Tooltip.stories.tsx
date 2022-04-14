@@ -6,6 +6,8 @@ export default {
   component: Tooltip,
   parameters: {
     happo: {
+      // Comparing on ios-safari causes spurious diffs.
+      targets: ['chrome', 'firefox', 'internet explorer', 'safari'],
       beforeScreenshot: (): void => {
         const event = new MouseEvent('mouseover', {
           view: window,
@@ -14,6 +16,8 @@ export default {
         })
         document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
       },
+      waitFor: () =>
+        document.querySelector('.usa-tooltip__body.is-visible.is-set'),
     },
     docs: {
       description: {
