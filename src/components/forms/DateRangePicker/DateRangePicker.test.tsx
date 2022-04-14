@@ -225,7 +225,7 @@ describe('DateRangePicker component', () => {
     )
   })
 
-  it('allows a date range to be selected by using both date pickers to pick start and end dates', () => {
+  it('allows a date range to be selected by using both date pickers to pick start and end dates', async () => {
     const mockStartDatePickerOnChange = jest.fn()
     const mockEndDatePickerOnChange = jest.fn()
     const { getAllByTestId, getByText } = render(
@@ -260,7 +260,7 @@ describe('DateRangePicker component', () => {
     const endDatePickerExternalInput = externalInputs[1]
 
     // Select the start date from the first date picker:
-    userEvent.click(startDatePickerButton)
+    await userEvent.click(startDatePickerButton)
     expect(startDatePickerCalendar).toBeVisible()
     const defaultSelectedStartDate = getByText('20')
     expect(defaultSelectedStartDate).toHaveClass(
@@ -270,7 +270,7 @@ describe('DateRangePicker component', () => {
     expect(newStartDateButton).toHaveClass(
       'usa-date-picker__calendar__date usa-date-picker__calendar__date--within-range'
     )
-    userEvent.click(newStartDateButton)
+    await userEvent.click(newStartDateButton)
     expect(startDatePickerExternalInput).toHaveValue('01/21/2021')
     expect(startDatePickerInternalInput).toHaveValue('2021-01-21')
     expect(startDatePickerExternalInput).toHaveFocus()
@@ -278,7 +278,7 @@ describe('DateRangePicker component', () => {
     expect(mockStartDatePickerOnChange).toHaveBeenCalledWith('01/21/2021')
 
     // Select the end date from the second date picker:
-    userEvent.click(endDatePickerButton)
+    await userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).toBeVisible()
     const defaultSelectedEndDate = getByText('25')
     expect(defaultSelectedEndDate).toHaveClass(
@@ -288,7 +288,7 @@ describe('DateRangePicker component', () => {
     expect(newEndDateButton).toHaveClass(
       'usa-date-picker__calendar__date usa-date-picker__calendar__date--within-range'
     )
-    userEvent.click(newEndDateButton)
+    await userEvent.click(newEndDateButton)
     expect(endDatePickerExternalInput).toHaveValue('01/24/2021')
     expect(endDatePickerInternalInput).toHaveValue('2021-01-24')
     expect(endDatePickerExternalInput).toHaveFocus()
@@ -296,7 +296,7 @@ describe('DateRangePicker component', () => {
     expect(mockEndDatePickerOnChange).toHaveBeenCalledWith('01/24/2021')
   })
 
-  it('prevents the selection of a date range where the end date is before the start date', () => {
+  it('prevents the selection of a date range where the end date is before the start date', async () => {
     const mockStartDatePickerOnChange = jest.fn()
     const mockEndDatePickerOnChange = jest.fn()
     const { getAllByTestId, getByText } = render(
@@ -323,7 +323,7 @@ describe('DateRangePicker component', () => {
     const endDatePickerCalendar = calendars[1]
 
     // Try to select an start date before the end date:
-    userEvent.click(startDatePickerButton)
+    await userEvent.click(startDatePickerButton)
     expect(startDatePickerCalendar).toBeVisible()
     const defaultSelectedStartDate = getByText('20')
     expect(defaultSelectedStartDate).toHaveClass(
@@ -338,12 +338,12 @@ describe('DateRangePicker component', () => {
       'usa-date-picker__calendar__date'
     )
     expect(invalidStartDateButton).toBeDisabled()
-    userEvent.click(invalidStartDateButton)
+    await userEvent.click(invalidStartDateButton)
     expect(startDatePickerCalendar).toBeVisible()
     expect(mockEndDatePickerOnChange).not.toHaveBeenCalledWith('01/26/2021')
 
     // Try to select an end date before the start date:
-    userEvent.click(endDatePickerButton)
+    await userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).toBeVisible()
     const endDatePickerRangeStart = getByText('20')
     expect(endDatePickerRangeStart).toHaveClass(
@@ -356,12 +356,12 @@ describe('DateRangePicker component', () => {
     const invalidEndDateButton = getByText('19')
     expect(invalidEndDateButton).toHaveClass('usa-date-picker__calendar__date')
     expect(invalidEndDateButton).toBeDisabled()
-    userEvent.click(invalidEndDateButton)
+    await userEvent.click(invalidEndDateButton)
     expect(endDatePickerCalendar).toBeVisible()
     expect(mockEndDatePickerOnChange).not.toHaveBeenCalledWith('01/19/2021')
   })
 
-  it('clears the range-determining date of the opposite DatePicker when the input is cleared', () => {
+  it('clears the range-determining date of the opposite DatePicker when the input is cleared', async () => {
     const mockStartDatePickerOnChange = jest.fn()
     const mockEndDatePickerOnChange = jest.fn()
     const { getAllByTestId, getByText } = render(
@@ -397,7 +397,7 @@ describe('DateRangePicker component', () => {
     const endDatePickerCalendar = calendars[1]
 
     // Verify the end date cannot be selected before the default-selected start date:
-    userEvent.click(endDatePickerButton)
+    await userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).toBeVisible()
     const endDatePickerRangeStart = getByText('20')
     expect(endDatePickerRangeStart).toHaveClass(
@@ -406,19 +406,19 @@ describe('DateRangePicker component', () => {
     const invalidEndDateButton = getByText('19')
     expect(invalidEndDateButton).toHaveClass('usa-date-picker__calendar__date')
     expect(invalidEndDateButton).toBeDisabled()
-    userEvent.click(invalidEndDateButton)
+    await userEvent.click(invalidEndDateButton)
     expect(endDatePickerCalendar).toBeVisible()
     expect(mockEndDatePickerOnChange).not.toHaveBeenCalledWith('01/19/2021')
 
     // Close the end date picker calendar:
-    userEvent.click(endDatePickerButton)
+    await userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).not.toBeVisible()
 
     // Clear the start picker input:
-    userEvent.clear(startDatePickerExternalInput)
+    await userEvent.clear(startDatePickerExternalInput)
 
     // Verify an end date before the previously selected start date can be selected:
-    userEvent.click(endDatePickerButton)
+    await userEvent.click(endDatePickerButton)
     expect(endDatePickerCalendar).toBeVisible()
     const noLongerRangeStart = getByText('20')
     expect(noLongerRangeStart).toHaveClass('usa-date-picker__calendar__date')
@@ -427,7 +427,7 @@ describe('DateRangePicker component', () => {
       'usa-date-picker__calendar__date'
     )
     expect(previouslyInvalidEndDateButton).not.toBeDisabled()
-    userEvent.click(previouslyInvalidEndDateButton)
+    await userEvent.click(previouslyInvalidEndDateButton)
     expect(endDatePickerCalendar).not.toBeVisible()
     expect(mockEndDatePickerOnChange).toHaveBeenCalledWith('01/19/2021')
   })
