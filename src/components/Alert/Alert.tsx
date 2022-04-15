@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import styles from './Alert.module.css'
+import { deprecationWarning } from '../../deprecation'
 
 interface AlertProps {
   type: 'success' | 'warning' | 'error' | 'info'
@@ -17,7 +18,7 @@ interface AlertProps {
 export const Alert = ({
   type,
   heading,
-  headingLevel = 'h4',
+  headingLevel,
   cta,
   children,
   slim,
@@ -41,7 +42,13 @@ export const Alert = ({
     className
   )
 
-  const Heading = headingLevel
+  if (!headingLevel) {
+    deprecationWarning(
+      'Default headingLevel h4 has been deprecated. If you are including a heading, specify a headingLevel.'
+    )
+  }
+  const Heading = headingLevel || 'h4'
+
   return (
     <div className={classes} data-testid="alert" {...props}>
       <div className="usa-alert__body">
