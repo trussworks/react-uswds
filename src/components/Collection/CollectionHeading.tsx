@@ -9,7 +9,10 @@ export const CollectionHeading = ({
   children,
   ...props
 }: CollectionHeadingProps &
-  JSX.IntrinsicElements['h3']): React.ReactElement => {
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >): React.ReactElement => {
   const Heading = headingLevel
 
   const classes = classnames('usa-collection__heading', className)

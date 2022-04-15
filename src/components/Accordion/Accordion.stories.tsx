@@ -112,7 +112,7 @@ export const multiselectable = (): React.ReactElement => (
   <Accordion items={testItems} multiselectable={true} />
 )
 
-const customTestItems = [
+const customTestItems: AccordionItemProps[] = [
   {
     title: (
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -130,6 +130,7 @@ const customTestItems = [
     expanded: false,
     id: '123',
     className: 'myCustomAccordionItem',
+    headingLevel: 'h4',
   },
   {
     title: 'Second Amendment',
@@ -148,6 +149,7 @@ const customTestItems = [
     ),
     expanded: false,
     id: 'abc',
+    headingLevel: 'h4',
   },
   {
     title: 'Third Amendment',
@@ -160,6 +162,7 @@ const customTestItems = [
     ),
     expanded: false,
     id: 'def',
+    headingLevel: 'h4',
   },
 ]
 

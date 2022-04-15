@@ -326,6 +326,7 @@ describe('Accordion component', () => {
       )
     })
   })
+
   describe('custom headingLevel for AccordionItems', () => {
     it('passes on the headingLevel', () => {
       const customTestItems: AccordionItemProps[] = [
@@ -358,13 +359,6 @@ describe('Accordion component', () => {
 
       const headings = getAllByRole('heading', { level: 2 })
       expect(headings.length).toEqual(customTestItems.length)
-    })
-
-    it('uses headingLevel h4 by default', () => {
-      const { getAllByRole } = render(<Accordion items={testItems} />)
-
-      const headings = getAllByRole('heading', { level: 4 })
-      expect(headings.length).toEqual(testItems.length)
     })
   })
 })
