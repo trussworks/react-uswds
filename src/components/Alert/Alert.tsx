@@ -2,12 +2,11 @@ import React from 'react'
 import classnames from 'classnames'
 
 import styles from './Alert.module.css'
-import { deprecationWarning } from '../../deprecation'
 
 interface AlertProps {
   type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   children?: React.ReactNode
   cta?: React.ReactNode
   slim?: boolean
@@ -42,12 +41,7 @@ export const Alert = ({
     className
   )
 
-  if (!headingLevel) {
-    deprecationWarning(
-      'Default headingLevel h4 has been deprecated. If you are including a heading, specify a headingLevel.'
-    )
-  }
-  const Heading = headingLevel || 'h4'
+  const Heading = headingLevel
 
   return (
     <div className={classes} data-testid="alert" {...props}>

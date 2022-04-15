@@ -2,8 +2,6 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { Alert } from './Alert'
-import { deprecationWarning } from '../../deprecation'
-jest.mock('../../deprecation')
 
 describe('Alert component', () => {
   beforeEach(() => {
@@ -11,13 +9,13 @@ describe('Alert component', () => {
   })
 
   it('renders without errors', () => {
-    const { queryByTestId } = render(<Alert type="success" />)
+    const { queryByTestId } = render(<Alert type="success" headingLevel="h4" />)
     expect(queryByTestId('alert')).toBeInTheDocument()
   })
 
   it('renders children in <p> tag by default', () => {
     const { queryByTestId } = render(
-      <Alert type="success" className="myClass">
+      <Alert type="success" headingLevel="h4" className="myClass">
         Test children
       </Alert>
     )
@@ -27,7 +25,7 @@ describe('Alert component', () => {
 
   it('renders validation style alert', () => {
     const { queryByTestId } = render(
-      <Alert type="success" validation className="myClass">
+      <Alert type="success" validation headingLevel="h4" className="myClass">
         Test children
       </Alert>
     )
@@ -38,7 +36,7 @@ describe('Alert component', () => {
 
   it('accepts className prop', () => {
     const { queryByTestId } = render(
-      <Alert type="success" className="myClass" />
+      <Alert type="success" headingLevel="h4" className="myClass" />
     )
     expect(queryByTestId('alert')).toHaveClass('myClass')
   })
@@ -50,16 +48,12 @@ describe('Alert component', () => {
     expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
   })
 
-  it('uses heading level 4 by default and warns deprecation', () => {
-    const { getByRole } = render(<Alert type="info" heading="Working Alert" />)
-    expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
-    expect(deprecationWarning).toHaveBeenCalledTimes(1)
-  })
-
   describe('with a CTA', () => {
     it('renders the CTA', () => {
       const testCTA = <button type="button">Click Here</button>
-      const { queryByText } = render(<Alert type="success" cta={testCTA} />)
+      const { queryByText } = render(
+        <Alert type="success" headingLevel="h4" cta={testCTA} />
+      )
       expect(queryByText('Click Here')).toBeInTheDocument()
     })
   })

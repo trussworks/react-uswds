@@ -2,8 +2,6 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import { Accordion, AccordionItemProps } from './Accordion'
-import { deprecationWarning } from '../../deprecation'
-jest.mock('../../deprecation')
 
 const firstAmendment = (
   <p>
@@ -257,6 +255,7 @@ describe('Accordion component', () => {
         content: thirdAmendment,
         expanded: false,
         id: 'def',
+        headingLevel: 'h4',
       },
       {
         title: 'Fourth Amendment',
@@ -366,38 +365,6 @@ describe('Accordion component', () => {
 
       const headings = getAllByRole('heading', { level: 4 })
       expect(headings.length).toEqual(testItems.length)
-    })
-  })
-
-  describe('default headingLevel for AccordionItems', () => {
-    it('uses the default headingLevel and warns deprecation', () => {
-      const customTestItems: AccordionItemProps[] = [
-        {
-          title: 'First Amendment',
-          content: firstAmendment,
-          expanded: false,
-          id: '123',
-          className: 'myCustomAccordionItem',
-        },
-        {
-          title: 'Second Amendment',
-          content: secondAmendment,
-          expanded: false,
-          id: 'abc',
-        },
-        {
-          title: 'Third Amendment',
-          content: thirdAmendment,
-          expanded: false,
-          id: 'def',
-        },
-      ]
-
-      const { getAllByRole } = render(<Accordion items={customTestItems} />)
-
-      const headings = getAllByRole('heading', { level: 4 })
-      expect(headings.length).toEqual(customTestItems.length)
-      expect(deprecationWarning).toHaveBeenCalledTimes(customTestItems.length)
     })
   })
 })

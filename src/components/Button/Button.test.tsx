@@ -2,7 +2,6 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 jest.mock('../../deprecation')
-import { deprecationWarning } from '../../deprecation'
 import { Button } from './Button'
 
 describe('Button component', () => {
@@ -24,7 +23,6 @@ describe('Button component', () => {
     const optionalBooleanClasses = [
       ['secondary', 'usa-button--secondary'],
       ['base', 'usa-button--base'],
-      ['accent', 'usa-button--accent-cool'],
       ['outline', 'usa-button--outline'],
       ['inverse', 'usa-button--inverse'],
       ['unstyled', 'usa-button--unstyled'],
@@ -51,7 +49,6 @@ describe('Button component', () => {
         </Button>
       )
       expect(queryByTestId('button')).toHaveClass('usa-button--big')
-      expect(deprecationWarning).toHaveBeenCalledTimes(0)
     })
 
     it('renders uswds class for cool accent style', () => {
@@ -61,7 +58,6 @@ describe('Button component', () => {
         </Button>
       )
       expect(queryByTestId('button')).toHaveClass('usa-button--accent-cool')
-      expect(deprecationWarning).toHaveBeenCalledTimes(0)
     })
 
     it('renders uswds class for warm accent style', () => {
@@ -71,17 +67,6 @@ describe('Button component', () => {
         </Button>
       )
       expect(queryByTestId('button')).toHaveClass('usa-button--accent-warm')
-      expect(deprecationWarning).toHaveBeenCalledTimes(0)
-    })
-
-    it("shows a deprecation warning for prop 'accent'", () => {
-      const { queryByTestId } = render(
-        <Button type="button" accent>
-          Click Me
-        </Button>
-      )
-      expect(queryByTestId('button')).toHaveClass('usa-button--accent-cool')
-      expect(deprecationWarning).toHaveBeenCalledTimes(1)
     })
   })
 

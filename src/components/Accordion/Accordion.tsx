@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import { deprecationWarning } from '../../deprecation'
 
 export interface AccordionItemProps {
   title: React.ReactNode | string
@@ -8,7 +7,7 @@ export interface AccordionItemProps {
   expanded: boolean
   id: string
   className?: string
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -35,12 +34,7 @@ export const AccordionItem = ({
     className
   )
 
-  if (!headingLevel) {
-    deprecationWarning(
-      'Default headingLevel h4 has been deprecated. Please specify a heading level.'
-    )
-  }
-  const Heading = headingLevel || 'h4'
+  const Heading = headingLevel
 
   return (
     <>

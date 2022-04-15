@@ -1,7 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
-import { deprecationWarning } from '../../../deprecation'
 
 interface StepIndicatorProps {
   showLabels?: boolean
@@ -15,7 +14,7 @@ interface StepIndicatorProps {
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   >
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 export const StepIndicator = (
   props: StepIndicatorProps
@@ -32,12 +31,7 @@ export const StepIndicator = (
     headingLevel,
   } = props
 
-  if (!headingLevel) {
-    deprecationWarning(
-      'Default headingLevel h4 has been deprecated. Please specify a heading level.'
-    )
-  }
-  const Heading = headingLevel || 'h4'
+  const Heading = headingLevel
 
   const { className: additionalDivClasses, ...remainingDivProps } =
     divProps || {}

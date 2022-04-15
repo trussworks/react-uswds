@@ -1,9 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { CollectionHeading } from './CollectionHeading'
-jest.mock('../../deprecation')
-
-import { deprecationWarning } from '../../deprecation'
 
 describe('CollectionHeading component', () => {
   beforeEach(() => {
@@ -26,15 +23,6 @@ describe('CollectionHeading component', () => {
     )
 
     expect(queryByTestId('test-child')).toBeInTheDocument()
-  })
-
-  it('renders default heading level and warns deprecation', () => {
-    const { getByTestId } = render(
-      <CollectionHeading data-testid="collection-heading" />
-    )
-
-    expect(getByTestId('collection-heading').tagName).toEqual('H3')
-    expect(deprecationWarning).toHaveBeenCalledTimes(1)
   })
 
   it('renders custom class name', () => {
