@@ -43,6 +43,28 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList.children.length).toEqual(7)
   })
 
+  it('renders a label', () => {
+    const { queryByText } = render(
+      <TimePicker {...testProps} label="test label" />
+    )
+
+    const label = queryByText('test label')
+
+    expect(label).toBeInTheDocument()
+    expect(label).toHaveAttribute('id', `${testProps.name}-label`)
+  })
+
+  it('renders a hint', () => {
+    const { queryByText } = render(
+      <TimePicker {...testProps} hint="test hint" />
+    )
+
+    const hint = queryByText('test hint')
+
+    expect(hint).toBeInTheDocument()
+    expect(hint).toHaveAttribute('id', `${testProps.name}-hint`)
+  })
+
   it('allows the user to select a time', async () => {
     const { getByTestId } = render(<TimePicker {...testProps} />)
 
