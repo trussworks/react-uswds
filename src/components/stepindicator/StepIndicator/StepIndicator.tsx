@@ -14,7 +14,7 @@ interface StepIndicatorProps {
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   >
-  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: HeadingLevel
 }
 export const StepIndicator = (
   props: StepIndicatorProps
