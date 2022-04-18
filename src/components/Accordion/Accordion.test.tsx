@@ -100,9 +100,14 @@ describe('Accordion component', () => {
   })
 
   it('renders a header and content for each item', () => {
-    const { getByTestId } = render(<Accordion items={testItems} />)
+    const { getByTestId, getAllByRole } = render(
+      <Accordion items={testItems} />
+    )
     const accordionEl = getByTestId('accordion')
+    const headings = getAllByRole('heading', { level: 4 })
+
     expect(accordionEl.childElementCount).toBe(testItems.length * 2)
+    expect(headings.length).toEqual(testItems.length)
   })
 
   it('no items are open by default', () => {
@@ -328,37 +333,47 @@ describe('Accordion component', () => {
   })
 
   describe('custom headingLevel for AccordionItems', () => {
-    it('passes on the headingLevel', () => {
-      const customTestItems: AccordionItemProps[] = [
-        {
-          title: 'First Amendment',
-          content: firstAmendment,
-          expanded: false,
-          headingLevel: 'h2',
-          id: '123',
-          className: 'myCustomAccordionItem',
-        },
-        {
-          title: 'Second Amendment',
-          content: secondAmendment,
-          expanded: false,
-          headingLevel: 'h2',
+    const scenarios: [HeadingLevel, number][] = [
+      ['h1', 1],
+      ['h2', 2],
+      ['h3', 3],
+      ['h4', 4],
+      ['h5', 5],
+      ['h6', 6],
+    ]
+    it.each(scenarios)(
+      'can render with headingLevel %s',
+      (headingLevel, expectedLevel) => {
+        const customTestItems: AccordionItemProps[] = [
+          {
+            title: 'First Amendment',
+            content: firstAmendment,
+            expanded: false,
+            headingLevel,
+            id: '123',
+            className: 'myCustomAccordionItem',
+          },
+          {
+            title: 'Second Amendment',
+            content: secondAmendment,
+            expanded: false,
+            headingLevel,
 
-          id: 'abc',
-        },
-        {
-          title: 'Third Amendment',
-          content: thirdAmendment,
-          expanded: false,
-          headingLevel: 'h2',
-          id: 'def',
-        },
-      ]
+            id: 'abc',
+          },
+          {
+            title: 'Third Amendment',
+            content: thirdAmendment,
+            expanded: false,
+            headingLevel,
+            id: 'def',
+          },
+        ]
 
-      const { getAllByRole } = render(<Accordion items={customTestItems} />)
-
-      const headings = getAllByRole('heading', { level: 2 })
-      expect(headings.length).toEqual(customTestItems.length)
-    })
+        const { getAllByRole } = render(<Accordion items={customTestItems} />)
+        const headings = getAllByRole('heading', { level: expectedLevel })
+        expect(headings.length).toEqual(customTestItems.length)
+      }
+    )
   })
 })

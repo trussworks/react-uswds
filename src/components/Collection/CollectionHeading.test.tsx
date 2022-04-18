@@ -51,4 +51,26 @@ describe('CollectionHeading component', () => {
       'Hello'
     )
   })
+
+  describe('with custom heading levels', () => {
+    const scenarios: [HeadingLevel, number][] = [
+      ['h1', 1],
+      ['h2', 2],
+      ['h3', 3],
+      ['h4', 4],
+      ['h5', 5],
+      ['h6', 6],
+    ]
+    it.each(scenarios)(
+      'can render with headingLevel %s',
+      (headingLevel, expectedLevel) => {
+        const { getByRole } = render(
+          <CollectionHeading headingLevel={headingLevel} />
+        )
+        expect(
+          getByRole('heading', { level: expectedLevel })
+        ).toBeInTheDocument()
+      }
+    )
+  })
 })

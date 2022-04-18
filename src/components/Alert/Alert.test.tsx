@@ -41,11 +41,30 @@ describe('Alert component', () => {
     expect(queryByTestId('alert')).toHaveClass('myClass')
   })
 
-  it('accepts a headingLevel', () => {
-    const { getByRole } = render(
-      <Alert type="success" headingLevel="h2" heading="Working Alert" />
+  describe('with custom heading levels', () => {
+    const scenarios: [HeadingLevel, number][] = [
+      ['h1', 1],
+      ['h2', 2],
+      ['h3', 3],
+      ['h4', 4],
+      ['h5', 5],
+      ['h6', 6],
+    ]
+    it.each(scenarios)(
+      'can render with headingLevel %s',
+      (headingLevel, expectedLevel) => {
+        const { getByRole } = render(
+          <Alert
+            type="success"
+            headingLevel={headingLevel}
+            heading="Working Alert"
+          />
+        )
+        expect(
+          getByRole('heading', { level: expectedLevel })
+        ).toBeInTheDocument()
+      }
     )
-    expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
   })
 
   describe('with a CTA', () => {
