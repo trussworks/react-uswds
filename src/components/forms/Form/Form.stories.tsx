@@ -57,7 +57,7 @@ export const textInputForm = (): React.ReactElement => (
           id="input-error"
           name="input-error"
           type="text"
-          error
+          validationStatus="error"
           aria-describedby="input-error-message"
         />
       </FormGroup>
