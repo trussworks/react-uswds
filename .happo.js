@@ -18,6 +18,7 @@ module.exports = {
     }),
     'internet explorer': new RemoteBrowserTarget('internet explorer', {
       viewport: '1024x768',
+      chunks: 3,
     }),
     safari: new RemoteBrowserTarget('safari', {
       viewport: '1024x768',
