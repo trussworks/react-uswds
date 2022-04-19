@@ -92,7 +92,7 @@ export const withDefaultInvalidValue = (): React.ReactElement => (
 )
 withDefaultValue.parameters = {
   happo: {
-    waitForContent: '1988-05-16',
+    waitForContent: '05/16/1988',
   },
 }
 
@@ -124,7 +124,7 @@ export const withRangeDate = (): React.ReactElement => (
 )
 withRangeDate.parameters = {
   happo: {
-    waitForContent: '2021-01-20',
+    waitForContent: '01/20/2021',
   },
 }
 
