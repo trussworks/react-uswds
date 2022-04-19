@@ -180,7 +180,7 @@ describe('ComboBox component', () => {
       expect(inputEl).toHaveAttribute('aria-activedescendant', firstItem.id)
     })
 
-    it('highlights the default value when opening the menu, when one exists', () => {
+    it('highlights the default value when opening the menu, when one exists', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -191,7 +191,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-option-avocado')).toHaveAttribute(
         'aria-selected',
@@ -222,7 +222,7 @@ describe('ComboBox component', () => {
     expect(screen.getByTestId('combo-box-select')).not.toBeDisabled()
   })
 
-  it('does not show the list when clicking the disabled component', () => {
+  it('does not show the list when clicking the disabled component', async () => {
     const { getByTestId } = render(
       <ComboBox
         id="favorite-fruit"
@@ -232,7 +232,7 @@ describe('ComboBox component', () => {
         disabled={true}
       />
     )
-    userEvent.click(getByTestId('combo-box-toggle'))
+    await userEvent.click(getByTestId('combo-box-toggle'))
 
     expect(getByTestId('combo-box-option-list')).not.toBeVisible()
   })
@@ -396,7 +396,7 @@ describe('ComboBox component', () => {
   })
 
   describe('filtering', () => {
-    it('shows all options on initial load when no default value exists', () => {
+    it('shows all options on initial load when no default value exists', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -406,14 +406,14 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-option-list').children.length).toBe(
         fruitOptions.length
       )
     })
 
-    it('shows all options on initial load when a default value exists', () => {
+    it('shows all options on initial load when a default value exists', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -424,7 +424,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.click(getByTestId('combo-box-input'))
+      await userEvent.click(getByTestId('combo-box-input'))
 
       expect(getByTestId('combo-box-option-list').children.length).toBe(
         fruitOptions.length
@@ -538,7 +538,7 @@ describe('ComboBox component', () => {
       expect(firstItem).toHaveTextContent('No results found')
     })
 
-    it('shows all results when typed value is cleared', () => {
+    it('shows all results when typed value is cleared', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -549,8 +549,8 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      userEvent.type(input, 'apple')
-      userEvent.clear(input)
+      await userEvent.type(input, 'apple')
+      await userEvent.clear(input)
       expect(getByTestId('combo-box-option-list').children.length).toEqual(
         fruitOptions.length
       )
@@ -618,7 +618,7 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-clear-button')).toBeVisible()
     })
 
-    it('resets the filter on click', () => {
+    it('resets the filter on click', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -628,8 +628,8 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'b')
-      userEvent.click(getByTestId('combo-box-clear-button'))
+      await userEvent.type(getByTestId('combo-box-input'), 'b')
+      await userEvent.click(getByTestId('combo-box-clear-button'))
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-option-list').children.length).toBe(
@@ -653,7 +653,7 @@ describe('ComboBox component', () => {
       expect(onChange).toHaveBeenCalledWith(undefined)
     })
 
-    it('clears the input on click', () => {
+    it('clears the input on click', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -663,8 +663,8 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'b')
-      userEvent.click(getByTestId('combo-box-clear-button'))
+      await userEvent.type(getByTestId('combo-box-input'), 'b')
+      await userEvent.click(getByTestId('combo-box-clear-button'))
 
       expect(getByTestId('combo-box-clear-button')).not.toBeVisible()
       expect(getByTestId('combo-box-input')).toHaveValue('')
@@ -738,7 +738,7 @@ describe('ComboBox component', () => {
     })
   })
 
-  it('clears input value and closes list when an incomplete item is remaining on blur', () => {
+  it('clears input value and closes list when an incomplete item is remaining on blur', async () => {
     const { getByTestId } = render(
       <>
         <div data-testid="outside" />
@@ -752,8 +752,8 @@ describe('ComboBox component', () => {
       </>
     )
 
-    userEvent.type(getByTestId('combo-box-input'), 'a')
-    userEvent.click(getByTestId('outside'))
+    await userEvent.type(getByTestId('combo-box-input'), 'a')
+    await userEvent.click(getByTestId('outside'))
 
     expect(getByTestId('combo-box-input')).toHaveValue('')
     expect(getByTestId('combo-box-input')).toHaveAttribute(
@@ -782,7 +782,7 @@ describe('ComboBox component', () => {
       expect(comboBoxInput).toHaveFocus()
     })
 
-    it('clears filter when there is no match and enter is pressed', () => {
+    it('clears filter when there is no match and enter is pressed', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -792,7 +792,7 @@ describe('ComboBox component', () => {
         />
       )
 
-      userEvent.type(getByTestId('combo-box-input'), 'zzz{enter}')
+      await userEvent.type(getByTestId('combo-box-input'), 'zzz{enter}')
       const comboBoxOptionList = getByTestId('combo-box-option-list')
       expect(comboBoxOptionList).not.toBeVisible()
       expect(comboBoxOptionList.children.length).toBe(fruitOptions.length)
@@ -1070,7 +1070,7 @@ describe('ComboBox component', () => {
       expect(yuzuOption).toHaveFocus()
     })
 
-    it('pressing tab once in the input with a selected option focuses the clear button', () => {
+    it('pressing tab once in the input with a selected option focuses the clear button', async () => {
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1081,9 +1081,9 @@ describe('ComboBox component', () => {
         />
       )
       // first tab goes to input
-      userEvent.tab()
+      await userEvent.tab()
 
-      userEvent.tab()
+      await userEvent.tab()
 
       expect(getByTestId('combo-box-clear-button')).toHaveFocus()
     })
@@ -1494,7 +1494,7 @@ describe('ComboBox component', () => {
       expect(inputEl).toHaveAttribute('aria-activedescendant', yuzuOption.id)
     })
 
-    it('clears focus when clicking outside of the component', () => {
+    it('clears focus when clicking outside of the component', async () => {
       const { getByTestId } = render(
         <>
           <button type="button" data-testid="outside">
@@ -1509,8 +1509,8 @@ describe('ComboBox component', () => {
         </>
       )
 
-      userEvent.click(getByTestId('combo-box-toggle'))
-      userEvent.click(getByTestId('outside'))
+      await userEvent.click(getByTestId('combo-box-toggle'))
+      await userEvent.click(getByTestId('outside'))
 
       expect(getByTestId('combo-box-input')).not.toHaveFocus()
       expect(getByTestId('combo-box-input')).toHaveAttribute(
