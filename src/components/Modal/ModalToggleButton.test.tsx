@@ -29,7 +29,7 @@ describe('ModalToggleButton', () => {
     expect(button).toHaveAttribute('data-close-modal')
   })
 
-  it('throws an error if clicked when the modal ref is null', () => {
+  it('throws an error if clicked when the modal ref is null', async () => {
     const consoleSpy = jest.spyOn(console, 'error')
 
     const modalRef: React.RefObject<ModalRef> = {
@@ -41,11 +41,11 @@ describe('ModalToggleButton', () => {
     )
 
     const button = screen.getByRole('button', { name: 'Open modal' })
-    userEvent.click(button)
+    await userEvent.click(button)
     expect(consoleSpy).toHaveBeenCalledWith('ModalRef is required')
   })
 
-  it('toggles the modal when clicked', () => {
+  it('toggles the modal when clicked', async () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
@@ -61,7 +61,7 @@ describe('ModalToggleButton', () => {
     )
 
     const button = screen.getByRole('button', { name: 'Open modal' })
-    userEvent.click(button)
+    await userEvent.click(button)
     expect(mockRef.toggleModal).toHaveBeenCalled()
   })
 
@@ -88,7 +88,7 @@ describe('ModalToggleButton', () => {
       expect(button).not.toHaveAttribute('data-close-modal')
     })
 
-    it('opens the modal when clicked', () => {
+    it('opens the modal when clicked', async () => {
       const mockRef: ModalRef = {
         modalIsOpen: false,
         modalId: 'testModal',
@@ -106,7 +106,7 @@ describe('ModalToggleButton', () => {
       )
 
       const button = screen.getByRole('button', { name: 'Open modal' })
-      userEvent.click(button)
+      await userEvent.click(button)
       expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
     })
   })
@@ -134,7 +134,7 @@ describe('ModalToggleButton', () => {
       expect(button).not.toHaveAttribute('data-open-modal')
     })
 
-    it('closes the modal when clicked', () => {
+    it('closes the modal when clicked', async () => {
       const mockRef: ModalRef = {
         modalIsOpen: false,
         modalId: 'testModal',
@@ -152,7 +152,7 @@ describe('ModalToggleButton', () => {
       )
 
       const button = screen.getByRole('button', { name: 'Close modal' })
-      userEvent.click(button)
+      await userEvent.click(button)
       expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), false)
     })
   })
