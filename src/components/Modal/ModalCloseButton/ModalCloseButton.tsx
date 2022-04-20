@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconClose } from '../../Icon/Icons'
+import { Icon } from '../../Icon/Icons'
 import { Button } from '../../Button/Button'
 
 interface ModalCloseButtonProps {
@@ -20,7 +20,7 @@ export const ModalCloseButton = ({
       data-close-modal
       type="button"
     >
-      <IconClose aria-hidden="true" />
+      <Icon.Close aria-hidden="true" />
     </Button>
   )
 }
