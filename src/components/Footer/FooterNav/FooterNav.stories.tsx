@@ -67,3 +67,6 @@ export const BigFooterNav = (): React.ReactElement => (
     secondary={<></>}
   />
 )
+BigFooterNav.parameters = {
+  happo: { waitForContent: 'Secondary link that is pretty long' },
+}
