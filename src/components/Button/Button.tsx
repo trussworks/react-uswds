@@ -92,7 +92,8 @@ export const Button = ({
       className={classes}
       onClick={onClick}
       data-testid="button"
-      {...defaultProps}>
+      {...defaultProps}
+    >
       {children}
     </button>
   )

@@ -44,11 +44,13 @@ export const defaultModal = (
       handleClose={argTypes.handleClose}
       forceAction={false}
       aria-labelledby="modal-1-heading"
-      aria-describedby="modal-1-description">
+      aria-describedby="modal-1-description"
+    >
       <ModalWindow
         modalId="example-modal-1"
         tabIndex={-1}
-        handleClose={argTypes.handleClose}>
+        handleClose={argTypes.handleClose}
+      >
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -66,7 +68,8 @@ export const defaultModal = (
               type="button"
               onClick={argTypes.handleClose}
               unstyled
-              className="padding-105 text-center">
+              className="padding-105 text-center"
+            >
               Go back
             </Button>
           </ButtonGroup>
@@ -87,12 +90,14 @@ export const largeModal = (
       handleClose={argTypes.handleClose}
       forceAction={false}
       aria-labelledby="modal-2-heading"
-      aria-describedby="modal-2-description">
+      aria-describedby="modal-2-description"
+    >
       <ModalWindow
         isLarge
         modalId="example-modal-2"
         tabIndex={-1}
-        handleClose={argTypes.handleClose}>
+        handleClose={argTypes.handleClose}
+      >
         <ModalHeading id="modal-2-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -110,7 +115,8 @@ export const largeModal = (
               type="button"
               onClick={argTypes.handleClose}
               unstyled
-              className="padding-105 text-center">
+              className="padding-105 text-center"
+            >
               Go back
             </Button>
           </ButtonGroup>
@@ -131,12 +137,14 @@ export const forceActionModal = (
       handleClose={argTypes.handleClose}
       forceAction={true}
       aria-labelledby="modal-3-heading"
-      aria-describedby="modal-3-description">
+      aria-describedby="modal-3-description"
+    >
       <ModalWindow
         forceAction
         modalId="example-modal-3"
         tabIndex={-1}
-        handleClose={argTypes.handleClose}>
+        handleClose={argTypes.handleClose}
+      >
         <ModalHeading id="modal-3-heading">
           Your session will end soon.
         </ModalHeading>
@@ -156,7 +164,8 @@ export const forceActionModal = (
               type="button"
               onClick={argTypes.handleClose}
               unstyled
-              className="padding-105 text-center">
+              className="padding-105 text-center"
+            >
               Sign out
             </Button>
           </ButtonGroup>
