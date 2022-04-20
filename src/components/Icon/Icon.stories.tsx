@@ -1,245 +1,6 @@
 import React from 'react'
 
-import {
-  IconAccessibilityNew,
-  IconAccessibleForward,
-  IconAccountBalance,
-  IconAccountBox,
-  IconAccountCircle,
-  IconAdd,
-  IconAddCircle,
-  IconAddCircleOutline,
-  IconAlarm,
-  IconAlternateEmail,
-  IconAnnouncement,
-  IconArrowBack,
-  IconArrowDownward,
-  IconArrowDropDown,
-  IconArrowDropUp,
-  IconArrowForward,
-  IconArrowUpward,
-  IconApi,
-  IconAssessment,
-  IconAttachFile,
-  IconAttachMoney,
-  IconAutorenew,
-  IconBackpack,
-  IconBathtub,
-  IconBedding,
-  IconBookmark,
-  IconBugReport,
-  IconBuild,
-  IconCalendarToday,
-  IconCampaign,
-  IconCamping,
-  IconCancel,
-  IconChat,
-  IconCheck,
-  IconCheckBoxOutlineBlank,
-  IconCheckCircle,
-  IconCheckCircleOutline,
-  IconCheckroom,
-  IconCleanHands,
-  IconClothes,
-  IconClose,
-  IconClosedCaption,
-  IconCloud,
-  IconCode,
-  IconComment,
-  IconConnectWithoutContact,
-  IconConstruction,
-  IconConstructionWorker,
-  IconContactPage,
-  IconContentCopy,
-  IconCoronavirus,
-  IconCreditCard,
-  IconDeck,
-  IconDelete,
-  IconDeviceThermostat,
-  IconDirections,
-  IconDirectionsBike,
-  IconDirectionsBus,
-  IconDirectionsCar,
-  IconDirectionsWalk,
-  IconDoNotDisturb,
-  IconDoNotTouch,
-  IconDragHandle,
-  IconEco,
-  IconElectricalServices,
-  IconEmojiEvents,
-  IconError,
-  IconErrorOutline,
-  IconEvent,
-  IconExpandLess,
-  IconExpandMore,
-  IconFacebook,
-  IconFastForward,
-  IconFastRewind,
-  IconFavorite,
-  IconFavoriteBorder,
-  IconFileDownload,
-  IconFilePresent,
-  IconFileUpload,
-  IconFilterAlt,
-  IconFilterList,
-  IconFingerprint,
-  IconFirstPage,
-  IconFlag,
-  IconFlickr,
-  IconFlight,
-  IconFlooding,
-  IconFolder,
-  IconFolderOpen,
-  IconFormatQuote,
-  IconFormatSize,
-  IconForum,
-  IconGithub,
-  IconGridView,
-  IconGroupAdd,
-  IconGroups,
-  IconHearing,
-  IconHelp,
-  IconHelpOutline,
-  IconHighlightOff,
-  IconHistory,
-  IconHome,
-  IconHospital,
-  IconHotel,
-  IconHourglassEmpty,
-  IconHurricane,
-  IconIdentification,
-  IconImage,
-  IconInfo,
-  IconInfoOutline,
-  IconInsights,
-  IconInstagram,
-  IconKeyboard,
-  IconLabel,
-  IconLanguage,
-  IconLastPage,
-  IconLaunch,
-  IconLightbulb,
-  IconLightbulbOutline,
-  IconLink,
-  IconLinkOff,
-  IconList,
-  IconLocalCafe,
-  IconLocalFireDepartment,
-  IconLocalGasStation,
-  IconLocalGroceryStore,
-  IconLocalHospital,
-  IconLocalLaundryService,
-  IconLocalLibrary,
-  IconLocalOffer,
-  IconLocalParking,
-  IconLocalPharmacy,
-  IconLocalPolice,
-  IconLocalTaxi,
-  IconLocationCity,
-  IconLocationOn,
-  IconLock,
-  IconLockOpen,
-  IconLockOutline,
-  IconLogin,
-  IconLogout,
-  IconLoop,
-  IconMail,
-  IconMailOutline,
-  IconMap,
-  IconMasks,
-  IconMedicalServices,
-  IconMenu,
-  IconMilitaryTech,
-  IconMoreHoriz,
-  IconMoreVert,
-  IconMyLocation,
-  IconNavigateBefore,
-  IconNavigateNext,
-  IconNavigateFarBefore,
-  IconNavigateFarNext,
-  IconNearMe,
-  IconNotifications,
-  IconNotificationsActive,
-  IconNotificationsNone,
-  IconNotificationsOff,
-  IconPark,
-  IconPeople,
-  IconPerson,
-  IconPets,
-  IconPhone,
-  IconPhotoCamera,
-  IconPrint,
-  IconPriorityHigh,
-  IconPublic,
-  IconPushPin,
-  IconRadioButtonUnchecked,
-  IconRain,
-  IconReduceCapacity,
-  IconRemove,
-  IconReport,
-  IconRestaurant,
-  IconRssFeed,
-  IconSafetyDivider,
-  IconSanitizer,
-  IconSaveAlt,
-  IconSevereWeather,
-  IconSchedule,
-  IconSchool,
-  IconScience,
-  IconSearch,
-  IconSecurity,
-  IconSend,
-  IconSentimentDissatisfied,
-  IconSentimentNeutral,
-  IconSentimentSatisfied,
-  IconSentimentSatisfiedAlt,
-  IconSentimentVeryDissatisfied,
-  IconSettings,
-  IconShare,
-  IconShield,
-  IconShoppingBasket,
-  IconSnow,
-  IconSoap,
-  IconSocialDistance,
-  IconSortArrow,
-  IconSpellcheck,
-  IconStar,
-  IconStarHalf,
-  IconStarOutline,
-  IconStore,
-  IconSupport,
-  IconSupportAgent,
-  IconTextFields,
-  IconThumbDownAlt,
-  IconThumbUpAlt,
-  IconTimer,
-  IconToggleOff,
-  IconToggleOn,
-  IconTopic,
-  IconTornado,
-  IconTranslate,
-  IconTrendingDown,
-  IconTrendingUp,
-  IconTwitter,
-  IconUndo,
-  IconUnfoldLess,
-  IconUnfoldMore,
-  IconUpdate,
-  IconUploadFile,
-  IconVerified,
-  IconVerifiedUser,
-  IconVisiblity,
-  IconVisibilityOff,
-  IconVolumeOff,
-  IconWarning,
-  IconWash,
-  IconWifi,
-  IconWork,
-  IconYoutube,
-  IconZoomIn,
-  IconZoomOutMap,
-  IconZoomOut,
-} from './Icons'
+import { Icon } from './Icons'
 
 type StorybookArgs = {
   size: 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -270,723 +31,944 @@ Source: https://designsystem.digital.gov/components/icon/
 }
 
 export const accessibilityNew = (args: StorybookArgs): React.ReactElement => (
-  <IconAccessibilityNew {...args} />
+  <Icon.AccessibilityNew {...args} />
 )
 
 export const accessibleForward = (args: StorybookArgs): React.ReactElement => (
-  <IconAccessibleForward {...args} />
+  <Icon.AccessibleForward {...args} />
 )
 
 export const accountBalance = (args: StorybookArgs): React.ReactElement => (
-  <IconAccountBalance {...args} />
+  <Icon.AccountBalance {...args} />
 )
 
 export const accountBox = (args: StorybookArgs): React.ReactElement => (
-  <IconAccountBox {...args} />
+  <Icon.AccountBox {...args} />
 )
 
 export const accountCircle = (args: StorybookArgs): React.ReactElement => (
-  <IconAccountCircle {...args} />
+  <Icon.AccountCircle {...args} />
 )
 
 export const add = (args: StorybookArgs): React.ReactElement => (
-  <IconAdd {...args} />
+  <Icon.Add {...args} />
 )
 
 export const addCircle = (args: StorybookArgs): React.ReactElement => (
-  <IconAddCircle {...args} />
+  <Icon.AddCircle {...args} />
 )
+
 export const addCircleOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconAddCircleOutline {...args} />
+  <Icon.AddCircleOutline {...args} />
 )
+
 export const alarm = (args: StorybookArgs): React.ReactElement => (
-  <IconAlarm {...args} />
+  <Icon.Alarm {...args} />
 )
+
 export const alternateEmail = (args: StorybookArgs): React.ReactElement => (
-  <IconAlternateEmail {...args} />
+  <Icon.AlternateEmail {...args} />
 )
+
 export const announcement = (args: StorybookArgs): React.ReactElement => (
-  <IconAnnouncement {...args} />
+  <Icon.Announcement {...args} />
 )
+
 export const arrowBack = (args: StorybookArgs): React.ReactElement => (
-  <IconArrowBack {...args} />
+  <Icon.ArrowBack {...args} />
 )
+
 export const arrowDownward = (args: StorybookArgs): React.ReactElement => (
-  <IconArrowDownward {...args} />
+  <Icon.ArrowDownward {...args} />
 )
+
 export const arrowDropDown = (args: StorybookArgs): React.ReactElement => (
-  <IconArrowDropDown {...args} />
+  <Icon.ArrowDropDown {...args} />
 )
+
 export const arrowDropUp = (args: StorybookArgs): React.ReactElement => (
-  <IconArrowDropUp {...args} />
+  <Icon.ArrowDropUp {...args} />
 )
+
 export const arrowForward = (args: StorybookArgs): React.ReactElement => (
-  <IconArrowForward {...args} />
+  <Icon.ArrowForward {...args} />
 )
+
 export const arrowUpward = (args: StorybookArgs): React.ReactElement => (
-  <IconArrowUpward {...args} />
+  <Icon.ArrowUpward {...args} />
 )
+
 export const api = (args: StorybookArgs): React.ReactElement => (
-  <IconApi {...args} />
+  <Icon.Api {...args} />
 )
+
 export const assessment = (args: StorybookArgs): React.ReactElement => (
-  <IconAssessment {...args} />
+  <Icon.Assessment {...args} />
 )
+
 export const attachFile = (args: StorybookArgs): React.ReactElement => (
-  <IconAttachFile {...args} />
+  <Icon.AttachFile {...args} />
 )
+
 export const attachMoney = (args: StorybookArgs): React.ReactElement => (
-  <IconAttachMoney {...args} />
+  <Icon.AttachMoney {...args} />
 )
+
 export const autorenew = (args: StorybookArgs): React.ReactElement => (
-  <IconAutorenew {...args} />
+  <Icon.Autorenew {...args} />
 )
+
 export const backpack = (args: StorybookArgs): React.ReactElement => (
-  <IconBackpack {...args} />
+  <Icon.Backpack {...args} />
 )
+
 export const bathtub = (args: StorybookArgs): React.ReactElement => (
-  <IconBathtub {...args} />
+  <Icon.Bathtub {...args} />
 )
+
 export const bedding = (args: StorybookArgs): React.ReactElement => (
-  <IconBedding {...args} />
+  <Icon.Bedding {...args} />
 )
+
 export const bookmark = (args: StorybookArgs): React.ReactElement => (
-  <IconBookmark {...args} />
+  <Icon.Bookmark {...args} />
 )
+
 export const bugReport = (args: StorybookArgs): React.ReactElement => (
-  <IconBugReport {...args} />
+  <Icon.BugReport {...args} />
 )
+
 export const build = (args: StorybookArgs): React.ReactElement => (
-  <IconBuild {...args} />
+  <Icon.Build {...args} />
 )
+
 export const calendarToday = (args: StorybookArgs): React.ReactElement => (
-  <IconCalendarToday {...args} />
+  <Icon.CalendarToday {...args} />
 )
+
 export const campaign = (args: StorybookArgs): React.ReactElement => (
-  <IconCampaign {...args} />
+  <Icon.Campaign {...args} />
 )
+
 export const camping = (args: StorybookArgs): React.ReactElement => (
-  <IconCamping {...args} />
+  <Icon.Camping {...args} />
 )
+
 export const cancel = (args: StorybookArgs): React.ReactElement => (
-  <IconCancel {...args} />
+  <Icon.Cancel {...args} />
 )
+
 export const chat = (args: StorybookArgs): React.ReactElement => (
-  <IconChat {...args} />
+  <Icon.Chat {...args} />
 )
+
 export const check = (args: StorybookArgs): React.ReactElement => (
-  <IconCheck {...args} />
+  <Icon.Check {...args} />
 )
+
 export const checkBoxOutlineBlank = (
   args: StorybookArgs
-): React.ReactElement => <IconCheckBoxOutlineBlank {...args} />
+): React.ReactElement => <Icon.CheckBoxOutlineBlank {...args} />
 export const checkCircle = (args: StorybookArgs): React.ReactElement => (
-  <IconCheckCircle {...args} />
+  <Icon.CheckCircle {...args} />
 )
+
 export const checkCircleOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconCheckCircleOutline {...args} />
+  <Icon.CheckCircleOutline {...args} />
 )
+
 export const checkroom = (args: StorybookArgs): React.ReactElement => (
-  <IconCheckroom {...args} />
+  <Icon.Checkroom {...args} />
 )
+
 export const cleanHands = (args: StorybookArgs): React.ReactElement => (
-  <IconCleanHands {...args} />
+  <Icon.CleanHands {...args} />
 )
+
 export const clothes = (args: StorybookArgs): React.ReactElement => (
-  <IconClothes {...args} />
+  <Icon.Clothes {...args} />
 )
+
 export const close = (args: StorybookArgs): React.ReactElement => (
-  <IconClose {...args} />
+  <Icon.Close {...args} />
 )
+
 export const closedCaption = (args: StorybookArgs): React.ReactElement => (
-  <IconClosedCaption {...args} />
+  <Icon.ClosedCaption {...args} />
 )
+
 export const cloud = (args: StorybookArgs): React.ReactElement => (
-  <IconCloud {...args} />
+  <Icon.Cloud {...args} />
 )
+
 export const code = (args: StorybookArgs): React.ReactElement => (
-  <IconCode {...args} />
+  <Icon.Code {...args} />
 )
+
 export const comment = (args: StorybookArgs): React.ReactElement => (
-  <IconComment {...args} />
+  <Icon.Comment {...args} />
 )
+
 export const connectWithoutContact = (
   args: StorybookArgs
-): React.ReactElement => <IconConnectWithoutContact {...args} />
+): React.ReactElement => <Icon.ConnectWithoutContact {...args} />
 export const construction = (args: StorybookArgs): React.ReactElement => (
-  <IconConstruction {...args} />
+  <Icon.Construction {...args} />
 )
+
 export const constructionWorker = (args: StorybookArgs): React.ReactElement => (
-  <IconConstructionWorker {...args} />
+  <Icon.ConstructionWorker {...args} />
 )
+
 export const contactPage = (args: StorybookArgs): React.ReactElement => (
-  <IconContactPage {...args} />
+  <Icon.ContactPage {...args} />
 )
+
 export const contentCopy = (args: StorybookArgs): React.ReactElement => (
-  <IconContentCopy {...args} />
+  <Icon.ContentCopy {...args} />
 )
+
 export const coronavirus = (args: StorybookArgs): React.ReactElement => (
-  <IconCoronavirus {...args} />
+  <Icon.Coronavirus {...args} />
 )
+
 export const creditCard = (args: StorybookArgs): React.ReactElement => (
-  <IconCreditCard {...args} />
+  <Icon.CreditCard {...args} />
 )
 
 export const deck = (args: StorybookArgs): React.ReactElement => (
-  <IconDeck {...args} />
+  <Icon.Deck {...args} />
 )
+
 export const deleteIcon = (args: StorybookArgs): React.ReactElement => (
-  <IconDelete {...args} />
+  <Icon.Delete {...args} />
 )
+
 export const deviceThermostat = (args: StorybookArgs): React.ReactElement => (
-  <IconDeviceThermostat {...args} />
+  <Icon.DeviceThermostat {...args} />
 )
+
 export const directions = (args: StorybookArgs): React.ReactElement => (
-  <IconDirections {...args} />
+  <Icon.Directions {...args} />
 )
+
 export const directionsBike = (args: StorybookArgs): React.ReactElement => (
-  <IconDirectionsBike {...args} />
+  <Icon.DirectionsBike {...args} />
 )
+
 export const directionsBus = (args: StorybookArgs): React.ReactElement => (
-  <IconDirectionsBus {...args} />
+  <Icon.DirectionsBus {...args} />
 )
+
 export const directionsCar = (args: StorybookArgs): React.ReactElement => (
-  <IconDirectionsCar {...args} />
+  <Icon.DirectionsCar {...args} />
 )
+
 export const directionsWalk = (args: StorybookArgs): React.ReactElement => (
-  <IconDirectionsWalk {...args} />
+  <Icon.DirectionsWalk {...args} />
 )
+
 export const doNotDisturb = (args: StorybookArgs): React.ReactElement => (
-  <IconDoNotDisturb {...args} />
+  <Icon.DoNotDisturb {...args} />
 )
+
 export const doNotTouch = (args: StorybookArgs): React.ReactElement => (
-  <IconDoNotTouch {...args} />
+  <Icon.DoNotTouch {...args} />
 )
+
 export const dragHandle = (args: StorybookArgs): React.ReactElement => (
-  <IconDragHandle {...args} />
+  <Icon.DragHandle {...args} />
 )
+
 export const eco = (args: StorybookArgs): React.ReactElement => (
-  <IconEco {...args} />
+  <Icon.Eco {...args} />
 )
+
 export const electricalServices = (args: StorybookArgs): React.ReactElement => (
-  <IconElectricalServices {...args} />
+  <Icon.ElectricalServices {...args} />
 )
+
 export const emojiEvents = (args: StorybookArgs): React.ReactElement => (
-  <IconEmojiEvents {...args} />
+  <Icon.EmojiEvents {...args} />
 )
+
 export const error = (args: StorybookArgs): React.ReactElement => (
-  <IconError {...args} />
+  <Icon.Error {...args} />
 )
+
 export const errorOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconErrorOutline {...args} />
+  <Icon.ErrorOutline {...args} />
 )
+
 export const event = (args: StorybookArgs): React.ReactElement => (
-  <IconEvent {...args} />
+  <Icon.Event {...args} />
 )
+
 export const expandLess = (args: StorybookArgs): React.ReactElement => (
-  <IconExpandLess {...args} />
+  <Icon.ExpandLess {...args} />
 )
+
 export const expandMore = (args: StorybookArgs): React.ReactElement => (
-  <IconExpandMore {...args} />
+  <Icon.ExpandMore {...args} />
 )
+
 export const facebook = (args: StorybookArgs): React.ReactElement => (
-  <IconFacebook {...args} />
+  <Icon.Facebook {...args} />
 )
+
 export const fastForward = (args: StorybookArgs): React.ReactElement => (
-  <IconFastForward {...args} />
+  <Icon.FastForward {...args} />
 )
+
 export const fastRewind = (args: StorybookArgs): React.ReactElement => (
-  <IconFastRewind {...args} />
+  <Icon.FastRewind {...args} />
 )
+
 export const favorite = (args: StorybookArgs): React.ReactElement => (
-  <IconFavorite {...args} />
+  <Icon.Favorite {...args} />
 )
+
 export const favoriteBorder = (args: StorybookArgs): React.ReactElement => (
-  <IconFavoriteBorder {...args} />
+  <Icon.FavoriteBorder {...args} />
 )
+
 export const fileDownload = (args: StorybookArgs): React.ReactElement => (
-  <IconFileDownload {...args} />
+  <Icon.FileDownload {...args} />
 )
+
 export const filePresent = (args: StorybookArgs): React.ReactElement => (
-  <IconFilePresent {...args} />
+  <Icon.FilePresent {...args} />
 )
+
 export const fileUpload = (args: StorybookArgs): React.ReactElement => (
-  <IconFileUpload {...args} />
+  <Icon.FileUpload {...args} />
 )
+
 export const filterAlt = (args: StorybookArgs): React.ReactElement => (
-  <IconFilterAlt {...args} />
+  <Icon.FilterAlt {...args} />
 )
+
 export const filterList = (args: StorybookArgs): React.ReactElement => (
-  <IconFilterList {...args} />
+  <Icon.FilterList {...args} />
 )
+
 export const fingerprint = (args: StorybookArgs): React.ReactElement => (
-  <IconFingerprint {...args} />
+  <Icon.Fingerprint {...args} />
 )
+
 export const firstPage = (args: StorybookArgs): React.ReactElement => (
-  <IconFirstPage {...args} />
+  <Icon.FirstPage {...args} />
 )
+
 export const flag = (args: StorybookArgs): React.ReactElement => (
-  <IconFlag {...args} />
+  <Icon.Flag {...args} />
 )
+
 export const flickr = (args: StorybookArgs): React.ReactElement => (
-  <IconFlickr {...args} />
+  <Icon.Flickr {...args} />
 )
+
 export const flight = (args: StorybookArgs): React.ReactElement => (
-  <IconFlight {...args} />
+  <Icon.Flight {...args} />
 )
+
 export const flooding = (args: StorybookArgs): React.ReactElement => (
-  <IconFlooding {...args} />
+  <Icon.Flooding {...args} />
 )
+
 export const folder = (args: StorybookArgs): React.ReactElement => (
-  <IconFolder {...args} />
+  <Icon.Folder {...args} />
 )
+
 export const folderOpen = (args: StorybookArgs): React.ReactElement => (
-  <IconFolderOpen {...args} />
+  <Icon.FolderOpen {...args} />
 )
+
 export const formatQuote = (args: StorybookArgs): React.ReactElement => (
-  <IconFormatQuote {...args} />
+  <Icon.FormatQuote {...args} />
 )
+
 export const formatSize = (args: StorybookArgs): React.ReactElement => (
-  <IconFormatSize {...args} />
+  <Icon.FormatSize {...args} />
 )
+
 export const forum = (args: StorybookArgs): React.ReactElement => (
-  <IconForum {...args} />
+  <Icon.Forum {...args} />
 )
+
 export const github = (args: StorybookArgs): React.ReactElement => (
-  <IconGithub {...args} />
+  <Icon.Github {...args} />
 )
+
 export const gridView = (args: StorybookArgs): React.ReactElement => (
-  <IconGridView {...args} />
+  <Icon.GridView {...args} />
 )
+
 export const groupAdd = (args: StorybookArgs): React.ReactElement => (
-  <IconGroupAdd {...args} />
+  <Icon.GroupAdd {...args} />
 )
+
 export const groups = (args: StorybookArgs): React.ReactElement => (
-  <IconGroups {...args} />
+  <Icon.Groups {...args} />
 )
+
 export const hearing = (args: StorybookArgs): React.ReactElement => (
-  <IconHearing {...args} />
+  <Icon.Hearing {...args} />
 )
+
 export const help = (args: StorybookArgs): React.ReactElement => (
-  <IconHelp {...args} />
+  <Icon.Help {...args} />
 )
+
 export const helpOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconHelpOutline {...args} />
+  <Icon.HelpOutline {...args} />
 )
+
 export const highlightOff = (args: StorybookArgs): React.ReactElement => (
-  <IconHighlightOff {...args} />
+  <Icon.HighlightOff {...args} />
 )
+
 export const history = (args: StorybookArgs): React.ReactElement => (
-  <IconHistory {...args} />
+  <Icon.History {...args} />
 )
+
 export const home = (args: StorybookArgs): React.ReactElement => (
-  <IconHome {...args} />
+  <Icon.Home {...args} />
 )
+
 export const hospital = (args: StorybookArgs): React.ReactElement => (
-  <IconHospital {...args} />
+  <Icon.Hospital {...args} />
 )
+
 export const hotel = (args: StorybookArgs): React.ReactElement => (
-  <IconHotel {...args} />
+  <Icon.Hotel {...args} />
 )
+
 export const hourglassEmpty = (args: StorybookArgs): React.ReactElement => (
-  <IconHourglassEmpty {...args} />
+  <Icon.HourglassEmpty {...args} />
 )
+
 export const hurricane = (args: StorybookArgs): React.ReactElement => (
-  <IconHurricane {...args} />
+  <Icon.Hurricane {...args} />
 )
+
 export const identification = (args: StorybookArgs): React.ReactElement => (
-  <IconIdentification {...args} />
+  <Icon.Identification {...args} />
 )
+
 export const image = (args: StorybookArgs): React.ReactElement => (
-  <IconImage {...args} />
+  <Icon.Image {...args} />
 )
+
 export const info = (args: StorybookArgs): React.ReactElement => (
-  <IconInfo {...args} />
+  <Icon.Info {...args} />
 )
+
 export const infoOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconInfoOutline {...args} />
+  <Icon.InfoOutline {...args} />
 )
+
 export const insights = (args: StorybookArgs): React.ReactElement => (
-  <IconInsights {...args} />
+  <Icon.Insights {...args} />
 )
+
 export const instagram = (args: StorybookArgs): React.ReactElement => (
-  <IconInstagram {...args} />
+  <Icon.Instagram {...args} />
 )
+
 export const keyboard = (args: StorybookArgs): React.ReactElement => (
-  <IconKeyboard {...args} />
+  <Icon.Keyboard {...args} />
 )
+
 export const label = (args: StorybookArgs): React.ReactElement => (
-  <IconLabel {...args} />
+  <Icon.Label {...args} />
 )
+
 export const language = (args: StorybookArgs): React.ReactElement => (
-  <IconLanguage {...args} />
+  <Icon.Language {...args} />
 )
+
 export const lastPage = (args: StorybookArgs): React.ReactElement => (
-  <IconLastPage {...args} />
+  <Icon.LastPage {...args} />
 )
+
 export const launch = (args: StorybookArgs): React.ReactElement => (
-  <IconLaunch {...args} />
+  <Icon.Launch {...args} />
 )
+
 export const lightbulb = (args: StorybookArgs): React.ReactElement => (
-  <IconLightbulb {...args} />
+  <Icon.Lightbulb {...args} />
 )
+
 export const lightbulbOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconLightbulbOutline {...args} />
+  <Icon.LightbulbOutline {...args} />
 )
+
 export const link = (args: StorybookArgs): React.ReactElement => (
-  <IconLink {...args} />
+  <Icon.Link {...args} />
 )
+
 export const linkOff = (args: StorybookArgs): React.ReactElement => (
-  <IconLinkOff {...args} />
+  <Icon.LinkOff {...args} />
 )
+
 export const list = (args: StorybookArgs): React.ReactElement => (
-  <IconList {...args} />
+  <Icon.List {...args} />
 )
+
 export const localCafe = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalCafe {...args} />
+  <Icon.LocalCafe {...args} />
 )
+
 export const localFireDepartment = (
   args: StorybookArgs
-): React.ReactElement => <IconLocalFireDepartment {...args} />
+): React.ReactElement => <Icon.LocalFireDepartment {...args} />
 export const localGasStation = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalGasStation {...args} />
+  <Icon.LocalGasStation {...args} />
 )
+
 export const localGroceryStore = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalGroceryStore {...args} />
+  <Icon.LocalGroceryStore {...args} />
 )
+
 export const localHospital = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalHospital {...args} />
+  <Icon.LocalHospital {...args} />
 )
+
 export const localLaundryService = (
   args: StorybookArgs
-): React.ReactElement => <IconLocalLaundryService {...args} />
+): React.ReactElement => <Icon.LocalLaundryService {...args} />
 export const localLibrary = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalLibrary {...args} />
+  <Icon.LocalLibrary {...args} />
 )
+
 export const localOffer = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalOffer {...args} />
+  <Icon.LocalOffer {...args} />
 )
+
 export const localParking = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalParking {...args} />
+  <Icon.LocalParking {...args} />
 )
+
 export const localPharmacy = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalPharmacy {...args} />
+  <Icon.LocalPharmacy {...args} />
 )
+
 export const localPolice = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalPolice {...args} />
+  <Icon.LocalPolice {...args} />
 )
+
 export const localTaxi = (args: StorybookArgs): React.ReactElement => (
-  <IconLocalTaxi {...args} />
+  <Icon.LocalTaxi {...args} />
 )
+
 export const locationCity = (args: StorybookArgs): React.ReactElement => (
-  <IconLocationCity {...args} />
+  <Icon.LocationCity {...args} />
 )
+
 export const locationOn = (args: StorybookArgs): React.ReactElement => (
-  <IconLocationOn {...args} />
+  <Icon.LocationOn {...args} />
 )
+
 export const lock = (args: StorybookArgs): React.ReactElement => (
-  <IconLock {...args} />
+  <Icon.Lock {...args} />
 )
+
 export const lockOpen = (args: StorybookArgs): React.ReactElement => (
-  <IconLockOpen {...args} />
+  <Icon.LockOpen {...args} />
 )
+
 export const lockOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconLockOutline {...args} />
+  <Icon.LockOutline {...args} />
 )
+
 export const login = (args: StorybookArgs): React.ReactElement => (
-  <IconLogin {...args} />
+  <Icon.Login {...args} />
 )
+
 export const logout = (args: StorybookArgs): React.ReactElement => (
-  <IconLogout {...args} />
+  <Icon.Logout {...args} />
 )
+
 export const loop = (args: StorybookArgs): React.ReactElement => (
-  <IconLoop {...args} />
+  <Icon.Loop {...args} />
 )
+
 export const mail = (args: StorybookArgs): React.ReactElement => (
-  <IconMail {...args} />
+  <Icon.Mail {...args} />
 )
+
 export const mailOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconMailOutline {...args} />
+  <Icon.MailOutline {...args} />
 )
+
 export const map = (args: StorybookArgs): React.ReactElement => (
-  <IconMap {...args} />
+  <Icon.Map {...args} />
 )
+
 export const masks = (args: StorybookArgs): React.ReactElement => (
-  <IconMasks {...args} />
+  <Icon.Masks {...args} />
 )
+
 export const medicalServices = (args: StorybookArgs): React.ReactElement => (
-  <IconMedicalServices {...args} />
+  <Icon.MedicalServices {...args} />
 )
+
 export const menu = (args: StorybookArgs): React.ReactElement => (
-  <IconMenu {...args} />
+  <Icon.Menu {...args} />
 )
+
 export const militaryTech = (args: StorybookArgs): React.ReactElement => (
-  <IconMilitaryTech {...args} />
+  <Icon.MilitaryTech {...args} />
 )
+
 export const moreHoriz = (args: StorybookArgs): React.ReactElement => (
-  <IconMoreHoriz {...args} />
+  <Icon.MoreHoriz {...args} />
 )
+
 export const moreVert = (args: StorybookArgs): React.ReactElement => (
-  <IconMoreVert {...args} />
+  <Icon.MoreVert {...args} />
 )
+
 export const myLocation = (args: StorybookArgs): React.ReactElement => (
-  <IconMyLocation {...args} />
+  <Icon.MyLocation {...args} />
 )
+
 export const navigateBefore = (args: StorybookArgs): React.ReactElement => (
-  <IconNavigateBefore {...args} />
+  <Icon.NavigateBefore {...args} />
 )
+
 export const navigateNext = (args: StorybookArgs): React.ReactElement => (
-  <IconNavigateNext {...args} />
+  <Icon.NavigateNext {...args} />
 )
+
 export const navigateFarBefore = (args: StorybookArgs): React.ReactElement => (
-  <IconNavigateFarBefore {...args} />
+  <Icon.NavigateFarBefore {...args} />
 )
+
 export const navigateFarNext = (args: StorybookArgs): React.ReactElement => (
-  <IconNavigateFarNext {...args} />
+  <Icon.NavigateFarNext {...args} />
 )
+
 export const nearMe = (args: StorybookArgs): React.ReactElement => (
-  <IconNearMe {...args} />
+  <Icon.NearMe {...args} />
 )
+
 export const notifications = (args: StorybookArgs): React.ReactElement => (
-  <IconNotifications {...args} />
+  <Icon.Notifications {...args} />
 )
+
 export const notificationsActive = (
   args: StorybookArgs
-): React.ReactElement => <IconNotificationsActive {...args} />
+): React.ReactElement => <Icon.NotificationsActive {...args} />
 export const notificationsNone = (args: StorybookArgs): React.ReactElement => (
-  <IconNotificationsNone {...args} />
+  <Icon.NotificationsNone {...args} />
 )
+
 export const notificationsOff = (args: StorybookArgs): React.ReactElement => (
-  <IconNotificationsOff {...args} />
+  <Icon.NotificationsOff {...args} />
 )
+
 export const park = (args: StorybookArgs): React.ReactElement => (
-  <IconPark {...args} />
+  <Icon.Park {...args} />
 )
+
 export const people = (args: StorybookArgs): React.ReactElement => (
-  <IconPeople {...args} />
+  <Icon.People {...args} />
 )
+
 export const person = (args: StorybookArgs): React.ReactElement => (
-  <IconPerson {...args} />
+  <Icon.Person {...args} />
 )
+
 export const pets = (args: StorybookArgs): React.ReactElement => (
-  <IconPets {...args} />
+  <Icon.Pets {...args} />
 )
+
 export const phone = (args: StorybookArgs): React.ReactElement => (
-  <IconPhone {...args} />
+  <Icon.Phone {...args} />
 )
+
 export const photoCamera = (args: StorybookArgs): React.ReactElement => (
-  <IconPhotoCamera {...args} />
+  <Icon.PhotoCamera {...args} />
 )
+
 export const print = (args: StorybookArgs): React.ReactElement => (
-  <IconPrint {...args} />
+  <Icon.Print {...args} />
 )
+
 export const priorityHigh = (args: StorybookArgs): React.ReactElement => (
-  <IconPriorityHigh {...args} />
+  <Icon.PriorityHigh {...args} />
 )
+
 export const publicIcon = (args: StorybookArgs): React.ReactElement => (
-  <IconPublic {...args} />
+  <Icon.Public {...args} />
 )
+
 export const pushPin = (args: StorybookArgs): React.ReactElement => (
-  <IconPushPin {...args} />
+  <Icon.PushPin {...args} />
 )
+
 export const radioButtonUnchecked = (
   args: StorybookArgs
-): React.ReactElement => <IconRadioButtonUnchecked {...args} />
+): React.ReactElement => <Icon.RadioButtonUnchecked {...args} />
 export const rain = (args: StorybookArgs): React.ReactElement => (
-  <IconRain {...args} />
+  <Icon.Rain {...args} />
 )
+
 export const reduceCapacity = (args: StorybookArgs): React.ReactElement => (
-  <IconReduceCapacity {...args} />
+  <Icon.ReduceCapacity {...args} />
 )
+
 export const remove = (args: StorybookArgs): React.ReactElement => (
-  <IconRemove {...args} />
+  <Icon.Remove {...args} />
 )
+
 export const report = (args: StorybookArgs): React.ReactElement => (
-  <IconReport {...args} />
+  <Icon.Report {...args} />
 )
+
 export const restaurant = (args: StorybookArgs): React.ReactElement => (
-  <IconRestaurant {...args} />
+  <Icon.Restaurant {...args} />
 )
+
 export const rssFeed = (args: StorybookArgs): React.ReactElement => (
-  <IconRssFeed {...args} />
+  <Icon.RssFeed {...args} />
 )
+
 export const safetyDivider = (args: StorybookArgs): React.ReactElement => (
-  <IconSafetyDivider {...args} />
+  <Icon.SafetyDivider {...args} />
 )
+
 export const sanitizer = (args: StorybookArgs): React.ReactElement => (
-  <IconSanitizer {...args} />
+  <Icon.Sanitizer {...args} />
 )
+
 export const saveAlt = (args: StorybookArgs): React.ReactElement => (
-  <IconSaveAlt {...args} />
+  <Icon.SaveAlt {...args} />
 )
+
 export const severeWeather = (args: StorybookArgs): React.ReactElement => (
-  <IconSevereWeather {...args} />
+  <Icon.SevereWeather {...args} />
 )
+
 export const schedule = (args: StorybookArgs): React.ReactElement => (
-  <IconSchedule {...args} />
+  <Icon.Schedule {...args} />
 )
+
 export const school = (args: StorybookArgs): React.ReactElement => (
-  <IconSchool {...args} />
+  <Icon.School {...args} />
 )
+
 export const science = (args: StorybookArgs): React.ReactElement => (
-  <IconScience {...args} />
+  <Icon.Science {...args} />
 )
+
 export const search = (args: StorybookArgs): React.ReactElement => (
-  <IconSearch {...args} />
+  <Icon.Search {...args} />
 )
+
 export const security = (args: StorybookArgs): React.ReactElement => (
-  <IconSecurity {...args} />
+  <Icon.Security {...args} />
 )
+
 export const send = (args: StorybookArgs): React.ReactElement => (
-  <IconSend {...args} />
+  <Icon.Send {...args} />
 )
+
 export const sentimentDissatisfied = (
   args: StorybookArgs
-): React.ReactElement => <IconSentimentDissatisfied {...args} />
+): React.ReactElement => <Icon.SentimentDissatisfied {...args} />
 export const sentimentNeutral = (args: StorybookArgs): React.ReactElement => (
-  <IconSentimentNeutral {...args} />
+  <Icon.SentimentNeutral {...args} />
 )
+
 export const sentimentSatisfied = (args: StorybookArgs): React.ReactElement => (
-  <IconSentimentSatisfied {...args} />
+  <Icon.SentimentSatisfied {...args} />
 )
+
 export const sentimentSatisfiedAlt = (
   args: StorybookArgs
-): React.ReactElement => <IconSentimentSatisfiedAlt {...args} />
+): React.ReactElement => <Icon.SentimentSatisfiedAlt {...args} />
 export const sentimentVeryDissatisfied = (
   args: StorybookArgs
-): React.ReactElement => <IconSentimentVeryDissatisfied {...args} />
+): React.ReactElement => <Icon.SentimentVeryDissatisfied {...args} />
 export const settings = (args: StorybookArgs): React.ReactElement => (
-  <IconSettings {...args} />
+  <Icon.Settings {...args} />
 )
+
 export const share = (args: StorybookArgs): React.ReactElement => (
-  <IconShare {...args} />
+  <Icon.Share {...args} />
 )
+
 export const shield = (args: StorybookArgs): React.ReactElement => (
-  <IconShield {...args} />
+  <Icon.Shield {...args} />
 )
+
 export const shoppingBasket = (args: StorybookArgs): React.ReactElement => (
-  <IconShoppingBasket {...args} />
+  <Icon.ShoppingBasket {...args} />
 )
+
 export const snow = (args: StorybookArgs): React.ReactElement => (
-  <IconSnow {...args} />
+  <Icon.Snow {...args} />
 )
+
 export const soap = (args: StorybookArgs): React.ReactElement => (
-  <IconSoap {...args} />
+  <Icon.Soap {...args} />
 )
+
 export const socialDistance = (args: StorybookArgs): React.ReactElement => (
-  <IconSocialDistance {...args} />
+  <Icon.SocialDistance {...args} />
 )
+
 export const sortArrow = (args: StorybookArgs): React.ReactElement => (
-  <IconSortArrow {...args} />
+  <Icon.SortArrow {...args} />
 )
+
 export const spellcheck = (args: StorybookArgs): React.ReactElement => (
-  <IconSpellcheck {...args} />
+  <Icon.Spellcheck {...args} />
 )
+
 export const star = (args: StorybookArgs): React.ReactElement => (
-  <IconStar {...args} />
+  <Icon.Star {...args} />
 )
+
 export const starHalf = (args: StorybookArgs): React.ReactElement => (
-  <IconStarHalf {...args} />
+  <Icon.StarHalf {...args} />
 )
+
 export const starOutline = (args: StorybookArgs): React.ReactElement => (
-  <IconStarOutline {...args} />
+  <Icon.StarOutline {...args} />
 )
+
 export const store = (args: StorybookArgs): React.ReactElement => (
-  <IconStore {...args} />
+  <Icon.Store {...args} />
 )
+
 export const support = (args: StorybookArgs): React.ReactElement => (
-  <IconSupport {...args} />
+  <Icon.Support {...args} />
 )
+
 export const supportAgent = (args: StorybookArgs): React.ReactElement => (
-  <IconSupportAgent {...args} />
+  <Icon.SupportAgent {...args} />
 )
+
 export const textFields = (args: StorybookArgs): React.ReactElement => (
-  <IconTextFields {...args} />
+  <Icon.TextFields {...args} />
 )
+
 export const thumbDownAlt = (args: StorybookArgs): React.ReactElement => (
-  <IconThumbDownAlt {...args} />
+  <Icon.ThumbDownAlt {...args} />
 )
+
 export const thumbUpAlt = (args: StorybookArgs): React.ReactElement => (
-  <IconThumbUpAlt {...args} />
+  <Icon.ThumbUpAlt {...args} />
 )
+
 export const timer = (args: StorybookArgs): React.ReactElement => (
-  <IconTimer {...args} />
+  <Icon.Timer {...args} />
 )
+
 export const toggleOff = (args: StorybookArgs): React.ReactElement => (
-  <IconToggleOff {...args} />
+  <Icon.ToggleOff {...args} />
 )
+
 export const toggleOn = (args: StorybookArgs): React.ReactElement => (
-  <IconToggleOn {...args} />
+  <Icon.ToggleOn {...args} />
 )
+
 export const topic = (args: StorybookArgs): React.ReactElement => (
-  <IconTopic {...args} />
+  <Icon.Topic {...args} />
 )
+
 export const tornado = (args: StorybookArgs): React.ReactElement => (
-  <IconTornado {...args} />
+  <Icon.Tornado {...args} />
 )
+
 export const translate = (args: StorybookArgs): React.ReactElement => (
-  <IconTranslate {...args} />
+  <Icon.Translate {...args} />
 )
+
 export const trendingDown = (args: StorybookArgs): React.ReactElement => (
-  <IconTrendingDown {...args} />
+  <Icon.TrendingDown {...args} />
 )
+
 export const trendingUp = (args: StorybookArgs): React.ReactElement => (
-  <IconTrendingUp {...args} />
+  <Icon.TrendingUp {...args} />
 )
+
 export const twitter = (args: StorybookArgs): React.ReactElement => (
-  <IconTwitter {...args} />
+  <Icon.Twitter {...args} />
 )
+
 export const undo = (args: StorybookArgs): React.ReactElement => (
-  <IconUndo {...args} />
+  <Icon.Undo {...args} />
 )
+
 export const unfoldLess = (args: StorybookArgs): React.ReactElement => (
-  <IconUnfoldLess {...args} />
+  <Icon.UnfoldLess {...args} />
 )
+
 export const unfoldMore = (args: StorybookArgs): React.ReactElement => (
-  <IconUnfoldMore {...args} />
+  <Icon.UnfoldMore {...args} />
 )
+
 export const update = (args: StorybookArgs): React.ReactElement => (
-  <IconUpdate {...args} />
+  <Icon.Update {...args} />
 )
+
 export const uploadFile = (args: StorybookArgs): React.ReactElement => (
-  <IconUploadFile {...args} />
+  <Icon.UploadFile {...args} />
 )
+
 export const verified = (args: StorybookArgs): React.ReactElement => (
-  <IconVerified {...args} />
+  <Icon.Verified {...args} />
 )
+
 export const verifiedUser = (args: StorybookArgs): React.ReactElement => (
-  <IconVerifiedUser {...args} />
+  <Icon.VerifiedUser {...args} />
 )
+
 export const visibility = (args: StorybookArgs): React.ReactElement => (
-  <IconVisiblity {...args} />
+  <Icon.Visibility {...args} />
 )
+
 export const visibilityOff = (args: StorybookArgs): React.ReactElement => (
-  <IconVisibilityOff {...args} />
+  <Icon.VisibilityOff {...args} />
 )
+
 export const volumeOff = (args: StorybookArgs): React.ReactElement => (
-  <IconVolumeOff {...args} />
+  <Icon.VolumeOff {...args} />
 )
+
 export const warning = (args: StorybookArgs): React.ReactElement => (
-  <IconWarning {...args} />
+  <Icon.Warning {...args} />
 )
+
 export const wash = (args: StorybookArgs): React.ReactElement => (
-  <IconWash {...args} />
+  <Icon.Wash {...args} />
 )
+
 export const wifi = (args: StorybookArgs): React.ReactElement => (
-  <IconWifi {...args} />
+  <Icon.Wifi {...args} />
 )
+
 export const work = (args: StorybookArgs): React.ReactElement => (
-  <IconWork {...args} />
+  <Icon.Work {...args} />
 )
+
 export const youtube = (args: StorybookArgs): React.ReactElement => (
-  <IconYoutube {...args} />
+  <Icon.Youtube {...args} />
 )
+
 export const zoomIn = (args: StorybookArgs): React.ReactElement => (
-  <IconZoomIn {...args} />
+  <Icon.ZoomIn {...args} />
 )
+
 export const zoomOutMap = (args: StorybookArgs): React.ReactElement => (
-  <IconZoomOutMap {...args} />
+  <Icon.ZoomOutMap {...args} />
 )
+
 export const zoomOut = (args: StorybookArgs): React.ReactElement => (
-  <IconZoomOut {...args} />
+  <Icon.ZoomOut {...args} />
 )
