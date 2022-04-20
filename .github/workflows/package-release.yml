@@ -1,0 +1,42 @@
+name: Package release
+
+on:
+  pull_request:
+    types: 
+      - closed
+    branches: 
+      - main
+
+jobs:
+  package-release:
+    runs-on: ubuntu-latest
+    if: |
+      startsWith(github.head_ref, 'release-')
+      && github.event.pull_request.merged
+      
+    steps: 
+      - name: Checkout out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+      
+      # The yarn cache is not node_modules
+      - name: Install Dependencies
+        run: yarn --prefer-offline
+      
+      - name: Run tests
+        run: yarn test
+
+      - name: Package library
+        run: yarn pack
+
+      - name: Upload package
+        uses: actions/upload-artifact@v2
+        with:
+          path: trussworks-react-uswds-v*.*.*.tgz
+          if-no-files-found: error
+          retention-days: 5

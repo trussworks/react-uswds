@@ -7,6 +7,11 @@ updates:
     pull-request-branch-name:
       separator: '-'
     open-pull-requests-limit: 10
+    reviewers:
+      - "suzubara"
+      - "haworku"
+      - "ahobson"
+      - "brandonlenz"
     labels:
       - 'type: dependencies'
       - 'type: automerge'
@@ -46,6 +51,11 @@ updates:
     pull-request-branch-name:
       separator: '-'
     open-pull-requests-limit: 10
+    reviewers:
+      - "suzubara"
+      - "haworku"
+      - "ahobson"
+      - "brandonlenz"
     labels:
       - 'type: dependencies'
       - 'type: automerge'

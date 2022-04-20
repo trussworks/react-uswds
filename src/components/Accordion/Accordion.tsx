@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
+import { deprecationWarning } from '../../deprecation'
 
-interface AccordionItem {
+export interface AccordionItemProps {
   title: React.ReactNode | string
   content: React.ReactNode
   expanded: boolean
   id: string
   className?: string
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 interface AccordionProps {
   bordered?: boolean
   multiselectable?: boolean
-  items: AccordionItem[]
+  items: AccordionItemProps[]
   className?: string
 }
 
@@ -23,8 +25,9 @@ export const AccordionItem = ({
   content,
   expanded,
   className,
+  headingLevel,
   handleToggle,
-}: AccordionItem): React.ReactElement => {
+}: AccordionItemProps): React.ReactElement => {
   const headingClasses = classnames('usa-accordion__heading', className)
   const contentClasses = classnames(
     'usa-accordion__content',
@@ -32,24 +35,33 @@ export const AccordionItem = ({
     className
   )
 
+  if (!headingLevel) {
+    deprecationWarning(
+      'Default headingLevel h4 has been deprecated. Please specify a heading level.'
+    )
+  }
+  const Heading = headingLevel || 'h4'
+
   return (
     <>
-      <h2 className={headingClasses}>
+      <Heading className={headingClasses}>
         <button
           type="button"
           className="usa-accordion__button"
           aria-expanded={expanded}
           aria-controls={id}
           data-testid={`accordionButton_${id}`}
-          onClick={handleToggle}>
+          onClick={handleToggle}
+        >
           {title}
         </button>
-      </h2>
+      </Heading>
       <div
         id={id}
         data-testid={`accordionItem_${id}`}
         className={contentClasses}
-        hidden={!expanded}>
+        hidden={!expanded}
+      >
         {content}
       </div>
     </>
@@ -74,7 +86,7 @@ export const Accordion = ({
     className
   )
 
-  const toggleItem = (itemId: AccordionItem['id']): void => {
+  const toggleItem = (itemId: AccordionItemProps['id']): void => {
     const newOpenItems = [...openItems]
     const itemIndex = openItems.indexOf(itemId)
     const isMultiselectable = multiselectable
@@ -96,7 +108,8 @@ export const Accordion = ({
     <div
       className={classes}
       data-testid="accordion"
-      aria-multiselectable={multiselectable || undefined}>
+      aria-multiselectable={multiselectable || undefined}
+    >
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}

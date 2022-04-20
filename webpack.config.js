@@ -77,7 +77,28 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.svg$/,
+        oneOf: [
+          {
+            issuer: /\.[jt]sx?$/,
+            resourceQuery: /svgr/,
+            use: [
+              {
+                loader: '@svgr/webpack',
+                options: {
+                  icon: true,
+                  memo: true,
+                },
+              },
+            ],
+          },
+          {
+            type: 'asset',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|eot|ttf|woff|woff2)$/i,
         type: 'asset',
       },
     ],

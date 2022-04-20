@@ -64,7 +64,7 @@ export function Link<FCProps = DefaultLinkProps>(
     // 3. Therefore we know that removing those props leaves us
     //    with FCProps
     //
-    const linkProps: FCProps = (remainingProps as unknown) as FCProps
+    const linkProps: FCProps = remainingProps as unknown as FCProps
     const classes = linkClasses(variant, className)
     return React.createElement(
       asCustom,

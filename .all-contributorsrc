@@ -26,7 +26,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/10750442?v=4",
       "profile": "https://github.com/haworku",
       "contributions": [
-        "code"
+        "code",
+        "doc"
       ]
     },
     {
@@ -124,6 +125,42 @@
       "name": "Jim Benton",
       "avatar_url": "https://avatars.githubusercontent.com/u/3331?v=4",
       "profile": "http://pandasguide.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jenbutongit",
+      "name": "Jen Duong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22080510?v=4",
+      "profile": "https://github.com/jenbutongit",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kimallen",
+      "name": "Kim Allen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13249580?v=4",
+      "profile": "https://github.com/kimallen",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kylehilltruss",
+      "name": "Kyle Hill",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83614364?v=4",
+      "profile": "https://github.com/kylehilltruss",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rswerve",
+      "name": "Mazdak Atighi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8964335?v=4",
+      "profile": "https://github.com/rswerve",
       "contributions": [
         "code"
       ]

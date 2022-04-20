@@ -16,6 +16,17 @@ describe('Fieldset component', () => {
     expect(queryByText('My Fieldset')).toBeInTheDocument()
   })
 
+  it('accepts fieldset intrinsic props', () => {
+    const { queryByText } = render(
+      <Fieldset aria-live="polite">My Fieldset</Fieldset>
+    )
+
+    const myFieldset = queryByText('My Fieldset')
+
+    expect(myFieldset).toBeInTheDocument()
+    expect(myFieldset).toHaveAttribute('aria-live', 'polite')
+  })
+
   describe('renders uswds classes', () => {
     it('renders legend with class usa-legend by default', () => {
       const { queryByTestId, getByText } = render(

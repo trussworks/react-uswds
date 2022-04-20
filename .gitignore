@@ -89,6 +89,7 @@ storybook-static/
 # editor config
 
 .vscode
+.idea
 
 # happo output directory
 

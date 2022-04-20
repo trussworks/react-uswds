@@ -26,7 +26,8 @@
   "settings": {
     "react": {
       "version": "detect"
-    }
+    },
+    "import/resolver": "webpack"
   },
   "overrides": [
     {
@@ -41,10 +42,7 @@
         "warnOnUnsupportedTypeScriptVersion": true
       },
       "plugins": ["@typescript-eslint"],
-      "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint"
-      ]
+      "extends": ["plugin:@typescript-eslint/recommended", "prettier"]
     }
   ],
   "extends": [
@@ -58,6 +56,7 @@
     "plugin:security/recommended"
   ],
   "rules": {
-    "no-only-tests/no-only-tests": "error"
+    "no-only-tests/no-only-tests": "error",
+    "react/prop-types": "off"
   }
 }

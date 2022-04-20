@@ -36,6 +36,32 @@ const webpackConfig = (config) => {
     ],
   })
 
+  const fileLoaderRule = config.module.rules.find(
+    (rule) => rule.test && rule.test.test('.svg')
+  )
+  fileLoaderRule.exclude = /\.svg$/
+
+  config.module.rules.push({
+    test: /\.svg$/,
+    oneOf: [
+      {
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: /svgr/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              icon: true,
+            },
+          },
+        ],
+      },
+      {
+        type: 'asset',
+      },
+    ],
+  })
+
   return config
 }
 
@@ -44,7 +70,7 @@ module.exports = {
     builder: 'webpack5',
   },
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-essentials'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   typescript: {
     check: false,
     checkOptions: {},
