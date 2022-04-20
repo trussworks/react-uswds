@@ -61,7 +61,8 @@ export const Default = (): React.ReactElement => {
     <Form
       onSubmit={(): void => {
         console.log('submit')
-      }}>
+      }}
+    >
       <Fieldset legend="Enter a code" legendStyle="large">
         <Alert type="info" validation heading="Code Requirements">
           <ValidationChecklist id="validate-code">

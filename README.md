@@ -1,7 +1,9 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -45,6 +47,7 @@ or
 ```
 npm i @trussworks/react-uswds
 ```
+
 ## Usage
 
 It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using. A version mismatch may result in unexpected markup & CSS combinations.
@@ -68,6 +71,7 @@ If you aren't already using USWDS as a dependency, you also need to import USWDS
 Having issues? See [FAQs](./docs/faqs.md).
 
 ### Pre-Release
+
 See [prelease.md](docs/prerelease.md)
 
 ## Background
@@ -82,7 +86,7 @@ In the process, we expect to gain learnings around how to best abstract out UI c
 
 ## Active Maintainers
 
-TBD
+- [Roger Steve Ruiz](https://github.com/rogeruiz)
 
 We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
