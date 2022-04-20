@@ -6,7 +6,6 @@ require('dotenv').config()
 module.exports = {
   apiKey: process.env.HAPPO_API_KEY,
   apiSecret: process.env.HAPPO_API_SECRET,
-  compareThreshold: 0.375,
   targets: {
     chrome: new RemoteBrowserTarget('chrome', {
       viewport: '1024x768',
@@ -14,11 +13,7 @@ module.exports = {
     firefox: new RemoteBrowserTarget('firefox', {
       viewport: '1024x768',
     }),
-    // happo has too many false postive diffs with edge to use it
-    // edge: new RemoteBrowserTarget('edge', {
-    //   viewport: '1024x768',
-    // }),
-    'internet explorer': new RemoteBrowserTarget('internet explorer', {
+    edge: new RemoteBrowserTarget('edge', {
       viewport: '1024x768',
     }),
     safari: new RemoteBrowserTarget('safari', {
