@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion } from './Accordion'
+import { Accordion, AccordionItemProps } from './Accordion'
 
 export default {
   title: 'Components/Accordion',
@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/accordion/
   },
 }
 
-const testItems = [
+const testItems: AccordionItemProps[] = [
   {
     title: 'First Amendment',
     content: (
@@ -30,6 +30,7 @@ const testItems = [
     ),
     expanded: false,
     id: '123',
+    headingLevel: 'h4',
   },
   {
     title: 'Second Amendment',
@@ -48,6 +49,7 @@ const testItems = [
     ),
     expanded: false,
     id: 'abc',
+    headingLevel: 'h4',
   },
   {
     title: 'Third Amendment',
@@ -60,6 +62,7 @@ const testItems = [
     ),
     expanded: false,
     id: 'def',
+    headingLevel: 'h4',
   },
   {
     title: 'Fourth Amendment',
@@ -74,6 +77,7 @@ const testItems = [
     ),
     expanded: false,
     id: '456',
+    headingLevel: 'h4',
   },
   {
     title: 'Fifth Amendment',
@@ -92,6 +96,7 @@ const testItems = [
     ),
     expanded: false,
     id: '789',
+    headingLevel: 'h4',
   },
 ]
 
