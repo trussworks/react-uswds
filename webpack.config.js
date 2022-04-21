@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -32,6 +33,7 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[name].[id].css',
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
@@ -42,18 +44,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        include: path.resolve(__dirname, 'src'),
-        use: {
-          loader: 'awesome-typescript-loader',
-          options: {
-            useBabel: true,
-            babelCore: '@babel/core',
-          },
-        },
-      },
-      {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader',
