@@ -247,7 +247,7 @@ describe('Modal component', () => {
       name: 'Close this window',
     })
     expect(closeButton).toBeInTheDocument()
-    userEvent.click(closeButton)
+    await userEvent.click(closeButton)
     expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
@@ -266,7 +266,7 @@ describe('Modal component', () => {
 
     expect(modalRef.current?.modalIsOpen).toBe(true)
     const overlay = screen.getByTestId('modalOverlay')
-    userEvent.click(overlay)
+    await userEvent.click(overlay)
     expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
@@ -493,27 +493,27 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', { name: 'Close this window' })
         ).toHaveFocus()
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
@@ -526,21 +526,21 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', {
             name: 'Continue without saving',
           })
         ).toHaveFocus()
 
-        userEvent.click(
+        await userEvent.click(
           screen.getByRole('button', { name: 'Close this window' })
         )
 

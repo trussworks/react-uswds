@@ -70,7 +70,7 @@ module.exports = {
     builder: 'webpack5',
   },
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-essentials'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   typescript: {
     check: false,
     checkOptions: {},
