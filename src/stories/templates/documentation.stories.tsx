@@ -163,31 +163,36 @@ export const DocumentationPage = (): React.ReactElement => {
               <a
                 key="facebook"
                 className="usa-social-link usa-social-link--facebook"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>Facebook</span>
               </a>,
               <a
                 key="twitter"
                 className="usa-social-link usa-social-link--twitter"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>Twitter</span>
               </a>,
               <a
                 key="youtube"
                 className="usa-social-link usa-social-link--youtube"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>YouTube</span>
               </a>,
               <a
                 key="instagram"
                 className="usa-social-link usa-social-link--instagram"
-                href="#">
+                href="#"
+              >
                 <span>Instagram</span>
               </a>,
               <a
                 key="rss"
                 className="usa-social-link usa-social-link--rss"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>RSS</span>
               </a>,
             ]}
@@ -234,7 +239,8 @@ export const DocumentationPage = (): React.ReactElement => {
             aria-label="Primary navigation"
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
-            mobileExpanded={mobileNavOpen}>
+            mobileExpanded={mobileNavOpen}
+          >
             <Search size="small" onSubmit={handleSearch} />
           </PrimaryNav>
         </div>
@@ -250,7 +256,8 @@ export const DocumentationPage = (): React.ReactElement => {
             </Grid>
             <main
               className="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs"
-              id="main-content">
+              id="main-content"
+            >
               <h1>Page heading (h1)</h1>
 
               <p className="usa-intro">
@@ -291,7 +298,7 @@ export const DocumentationPage = (): React.ReactElement => {
               </p>
 
               <p>
-                Read the full documentatino on our side navigation on the
+                Read the full documentation on our side navigation on the
                 component page.
               </p>
             </main>

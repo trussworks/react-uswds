@@ -65,8 +65,13 @@ export { NavDropDownButton } from './components/header/NavDropDownButton/NavDrop
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
+// IconList
+export { IconList } from './components/IconList/IconList'
+export { IconListItem } from './components/IconList/IconListItem/IconListItem'
+export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
+
 // Icons
-export * from './components/Icon/Icons'
+export { Icon } from './components/Icon/Icons'
 
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'

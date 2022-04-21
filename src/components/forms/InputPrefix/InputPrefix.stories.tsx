@@ -1,6 +1,6 @@
 import React from 'react'
 import { InputPrefix } from './InputPrefix'
-import { IconCreditCard } from '../../Icon/Icons'
+import { Icon } from '../../Icon/Icons'
 import { TextInput } from '../TextInput/TextInput'
 import { FormGroup } from '../FormGroup/FormGroup'
 
@@ -42,7 +42,7 @@ export const InputWithIconInputPrefix = (): React.ReactElement => (
   <FormGroup>
     <div className="usa-input-group">
       <InputPrefix>
-        <IconCreditCard />
+        <Icon.CreditCard />
       </InputPrefix>
       <TextInput id="card" name="card" type="text" />
     </div>
