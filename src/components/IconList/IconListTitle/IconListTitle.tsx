@@ -8,7 +8,7 @@ interface BaseIconListTitleProps {
 }
 
 interface HeadingIconListTitleProps extends BaseIconListTitleProps {
-  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  type: HeadingLevel
 }
 
 interface ParagraphIconListTitleProps extends BaseIconListTitleProps {
