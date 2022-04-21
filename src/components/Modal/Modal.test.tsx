@@ -288,7 +288,7 @@ describe('Modal component', () => {
     const testModalId = 'testModal'
 
     renderWithModalRoot(
-      <Modal id={testModalId} isInitiallyOpen={}>
+      <Modal id={testModalId} isInitiallyOpen={true} ref={modalRef}>
         Test modal
       </Modal>
     )

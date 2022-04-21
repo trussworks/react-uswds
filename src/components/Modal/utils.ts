@@ -5,7 +5,7 @@ export type ModalHook = {
   toggleModal: (e?: React.MouseEvent, open?: boolean) => boolean
 }
 
-export const useModal = (isInitiallyOpen: boolean | undefined): ModalHook => {
+export const useModal = (isInitiallyOpen?: boolean): ModalHook => {
   const [isOpen, setIsOpen] = useState(isInitiallyOpen || false)
 
   const allowToggle = (e: React.MouseEvent): boolean => {
