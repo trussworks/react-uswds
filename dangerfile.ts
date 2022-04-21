@@ -1,6 +1,6 @@
 import * as child from 'child_process'
 
-import { danger, fail, warn } from 'danger'
+import { danger, warn } from 'danger'
 
 // Load all modified and new files
 const allFiles = danger.git.modified_files.concat(danger.git.created_files)
@@ -126,37 +126,6 @@ const checkDependencyChanges: () => void = () => {
   }
 }
 
-// const checkYarnAudit: () => void = () => {
-const checkContributorsJSON: () => void = () => {
-  const packageChanged = allFiles.includes('package.json')
-  if (packageChanged) {
-    danger.git
-      .structuredDiffForFile('package.json')
-      .then((sdiff) => {
-        return sdiff.chunks.every((chunk) => {
-          return chunk.changes
-            .filter((change) => {
-              return change.type === 'add'
-            })
-            .every((change) => {
-              return change.content.match(/"contributors":/)
-            })
-        })
-      })
-      .then((onlyContributorsChanges) => {
-        // If the only thing that changed is the version, it is ok if
-        // yarn.lock didn't change
-        if (!onlyContributorsChanges) {
-          const message =
-            'Do not make changes to package.json around contributors.'
-          const idea =
-            'This project only uses .all-contributorsrc for tracking contributors.'
-          fail(`${message} - <i>${idea}</i>`)
-        }
-      })
-  }
-}
-
 // skip these checks if PR is by any bot (e.g. dependabot), if we
 // don't have a github object let it run also since we are local
 if (!danger.github || (danger.github && danger.github.pr.user.type !== 'Bot')) {
@@ -165,6 +134,4 @@ if (!danger.github || (danger.github && danger.github.pr.user.type !== 'Bot')) {
 
   checkCodeChanges()
   checkDependencyChanges()
-
-  checkContributorsJSON()
 }
