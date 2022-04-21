@@ -17,4 +17,18 @@ describe('Label component', () => {
     )
     expect(queryByText('My Text Input')).toBeInTheDocument()
   })
+
+  it('renders with hint', () => {
+    const { queryByText } = render(
+      <Label htmlFor="testInput" hint="a hint...">
+        My Text Input
+      </Label>
+    )
+
+    expect(queryByText('My Text Input')).toBeInTheDocument()
+
+    const hint = queryByText('a hint...')
+    expect(hint).toBeInTheDocument()
+    expect(hint).toHaveClass('usa-hint')
+  })
 })

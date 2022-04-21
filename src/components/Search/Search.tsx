@@ -1,7 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-import { deprecationWarning } from '../../deprecation'
-
 import { Button } from '../Button/Button'
 import { Form, OptionalFormProps } from '../forms/Form/Form'
 import { Label } from '../forms/Label/Label'
@@ -14,14 +12,6 @@ interface SearchLocalization {
 interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
-  /**
-   * @deprecated since 1.6.0, use size
-   */
-  big?: boolean
-  /**
-   * @deprecated since 1.6.0, use size
-   */
-  small?: boolean
   className?: string
   inputName?: string
   inputId?: string
@@ -33,8 +23,6 @@ interface SearchInputProps {
 export const Search = ({
   onSubmit,
   size,
-  big,
-  small,
   className,
   placeholder,
   inputName = 'search',
@@ -43,17 +31,10 @@ export const Search = ({
   i18n,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
-  if (big) {
-    deprecationWarning('Search property big is deprecated.  Use size')
-  }
-  if (small) {
-    deprecationWarning('Search property small is deprecated.  Use size')
-  }
-
   const buttonText = i18n?.buttonText || 'Search'
 
-  const isBig = size ? size === 'big' : big
-  const isSmall = size ? size === 'small' : small
+  const isBig = size === 'big'
+  const isSmall = size === 'small'
   const classes = classnames(
     'usa-search',
     {
@@ -69,7 +50,8 @@ export const Search = ({
       className={classes}
       role="search"
       search={true}
-      {...formProps}>
+      {...formProps}
+    >
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>

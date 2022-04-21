@@ -1,8 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-
-jest.mock('../../../deprecation')
-import { deprecationWarning } from '../../../deprecation'
 import { Footer } from './Footer'
 
 const nav = (
@@ -68,31 +65,6 @@ describe('Footer component', () => {
         />
       )
       expect(container.querySelector('footer')).toHaveClass(uswdsClass)
-      expect(deprecationWarning).toHaveBeenCalledTimes(0)
     })
-
-    it.each([
-      ['big', 'slim', 'usa-footer--big'],
-      ['medium', 'big', 'usa-footer--medium'],
-      ['slim', 'medium', 'usa-footer--slim'],
-    ])(
-      'prefers size to deprecated %s',
-      (sizeString, deprecatedKey, uswdsClass) => {
-        const size = sizeString as 'big' | 'medium' | 'slim'
-        const deprecatedProps: { [key: string]: boolean } = {}
-        deprecatedProps[`${deprecatedKey}`] = true
-        const { container } = render(
-          <Footer
-            primary={nav}
-            secondary={address}
-            returnToTop={returnToTop}
-            size={size}
-            {...deprecatedProps}
-          />
-        )
-        expect(container.querySelector('footer')).toHaveClass(uswdsClass)
-        expect(deprecationWarning).toHaveBeenCalledTimes(1)
-      }
-    )
   })
 })
