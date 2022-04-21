@@ -15,8 +15,7 @@ export const useModal = (isInitiallyOpen: boolean | undefined): ModalHook => {
       if (clickedElement.closest('.usa-modal')) {
         // Element is inside a modal
 
-        // Element is a close button - proceed
-        // Don't allow opening a modal from within a modal
+        // Only allow toggle if element is a close button, don't allow opening a modal from with a modal
         return (
           clickedElement.hasAttribute('[data-close-modal]') ||
           !!clickedElement.closest('[data-close-modal]')
