@@ -142,7 +142,7 @@ export const NotFoundPage = (): React.ReactElement => {
     <>
       <Grid row gap>
         <Logo
-          medium
+          size="medium"
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
           heading={
             <p className="usa-footer__logo-heading">{'<Name of Agency>'}</p>
@@ -192,7 +192,7 @@ export const NotFoundPage = (): React.ReactElement => {
             {'<Agency Contact Center>'}
           </h3>
           <Address
-            medium
+            size="medium"
             items={[
               <a key="telephone" href="javascript:void(0);">
                 {'<(800) CALL-GOVT>'}
