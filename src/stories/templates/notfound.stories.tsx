@@ -1,29 +1,40 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
 import logoImg from 'uswds/src/img/logo-img.png'
+import circleSvg from 'uswds/src/img/circle-gray-20.svg'
 
-import { GovBanner, GridContainer, Grid } from '../../index'
-
-/** HEADER */
-import { Header } from '../../components/header/Header/Header'
-import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search'
-import { Menu } from '../../components/header/Menu/Menu'
-import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
-import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
-import { PrimaryNav } from '../../components/header/PrimaryNav/PrimaryNav'
-
-/** FOOTER */
-import { Address } from '../../components/Footer/Address/Address'
-import { Footer } from '../../components/Footer/Footer/Footer'
-import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
-import { Logo } from '../../components/Footer/Logo/Logo'
-import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
-
-import { SideNav } from '../../components/SideNav/SideNav'
+import {
+  GovBanner,
+  GridContainer,
+  Grid,
+  ButtonGroup,
+  Link,
+  Button,
+  Identifier,
+  IdentifierMasthead,
+  IdentifierLogos,
+  IdentifierLogo,
+  IdentifierIdentity,
+  IdentifierLinks,
+  IdentifierLinkItem,
+  IdentifierLink,
+  IdentifierGov,
+  Header,
+  Title,
+  Search,
+  Menu,
+  NavMenuButton,
+  NavDropDownButton,
+  PrimaryNav,
+  Address,
+  Footer,
+  FooterNav,
+  Logo,
+  SocialLinks,
+} from '../../index'
 
 export default {
-  title: 'Page Templates/Documentation Page',
+  title: 'Page Templates/Not Found Page',
   parameters: {
     docs: {
       description: {
@@ -35,7 +46,7 @@ Page templates
   },
 }
 
-export const DocumentationPage = (): React.ReactElement => {
+export const NotFoundPage = (): React.ReactElement => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 
@@ -53,15 +64,25 @@ export const DocumentationPage = (): React.ReactElement => {
   }
 
   const handleSearch = (): void => {
-    /* */
+    return
   }
+
+  const identifierLinksText = [
+    'About <Parent shortname>',
+    'Accessibility support',
+    'FOIA requests',
+    'No FEAR Act data',
+    'Office of the Inspector General',
+    'Performance reports',
+    'Privacy policy',
+  ]
 
   const primaryNavItems = [
     <React.Fragment key="primaryNav_0">
       <NavDropDownButton
         menuId="extended-nav-section-one"
         isOpen={navDropdownOpen[0]}
-        label="Current section"
+        label={'<Current section>'}
         onToggle={(): void => {
           handleToggleNavDropdown(0)
         }}
@@ -69,7 +90,9 @@ export const DocumentationPage = (): React.ReactElement => {
       />
       <Menu
         id="extended-nav-section-one"
-        items={new Array(3).fill(<a href="#">Navigation link</a>)}
+        items={new Array(8).fill(
+          <a href="javascript:void(0);">{'<Navigation link>'}</a>
+        )}
         isOpen={navDropdownOpen[0]}
       />
     </React.Fragment>,
@@ -77,57 +100,23 @@ export const DocumentationPage = (): React.ReactElement => {
       <NavDropDownButton
         menuId="extended-nav-section-two"
         isOpen={navDropdownOpen[1]}
-        label="Section"
+        label={'<Section>'}
         onToggle={(): void => {
           handleToggleNavDropdown(1)
         }}
       />
       <Menu
         id="extended-nav-section-two"
-        items={new Array(3).fill(<a href="#">Navigation link</a>)}
+        items={new Array(3).fill(
+          <a href="javascript:void(0);">
+            {'< A very long navigation link that goes on two lines>'}
+          </a>
+        )}
         isOpen={navDropdownOpen[1]}
       />
     </React.Fragment>,
     <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
-      <span>Simple link</span>
-    </a>,
-  ]
-
-  const sideNavItems = [
-    <a key="sidenav_0" href="">
-      Parent link
-    </a>,
-    <React.Fragment key="sidenav_1">
-      <a href="" className="usa-current">
-        Current page
-      </a>
-      <SideNav
-        isSubnav
-        items={[
-          ...Array(1).fill(<a href="">Child link</a>),
-          <React.Fragment key="sidenav_1_1">
-            <a href="" className="usa-current">
-              Child link
-            </a>
-            <SideNav
-              isSubnav
-              items={[
-                ...Array(2).fill(<a href="">Grandchild link</a>),
-                <a href="" key="sidenav_1_2" className="usa-current">
-                  Grandchild link
-                </a>,
-                <a href="" key="sidenav_1_3">
-                  Grandchild link
-                </a>,
-              ]}
-            />
-          </React.Fragment>,
-          ...Array(3).fill(<a href="">Child link</a>),
-        ]}
-      />
-    </React.Fragment>,
-    <a key="sidenav_2" href="">
-      Parent link
+      <span>{'<Simple link>'}</span>
     </a>,
   ]
 
@@ -143,7 +132,7 @@ export const DocumentationPage = (): React.ReactElement => {
       size="medium"
       links={Array(5).fill(
         <a href="javascript:void(0)" className="usa-footer__primary-link">
-          Primary link
+          {'<Primary link>'}
         </a>
       )}
     />
@@ -155,7 +144,9 @@ export const DocumentationPage = (): React.ReactElement => {
         <Logo
           size="medium"
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
-          heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
+          heading={
+            <p className="usa-footer__logo-heading">{'<Name of Agency>'}</p>
+          }
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
           <SocialLinks
@@ -184,7 +175,7 @@ export const DocumentationPage = (): React.ReactElement => {
               <a
                 key="instagram"
                 className="usa-social-link usa-social-link--instagram"
-                href="#"
+                href="javascript:void(0);"
               >
                 <span>Instagram</span>
               </a>,
@@ -197,15 +188,17 @@ export const DocumentationPage = (): React.ReactElement => {
               </a>,
             ]}
           />
-          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
+          <h3 className="usa-footer__contact-heading">
+            {'<Agency Contact Center>'}
+          </h3>
           <Address
-            medium
+            size="medium"
             items={[
-              <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
+              <a key="telephone" href="javascript:void(0);">
+                {'<(800) CALL-GOVT>'}
               </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
+              <a key="email" href="javascript:void(0);">
+                {'<info@agency.gov>'}
               </a>,
             ]}
           />
@@ -225,8 +218,8 @@ export const DocumentationPage = (): React.ReactElement => {
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title id="basic-logo">
-              <a href="/" title="Home" aria-label="Home">
-                Project title
+              <a href="javascript:void(0);" title="Home" aria-label="Home">
+                {'<Project title>'}
               </a>
             </Title>
             <NavMenuButton
@@ -249,57 +242,55 @@ export const DocumentationPage = (): React.ReactElement => {
       <div className="usa-section">
         <GridContainer>
           <Grid row gap>
-            <Grid className="usa-layout-docs__sidenav" desktop={{ col: 3 }}>
-              <nav aria-label="Secondary navigation">
-                <SideNav items={sideNavItems} />
-              </nav>
-            </Grid>
             <main
               className="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs"
               id="main-content"
             >
-              <h1>Page heading (h1)</h1>
+              <h1>Page not found</h1>
 
               <p className="usa-intro">
-                The page heading communicates the main focus of the page. Make
-                your page heading descriptive and keep it succinct.
-              </p>
-              <h2 id="section-heading-h2">Section heading (h2)</h2>
-
-              <p>
-                These headings introduce, respectively, sections and subsections
-                within your body copy. As you create these headings, follow the
-                same guidelines that you use when writing section headings: Be
-                succinct, descriptive, and precise.
-              </p>
-
-              <h3 id="section-heading-h3">Subsection heading (h3)</h3>
-
-              <p>
-                The particulars of your body copy will be determined by the
-                topic of your page. Regardless of topic, it’s a good practice to
-                follow the inverted pyramid structure when writing copy: Begin
-                with the information that’s most important to your users and
-                then present information of less importance.
+                We’re sorry, we can’t find the page you&apos;re looking for. It
+                might have been removed, changed its name, or is otherwise
+                unavailable.
               </p>
 
               <p>
-                Keep each section and subsection focused - a good approach is to
-                include one theme (topic) per section.
-              </p>
-
-              <h4 id="section-heading-h4">Subsection heading (h4)</h4>
-
-              <p>
-                Use the side navigation menu to help your users quickly skip to
-                different sections of your page. The menu is best suited to
-                displaying a hierarchy with one to three levels and, as we
-                mentioned, to display the sub-navigation of a given page.
+                If you typed the URL directly, check your spelling and
+                capitalization. Our URLs look like this:
+                <strong>{' <agency.gov/example-one>'}</strong>.
               </p>
 
               <p>
-                Read the full documentation on our side navigation on the
-                component page.
+                Visit our homepage for helpful tools and resources, or contact
+                us and we’ll point you in the right direction.
+              </p>
+
+              <div className="margin-y-5">
+                <ButtonGroup>
+                  <Button type="button">Visit homepage</Button>
+                  <Button type="button" outline>
+                    Contact Us
+                  </Button>
+                </ButtonGroup>
+              </div>
+
+              <p>For immediate assistance:</p>
+
+              <ul>
+                <li>
+                  <Link href="javascript:void()">
+                    Start a live chat with us
+                  </Link>
+                </li>
+
+                <li>
+                  Call
+                  <Link href="javascript:void()"> (555) 555-GOVT</Link>
+                </li>
+              </ul>
+
+              <p className="text-base">
+                <strong>Error code:</strong> 404
               </p>
             </main>
           </Grid>
@@ -311,6 +302,40 @@ export const DocumentationPage = (): React.ReactElement => {
         primary={footerPrimary}
         secondary={footerSecondary}
       />
+
+      <Identifier>
+        <IdentifierMasthead aria-label="Agency identifier">
+          <IdentifierLogos>
+            <IdentifierLogo href="javascript:void(0);">
+              <img
+                className="usa-identifier__logo-img"
+                src={circleSvg}
+                alt="<Parent agency> logo"
+              />
+            </IdentifierLogo>
+          </IdentifierLogos>
+          <IdentifierIdentity domain={'<domain.gov>'}>
+            An official website of the{' '}
+            <Link href="javascript:void(0);">{`<Parent agency>`}</Link>
+          </IdentifierIdentity>
+        </IdentifierMasthead>
+        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+          {identifierLinksText.map((text, idx) => (
+            <IdentifierLinkItem key={idx}>
+              <IdentifierLink href="javascript:void(0);">{text}</IdentifierLink>
+            </IdentifierLinkItem>
+          ))}
+        </IdentifierLinks>
+        <IdentifierGov aria-label="U.S. government information and services">
+          <div className="usa-identifier__usagov-description">
+            Looking for U.S. government information and services?
+          </div>
+          &nbsp;
+          <Link href="javascript:void(0);" className="usa-link">
+            Visit USA.gov
+          </Link>
+        </IdentifierGov>
+      </Identifier>
     </>
   )
 }

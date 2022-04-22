@@ -64,7 +64,12 @@ export const Default = (): React.ReactElement => {
       }}
     >
       <Fieldset legend="Enter a code" legendStyle="large">
-        <Alert type="info" validation heading="Code Requirements">
+        <Alert
+          type="info"
+          validation
+          heading="Code Requirements"
+          headingLevel="h4"
+        >
           <ValidationChecklist id="validate-code">
             <ValidationItem id="uppercase" isValid={validations.uppercase}>
               Use at least one uppercase character

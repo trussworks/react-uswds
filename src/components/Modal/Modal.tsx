@@ -20,6 +20,7 @@ interface ModalComponentProps {
   forceAction?: boolean
   modalRoot?: string
   renderToPortal?: boolean
+  isInitiallyOpen?: boolean
 }
 
 export type ModalProps = ModalComponentProps & JSX.IntrinsicElements['div']
@@ -47,11 +48,12 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     forceAction = false,
     modalRoot = '.usa-modal-wrapper',
     renderToPortal = true,
+    isInitiallyOpen,
     ...divProps
   },
   ref
 ): React.ReactElement => {
-  const { isOpen, toggleModal } = useModal()
+  const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
   const initialPaddingRef = useRef<string>()
   const tempPaddingRef = useRef<string>()

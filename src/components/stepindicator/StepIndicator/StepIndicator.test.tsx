@@ -2,8 +2,6 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
-jest.mock('../../../deprecation')
-import { deprecationWarning } from '../../../deprecation'
 
 const step1 = 'Step 1'
 const step2 = 'Step 2'
@@ -117,40 +115,36 @@ describe('StepIndicator component', () => {
     expect(getByRole('list')).toHaveClass('usa-step-indicator__segments')
   })
 
-  it('renders properly with a passed in heading level', () => {
-    const { getByRole, queryByTestId } = render(
-      <StepIndicator headingLevel="h2">
-        <StepIndicatorStep label={step1} status="complete" />
-        <StepIndicatorStep label={step2} status="current" />
-        <StepIndicatorStep label={step3} status="incomplete" />
-      </StepIndicator>
+  describe('with custom heading levels', () => {
+    const scenarios: [HeadingLevel, number][] = [
+      ['h1', 1],
+      ['h2', 2],
+      ['h3', 3],
+      ['h4', 4],
+      ['h5', 5],
+      ['h6', 6],
+    ]
+    it.each(scenarios)(
+      'can render with headingLevel %s',
+      (headingLevel, expectedLevel) => {
+        const { getByRole } = render(
+          <StepIndicator headingLevel={headingLevel}>
+            <StepIndicatorStep label={step1} status="complete" />
+            <StepIndicatorStep label={step2} status="current" />
+            <StepIndicatorStep label={step3} status="incomplete" />
+          </StepIndicator>
+        )
+        expect(
+          getByRole('heading', { level: expectedLevel })
+        ).toBeInTheDocument()
+      }
     )
-
-    const stepIndicator = queryByTestId('step-indicator')
-
-    expect(stepIndicator).toBeInTheDocument()
-    expect(getByRole('heading', { level: 2 })).toBeInTheDocument()
-  })
-
-  it('renders properly with a default heading level and warns deprecation', () => {
-    const { getByRole, queryByTestId } = render(
-      <StepIndicator>
-        <StepIndicatorStep label={step1} status="complete" />
-        <StepIndicatorStep label={step2} status="current" />
-        <StepIndicatorStep label={step3} status="incomplete" />
-      </StepIndicator>
-    )
-
-    const stepIndicator = queryByTestId('step-indicator')
-
-    expect(stepIndicator).toBeInTheDocument()
-    expect(getByRole('heading', { level: 4 })).toBeInTheDocument()
-    expect(deprecationWarning).toHaveBeenCalledTimes(1)
   })
 
   it('allows props to be passed through to the heading element', () => {
     const { queryByRole, queryByTestId } = render(
       <StepIndicator
+        headingLevel="h4"
         headingProps={{ id: 'my-id', className: 'my-custom-className' }}
       >
         <StepIndicatorStep label={step1} status="complete" />

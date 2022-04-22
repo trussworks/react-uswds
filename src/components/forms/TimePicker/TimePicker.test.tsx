@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 
 import { TimePicker } from './TimePicker'
 import userEvent from '@testing-library/user-event'
@@ -22,6 +22,47 @@ describe('TimePicker Component', () => {
 
     expect(timePickerComboBox).toBeInTheDocument()
     expect(timePickerComboBox).toHaveClass('usa-combo-box usa-time-picker')
+  })
+
+  it('accepts minTime, maxTime, and step non-defaults', () => {
+    const { getByTestId } = render(
+      <TimePicker {...testProps} minTime="12:00" maxTime="18:00" step={60} />
+    )
+
+    const comboBoxDropdownList = getByTestId('combo-box-option-list')
+    expect(comboBoxDropdownList).not.toBeVisible()
+    expect(
+      within(comboBoxDropdownList).getByText('12:00pm')
+    ).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('1:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('2:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('3:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('4:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('5:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('6:00pm')).toBeInTheDocument()
+    expect(comboBoxDropdownList.children.length).toEqual(7)
+  })
+
+  it('renders a label', () => {
+    const { queryByText } = render(
+      <TimePicker {...testProps} label="test label" />
+    )
+
+    const label = queryByText('test label')
+
+    expect(label).toBeInTheDocument()
+    expect(label).toHaveAttribute('id', `${testProps.name}-label`)
+  })
+
+  it('renders a hint', () => {
+    const { queryByText } = render(
+      <TimePicker {...testProps} hint="test hint" />
+    )
+
+    const hint = queryByText('test hint')
+
+    expect(hint).toBeInTheDocument()
+    expect(hint).toHaveAttribute('id', `${testProps.name}-hint`)
   })
 
   it('allows the user to select a time', async () => {
