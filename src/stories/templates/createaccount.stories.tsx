@@ -114,7 +114,7 @@ const footerSecondary = (
         />
         <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
         <Address
-          medium
+          size="medium"
           items={[
             <a key="telephone" href="tel:1-800-555-5555">
               (800) CALL-GOVT
