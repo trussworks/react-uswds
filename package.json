@@ -51,7 +51,7 @@
   "peerDependencies": {
     "react": "^16.x || ^17.x",
     "react-dom": "^16.x || ^17.x",
-    "uswds": "2.11.2"
+    "uswds": "2.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -121,7 +121,7 @@
     "stylelint-scss": "^3.17.1",
     "ts-jest": "^26.1.2",
     "typescript": "^4.2.4",
-    "uswds": "2.11.2",
+    "uswds": "2.12.0",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.0.0"
   },
