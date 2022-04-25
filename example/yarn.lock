@@ -2683,10 +2683,10 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-1.3.2.tgz#93e25bf9ee75fe0fd80b594bc4feb0e862111b5a"
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
-"@types/node@*", "@types/node@^17.0.6":
-  version "17.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.6.tgz#cc1589c9ee853b389e67e8fb4384e0f250a139b9"
-  integrity sha512-+XBAjfZmmivILUzO0HwBJoYkAyyySSLg5KCGBDFLomJo0sV6szvVLAf4ANZZ0pfWzgEds5KmGLG9D5hfEqOhaA==
+"@types/node@*", "@types/node@^17.0.27":
+  version "17.0.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.27.tgz#f4df3981ae8268c066e8f49995639f855469081e"
+  integrity sha512-4/Ke7bbWOasuT3kceBZFGakP1dYN2XFd8v2l9bqF2LNWrmeU07JLpp56aEeG6+Q3olqO5TvXpW0yaiYnZJ5CXg==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -4448,9 +4448,9 @@ doctrine@^3.0.0:
     esutils "^2.0.2"
 
 dom-accessibility-api@^0.5.6:
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.8.tgz#414813012e065b5dfa8998b990460c0af12a5421"
-  integrity sha512-rAfghuBPeJldxqsmZQtBbna4TqMgFe4xhYs24vPULNslbmXUdcga+CXiKWzZxyWw0FCkGKPgmizIysIvsAEN8w==
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.13.tgz#102ee5f25eacce09bdf1cfa5a298f86da473be4b"
+  integrity sha512-R305kwb5CcMDIpSHUnLyIAp7SrSPBx6F0VfQFB3M75xVMHhXJJIdePYgbPPh1o57vCHNu5QztokWUPsLjWzFqw==
 
 dom-converter@^0.2.0:
   version "0.2.0"
