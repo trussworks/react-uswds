@@ -8,21 +8,21 @@ All notable changes to this project will be documented in this file. See [standa
 ### ⚠ BREAKING CHANGES
 
 * Previous deprecated features and props have been removed. Please see the following guidance for affected components:
-- Accordion: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-- Alert: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-- Button: 
-  - `accent` has been removed. Use `accentStyle` instead.
-  - `big`, `small`, and `size="small"` have been removed. Use `size="big"` or do not define the `size` prop for default sizing.
-- CollectionHeading: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-- Footer/Address: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
-- Footer/Footer: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
-- Footer/FooterNav: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
-- Footer/Logo: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
-- Search: `big`, and `small` props have been removed. Use the `size` prop instead.
-- Fieldset: `legendSrOnly` has been removed. Use `legendStyle="srOnly"` instead.
-- TextInput: `error`, and `success` props have been removed. Use the `validationStatus` prop instead.
-- header/NavList: `primary`, `secondary`, `subnav`, `megamenu`, and `footerSecondary` props have been removed. Use the `type` prop instead.
-- StepIndicator: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Accordion: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Alert: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Button: 
+    * `accent` has been removed. Use `accentStyle` instead.
+    * `big`, `small`, and `size="small"` have been removed. Use `size="big"` or do not define the `size` prop for default sizing.
+  * CollectionHeading: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Footer/Address: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+  * Footer/Footer: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+  * Footer/FooterNav: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+  * Footer/Logo: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+  * Search: `big`, and `small` props have been removed. Use the `size` prop instead.
+  * Fieldset: `legendSrOnly` has been removed. Use `legendStyle="srOnly"` instead.
+  * TextInput: `error`, and `success` props have been removed. Use the `validationStatus` prop instead.
+  * header/NavList: `primary`, `secondary`, `subnav`, `megamenu`, and `footerSecondary` props have been removed. Use the `type` prop instead.
+  * StepIndicator: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
 * SummaryBox now exposes sub-components (SummaryBoxHeading and SummaryBoxContent) for a more compositional API. Consumers will need to update their implementation to match.
 * In order to accommodate IconList as a named component, Icons themselves needed to be refactored. All use of ReactUSWDS icons now follows the following syntax: <Icon.{IconName} /> instead of <Icon{IconName />. Furthermore, icons are no longer imported individually. Instead, Icon (the class) is imported to then use any <Icon.{IconName}> consumers require.
 
