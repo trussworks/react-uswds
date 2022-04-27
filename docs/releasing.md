@@ -59,7 +59,7 @@ Steps for a new release (these are in the process of being automated):
       - Title your release with the version number. Use the same release notes as the release PR.
       - Point the release tag at the release merge commit by selecting `Recent Commits` from the `Target` dropdown in the Github UI. You should find the `chore(release): ...` commit at or near the top.
    - Download the tarbell for the release from the Github Action workflow
-      - After merging the release PR, a [Github Actions workflow](../.github/workflows/package-release.yml) will build and package the release. You can find the action in the list by [filtering for `Package release` actions](https://github.com/trussworks/react-uswds/actions/workflows/package-release.yml). From the bottom of the workflow run's summary page, there is an artifacts section [where the artifact can be downloaded](https://github.com/actions/upload-artifact#where-does-the-upload-go).
+      - After merging the release PR, a [Github Actions workflow](../.github/workflows/package-release.yml) will build and package the release. You can find the action in the list by [filtering for `Package release` actions](https://github.com/trussworks/react-uswds/actions/workflows/package-release.yml?query=is%3Asuccess). From the bottom of the workflow run's summary page, there is an artifacts section [where the artifact can be downloaded](https://github.com/actions/upload-artifact#where-does-the-upload-go).
       - The `.tgz` will be inside of the `artifact.zip`.
         ```
         unzip artifact.zip
