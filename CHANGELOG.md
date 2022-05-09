@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [3.0.1](https://github.com/trussworks/react-uswds/compare/3.0.0...3.0.1) (2022-05-09)
 
+* Fixes an issue where Type definitions were not properly packaged
+
 ## [3.0.0](https://github.com/trussworks/react-uswds/compare/2.9.0...3.0.0) (2022-04-25)
 
 
