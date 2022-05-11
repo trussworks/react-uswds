@@ -282,6 +282,20 @@ describe('Modal component', () => {
     expect(screen.getByTestId('modalWindow')).toHaveClass('usa-modal--lg')
   })
 
+  it('renders modal initially open when isInitiallyOpen is true', () => {
+    const modalRef = createRef<ModalRef>()
+
+    const testModalId = 'testModal'
+
+    renderWithModalRoot(
+      <Modal id={testModalId} isInitiallyOpen={true} ref={modalRef}>
+        Test modal
+      </Modal>
+    )
+
+    expect(modalRef.current?.modalIsOpen).toBe(true)
+  })
+
   it('does not render a close button when forceAction is true', () => {
     const testModalId = 'testModal'
 

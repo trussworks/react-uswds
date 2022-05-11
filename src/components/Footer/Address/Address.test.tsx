@@ -1,8 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-
-jest.mock('../../../deprecation')
-import { deprecationWarning } from '../../../deprecation'
 import { Address } from './Address'
 
 const addressItems = [
@@ -33,30 +30,19 @@ describe('Address component', () => {
     expect(container.querySelector('address')).toHaveClass('custom-class')
   })
 
-  describe('renders with size prop', () => {
-    beforeEach(() => {
-      jest.clearAllMocks()
-    })
-
-    it.each([
-      ['big', 'slim', '.grid-col-auto', '.mobile-lg\\:grid-col-12'],
-      ['medium', 'slim', '.grid-col-auto', '.mobile-lg\\:grid-col-12'],
-      ['slim', 'big', '.mobile-lg\\:grid-col-12', undefined],
-    ])(
-      'prefers size to deprecated %s',
-      (sizeString, deprecatedKey, expectedClass, missingClass) => {
-        const size = sizeString as 'big' | 'medium' | 'slim'
-        const deprecatedProps: { [key: string]: boolean } = {}
-        deprecatedProps[`${deprecatedKey}`] = true
-        const { container } = render(
-          <Address items={addressItems} size={size} {...deprecatedProps} />
-        )
-        expect(container.querySelector(expectedClass)).toBeInTheDocument()
-        if (missingClass !== undefined) {
-          expect(container.querySelector(missingClass)).not.toBeInTheDocument()
-        }
-        expect(deprecationWarning).toHaveBeenCalledTimes(1)
+  it.each([
+    ['big', '.grid-col-auto', '.mobile-lg\\:grid-col-12'],
+    ['medium', '.grid-col-auto', '.mobile-lg\\:grid-col-12'],
+    ['slim', '.mobile-lg\\:grid-col-12', undefined],
+  ])(
+    'renders with a size prop %s',
+    (sizeString, expectedClass, missingClass) => {
+      const size = sizeString as 'big' | 'medium' | 'slim'
+      const { container } = render(<Address items={addressItems} size={size} />)
+      expect(container.querySelector(expectedClass)).toBeInTheDocument()
+      if (missingClass !== undefined) {
+        expect(container.querySelector(missingClass)).not.toBeInTheDocument()
       }
-    )
-  })
+    }
+  )
 })

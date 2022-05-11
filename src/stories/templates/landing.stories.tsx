@@ -124,7 +124,7 @@ export const LandingPage = (): React.ReactElement => {
     <>
       <Grid row gap>
         <Logo
-          medium
+          size="medium"
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
@@ -134,38 +134,43 @@ export const LandingPage = (): React.ReactElement => {
               <a
                 key="facebook"
                 className="usa-social-link usa-social-link--facebook"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>Facebook</span>
               </a>,
               <a
                 key="twitter"
                 className="usa-social-link usa-social-link--twitter"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>Twitter</span>
               </a>,
               <a
                 key="youtube"
                 className="usa-social-link usa-social-link--youtube"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>YouTube</span>
               </a>,
               <a
                 key="instagram"
                 className="usa-social-link usa-social-link--instagram"
-                href="#">
+                href="#"
+              >
                 <span>Instagram</span>
               </a>,
               <a
                 key="rss"
                 className="usa-social-link usa-social-link--rss"
-                href="javascript:void(0);">
+                href="javascript:void(0);"
+              >
                 <span>RSS</span>
               </a>,
             ]}
           />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
-            medium
+            size="medium"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -205,7 +210,8 @@ export const LandingPage = (): React.ReactElement => {
           primaryItems={primaryNavItems}
           secondaryItems={secondaryNavItems}
           onToggleMobileNav={toggleMobileNav}
-          mobileExpanded={mobileNavOpen}>
+          mobileExpanded={mobileNavOpen}
+        >
           <Search size="small" onSubmit={handleSearch} />
         </ExtendedNav>
       </Header>

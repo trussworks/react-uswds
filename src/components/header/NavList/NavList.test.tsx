@@ -1,8 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-
-jest.mock('../../../deprecation')
-import { deprecationWarning } from '../../../deprecation'
 import { NavList } from './NavList'
 
 const testItems = ['item 1', 'item 2', 'item 3']
@@ -29,28 +26,20 @@ describe('NavList component', () => {
     })
 
     it.each([
-      ['primary', 'secondary', '.usa-nav__primary-item'],
-      ['secondary', 'subnav', '.usa-nav__secondary-links'],
-      ['subnav', 'megamenu', '.usa-nav__submenu'],
-      ['megamenu', 'footerSecondary', '.usa-nav__submenu-list'],
-      ['footerSecondary', 'primary', '.usa-list'],
-    ])(
-      'prefers type to deprecated %s',
-      (typeString, deprecatedKey, expectedClass) => {
-        const type = typeString as
-          | 'primary'
-          | 'secondary'
-          | 'subnav'
-          | 'megamenu'
-          | 'footerSecondary'
-        const deprecatedProps: { [key: string]: boolean } = {}
-        deprecatedProps[`${deprecatedKey}`] = true
-        const { container } = render(
-          <NavList items={testItems} type={type} {...deprecatedProps} />
-        )
-        expect(container.querySelector(expectedClass)).toBeInTheDocument()
-        expect(deprecationWarning).toHaveBeenCalledTimes(1)
-      }
-    )
+      ['primary', '.usa-nav__primary-item'],
+      ['secondary', '.usa-nav__secondary-links'],
+      ['subnav', '.usa-nav__submenu'],
+      ['megamenu', '.usa-nav__submenu-list'],
+      ['footerSecondary', '.usa-list'],
+    ])('prefers applies type classes %s', (typeString, expectedClass) => {
+      const type = typeString as
+        | 'primary'
+        | 'secondary'
+        | 'subnav'
+        | 'megamenu'
+        | 'footerSecondary'
+      const { container } = render(<NavList items={testItems} type={type} />)
+      expect(container.querySelector(expectedClass)).toBeInTheDocument()
+    })
   })
 })

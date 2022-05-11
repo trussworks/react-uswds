@@ -2,9 +2,6 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-
-jest.mock('../../../deprecation')
-import { deprecationWarning } from '../../../deprecation'
 import { FooterNav } from './FooterNav'
 
 const links = Array(4).fill(
@@ -71,31 +68,5 @@ describe('FooterNav component', () => {
   it('does not render extended nav links without size="big"', () => {
     const { container } = render(<FooterNav links={extendedLinks} />)
     expect(container.querySelectorAll('a').length).toBe(0)
-  })
-
-  describe('renders with size prop', () => {
-    beforeEach(() => {
-      jest.clearAllMocks()
-    })
-
-    it.each([
-      ['big', 'slim', 5],
-      ['medium', 'big', 0],
-      ['slim', 'big', 0],
-    ])(
-      'prefers size to deprecated %s',
-      (sizeString, deprecatedKey, renderedNavLinkCount) => {
-        const size = sizeString as 'big' | 'medium' | 'slim'
-        const deprecatedProps: { [key: string]: boolean } = {}
-        deprecatedProps[`${deprecatedKey}`] = true
-        const { container } = render(
-          <FooterNav links={extendedLinks} size={size} {...deprecatedProps} />
-        )
-        expect(container.querySelectorAll('a').length).toBe(
-          renderedNavLinkCount
-        )
-        expect(deprecationWarning).toHaveBeenCalledTimes(1)
-      }
-    )
   })
 })

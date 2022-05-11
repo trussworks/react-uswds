@@ -1,21 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
-import { deprecationWarning } from '../../../deprecation'
 
 type AddressProps = {
   size?: 'big' | 'medium' | 'slim'
-  /**
-   * @deprecated since 1.6.0, use size
-   */
-  big?: boolean
-  /**
-   * @deprecated since 1.6.0, use size
-   */
-  medium?: boolean
-  /**
-   * @deprecated since 1.6.0, use size
-   */
-  slim?: boolean
   /*
      Contact info items - e.g. anchor tags or text for email, phone, website, etc.
    */
@@ -25,23 +12,11 @@ type AddressProps = {
 export const Address = ({
   size,
   className,
-  big,
-  medium,
-  slim,
   items,
 }: AddressProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
-  if (big) {
-    deprecationWarning('FooterNav property big is deprecated.  Use size')
-  }
-  if (medium) {
-    deprecationWarning('FooterNav property medium is deprecated.  Use size')
-  }
-  if (slim) {
-    deprecationWarning('FooterNav property slim is deprecated.  Use size')
-  }
-  const isBig = size ? size === 'big' : big
-  const isMedium = size ? size === 'medium' : medium
-  const isSlim = size ? size === 'slim' : slim
+  const isBig = size === 'big'
+  const isMedium = size === 'medium'
+  const isSlim = size === 'slim'
 
   const addressClasses = classnames('usa-footer__address', className)
 

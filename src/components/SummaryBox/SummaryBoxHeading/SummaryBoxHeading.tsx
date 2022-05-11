@@ -1,0 +1,27 @@
+import React, { ReactNode } from 'react'
+import classnames from 'classnames'
+
+interface SummaryBoxHeadingProps {
+  children: ReactNode
+  className?: string
+  headingLevel: HeadingLevel
+}
+
+export const SummaryBoxHeading = ({
+  children,
+  className,
+  headingLevel,
+  ...h3Props
+}: SummaryBoxHeadingProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >): React.ReactElement => {
+  const classes = classnames('usa-summary-box__heading', className)
+  const Heading = headingLevel
+  return (
+    <Heading className={classes} {...h3Props}>
+      {children}
+    </Heading>
+  )
+}

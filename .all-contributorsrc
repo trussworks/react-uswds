@@ -164,7 +164,26 @@
       "contributions": [
         "code"
       ]
-    }
+    },
+    {
+      "login": "Igarfinkle",
+      "name": "Isaac Garfinkle",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7664177?v=4",
+      "profile": "https://github.com/Igarfinkle",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rogeruiz",
+      "name": "Roger Steve Ruiz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/706004?v=4",
+      "profile": "https://github.com/rogeruiz",
+      "contributions": [
+        "code",
+        "doc",
+      ]
+    },
   ],
   "contributorsPerLine": 7
 }

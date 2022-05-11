@@ -1,8 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-
-jest.mock('../../../deprecation')
-import { deprecationWarning } from '../../../deprecation'
 import { Logo } from './Logo'
 
 const heading = <p className="usa-footer__logo-heading">Swoosh Branding</p>
@@ -30,27 +27,13 @@ describe('Logo component', () => {
     expect(getByText('Swoosh Branding')).toBeInTheDocument()
   })
 
-  describe('renders with size prop', () => {
-    beforeEach(() => {
-      jest.clearAllMocks()
-    })
-
-    it.each([
-      ['big', 'slim', '.mobile-lg\\:grid-col-6'],
-      ['medium', 'slim', '.mobile-lg\\:grid-col-6'],
-      ['slim', 'big', '.grid-gap-2'],
-    ])(
-      'prefers size to deprecated %s',
-      (sizeString, deprecatedKey, expectedClass) => {
-        const size = sizeString as 'big' | 'medium' | 'slim'
-        const deprecatedProps: { [key: string]: boolean } = {}
-        deprecatedProps[`${deprecatedKey}`] = true
-        const { container } = render(
-          <Logo image={logoImage} size={size} {...deprecatedProps} />
-        )
-        expect(container.querySelector(expectedClass)).toBeInTheDocument()
-        expect(deprecationWarning).toHaveBeenCalledTimes(1)
-      }
-    )
+  it.each([
+    ['big', '.mobile-lg\\:grid-col-6'],
+    ['medium', '.mobile-lg\\:grid-col-6'],
+    ['slim', '.grid-gap-2'],
+  ])('renders with size prop %s', (sizeString, expectedClass) => {
+    const size = sizeString as 'big' | 'medium' | 'slim'
+    const { container } = render(<Logo image={logoImage} size={size} />)
+    expect(container.querySelector(expectedClass)).toBeInTheDocument()
   })
 })

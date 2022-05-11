@@ -153,7 +153,7 @@ export const DocumentationPage = (): React.ReactElement => {
     <>
       <Grid row gap>
         <Logo
-          medium
+          size="medium"
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
