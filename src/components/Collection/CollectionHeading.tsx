@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 interface CollectionHeadingProps {
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: HeadingLevel
 }
 export const CollectionHeading = ({
   headingLevel,
@@ -9,12 +9,16 @@ export const CollectionHeading = ({
   children,
   ...props
 }: CollectionHeadingProps &
-  JSX.IntrinsicElements['h3']): React.ReactElement => {
-  const Component = headingLevel || 'h3'
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >): React.ReactElement => {
+  const Heading = headingLevel
+
   const classes = classnames('usa-collection__heading', className)
   return (
-    <Component className={classes} {...props}>
+    <Heading className={classes} {...props}>
       {children}
-    </Component>
+    </Heading>
   )
 }

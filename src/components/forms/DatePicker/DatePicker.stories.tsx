@@ -82,7 +82,7 @@ export const withDefaultValue = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
 )
 
-export const withDefaultInvalidValue = (): React.ReactElement => (
+const withDefaultInvalidValue = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -90,6 +90,12 @@ export const withDefaultInvalidValue = (): React.ReactElement => (
     minDate="2020-01-01"
   />
 )
+withDefaultValue.parameters = {
+  happo: {
+    waitForContent: '05/16/1988',
+  },
+}
+export { withDefaultInvalidValue }
 
 export const withMinMaxInSameMonth = (): React.ReactElement => (
   <DatePicker
@@ -109,7 +115,7 @@ export const withMinMax = (): React.ReactElement => (
   />
 )
 
-export const withRangeDate = (): React.ReactElement => (
+const withRangeDate = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -117,6 +123,12 @@ export const withRangeDate = (): React.ReactElement => (
     rangeDate="2021-01-08"
   />
 )
+withRangeDate.parameters = {
+  happo: {
+    waitForContent: '01/20/2021',
+  },
+}
+export { withRangeDate }
 
 export const withLocalizations = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />

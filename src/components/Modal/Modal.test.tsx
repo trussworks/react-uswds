@@ -64,7 +64,8 @@ const ExampleModal = ({
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
         forceAction={forceAction}
-        modalRoot="#modal-root">
+        modalRoot="#modal-root"
+      >
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -78,7 +79,8 @@ const ExampleModal = ({
             <Button
               type="button"
               data-close-modal
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}
+            >
               Continue without saving
             </Button>
             <Button
@@ -86,7 +88,8 @@ const ExampleModal = ({
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}
+            >
               Go back
             </Button>
           </ButtonGroup>
@@ -109,7 +112,8 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
-        modalRoot="#modal-root">
+        modalRoot="#modal-root"
+      >
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -126,7 +130,8 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
             <Button
               type="button"
               data-close-modal
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}
+            >
               Continue without saving
             </Button>
             <Button
@@ -134,7 +139,8 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}
+            >
               Go back
             </Button>
           </ButtonGroup>
@@ -185,7 +191,8 @@ describe('Modal component', () => {
       <Modal
         id={testModalId}
         aria-labelledby="modal-label"
-        aria-describedby="modal-description">
+        aria-describedby="modal-description"
+      >
         Test modal
       </Modal>
     )
@@ -240,7 +247,7 @@ describe('Modal component', () => {
       name: 'Close this window',
     })
     expect(closeButton).toBeInTheDocument()
-    userEvent.click(closeButton)
+    await userEvent.click(closeButton)
     expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
@@ -259,7 +266,7 @@ describe('Modal component', () => {
 
     expect(modalRef.current?.modalIsOpen).toBe(true)
     const overlay = screen.getByTestId('modalOverlay')
-    userEvent.click(overlay)
+    await userEvent.click(overlay)
     expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
@@ -273,6 +280,20 @@ describe('Modal component', () => {
     )
 
     expect(screen.getByTestId('modalWindow')).toHaveClass('usa-modal--lg')
+  })
+
+  it('renders modal initially open when isInitiallyOpen is true', () => {
+    const modalRef = createRef<ModalRef>()
+
+    const testModalId = 'testModal'
+
+    renderWithModalRoot(
+      <Modal id={testModalId} isInitiallyOpen={true} ref={modalRef}>
+        Test modal
+      </Modal>
+    )
+
+    expect(modalRef.current?.modalIsOpen).toBe(true)
   })
 
   it('does not render a close button when forceAction is true', () => {
@@ -472,27 +493,27 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', { name: 'Close this window' })
         ).toHaveFocus()
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
@@ -505,21 +526,21 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
 
-        userEvent.tab()
+        await userEvent.tab()
         expect(
           screen.getByRole('button', {
             name: 'Continue without saving',
           })
         ).toHaveFocus()
 
-        userEvent.click(
+        await userEvent.click(
           screen.getByRole('button', { name: 'Close this window' })
         )
 

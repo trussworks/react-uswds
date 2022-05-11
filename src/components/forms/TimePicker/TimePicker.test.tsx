@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, waitFor } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 
 import { TimePicker } from './TimePicker'
 import userEvent from '@testing-library/user-event'
@@ -24,7 +24,48 @@ describe('TimePicker Component', () => {
     expect(timePickerComboBox).toHaveClass('usa-combo-box usa-time-picker')
   })
 
-  it('allows the user to select a time', () => {
+  it('accepts minTime, maxTime, and step non-defaults', () => {
+    const { getByTestId } = render(
+      <TimePicker {...testProps} minTime="12:00" maxTime="18:00" step={60} />
+    )
+
+    const comboBoxDropdownList = getByTestId('combo-box-option-list')
+    expect(comboBoxDropdownList).not.toBeVisible()
+    expect(
+      within(comboBoxDropdownList).getByText('12:00pm')
+    ).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('1:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('2:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('3:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('4:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('5:00pm')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('6:00pm')).toBeInTheDocument()
+    expect(comboBoxDropdownList.children.length).toEqual(7)
+  })
+
+  it('renders a label', () => {
+    const { queryByText } = render(
+      <TimePicker {...testProps} label="test label" />
+    )
+
+    const label = queryByText('test label')
+
+    expect(label).toBeInTheDocument()
+    expect(label).toHaveAttribute('id', `${testProps.name}-label`)
+  })
+
+  it('renders a hint', () => {
+    const { queryByText } = render(
+      <TimePicker {...testProps} hint="test hint" />
+    )
+
+    const hint = queryByText('test hint')
+
+    expect(hint).toBeInTheDocument()
+    expect(hint).toHaveAttribute('id', `${testProps.name}-hint`)
+  })
+
+  it('allows the user to select a time', async () => {
     const { getByTestId } = render(<TimePicker {...testProps} />)
 
     const comboBoxTextInput = getByTestId('combo-box-input')
@@ -37,15 +78,15 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).not.toBeVisible()
 
     // Click on the TimePicker input
-    userEvent.click(comboBoxTextInput)
+    await userEvent.click(comboBoxTextInput)
     expect(comboBoxTextInput).toHaveAttribute('aria-expanded', 'true')
     expect(comboBoxDropdownList).toBeVisible()
 
     // Select a time
-    userEvent.hover(elementToSelect)
+    await userEvent.hover(elementToSelect)
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
 
-    userEvent.click(elementToSelect)
+    await userEvent.click(elementToSelect)
     expect(testProps.onChange).toHaveBeenCalledTimes(2) // once on mount, twice on select
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
@@ -57,7 +98,7 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).toBeVisible()
   })
 
-  it('allows the user to select a time using the keyboard typing an exact match', () => {
+  it('allows the user to select a time using the keyboard typing an exact match', async () => {
     const { getByTestId } = render(<TimePicker {...testProps} />)
 
     const comboBoxTextInput = getByTestId('combo-box-input')
@@ -70,16 +111,16 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).not.toBeVisible()
 
     // Click on the TimePicker input
-    userEvent.click(comboBoxTextInput)
+    await userEvent.click(comboBoxTextInput)
     expect(comboBoxTextInput).toHaveAttribute('aria-expanded', 'true')
     expect(comboBoxDropdownList).toBeVisible()
 
     // Select a time
-    userEvent.type(comboBoxTextInput, '5:30pm')
+    await userEvent.type(comboBoxTextInput, '5:30pm')
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).not.toHaveFocus()
 
-    userEvent.type(comboBoxTextInput, '{enter}')
+    await userEvent.type(comboBoxTextInput, '{enter}')
     expect(testProps.onChange).toHaveBeenCalledTimes(2)
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
@@ -90,7 +131,7 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).toBeVisible()
   })
 
-  it('allows pre-selection of an element via pattern matching', () => {
+  it('allows pre-selection of an element via pattern matching', async () => {
     const { getByTestId } = render(<TimePicker {...testProps} />)
 
     const comboBoxTextInput = getByTestId('combo-box-input')
@@ -103,21 +144,21 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).not.toBeVisible()
 
     // Click on the TimePicker input
-    userEvent.click(comboBoxTextInput)
+    await userEvent.click(comboBoxTextInput)
 
     expect(comboBoxTextInput).toHaveAttribute('aria-expanded', 'true')
     expect(comboBoxDropdownList).toBeVisible()
 
     // Select a time
-    userEvent.type(comboBoxTextInput, '5:3p')
+    await userEvent.type(comboBoxTextInput, '5:3p')
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).not.toHaveFocus()
 
-    fireEvent.keyDown(comboBoxTextInput, { key: 'ArrowDown' })
+    await userEvent.type(comboBoxTextInput, '{ArrowDown}')
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
     expect(elementToSelect).toHaveFocus()
 
-    userEvent.type(elementToSelect, '{enter}')
+    await userEvent.type(elementToSelect, '{enter}')
     expect(testProps.onChange).toHaveBeenNthCalledWith(2, '17:30') // called twice, first time on mount
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
@@ -128,7 +169,7 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).toBeVisible()
   })
 
-  it('does not filter options from the list, but does apply styling to first match', () => {
+  it('does not filter options from the list, but does apply styling to first match', async () => {
     const { getByTestId } = render(<TimePicker {...testProps} />)
 
     const comboBoxTextInput = getByTestId('combo-box-input')
@@ -143,36 +184,36 @@ describe('TimePicker Component', () => {
     expect(comboBoxClearButton).not.toBeVisible()
 
     // Click on the TimePicker input
-    userEvent.click(comboBoxTextInput)
+    await userEvent.click(comboBoxTextInput)
     expect(comboBoxTextInput).toHaveAttribute('aria-expanded', 'true')
     expect(comboBoxDropdownList).toBeVisible()
     expect(comboBoxDropdownList.children.length).toEqual(48)
 
     // Start typing to filter by hour
-    userEvent.type(comboBoxTextInput, '5')
+    await userEvent.type(comboBoxTextInput, '5')
     expect(fiveAm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveAm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
 
     // Continue typing to filter by half hour
-    userEvent.type(comboBoxTextInput, ':3')
+    await userEvent.type(comboBoxTextInput, ':3')
     expect(fiveThirtyAm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyAm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
 
     // Continue typing to filter by am/pm
-    userEvent.type(comboBoxTextInput, 'p')
+    await userEvent.type(comboBoxTextInput, 'p')
     expect(fiveThirtyPm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyPm).not.toHaveFocus()
     expect(comboBoxDropdownList.children.length).toEqual(48)
 
     // Focus the element by pressing the down key
-    fireEvent.keyDown(comboBoxTextInput, { key: 'ArrowDown' })
+    await userEvent.type(comboBoxTextInput, '{ArrowDown}')
     expect(fiveThirtyPm).toHaveClass('usa-combo-box__list-option--focused')
     expect(fiveThirtyPm).toHaveFocus()
 
     // Select the element by pressing enter
-    userEvent.type(fiveThirtyPm, '{enter}')
+    await userEvent.type(fiveThirtyPm, '{enter}')
     expect(testProps.onChange).toHaveBeenNthCalledWith(2, '17:30')
     expect(fiveThirtyPm).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
@@ -195,7 +236,7 @@ describe('TimePicker Component', () => {
     expect(comboBoxTextInput).toHaveValue('12:00am')
 
     // Clear the input
-    userEvent.click(comboBoxClearButton)
+    await userEvent.click(comboBoxClearButton)
     expect(comboBoxClearButton).not.toBeVisible()
     expect(comboBoxTextInput).not.toHaveValue()
     await waitFor(() => {

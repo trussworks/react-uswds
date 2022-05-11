@@ -27,41 +27,41 @@ const testText = (
 )
 
 export const success = (): React.ReactElement => (
-  <Alert type="success" heading="Success status">
+  <Alert type="success" heading="Success status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const warning = (): React.ReactElement => (
-  <Alert type="warning" heading="Warning status">
+  <Alert type="warning" heading="Warning status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const error = (): React.ReactElement => (
-  <Alert type="error" heading="Error status">
+  <Alert type="error" heading="Error status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const info = (): React.ReactElement => (
-  <Alert type="info" heading="Informative status">
+  <Alert type="info" heading="Informative status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
 export const slim = (): React.ReactElement => (
   <>
-    <Alert type="success" slim>
+    <Alert type="success" headingLevel="h4" slim>
       {testText}
     </Alert>
-    <Alert type="warning" slim>
+    <Alert type="warning" headingLevel="h4" slim>
       {testText}
     </Alert>
-    <Alert type="error" slim>
+    <Alert type="error" headingLevel="h4" slim>
       {testText}
     </Alert>
-    <Alert type="info" slim>
+    <Alert type="info" headingLevel="h4" slim>
       {testText}
     </Alert>
   </>
@@ -69,16 +69,16 @@ export const slim = (): React.ReactElement => (
 
 export const noIcon = (): React.ReactElement => (
   <>
-    <Alert type="success" noIcon>
+    <Alert type="success" headingLevel="h4" noIcon>
       {testText}
     </Alert>
-    <Alert type="warning" noIcon>
+    <Alert type="warning" headingLevel="h4" noIcon>
       {testText}
     </Alert>
-    <Alert type="error" noIcon>
+    <Alert type="error" headingLevel="h4" noIcon>
       {testText}
     </Alert>
-    <Alert type="info" noIcon>
+    <Alert type="info" headingLevel="h4" noIcon>
       {testText}
     </Alert>
   </>
@@ -86,16 +86,16 @@ export const noIcon = (): React.ReactElement => (
 
 export const slimNoIcon = (): React.ReactElement => (
   <>
-    <Alert type="success" slim noIcon>
+    <Alert type="success" headingLevel="h4" slim noIcon>
       {testText}
     </Alert>
-    <Alert type="warning" slim noIcon>
+    <Alert type="warning" headingLevel="h4" slim noIcon>
       {testText}
     </Alert>
-    <Alert type="error" slim noIcon>
+    <Alert type="error" headingLevel="h4" slim noIcon>
       {testText}
     </Alert>
-    <Alert type="info" slim noIcon>
+    <Alert type="info" headingLevel="h4" slim noIcon>
       {testText}
     </Alert>
   </>
@@ -113,6 +113,7 @@ export const withCTA = (): React.ReactElement => (
   <Alert
     type="warning"
     heading="Warning status"
+    headingLevel="h4"
     cta={
       <Button type="button" outline>
         Click here

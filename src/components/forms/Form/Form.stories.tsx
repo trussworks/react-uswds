@@ -57,7 +57,7 @@ export const textInputForm = (): React.ReactElement => (
           id="input-error"
           name="input-error"
           type="text"
-          error
+          validationStatus="error"
           aria-describedby="input-error-message"
         />
       </FormGroup>
@@ -219,7 +219,8 @@ export const signInForm = (): React.ReactElement => {
             aria-controls="password-sign-in"
             onClick={(): void =>
               setShowPassword((showPassword) => !showPassword)
-            }>
+            }
+          >
             {showPassword ? 'Hide password' : 'Show password'}
           </a>
         </p>
@@ -246,7 +247,7 @@ export const passwordResetForm = (): React.ReactElement => {
     <Form onSubmit={mockSubmit} large>
       <Fieldset legend="Reset password" legendStyle="large">
         <span>Please enter your new password</span>
-        <Alert type="info" heading="Password information">
+        <Alert type="info" heading="Password information" headingLevel="h4">
           Length requirements
           <br />
           Character constraints, if any
@@ -272,7 +273,8 @@ export const passwordResetForm = (): React.ReactElement => {
             aria-controls="newPassword confirmPassword"
             onClick={(): void =>
               setShowPassword((showPassword) => !showPassword)
-            }>
+            }
+          >
             {showPassword ? 'Hide my typing' : 'Show my typing'}
           </a>
         </p>

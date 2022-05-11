@@ -2,6 +2,67 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/trussworks/react-uswds/compare/3.0.0...3.0.1) (2022-05-09)
+
+
+### Bug Fixes
+
+* Fixes an issue where Type definitions were not properly packaged
+
+## [3.0.0](https://github.com/trussworks/react-uswds/compare/2.9.0...3.0.0) (2022-04-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* Previous deprecated features and props have been removed. Please see the following guidance for affected components:
+  * Accordion: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Alert: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Button: 
+    * `accent` has been removed. Use `accentStyle` instead.
+    * `big`, `small`, and `size="small"` have been removed. Use `size="big"` or do not define the `size` prop for default sizing.
+  * CollectionHeading: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  * Footer/Address: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+  * Footer/Footer: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+  * Footer/FooterNav: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+  * Footer/Logo: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+  * Search: `big`, and `small` props have been removed. Use the `size` prop instead.
+  * Fieldset: `legendSrOnly` has been removed. Use `legendStyle="srOnly"` instead.
+  * TextInput: `error`, and `success` props have been removed. Use the `validationStatus` prop instead.
+  * header/NavList: `primary`, `secondary`, `subnav`, `megamenu`, and `footerSecondary` props have been removed. Use the `type` prop instead.
+  * StepIndicator: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+* SummaryBox now exposes sub-components (SummaryBoxHeading and SummaryBoxContent) for a more compositional API. Consumers will need to update their implementation to match.
+* In order to accommodate IconList as a named component, Icons themselves needed to be refactored. All use of ReactUSWDS icons now follows the following syntax: <Icon.{IconName} /> instead of <Icon{IconName />. Furthermore, icons are no longer imported individually. Instead, Icon (the class) is imported to then use any <Icon.{IconName}> consumers require.
+
+### Features
+
+* add isInitiallyOpen option to modal ([#1971](https://github.com/trussworks/react-uswds/issues/1971)) ([560564e](https://github.com/trussworks/react-uswds/commit/560564e41572d270940db3f5029b240ef416c5b2))
+* Make Summary Box more flexible ([#1929](https://github.com/trussworks/react-uswds/issues/1929)) ([a46ed35](https://github.com/trussworks/react-uswds/commit/a46ed35d1da5a4d4fed86240487547462bed3ce4))
+* New Component: IconList ([#1691](https://github.com/trussworks/react-uswds/issues/1691)) ([86589ac](https://github.com/trussworks/react-uswds/commit/86589ac5c629df026cc01518d6d69fe9d8ddabe9))
+* **ci:** add automerge priority label for Kodiak ([#1985](https://github.com/trussworks/react-uswds/issues/1985)) ([9dc940e](https://github.com/trussworks/react-uswds/commit/9dc940ec25246eb9c3af49b310a159134ce11203))
+
+
+* Remove 1.x.x and 2.x.x deprecated properties ([#1988](https://github.com/trussworks/react-uswds/issues/1988)) ([5dfadb1](https://github.com/trussworks/react-uswds/commit/5dfadb14a3559e308c20d3b7852879a3aa0a3848))
+
+
+### Documentation & Examples
+
+* 404 page template added ([#2017](https://github.com/trussworks/react-uswds/issues/2017)) ([0c9474d](https://github.com/trussworks/react-uswds/commit/0c9474ddedb2ad2f4cbb50357696814ddd4db99d))
+
+## [2.9.0](https://github.com/trussworks/react-uswds/compare/2.8.0...2.9.0) (2022-04-14)
+
+
+### Features
+
+* Add ability to pass through StepIndicator heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
+* Adds headingLevel prop for Alert component ([#1928](https://github.com/trussworks/react-uswds/issues/1928)) ([ce6de61](https://github.com/trussworks/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
+* Deprecate default heading levels ([#1947](https://github.com/trussworks/react-uswds/issues/1947)) ([512a901](https://github.com/trussworks/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
+
+
+### Bug Fixes
+
+* **docs:** Fix typo in Storybook documentation template [#1914](https://github.com/trussworks/react-uswds/issues/1914) ([#1949](https://github.com/trussworks/react-uswds/issues/1949)) ([#1967](https://github.com/trussworks/react-uswds/issues/1967)) ([7438640](https://github.com/trussworks/react-uswds/commit/743864068823f8317a8bca2cab0c62cf8f6f4209))
+* **docs:** Fix typo in storybook file name ([#1934](https://github.com/trussworks/react-uswds/issues/1934)) ([7514689](https://github.com/trussworks/react-uswds/commit/7514689da58cbd9df0ce65cb3306cdd9eba2e30b))
+
 ## [2.8.0](https://github.com/trussworks/react-uswds/compare/2.7.2...2.8.0) (2022-02-18)
 
 

@@ -65,16 +65,6 @@ export const readonly = (): React.ReactElement => (
   <TextInput id="input-readonly" name="input-readonly" type="text" readOnly />
 )
 
-/*
-export const small = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" inputSize="small" />
-)
-
-export const medium = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" inputSize="medium" />
-)
-*/
-
 export const password = (): React.ReactElement => (
   <TextInput id="input-type-text" name="input-type-text" type="password" />
 )

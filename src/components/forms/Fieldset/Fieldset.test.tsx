@@ -3,7 +3,6 @@ import { render } from '@testing-library/react'
 
 jest.mock('../../../deprecation')
 import { Fieldset } from './Fieldset'
-import { deprecationWarning } from '../../../deprecation'
 
 describe('Fieldset component', () => {
   it('renders without errors', () => {
@@ -54,17 +53,6 @@ describe('Fieldset component', () => {
       )
       expect(queryByTestId('fieldset')).toBeInTheDocument()
       expect(getByText('Legend')).toHaveClass('usa-sr-only')
-    })
-
-    it('shows a deprecation warning when using deprecated legendSrOnly prop', () => {
-      const { queryByTestId, getByText } = render(
-        <Fieldset legend="Legend" legendSrOnly>
-          My Fieldset
-        </Fieldset>
-      )
-      expect(queryByTestId('fieldset')).toBeInTheDocument()
-      expect(getByText('Legend')).toHaveClass('usa-sr-only')
-      expect(deprecationWarning).toBeCalledTimes(1)
     })
   })
 })

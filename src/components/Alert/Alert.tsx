@@ -3,10 +3,10 @@ import classnames from 'classnames'
 
 import styles from './Alert.module.css'
 
-interface AlertProps {
+export interface AlertProps {
   type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: HeadingLevel
   children?: React.ReactNode
   cta?: React.ReactNode
   slim?: boolean
@@ -17,7 +17,7 @@ interface AlertProps {
 export const Alert = ({
   type,
   heading,
-  headingLevel = 'h4',
+  headingLevel,
   cta,
   children,
   slim,
@@ -42,6 +42,7 @@ export const Alert = ({
   )
 
   const Heading = headingLevel
+
   return (
     <div className={classes} data-testid="alert" {...props}>
       <div className="usa-alert__body">

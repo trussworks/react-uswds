@@ -7,7 +7,7 @@ export interface AccordionItemProps {
   expanded: boolean
   id: string
   className?: string
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  headingLevel: HeadingLevel
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -24,7 +24,7 @@ export const AccordionItem = ({
   content,
   expanded,
   className,
-  headingLevel = 'h4',
+  headingLevel,
   handleToggle,
 }: AccordionItemProps): React.ReactElement => {
   const headingClasses = classnames('usa-accordion__heading', className)
@@ -33,6 +33,7 @@ export const AccordionItem = ({
     'usa-prose',
     className
   )
+
   const Heading = headingLevel
 
   return (

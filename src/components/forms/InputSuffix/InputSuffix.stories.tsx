@@ -2,7 +2,7 @@ import React from 'react'
 import { InputSuffix } from './InputSuffix'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { TextInput } from '../TextInput/TextInput'
-import { IconSearch } from '../../Icon/Icons'
+import { Icon } from '../../Icon/Icons'
 
 export default {
   title: 'Components/Input prefix or suffix/InputSuffix',
@@ -25,7 +25,7 @@ export const InputWithIconInputSuffix = (): React.ReactElement => (
     <div className="usa-input-group">
       <TextInput id="search" name="search" type="search" />
       <InputSuffix>
-        <IconSearch />
+        <Icon.Search />
       </InputSuffix>
     </div>
   </FormGroup>
@@ -41,7 +41,7 @@ export const InputWithIconInputSuffixError = (): React.ReactElement => (
         validationStatus="error"
       />
       <InputSuffix>
-        <IconSearch />
+        <Icon.Search />
       </InputSuffix>
     </div>
   </FormGroup>
