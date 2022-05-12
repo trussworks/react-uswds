@@ -67,6 +67,12 @@ module.exports = {
             loader: 'sass-resources-loader',
             options: {
               resources: ['./src/uswdsResources.scss'],
+              sassOptions: {
+                includePaths: [
+                  "./node_modules/@uswds",
+                  "./node_modules/@uswds/uswds/packages",
+                ],
+              },
             },
           },
         ],
@@ -74,7 +80,21 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/i,
         exclude: /\.module\.(sa|sc|c)ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [
+                  "./node_modules/@uswds",
+                  "./node_modules/@uswds/uswds/packages",
+                ],
+              },
+            }
+          }
+        ],
       },
       {
         test: /\.svg$/,
