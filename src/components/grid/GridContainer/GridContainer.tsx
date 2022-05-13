@@ -48,14 +48,9 @@ export function GridContainer<FCProps = DefaultGridContainerProps>(
   props: DefaultGridContainerProps | CustomGridContainerProps<FCProps>
 ): React.ReactElement {
   if (isCustomProps(props)) {
-    const {
-      className,
-      containerSize,
-      asCustom,
-      children,
-      ...remainingProps
-    } = props
-    const gridContainerProps: FCProps = (remainingProps as unknown) as FCProps
+    const { className, containerSize, asCustom, children, ...remainingProps } =
+      props
+    const gridContainerProps: FCProps = remainingProps as unknown as FCProps
     const classes = gridContainerClasses(className, containerSize)
     return React.createElement(
       asCustom,

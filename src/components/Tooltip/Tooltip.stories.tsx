@@ -74,8 +74,7 @@ export const tooltipWithUtilityClass = (): React.ReactElement => (
     <Tooltip
       wrapperclasses="width-full tablet:width-auto"
       position="right"
-      label="Right"
-    >
+      label="Right">
       Show on right
     </Tooltip>
   </div>
@@ -104,8 +103,7 @@ export const CustomComponent = (): React.ReactElement => {
         <Tooltip<CustomLinkProps>
           label="Follow Link"
           asCustom={CustomLink}
-          to="http://www.truss.works"
-        >
+          to="http://www.truss.works">
           This
         </Tooltip>
         &nbsp;is a custom component link.
@@ -147,8 +145,7 @@ export const tooltipBottomRightWrap = (): React.ReactElement => (
       left: '0',
       paddingRight: '32px',
       textAlign: 'right',
-    }}
-  >
+    }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
     </Tooltip>

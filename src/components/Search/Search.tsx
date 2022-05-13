@@ -50,8 +50,7 @@ export const Search = ({
       className={classes}
       role="search"
       search={true}
-      {...formProps}
-    >
+      {...formProps}>
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>

@@ -77,43 +77,38 @@ const footerSecondary = (
             <a
               key="facebook"
               className="usa-social-link usa-social-link--facebook"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>Facebook</span>
             </a>,
             <a
               key="twitter"
               className="usa-social-link usa-social-link--twitter"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>Twitter</span>
             </a>,
             <a
               key="youtube"
               className="usa-social-link usa-social-link--youtube"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>YouTube</span>
             </a>,
             <a
               key="instagram"
               className="usa-social-link usa-social-link--instagram"
-              href="#"
-            >
+              href="#">
               <span>Instagram</span>
             </a>,
             <a
               key="rss"
               className="usa-social-link usa-social-link--rss"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>RSS</span>
             </a>,
           ]}
         />
         <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
         <Address
-          medium
+          size="medium"
           items={[
             <a key="telephone" href="tel:1-800-555-5555">
               (800) CALL-GOVT
@@ -199,8 +194,7 @@ export const SignIn = (): React.ReactElement => {
                           aria-controls="password-create-account password-create-account-confirm"
                           onClick={(): void =>
                             setShowPassword((showPassword) => !showPassword)
-                          }
-                        >
+                          }>
                           {showPassword ? 'Hide password' : 'Show password'}
                         </a>
                       </p>

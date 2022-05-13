@@ -61,15 +61,13 @@ export const Default = (): React.ReactElement => {
     <Form
       onSubmit={(): void => {
         console.log('submit')
-      }}
-    >
+      }}>
       <Fieldset legend="Enter a code" legendStyle="large">
         <Alert
           type="info"
           validation
           heading="Code Requirements"
-          headingLevel="h4"
-        >
+          headingLevel="h4">
           <ValidationChecklist id="validate-code">
             <ValidationItem id="uppercase" isValid={validations.uppercase}>
               Use at least one uppercase character

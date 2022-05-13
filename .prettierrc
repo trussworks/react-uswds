@@ -1,4 +1,4 @@
-trailingComma: "es5"
+trailingComma: 'es5'
 semi: false
 singleQuote: true
-jsxBracketSameLine: true
+bracketSameLine: true
