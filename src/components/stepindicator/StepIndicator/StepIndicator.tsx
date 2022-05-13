@@ -76,8 +76,7 @@ export const StepIndicator = (
       className={divClasses}
       data-testid="step-indicator"
       aria-label="progress"
-      {...remainingDivProps}
-    >
+      {...remainingDivProps}>
       <ol className={listClasses} {...remainingListProps}>
         {children}
       </ol>

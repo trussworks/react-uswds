@@ -154,20 +154,17 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     <div
       data-testid="file-input"
       className={fileInputClasses}
-      aria-disabled={disabled}
-    >
+      aria-disabled={disabled}>
       <div
         data-testid="file-input-droptarget"
         className={targetClasses}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      >
+        onDrop={handleDrop}>
         {filePreviews.length > 0 && (
           <div
             data-testid="file-input-preview-heading"
-            className="usa-file-input__preview-heading"
-          >
+            className="usa-file-input__preview-heading">
             {previewHeaderText}{' '}
             <span className="usa-file-input__choose">
               Change file{filePreviews.length > 1 && 's'}
@@ -177,8 +174,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
         <div
           data-testid="file-input-instructions"
           className={instructionClasses}
-          aria-hidden="true"
-        >
+          aria-hidden="true">
           {!hideDragText && (
             <span className="usa-file-input__drag-text">{dragText}</span>
           )}
@@ -189,8 +185,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
         {showError && (
           <div
             data-testid="file-input-error"
-            className="usa-file-input__accepted-files-message"
-          >
+            className="usa-file-input__accepted-files-message">
             This is not a valid file type.
           </div>
         )}

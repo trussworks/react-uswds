@@ -18,8 +18,7 @@ export const InputPrefix = ({
       className={classes}
       aria-hidden="true"
       {...divProps}
-      data-testid="InputPrefix"
-    >
+      data-testid="InputPrefix">
       {children}
     </div>
   )

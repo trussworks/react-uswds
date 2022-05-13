@@ -110,12 +110,8 @@ export const CharacterCount = ({
 
   let InputComponent: React.ReactElement
   if (isTextArea) {
-    const {
-      onBlur,
-      onChange,
-      inputRef,
-      ...textAreaProps
-    } = remainingProps as Partial<TextareaCharacterCountProps>
+    const { onBlur, onChange, inputRef, ...textAreaProps } =
+      remainingProps as Partial<TextareaCharacterCountProps>
 
     InputComponent = (
       <Textarea

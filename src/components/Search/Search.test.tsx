@@ -39,8 +39,7 @@ describe('Search component', () => {
       <Search
         onSubmit={mockSubmit}
         label="Buscar"
-        i18n={sampleLocalization}
-      ></Search>
+        i18n={sampleLocalization}></Search>
     )
 
     expect(queryByLabelText('Buscar')).toBeInTheDocument()

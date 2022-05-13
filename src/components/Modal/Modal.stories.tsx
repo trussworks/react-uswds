@@ -57,8 +57,7 @@ export const defaultModal = (): React.ReactElement => {
           ref={modalRef}
           id="example-modal-1"
           aria-labelledby="modal-1-heading"
-          aria-describedby="modal-1-description"
-        >
+          aria-describedby="modal-1-description">
           <ModalHeading id="modal-1-heading">
             Are you sure you want to continue?
           </ModalHeading>
@@ -76,8 +75,7 @@ export const defaultModal = (): React.ReactElement => {
                 modalRef={modalRef}
                 closer
                 unstyled
-                className="padding-105 text-center"
-              >
+                className="padding-105 text-center">
                 Go back
               </ModalToggleButton>
             </ButtonGroup>
@@ -101,8 +99,7 @@ export const largeModal = (): React.ReactElement => {
         isLarge
         aria-labelledby="modal-2-heading"
         aria-describedby="modal-2-description"
-        id="example-modal-2"
-      >
+        id="example-modal-2">
         <ModalHeading id="modal-2-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -120,8 +117,7 @@ export const largeModal = (): React.ReactElement => {
               modalRef={modalRef}
               closer
               unstyled
-              className="padding-105 text-center"
-            >
+              className="padding-105 text-center">
               Go back
             </ModalToggleButton>
           </ButtonGroup>
@@ -144,8 +140,7 @@ export const forceActionModal = (): React.ReactElement => {
         forceAction
         aria-labelledby="modal-3-heading"
         aria-describedby="modal-3-description"
-        id="example-modal-3"
-      >
+        id="example-modal-3">
         <ModalHeading id="modal-3-heading">
           Your session will end soon.
         </ModalHeading>
@@ -165,8 +160,7 @@ export const forceActionModal = (): React.ReactElement => {
               modalRef={modalRef}
               closer
               unstyled
-              className="padding-105 text-center"
-            >
+              className="padding-105 text-center">
               Sign out
             </ModalToggleButton>
           </ButtonGroup>
@@ -188,8 +182,7 @@ export const customFocusElementModal = (): React.ReactElement => {
         ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
-        aria-describedby="modal-1-description"
-      >
+        aria-describedby="modal-1-description">
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -211,8 +204,7 @@ export const customFocusElementModal = (): React.ReactElement => {
               modalRef={modalRef}
               closer
               unstyled
-              className="padding-105 text-center"
-            >
+              className="padding-105 text-center">
               Go back
             </ModalToggleButton>
           </ButtonGroup>
@@ -236,8 +228,7 @@ export const initiallyOpenModal = (): React.ReactElement => {
           id="example-modal-1"
           aria-labelledby="modal-1-heading"
           aria-describedby="modal-1-description"
-          isInitiallyOpen
-        >
+          isInitiallyOpen>
           <ModalHeading id="modal-1-heading">
             Are you sure you want to continue?
           </ModalHeading>
@@ -255,8 +246,7 @@ export const initiallyOpenModal = (): React.ReactElement => {
                 modalRef={modalRef}
                 closer
                 unstyled
-                className="padding-105 text-center"
-              >
+                className="padding-105 text-center">
                 Go back
               </ModalToggleButton>
             </ButtonGroup>
