@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* Fixes an issue where Type definitions were not properly packaged [#2053](https://github.com/trussworks/react-uswds/issues/2053) [febcd65](https://github.com/trussworks/react-uswds/commit/febcd65d1d2bf8ff84f558b4d14013ba8328cc38)
+* Fixes an issue where Type definitions were not properly packaged ([#2053](https://github.com/trussworks/react-uswds/issues/2053)) ([febcd65](https://github.com/trussworks/react-uswds/commit/febcd65d1d2bf8ff84f558b4d14013ba8328cc38))
 
 ### [3.0.1](https://github.com/trussworks/react-uswds/compare/3.0.0...3.0.1) (2022-05-09)
 
