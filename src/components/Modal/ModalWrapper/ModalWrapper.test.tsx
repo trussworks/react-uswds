@@ -10,8 +10,7 @@ describe('ModalWrapper component', () => {
         id="testModal"
         isVisible={false}
         forceAction={false}
-        handleClose={jest.fn()}
-      >
+        handleClose={jest.fn()}>
         children
       </ModalWrapper>
     )

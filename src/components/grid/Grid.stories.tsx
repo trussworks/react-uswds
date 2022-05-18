@@ -41,7 +41,9 @@ const CustomGrid: React.FunctionComponent<CustomGridProps> = ({
 
 type CustomGridContainerProps = JSX.IntrinsicElements['ul']
 
-const CustomGridContainer: React.FunctionComponent<CustomGridContainerProps> = ({
+const CustomGridContainer: React.FunctionComponent<
+  CustomGridContainerProps
+> = ({
   children,
   className,
   ...ulProps

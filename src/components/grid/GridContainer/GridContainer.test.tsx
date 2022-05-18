@@ -40,7 +40,9 @@ describe('GridContainer component', () => {
   describe('custom component', () => {
     type CustomGridContainerProps = JSX.IntrinsicElements['ul']
 
-    const CustomGridContainer: React.FunctionComponent<CustomGridContainerProps> = ({
+    const CustomGridContainer: React.FunctionComponent<
+      CustomGridContainerProps
+    > = ({
       children,
       className,
       ...ulProps

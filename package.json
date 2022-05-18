@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "2.9.0",
+  "version": "3.0.2",
   "description": "React USWDS 2.0 component library",
   "keywords": [
     "react",
@@ -27,9 +27,9 @@
     "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "start-storybook -p 9009",
     "storybook:deploy": "storybook-to-ghpages",
-    "build": "webpack --progress",
-    "build:watch": "webpack --watch",
-    "lint": "tsc --noEmit && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
+    "build": "tsc && webpack --progress",
+    "build:watch": "tsc && webpack --watch",
+    "lint": "tsc --noEmit --emitDeclarationOnly false && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t ''",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
@@ -73,12 +73,12 @@
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@types/react-test-renderer": "^17.0.1",
+    "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "all-contributors-cli": "^6.20.0",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^27.0.2",
+    "babel-jest": "^28.1.0",
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
     "css-loader": "^6.2.0",
@@ -94,7 +94,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
     "focus-trap-react": "^8.8.1",
-    "fork-ts-checker-webpack-plugin": "^6.3.3",
+    "fork-ts-checker-webpack-plugin": "^7.2.7",
     "happo-plugin-storybook": "^2.7.0",
     "happo.io": "^7.1.0",
     "husky": "^4.3.8",
@@ -127,7 +127,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged",
+      "pre-commit": "tsc --noEmit --emitDeclarationOnly false && lint-staged",
       "pre-push": "yarn danger local -b main --failOnErrors"
     }
   },

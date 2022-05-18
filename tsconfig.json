@@ -11,11 +11,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "jsx": "react",
     "noImplicitAny": true,
     "declaration": true,
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "isolatedModules": true,
   },
   "include": ["src/**/*", "custom.d.ts"],
   "exclude": [

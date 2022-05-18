@@ -45,8 +45,7 @@ export const AccordionItem = ({
           aria-expanded={expanded}
           aria-controls={id}
           data-testid={`accordionButton_${id}`}
-          onClick={handleToggle}
-        >
+          onClick={handleToggle}>
           {title}
         </button>
       </Heading>
@@ -54,8 +53,7 @@ export const AccordionItem = ({
         id={id}
         data-testid={`accordionItem_${id}`}
         className={contentClasses}
-        hidden={!expanded}
-      >
+        hidden={!expanded}>
         {content}
       </div>
     </>
@@ -102,8 +100,7 @@ export const Accordion = ({
     <div
       className={classes}
       data-testid="accordion"
-      aria-multiselectable={multiselectable || undefined}
-    >
+      aria-multiselectable={multiselectable || undefined}>
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}

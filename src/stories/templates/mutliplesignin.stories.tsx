@@ -73,36 +73,31 @@ const footerSecondary = (
             <a
               key="facebook"
               className="usa-social-link usa-social-link--facebook"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>Facebook</span>
             </a>,
             <a
               key="twitter"
               className="usa-social-link usa-social-link--twitter"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>Twitter</span>
             </a>,
             <a
               key="youtube"
               className="usa-social-link usa-social-link--youtube"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>YouTube</span>
             </a>,
             <a
               key="instagram"
               className="usa-social-link usa-social-link--instagram"
-              href="#"
-            >
+              href="#">
               <span>Instagram</span>
             </a>,
             <a
               key="rss"
               className="usa-social-link usa-social-link--rss"
-              href="javascript:void(0);"
-            >
+              href="javascript:void(0);">
               <span>RSS</span>
             </a>,
           ]}
@@ -157,15 +152,13 @@ export const MultipleSignInOptions = (): React.ReactElement => {
           <GridContainer className="usa-section">
             <Grid
               row={true}
-              className="margin-x-neg-205 margin-bottom-7 flex-justify-center"
-            >
+              className="margin-x-neg-205 margin-bottom-7 flex-justify-center">
               <Grid
                 col={12}
                 mobileLg={{ col: 10 }}
                 tablet={{ col: 8 }}
                 desktop={{ col: 6 }}
-                className="padding-x-205 margin-bottom-7"
-              >
+                className="padding-x-205 margin-bottom-7">
                 <h1 className="desktop:display-none font-sans-lg margin-bottom-4 tablet:margin-top-neg-3">
                   A tagline that explains the benefit of creating an account.
                 </h1>
@@ -221,8 +214,7 @@ export const MultipleSignInOptions = (): React.ReactElement => {
                 mobileLg={{ col: 10 }}
                 tablet={{ col: 8 }}
                 desktop={{ col: 6 }}
-                className="padding-x-205"
-              >
+                className="padding-x-205">
                 <div className="border-top border-base-lighter padding-top-4 desktop:border-0 desktop:padding-top-0">
                   <h2 className="display-none desktop:display-block">
                     A tagline that explains the benefit of creating an account.
