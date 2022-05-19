@@ -154,36 +154,31 @@ export const NotFoundPage = (): React.ReactElement => {
               <a
                 key="facebook"
                 className="usa-social-link usa-social-link--facebook"
-                href="javascript:void(0);"
-              >
+                href="javascript:void(0);">
                 <span>Facebook</span>
               </a>,
               <a
                 key="twitter"
                 className="usa-social-link usa-social-link--twitter"
-                href="javascript:void(0);"
-              >
+                href="javascript:void(0);">
                 <span>Twitter</span>
               </a>,
               <a
                 key="youtube"
                 className="usa-social-link usa-social-link--youtube"
-                href="javascript:void(0);"
-              >
+                href="javascript:void(0);">
                 <span>YouTube</span>
               </a>,
               <a
                 key="instagram"
                 className="usa-social-link usa-social-link--instagram"
-                href="javascript:void(0);"
-              >
+                href="javascript:void(0);">
                 <span>Instagram</span>
               </a>,
               <a
                 key="rss"
                 className="usa-social-link usa-social-link--rss"
-                href="javascript:void(0);"
-              >
+                href="javascript:void(0);">
                 <span>RSS</span>
               </a>,
             ]}
@@ -232,8 +227,7 @@ export const NotFoundPage = (): React.ReactElement => {
             aria-label="Primary navigation"
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
-            mobileExpanded={mobileNavOpen}
-          >
+            mobileExpanded={mobileNavOpen}>
             <Search size="small" onSubmit={handleSearch} />
           </PrimaryNav>
         </div>
@@ -244,8 +238,7 @@ export const NotFoundPage = (): React.ReactElement => {
           <Grid row gap>
             <main
               className="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs"
-              id="main-content"
-            >
+              id="main-content">
               <h1>Page not found</h1>
 
               <p className="usa-intro">

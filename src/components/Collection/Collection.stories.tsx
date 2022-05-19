@@ -116,8 +116,7 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={gearsImage} alt="Alt text" />
-        }
-      >
+        }>
         <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/presidents-winners-press-release/">
             Gears of Government President’s Award winners
@@ -144,8 +143,7 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={wosb1Image} alt="Alt text" />
-        }
-      >
+        }>
         <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
@@ -168,8 +166,7 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={septImage} alt="Alt text" />
-        }
-      >
+        }>
         <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency
@@ -294,8 +291,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionThumbnail src={wosb1Image} alt="Alt text" />
-        }
-      >
+        }>
         <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             Women-owned small business dashboard
@@ -328,8 +324,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
       <CollectionItem
         variantComponent={
           <CollectionCalendarDate datetime="2020-09-17T12:00:00+01:00" />
-        }
-      >
+        }>
         <CollectionHeading headingLevel="h3">
           <Link href="https://www.performance.gov/sba-wosb-dashboard/">
             September 2020 updates show progress on cross-agency and agency

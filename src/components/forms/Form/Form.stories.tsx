@@ -219,8 +219,7 @@ export const signInForm = (): React.ReactElement => {
             aria-controls="password-sign-in"
             onClick={(): void =>
               setShowPassword((showPassword) => !showPassword)
-            }
-          >
+            }>
             {showPassword ? 'Hide password' : 'Show password'}
           </a>
         </p>
@@ -273,8 +272,7 @@ export const passwordResetForm = (): React.ReactElement => {
             aria-controls="newPassword confirmPassword"
             onClick={(): void =>
               setShowPassword((showPassword) => !showPassword)
-            }
-          >
+            }>
             {showPassword ? 'Hide my typing' : 'Show my typing'}
           </a>
         </p>

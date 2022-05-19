@@ -34,8 +34,7 @@ export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
         data-testid="modalOverlay"
         className="usa-modal-overlay"
         onClick={forceAction ? undefined : handleClose}
-        aria-controls={id}
-      >
+        aria-controls={id}>
         {children}
       </div>
     </div>
