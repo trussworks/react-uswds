@@ -3,10 +3,9 @@ import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
 
-export type GridProps = GridItemProps &
-  {
-    [P in BreakpointKeys]?: GridItemProps
-  }
+export type GridProps = GridItemProps & {
+  [P in BreakpointKeys]?: GridItemProps
+}
 
 export type GridComponentProps<T> = GridProps & { className?: string } & T
 
@@ -138,7 +137,7 @@ export function Grid<FCProps = DefaultGridProps>(
   if (isCustomProps(otherProps)) {
     const { asCustom, ...remainingProps } = otherProps
 
-    const gridProps: FCProps = (remainingProps as unknown) as FCProps
+    const gridProps: FCProps = remainingProps as unknown as FCProps
     return React.createElement(
       asCustom,
       {

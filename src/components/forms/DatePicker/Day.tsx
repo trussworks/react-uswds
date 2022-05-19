@@ -104,8 +104,7 @@ const DayForwardRef: React.ForwardRefRenderFunction<
       aria-selected={isSelected ? true : false}
       disabled={isDisabled}
       onKeyDown={handleKeyDown}
-      onMouseMove={isFocusedMonth ? handleMouseMove : undefined}
-    >
+      onMouseMove={isFocusedMonth ? handleMouseMove : undefined}>
       {day}
     </button>
   )

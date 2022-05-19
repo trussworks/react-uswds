@@ -369,8 +369,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
       data-testid="combo-box"
       data-enhanced="true"
       className={containerClasses}
-      ref={containerRef}
-    >
+      ref={containerRef}>
       <select
         {...selectProps}
         className="usa-select usa-sr-only usa-combo-box__select"
@@ -378,8 +377,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         aria-hidden
         tabIndex={-1}
         defaultValue={state.selectedOption?.value}
-        data-testid="combo-box-select"
-      >
+        data-testid="combo-box-select">
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
@@ -419,8 +417,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
           data-testid="combo-box-clear-button"
           onKeyDown={handleClearKeyDown}
           hidden={!isPristine || isDisabled}
-          disabled={isDisabled}
-        >
+          disabled={isDisabled}>
           &nbsp;
         </button>
       </span>
@@ -439,8 +436,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
                 : ActionTypes.OPEN_LIST,
             })
           }
-          disabled={isDisabled}
-        >
+          disabled={isDisabled}>
           &nbsp;
         </button>
       </span>
@@ -452,8 +448,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         className="usa-combo-box__list"
         role="listbox"
         ref={listRef}
-        hidden={!state.isOpen}
-      >
+        hidden={!state.isOpen}>
         {state.filteredOptions.map((option, index) => {
           const focused = option === state.focusedOption
           const selected = option === state.selectedOption
@@ -483,8 +478,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
               }
               onClick={(): void => {
                 dispatch({ type: ActionTypes.SELECT_OPTION, option: option })
-              }}
-            >
+              }}>
               {option.label}
             </li>
           )
@@ -502,8 +496,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
       <span
         id={assistiveHintID}
         className="usa-sr-only"
-        data-testid="combo-box-assistive-hint"
-      >
+        data-testid="combo-box-assistive-hint">
         {assistiveHint ||
           `When autocomplete results are available use up and down arrows to review
            and enter to select. Touch device users, explore by touch or with swipe
