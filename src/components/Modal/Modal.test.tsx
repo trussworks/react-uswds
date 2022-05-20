@@ -613,7 +613,9 @@ describe('Modal component', () => {
 
         await waitFor(() => handleOpen())
 
-        expect(baseElement).toHaveClass('usa-js-no-click')
+        await waitFor(() => {
+          expect(baseElement).toHaveClass('usa-js-no-click')
+        })
 
         await waitFor(() => handleClose())
 
