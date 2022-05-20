@@ -58,3 +58,5 @@ export const ModalToggleButton = ({
     </Button>
   )
 }
+
+export default ModalToggleButton
