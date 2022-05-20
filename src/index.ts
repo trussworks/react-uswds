@@ -125,6 +125,8 @@ export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/
 export { Search } from './components/Search/Search'
 
 export { SummaryBox } from './components/SummaryBox/SummaryBox/SummaryBox'
+export { SummaryBoxHeading } from './components/SummaryBox/SummaryBoxHeading/SummaryBoxHeading'
+export { SummaryBoxContent } from './components/SummaryBox/SummaryBoxContent/SummaryBoxContent'
 
 /** ProcessList components */
 export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
