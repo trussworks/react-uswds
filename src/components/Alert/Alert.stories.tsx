@@ -118,8 +118,7 @@ export const withCTA = (): React.ReactElement => (
       <Button type="button" outline>
         Click here
       </Button>
-    }
-  >
+    }>
     {testText}
   </Alert>
 )

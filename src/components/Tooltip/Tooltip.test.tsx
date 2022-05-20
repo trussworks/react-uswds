@@ -188,8 +188,7 @@ describe('Tooltip component', () => {
           label="Click me"
           asCustom={CustomLink}
           to="http://www.truss.works"
-          className="customTriggerClass"
-        >
+          className="customTriggerClass">
           This is a custom link tooltip
         </Tooltip>
       )

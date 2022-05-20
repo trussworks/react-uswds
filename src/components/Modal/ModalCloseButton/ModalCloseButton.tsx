@@ -18,8 +18,7 @@ export const ModalCloseButton = ({
       aria-label="Close this window"
       onClick={handleClose}
       data-close-modal
-      type="button"
-    >
+      type="button">
       <Icon.Close aria-hidden="true" />
     </Button>
   )

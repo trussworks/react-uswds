@@ -145,8 +145,7 @@ describe('StepIndicator component', () => {
     const { queryByRole, queryByTestId } = render(
       <StepIndicator
         headingLevel="h4"
-        headingProps={{ id: 'my-id', className: 'my-custom-className' }}
-      >
+        headingProps={{ id: 'my-id', className: 'my-custom-className' }}>
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />
