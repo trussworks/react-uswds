@@ -18,3 +18,5 @@ export const SummaryBoxContent = ({
     </div>
   )
 }
+
+export default SummaryBoxContent
