@@ -121,15 +121,15 @@ export const withOtherFields = (): React.ReactElement => {
 }
 
 export const exposedRefMethods = (): React.ReactElement => {
-  const ref = useRef<ComboBoxRef>()
+  const ref = useRef<ComboBoxRef>(null)
 
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
   }))
 
-  const handleClearSelection = (): void => ref.current.clearSelection()
-  const handleFocus = (): void => ref.current.focus()
+  const handleClearSelection = (): void => ref.current?.clearSelection()
+  const handleFocus = (): void => ref.current?.focus()
 
   return (
     <Form onSubmit={noop}>

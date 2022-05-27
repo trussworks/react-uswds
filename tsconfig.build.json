@@ -1,0 +1,9 @@
+{ 
+  "extends": "./tsconfig.json",
+  "noEmit": false,
+  "emitDeclarationOnly": true,
+  "exclude": [
+    "**/*.test.tsx",
+    "**/*.stories.tsx"
+  ]
+}

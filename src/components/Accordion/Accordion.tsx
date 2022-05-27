@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
+import { HeadingLevel } from '../../types/headingLevel'
+
 export interface AccordionItemProps {
   title: React.ReactNode | string
   content: React.ReactNode
