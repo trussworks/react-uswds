@@ -26,3 +26,5 @@ export const SummaryBoxHeading = ({
     </Heading>
   )
 }
+
+export default SummaryBoxHeading
