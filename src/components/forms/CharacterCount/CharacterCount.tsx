@@ -33,7 +33,7 @@ const defaultMessage = (count: number, max: number): string => {
 }
 
 /* Types */
-interface BaseCharacterCountProps {
+type BaseCharacterCountProps = {
   id: string
   name: string
   maxLength: number
@@ -44,9 +44,10 @@ interface BaseCharacterCountProps {
   getMessage?: (remainingCount: number, max: number) => string
 }
 
-type TextInputCharacterCountProps = BaseCharacterCountProps & TextInputProps
+export type TextInputCharacterCountProps = BaseCharacterCountProps &
+  TextInputProps
 
-type TextareaCharacterCountProps = BaseCharacterCountProps &
+export type TextareaCharacterCountProps = BaseCharacterCountProps &
   TextareaProps &
   JSX.IntrinsicElements['textarea']
 

@@ -8,13 +8,13 @@ type TextInputRef =
   | null
   | undefined
 
-interface RequiredTextInputProps {
+type RequiredTextInputProps = {
   id: string
   name: string
   type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
 }
 
-interface CustomTextInputProps {
+type CustomTextInputProps = {
   className?: string
   validationStatus?: 'error' | 'success'
   inputSize?: 'small' | 'medium'

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface FieldsetProps {
+type FieldsetProps = {
   children: React.ReactNode
   legend?: React.ReactNode
   legendStyle?: 'default' | 'large' | 'srOnly'

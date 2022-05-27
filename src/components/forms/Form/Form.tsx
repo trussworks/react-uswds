@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface RequiredFormProps {
+type RequiredFormProps = {
   children: React.ReactNode
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
-interface CustomFormProps {
+type CustomFormProps = {
   className?: string
   large?: boolean
   search?: boolean

@@ -6,6 +6,7 @@ import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/CharacterCount',
+  component: CharacterCount,
   parameters: {
     docs: {
       description: {

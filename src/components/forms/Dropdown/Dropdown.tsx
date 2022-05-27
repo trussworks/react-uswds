@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface DropdownProps {
+type DropdownProps = {
   id: string
   name: string
   className?: string
