@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import type { HeadingLevel } from '../../../types/headingLevel'
 
 interface BaseProcessListHeadingProps {
   type: string

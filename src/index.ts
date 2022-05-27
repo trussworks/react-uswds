@@ -1,6 +1,9 @@
 // Global CSS
 import './styles/index.scss'
 
+/** Types */
+export type { HeadingLevel } from './types/headingLevel'
+
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'

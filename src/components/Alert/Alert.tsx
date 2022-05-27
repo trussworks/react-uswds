@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import styles from './Alert.module.css'
+import type { HeadingLevel } from '../../types/headingLevel'
 
 export interface AlertProps {
   type: 'success' | 'warning' | 'error' | 'info'

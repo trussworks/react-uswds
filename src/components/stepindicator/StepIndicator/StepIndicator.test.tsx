@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
+import type { HeadingLevel } from '../../../types/headingLevel'
 
 const step1 = 'Step 1'
 const step2 = 'Step 2'

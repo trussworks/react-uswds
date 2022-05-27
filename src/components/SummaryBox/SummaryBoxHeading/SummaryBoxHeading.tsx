@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import classnames from 'classnames'
+import type { HeadingLevel } from '../../../types/headingLevel'
 
 interface SummaryBoxHeadingProps {
   children: ReactNode
