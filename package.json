@@ -28,7 +28,7 @@
     "storybook": "start-storybook -p 9009",
     "storybook:deploy": "storybook-to-ghpages",
     "build": "tsc -p tsconfig.build.json && webpack --progress",
-    "build:watch": "tsc && webpack --watch",
+    "build:watch": "tsc -p tsconfig.build.json && webpack --watch",
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "release": "standard-version -t ''",
     "prepare": "yarn build",
