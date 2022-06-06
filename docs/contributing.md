@@ -6,14 +6,21 @@ We welcome contributions in the form of comments, issues, or pull requests with 
 
 **Table of Contents**
 
-- [Environment setup](#environment-setup)
-  - [Available commands](#available-commands)
-- [Development](#development)
-  - [Working on an issue](#working-on-an-issue)
-  - [General guidelines](#general-guidelines)
-  - [Linting, formatting, & automated tests](#linting-formatting--automated-tests)
-  - [Testing in an application](#testing-in-an-application)
-  - [Opening & merging pull requests](#opening--merging-pull-requests)
+- [Contributing](#contributing)
+  - [Environment setup](#environment-setup)
+    - [Available commands](#available-commands)
+  - [Development](#development)
+    - [Working on an issue](#working-on-an-issue)
+    - [General guidelines](#general-guidelines)
+    - [Linting, formatting, & automated tests](#linting-formatting--automated-tests)
+    - [Testing in an application](#testing-in-an-application)
+      - [`yarn link`](#yarn-link)
+      - [Install from a ReactUSWDS branch](#install-from-a-reactuswds-branch)
+    - [Opening & merging pull requests](#opening--merging-pull-requests)
+      - [`type`:](#type)
+      - [`scope`:](#scope)
+      - [`body`:](#body)
+      - [`footer`:](#footer)
 
 ## Environment setup
 
@@ -40,12 +47,6 @@ These should all be run from within the project directory.
 - `yarn build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
-- `yarn example:install`
-  - Installs dependencies for the example app. This must be run prior to viewing/developing the example application (located in `/example`).
-  - Builds the library files from `/src` into `/lib`, and also runs `yarn install` in the `/example` directory
-- `yarn example:start`
-  - After installing dependencies, use this to start the example app dev server, so you can view the example app and also add to it.
-
 ## Development
 
 ### Working on an issue
@@ -65,7 +66,7 @@ For example: `hw-accordion-component-112`
 - Encourage a strict separation of concerns, focusing on UI (rendered HTML and CSS) rather than any application logic.
 - Expose the necessary props for composability and extensibility, such as event handlers, custom CSS classes, etc.
 - Maintain a high standard of unit test coverage and cross-browser/device support, so that projects including this dependency can focus on integration and implementation.
-- Provide thorough documentation (in Storybook and in the example app) so that users can view the components as they render in the UI, the source code required to use them, and specifications such as how props are used, a11y support, and test coverage.
+- Provide thorough documentation (in Storybook) so that users can view the components as they render in the UI, the source code required to use them, and specifications such as how props are used, a11y support, and test coverage.
 - Consistent and transparent versioning so that multiple projects can rely on this package, and it can be maintained as React and USWDS release new versions while also providing backwards compatibility.
 
 More guidance for preferred React practices can be found in the [adding new components](./adding_new_components.md) documentation.

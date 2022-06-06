@@ -16,8 +16,6 @@ This is a frontend component library, built in [React](https://reactjs.org/) wit
 
 A deployed instance of the ReactUSWDS Storybook is located at: [https://trussworks.github.io/react-uswds/](https://trussworks.github.io/react-uswds/)
 
-An example application, built with React-USWDS, can be found in the `/example` folder and run with the appropriate [`yarn:example` commands](./docs/contributing.md#available-commands).
-
 **Table of Contents**
 
 - [@trussworks/react-uswds](#trussworksreact-uswds)
