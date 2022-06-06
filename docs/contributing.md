@@ -247,7 +247,6 @@ Optional, can be one of the following:
 - `deps-dev`: Updating a package listed in devDependencies
 - `release`: Releasing a new version
 - `circleci`: Changes to CircleCI config and/or scripts
-- `example`: Changes to the Example App only
 - `storybook`: Changes to Storybook or stories files only
 
 #### `body`:
