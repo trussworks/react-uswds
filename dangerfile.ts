@@ -45,7 +45,7 @@ const checkYarnAudit: () => void = () => {
       })
       fail(
         `${issuesFound}${summary.data.vulnerabilities.high} high vulnerabilities and ` +
-          `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
+        `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
       )
     }
   } else {
