@@ -1,6 +1,7 @@
 import * as child from 'child_process'
 
-import { danger, fail, warn } from 'danger'
+import { danger, fail, schedule, warn } from 'danger'
+
 const shouldRun = !danger.github || (danger.github && danger.github.pr.user.type !== 'Bot');
 
 // Load all modified and new files
@@ -127,34 +128,21 @@ const checkDependencyChanges: () => void = () => {
   }
 }
 
-// const checkYarnAudit: () => void = () => {
-const checkContributorsJSON: () => void = () => {
-  const packageChanged = allFiles.includes('package.json')
-  if (packageChanged) {
-    danger.git
-      .structuredDiffForFile('package.json')
-      .then((sdiff) => {
-        return sdiff.chunks.every((chunk) => {
-          return chunk.changes
-            .filter((change) => {
-              return change.type === 'add' // Filter on additive changes
-            })
-            .every((change) => {
-              return change.content.match(/"contributors":/)
-            })
-        })
-      })
-      .then((contributorsChanges) => {
-        if (contributorsChanges) {
-          const message =
-            'Do not make changes to package.json around contributors.'
-          const idea =
-            'This project only uses .all-contributorsrc for tracking contributors.'
-          fail(`${message} - <i>${idea}</i>`)
-        }
-      })
+// Check for any changes to the contributors section of package.json
+schedule(async () => {
+  if (!shouldRun) {
+    return;
   }
-}
+  const pd = await danger.git.JSONDiffForFile('package.json')
+
+  if (pd.contributors) {
+    const message =
+      'Do not make changes to package.json around contributors.'
+    const idea =
+      'This project only uses .all-contributorsrc for tracking contributors.'
+    fail(`${message} - <i>${idea}</i>`)
+  }
+})
 
 // skip these checks if PR is by any bot (e.g. dependabot), if we
 // don't have a github object let it run also since we are local
@@ -164,6 +152,4 @@ if (shouldRun) {
 
   checkCodeChanges()
   checkDependencyChanges()
-
-  checkContributorsJSON()
 }
