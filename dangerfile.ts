@@ -1,6 +1,7 @@
 import * as child from 'child_process'
 
 import { danger, fail, warn } from 'danger'
+const shouldRun = !danger.github || (danger.github && danger.github.pr.user.type !== 'Bot');
 
 // Load all modified and new files
 const allFiles = danger.git.modified_files.concat(danger.git.created_files)
@@ -157,7 +158,7 @@ const checkContributorsJSON: () => void = () => {
 
 // skip these checks if PR is by any bot (e.g. dependabot), if we
 // don't have a github object let it run also since we are local
-if (!danger.github || (danger.github && danger.github.pr.user.type !== 'Bot')) {
+if (shouldRun) {
   checkYarnAudit()
   checkPrDescription()
 
