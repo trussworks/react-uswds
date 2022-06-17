@@ -13988,9 +13988,9 @@ sass-resources-loader@^2.0.1:
     loader-utils "^2.0.0"
 
 sass@^1.26.0:
-  version "1.52.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.52.0.tgz#3dc755ff459858ce7062887181648701f028c4f5"
-  integrity sha512-6EnTglag2oVD8sNJCxUi2Jd3ICH9tJ5Mqudt/gIZNBR2uKJUBZuTpW9O1t04SkDLP7VFa76FCWTV2rwchqM8Kw==
+  version "1.52.3"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.52.3.tgz#b7cc7ffea2341ccc9a0c4fd372bf1b3f9be1b6cb"
+  integrity sha512-LNNPJ9lafx+j1ArtA7GyEJm9eawXN8KlA1+5dF6IZyoONg1Tyo/g+muOsENWJH/2Q1FHbbV4UwliU0cXMa/VIA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
