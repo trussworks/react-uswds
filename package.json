@@ -17,7 +17,7 @@
     "lib"
   ],
   "engines": {
-    "node": "10.x - 16.x"
+    "node": "10.x - 18.x"
   },
   "scripts": {
     "test": "jest",
@@ -35,8 +35,6 @@
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo",
     "happo-ci": "happo-ci-github-actions",
-    "example:install": "yarn build && cd example/ && yarn",
-    "example:start": "cd example/ && yarn start",
     "contributors:add": "all-contributors add"
   },
   "repository": {
@@ -99,7 +97,7 @@
     "happo.io": "^7.1.0",
     "husky": "^4.3.8",
     "jest": "^26.1.0",
-    "lint-staged": "^12.0.2",
+    "lint-staged": "^13.0.0",
     "mini-css-extract-plugin": "^2.3.0",
     "prettier": "^2.0.2",
     "react": "^17.0.1",
