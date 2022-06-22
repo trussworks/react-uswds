@@ -134,3 +134,6 @@ export { ProcessListItem } from './components/ProcessList/ProcessListItem/Proces
 export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/ProcessListHeading'
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
+/** Types */
+export type { HeadingLevel } from './types/headingLevel'
