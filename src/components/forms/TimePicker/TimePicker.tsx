@@ -14,7 +14,7 @@ import {
   TIME_PICKER_CUSTOM_FILTER,
 } from './constants'
 
-interface BaseTimePickerProps {
+type BaseTimePickerProps = {
   id: string
   name: string
   onChange: (val?: string) => void
