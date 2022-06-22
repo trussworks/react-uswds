@@ -103,7 +103,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   }
 }
 
-interface GovBannerProps {
+type GovBannerProps = {
   tld?: TLD
   language?: Language
 }

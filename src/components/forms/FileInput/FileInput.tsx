@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { FilePreview } from './FilePreview'
 import { makeSafeForID } from './utils'
 
-interface FileInputProps {
+type FileInputProps = {
   id: string
   name: string
   disabled?: boolean

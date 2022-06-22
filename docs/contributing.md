@@ -209,7 +209,11 @@ When your branch is ready for review, open a new pull request into `main` and re
 
 When opening the pull request, it's important to understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)**. This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
 
-> Note: Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR.
+#### ⚠️ Note to outside contributors
+
+Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR. We will always ensure that attribution for your work will be associated with your account.
+
+#### Formatting your commits
 
 The format for PR commits is:
 

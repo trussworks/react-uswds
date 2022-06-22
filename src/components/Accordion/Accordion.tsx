@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
+import { HeadingLevel } from '../../types/headingLevel'
+
 export interface AccordionItemProps {
   title: React.ReactNode | string
   content: React.ReactNode
@@ -11,7 +13,7 @@ export interface AccordionItemProps {
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-interface AccordionProps {
+type AccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
@@ -65,7 +67,7 @@ export const Accordion = ({
   items,
   className,
   multiselectable = false,
-}: AccordionProps): React.ReactElement => {
+}: AccordionProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
