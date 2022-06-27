@@ -95,7 +95,10 @@ export { Footer } from './components/Footer/Footer/Footer'
 export { FooterExtendedNavList } from './components/Footer/FooterExtendedNavList/FooterExtendedNavList'
 export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
-export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
+export {
+  SocialLinks,
+  SocialLink,
+} from './components/Footer/SocialLinks/SocialLinks'
 
 /** Modal components */
 export { Modal } from './components/Modal/Modal'

@@ -363,9 +363,7 @@ export const Calendar = ({
             ref={prevYearEl}
             className="usa-date-picker__calendar__previous-year"
             aria-label={backOneYear}
-            disabled={prevButtonsDisabled}>
-            &nbsp;
-          </button>
+            disabled={prevButtonsDisabled}></button>
         </div>
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__cell--center-items">
           <button
@@ -375,9 +373,7 @@ export const Calendar = ({
             ref={prevMonthEl}
             className="usa-date-picker__calendar__previous-month"
             aria-label={backOneMonth}
-            disabled={prevButtonsDisabled}>
-            &nbsp;
-          </button>
+            disabled={prevButtonsDisabled}></button>
         </div>
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__month-label">
           <button
@@ -407,9 +403,7 @@ export const Calendar = ({
             ref={nextMonthEl}
             className="usa-date-picker__calendar__next-month"
             aria-label={forwardOneMonth}
-            disabled={nextButtonsDisabled}>
-            &nbsp;
-          </button>
+            disabled={nextButtonsDisabled}></button>
         </div>
         <div className="usa-date-picker__calendar__cell usa-date-picker__calendar__cell--center-items">
           <button
@@ -419,9 +413,7 @@ export const Calendar = ({
             ref={nextYearEl}
             className="usa-date-picker__calendar__next-year"
             aria-label={forwardOneYear}
-            disabled={nextButtonsDisabled}>
-            &nbsp;
-          </button>
+            disabled={nextButtonsDisabled}></button>
         </div>
       </div>
       <table className="usa-date-picker__calendar__table" role="presentation">

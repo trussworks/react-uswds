@@ -245,9 +245,7 @@ export const YearPicker = ({
                 aria-label={`Navigate back ${YEAR_CHUNK} years`}
                 disabled={prevYearChunkDisabled}
                 onClick={handlePreviousYearChunkClick}
-                ref={prevYearChunkEl}>
-                &nbsp;
-              </button>
+                ref={prevYearChunkEl}></button>
             </td>
             <td colSpan={3}>
               <table
@@ -264,9 +262,7 @@ export const YearPicker = ({
                 aria-label={`Navigate forward ${YEAR_CHUNK} years`}
                 disabled={nextYearChunkDisabled}
                 onClick={handleNextYearChunkClick}
-                ref={nextYearChunkEl}>
-                &nbsp;
-              </button>
+                ref={nextYearChunkEl}></button>
             </td>
           </tr>
         </tbody>

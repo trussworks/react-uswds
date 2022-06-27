@@ -128,20 +128,9 @@ export const DateRangePicker = (
 
   const startDatePickerLabelId = `${startDatePickerProps.id}-label`
   const startDatePickerHintId = `${startDatePickerProps.id}-hint`
-  const startDatePickerAriaDescribedBy =
-    [
-      startDateLabel && startDatePickerLabelId,
-      startDateHint && startDatePickerHintId,
-    ]
-      .join(' ')
-      .trim() || undefined
 
   const endDatePickerLabelId = `${endDatePickerProps.id}-label`
   const endDatePickerHintId = `${endDatePickerProps.id}-hint`
-  const endDatePickerAriaDescribedBy =
-    [endDateLabel && endDatePickerLabelId, endDateHint && endDatePickerHintId]
-      .join(' ')
-      .trim() || undefined
 
   return (
     <div className={classes} data-testid="date-range-picker">
@@ -160,7 +149,8 @@ export const DateRangePicker = (
           className={startDatePickerClasses}
           rangeDate={endDateInternalValue}
           {...startDatePickerProps}
-          aria-describedby={startDatePickerAriaDescribedBy}
+          aria-labelledby={startDatePickerLabelId}
+          aria-describedby={startDatePickerHintId}
           onChange={startDatePickerOnChange}
           maxDate={getMaxStartDate()}
         />
@@ -181,7 +171,8 @@ export const DateRangePicker = (
           className={endDatePickerClasses}
           rangeDate={startDateInternalValue}
           {...endDatePickerProps}
-          aria-describedby={endDatePickerAriaDescribedBy}
+          aria-labelledby={endDatePickerLabelId}
+          aria-describedby={endDatePickerHintId}
           onChange={endDatePickerOnChange}
           minDate={getMinEndDate()}
         />
