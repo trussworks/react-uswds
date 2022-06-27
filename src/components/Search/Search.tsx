@@ -1,5 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
+
+import searchImg from 'uswds/src/img/usa-icons-bg/search--white.svg'
+
 import { Button } from '../Button/Button'
 import { Form, OptionalFormProps } from '../forms/Form/Form'
 import { Label } from '../forms/Label/Label'
@@ -61,9 +64,14 @@ export const Search = ({
         placeholder={placeholder}
       />
       <Button type="submit">
-        <span className={isSmall ? 'usa-sr-only' : 'usa-search__submit-text'}>
-          {buttonText}
-        </span>
+        {!isSmall && (
+          <span className="usa-search__submit-text">{buttonText}</span>
+        )}
+        <img
+          src={searchImg}
+          className="usa-search__submit-icon"
+          alt={buttonText}
+        />
       </Button>
     </Form>
   )

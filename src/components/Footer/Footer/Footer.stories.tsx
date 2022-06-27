@@ -8,7 +8,7 @@ import { FooterNav } from '../FooterNav/FooterNav'
 import { Form } from '../../forms/Form/Form'
 import { Label } from '../../forms/Label/Label'
 import { Logo } from '../Logo/Logo'
-import { SocialLinks } from '../SocialLinks/SocialLinks'
+import { SocialLinks, SocialLink } from '../SocialLinks/SocialLinks'
 import { TextInput } from '../../forms/TextInput/TextInput'
 
 // assets
@@ -41,6 +41,14 @@ const returnToTop = (
     </Button>
   </div>
 )
+
+const socialLinkItems = [
+  <SocialLink key="facebook" name="Facebook" href="#" />,
+  <SocialLink key="twitter" name="Twitter" href="#" />,
+  <SocialLink key="youtube" name="YouTube" href="#" />,
+  <SocialLink key="instagram" name="Instagram" href="#" />,
+  <SocialLink key="rss" name="RSS" href="#" />,
+]
 
 const SignUpForm = (): React.ReactElement => {
   return (
@@ -130,40 +138,7 @@ export const MediumFooter = (): React.ReactElement => (
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
         <div className="usa-footer__contact-links mobile-lg:grid-col-6">
-          <SocialLinks
-            links={[
-              <a
-                key="facebook"
-                className="usa-social-link usa-social-link--facebook"
-                href="#">
-                <span>Facebook</span>
-              </a>,
-              <a
-                key="twitter"
-                className="usa-social-link usa-social-link--twitter"
-                href="#">
-                <span>Twitter</span>
-              </a>,
-              <a
-                key="youtube"
-                className="usa-social-link usa-social-link--youtube"
-                href="#">
-                <span>YouTube</span>
-              </a>,
-              <a
-                key="instagram"
-                className="usa-social-link usa-social-link--instagram"
-                href="#">
-                <span>Instagram</span>
-              </a>,
-              <a
-                key="rss"
-                className="usa-social-link usa-social-link--rss"
-                href="#">
-                <span>RSS</span>
-              </a>,
-            ]}
-          />
+          <SocialLinks links={socialLinkItems} />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
             size="medium"
@@ -249,40 +224,7 @@ export const BigFooter = (): React.ReactElement => (
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
         <div className="usa-footer__contact-links mobile-lg:grid-col-6">
-          <SocialLinks
-            links={[
-              <a
-                key="facebook"
-                className="usa-social-link usa-social-link--facebook"
-                href="#">
-                <span>Facebook</span>
-              </a>,
-              <a
-                key="twitter"
-                className="usa-social-link usa-social-link--twitter"
-                href="#">
-                <span>Twitter</span>
-              </a>,
-              <a
-                key="youtube"
-                className="usa-social-link usa-social-link--youtube"
-                href="#">
-                <span>YouTube</span>
-              </a>,
-              <a
-                key="instagram"
-                className="usa-social-link usa-social-link--instagram"
-                href="#">
-                <span>Instagram</span>
-              </a>,
-              <a
-                key="rss"
-                className="usa-social-link usa-social-link--rss"
-                href="#">
-                <span>RSS</span>
-              </a>,
-            ]}
-          />
+          <SocialLinks links={socialLinkItems} />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
             size="big"

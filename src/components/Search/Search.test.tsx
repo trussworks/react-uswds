@@ -9,8 +9,11 @@ const sampleLocalization = {
 describe('Search component', () => {
   it('renders without errors', () => {
     const mockSubmit = jest.fn()
-    const { queryByTestId } = render(<Search onSubmit={mockSubmit}></Search>)
+    const { queryByTestId, queryByRole } = render(
+      <Search onSubmit={mockSubmit}></Search>
+    )
     expect(queryByTestId('textInput')).toBeInTheDocument()
+    expect(queryByRole('button')).toHaveTextContent('Search')
   })
 
   it('implements an onSubmit handler', () => {
@@ -43,6 +46,15 @@ describe('Search component', () => {
     )
 
     expect(queryByLabelText('Buscar')).toBeInTheDocument()
+  })
+
+  it('does not render button text when small', () => {
+    const mockSubmit = jest.fn()
+    const { queryByRole } = render(
+      <Search size="small" onSubmit={mockSubmit}></Search>
+    )
+
+    expect(queryByRole('button')).not.toHaveTextContent('Search')
   })
 
   describe('renders size classes', () => {

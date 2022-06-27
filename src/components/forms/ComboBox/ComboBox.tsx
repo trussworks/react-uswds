@@ -401,6 +401,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         value={state.inputValue}
         focused={state.focusMode === FocusMode.Input}
         aria-owns={listID}
+        aria-controls={listID}
         aria-autocomplete="list"
         aria-describedby={assistiveHintID}
         aria-expanded={state.isOpen}
