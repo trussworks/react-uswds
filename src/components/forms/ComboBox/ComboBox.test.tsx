@@ -45,6 +45,10 @@ describe('ComboBox component', () => {
     expect(comboBoxInput).toBeInTheDocument()
     expect(comboBoxInput).toBeInstanceOf(HTMLInputElement)
     expect(comboBoxInput).toHaveAttribute('aria-owns', 'favorite-fruit--list')
+    expect(comboBoxInput).toHaveAttribute(
+      'aria-controls',
+      'favorite-fruit--list'
+    )
     expect(comboBoxInput).toHaveAttribute('aria-autocomplete', 'list')
     expect(comboBoxInput).toHaveAttribute(
       'aria-describedby',
