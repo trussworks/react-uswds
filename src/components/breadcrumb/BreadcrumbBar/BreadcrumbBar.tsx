@@ -26,7 +26,7 @@ export const BreadcrumbBar = ({
   )
 
   return (
-    <nav className={classes} {...navProps} aria-label="Breadcrumbs">
+    <nav className={classes} aria-label="Breadcrumbs" {...navProps}>
       <ol className="usa-breadcrumb__list" {...listProps}>
         {children}
       </ol>

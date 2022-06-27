@@ -30,7 +30,7 @@ export const DateInput = ({
     'usa-form-group--year': unit == 'year',
   })
 
-  const inputClasses = classnames('usa-input--inline', className)
+  const inputClasses = classnames(className)
 
   return (
     <FormGroup className={formGroupClasses}>
