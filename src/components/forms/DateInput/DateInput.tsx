@@ -5,7 +5,7 @@ import { TextInput, OptionalTextInputProps } from '../TextInput/TextInput'
 import { Label } from '../Label/Label'
 import { FormGroup } from '../FormGroup/FormGroup'
 
-interface DateInputElementProps {
+type DateInputElementProps = {
   id: string
   name: string
   label: string

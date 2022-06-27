@@ -63,7 +63,7 @@ export const minAndMax = (argTypes: StorybookArguments): React.ReactElement => (
     handleSelectDate={argTypes.handleSelectDate}
     setStatuses={argTypes.setStatuses}
     date={new Date('January 15 2021')}
-    minDate={parseDateString('2021-01-10')}
+    minDate={parseDateString('2021-01-10') as Date}
     maxDate={parseDateString('2021-01-20')}
   />
 )

@@ -5,11 +5,11 @@ import { Form, OptionalFormProps } from '../forms/Form/Form'
 import { Label } from '../forms/Label/Label'
 import { TextInput } from '../forms/TextInput/TextInput'
 
-interface SearchLocalization {
+type SearchLocalization = {
   buttonText: string
 }
 
-interface SearchInputProps {
+type SearchInputProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
   className?: string

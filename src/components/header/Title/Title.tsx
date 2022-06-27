@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface TitleProps {
+type TitleProps = {
   children: React.ReactNode
 }
 

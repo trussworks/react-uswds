@@ -116,8 +116,8 @@ export const disabled = (): React.ReactElement => (
 export const withRefAndCustomHandlers = (
   argTypes: StorybookArguments
 ): React.ReactElement => {
-  const [files, setFiles] = useState<FileList>()
-  const fileInputRef = useRef<FileInputRef>()
+  const [files, setFiles] = useState<FileList | null>(null)
+  const fileInputRef = useRef<FileInputRef>(null)
 
   const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
 
@@ -127,8 +127,10 @@ export const withRefAndCustomHandlers = (
   }
 
   const fileList = []
-  for (let i = 0; i < files?.length; i++) {
-    fileList.push(<li key={`file_${i}`}>{files[Number(i)].name}</li>)
+  if (files) {
+    for (let i = 0; i < files?.length; i++) {
+      fileList.push(<li key={`file_${i}`}>{files?.[Number(i)].name}</li>)
+    }
   }
 
   return (

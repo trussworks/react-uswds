@@ -25,7 +25,7 @@ import {
 } from './utils'
 import { Calendar } from './Calendar'
 
-interface BaseDatePickerProps {
+type BaseDatePickerProps = {
   id: string
   name: string
   className?: string

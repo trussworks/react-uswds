@@ -11,7 +11,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "emitDeclarationOnly": true,
+    "noEmit": true,
     "jsx": "react",
     "noImplicitAny": true,
     "declaration": true,
@@ -19,8 +19,4 @@
     "isolatedModules": true,
   },
   "include": ["src/**/*", "custom.d.ts"],
-  "exclude": [
-    "node_modules",
-    "**/*.stories.tsx"
-  ]
 }
