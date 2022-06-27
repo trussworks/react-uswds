@@ -149,8 +149,8 @@ export const DateRangePicker = (
           className={startDatePickerClasses}
           rangeDate={endDateInternalValue}
           {...startDatePickerProps}
-          aria-labelledby={startDatePickerLabelId}
-          aria-describedby={startDatePickerHintId}
+          aria-labelledby={startDateLabel && startDatePickerLabelId}
+          aria-describedby={startDateHint && startDatePickerHintId}
           onChange={startDatePickerOnChange}
           maxDate={getMaxStartDate()}
         />
@@ -171,8 +171,8 @@ export const DateRangePicker = (
           className={endDatePickerClasses}
           rangeDate={startDateInternalValue}
           {...endDatePickerProps}
-          aria-labelledby={endDatePickerLabelId}
-          aria-describedby={endDatePickerHintId}
+          aria-labelledby={endDateLabel && endDatePickerLabelId}
+          aria-describedby={endDateHint && endDatePickerHintId}
           onChange={endDatePickerOnChange}
           minDate={getMinEndDate()}
         />
