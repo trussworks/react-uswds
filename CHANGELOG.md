@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/trussworks/react-uswds/compare/3.0.2...3.1.0) (2022-07-13)
+
+
+### Features
+
+* Remove example app ([#2162](https://github.com/trussworks/react-uswds/issues/2162)) ([1eb579e](https://github.com/trussworks/react-uswds/commit/1eb579e4d18e3ee04d3f54fc3445e6539fce3ec6))
+* USWDS 2.13.3 ([#2175](https://github.com/trussworks/react-uswds/issues/2175)) ([fdeefc6](https://github.com/trussworks/react-uswds/commit/fdeefc6d4e7e69fea50b6b0017dcc286979fbca5))
+
+
+### Bug Fixes
+
+* Danger contributors check ([#2167](https://github.com/trussworks/react-uswds/issues/2167)) ([c05fe06](https://github.com/trussworks/react-uswds/commit/c05fe0626acbc5f8945700e4d6a51e37693fcee3))
+* Emit headingLevel type and do not emit type declarations for tests ([#2134](https://github.com/trussworks/react-uswds/issues/2134)) ([a4501dd](https://github.com/trussworks/react-uswds/commit/a4501ddc24c12bbe3cf1279edbcf650f9dccd412))
+* export SummaryBoxHeading and SummaryBoxContent ([#2100](https://github.com/trussworks/react-uswds/issues/2100)) ([141ba8e](https://github.com/trussworks/react-uswds/commit/141ba8e23ed4eb41f3d0533bc155550c02d0b3f6))
+
+
+### Documentation & Examples
+
+* Callout outside contributors process ([#1969](https://github.com/trussworks/react-uswds/issues/1969)) ([7881191](https://github.com/trussworks/react-uswds/commit/78811918c1a38f773b5acf517181966ac5e58fe7))
+* Update releasing docs ([#2018](https://github.com/trussworks/react-uswds/issues/2018)) ([6849dda](https://github.com/trussworks/react-uswds/commit/6849ddab25c8674446dbd12a60f9ed1f9d1ce09c))
+
 ### [3.0.2](https://github.com/trussworks/react-uswds/compare/3.0.1...3.0.2) (2022-05-13)
 
 
