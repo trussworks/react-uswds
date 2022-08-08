@@ -4,14 +4,24 @@ import './styles/index.scss'
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'
-export { GovBanner } from './components/GovBanner/GovBanner'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { Link } from './components/Link/Link'
+export { MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
+
+/** Banner components */
+export { Banner } from './components/banner/Banner/Banner'
+export { BannerButton } from './components/banner/BannerButton/BannerButton'
+export { BannerContent } from './components/banner/BannerContent/BannerContent'
+export { BannerGuidance } from './components/banner/BannerGuidance/BannerGuidance'
+export { BannerHeader } from './components/banner/BannerHeader/BannerHeader'
+export { BannerIcon } from './components/banner/BannerIcon/BannerIcon'
+export { BannerLockImage } from './components/banner/BannerLockImage/BannerLockImage'
+export { GovBanner } from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
 export { Collection } from './components/Collection/Collection'
