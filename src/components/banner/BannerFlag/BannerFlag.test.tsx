@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { BannerFlag } from './BannerFlag'
 
-describe('BannerContent Component', () => {
+describe('BannerFlag Component', () => {
   it('renders properly', () => {
     render(<BannerFlag alt="A flag image" />)
 
