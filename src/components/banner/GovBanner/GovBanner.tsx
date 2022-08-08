@@ -4,15 +4,15 @@ import { BannerHeader } from '../BannerHeader/BannerHeader'
 import { BannerFlag } from '../BannerFlag/BannerFlag'
 import { BannerButton } from '../BannerButton/BannerButton'
 import { BannerContent } from '../BannerContent/BannerContent'
+import { BannerGuidance } from '../BannerGuidance/BannerGuidance'
+import { BannerIcon } from '../BannerIcon/BannerIcon'
+import { MediaBlockBody } from '../../mediablock/MediaBlockBody/MediaBlockBody'
+import { BannerLockImage } from '../BannerLockImage/BannerLockImage'
 
 // assets
 import flagImg from 'uswds/src/img/us_flag_small.png'
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
-import { BannerGuidance } from '../BannerGuidance/BannerGuidance'
-import { BannerIcon } from '../BannerIcon/BannerIcon'
-import { MediaBlockBody } from '../../mediablock/MediaBlockBody/MediaBlockBody'
-import { BannerLockImage } from '../BannerLockImage/BannerLockImage'
 
 type Language = 'english' | 'spanish'
 
