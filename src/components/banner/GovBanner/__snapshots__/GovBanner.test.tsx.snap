@@ -13,9 +13,11 @@ exports[`GovBanner component static content renders consistently in English for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -25,6 +27,7 @@ exports[`GovBanner component static content renders consistently in English for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -170,9 +173,11 @@ exports[`GovBanner component static content renders consistently in English for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -182,6 +187,7 @@ exports[`GovBanner component static content renders consistently in English for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -327,9 +333,11 @@ exports[`GovBanner component static content renders consistently in Spanish for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -339,6 +347,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -484,9 +493,11 @@ exports[`GovBanner component static content renders consistently in Spanish for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -496,6 +507,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -641,9 +653,11 @@ exports[`GovBanner component static content renders consistently with default pr
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -653,6 +667,7 @@ exports[`GovBanner component static content renders consistently with default pr
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
