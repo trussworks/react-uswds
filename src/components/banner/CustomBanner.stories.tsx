@@ -1,17 +1,19 @@
 import React, { ReactElement, useState } from 'react'
-import { MediaBlockBody } from '../mediablock/MediaBlockBody/MediaBlockBody'
-import { Banner } from './Banner/Banner'
-import { BannerButton } from './BannerButton/BannerButton'
-import { BannerContent } from './BannerContent/BannerContent'
-import { BannerFlag } from './BannerFlag/BannerFlag'
-import { BannerGuidance } from './BannerGuidance/BannerGuidance'
-import { BannerHeader } from './BannerHeader/BannerHeader'
-import { BannerIcon } from './BannerIcon/BannerIcon'
+import {
+  Banner,
+  BannerButton,
+  BannerContent,
+  BannerFlag,
+  BannerGuidance,
+  BannerHeader,
+  BannerIcon,
+  BannerLockImage,
+  MediaBlockBody,
+} from '../../index'
 
 import flagImg from 'uswds/src/img/us_flag_small.png'
 import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from 'uswds/src/img/icon-https.svg'
-import { BannerLockImage } from './BannerLockImage/BannerLockImage'
 
 const CustomBanner = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
