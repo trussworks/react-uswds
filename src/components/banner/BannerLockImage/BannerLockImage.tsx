@@ -6,7 +6,6 @@ type BannerLockImageProps = {
   titleProps?: JSX.IntrinsicElements['title']
   description: string
   descriptionProps?: JSX.IntrinsicElements['desc']
-  svgClassName?: string
   svgProps?: JSX.IntrinsicElements['svg']
 }
 
@@ -16,11 +15,12 @@ export const BannerLockImage = ({
   titleProps,
   description,
   descriptionProps,
-  svgClassName,
   svgProps,
   ...spanProps
 }: BannerLockImageProps & JSX.IntrinsicElements['span']): ReactElement => {
   const spanClasses = classNames('icon-lock', className)
+
+  const { className: svgClassName, ...remainingSvgProps } = svgProps || {}
   const svgClasses = classNames('usa-banner__lock-image', svgClassName)
 
   return (
@@ -34,7 +34,7 @@ export const BannerLockImage = ({
         role="img"
         aria-labelledby="banner-lock-title banner-lock-description"
         focusable="false"
-        {...svgProps}>
+        {...remainingSvgProps}>
         <title id="banner-lock-title" {...titleProps}>
           {title}
         </title>
