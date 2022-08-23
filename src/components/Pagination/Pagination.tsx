@@ -46,7 +46,7 @@ const PaginationOverflow = () => (
   </li>
 )
 
-const Pagination = ({
+export const Pagination = ({
   pathname,
   totalPages,
   currentPage,
@@ -171,5 +171,3 @@ const Pagination = ({
     </nav>
   )
 }
-
-export default Pagination
