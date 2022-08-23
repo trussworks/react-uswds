@@ -1,8 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { Icon } from '../Icon/Icons'
-// import LinkTo from 'components/util/LinkTo/LinkTo'
-// import Link from '../Link'
+import { Link } from '../Link/Link'
 
 type PaginationProps = {
   pathname: string // pathname of results page
@@ -28,13 +27,13 @@ const PaginationPage = ({
     <li
       key={`pagination_page_${page}`}
       className="usa-pagination__item usa-pagination__page-no">
-      <a
+      <Link
         href={`${pathname}?page=${page}`}
         className={linkClasses}
         aria-label={`Page ${page}`}
         aria-current={isCurrent ? 'page' : undefined}>
         {page}
-      </a>
+      </Link>
     </li>
   )
 }
@@ -134,13 +133,13 @@ const Pagination = ({
       <ul className="usa-pagination__list">
         {prevPage && (
           <li className="usa-pagination__item usa-pagination__arrow">
-            <a
+            <Link
               href={`${pathname}?page=${prevPage}`}
               className="usa-pagination__link usa-pagination__previous-page"
               aria-label="Previous page">
               <Icon.NavigateBefore />
               <span className="usa-pagination__link-text">Previous</span>
-            </a>
+            </Link>
           </li>
         )}
 
@@ -159,13 +158,13 @@ const Pagination = ({
 
         {nextPage && (
           <li className="usa-pagination__item usa-pagination__arrow">
-            <a
+            <Link
               href={`${pathname}?page=${nextPage}`}
               className="usa-pagination__link usa-pagination__next-page"
               aria-label="Next page">
               <span className="usa-pagination__link-text">Next</span>
               <Icon.NavigateNext />
-            </a>
+            </Link>
           </li>
         )}
       </ul>
