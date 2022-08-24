@@ -9,13 +9,14 @@ export default {
     currentPage: { control: 'number' },
     maxSlots: { control: 'number' },
     pathname: { control: 'string' },
+    totalPages: { control: 'number' },
   },
 } as ComponentMeta<typeof Pagination>
 
 const pathname = '/test-pathname'
 const Template: ComponentStory<typeof Pagination> = (args) => (
   <Pagination
-    totalPages={24}
+    totalPages={args.totalPages || 24}
     currentPage={args.currentPage}
     maxSlots={args.maxSlots}
     pathname={args.pathname}
