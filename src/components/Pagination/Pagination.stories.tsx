@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Pagination } from './Pagination'
 
@@ -14,14 +14,37 @@ export default {
 } as ComponentMeta<typeof Pagination>
 
 const pathname = '/test-pathname'
-const Template: ComponentStory<typeof Pagination> = (args) => (
-  <Pagination
-    totalPages={args.totalPages || 24}
-    currentPage={args.currentPage}
-    maxSlots={args.maxSlots}
-    pathname={args.pathname}
-  />
-)
+const Template: ComponentStory<typeof Pagination> = (args) => {
+  const [current, setCurrentPage] = useState<number>(args.currentPage)
+
+  useEffect(() => {
+    if (args.currentPage >= args.totalPages) {
+      return
+    }
+    setCurrentPage(args.currentPage)
+  }, [args.currentPage])
+
+  const handleNext = () => {
+    const nextPage = current + 1
+    setCurrentPage(nextPage)
+  }
+
+  const handlePrevious = () => {
+    const prevPage = current - 1
+    setCurrentPage(prevPage)
+  }
+
+  return (
+    <Pagination
+      totalPages={args.totalPages || 24}
+      currentPage={current}
+      maxSlots={args.maxSlots}
+      pathname={args.pathname}
+      onClickNext={handleNext}
+      onClickPrevious={handlePrevious}
+    />
+  )
+}
 
 export const Sandbox = Template.bind({})
 Sandbox.args = {
