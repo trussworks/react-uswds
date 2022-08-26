@@ -34,6 +34,13 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
     setCurrentPage(prevPage)
   }
 
+  const handlePageNumber = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    pageNum: number
+  ) => {
+    setCurrentPage(pageNum)
+  }
+
   return (
     <Pagination
       totalPages={args.totalPages || 24}
@@ -42,6 +49,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
       pathname={args.pathname}
       onClickNext={handleNext}
       onClickPrevious={handlePrevious}
+      onClickPageNumber={handlePageNumber}
     />
   )
 }

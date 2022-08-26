@@ -11,16 +11,25 @@ type PaginationProps = {
   maxSlots?: number // number of pagination "slots"
   onClickNext?: () => void
   onClickPrevious?: () => void
+  onClickPageNumber?: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    page: number
+  ) => void
 }
 
 const PaginationPage = ({
   page,
   isCurrent,
   pathname,
+  onClickPageNumber,
 }: {
   pathname: string
   page: number
   isCurrent?: boolean
+  onClickPageNumber?: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    page: number
+  ) => void
 }) => {
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent,
@@ -30,13 +39,27 @@ const PaginationPage = ({
     <li
       key={`pagination_page_${page}`}
       className="usa-pagination__item usa-pagination__page-no">
-      <Link
-        href={`${pathname}?page=${page}`}
-        className={linkClasses}
-        aria-label={`Page ${page}`}
-        aria-current={isCurrent ? 'page' : undefined}>
-        {page}
-      </Link>
+      {onClickPageNumber ? (
+        <Button
+          type="button"
+          unstyled
+          className={linkClasses}
+          aria-label={`Page ${page}`}
+          aria-current={isCurrent ? 'page' : undefined}
+          onClick={(event) => {
+            onClickPageNumber(event, page)
+          }}>
+          {page}
+        </Button>
+      ) : (
+        <Link
+          href={`${pathname}?page=${page}`}
+          className={linkClasses}
+          aria-label={`Page ${page}`}
+          aria-current={isCurrent ? 'page' : undefined}>
+          {page}
+        </Link>
+      )}
     </li>
   )
 }
@@ -57,6 +80,7 @@ export const Pagination = ({
   maxSlots = 7,
   onClickPrevious,
   onClickNext,
+  onClickPageNumber,
   ...props
 }: PaginationProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
   const navClasses = classnames('usa-pagination', className)
@@ -169,6 +193,7 @@ export const Pagination = ({
               page={pageNum}
               pathname={pathname}
               isCurrent={pageNum === currentPage}
+              onClickPageNumber={onClickPageNumber}
             />
           )
         )}
