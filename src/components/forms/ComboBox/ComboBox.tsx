@@ -271,6 +271,8 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>): void => {
     const { relatedTarget: newTarget } = event
+    console.log('input blur new target?', newTarget)
+    console.log('container ref current', containerRef.current)
     const newTargetIsOutside =
       !newTarget ||
       (newTarget instanceof Node && !containerRef.current?.contains(newTarget))
