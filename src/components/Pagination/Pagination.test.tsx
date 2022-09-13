@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 
 import { Pagination } from './Pagination'
@@ -233,6 +233,33 @@ describe('Pagination component', () => {
       `${testPathname}?page=22`
     )
     expect(screen.getAllByText('…')).toHaveLength(1)
+  })
+
+  it('can click onClickNext, onClickPrevious and onClickPagenumber', () => {
+    const mockOnClickNext = jest.fn()
+    const mockOnClickPrevious = jest.fn()
+    const mockOnClickPageNumber = jest.fn()
+
+    const { getByTestId, getAllByTestId } = render(
+      <Pagination
+        totalPages={testPages}
+        currentPage={21}
+        pathname={testPathname}
+        onClickPrevious={mockOnClickPrevious}
+        onClickNext={mockOnClickNext}
+        onClickPageNumber={mockOnClickPageNumber}
+      />
+    )
+
+    fireEvent.click(getByTestId('pagination-next'))
+    expect(mockOnClickNext).toHaveBeenCalledTimes(1)
+
+    fireEvent.click(getByTestId('pagination-previous'))
+    expect(mockOnClickPrevious).toHaveBeenCalledTimes(1)
+
+    const allPageNumbers = getAllByTestId('pagination-page-number')
+    fireEvent.click(allPageNumbers[0])
+    expect(mockOnClickPageNumber).toHaveBeenCalledTimes(1)
   })
 
   describe('for fewer pages than the max slots', () => {

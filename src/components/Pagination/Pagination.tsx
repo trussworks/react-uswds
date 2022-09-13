@@ -43,6 +43,7 @@ const PaginationPage = ({
         <Button
           type="button"
           unstyled
+          data-testid="pagination-page-number"
           className={linkClasses}
           aria-label={`Page ${page}`}
           aria-current={isCurrent ? 'page' : undefined}
@@ -168,6 +169,7 @@ export const Pagination = ({
                 unstyled
                 className="usa-pagination__link usa-pagination__previous-page"
                 aria-label="Previous page"
+                data-testid="pagination-previous"
                 onClick={onClickPrevious}>
                 <Icon.NavigateBefore />
                 <span className="usa-pagination__link-text">Previous</span>
@@ -206,6 +208,7 @@ export const Pagination = ({
                 unstyled
                 className="usa-pagination__link usa-pagination__next-page"
                 aria-label="Next page"
+                data-testid="pagination-next"
                 onClick={onClickNext}>
                 <span className="usa-pagination__link-text">Next</span>
                 <Icon.NavigateNext />
