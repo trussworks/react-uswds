@@ -1,9 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -153,6 +151,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Igarfinkle"><img src="https://avatars.githubusercontent.com/u/7664177?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Isaac Garfinkle</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=Igarfinkle" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/rogeruiz"><img src="https://avatars.githubusercontent.com/u/706004?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Roger Steve Ruiz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rogeruiz" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=rogeruiz" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/lpsinger"><img src="https://avatars.githubusercontent.com/u/728407?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leo Singer</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Alpsinger" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lpsinger" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Shkeating"><img src="https://avatars.githubusercontent.com/u/59394696?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shauna Keating</b></sub></a><br /><a href="#a11y-Shkeating" title="Accessibility">️️️️♿️</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Shkeating" title="Code">💻</a></td>
   </tr>
 </table>
 

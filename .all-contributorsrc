@@ -194,6 +194,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "Shkeating",
+      "name": "Shauna Keating",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59394696?v=4",
+      "profile": "https://github.com/Shkeating",
+      "contributions": [
+        "a11y",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
