@@ -32,6 +32,7 @@ import {
 
 import logoImg from 'uswds/src/img/logo-img.png'
 import circleSvg from 'uswds/src/img/circle-gray-20.svg'
+import { MediaBlockBody } from '../../components/mediablock/MediaBlockBody/MediaBlockBody'
 
 export default {
   title: 'Page Templates/Authentication Pages',
@@ -273,13 +274,13 @@ export const CreateAccount = (): React.ReactElement => {
                               src={circleSvg}
                               alt="Alt text"
                             />
-                            <div className="usa-media-block__body">
+                            <MediaBlockBody>
                               <p>
                                 <strong>Value proposition {idx + 1}:</strong>{' '}
                                 Vivamus nec velit sed leo scelerisque laoreet
                                 vestibulum.
                               </p>
-                            </div>
+                            </MediaBlockBody>
                           </div>
                         ))}
                       </div>
