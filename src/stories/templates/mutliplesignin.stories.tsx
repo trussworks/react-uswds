@@ -5,6 +5,7 @@ import {
   Grid,
   FooterNav,
   Logo,
+  MediaBlockBody,
   SocialLink,
   SocialLinks,
   Address,
@@ -211,13 +212,13 @@ export const MultipleSignInOptions = (): React.ReactElement => {
                               src={circleSvg}
                               alt="Alt text"
                             />
-                            <div className="usa-media-block__body">
+                            <MediaBlockBody>
                               <p>
                                 <strong>Value proposition {idx + 1}:</strong>{' '}
                                 Vivamus nec velit sed leo scelerisque laoreet
                                 vestibulum.
                               </p>
-                            </div>
+                            </MediaBlockBody>
                           </div>
                         ))}
                       </div>
