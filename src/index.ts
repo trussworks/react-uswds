@@ -12,6 +12,7 @@ export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
+export { Pagination } from './components/Pagination/Pagination'
 
 /** Banner components */
 export { Banner } from './components/banner/Banner/Banner'
