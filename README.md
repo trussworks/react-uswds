@@ -82,7 +82,7 @@ In the process, we expect to gain learnings around how to best abstract out UI c
 
 ## Active Maintainers
 
-- [Roger Steve Ruiz](https://github.com/rogeruiz)
+- [John Gedeon](https://github.com/gidjin)
 
 We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
