@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import logoImg from 'uswds/src/img/logo-img.png'
 import circleImg from 'uswds/src/img/circle-124.png'
 
-import { GovBanner, GridContainer, Grid } from '../../index'
+import { GovBanner, GridContainer, Grid, MediaBlockBody } from '../../index'
 
 /** HEADER */
 import { Header } from '../../components/header/Header/Header'
@@ -240,7 +240,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Graphic headings can vary.
                   </h2>
@@ -249,7 +249,7 @@ export const LandingPage = (): React.ReactElement => {
                     on what your landing page is for. Highlight your values,
                     specific program areas, or results.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
               <Grid tablet={{ col: true }} className="usa-media-block">
                 <img
@@ -257,7 +257,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Stick to 6 or fewer words.
                   </h2>
@@ -266,7 +266,7 @@ export const LandingPage = (): React.ReactElement => {
                     try to be somewhat balanced across all four. It creates a
                     clean appearance with good spacing.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
             </Grid>
             <Grid row gap className="usa-graphic-list__row">
@@ -276,7 +276,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Never highlight anything without a goal.
                   </h2>
@@ -285,7 +285,7 @@ export const LandingPage = (): React.ReactElement => {
                     your users know now, and what activity or impression you
                     want from them after they see it.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
               <Grid tablet={{ col: true }} className="usa-media-block">
                 <img
@@ -293,7 +293,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Could also have 2 or 6.
                   </h2>
@@ -302,7 +302,7 @@ export const LandingPage = (): React.ReactElement => {
                     do they want to know or do that supports your mission? Use
                     these headings to show these.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
             </Grid>
           </GridContainer>
