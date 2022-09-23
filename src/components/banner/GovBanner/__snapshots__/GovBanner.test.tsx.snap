@@ -13,9 +13,11 @@ exports[`GovBanner component static content renders consistently in English for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -25,6 +27,7 @@ exports[`GovBanner component static content renders consistently in English for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -107,25 +110,45 @@ exports[`GovBanner component static content renders consistently in English for 
               <br />
               A 
               <strong>
-                lock (
+                lock ( 
                 <span
                   className="icon-lock"
                 >
-                  <img
-                    alt="lock"
+                  <svg
+                    aria-labelledby="banner-lock-title banner-lock-description"
                     className="usa-banner__lock-image"
+                    focusable="false"
+                    height="64"
                     role="img"
-                    src="test-file-stub"
-                    title="Lock"
-                  />
+                    viewBox="0 0 52 64"
+                    width="52"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="banner-lock-title"
+                    >
+                      Lock
+                    </title>
+                    <desc
+                      id="banner-lock-description"
+                    >
+                      A locked padlock
+                    </desc>
+                    <path
+                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+                      fill="#000000"
+                      fillRule="evenodd"
+                    />
+                  </svg>
                 </span>
-                )
+                 )
               </strong>
                or 
               <strong>
                 https://
               </strong>
-               means you’ve safely connected to the 
+               
+              means you’ve safely connected to the 
               .gov
                website. Share sensitive information only on official, secure websites.
             </p>
@@ -150,9 +173,11 @@ exports[`GovBanner component static content renders consistently in English for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -162,6 +187,7 @@ exports[`GovBanner component static content renders consistently in English for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -244,25 +270,45 @@ exports[`GovBanner component static content renders consistently in English for 
               <br />
               A 
               <strong>
-                lock (
+                lock ( 
                 <span
                   className="icon-lock"
                 >
-                  <img
-                    alt="lock"
+                  <svg
+                    aria-labelledby="banner-lock-title banner-lock-description"
                     className="usa-banner__lock-image"
+                    focusable="false"
+                    height="64"
                     role="img"
-                    src="test-file-stub"
-                    title="Lock"
-                  />
+                    viewBox="0 0 52 64"
+                    width="52"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="banner-lock-title"
+                    >
+                      Lock
+                    </title>
+                    <desc
+                      id="banner-lock-description"
+                    >
+                      A locked padlock
+                    </desc>
+                    <path
+                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+                      fill="#000000"
+                      fillRule="evenodd"
+                    />
+                  </svg>
                 </span>
-                )
+                 )
               </strong>
                or 
               <strong>
                 https://
               </strong>
-               means you’ve safely connected to the 
+               
+              means you’ve safely connected to the 
               .mil
                website. Share sensitive information only on official, secure websites.
             </p>
@@ -287,9 +333,11 @@ exports[`GovBanner component static content renders consistently in Spanish for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -299,6 +347,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -381,19 +430,38 @@ exports[`GovBanner component static content renders consistently in Spanish for 
               <br />
               Un 
               <strong>
-                candado (
+                candado ( 
                 <span
                   className="icon-lock"
                 >
-                  <img
-                    alt="lock"
+                  <svg
+                    aria-labelledby="banner-lock-title banner-lock-description"
                     className="usa-banner__lock-image"
+                    focusable="false"
+                    height="64"
                     role="img"
-                    src="test-file-stub"
-                    title="Lock"
-                  />
+                    viewBox="0 0 52 64"
+                    width="52"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="banner-lock-title"
+                    >
+                      Lock
+                    </title>
+                    <desc
+                      id="banner-lock-description"
+                    >
+                      A locked padlock
+                    </desc>
+                    <path
+                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+                      fill="#000000"
+                      fillRule="evenodd"
+                    />
+                  </svg>
                 </span>
-                )
+                 )
               </strong>
                o 
               <strong>
@@ -425,9 +493,11 @@ exports[`GovBanner component static content renders consistently in Spanish for 
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -437,6 +507,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -519,19 +590,38 @@ exports[`GovBanner component static content renders consistently in Spanish for 
               <br />
               Un 
               <strong>
-                candado (
+                candado ( 
                 <span
                   className="icon-lock"
                 >
-                  <img
-                    alt="lock"
+                  <svg
+                    aria-labelledby="banner-lock-title banner-lock-description"
                     className="usa-banner__lock-image"
+                    focusable="false"
+                    height="64"
                     role="img"
-                    src="test-file-stub"
-                    title="Lock"
-                  />
+                    viewBox="0 0 52 64"
+                    width="52"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="banner-lock-title"
+                    >
+                      Lock
+                    </title>
+                    <desc
+                      id="banner-lock-description"
+                    >
+                      A locked padlock
+                    </desc>
+                    <path
+                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+                      fill="#000000"
+                      fillRule="evenodd"
+                    />
+                  </svg>
                 </span>
-                )
+                 )
               </strong>
                o 
               <strong>
@@ -563,9 +653,11 @@ exports[`GovBanner component static content renders consistently with default pr
     >
       <div
         className="usa-banner__inner"
+        data-testid="banner-header-inner-div"
       >
         <div
           className="grid-col-auto"
+          data-testid="banner-header-flag-div"
         >
           <img
             alt="U.S. flag"
@@ -575,6 +667,7 @@ exports[`GovBanner component static content renders consistently with default pr
         </div>
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          data-testid="banner-header-grid-div"
         >
           <p
             className="usa-banner__header-text"
@@ -657,25 +750,45 @@ exports[`GovBanner component static content renders consistently with default pr
               <br />
               A 
               <strong>
-                lock (
+                lock ( 
                 <span
                   className="icon-lock"
                 >
-                  <img
-                    alt="lock"
+                  <svg
+                    aria-labelledby="banner-lock-title banner-lock-description"
                     className="usa-banner__lock-image"
+                    focusable="false"
+                    height="64"
                     role="img"
-                    src="test-file-stub"
-                    title="Lock"
-                  />
+                    viewBox="0 0 52 64"
+                    width="52"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="banner-lock-title"
+                    >
+                      Lock
+                    </title>
+                    <desc
+                      id="banner-lock-description"
+                    >
+                      A locked padlock
+                    </desc>
+                    <path
+                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+                      fill="#000000"
+                      fillRule="evenodd"
+                    />
+                  </svg>
                 </span>
-                )
+                 )
               </strong>
                or 
               <strong>
                 https://
               </strong>
-               means you’ve safely connected to the 
+               
+              means you’ve safely connected to the 
               .gov
                website. Share sensitive information only on official, secure websites.
             </p>
