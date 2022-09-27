@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/trussworks/react-uswds/compare/3.1.0...3.2.0) (2022-09-27)
+
+
+### Features
+
+* Add compositional Banner components ([#2184](https://github.com/trussworks/react-uswds/issues/2184)) ([f75e4ba](https://github.com/trussworks/react-uswds/commit/f75e4ba06b305d4e47651fdfeaf8f564af8398fc))
+* Add Pagination component ([#2188](https://github.com/trussworks/react-uswds/issues/2188)) ([4c021d1](https://github.com/trussworks/react-uswds/commit/4c021d10c4041b21b9f2f5e433aed86e5c257dd6))
+
 ## [3.1.0](https://github.com/trussworks/react-uswds/compare/3.0.2...3.1.0) (2022-07-13)
 
 
