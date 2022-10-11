@@ -65,23 +65,27 @@ export const BreadcrumbWithRdfaMetadata = (): React.ReactElement => {
     <BreadcrumbBar listProps={{ ...rdfaMetadata.ol }}>
       <Breadcrumb {...rdfaMetadata.li}>
         <BreadcrumbLink href="#" {...rdfaMetadata.a}>
+          {/* eslint-disable-next-line react/no-unknown-property */ }
           <span property="name">Home</span>
         </BreadcrumbLink>
         <meta property="position" content="1" />
       </Breadcrumb>
       <Breadcrumb {...rdfaMetadata.li}>
         <BreadcrumbLink href="#" {...rdfaMetadata.a}>
+          {/* eslint-disable-next-line react/no-unknown-property */ }
           <span property="name">Federal Contracting</span>
         </BreadcrumbLink>
         <meta property="position" content="2" />
       </Breadcrumb>
       <Breadcrumb {...rdfaMetadata.li}>
         <BreadcrumbLink href="#" {...rdfaMetadata.a}>
+          {/* eslint-disable-next-line react/no-unknown-property */ }
           <span property="name">Contracting assistance programs</span>
         </BreadcrumbLink>
         <meta property="position" content="3" />
       </Breadcrumb>
       <Breadcrumb current {...rdfaMetadata.li}>
+        {/* eslint-disable-next-line react/no-unknown-property */ }
         <span property="name">
           Women-owned small business federal contracting program
         </span>
