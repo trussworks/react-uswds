@@ -14,7 +14,7 @@ if ! deployment=$(curl -s \
     exit 1
 fi
 
-if ! deployment_id=$(echo "${deployment}" | python -c 'import sys, json; print json.load(sys.stdin)["id"]'); then
+if ! deployment_id=$(echo "${deployment}" | python3 -c 'import sys, json; print(json.load(sys.stdin)["id"])'); then
     echo "Could not extract deployment ID from API response" 1>&2
     exit 3
 fi
