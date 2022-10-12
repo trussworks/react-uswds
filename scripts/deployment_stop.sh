@@ -29,7 +29,7 @@ if ! repository=$(curl -s \
     exit 1
 fi
 
-if ! repository_id=$(echo "${repository}" | python -c 'import sys, json; print json.load(sys.stdin)["id"]'); then
+if ! repository_id=$(echo "${repository}" | python3 -c 'import sys, json; print(json.load(sys.stdin)["id"])'); then
     echo "Could not extract repository ID from API response" 1>&2
     exit 3
 fi

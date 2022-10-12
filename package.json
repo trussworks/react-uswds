@@ -17,7 +17,7 @@
     "lib"
   ],
   "engines": {
-    "node": "10.x - 18.x"
+    "node": "14.x - 18.x"
   },
   "scripts": {
     "test": "jest",
