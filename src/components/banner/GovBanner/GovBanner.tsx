@@ -10,9 +10,9 @@ import { MediaBlockBody } from '../../mediablock/MediaBlockBody/MediaBlockBody'
 import { BannerLockImage } from '../BannerLockImage/BannerLockImage'
 
 // assets
-import flagImg from 'uswds/src/img/us_flag_small.png'
-import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
-import httpsIcon from 'uswds/src/img/icon-https.svg'
+import flagImg from '@uswds/uswds/src/img/us_flag_small.png'
+import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
+import httpsIcon from '@uswds/uswds/src/img/icon-https.svg'
 
 type Language = 'english' | 'spanish'
 

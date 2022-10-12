@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from 'uswds/src/img/logo-img.png'
-import circleSvg from 'uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/src/img/logo-img.png'
+import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
 
 import {
   GovBanner,

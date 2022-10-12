@@ -48,8 +48,7 @@
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
     "react": "^16.x || ^17.x || ^18.x",
-    "react-dom": "^16.x || ^17.x || ^18.x",
-    "uswds": "2.13.3"
+    "react-dom": "^16.x || ^17.x || ^18.x"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -74,6 +73,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
+    "@uswds/uswds": "^3.1.0",
     "all-contributors-cli": "^6.20.4",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^28.1.0",
@@ -119,7 +119,6 @@
     "stylelint-scss": "^3.17.1",
     "ts-jest": "^26.1.2",
     "typescript": "^4.2.4",
-    "uswds": "2.13.3",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.0.0"
   },

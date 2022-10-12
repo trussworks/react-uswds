@@ -1,7 +1,7 @@
 const path = require('path')
 
 const webpackConfig = (config) => {
-  config.resolve.alias.uswds = path.resolve(__dirname, '../node_modules/uswds')
+  config.resolve.alias.uswds = path.resolve(__dirname, '../node_modules/@uswds/uswds')
 
   config.module.rules = config.module.rules.filter(
     (rule) => rule.test.toString() !== '/\\.css$/'
@@ -9,7 +9,18 @@ const webpackConfig = (config) => {
   config.module.rules.push({
     test: /\.(sa|sc|c)ss$/,
     exclude: /\.module\.(sa|sc|c)ss$/i,
-    use: ['style-loader', 'css-loader', 'sass-loader'],
+    use: ['style-loader', 'css-loader', {
+      loader: "sass-loader",
+      options: {
+        sourceMap: true,
+        sassOptions: {
+          includePaths: [
+            "./node_modules/@uswds",
+            "./node_modules/@uswds/uswds/packages",
+          ],
+        },
+      },
+    },],
     include: path.resolve(__dirname, '../'),
   })
 
@@ -26,13 +37,7 @@ const webpackConfig = (config) => {
           },
         },
       },
-      'sass-loader',
-      {
-        loader: 'sass-resources-loader',
-        options: {
-          resources: ['./src/uswdsResources.scss'],
-        },
-      },
+      "sass-loader",
     ],
   })
 

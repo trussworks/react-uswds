@@ -184,7 +184,7 @@ export const YearPicker = ({
 
     years.push(
       // Ignoring error: "The attribute aria-selected is not supported by the role button. This role is implicit on the element button."
-      // Ignoring because this attribute is present in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1447)
+      // Ignoring because this attribute is present in the USWDS implementation (https://github.com/@uswds/uswds/@uswds/uswds/blob/develop/src/js/components/date-picker.js#L1447)
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         type="button"
@@ -226,7 +226,7 @@ export const YearPicker = ({
 
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
-    // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1457)
+    // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/@uswds/uswds/@uswds/uswds/blob/develop/src/js/components/date-picker.js#L1457)
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       tabIndex={-1}

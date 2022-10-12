@@ -246,7 +246,7 @@ export const DatePicker = ({
 
   return (
     // Ignoring error: "Static HTML elements with event handlers require a role."
-    // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L828)
+    // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/@uswds/uswds/@uswds/uswds/blob/develop/src/js/components/date-picker.js#L828)
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       data-testid="date-picker"

@@ -12,7 +12,7 @@ export const isElementInViewport = (
   )
 }
 
-// https://github.com/uswds/uswds/blob/v2.11.2/src/js/components/tooltip.js
+// https://github.com/@uswds/uswds/@uswds/uswds/blob/v2.11.2/src/js/components/tooltip.js
 
 /**
  * get margin offset calculations

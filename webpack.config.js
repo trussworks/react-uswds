@@ -38,7 +38,7 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
     alias: {
-      uswds: path.resolve(__dirname, './node_modules/uswds'),
+      uswds: path.resolve(__dirname, './node_modules/@uswds/uswds'),
     },
   },
   module: {
@@ -62,19 +62,26 @@ module.exports = {
               },
             },
           },
-          'sass-loader',
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: ['./src/uswdsResources.scss'],
-            },
-          },
+          "sass-loader"
         ],
       },
       {
         test: /\.(sa|sc|c)ss$/i,
         exclude: /\.module\.(sa|sc|c)ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 
+        {
+          loader: "sass-loader",
+          options: {
+            sourceMap: true,
+            sassOptions: {
+              includePaths: [
+                "./node_modules/@uswds",
+                "./node_modules/@uswds/uswds/packages",
+              ],
+            },
+          },
+        },
+      ],
       },
       {
         test: /\.svg$/,

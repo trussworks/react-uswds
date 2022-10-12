@@ -87,7 +87,7 @@ describe('DatePicker component', () => {
     expect(getByTestId('date-picker-status')).toHaveTextContent('')
   })
 
-  // https://github.com/uswds/uswds/blob/develop/spec/unit/date-picker/date-picker.spec.js#L933
+  // https://github.com/@uswds/uswds/@uswds/uswds/blob/develop/spec/unit/date-picker/date-picker.spec.js#L933
   it('prevents default action if keyup doesn’t originate within the calendar', async () => {
     const { getByTestId } = render(
       <DatePicker {...testProps} defaultValue="2021-01-20" />
