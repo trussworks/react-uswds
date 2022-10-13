@@ -9,7 +9,7 @@ import { fruits } from './fruits'
 /*
   Source of truth for combo box behavior is USWDS storybook examples and tests. For more:
   - https://designsystem.digital.gov/form-controls/03-combo-box/
-  - https://github.com/@uswds/uswds/@uswds/uswds/tree/7a89611fe649650922e4d431b78c39fed6a867e1/spec/unit/combo-box
+  - https://github.com/uswds/uswds/tree/7a89611fe649650922e4d431b78c39fed6a867e1/spec/unit/combo-box
 */
 
 const fruitOptions = Object.entries(fruits).map(([value, key]) => ({

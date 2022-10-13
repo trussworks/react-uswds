@@ -87,7 +87,7 @@ const DayForwardRef: React.ForwardRefRenderFunction<
 
   return (
     // Ignoring error: "The attribute aria-selected is not supported by the role button. This role is implicit on the element button."
-    // Ignoring because this attribute is present in the USWDS implementation (https://github.com/@uswds/uswds/@uswds/uswds/blob/develop/src/js/components/date-picker.js#L1017)
+    // Ignoring because this attribute is present in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1017)
     // eslint-disable-next-line jsx-a11y/role-supports-aria-props
     <button
       type="button"

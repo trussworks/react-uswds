@@ -62,7 +62,7 @@ module.exports = {
               },
             },
           },
-          "sass-loader"
+          'sass-loader'
         ],
       },
       {
