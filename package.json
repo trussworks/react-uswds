@@ -1,11 +1,11 @@
 {
   "name": "@trussworks/react-uswds",
   "version": "3.2.0",
-  "description": "React USWDS 2.0 component library",
+  "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
     "uswds",
-    "uswds 2.0",
+    "uswds 3.0",
     "react component",
     "us web design",
     "design system",
