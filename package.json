@@ -49,7 +49,7 @@
   "peerDependencies": {
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x",
-    "uswds": "3.1.0"
+    "@uswds/uswds": "3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
