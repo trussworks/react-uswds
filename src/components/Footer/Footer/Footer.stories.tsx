@@ -12,7 +12,7 @@ import { SocialLinks, SocialLink } from '../SocialLinks/SocialLinks'
 import { TextInput } from '../../forms/TextInput/TextInput'
 
 // assets
-import logoImg from 'uswds/dist/img/logo-img.png'
+import logoImg from '@uswds/uswds/img/logo-img.png'
 
 export default {
   title: 'Components/Footer',

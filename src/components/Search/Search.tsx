@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import searchImg from 'uswds/src/img/usa-icons-bg/search--white.svg'
+import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
 
 import { Button } from '../Button/Button'
 import { Form, OptionalFormProps } from '../forms/Form/Form'

@@ -13,7 +13,7 @@ import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
 
 import { Link } from '../../Link/Link'
 
-import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
 
 export default {
   title: 'Components/Identifier',

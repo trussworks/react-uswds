@@ -1,7 +1,8 @@
-@import '../uswdsResources';
+@forward 'uswds-theme';
+@forward 'uswds';
 
-@import 'backgrounds';
-@import 'type';
+@forward 'backgrounds';
+@forward 'type';
 
 // This should be set by USWDS but isn't
 // It can be removed when https://github.com/uswds/uswds/issues/4458 is fixed
