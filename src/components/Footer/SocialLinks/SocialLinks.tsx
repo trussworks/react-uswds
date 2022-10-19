@@ -2,11 +2,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import iconFacebook from 'uswds/src/img/usa-icons/facebook.svg'
-import iconTwitter from 'uswds/src/img/usa-icons/twitter.svg'
-import iconYouTube from 'uswds/src/img/usa-icons/youtube.svg'
-import iconInstagram from 'uswds/src/img/usa-icons/instagram.svg'
-import iconRSS from 'uswds/src/img/usa-icons/rss_feed.svg'
+import iconFacebook from '@uswds/uswds/src/img/usa-icons/facebook.svg'
+import iconTwitter from '@uswds/uswds/src/img/usa-icons/twitter.svg'
+import iconYouTube from '@uswds/uswds/src/img/usa-icons/youtube.svg'
+import iconInstagram from '@uswds/uswds/src/img/usa-icons/instagram.svg'
+import iconRSS from '@uswds/uswds/src/img/usa-icons/rss_feed.svg'
 
 type SocialLinksProps = {
   links: React.ReactNode[]
