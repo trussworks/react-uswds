@@ -36,6 +36,18 @@ describe('Search component', () => {
     )
   })
 
+  it('renders a default value', () => {
+    const mockSubmit = jest.fn()
+    const defaultValue = 'Search here'
+    const { queryByTestId } = render(
+      <Search onSubmit={mockSubmit} defaultValue={defaultValue}></Search>
+    )
+    expect(queryByTestId('textInput')).toHaveAttribute(
+      'value',
+      defaultValue
+    )
+  })
+
   it('renders a label', () => {
     const mockSubmit = jest.fn()
     const { queryByLabelText } = render(
