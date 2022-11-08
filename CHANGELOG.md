@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/trussworks/react-uswds/compare/3.2.0...4.0.0) (2022-11-08)
+
+
+### Features
+
+* upgrade to USWDS v3.1.0 ([#2203](https://github.com/trussworks/react-uswds/issues/2203)) ([cd40e03](https://github.com/trussworks/react-uswds/commit/cd40e03912b41b8f69c51278b20785e81a84468f))
+* Add defaultValue prop to Search component ([#2211](https://github.com/trussworks/react-uswds/issues/2211)) ([6ad525b](https://github.com/trussworks/react-uswds/commit/6ad525bc0e38fafb397891e337405cf6c7f6a5eb))
+
+
+### Documentation & Examples
+
+* Update docs for USWDS v3 ([#2205](https://github.com/trussworks/react-uswds/issues/2205)) ([f5bf2e7](https://github.com/trussworks/react-uswds/commit/f5bf2e70369f860e6af67305557ff626009c2585)), closes [#2202](https://github.com/trussworks/react-uswds/issues/2202)
+
 ## [3.2.0](https://github.com/trussworks/react-uswds/compare/3.1.0...3.2.0) (2022-09-27)
 
 
