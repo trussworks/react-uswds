@@ -62,6 +62,7 @@ export const Search = ({
         type="search"
         name={inputName}
         placeholder={placeholder}
+        defaultValue={formProps.defaultValue}
       />
       <Button type="submit">
         {!isSmall && (
