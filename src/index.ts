@@ -84,6 +84,8 @@ export { Title } from './components/header/Title/Title'
 
 /** IconList component */
 export { IconList } from './components/IconList/IconList'
+export { IconListContent } from './components/IconList/IconListContent/IconListContent'
+export { IconListIcon } from './components/IconList/IconListIcon/IconListIcon'
 export { IconListItem } from './components/IconList/IconListItem/IconListItem'
 export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
 
