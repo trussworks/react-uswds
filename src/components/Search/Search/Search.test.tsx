@@ -68,19 +68,4 @@ describe('Search component', () => {
 
     expect(queryByRole('button')).not.toHaveTextContent('Search')
   })
-
-  describe('renders size classes', () => {
-    beforeEach(() => {
-      jest.clearAllMocks()
-    })
-    it.each([
-      ['big', 'usa-search--big'],
-      ['small', 'usa-search--small'],
-    ])('when size is %s should include class %s', (sizeString, uswdsClass) => {
-      const size = sizeString as 'big' | 'small'
-      const mockSubmit = jest.fn()
-      const { container } = render(<Search onSubmit={mockSubmit} size={size} />)
-      expect(container.querySelector('form')).toHaveClass(uswdsClass)
-    })
-  })
 })
