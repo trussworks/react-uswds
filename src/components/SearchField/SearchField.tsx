@@ -6,16 +6,16 @@ import { Label } from '../forms/Label/Label'
 import { TextInput, OptionalTextInputProps } from '../forms/TextInput/TextInput'
 
 
-type SearchInputProps = {
+type SearchFieldProps = {
   className?: string
   inputName?: string
   inputId?: string
   placeholder?: string
-  defaultValue?: string
+  defaultValue?: React.ReactNode
   label?: React.ReactNode
 }
 
-export const Search = ({
+export const SearchField = ({
   className,
   placeholder,
   defaultValue,
@@ -23,7 +23,7 @@ export const Search = ({
   label = 'Search',
   inputId = 'search-field',
   ...inputProps
-}: SearchInputProps & OptionalTextInputProps): React.ReactElement => {
+}: SearchFieldProps & OptionalTextInputProps): React.ReactElement => {
 
   return (
     <FormGroup className={className}>
@@ -42,4 +42,4 @@ export const Search = ({
   )
 }
 
-export default Search
+export default SearchField

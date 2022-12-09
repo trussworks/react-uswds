@@ -5,8 +5,8 @@ import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
 
 import { Button } from '../Button/Button'
 import { Form, OptionalFormProps } from '../forms/Form/Form'
-import { Label } from '../forms/Label/Label'
-import { TextInput } from '../forms/TextInput/TextInput'
+import { SearchField } from '../SearchField/SearchField'
+import { OptionalTextInputProps } from '../forms/TextInput/TextInput'
 
 type SearchLocalization = {
   buttonText: string
@@ -21,6 +21,7 @@ type SearchInputProps = {
   placeholder?: string
   label?: React.ReactNode
   i18n?: SearchLocalization
+  inputProps?: OptionalTextInputProps
 }
 
 export const Search = ({
@@ -32,6 +33,7 @@ export const Search = ({
   label = 'Search',
   inputId = 'search-field',
   i18n,
+  inputProps,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
@@ -54,14 +56,12 @@ export const Search = ({
       role="search"
       search={true}
       {...formProps}>
-      <Label srOnly={true} htmlFor={inputId}>
-        {label}
-      </Label>
-      <TextInput
-        id={inputId}
-        type="search"
-        name={inputName}
+      <SearchField 
+        {...inputProps}
+        label={label}
+        inputId={inputId}
         placeholder={placeholder}
+        name={inputName}
         defaultValue={formProps.defaultValue}
       />
       <Button type="submit">
