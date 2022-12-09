@@ -2,7 +2,7 @@ import React from 'react'
 import { SearchField } from './SearchField'
 
 export default {
-  title: 'Components/SearchField',
+  title: 'Components/Search/SearchField',
   component: SearchField,
   parameters: {
     docs: {

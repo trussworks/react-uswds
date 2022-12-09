@@ -35,14 +35,8 @@ export const Search = ({
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
 
-  const isBig = size === 'big'
-  const isSmall = size === 'small'
   const classes = classnames(
     'usa-search',
-    {
-      'usa-search--small': isSmall,
-      'usa-search--big': isBig,
-    },
     className
   )
 
