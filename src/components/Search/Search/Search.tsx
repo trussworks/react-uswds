@@ -1,11 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
-
-import { Button } from '../../Button/Button'
 import { Form, OptionalFormProps } from '../../forms/Form/Form'
 import { SearchField } from '../SearchField/SearchField'
+import { SearchButton } from '../SearchButton/SearchButton'
 import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
 
 type SearchLocalization = {
@@ -36,7 +34,6 @@ export const Search = ({
   inputProps,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
-  const buttonText = i18n?.buttonText || 'Search'
 
   const isBig = size === 'big'
   const isSmall = size === 'small'
@@ -64,16 +61,7 @@ export const Search = ({
         label={label}
         defaultValue={formProps.defaultValue}
       />
-      <Button type="submit">
-        {!isSmall && (
-          <span className="usa-search__submit-text">{buttonText}</span>
-        )}
-        <img
-          src={searchImg}
-          className="usa-search__submit-icon"
-          alt={buttonText}
-        />
-      </Button>
+      <SearchButton size={size} i18n={i18n} />
     </Form>
   )
 }
