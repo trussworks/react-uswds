@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Label } from '../forms/Label/Label'
-import { TextInput, OptionalTextInputProps } from '../forms/TextInput/TextInput'
+import { Label } from '../../forms/Label/Label'
+import { TextInput, OptionalTextInputProps } from '../../forms/TextInput/TextInput'
 
 
 type SearchFieldProps = {

@@ -3,11 +3,11 @@ import classnames from 'classnames'
 
 import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
 
-import { Button } from '../Button/Button'
-import { Form, OptionalFormProps } from '../forms/Form/Form'
+import { Button } from '../../Button/Button'
+import { Form, OptionalFormProps } from '../../forms/Form/Form'
 import { SearchField } from '../SearchField/SearchField'
-import { OptionalTextInputProps } from '../forms/TextInput/TextInput'
-import { Label } from '../forms/Label/Label'
+import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
+import { Label } from '../../forms/Label/Label'
 
 type SearchLocalization = {
   buttonText: string
