@@ -21,3 +21,7 @@ Source: https://designsystem.digital.gov/components/search/
 export const defaultSearchField = (): React.ReactElement => (
   <SearchField placeholder='Search...' />
 )
+
+export const searchFieldWithLabel = (): React.ReactElement => (
+    <SearchField placeholder='Type something...' label="Search" />
+  )

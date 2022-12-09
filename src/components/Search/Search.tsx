@@ -7,6 +7,7 @@ import { Button } from '../Button/Button'
 import { Form, OptionalFormProps } from '../forms/Form/Form'
 import { SearchField } from '../SearchField/SearchField'
 import { OptionalTextInputProps } from '../forms/TextInput/TextInput'
+import { Label } from '../forms/Label/Label'
 
 type SearchLocalization = {
   buttonText: string
@@ -56,13 +57,16 @@ export const Search = ({
       role="search"
       search={true}
       {...formProps}>
+      <Label srOnly={true} htmlFor={inputId}>
+        {label}
+      </Label>
       <SearchField 
         {...inputProps}
-        label={label}
         inputId={inputId}
         placeholder={placeholder}
         name={inputName}
         defaultValue={formProps.defaultValue}
+        label={<p>hello</p>}
       />
       <Button type="submit">
         {!isSmall && (

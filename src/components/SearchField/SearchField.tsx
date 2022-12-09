@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { FormGroup } from '../forms/FormGroup/FormGroup'
-
 import { Label } from '../forms/Label/Label'
 import { TextInput, OptionalTextInputProps } from '../forms/TextInput/TextInput'
 
@@ -26,7 +24,7 @@ export const SearchField = ({
 }: SearchFieldProps & OptionalTextInputProps): React.ReactElement => {
 
   return (
-    <FormGroup className={className}>
+    <div className={className}>
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>
@@ -38,7 +36,7 @@ export const SearchField = ({
         placeholder={placeholder}
         defaultValue={defaultValue}
       />
-    </FormGroup>
+    </div>
   )
 }
 
