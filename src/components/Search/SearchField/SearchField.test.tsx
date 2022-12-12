@@ -39,4 +39,10 @@ describe('SearchField component', () => {
 
     expect(queryByLabelText('Buscar')).toBeInTheDocument()
   })
+
+  it('adds big class when isBig is true', () => {
+    const uswdsClass = 'usa-search--big'
+    const { container } = render(<SearchField isBig />)
+    expect(container.querySelector('div')).toHaveClass(uswdsClass)
+  })
 })
