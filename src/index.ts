@@ -139,7 +139,7 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
-export { Search } from './components/Search/Search'
+export { Search } from './components/Search/Search/Search'
 
 export { SummaryBox } from './components/SummaryBox/SummaryBox/SummaryBox'
 export { SummaryBoxHeading } from './components/SummaryBox/SummaryBoxHeading/SummaryBoxHeading'
