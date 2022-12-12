@@ -22,6 +22,6 @@ export const defaultSearchField = (): React.ReactElement => (
   <SearchField placeholder='Search...' />
 )
 
-export const searchFieldWithLabel = (): React.ReactElement => (
-    <SearchField placeholder='Type something...' label="Search" />
-  )
+export const bigSearchField = (): React.ReactElement => (
+  <SearchField placeholder='Type something...' isBig />
+)

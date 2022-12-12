@@ -49,6 +49,7 @@ export const Search = ({
       {...formProps}>
       <SearchField 
         {...inputProps}
+        isBig={size == 'big'}
         inputId={inputId}
         placeholder={placeholder}
         name={inputName}

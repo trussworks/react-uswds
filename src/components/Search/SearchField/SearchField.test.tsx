@@ -5,7 +5,7 @@ import { SearchField } from './SearchField'
 describe('SearchField component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
-      <SearchField></SearchField>
+      <SearchField />
     )
     expect(queryByTestId('textInput')).toBeInTheDocument()
   })
@@ -13,7 +13,7 @@ describe('SearchField component', () => {
   it('renders a placeholder', () => {
     const placeholder = 'SearchFieldhere'
     const { queryByTestId } = render(
-      <SearchField placeholder={placeholder}></SearchField>
+      <SearchField placeholder={placeholder} />
     )
     expect(queryByTestId('textInput')).toHaveAttribute(
       'placeholder',
@@ -24,7 +24,7 @@ describe('SearchField component', () => {
   it('renders a default value', () => {
     const defaultValue = 'SearchFieldhere'
     const { queryByTestId } = render(
-      <SearchField defaultValue={defaultValue}></SearchField>
+      <SearchField defaultValue={defaultValue} />
     )
     expect(queryByTestId('textInput')).toHaveAttribute(
       'value',
@@ -34,7 +34,7 @@ describe('SearchField component', () => {
 
   it('renders a label', () => {
     const { queryByLabelText } = render(
-      <SearchField label="Buscar"></SearchField>
+      <SearchField label="Buscar" />
     )
 
     expect(queryByLabelText('Buscar')).toBeInTheDocument()
