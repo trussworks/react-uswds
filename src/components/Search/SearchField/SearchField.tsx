@@ -13,6 +13,7 @@ type SearchFieldProps = {
   placeholder?: string
   defaultValue?: React.ReactNode
   label?: React.ReactNode
+  inputProps?: JSX.IntrinsicElements['input']
 }
 
 export const SearchField = ({
@@ -23,7 +24,7 @@ export const SearchField = ({
   inputName = 'search',
   label = 'Search',
   inputId = 'search-field',
-  ...inputProps
+  inputProps
 }: SearchFieldProps & OptionalTextInputProps): React.ReactElement => {
   const classes = classnames(
     {
@@ -33,7 +34,7 @@ export const SearchField = ({
   )
 
   return (
-    <div className={classes}>
+    <div className={classes} data-testid='searchField'>
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>

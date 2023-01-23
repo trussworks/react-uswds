@@ -32,6 +32,16 @@ describe('SearchField component', () => {
     )
   })
 
+  it('passes input props', () => {
+    const { getByTestId } = render(
+      <SearchField inputProps={{ required: true, minLength: 6 }} />
+    )
+    const input = getByTestId('textInput')
+
+    expect(input).toHaveAttribute('required')
+    expect(input).toHaveAttribute('minLength', "6")
+  })
+
   it('renders a label', () => {
     const { queryByLabelText } = render(
       <SearchField label="Buscar" />
