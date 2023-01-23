@@ -1,6 +1,4 @@
-import React, {
-  useRef
-} from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 type TextInputRef =
@@ -36,13 +34,13 @@ export const TextInput = ({
   className,
   validationStatus,
   inputSize,
+  inputRef,
   ...inputProps
 }: TextInputProps): React.ReactElement => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const isSmall = inputSize === 'small'
   const isMedium = inputSize === 'medium'
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const classes = classnames(
     'usa-input',
