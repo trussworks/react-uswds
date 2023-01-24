@@ -23,5 +23,5 @@ export const defaultSearchField = (): React.ReactElement => (
 )
 
 export const bigSearchField = (): React.ReactElement => (
-  <SearchField placeholder='Type something...' isBig />
+  <SearchField placeholder='Type something here...' isBig />
 )
