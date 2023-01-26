@@ -8,7 +8,7 @@ import { GovBanner, GridContainer, Grid, MediaBlockBody } from '../../index'
 /** HEADER */
 import { Header } from '../../components/header/Header/Header'
 import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search'
+import { Search } from '../../components/header/../Search/Search/Search'
 import { Menu } from '../../components/header/Menu/Menu'
 import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
 import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
