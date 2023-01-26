@@ -1,12 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
-
-import { Button } from '../Button/Button'
-import { Form, OptionalFormProps } from '../forms/Form/Form'
-import { Label } from '../forms/Label/Label'
-import { TextInput } from '../forms/TextInput/TextInput'
+import { Form, OptionalFormProps } from '../../forms/Form/Form'
+import { SearchField } from '../SearchField/SearchField'
+import { SearchButton } from '../SearchButton/SearchButton'
+import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
 
 type SearchLocalization = {
   buttonText: string
@@ -21,6 +19,7 @@ type SearchInputProps = {
   placeholder?: string
   label?: React.ReactNode
   i18n?: SearchLocalization
+  inputProps?: OptionalTextInputProps
 }
 
 export const Search = ({
@@ -32,18 +31,12 @@ export const Search = ({
   label = 'Search',
   inputId = 'search-field',
   i18n,
+  inputProps,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
-  const buttonText = i18n?.buttonText || 'Search'
 
-  const isBig = size === 'big'
-  const isSmall = size === 'small'
   const classes = classnames(
     'usa-search',
-    {
-      'usa-search--small': isSmall,
-      'usa-search--big': isBig,
-    },
     className
   )
 
@@ -54,26 +47,16 @@ export const Search = ({
       role="search"
       search={true}
       {...formProps}>
-      <Label srOnly={true} htmlFor={inputId}>
-        {label}
-      </Label>
-      <TextInput
-        id={inputId}
-        type="search"
-        name={inputName}
+      <SearchField 
+        {...inputProps}
+        isBig={size == 'big'}
+        inputId={inputId}
         placeholder={placeholder}
+        name={inputName}
+        label={label}
         defaultValue={formProps.defaultValue}
       />
-      <Button type="submit">
-        {!isSmall && (
-          <span className="usa-search__submit-text">{buttonText}</span>
-        )}
-        <img
-          src={searchImg}
-          className="usa-search__submit-icon"
-          alt={buttonText}
-        />
-      </Button>
+      <SearchButton size={size} i18n={i18n} />
     </Form>
   )
 }
