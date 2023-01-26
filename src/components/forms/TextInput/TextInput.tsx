@@ -19,6 +19,7 @@ type CustomTextInputProps = {
   validationStatus?: 'error' | 'success'
   inputSize?: 'small' | 'medium'
   inputRef?: TextInputRef
+  inputProps?: JSX.IntrinsicElements['input']
 }
 
 export type OptionalTextInputProps = CustomTextInputProps &
@@ -40,6 +41,7 @@ export const TextInput = ({
   const isSuccess = validationStatus === 'success'
   const isSmall = inputSize === 'small'
   const isMedium = inputSize === 'medium'
+
   const classes = classnames(
     'usa-input',
     {
