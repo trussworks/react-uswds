@@ -53,7 +53,11 @@ export const ModalToggleButton = ({
       {...dataProps}
       type="button"
       aria-controls={modalRef?.current?.modalId}
-      onClick={e => { props.onClick && props.onClick(e); handleClick(e); }}>
+      onClick={async (e) => {
+        props.onClick && await props.onClick(e);
+        handleClick(e);
+      }}
+    >
       {children}
     </Button>
   )
