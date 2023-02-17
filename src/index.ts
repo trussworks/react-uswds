@@ -4,14 +4,26 @@ import './styles/index.scss'
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'
-export { GovBanner } from './components/GovBanner/GovBanner'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { Link } from './components/Link/Link'
+export { MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
+export { Pagination } from './components/Pagination/Pagination'
+
+/** Banner components */
+export { Banner } from './components/banner/Banner/Banner'
+export { BannerButton } from './components/banner/BannerButton/BannerButton'
+export { BannerContent } from './components/banner/BannerContent/BannerContent'
+export { BannerFlag } from './components/banner/BannerFlag/BannerFlag'
+export { BannerGuidance } from './components/banner/BannerGuidance/BannerGuidance'
+export { BannerHeader } from './components/banner/BannerHeader/BannerHeader'
+export { BannerIcon } from './components/banner/BannerIcon/BannerIcon'
+export { BannerLockImage } from './components/banner/BannerLockImage/BannerLockImage'
+export { GovBanner } from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
 export { Collection } from './components/Collection/Collection'
@@ -31,7 +43,11 @@ export { Grid } from './components/grid/Grid/Grid'
 /** Form components */
 export { CharacterCount } from './components/forms/CharacterCount/CharacterCount'
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
-export { ComboBox, ComboBoxOption } from './components/forms/ComboBox/ComboBox'
+export { ComboBox } from './components/forms/ComboBox/ComboBox'
+export type {
+  ComboBoxRef,
+  ComboBoxOption,
+} from './components/forms/ComboBox/ComboBox'
 export { DateInput } from './components/forms/DateInput/DateInput'
 export { DateInputGroup } from './components/forms/DateInputGroup/DateInputGroup'
 export { DatePicker } from './components/forms/DatePicker/DatePicker'
@@ -40,6 +56,7 @@ export { Dropdown } from './components/forms/Dropdown/Dropdown'
 export { ErrorMessage } from './components/forms/ErrorMessage/ErrorMessage'
 export { Fieldset } from './components/forms/Fieldset/Fieldset'
 export { FileInput } from './components/forms/FileInput/FileInput'
+export type { FileInputRef } from './components/forms/FileInput/FileInput'
 export { Form } from './components/forms/Form/Form'
 export { FormGroup } from './components/forms/FormGroup/FormGroup'
 export { InputPrefix } from './components/forms/InputPrefix/InputPrefix'
@@ -65,8 +82,10 @@ export { NavDropDownButton } from './components/header/NavDropDownButton/NavDrop
 export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
-// IconList
+/** IconList component */
 export { IconList } from './components/IconList/IconList'
+export { IconListContent } from './components/IconList/IconListContent/IconListContent'
+export { IconListIcon } from './components/IconList/IconListIcon/IconListIcon'
 export { IconListItem } from './components/IconList/IconListItem/IconListItem'
 export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
 
@@ -90,14 +109,18 @@ export { Footer } from './components/Footer/Footer/Footer'
 export { FooterExtendedNavList } from './components/Footer/FooterExtendedNavList/FooterExtendedNavList'
 export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
-export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
+export {
+  SocialLinks,
+  SocialLink,
+} from './components/Footer/SocialLinks/SocialLinks'
 
 /** Modal components */
-export { Modal, ModalProps, ModalRef } from './components/Modal/Modal'
+export { Modal } from './components/Modal/Modal'
 export { ModalToggleButton } from './components/Modal/ModalToggleButton'
 export { ModalOpenLink } from './components/Modal/ModalOpenLink'
 export { ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
 export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
+export type { ModalProps, ModalRef } from './components/Modal/Modal'
 
 /** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
@@ -116,9 +139,11 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
-export { Search } from './components/Search/Search'
+export { Search } from './components/Search/Search/Search'
 
 export { SummaryBox } from './components/SummaryBox/SummaryBox/SummaryBox'
+export { SummaryBoxHeading } from './components/SummaryBox/SummaryBoxHeading/SummaryBoxHeading'
+export { SummaryBoxContent } from './components/SummaryBox/SummaryBoxContent/SummaryBoxContent'
 
 /** ProcessList components */
 export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
@@ -127,5 +152,5 @@ export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
 
-export type { FileInputRef } from './components/forms/FileInput/FileInput'
-export type { ComboBoxRef } from './components/forms/ComboBox/ComboBox'
+/** Types */
+export type { HeadingLevel } from './types/headingLevel'

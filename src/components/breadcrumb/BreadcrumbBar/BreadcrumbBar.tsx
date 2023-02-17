@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
-interface BreadcrumbBarProps {
+type BreadcrumbBarProps = {
   children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
   variant?: 'default' | 'wrap'
   className?: string
@@ -26,7 +26,7 @@ export const BreadcrumbBar = ({
   )
 
   return (
-    <nav className={classes} {...navProps} aria-label="Breadcrumbs">
+    <nav className={classes} aria-label="Breadcrumbs" {...navProps}>
       <ol className="usa-breadcrumb__list" {...listProps}>
         {children}
       </ol>

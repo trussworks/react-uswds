@@ -6,6 +6,7 @@ import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/CharacterCount',
+  component: CharacterCount,
   parameters: {
     docs: {
       description: {
@@ -66,11 +67,11 @@ const withCustomCharacterCount = (): React.ReactElement => {
 
   const customEmojiMessage = (count: number, maxCount: number): string => {
     const remainingCount = maxCount - count
-    if (remainingCount >= 0) return `${remainingCount} of ${maxCount} remain`
+    return remainingCount >= 0 ? `${remainingCount} of ${maxCount} remain` : ''
   }
 
   const twitterStyleMessage = (count: number, maxCount: number): string => {
-    if (maxCount - count < 5) return `${maxCount - count}`
+    return maxCount - count < 5 ? `${maxCount - count}` : ''
   }
 
   return (

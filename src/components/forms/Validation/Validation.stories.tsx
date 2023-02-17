@@ -26,7 +26,7 @@ Source: https://designsystem.digital.gov/components/validation
 }
 
 //This could be a third party util or any function that returns boolean for a specific validation
-const validate = (type, value): boolean => {
+const validate = (type: string, value: string): boolean => {
   switch (type) {
     case 'uppercase':
       return /[A-Z]/.test(value)
@@ -48,7 +48,7 @@ export const Default = (): React.ReactElement => {
     const {
       target: { value },
     } = event
-    const updatedValidations = {}
+    const updatedValidations: Record<string, boolean> = {}
 
     Object.keys(validations).forEach((validator) => {
       // eslint-disable-next-line security/detect-object-injection
@@ -61,15 +61,13 @@ export const Default = (): React.ReactElement => {
     <Form
       onSubmit={(): void => {
         console.log('submit')
-      }}
-    >
+      }}>
       <Fieldset legend="Enter a code" legendStyle="large">
         <Alert
           type="info"
           validation
           heading="Code Requirements"
-          headingLevel="h4"
-        >
+          headingLevel="h4">
           <ValidationChecklist id="validate-code">
             <ValidationItem id="uppercase" isValid={validations.uppercase}>
               Use at least one uppercase character

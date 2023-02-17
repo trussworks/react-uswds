@@ -1,9 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -14,11 +12,9 @@
 
 **ReactUSWDS Component Library**
 
-This is a frontend component library, built in [React](https://reactjs.org/) with [Typescript](https://www.typescriptlang.org/), based on design patterns defined by the [United States Web Design System (USWDS) 2.0](https://designsystem.digital.gov/). Our primary goal is to document and provide common UI components following the USWDS specification. This library removes a significant amount of overhead UI development for projects based on this standard.
+This is a frontend component library, built in [React](https://reactjs.org/) with [Typescript](https://www.typescriptlang.org/), based on design patterns defined by the [United States Web Design System (USWDS) 3.0](https://designsystem.digital.gov/). Our primary goal is to document and provide common UI components following the USWDS specification. This library removes a significant amount of overhead UI development for projects based on this standard.
 
 A deployed instance of the ReactUSWDS Storybook is located at: [https://trussworks.github.io/react-uswds/](https://trussworks.github.io/react-uswds/)
-
-An example application, built with React-USWDS, can be found in the `/example` folder and run with the appropriate [`yarn:example` commands](./docs/contributing.md#available-commands).
 
 **Table of Contents**
 
@@ -86,7 +82,7 @@ In the process, we expect to gain learnings around how to best abstract out UI c
 
 ## Active Maintainers
 
-- [Roger Steve Ruiz](https://github.com/rogeruiz)
+- [John Gedeon](https://github.com/gidjin)
 
 We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
@@ -130,29 +126,39 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/suzubara"><img src="https://avatars.githubusercontent.com/u/2723066?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Suzanne Rozier</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=suzubara" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=suzubara" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/haworku"><img src="https://avatars.githubusercontent.com/u/10750442?v=4?s=100" width="100px;" alt=""/><br /><sub><b>haworku</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/ahobson"><img src="https://avatars.githubusercontent.com/u/21983?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Hobson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ahobson" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/gidjin"><img src="https://avatars.githubusercontent.com/u/940173?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Gedeon</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=gidjin" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/eamahanna"><img src="https://avatars.githubusercontent.com/u/56279459?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Emily Mahanna</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=eamahanna" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/brandonlenz"><img src="https://avatars.githubusercontent.com/u/15805554?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brandon Lenz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/sojeri"><img src="https://avatars.githubusercontent.com/u/10818509?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeri Sommers</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sojeri" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/tinyels"><img src="https://avatars.githubusercontent.com/u/3142631?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erin Stanfill</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=tinyels" title="Code">💻</a></td>
-    <td align="center"><a href="http://www.barrymorrison.com/"><img src="https://avatars.githubusercontent.com/u/689591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Barry Morrison</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=esacteksab" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/duncan-truss"><img src="https://avatars.githubusercontent.com/u/52669884?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Duncan</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=duncan-truss" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/SirenaBorracha"><img src="https://avatars.githubusercontent.com/u/16230705?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arianna Kellogg</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=SirenaBorracha" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/christopherhuii"><img src="https://avatars.githubusercontent.com/u/8367504?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Hui</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=christopherhuii" title="Code">💻</a></td>
-    <td align="center"><a href="http://pandasguide.com/"><img src="https://avatars.githubusercontent.com/u/3331?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jim Benton</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jim" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/jenbutongit"><img src="https://avatars.githubusercontent.com/u/22080510?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jen Duong</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jenbutongit" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/kimallen"><img src="https://avatars.githubusercontent.com/u/13249580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kim Allen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kimallen" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/kylehilltruss"><img src="https://avatars.githubusercontent.com/u/83614364?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Hill</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kylehilltruss" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/rswerve"><img src="https://avatars.githubusercontent.com/u/8964335?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mazdak Atighi</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rswerve" title="Code">💻</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/suzubara"><img src="https://avatars.githubusercontent.com/u/2723066?v=4?s=100" width="100px;" alt="Suzanne Rozier"/><br /><sub><b>Suzanne Rozier</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=suzubara" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=suzubara" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/haworku"><img src="https://avatars.githubusercontent.com/u/10750442?v=4?s=100" width="100px;" alt="haworku"/><br /><sub><b>haworku</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=haworku" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ahobson"><img src="https://avatars.githubusercontent.com/u/21983?v=4?s=100" width="100px;" alt="Andrew Hobson"/><br /><sub><b>Andrew Hobson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ahobson" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gidjin"><img src="https://avatars.githubusercontent.com/u/940173?v=4?s=100" width="100px;" alt="John Gedeon"/><br /><sub><b>John Gedeon</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=gidjin" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/eamahanna"><img src="https://avatars.githubusercontent.com/u/56279459?v=4?s=100" width="100px;" alt="Emily Mahanna"/><br /><sub><b>Emily Mahanna</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=eamahanna" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/brandonlenz"><img src="https://avatars.githubusercontent.com/u/15805554?v=4?s=100" width="100px;" alt="Brandon Lenz"/><br /><sub><b>Brandon Lenz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sojeri"><img src="https://avatars.githubusercontent.com/u/10818509?v=4?s=100" width="100px;" alt="Jeri Sommers"/><br /><sub><b>Jeri Sommers</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sojeri" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tinyels"><img src="https://avatars.githubusercontent.com/u/3142631?v=4?s=100" width="100px;" alt="Erin Stanfill"/><br /><sub><b>Erin Stanfill</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=tinyels" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.barrymorrison.com/"><img src="https://avatars.githubusercontent.com/u/689591?v=4?s=100" width="100px;" alt="Barry Morrison"/><br /><sub><b>Barry Morrison</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=esacteksab" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/duncan-truss"><img src="https://avatars.githubusercontent.com/u/52669884?v=4?s=100" width="100px;" alt="Duncan"/><br /><sub><b>Duncan</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=duncan-truss" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SirenaBorracha"><img src="https://avatars.githubusercontent.com/u/16230705?v=4?s=100" width="100px;" alt="Arianna Kellogg"/><br /><sub><b>Arianna Kellogg</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=SirenaBorracha" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/christopherhuii"><img src="https://avatars.githubusercontent.com/u/8367504?v=4?s=100" width="100px;" alt="Christopher Hui"/><br /><sub><b>Christopher Hui</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=christopherhuii" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://pandasguide.com/"><img src="https://avatars.githubusercontent.com/u/3331?v=4?s=100" width="100px;" alt="Jim Benton"/><br /><sub><b>Jim Benton</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jim" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jenbutongit"><img src="https://avatars.githubusercontent.com/u/22080510?v=4?s=100" width="100px;" alt="Jen Duong"/><br /><sub><b>Jen Duong</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jenbutongit" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kimallen"><img src="https://avatars.githubusercontent.com/u/13249580?v=4?s=100" width="100px;" alt="Kim Allen"/><br /><sub><b>Kim Allen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kimallen" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylehilltruss"><img src="https://avatars.githubusercontent.com/u/83614364?v=4?s=100" width="100px;" alt="Kyle Hill"/><br /><sub><b>Kyle Hill</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kylehilltruss" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rswerve"><img src="https://avatars.githubusercontent.com/u/8964335?v=4?s=100" width="100px;" alt="Mazdak Atighi"/><br /><sub><b>Mazdak Atighi</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rswerve" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Igarfinkle"><img src="https://avatars.githubusercontent.com/u/7664177?v=4?s=100" width="100px;" alt="Isaac Garfinkle"/><br /><sub><b>Isaac Garfinkle</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=Igarfinkle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rogeruiz"><img src="https://avatars.githubusercontent.com/u/706004?v=4?s=100" width="100px;" alt="Roger Steve Ruiz"/><br /><sub><b>Roger Steve Ruiz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rogeruiz" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=rogeruiz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lpsinger"><img src="https://avatars.githubusercontent.com/u/728407?v=4?s=100" width="100px;" alt="Leo Singer"/><br /><sub><b>Leo Singer</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Alpsinger" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lpsinger" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Shkeating"><img src="https://avatars.githubusercontent.com/u/59394696?v=4?s=100" width="100px;" alt="Shauna Keating"/><br /><sub><b>Shauna Keating</b></sub></a><br /><a href="#a11y-Shkeating" title="Accessibility">️️️️♿️</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Shkeating" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jcbcapps"><img src="https://avatars.githubusercontent.com/u/99674188?v=4?s=100" width="100px;" alt="Jacob Capps"/><br /><sub><b>Jacob Capps</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jcbcapps" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/pearl-truss"><img src="https://avatars.githubusercontent.com/u/67110378?v=4?s=100" width="100px;" alt="pearl-truss"/><br /><sub><b>pearl-truss</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=pearl-truss" title="Code">💻</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->

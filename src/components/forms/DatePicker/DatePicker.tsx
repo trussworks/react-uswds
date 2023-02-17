@@ -25,7 +25,7 @@ import {
 } from './utils'
 import { Calendar } from './Calendar'
 
-interface BaseDatePickerProps {
+type BaseDatePickerProps = {
   id: string
   name: string
   className?: string
@@ -253,8 +253,7 @@ export const DatePicker = ({
       className={datePickerClasses}
       ref={datePickerEl}
       onBlur={handleFocusOut}
-      onKeyDown={handleEscapeKey}
-    >
+      onKeyDown={handleEscapeKey}>
       <input
         {...inputProps}
         name={name}
@@ -295,10 +294,7 @@ export const DatePicker = ({
           aria-haspopup={true}
           aria-label={toggleCalendar}
           disabled={disabled}
-          onClick={handleToggleClick}
-        >
-          &nbsp;
-        </button>
+          onClick={handleToggleClick}></button>
         {/* Ignoring error: "Non-interactive elements should not be assigned mouse or keyboard event listeners." */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
@@ -310,8 +306,7 @@ export const DatePicker = ({
           data-value={calendarDisplayValue && formatDate(calendarDisplayValue)}
           style={{ top: `${calendarPosY}px` }}
           onKeyDown={handleCalendarKeydown}
-          onKeyUp={handleCalendarKeyup}
-        >
+          onKeyUp={handleCalendarKeyup}>
           {showCalendar && (
             <Calendar
               date={calendarDisplayValue}
@@ -330,8 +325,7 @@ export const DatePicker = ({
           data-testid="date-picker-status"
           className="usa-sr-only usa-date-picker__status"
           role="status"
-          aria-live="polite"
-        >
+          aria-live="polite">
           {statuses.join('. ')}
         </div>
       </div>

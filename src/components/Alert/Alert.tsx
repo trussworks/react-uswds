@@ -1,9 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import { HeadingLevel } from '../../types/headingLevel'
+
 import styles from './Alert.module.css'
 
-export interface AlertProps {
+type AlertProps = {
   type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
   headingLevel: HeadingLevel

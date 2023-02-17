@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface CustomNavListProps {
+type CustomNavListProps = {
   items: React.ReactNode[]
   type?: 'primary' | 'secondary' | 'subnav' | 'megamenu' | 'footerSecondary'
 }

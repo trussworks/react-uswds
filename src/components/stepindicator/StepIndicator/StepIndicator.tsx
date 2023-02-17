@@ -1,8 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
+import { HeadingLevel } from '../../../types/headingLevel'
 
-interface StepIndicatorProps {
+type StepIndicatorProps = {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
   centered?: boolean
@@ -76,8 +77,7 @@ export const StepIndicator = (
       className={divClasses}
       data-testid="step-indicator"
       aria-label="progress"
-      {...remainingDivProps}
-    >
+      {...remainingDivProps}>
       <ol className={listClasses} {...remainingListProps}>
         {children}
       </ol>

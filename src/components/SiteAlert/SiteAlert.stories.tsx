@@ -126,8 +126,7 @@ export const emergencyAlertWithList = (): React.ReactElement => (
   <SiteAlert
     variant="emergency"
     heading={emergencyHeading}
-    aria-label="Site alert"
-  >
+    aria-label="Site alert">
     {emergencyWithList}
   </SiteAlert>
 )
@@ -150,8 +149,7 @@ export const alertWithCustomControls = (
   <SiteAlert
     slim={argTypes.slim}
     showIcon={argTypes.showIcon}
-    variant={argTypes.variant}
-  >
+    variant={argTypes.variant}>
     {shortAlertContent}
   </SiteAlert>
 )

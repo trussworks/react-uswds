@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
+import { HeadingLevel } from '../../types/headingLevel'
+
 export interface AccordionItemProps {
   title: React.ReactNode | string
   content: React.ReactNode
@@ -11,7 +13,7 @@ export interface AccordionItemProps {
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-interface AccordionProps {
+type AccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
@@ -45,8 +47,7 @@ export const AccordionItem = ({
           aria-expanded={expanded}
           aria-controls={id}
           data-testid={`accordionButton_${id}`}
-          onClick={handleToggle}
-        >
+          onClick={handleToggle}>
           {title}
         </button>
       </Heading>
@@ -54,8 +55,7 @@ export const AccordionItem = ({
         id={id}
         data-testid={`accordionItem_${id}`}
         className={contentClasses}
-        hidden={!expanded}
-      >
+        hidden={!expanded}>
         {content}
       </div>
     </>
@@ -67,7 +67,7 @@ export const Accordion = ({
   items,
   className,
   multiselectable = false,
-}: AccordionProps): React.ReactElement => {
+}: AccordionProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
@@ -102,8 +102,7 @@ export const Accordion = ({
     <div
       className={classes}
       data-testid="accordion"
-      aria-multiselectable={multiselectable || undefined}
-    >
+      aria-multiselectable={multiselectable || undefined}>
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}

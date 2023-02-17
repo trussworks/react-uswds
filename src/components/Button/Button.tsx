@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export interface ButtonProps {
+export type ButtonProps = {
   type: 'button' | 'submit' | 'reset'
   children: React.ReactNode
   secondary?: boolean
@@ -48,8 +48,7 @@ export const Button = ({
       className={classes}
       onClick={onClick}
       data-testid="button"
-      {...defaultProps}
-    >
+      {...defaultProps}>
       {children}
     </button>
   )

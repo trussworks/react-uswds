@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import classnames from 'classnames'
+import { HeadingLevel } from '../../../types/headingLevel'
 
 interface SummaryBoxHeadingProps {
   children: ReactNode
@@ -25,3 +26,5 @@ export const SummaryBoxHeading = ({
     </Heading>
   )
 }
+
+export default SummaryBoxHeading

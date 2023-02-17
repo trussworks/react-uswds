@@ -13,7 +13,7 @@ import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
 
 import { Link } from '../../Link/Link'
 
-import dotGovIcon from 'uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
 
 export default {
   title: 'Components/Identifier',
@@ -311,26 +311,27 @@ export const taxDisclaimerSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const taxDisclaimerAndMultipleParentsAndLogos = (): React.ReactElement => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`An official website of the `}
-        <Link href="#">Test Agency Name</Link>
-        {` and the `}
-        <Link href="#">Other Test Agency Name</Link>
-        {`. Produced and published at taxpayer expense.`}
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const taxDisclaimerAndMultipleParentsAndLogos =
+  (): React.ReactElement => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`An official website of the `}
+          <Link href="#">Test Agency Name</Link>
+          {` and the `}
+          <Link href="#">Other Test Agency Name</Link>
+          {`. Produced and published at taxpayer expense.`}
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  )

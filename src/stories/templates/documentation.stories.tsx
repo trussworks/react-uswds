@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from 'uswds/src/img/logo-img.png'
+import logoImg from '@uswds/uswds/src/img/logo-img.png'
 
 import { GovBanner, GridContainer, Grid } from '../../index'
 
 /** HEADER */
 import { Header } from '../../components/header/Header/Header'
 import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search'
+import { Search } from '../../components/header/../Search/Search/Search'
 import { Menu } from '../../components/header/Menu/Menu'
 import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
 import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
@@ -18,7 +18,10 @@ import { Address } from '../../components/Footer/Address/Address'
 import { Footer } from '../../components/Footer/Footer/Footer'
 import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
 import { Logo } from '../../components/Footer/Logo/Logo'
-import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
+import {
+  SocialLinks,
+  SocialLink,
+} from '../../components/Footer/SocialLinks/SocialLinks'
 
 import { SideNav } from '../../components/SideNav/SideNav'
 
@@ -137,6 +140,14 @@ export const DocumentationPage = (): React.ReactElement => {
     </GridContainer>
   )
 
+  const socialLinkItems = [
+    <SocialLink key="facebook" name="Facebook" href="#" />,
+    <SocialLink key="twitter" name="Twitter" href="#" />,
+    <SocialLink key="youtube" name="YouTube" href="#" />,
+    <SocialLink key="instagram" name="Instagram" href="#" />,
+    <SocialLink key="rss" name="RSS" href="#" />,
+  ]
+
   const footerPrimary = (
     <FooterNav
       aria-label="Footer navigation"
@@ -158,48 +169,10 @@ export const DocumentationPage = (): React.ReactElement => {
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-          <SocialLinks
-            links={[
-              <a
-                key="facebook"
-                className="usa-social-link usa-social-link--facebook"
-                href="javascript:void(0);"
-              >
-                <span>Facebook</span>
-              </a>,
-              <a
-                key="twitter"
-                className="usa-social-link usa-social-link--twitter"
-                href="javascript:void(0);"
-              >
-                <span>Twitter</span>
-              </a>,
-              <a
-                key="youtube"
-                className="usa-social-link usa-social-link--youtube"
-                href="javascript:void(0);"
-              >
-                <span>YouTube</span>
-              </a>,
-              <a
-                key="instagram"
-                className="usa-social-link usa-social-link--instagram"
-                href="#"
-              >
-                <span>Instagram</span>
-              </a>,
-              <a
-                key="rss"
-                className="usa-social-link usa-social-link--rss"
-                href="javascript:void(0);"
-              >
-                <span>RSS</span>
-              </a>,
-            ]}
-          />
+          <SocialLinks links={socialLinkItems} />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
-            medium
+            size="medium"
             items={[
               <a key="telephone" href="tel:1-800-555-5555">
                 (800) CALL-GOVT
@@ -239,8 +212,7 @@ export const DocumentationPage = (): React.ReactElement => {
             aria-label="Primary navigation"
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
-            mobileExpanded={mobileNavOpen}
-          >
+            mobileExpanded={mobileNavOpen}>
             <Search size="small" onSubmit={handleSearch} />
           </PrimaryNav>
         </div>
@@ -256,8 +228,7 @@ export const DocumentationPage = (): React.ReactElement => {
             </Grid>
             <main
               className="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs"
-              id="main-content"
-            >
+              id="main-content">
               <h1>Page heading (h1)</h1>
 
               <p className="usa-intro">

@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
+import { HeadingLevel } from '../../../types/headingLevel'
 
 const step1 = 'Step 1'
 const step2 = 'Step 2'
@@ -145,8 +146,7 @@ describe('StepIndicator component', () => {
     const { queryByRole, queryByTestId } = render(
       <StepIndicator
         headingLevel="h4"
-        headingProps={{ id: 'my-id', className: 'my-custom-className' }}
-      >
+        headingProps={{ id: 'my-id', className: 'my-custom-className' }}>
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
         <StepIndicatorStep label={step3} status="incomplete" />

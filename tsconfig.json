@@ -15,11 +15,8 @@
     "jsx": "react",
     "noImplicitAny": true,
     "declaration": true,
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "isolatedModules": true,
   },
   "include": ["src/**/*", "custom.d.ts"],
-  "exclude": [
-    "node_modules",
-    "**/*.stories.tsx"
-  ]
 }
