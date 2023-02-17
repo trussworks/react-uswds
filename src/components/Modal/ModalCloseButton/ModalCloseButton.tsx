@@ -13,13 +13,12 @@ export const ModalCloseButton = ({
   JSX.IntrinsicElements['button']): React.ReactElement => {
   return (
     <Button
+      aria-label="Close this window"
       {...buttonProps}
       className="usa-modal__close"
-      aria-label="Close this window"
       onClick={handleClose}
       data-close-modal
-      type="button"
-    >
+      type="button">
       <Icon.Close aria-hidden="true" />
     </Button>
   )

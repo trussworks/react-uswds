@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface ErrorMessageProps {
+type ErrorMessageProps = {
   children: React.ReactNode
   id?: string
   className?: string

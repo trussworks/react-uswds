@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from 'uswds/src/img/logo-img.png'
-import circleImg from 'uswds/src/img/circle-124.png'
+import logoImg from '@uswds/uswds/src/img/logo-img.png'
+import circleImg from '@uswds/uswds/src/img/circle-124.png'
 
-import { GovBanner, GridContainer, Grid } from '../../index'
+import { GovBanner, GridContainer, Grid, MediaBlockBody } from '../../index'
 
 /** HEADER */
 import { Header } from '../../components/header/Header/Header'
 import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search'
+import { Search } from '../../components/header/../Search/Search/Search'
 import { Menu } from '../../components/header/Menu/Menu'
 import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
 import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
@@ -20,7 +20,10 @@ import { Address } from '../../components/Footer/Address/Address'
 import { Footer } from '../../components/Footer/Footer/Footer'
 import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
 import { Logo } from '../../components/Footer/Logo/Logo'
-import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
+import {
+  SocialLinks,
+  SocialLink,
+} from '../../components/Footer/SocialLinks/SocialLinks'
 
 export default {
   title: 'Page Templates/Landing Page',
@@ -108,6 +111,14 @@ export const LandingPage = (): React.ReactElement => {
     </GridContainer>
   )
 
+  const socialLinkItems = [
+    <SocialLink key="facebook" name="Facebook" href="#" />,
+    <SocialLink key="twitter" name="Twitter" href="#" />,
+    <SocialLink key="youtube" name="YouTube" href="#" />,
+    <SocialLink key="instagram" name="Instagram" href="#" />,
+    <SocialLink key="rss" name="RSS" href="#" />,
+  ]
+
   const footerPrimary = (
     <FooterNav
       aria-label="Footer navigation"
@@ -129,45 +140,7 @@ export const LandingPage = (): React.ReactElement => {
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-          <SocialLinks
-            links={[
-              <a
-                key="facebook"
-                className="usa-social-link usa-social-link--facebook"
-                href="javascript:void(0);"
-              >
-                <span>Facebook</span>
-              </a>,
-              <a
-                key="twitter"
-                className="usa-social-link usa-social-link--twitter"
-                href="javascript:void(0);"
-              >
-                <span>Twitter</span>
-              </a>,
-              <a
-                key="youtube"
-                className="usa-social-link usa-social-link--youtube"
-                href="javascript:void(0);"
-              >
-                <span>YouTube</span>
-              </a>,
-              <a
-                key="instagram"
-                className="usa-social-link usa-social-link--instagram"
-                href="#"
-              >
-                <span>Instagram</span>
-              </a>,
-              <a
-                key="rss"
-                className="usa-social-link usa-social-link--rss"
-                href="javascript:void(0);"
-              >
-                <span>RSS</span>
-              </a>,
-            ]}
-          />
+          <SocialLinks links={socialLinkItems} />
           <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
           <Address
             size="medium"
@@ -210,8 +183,7 @@ export const LandingPage = (): React.ReactElement => {
           primaryItems={primaryNavItems}
           secondaryItems={secondaryNavItems}
           onToggleMobileNav={toggleMobileNav}
-          mobileExpanded={mobileNavOpen}
-        >
+          mobileExpanded={mobileNavOpen}>
           <Search size="small" onSubmit={handleSearch} />
         </ExtendedNav>
       </Header>
@@ -268,7 +240,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Graphic headings can vary.
                   </h2>
@@ -277,7 +249,7 @@ export const LandingPage = (): React.ReactElement => {
                     on what your landing page is for. Highlight your values,
                     specific program areas, or results.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
               <Grid tablet={{ col: true }} className="usa-media-block">
                 <img
@@ -285,7 +257,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Stick to 6 or fewer words.
                   </h2>
@@ -294,7 +266,7 @@ export const LandingPage = (): React.ReactElement => {
                     try to be somewhat balanced across all four. It creates a
                     clean appearance with good spacing.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
             </Grid>
             <Grid row gap className="usa-graphic-list__row">
@@ -304,7 +276,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Never highlight anything without a goal.
                   </h2>
@@ -313,7 +285,7 @@ export const LandingPage = (): React.ReactElement => {
                     your users know now, and what activity or impression you
                     want from them after they see it.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
               <Grid tablet={{ col: true }} className="usa-media-block">
                 <img
@@ -321,7 +293,7 @@ export const LandingPage = (): React.ReactElement => {
                   src={circleImg}
                   alt="Alt text"
                 />
-                <div className="usa-media-block__body">
+                <MediaBlockBody>
                   <h2 className="usa-graphic-list__heading">
                     Could also have 2 or 6.
                   </h2>
@@ -330,7 +302,7 @@ export const LandingPage = (): React.ReactElement => {
                     do they want to know or do that supports your mission? Use
                     these headings to show these.
                   </p>
-                </div>
+                </MediaBlockBody>
               </Grid>
             </Grid>
           </GridContainer>

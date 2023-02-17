@@ -172,8 +172,7 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
         data-force-action={forceAction}
         isVisible={isOpen}
         handleClose={closeModal}
-        forceAction={forceAction}
-      >
+        forceAction={forceAction}>
         <ModalWindow
           modalId={id}
           {...divProps}
@@ -181,8 +180,7 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
           isLarge={isLarge}
           forceAction={forceAction}
           tabIndex={-1}
-          handleClose={closeModal}
-        >
+          handleClose={closeModal}>
           {children}
         </ModalWindow>
       </ModalWrapper>

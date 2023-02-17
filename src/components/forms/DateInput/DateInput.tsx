@@ -5,7 +5,7 @@ import { TextInput, OptionalTextInputProps } from '../TextInput/TextInput'
 import { Label } from '../Label/Label'
 import { FormGroup } from '../FormGroup/FormGroup'
 
-interface DateInputElementProps {
+type DateInputElementProps = {
   id: string
   name: string
   label: string
@@ -30,7 +30,7 @@ export const DateInput = ({
     'usa-form-group--year': unit == 'year',
   })
 
-  const inputClasses = classnames('usa-input--inline', className)
+  const inputClasses = classnames(className)
 
   return (
     <FormGroup className={formGroupClasses}>

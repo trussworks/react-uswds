@@ -9,6 +9,7 @@ We have a Truss Slack channel dedicated to discussing this project (**#react-usw
 ## Active Maintainers
 
 See ["For Maintainers" README](for_maintainers.md). There are also some "For Maintainers" notes below.
+
 ## Onboarding
 
 First of all, we’re so excited you want to be an active maintainer on this project! Here are the things you should make sure to do:
@@ -18,8 +19,8 @@ First of all, we’re so excited you want to be an active maintainer on this pro
 - [ ] _For Maintainers:_ Add yourself to main project README "Active Maintainers" list.
 - [ ] _For Maintainers:_ Ping in #react-uswds to request access to the npm org so you can publish new releases
 - [ ] _For Maintainers:_ Ping in #react-uswds to request admin privileges to the [Happo Account](https://happo.io/)
-- [ ] _Optional:_ Add yourself to the `contributors` list in the [contributors file](../all-contributorsrc.json),
-- [ ] _Optional: Add yourself to [CODEOWNERS](../CODEOWNERS) if you'd like to automatically be requested to review PRs.
+- [ ] _Optional:_ Add yourself to the `contributors` list in the [the README](../README.md), using the command `yarn contributors:add [your github username] code`
+- [ ] _Optional_: Add yourself to [CODEOWNERS](../CODEOWNERS) if you'd like to automatically be requested to review PRs.
 
 If you've completed all of the above and are wondering what to do next, here are some ideas!
 
@@ -29,7 +30,7 @@ If you've completed all of the above and are wondering what to do next, here are
     - especially any that are labeled `good first issue` if this is your first time contributing to ReactUSWDS
   - Issues in the **Needs requirements** column are undergoing active discussion and would probably benefit from your point of view!
 - Browse [open issues](https://github.com/trussworks/react-uswds/issues) to see if there are any new issues that need to be labeled or prioritized
-  
+
 ## Offboarding
 
 Please make sure to do the following before you wash your hands of responsibilities:
@@ -39,7 +40,7 @@ Please make sure to do the following before you wash your hands of responsibilit
   - [ ] Open a draft PR for your branch, and use that to annotate any remaining work, TODOs, open questions, etc. as well as the overarching strategy you had in mind. The more documentation you leave, the easier it will be for someone else to finish your work!
   - [ ] If there is another active maintainer who is planning to pick up your work, comment on the PR and tag them so it's clear who will be picking it up. If there isn't, or you aren't sure, comment on the PR saying the work needs a new assignee or else it will go stale.
   - [ ] Unassign yourself from any corresponding issues
-  - It’s ideal if you are able to help answer any questions that arise from handing off work, but we understand if your new commitments don't allow for it! 
+  - It’s ideal if you are able to help answer any questions that arise from handing off work, but we understand if your new commitments don't allow for it!
 - [ ] _For Maintainers:_ Open a new PR that removes yourself from the Active Maintainers list in the [readme](../README.md).
 - [ ] Remove yourself from [CODEOWNERS](../CODEOWNERS) so you don't get PR requests that you won't have time to review.
 - **_Don't_** remove yourself from `package.json` contributors! You did good work on this project and that should be recognized.

@@ -2,6 +2,71 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/trussworks/react-uswds/compare/4.0.0...4.1.0) (2023-02-17)
+
+
+### Features
+
+* Make search component extendable ([#2230](https://github.com/trussworks/react-uswds/issues/2230)) ([9bd9137](https://github.com/trussworks/react-uswds/commit/9bd91379722aa010ed5a9ee2c90daa852ce4c922))
+
+### Bug Fixes
+
+* Export IconListContent and IconListIcon ([#2210](https://github.com/trussworks/react-uswds/issues/2210)) ([#2217](https://github.com/trussworks/react-uswds/issues/2217)) ([5cb4024](https://github.com/trussworks/react-uswds/commit/5cb40245eb86f4b267b9eef4b748f27c1218a065))
+
+## [4.0.0](https://github.com/trussworks/react-uswds/compare/3.2.0...4.0.0) (2022-11-08)
+
+### Features
+
+* upgrade to USWDS v3.1.0 ([#2203](https://github.com/trussworks/react-uswds/issues/2203)) ([cd40e03](https://github.com/trussworks/react-uswds/commit/cd40e03912b41b8f69c51278b20785e81a84468f))
+* Add defaultValue prop to Search component ([#2211](https://github.com/trussworks/react-uswds/issues/2211)) ([6ad525b](https://github.com/trussworks/react-uswds/commit/6ad525bc0e38fafb397891e337405cf6c7f6a5eb))
+
+### Documentation & Examples
+
+* Update docs for USWDS v3 ([#2205](https://github.com/trussworks/react-uswds/issues/2205)) ([f5bf2e7](https://github.com/trussworks/react-uswds/commit/f5bf2e70369f860e6af67305557ff626009c2585)), closes [#2202](https://github.com/trussworks/react-uswds/issues/2202)
+
+## [3.2.0](https://github.com/trussworks/react-uswds/compare/3.1.0...3.2.0) (2022-09-27)
+
+
+### Features
+
+* Add compositional Banner components ([#2184](https://github.com/trussworks/react-uswds/issues/2184)) ([f75e4ba](https://github.com/trussworks/react-uswds/commit/f75e4ba06b305d4e47651fdfeaf8f564af8398fc))
+* Add Pagination component ([#2188](https://github.com/trussworks/react-uswds/issues/2188)) ([4c021d1](https://github.com/trussworks/react-uswds/commit/4c021d10c4041b21b9f2f5e433aed86e5c257dd6))
+
+## [3.1.0](https://github.com/trussworks/react-uswds/compare/3.0.2...3.1.0) (2022-07-13)
+
+
+### Features
+
+* Remove example app ([#2162](https://github.com/trussworks/react-uswds/issues/2162)) ([1eb579e](https://github.com/trussworks/react-uswds/commit/1eb579e4d18e3ee04d3f54fc3445e6539fce3ec6))
+* USWDS 2.13.3 ([#2175](https://github.com/trussworks/react-uswds/issues/2175)) ([fdeefc6](https://github.com/trussworks/react-uswds/commit/fdeefc6d4e7e69fea50b6b0017dcc286979fbca5))
+
+
+### Bug Fixes
+
+* Danger contributors check ([#2167](https://github.com/trussworks/react-uswds/issues/2167)) ([c05fe06](https://github.com/trussworks/react-uswds/commit/c05fe0626acbc5f8945700e4d6a51e37693fcee3))
+* Emit headingLevel type and do not emit type declarations for tests ([#2134](https://github.com/trussworks/react-uswds/issues/2134)) ([a4501dd](https://github.com/trussworks/react-uswds/commit/a4501ddc24c12bbe3cf1279edbcf650f9dccd412))
+* export SummaryBoxHeading and SummaryBoxContent ([#2100](https://github.com/trussworks/react-uswds/issues/2100)) ([141ba8e](https://github.com/trussworks/react-uswds/commit/141ba8e23ed4eb41f3d0533bc155550c02d0b3f6))
+
+
+### Documentation & Examples
+
+* Callout outside contributors process ([#1969](https://github.com/trussworks/react-uswds/issues/1969)) ([7881191](https://github.com/trussworks/react-uswds/commit/78811918c1a38f773b5acf517181966ac5e58fe7))
+* Update releasing docs ([#2018](https://github.com/trussworks/react-uswds/issues/2018)) ([6849dda](https://github.com/trussworks/react-uswds/commit/6849ddab25c8674446dbd12a60f9ed1f9d1ce09c))
+
+### [3.0.2](https://github.com/trussworks/react-uswds/compare/3.0.1...3.0.2) (2022-05-13)
+
+
+### Bug Fixes
+
+* Fixes an issue where Type definitions were not properly packaged ([#2053](https://github.com/trussworks/react-uswds/issues/2053)) ([febcd65](https://github.com/trussworks/react-uswds/commit/febcd65d1d2bf8ff84f558b4d14013ba8328cc38))
+
+### [3.0.1](https://github.com/trussworks/react-uswds/compare/3.0.0...3.0.1) (2022-05-09)
+
+
+### Bug Fixes
+
+* Attempted to fixes an issue where Type definitions were not properly packaged
+
 ## [3.0.0](https://github.com/trussworks/react-uswds/compare/2.9.0...3.0.0) (2022-04-25)
 
 

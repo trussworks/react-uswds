@@ -9,6 +9,7 @@ import {
   GridContainer,
   Grid,
   Logo,
+  SocialLink,
   SocialLinks,
   Address,
   Form,
@@ -29,8 +30,9 @@ import {
   IdentifierGov,
 } from '../../index'
 
-import logoImg from 'uswds/src/img/logo-img.png'
-import circleSvg from 'uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/src/img/logo-img.png'
+import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
+import { MediaBlockBody } from '../../components/mediablock/MediaBlockBody/MediaBlockBody'
 
 export default {
   title: 'Page Templates/Authentication Pages',
@@ -51,6 +53,14 @@ const returnToTop = (
     <a href="#">Return to top</a>
   </GridContainer>
 )
+
+const socialLinkItems = [
+  <SocialLink key="facebook" name="Facebook" href="#" />,
+  <SocialLink key="twitter" name="Twitter" href="#" />,
+  <SocialLink key="youtube" name="YouTube" href="#" />,
+  <SocialLink key="instagram" name="Instagram" href="#" />,
+  <SocialLink key="rss" name="RSS" href="#" />,
+]
 
 const footerPrimary = (
   <FooterNav
@@ -73,45 +83,7 @@ const footerSecondary = (
         heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
       />
       <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-        <SocialLinks
-          links={[
-            <a
-              key="facebook"
-              className="usa-social-link usa-social-link--facebook"
-              href="javascript:void(0);"
-            >
-              <span>Facebook</span>
-            </a>,
-            <a
-              key="twitter"
-              className="usa-social-link usa-social-link--twitter"
-              href="javascript:void(0);"
-            >
-              <span>Twitter</span>
-            </a>,
-            <a
-              key="youtube"
-              className="usa-social-link usa-social-link--youtube"
-              href="javascript:void(0);"
-            >
-              <span>YouTube</span>
-            </a>,
-            <a
-              key="instagram"
-              className="usa-social-link usa-social-link--instagram"
-              href="#"
-            >
-              <span>Instagram</span>
-            </a>,
-            <a
-              key="rss"
-              className="usa-social-link usa-social-link--rss"
-              href="javascript:void(0);"
-            >
-              <span>RSS</span>
-            </a>,
-          ]}
-        />
+        <SocialLinks links={socialLinkItems} />
         <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
         <Address
           size="medium"
@@ -181,8 +153,7 @@ export const CreateAccount = (): React.ReactElement => {
                 mobileLg={{ col: 10 }}
                 tablet={{ col: 8 }}
                 desktop={{ col: 6 }}
-                className="padding-x-205 margin-bottom-4"
-              >
+                className="padding-x-205 margin-bottom-4">
                 <h1 className="desktop:display-none font-sans-lg margin-bottom-4 tablet:margin-top-neg-3">
                   A tagline that explains the benefit of creating an account.
                 </h1>
@@ -194,8 +165,7 @@ export const CreateAccount = (): React.ReactElement => {
                       <p>
                         <abbr
                           title="required"
-                          className="usa-hint usa-hint--required"
-                        >
+                          className="usa-hint usa-hint--required">
                           *
                         </abbr>{' '}
                         indicates a required field.
@@ -239,8 +209,7 @@ export const CreateAccount = (): React.ReactElement => {
                           aria-controls="password-create-account password-create-account-confirm"
                           onClick={(): void =>
                             setShowPassword((showPassword) => !showPassword)
-                          }
-                        >
+                          }>
                           {showPassword ? 'Hide password' : 'Show password'}
                         </a>
                       </p>
@@ -284,8 +253,7 @@ export const CreateAccount = (): React.ReactElement => {
                 mobileLg={{ col: 10 }}
                 tablet={{ col: 8 }}
                 desktop={{ col: 6 }}
-                className="padding-x-205"
-              >
+                className="padding-x-205">
                 <div className="border-top border-base-lighter padding-top-4 desktop:border-0 desktop:padding-top-0">
                   <h2 className="display-none desktop:display-block">
                     A tagline that explains the benefit of creating an account.
@@ -306,13 +274,13 @@ export const CreateAccount = (): React.ReactElement => {
                               src={circleSvg}
                               alt="Alt text"
                             />
-                            <div className="usa-media-block__body">
+                            <MediaBlockBody>
                               <p>
                                 <strong>Value proposition {idx + 1}:</strong>{' '}
                                 Vivamus nec velit sed leo scelerisque laoreet
                                 vestibulum.
                               </p>
-                            </div>
+                            </MediaBlockBody>
                           </div>
                         ))}
                       </div>

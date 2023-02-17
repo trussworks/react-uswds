@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 // assets
-import closeImg from 'uswds/src/img/close.svg'
+import closeImg from '@uswds/uswds/src/img/usa-icons/close.svg'
 
 export const NavCloseButton = ({
   onClick,

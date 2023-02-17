@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'
 
-interface CardProps {
+type CardProps = {
   layout?: 'standardDefault' | 'flagDefault' | 'flagMediaRight'
   headerFirst?: boolean
   containerProps?: React.HTMLAttributes<HTMLDivElement>

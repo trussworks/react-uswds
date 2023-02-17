@@ -1,1 +1,1 @@
-import 'uswds/dist/css/uswds.css'
+import '@uswds/uswds/css/uswds.css'

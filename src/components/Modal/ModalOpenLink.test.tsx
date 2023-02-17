@@ -103,8 +103,7 @@ describe('ModalOpenLink', () => {
       <ModalOpenLink<CustomLinkProps>
         to="#testModal"
         asCustom={CustomLink}
-        modalRef={modalRef}
-      >
+        modalRef={modalRef}>
         Open modal
       </ModalOpenLink>
     )

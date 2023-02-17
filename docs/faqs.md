@@ -6,7 +6,7 @@
 
 - How do I use a component from this library?
 
-  - Most components are standalone and can be dropped into your codebase anywhere. Assuming that you have imported the library and styles properly, please reference the project [Storybook](https://trussworks.github.io/react-uswds/) to learn how to use the component in your code. Click any of the component stories and you can "Show Code" to see the usage of the component in context. Storybook also has a tab on each story called "Docs" which will allow you to see full documentation of the types of props you can use. In addition, we have an example app (see `/example` directory) which shows how to use `react-uswds` components with other widely used Javascript/React dependencies.
+  - Most components are standalone and can be dropped into your codebase anywhere. Assuming that you have imported the library and styles properly, please reference the project [Storybook](https://trussworks.github.io/react-uswds/) to learn how to use the component in your code. Click any of the component stories and you can "Show Code" to see the usage of the component in context. Storybook also has a tab on each story called "Docs" which will allow you to see full documentation of the types of props you can use.
 
 - If something is not behaving as it should, or if I believe I've spotted a problem, where should I open an issue?
 

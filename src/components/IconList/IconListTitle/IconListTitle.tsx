@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
+import { HeadingLevel } from '../../../types/headingLevel'
 
 interface BaseIconListTitleProps {
   type: string

@@ -64,8 +64,7 @@ const ExampleModal = ({
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
         forceAction={forceAction}
-        modalRoot="#modal-root"
-      >
+        modalRoot="#modal-root">
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -79,8 +78,7 @@ const ExampleModal = ({
             <Button
               type="button"
               data-close-modal
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}
-            >
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Continue without saving
             </Button>
             <Button
@@ -88,8 +86,7 @@ const ExampleModal = ({
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}
-            >
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Go back
             </Button>
           </ButtonGroup>
@@ -112,8 +109,7 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
-        modalRoot="#modal-root"
-      >
+        modalRoot="#modal-root">
         <ModalHeading id="modal-1-heading">
           Are you sure you want to continue?
         </ModalHeading>
@@ -130,8 +126,7 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
             <Button
               type="button"
               data-close-modal
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}
-            >
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Continue without saving
             </Button>
             <Button
@@ -139,8 +134,7 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
               data-close-modal
               unstyled
               className="padding-105 text-center"
-              onClick={(e) => modalRef.current?.toggleModal(e, false)}
-            >
+              onClick={(e) => modalRef.current?.toggleModal(e, false)}>
               Go back
             </Button>
           </ButtonGroup>
@@ -191,8 +185,7 @@ describe('Modal component', () => {
       <Modal
         id={testModalId}
         aria-labelledby="modal-label"
-        aria-describedby="modal-description"
-      >
+        aria-describedby="modal-description">
         Test modal
       </Modal>
     )
@@ -620,7 +613,9 @@ describe('Modal component', () => {
 
         await waitFor(() => handleOpen())
 
-        expect(baseElement).toHaveClass('usa-js-no-click')
+        await waitFor(() => {
+          expect(baseElement).toHaveClass('usa-js-no-click')
+        })
 
         await waitFor(() => handleClose())
 
@@ -712,7 +707,9 @@ describe('Modal component', () => {
 
       await waitFor(() => handleOpen())
 
-      expect(baseElement).toHaveClass('usa-js-modal--active')
+      await waitFor(() => {
+        expect(baseElement).toHaveClass('usa-js-modal--active')
+      })
       expect(baseElement).toHaveStyle('padding-right: 15px')
 
       await waitFor(() => handleClose())

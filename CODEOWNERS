@@ -1,8 +1,10 @@
 # Default owners for all files
-* @suzubara @gidjin @haworku @ahobson @brandonlenz @sirenaborracha @kylehilltruss @rogeruiz
+
+* @gidjin @haworku @ahobson @brandonlenz @sirenaborracha @kylehilltruss @rogeruiz @jcbcapps
 
 # Owners for PRs that change ONLY package.json and/or yarn.lock
-# Note: Reviewers for dependabot PRs that change these files are configured in .github/dependabot.yml  under `reviewers` 
-#       for both the main repository and the example app.
-package.json 
+
+# Note: Reviewers for dependabot PRs that change these files are configured in .github/dependabot.yml under `reviewers`
+
+package.json
 yarn.lock
