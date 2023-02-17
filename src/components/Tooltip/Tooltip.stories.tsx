@@ -14,9 +14,9 @@ export default {
           bubbles: true,
           cancelable: true,
         })
-        document.querySelector('.usa-tooltip__trigger').dispatchEvent(event)
+        document.querySelector('.usa-tooltip__trigger')?.dispatchEvent(event)
       },
-      waitFor: <E extends Element>(): E =>
+      waitFor: <E extends Element>(): E | null =>
         document.querySelector('.usa-tooltip__body.is-visible.is-set'),
     },
     docs: {

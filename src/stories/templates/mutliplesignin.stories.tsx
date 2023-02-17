@@ -5,6 +5,8 @@ import {
   Grid,
   FooterNav,
   Logo,
+  MediaBlockBody,
+  SocialLink,
   SocialLinks,
   Address,
   GovBanner,
@@ -24,8 +26,8 @@ import {
   Button,
 } from '../../index'
 
-import logoImg from 'uswds/src/img/logo-img.png'
-import circleSvg from 'uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/src/img/logo-img.png'
+import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
 
 export default {
   title: 'Page Templates/Authentication Pages',
@@ -46,6 +48,14 @@ const returnToTop = (
     <a href="#">Return to top</a>
   </GridContainer>
 )
+
+const socialLinkItems = [
+  <SocialLink key="facebook" name="Facebook" href="#" />,
+  <SocialLink key="twitter" name="Twitter" href="#" />,
+  <SocialLink key="youtube" name="YouTube" href="#" />,
+  <SocialLink key="instagram" name="Instagram" href="#" />,
+  <SocialLink key="rss" name="RSS" href="#" />,
+]
 
 const footerPrimary = (
   <FooterNav
@@ -68,43 +78,10 @@ const footerSecondary = (
         heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
       />
       <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-        <SocialLinks
-          links={[
-            <a
-              key="facebook"
-              className="usa-social-link usa-social-link--facebook"
-              href="javascript:void(0);">
-              <span>Facebook</span>
-            </a>,
-            <a
-              key="twitter"
-              className="usa-social-link usa-social-link--twitter"
-              href="javascript:void(0);">
-              <span>Twitter</span>
-            </a>,
-            <a
-              key="youtube"
-              className="usa-social-link usa-social-link--youtube"
-              href="javascript:void(0);">
-              <span>YouTube</span>
-            </a>,
-            <a
-              key="instagram"
-              className="usa-social-link usa-social-link--instagram"
-              href="#">
-              <span>Instagram</span>
-            </a>,
-            <a
-              key="rss"
-              className="usa-social-link usa-social-link--rss"
-              href="javascript:void(0);">
-              <span>RSS</span>
-            </a>,
-          ]}
-        />
+        <SocialLinks links={socialLinkItems} />
         <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
         <Address
-          medium
+          size="medium"
           items={[
             <a key="telephone" href="tel:1-800-555-5555">
               (800) CALL-GOVT
@@ -235,13 +212,13 @@ export const MultipleSignInOptions = (): React.ReactElement => {
                               src={circleSvg}
                               alt="Alt text"
                             />
-                            <div className="usa-media-block__body">
+                            <MediaBlockBody>
                               <p>
                                 <strong>Value proposition {idx + 1}:</strong>{' '}
                                 Vivamus nec velit sed leo scelerisque laoreet
                                 vestibulum.
                               </p>
-                            </div>
+                            </MediaBlockBody>
                           </div>
                         ))}
                       </div>

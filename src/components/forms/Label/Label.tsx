@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface LabelProps {
+type LabelProps = {
   children: React.ReactNode
   htmlFor: string
   className?: string

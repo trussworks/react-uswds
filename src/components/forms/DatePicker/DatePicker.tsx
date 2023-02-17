@@ -25,7 +25,7 @@ import {
 } from './utils'
 import { Calendar } from './Calendar'
 
-interface BaseDatePickerProps {
+type BaseDatePickerProps = {
   id: string
   name: string
   className?: string
@@ -294,9 +294,7 @@ export const DatePicker = ({
           aria-haspopup={true}
           aria-label={toggleCalendar}
           disabled={disabled}
-          onClick={handleToggleClick}>
-          &nbsp;
-        </button>
+          onClick={handleToggleClick}></button>
         {/* Ignoring error: "Non-interactive elements should not be assigned mouse or keyboard event listeners." */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div

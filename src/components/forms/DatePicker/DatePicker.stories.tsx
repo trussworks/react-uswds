@@ -61,7 +61,8 @@ export const completeDatePicker = (
       <DatePicker
         id="appointment-date"
         name="appointment-date"
-        aria-describedby="appointment-date-label appointment-date-hint"
+        aria-describedby="appointment-date-hint"
+        aria-labelledby="appointment-date-label"
         disabled={argTypes.disabled}
       />
       <Label htmlFor="otherInput">Another unrelated input</Label>

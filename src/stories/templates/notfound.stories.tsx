@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from 'uswds/src/img/logo-img.png'
-import circleSvg from 'uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/src/img/logo-img.png'
+import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
 
 import {
   GovBanner,
@@ -30,6 +30,7 @@ import {
   Footer,
   FooterNav,
   Logo,
+  SocialLink,
   SocialLinks,
 } from '../../index'
 
@@ -126,6 +127,14 @@ export const NotFoundPage = (): React.ReactElement => {
     </GridContainer>
   )
 
+  const socialLinkItems = [
+    <SocialLink key="facebook" name="Facebook" href="#" />,
+    <SocialLink key="twitter" name="Twitter" href="#" />,
+    <SocialLink key="youtube" name="YouTube" href="#" />,
+    <SocialLink key="instagram" name="Instagram" href="#" />,
+    <SocialLink key="rss" name="RSS" href="#" />,
+  ]
+
   const footerPrimary = (
     <FooterNav
       aria-label="Footer navigation"
@@ -149,40 +158,7 @@ export const NotFoundPage = (): React.ReactElement => {
           }
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-          <SocialLinks
-            links={[
-              <a
-                key="facebook"
-                className="usa-social-link usa-social-link--facebook"
-                href="javascript:void(0);">
-                <span>Facebook</span>
-              </a>,
-              <a
-                key="twitter"
-                className="usa-social-link usa-social-link--twitter"
-                href="javascript:void(0);">
-                <span>Twitter</span>
-              </a>,
-              <a
-                key="youtube"
-                className="usa-social-link usa-social-link--youtube"
-                href="javascript:void(0);">
-                <span>YouTube</span>
-              </a>,
-              <a
-                key="instagram"
-                className="usa-social-link usa-social-link--instagram"
-                href="javascript:void(0);">
-                <span>Instagram</span>
-              </a>,
-              <a
-                key="rss"
-                className="usa-social-link usa-social-link--rss"
-                href="javascript:void(0);">
-                <span>RSS</span>
-              </a>,
-            ]}
-          />
+          <SocialLinks links={socialLinkItems} />
           <h3 className="usa-footer__contact-heading">
             {'<Agency Contact Center>'}
           </h3>

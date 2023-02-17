@@ -34,7 +34,7 @@ export const withMinAndMax = (
   <MonthPicker
     {...testProps}
     handleSelectMonth={argTypes.handleSelectMonth}
-    minDate={parseDateString('2021-04-01')}
+    minDate={parseDateString('2021-04-01') as Date}
     maxDate={parseDateString('2021-08-01')}
   />
 )

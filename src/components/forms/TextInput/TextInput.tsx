@@ -8,17 +8,18 @@ type TextInputRef =
   | null
   | undefined
 
-interface RequiredTextInputProps {
+type RequiredTextInputProps = {
   id: string
   name: string
   type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
 }
 
-interface CustomTextInputProps {
+type CustomTextInputProps = {
   className?: string
   validationStatus?: 'error' | 'success'
   inputSize?: 'small' | 'medium'
   inputRef?: TextInputRef
+  inputProps?: JSX.IntrinsicElements['input']
 }
 
 export type OptionalTextInputProps = CustomTextInputProps &
@@ -40,6 +41,7 @@ export const TextInput = ({
   const isSuccess = validationStatus === 'success'
   const isSmall = inputSize === 'small'
   const isMedium = inputSize === 'medium'
+
   const classes = classnames(
     'usa-input',
     {

@@ -8,10 +8,8 @@ updates:
       separator: '-'
     open-pull-requests-limit: 10
     reviewers:
-      - "suzubara"
       - "haworku"
       - "ahobson"
-      - "brandonlenz"
     labels:
       - 'type: dependencies'
       - 'type: automerge'
@@ -43,35 +41,3 @@ updates:
       - dependency-name: 'husky'
         versions:
           - '>=5.0.0'
-
-  - package-ecosystem: npm
-    directory: '/example/'
-    schedule:
-      interval: weekly
-    pull-request-branch-name:
-      separator: '-'
-    open-pull-requests-limit: 10
-    reviewers:
-      - "suzubara"
-      - "haworku"
-      - "ahobson"
-      - "brandonlenz"
-    labels:
-      - 'type: dependencies'
-      - 'type: automerge'
-      - 'type: example'
-    allow:
-      - dependency-type: all
-    ignore:
-      - dependency-name: react
-        versions:
-          - '>=18.0.0'
-      - dependency-name: react-dom
-        versions:
-          - '>=18.0.0'
-      - dependency-name: '@types/react'
-        versions:
-          - '>=18.0.0'
-      - dependency-name: '@types/react-dom'
-        versions:
-          - '>=18.0.0'
