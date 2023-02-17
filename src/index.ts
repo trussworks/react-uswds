@@ -4,14 +4,26 @@ import './styles/index.scss'
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'
-export { GovBanner } from './components/GovBanner/GovBanner'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { Link } from './components/Link/Link'
+export { MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
+export { Pagination } from './components/Pagination/Pagination'
+
+/** Banner components */
+export { Banner } from './components/banner/Banner/Banner'
+export { BannerButton } from './components/banner/BannerButton/BannerButton'
+export { BannerContent } from './components/banner/BannerContent/BannerContent'
+export { BannerFlag } from './components/banner/BannerFlag/BannerFlag'
+export { BannerGuidance } from './components/banner/BannerGuidance/BannerGuidance'
+export { BannerHeader } from './components/banner/BannerHeader/BannerHeader'
+export { BannerIcon } from './components/banner/BannerIcon/BannerIcon'
+export { BannerLockImage } from './components/banner/BannerLockImage/BannerLockImage'
+export { GovBanner } from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
 export { Collection } from './components/Collection/Collection'
@@ -72,6 +84,8 @@ export { Title } from './components/header/Title/Title'
 
 /** IconList component */
 export { IconList } from './components/IconList/IconList'
+export { IconListContent } from './components/IconList/IconListContent/IconListContent'
+export { IconListIcon } from './components/IconList/IconListIcon/IconListIcon'
 export { IconListItem } from './components/IconList/IconListItem/IconListItem'
 export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
 
@@ -95,7 +109,10 @@ export { Footer } from './components/Footer/Footer/Footer'
 export { FooterExtendedNavList } from './components/Footer/FooterExtendedNavList/FooterExtendedNavList'
 export { FooterNav } from './components/Footer/FooterNav/FooterNav'
 export { Logo } from './components/Footer/Logo/Logo'
-export { SocialLinks } from './components/Footer/SocialLinks/SocialLinks'
+export {
+  SocialLinks,
+  SocialLink,
+} from './components/Footer/SocialLinks/SocialLinks'
 
 /** Modal components */
 export { Modal } from './components/Modal/Modal'
@@ -122,7 +139,7 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
-export { Search } from './components/Search/Search'
+export { Search } from './components/Search/Search/Search'
 
 export { SummaryBox } from './components/SummaryBox/SummaryBox/SummaryBox'
 export { SummaryBoxHeading } from './components/SummaryBox/SummaryBoxHeading/SummaryBoxHeading'
@@ -134,3 +151,6 @@ export { ProcessListItem } from './components/ProcessList/ProcessListItem/Proces
 export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/ProcessListHeading'
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
+
+/** Types */
+export type { HeadingLevel } from './types/headingLevel'

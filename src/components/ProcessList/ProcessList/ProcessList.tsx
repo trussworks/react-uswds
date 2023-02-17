@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { ProcessListItemProps } from '../ProcessListItem/ProcessListItem'
 
-interface ProcessListProps {
+type ProcessListProps = {
   className?: string
   children: React.ReactElement<ProcessListItemProps>[]
 }

@@ -40,7 +40,7 @@ export interface CustomizableFilter {
   extras?: Record<string, string>
 }
 
-interface ComboBoxProps {
+type ComboBoxProps = {
   id: string
   name: string
   className?: string
@@ -401,6 +401,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         value={state.inputValue}
         focused={state.focusMode === FocusMode.Input}
         aria-owns={listID}
+        aria-controls={listID}
         aria-autocomplete="list"
         aria-describedby={assistiveHintID}
         aria-expanded={state.isOpen}

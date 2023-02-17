@@ -1,8 +1,8 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { SocialLinks } from './SocialLinks'
+import { SocialLinks, SocialLink } from './SocialLinks'
 
 const links = [
   <a key="fb" href="#">
@@ -30,9 +30,17 @@ describe('SocialLinks component', () => {
     )
   })
 
-  it('renders social links', () => {
+  it('renders custom social links', () => {
     const { getByText } = render(<SocialLinks links={links} />)
     expect(getByText('Facebooked')).toBeInTheDocument()
     expect(getByText('Finstagram')).toBeInTheDocument()
+  })
+})
+
+describe('SocialLink component', () => {
+  it('renders without errors', () => {
+    const { container } = render(<SocialLink name="Instagram" />)
+    expect(container.querySelector('.usa-social-link')).toBeInTheDocument()
+    expect(screen.getByRole('img')).toHaveAttribute('alt', 'Instagram')
   })
 })
