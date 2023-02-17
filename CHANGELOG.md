@@ -2,14 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [4.0.0](https://github.com/trussworks/react-uswds/compare/3.2.0...4.0.0) (2022-11-08)
+## [4.1.0](https://github.com/trussworks/react-uswds/compare/4.0.0...4.1.0) (2023-02-17)
 
+
+### Features
+
+* Make search component extendable ([#2230](https://github.com/trussworks/react-uswds/issues/2230)) ([9bd9137](https://github.com/trussworks/react-uswds/commit/9bd91379722aa010ed5a9ee2c90daa852ce4c922))
+
+### Bug Fixes
+
+* Export IconListContent and IconListIcon ([#2210](https://github.com/trussworks/react-uswds/issues/2210)) ([#2217](https://github.com/trussworks/react-uswds/issues/2217)) ([5cb4024](https://github.com/trussworks/react-uswds/commit/5cb40245eb86f4b267b9eef4b748f27c1218a065))
+
+## [4.0.0](https://github.com/trussworks/react-uswds/compare/3.2.0...4.0.0) (2022-11-08)
 
 ### Features
 
 * upgrade to USWDS v3.1.0 ([#2203](https://github.com/trussworks/react-uswds/issues/2203)) ([cd40e03](https://github.com/trussworks/react-uswds/commit/cd40e03912b41b8f69c51278b20785e81a84468f))
 * Add defaultValue prop to Search component ([#2211](https://github.com/trussworks/react-uswds/issues/2211)) ([6ad525b](https://github.com/trussworks/react-uswds/commit/6ad525bc0e38fafb397891e337405cf6c7f6a5eb))
-
 
 ### Documentation & Examples
 
