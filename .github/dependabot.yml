@@ -8,8 +8,7 @@ updates:
       separator: '-'
     open-pull-requests-limit: 10
     reviewers:
-      - "haworku"
-      - "ahobson"
+      - 'gidjin'
     labels:
       - 'type: dependencies'
       - 'type: automerge'
