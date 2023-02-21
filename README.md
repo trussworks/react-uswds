@@ -5,7 +5,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
-[![uswds version](https://img.shields.io/github/package-json/dependency-version/trussworks/react-uswds/dev/uswds)](https://www.npmjs.com/package/uswds)
+[![uswds version](https://img.shields.io/github/package-json/dependency-version/trussworks/react-uswds/dev/@uswds/uswds)](https://www.npmjs.com/package/@uswds/uswds)
 
 [![CircleCI](https://img.shields.io/circleci/build/github/trussworks/react-uswds/main)](https://circleci.com/gh/trussworks/react-uswds)
 [![npm downloads](https://img.shields.io/npm/dm/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
