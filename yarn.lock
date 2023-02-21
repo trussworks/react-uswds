@@ -1167,14 +1167,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@>=7.0.0", "@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
-  version "7.17.8"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.8.tgz#3e56e4aff81befa55ac3ac6a0967349fd1c5bca2"
-  integrity sha512-dQpEpK0O9o6lj6oPu0gRDbbnk+4LeHlNcBpspf6Olzt3GIX4P1lWF1gS+pHLDFlaJvbR6q7jCfQ08zA4QJBnmA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.17.8", "@babel/runtime@^7.18.9":
+"@babel/runtime@>=7.0.0", "@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.9", "@babel/runtime@^7.5.0", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.19.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.19.0.tgz#22b11c037b094d27a8a2504ea4dcff00f50e2259"
   integrity sha512-eR8Lo9hnDS7tqkO7NsV+mKvCmv5boaXFSZ70DnfhcgiEne8hv9oCEd36Klw74EtizEqLsy4YnW8UWwpBVolHZA==
@@ -8364,9 +8357,9 @@ handlebars@^4.7.6, handlebars@^4.7.7:
     uglify-js "^3.1.4"
 
 happo-plugin-storybook@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/happo-plugin-storybook/-/happo-plugin-storybook-3.0.0.tgz#a1ab09dddefa0a638f5d686e109aec58b2c65698"
-  integrity sha512-qRjM54dJ43CkDNEKXY2dZk8eGbGUN/Wzm/xpon8GtnDbBEcfFGQeLiOEZzwyYLD1fOkrZU7p3fLYylLkH8jzjw==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/happo-plugin-storybook/-/happo-plugin-storybook-3.1.0.tgz#6399ba0d9c8fa8f2876aab3e3417acb793a574d3"
+  integrity sha512-7hf8ads/MwLmxwJyY7BaNYnvgmVrwHhu7t6k6M8fowqcYpSvQyf78Bu36WNyWkvt6X1Kqn7MQTcJawea2xqBvg==
   dependencies:
     "@babel/runtime" ">=7.0.0"
     archiver "^3.0.0"
