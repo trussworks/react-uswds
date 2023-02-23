@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -130,7 +130,6 @@
     "glob-parent": "5.1.2",
     "trim": "0.0.3",
     "trim-newlines": "3.0.1"
-
   },
   "husky": {
     "hooks": {
