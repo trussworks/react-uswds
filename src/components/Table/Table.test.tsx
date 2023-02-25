@@ -68,6 +68,12 @@ describe('Table component', () => {
     expect(getByRole('table')).toHaveClass('usa-table usa-table--compact')
   })
 
+  it('renders full width table', () => {
+    const { getByRole } = render(<Table fullWidth>{testContent}</Table>)
+
+    expect(getByRole('table')).toHaveClass('usa-table width-full')
+  })
+
   it('renders scrollable table', () => {
     const { queryByTestId } = render(<Table scrollable>{testContent}</Table>)
 
