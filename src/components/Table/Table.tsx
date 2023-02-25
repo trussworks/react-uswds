@@ -7,7 +7,6 @@ interface TableProps {
   bordered?: boolean
   caption?: React.ReactNode
   children: React.ReactNode
-  className?: string
   fullWidth?: boolean
   fixed?: boolean
   scrollable?: boolean
@@ -20,7 +19,6 @@ export const Table = ({
   bordered,
   caption,
   children,
-  className,
   fullWidth,
   fixed,
   scrollable,
@@ -28,19 +26,15 @@ export const Table = ({
   compact,
   stackedStyle = 'none',
 }: TableProps): React.ReactElement => {
-  const classes = classnames(
-    'usa-table',
-    {
-      'usa-table--borderless': !bordered,
-      'width-full': fullWidth,
-      [`${styles.fixed}`]: fixed,
-      'usa-table--striped': striped,
-      'usa-table--compact': compact,
-      'usa-table--stacked': stackedStyle === 'default',
-      'usa-table--stacked-header': stackedStyle === 'headers',
-    },
-    className
-  )
+  const classes = classnames('usa-table', {
+    'usa-table--borderless': !bordered,
+    'width-full': fullWidth,
+    [`${styles.fixed}`]: fixed,
+    'usa-table--striped': striped,
+    'usa-table--compact': compact,
+    'usa-table--stacked': stackedStyle === 'default',
+    'usa-table--stacked-header': stackedStyle === 'headers',
+  })
 
   if (compact && stackedStyle !== 'none') {
     console.warn(
