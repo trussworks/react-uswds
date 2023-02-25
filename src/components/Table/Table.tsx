@@ -28,13 +28,13 @@ export const Table = ({
 }: TableProps): React.ReactElement => {
   const classes = classnames('usa-table', {
     'usa-table--borderless': !bordered,
-    [`${styles.fullwidth}`]: fullWidth,
     [`${styles.fixed}`]: fixed,
     'usa-table--striped': striped,
     'usa-table--compact': compact,
     'usa-table--stacked': stackedStyle === 'default',
     'usa-table--stacked-header': stackedStyle === 'headers',
   })
+      'width-full': fullWidth,
 
   if (compact && stackedStyle !== 'none') {
     console.warn(
