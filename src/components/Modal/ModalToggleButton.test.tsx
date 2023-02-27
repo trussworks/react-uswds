@@ -99,8 +99,10 @@ describe('ModalToggleButton', () => {
         current: mockRef,
       }
 
+      const handleClick = jest.fn()
+
       render(
-        <ModalToggleButton modalRef={modalRef} opener>
+        <ModalToggleButton modalRef={modalRef} opener onClick={handleClick}>
           Open modal
         </ModalToggleButton>
       )
@@ -108,6 +110,7 @@ describe('ModalToggleButton', () => {
       const button = screen.getByRole('button', { name: 'Open modal' })
       await userEvent.click(button)
       expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), true)
+      expect(handleClick).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -145,8 +148,10 @@ describe('ModalToggleButton', () => {
         current: mockRef,
       }
 
+      const handleClick = jest.fn()
+
       render(
-        <ModalToggleButton modalRef={modalRef} closer>
+        <ModalToggleButton modalRef={modalRef} closer onClick={handleClick}>
           Close modal
         </ModalToggleButton>
       )
@@ -154,6 +159,7 @@ describe('ModalToggleButton', () => {
       const button = screen.getByRole('button', { name: 'Close modal' })
       await userEvent.click(button)
       expect(mockRef.toggleModal).toHaveBeenCalledWith(expect.anything(), false)
+      expect(handleClick).toHaveBeenCalledTimes(1)
     })
   })
 })
