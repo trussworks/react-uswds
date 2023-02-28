@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -63,7 +63,7 @@
     "@storybook/react": "^6.5.16",
     "@storybook/storybook-deployer": "^2.8.16",
     "@svgr/webpack": "^6.0.0",
-    "@testing-library/dom": "^8.2.0",
+    "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.0",
     "@testing-library/react-hooks": "^8.0.1",
@@ -130,7 +130,6 @@
     "glob-parent": "5.1.2",
     "trim": "0.0.3",
     "trim-newlines": "3.0.1"
-
   },
   "husky": {
     "hooks": {
