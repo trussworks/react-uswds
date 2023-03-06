@@ -7778,19 +7778,20 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-focus-trap-react@^8.8.1:
-  version "8.9.1"
-  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.9.1.tgz#5f2b3bce6a7c4de6485fd6f4c5e8c0cbaa6e9ad3"
-  integrity sha512-QGVw4ch1ZfT2IcCL1ehBgrwnFuPA0nP7hXcrZzC8SThbktt/jiXCWQSKhA2WL0nVbxTiZ7YpIu/foTekp+dcqA==
+focus-trap-react@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-10.1.0.tgz#7cfb5551b32c22b5e8496f8914609f37ec6c072f"
+  integrity sha512-mAUw9lrcZbMz/KZZdU55TuwHp5991hES7z7WKokopzIsRC5cTmbMUXRIhN7ZNPW4Mt7ULAH+gVjm0v4e2kN4/Q==
   dependencies:
-    focus-trap "^6.7.2"
+    focus-trap "^7.3.1"
+    tabbable "^6.1.1"
 
-focus-trap@^6.7.2:
-  version "6.7.2"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-6.7.2.tgz#02e63b12f4d4b3d00bfac4309cfd223e9b4ed44e"
-  integrity sha512-mRVv9QPCXITaDreu+pNXiPk1Rpn0WQtGvGrDo3Z/s2kdwtzFw/WOPfbLkdxWWvcahoInm9eRztuQOr1RNyQGrw==
+focus-trap@^7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.3.1.tgz#417c98e5f1ab94e717d31f1bafa2da45dabcd65f"
+  integrity sha512-bX/u4FJ+F0Pp6b/8Q9W8Br/JaLJ7rrhOJAzai9JU8bh4BPdOjEATy4pxHcbBBxFjPN4d1oHy7/KqknEdOetm9w==
   dependencies:
-    tabbable "^5.2.1"
+    tabbable "^6.1.1"
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -14486,10 +14487,10 @@ synchronous-promise@^2.0.15:
   resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-2.0.15.tgz#07ca1822b9de0001f5ff73595f3d08c4f720eb8e"
   integrity sha512-k8uzYIkIVwmT+TcglpdN50pS2y1BDcUnBPK9iJeGu0Pl1lOI8pD6wtzgw91Pjpe+RxtTncw32tLxs/R0yNL2Mg==
 
-tabbable@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.2.1.tgz#e3fda7367ddbb172dcda9f871c0fdb36d1c4cd9c"
-  integrity sha512-40pEZ2mhjaZzK0BnI+QGNjJO8UYx9pP5v7BGe17SORTO0OEuuaAwQTkAp8whcZvqon44wKFOikD+Al11K3JICQ==
+tabbable@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.1.1.tgz#40cfead5ed11be49043f04436ef924c8890186a0"
+  integrity sha512-4kl5w+nCB44EVRdO0g/UGoOp3vlwgycUVtkk/7DPyeLZUCuNFFKCFG6/t/DgHLrUPHjrZg6s5tNm+56Q2B0xyg==
 
 table@^6.6.0:
   version "6.7.1"
