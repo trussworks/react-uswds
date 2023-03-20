@@ -3583,13 +3583,12 @@
     "@typescript-eslint/types" "5.54.1"
     eslint-visitor-keys "^3.3.0"
 
-"@uswds/uswds@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@uswds/uswds/-/uswds-3.1.0.tgz#764d6053ea6d2a3b80bd4023d408f726608a2a97"
-  integrity sha512-6XTeaQD/ipc3x4713mud4Rrr+lRc4nJ1Qw5Oy35dbVEXuKr7DjN4EBoAkbze9OoV0UdmAIvoxolBF/UcpFVKOg==
+"@uswds/uswds@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@uswds/uswds/-/uswds-3.4.1.tgz#dd15644d791e1969dff2394d9d2ec2ea1e795128"
+  integrity sha512-eLYbWUqf9eWUa2P6CO3ckIjtQyM3AylrIOHxN5gYG3P62TDd3FzRDyoACfvOe6CNk0w0PqXWJnuPzxpNoOgWNA==
   dependencies:
     classlist-polyfill "1.0.3"
-    domready "1.0.8"
     object-assign "4.1.1"
     receptor "1.0.0"
     resolve-id-refs "0.1.0"
@@ -6605,11 +6604,6 @@ domhandler@^4.0.0, domhandler@^4.2.0:
   integrity sha512-PzE9aBMsdZO8TK4BnuJwH0QT41wgMbRzuZrHUcpYncEjmQazq8QEaBWgLG7ZyC/DAZKEgglpIA6j4Qn/HmxS3w==
   dependencies:
     domelementtype "^2.2.0"
-
-domready@1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/domready/-/domready-1.0.8.tgz#91f252e597b65af77e745ae24dd0185d5e26d58c"
-  integrity sha512-uIzsOJUNk+AdGE9a6VDeessoMCzF8RrZvJCX/W8QtyfgdR6Uofn/MvRonih3OtCO79b2VDzDOymuiABrQ4z3XA==
 
 domutils@^1.5.1:
   version "1.7.0"
