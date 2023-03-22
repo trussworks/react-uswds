@@ -24,6 +24,10 @@ export const ModalToggleButton = ({
       return false
     }
 
+    if (props.onClick) {
+      props.onClick(e)
+    }
+
     if (opener && !closer) {
       // Only open
       modalRef.current.toggleModal(e, true)
