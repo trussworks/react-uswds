@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Search component
+### USWDS 3.0 Search component
 
 Source: https://designsystem.digital.gov/components/search/
 `,
@@ -21,9 +21,7 @@ const sampleLocalization = {
   buttonText: 'Buscar',
 }
 
-export const defaultSearchButton = (): React.ReactElement => (
-  <SearchButton  />
-)
+export const defaultSearchButton = (): React.ReactElement => <SearchButton />
 
 export const bigSearchButton = (): React.ReactElement => (
   <SearchButton size="big" />

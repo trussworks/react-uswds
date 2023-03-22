@@ -7,7 +7,7 @@ export default {
   component: StepIndicator,
   parameters: {
     info: `
-    ### USWDS 2.0 Step Indicator component
+    ### USWDS 3.0 Step Indicator component
     Source: https://designsystem.digital.gov/components/step-indicator/
 
     Updates users on their progress through a multi-step process.

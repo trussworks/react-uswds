@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 DateInput component
+### USWDS 3.0 DateInput component
 
 Source: https://designsystem.digital.gov/components/date-input
 `,

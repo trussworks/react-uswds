@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Accordion component
+### USWDS 3.0 Accordion component
 
 Source: https://designsystem.digital.gov/components/accordion/
 `,

@@ -14,7 +14,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 TimePicker component
+### USWDS 3.0 TimePicker component
 
 https://designsystem.digital.gov/components/time-picker/
 `,

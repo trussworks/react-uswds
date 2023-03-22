@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Dropdown component
+### USWDS 3.0 Dropdown component
 
 Source: https://designsystem.digital.gov/components/dropdown
 `,

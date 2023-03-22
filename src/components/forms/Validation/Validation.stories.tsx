@@ -16,7 +16,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Validation component
+### USWDS 3.0 Validation component
 
 Source: https://designsystem.digital.gov/components/validation
 `,

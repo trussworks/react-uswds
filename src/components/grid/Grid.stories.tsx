@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Grid components
+### USWDS 3.0 Grid components
 
 Source: https://designsystem.digital.gov/utilities/layout-grid/
 `,

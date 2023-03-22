@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Search Field component
+### USWDS 3.0 Search Field component
 
 Source: https://designsystem.digital.gov/components/search/
 `,
@@ -17,11 +17,10 @@ Source: https://designsystem.digital.gov/components/search/
   },
 }
 
-
 export const defaultSearchField = (): React.ReactElement => (
-  <SearchField placeholder='Search...' />
+  <SearchField placeholder="Search..." />
 )
 
 export const bigSearchField = (): React.ReactElement => (
-  <SearchField placeholder='Type something here...' isBig />
+  <SearchField placeholder="Type something here..." isBig />
 )

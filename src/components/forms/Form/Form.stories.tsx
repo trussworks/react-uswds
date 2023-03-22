@@ -19,7 +19,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Form component
+### USWDS 3.0 Form component
 
 Source: https://designsystem.digital.gov/components/form-templates/
 `,
