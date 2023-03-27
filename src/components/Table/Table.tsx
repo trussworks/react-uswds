@@ -7,6 +7,7 @@ interface TableProps {
   bordered?: boolean
   caption?: React.ReactNode
   children: React.ReactNode
+  className?: string
   fullWidth?: boolean
   fixed?: boolean
   scrollable?: boolean
@@ -19,6 +20,7 @@ export const Table = ({
   bordered,
   caption,
   children,
+  className,
   fullWidth,
   fixed,
   scrollable,
@@ -34,7 +36,9 @@ export const Table = ({
     'usa-table--compact': compact,
     'usa-table--stacked': stackedStyle === 'default',
     'usa-table--stacked-header': stackedStyle === 'headers',
-  })
+  }, 
+    className
+  )
 
   if (compact && stackedStyle !== 'none') {
     console.warn(
