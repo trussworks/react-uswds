@@ -108,7 +108,7 @@
     "sass": "^1.26.0",
     "sass-loader": "^13.0.0",
     "sass-resources-loader": "^2.0.1",
-    "source-map-loader": "^3.0.0",
+    "source-map-loader": "^4.0.1",
     "standard-version": "^9.0.0",
     "style-loader": "^3.2.1",
     "stylelint": "^13.3.0",
