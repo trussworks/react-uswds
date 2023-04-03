@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/trussworks/react-uswds/compare/4.1.1...4.2.0) (2023-04-03)
+
+
+### Features
+
+* Add className prop to Table component ([#2269](https://github.com/trussworks/react-uswds/issues/2269)) ([cf082c5](https://github.com/trussworks/react-uswds/commit/cf082c533b60317dfeeb4397a997514a586cf5a3))
+
+
+### Documentation & Examples
+
+* fix typo and add alt download instructions ([#2281](https://github.com/trussworks/react-uswds/issues/2281)) ([7508dfb](https://github.com/trussworks/react-uswds/commit/7508dfb714d9a26d1a0787eb7032516e10fa082c))
+* Update old references from USWDS 2.0 to USWDS 3.0 ([#2317](https://github.com/trussworks/react-uswds/issues/2317)) ([6232c5c](https://github.com/trussworks/react-uswds/commit/6232c5cbb90972457c6ee8b8c6ff5a441b4cd6bd))
+
 ### [4.1.1](https://github.com/trussworks/react-uswds/compare/4.1.0...4.1.1) (2023-02-23)
 
 ## [4.1.0](https://github.com/trussworks/react-uswds/compare/4.0.0...4.1.0) (2023-02-17)
