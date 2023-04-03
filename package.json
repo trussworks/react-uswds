@@ -78,7 +78,7 @@
     "@uswds/uswds": "3.1.0",
     "all-contributors-cli": "^6.24.0",
     "babel-jest": "^29.4.3",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^9.1.2",
     "classnames": "^2.3.2",
     "css-loader": "^6.7.3",
     "danger": "^11.2.3",
