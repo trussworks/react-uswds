@@ -38,7 +38,7 @@ jobs:
         run: yarn install
 
       - name: Build Storybook
-        run: yarn storybook:build --modern
+        run: yarn build-storybook --modern
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
