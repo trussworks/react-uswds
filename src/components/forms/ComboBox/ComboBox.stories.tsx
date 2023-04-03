@@ -14,7 +14,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 ComboBox component
+### USWDS 3.0 ComboBox component
 
 Source: https://designsystem.digital.gov/components/combo-box
 `,

@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Breadcrumb component
+### USWDS 3.0 Breadcrumb component
 
 Provide secondary navigation to help users understand where they are in a website.
     

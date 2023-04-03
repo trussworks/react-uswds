@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Textarea component
+### USWDS 3.0 Textarea component
 
 Source: https://designsystem.digital.gov/components/text-input
 `,

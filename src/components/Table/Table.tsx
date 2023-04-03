@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import styles from './Table.module.css'
 
-interface TableProps {
+type TableProps = {
   bordered?: boolean
   caption?: React.ReactNode
   children: React.ReactNode

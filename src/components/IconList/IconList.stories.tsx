@@ -12,7 +12,7 @@ export default {
     docs: {
       description: {
         component: `
-###USWDS 2.0 Icon list component
+###USWDS 3.0 Icon list component
 Source: https://designsystem.digital.gov/components/icon-list/
 `,
       },

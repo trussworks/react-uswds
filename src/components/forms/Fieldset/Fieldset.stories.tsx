@@ -13,7 +13,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Fieldset component
+### USWDS 3.0 Fieldset component
 
 Source: https://designsystem.digital.gov/components/form-controls/
 `,

@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 NavDropDownButton component used within the Header component
+### USWDS 3.0 NavDropDownButton component used within the Header component
 
 Source: https://designsystem.digital.gov/components/header/
 `,

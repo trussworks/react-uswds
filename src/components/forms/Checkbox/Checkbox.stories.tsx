@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Checkbox component
+### USWDS 3.0 Checkbox component
 
 Source: https://designsystem.digital.gov/components/checkbox
 `,
