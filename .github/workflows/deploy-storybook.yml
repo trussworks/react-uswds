@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - '[1-9].*'
+  workflow_dispatch:
 
 jobs:
   deploy-storybook:
