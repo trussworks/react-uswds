@@ -25,6 +25,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:serverside": "yarn build && node src/serverSideTest.js",
+    "danger:local": "yarn danger local --base main",
     "storybook": "start-storybook -p 9009",
     "build": "tsc -p tsconfig.build.json && webpack --progress",
     "build:watch": "tsc -p tsconfig.build.json && webpack --watch",
