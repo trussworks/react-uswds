@@ -2,8 +2,6 @@ import * as child from 'child_process'
 
 import { danger, fail, schedule, warn } from 'danger'
 
-const shouldRun = !danger.github || (danger.github && danger.github.pr.user.type !== 'Bot');
-
 // Load all modified and new files
 const allFiles = danger.git.modified_files.concat(danger.git.created_files)
 
@@ -55,7 +53,7 @@ const checkYarnAudit: () => void = () => {
 
 const checkPrDescription: () => void = () => {
   // No PR is too small to include a description of why you made a change
-  if (danger.github && danger.github.pr.body.length < 10) {
+  if (danger.github?.pr?.body.length < 10) {
     warn('Please include a description of your PR changes.')
   }
 }
@@ -103,7 +101,7 @@ const checkDependencyChanges: () => void = () => {
     danger.git
       .structuredDiffForFile('package.json')
       .then((sdiff) => {
-        return sdiff.chunks.every((chunk) => {
+        return sdiff?.chunks.every((chunk) => {
           return chunk.changes
             .filter((change) => {
               // filter out changes that are context lines in the diff
@@ -130,9 +128,6 @@ const checkDependencyChanges: () => void = () => {
 
 // Check for any changes to the contributors section of package.json
 schedule(async () => {
-  if (!shouldRun) {
-    return;
-  }
   const pd = await danger.git.JSONDiffForFile('package.json')
 
   if (pd.contributors) {
@@ -144,12 +139,8 @@ schedule(async () => {
   }
 })
 
-// skip these checks if PR is by any bot (e.g. dependabot), if we
-// don't have a github object let it run also since we are local
-if (shouldRun) {
-  checkYarnAudit()
-  checkPrDescription()
+checkYarnAudit()
+checkPrDescription()
 
-  checkCodeChanges()
-  checkDependencyChanges()
-}
+checkCodeChanges()
+checkDependencyChanges()
