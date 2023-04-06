@@ -68,6 +68,12 @@ describe('Table component', () => {
     expect(getByRole('table')).toHaveClass('usa-table usa-table--compact')
   })
 
+  it('renders full width table', () => {
+    const { getByRole } = render(<Table fullWidth>{testContent}</Table>)
+
+    expect(getByRole('table')).toHaveClass('usa-table width-full')
+  })
+
   it('renders scrollable table', () => {
     const { queryByTestId } = render(<Table scrollable>{testContent}</Table>)
 
@@ -96,5 +102,13 @@ describe('Table component', () => {
     expect(getByRole('table')).toHaveClass(
       'usa-table usa-table--stacked-header'
     )
+  })
+
+  it('passes the class onto the root table element', () => {
+    const { getByRole } = render(
+      <Table className="custom-class">{testContent}</Table>
+    )
+
+    expect(getByRole('table')).toHaveClass('custom-class')
   })
 })

@@ -18,7 +18,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 DatePicker component
+### USWDS 3.0 DatePicker component
 
 Source: https://designsystem.digital.gov/components/date-picker
 

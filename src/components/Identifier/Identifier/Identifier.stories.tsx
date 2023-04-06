@@ -22,7 +22,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Identifier component
+### USWDS 3.0 Identifier component
         
 Source: https://designsystem.digital.gov/components/identifier/
 `,

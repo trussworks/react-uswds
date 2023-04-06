@@ -9,7 +9,7 @@ export default {
     docs: {
       description: {
         component: `
-Display social links in styled row. Used in USWDS 2.0 Footer component.
+Display social links in styled row. Used in USWDS 3.0 Footer component.
 
 Source: https://designsystem.digital.gov/components/footer
 `,

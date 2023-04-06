@@ -26,7 +26,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.10.0 Collection component
+### USWDS 3.0 Collection component
         `,
       },
     },

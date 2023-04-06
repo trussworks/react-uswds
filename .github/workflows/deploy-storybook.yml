@@ -4,11 +4,15 @@ on:
   push:
     tags:
       - '[1-9].*'
+  workflow_dispatch:
 
 jobs:
   deploy-storybook:
     runs-on: ubuntu-latest
     name: Deploy Storybook
+    environment:
+      name: github-pages
+      url: ${{ steps.build-publish.outputs.page_url }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -34,7 +38,13 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Deploy Storybook to Github page
-        run: yarn storybook:deploy --ci
-        env:
-          GH_TOKEN: trussworks:${{ secrets.GITHUB_TOKEN }}
+      - name: Build Storybook
+        run: yarn build-storybook --modern
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: true
+          clean-exclude: |
+            CNAME
+          folder: storybook-static # The folder the action should deploy.

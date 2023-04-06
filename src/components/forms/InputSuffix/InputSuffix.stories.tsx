@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 InputSuffix component
+### USWDS 3.0 InputSuffix component
 
 Source: https://designsystem.digital.gov/components/input-prefix-suffix/
 `,
