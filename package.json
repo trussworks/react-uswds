@@ -55,7 +55,7 @@
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
-    "@storybook/addon-a11y": "^6.5.14",
+    "@storybook/addon-a11y": "^7.0.2",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/builder-webpack5": "^6.5.14",
     "@storybook/manager-webpack5": "^6.5.16",
