@@ -3126,9 +3126,9 @@
     pretty-format "^27.0.2"
 
 "@testing-library/dom@^9.0.0":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-9.0.1.tgz#fb9e3837fe2a662965df1536988f0863f01dbf51"
-  integrity sha512-fTOVsMY9QLFCCXRHG3Ese6cMH5qIWwSbgxZsgeF5TNsy81HKaZ4kgehnSF8FsR3OF+numlIV2YcU79MzbnhSig==
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-9.2.0.tgz#0e1f45e956f2a16f471559c06edd8827c4832f04"
+  integrity sha512-xTEnpUKiV/bMyEsE5bT4oYA0x0Z/colMtxzUY8bKyPXBNLn/e0V4ZjBZkEhms0xE4pv9QsPfSRu9AWS4y5wGvA==
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.12.5"
@@ -8547,9 +8547,9 @@ handlebars@^4.7.6, handlebars@^4.7.7:
     uglify-js "^3.1.4"
 
 happo-plugin-storybook@^3.0.0:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/happo-plugin-storybook/-/happo-plugin-storybook-3.2.2.tgz#db463bf29e8b510ac6b831e5033eb5a39ed764f3"
-  integrity sha512-Nwetb8NQqgp0iSMrYqcAITq5hJ2oj3mfSvfIScfC3Te2HWN2QKK4LsArfEJ1sMi3u54prmZJojfU6jP7OeMsuw==
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/happo-plugin-storybook/-/happo-plugin-storybook-3.2.3.tgz#83a539148b2f0aeaa2b7af8f74abff8a505c3585"
+  integrity sha512-PZGl4VBJq6uPlbqPLLwtqdMzQqfcILKcKoNKNTMIb51WSHQHuh0Dh4JXFR2tj+VxYeUVD7jTyhO/UfHo1U/pJQ==
   dependencies:
     "@babel/runtime" ">=7.0.0"
     archiver "^3.0.0"
