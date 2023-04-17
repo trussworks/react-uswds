@@ -6545,9 +6545,9 @@ damerau-levenshtein@^1.0.8:
   integrity sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==
 
 danger@^11.2.3:
-  version "11.2.4"
-  resolved "https://registry.yarnpkg.com/danger/-/danger-11.2.4.tgz#b11e2803350cd7e4695b44c525968d4d39ae5810"
-  integrity sha512-9tSrDm79+vWijG3zLXp6DQFmUqFLXg8Fl3jZmPhymlfsmAX0NaAc4HbC81pTOsSgOdiJfJHWpDwKu7fsTktFOQ==
+  version "11.2.6"
+  resolved "https://registry.yarnpkg.com/danger/-/danger-11.2.6.tgz#0c7bffb9aa2daf3eb841ee2d6fba37bd4866d23a"
+  integrity sha512-EEeuDmUcxPGJ166q7Zzz1WEiV+e0qbPopaX4sXxds8U5doGMdw/8oOUOVye7JiHIBuss3KvQWt4YHZeD3jSCfw==
   dependencies:
     "@gitbeaker/node" "^21.3.0"
     "@octokit/rest" "^18.12.0"
@@ -13822,9 +13822,9 @@ sass-resources-loader@^2.0.1:
     loader-utils "^2.0.0"
 
 sass@^1.26.0:
-  version "1.61.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.61.0.tgz#d1f6761bb833887b8fdab32a24e052c40531d02b"
-  integrity sha512-PDsN7BrVkNZK2+dj/dpKQAWZavbAQ87IXqVvw2+oEYI+GwlTWkvbQtL7F2cCNbMqJEYKPh1EcjSxsnqIb/kyaQ==
+  version "1.62.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.62.0.tgz#3686b2195b93295d20765135e562366b33ece37d"
+  integrity sha512-Q4USplo4pLYgCi+XlipZCWUQz5pkg/ruSSgJ0WRDSb/+3z9tXUOkQ7QPYn4XrhZKYAK4HlpaQecRwKLJX6+DBg==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
