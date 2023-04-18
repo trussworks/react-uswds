@@ -46,6 +46,8 @@ npm i @trussworks/react-uswds
 
 ## Usage
 
+### USWDS
+
 It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using. A version mismatch may result in unexpected markup & CSS combinations.
 
 You can import ReactUSWDS components using ES6 syntax:
@@ -63,6 +65,12 @@ Also make sure to include the following in order to import the compiled CSS from
 ```
 
 If you aren't already using USWDS as a dependency, you also need to import USWDS styles. **[Read more info about using USWDS styles and assets here](./docs/styles_and_assets.md)**
+
+Having issues? See [FAQs](./docs/faqs.md).
+
+### NodeJS
+
+We develop on this library with the version of node defined in `.node-version`. We run the test suite against the major released versions of node that are still in active LTS and not development releases. Specific versions are defined in the workflow: `.github/workflows/build-and-test.yml`. Those are the versions we exxpect to support, if you are using a pre-release or development version of node you may run into unexpected issues.
 
 Having issues? See [FAQs](./docs/faqs.md).
 
