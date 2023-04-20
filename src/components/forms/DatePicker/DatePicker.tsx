@@ -32,6 +32,7 @@ type BaseDatePickerProps = {
   disabled?: boolean
   required?: boolean
   defaultValue?: string
+  value?: string
   minDate?: string
   maxDate?: string
   rangeDate?: string
@@ -55,6 +56,7 @@ export const DatePicker = ({
   name,
   className,
   defaultValue,
+  value,
   disabled,
   required,
   minDate = DEFAULT_MIN_DATE,
@@ -141,6 +143,23 @@ export const DatePicker = ({
       setCalendarDisplayValue(newCalendarDate)
     }
   }
+
+  useEffect(() => {
+    if (value || value === '') {
+      setExternalValue(value)
+      if (onChange) onChange(value)
+  
+      const inputDate = parseDateString(value, DEFAULT_EXTERNAL_DATE_FORMAT, true)
+      let newValue = ''
+      if (inputDate && !isDateInvalid(value, parsedMinDate, parsedMaxDate)) {
+        newValue = formatDate(inputDate)
+      }
+  
+      if (internalValue !== newValue) {
+        setInternalValue(newValue)
+      }
+    }
+  }, [value])
 
   useEffect(() => {
     if (defaultValue) {
