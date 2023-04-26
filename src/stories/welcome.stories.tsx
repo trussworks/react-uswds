@@ -2,6 +2,11 @@ import React from 'react'
 
 export default {
   title: 'Welcome',
+  parameters: { 
+    options: { 
+      showPanel: false
+    }
+  }
 }
 
 export const Welcome = (): React.ReactElement => {

@@ -2,6 +2,11 @@ import React from 'react'
 
 export default {
   title: 'Components/Typography/Type Styles',
+  parameters: { 
+    options: { 
+      showPanel: false
+    }
+  }
 }
 
 export const TypeStyles = (): React.ReactElement => (
