@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -165,6 +165,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jcbcapps"><img src="https://avatars.githubusercontent.com/u/99674188?v=4?s=100" width="100px;" alt="Jacob Capps"/><br /><sub><b>Jacob Capps</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jcbcapps" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/pearl-truss"><img src="https://avatars.githubusercontent.com/u/67110378?v=4?s=100" width="100px;" alt="pearl-truss"/><br /><sub><b>pearl-truss</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=pearl-truss" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://andyhub.com/"><img src="https://avatars.githubusercontent.com/u/764090?v=4?s=100" width="100px;" alt="Andrew Nelson"/><br /><sub><b>Andrew Nelson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
