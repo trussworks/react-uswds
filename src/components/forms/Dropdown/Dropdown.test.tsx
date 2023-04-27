@@ -1,19 +1,25 @@
-import React, { ComponentProps } from "react";
+import React, { ComponentProps } from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { Dropdown } from './Dropdown'
 
 describe('Dropdown component', () => {
-  const renderDropdown = (props?: Omit<ComponentProps<typeof Dropdown>, 'id' |'name' | 'children'>) => {
-    render(<Dropdown id="input-type-dropdown" name="input-type-dropdown" {...props}><option>- Select - </option>
-      <option value="value1">Option A</option>
-      <option value="value2">Option B</option>
-      <option value="value3">Option C</option></Dropdown>)
+  const renderDropdown = (
+    props?: Omit<ComponentProps<typeof Dropdown>, 'id' | 'name' | 'children'>
+  ) => {
+    render(
+      <Dropdown id="input-type-dropdown" name="input-type-dropdown" {...props}>
+        <option>- Select - </option>
+        <option value="value1">Option A</option>
+        <option value="value2">Option B</option>
+        <option value="value3">Option C</option>
+      </Dropdown>
+    )
 
     const queryForDropdown = () => screen.queryByRole('combobox')
 
     return {
-      queryForDropdown
+      queryForDropdown,
     }
   }
 
@@ -28,7 +34,7 @@ describe('Dropdown component', () => {
 
   describe('validationStatus', () => {
     it('renders with error styling', () => {
-      const { queryForDropdown } = renderDropdown({validationStatus: "error"})
+      const { queryForDropdown } = renderDropdown({ validationStatus: 'error' })
 
       const dropdown = queryForDropdown()
 
@@ -38,7 +44,9 @@ describe('Dropdown component', () => {
     })
 
     it('renders with success styling', () => {
-      const { queryForDropdown } = renderDropdown({ validationStatus: "success"})
+      const { queryForDropdown } = renderDropdown({
+        validationStatus: 'success',
+      })
 
       const dropdown = queryForDropdown()
 

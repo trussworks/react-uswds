@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { ValidationStatus } from "../../../types/validationStatus";
+import { ValidationStatus } from '../../../types/validationStatus'
 
 type DropdownProps = {
   id: string
@@ -27,12 +27,14 @@ export const Dropdown = ({
 }: DropdownProps & JSX.IntrinsicElements['select']): React.ReactElement => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
-  const classes = classnames('usa-select',
+  const classes = classnames(
+    'usa-select',
     {
       'usa-input--error': isError,
       'usa-input--success': isSuccess,
-  },
-    className)
+    },
+    className
+  )
 
   return (
     <select
