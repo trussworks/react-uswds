@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import { ValidationStatus } from "../../../types/validationStatus";
 
 type TextInputRef =
   | string
@@ -16,7 +17,7 @@ type RequiredTextInputProps = {
 
 type CustomTextInputProps = {
   className?: string
-  validationStatus?: 'error' | 'success'
+  validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
   inputRef?: TextInputRef
   inputProps?: JSX.IntrinsicElements['input']
