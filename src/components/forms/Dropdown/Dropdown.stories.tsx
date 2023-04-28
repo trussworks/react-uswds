@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Dropdown } from './Dropdown'
 import { Label } from '../Label/Label'
-import { ComponentMeta, ComponentStory, Meta, Story } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
   title: 'Components/Dropdown',
@@ -17,6 +17,13 @@ Source: https://designsystem.digital.gov/components/select/
 `,
       },
     },
+  },
+  argTypes: {
+    validationStatus: {
+      options: ['error', 'success'],
+      control: 'radio',
+    },
+    disabled: { control: 'boolean' },
   },
 } as ComponentMeta<typeof Dropdown>
 
@@ -33,22 +40,22 @@ const Template: ComponentStory<typeof Dropdown> = (args) => (
   <Dropdown {...args}>{options}</Dropdown>
 )
 
-export const Default = Template.bind({
-  id: 'input-dropdown',
-  name: 'input-dropdown',
-})
+export const Default = Template.bind({})
+Default.args = { id: 'input-dropdown', name: 'input-dropdown' }
 
-export const WithDefaultValue = Template.bind({
+export const WithDefaultValue = Template.bind({})
+WithDefaultValue.args = {
   id: 'input-dropdown',
   name: 'input-dropdown',
   defaultValue: 'value2',
-})
+}
 
-export const Disabled = Template.bind({
+export const Disabled = Template.bind({})
+Disabled.args = {
   id: 'input-dropdown',
   name: 'input-dropdown',
   disabled: true,
-})
+}
 
 export const WithLabel = (
   <>
