@@ -57,7 +57,7 @@ Disabled.args = {
   disabled: true,
 }
 
-export const WithLabel = (
+export const WithLabel = () => (
   <>
     <Label htmlFor="options">Dropdown label</Label>
     <Dropdown id="input-dropdown" name="input-dropdown">
