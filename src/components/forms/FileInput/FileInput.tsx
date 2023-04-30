@@ -1,4 +1,10 @@
-import React, { useState, forwardRef, useRef, useImperativeHandle } from 'react'
+import React, {
+  useState,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+} from 'react'
 import classnames from 'classnames'
 
 import { FilePreview } from './FilePreview'
@@ -41,6 +47,17 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
   const [files, setFiles] = useState<File[]>([])
+  const [hideDragText, setHideDragText] = useState(false)
+
+  useEffect(() => {
+    if (typeof navigator === 'undefined') return
+
+    const hideDragText =
+      /rv:11.0/i.test(navigator?.userAgent) ||
+      /Edge\/\d./i.test(navigator?.userAgent)
+
+    setHideDragText(hideDragText)
+  }, [typeof navigator])
 
   useImperativeHandle(
     ref,
@@ -64,11 +81,6 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     'usa-file-input--drag': isDragging,
     'has-invalid-file': showError,
   })
-
-  const hideDragText =
-    typeof navigator === 'undefined' ||
-    /rv:11.0/i.test(navigator.userAgent) ||
-    /Edge\/\d./i.test(navigator.userAgent)
 
   const dragText = multiple ? 'Drag files here or ' : 'Drag file here or '
 
