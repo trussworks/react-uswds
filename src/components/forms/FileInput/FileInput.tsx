@@ -66,6 +66,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   })
 
   const hideDragText =
+    typeof navigator === 'undefined' ||
     /rv:11.0/i.test(navigator.userAgent) ||
     /Edge\/\d./i.test(navigator.userAgent)
 
