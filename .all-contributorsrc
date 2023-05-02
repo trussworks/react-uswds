@@ -63,7 +63,9 @@
       "profile": "https://github.com/brandonlenz",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug"
       ]
     },
     {
@@ -242,5 +244,6 @@
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitConvention": "angular"
 }
