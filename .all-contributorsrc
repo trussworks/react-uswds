@@ -65,8 +65,7 @@
         "code",
         "doc",
         "maintenance",
-        "bug",
-        "infra"
+        "bug"
       ]
     },
     {
