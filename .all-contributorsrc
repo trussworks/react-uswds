@@ -222,6 +222,25 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "werdnanoslen",
+      "name": "Andrew Nelson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/764090?v=4",
+      "profile": "https://andyhub.com/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "sawyerh",
+      "name": "Sawyer Hollenshead",
+      "avatar_url": "https://avatars.githubusercontent.com/u/371943?v=4",
+      "profile": "https://sawyer.soy",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
