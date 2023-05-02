@@ -63,7 +63,10 @@
       "profile": "https://github.com/brandonlenz",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug",
+        "infra"
       ]
     },
     {
