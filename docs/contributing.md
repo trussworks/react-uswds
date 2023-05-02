@@ -21,6 +21,7 @@ We welcome contributions in the form of comments, issues, or pull requests with 
       - [`scope`:](#scope)
       - [`body`:](#body)
       - [`footer`:](#footer)
+  - [All-contributors](#all-contributors)
 
 ## Environment setup
 
@@ -209,10 +210,6 @@ When your branch is ready for review, open a new pull request into `main` and re
 
 When opening the pull request, it's important to understand the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification. **All pull requests opened into `main` must have a title that follows the [conventional commits spec](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)**. This generates an automated changelog entry and is later used to determine versioning for release. It is required to merge.
 
-#### ⚠️ Note to outside contributors
-
-Currently our CI cannot run directly on external PRs (work from outside the Truss organization) and prevents merge. To manage this, we pull these PRs into a separate branch that a CODEOWNER creates, run automation, and merge from there. Your initial PR will be closed with a comment and your work will be merged instead from the related PR. We will always ensure that attribution for your work will be associated with your account.
-
 #### Formatting your commits
 
 The format for PR commits is:
@@ -268,3 +265,16 @@ Closes #123
 ```
 
 Should also include `BREAKING CHANGE:` if the commit includes any breaking changes. This will make sure the major version is automatically bumped when this commit is released.
+
+## All Contributors
+
+ReactUSWDS uses [All Contributors](https://allcontributors.org/) to highlight the work that folks contribute to the library.
+All Contributors sections of the readme and [.all-contributorsrc](../.all-contributorsrc) should _not_ be manually changed.
+
+There are a couple of automations to easily add yourself or others as contributors:
+
+- Use the [All Contributors bot](https://allcontributors.org/docs/en/bot/overview) and simply comment on a contributor's PR following [the official usage instructions](https://allcontributors.org/docs/en/bot/usage) to have a PR automatically opened adding the requested contributor and their contribution type(s).
+- Use the CLI via the `yarn contributors:add` script, e.g. `yarn contributors:add github-person code,doc`
+
+Using All Contributors is not a requirement, so if you would prefer not to be highlighted, that is okay.
+If you would like to be highlighted and need some help with either step above, please reach out to a [CODEOWNER](../CODEOWNERS), and reference this portion of the documentation.
