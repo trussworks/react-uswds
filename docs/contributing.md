@@ -270,6 +270,7 @@ Should also include `BREAKING CHANGE:` if the commit includes any breaking chang
 
 ReactUSWDS uses [All Contributors](https://allcontributors.org/) to highlight the work that folks contribute to the library.
 All Contributors sections of the readme and [.all-contributorsrc](../.all-contributorsrc) should _not_ be manually changed.
+
 There are a couple of automations to easily add yourself or others as contributors:
 
 1. Use the [All Contributors bot](https://allcontributors.org/docs/en/bot/overview) and simply comment on a contributor's PR following [the official usage instructions](https://allcontributors.org/docs/en/bot/usage) to have a PR automatically opened adding the requested contributor and their contribution type(s).
