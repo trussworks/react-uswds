@@ -273,8 +273,8 @@ All Contributors sections of the readme and [.all-contributorsrc](../.all-contri
 
 There are a couple of automations to easily add yourself or others as contributors:
 
-1. Use the [All Contributors bot](https://allcontributors.org/docs/en/bot/overview) and simply comment on a contributor's PR following [the official usage instructions](https://allcontributors.org/docs/en/bot/usage) to have a PR automatically opened adding the requested contributor and their contribution type(s).
-2. Use the CLI via the `yarn contributors:add` script, e.g. `yarn contributors:add github-person code,doc`
+- Use the [All Contributors bot](https://allcontributors.org/docs/en/bot/overview) and simply comment on a contributor's PR following [the official usage instructions](https://allcontributors.org/docs/en/bot/usage) to have a PR automatically opened adding the requested contributor and their contribution type(s).
+- Use the CLI via the `yarn contributors:add` script, e.g. `yarn contributors:add github-person code,doc`
 
 Using All Contributors is not a requirement, so if you would prefer not to be highlighted, that is okay.
 If you would like to be highlighted and need some help with either step above, please reach out to a [CODEOWNER](../CODEOWNERS), and reference this portion of the documentation.
