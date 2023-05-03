@@ -2,7 +2,7 @@ import React from 'react'
 import { InputPrefix } from './InputPrefix'
 import { Icon } from '../../Icon/Icons'
 import { TextInput } from '../TextInput/TextInput'
-import { FormGroup } from '../FormGroup/FormGroup'
+import { InputGroup } from '../InputGroup/InputGroup'
 
 export default {
   title: 'Components/Input prefix or suffix/InputPrefix',
@@ -21,30 +21,24 @@ Source: https://designsystem.digital.gov/components/input-prefix-suffix/
 }
 
 export const InputWithTextInputPrefix = (): React.ReactElement => (
-  <FormGroup>
-    <div className="usa-input-group">
-      <InputPrefix>cvc</InputPrefix>
-      <TextInput id="cvc" name="cvc" type="text" />
-    </div>
-  </FormGroup>
+  <InputGroup>
+    <InputPrefix>cvc</InputPrefix>
+    <TextInput id="cvc" name="cvc" type="text" />
+  </InputGroup>
 )
 
 export const InputWithTextInputPrefixError = (): React.ReactElement => (
-  <FormGroup>
-    <div className="usa-input-group usa-input-group--error">
-      <InputPrefix>cvc</InputPrefix>
-      <TextInput id="cvc" name="cvc" type="text" validationStatus="error" />
-    </div>
-  </FormGroup>
+  <InputGroup error>
+    <InputPrefix>cvc</InputPrefix>
+    <TextInput id="cvc" name="cvc" type="text" validationStatus="error" />
+  </InputGroup>
 )
 
 export const InputWithIconInputPrefix = (): React.ReactElement => (
-  <FormGroup>
-    <div className="usa-input-group">
-      <InputPrefix>
-        <Icon.CreditCard />
-      </InputPrefix>
-      <TextInput id="card" name="card" type="text" />
-    </div>
-  </FormGroup>
+  <InputGroup>
+    <InputPrefix>
+      <Icon.CreditCard />
+    </InputPrefix>
+    <TextInput id="card" name="card" type="text" />
+  </InputGroup>
 )

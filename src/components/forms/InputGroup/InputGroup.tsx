@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface InputGroupProps {
+export interface InputGroupProps {
   children: React.ReactNode
   className?: string
   error?: boolean
