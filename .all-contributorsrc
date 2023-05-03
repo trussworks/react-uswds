@@ -8,7 +8,6 @@
   ],
   "imageSize": 100,
   "commit": true,
-  "commitConvention": "none",
   "contributors": [
     {
       "login": "suzubara",
@@ -64,7 +63,10 @@
       "profile": "https://github.com/brandonlenz",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug",
+        "infra"
       ]
     },
     {
@@ -241,7 +243,18 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "rpdelaney",
+      "name": "Ryan Delaney",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1139517?v=4",
+      "profile": "https://keybase.io/rpdelaney",
+      "contributions": [
+        "maintenance",
+        "infra"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitConvention": "angular"
 }
