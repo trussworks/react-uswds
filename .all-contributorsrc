@@ -242,6 +242,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "rpdelaney",
+      "name": "Ryan Delaney",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1139517?v=4",
+      "profile": "https://keybase.io/rpdelaney",
+      "contributions": [
+        "maintenance",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
