@@ -18,13 +18,15 @@ import httpsIcon from '@uswds/uswds/src/img/icon-https.svg'
 const CustomBanner = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const lock = <BannerLockImage title="Lock" description="A locked padlock" />
+  const lock = (
+    <BannerLockImage title="Lock" description="Locked padlock icon" />
+  )
 
   return (
-    <Banner>
+    <Banner aria-label="Official website of the state department of something specific">
       <BannerHeader
         isOpen={isOpen}
-        flagImg={<BannerFlag src={flagImg} alt="U.S. flag" />}
+        flagImg={<BannerFlag src={flagImg} aria-hidden alt="" />}
         headerText="This is an official website of the state department of something specific"
         headerActionText="Here's how you know">
         <BannerButton

@@ -2,6 +2,7 @@
 
 exports[`GovBanner component static content renders consistently in English for .gov sites 1`] = `
 <section
+  aria-label="Official website of the United States government"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -20,12 +21,14 @@ exports[`GovBanner component static content renders consistently in English for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -115,7 +118,7 @@ exports[`GovBanner component static content renders consistently in English for 
                   className="icon-lock"
                 >
                   <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
+                    aria-labelledby="banner-lock-description"
                     className="usa-banner__lock-image"
                     focusable="false"
                     height="64"
@@ -132,7 +135,7 @@ exports[`GovBanner component static content renders consistently in English for 
                     <desc
                       id="banner-lock-description"
                     >
-                      A locked padlock
+                      Locked padlock icon
                     </desc>
                     <path
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
@@ -162,6 +165,7 @@ exports[`GovBanner component static content renders consistently in English for 
 
 exports[`GovBanner component static content renders consistently in English for .mil sites 1`] = `
 <section
+  aria-label="Official website of the United States government"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -180,12 +184,14 @@ exports[`GovBanner component static content renders consistently in English for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -275,7 +281,7 @@ exports[`GovBanner component static content renders consistently in English for 
                   className="icon-lock"
                 >
                   <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
+                    aria-labelledby="banner-lock-description"
                     className="usa-banner__lock-image"
                     focusable="false"
                     height="64"
@@ -292,7 +298,7 @@ exports[`GovBanner component static content renders consistently in English for 
                     <desc
                       id="banner-lock-description"
                     >
-                      A locked padlock
+                      Locked padlock icon
                     </desc>
                     <path
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
@@ -322,6 +328,7 @@ exports[`GovBanner component static content renders consistently in English for 
 
 exports[`GovBanner component static content renders consistently in Spanish for .gov sites 1`] = `
 <section
+  aria-label="Un sitio oficial del Gobierno de Estados Unidos"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -340,12 +347,14 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -435,7 +444,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                   className="icon-lock"
                 >
                   <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
+                    aria-labelledby="banner-lock-description"
                     className="usa-banner__lock-image"
                     focusable="false"
                     height="64"
@@ -452,7 +461,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                     <desc
                       id="banner-lock-description"
                     >
-                      A locked padlock
+                      Locked padlock icon
                     </desc>
                     <path
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
@@ -482,6 +491,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 
 exports[`GovBanner component static content renders consistently in Spanish for .mil sites 1`] = `
 <section
+  aria-label="Un sitio oficial del Gobierno de Estados Unidos"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -500,12 +510,14 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -595,7 +607,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                   className="icon-lock"
                 >
                   <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
+                    aria-labelledby="banner-lock-description"
                     className="usa-banner__lock-image"
                     focusable="false"
                     height="64"
@@ -612,7 +624,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                     <desc
                       id="banner-lock-description"
                     >
-                      A locked padlock
+                      Locked padlock icon
                     </desc>
                     <path
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
@@ -642,6 +654,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 
 exports[`GovBanner component static content renders consistently with default props 1`] = `
 <section
+  aria-label="Official website of the United States government"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -660,12 +673,14 @@ exports[`GovBanner component static content renders consistently with default pr
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -755,7 +770,7 @@ exports[`GovBanner component static content renders consistently with default pr
                   className="icon-lock"
                 >
                   <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
+                    aria-labelledby="banner-lock-description"
                     className="usa-banner__lock-image"
                     focusable="false"
                     height="64"
@@ -772,7 +787,7 @@ exports[`GovBanner component static content renders consistently with default pr
                     <desc
                       id="banner-lock-description"
                     >
-                      A locked padlock
+                      Locked padlock icon
                     </desc>
                     <path
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
