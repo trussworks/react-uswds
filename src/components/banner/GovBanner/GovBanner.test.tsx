@@ -7,7 +7,13 @@ import { GovBanner } from './GovBanner'
 describe('GovBanner component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<GovBanner />)
-    expect(queryByTestId('govBanner')).toBeInTheDocument()
+
+    const banner = queryByTestId('govBanner')
+    expect(banner).toBeInTheDocument()
+    expect(banner).toHaveAttribute(
+      'aria-label',
+      'Official website of the United States government'
+    )
   })
 
   it('renders section attributes passed in through props', () => {

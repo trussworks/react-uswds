@@ -15,10 +15,7 @@ describe('BannerIcon Component', () => {
 
     expect(span).toHaveClass('icon-lock')
     expect(svg).toHaveClass('usa-banner__lock-image')
-    expect(svg).toHaveAttribute(
-      'aria-labelledby',
-      'banner-lock-title banner-lock-description'
-    )
+    expect(svg).toHaveAttribute('aria-labelledby', 'banner-lock-description')
     expect(title).toHaveProperty('id', 'banner-lock-title')
     expect(description).toHaveProperty('id', 'banner-lock-description')
   })
