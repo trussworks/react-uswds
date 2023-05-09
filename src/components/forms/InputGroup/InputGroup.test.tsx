@@ -7,6 +7,7 @@ describe('InputGroup component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<InputGroup>My Input Group</InputGroup>)
     expect(queryByTestId('inputGroup')).toBeInTheDocument()
+    expect(queryByTestId('inputGroup')).toHaveClass('usa-input-group')
   })
 
   it('renders its children', () => {
