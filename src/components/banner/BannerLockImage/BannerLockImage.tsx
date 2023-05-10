@@ -32,7 +32,7 @@ export const BannerLockImage = ({
         viewBox="0 0 52 64"
         className={svgClasses}
         role="img"
-        aria-labelledby="banner-lock-title banner-lock-description"
+        aria-labelledby="banner-lock-description"
         focusable="false"
         {...remainingSvgProps}>
         <title id="banner-lock-title" {...titleProps}>

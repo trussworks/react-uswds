@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -141,7 +141,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ahobson"><img src="https://avatars.githubusercontent.com/u/21983?v=4?s=100" width="100px;" alt="Andrew Hobson"/><br /><sub><b>Andrew Hobson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ahobson" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gidjin"><img src="https://avatars.githubusercontent.com/u/940173?v=4?s=100" width="100px;" alt="John Gedeon"/><br /><sub><b>John Gedeon</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=gidjin" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/eamahanna"><img src="https://avatars.githubusercontent.com/u/56279459?v=4?s=100" width="100px;" alt="Emily Mahanna"/><br /><sub><b>Emily Mahanna</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=eamahanna" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/brandonlenz"><img src="https://avatars.githubusercontent.com/u/15805554?v=4?s=100" width="100px;" alt="Brandon Lenz"/><br /><sub><b>Brandon Lenz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/brandonlenz"><img src="https://avatars.githubusercontent.com/u/15805554?v=4?s=100" width="100px;" alt="Brandon Lenz"/><br /><sub><b>Brandon Lenz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=brandonlenz" title="Documentation">📖</a> <a href="#maintenance-brandonlenz" title="Maintenance">🚧</a> <a href="https://github.com/trussworks/react-uswds/issues?q=author%3Abrandonlenz" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sojeri"><img src="https://avatars.githubusercontent.com/u/10818509?v=4?s=100" width="100px;" alt="Jeri Sommers"/><br /><sub><b>Jeri Sommers</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sojeri" title="Code">💻</a></td>
     </tr>
     <tr>
@@ -165,6 +165,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jcbcapps"><img src="https://avatars.githubusercontent.com/u/99674188?v=4?s=100" width="100px;" alt="Jacob Capps"/><br /><sub><b>Jacob Capps</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jcbcapps" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/pearl-truss"><img src="https://avatars.githubusercontent.com/u/67110378?v=4?s=100" width="100px;" alt="pearl-truss"/><br /><sub><b>pearl-truss</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=pearl-truss" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://andyhub.com/"><img src="https://avatars.githubusercontent.com/u/764090?v=4?s=100" width="100px;" alt="Andrew Nelson"/><br /><sub><b>Andrew Nelson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://sawyer.soy"><img src="https://avatars.githubusercontent.com/u/371943?v=4?s=100" width="100px;" alt="Sawyer Hollenshead"/><br /><sub><b>Sawyer Hollenshead</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sawyerh" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://keybase.io/rpdelaney"><img src="https://avatars.githubusercontent.com/u/1139517?v=4?s=100" width="100px;" alt="Ryan Delaney"/><br /><sub><b>Ryan Delaney</b></sub></a><br /><a href="#maintenance-rpdelaney" title="Maintenance">🚧</a> <a href="#infra-rpdelaney" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     </tr>
   </tbody>
 </table>
