@@ -28,15 +28,12 @@ describe('DatePicker component', () => {
       ...testProps,
       ...props
     }
-    const { getByLabelText, getByTestId, getByText } = render(<DatePicker {...allProps} />)
+    const rendered = render(<DatePicker {...allProps} />)
     const queryForDatePicker = () => screen.queryByTestId('date-picker')
     return {
-      getByLabelText,
-      getByTestId,
-      getByText,
+      ...rendered,
       queryForDatePicker,
     }
-  }
 
   it('renders without errors', () => {
     const { queryForDatePicker } = renderDatePicker()
