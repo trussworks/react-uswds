@@ -34,6 +34,7 @@ describe('DatePicker component', () => {
       ...rendered,
       queryForDatePicker,
     }
+  }
 
   it('renders without errors', () => {
     const { queryForDatePicker } = renderDatePicker()
