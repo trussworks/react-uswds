@@ -57,7 +57,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
         httpsSectionHeader: `Secure ${tld} websites use HTTPS`,
         httpsSectionContent: (
           <>
-            A <strong>lock (<Icon.Lock />)</strong> or <strong>https://</strong>{' '}
+            A <strong>lock (<Icon.Lock aria-label="Locked padlock icon"/>)</strong> or <strong>https://</strong>{' '}
             means you’ve safely connected to the {tld} website. Share sensitive
             information only on official, secure websites.
           </>
@@ -90,7 +90,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
         httpsSectionHeader: `Los sitios web seguros ${tld} usan HTTPS`,
         httpsSectionContent: (
           <>
-            Un <strong>candado (<Icon.Lock />)</strong> o <strong>https://</strong>{' '}
+            Un <strong>candado (<Icon.Lock aria-label="Icono de candado cerrado" />)</strong> o <strong>https://</strong>{' '}
             significa que usted se conectó de forma segura a un sitio web {tld}.
             Comparta información sensible sólo en sitios web oficiales y
             seguros.
