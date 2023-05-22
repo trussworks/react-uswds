@@ -115,6 +115,7 @@ exports[`GovBanner component static content renders consistently in English for 
               <strong>
                 lock (
                 <svg
+                  aria-label="Locked padlock icon"
                   className="usa-icon"
                   focusable={false}
                   role="img"
@@ -253,6 +254,7 @@ exports[`GovBanner component static content renders consistently in English for 
               <strong>
                 lock (
                 <svg
+                  aria-label="Locked padlock icon"
                   className="usa-icon"
                   focusable={false}
                   role="img"
@@ -391,6 +393,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
               <strong>
                 candado (
                 <svg
+                  aria-label="Icono de candado cerrado"
                   className="usa-icon"
                   focusable={false}
                   role="img"
@@ -529,6 +532,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
               <strong>
                 candado (
                 <svg
+                  aria-label="Icono de candado cerrado"
                   className="usa-icon"
                   focusable={false}
                   role="img"
@@ -667,6 +671,7 @@ exports[`GovBanner component static content renders consistently with default pr
               <strong>
                 lock (
                 <svg
+                  aria-label="Locked padlock icon"
                   className="usa-icon"
                   focusable={false}
                   role="img"
