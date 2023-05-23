@@ -37,7 +37,7 @@ export const SearchButton = ({
             {!isSmall && (
                 <span className="usa-search__submit-text">{buttonText}</span>
             )}
-            <Icon.Search className="usa-search__submit-icon" name={buttonText}/>
+            <Icon.Search className="usa-search__submit-icon" name={buttonText} size={3}/>
         </Button>
     </div>
   )
