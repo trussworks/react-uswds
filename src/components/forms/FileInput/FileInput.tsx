@@ -13,6 +13,8 @@ import { makeSafeForID } from './utils'
 type FileInputProps = {
   id: string
   name: string
+  dragText?: string
+  folderText?: string
   disabled?: boolean
   multiple?: boolean
   accept?: string
@@ -33,6 +35,8 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   {
     name,
     id,
+    dragText,
+    folderText,
     disabled,
     multiple,
     className,
@@ -82,7 +86,8 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     'has-invalid-file': showError,
   })
 
-  const dragText = multiple ? 'Drag files here or ' : 'Drag file here or '
+  const defaultDragText = multiple ? 'Drag files here or ' : 'Drag file here or '
+  const defaultFolderText = 'choose from folder'
 
   const filePreviews = []
   if (files) {
@@ -189,9 +194,9 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           className={instructionClasses}
           aria-hidden="true">
           {!hideDragText && (
-            <span className="usa-file-input__drag-text">{dragText}</span>
+            <span className="usa-file-input__drag-text">{dragText || defaultDragText}</span>
           )}
-          <span className="usa-file-input__choose">choose from folder</span>
+          <span className="usa-file-input__choose">{folderText || defaultFolderText}</span>
         </div>
         {filePreviews}
         <div data-testid="file-input-box" className="usa-file-input__box"></div>
