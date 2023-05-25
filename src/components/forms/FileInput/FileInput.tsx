@@ -14,7 +14,7 @@ type FileInputProps = {
   id: string
   name: string
   dragText?: string
-  folderText?: string
+  chooseText?: string
   disabled?: boolean
   multiple?: boolean
   accept?: string
@@ -36,7 +36,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     name,
     id,
     dragText,
-    folderText,
+    chooseText,
     disabled,
     multiple,
     className,
@@ -87,7 +87,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   })
 
   const defaultDragText = multiple ? 'Drag files here or ' : 'Drag file here or '
-  const defaultFolderText = 'choose from folder'
+  const defaultchooseText = 'choose from folder'
 
   const filePreviews = []
   if (files) {
@@ -196,7 +196,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           {!hideDragText && (
             <span className="usa-file-input__drag-text">{dragText || defaultDragText}</span>
           )}
-          <span className="usa-file-input__choose">{folderText || defaultFolderText}</span>
+          <span className="usa-file-input__choose">{chooseText || defaultchooseText}</span>
         </div>
         {filePreviews}
         <div data-testid="file-input-box" className="usa-file-input__box"></div>

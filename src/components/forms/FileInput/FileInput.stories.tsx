@@ -166,7 +166,7 @@ export const customText = (): React.ReactElement => (
       id="file-input-single" 
       name="file-input-single" 
       dragText="Arrastre el archivo aquí o "
-      folderText="elija de una carpeta"
+      chooseText="elija de una carpeta"
     />
   </FormGroup>
 )
