@@ -1,12 +1,7 @@
-/*
-  @deprecated Make updates to the Select component instead
-  @todo Remove this component
-*/
-
 import React from 'react'
 import classnames from 'classnames'
 
-type DropdownProps = {
+type SelectProps = {
   id: string
   name: string
   className?: string
@@ -19,20 +14,19 @@ type DropdownProps = {
     | undefined
 }
 
-export const Dropdown = ({
+export const Select = ({
   id,
   name,
   className,
   inputRef,
   children,
   ...inputProps
-}: DropdownProps & JSX.IntrinsicElements['select']): React.ReactElement => {
+}: SelectProps & JSX.IntrinsicElements['select']): React.ReactElement => {
   const classes = classnames('usa-select', className)
-  console.warn('Dropdown is deprecated and will be removed in the future. Please use the Select component instead.')
 
   return (
     <select
-      data-testid="dropdown"
+      data-testid="Select"
       className={classes}
       id={id}
       name={name}
@@ -43,4 +37,4 @@ export const Dropdown = ({
   )
 }
 
-export default Dropdown
+export default Select

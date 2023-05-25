@@ -1,61 +1,59 @@
 import React from 'react'
 
-import { Dropdown } from './Dropdown'
+import { Select } from './Select'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Dropdown',
-  component: 'Dropdown',
+  title: 'Components/Select',
+  component: Select,
   parameters: {
     docs: {
       description: {
         component: `
-### Deprecated USWDS 2.x Dropdown component
+### USWDS 3.0 Select component
 
-⚠️ Dropdown is deprecated and will be removed in the future. Please use the Select component instead.
-
-Source: https://designsystem.digital.gov/components/dropdown/
+Source: https://designsystem.digital.gov/components/select/
 `,
       },
     },
   },
 }
 
-export const defaultDropdown = (): React.ReactElement => (
-  <Dropdown id="input-dropdown" name="input-dropdown">
+export const defaultSelect = (): React.ReactElement => (
+  <Select id="input-select" name="input-select">
     <option>- Select - </option>
     <option value="value1">Option A</option>
     <option value="value2">Option B</option>
     <option value="value3">Option C</option>
-  </Dropdown>
+  </Select>
 )
 
 export const withDefaultValue = (): React.ReactElement => (
-  <Dropdown id="input-dropdown" name="input-dropdown" defaultValue="value2">
+  <Select id="input-select" name="input-select" defaultValue="value2">
     <option>- Select - </option>
     <option value="value1">Option A</option>
     <option value="value2">Option B</option>
     <option value="value3">Option C</option>
-  </Dropdown>
+  </Select>
 )
 
 export const withLabel = (): React.ReactElement => (
   <>
-    <Label htmlFor="options">Dropdown label</Label>
-    <Dropdown id="input-dropdown" name="input-dropdown">
+    <Label htmlFor="options">Select label</Label>
+    <Select id="input-select" name="input-select">
       <option>- Select - </option>
       <option value="value1">Option A</option>
       <option value="value2">Option B</option>
       <option value="value3">Option C</option>
-    </Dropdown>
+    </Select>
   </>
 )
 
 export const disabled = (): React.ReactElement => (
-  <Dropdown id="input-dropdown" name="input-dropdown" disabled>
+  <Select id="input-select" name="input-select" disabled>
     <option>- Select - </option>
     <option value="value1">Option A</option>
     <option value="value2">Option B</option>
     <option value="value3">Option C</option>
-  </Dropdown>
+  </Select>
 )
