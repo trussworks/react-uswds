@@ -13,6 +13,13 @@ export default {
   argTypes: {
     onSubmit: { action: 'submitted' },
     disabled: { control: { type: 'boolean' } },
+    validationStatus: { 
+      control: {
+        type: 'select',
+        options: [undefined, 'success', 'error'],
+      },
+    defaultValue: undefined,
+   } 
   },
   parameters: {
     docs: {
@@ -45,14 +52,15 @@ We may find that we want to expose props for custom event handlers or even a ref
 type StorybookArguments = {
   onSubmit: React.FormEventHandler<HTMLFormElement>
   disabled?: boolean
+  validationStatus: 'success' | 'error' | undefined
 }
 
 export const completeDatePicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
-    <FormGroup>
-      <Label id="appointment-date-label" htmlFor="appointment-date">
+    <FormGroup error={argTypes.validationStatus === 'error'}>
+      <Label id="appointment-date-label" htmlFor="appointment-date" error={argTypes.validationStatus === 'error'}>
         Appointment date
       </Label>
       <div className="usa-hint" id="appointment-date-hint">
@@ -64,10 +72,11 @@ export const completeDatePicker = (
         aria-describedby="appointment-date-hint"
         aria-labelledby="appointment-date-label"
         disabled={argTypes.disabled}
+        validationStatus={argTypes.validationStatus}
       />
-      <Label htmlFor="otherInput">Another unrelated input</Label>
-      <TextInput id="otherInput" name="otherInput" type="text" />
     </FormGroup>
+    <Label htmlFor="otherInput">Another unrelated input</Label>
+    <TextInput id="otherInput" name="otherInput" type="tel" />
   </Form>
 )
 
