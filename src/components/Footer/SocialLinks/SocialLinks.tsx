@@ -1,12 +1,7 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import classnames from 'classnames'
-
-import iconFacebook from '@uswds/uswds/src/img/usa-icons/facebook.svg'
-import iconTwitter from '@uswds/uswds/src/img/usa-icons/twitter.svg'
-import iconYouTube from '@uswds/uswds/src/img/usa-icons/youtube.svg'
-import iconInstagram from '@uswds/uswds/src/img/usa-icons/instagram.svg'
-import iconRSS from '@uswds/uswds/src/img/usa-icons/rss_feed.svg'
+import { Icon } from '../../Icon/Icons'
 
 type SocialLinksProps = {
   links: React.ReactNode[]
@@ -39,28 +34,26 @@ export const SocialLink = ({
   name,
   ...props
 }: SocialLinkProps & JSX.IntrinsicElements['a']): React.ReactElement => {
-  let iconSrc = ''
+  let icon: Icon
   switch (name) {
     case 'Facebook':
-      iconSrc = iconFacebook
+      icon = <Icon.Facebook className="usa-social-link__icon" name={name} />
       break
     case 'Twitter':
-      iconSrc = iconTwitter
+      icon = <Icon.Twitter className="usa-social-link__icon" name={name} />
       break
     case 'YouTube':
-      iconSrc = iconYouTube
+      icon = <Icon.Youtube className="usa-social-link__icon" name={name} />
       break
     case 'Instagram':
-      iconSrc = iconInstagram
+      icon = <Icon.Instagram className="usa-social-link__icon" name={name} />
       break
     case 'RSS':
-      iconSrc = iconRSS
+      icon = <Icon.RssFeed className="usa-social-link__icon" name={name} />
       break
   }
 
   return (
-    <a className="usa-social-link" {...props}>
-      <img className="usa-social-link__icon" src={iconSrc} alt={name} />
-    </a>
+    <a className="usa-social-link" {...props} title={name}>{icon}</a>
   )
 }
