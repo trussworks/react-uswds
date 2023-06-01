@@ -400,6 +400,38 @@ describe('DatePicker component', () => {
     })
   })
 
+  describe('with a value prop', () => {
+    it('the internal input value is the date string, and the external input value is the formatted date', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="1988-05-16" />
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveValue(
+        '05/16/1988'
+      )
+      expect(getByTestId('date-picker-internal-input')).toHaveValue(
+        '1988-05-16'
+      )
+    })
+
+    it('validates a valid value', () => {
+      const { getByTestId } = render(
+        <DatePicker {...testProps} defaultValue="1988-05-16" />
+      )
+      expect(getByTestId('date-picker-external-input')).toBeValid()
+    })
+
+    it('validates an invalid value', () => {
+      const { getByTestId } = render(
+        <DatePicker
+          {...testProps}
+          defaultValue="1990-01-01"
+          minDate="2020-01-01"
+        />
+      )
+      expect(getByTestId('date-picker-external-input')).toBeInvalid()
+    })
+  })
+
   describe('with localization props', () => {
     it('displays abbreviated translations for days of the week', async () => {
       const { getByText, getByTestId } = render(
