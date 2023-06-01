@@ -37,6 +37,7 @@ type BaseCharacterCountProps = {
   id: string
   name: string
   maxLength: number
+  value?: string
   defaultValue?: string
   className?: string
   isTextArea?: boolean
@@ -57,6 +58,7 @@ export const CharacterCount = ({
   name,
   className,
   maxLength,
+  value = '',
   defaultValue = '',
   isTextArea = false,
   getCharacterCount = defaultCharacterCount,
@@ -65,7 +67,7 @@ export const CharacterCount = ({
 }:
   | TextInputCharacterCountProps
   | TextareaCharacterCountProps): React.ReactElement => {
-  const initialCount = getCharacterCount(defaultValue)
+  const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
   const [isValid, setIsValid] = useState(initialCount < maxLength)
@@ -114,18 +116,17 @@ export const CharacterCount = ({
     const { onBlur, onChange, inputRef, ...textAreaProps } =
       remainingProps as Partial<TextareaCharacterCountProps>
 
-    InputComponent = (
-      <Textarea
-        id={id}
-        name={name}
-        className={classes}
-        defaultValue={defaultValue}
-        onBlur={(e): void => handleBlur(e, onBlur)}
-        onChange={(e): void => handleChange(e, onChange)}
-        inputRef={inputRef}
-        {...textAreaProps}
-      />
-    )
+    const attributes = {
+      id: id,
+      name: name,
+      className: classes,
+      ...(value ? {value: value} : {defaultValue: defaultValue}),
+      onBlur: (e: React.FocusEvent<HTMLTextAreaElement, Element>): void => handleBlur(e, onBlur),
+      onChange: (e: React.ChangeEvent<HTMLTextAreaElement>): void => handleChange(e, onChange),
+      inputRef: inputRef,
+      ...textAreaProps,
+    }
+    InputComponent = (<Textarea {...attributes} />)
   } else {
     const {
       onBlur,
@@ -134,20 +135,18 @@ export const CharacterCount = ({
       type = 'text',
       ...inputProps
     } = remainingProps as Partial<TextInputCharacterCountProps>
-
-    InputComponent = (
-      <TextInput
-        id={id}
-        type={type}
-        name={name}
-        className={classes}
-        defaultValue={defaultValue}
-        onBlur={(e): void => handleBlur(e, onBlur)}
-        onChange={(e): void => handleChange(e, onChange)}
-        inputRef={inputRef}
-        {...inputProps}
-      />
-    )
+    const attributes = {
+      id: id,
+      type: type,
+      name: name,
+      className: classes,
+      ...(value ? {value: value} : {defaultValue: defaultValue}),
+      onBlur: (e: React.FocusEvent<HTMLInputElement, Element>): void => handleBlur(e, onBlur),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e, onChange),
+      inputRef: inputRef,
+      ...inputProps,
+    }
+    InputComponent = (<TextInput {...attributes} />)
   }
 
   return (
