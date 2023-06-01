@@ -145,19 +145,12 @@ export const DatePicker = ({
   }
 
   useEffect(() => {
-    if (value || value === '') {
-      setExternalValue(value)
-      if (onChange) onChange(value)
-  
-      const inputDate = parseDateString(value, DEFAULT_EXTERNAL_DATE_FORMAT, true)
-      let newValue = ''
-      if (inputDate && !isDateInvalid(value, parsedMinDate, parsedMaxDate)) {
-        newValue = formatDate(inputDate)
-      }
-  
-      if (internalValue !== newValue) {
-        setInternalValue(newValue)
-      }
+    if (value) {
+      handleSelectDate(value, false)
+    } else {
+      setExternalValue('')
+      setInternalValue('')
+      if (onChange) onChange('')
     }
   }, [value])
 

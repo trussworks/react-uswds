@@ -403,7 +403,7 @@ describe('DatePicker component', () => {
   describe('with a value prop', () => {
     it('the internal input value is the date string, and the external input value is the formatted date', () => {
       const { getByTestId } = render(
-        <DatePicker {...testProps} defaultValue="1988-05-16" />
+        <DatePicker {...testProps} value="1988-05-16" />
       )
       expect(getByTestId('date-picker-external-input')).toHaveValue(
         '05/16/1988'
@@ -413,9 +413,19 @@ describe('DatePicker component', () => {
       )
     })
 
+    it('clears the input values if the value prop is falsy', () => {
+      const mockOnChange = jest.fn()
+      const { getByTestId } = render(
+        <DatePicker {...testProps} value="" onChange={mockOnChange} />
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveValue('')
+      expect(getByTestId('date-picker-internal-input')).toHaveValue('')
+      expect(mockOnChange).toHaveBeenCalledWith('')
+    })
+
     it('validates a valid value', () => {
       const { getByTestId } = render(
-        <DatePicker {...testProps} defaultValue="1988-05-16" />
+        <DatePicker {...testProps} value="1988-05-16" />
       )
       expect(getByTestId('date-picker-external-input')).toBeValid()
     })
@@ -424,7 +434,7 @@ describe('DatePicker component', () => {
       const { getByTestId } = render(
         <DatePicker
           {...testProps}
-          defaultValue="1990-01-01"
+          value="1990-01-01"
           minDate="2020-01-01"
         />
       )
