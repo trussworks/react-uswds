@@ -22,7 +22,6 @@ export { BannerFlag } from './components/banner/BannerFlag/BannerFlag'
 export { BannerGuidance } from './components/banner/BannerGuidance/BannerGuidance'
 export { BannerHeader } from './components/banner/BannerHeader/BannerHeader'
 export { BannerIcon } from './components/banner/BannerIcon/BannerIcon'
-export { BannerLockImage } from './components/banner/BannerLockImage/BannerLockImage'
 export { GovBanner } from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
