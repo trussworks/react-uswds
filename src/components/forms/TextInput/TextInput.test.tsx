@@ -46,7 +46,7 @@ describe('TextInput component', () => {
       ['success', 'usa-input--success'],
     ])(
       'when validationStatus is %s should include class %s',
-      (validationStatus: ValidationStatus, uswdsClass) => {
+      (validationStatus, uswdsClass) => {
         const { container } = render(
           <TextInput
             id="input-type-text"
