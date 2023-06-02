@@ -87,7 +87,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   })
 
   const defaultDragText = multiple ? 'Drag files here or ' : 'Drag file here or '
-  const defaultchooseText = 'choose from folder'
+  const defaultChooseText = 'choose from folder'
 
   const filePreviews = []
   if (files) {
@@ -196,7 +196,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           {!hideDragText && (
             <span className="usa-file-input__drag-text">{dragText || defaultDragText}</span>
           )}
-          <span className="usa-file-input__choose">{chooseText || defaultchooseText}</span>
+          <span className="usa-file-input__choose">{chooseText || defaultChooseText}</span>
         </div>
         {filePreviews}
         <div data-testid="file-input-box" className="usa-file-input__box"></div>
