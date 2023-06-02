@@ -102,7 +102,7 @@ export const Accordion = ({
     <div
       className={classes}
       data-testid="accordion"
-      aria-multiselectable={multiselectable || undefined}>
+      data-allow-multiple={multiselectable || undefined}>
       {items.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}

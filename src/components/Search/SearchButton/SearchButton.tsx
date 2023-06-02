@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
+import { Icon } from '../../Icon/Icons'
 
 import { Button } from '../../Button/Button'
 
@@ -37,11 +37,7 @@ export const SearchButton = ({
             {!isSmall && (
                 <span className="usa-search__submit-text">{buttonText}</span>
             )}
-            <img
-                src={searchImg}
-                className="usa-search__submit-icon"
-                alt={buttonText}
-            />
+            <Icon.Search className="usa-search__submit-icon" name={buttonText} size={3}/>
         </Button>
     </div>
   )

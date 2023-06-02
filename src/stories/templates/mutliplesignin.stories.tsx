@@ -32,6 +32,9 @@ import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
 export default {
   title: 'Page Templates/Authentication Pages',
   parameters: {
+    options: { 
+      showPanel: false
+    },
     layout: 'fullscreen',
     docs: {
       description: {

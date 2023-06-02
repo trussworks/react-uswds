@@ -8,7 +8,6 @@
   ],
   "imageSize": 100,
   "commit": true,
-  "commitConvention": "none",
   "contributors": [
     {
       "login": "suzubara",
@@ -64,7 +63,9 @@
       "profile": "https://github.com/brandonlenz",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug"
       ]
     },
     {
@@ -222,7 +223,37 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "werdnanoslen",
+      "name": "Andrew Nelson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/764090?v=4",
+      "profile": "https://andyhub.com/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "sawyerh",
+      "name": "Sawyer Hollenshead",
+      "avatar_url": "https://avatars.githubusercontent.com/u/371943?v=4",
+      "profile": "https://sawyer.soy",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rpdelaney",
+      "name": "Ryan Delaney",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1139517?v=4",
+      "profile": "https://keybase.io/rpdelaney",
+      "contributions": [
+        "maintenance",
+        "infra"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitConvention": "angular"
 }
