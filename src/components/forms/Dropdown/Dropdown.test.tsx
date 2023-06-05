@@ -13,6 +13,6 @@ describe('Dropdown component', () => {
         <option value="value3">Option C</option>
       </Dropdown>
     )
-    expect(queryByTestId('dropdown')).toBeInTheDocument()
+    expect(queryByTestId('Select')).toBeInTheDocument()
   })
 })
