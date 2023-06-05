@@ -69,6 +69,7 @@ export { TextInput } from './components/forms/TextInput/TextInput'
 export { TimePicker } from './components/forms/TimePicker/TimePicker'
 export { ValidationChecklist } from './components/forms/Validation/ValidationChecklist'
 export { ValidationItem } from './components/forms/Validation/ValidationItem'
+export type { ValidationStatus } from './types/validationStatus'
 
 /** Header Components */
 export { ExtendedNav } from './components/header/ExtendedNav/ExtendedNav'
