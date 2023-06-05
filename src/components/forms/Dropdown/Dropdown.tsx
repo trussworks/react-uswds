@@ -4,14 +4,16 @@
 */
 
 import React from 'react'
-import Select from '../Select/Select'
+import { Select } from '../Select/Select'
 import { withDeprecationWarning } from '../../hoc/withDeprecationWarning'
+import { ValidationStatus } from '../../../types/validationStatus'
 
 type DropdownProps = {
   id: string
   name: string
   className?: string
   children: React.ReactNode
+  validationStatus?: ValidationStatus
   inputRef?:
     | string
     | ((instance: HTMLSelectElement | null) => void)
@@ -26,6 +28,7 @@ export const Dropdown = ({
   className,
   inputRef,
   children,
+  validationStatus,
   ...inputProps
 }: DropdownProps & JSX.IntrinsicElements['select']): React.ReactElement => {
   const deprecationWarningMessage = 'Dropdown is deprecated and will be removed in the future. Please use the Select component instead.'
@@ -35,6 +38,7 @@ export const Dropdown = ({
   )
   return (
     <DeprecatedDropdown
+      validationStatus={validationStatus}
       className={className}
       id={id}
       name={name}
