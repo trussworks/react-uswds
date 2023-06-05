@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Select } from './Select'
 import { Label } from '../Label/Label'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
   title: 'Components/Select',
@@ -10,50 +11,57 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 3.0 Select component
+        ### USWDS 3.0 Select component
 
-Source: https://designsystem.digital.gov/components/select/
-`,
+        Source: https://designsystem.digital.gov/components/select/
+        `,
       },
     },
   },
-}
+  argTypes: {
+    validationStatus: {
+      options: ['error', 'success'],
+      control: 'radio',
+    },
+    disabled: { control: 'boolean' },
+  },
+} as ComponentMeta<typeof Select>
 
-export const defaultSelect = (): React.ReactElement => (
-  <Select id="input-select" name="input-select">
-    <option>- Select - </option>
-    <option value="value1">Option A</option>
-    <option value="value2">Option B</option>
-    <option value="value3">Option C</option>
-  </Select>
-)
-
-export const withDefaultValue = (): React.ReactElement => (
-  <Select id="input-select" name="input-select" defaultValue="value2">
-    <option>- Select - </option>
-    <option value="value1">Option A</option>
-    <option value="value2">Option B</option>
-    <option value="value3">Option C</option>
-  </Select>
-)
-
-export const withLabel = (): React.ReactElement => (
+const options = (
   <>
-    <Label htmlFor="options">Select label</Label>
-    <Select id="input-select" name="input-select">
-      <option>- Select - </option>
-      <option value="value1">Option A</option>
-      <option value="value2">Option B</option>
-      <option value="value3">Option C</option>
-    </Select>
+    <option>- Select - </option>
+    <option value="value1">Option A</option>
+    <option value="value2">Option B</option>
+    <option value="value3">Option C</option>
   </>
 )
 
-export const disabled = (): React.ReactElement => (
-  <Select id="input-select" name="input-select" disabled>
-    <option>- Select - </option>
-    <option value="value1">Option A</option>
-    <option value="value2">Option B</option>
-    <option value="value3">Option C</option>
-  </Select>
+const Template: ComponentStory<typeof Select> = (args) => (
+  <Select {...args}>{options}</Select>
+)
+
+export const Default = Template.bind({})
+Default.args = { id: 'input-select', name: 'input-select' }
+
+export const WithDefaultValue = Template.bind({})
+WithDefaultValue.args = {
+  id: 'input-select',
+  name: 'input-select',
+  defaultValue: 'value2',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  id: 'input-select',
+  name: 'input-select',
+  disabled: true,
+}
+
+export const WithLabel = () => (
+  <>
+    <Label htmlFor="input-select">Select label</Label>
+    <Select id="input-select" name="input-select">
+      {options}
+    </Select>
+  </>
 )
