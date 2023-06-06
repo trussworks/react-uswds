@@ -8,31 +8,29 @@ All notable changes to this project will be documented in this file. See [standa
 ### ⚠ BREAKING CHANGES
 
 * Unify icon usage (#2411)
+  * As a part of this change, the previously exported `BannerLockIcon` component has been removed. Consumers building custom `Banner` components for their applications should use the `Icon.Lock` (with appropriate aria attributes) as shown in our [Storybook example](https://github.com/trussworks/react-uswds/blob/75e936985cc1cd2f2052f902f0806c58446aca30/src/components/banner/CustomBanner.stories.tsx#L54)
 
 ### Features
 
-* Add validationStatus prop to Dropdown ([#2365](https://github.com/trussworks/react-uswds/issues/2365)) ([c314234](https://github.com/trussworks/react-uswds/commit/c31423439cf6a30117fd327ee6cc2b1aacdb9124))
-* InputGroup component ([#2383](https://github.com/trussworks/react-uswds/issues/2383)) ([5761db6](https://github.com/trussworks/react-uswds/commit/5761db6e66db98c8299efb978bbe39fd259f1209))
+* Add `validationStatus` prop to `Dropdown` ([#2365](https://github.com/trussworks/react-uswds/issues/2365)) ([c314234](https://github.com/trussworks/react-uswds/commit/c31423439cf6a30117fd327ee6cc2b1aacdb9124))
+* Add `InputGroup` component ([#2383](https://github.com/trussworks/react-uswds/issues/2383)) ([5761db6](https://github.com/trussworks/react-uswds/commit/5761db6e66db98c8299efb978bbe39fd259f1209))
 * Update banner aria props with changes from USWDS ([#2384](https://github.com/trussworks/react-uswds/issues/2384)) ([f8c359b](https://github.com/trussworks/react-uswds/commit/f8c359b4afcfe998c492d916ad4c4ec44ee7b4f9))
 
 
 ### Bug Fixes
 
-* Adds validation styles to datepicker ([#2398](https://github.com/trussworks/react-uswds/issues/2398)) ([161a931](https://github.com/trussworks/react-uswds/commit/161a931f897edc38b1eb6aff22f36e5eb75c4388))
-* allow CharacterCount value ^ defaultValue ([#2397](https://github.com/trussworks/react-uswds/issues/2397)) ([9de5b9d](https://github.com/trussworks/react-uswds/commit/9de5b9dcd1b10e069cf672680f2685ced97d645c))
-* Creates new Select component to eventually replace Dropdown ([#2415](https://github.com/trussworks/react-uswds/issues/2415)) ([75e9369](https://github.com/trussworks/react-uswds/commit/75e936985cc1cd2f2052f902f0806c58446aca30))
-* Fix FileInput in SSR ([#2367](https://github.com/trussworks/react-uswds/issues/2367)) ([3d4845e](https://github.com/trussworks/react-uswds/commit/3d4845e349bf940f0ba13f2680bc865c5f58d6ef))
-* misapplied attribute ([#2396](https://github.com/trussworks/react-uswds/issues/2396)) ([dafbb4e](https://github.com/trussworks/react-uswds/commit/dafbb4e4f75c39e0a76f18a80934fcf2d1a3e770))
+* Adds validation styles to `DatePicker` ([#2398](https://github.com/trussworks/react-uswds/issues/2398)) ([161a931](https://github.com/trussworks/react-uswds/commit/161a931f897edc38b1eb6aff22f36e5eb75c4388))
+* Allow `CharacterCount` value ^ defaultValue ([#2397](https://github.com/trussworks/react-uswds/issues/2397)) ([9de5b9d](https://github.com/trussworks/react-uswds/commit/9de5b9dcd1b10e069cf672680f2685ced97d645c))
+* Rename `Dropdown` component to `Select` ([#2415](https://github.com/trussworks/react-uswds/issues/2415)) ([75e9369](https://github.com/trussworks/react-uswds/commit/75e936985cc1cd2f2052f902f0806c58446aca30))
+  * Note: `Dropdown` is now marked as deprecated, and will be removed in a future release 
+* Fix `FileInput` in SSR ([#2367](https://github.com/trussworks/react-uswds/issues/2367)) ([3d4845e](https://github.com/trussworks/react-uswds/commit/3d4845e349bf940f0ba13f2680bc865c5f58d6ef))
+* Fix misapplied aria attribute ([#2396](https://github.com/trussworks/react-uswds/issues/2396)) ([dafbb4e](https://github.com/trussworks/react-uswds/commit/dafbb4e4f75c39e0a76f18a80934fcf2d1a3e770))
 * Unify icon usage ([#2411](https://github.com/trussworks/react-uswds/issues/2411)) ([ef2be8d](https://github.com/trussworks/react-uswds/commit/ef2be8dddbbfec21f3cedf606e2bddcaad57f7e7))
 
 
 ### Documentation & Examples
 
-* add brandonlenz as a contributor for maintenance, and bug ([#2379](https://github.com/trussworks/react-uswds/issues/2379)) ([31fba53](https://github.com/trussworks/react-uswds/commit/31fba533444129486704b0d24e75d6c0fb09d65b))
 * Add documentation for how we use All Contributors ([#2378](https://github.com/trussworks/react-uswds/issues/2378)) ([5aa9bda](https://github.com/trussworks/react-uswds/commit/5aa9bda79237d90dd9538fc9362bb45b04ad8b81))
-* add rpdelaney as a contributor for maintenance, and infra ([#2380](https://github.com/trussworks/react-uswds/issues/2380)) ([eb1271f](https://github.com/trussworks/react-uswds/commit/eb1271fcd693a82ed7c123d5934d25dc9cdf2fad))
-* add sawyerh as a contributor for code ([#2375](https://github.com/trussworks/react-uswds/issues/2375)) ([9169701](https://github.com/trussworks/react-uswds/commit/91697014151bd312a77a5d48c4fa6ee424012d09))
-* add werdnanoslen as a contributor for code, and doc ([#2363](https://github.com/trussworks/react-uswds/issues/2363)) ([d330621](https://github.com/trussworks/react-uswds/commit/d330621065b1f8c71078c97858609f7b0ead5f73))
 
 ### [4.2.1](https://github.com/trussworks/react-uswds/compare/4.2.0...4.2.1) (2023-04-24)
 
