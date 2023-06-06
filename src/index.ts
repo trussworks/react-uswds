@@ -64,11 +64,13 @@ export { InputSuffix } from './components/forms/InputSuffix/InputSuffix'
 export { Label } from './components/forms/Label/Label'
 export { Radio } from './components/forms/Radio/Radio'
 export { RangeInput } from './components/forms/RangeInput/RangeInput'
+export { Select } from './components/forms/Select/Select'
 export { Textarea } from './components/forms/Textarea/Textarea'
 export { TextInput } from './components/forms/TextInput/TextInput'
 export { TimePicker } from './components/forms/TimePicker/TimePicker'
 export { ValidationChecklist } from './components/forms/Validation/ValidationChecklist'
 export { ValidationItem } from './components/forms/Validation/ValidationItem'
+export type { ValidationStatus } from './types/validationStatus'
 
 /** Header Components */
 export { ExtendedNav } from './components/header/ExtendedNav/ExtendedNav'

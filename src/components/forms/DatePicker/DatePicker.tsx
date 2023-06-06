@@ -24,12 +24,13 @@ import {
   addDays,
 } from './utils'
 import { Calendar } from './Calendar'
+import { ValidationStatus } from '../../../types/validationStatus'
 
 type BaseDatePickerProps = {
   id: string
   name: string
   className?: string
-  validationStatus?: 'error' | 'success'
+  validationStatus?: ValidationStatus
   disabled?: boolean
   required?: boolean
   defaultValue?: string
@@ -252,7 +253,7 @@ export const DatePicker = ({
     {
       'usa-input--error': isError,
       'usa-input--success': isSuccess,
-    },
+    }
   )
 
   const toggleCalendar = i18n.toggleCalendar

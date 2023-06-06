@@ -6,6 +6,7 @@ import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
+import { ValidationStatus } from '../../../types/validationStatus'
 
 export default {
   title: 'Components/Date picker',
@@ -13,13 +14,13 @@ export default {
   argTypes: {
     onSubmit: { action: 'submitted' },
     disabled: { control: { type: 'boolean' } },
-    validationStatus: { 
+    validationStatus: {
       control: {
         type: 'select',
         options: [undefined, 'success', 'error'],
       },
-    defaultValue: undefined,
-   } 
+      defaultValue: undefined,
+    },
   },
   parameters: {
     docs: {
@@ -52,7 +53,7 @@ We may find that we want to expose props for custom event handlers or even a ref
 type StorybookArguments = {
   onSubmit: React.FormEventHandler<HTMLFormElement>
   disabled?: boolean
-  validationStatus: 'success' | 'error' | undefined
+  validationStatus?: ValidationStatus
 }
 
 export const completeDatePicker = (
@@ -60,7 +61,10 @@ export const completeDatePicker = (
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <FormGroup error={argTypes.validationStatus === 'error'}>
-      <Label id="appointment-date-label" htmlFor="appointment-date" error={argTypes.validationStatus === 'error'}>
+      <Label
+        id="appointment-date-label"
+        htmlFor="appointment-date"
+        error={argTypes.validationStatus === 'error'}>
         Appointment date
       </Label>
       <div className="usa-hint" id="appointment-date-hint">
