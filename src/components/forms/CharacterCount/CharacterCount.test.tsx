@@ -132,22 +132,33 @@ describe('CharacterCount component', () => {
 
     it('handles own props', () => {
       const tRef = React.createRef<HTMLTextAreaElement>()
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="character-count"
-          defaultValue="Prefill this value"
-          isTextArea
-          rows={5}
-          maxLength={10}
-          inputRef={tRef}
-        />
+      const { getByDisplayValue } = render(
+        <>
+          <CharacterCount
+            id="character-count-defaultValue"
+            name="character-count-defaultValue"
+            defaultValue="Prefilled defaultValue"
+            isTextArea
+            rows={5}
+            maxLength={10}
+            inputRef={tRef}
+          />
+          <CharacterCount
+            id="character-count-value"
+            name="character-count-value"
+            value="Prefilled value"
+            isTextArea
+            rows={5}
+            maxLength={10}
+          />
+        </>
       )
-      const textarea = getByRole('textbox')
-      expect(textarea).toHaveAttribute('name', 'character-count')
-      expect(textarea).toHaveAttribute('rows', '5')
-      expect(textarea).toHaveTextContent('Prefill this value')
-      expect(textarea).toBe(tRef.current)
+      const textareaDefaultValue = getByDisplayValue('Prefilled defaultValue')
+      expect(textareaDefaultValue).toHaveAttribute('name', 'character-count-defaultValue')
+      expect(textareaDefaultValue).toHaveAttribute('rows', '5')
+      expect(textareaDefaultValue).toBe(tRef.current)
+      const textareaValue = getByDisplayValue('Prefilled value')
+      expect(textareaValue).toHaveAttribute('id', 'character-count-value')
     })
 
     it('calls own onChange and onBlur functions', () => {

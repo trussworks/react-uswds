@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { TextInput } from './TextInput'
+import { ValidationStatus } from '../../../types/validationStatus'
 
 describe('TextInput component', () => {
   it('renders without errors', () => {
@@ -40,13 +41,12 @@ describe('TextInput component', () => {
       jest.clearAllMocks()
     })
 
-    it.each([
+    it.each<[ValidationStatus, string]>([
       ['error', 'usa-input--error'],
       ['success', 'usa-input--success'],
     ])(
       'when validationStatus is %s should include class %s',
-      (validationString, uswdsClass) => {
-        const validationStatus = validationString as 'error' | 'success'
+      (validationStatus, uswdsClass) => {
         const { container } = render(
           <TextInput
             id="input-type-text"
