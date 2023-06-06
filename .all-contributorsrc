@@ -44,7 +44,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/940173?v=4",
       "profile": "https://github.com/gidjin",
       "contributions": [
-        "code"
+        "code",
+        "maintenance"
       ]
     },
     {
@@ -255,5 +256,6 @@
     }
   ],
   "contributorsPerLine": 7,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
