@@ -8907,9 +8907,9 @@ happo-plugin-storybook@^3.0.0:
     rimraf "^2.6.3"
 
 happo.io@^8.3.1:
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-8.3.2.tgz#4c50c277a79d2d3312a34ee3bcfdc9264e7e2ac5"
-  integrity sha512-MRKADNQBaSJafZ8cuC1D5euGa08bORBI9+S0tK0i/r4mvDKfAAxsreySX+QFHagt/Yk/9kIG0Clt9kBHDwLjtw==
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-8.3.3.tgz#eeb2f1b9bd955fde530da9cc30f4028de032d116"
+  integrity sha512-E9a9LrHXOQFbs+qlJCET59Q9HVHbzvCX/Wht5236SpP2d3NymlziuBb8uXvF3t9mvvLVx5Od4+EDNzeNrttB3g==
   dependencies:
     "@babel/preset-react" "^7.12.1"
     abort-controller "^3.0.0"
