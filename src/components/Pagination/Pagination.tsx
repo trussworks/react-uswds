@@ -87,15 +87,14 @@ export const Pagination = ({
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1
-  const isOnLastPage = totalPages ? currentPage === totalPages : null
+  const isOnLastPage = totalPages ? currentPage === totalPages : false
 
   const showOverflow = totalPages ? totalPages > maxSlots : true // If more pages than slots, use overflow indicator(s)
 
   const middleSlot = Math.round(maxSlots / 2) // 4 if maxSlots is 7
+  const isBeforeMiddleSlot = !!(totalPages && totalPages - currentPage >= middleSlot)
   const showPrevOverflow = showOverflow && currentPage > middleSlot
-  const showNextOverflow =
-    totalPages ? showOverflow && totalPages - currentPage >= middleSlot : true
-
+  const showNextOverflow = isBeforeMiddleSlot || !totalPages
   // Assemble array of page numbers to be shown
   const currentPageRange: Array<number | 'overflow'> = showOverflow || !totalPages
     ? [currentPage]
