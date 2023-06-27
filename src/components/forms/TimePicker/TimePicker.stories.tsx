@@ -32,63 +32,63 @@ const noop = (): void => {
   return
 }
 
-export const completeTimePicker = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <TimePicker
-      id="appointment-time"
-      name="appointment-time"
-      label="Appointment Time"
-      hint="hh:mm"
-      onChange={noop}
-      disabled={argTypes.disabled}
-    />
-  </Form>
-)
+export const completeTimePicker = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <TimePicker
+        id="appointment-time"
+        name="appointment-time"
+        label="Appointment Time"
+        hint="hh:mm"
+        onChange={noop}
+        disabled={argTypes.disabled}
+      />
+    </Form>
+  )
+}
 
-export const defaultTimePicker = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <TimePicker
-      id="appointment-time"
-      name="appointment-time"
-      onChange={noop}
-      disabled={argTypes.disabled}
-    />
-  </Form>
-)
+export const defaultTimePicker = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <TimePicker
+        id="appointment-time"
+        name="appointment-time"
+        onChange={noop}
+        disabled={argTypes.disabled}
+      />
+    </Form>
+  )
+}
 
-export const withMinAndMaxTimes = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <TimePicker
-      id="appointment-time"
-      name="appointment-time"
-      label="Appointment Time"
-      hint="hh:mm (9:00am - 5:00pm)"
-      minTime="9:00"
-      maxTime="17:00"
-      onChange={noop}
-      disabled={argTypes.disabled}
-    />
-  </Form>
-)
+export const withMinAndMaxTimes = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <TimePicker
+        id="appointment-time"
+        name="appointment-time"
+        label="Appointment Time"
+        hint="hh:mm (9:00am - 5:00pm)"
+        minTime="9:00"
+        maxTime="17:00"
+        onChange={noop}
+        disabled={argTypes.disabled}
+      />
+    </Form>
+  )
+}
 
-export const withDefaultValue = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <TimePicker
-      id="appointment-time"
-      name="appointment-time"
-      label="Appointment Time"
-      hint="hh:mm"
-      defaultValue="12:00"
-      onChange={noop}
-      disabled={argTypes.disabled}
-    />
-  </Form>
-)
+export const withDefaultValue = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <TimePicker
+        id="appointment-time"
+        name="appointment-time"
+        label="Appointment Time"
+        hint="hh:mm"
+        defaultValue="12:00"
+        onChange={noop}
+        disabled={argTypes.disabled}
+      />
+    </Form>
+  )
+}

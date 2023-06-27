@@ -1,10 +1,12 @@
+import type { StorybookConfig } from '@storybook/react-webpack5'
+
 const path = require('path')
 
 const webpackConfig = (config) => {
   config.resolve.alias.uswds = path.resolve(__dirname, '../node_modules/@uswds/uswds')
 
   config.module.rules = config.module.rules.filter(
-    (rule) => rule.test.toString() !== '/\\.css$/'
+    (rule) => rule.test && rule.test.toString() !== '/\\.css$/'
   )
   config.module.rules.push({
     test: /\.(sa|sc|c)ss$/,
@@ -71,20 +73,17 @@ const webpackConfig = (config) => {
 }
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
-  typescript: {
-    check: false,
-    checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
-    },
-  },
   webpackFinal: async (config) => {
     return webpackConfig(config)
   },
-}
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: { strictMode: false },
+  },
+  docs: {
+    autodocs: true,
+  },
+  staticDirs: ['./public'],
+} as StorybookConfig

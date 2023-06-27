@@ -37,77 +37,77 @@ type StorybookArguments = {
   endDatePickerDisabled: boolean
 }
 
-export const completeDateRangePicker = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <DateRangePicker
-      startDateLabel="Event start date"
-      startDateHint="mm/dd/yyyy"
-      startDatePickerProps={{
-        id: 'event-date-start',
-        name: 'event-date-start',
-        disabled: argTypes.startDatePickerDisabled,
-      }}
-      endDateLabel="Event end date"
-      endDateHint="mm/dd/yyyy"
-      endDatePickerProps={{
-        id: 'event-date-end',
-        name: 'event-date-end',
-        disabled: argTypes.endDatePickerDisabled,
-      }}
-    />
-  </Form>
-)
+export const completeDateRangePicker = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <DateRangePicker
+        startDateLabel="Event start date"
+        startDateHint="mm/dd/yyyy"
+        startDatePickerProps={{
+          id: 'event-date-start',
+          name: 'event-date-start',
+          disabled: argTypes.startDatePickerDisabled,
+        }}
+        endDateLabel="Event end date"
+        endDateHint="mm/dd/yyyy"
+        endDatePickerProps={{
+          id: 'event-date-end',
+          name: 'event-date-end',
+          disabled: argTypes.endDatePickerDisabled,
+        }}
+      />
+    </Form>
+  ),
+}
 
-export const withDefaultValues = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <DateRangePicker
-      startDateLabel="Event start date"
-      startDateHint="mm/dd/yyyy"
-      startDatePickerProps={{
-        id: 'event-date-start',
-        name: 'event-date-start',
-        defaultValue: '2021-01-20',
-        disabled: argTypes.startDatePickerDisabled,
-      }}
-      endDateLabel="Event end date"
-      endDateHint="mm/dd/yyyy"
-      endDatePickerProps={{
-        id: 'event-date-end',
-        name: 'event-date-end',
-        defaultValue: '2021-01-25',
-        disabled: argTypes.endDatePickerDisabled,
-      }}
-    />
-  </Form>
-)
+export const withDefaultValues = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <DateRangePicker
+        startDateLabel="Event start date"
+        startDateHint="mm/dd/yyyy"
+        startDatePickerProps={{
+          id: 'event-date-start',
+          name: 'event-date-start',
+          defaultValue: '2021-01-20',
+          disabled: argTypes.startDatePickerDisabled,
+        }}
+        endDateLabel="Event end date"
+        endDateHint="mm/dd/yyyy"
+        endDatePickerProps={{
+          id: 'event-date-end',
+          name: 'event-date-end',
+          defaultValue: '2021-01-25',
+          disabled: argTypes.endDatePickerDisabled,
+        }}
+      />
+    </Form>
+  ),
+}
 
-export const withAllowableRanges = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <DateRangePicker
-      startDateLabel="Event start date"
-      startDateHint="mm/dd/yyyy"
-      startDatePickerProps={{
-        id: 'event-date-start',
-        name: 'event-date-start',
-        minDate: '2021-01-01',
-        maxDate: '2021-01-20',
-        disabled: argTypes.startDatePickerDisabled,
-      }}
-      endDateLabel="Event end date"
-      endDateHint="mm/dd/yyyy"
-      endDatePickerProps={{
-        id: 'event-date-end',
-        name: 'event-date-end',
-        minDate: '2021-01-20',
-        maxDate: '2021-01-25',
-        disabled: argTypes.endDatePickerDisabled,
-      }}
-    />
-  </Form>
-)
+export const withAllowableRanges = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <DateRangePicker
+        startDateLabel="Event start date"
+        startDateHint="mm/dd/yyyy"
+        startDatePickerProps={{
+          id: 'event-date-start',
+          name: 'event-date-start',
+          minDate: '2021-01-01',
+          maxDate: '2021-01-20',
+          disabled: argTypes.startDatePickerDisabled,
+        }}
+        endDateLabel="Event end date"
+        endDateHint="mm/dd/yyyy"
+        endDatePickerProps={{
+          id: 'event-date-end',
+          name: 'event-date-end',
+          minDate: '2021-01-20',
+          maxDate: '2021-01-25',
+          disabled: argTypes.endDatePickerDisabled,
+        }}
+      />
+    </Form>
+  ),
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Pagination } from './Pagination'
+import type { Meta, StoryFn } from '@storybook/react'
 
 export default {
   title: 'Components/Pagination',
@@ -11,10 +11,10 @@ export default {
     pathname: { control: 'string' },
     totalPages: { control: 'number' },
   },
-} as ComponentMeta<typeof Pagination>
+} as Meta<typeof Pagination>
 
 const pathname = '/test-pathname'
-const Template: ComponentStory<typeof Pagination> = (args) => {
+const Template: StoryFn<typeof Pagination> = (args) => {
   const [current, setCurrentPage] = useState<number>(args.currentPage)
 
   useEffect(() => {
@@ -54,10 +54,13 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
   )
 }
 
-export const Sandbox = Template.bind({})
-Sandbox.args = {
-  currentPage: 10,
-  maxSlots: 7,
+export const Sandbox = {
+  render: Template,
+
+  args: {
+    currentPage: 10,
+    maxSlots: 7,
+  },
 }
 
 export const Default = (): React.ReactElement => (
@@ -67,9 +70,11 @@ export const Default = (): React.ReactElement => (
 export const ThreePagesFirst = (): React.ReactElement => (
   <Pagination pathname={pathname} totalPages={3} currentPage={1} />
 )
+
 export const ThreePages = (): React.ReactElement => (
   <Pagination pathname={pathname} totalPages={3} currentPage={2} />
 )
+
 export const ThreePagesLast = (): React.ReactElement => (
   <Pagination pathname={pathname} totalPages={3} currentPage={3} />
 )
