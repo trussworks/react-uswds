@@ -9,3 +9,9 @@
 .usa-tooltip__body {
   opacity: 0;
 }
+
+// This fixes a chromium browser bug that causes accessibility issues in the search field
+// It can be removed when https://github.com/uswds/uswds/issues/5277 is fixed
+.usa-search [type='search']::-webkit-search-cancel-button {
+  display: none;
+}
