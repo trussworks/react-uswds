@@ -56,6 +56,9 @@ jobs:
       - name: Lint code
         run: yarn lint
 
+      - name: Check format
+        run: yarn format:check
+
       - name: Happo
         run: yarn happo-ci
         env:

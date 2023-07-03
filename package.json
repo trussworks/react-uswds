@@ -29,6 +29,8 @@
     "build": "tsc -p tsconfig.build.json && webpack --progress",
     "build:watch": "tsc -p tsconfig.build.json && webpack --watch",
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "release": "standard-version -t ''",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
