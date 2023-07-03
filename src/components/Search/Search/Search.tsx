@@ -34,11 +34,7 @@ export const Search = ({
   inputProps,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
-
-  const classes = classnames(
-    'usa-search',
-    className
-  )
+  const classes = classnames('usa-search', className)
 
   return (
     <Form
@@ -47,7 +43,7 @@ export const Search = ({
       role="search"
       search={true}
       {...formProps}>
-      <SearchField 
+      <SearchField
         {...inputProps}
         isBig={size == 'big'}
         inputId={inputId}

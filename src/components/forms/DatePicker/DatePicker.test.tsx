@@ -1,5 +1,11 @@
 import React, { ComponentProps } from 'react'
-import { render, fireEvent, createEvent, waitFor, screen } from '@testing-library/react'
+import {
+  render,
+  fireEvent,
+  createEvent,
+  waitFor,
+  screen,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
@@ -26,7 +32,7 @@ describe('DatePicker component', () => {
   ) => {
     const allProps = {
       ...testProps,
-      ...props
+      ...props,
     }
     const rendered = render(<DatePicker {...allProps} />)
     const queryForDatePicker = () => screen.queryByTestId('date-picker')
@@ -106,7 +112,7 @@ describe('DatePicker component', () => {
 
   // https://github.com/uswds/uswds/blob/develop/spec/unit/date-picker/date-picker.spec.js#L933
   it('prevents default action if keyup doesn’t originate within the calendar', async () => {
-    const { getByTestId } = renderDatePicker({defaultValue: "2021-01-20"})
+    const { getByTestId } = renderDatePicker({ defaultValue: '2021-01-20' })
 
     const calendarEl = getByTestId('date-picker-calendar')
     await userEvent.click(getByTestId('date-picker-button'))
@@ -131,7 +137,9 @@ describe('DatePicker component', () => {
     })
 
     it('shows the calendar when the toggle button is clicked and focuses on the selected date', async () => {
-      const { getByTestId, getByText } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId, getByText } = renderDatePicker({
+        defaultValue: '2021-01-20',
+      })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
@@ -189,7 +197,9 @@ describe('DatePicker component', () => {
     })
 
     it('adds Selected date to the status text if the selected date and the focused date are the same', async () => {
-      const { getByTestId, getByText } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId, getByText } = renderDatePicker({
+        defaultValue: '2021-01-20',
+      })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
@@ -205,9 +215,9 @@ describe('DatePicker component', () => {
 
     it('coerces the display date to a valid value', async () => {
       const { getByTestId, getByLabelText } = renderDatePicker({
-        defaultValue: "2021-01-06",
-        minDate: "2021-01-10",
-        maxDate: "2021-01-20",
+        defaultValue: '2021-01-06',
+        minDate: '2021-01-10',
+        maxDate: '2021-01-20',
       })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByLabelText('6 January 2021 Wednesday')).not.toHaveFocus()
@@ -236,7 +246,7 @@ describe('DatePicker component', () => {
 
   describe('status text', () => {
     it('shows instructions in the status text when the calendar is opened', async () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId } = renderDatePicker({ defaultValue: '2021-01-20' })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       expect(getByTestId('date-picker')).toHaveClass('usa-date-picker--active')
@@ -259,7 +269,9 @@ describe('DatePicker component', () => {
     })
 
     it('removes instructions from the status text when the calendar is already open and the displayed date changes', async () => {
-      const { getByTestId, getByLabelText } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId, getByLabelText } = renderDatePicker({
+        defaultValue: '2021-01-20',
+      })
 
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
@@ -312,7 +324,9 @@ describe('DatePicker component', () => {
     })
 
     it('does not add Selected date to the status text if the selected date and the focused date are not the same', async () => {
-      const { getByTestId, getByLabelText } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId, getByLabelText } = renderDatePicker({
+        defaultValue: '2021-01-20',
+      })
 
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
@@ -343,7 +357,7 @@ describe('DatePicker component', () => {
 
   describe('with the required prop', () => {
     it('the external input is required, and the internal input is not required', () => {
-      const { getByTestId } = renderDatePicker({required: true})
+      const { getByTestId } = renderDatePicker({ required: true })
       expect(getByTestId('date-picker-external-input')).toBeRequired()
       expect(getByTestId('date-picker-internal-input')).not.toBeRequired()
     })
@@ -351,14 +365,14 @@ describe('DatePicker component', () => {
 
   describe('with the disabled prop', () => {
     it('the toggle button and external inputs are disabled, and the internal input is not disabled', () => {
-      const { getByTestId } = renderDatePicker({disabled: true})
+      const { getByTestId } = renderDatePicker({ disabled: true })
       expect(getByTestId('date-picker-button')).toBeDisabled()
       expect(getByTestId('date-picker-external-input')).toBeDisabled()
       expect(getByTestId('date-picker-internal-input')).not.toBeDisabled()
     })
 
     it('does not show the calendar when the toggle button is clicked', async () => {
-      const { getByTestId } = renderDatePicker({disabled: true})
+      const { getByTestId } = renderDatePicker({ disabled: true })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).not.toBeVisible()
       expect(getByTestId('date-picker')).not.toHaveClass(
@@ -369,7 +383,7 @@ describe('DatePicker component', () => {
 
   describe('with a default value prop', () => {
     it('the internal input value is the date string, and the external input value is the formatted date', () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "1988-05-16"})
+      const { getByTestId } = renderDatePicker({ defaultValue: '1988-05-16' })
       expect(getByTestId('date-picker-external-input')).toHaveValue(
         '05/16/1988'
       )
@@ -379,12 +393,15 @@ describe('DatePicker component', () => {
     })
 
     it('validates a valid default value', () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "1988-05-16"})
+      const { getByTestId } = renderDatePicker({ defaultValue: '1988-05-16' })
       expect(getByTestId('date-picker-external-input')).toBeValid()
     })
 
     it('validates an invalid default value', () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "1990-01-01", minDate: "2020-01-01"})
+      const { getByTestId } = renderDatePicker({
+        defaultValue: '1990-01-01',
+        minDate: '2020-01-01',
+      })
 
       expect(getByTestId('date-picker-external-input')).toBeInvalid()
     })
@@ -392,14 +409,19 @@ describe('DatePicker component', () => {
 
   describe('with localization props', () => {
     it('displays abbreviated translations for days of the week', async () => {
-      const { getByText, getByTestId } = renderDatePicker({i18n: sampleLocalization})
+      const { getByText, getByTestId } = renderDatePicker({
+        i18n: sampleLocalization,
+      })
       await userEvent.click(getByTestId('date-picker-button'))
       sampleLocalization.daysOfWeekShort.forEach((translation) => {
         expect(getByText(translation)).toBeInTheDocument()
       })
     })
     it('displays translation for month', async () => {
-      const { getByText, getByTestId } = renderDatePicker({defaultValue: "2020-02-01", i18n: sampleLocalization})
+      const { getByText, getByTestId } = renderDatePicker({
+        defaultValue: '2020-02-01',
+        i18n: sampleLocalization,
+      })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByText('febrero')).toBeInTheDocument()
     })
@@ -408,7 +430,10 @@ describe('DatePicker component', () => {
   describe('selecting a date', () => {
     it('clicking a date button selects that date and closes the calendar and focuses the external input', async () => {
       const mockOnChange = jest.fn()
-      const { getByText, getByTestId } = renderDatePicker({defaultValue: "2021-01-20", onChange: mockOnChange})
+      const { getByText, getByTestId } = renderDatePicker({
+        defaultValue: '2021-01-20',
+        onChange: mockOnChange,
+      })
       await userEvent.click(getByTestId('date-picker-button'))
       const dateButton = getByText('15')
       expect(dateButton).toHaveClass('usa-date-picker__calendar__date')
@@ -449,7 +474,9 @@ describe('DatePicker component', () => {
   describe('typing in a date', () => {
     it('typing a date in the external input updates the selected date', async () => {
       const mockOnChange = jest.fn()
-      const { getByTestId, getByText } = renderDatePicker({onChange: mockOnChange})
+      const { getByTestId, getByText } = renderDatePicker({
+        onChange: mockOnChange,
+      })
       await userEvent.type(
         getByTestId('date-picker-external-input'),
         '05/16/1988'
@@ -479,7 +506,9 @@ describe('DatePicker component', () => {
     })
 
     it('typing a date with the calendar open updates the calendar to the entered date', async () => {
-      const { getByTestId, getByText } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId, getByText } = renderDatePicker({
+        defaultValue: '2021-01-20',
+      })
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('select-month')).toHaveTextContent('January')
       expect(getByTestId('select-year')).toHaveTextContent('2021')
@@ -497,7 +526,7 @@ describe('DatePicker component', () => {
 
     it('implements a custom onBlur handler', async () => {
       const mockOnBlur = jest.fn()
-      const { getByTestId } = renderDatePicker({onBlur: mockOnBlur})
+      const { getByTestId } = renderDatePicker({ onBlur: mockOnBlur })
 
       await userEvent.type(
         getByTestId('date-picker-external-input'),
@@ -509,7 +538,10 @@ describe('DatePicker component', () => {
 
     // TODO - this is an outstanding difference in behavior from USWDS. Fails because validation happens onChange.
     it.skip('typing in the external input does not validate until blurring', async () => {
-      const { getByTestId } = renderDatePicker({minDate: "2021-01-20", maxDate: "2021-02-14"})
+      const { getByTestId } = renderDatePicker({
+        minDate: '2021-01-20',
+        maxDate: '2021-02-14',
+      })
 
       const externalInput = getByTestId('date-picker-external-input')
       expect(externalInput).toBeValid()
@@ -521,7 +553,10 @@ describe('DatePicker component', () => {
 
     // TODO - this can be implemented if the above test case is implemented
     it.skip('pressing the Enter key in the external input validates the date', async () => {
-      const { getByTestId } = renderDatePicker({minDate: "2021-01-20", maxDate: "2021-02-14"})
+      const { getByTestId } = renderDatePicker({
+        minDate: '2021-01-20',
+        maxDate: '2021-02-14',
+      })
 
       const externalInput = getByTestId('date-picker-external-input')
       expect(externalInput).toBeValid()
@@ -547,7 +582,7 @@ describe('DatePicker component', () => {
 
     it('entering a non-date value sets a validation message', async () => {
       const mockOnChange = jest.fn()
-      const { getByTestId } = renderDatePicker({onChange: mockOnChange})
+      const { getByTestId } = renderDatePicker({ onChange: mockOnChange })
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
@@ -565,7 +600,7 @@ describe('DatePicker component', () => {
 
     it('entering a non-date value sets a validation message', async () => {
       const mockOnChange = jest.fn()
-      const { getByTestId } = renderDatePicker({onChange: mockOnChange})
+      const { getByTestId } = renderDatePicker({ onChange: mockOnChange })
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
@@ -578,7 +613,9 @@ describe('DatePicker component', () => {
 
     it('entering an invalid date sets a validation message and becomes valid when selecting a date in the calendar', async () => {
       const mockOnChange = jest.fn()
-      const { getByTestId, getByLabelText } = renderDatePicker({onChange: mockOnChange})
+      const { getByTestId, getByLabelText } = renderDatePicker({
+        onChange: mockOnChange,
+      })
       const externalInput = getByTestId(
         'date-picker-external-input'
       ) as HTMLInputElement
@@ -601,8 +638,8 @@ describe('DatePicker component', () => {
     it('entering a valid date outside of the min/max date sets a validation message', async () => {
       const mockOnChange = jest.fn()
       const { getByTestId } = renderDatePicker({
-        minDate: "2021-01-20",
-        maxDate: "2021-02-14",
+        minDate: '2021-01-20',
+        maxDate: '2021-02-14',
         onChange: mockOnChange,
       })
       const externalInput = getByTestId(
@@ -629,7 +666,7 @@ describe('DatePicker component', () => {
 
   describe('year selection', () => {
     it('clicking the selected year updates the status text', async () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId } = renderDatePicker({ defaultValue: '2021-01-20' })
       await userEvent.click(getByTestId('date-picker-button'))
       await userEvent.click(getByTestId('select-year'))
 
@@ -641,7 +678,7 @@ describe('DatePicker component', () => {
     })
 
     it('clicking previous year chunk updates the status text', async () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId } = renderDatePicker({ defaultValue: '2021-01-20' })
       await userEvent.click(getByTestId('date-picker-button'))
       await userEvent.click(getByTestId('select-year'))
       await userEvent.click(getByTestId('previous-year-chunk'))
@@ -654,7 +691,7 @@ describe('DatePicker component', () => {
     })
 
     it('clicking next year chunk navigates the year picker forward one chunk', async () => {
-      const { getByTestId } = renderDatePicker({defaultValue: "2021-01-20"})
+      const { getByTestId } = renderDatePicker({ defaultValue: '2021-01-20' })
       await userEvent.click(getByTestId('date-picker-button'))
       await userEvent.click(getByTestId('select-year'))
       await userEvent.click(getByTestId('next-year-chunk'))
@@ -670,14 +707,22 @@ describe('DatePicker component', () => {
   describe('validationStatus', () => {
     it('renders with error styling', () => {
       const { getByTestId } = renderDatePicker({ validationStatus: 'error' })
-      expect(getByTestId('date-picker-external-input')).toBeInstanceOf(HTMLInputElement)
-      expect(getByTestId('date-picker-external-input')).toHaveClass('usa-input--error')
+      expect(getByTestId('date-picker-external-input')).toBeInstanceOf(
+        HTMLInputElement
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveClass(
+        'usa-input--error'
+      )
     })
 
     it('renders with success styling', () => {
       const { getByTestId } = renderDatePicker({ validationStatus: 'success' })
-      expect(getByTestId('date-picker-external-input')).toBeInstanceOf(HTMLInputElement)
-      expect(getByTestId('date-picker-external-input')).toHaveClass('usa-input--success')
+      expect(getByTestId('date-picker-external-input')).toBeInstanceOf(
+        HTMLInputElement
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveClass(
+        'usa-input--success'
+      )
     })
   })
 })

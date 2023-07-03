@@ -51,10 +51,13 @@ const CustomBanner = (): ReactElement => {
             <MediaBlockBody>
               <p>
                 <strong>Secure .gov websites use HTTPS</strong>
-                <br />A <strong>lock (<Icon.Lock aria-label="Locked padlock icon" />)</strong> or{' '}
-                <strong>https://</strong> means you&apos;ve safely connected to
-                the .gov website. Share sensitive information only on official,
-                secure websites.
+                <br />A{' '}
+                <strong>
+                  lock (<Icon.Lock aria-label="Locked padlock icon" />)
+                </strong>{' '}
+                or <strong>https://</strong> means you&apos;ve safely connected
+                to the .gov website. Share sensitive information only on
+                official, secure websites.
               </p>
             </MediaBlockBody>
           </BannerGuidance>

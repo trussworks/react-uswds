@@ -31,7 +31,7 @@ const CalendarModes = {
   YEAR_PICKER: 'YEAR_PICKER',
 } as const
 
-type CalendarMode = typeof CalendarModes[keyof typeof CalendarModes]
+type CalendarMode = (typeof CalendarModes)[keyof typeof CalendarModes]
 
 import { Day } from './Day'
 import { MonthPicker } from './MonthPicker'
