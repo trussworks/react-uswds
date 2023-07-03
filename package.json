@@ -96,9 +96,7 @@
     "fork-ts-checker-webpack-plugin": "^8.0.0",
     "happo-plugin-storybook": "^3.0.0",
     "happo.io": "^8.3.1",
-    "husky": "^8.0.3",
     "jest": "^26.1.0",
-    "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^2.7.1",
     "react": "^17.0.1",
@@ -130,22 +128,6 @@
     "glob-parent": "5.1.2",
     "trim": "0.0.3",
     "trim-newlines": "3.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc && lint-staged",
-      "pre-push": "yarn danger local -b main --failOnErrors"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,md}": [
-      "prettier --write",
-      "eslint"
-    ],
-    "src/**/*.{css,scss}": [
-      "prettier --write",
-      "stylelint"
-    ]
   },
   "standard-version": {
     "skip": {
