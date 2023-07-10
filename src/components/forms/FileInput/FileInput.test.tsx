@@ -112,7 +112,7 @@ describe('FileInput component', () => {
     )
     expect(chooseText).toBeInTheDocument()
     expect(chooseText).toHaveClass('usa-file-input__choose')
-    
+
     const targetEl = getByTestId('file-input-droptarget')
     fireEvent.drop(targetEl, {
       dataTransfer: {
