@@ -92,13 +92,16 @@ export const Pagination = ({
   const showOverflow = totalPages ? totalPages > maxSlots : true // If more pages than slots, use overflow indicator(s)
 
   const middleSlot = Math.round(maxSlots / 2) // 4 if maxSlots is 7
-  const isBeforeMiddleSlot = !!(totalPages && totalPages - currentPage >= middleSlot)
+  const isBeforeMiddleSlot = !!(
+    totalPages && totalPages - currentPage >= middleSlot
+  )
   const showPrevOverflow = showOverflow && currentPage > middleSlot
   const showNextOverflow = isBeforeMiddleSlot || !totalPages
   // Assemble array of page numbers to be shown
-  const currentPageRange: Array<number | 'overflow'> = showOverflow || !totalPages
-    ? [currentPage]
-    : Array.from({ length: totalPages }).map((_, i) => i + 1)
+  const currentPageRange: Array<number | 'overflow'> =
+    showOverflow || !totalPages
+      ? [currentPage]
+      : Array.from({ length: totalPages }).map((_, i) => i + 1)
 
   if (showOverflow) {
     // Determine range of pages to show based on current page & number of slots
@@ -151,7 +154,8 @@ export const Pagination = ({
     if (showPrevOverflow) currentPageRange.unshift('overflow')
     if (currentPage !== 1) currentPageRange.unshift(1)
     if (showNextOverflow) currentPageRange.push('overflow')
-    if (totalPages && currentPage !== totalPages) currentPageRange.push(totalPages)
+    if (totalPages && currentPage !== totalPages)
+      currentPageRange.push(totalPages)
   }
 
   const prevPage = !isOnFirstPage && currentPage - 1
