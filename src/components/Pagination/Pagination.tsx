@@ -6,7 +6,7 @@ import { Button } from '../Button/Button'
 
 type PaginationProps = {
   pathname: string // pathname of results page
-  totalPages: number // total items divided by items per page
+  totalPages?: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
   maxSlots?: number // number of pagination "slots"
   onClickNext?: () => void
@@ -87,17 +87,16 @@ export const Pagination = ({
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1
-  const isOnLastPage = currentPage === totalPages
+  const isOnLastPage = totalPages ? currentPage === totalPages : false
 
-  const showOverflow = totalPages > maxSlots // If more pages than slots, use overflow indicator(s)
+  const showOverflow = totalPages ? totalPages > maxSlots : true // If more pages than slots, use overflow indicator(s)
 
   const middleSlot = Math.round(maxSlots / 2) // 4 if maxSlots is 7
+  const isBeforeMiddleSlot = !!(totalPages && totalPages - currentPage >= middleSlot)
   const showPrevOverflow = showOverflow && currentPage > middleSlot
-  const showNextOverflow =
-    showOverflow && totalPages - currentPage >= middleSlot
-
+  const showNextOverflow = isBeforeMiddleSlot || !totalPages
   // Assemble array of page numbers to be shown
-  const currentPageRange: Array<number | 'overflow'> = showOverflow
+  const currentPageRange: Array<number | 'overflow'> = showOverflow || !totalPages
     ? [currentPage]
     : Array.from({ length: totalPages }).map((_, i) => i + 1)
 
@@ -119,7 +118,7 @@ export const Pagination = ({
     } else if (showPrevOverflow) {
       // We are in the end of the set, there will be overflow (...) at the beginning
       // Ex: [1] [...] [20] [21] [22] [23] [24]
-      currentPageAfterSize = totalPages - currentPage - 1 // current & last
+      currentPageAfterSize = (totalPages || 0) - currentPage - 1 // current & last
       currentPageAfterSize = currentPageAfterSize < 0 ? 0 : currentPageAfterSize
       currentPageBeforeSize = pageRangeSize - currentPageAfterSize
     } else if (showNextOverflow) {
@@ -152,7 +151,7 @@ export const Pagination = ({
     if (showPrevOverflow) currentPageRange.unshift('overflow')
     if (currentPage !== 1) currentPageRange.unshift(1)
     if (showNextOverflow) currentPageRange.push('overflow')
-    if (currentPage !== totalPages) currentPageRange.push(totalPages)
+    if (totalPages && currentPage !== totalPages) currentPageRange.push(totalPages)
   }
 
   const prevPage = !isOnFirstPage && currentPage - 1
