@@ -168,6 +168,7 @@ export const customText = (): React.ReactElement => (
       dragText="Arrastre el archivo aquí o "
       chooseText="elija de una carpeta"
       errorText="Este no es un tipo de archivo válido."
+      accept=".no"
     />
   </FormGroup>
 )
