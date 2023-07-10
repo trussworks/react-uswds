@@ -111,7 +111,8 @@ exports[`GovBanner component static content renders consistently in English for 
                 Secure .gov websites use HTTPS
               </strong>
               <br />
-              A 
+              A
+               
               <strong>
                 lock (
                 <svg
@@ -122,12 +123,13 @@ exports[`GovBanner component static content renders consistently in English for 
                 />
                 )
               </strong>
-               or 
+               
+              or 
               <strong>
                 https://
               </strong>
+               means you’ve safely connected to the
                
-              means you’ve safely connected to the 
               .gov
                website. Share sensitive information only on official, secure websites.
             </p>
@@ -250,7 +252,8 @@ exports[`GovBanner component static content renders consistently in English for 
                 Secure .mil websites use HTTPS
               </strong>
               <br />
-              A 
+              A
+               
               <strong>
                 lock (
                 <svg
@@ -261,12 +264,13 @@ exports[`GovBanner component static content renders consistently in English for 
                 />
                 )
               </strong>
-               or 
+               
+              or 
               <strong>
                 https://
               </strong>
+               means you’ve safely connected to the
                
-              means you’ve safely connected to the 
               .mil
                website. Share sensitive information only on official, secure websites.
             </p>
@@ -389,7 +393,8 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                 Los sitios web seguros .gov usan HTTPS
               </strong>
               <br />
-              Un 
+              Un
+               
               <strong>
                 candado (
                 <svg
@@ -400,12 +405,12 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                 />
                 )
               </strong>
-               o 
+               
+              o 
               <strong>
                 https://
               </strong>
-               
-              significa que usted se conectó de forma segura a un sitio web 
+               significa que usted se conectó de forma segura a un sitio web 
               .gov
               . Comparta información sensible sólo en sitios web oficiales y seguros.
             </p>
@@ -528,7 +533,8 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                 Los sitios web seguros .mil usan HTTPS
               </strong>
               <br />
-              Un 
+              Un
+               
               <strong>
                 candado (
                 <svg
@@ -539,12 +545,12 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                 />
                 )
               </strong>
-               o 
+               
+              o 
               <strong>
                 https://
               </strong>
-               
-              significa que usted se conectó de forma segura a un sitio web 
+               significa que usted se conectó de forma segura a un sitio web 
               .mil
               . Comparta información sensible sólo en sitios web oficiales y seguros.
             </p>
@@ -667,7 +673,8 @@ exports[`GovBanner component static content renders consistently with default pr
                 Secure .gov websites use HTTPS
               </strong>
               <br />
-              A 
+              A
+               
               <strong>
                 lock (
                 <svg
@@ -678,12 +685,13 @@ exports[`GovBanner component static content renders consistently with default pr
                 />
                 )
               </strong>
-               or 
+               
+              or 
               <strong>
                 https://
               </strong>
+               means you’ve safely connected to the
                
-              means you’ve safely connected to the 
               .gov
                website. Share sensitive information only on official, secure websites.
             </p>

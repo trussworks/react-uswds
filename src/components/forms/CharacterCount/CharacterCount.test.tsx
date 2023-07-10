@@ -154,7 +154,10 @@ describe('CharacterCount component', () => {
         </>
       )
       const textareaDefaultValue = getByDisplayValue('Prefilled defaultValue')
-      expect(textareaDefaultValue).toHaveAttribute('name', 'character-count-defaultValue')
+      expect(textareaDefaultValue).toHaveAttribute(
+        'name',
+        'character-count-defaultValue'
+      )
       expect(textareaDefaultValue).toHaveAttribute('rows', '5')
       expect(textareaDefaultValue).toBe(tRef.current)
       const textareaValue = getByDisplayValue('Prefilled value')

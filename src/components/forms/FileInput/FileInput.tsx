@@ -86,7 +86,9 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     'has-invalid-file': showError,
   })
 
-  const defaultDragText = multiple ? 'Drag files here or ' : 'Drag file here or '
+  const defaultDragText = multiple
+    ? 'Drag files here or '
+    : 'Drag file here or '
   const defaultChooseText = 'choose from folder'
 
   const filePreviews = []
@@ -194,9 +196,13 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           className={instructionClasses}
           aria-hidden="true">
           {!hideDragText && (
-            <span className="usa-file-input__drag-text">{dragText || defaultDragText}</span>
+            <span className="usa-file-input__drag-text">
+              {dragText || defaultDragText}
+            </span>
           )}
-          <span className="usa-file-input__choose">{chooseText || defaultChooseText}</span>
+          <span className="usa-file-input__choose">
+            {chooseText || defaultChooseText}
+          </span>
         </div>
         {filePreviews}
         <div data-testid="file-input-box" className="usa-file-input__box"></div>

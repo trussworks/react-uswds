@@ -28,15 +28,17 @@ export const Table = ({
   compact,
   stackedStyle = 'none',
 }: TableProps): React.ReactElement => {
-  const classes = classnames('usa-table', {
-    'usa-table--borderless': !bordered,
-    'width-full': fullWidth,
-    [`${styles.fixed}`]: fixed,
-    'usa-table--striped': striped,
-    'usa-table--compact': compact,
-    'usa-table--stacked': stackedStyle === 'default',
-    'usa-table--stacked-header': stackedStyle === 'headers',
-  }, 
+  const classes = classnames(
+    'usa-table',
+    {
+      'usa-table--borderless': !bordered,
+      'width-full': fullWidth,
+      [`${styles.fixed}`]: fixed,
+      'usa-table--striped': striped,
+      'usa-table--compact': compact,
+      'usa-table--stacked': stackedStyle === 'default',
+      'usa-table--stacked-header': stackedStyle === 'headers',
+    },
     className
   )
 

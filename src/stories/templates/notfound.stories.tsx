@@ -37,8 +37,8 @@ import {
 export default {
   title: 'Page Templates/Not Found Page',
   parameters: {
-    options: { 
-      showPanel: false
+    options: {
+      showPanel: false,
     },
     docs: {
       description: {
