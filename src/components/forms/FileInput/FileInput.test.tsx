@@ -96,6 +96,7 @@ describe('FileInput component', () => {
       ...testProps,
       dragText: 'Custom dragText',
       chooseText: 'Custom chooseText',
+      errorText: 'Custom errorText',
     }
     const { getByTestId } = render(<FileInput {...customProps} />)
 
@@ -110,6 +111,12 @@ describe('FileInput component', () => {
     )
     expect(chooseText).toBeInTheDocument()
     expect(chooseText).toHaveClass('usa-file-input__choose')
+
+    const errorText = within(getByTestId('file-input-instructions')).getByText(
+      customProps.errorText
+    )
+    expect(errorText).toBeInTheDocument()
+    expect(errorText).toHaveClass('file-input-error')
   })
 
   describe('when disabled', () => {

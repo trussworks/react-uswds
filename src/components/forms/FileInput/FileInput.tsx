@@ -15,6 +15,7 @@ type FileInputProps = {
   name: string
   dragText?: string
   chooseText?: string
+  errorText?: string
   disabled?: boolean
   multiple?: boolean
   accept?: string
@@ -37,6 +38,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     id,
     dragText,
     chooseText,
+    errorText,
     disabled,
     multiple,
     className,
@@ -90,6 +92,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     ? 'Drag files here or '
     : 'Drag file here or '
   const defaultChooseText = 'choose from folder'
+  const defaultErrorText = 'This is not a valid file type.'
 
   const filePreviews = []
   if (files) {
@@ -210,7 +213,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           <div
             data-testid="file-input-error"
             className="usa-file-input__accepted-files-message">
-            This is not a valid file type.
+            {errorText || defaultErrorText}
           </div>
         )}
         <input
