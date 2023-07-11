@@ -96,6 +96,8 @@ describe('FileInput component', () => {
       ...testProps,
       dragText: 'Custom dragText',
       chooseText: 'Custom chooseText',
+      errorText: 'Custom errorText',
+      accept: '.no',
     }
     const { getByTestId } = render(<FileInput {...customProps} />)
 
@@ -110,6 +112,18 @@ describe('FileInput component', () => {
     )
     expect(chooseText).toBeInTheDocument()
     expect(chooseText).toHaveClass('usa-file-input__choose')
+
+    const targetEl = getByTestId('file-input-droptarget')
+    fireEvent.drop(targetEl, {
+      dataTransfer: {
+        files: [TEST_PNG_FILE],
+      },
+    })
+    const errorText = within(getByTestId('file-input-error')).getByText(
+      customProps.errorText
+    )
+    expect(errorText).toBeInTheDocument()
+    expect(errorText).toHaveClass('usa-file-input__accepted-files-message')
   })
 
   describe('when disabled', () => {
