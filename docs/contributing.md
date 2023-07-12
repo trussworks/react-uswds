@@ -88,7 +88,7 @@ Because this project exports a library that will be used by other projects, it i
 - [Jest tests](https://jestjs.io/) are run in CI and must pass before the branch can be merged
 - [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) are run CI against Storybook stories. All diffs must be approved before the branch can be merged. Developers with access (maintainers and many codeowners) log in to Happo.io account to approve/reject diffs.
 - PR titles must follow conventional commits specification.
-  - We use [`standard-version`](https://github.com/conventional-changelog/standard-version). This auto-generates version numbers and changelog based on commits. We [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits, so the title must be correct.
+  - We use [release-please](https://github.com/googleapis/release-please). This auto-generates version numbers and changelog based on commits. We [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits, so the title must be correct.
   - The version number is determined based on the commit prefix -
     **[fix]** indicates a bug fix, **[feat]** indicates a minor bump.
     **[!]** or [BREAKING CHANGES] indicates a major bump. Other
