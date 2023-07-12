@@ -31,7 +31,6 @@
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "release": "standard-version -t ''",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo",
@@ -109,7 +108,6 @@
     "sass-loader": "^13.0.0",
     "sass-resources-loader": "^2.0.1",
     "source-map-loader": "^4.0.1",
-    "standard-version": "^9.0.0",
     "style-loader": "^3.2.1",
     "stylelint": "^13.3.0",
     "stylelint-config-css-modules": "^2.2.0",
@@ -130,52 +128,5 @@
     "glob-parent": "5.1.2",
     "trim": "0.0.3",
     "trim-newlines": "3.0.1"
-  },
-  "standard-version": {
-    "skip": {
-      "tag": true
-    },
-    "types": [
-      {
-        "type": "build",
-        "hidden": true
-      },
-      {
-        "type": "chore",
-        "hidden": true
-      },
-      {
-        "type": "ci",
-        "hidden": true
-      },
-      {
-        "type": "feat",
-        "section": "Features"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes"
-      },
-      {
-        "type": "docs",
-        "section": "Documentation & Examples"
-      },
-      {
-        "type": "style",
-        "hidden": true
-      },
-      {
-        "type": "refactor",
-        "hidden": true
-      },
-      {
-        "type": "perf",
-        "section": "Performance Improvements"
-      },
-      {
-        "type": "test",
-        "hidden": true
-      }
-    ]
   }
 }
