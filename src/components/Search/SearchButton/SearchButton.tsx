@@ -18,7 +18,7 @@ type SearchButtonProps = {
 export const SearchButton = ({
   size,
   className,
-  i18n
+  i18n,
 }: SearchButtonProps): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
@@ -33,12 +33,16 @@ export const SearchButton = ({
   )
   return (
     <div className={classes}>
-        <Button type="submit">
-            {!isSmall && (
-                <span className="usa-search__submit-text">{buttonText}</span>
-            )}
-            <Icon.Search className="usa-search__submit-icon" name={buttonText} size={3}/>
-        </Button>
+      <Button type="submit">
+        {!isSmall && (
+          <span className="usa-search__submit-text">{buttonText}</span>
+        )}
+        <Icon.Search
+          className="usa-search__submit-icon"
+          name={buttonText}
+          size={3}
+        />
+      </Button>
     </div>
   )
 }

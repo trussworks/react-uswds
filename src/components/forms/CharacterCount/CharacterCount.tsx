@@ -120,13 +120,15 @@ export const CharacterCount = ({
       id: id,
       name: name,
       className: classes,
-      ...(value ? {value: value} : {defaultValue: defaultValue}),
-      onBlur: (e: React.FocusEvent<HTMLTextAreaElement, Element>): void => handleBlur(e, onBlur),
-      onChange: (e: React.ChangeEvent<HTMLTextAreaElement>): void => handleChange(e, onChange),
+      ...(value ? { value: value } : { defaultValue: defaultValue }),
+      onBlur: (e: React.FocusEvent<HTMLTextAreaElement, Element>): void =>
+        handleBlur(e, onBlur),
+      onChange: (e: React.ChangeEvent<HTMLTextAreaElement>): void =>
+        handleChange(e, onChange),
       inputRef: inputRef,
       ...textAreaProps,
     }
-    InputComponent = (<Textarea {...attributes} />)
+    InputComponent = <Textarea {...attributes} />
   } else {
     const {
       onBlur,
@@ -140,13 +142,15 @@ export const CharacterCount = ({
       type: type,
       name: name,
       className: classes,
-      ...(value ? {value: value} : {defaultValue: defaultValue}),
-      onBlur: (e: React.FocusEvent<HTMLInputElement, Element>): void => handleBlur(e, onBlur),
-      onChange: (e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e, onChange),
+      ...(value ? { value: value } : { defaultValue: defaultValue }),
+      onBlur: (e: React.FocusEvent<HTMLInputElement, Element>): void =>
+        handleBlur(e, onBlur),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>): void =>
+        handleChange(e, onChange),
       inputRef: inputRef,
       ...inputProps,
     }
-    InputComponent = (<TextInput {...attributes} />)
+    InputComponent = <TextInput {...attributes} />
   }
 
   return (

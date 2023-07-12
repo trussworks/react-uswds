@@ -74,10 +74,20 @@ More guidance for preferred React practices can be found in the [adding new comp
 
 ### Linting, formatting, & automated tests
 
-Because this project exports a library that will be used by other projects, it is important that updates follow a set of standard practices. When you commit your changes, several hooks will run to check and format staged files. In order to be eligible for merging, all branches must pass the following automation.
+Because this project exports a library that will be used by other projects, it is important that updates follow a set of standard practices. When you PR your changes, several hooks will run to check and format changed files. In order to be eligible for merging, all branches must pass the following automation.
 
-- [Prettier](https://prettier.io/), [TypeScript compilation](https://www.typescriptlang.org/), [eslint](https://eslint.org/) and [stylelint](https://stylelint.io/) are run on _staged files_ as a pre-commit hook/
+- Code format and linting are enforced with automations.
+  - We use the following tools: 
+    - [Prettier](https://prettier.io/)
+    - [TypeScript compilation](https://www.typescriptlang.org/)
+    - [eslint](https://eslint.org/)
+    - [stylelint](https://stylelint.io/)
+  - GitHub Actions are used to check each PR for format and linting compliance
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
+  - It is also possible to invoke the tools manually
+    - To check code format compliance, run `yarn format:check`
+    - To auto-fix code format, run `yarn format:fix`
+    - To check typescript complication, eslint, and stylelint, run `yarn lint`
 - [dangerjs](https://github.com/danger/danger-js) is used to enforce several pull request standards, including:
   - Changes to package source code should include changes to tests.
   - New `src/components` files should include changes to storybook.

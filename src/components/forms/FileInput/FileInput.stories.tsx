@@ -162,11 +162,13 @@ export const withRefAndCustomHandlers = (
 export const customText = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-single">La entrada acepta un solo archivo</Label>
-    <FileInput 
-      id="file-input-single" 
-      name="file-input-single" 
+    <FileInput
+      id="file-input-single"
+      name="file-input-single"
       dragText="Arrastre el archivo aquí o "
       chooseText="elija de una carpeta"
+      errorText="Este no es un tipo de archivo válido."
+      accept=".no"
     />
   </FormGroup>
 )

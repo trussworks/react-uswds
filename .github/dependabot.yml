@@ -38,6 +38,3 @@ updates:
         versions:
           - '>=7.0.0'
       - dependency-name: 'uswds'
-      - dependency-name: 'husky'
-        versions:
-          - '>=5.0.0'
