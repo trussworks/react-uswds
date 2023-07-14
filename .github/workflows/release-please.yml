@@ -20,6 +20,7 @@ jobs:
           release-type: node
           package-name: '@trussworks/react-uswds'
           release-labels: 'type: release'
+          include-v-in-tag: false
           changelog-types: >
             { "types":
               [
