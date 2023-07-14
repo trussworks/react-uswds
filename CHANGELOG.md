@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/trussworks/react-uswds/compare/5.0.0...5.1.0) (2023-07-14)
+
+
+### Features
+
+* added customizable text control to file input ([#2417](https://github.com/trussworks/react-uswds/issues/2417)) ([0a387be](https://github.com/trussworks/react-uswds/commit/0a387beaa50612d9184bc8166283a131697e0c8c))
+* adds unbounded functionality to pagination ([#2418](https://github.com/trussworks/react-uswds/issues/2418)) ([f9e7957](https://github.com/trussworks/react-uswds/commit/f9e79579350f6890de9c111a7cb2467be029cf6e))
+
+
+### Bug Fixes
+
+* a11y: adds css to hide search clear button that causes accessibility issues ([#2467](https://github.com/trussworks/react-uswds/issues/2467)) ([d19527f](https://github.com/trussworks/react-uswds/commit/d19527f5ff043bc3be3cd789b3a8254a7580fe89))
+* added error param, test, story ([#2488](https://github.com/trussworks/react-uswds/issues/2488)) ([42da85d](https://github.com/trussworks/react-uswds/commit/42da85d7c7576c5ec408ca336edd4c2e32aa647b))
+
 ## [5.0.0](https://github.com/trussworks/react-uswds/compare/4.2.1...5.0.0) (2023-06-06)
 
 
