@@ -16,9 +16,8 @@ export const NavCloseButton = ({
       onClick={onClick}
       data-testid="navCloseButton"
       {...buttonProps}
-      type="button"
-      aria-label="Close">
-      <Icon.Close size={3} />
+      type="button">
+      <Icon.Close size={3} aria-label="Close" />
     </button>
   )
 }
