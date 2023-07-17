@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.1](https://github.com/trussworks/react-uswds/compare/5.1.0...5.1.1) (2023-07-17)
+
+
+### Bug Fixes
+
+* Set alternative text on SVG img icon in menu close button ([#2500](https://github.com/trussworks/react-uswds/issues/2500)) ([ebdca5b](https://github.com/trussworks/react-uswds/commit/ebdca5ba2b775e1ceacc4229c1191547bf98ea0d))
+
 ## [5.1.0](https://github.com/trussworks/react-uswds/compare/5.0.0...5.1.0) (2023-07-14)
 
 
