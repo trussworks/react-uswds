@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-Display address items (most likely links or simple text) in a row, wrapped in address tag.  Used in USWDS 2.0 Footer component.
+Display address items (most likely links or simple text) in a row, wrapped in address tag.  Used in USWDS 3.0 Footer component.
 
 Source: https://designsystem.digital.gov/components/footer
 `,

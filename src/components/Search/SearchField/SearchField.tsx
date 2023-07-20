@@ -2,8 +2,10 @@ import React from 'react'
 import classnames from 'classnames'
 
 import { Label } from '../../forms/Label/Label'
-import { TextInput, OptionalTextInputProps } from '../../forms/TextInput/TextInput'
-
+import {
+  TextInput,
+  OptionalTextInputProps,
+} from '../../forms/TextInput/TextInput'
 
 type SearchFieldProps = {
   isBig?: boolean
@@ -24,7 +26,7 @@ export const SearchField = ({
   inputName = 'search',
   label = 'Search',
   inputId = 'search-field',
-  inputProps
+  inputProps,
 }: SearchFieldProps & OptionalTextInputProps): React.ReactElement => {
   const classes = classnames(
     {
@@ -34,7 +36,7 @@ export const SearchField = ({
   )
 
   return (
-    <div className={classes} data-testid='searchField'>
+    <div className={classes} data-testid="searchField">
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>

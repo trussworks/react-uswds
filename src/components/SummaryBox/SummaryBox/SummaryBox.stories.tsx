@@ -11,7 +11,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 SummaryBox component
+### USWDS 3.0 SummaryBox component
 
 Source: https://designsystem.digital.gov/components/summary-box
 `,

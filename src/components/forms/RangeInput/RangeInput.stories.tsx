@@ -9,7 +9,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 RangeInput component
+### USWDS 3.0 RangeInput component
 
 Source: https://designsystem.digital.gov/components/range-slider
 `,

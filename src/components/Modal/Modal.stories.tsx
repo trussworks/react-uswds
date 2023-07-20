@@ -14,7 +14,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Modal component
+### USWDS 3.0 Modal component
 
 Source: http://designsystem.digital.gov/components/modal
 

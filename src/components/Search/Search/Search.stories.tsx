@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Search component
+### USWDS 3.0 Search component
 
 Source: https://designsystem.digital.gov/components/search/
 `,

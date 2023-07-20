@@ -28,6 +28,9 @@ import {
 export default {
   title: 'Page Templates/Landing Page',
   parameters: {
+    options: {
+      showPanel: false,
+    },
     docs: {
       description: {
         component: `

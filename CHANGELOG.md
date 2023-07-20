@@ -2,6 +2,72 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.1](https://github.com/trussworks/react-uswds/compare/5.1.0...5.1.1) (2023-07-17)
+
+
+### Bug Fixes
+
+* Set alternative text on SVG img icon in menu close button ([#2500](https://github.com/trussworks/react-uswds/issues/2500)) ([ebdca5b](https://github.com/trussworks/react-uswds/commit/ebdca5ba2b775e1ceacc4229c1191547bf98ea0d))
+
+## [5.1.0](https://github.com/trussworks/react-uswds/compare/5.0.0...5.1.0) (2023-07-14)
+
+
+### Features
+
+* added customizable text control to file input ([#2417](https://github.com/trussworks/react-uswds/issues/2417)) ([0a387be](https://github.com/trussworks/react-uswds/commit/0a387beaa50612d9184bc8166283a131697e0c8c))
+* adds unbounded functionality to pagination ([#2418](https://github.com/trussworks/react-uswds/issues/2418)) ([f9e7957](https://github.com/trussworks/react-uswds/commit/f9e79579350f6890de9c111a7cb2467be029cf6e))
+
+
+### Bug Fixes
+
+* a11y: adds css to hide search clear button that causes accessibility issues ([#2467](https://github.com/trussworks/react-uswds/issues/2467)) ([d19527f](https://github.com/trussworks/react-uswds/commit/d19527f5ff043bc3be3cd789b3a8254a7580fe89))
+* added error param, test, story ([#2488](https://github.com/trussworks/react-uswds/issues/2488)) ([42da85d](https://github.com/trussworks/react-uswds/commit/42da85d7c7576c5ec408ca336edd4c2e32aa647b))
+
+## [5.0.0](https://github.com/trussworks/react-uswds/compare/4.2.1...5.0.0) (2023-06-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Unify icon usage (#2411)
+  * As a part of this change, the previously exported `BannerLockIcon` component has been removed. Consumers building custom `Banner` components for their applications should use the `Icon.Lock` (with appropriate aria attributes) as shown in our [Storybook example](https://github.com/trussworks/react-uswds/blob/75e936985cc1cd2f2052f902f0806c58446aca30/src/components/banner/CustomBanner.stories.tsx#L54)
+
+### Features
+
+* Add `validationStatus` prop to `Dropdown` ([#2365](https://github.com/trussworks/react-uswds/issues/2365)) ([c314234](https://github.com/trussworks/react-uswds/commit/c31423439cf6a30117fd327ee6cc2b1aacdb9124))
+* Add `InputGroup` component ([#2383](https://github.com/trussworks/react-uswds/issues/2383)) ([5761db6](https://github.com/trussworks/react-uswds/commit/5761db6e66db98c8299efb978bbe39fd259f1209))
+* Update banner aria props with changes from USWDS ([#2384](https://github.com/trussworks/react-uswds/issues/2384)) ([f8c359b](https://github.com/trussworks/react-uswds/commit/f8c359b4afcfe998c492d916ad4c4ec44ee7b4f9))
+
+
+### Bug Fixes
+
+* Adds validation styles to `DatePicker` ([#2398](https://github.com/trussworks/react-uswds/issues/2398)) ([161a931](https://github.com/trussworks/react-uswds/commit/161a931f897edc38b1eb6aff22f36e5eb75c4388))
+* Allow `CharacterCount` value ^ defaultValue ([#2397](https://github.com/trussworks/react-uswds/issues/2397)) ([9de5b9d](https://github.com/trussworks/react-uswds/commit/9de5b9dcd1b10e069cf672680f2685ced97d645c))
+* Rename `Dropdown` component to `Select` ([#2415](https://github.com/trussworks/react-uswds/issues/2415)) ([75e9369](https://github.com/trussworks/react-uswds/commit/75e936985cc1cd2f2052f902f0806c58446aca30))
+  * Note: `Dropdown` is now marked as deprecated, and will be removed in a future release 
+* Fix `FileInput` in SSR ([#2367](https://github.com/trussworks/react-uswds/issues/2367)) ([3d4845e](https://github.com/trussworks/react-uswds/commit/3d4845e349bf940f0ba13f2680bc865c5f58d6ef))
+* Fix misapplied aria attribute ([#2396](https://github.com/trussworks/react-uswds/issues/2396)) ([dafbb4e](https://github.com/trussworks/react-uswds/commit/dafbb4e4f75c39e0a76f18a80934fcf2d1a3e770))
+* Unify icon usage ([#2411](https://github.com/trussworks/react-uswds/issues/2411)) ([ef2be8d](https://github.com/trussworks/react-uswds/commit/ef2be8dddbbfec21f3cedf606e2bddcaad57f7e7))
+
+
+### Documentation & Examples
+
+* Add documentation for how we use All Contributors ([#2378](https://github.com/trussworks/react-uswds/issues/2378)) ([5aa9bda](https://github.com/trussworks/react-uswds/commit/5aa9bda79237d90dd9538fc9362bb45b04ad8b81))
+
+### [4.2.1](https://github.com/trussworks/react-uswds/compare/4.2.0...4.2.1) (2023-04-24)
+
+## [4.2.0](https://github.com/trussworks/react-uswds/compare/4.1.1...4.2.0) (2023-04-03)
+
+
+### Features
+
+* Add className prop to Table component ([#2269](https://github.com/trussworks/react-uswds/issues/2269)) ([cf082c5](https://github.com/trussworks/react-uswds/commit/cf082c533b60317dfeeb4397a997514a586cf5a3))
+
+
+### Documentation & Examples
+
+* fix typo and add alt download instructions ([#2281](https://github.com/trussworks/react-uswds/issues/2281)) ([7508dfb](https://github.com/trussworks/react-uswds/commit/7508dfb714d9a26d1a0787eb7032516e10fa082c))
+* Update old references from USWDS 2.0 to USWDS 3.0 ([#2317](https://github.com/trussworks/react-uswds/issues/2317)) ([6232c5c](https://github.com/trussworks/react-uswds/commit/6232c5cbb90972457c6ee8b8c6ff5a441b4cd6bd))
+
 ### [4.1.1](https://github.com/trussworks/react-uswds/compare/4.1.0...4.1.1) (2023-02-23)
 
 ## [4.1.0](https://github.com/trussworks/react-uswds/compare/4.0.0...4.1.0) (2023-02-17)

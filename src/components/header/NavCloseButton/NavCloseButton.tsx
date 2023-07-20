@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 // assets
-import closeImg from '@uswds/uswds/src/img/usa-icons/close.svg'
+import { Icon } from '../../Icon/Icons'
 
 export const NavCloseButton = ({
   onClick,
@@ -17,7 +17,7 @@ export const NavCloseButton = ({
       data-testid="navCloseButton"
       {...buttonProps}
       type="button">
-      <img src={closeImg} alt="close" />
+      <Icon.Close size={3} aria-label="Close" />
     </button>
   )
 }

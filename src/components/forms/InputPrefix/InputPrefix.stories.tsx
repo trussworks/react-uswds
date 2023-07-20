@@ -2,6 +2,7 @@ import React from 'react'
 import { InputPrefix } from './InputPrefix'
 import { Icon } from '../../Icon/Icons'
 import { TextInput } from '../TextInput/TextInput'
+import { InputGroup } from '../InputGroup/InputGroup'
 import { FormGroup } from '../FormGroup/FormGroup'
 
 export default {
@@ -11,7 +12,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 InputPrefix component
+### USWDS 3.0 InputPrefix component
 
 Source: https://designsystem.digital.gov/components/input-prefix-suffix/
 `,
@@ -22,29 +23,29 @@ Source: https://designsystem.digital.gov/components/input-prefix-suffix/
 
 export const InputWithTextInputPrefix = (): React.ReactElement => (
   <FormGroup>
-    <div className="usa-input-group">
+    <InputGroup>
       <InputPrefix>cvc</InputPrefix>
       <TextInput id="cvc" name="cvc" type="text" />
-    </div>
+    </InputGroup>
   </FormGroup>
 )
 
 export const InputWithTextInputPrefixError = (): React.ReactElement => (
   <FormGroup>
-    <div className="usa-input-group usa-input-group--error">
+    <InputGroup error>
       <InputPrefix>cvc</InputPrefix>
       <TextInput id="cvc" name="cvc" type="text" validationStatus="error" />
-    </div>
+    </InputGroup>
   </FormGroup>
 )
 
 export const InputWithIconInputPrefix = (): React.ReactElement => (
   <FormGroup>
-    <div className="usa-input-group">
+    <InputGroup>
       <InputPrefix>
         <Icon.CreditCard />
       </InputPrefix>
       <TextInput id="card" name="card" type="text" />
-    </div>
+    </InputGroup>
   </FormGroup>
 )

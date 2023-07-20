@@ -12,7 +12,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 FormGroup component
+### USWDS 3.0 FormGroup component
 
 Source: https://designsystem.digital.gov/components/form-templates/
 `,

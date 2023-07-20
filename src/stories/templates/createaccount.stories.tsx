@@ -37,6 +37,9 @@ import { MediaBlockBody } from '../../components/mediablock/MediaBlockBody/Media
 export default {
   title: 'Page Templates/Authentication Pages',
   parameters: {
+    options: {
+      showPanel: false,
+    },
     layout: 'fullscreen',
     docs: {
       description: {

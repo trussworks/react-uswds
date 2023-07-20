@@ -8,24 +8,18 @@ const sampleLocalization = {
 
 describe('SearchButton component', () => {
   it('renders without errors', () => {
-    const { queryByRole } = render(
-      <SearchButton />
-    )
+    const { queryByRole } = render(<SearchButton />)
     expect(queryByRole('button')).toHaveTextContent('Search')
   })
 
   it('does not render button text when small', () => {
-    const { queryByRole } = render(
-      <SearchButton size="small" />
-    )
+    const { queryByRole } = render(<SearchButton size="small" />)
 
     expect(queryByRole('button')).not.toHaveTextContent('Search')
   })
 
   it('internationalization', () => {
-    const { queryByText } = render(
-      <SearchButton i18n={sampleLocalization} />
-    )
+    const { queryByText } = render(<SearchButton i18n={sampleLocalization} />)
 
     expect(queryByText('Buscar')).toBeInTheDocument()
   })

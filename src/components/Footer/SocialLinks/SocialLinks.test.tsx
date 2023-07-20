@@ -40,7 +40,9 @@ describe('SocialLinks component', () => {
 describe('SocialLink component', () => {
   it('renders without errors', () => {
     const { container } = render(<SocialLink name="Instagram" />)
-    expect(container.querySelector('.usa-social-link')).toBeInTheDocument()
-    expect(screen.getByRole('img')).toHaveAttribute('alt', 'Instagram')
+    const link = container.querySelector('.usa-social-link')
+    expect(link).toBeInTheDocument()
+    expect(link).toHaveAttribute('title', 'Instagram')
+    expect(screen.getByRole('img')).toHaveAttribute('name', 'Instagram')
   })
 })

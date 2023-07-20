@@ -21,7 +21,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Footer component
+### USWDS 3.0 Footer component
 
 Source: https://designsystem.digital.gov/components/footer
 `,

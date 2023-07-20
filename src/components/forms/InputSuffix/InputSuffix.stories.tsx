@@ -1,5 +1,6 @@
 import React from 'react'
 import { InputSuffix } from './InputSuffix'
+import { InputGroup } from '../InputGroup/InputGroup'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { TextInput } from '../TextInput/TextInput'
 import { Icon } from '../../Icon/Icons'
@@ -11,7 +12,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 InputSuffix component
+### USWDS 3.0 InputSuffix component
 
 Source: https://designsystem.digital.gov/components/input-prefix-suffix/
 `,
@@ -22,18 +23,18 @@ Source: https://designsystem.digital.gov/components/input-prefix-suffix/
 
 export const InputWithIconInputSuffix = (): React.ReactElement => (
   <FormGroup>
-    <div className="usa-input-group">
+    <InputGroup>
       <TextInput id="search" name="search" type="search" />
       <InputSuffix>
         <Icon.Search />
       </InputSuffix>
-    </div>
+    </InputGroup>
   </FormGroup>
 )
 
 export const InputWithIconInputSuffixError = (): React.ReactElement => (
   <FormGroup>
-    <div className="usa-input-group usa-input-group--error">
+    <InputGroup error>
       <TextInput
         id="search"
         name="search"
@@ -43,15 +44,15 @@ export const InputWithIconInputSuffixError = (): React.ReactElement => (
       <InputSuffix>
         <Icon.Search />
       </InputSuffix>
-    </div>
+    </InputGroup>
   </FormGroup>
 )
 
 export const InputWithTextInputSuffix = (): React.ReactElement => (
   <FormGroup>
-    <div className="usa-input-group usa-input-group--sm">
+    <InputGroup>
       <TextInput id="weight" name="weight" type="text" />
       <InputSuffix>lbs.</InputSuffix>
-    </div>
+    </InputGroup>
   </FormGroup>
 )
