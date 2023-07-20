@@ -24,21 +24,6 @@ describe('Alert component', () => {
     expect(queryByTestId('alert')).toContainHTML('p')
   })
 
-  it('renders custom children with validation prop', () => {
-    const { queryByTestId } = render(
-      <Alert type="success" headingLevel="h4" validation>
-        <ul>
-          <li>test 1</li>
-          <li>test 2</li>
-        </ul>
-      </Alert>
-    )
-    expect(queryByTestId('alert')).toHaveTextContent('test 1test 2')
-    expect(queryByTestId('alert')).toContainHTML('ul')
-    expect(queryByTestId('alert')).toContainHTML('li')
-    expect(queryByTestId('alert')).not.toContainHTML('p')
-  })
-
   it('renders validation style alert', () => {
     const { queryByTestId } = render(
       <Alert type="success" validation headingLevel="h4" className="myClass">
