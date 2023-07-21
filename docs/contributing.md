@@ -25,7 +25,9 @@ We welcome contributions in the form of comments, issues, or pull requests with 
 
 ## Environment setup
 
-1. Use the node environment manager of your choice, but make sure you have the required version specified in `.node-version`. We recommend using [nodenv](https://github.com/nodenv/nodenv) to manage your node versions, but you can also use [homebrew](https://brew.sh/). More info can be found here: [how to install Node.js](https://nodejs.dev/how-to-install-nodejs)
+1. Use the node environment manager of your choice, but make sure you have the required version specified by the project.
+   - The version required by the project can be found in [`.node-version`](../.node-version) or [`.tool-versions`](../.tool-versions). 
+   - We recommend using [nodenv](https://github.com/nodenv/nodenv) OR [asdf](https://asdf-vm.com/) to manage your node versions, but not both. If you already have a preferred node version manager installed, use it.
 
 2. Use [yarn](https://yarnpkg.com) to manage JS packages.
 
