@@ -80,13 +80,9 @@ export const nameForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
     <Fieldset legend="Name" legendStyle="large">
       <Label htmlFor="first-name">First or given name</Label>
-      <span className="usa-hint">
-        For example, Jose, Darren, or Mai
-      </span>
+      <span className="usa-hint">For example, Jose, Darren, or Mai</span>
       <TextInput id="first-name" name="first-name" type="text" />
-      <Label htmlFor="middle-name">
-        Middle name
-      </Label>
+      <Label htmlFor="middle-name">Middle name</Label>
       <TextInput id="middle-name" name="middle-name" type="text" />
       <Label htmlFor="last-name">Last or family name</Label>
       <span className="usa-hint">
@@ -115,30 +111,31 @@ export const addressForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit} large>
     <Fieldset legend="Mailing address" legendStyle="large">
       <p>
-        Required fields are marked with an asterisk (<abbr
-          title="required"
-          className="usa-hint usa-hint--required"
-          >*</abbr>).
+        Required fields are marked with an asterisk (
+        <abbr title="required" className="usa-hint usa-hint--required">
+          *
+        </abbr>
+        ).
       </p>
       <Label htmlFor="mailing-address-1">Street address</Label>
       <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
 
-      <Label htmlFor="mailing-address-2">
-        Street address line 2
-      </Label>
+      <Label htmlFor="mailing-address-2">Street address line 2</Label>
       <TextInput id="mailing-address-2" name="mailing-address-2" type="text" />
 
-      <Label htmlFor="city">City <abbr
-        title="required"
-        className="usa-hint usa-hint--required"
-        >*</abbr>
+      <Label htmlFor="city">
+        City{' '}
+        <abbr title="required" className="usa-hint usa-hint--required">
+          *
+        </abbr>
       </Label>
       <TextInput id="city" name="city" type="text" required />
 
-      <Label htmlFor="state">State, territory, or military post <abbr
-        title="required"
-        className="usa-hint usa-hint--required"
-        >*</abbr>
+      <Label htmlFor="state">
+        State, territory, or military post{' '}
+        <abbr title="required" className="usa-hint usa-hint--required">
+          *
+        </abbr>
       </Label>
       <Dropdown id="state" name="state" required>
         <option>- Select -</option>
