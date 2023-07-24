@@ -35,13 +35,7 @@ export const withHint = (): React.ReactElement => (
 )
 
 export const withRequiredMarker = (): React.ReactElement => (
-  <>
-    <p>
-      Required fields are marked with an asterisk (<RequiredMarker />
-      ).
-    </p>
-    <Label htmlFor="testInputRequired" requiredMarker>
-      Text input
-    </Label>
-  </>
+  <Label htmlFor="testInputRequired" requiredMarker>
+    Text input
+  </Label>
 )

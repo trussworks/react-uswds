@@ -9,6 +9,7 @@ import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 import { Fieldset } from '../Fieldset/Fieldset'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
+import { RequiredMarker } from '../Label/RequiredMarker'
 import { TextInput } from '../TextInput/TextInput'
 import { Textarea } from '../Textarea/Textarea'
 
@@ -98,6 +99,10 @@ export const nameForm = (): React.ReactElement => (
 export const addressForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit} large>
     <Fieldset legend="Mailing address" legendStyle="large">
+      <p>
+        Required fields are marked with an asterisk (<RequiredMarker />
+        ).
+      </p>
       <Label htmlFor="mailing-address-1">Street address 1</Label>
       <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
 
@@ -108,11 +113,15 @@ export const addressForm = (): React.ReactElement => (
 
       <div className="grid-row grid-gap">
         <div className="mobile-lg:grid-col-8">
-          <Label htmlFor="city">City</Label>
+          <Label htmlFor="city" requiredMarker>
+            City
+          </Label>
           <TextInput id="city" name="city" type="text" />
         </div>
         <div className="mobile-lg:grid-col-4">
-          <Label htmlFor="state">State</Label>
+          <Label htmlFor="state" requiredMarker>
+            State
+          </Label>
           <Dropdown id="state" name="state">
             <option>- Select -</option>
             <option value="AL">Alabama</option>
