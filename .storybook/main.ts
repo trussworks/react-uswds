@@ -83,7 +83,7 @@ module.exports = {
     options: { strictMode: false },
   },
   docs: {
-    autodocs: true,
+    autodocs: 'tag',
   },
   staticDirs: ['./public'],
 } as StorybookConfig
