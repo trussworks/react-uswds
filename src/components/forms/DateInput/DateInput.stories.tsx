@@ -58,7 +58,7 @@ export const yearDateInput = (): React.ReactElement => (
 export const dateOfBirthExample = (): React.ReactElement => (
   <Fieldset legend="Date of birth">
     <span className="usa-hint" id="dateOfBirthHint">
-      For example: 4 28 1986
+      For example: April 28 1986
     </span>
     <DateInputGroup>
       <FormGroup className="usa-form-group--month usa-form-group--select">
