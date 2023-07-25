@@ -75,6 +75,14 @@ const webpackConfig = (config) => {
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+    },
+  },
   webpackFinal: async (config) => {
     return webpackConfig(config)
   },
