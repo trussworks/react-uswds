@@ -54,6 +54,8 @@ export const SocialLink = ({
   }
 
   return (
-    <a className="usa-social-link" {...props} title={name}>{icon}</a>
+    <a className="usa-social-link" {...props} title={name}>
+      {icon}
+    </a>
   )
 }

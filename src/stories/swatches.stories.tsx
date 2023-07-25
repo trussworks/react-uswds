@@ -2,11 +2,11 @@ import React from 'react'
 
 export default {
   title: 'Design tokens/Swatches',
-  parameters: { 
-    options: { 
-      showPanel: false
-    }
-  }
+  parameters: {
+    options: {
+      showPanel: false,
+    },
+  },
 }
 
 export const BackgroundColors = (): React.ReactElement => (

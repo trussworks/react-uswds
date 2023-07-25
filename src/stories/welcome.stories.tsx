@@ -4,9 +4,9 @@ export default {
   title: 'Welcome',
   parameters: {
     options: {
-      showPanel: false
-    }
-  }
+      showPanel: false,
+    },
+  },
 }
 
 export const Welcome = (): React.ReactElement => {
@@ -43,7 +43,10 @@ export const Welcome = (): React.ReactElement => {
       </div>
       <div className="display-flex flex-align-center flex-justify-center padding-top-4">
         <div className="margin-right-3" style={{ width: '150px' }}>
-          <img src="/uswds.svg" alt="USWDS logo" />
+          <img 
+            src="/uswds.svg" 
+            alt="USWDS logo" 
+          />
         </div>
         <div>
           <h1 className="margin-y-0" style={{ maxWidth: '527px' }}>
@@ -52,7 +55,17 @@ export const Welcome = (): React.ReactElement => {
         </div>
       </div>
       <p className="line-height-sans-4">
-        This is a frontend component library built by <a href="https://truss.works">Truss</a>, using <a href="https://reactjs.org/">React</a> with <a href="https://www.typescriptlang.org/">Typescript</a>, based on design patterns defined by the <a href="https://designsystem.digital.gov/">United States Web Design System (USWDS)</a>. Our primary goal is to document and provide common UI components following the USWDS specification. This library removes a significant amount of overhead UI development for projects based on this standard.
+        This is a frontend component library built by{' '}
+        <a href="https://truss.works">Truss</a>, using{' '}
+        <a href="https://reactjs.org/">React</a> with{' '}
+        <a href="https://www.typescriptlang.org/">Typescript</a>, based on
+        design patterns defined by the{' '}
+        <a href="https://designsystem.digital.gov/">
+          United States Web Design System (USWDS)
+        </a>
+        . Our primary goal is to document and provide common UI components
+        following the USWDS specification. This library removes a significant
+        amount of overhead UI development for projects based on this standard.
       </p>
       <h2 className="margin-bottom-0">See also</h2>
       <ul>

@@ -2,10 +2,10 @@ import React from 'react'
 
 export default {
   title: 'Components/Typography/Type Styles',
-  parameters: { 
-    options: { 
-      showPanel: false
-    }
+  parameters: {
+    options: {
+      showPanel: false,
+    },
   },
 }
 
