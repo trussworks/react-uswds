@@ -124,6 +124,7 @@
   "resolutions": {
     "loader-utils": "2.0.4",
     "parse-url": "8.1.0",
+    "jackspeak": "2.1.1",
     "json-schema": "0.4.0",
     "glob-parent": "5.1.2",
     "trim": "0.0.3",
