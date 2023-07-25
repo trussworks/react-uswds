@@ -211,18 +211,17 @@ export const signInForm = (): React.ReactElement => {
           name="password-sign-in"
           type={showPassword ? 'text' : 'password'}
         />
-        <p className="usa-form__note">
-          <a
-            title="Show password"
-            href="javascript:void(0);"
-            className="usa-show-password"
-            aria-controls="password-sign-in"
-            onClick={(): void =>
-              setShowPassword((showPassword) => !showPassword)
-            }>
-            {showPassword ? 'Hide password' : 'Show password'}
-          </a>
-        </p>
+        <Button
+          title="Show password"
+          type="button"
+          unstyled
+          className="usa-show-password"
+          aria-controls="password-sign-in"
+          onClick={(): void =>
+            setShowPassword((showPassword) => !showPassword)
+          }>
+          {showPassword ? 'Hide password' : 'Show password'}
+        </Button>
 
         <Button type="submit">Sign in</Button>
         <p>
@@ -265,17 +264,16 @@ export const passwordResetForm = (): React.ReactElement => {
           name="confirmPassword"
           type={showPassword ? 'text' : 'password'}
         />
-        <p className="usa-form__note">
-          <a
-            href="javascript:void(0);"
-            className="usa-show-multipassword"
-            aria-controls="newPassword confirmPassword"
-            onClick={(): void =>
-              setShowPassword((showPassword) => !showPassword)
-            }>
-            {showPassword ? 'Hide my typing' : 'Show my typing'}
-          </a>
-        </p>
+        <Button
+          type="button"
+          unstyled
+          className="usa-show-password"
+          aria-controls="newPassword confirmPassword"
+          onClick={(): void =>
+            setShowPassword((showPassword) => !showPassword)
+          }>
+          {showPassword ? 'Hide my typing' : 'Show my typing'}
+        </Button>
 
         <Button type="submit">Reset password</Button>
       </Fieldset>
