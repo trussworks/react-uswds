@@ -19,7 +19,7 @@ If you want to use USWDS SCSS (mixins, functions, variables, etc.), you will nee
 @use 'uswds-core' with (
   $theme-image-path: '@uswds/uswds/img',
   $theme-font-path: '@uswds/uswds/fonts',
-  $theme-hero-image: '@uswds/uswds/img/hero.png'
+  $theme-hero-image: '@uswds/uswds/img/hero.jpg'
 );
 ```
 
@@ -66,7 +66,7 @@ You can also customize any of the variables used in USWDS SCSS in the `your-proj
   $theme-grid-container-max-width: 'desktop-lg',
 
   <!-- COMPONENTS -->
-  $theme-hero-image: '@uswds/uswds/img/hero.png',
+  $theme-hero-image: '@uswds/uswds/img/hero.jpg',
 );
 ```
 
