@@ -37,7 +37,7 @@ const TRIANGLE_SIZE = 5
 
 export function Tooltip(props: DefaultTooltipProps): ReactElement
 export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
-export function Tooltip<FCProps = DefaultTooltipProps>(
+export function Tooltip<FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps>(
   props: DefaultTooltipProps | CustomTooltipProps<FCProps>
 ): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
