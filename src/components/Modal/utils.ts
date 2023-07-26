@@ -46,7 +46,7 @@ export const useModal = (isInitiallyOpen?: boolean): ModalHook => {
 
 export const getScrollbarWidth = (): string => {
   // Only run in browser
-  if (typeof document !== "undefined") {
+  if (typeof document !== 'undefined') {
     const outer = document.createElement('div')
 
     outer.setAttribute(

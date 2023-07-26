@@ -73,7 +73,7 @@ export const defaultModal = {
         </ModalWindow>
       </ModalWrapper>
     )
-  }
+  },
 }
 
 export const largeModal = {
@@ -117,7 +117,7 @@ export const largeModal = {
         </ModalWindow>
       </ModalWrapper>
     )
-  }
+  },
 }
 
 export const forceActionModal = {
@@ -163,5 +163,5 @@ export const forceActionModal = {
         </ModalWindow>
       </ModalWrapper>
     )
-  }
+  },
 }

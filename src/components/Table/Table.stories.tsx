@@ -349,7 +349,7 @@ export const striped = {
       caption="This is a striped table">
       {testContent}
     </Table>
-  )
+  ),
 }
 
 export const compact = {
@@ -361,7 +361,7 @@ export const compact = {
       caption="This is a compact table">
       {testContent}
     </Table>
-  )
+  ),
 }
 
 export const stackedStylesDemo = {
@@ -406,5 +406,5 @@ export const stackedStylesDemo = {
     viewport: {
       defaultViewport: 'iphone6',
     },
-  }
+  },
 }

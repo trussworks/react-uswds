@@ -271,5 +271,5 @@ export const allIcons = {
       <Icon.ZoomOutMap {...args} />
       <Icon.ZoomOut {...args} />
     </div>
-  )
+  ),
 }

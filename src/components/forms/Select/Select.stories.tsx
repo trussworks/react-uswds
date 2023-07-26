@@ -42,7 +42,7 @@ const Template: StoryFn<typeof Select> = (args) => (
 
 export const Default = {
   render: Template,
-  args: { id: 'input-select', name: 'input-select' }
+  args: { id: 'input-select', name: 'input-select' },
 }
 
 export const WithDefaultValue = {
@@ -52,7 +52,7 @@ export const WithDefaultValue = {
     id: 'input-select',
     name: 'input-select',
     defaultValue: 'value2',
-  }
+  },
 }
 
 export const Disabled = {
@@ -62,7 +62,7 @@ export const Disabled = {
     id: 'input-select',
     name: 'input-select',
     disabled: true,
-  }
+  },
 }
 
 export const WithLabel = () => (

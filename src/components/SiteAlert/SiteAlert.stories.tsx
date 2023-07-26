@@ -151,7 +151,7 @@ export const alertWithCustomControls = {
       variant={argTypes.variant}>
       {shortAlertContent}
     </SiteAlert>
-  )
+  ),
 }
 
 export const alertWithStringContent = (): React.ReactElement => (

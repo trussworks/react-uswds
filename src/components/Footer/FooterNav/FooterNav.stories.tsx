@@ -71,5 +71,5 @@ export const BigFooterNav = {
 
   parameters: {
     happo: { waitForContent: 'Secondary link that is pretty long' },
-  }
+  },
 }

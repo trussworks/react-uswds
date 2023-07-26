@@ -44,7 +44,7 @@ export const completeTimePicker = {
         disabled={argTypes.disabled}
       />
     </Form>
-  )
+  ),
 }
 
 export const defaultTimePicker = {
@@ -57,7 +57,7 @@ export const defaultTimePicker = {
         disabled={argTypes.disabled}
       />
     </Form>
-  )
+  ),
 }
 
 export const withMinAndMaxTimes = {
@@ -74,7 +74,7 @@ export const withMinAndMaxTimes = {
         disabled={argTypes.disabled}
       />
     </Form>
-  )
+  ),
 }
 
 export const withDefaultValue = {
@@ -90,5 +90,5 @@ export const withDefaultValue = {
         disabled={argTypes.disabled}
       />
     </Form>
-  )
+  ),
 }
