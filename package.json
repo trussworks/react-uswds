@@ -26,6 +26,7 @@
     "test:coverage": "jest --coverage",
     "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "storybook dev -p 9009",
+    "build-storybook": "storybook build",
     "build": "tsc -p tsconfig.build.json && webpack --progress",
     "build:watch": "tsc -p tsconfig.build.json && webpack --watch",
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
