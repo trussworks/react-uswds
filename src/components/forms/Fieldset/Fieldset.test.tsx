@@ -26,6 +26,13 @@ describe('Fieldset component', () => {
     expect(myFieldset).toHaveAttribute('aria-live', 'polite')
   })
 
+  it('renders with required marker', () => {
+    const { queryByText } = render(<Fieldset legend="Historical figures 1" requiredMarker>My Fieldset</Fieldset>)
+    const marker = queryByText('*')
+    expect(marker).toBeInTheDocument()
+    expect(marker).toHaveClass('usa-hint--required')
+  })
+
   describe('renders uswds classes', () => {
     it('renders legend with class usa-legend by default', () => {
       const { queryByTestId, getByText } = render(
