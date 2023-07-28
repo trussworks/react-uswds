@@ -341,62 +341,70 @@ export const scrollable = (): React.ReactElement => (
   </>
 )
 
-export const striped = (argTypes: StorybookArguments): React.ReactElement => (
-  <Table striped bordered={argTypes.bordered} caption="This is a striped table">
-    {testContent}
-  </Table>
-)
+export const striped = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table
+      striped
+      bordered={argTypes.bordered}
+      caption="This is a striped table">
+      {testContent}
+    </Table>
+  ),
+}
 
-export const compact = (argTypes: StorybookArguments): React.ReactElement => (
-  <Table
-    compact
-    bordered={argTypes.bordered}
-    striped={argTypes.striped}
-    caption="This is a compact table">
-    {testContent}
-  </Table>
-)
+export const compact = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table
+      compact
+      bordered={argTypes.bordered}
+      striped={argTypes.striped}
+      caption="This is a compact table">
+      {testContent}
+    </Table>
+  ),
+}
 
-export const stackedStylesDemo = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Table
-    bordered={argTypes.bordered}
-    stackedStyle={argTypes.stackedStyle}
-    caption="This is a stacked table (when on a mobile-width screen)">
-    <thead>
-      <tr>
-        <th scope="col">Document title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Year</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th data-label="Document title" scope="row">
-          Declaration of Independence
-        </th>
-        <td data-label="Description">
-          Statement adopted by the Continental Congress declaring independence
-          from the British Empire.
-        </td>
-        <td data-label="Year">1776</td>
-      </tr>
-      <tr>
-        <th data-label="Document title" scope="row">
-          Bill of Rights
-        </th>
-        <td data-label="Description">
-          The first ten amendments of the U.S. Constitution guaranteeing rights
-          and freedoms.
-        </td>
-        <td data-label="Year">1791</td>
-      </tr>
-    </tbody>
-  </Table>
-)
-stackedStylesDemo.parameters = {
-  viewport: {
-    defaultViewport: 'iphone6',
+export const stackedStylesDemo = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table
+      bordered={argTypes.bordered}
+      stackedStyle={argTypes.stackedStyle}
+      caption="This is a stacked table (when on a mobile-width screen)">
+      <thead>
+        <tr>
+          <th scope="col">Document title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-label="Document title" scope="row">
+            Declaration of Independence
+          </th>
+          <td data-label="Description">
+            Statement adopted by the Continental Congress declaring independence
+            from the British Empire.
+          </td>
+          <td data-label="Year">1776</td>
+        </tr>
+        <tr>
+          <th data-label="Document title" scope="row">
+            Bill of Rights
+          </th>
+          <td data-label="Description">
+            The first ten amendments of the U.S. Constitution guaranteeing
+            rights and freedoms.
+          </td>
+          <td data-label="Year">1791</td>
+        </tr>
+      </tbody>
+    </Table>
+  ),
+
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone6',
+    },
   },
 }
