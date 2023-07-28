@@ -22,8 +22,8 @@ Source: https://designsystem.digital.gov/components/language-selector/
 type StorybookArguments = {
   small?: boolean
 }
-const voidLink = 'javascript:void()'
-const languages: LanguageDefinition[] = [
+const voidLink = '#test'
+const languagesLink: LanguageDefinition[] = [
   {
     label: 'العربية',
     label_en: 'Arabic',
@@ -67,21 +67,96 @@ const languages: LanguageDefinition[] = [
   },
 ]
 
-export const TwoLanguages = (
+const voidButton = () => console.log('click')
+const languagesButton: LanguageDefinition[] = [
+  {
+    label: 'العربية',
+    label_en: 'Arabic',
+    attr: 'ar',
+    on_click: voidButton,
+  },
+  {
+    label: '简体字',
+    label_en: 'Chinese - Simplified',
+    attr: 'zh',
+    on_click: voidButton,
+  },
+  {
+    label: 'English',
+    attr: 'en',
+    on_click: voidButton,
+  },
+  {
+    label: 'Español',
+    label_en: 'Spanish',
+    attr: 'es',
+    on_click: voidButton,
+  },
+  {
+    label: 'Français',
+    label_en: 'French',
+    attr: 'fr',
+    on_click: voidButton,
+  },
+  {
+    label: 'Italiano',
+    label_en: 'Italian',
+    attr: 'it',
+    on_click: voidButton,
+  },
+  {
+    label: 'Pусский',
+    label_en: 'Russian',
+    attr: 'ru',
+    on_click: voidButton,
+  },
+]
+
+export const TwoLanguagesAsALink = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <LanguageSelector
-    langs={[languages[2], languages[3]]}
+    langs={[languagesLink[2], languagesLink[3]]}
     small={argTypes.small}
   />
 )
 
-export const MoreThanTwoLanguages = (
+export const TwoLanguagesAsAButton = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <LanguageSelector
-    langs={languages}
+    langs={[languagesButton[2], languagesButton[3]]}
+    small={argTypes.small}
+  />
+)
+
+export const MoreThanTwoLanguagesAsALink = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
+  <LanguageSelector
+    langs={languagesLink}
     label="Languages"
     small={argTypes.small}
+  />
+)
+
+export const MoreThanTwoLanguagesAsAButton = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
+  <LanguageSelector
+    langs={languagesButton}
+    label="Languages"
+    small={argTypes.small}
+  />
+)
+
+export const CustomClass = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
+  <LanguageSelector
+    langs={languagesLink}
+    label="Languages"
+    small={argTypes.small}
+    className="usa-button--unstyled"
   />
 )

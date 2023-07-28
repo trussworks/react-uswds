@@ -7,7 +7,7 @@ export type LanguageDefinition = {
   label: string
   label_en?: string
   attr: string
-  on_click: string
+  on_click: string | (() => void)
 }
 
 type LanguageSelectorProps = {
@@ -39,20 +39,32 @@ export const LanguageSelector = ({
     for (let i = 0; i < langs.length; i++) {
       // eslint-disable-next-line security/detect-object-injection
       const lang: LanguageDefinition = langs[i]
-      items.push(
-        <a href={lang.on_click} key={lang.attr}>
-          <span lang={lang.attr}>
-            <strong>{lang.label}</strong>
-          </span>
-          {lang.label_en && ` (${lang.label_en})`}
-        </a>
-      )
+      if (typeof lang.on_click === 'string') {
+        items.push(
+          <a href={lang.on_click} data-testid={lang.attr}>
+            <span lang={lang.attr}>
+              <strong>{lang.label}</strong>
+            </span>
+            {lang.label_en && ` (${lang.label_en})`}
+          </a>
+        )
+      } else {
+        items.push(
+          <button onClick={lang.on_click} data-testid={lang.attr}>
+            <span lang={lang.attr}>
+              <strong>{lang.label}</strong>
+            </span>
+            {lang.label_en && ` (${lang.label_en})`}
+          </button>
+        )
+      }
     }
     return (
       <div className={classes} data-testid="languageSelector" {...divProps}>
         <ul className="usa-language__primary usa-accordion">
           <li className="usa-language__primary-item">
             <LanguageSelectorButton
+              className={classes}
               label={label || langs[0].label}
               isOpen={isOpen}
               onToggle={() => {
@@ -78,6 +90,9 @@ export const LanguageSelector = ({
     const curLang = langs[Number(langIndex)]
     const curLangNotEn =
       curLang.attr && curLang.attr !== 'en' ? curLang.attr : undefined
+    const onClickString: string = (typeof(curLang.on_click) === 'string') ? curLang.on_click : ''
+    const onClick = (typeof(curLang.on_click) === 'string') ?
+      () => {window.location.assign(onClickString)} : curLang.on_click
     return (
       <div className={classes} data-testid="languageSelector" {...divProps}>
         <LanguageSelectorButton
@@ -85,6 +100,7 @@ export const LanguageSelector = ({
           label={curLang.label}
           labelAttr={curLangNotEn}
           onToggle={() => {
+            onClick()
             setLangIndex((prevLangIndex) => !prevLangIndex)
           }}
         />
