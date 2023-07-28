@@ -26,7 +26,7 @@ const languages: LanguageDefinition[] = [
   },
 ]
 
-const voidButton = jest.fn();
+const voidButton = jest.fn()
 const languagesButton: LanguageDefinition[] = [
   {
     label: 'العربية',
@@ -101,7 +101,7 @@ describe('LanguageSelector component', () => {
       )
       fireEvent.click(getByTestId('languageSelectorButton'))
       fireEvent.click(getByTestId('languageSelectorButton'))
-      expect(voidButton).toHaveBeenCalledTimes(2);
+      expect(voidButton).toHaveBeenCalledTimes(2)
     })
   })
 
@@ -134,11 +134,20 @@ describe('LanguageSelector component', () => {
           <LanguageSelector langs={languages} label="Languages" />
         )
         fireEvent.click(getByTestId('languageSelectorButton'))
-        expect(getByTestId(languages[0].attr)).toHaveAttribute('href',languages[0].on_click)
-        expect(getByTestId(languages[1].attr)).toHaveAttribute('href',languages[0].on_click)
-        expect(getByTestId(languages[2].attr)).toHaveAttribute('href',languages[0].on_click)
+        expect(getByTestId(languages[0].attr)).toHaveAttribute(
+          'href',
+          languages[0].on_click
+        )
+        expect(getByTestId(languages[1].attr)).toHaveAttribute(
+          'href',
+          languages[0].on_click
+        )
+        expect(getByTestId(languages[2].attr)).toHaveAttribute(
+          'href',
+          languages[0].on_click
+        )
       })
-  
+
       it('are buttons', () => {
         const { getByTestId } = render(
           <LanguageSelector langs={languagesButton} label="Languages" />
@@ -147,7 +156,7 @@ describe('LanguageSelector component', () => {
         fireEvent.click(getByTestId(languagesButton[0].attr))
         fireEvent.click(getByTestId(languagesButton[1].attr))
         fireEvent.click(getByTestId(languagesButton[2].attr))
-        expect(voidButton).toHaveBeenCalledTimes(5); //3 here and 2 above
+        expect(voidButton).toHaveBeenCalledTimes(5) //3 here and 2 above
       })
     })
   })

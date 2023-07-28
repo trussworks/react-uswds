@@ -90,9 +90,14 @@ export const LanguageSelector = ({
     const curLang = langs[Number(langIndex)]
     const curLangNotEn =
       curLang.attr && curLang.attr !== 'en' ? curLang.attr : undefined
-    const onClickString: string = (typeof(curLang.on_click) === 'string') ? curLang.on_click : ''
-    const onClick = (typeof(curLang.on_click) === 'string') ?
-      () => {window.location.assign(onClickString)} : curLang.on_click
+    const onClickString: string =
+      typeof curLang.on_click === 'string' ? curLang.on_click : ''
+    const onClick =
+      typeof curLang.on_click === 'string'
+        ? () => {
+            window.location.assign(onClickString)
+          }
+        : curLang.on_click
     return (
       <div className={classes} data-testid="languageSelector" {...divProps}>
         <LanguageSelectorButton
