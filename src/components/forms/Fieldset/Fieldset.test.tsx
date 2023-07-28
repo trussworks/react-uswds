@@ -27,7 +27,11 @@ describe('Fieldset component', () => {
   })
 
   it('renders with required marker', () => {
-    const { queryByText } = render(<Fieldset legend="Historical figures 1" requiredMarker>My Fieldset</Fieldset>)
+    const { queryByText } = render(
+      <Fieldset legend="Historical figures 1" requiredMarker>
+        My Fieldset
+      </Fieldset>
+    )
     const marker = queryByText('*')
     expect(marker).toBeInTheDocument()
     expect(marker).toHaveClass('usa-hint--required')
