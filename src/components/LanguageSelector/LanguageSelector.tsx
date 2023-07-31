@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { Menu } from '../header/Menu/Menu'
 import { LanguageSelectorButton } from './LanguageSelectorButton'
+import { Button } from '../Button/Button'
 
 export type LanguageDefinition = {
   label: string
@@ -50,12 +51,16 @@ export const LanguageSelector = ({
         )
       } else {
         items.push(
-          <button onClick={lang.on_click} data-testid={lang.attr}>
+          <Button
+            onClick={lang.on_click}
+            data-testid={lang.attr}
+            type="button"
+            unstyled>
             <span lang={lang.attr}>
               <strong>{lang.label}</strong>
             </span>
             {lang.label_en && ` (${lang.label_en})`}
-          </button>
+          </Button>
         )
       }
     }
