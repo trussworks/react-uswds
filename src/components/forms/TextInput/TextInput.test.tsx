@@ -11,6 +11,20 @@ describe('TextInput component', () => {
     expect(queryByTestId('textInput')).toBeInTheDocument()
   })
 
+  describe('masking features', () => {
+    it('renders mask class', () => {
+      const { queryByTestId } = render(
+        <TextInput
+          id="input-type-text"
+          name="input-type-text"
+          type="text"
+          masked
+        />
+      )
+      expect(queryByTestId('textInput')).toHaveClass('usa-masked')
+    })
+  })
+
   describe('renders inputSize classes', () => {
     beforeEach(() => {
       jest.clearAllMocks()

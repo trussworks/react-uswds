@@ -20,6 +20,7 @@ type CustomTextInputProps = {
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
   inputRef?: TextInputRef
+  masked?: boolean
   inputProps?: JSX.IntrinsicElements['input']
 }
 
@@ -36,6 +37,7 @@ export const TextInput = ({
   validationStatus,
   inputSize,
   inputRef,
+  masked,
   ...inputProps
 }: TextInputProps): React.ReactElement => {
   const isError = validationStatus === 'error'
@@ -50,6 +52,7 @@ export const TextInput = ({
       'usa-input--success': isSuccess,
       'usa-input--small': isSmall,
       'usa-input--medium': isMedium,
+      'usa-masked': masked,
     },
     className
   )

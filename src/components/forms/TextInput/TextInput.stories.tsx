@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextInput } from './TextInput'
+import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/Text input',
@@ -11,6 +12,8 @@ export default {
 ### USWDS 3.0 TextInput component
 
 Source: https://designsystem.digital.gov/components/text-input
+
+Also includes [input-masks](https://designsystem.digital.gov/components/input-mask/) as a property of our text-input component
 `,
       },
     },
@@ -67,4 +70,65 @@ export const readonly = (): React.ReactElement => (
 
 export const password = (): React.ReactElement => (
   <TextInput id="input-type-text" name="input-type-text" type="password" />
+)
+
+export const inputMask = (): React.ReactElement => (
+  <>
+    <Label htmlFor="first-name">Social Security Number</Label>
+    <span id="hint-ssn" className="usa-hint">
+      For example, 123 45 6789
+    </span>
+    <TextInput
+      id="input-type-ssn"
+      name="input-type-ssn"
+      type="text"
+      aria-describedby="hint-ssn"
+      masked
+      placeholder="___ __ ____"
+      pattern="^(?!(000|666|9))\d{3} (?!00)\d{2} (?!0000)\d{4}$"
+    />
+
+    <Label htmlFor="first-name">US Telephone Number</Label>
+    <span id="hint-tel" className="usa-hint">
+      For example, 123-456-7890
+    </span>
+    <TextInput
+      id="input-type-tel"
+      name="input-type-tel"
+      type="tel"
+      aria-describedby="hint-tel"
+      masked
+      placeholder="___-___-____"
+      pattern="\d{3}-\d{3}-\d{4}"
+    />
+
+    <Label htmlFor="first-name">ZIP Code</Label>
+    <span id="hint-zip" className="usa-hint">
+      For example, 12345-6789
+    </span>
+    <TextInput
+      id="input-type-zip"
+      name="input-type-zip"
+      type="text"
+      aria-describedby="hint-zip"
+      masked
+      placeholder="_____-____"
+      pattern="^[0-9]{5}(?:-[0-9]{4})?$"
+    />
+
+    <Label htmlFor="first-name">Alphanumeric</Label>
+    <span id="hint-alphanumeric" className="usa-hint">
+      For example, A1B 2C3
+    </span>
+    <TextInput
+      id="input-type-alphanumeric"
+      name="input-type-alphanumeric"
+      type="text"
+      aria-describedby="hint-alphanumeric"
+      masked
+      placeholder="___ ___"
+      pattern="\w\d\w \d\w\d"
+      data-charset="A#A #A#"
+    />
+  </>
 )
