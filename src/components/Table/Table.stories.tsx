@@ -31,9 +31,11 @@ Source: https://designsystem.digital.gov/components/table/
         type: 'select',
         options: ['default', 'headers'],
       },
-      defaultValue: 'default',
     },
   },
+  args: {
+    stackedStyle: 'default'
+  }
 }
 
 type StorybookArguments = {

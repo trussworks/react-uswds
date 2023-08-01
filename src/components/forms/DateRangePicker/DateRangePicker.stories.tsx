@@ -12,11 +12,9 @@ export default {
     },
     startDatePickerDisabled: {
       control: { type: 'boolean' },
-      defaultValue: false,
     },
     endDatePickerDisabled: {
       control: { type: 'boolean' },
-      defaultValue: false,
     },
   },
   parameters: {
@@ -29,6 +27,10 @@ export default {
       },
     },
   },
+  args: {
+    startDatePickerDisabled: false,
+    endDatePickerDisabled: false
+  }
 }
 
 type StorybookArguments = {

@@ -19,7 +19,6 @@ export default {
         type: 'select',
         options: [undefined, 'success', 'error'],
       },
-      defaultValue: undefined,
     },
   },
   parameters: {

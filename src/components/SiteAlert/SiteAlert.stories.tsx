@@ -33,9 +33,11 @@ Source: http://designsystem.digital.gov/components/site-alert
     variant: {
       options: ['info', 'emergency'],
       control: { type: 'radio' },
-      defaultValue: 'info',
     },
   },
+  args: {
+    variant: 'info'
+  }
 }
 
 type StorybookArguments = {
