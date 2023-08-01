@@ -26,13 +26,13 @@ const voidLink = '#test'
 const languagesLink: LanguageDefinition[] = [
   {
     label: 'العربية',
-    label_en: 'Arabic',
+    label_local: 'Arabic',
     attr: 'ar',
     on_click: voidLink,
   },
   {
     label: '简体字',
-    label_en: 'Chinese - Simplified',
+    label_local: 'Chinese - Simplified',
     attr: 'zh',
     on_click: voidLink,
   },
@@ -43,25 +43,25 @@ const languagesLink: LanguageDefinition[] = [
   },
   {
     label: 'Español',
-    label_en: 'Spanish',
+    label_local: 'Spanish',
     attr: 'es',
     on_click: voidLink,
   },
   {
     label: 'Français',
-    label_en: 'French',
+    label_local: 'French',
     attr: 'fr',
     on_click: voidLink,
   },
   {
     label: 'Italiano',
-    label_en: 'Italian',
+    label_local: 'Italian',
     attr: 'it',
     on_click: voidLink,
   },
   {
     label: 'Pусский',
-    label_en: 'Russian',
+    label_local: 'Russian',
     attr: 'ru',
     on_click: voidLink,
   },
@@ -71,13 +71,13 @@ const voidButton = () => console.log('click')
 const languagesButton: LanguageDefinition[] = [
   {
     label: 'العربية',
-    label_en: 'Arabic',
+    label_local: 'Arabic',
     attr: 'ar',
     on_click: voidButton,
   },
   {
     label: '简体字',
-    label_en: 'Chinese - Simplified',
+    label_local: 'Chinese - Simplified',
     attr: 'zh',
     on_click: voidButton,
   },
@@ -88,25 +88,25 @@ const languagesButton: LanguageDefinition[] = [
   },
   {
     label: 'Español',
-    label_en: 'Spanish',
+    label_local: 'Spanish',
     attr: 'es',
     on_click: voidButton,
   },
   {
     label: 'Français',
-    label_en: 'French',
+    label_local: 'French',
     attr: 'fr',
     on_click: voidButton,
   },
   {
     label: 'Italiano',
-    label_en: 'Italian',
+    label_local: 'Italian',
     attr: 'it',
     on_click: voidButton,
   },
   {
     label: 'Pусский',
-    label_en: 'Russian',
+    label_local: 'Russian',
     attr: 'ru',
     on_click: voidButton,
   },

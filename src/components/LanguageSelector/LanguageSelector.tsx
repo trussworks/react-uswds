@@ -6,7 +6,7 @@ import { Button } from '../Button/Button'
 
 export type LanguageDefinition = {
   label: string
-  label_en?: string
+  label_local?: string
   attr: string
   on_click: string | (() => void)
 }
@@ -46,7 +46,7 @@ export const LanguageSelector = ({
             <span lang={lang.attr}>
               <strong>{lang.label}</strong>
             </span>
-            {lang.label_en && ` (${lang.label_en})`}
+            {lang.label_local && ` (${lang.label_local})`}
           </a>
         )
       } else {
@@ -59,7 +59,7 @@ export const LanguageSelector = ({
             <span lang={lang.attr}>
               <strong>{lang.label}</strong>
             </span>
-            {lang.label_en && ` (${lang.label_en})`}
+            {lang.label_local && ` (${lang.label_local})`}
           </Button>
         )
       }
@@ -93,8 +93,6 @@ export const LanguageSelector = ({
       )
     const [langIndex, setLangIndex] = useState(false)
     const curLang = langs[Number(langIndex)]
-    const curLangNotEn =
-      curLang.attr && curLang.attr !== 'en' ? curLang.attr : undefined
     const onClickString: string =
       typeof curLang.on_click === 'string' ? curLang.on_click : ''
     const onClick =
@@ -108,7 +106,6 @@ export const LanguageSelector = ({
         <LanguageSelectorButton
           className={classes}
           label={curLang.label}
-          labelAttr={curLangNotEn}
           onToggle={() => {
             onClick()
             setLangIndex((prevLangIndex) => !prevLangIndex)

@@ -9,13 +9,13 @@ const voidLink = '#test'
 const languages: LanguageDefinition[] = [
   {
     label: 'العربية',
-    label_en: 'Arabic',
+    label_local: 'Arabic',
     attr: 'ar',
     on_click: voidLink,
   },
   {
     label: '简体字',
-    label_en: 'Chinese - Simplified',
+    label_local: 'Chinese - Simplified',
     attr: 'zh',
     on_click: voidLink,
   },
@@ -30,13 +30,13 @@ const voidButton = jest.fn()
 const languagesButton: LanguageDefinition[] = [
   {
     label: 'العربية',
-    label_en: 'Arabic',
+    label_local: 'Arabic',
     attr: 'ar',
     on_click: voidButton,
   },
   {
     label: '简体字',
-    label_en: 'Chinese - Simplified',
+    label_local: 'Chinese - Simplified',
     attr: 'zh',
     on_click: voidButton,
   },
