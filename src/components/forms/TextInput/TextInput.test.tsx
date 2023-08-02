@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { screen, fireEvent, render } from '@testing-library/react'
 import { TextInput } from './TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
 
@@ -12,16 +12,43 @@ describe('TextInput component', () => {
   })
 
   describe('masking features', () => {
-    it('renders mask class', () => {
-      const { queryByTestId } = render(
+    const setup = () => {
+      const utils = render(
         <TextInput
-          id="input-type-text"
-          name="input-type-text"
+          id="input-type-alphanumeric"
+          name="input-type-alphanumeric"
           type="text"
-          masked
+          aria-describedby="hint-alphanumeric"
+          mask="___ ___"
+          pattern="\w\d\w \d\w\d"
+          charset="A#A #A#"
         />
       )
-      expect(queryByTestId('textInput')).toHaveClass('usa-masked')
+      const input = screen.getByTestId('textInput')
+      const mask = screen.getByTestId('input-type-alphanumericMask')
+      return {
+        input,
+        mask,
+        ...utils,
+      }
+    }
+
+    it('renders with class and placeholder', () => {
+      const { input, mask } = setup()
+      expect(input).toHaveClass('usa-masked')
+      expect(mask).toHaveTextContent('___ ___')
+    })
+
+    it('autoformats inputted text', () => {
+      const { input } = setup()
+      fireEvent.change(input, { target: { value: 'A1B2C3' } })
+      expect((input as HTMLInputElement).value).toBe('A1B 2C3')
+    })
+
+    it('rejects entry based on charset', () => {
+      const { input } = setup()
+      fireEvent.change(input, { target: { value: 'A1B 2CC' } })
+      expect((input as HTMLInputElement).value).toBe('A1B 2C')
     })
   })
 

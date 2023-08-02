@@ -1,6 +1,7 @@
 import React from 'react'
 import { TextInput } from './TextInput'
 import { Label } from '../Label/Label'
+import { Form } from '../../..'
 
 export default {
   title: 'Components/Text input',
@@ -73,7 +74,10 @@ export const password = (): React.ReactElement => (
 )
 
 export const inputMask = (): React.ReactElement => (
-  <>
+  <Form
+    onSubmit={(): void => {
+      return
+    }}>
     <Label htmlFor="first-name">Social Security Number</Label>
     <span id="hint-ssn" className="usa-hint">
       For example, 123 45 6789
@@ -83,8 +87,7 @@ export const inputMask = (): React.ReactElement => (
       name="input-type-ssn"
       type="text"
       aria-describedby="hint-ssn"
-      masked
-      placeholder="___ __ ____"
+      mask="___ __ ____"
       pattern="^(?!(000|666|9))\d{3} (?!00)\d{2} (?!0000)\d{4}$"
     />
 
@@ -97,8 +100,7 @@ export const inputMask = (): React.ReactElement => (
       name="input-type-tel"
       type="tel"
       aria-describedby="hint-tel"
-      masked
-      placeholder="___-___-____"
+      mask="___-___-____"
       pattern="\d{3}-\d{3}-\d{4}"
     />
 
@@ -111,8 +113,7 @@ export const inputMask = (): React.ReactElement => (
       name="input-type-zip"
       type="text"
       aria-describedby="hint-zip"
-      masked
-      placeholder="_____-____"
+      mask="_____-____"
       pattern="^[0-9]{5}(?:-[0-9]{4})?$"
     />
 
@@ -125,10 +126,9 @@ export const inputMask = (): React.ReactElement => (
       name="input-type-alphanumeric"
       type="text"
       aria-describedby="hint-alphanumeric"
-      masked
-      placeholder="___ ___"
+      mask="___ ___"
       pattern="\w\d\w \d\w\d"
-      data-charset="A#A #A#"
+      charset="A#A #A#"
     />
-  </>
+  </Form>
 )

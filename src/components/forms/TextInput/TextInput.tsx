@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable security/detect-object-injection */
+import React, { useState } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
@@ -20,7 +21,8 @@ type CustomTextInputProps = {
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
   inputRef?: TextInputRef
-  masked?: boolean
+  mask?: string
+  charset?: string
   inputProps?: JSX.IntrinsicElements['input']
 }
 
@@ -37,7 +39,8 @@ export const TextInput = ({
   validationStatus,
   inputSize,
   inputRef,
-  masked,
+  mask,
+  charset,
   ...inputProps
 }: TextInputProps): React.ReactElement => {
   const isError = validationStatus === 'error'
@@ -52,12 +55,13 @@ export const TextInput = ({
       'usa-input--success': isSuccess,
       'usa-input--small': isSmall,
       'usa-input--medium': isMedium,
-      'usa-masked': masked,
+      'usa-masked': mask,
     },
     className
   )
 
-  return (
+  const [inputValue, setInputValue] = useState('')
+  const input = (
     <input
       data-testid="textInput"
       className={classes}
@@ -65,9 +69,69 @@ export const TextInput = ({
       name={name}
       type={type}
       ref={inputRef}
+      maxLength={
+        inputProps.maxLength || !mask ? inputProps.maxLength : mask.length
+      }
+      onChange={mask ? handleChange : inputProps.onChange}
+      value={mask ? inputValue : inputProps.value}
       {...inputProps}
     />
   )
+
+  const [maskValue, setMaskValue] = useState(mask)
+  const [iValue, setIValue] = useState(<i></i>)
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    const value = e.target.value
+    const maskData = charset || mask
+    if (undefined === maskData) return
+    const strippedValue = charset
+      ? value.replace(/\W/g, '')
+      : value.replace(/\D/g, '')
+    const isInteger = (v: string) => !Number.isNaN(parseInt(v, 10))
+    const isLetter = (v: string) => (v ? v.match(/[A-Z]/i) : false)
+    const maskedNumber = '_#dDmMyY9'
+    const maskedLetter = 'A'
+    let newValue = ''
+    for (let m = 0, v = 0; m < maskData.length; m++) {
+      const isInt = isInteger(strippedValue[v])
+      const isLet = isLetter(strippedValue[v])
+      const matchesNumber = maskedNumber.indexOf(maskData[m]) >= 0
+      const matchesLetter = maskedLetter.indexOf(maskData[m]) >= 0
+      if ((matchesNumber && isInt) || (charset && matchesLetter && isLet)) {
+        newValue += strippedValue[v++]
+      } else if (
+        strippedValue[v] === undefined || // if no characters left and the pattern is non-special character
+        (!charset && !isInt && matchesNumber) ||
+        (charset && ((matchesLetter && !isLet) || (matchesNumber && !isInt)))
+      ) {
+        break
+      } else {
+        newValue += maskData[m]
+      }
+    }
+    const newMaskValue = mask ? mask.substring(newValue.length) : ''
+    setMaskValue(newMaskValue)
+    setIValue(<i>{newValue}</i>)
+    setInputValue(newValue)
+    inputProps.onChange
+  }
+
+  if (mask) {
+    return (
+      <span className="usa-input-mask">
+        <span
+          className="usa-input-mask--content"
+          aria-hidden
+          data-testid={`${id}Mask`}>
+          {iValue}
+          {maskValue}
+        </span>
+        {input}
+      </span>
+    )
+  } else {
+    return input
+  }
 }
 
 export default TextInput
