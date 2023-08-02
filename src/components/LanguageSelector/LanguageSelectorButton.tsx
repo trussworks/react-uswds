@@ -18,7 +18,11 @@ export const LanguageSelectorButton = ({
 }: LanguageSelectorButtonProps &
   JSX.IntrinsicElements['button']): React.ReactElement => {
   const classes = classnames('usa-button', 'usa-language__link', className)
-  const labelNotEn = labelAttr && <span lang={labelAttr}>{label}</span>
+  const buttonContents = labelAttr ? (
+    <span lang={labelAttr}>{label}</span>
+  ) : (
+    label
+  )
   return (
     <button
       data-testid="languageSelectorButton"
@@ -28,7 +32,7 @@ export const LanguageSelectorButton = ({
       onClick={(): void => onToggle()}
       type="button"
       {...buttonProps}>
-      {labelNotEn || label}
+      {buttonContents}
     </button>
   )
 }

@@ -87,10 +87,11 @@ export const LanguageSelector = ({
       </div>
     )
   } else {
-    if (label)
+    if (label) {
       console.warn(
         "LanguageSelector's label is not used when only two languages are available."
       )
+    }
     const [langIndex, setLangIndex] = useState(false)
     const curLang = langs[Number(langIndex)]
     const onClickString: string =
@@ -106,6 +107,7 @@ export const LanguageSelector = ({
         <LanguageSelectorButton
           className={classes}
           label={curLang.label}
+          labelAttr={curLang.attr}
           onToggle={() => {
             onClick()
             setLangIndex((prevLangIndex) => !prevLangIndex)
