@@ -78,7 +78,9 @@ export const inputMask = (): React.ReactElement => (
     onSubmit={(): void => {
       return
     }}>
-    <Label htmlFor="first-name">Social Security Number</Label>
+    <Label id="first-name" htmlFor="first-name">
+      Social Security Number
+    </Label>
     <span id="hint-ssn" className="usa-hint">
       For example, 123 45 6789
     </span>
@@ -86,12 +88,15 @@ export const inputMask = (): React.ReactElement => (
       id="input-type-ssn"
       name="input-type-ssn"
       type="text"
+      aria-labelledby="first-name"
       aria-describedby="hint-ssn"
       mask="___ __ ____"
       pattern="^(?!(000|666|9))\d{3} (?!00)\d{2} (?!0000)\d{4}$"
     />
 
-    <Label htmlFor="first-name">US Telephone Number</Label>
+    <Label id="tel" htmlFor="first-name">
+      US Telephone Number
+    </Label>
     <span id="hint-tel" className="usa-hint">
       For example, 123-456-7890
     </span>
@@ -99,12 +104,15 @@ export const inputMask = (): React.ReactElement => (
       id="input-type-tel"
       name="input-type-tel"
       type="tel"
+      aria-labelledby="tel"
       aria-describedby="hint-tel"
       mask="___-___-____"
       pattern="\d{3}-\d{3}-\d{4}"
     />
 
-    <Label htmlFor="first-name">ZIP Code</Label>
+    <Label id="zip" htmlFor="first-name">
+      ZIP Code
+    </Label>
     <span id="hint-zip" className="usa-hint">
       For example, 12345-6789
     </span>
@@ -112,12 +120,15 @@ export const inputMask = (): React.ReactElement => (
       id="input-type-zip"
       name="input-type-zip"
       type="text"
+      aria-labelledby="zip"
       aria-describedby="hint-zip"
       mask="_____-____"
       pattern="^[0-9]{5}(?:-[0-9]{4})?$"
     />
 
-    <Label htmlFor="first-name">Alphanumeric</Label>
+    <Label id="alphanumeric" htmlFor="first-name">
+      Alphanumeric
+    </Label>
     <span id="hint-alphanumeric" className="usa-hint">
       For example, A1B 2C3
     </span>
@@ -125,6 +136,7 @@ export const inputMask = (): React.ReactElement => (
       id="input-type-alphanumeric"
       name="input-type-alphanumeric"
       type="text"
+      aria-labelledby="alphanumeric"
       aria-describedby="hint-alphanumeric"
       mask="___ ___"
       pattern="\w\d\w \d\w\d"
