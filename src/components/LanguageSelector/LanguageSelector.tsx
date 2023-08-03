@@ -34,8 +34,9 @@ export const LanguageSelector = ({
     className
   )
 
+  const [isOpen, setIsOpen] = useState(false)
+  const [langIndex, setLangIndex] = useState(false)
   if (langs.length > 2) {
-    const [isOpen, setIsOpen] = useState(false)
     const items = []
     for (let i = 0; i < langs.length; i++) {
       // eslint-disable-next-line security/detect-object-injection
@@ -92,7 +93,6 @@ export const LanguageSelector = ({
         "LanguageSelector's label is not used when only two languages are available."
       )
     }
-    const [langIndex, setLangIndex] = useState(false)
     const curLang = langs[Number(langIndex)]
     const onClickString: string =
       typeof curLang.on_click === 'string' ? curLang.on_click : ''
