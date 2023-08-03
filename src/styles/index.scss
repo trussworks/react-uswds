@@ -16,8 +16,24 @@
   display: none;
 }
 
-// This just allows buttons as well as links in the LanguageSelector
+// This just allows buttons as well as links in the LanguageSelector. A more ideal coding for this would just be to `@extend a` here instead of copy-pasting it, but that caused a lint error
 // It can be removed when https://github.com/uswds/uswds/issues/5409 is fixed
+@use 'uswds-core' as *;
+
 .usa-language__submenu .usa-language__submenu-item button {
-  @extend a;
+  color: color('white');
+  display: block;
+  line-height: line-height($theme-navigation-font-family, 3);
+  padding: 0;
+  padding: units(1);
+  text-decoration: none;
+  width: 100%; /* this is something that was actually missing when we were doing the extend because button widths hve different default widths than block element links */
+  &:focus {
+    outline-offset: units('neg-05');
+  }
+
+  &:hover {
+    color: color('white');
+    text-decoration: underline;
+  }
 }
