@@ -29,8 +29,8 @@ export default {
   },
   args: {
     startDatePickerDisabled: false,
-    endDatePickerDisabled: false
-  }
+    endDatePickerDisabled: false,
+  },
 }
 
 type StorybookArguments = {

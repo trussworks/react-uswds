@@ -36,8 +36,8 @@ Source: http://designsystem.digital.gov/components/site-alert
     },
   },
   args: {
-    variant: 'info'
-  }
+    variant: 'info',
+  },
 }
 
 type StorybookArguments = {

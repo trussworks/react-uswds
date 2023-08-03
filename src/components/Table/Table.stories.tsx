@@ -34,8 +34,8 @@ Source: https://designsystem.digital.gov/components/table/
     },
   },
   args: {
-    stackedStyle: 'default'
-  }
+    stackedStyle: 'default',
+  },
 }
 
 type StorybookArguments = {

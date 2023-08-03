@@ -30,7 +30,7 @@ Source: https://designsystem.digital.gov/components/icon/
   },
   args: {
     size: 4,
-  }
+  },
 }
 
 export const accessibilityNew = {
