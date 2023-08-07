@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
-    "@uswds/uswds": "3.1.0",
+    "@uswds/uswds": "3.4.1",
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
@@ -76,7 +76,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "@uswds/uswds": "3.1.0",
+    "@uswds/uswds": "3.4.1",
     "all-contributors-cli": "^6.24.0",
     "babel-jest": "^29.4.3",
     "babel-loader": "^9.1.2",
@@ -85,7 +85,7 @@
     "danger": "^11.2.3",
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-webpack": "^0.13.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",
