@@ -2,6 +2,7 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { TextInput } from './TextInput'
+import { TextInputMask } from './TextInputMask'
 import { ValidationStatus } from '../../../types/validationStatus'
 
 describe('TextInput component', () => {
@@ -15,7 +16,7 @@ describe('TextInput component', () => {
   describe('masking features', () => {
     const setup = () => {
       const utils = render(
-        <TextInput
+        <TextInputMask
           id="input-type-alphanumeric"
           name="input-type-alphanumeric"
           type="text"

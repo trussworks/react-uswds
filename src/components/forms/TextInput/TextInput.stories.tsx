@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextInput } from './TextInput'
+import { TextInputMask } from './TextInputMask'
 import { Label } from '../Label/Label'
 import { Form } from '../../..'
 
@@ -84,7 +85,7 @@ export const inputMask = (): React.ReactElement => (
     <span id="hint-ssn" className="usa-hint">
       For example, 123 45 6789
     </span>
-    <TextInput
+    <TextInputMask
       id="input-type-ssn"
       name="input-type-ssn"
       type="text"
@@ -100,7 +101,7 @@ export const inputMask = (): React.ReactElement => (
     <span id="hint-tel" className="usa-hint">
       For example, 123-456-7890
     </span>
-    <TextInput
+    <TextInputMask
       id="input-type-tel"
       name="input-type-tel"
       type="tel"
@@ -116,7 +117,7 @@ export const inputMask = (): React.ReactElement => (
     <span id="hint-zip" className="usa-hint">
       For example, 12345-6789
     </span>
-    <TextInput
+    <TextInputMask
       id="input-type-zip"
       name="input-type-zip"
       type="text"
@@ -132,7 +133,7 @@ export const inputMask = (): React.ReactElement => (
     <span id="hint-alphanumeric" className="usa-hint">
       For example, A1B 2C3
     </span>
-    <TextInput
+    <TextInputMask
       id="input-type-alphanumeric"
       name="input-type-alphanumeric"
       type="text"
