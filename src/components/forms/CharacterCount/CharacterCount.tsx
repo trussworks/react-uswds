@@ -163,7 +163,7 @@ export const CharacterCount = ({
   return (
     <>
       {InputComponent}
-      <span className="usa-character-count__message usa-sr-only">
+      <span className="usa-sr-only">
         You can enter up to {maxLength} characters
       </span>
       <div
