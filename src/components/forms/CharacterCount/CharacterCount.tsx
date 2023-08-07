@@ -70,18 +70,25 @@ export const CharacterCount = ({
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
+  const [srMessage, setSrMessage] = useState(
+    getMessage(initialCount, maxLength)
+  )
   const [isValid, setIsValid] = useState(initialCount < maxLength)
 
   const classes = classnames('usa-character-count__field', className)
-  const messageClasses = classnames(
-    'usa-hint',
-    'usa-character-count__message',
-    { 'usa-character-count__message--invalid': !isValid }
-  )
+  const messageClasses = classnames('usa-hint', 'usa-character-count__status', {
+    'usa-character-count__status--invalid': !isValid,
+  })
 
   useEffect(() => {
-    setMessage(getMessage(length, maxLength))
+    const message = getMessage(length, maxLength)
+    setMessage(message)
     setIsValid(length <= maxLength)
+    // Updates the character count status for screen readers after a 1000ms
+    const timer = setTimeout(() => {
+      setSrMessage(message)
+    }, 1000)
+    return () => clearTimeout(timer)
   }, [length])
 
   const handleBlur = (
@@ -156,13 +163,21 @@ export const CharacterCount = ({
   return (
     <>
       {InputComponent}
-      <span
-        data-testid="characterCountMessage"
+      <span className="usa-character-count__message usa-sr-only">
+        You can enter up to {maxLength} characters
+      </span>
+      <div
         id={`${id}-info`}
         className={messageClasses}
-        aria-live="polite">
+        aria-hidden="true"
+        data-testid="characterCountMessage">
         {message}
-      </span>
+      </div>
+      <div
+        className="usa-character-count__sr-status usa-sr-only"
+        aria-live="polite">
+        {srMessage}
+      </div>
     </>
   )
 }

@@ -96,7 +96,7 @@ describe('CharacterCount component', () => {
         />
       )
       const message = getByTestId('characterCountMessage')
-      expect(message).toHaveClass('usa-character-count__message')
+      expect(message).toHaveClass('usa-hint usa-character-count__status')
       expect(message).toHaveAttribute('id', 'character-count-id-info')
     })
   })
@@ -202,21 +202,21 @@ describe('CharacterCount component', () => {
         />
       )
       const message = getByTestId('characterCountMessage')
-      expect(message).toHaveClass('usa-character-count__message')
+      expect(message).toHaveClass('usa-character-count__status')
       expect(message).toHaveAttribute('id', 'character-count-info')
     })
   })
 
   describe('with default character count and message', () => {
     it('displays allowed characters when character count is zero', () => {
-      const { getByText } = render(
+      const { getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
           maxLength={20}
         />
       )
-      expect(getByText('20 characters allowed')).toBeInTheDocument()
+      expect(getAllByText('20 characters allowed')[0]).toBeInTheDocument()
     })
 
     it('updates message text with characters left onChange', () => {
@@ -257,7 +257,7 @@ describe('CharacterCount component', () => {
 
       expect(getByText('1 character over limit')).toBeInTheDocument()
       expect(getByText('1 character over limit')).toHaveClass(
-        'usa-character-count__message--invalid'
+        'usa-character-count__status--invalid'
       )
 
       fireEvent.change(input, {
@@ -306,7 +306,7 @@ describe('CharacterCount component', () => {
         target: { value: 'abcdef' },
       })
       expect(getByTestId('characterCountMessage')).toHaveClass(
-        'usa-character-count__message--invalid'
+        'usa-character-count__status--invalid'
       )
 
       fireEvent.change(input, {
@@ -314,7 +314,7 @@ describe('CharacterCount component', () => {
       })
 
       expect(getByTestId('characterCountMessage')).not.toHaveClass(
-        'usa-character-count__message--invalid'
+        'usa-character-count__status--invalid'
       )
     })
   })
@@ -326,7 +326,7 @@ describe('CharacterCount component', () => {
     )
 
     it('renders initially with custom message', () => {
-      const { getByText } = render(
+      const { getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -335,11 +335,11 @@ describe('CharacterCount component', () => {
         />
       )
       expect(customMessage).toHaveBeenCalled()
-      expect(getByText('6 characters remain')).toBeInTheDocument()
+      expect(getAllByText('6 characters remain')[0]).toBeInTheDocument()
     })
 
     it('updates message text onChange', () => {
-      const { getByRole, getByText } = render(
+      const { getByRole, getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -349,13 +349,13 @@ describe('CharacterCount component', () => {
       )
 
       const input = getByRole('textbox')
-      expect(getByText('6 characters remain')).toBeInTheDocument()
+      expect(getAllByText('6 characters remain')[0]).toBeInTheDocument()
 
       fireEvent.change(input, {
         target: { value: 'abcdef' },
       })
 
-      expect(getByText('0 characters remain')).toBeInTheDocument()
+      expect(getAllByText('0 characters remain')[0]).toBeInTheDocument()
     })
   })
 
@@ -365,7 +365,7 @@ describe('CharacterCount component', () => {
     )
 
     it('renders initially with custom character count', () => {
-      const { getByText } = render(
+      const { getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -374,7 +374,7 @@ describe('CharacterCount component', () => {
         />
       )
       expect(customCharacterCount).toHaveBeenCalled()
-      expect(getByText('4 characters left')).toBeInTheDocument()
+      expect(getAllByText('4 characters left')[0]).toBeInTheDocument()
     })
 
     it('updates input validity', () => {
