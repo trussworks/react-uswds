@@ -1,10 +1,22 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { InPageNavigation } from './InPageNavigation'
 
 describe('InPageNavigation component', () => {
+  const setup = () => {
+    const utils = render(<InPageNavigation />)
+    const nav = screen.getByTestId('InPageNavigation')
+    const user = userEvent.setup()
+    return {
+      nav,
+      user,
+      ...utils,
+    }
+  }
+
   it('renders without errors', () => {
-    const { queryByTestId } = render(<InPageNavigation />)
-    expect(queryByTestId('InPageNavigation')).toBeInTheDocument()
+    const { nav } = setup()
+    expect(nav).toBeInTheDocument()
   })
 })
