@@ -163,11 +163,10 @@ export const CharacterCount = ({
   return (
     <>
       {InputComponent}
-      <span className="usa-sr-only">
+      <span className="usa-sr-only" id={`${id}-info`}>
         You can enter up to {maxLength} characters
       </span>
       <div
-        id={`${id}-info`}
         className={messageClasses}
         aria-hidden="true"
         data-testid="characterCountMessage">

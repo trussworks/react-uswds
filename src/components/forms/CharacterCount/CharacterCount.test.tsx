@@ -97,7 +97,7 @@ describe('CharacterCount component', () => {
       )
       const message = getByTestId('characterCountMessage')
       expect(message).toHaveClass('usa-hint usa-character-count__status')
-      expect(message).toHaveAttribute('id', 'character-count-id-info')
+      expect(message).toHaveAttribute('aria-hidden', 'true')
     })
   })
 
@@ -203,7 +203,7 @@ describe('CharacterCount component', () => {
       )
       const message = getByTestId('characterCountMessage')
       expect(message).toHaveClass('usa-character-count__status')
-      expect(message).toHaveAttribute('id', 'character-count-info')
+      expect(message).toHaveAttribute('aria-hidden', 'true')
     })
   })
 
