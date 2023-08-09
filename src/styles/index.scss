@@ -20,11 +20,10 @@
 // It can be removed when https://github.com/uswds/uswds/issues/5409 is fixed
 
 .usa-language__submenu .usa-language__submenu-item button {
-  color: color('white');
+  color: #ffffff;
   display: block;
-  line-height: line-height($theme-navigation-font-family, 3);
-  padding: 0;
-  padding: units(1);
+  line-height: 1.3;
+  padding: 0.5rem;
   text-decoration: none;
   width: 100%; /* this is something that was actually missing when we were doing the extend because button widths hve different default widths than block element links */
   &:focus {
