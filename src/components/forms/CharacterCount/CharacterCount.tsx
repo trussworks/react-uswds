@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
@@ -70,10 +70,8 @@ export const CharacterCount = ({
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
-  const [srMessage, setSrMessage] = useState(
-    getMessage(initialCount, maxLength)
-  )
   const [isValid, setIsValid] = useState(initialCount < maxLength)
+  const srMessageRef = useRef<HTMLDivElement>(null)
 
   const classes = classnames('usa-character-count__field', className)
   const messageClasses = classnames('usa-hint', 'usa-character-count__status', {
@@ -84,9 +82,10 @@ export const CharacterCount = ({
     const message = getMessage(length, maxLength)
     setMessage(message)
     setIsValid(length <= maxLength)
-    // Updates the character count status for screen readers after a 1000ms
+    // Updates the character count status for screen readers after a 1000ms delay
     const timer = setTimeout(() => {
-      setSrMessage(message)
+      // Setting the text directly for VoiceOver compatibility.
+      if (srMessageRef.current) srMessageRef.current.textContent = message
     }, 1000)
     return () => clearTimeout(timer)
   }, [length])
@@ -173,10 +172,10 @@ export const CharacterCount = ({
         {message}
       </div>
       <div
+        ref={srMessageRef}
         className="usa-character-count__sr-status usa-sr-only"
-        aria-live="polite">
-        {srMessage}
-      </div>
+        aria-live="polite"
+      />
     </>
   )
 }
