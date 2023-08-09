@@ -175,6 +175,7 @@ export const CharacterCount = ({
         ref={srMessageRef}
         className="usa-character-count__sr-status usa-sr-only"
         aria-live="polite"
+        data-testid="characterCountSRMessage"
       />
     </>
   )

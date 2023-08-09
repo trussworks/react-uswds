@@ -99,6 +99,19 @@ describe('CharacterCount component', () => {
       expect(message).toHaveClass('usa-hint usa-character-count__status')
       expect(message).toHaveAttribute('aria-hidden', 'true')
     })
+
+    it('includes the screen reader message', () => {
+      const { getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="character-count"
+          maxLength={10}
+        />
+      )
+      const message = getByTestId('characterCountSRMessage')
+      expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
+      expect(message).toHaveAttribute('aria-live', 'polite')
+    })
   })
 
   describe('renders textarea', () => {
@@ -204,6 +217,20 @@ describe('CharacterCount component', () => {
       const message = getByTestId('characterCountMessage')
       expect(message).toHaveClass('usa-character-count__status')
       expect(message).toHaveAttribute('aria-hidden', 'true')
+    })
+
+    it('includes the screen reader message hint', () => {
+      const { getByTestId } = render(
+        <CharacterCount
+          id="character-count"
+          name="character-count"
+          maxLength={10}
+          isTextArea
+        />
+      )
+      const message = getByTestId('characterCountSRMessage')
+      expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
+      expect(message).toHaveAttribute('aria-live', 'polite')
     })
   })
 
