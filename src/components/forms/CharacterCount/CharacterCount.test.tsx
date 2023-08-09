@@ -236,18 +236,18 @@ describe('CharacterCount component', () => {
 
   describe('with default character count and message', () => {
     it('displays allowed characters when character count is zero', () => {
-      const { getAllByText } = render(
+      const { getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
           maxLength={20}
         />
       )
-      expect(getAllByText('20 characters allowed')[0]).toBeInTheDocument()
+      expect(getByText('20 characters allowed')).toBeInTheDocument()
     })
 
-    it('updates message text with characters left onChange', () => {
-      const { getByRole, getByText } = render(
+    it('updates message text with characters left onChange', async () => {
+      const { getByRole, getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -259,17 +259,23 @@ describe('CharacterCount component', () => {
         target: { value: 'a' },
       })
 
-      expect(getByText('4 characters left')).toBeInTheDocument()
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('4 characters left')).toHaveLength(2)
+      expect(getAllByText('4 characters left')[0]).toBeInTheDocument()
 
       fireEvent.change(input, {
         target: { value: 'abcd' },
       })
 
-      expect(getByText('1 character left')).toBeInTheDocument()
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('1 character left')).toHaveLength(2)
+      expect(getAllByText('1 character left')[0]).toBeInTheDocument()
     })
 
-    it('updates message text with characters over the limit when expected ', () => {
-      const { getByRole, getByText } = render(
+    it('updates message text with characters over the limit when expected ', async () => {
+      const { getByRole, getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -282,8 +288,11 @@ describe('CharacterCount component', () => {
         target: { value: 'abcdef' },
       })
 
-      expect(getByText('1 character over limit')).toBeInTheDocument()
-      expect(getByText('1 character over limit')).toHaveClass(
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('1 character over limit')).toHaveLength(2)
+      expect(getAllByText('1 character over limit')[0]).toBeInTheDocument()
+      expect(getAllByText('1 character over limit')[0]).toHaveClass(
         'usa-character-count__status--invalid'
       )
 
@@ -291,7 +300,10 @@ describe('CharacterCount component', () => {
         target: { value: 'abcdefg' },
       })
 
-      expect(getByText('2 characters over limit')).toBeInTheDocument()
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('2 characters over limit')).toHaveLength(2)
+      expect(getAllByText('2 characters over limit')[0]).toBeInTheDocument()
     })
 
     it('updates input validity', () => {
@@ -353,7 +365,7 @@ describe('CharacterCount component', () => {
     )
 
     it('renders initially with custom message', () => {
-      const { getAllByText } = render(
+      const { getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -362,11 +374,11 @@ describe('CharacterCount component', () => {
         />
       )
       expect(customMessage).toHaveBeenCalled()
-      expect(getAllByText('6 characters remain')[0]).toBeInTheDocument()
+      expect(getByText('6 characters remain')).toBeInTheDocument()
     })
 
     it('updates message text onChange', () => {
-      const { getByRole, getAllByText } = render(
+      const { getByRole, getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -376,13 +388,13 @@ describe('CharacterCount component', () => {
       )
 
       const input = getByRole('textbox')
-      expect(getAllByText('6 characters remain')[0]).toBeInTheDocument()
+      expect(getByText('6 characters remain')).toBeInTheDocument()
 
       fireEvent.change(input, {
         target: { value: 'abcdef' },
       })
 
-      expect(getAllByText('0 characters remain')[0]).toBeInTheDocument()
+      expect(getByText('0 characters remain')).toBeInTheDocument()
     })
   })
 
@@ -392,7 +404,7 @@ describe('CharacterCount component', () => {
     )
 
     it('renders initially with custom character count', () => {
-      const { getAllByText } = render(
+      const { getByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -401,7 +413,7 @@ describe('CharacterCount component', () => {
         />
       )
       expect(customCharacterCount).toHaveBeenCalled()
-      expect(getAllByText('4 characters left')[0]).toBeInTheDocument()
+      expect(getByText('4 characters left')).toBeInTheDocument()
     })
 
     it('updates input validity', () => {
