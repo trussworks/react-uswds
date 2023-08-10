@@ -1,0 +1,8 @@
+@use 'uswds-core' as *;
+
+.alertWithCTA {
+    background-color: color('primary-darker');
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
