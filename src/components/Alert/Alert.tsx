@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
 
-import styles from './Alert.module.scss'
+import styles from './Alert.module.css'
 
 type AlertProps = {
   type: 'success' | 'warning' | 'error' | 'info'
