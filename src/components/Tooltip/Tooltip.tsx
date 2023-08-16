@@ -12,6 +12,7 @@ import classnames from 'classnames'
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
 type TooltipProps<T> = {
+  id: string
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   wrapperclasses?: string
@@ -42,9 +43,6 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 ): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
-  const tooltipID = useRef(
-    `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
-  )
 
   const [isVisible, setVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
@@ -55,7 +53,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
 
-  const { position, wrapperclasses, className } = props
+  const { id, position, wrapperclasses, className } = props
 
   const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
     const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
@@ -213,7 +211,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         ...customProps,
         ref: triggerElementRef,
         'data-testid': 'triggerElement',
-        'aria-describedby': tooltipID.current,
+        'aria-describedby': id,
         tabIndex: 0,
         title: '',
         onMouseEnter: showTooltip,
@@ -233,7 +231,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         <span
           data-testid="tooltipBody"
           title={label}
-          id={tooltipID.current}
+          id={id}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"
@@ -258,7 +256,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
           {...remainingProps}
           data-testid="triggerElement"
           ref={triggerElementRef}
-          aria-describedby={tooltipID.current}
+          aria-describedby={id}
           tabIndex={0}
           type="button"
           className={triggerClasses}
@@ -274,7 +272,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         <span
           data-testid="tooltipBody"
           title={label}
-          id={tooltipID.current}
+          id={id}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"

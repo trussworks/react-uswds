@@ -33,13 +33,13 @@ Source: https://designsystem.digital.gov/components/tooltip/
 
 export const tooltipDefault = (): React.ReactElement => (
   <div className="margin-4">
-    <Tooltip label="Default">Default</Tooltip>
+    <Tooltip id="tooltip-default" label="Default">Default</Tooltip>
   </div>
 )
 
 export const tooltipTop = (): React.ReactElement => (
   <div className="margin-4">
-    <Tooltip position="top" label="Top">
+    <Tooltip id="tooltip-top" position="top" label="Top">
       Show on top
     </Tooltip>
   </div>
@@ -47,7 +47,7 @@ export const tooltipTop = (): React.ReactElement => (
 
 export const tooltipBottom = (): React.ReactElement => (
   <div className="margin-4">
-    <Tooltip position="bottom" label="Bottom">
+    <Tooltip id="tooltip-bottom" position="bottom" label="Bottom">
       Show on bottom
     </Tooltip>
   </div>
@@ -55,7 +55,7 @@ export const tooltipBottom = (): React.ReactElement => (
 
 export const tooltipRight = (): React.ReactElement => (
   <div className="margin-4">
-    <Tooltip position="right" label="Right">
+    <Tooltip id="tooltip-right" position="right" label="Right">
       Show on right
     </Tooltip>
   </div>
@@ -63,7 +63,7 @@ export const tooltipRight = (): React.ReactElement => (
 
 export const tooltipLeft = (): React.ReactElement => (
   <div className="margin-4">
-    <Tooltip position="left" label="Left">
+    <Tooltip id="tooltip-left" position="left" label="Left">
       Show on left
     </Tooltip>
   </div>
@@ -72,6 +72,7 @@ export const tooltipLeft = (): React.ReactElement => (
 export const tooltipWithUtilityClass = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip
+      id="tooltip-with-utility-class"
       wrapperclasses="width-full tablet:width-auto"
       position="right"
       label="Right">
@@ -101,6 +102,7 @@ export const CustomComponent = (): React.ReactElement => {
     <div className="margin-4">
       <p>
         <Tooltip<CustomLinkProps>
+          id="tooltip-custom-component"
           label="Follow Link"
           asCustom={CustomLink}
           to="http://www.truss.works">
@@ -114,7 +116,7 @@ export const CustomComponent = (): React.ReactElement => {
 
 export const tooltipTopLeftWrap = (): React.ReactElement => (
   <div style={{ marginTop: '32px' }}>
-    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+    <Tooltip id="tooltip-tl-wrap" label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
     </Tooltip>
   </div>
@@ -122,7 +124,7 @@ export const tooltipTopLeftWrap = (): React.ReactElement => (
 
 export const tooltipBottomLeftWrap = (): React.ReactElement => (
   <div style={{ position: 'absolute', bottom: '32px' }}>
-    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+    <Tooltip id="tooltip-bl-wrap" label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
     </Tooltip>
   </div>
@@ -130,7 +132,7 @@ export const tooltipBottomLeftWrap = (): React.ReactElement => (
 
 export const tooltipTopRightWrap = (): React.ReactElement => (
   <div style={{ marginTop: '32px', textAlign: 'right' }}>
-    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+    <Tooltip id="tooltip-tr-wrap" label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
     </Tooltip>
   </div>
@@ -146,7 +148,7 @@ export const tooltipBottomRightWrap = (): React.ReactElement => (
       paddingRight: '32px',
       textAlign: 'right',
     }}>
-    <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
+    <Tooltip id="tooltip-br-wrap" label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
     </Tooltip>
   </div>
