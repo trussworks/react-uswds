@@ -34,7 +34,7 @@ export const SocialLink = ({
   name,
   ...props
 }: SocialLinkProps & JSX.IntrinsicElements['a']): React.ReactElement => {
-  let icon: Icon
+  let icon: React.ReactElement
   switch (name) {
     case 'Facebook':
       icon = <Icon.Facebook className="usa-social-link__icon" name={name} />

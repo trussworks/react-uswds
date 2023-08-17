@@ -208,7 +208,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
     const triggerClasses = classnames('usa-tooltip__trigger', className)
 
     const triggerElement = createElement(
-      asCustom,
+      asCustom as React.ForwardRefExoticComponent<object>,
       {
         ...customProps,
         ref: triggerElementRef,

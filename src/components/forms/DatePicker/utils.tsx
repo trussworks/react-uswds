@@ -1,5 +1,4 @@
 import React, { KeyboardEvent } from 'react'
-
 import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
 
 /**
@@ -495,7 +494,7 @@ export const isDateInvalid = (
 export const listToTable = (
   list: React.ReactNode[],
   rowSize: number
-): React.ReactFragment => {
+): React.ReactElement => {
   const rows = []
   let i = 0
 
@@ -558,9 +557,9 @@ export const handleTabKey = (
   }
 }
 
-// iOS detection from: http://stackoverflow.com/a/9039885/177710
+// iOS detection from: http`://stackoverflow.com/a/9039885/177710
 export const isIosDevice = (): boolean =>
   typeof navigator !== 'undefined' &&
   (navigator.userAgent.match(/(iPod|iPhone|iPad)/g) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
-  !window.MSStream
+  !(window as {MSStream?: object}).MSStream !== undefined

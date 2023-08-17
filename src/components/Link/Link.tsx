@@ -15,7 +15,7 @@ interface WithDefaultLinkProps {
 
 // Add `asCustom` to the provided custom props
 interface WithCustomLinkProps<T> {
-  asCustom: React.FunctionComponent<T>
+  asCustom: React.FC<T>
 }
 
 // Default props means allow the StyledLinkProps as well as any
@@ -67,7 +67,7 @@ export function Link<FCProps = DefaultLinkProps>(
     const linkProps: FCProps = remainingProps as unknown as FCProps
     const classes = linkClasses(variant, className)
     return React.createElement(
-      asCustom,
+      asCustom as React.FC<{className?: string}>,
       {
         className: classes,
         ...linkProps,

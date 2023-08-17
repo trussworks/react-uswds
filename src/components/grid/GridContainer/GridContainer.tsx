@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-
 import { ContainerSizes } from '../types'
 
 type GridContainerProps = {
@@ -10,7 +9,7 @@ type GridContainerProps = {
 }
 
 interface WithCustomGridContainerProps<T> {
-  asCustom: React.FunctionComponent<T>
+  asCustom: React.FC<T>
 }
 
 export type DefaultGridContainerProps = GridContainerProps
@@ -53,11 +52,11 @@ export function GridContainer<FCProps = DefaultGridContainerProps>(
     const gridContainerProps: FCProps = remainingProps as unknown as FCProps
     const classes = gridContainerClasses(className, containerSize)
     return React.createElement(
-      asCustom,
+      asCustom as React.FC<{'data-testid': string, className?: string}>,
       {
         'data-testid': 'gridContainer',
         className: classes,
-        ...gridContainerProps,
+        ...(gridContainerProps as React.Attributes),
       },
       children
     )
