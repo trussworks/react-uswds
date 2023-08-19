@@ -2,5 +2,5 @@
 @use 'uswds-core' with (
   $theme-image-path: '@uswds/uswds/img',
   $theme-font-path: '@uswds/uswds/fonts',
-  $theme-show-notifications: false
+  $theme-show-notifications: false,
 );
