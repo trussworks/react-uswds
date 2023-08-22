@@ -4205,10 +4205,10 @@
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
 
-"@uswds/uswds@3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@uswds/uswds/-/uswds-3.4.1.tgz#dd15644d791e1969dff2394d9d2ec2ea1e795128"
-  integrity sha512-eLYbWUqf9eWUa2P6CO3ckIjtQyM3AylrIOHxN5gYG3P62TDd3FzRDyoACfvOe6CNk0w0PqXWJnuPzxpNoOgWNA==
+"@uswds/uswds@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@uswds/uswds/-/uswds-3.5.0.tgz#a54f6c668541453419eb49e7268026f125255166"
+  integrity sha512-pXgxmAwHsFPopZ1fll8La9jOsaQPHDM2g8oqv14GF1084RoCcBIRy3eZUux0VjeO/jscxsxACWy8v/vulQK4CQ==
   dependencies:
     classlist-polyfill "1.0.3"
     object-assign "4.1.1"
