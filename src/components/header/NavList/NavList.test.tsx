@@ -31,6 +31,7 @@ describe('NavList component', () => {
       ['subnav', '.usa-nav__submenu'],
       ['megamenu', '.usa-nav__submenu-list'],
       ['footerSecondary', '.usa-list'],
+      ['language', '.usa-language__submenu-item'],
     ])('prefers applies type classes %s', (typeString, expectedClass) => {
       const type = typeString as
         | 'primary'
@@ -38,6 +39,7 @@ describe('NavList component', () => {
         | 'subnav'
         | 'megamenu'
         | 'footerSecondary'
+        | 'language'
       const { container } = render(<NavList items={testItems} type={type} />)
       expect(container.querySelector(expectedClass)).toBeInTheDocument()
     })

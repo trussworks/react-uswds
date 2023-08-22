@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/trussworks/react-uswds/compare/5.1.1...5.2.0) (2023-08-14)
+
+
+### Features
+
+* added language selector ([#2531](https://github.com/trussworks/react-uswds/issues/2531)) ([60bf797](https://github.com/trussworks/react-uswds/commit/60bf797ba2b4bbd4ef6380502a59d1f989b220b1))
+
+
+### Bug Fixes
+
+* Adds story using validation prop for Alert component ([#2504](https://github.com/trussworks/react-uswds/issues/2504)) ([c5176c9](https://github.com/trussworks/react-uswds/commit/c5176c9b4a7e94460f6cae518b73627f11f3647d))
+* Improve character count component's SR experience ([#2550](https://github.com/trussworks/react-uswds/issues/2550)) ([c612a1b](https://github.com/trussworks/react-uswds/commit/c612a1b7074f671cdf29faae9cd5ca042d3e72b5))
+* moved overrides to let us use utilities ([#2553](https://github.com/trussworks/react-uswds/issues/2553)) ([45e1430](https://github.com/trussworks/react-uswds/commit/45e1430fd96339aecce55aebf109e8ad72000f91))
+
+
+### Documentation & Examples
+
+* updated path ([#2521](https://github.com/trussworks/react-uswds/issues/2521)) ([7721e58](https://github.com/trussworks/react-uswds/commit/7721e5879cbb3443f8d37c974a9a33ac44454a9c))
+* Updated storybook templates ([#2522](https://github.com/trussworks/react-uswds/issues/2522)) ([e1c60cb](https://github.com/trussworks/react-uswds/commit/e1c60cbff90c484b1942675a459aaab2e581b0e1))
+
+## [5.1.1](https://github.com/trussworks/react-uswds/compare/5.1.0...5.1.1) (2023-07-17)
+
+
+### Bug Fixes
+
+* Set alternative text on SVG img icon in menu close button ([#2500](https://github.com/trussworks/react-uswds/issues/2500)) ([ebdca5b](https://github.com/trussworks/react-uswds/commit/ebdca5ba2b775e1ceacc4229c1191547bf98ea0d))
+
 ## [5.1.0](https://github.com/trussworks/react-uswds/compare/5.0.0...5.1.0) (2023-07-14)
 
 
