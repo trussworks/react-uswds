@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { FileInput, FileInputRef } from './FileInput'
@@ -89,6 +89,41 @@ describe('FileInput component', () => {
       /choose from folder/i
     )
     jest.restoreAllMocks()
+  })
+
+  it('displays custom text when given', () => {
+    const customProps = {
+      ...testProps,
+      dragText: 'Custom dragText',
+      chooseText: 'Custom chooseText',
+      errorText: 'Custom errorText',
+      accept: '.no',
+    }
+    const { getByTestId } = render(<FileInput {...customProps} />)
+
+    const dragText = within(getByTestId('file-input-instructions')).getByText(
+      customProps.dragText
+    )
+    expect(dragText).toBeInTheDocument()
+    expect(dragText).toHaveClass('usa-file-input__drag-text')
+
+    const chooseText = within(getByTestId('file-input-instructions')).getByText(
+      customProps.chooseText
+    )
+    expect(chooseText).toBeInTheDocument()
+    expect(chooseText).toHaveClass('usa-file-input__choose')
+
+    const targetEl = getByTestId('file-input-droptarget')
+    fireEvent.drop(targetEl, {
+      dataTransfer: {
+        files: [TEST_PNG_FILE],
+      },
+    })
+    const errorText = within(getByTestId('file-input-error')).getByText(
+      customProps.errorText
+    )
+    expect(errorText).toBeInTheDocument()
+    expect(errorText).toHaveClass('usa-file-input__accepted-files-message')
   })
 
   describe('when disabled', () => {

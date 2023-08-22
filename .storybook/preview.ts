@@ -11,9 +11,10 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
   },
   options: {
+    showPanel: true,
     storySort: {
       method: 'alphabetical',
-      order: ['Components', 'Design tokens', 'Page templates', 'Other'],
+      order: ['Welcome', 'Design tokens', 'Page Templates', 'Components', 'Other'],
     },
   },
 }

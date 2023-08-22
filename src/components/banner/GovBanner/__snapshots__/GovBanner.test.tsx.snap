@@ -2,6 +2,7 @@
 
 exports[`GovBanner component static content renders consistently in English for .gov sites 1`] = `
 <section
+  aria-label="Official website of the United States government"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -20,12 +21,14 @@ exports[`GovBanner component static content renders consistently in English for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -108,47 +111,25 @@ exports[`GovBanner component static content renders consistently in English for 
                 Secure .gov websites use HTTPS
               </strong>
               <br />
-              A 
+              A
+               
               <strong>
-                lock ( 
-                <span
-                  className="icon-lock"
-                >
-                  <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
-                    className="usa-banner__lock-image"
-                    focusable="false"
-                    height="64"
-                    role="img"
-                    viewBox="0 0 52 64"
-                    width="52"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="banner-lock-title"
-                    >
-                      Lock
-                    </title>
-                    <desc
-                      id="banner-lock-description"
-                    >
-                      A locked padlock
-                    </desc>
-                    <path
-                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
-                      fill="#000000"
-                      fillRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                 )
+                lock (
+                <svg
+                  aria-label="Locked padlock icon"
+                  className="usa-icon"
+                  focusable={false}
+                  role="img"
+                />
+                )
               </strong>
-               or 
+               
+              or 
               <strong>
                 https://
               </strong>
+               means you’ve safely connected to the
                
-              means you’ve safely connected to the 
               .gov
                website. Share sensitive information only on official, secure websites.
             </p>
@@ -162,6 +143,7 @@ exports[`GovBanner component static content renders consistently in English for 
 
 exports[`GovBanner component static content renders consistently in English for .mil sites 1`] = `
 <section
+  aria-label="Official website of the United States government"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -180,12 +162,14 @@ exports[`GovBanner component static content renders consistently in English for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -268,47 +252,25 @@ exports[`GovBanner component static content renders consistently in English for 
                 Secure .mil websites use HTTPS
               </strong>
               <br />
-              A 
+              A
+               
               <strong>
-                lock ( 
-                <span
-                  className="icon-lock"
-                >
-                  <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
-                    className="usa-banner__lock-image"
-                    focusable="false"
-                    height="64"
-                    role="img"
-                    viewBox="0 0 52 64"
-                    width="52"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="banner-lock-title"
-                    >
-                      Lock
-                    </title>
-                    <desc
-                      id="banner-lock-description"
-                    >
-                      A locked padlock
-                    </desc>
-                    <path
-                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
-                      fill="#000000"
-                      fillRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                 )
+                lock (
+                <svg
+                  aria-label="Locked padlock icon"
+                  className="usa-icon"
+                  focusable={false}
+                  role="img"
+                />
+                )
               </strong>
-               or 
+               
+              or 
               <strong>
                 https://
               </strong>
+               means you’ve safely connected to the
                
-              means you’ve safely connected to the 
               .mil
                website. Share sensitive information only on official, secure websites.
             </p>
@@ -322,6 +284,7 @@ exports[`GovBanner component static content renders consistently in English for 
 
 exports[`GovBanner component static content renders consistently in Spanish for .gov sites 1`] = `
 <section
+  aria-label="Un sitio oficial del Gobierno de Estados Unidos"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -340,12 +303,14 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -428,47 +393,24 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                 Los sitios web seguros .gov usan HTTPS
               </strong>
               <br />
-              Un 
+              Un
+               
               <strong>
-                candado ( 
-                <span
-                  className="icon-lock"
-                >
-                  <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
-                    className="usa-banner__lock-image"
-                    focusable="false"
-                    height="64"
-                    role="img"
-                    viewBox="0 0 52 64"
-                    width="52"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="banner-lock-title"
-                    >
-                      Lock
-                    </title>
-                    <desc
-                      id="banner-lock-description"
-                    >
-                      A locked padlock
-                    </desc>
-                    <path
-                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
-                      fill="#000000"
-                      fillRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                 )
+                candado (
+                <svg
+                  aria-label="Icono de candado cerrado"
+                  className="usa-icon"
+                  focusable={false}
+                  role="img"
+                />
+                )
               </strong>
-               o 
+               
+              o 
               <strong>
                 https://
               </strong>
-               
-              significa que usted se conectó de forma segura a un sitio web 
+               significa que usted se conectó de forma segura a un sitio web 
               .gov
               . Comparta información sensible sólo en sitios web oficiales y seguros.
             </p>
@@ -482,6 +424,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 
 exports[`GovBanner component static content renders consistently in Spanish for .mil sites 1`] = `
 <section
+  aria-label="Un sitio oficial del Gobierno de Estados Unidos"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -500,12 +443,14 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -588,47 +533,24 @@ exports[`GovBanner component static content renders consistently in Spanish for 
                 Los sitios web seguros .mil usan HTTPS
               </strong>
               <br />
-              Un 
+              Un
+               
               <strong>
-                candado ( 
-                <span
-                  className="icon-lock"
-                >
-                  <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
-                    className="usa-banner__lock-image"
-                    focusable="false"
-                    height="64"
-                    role="img"
-                    viewBox="0 0 52 64"
-                    width="52"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="banner-lock-title"
-                    >
-                      Lock
-                    </title>
-                    <desc
-                      id="banner-lock-description"
-                    >
-                      A locked padlock
-                    </desc>
-                    <path
-                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
-                      fill="#000000"
-                      fillRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                 )
+                candado (
+                <svg
+                  aria-label="Icono de candado cerrado"
+                  className="usa-icon"
+                  focusable={false}
+                  role="img"
+                />
+                )
               </strong>
-               o 
+               
+              o 
               <strong>
                 https://
               </strong>
-               
-              significa que usted se conectó de forma segura a un sitio web 
+               significa que usted se conectó de forma segura a un sitio web 
               .mil
               . Comparta información sensible sólo en sitios web oficiales y seguros.
             </p>
@@ -642,6 +564,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 
 exports[`GovBanner component static content renders consistently with default props 1`] = `
 <section
+  aria-label="Official website of the United States government"
   className="usa-banner"
   data-testid="govBanner"
 >
@@ -660,12 +583,14 @@ exports[`GovBanner component static content renders consistently with default pr
           data-testid="banner-header-flag-div"
         >
           <img
-            alt="U.S. flag"
+            alt=""
+            aria-hidden={true}
             className="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
+          aria-hidden={true}
           className="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
@@ -748,47 +673,25 @@ exports[`GovBanner component static content renders consistently with default pr
                 Secure .gov websites use HTTPS
               </strong>
               <br />
-              A 
+              A
+               
               <strong>
-                lock ( 
-                <span
-                  className="icon-lock"
-                >
-                  <svg
-                    aria-labelledby="banner-lock-title banner-lock-description"
-                    className="usa-banner__lock-image"
-                    focusable="false"
-                    height="64"
-                    role="img"
-                    viewBox="0 0 52 64"
-                    width="52"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="banner-lock-title"
-                    >
-                      Lock
-                    </title>
-                    <desc
-                      id="banner-lock-description"
-                    >
-                      A locked padlock
-                    </desc>
-                    <path
-                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
-                      fill="#000000"
-                      fillRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                 )
+                lock (
+                <svg
+                  aria-label="Locked padlock icon"
+                  className="usa-icon"
+                  focusable={false}
+                  role="img"
+                />
+                )
               </strong>
-               or 
+               
+              or 
               <strong>
                 https://
               </strong>
+               means you’ve safely connected to the
                
-              means you’ve safely connected to the 
               .gov
                website. Share sensitive information only on official, secure websites.
             </p>

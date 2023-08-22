@@ -1,4 +1,10 @@
-import React, { useState, forwardRef, useRef, useImperativeHandle } from 'react'
+import React, {
+  useState,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+} from 'react'
 import classnames from 'classnames'
 
 import { FilePreview } from './FilePreview'
@@ -7,6 +13,9 @@ import { makeSafeForID } from './utils'
 type FileInputProps = {
   id: string
   name: string
+  dragText?: string
+  chooseText?: string
+  errorText?: string
   disabled?: boolean
   multiple?: boolean
   accept?: string
@@ -27,6 +36,9 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   {
     name,
     id,
+    dragText,
+    chooseText,
+    errorText,
     disabled,
     multiple,
     className,
@@ -41,6 +53,17 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
   const [files, setFiles] = useState<File[]>([])
+  const [hideDragText, setHideDragText] = useState(false)
+
+  useEffect(() => {
+    if (typeof navigator === 'undefined') return
+
+    const hideDragText =
+      /rv:11.0/i.test(navigator?.userAgent) ||
+      /Edge\/\d./i.test(navigator?.userAgent)
+
+    setHideDragText(hideDragText)
+  }, [typeof navigator])
 
   useImperativeHandle(
     ref,
@@ -65,11 +88,11 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     'has-invalid-file': showError,
   })
 
-  const hideDragText =
-    /rv:11.0/i.test(navigator.userAgent) ||
-    /Edge\/\d./i.test(navigator.userAgent)
-
-  const dragText = multiple ? 'Drag files here or ' : 'Drag file here or '
+  const defaultDragText = multiple
+    ? 'Drag files here or '
+    : 'Drag file here or '
+  const defaultChooseText = 'choose from folder'
+  const defaultErrorText = 'This is not a valid file type.'
 
   const filePreviews = []
   if (files) {
@@ -176,9 +199,13 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           className={instructionClasses}
           aria-hidden="true">
           {!hideDragText && (
-            <span className="usa-file-input__drag-text">{dragText}</span>
+            <span className="usa-file-input__drag-text">
+              {dragText || defaultDragText}
+            </span>
           )}
-          <span className="usa-file-input__choose">choose from folder</span>
+          <span className="usa-file-input__choose">
+            {chooseText || defaultChooseText}
+          </span>
         </div>
         {filePreviews}
         <div data-testid="file-input-box" className="usa-file-input__box"></div>
@@ -186,7 +213,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           <div
             data-testid="file-input-error"
             className="usa-file-input__accepted-files-message">
-            This is not a valid file type.
+            {errorText || defaultErrorText}
           </div>
         )}
         <input
