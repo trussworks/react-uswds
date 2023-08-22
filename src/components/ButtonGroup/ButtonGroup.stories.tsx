@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 ButtonGroup component
+### USWDS 3.0 ButtonGroup component
 
 Source: https://designsystem.digital.gov/components/button-groups/
 `,

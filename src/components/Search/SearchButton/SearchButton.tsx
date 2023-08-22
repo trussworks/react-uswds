@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import searchImg from '@uswds/uswds/src/img/usa-icons-bg/search--white.svg'
+import { Icon } from '../../Icon/Icons'
 
 import { Button } from '../../Button/Button'
 
@@ -18,7 +18,7 @@ type SearchButtonProps = {
 export const SearchButton = ({
   size,
   className,
-  i18n
+  i18n,
 }: SearchButtonProps): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
@@ -33,16 +33,16 @@ export const SearchButton = ({
   )
   return (
     <div className={classes}>
-        <Button type="submit">
-            {!isSmall && (
-                <span className="usa-search__submit-text">{buttonText}</span>
-            )}
-            <img
-                src={searchImg}
-                className="usa-search__submit-icon"
-                alt={buttonText}
-            />
-        </Button>
+      <Button type="submit">
+        {!isSmall && (
+          <span className="usa-search__submit-text">{buttonText}</span>
+        )}
+        <Icon.Search
+          className="usa-search__submit-icon"
+          name={buttonText}
+          size={3}
+        />
+      </Button>
     </div>
   )
 }

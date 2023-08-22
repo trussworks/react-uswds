@@ -5,14 +5,16 @@ import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/Dropdown',
-  component: Dropdown,
+  component: 'Dropdown',
   parameters: {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Dropdown component
+### Deprecated USWDS 2.x Dropdown component
 
-Source: https://designsystem.digital.gov/components/dropdown
+⚠️ Dropdown is deprecated and will be removed in the future. Please use the Select component instead.
+
+Source: https://designsystem.digital.gov/components/dropdown/
 `,
       },
     },

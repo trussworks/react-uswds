@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
   const [current, setCurrentPage] = useState<number>(args.currentPage)
 
   useEffect(() => {
-    if (args.currentPage >= args.totalPages) {
+    if (args.totalPages && args.currentPage >= args.totalPages) {
       return
     }
     setCurrentPage(args.currentPage)
@@ -43,7 +43,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
 
   return (
     <Pagination
-      totalPages={args.totalPages || 24}
+      totalPages={args.totalPages}
       currentPage={current}
       maxSlots={args.maxSlots}
       pathname={args.pathname}
@@ -62,6 +62,10 @@ Sandbox.args = {
 
 export const Default = (): React.ReactElement => (
   <Pagination pathname={pathname} totalPages={10} currentPage={10} />
+)
+
+export const Unbounded = (): React.ReactElement => (
+  <Pagination pathname={pathname} currentPage={10} />
 )
 
 export const ThreePagesFirst = (): React.ReactElement => (

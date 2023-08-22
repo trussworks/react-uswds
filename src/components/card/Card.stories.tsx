@@ -30,7 +30,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Card components
+### USWDS 3.0 Card components
 
 Source: https://designsystem.digital.gov/components/card/
 `,

@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 TextInput component
+### USWDS 3.0 TextInput component
 
 Source: https://designsystem.digital.gov/components/text-input
 `,

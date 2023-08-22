@@ -23,7 +23,7 @@ export default {
     docs: {
       description: {
         component: `
-  ### USWDS 2.0 Date Range Picker component
+  ### USWDS 3.0 Date Range Picker component
   Source: https://designsystem.digital.gov/components/date-range-picker
         `,
       },

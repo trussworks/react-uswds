@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Alert component
+### USWDS 3.0 Alert component
 
 Source: https://designsystem.digital.gov/components/alert/
 `,
@@ -120,5 +120,14 @@ export const withCTA = (): React.ReactElement => (
       </Button>
     }>
     {testText}
+  </Alert>
+)
+
+export const withValidation = (): React.ReactElement => (
+  <Alert type="info" heading="Code requirements" headingLevel="h4" validation>
+    <ul>
+      <li>Use at least one uppercase character</li>
+      <li>Use at least one number</li>
+    </ul>
   </Alert>
 )

@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Radio component
+### USWDS 3.0 Radio component
 
 Source: https://designsystem.digital.gov/components/radio-buttons
 `,

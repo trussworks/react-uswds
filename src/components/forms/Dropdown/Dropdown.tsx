@@ -1,40 +1,11 @@
-import React from 'react'
-import classnames from 'classnames'
+/*
+  TODO: Remove this component
+*/
 
-type DropdownProps = {
-  id: string
-  name: string
-  className?: string
-  children: React.ReactNode
-  inputRef?:
-    | string
-    | ((instance: HTMLSelectElement | null) => void)
-    | React.RefObject<HTMLSelectElement>
-    | null
-    | undefined
-}
+import { Select } from '../Select/Select'
+import { withDeprecationWarning } from '../../hoc/withDeprecationWarning'
 
-export const Dropdown = ({
-  id,
-  name,
-  className,
-  inputRef,
-  children,
-  ...inputProps
-}: DropdownProps & JSX.IntrinsicElements['select']): React.ReactElement => {
-  const classes = classnames('usa-select', className)
-
-  return (
-    <select
-      data-testid="dropdown"
-      className={classes}
-      id={id}
-      name={name}
-      ref={inputRef}
-      {...inputProps}>
-      {children}
-    </select>
-  )
-}
-
-export default Dropdown
+export const Dropdown = withDeprecationWarning(
+  Select,
+  'Dropdown is deprecated and will be removed in the future. Please use the Select component instead.'
+)

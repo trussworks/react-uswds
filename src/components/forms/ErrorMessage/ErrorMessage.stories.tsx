@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 ErrorMessage component
+### USWDS 3.0 ErrorMessage component
 
 Source: https://designsystem.digital.gov/components/form-controls/
 `,
