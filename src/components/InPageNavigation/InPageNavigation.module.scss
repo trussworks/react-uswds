@@ -1,5 +1,7 @@
-html {
-  scroll-behavior: smooth;
+@media not (prefers-reduced-motion) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 :target {
