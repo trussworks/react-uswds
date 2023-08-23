@@ -1,6 +1,6 @@
 import React from 'react'
 export const CONTENT = (
-  <main id="main-content" className="main-content usa-prose">
+  <>
     <h1>Sample in-page navigation page</h1>
     <h2 id="lorem">Lorem ipsum dolor</h2>
     <p>
@@ -537,5 +537,5 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-  </main>
+  </>
 )

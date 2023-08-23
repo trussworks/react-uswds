@@ -19,15 +19,16 @@ Source: https://designsystem.digital.gov/components/in-page-navigation/
 }
 
 export const Default = (): React.ReactElement => (
-  <div className="usa-in-page-nav-container">
-    <InPageNavigation
-      content={CONTENT}
-      headingLevel="h4"
-      rootMargin="0px 0px 0px 0px"
-      scrollOffset={0}
-      threshold={1}
-      title="On this page"
-    />
-    {CONTENT}
-  </div>
+  <InPageNavigation content={CONTENT} />
+)
+
+export const Offset = (): React.ReactElement => (
+  <InPageNavigation
+    content={CONTENT}
+    headingLevel="h4"
+    rootMargin="0px 0px 0px 0px"
+    scrollOffset="2rem"
+    threshold={1}
+    title="On this page"
+  />
 )
