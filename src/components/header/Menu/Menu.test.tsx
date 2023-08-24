@@ -32,4 +32,18 @@ describe('Menu component', () => {
     expect(getByText('Simple link one')).toBeInTheDocument()
     expect(getByText('Simple link two')).toBeInTheDocument()
   })
+
+  it('defaults to subnav type', () => {
+    const { container } = render(<Menu items={testItems} isOpen={true} />)
+    expect(container.querySelector('.usa-nav__submenu')).toBeInTheDocument()
+  })
+
+  it('renders given NavList type', () => {
+    const { container } = render(
+      <Menu items={testItems} isOpen={true} type="language" />
+    )
+    expect(
+      container.querySelector('.usa-language__submenu-item')
+    ).toBeInTheDocument()
+  })
 })
