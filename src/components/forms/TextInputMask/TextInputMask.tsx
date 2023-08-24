@@ -31,10 +31,7 @@ export const TextInputMask = ({
 
   const [inputValue, setInputValue] = useState('')
   const [maskValue, setMaskValue] = useState(mask)
-  const [iValue, setIValue] =
-    useState<
-      React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
-    >()
+  const [iValue, setIValue] = useState('')
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value
     const maskData = charset || mask
@@ -65,7 +62,7 @@ export const TextInputMask = ({
       }
     }
     setMaskValue(mask.substring(newValue.length))
-    setIValue(<i>{newValue}</i>)
+    setIValue(newValue)
     setInputValue(newValue)
     inputProps.onChange
   }
@@ -76,7 +73,7 @@ export const TextInputMask = ({
         className="usa-input-mask--content"
         aria-hidden
         data-testid={`${id}Mask`}>
-        {iValue}
+        <i>{iValue}</i>
         {maskValue}
       </span>
       <TextInput
