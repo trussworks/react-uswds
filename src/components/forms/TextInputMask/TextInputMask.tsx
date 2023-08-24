@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import { TextInput, TextInputProps } from './TextInput'
+import { TextInput, TextInputProps } from '../TextInput/TextInput'
 
 type MaskProps = {
   mask: string
