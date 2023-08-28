@@ -99,7 +99,7 @@
     "happo.io": "^8.3.1",
     "jest": "^26.1.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "prettier": "^2.7.1",
+    "prettier": "^3.0.2",
     "react": "^17.0.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^17.0.1",
