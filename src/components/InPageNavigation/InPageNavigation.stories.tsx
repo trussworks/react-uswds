@@ -14,9 +14,6 @@ export default {
     rootMargin: {
       control: 'text',
     },
-    scrollOffset: {
-      control: 'text',
-    },
     threshold: {
       control: { type: 'range', min: 0, max: 1, step: 0.01 },
     },
@@ -27,7 +24,6 @@ export default {
   args: {
     headingLevel: 'h4',
     rootMargin: '0px 0px 0px 0px',
-    scrollOffset: '0',
     threshold: 1,
     title: 'On this page',
   },
@@ -57,7 +53,19 @@ export const Default = (argTypes: StorybookArguments): React.ReactElement => (
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
     rootMargin={argTypes.rootMargin}
-    scrollOffset={argTypes.scrollOffset}
+    threshold={argTypes.threshold}
+    title={argTypes.title}
+  />
+)
+
+// Storybook seems to force anchor links to open in a new window,
+// so this story is just to demonstrate how the scroll offset works
+export const ScrollOffset = (argTypes: StorybookArguments): React.ReactElement => (
+  <InPageNavigation
+    content={CONTENT}
+    headingLevel={argTypes.headingLevel}
+    rootMargin={argTypes.rootMargin}
+    scrollOffset="2rem"
     threshold={argTypes.threshold}
     title={argTypes.title}
   />
