@@ -19,6 +19,7 @@ export const TextInputMask = ({
   inputSize,
   inputRef,
   mask,
+  defaultValue,
   charset,
   ...inputProps
 }: AllProps): React.ReactElement => {
@@ -29,7 +30,7 @@ export const TextInputMask = ({
     className
   )
 
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState(defaultValue)
   const [maskValue, setMaskValue] = useState(mask)
   const [iValue, setIValue] = useState('')
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
