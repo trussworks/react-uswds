@@ -60,7 +60,9 @@ export const Default = (argTypes: StorybookArguments): React.ReactElement => (
 
 // Storybook seems to force anchor links to open in a new window,
 // so this story is just to demonstrate how the scroll offset works
-export const ScrollOffset = (argTypes: StorybookArguments): React.ReactElement => (
+export const ScrollOffset = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
