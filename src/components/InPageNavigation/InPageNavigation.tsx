@@ -10,6 +10,7 @@ type InPageNavigationProps = {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel
+  navProps?: JSX.IntrinsicElements['nav']
   rootMargin?: string
   scrollOffset?: string
   threshold?: number
@@ -19,20 +20,22 @@ type InPageNavigationProps = {
 export const InPageNavigation = ({
   className,
   content,
-  headingLevel,
-  rootMargin,
-  scrollOffset,
-  threshold,
-  title,
-}: InPageNavigationProps): React.ReactElement => {
+  headingLevel = 'h4',
+  navProps,
+  rootMargin = '0px 0px 0px 0px',
+  scrollOffset = '0',
+  threshold = 1,
+  title = 'On this page',
+  ...divProps
+}: InPageNavigationProps &
+  JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-in-page-nav', styles.target, className)
-  const Heading = headingLevel || 'h4'
-  const ROOT_MARGIN = '0px 0px 0px 0px'
+  const { className: navClassName, ...remainingNavProps } = navProps || {}
+  const navClasses = classnames('usa-in-page-nav__nav', navClassName)
+  const Heading = headingLevel
   const offsetStyle = {
-    '--margin-offset': scrollOffset || '0',
+    '--margin-offset': scrollOffset,
   } as React.CSSProperties
-  const THRESHOLD = 1
-  const TITLE = 'On this page'
   const [currentSection, setCurrentSection] = useState('')
   const sectionHeadings: JSX.Element[] = content.props.children.filter(
     (el: JSX.Element) => el.type === 'h2' || el.type === 'h3'
@@ -46,8 +49,8 @@ export const InPageNavigation = ({
   }
   const observerOptions = {
     root: null,
-    rootMargin: rootMargin || ROOT_MARGIN,
-    threshold: [threshold || THRESHOLD],
+    rootMargin: rootMargin,
+    threshold: [threshold],
   }
   const observer = new IntersectionObserver(handleIntersection, observerOptions)
   useEffect(() => {
@@ -55,14 +58,14 @@ export const InPageNavigation = ({
   })
 
   return (
-    <div className="usa-in-page-nav-container">
+    <div className="usa-in-page-nav-container" {...divProps}>
       <aside
         className={classes}
-        aria-label={title || TITLE}
+        aria-label={title}
         data-testid="InPageNavigation">
-        <nav>
+        <nav className={navClasses} {...remainingNavProps}>
           <Heading className="usa-in-page-nav__heading" tabIndex={0}>
-            {title || TITLE}
+            {title}
           </Heading>
           <ul className="usa-in-page-nav__list">
             {sectionHeadings.map((el: JSX.Element) => {

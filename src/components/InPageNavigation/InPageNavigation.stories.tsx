@@ -27,7 +27,7 @@ export default {
   args: {
     headingLevel: 'h4',
     rootMargin: '0px 0px 0px 0px',
-    scrollOffset: '0rem',
+    scrollOffset: '0',
     threshold: 1,
     title: 'On this page',
   },
