@@ -12,12 +12,7 @@ export type AllProps = TextInputProps & MaskProps
 
 export const TextInputMask = ({
   id,
-  name,
-  type,
   className,
-  validationStatus,
-  inputSize,
-  inputRef,
   mask,
   defaultValue,
   charset,
@@ -81,14 +76,9 @@ export const TextInputMask = ({
         data-testid="textInput"
         className={classes}
         id={id}
-        name={name}
-        type={type}
-        inputRef={inputRef}
         maxLength={mask.length}
         onChange={handleChange}
         value={inputValue}
-        validationStatus={validationStatus}
-        inputSize={inputSize}
         {...inputProps}
       />
     </span>
