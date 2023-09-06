@@ -3,12 +3,11 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 
-type MaskProps = {
+export type AllProps = TextInputProps & {
   mask: string
   charset?: string
 }
 
-export type AllProps = TextInputProps & MaskProps
 
 export const TextInputMask = ({
   id,
