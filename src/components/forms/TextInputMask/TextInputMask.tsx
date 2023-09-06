@@ -15,6 +15,7 @@ export const TextInputMask = ({
   mask,
   defaultValue,
   charset,
+  onChange,
   ...inputProps
 }: AllProps): React.ReactElement => {
   const classes = classnames(
@@ -60,6 +61,8 @@ export const TextInputMask = ({
     setIValue(newValue)
     setInputValue(newValue)
     inputProps.onChange
+
+    onChange?.(e)
   }
 
   return (
