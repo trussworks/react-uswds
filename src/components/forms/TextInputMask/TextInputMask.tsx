@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 
@@ -44,6 +44,7 @@ export const TextInputMask = ({
   id,
   className,
   mask,
+  value: externalValue,
   defaultValue,
   charset,
   onChange,
@@ -58,14 +59,27 @@ export const TextInputMask = ({
 
   const [value, setValue] = useState(
     // Ensure that this component preserves the expected behavior when a user sets the defaultValue
-    maskString((defaultValue as string) ?? ``, mask, charset)
+    maskString((externalValue ?? defaultValue ?? ``) as string, mask, charset)
   )
+  useEffect(() => {
+    // Make sure this component behaves correctly when used as a controlled component
+    setValue(
+      maskString(
+        ((externalValue ?? defaultValue) as string) ?? ``,
+        mask,
+        charset
+      )
+    )
+  }, [externalValue])
   const [maskValue, setMaskValue] = useState(mask.substring(value.length))
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue = maskString(e.target.value, mask, charset)
 
     setMaskValue(mask.substring(newValue.length))
     setValue(newValue)
+
+    // Ensure the new value is available to upstream onChange listeners
+    e.target.value = newValue
 
     onChange?.(e)
   }
