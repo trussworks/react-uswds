@@ -122,3 +122,12 @@ export const withCTA = (): React.ReactElement => (
     {testText}
   </Alert>
 )
+
+export const withValidation = (): React.ReactElement => (
+  <Alert type="info" heading="Code requirements" headingLevel="h4" validation>
+    <ul>
+      <li>Use at least one uppercase character</li>
+      <li>Use at least one number</li>
+    </ul>
+  </Alert>
+)
