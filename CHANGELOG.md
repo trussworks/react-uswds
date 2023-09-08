@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.1](https://github.com/trussworks/react-uswds/compare/5.3.0...5.3.1) (2023-09-08)
+
+
+### Bug Fixes
+
+* text input mask fixes ([#2581](https://github.com/trussworks/react-uswds/issues/2581)) ([84cf4d0](https://github.com/trussworks/react-uswds/commit/84cf4d0e03dc65521a463a6c7326740a5509ba8b))
+
 ## [5.3.0](https://github.com/trussworks/react-uswds/compare/5.2.0...5.3.0) (2023-08-29)
 
 
