@@ -1,4 +1,4 @@
-import React, { ComponentType, useEffect } from 'react'
+import React, { ComponentType, PropsWithChildren, useEffect } from 'react'
 
 import { deprecationWarning } from '../../deprecation'
 
@@ -7,7 +7,7 @@ export function withDeprecationWarning<P>(
   warning: string
 ) {
   // eslint-disable-next-line react/display-name
-  return (props: P): JSX.Element => {
+  return (props: PropsWithChildren<P>): JSX.Element => {
     useEffect(() => {
       deprecationWarning(warning)
     }, [])
