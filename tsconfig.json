@@ -17,6 +17,11 @@
     "declaration": true,
     "outDir": "./lib",
     "isolatedModules": true,
+    "paths": {
+      "react": [
+        "./node_modules/@types/react"
+      ]
+    }
   },
   "include": ["src/**/*", "custom.d.ts"],
 }
