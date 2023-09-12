@@ -53,6 +53,7 @@ export function GridContainer<FCProps = DefaultGridContainerProps>(
     const gridContainerProps: FCProps = remainingProps as unknown as FCProps
     const classes = gridContainerClasses(className, containerSize)
     return React.createElement(
+      'div',
       asCustom,
       {
         'data-testid': 'gridContainer',

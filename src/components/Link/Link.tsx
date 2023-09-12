@@ -67,6 +67,7 @@ export function Link<FCProps = DefaultLinkProps>(
     const linkProps: FCProps = remainingProps as unknown as FCProps
     const classes = linkClasses(variant, className)
     return React.createElement(
+      'a',
       asCustom,
       {
         className: classes,
