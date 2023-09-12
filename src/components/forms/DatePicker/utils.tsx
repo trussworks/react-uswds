@@ -561,6 +561,4 @@ export const handleTabKey = (
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
 export const isIosDevice = (): boolean =>
   typeof navigator !== 'undefined' &&
-  (navigator.userAgent.match(/(iPod|iPhone|iPad)/g) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
-  !window.MSStream
+  !!navigator.userAgent.match(/ipad|ipod|iphone/i)
