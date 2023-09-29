@@ -48,7 +48,10 @@ npm i @trussworks/react-uswds
 
 ### USWDS
 
-It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using. A version mismatch may result in unexpected markup & CSS combinations.
+It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using (see this repo's uswds `devDependency` in [package.json](./package.json)).
+A version mismatch may result in unexpected markup & CSS combinations.
+For flexibility, ReactUSWDS will not trigger warnings if consumers choose to use a higher minor version of `uswds` (hence the careted uswds `peerDependency` in [package.json](./package.json)).
+If encountering unexpected markup issues when choosing _not_ to use the matching `devDependency` version of `uswds`, consumers should check whether aligning the versions resolves their issue(s).
 
 You can import ReactUSWDS components using ES6 syntax:
 
