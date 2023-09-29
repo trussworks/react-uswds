@@ -2,6 +2,11 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
+const uswdsIncludePaths = [
+  './node_modules/@uswds',
+  './node_modules/@uswds/uswds/packages',
+]
+
 module.exports = {
   mode: 'production',
   entry: {
@@ -62,26 +67,33 @@ module.exports = {
               },
             },
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                includePaths: uswdsIncludePaths,
+              },
+            },
+          },
         ],
       },
       {
         test: /\.(sa|sc|c)ss$/i,
         exclude: /\.module\.(sa|sc|c)ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 
-        {
-          loader: "sass-loader",
-          options: {
-            sourceMap: true,
-            sassOptions: {
-              includePaths: [
-                "./node_modules/@uswds",
-                "./node_modules/@uswds/uswds/packages",
-              ],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                includePaths: uswdsIncludePaths,
+              },
             },
           },
-        },
-      ],
+        ],
       },
       {
         test: /\.svg$/,
