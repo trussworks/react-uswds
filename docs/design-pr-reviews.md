@@ -12,6 +12,8 @@ In that case, the reviewer who found the issue will leave a comment on the PR in
 
 ## Getting Set Up to Review PRs
 
+get added to the design group on github. This will tag designers for someone to review a PR if it has not been looked at by a designer.
+
 ### Github/Repo Access
 
 As part of onboarding, you join the contributors of the project. When you are added, you will suddenly start to get 1 million emails (approximately) every day from Github. We recommend turning off email notifications and using the Slackbot to get a daily digest of PRs that need a design review.
@@ -34,17 +36,17 @@ If you are a designer joining the project to conduct reviews, you'll want to ask
 
 Happo is a visual regression testing platform we have integrated into the project to help keep track of the impact a code change might have on our design system in production. It will automatically run a test to detect any visual changes a PR might make to the components and design system elements we track in Storybook. Happo takes screenshots of all of our components in Storybook and compares differences against its collection of screenshots of what the main branch looks like with each PR. It is integrated with Github, so when an engineer creates a PR, it generates a Happo report. During onboarding, ask to pair with someone doing a PR review to get an introduction to Happo and how to use it.
 
-https://lh4.googleusercontent.com/i_imRggob1k2hwPiJKczfZR9sHbbRYXGEUhA5ufqUtPOd2rVUjv0xDfDmVoWgSgtrLqeogg4qX0Q3GofFX0uS89EVzAAGrRb-9YMINiuOkyuOPcSVcIz0NqgYYYjNcfT2jK9K2ZZaGC3wAb7McvguKFy7aAdmVFs1hUxkpKxdhdhtC2T2Cvf8fm7_g
+![happo diffs view in browser](https://lh4.googleusercontent.com/i_imRggob1k2hwPiJKczfZR9sHbbRYXGEUhA5ufqUtPOd2rVUjv0xDfDmVoWgSgtrLqeogg4qX0Q3GofFX0uS89EVzAAGrRb-9YMINiuOkyuOPcSVcIz0NqgYYYjNcfT2jK9K2ZZaGC3wAb7McvguKFy7aAdmVFs1hUxkpKxdhdhtC2T2Cvf8fm7_g)
 
-https://lh4.googleusercontent.com/qXmkExulMtCIbUH-mw6QWQGu0MWhOS7638JymvAKmmpMfxEjh4KUsrWcjbRPEiiRdNB5Gv77kX7BNMsC6bdi1RIxYjHnKyxL-Hd8RK9MSFl5LcwOeL53lcSCegBMjzZEOf2ZFfrivjhwbRu-oIitEUIRISdCME1vnZcNqFSGzVF3N1QsUjI5hPAdww
+![happo changes in a PR in Github](https://lh4.googleusercontent.com/qXmkExulMtCIbUH-mw6QWQGu0MWhOS7638JymvAKmmpMfxEjh4KUsrWcjbRPEiiRdNB5Gv77kX7BNMsC6bdi1RIxYjHnKyxL-Hd8RK9MSFl5LcwOeL53lcSCegBMjzZEOf2ZFfrivjhwbRu-oIitEUIRISdCME1vnZcNqFSGzVF3N1QsUjI5hPAdww)
 
 **Good to know about Happo**
 
 Sometimes Happo flags components that are not related to the work done on the PR. these are called “[spurious diffs](https://docs.happo.io/docs/spurious-diffs)”. It may be caused by the way a screenshot was taken, showing a very slight difference in spacing, for example. Typically these can be ignored, but if you are unsure, ask the engineer who created the PR what might be causing these diffs. Generally, if you look at the before and after image and can’t find any differences, it’s okay to accept it. Happo is helpful, but it does deliver false positives sometimes.
 
-https://lh3.googleusercontent.com/0CJGCVuHI2fqOhURfnV6xztELYpJUvb6iRgKYJ5uLd4HVDyWzNa9fClk74jegJ5PvTLZlrJ54OPu4OGFd7tm05OGp4DMnZdg2r-w8BWItCydmWdGZHPd8LpnzIAG0JUh9YQWCkygIIQk2ru69wLiN5pvUkXR2h-Oqr9NP5k1xiuj9ooBpaYjAmkDBA
+![meme of Pam Beesley shwoing Creed two identical photos on an episode of The Office (US) and asking him to spot the differences](https://lh3.googleusercontent.com/0CJGCVuHI2fqOhURfnV6xztELYpJUvb6iRgKYJ5uLd4HVDyWzNa9fClk74jegJ5PvTLZlrJ54OPu4OGFd7tm05OGp4DMnZdg2r-w8BWItCydmWdGZHPd8LpnzIAG0JUh9YQWCkygIIQk2ru69wLiN5pvUkXR2h-Oqr9NP5k1xiuj9ooBpaYjAmkDBA)
 
-https://lh3.googleusercontent.com/XAvh9ARUnK-WXittJtrgDkIqns_ykebb4woQgjUJgHNmqqPA1oOOG9FXosbLSyOR-2vuCTH4DyZ1gXG2Bt9_oCQ_h4MgGY0TIk8YtveG_qdUbnaxA-2mNUJoTDlQhpZxfXJGueKbayXHo9q4KsEsmX5Maq7nYZtYQKzDRZ4ryKMK898RZeg6xqfvNQ
+![Pam informing the viewer that the photos are the same picture, so there are no differences](https://lh3.googleusercontent.com/XAvh9ARUnK-WXittJtrgDkIqns_ykebb4woQgjUJgHNmqqPA1oOOG9FXosbLSyOR-2vuCTH4DyZ1gXG2Bt9_oCQ_h4MgGY0TIk8YtveG_qdUbnaxA-2mNUJoTDlQhpZxfXJGueKbayXHo9q4KsEsmX5Maq7nYZtYQKzDRZ4ryKMK898RZeg6xqfvNQ)
 
 ### Storybook
 
@@ -58,22 +60,24 @@ To run storybook locally, run the command  yarn storybook  from your command l
 
 You can run storybook locally to measure and evaluate the component to ensure it meets your intentions, but you can also get a preview of what’s been added in Happo. When you add to Happo, it won’t show up as a failure that needs approval, but you can still navigate in to preview the added images.
 
-https://lh6.googleusercontent.com/nBN5pDS5ZVEaCt6ulj6ekgnEA_6-n8u4tPLatBkO0cyps27cSPE5c4Su0i-mSj3Byx1lK3dnn3jzJIXp7f62jLVzCdj2sQ0SH535HezOvQKl2p6KCd7WK15Oe-UGf22x_WRWsjHzOQR3Pp3-lvZ-1KfuKPyj5GQgGTNqHOWKG4RV-lxRUvhMpWkS5g
+![the location of the Added Images in Happo in the menu on the page](https://lh6.googleusercontent.com/nBN5pDS5ZVEaCt6ulj6ekgnEA_6-n8u4tPLatBkO0cyps27cSPE5c4Su0i-mSj3Byx1lK3dnn3jzJIXp7f62jLVzCdj2sQ0SH535HezOvQKl2p6KCd7WK15Oe-UGf22x_WRWsjHzOQR3Pp3-lvZ-1KfuKPyj5GQgGTNqHOWKG4RV-lxRUvhMpWkS5g)
 
-https://lh4.googleusercontent.com/1xepAdkBt17UZ-QG3NdVnXbtHbW64OGDire70DCeUe18XXiBHXII3Bg35nis5_BJx2WEVLiRjJQCakJ1tw8NcqQ8Qfj23XawAoN0gmlw_VgdYjNnDIxDnzpnsfwEQbDS2T1fSWKEkRVnAn9htaXmuPzf0s6nZnAikbkwuizp0lYN3GIc0CRAKnyYIg
+![What added components look like on the Added page](https://lh4.googleusercontent.com/1xepAdkBt17UZ-QG3NdVnXbtHbW64OGDire70DCeUe18XXiBHXII3Bg35nis5_BJx2WEVLiRjJQCakJ1tw8NcqQ8Qfj23XawAoN0gmlw_VgdYjNnDIxDnzpnsfwEQbDS2T1fSWKEkRVnAn9htaXmuPzf0s6nZnAikbkwuizp0lYN3GIc0CRAKnyYIg)
 
 **Recommended Browser Plugins for easier reviewing**
 
 Your browser’s developer tools are great for reviewing this kind of work, but if you aren’t very experienced with these kinds of tools, there are a few browser extensions that can make testing certain attributes on a component easier.
 
-https://lh5.googleusercontent.com/TfMBWiP1wFAYPdJ6_-Vk09OqQXBcBe_Z7liV968MMxXBXIShgquUdf6mqBfTUb8G8qxJt0C7_Yi6SThfUq5UysNu9i3n7lLOSyacjEEEwiLK4w6T6UBWG7Ezrt0WAcWUrz7BpL6reG13emGu1quH76jxEXRdyVWP0I6HatGv7ODLezx4MyOiVnwadw
-
-https://lh4.googleusercontent.com/qajZqDU9zMceS3gJstr0wAXtxC9O02A0d9JKROYBsMjANp2oEOpdl8PwJ5IWVYD0qoh5gIX2_eAH9m9F1TDSIXFyDr409TBHibJFeFqFfw6rN4b6OPa_n2G8V5QzfgemQTQqKYleFBbRohJ5avlnfOowLs_xu6pSS1Tzo18fSXXx622zWmqLyy6TyQ
-
-https://lh4.googleusercontent.com/ap2Nd_CxBJHF0b9kgeK1C-nK1B6j-PX853XIcGPP8me3Cflkx9DGIjTN0f_4DvUc5IJHzpRiqr08i3RCBr4AOYi0ItlBFrfWG2MlrvBWnDVcqa3nyV40mr-n5FadbJPyiNjXJ68n-Y1jHUvamS8GtZT9VEVSyRlh-7FiejRTyFddc7It3XxYLneUtQ
+![Whatfont](https://lh5.googleusercontent.com/TfMBWiP1wFAYPdJ6_-Vk09OqQXBcBe_Z7liV968MMxXBXIShgquUdf6mqBfTUb8G8qxJt0C7_Yi6SThfUq5UysNu9i3n7lLOSyacjEEEwiLK4w6T6UBWG7Ezrt0WAcWUrz7BpL6reG13emGu1quH76jxEXRdyVWP0I6HatGv7ODLezx4MyOiVnwadw)
 
 - **WhatFont** - when running, this tool will allow you to click on text in your browser and obtain the color, font weight, font style, calculated font size for that text. It doesn’t work in the storybook main view, but if you open the canvas in a new tab, it works very well there. Available from [Chrome](https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/zjm-whatfont/)
+
+![Measure-it](https://lh4.googleusercontent.com/qajZqDU9zMceS3gJstr0wAXtxC9O02A0d9JKROYBsMjANp2oEOpdl8PwJ5IWVYD0qoh5gIX2_eAH9m9F1TDSIXFyDr409TBHibJFeFqFfw6rN4b6OPa_n2G8V5QzfgemQTQqKYleFBbRohJ5avlnfOowLs_xu6pSS1Tzo18fSXXx622zWmqLyy6TyQ)
+
 - **Measure-it** It’s an on-screen pixel ruler. It lets you draw boxes over the browser view to measure things. Handy if you have any specific values for padding, margin, etc. that you want to make sure are right. [Chrome](https://chrome.google.com/webstore/detail/measure-it/jocbgkoackihphodedlefohapackjmna?hl=en) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/measure-it/)
+
+![](https://lh4.googleusercontent.com/ap2Nd_CxBJHF0b9kgeK1C-nK1B6j-PX853XIcGPP8me3Cflkx9DGIjTN0f_4DvUc5IJHzpRiqr08i3RCBr4AOYi0ItlBFrfWG2MlrvBWnDVcqa3nyV40mr-n5FadbJPyiNjXJ68n-Y1jHUvamS8GtZT9VEVSyRlh-7FiejRTyFddc7It3XxYLneUtQ)
+
 - **ColorZilla** lets you sample colors out of the page like you can in any design tool. [Chrome](https://www.colorzilla.com/chrome/) & [Firefox](https://www.colorzilla.com/firefox/)
 
 ## When a PR Needs Review
