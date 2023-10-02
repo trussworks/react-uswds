@@ -108,7 +108,7 @@ Make sure to hit Accept in the dropdown in the left sidebar. Ideally, it’s a d
 
 It’s in the description of the PR and looks like this. Use your best judgement in terms of what steps are necessary.
 
-https://lh4.googleusercontent.com/DT68ooHqMQ4GecIX2huNPjHZlxR5Pir1tkEJFGusPYTvZRG0sonemeF_TkipbH9rFxH41HrqksgaF3-1tLaXVGqloNl-b1TaEiLiy90kN9UjCTJewq9ZKNQudpFOE2VGxRRgitIV3FahpKoGjg-VxK_nXW1IhE97GEYoalEv4PDweTXl6KfP2t2P
+![design PR checklist](https://lh4.googleusercontent.com/DT68ooHqMQ4GecIX2huNPjHZlxR5Pir1tkEJFGusPYTvZRG0sonemeF_TkipbH9rFxH41HrqksgaF3-1tLaXVGqloNl-b1TaEiLiy90kN9UjCTJewq9ZKNQudpFOE2VGxRRgitIV3FahpKoGjg-VxK_nXW1IhE97GEYoalEv4PDweTXl6KfP2t2P)
 
 ### If everything looks good:
 
