@@ -95,6 +95,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <Icon.DoNotTouch {...args} />
     <Icon.DragHandle {...args} />
     <Icon.Eco {...args} />
+    <Icon.Edit {...args} />
     <Icon.ElectricalServices {...args} />
     <Icon.EmojiEvents {...args} />
     <Icon.Error {...args} />
@@ -107,6 +108,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <Icon.FastRewind {...args} />
     <Icon.Favorite {...args} />
     <Icon.FavoriteBorder {...args} />
+    <Icon.Fax {...args} />
     <Icon.FileDownload {...args} />
     <Icon.FilePresent {...args} />
     <Icon.FileUpload {...args} />
@@ -151,6 +153,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <Icon.Lightbulb {...args} />
     <Icon.LightbulbOutline {...args} />
     <Icon.Link {...args} />
+    <Icon.LinkedIn {...args} />
     <Icon.LinkOff {...args} />
     <Icon.List {...args} />
     <Icon.LocalCafe {...args} />
@@ -206,6 +209,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <Icon.Rain {...args} />
     <Icon.ReduceCapacity {...args} />
     <Icon.Remove {...args} />
+    <Icon.RemoveCircle {...args} />
     <Icon.Report {...args} />
     <Icon.Restaurant {...args} />
     <Icon.RssFeed {...args} />

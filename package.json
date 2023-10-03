@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "5.3.1",
+  "version": "5.4.0",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
-    "@uswds/uswds": "3.6.0",
+    "@uswds/uswds": "^3.6.0",
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
