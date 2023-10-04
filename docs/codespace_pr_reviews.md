@@ -7,7 +7,7 @@
 
    ![Create a new codespace screenshot](https://github.com/trussworks/react-uswds/assets/59394696/9ebfff8a-353c-4064-bf70-8712bbfbbeda)
 
-5. **Wait** for the codespace to finish setting up, you should see stuff happening in the `Terminal`. If you mess with it before it is done it might not work. If you mess this up, yo might see an error about your node version.
+5. **Wait** for the codespace to finish setting up, you should see stuff happening in the `Terminal`. If you mess with it before it is done it might not work. If you mess this up, you might see an error about your node version.
 6. if the yarn install in that process was not successful, run `yarn install`. Wait until it is done before you do anything. takes ~5ish minutes
 7. if it is successful run `yarn storybook`
 8. You will get a message saying your application is running on port 9009. click the `Open in Browser` button
