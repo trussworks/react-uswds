@@ -5,24 +5,24 @@
 3. click the `Codespaces` tab
 4. `Create new codespace`
 
-   ![Create a new codespace screenshot](https://prod-files-secure.s3.us-west-2.amazonaws.com/bf5cb10c-8e7c-41db-97ca-ded0d1f001c9/49ab6248-8f67-4e79-9ee5-7dee09e03237/Untitled.png)
+   ![Create a new codespace screenshot](https://github.com/trussworks/react-uswds/assets/59394696/9ebfff8a-353c-4064-bf70-8712bbfbbeda)
 
 5. **Wait** for the codespace to finish setting up, you should see stuff happening in the `Terminal`. If you mess with it before it is done it might not work. If you mess this up, yo might see an error about your node version.
 6. if the yarn install in that process was not successful, run `yarn install`. Wait until it is done before you do anything. takes ~5ish minutes
 7. if it is successful run `yarn storybook`
 8. You will get a message saying your application is running on port 9009. click the `Open in Browser` button
 
-   ![application running message](https://prod-files-secure.s3.us-west-2.amazonaws.com/bf5cb10c-8e7c-41db-97ca-ded0d1f001c9/1816a7df-3b12-4269-860f-8a1a1e616a65/Untitled.png)
+   ![application running message](https://github.com/trussworks/react-uswds/assets/59394696/9d6ac91d-5ea2-4bbc-a64d-685076444354)
 
 9. It should open a new tab that will have a blank window until the storybook is up and running. Might take a couple of minutes.
 10. It should show you the react uswds Storybook with the changes in the PR!
 
-    ![storybook running in codespaces dev environment](https://prod-files-secure.s3.us-west-2.amazonaws.com/bf5cb10c-8e7c-41db-97ca-ded0d1f001c9/02e9a1e8-ba30-4691-a37a-0d7def377db5/Untitled.png)
+    ![storybook running in codespaces dev environment](https://github.com/trussworks/react-uswds/assets/59394696/cdfc67de-711f-43c2-928a-284158744f1f)
 
 11. proceed as if you were running the PR on your own machine. hooray!
 12. When your review is complete, you should delete the codespace. There are costs associated with storing codespaces. **You should therefore delete any codespaces you no longer need**.
 
-![how to delete the codespace screencap](https://prod-files-secure.s3.us-west-2.amazonaws.com/bf5cb10c-8e7c-41db-97ca-ded0d1f001c9/87a1d20d-6234-4a75-8498-f5dd89baadc9/Untitled.png)
+![how to delete the codespace screencap](https://github.com/trussworks/react-uswds/assets/59394696/45c1ea01-28f3-4b77-a6da-b6af81546bbc)
 
 ## Things to watch out for
 
