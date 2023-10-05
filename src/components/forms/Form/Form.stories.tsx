@@ -236,17 +236,16 @@ export const signInForm = (): React.ReactElement => {
           name="password-sign-in"
           type={showPassword ? 'text' : 'password'}
         />
-        <Button
+        <button
           title="Show password"
           type="button"
-          unstyled
           className="usa-show-password"
           aria-controls="password-sign-in"
           onClick={(): void =>
             setShowPassword((showPassword) => !showPassword)
           }>
           {showPassword ? 'Hide password' : 'Show password'}
-        </Button>
+        </button>
 
         <Button type="submit">Sign in</Button>
         <p>

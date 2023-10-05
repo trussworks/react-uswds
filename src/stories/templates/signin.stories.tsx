@@ -165,17 +165,16 @@ export const SignIn = (): React.ReactElement => {
                         required={true}
                       />
 
-                      <Button
+                      <button
                         title="Show password"
                         type="button"
-                        unstyled
                         className="usa-show-password"
                         aria-controls="password-create-account password-create-account-confirm"
                         onClick={(): void =>
                           setShowPassword((showPassword) => !showPassword)
                         }>
                         {showPassword ? 'Hide password' : 'Show password'}
-                      </Button>
+                      </button>
 
                       <Button type="submit">Sign in</Button>
 
