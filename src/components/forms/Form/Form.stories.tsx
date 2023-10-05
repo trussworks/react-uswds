@@ -289,16 +289,15 @@ export const passwordResetForm = (): React.ReactElement => {
           name="confirmPassword"
           type={showPassword ? 'text' : 'password'}
         />
-        <Button
+        <button
           type="button"
-          unstyled
           className="usa-show-password"
           aria-controls="newPassword confirmPassword"
           onClick={(): void =>
             setShowPassword((showPassword) => !showPassword)
           }>
           {showPassword ? 'Hide my typing' : 'Show my typing'}
-        </Button>
+        </button>
 
         <Button type="submit">Reset password</Button>
       </Fieldset>
