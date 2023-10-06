@@ -130,6 +130,16 @@ export const TwoLanguagesAsAButton = (
   />
 )
 
+export const TwoLanguagesWithDisplayLangProp = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
+  <LanguageSelector
+    langs={[languagesButton[2], languagesButton[3]]}
+    small={argTypes.small}
+    displayLang={languagesButton[3]}
+  />
+)
+
 export const MoreThanTwoLanguagesAsALink = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
@@ -146,6 +156,17 @@ export const MoreThanTwoLanguagesAsAButton = (
   <LanguageSelector
     langs={languagesButton}
     label="Languages"
+    small={argTypes.small}
+  />
+)
+
+export const MoreThanTwoLanguagesWithDisplayLangProp = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
+  <LanguageSelector
+    langs={languagesButton}
+    label="Languages"
+    displayLang={languagesButton[2]}
     small={argTypes.small}
   />
 )
