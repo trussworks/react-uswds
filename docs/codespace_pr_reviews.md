@@ -3,7 +3,7 @@
 1. go to the PR
 2. click the `Code` button in the top right corner
 3. click the `Codespaces` tab
-4. `Create new codespace`
+4. `Create a new codespace on ...`
 
    ![Create a new codespace screenshot](https://github.com/trussworks/react-uswds/assets/59394696/9ebfff8a-353c-4064-bf70-8712bbfbbeda)
 
