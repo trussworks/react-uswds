@@ -2,7 +2,7 @@ import React from 'react'
 export const CONTENT = (
   <>
     <h1>Sample in-page navigation page</h1>
-    <h2 id="lorem">Lorem ipsum dolor</h2>
+    <h2 tabIndex={-1} id="lorem">Lorem ipsum dolor</h2>
     <p>
       Lorem ipsum dolor sit amet, <a href="#consectetuer">consectetuer adipiscing elit</a>. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -65,7 +65,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h2 id="consectetuer">Consectetuer adipiscing elit</h2>
+    <h2 tabIndex={-1} id="consectetuer">Consectetuer adipiscing elit</h2>
     <p>
       <a href="#lorem">Lorem ipsum dolor</a> sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -128,7 +128,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h3 id="nullam">Nullam sit amet enim</h3>
+    <h3 tabIndex={-1} id="nullam">Nullam sit amet enim</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -191,7 +191,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h3 id="vivamus">Vivamus pharetra posuere sapien</h3>
+    <h3 tabIndex={-1} id="vivamus">Vivamus pharetra posuere sapien</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -254,7 +254,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h3 id="suspendisse">Suspendisse id velit</h3>
+    <h3 tabIndex={-1} id="suspendisse">Suspendisse id velit</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -317,7 +317,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h3 id="orci">Orci magna rhoncus neque</h3>
+    <h3 tabIndex={-1} id="orci">Orci magna rhoncus neque</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -380,7 +380,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h2 id="aliquam">Aliquam erat volutpat: velit vitae ligula volutpat</h2>
+    <h2 tabIndex={-1} id="aliquam">Aliquam erat volutpat: velit vitae ligula volutpat</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
@@ -443,7 +443,7 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
-    <h3 id="vitae">Vitae ligula</h3>
+    <h3 tabIndex={-1} id="vitae">Vitae ligula</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
