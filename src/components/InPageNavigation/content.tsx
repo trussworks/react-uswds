@@ -4,7 +4,7 @@ export const CONTENT = (
     <h1>Sample in-page navigation page</h1>
     <h2 id="lorem">Lorem ipsum dolor</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
+      Lorem ipsum dolor sit amet, <a href="#consectetuer">consectetuer adipiscing elit</a>. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
       lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula
       volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla
@@ -67,7 +67,7 @@ export const CONTENT = (
     </p>
     <h2 id="consectetuer">Consectetuer adipiscing elit</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
+      <a href="#lorem">Lorem ipsum dolor</a> sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
       lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula
       volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla
