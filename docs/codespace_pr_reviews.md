@@ -13,7 +13,7 @@
 
    ![Github Codespace configuaration process](https://github.com/trussworks/react-uswds/assets/59394696/bdf6cd8d-22e2-4e6b-b778-65c83c51556a)
 
-6. if the yarn install in that process was not successful, like in the image above, run `yarn install`. Wait until it is done before you do anything. takes ~5ish minutes
+6. if the yarn install in that process was not successful (should look like the image above), run `yarn install`. Wait until it is done before you do anything. takes ~5ish minutes
 7. if it is successful run `yarn storybook`. this might also take a couple of minutes to complete.
 8. when the link the storybook will be hosted on is available, you will get a message saying your application is running on port 9009 in the bottom right corner. click the `Open in Browser` button
 
