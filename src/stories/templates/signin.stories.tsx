@@ -169,7 +169,7 @@ export const SignIn = (): React.ReactElement => {
                         title="Show password"
                         type="button"
                         className="usa-show-password"
-                        aria-controls="password-create-account password-create-account-confirm"
+                        aria-controls="password-sign-in"
                         onClick={(): void =>
                           setShowPassword((showPassword) => !showPassword)
                         }>
