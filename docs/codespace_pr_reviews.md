@@ -19,7 +19,7 @@
 
    ![application running message](https://github.com/trussworks/react-uswds/assets/59394696/9d6ac91d-5ea2-4bbc-a64d-685076444354)
 
-   If you don't see that message (it doesnt alawys happen) check the terminal for something like this:
+   If you don't see that message (it doesn't always happen) check the terminal for something like this:
    ![storybook started message in the terminal](https://user-images.githubusercontent.com/13249580/272653168-b9d66c78-3659-4c18-a7b4-c6d493354135.png)
 
    If you see that, go to `Ports` tab in the top bar of that bottom section where your `Terminal` is. You can find a link under the column in the table labelled `Forwarded address`. Click that to open the sotrybook site being hosted on Codespaces.
