@@ -27,7 +27,7 @@
    ![Ports Tab table with forwarded address](https://github.com/trussworks/react-uswds/assets/59394696/a3075661-a1c2-476a-aeb9-974e6f9e036f)
 
 9. It should open a new tab that will have a blank window until the storybook is completely done running its build. Might take a couple of minutes.
-10. When the build completes, should show you the react uswds Storybook with the changes in the PR!
+10. When the build completes, should show you the ReactUSWDS Storybook with the changes in the PR!
 
     ![storybook running in codespaces dev environment](https://github.com/trussworks/react-uswds/assets/59394696/cdfc67de-711f-43c2-928a-284158744f1f)
 
