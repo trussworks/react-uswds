@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/trussworks/react-uswds/compare/5.3.1...5.4.0) (2023-09-29)
+
+
+### Features
+
+* **deps:** Allow consumers to use newer uswds minor versions ([#2600](https://github.com/trussworks/react-uswds/issues/2600)) ([36c1c8a](https://github.com/trussworks/react-uswds/commit/36c1c8ab304b95a84538d9ce69405547caee4830))
+
 ## [5.3.1](https://github.com/trussworks/react-uswds/compare/5.3.0...5.3.1) (2023-09-08)
 
 
