@@ -15,7 +15,7 @@ export type LanguageSelectorProps = {
   langs: LanguageDefinition[]
   small?: boolean
   className?: string
-  displayLang?: LanguageDefinition
+  displayLang?: string
 }
 
 export const LanguageSelector = ({
@@ -45,7 +45,9 @@ export const LanguageSelector = ({
         "LanguageSelector's label is not used when only two languages are available."
       )
     }
-    const curLang = displayLang || langs[Number(langIndex)]
+    const curLang =
+      langs.find((langDef) => langDef.attr === displayLang) ||
+      langs[Number(langIndex)]
     const onClickString: string =
       typeof curLang.on_click === 'string' ? curLang.on_click : ''
     const onClick =

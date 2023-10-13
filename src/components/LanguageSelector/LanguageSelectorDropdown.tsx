@@ -53,6 +53,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
     },
     className
   )
+  const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
 
   return (
     <div className={classes} data-testid="languageSelector" {...divProps}>
@@ -60,7 +61,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
             className={classes}
-            label={displayLang?.label || label || langs[0].label}
+            label={displayLabel?.label || label || langs[0].label}
             isOpen={isOpen}
             onToggle={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
           />
