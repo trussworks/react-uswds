@@ -56,6 +56,10 @@ Storybook is our primary resource for everyone on the project outside of the des
 
 To run storybook locally, run the command  yarn storybook  from your command line. This will host the project storybook at localhost:9009. It can be helpful to save this to your bookmarks bar.
 
+**Running a PR branch for review in the browser without having the repo on your machine**
+
+See [Codespaces for PR reviews](docs/codespace_pr_reviews.md).
+
 **Reviewing a newly added component to storybook**
 
 You can run storybook locally to measure and evaluate the component to ensure it meets your intentions, but you can also get a preview of what’s been added in Happo. When you add to Happo, it won’t show up as a failure that needs approval, but you can still navigate in to preview the added images.
