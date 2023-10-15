@@ -18,7 +18,7 @@ type BaseTimePickerProps = {
   id: string
   name: string
   onChange: (val?: string) => void
-  label?: string
+  label: string
   defaultValue?: string
   disabled?: boolean
   minTime?: string
