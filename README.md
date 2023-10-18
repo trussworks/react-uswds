@@ -171,7 +171,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://andyhub.com/"><img src="https://avatars.githubusercontent.com/u/764090?v=4?s=100" width="100px;" alt="Andrew Nelson"/><br /><sub><b>Andrew Nelson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://sawyer.soy"><img src="https://avatars.githubusercontent.com/u/371943?v=4?s=100" width="100px;" alt="Sawyer Hollenshead"/><br /><sub><b>Sawyer Hollenshead</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sawyerh" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://keybase.io/rpdelaney"><img src="https://avatars.githubusercontent.com/u/1139517?v=4?s=100" width="100px;" alt="Ryan Delaney"/><br /><sub><b>Ryan Delaney</b></sub></a><br /><a href="#maintenance-rpdelaney" title="Maintenance">🚧</a> <a href="#infra-rpdelaney" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-    </tr>
+        <td align="center" valign="top" width="14.28%"><a href="https://github.com/annagingle"><img src="https://avatars.githubusercontent.com/u/48488699?v=4" width="100px;" alt="Anna Gingle"/><br /><sub><b>Anna Gingle</b></sub></a><br /><a href="https://annagingle.com" title="Design and a little code">🎨💻</a></td>
+      
+  
   </tbody>
 </table>
 
