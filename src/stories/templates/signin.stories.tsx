@@ -155,7 +155,7 @@ export const SignIn = (): React.ReactElement => {
                         required={true}
                       />
 
-                      <Label htmlFor="email">Password</Label>
+                      <Label htmlFor="password-sign-in">Password</Label>
                       <TextInput
                         id="password-sign-in"
                         name="password"
