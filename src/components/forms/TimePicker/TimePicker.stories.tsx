@@ -54,7 +54,7 @@ export const defaultTimePicker = (
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       onChange={noop}
       disabled={argTypes.disabled}
     />
