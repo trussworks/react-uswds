@@ -35,6 +35,7 @@ export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
+      <Label htmlFor="input-ComboBox">Select a Fruit</Label>
       <ComboBox
         id="input-ComboBox"
         name="input-ComboBox"
@@ -53,6 +54,7 @@ export const withDefaultValue = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
+      <Label htmlFor="input-ComboBox">Select a Fruit</Label>
       <ComboBox
         id="input-ComboBox"
         name="input-ComboBox"
@@ -72,7 +74,7 @@ export const withLabel = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a fruit</Label>
+      <Label htmlFor="fruit">Select a Fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
