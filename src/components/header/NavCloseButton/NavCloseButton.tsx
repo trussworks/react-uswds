@@ -15,9 +15,10 @@ export const NavCloseButton = ({
       className={classes}
       onClick={onClick}
       data-testid="navCloseButton"
+      aria-label="Close"
       {...buttonProps}
       type="button">
-      <Icon.Close size={3} aria-label="Close" />
+      <Icon.Close size={3} aria-hidden="true" />
     </button>
   )
 }
