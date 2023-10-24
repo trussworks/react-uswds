@@ -1,22 +1,23 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, within } from '@testing-library/react'
 
 import { ExtendedNav } from './ExtendedNav'
+import userEvent from '@testing-library/user-event'
 
 const testPrimaryItems = [
-  <a className="usa-current" href="#linkOne" key="one">
+  <a className="usa-current" href="#linkOne" key="one" data-testid="extendedNav_One" >
     Simple link one
   </a>,
-  <a href="#linkTwo" key="two">
+  <a href="#linkTwo" key="two" data-testid="extendedNav_Two">
     Simple link two
   </a>,
 ]
 
 const testSecondaryItems = [
-  <a className="usa-current" href="#linkThree" key="three">
+  <a className="usa-current" href="#linkThree" key="three" data-testid="extendedNav_Three">
     <span>Simple link three</span>
   </a>,
-  <a href="#linkFour" key="four">
+  <a href="#linkFour" key="four" data-testid="extendedNav_Four">
     <span>Simple link four</span>
   </a>,
 ]
@@ -108,5 +109,28 @@ describe('ExtendedNav component', () => {
       />
     )
     expect(container.querySelector('.is-visible')).not.toBeInTheDocument()
+  })
+
+  it('tab order matches visual order', async () => {
+    const {container} = render(
+      <ExtendedNav
+        onToggleMobileNav={onToggleMobileNav}
+        primaryItems={testPrimaryItems}
+        secondaryItems={testSecondaryItems}
+      />
+    )
+
+    const visualIdOrder = [
+      'navCloseButton',
+      'extendedNav_Three',
+      'extendedNav_Four',
+      'extendedNav_One',
+      'extendedNav_Two'
+    ]
+
+    for (const expectedFocusId of visualIdOrder) {
+      await userEvent.tab()
+      expect(within(container).getByTestId(expectedFocusId)).toHaveFocus()
+    }
   })
 })
