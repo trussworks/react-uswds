@@ -2,6 +2,7 @@ import React from 'react'
 import { InPageNavigation } from './InPageNavigation'
 import { CONTENT } from './content'
 import { HeadingLevel } from '../../types/headingLevel'
+import classNames from 'classnames'
 
 export default {
   title: 'Components/In-Page Navigation',
@@ -52,6 +53,7 @@ export const Default = (argTypes: StorybookArguments): React.ReactElement => (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
+    mainProps={{className: 'usa-prose'}}
     rootMargin={argTypes.rootMargin}
     threshold={argTypes.threshold}
     title={argTypes.title}
@@ -66,6 +68,7 @@ export const ScrollOffset = (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
+    mainProps={{className: 'usa-prose'}}
     rootMargin={argTypes.rootMargin}
     scrollOffset="2rem"
     threshold={argTypes.threshold}

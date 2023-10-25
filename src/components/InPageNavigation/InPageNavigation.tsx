@@ -4,12 +4,11 @@ import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'
 import styles from './InPageNavigation.module.scss'
 
-export type ContentType = [heading: HeadingLevel, text: string, href: string]
-
 type InPageNavigationProps = {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel
+  mainProps?: JSX.IntrinsicElements['main']
   navProps?: JSX.IntrinsicElements['nav']
   rootMargin?: string
   scrollOffset?: string
@@ -21,9 +20,10 @@ export const InPageNavigation = ({
   className,
   content,
   headingLevel = 'h4',
+  mainProps,
   navProps,
   rootMargin = '0px 0px 0px 0px',
-  scrollOffset = '0',
+  scrollOffset,
   threshold = 1,
   title = 'On this page',
   ...divProps
@@ -32,6 +32,8 @@ export const InPageNavigation = ({
   const classes = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)
+  const { className: mainClassName, ...remainingMainProps } = mainProps || {}
+  const mainClasses = classnames('main-content', mainClassName)
   const Heading = headingLevel
   const offsetStyle = {
     '--margin-offset': scrollOffset,
@@ -90,8 +92,9 @@ export const InPageNavigation = ({
       </aside>
       <main
         id="main-content"
-        className={classnames('main-content', 'usa-prose')}
-        style={offsetStyle}>
+        className={mainClasses}
+        {...remainingMainProps}
+        style={scrollOffset ? offsetStyle : undefined}>
         {content}
       </main>
     </div>
