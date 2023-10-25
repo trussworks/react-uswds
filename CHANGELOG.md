@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.0](https://github.com/trussworks/react-uswds/compare/5.4.0...5.5.0) (2023-10-20)
+
+
+### Features
+
+* added 4 icons ([#2525](https://github.com/trussworks/react-uswds/issues/2525)) ([c489814](https://github.com/trussworks/react-uswds/commit/c48981442b4bb65b403dc2009ed3cd28a72037a9))
+* Added LanguageDefinition to exports ([#2570](https://github.com/trussworks/react-uswds/issues/2570)) ([0f4688a](https://github.com/trussworks/react-uswds/commit/0f4688ae06afadd595689055750e65624868b1bd))
+* Added required marker ([#2524](https://github.com/trussworks/react-uswds/issues/2524)) ([c5f2b40](https://github.com/trussworks/react-uswds/commit/c5f2b40b4b79784340f66d66fceea365922648f8))
+* Allow Tooltip label to be a string or React component ([#2596](https://github.com/trussworks/react-uswds/issues/2596)) ([bc01008](https://github.com/trussworks/react-uswds/commit/bc0100816a0bcba797562a02ea3b32543f850904))
+* changed template links to buttons ([#2526](https://github.com/trussworks/react-uswds/issues/2526)) ([a4b8423](https://github.com/trussworks/react-uswds/commit/a4b8423f4d3a4b8dcb89b8dab8dea4363c6b567a))
+* replaced memorable date month input with select ([#2527](https://github.com/trussworks/react-uswds/issues/2527)) ([d38b31b](https://github.com/trussworks/react-uswds/commit/d38b31be9454a03a4605f69335daf19d376020a7))
+
+
+### Bug Fixes
+
+* Language selector: add prop for display lang for bug fix ([#2622](https://github.com/trussworks/react-uswds/issues/2622)) ([df68d0d](https://github.com/trussworks/react-uswds/commit/df68d0d8bc273533dcb5a85a5a699aca12404d67))
+* Sass modules bug ([#2555](https://github.com/trussworks/react-uswds/issues/2555)) ([a1ed9f7](https://github.com/trussworks/react-uswds/commit/a1ed9f758c151b639726b16fb74327299f7c09a2))
+* **storybook:** password label set to password input field id on sign in ([#2618](https://github.com/trussworks/react-uswds/issues/2618)) ([eae195e](https://github.com/trussworks/react-uswds/commit/eae195e73b71adb9b7849a25f8836c244e49ad21))
+* **storybook:** sufficient color contrast set in custom class button ([#2619](https://github.com/trussworks/react-uswds/issues/2619)) ([2878822](https://github.com/trussworks/react-uswds/commit/28788220761dc92243302bac72c0bd2b97872192))
+* Updates file input stories to set appropriate html for value of label ([#2628](https://github.com/trussworks/react-uswds/issues/2628)) ([7f51150](https://github.com/trussworks/react-uswds/commit/7f51150f1a12df261b18eb1d6ecf9e8faa3c4c0e))
+
+
+### Documentation & Examples
+
+* add design PR review documentation ([#2615](https://github.com/trussworks/react-uswds/issues/2615)) ([2892424](https://github.com/trussworks/react-uswds/commit/289242407c718fcfc157488492b0a9a942de00c0))
+* adds in information on how to test PRs in GitHub Codespaces ([#2617](https://github.com/trussworks/react-uswds/issues/2617)) ([ef944f8](https://github.com/trussworks/react-uswds/commit/ef944f8054e15f374b07fa73c26be827a89f5ef1))
+
+## [5.4.0](https://github.com/trussworks/react-uswds/compare/5.3.1...5.4.0) (2023-09-29)
+
+
+### Features
+
+* **deps:** Allow consumers to use newer uswds minor versions ([#2600](https://github.com/trussworks/react-uswds/issues/2600)) ([36c1c8a](https://github.com/trussworks/react-uswds/commit/36c1c8ab304b95a84538d9ce69405547caee4830))
+
+## [5.3.1](https://github.com/trussworks/react-uswds/compare/5.3.0...5.3.1) (2023-09-08)
+
+
+### Bug Fixes
+
+* text input mask fixes ([#2581](https://github.com/trussworks/react-uswds/issues/2581)) ([84cf4d0](https://github.com/trussworks/react-uswds/commit/84cf4d0e03dc65521a463a6c7326740a5509ba8b))
+
+## [5.3.0](https://github.com/trussworks/react-uswds/compare/5.2.0...5.3.0) (2023-08-29)
+
+
+### Features
+
+* input mask ([#2538](https://github.com/trussworks/react-uswds/issues/2538)) ([9d2fe14](https://github.com/trussworks/react-uswds/commit/9d2fe1414d3a99c3851031cdb0cd660cf39f5d8f))
+
 ## [5.2.0](https://github.com/trussworks/react-uswds/compare/5.1.1...5.2.0) (2023-08-14)
 
 
