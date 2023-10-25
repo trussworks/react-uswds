@@ -4,7 +4,6 @@ import { Form } from './Form'
 
 import { Alert } from '../../Alert/Alert'
 import { Button } from '../../Button/Button'
-import { Dropdown } from '../Dropdown/Dropdown'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 import { Fieldset } from '../Fieldset/Fieldset'
 import { FormGroup } from '../FormGroup/FormGroup'
@@ -12,6 +11,7 @@ import { Label } from '../Label/Label'
 import { RequiredMarker } from '../Label/RequiredMarker'
 import { TextInput } from '../TextInput/TextInput'
 import { Textarea } from '../Textarea/Textarea'
+import { Select } from '../Select/Select'
 
 export default {
   title: 'Components/Form templates',
@@ -129,7 +129,7 @@ export const addressForm = (): React.ReactElement => (
       <Label htmlFor="state" requiredMarker>
         State, territory, or military post
       </Label>
-      <Dropdown id="state" name="state" required>
+      <Select id="state" name="state" required>
         <option>- Select -</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -188,7 +188,7 @@ export const addressForm = (): React.ReactElement => (
         <option value="AE">AE - Armed Forces Europe</option>
         <option value="AE">AE - Armed Forces Middle East</option>
         <option value="AP">AP - Armed Forces Pacific</option>
-      </Dropdown>
+      </Select>
 
       <Label htmlFor="zip">ZIP Code</Label>
       <TextInput
