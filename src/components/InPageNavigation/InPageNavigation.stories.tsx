@@ -53,7 +53,7 @@ export const Default = (argTypes: StorybookArguments): React.ReactElement => (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
-    mainProps={{className: 'usa-prose'}}
+    mainProps={{ className: 'usa-prose' }}
     rootMargin={argTypes.rootMargin}
     threshold={argTypes.threshold}
     title={argTypes.title}
@@ -68,7 +68,7 @@ export const ScrollOffset = (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
-    mainProps={{className: 'usa-prose'}}
+    mainProps={{ className: 'usa-prose' }}
     rootMargin={argTypes.rootMargin}
     scrollOffset="2rem"
     threshold={argTypes.threshold}
