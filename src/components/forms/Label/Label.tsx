@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import { RequiredMarker } from './RequiredMarker'
 
 type LabelProps = {
   children: React.ReactNode
@@ -8,6 +9,7 @@ type LabelProps = {
   error?: boolean
   hint?: React.ReactNode
   srOnly?: boolean
+  requiredMarker?: boolean
 }
 
 export const Label = ({
@@ -17,6 +19,7 @@ export const Label = ({
   error,
   hint,
   srOnly,
+  requiredMarker,
   ...labelProps
 }: LabelProps & JSX.IntrinsicElements['label']): React.ReactElement => {
   const classes = classnames(
@@ -36,6 +39,12 @@ export const Label = ({
       htmlFor={htmlFor}>
       {children}
       {hint && <span className="usa-hint">{hint}</span>}
+      {requiredMarker && (
+        <>
+          {' '}
+          <RequiredMarker />
+        </>
+      )}
     </label>
   )
 }
