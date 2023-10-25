@@ -35,7 +35,7 @@ export const defaultComboBoxWithPropOptions = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="input-ComboBox">Select a Fruit</Label>
+      <Label htmlFor="input-ComboBox">Select a fruit</Label>
       <ComboBox
         id="input-ComboBox"
         name="input-ComboBox"
@@ -54,7 +54,7 @@ export const withDefaultValue = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="input-ComboBox">Select a Fruit</Label>
+      <Label htmlFor="input-ComboBox">Select a fruit</Label>
       <ComboBox
         id="input-ComboBox"
         name="input-ComboBox"
@@ -74,7 +74,7 @@ export const withLabel = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a Fruit</Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
@@ -94,7 +94,7 @@ export const disabled = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a Fruit</Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
@@ -114,7 +114,7 @@ export const withOtherFields = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a Fruit</Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
       <Label htmlFor="fruitDescription">Description</Label>
       <TextInput id="fruitDescription" name="fruitDescription" type="text" />
@@ -135,7 +135,7 @@ export const exposedRefMethods = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a Fruit</Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
@@ -178,7 +178,7 @@ export const customInputChangeHandler = (): React.ReactElement => {
 
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a Fruit</Label>
+      <Label htmlFor="fruit">Select a fruit</Label>
       <ComboBox
         id="fruit"
         name="fruit"
