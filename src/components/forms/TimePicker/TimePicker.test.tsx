@@ -12,6 +12,7 @@ describe('TimePicker Component', () => {
   const testProps = {
     id: 'appointment-time',
     name: 'appointment-time',
+    label: 'Appointment time',
     onChange: jest.fn(),
   }
 
