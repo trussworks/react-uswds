@@ -107,7 +107,7 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 
 ### Quick links:
 
-- [Yarn scripts](./docs/contributing#available-commands)
+- [Yarn scripts](./docs/contributing.md#available-commands)
 - [PR commit guidelines](./docs/contributing.md#opening--merging-pull-requests)
 - [Adding new components](./docs/adding_new_components.md)
 - [Testing in an application](./docs/contributing.md#testing-in-an-application)
