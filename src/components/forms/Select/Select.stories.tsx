@@ -20,7 +20,7 @@ export default {
   },
   argTypes: {
     validationStatus: {
-      options: ['error', 'success'],
+      options: ['error', 'success', 'undefined'],
       control: 'radio',
     },
     disabled: { control: 'boolean' },
@@ -65,3 +65,6 @@ export const WithLabel = () => (
     </Select>
   </>
 )
+
+export const Multiselect = Template.bind({})
+Multiselect.args = { id: 'input-multiselect', name: 'input-multiselect' }
