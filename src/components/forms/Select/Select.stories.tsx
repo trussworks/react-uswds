@@ -66,5 +66,8 @@ export const WithLabel = () => (
   </>
 )
 
-export const Multiselect = Template.bind({})
-Multiselect.args = { id: 'input-multiselect', name: 'input-multiselect' }
+export const Multiselect = () => (
+  <Select id='input-multiselect' name='input-multiselect' multiple>
+    {options}
+  </Select>
+)
