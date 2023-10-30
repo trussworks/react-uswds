@@ -33,6 +33,7 @@ const options = (
     <option value="value1">Option A</option>
     <option value="value2">Option B</option>
     <option value="value3">Option C</option>
+    <option value="valueBIG">Option of extra length to demonstrate how content like this will look different</option>
   </>
 )
 
