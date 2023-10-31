@@ -33,7 +33,10 @@ const options = (
     <option value="value1">Option A</option>
     <option value="value2">Option B</option>
     <option value="value3">Option C</option>
-    <option value="valueBIG">Option of extra length to demonstrate how content like this will look different</option>
+    <option value="valueBIG">
+      Option of extra length to demonstrate how content like this will look
+      different
+    </option>
   </>
 )
 
@@ -68,7 +71,7 @@ export const WithLabel = () => (
 )
 
 export const Multiselect = () => (
-  <Select id='input-multiselect' name='input-multiselect' multiple>
+  <Select id="input-multiselect" name="input-multiselect" multiple>
     {options}
   </Select>
 )
