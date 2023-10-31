@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/trussworks/react-uswds/compare/5.5.0...6.0.0) (2023-10-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* TimePicker implementations must specify a label prop
+* Use Select instead
+
+### Features
+
+* Delete deprecated Dropdown component ([#2644](https://github.com/trussworks/react-uswds/issues/2644)) ([59dffd1](https://github.com/trussworks/react-uswds/commit/59dffd138f745f38a222523360a4666c0c13b030))
+* in-page navigation ([#2551](https://github.com/trussworks/react-uswds/issues/2551)) ([d330a12](https://github.com/trussworks/react-uswds/commit/d330a121b5abcc63f25882d34900fa76f6330a49))
+
+
+### Bug Fixes
+
+* Label is mandatory for TimePicker component ([#2629](https://github.com/trussworks/react-uswds/issues/2629)) ([c7f00d3](https://github.com/trussworks/react-uswds/commit/c7f00d35175d4dd0b59288eb34685edc9525cb0f))
+* readme quick links ([#2646](https://github.com/trussworks/react-uswds/issues/2646)) ([d4c0b4e](https://github.com/trussworks/react-uswds/commit/d4c0b4e2f2b2c0924c35c96bea050ad8c2a2ae19))
+* Updates sign in stories to fix aria-controls issue of show password button ([#2627](https://github.com/trussworks/react-uswds/issues/2627)) ([67c1114](https://github.com/trussworks/react-uswds/commit/67c1114ab1eea857dc76271deb5c85672505e40a))
+
+
+### Documentation & Examples
+
+* add @AnnaGingle as a contributor ([#2649](https://github.com/trussworks/react-uswds/issues/2649)) ([c307f4b](https://github.com/trussworks/react-uswds/commit/c307f4b2a4989b911dd4339da8fe0181825925b1))
+
 ## [5.5.0](https://github.com/trussworks/react-uswds/compare/5.4.0...5.5.0) (2023-10-20)
 
 
