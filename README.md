@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -107,7 +107,7 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 
 ### Quick links:
 
-- [Yarn scripts](./docs/contributing#available-commands)
+- [Yarn scripts](./docs/contributing.md#available-commands)
 - [PR commit guidelines](./docs/contributing.md#opening--merging-pull-requests)
 - [Adding new components](./docs/adding_new_components.md)
 - [Testing in an application](./docs/contributing.md#testing-in-an-application)
@@ -171,6 +171,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://andyhub.com/"><img src="https://avatars.githubusercontent.com/u/764090?v=4?s=100" width="100px;" alt="Andrew Nelson"/><br /><sub><b>Andrew Nelson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://sawyer.soy"><img src="https://avatars.githubusercontent.com/u/371943?v=4?s=100" width="100px;" alt="Sawyer Hollenshead"/><br /><sub><b>Sawyer Hollenshead</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sawyerh" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://keybase.io/rpdelaney"><img src="https://avatars.githubusercontent.com/u/1139517?v=4?s=100" width="100px;" alt="Ryan Delaney"/><br /><sub><b>Ryan Delaney</b></sub></a><br /><a href="#maintenance-rpdelaney" title="Maintenance">🚧</a> <a href="#infra-rpdelaney" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/AnnaGingle"><img src="https://avatars.githubusercontent.com/u/48488699?v=4?s=100" width="100px;" alt="Anna Gingle"/><br /><sub><b>Anna Gingle</b></sub></a><br /><a href="#design-AnnaGingle" title="Design">🎨</a> <a href="https://github.com/trussworks/react-uswds/commits?author=AnnaGingle" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
