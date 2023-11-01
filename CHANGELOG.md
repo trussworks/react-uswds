@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* TimePicker implementations must specify a label prop
-* Use Select instead
+* `<TimePicker>` implementations must specify a `label` prop
+* Dropdown has been removed use `<Select>` instead
 
 ### Features
 
