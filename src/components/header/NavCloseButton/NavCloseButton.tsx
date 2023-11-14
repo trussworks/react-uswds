@@ -18,7 +18,7 @@ export const NavCloseButton = ({
       aria-label="Close Navigation Menu"
       {...buttonProps}
       type="button">
-      <Icon.Close size={3} aria-hidden="true" alt="Close Icon" />
+      <Icon.Close size={3} aria-hidden="true" />
     </button>
   )
 }
