@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type FormGroupProps = {
+export type FormGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean

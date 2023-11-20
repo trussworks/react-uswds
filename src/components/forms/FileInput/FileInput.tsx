@@ -10,7 +10,7 @@ import classnames from 'classnames'
 import { FilePreview } from './FilePreview'
 import { makeSafeForID } from './utils'
 
-type FileInputProps = {
+export type FileInputProps = {
   id: string
   name: string
   dragText?: string

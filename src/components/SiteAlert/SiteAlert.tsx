@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type SiteAlertProps = {
+export type SiteAlertProps = {
   variant: 'info' | 'emergency'
   children: string | React.ReactNode | React.ReactNode[]
   heading?: string

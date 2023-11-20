@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type CollectionProps = {
+export type CollectionProps = {
   condensed?: boolean
 }
 

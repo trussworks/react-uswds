@@ -33,7 +33,7 @@ const defaultMessage = (count: number, max: number): string => {
 }
 
 /* Types */
-type BaseCharacterCountProps = {
+export type BaseCharacterCountProps = {
   id: string
   name: string
   maxLength: number

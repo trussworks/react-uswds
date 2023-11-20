@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type RadioProps = {
+export type RadioProps = {
   id: string
   name: string
   className?: string

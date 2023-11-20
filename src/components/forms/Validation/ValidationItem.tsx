@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type ValidationItemProps = {
+export type ValidationItemProps = {
   children: React.ReactNode
   id: string
   isValid: boolean

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type TagProps = {
+export type TagProps = {
   children: React.ReactNode
   background?: string
 }

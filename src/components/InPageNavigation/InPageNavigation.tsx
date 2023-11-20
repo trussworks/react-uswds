@@ -4,7 +4,7 @@ import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'
 import styles from './InPageNavigation.module.scss'
 
-type InPageNavigationProps = {
+export type InPageNavigationProps = {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel

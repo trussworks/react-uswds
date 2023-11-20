@@ -2,7 +2,7 @@ import React from 'react'
 
 import classnames from 'classnames'
 
-type SummaryBoxProps = {
+export type SummaryBoxProps = {
   children?: React.ReactNode
   className?: string
 }

@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
 import { NavList } from '../NavList/NavList'
 
-type ExtendedNavProps = {
+export type ExtendedNavProps = {
   primaryItems: React.ReactNode[]
   secondaryItems: React.ReactNode[]
   onToggleMobileNav?: (
