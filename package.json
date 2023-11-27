@@ -59,7 +59,7 @@
     "@storybook/addon-a11y": "^7.0.2",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addons": "^7.0.8",
-    "@storybook/builder-webpack5": "^6.5.14",
+    "@storybook/builder-webpack5": "^7.5.3",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/theming": "^7.0.8",
