@@ -39,7 +39,7 @@ export const completeTimePicker = (
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       hint="hh:mm"
       onChange={noop}
       disabled={argTypes.disabled}
@@ -54,6 +54,7 @@ export const defaultTimePicker = (
     <TimePicker
       id="appointment-time"
       name="appointment-time"
+      label="Appointment time"
       onChange={noop}
       disabled={argTypes.disabled}
     />
@@ -67,7 +68,7 @@ export const withMinAndMaxTimes = (
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       hint="hh:mm (9:00am - 5:00pm)"
       minTime="9:00"
       maxTime="17:00"
@@ -84,7 +85,7 @@ export const withDefaultValue = (
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       hint="hh:mm"
       defaultValue="12:00"
       onChange={noop}
