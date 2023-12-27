@@ -202,6 +202,23 @@ describe('Modal component', () => {
     expect(modalWindow).not.toHaveAttribute('aria-describedby')
   })
 
+  it('throws an error if labelledby or describedby is null', async () => {
+    const consoleSpy = jest.spyOn(console, 'error')
+    const testModalId = 'testModal'
+
+    renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)
+
+    const modalWrapper = screen.getByRole('dialog')
+    expect(modalWrapper).not.toHaveAttribute('aria-labelledby')
+    expect(modalWrapper).not.toHaveAttribute('aria-describedby')
+    expect(consoleSpy).toHaveBeenCalledWith(
+      `${testModalId} is missing aria-labelledby attribute`
+    )
+    expect(consoleSpy).toHaveBeenCalledWith(
+      `${testModalId} is missing aria-describedby attribute`
+    )
+  })
+
   it('renders the visible state when open', async () => {
     const modalRef = createRef<ModalRef>()
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
