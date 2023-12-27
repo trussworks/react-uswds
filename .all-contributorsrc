@@ -253,9 +253,56 @@
         "maintenance",
         "infra"
       ]
+    },
+    {
+      "login": "AnnaGingle",
+      "name": "Anna Gingle",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48488699?v=4",
+      "profile": "https://github.com/AnnaGingle",
+      "contributions": [
+        "design",
+        "code"
+      ]
+    },
+    {
+      "login": "aybeedee",
+      "name": "Abdullah Umer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75930195?v=4",
+      "profile": "https://github.com/aybeedee",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "m7adeel",
+      "name": "Muhammad Adeel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87698014?v=4",
+      "profile": "https://github.com/m7adeel",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "vinodkv2511",
+      "name": "Vinod Krishna Vellampalli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44632502?v=4",
+      "profile": "https://github.com/vinodkv2511",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kleinschmidtj",
+      "name": "Joe Kleinschmidt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57681819?v=4",
+      "profile": "https://joeforyou.xyz",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "commitConvention": "angular",
-  "commitType": "chore(all-contributors)"
+  "commitType": "chore"
 }

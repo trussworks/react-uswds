@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LanguageSelector, LanguageDefinition } from './LanguageSelector'
+import { ComponentStory } from '@storybook/react'
 
 export default {
   title: 'Components/LanguageSelector',
   component: LanguageSelector,
   argTypes: {
+    displayLang: { control: 'string' },
     small: { control: 'boolean' },
   },
   parameters: {
@@ -19,6 +21,78 @@ Source: https://designsystem.digital.gov/components/language-selector/
     },
   },
 }
+
+const TwoLanguagesTemplate: ComponentStory<typeof LanguageSelector> = (
+  args
+) => {
+  const [lang, setLang] = useState<string | undefined>(args.displayLang)
+
+  const languagesDisplayProp: LanguageDefinition[] = [
+    {
+      label: '简体字',
+      label_local: 'Chinese - Simplified',
+      attr: 'zh',
+      on_click: () => {
+        setLang(`en`)
+      },
+    },
+    {
+      label: 'English',
+      attr: 'en',
+      on_click: () => {
+        setLang(`zh`)
+      },
+    },
+  ]
+
+  return <LanguageSelector langs={languagesDisplayProp} displayLang={lang} />
+}
+
+export const LanguagesDisplayPropSandbox = TwoLanguagesTemplate.bind({})
+LanguagesDisplayPropSandbox.args = {
+  displayLang: `en`,
+}
+
+const MoreThanTwoLanguagesTemplate: ComponentStory<typeof LanguageSelector> = (
+  args
+) => {
+  const [lang, setLang] = useState<string | undefined>(args.displayLang)
+
+  const languagesDisplayProp: LanguageDefinition[] = [
+    {
+      label: 'العربية',
+      label_local: 'Arabic',
+      attr: 'ar',
+      on_click: () => {
+        setLang(`ar`)
+      },
+    },
+    {
+      label: '简体字',
+      label_local: 'Chinese - Simplified',
+      attr: 'zh',
+      on_click: () => {
+        setLang(`zh`)
+      },
+    },
+    {
+      label: 'English',
+      attr: 'en',
+      on_click: () => {
+        setLang(`en`)
+      },
+    },
+  ]
+
+  return <LanguageSelector langs={languagesDisplayProp} displayLang={lang} />
+}
+
+export const LanguagesDisplayMoreThanTwoLanguagesPropSandbox =
+  MoreThanTwoLanguagesTemplate.bind({})
+LanguagesDisplayPropSandbox.args = {
+  displayLang: `en`,
+}
+
 type StorybookArguments = {
   small?: boolean
 }

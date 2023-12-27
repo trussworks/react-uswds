@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "5.3.1",
+  "version": "6.1.0",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
-    "@uswds/uswds": "3.5.0",
+    "@uswds/uswds": "^3.6.0",
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
@@ -76,7 +76,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "@uswds/uswds": "3.5.0",
+    "@uswds/uswds": "3.7.0",
     "all-contributors-cli": "^6.24.0",
     "babel-jest": "^29.4.3",
     "babel-loader": "^9.1.2",
@@ -94,7 +94,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-security": "^1.4.0",
     "focus-trap-react": "^8.8.1",
-    "fork-ts-checker-webpack-plugin": "^8.0.0",
+    "fork-ts-checker-webpack-plugin": "^9.0.0",
     "happo-plugin-storybook": "^3.0.0",
     "happo.io": "^8.3.1",
     "jest": "^26.1.0",
