@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
-    "@uswds/uswds": "^3.6.0",
+    "@uswds/uswds": "^3.7.1",
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
