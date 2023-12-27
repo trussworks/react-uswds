@@ -204,18 +204,16 @@ export const CreateAccount = (): React.ReactElement => {
                         required={true}
                       />
 
-                      <p className="usa-form__note">
-                        <a
-                          title="Show password"
-                          href="javascript:void(0);"
-                          className="usa-show-password"
-                          aria-controls="password-create-account password-create-account-confirm"
-                          onClick={(): void =>
-                            setShowPassword((showPassword) => !showPassword)
-                          }>
-                          {showPassword ? 'Hide password' : 'Show password'}
-                        </a>
-                      </p>
+                      <button
+                        title="Show password"
+                        type="button"
+                        className="usa-show-password"
+                        aria-controls="password-create-account password-create-account-confirm"
+                        onClick={(): void =>
+                          setShowPassword((showPassword) => !showPassword)
+                        }>
+                        {showPassword ? 'Hide password' : 'Show password'}
+                      </button>
 
                       <Label htmlFor="password-create-account-confirm">
                         Re-type password{' '}

@@ -5,6 +5,7 @@ import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { Radio } from '../Radio/Radio'
+import { RequiredMarker } from '../Label/RequiredMarker'
 
 export default {
   title: 'Components/Form elements/Fieldset',
@@ -70,33 +71,40 @@ export const checkboxFieldset = (): React.ReactElement => (
 )
 
 export const checkboxFieldsetWithDefaultLegend = (): React.ReactElement => (
-  <Fieldset legend="Historical figures 1">
-    <Checkbox
-      id="truth"
-      name="historical-figures-1"
-      value="truth"
-      defaultChecked
-      label="Sojourner Truth"
-    />
-    <Checkbox
-      id="douglass"
-      name="historical-figures-1"
-      value="douglass"
-      label="Frederick Douglass"
-    />
-    <Checkbox
-      id="washington"
-      name="historical-figures-1"
-      value="washington"
-      label="Booker T. Washington"
-    />
-    <Checkbox
-      id="carver"
-      name="historical-figures-1"
-      label="George Washington Carver"
-      disabled
-    />
-  </Fieldset>
+  <>
+    <p>
+      Required fields are marked with an asterisk (<RequiredMarker />
+      ).
+    </p>
+    <Fieldset legend="Historical figures 1" requiredMarker>
+      <Checkbox
+        required
+        id="truth"
+        name="historical-figures-1"
+        value="truth"
+        defaultChecked
+        label="Sojourner Truth"
+      />
+      <Checkbox
+        id="douglass"
+        name="historical-figures-1"
+        value="douglass"
+        label="Frederick Douglass"
+      />
+      <Checkbox
+        id="washington"
+        name="historical-figures-1"
+        value="washington"
+        label="Booker T. Washington"
+      />
+      <Checkbox
+        id="carver"
+        name="historical-figures-1"
+        label="George Washington Carver"
+        disabled
+      />
+    </Fieldset>
+  </>
 )
 
 export const radioFieldset = (): React.ReactElement => (
