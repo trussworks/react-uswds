@@ -50,7 +50,7 @@ export const RangeInput = ({
       min={rangeMin}
       max={rangeMax}
       defaultValue={value}
-      onChange={e => setValue(Number(e.target.value))}
+      onChange={(e) => setValue(Number(e.target.value))}
     />
   )
 }

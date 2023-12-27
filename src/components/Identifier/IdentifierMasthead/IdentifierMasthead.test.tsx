@@ -39,7 +39,8 @@ describe('IdentifierMasthead component', () => {
           </IdentifierLogo>
         </IdentifierLogos>
         <IdentifierIdentity domain="domain.edu.mil.gov">
-         <span aria-hidden="true">An</span>{` official website of the `}
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
           <Link href="#">Test Agency Name</Link>
         </IdentifierIdentity>
       </IdentifierMasthead>
@@ -74,7 +75,8 @@ describe('IdentifierMasthead component', () => {
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
         </IdentifierLogos>
         <IdentifierIdentity domain="domain.edu.mil.gov">
-          <span aria-hidden="true">An</span>{` official website of the `}
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
           <Link href="#">Test Agency Name</Link>
           {`, `}
           <Link href="#">Second Test Agency Name</Link>

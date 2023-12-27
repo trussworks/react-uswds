@@ -79,11 +79,21 @@ describe('RangeInput component', () => {
   it('renders with callout', () => {
     const max = 100
     const val = 50
-    const prep = "de"
-    const unit = "por ciento"
+    const prep = 'de'
+    const unit = 'por ciento'
     const { queryByTestId } = render(
-      <RangeInput id="range-slider-id" name="rangeName" defaultValue={val} max={max} textPreposition={prep} textUnit={unit} />
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        defaultValue={val}
+        max={max}
+        textPreposition={prep}
+        textUnit={unit}
+      />
     )
-    expect(queryByTestId('range')).toHaveAttribute('aria-valuetext', '50 por ciento de 100')
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-valuetext',
+      '50 por ciento de 100'
+    )
   })
 })

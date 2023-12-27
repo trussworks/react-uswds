@@ -9,7 +9,8 @@ describe('IdentifierIdentity component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     )
@@ -25,7 +26,8 @@ describe('IdentifierIdentity component', () => {
         className="custom-class"
         aria-label="Test aria label"
         domain="a.domain">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     )

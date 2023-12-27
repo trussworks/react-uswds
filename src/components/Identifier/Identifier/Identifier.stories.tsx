@@ -132,7 +132,8 @@ export const identifierDefault = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
@@ -173,7 +174,8 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
         {` and the `}
         <Link href="#">Other Test Agency Name</Link>
@@ -218,7 +220,8 @@ export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
         {`, `}
         <Link href="#">Second Test Agency Name</Link>
@@ -239,7 +242,8 @@ export const noLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
@@ -276,7 +280,8 @@ export const taxDisclaimerEnglish = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>{` official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
         {`. Produced and published at taxpayer expense.`}
       </IdentifierIdentity>
@@ -320,7 +325,8 @@ export const taxDisclaimerAndMultipleParentsAndLogos =
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
         </IdentifierLogos>
         <IdentifierIdentity domain="domain.edu.mil.gov">
-          <span aria-hidden="true">An</span>{` official website of the `}
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
           <Link href="#">Test Agency Name</Link>
           {` and the `}
           <Link href="#">Other Test Agency Name</Link>

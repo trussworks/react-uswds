@@ -119,7 +119,8 @@ describe('Identifier component', () => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain="domain.edu.mil.gov">
-            <span aria-hidden="true">An</span>{` official website of the `}
+            <span aria-hidden="true">An</span>
+            {` official website of the `}
             <Link href="testlink">Test Agency Name</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
@@ -175,7 +176,8 @@ describe('Identifier component', () => {
             data-testid="identifierMasthead-agency-description"
             domain="domain.edu.mil.gov"
             aria-label="Agency description">
-            <span aria-hidden="true">An</span>{` official website of the `}
+            <span aria-hidden="true">An</span>
+            {` official website of the `}
             <Link href="testlink">Test Agency Name</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
@@ -205,7 +207,8 @@ describe('Identifier component', () => {
             <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain="domain.edu.mil.gov">
-            <span aria-hidden="true">An</span>{` official website of the `}
+            <span aria-hidden="true">An</span>
+            {` official website of the `}
             <Link href="#">Test Agency Name</Link>
             {`, `}
             <Link href="#">Second Test Agency Name</Link>
@@ -237,7 +240,8 @@ describe('Identifier component', () => {
           <IdentifierIdentity
             data-testid="identifierMasthead-agency-description"
             domain="domain.edu.mil.gov">
-            <span aria-hidden="true">An</span>{` official website of the `}
+            <span aria-hidden="true">An</span>
+            {` official website of the `}
             <Link href="#">Test Agency Name</Link>
             {`. Produced and published at taxpayer expense.`}
           </IdentifierIdentity>
