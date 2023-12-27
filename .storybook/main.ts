@@ -91,7 +91,7 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  framework: '@storybook/react',
+  framework: '@storybook/react-webpack5',
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   typescript: {
