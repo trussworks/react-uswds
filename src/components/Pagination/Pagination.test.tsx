@@ -235,6 +235,15 @@ describe('Pagination component', () => {
     expect(screen.getAllByText('…')).toHaveLength(1)
   })
 
+  it("doesn't render last page when unbounded", () => {
+    const randomPage = Math.random() * 1000
+    render(<Pagination currentPage={randomPage} pathname={testPathname} />)
+    expect(screen.getByLabelText(`Page ${randomPage + 1}`)).toHaveAttribute(
+      'href',
+      `${testPathname}?page=${randomPage + 1}`
+    )
+  })
+
   it('can click onClickNext, onClickPrevious and onClickPagenumber', () => {
     const mockOnClickNext = jest.fn()
     const mockOnClickPrevious = jest.fn()

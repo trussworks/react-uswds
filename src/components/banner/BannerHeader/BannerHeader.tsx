@@ -62,6 +62,7 @@ export const BannerHeader = ({
         )}
         <div
           className="grid-col-fill tablet:grid-col-auto"
+          aria-hidden
           data-testid="banner-header-grid-div">
           <p className={headerTextClasses} {...remainingHeaderTextProps}>
             {headerText}

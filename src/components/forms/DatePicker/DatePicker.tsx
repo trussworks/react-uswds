@@ -24,11 +24,13 @@ import {
   addDays,
 } from './utils'
 import { Calendar } from './Calendar'
+import { ValidationStatus } from '../../../types/validationStatus'
 
 type BaseDatePickerProps = {
   id: string
   name: string
   className?: string
+  validationStatus?: ValidationStatus
   disabled?: boolean
   required?: boolean
   defaultValue?: string
@@ -54,6 +56,7 @@ export const DatePicker = ({
   id,
   name,
   className,
+  validationStatus,
   defaultValue,
   disabled,
   required,
@@ -67,6 +70,9 @@ export const DatePicker = ({
 }: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
+
+  const isError = validationStatus === 'error'
+  const isSuccess = validationStatus === 'success'
 
   const [internalValue, setInternalValue] = useState('')
   const [externalValue, setExternalValue] = useState('')
@@ -241,6 +247,14 @@ export const DatePicker = ({
     },
     className
   )
+  const datePickerInputClasses = classnames(
+    'usa-input',
+    'usa-date-picker__external-input',
+    {
+      'usa-input--error': isError,
+      'usa-input--success': isSuccess,
+    }
+  )
 
   const toggleCalendar = i18n.toggleCalendar
 
@@ -272,7 +286,7 @@ export const DatePicker = ({
           {...inputProps}
           id={id}
           data-testid="date-picker-external-input"
-          className="usa-input usa-date-picker__external-input"
+          className={datePickerInputClasses}
           type="text"
           disabled={disabled}
           required={required}

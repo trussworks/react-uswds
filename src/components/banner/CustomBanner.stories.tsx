@@ -1,4 +1,5 @@
 import React, { ReactElement, useState } from 'react'
+import { Icon } from '../Icon/Icons'
 import {
   Banner,
   BannerButton,
@@ -7,7 +8,6 @@ import {
   BannerGuidance,
   BannerHeader,
   BannerIcon,
-  BannerLockImage,
   MediaBlockBody,
 } from '../../index'
 
@@ -18,13 +18,11 @@ import httpsIcon from '@uswds/uswds/src/img/icon-https.svg'
 const CustomBanner = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const lock = <BannerLockImage title="Lock" description="A locked padlock" />
-
   return (
-    <Banner>
+    <Banner aria-label="Official website of the state department of something specific">
       <BannerHeader
         isOpen={isOpen}
-        flagImg={<BannerFlag src={flagImg} alt="U.S. flag" />}
+        flagImg={<BannerFlag src={flagImg} aria-hidden alt="" />}
         headerText="This is an official website of the state department of something specific"
         headerActionText="Here's how you know">
         <BannerButton
@@ -53,10 +51,13 @@ const CustomBanner = (): ReactElement => {
             <MediaBlockBody>
               <p>
                 <strong>Secure .gov websites use HTTPS</strong>
-                <br />A <strong>lock ( {lock} )</strong> or{' '}
-                <strong>https://</strong> means you&apos;ve safely connected to
-                the .gov website. Share sensitive information only on official,
-                secure websites.
+                <br />A{' '}
+                <strong>
+                  lock (<Icon.Lock aria-label="Locked padlock icon" />)
+                </strong>{' '}
+                or <strong>https://</strong> means you&apos;ve safely connected
+                to the .gov website. Share sensitive information only on
+                official, secure websites.
               </p>
             </MediaBlockBody>
           </BannerGuidance>

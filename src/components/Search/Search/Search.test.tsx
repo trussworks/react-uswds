@@ -42,10 +42,7 @@ describe('Search component', () => {
     const { queryByTestId } = render(
       <Search onSubmit={mockSubmit} defaultValue={defaultValue}></Search>
     )
-    expect(queryByTestId('textInput')).toHaveAttribute(
-      'value',
-      defaultValue
-    )
+    expect(queryByTestId('textInput')).toHaveAttribute('value', defaultValue)
   })
 
   it('renders a label', () => {
@@ -72,13 +69,19 @@ describe('Search component', () => {
   it('adds small class when size prop is small', () => {
     const mockSubmit = jest.fn()
     const { container } = render(<Search onSubmit={mockSubmit} size="small" />)
-    expect(container.querySelector('div.usa-search--small button')).toBeInTheDocument()
+    expect(
+      container.querySelector('div.usa-search--small button')
+    ).toBeInTheDocument()
   })
 
   it('adds big class when size prop is big', () => {
     const mockSubmit = jest.fn()
     const { container } = render(<Search onSubmit={mockSubmit} size="big" />)
-    expect(container.querySelector('div.usa-search--big button')).toBeInTheDocument()
-    expect(container.querySelector('div.usa-search--big input')).toBeInTheDocument()
+    expect(
+      container.querySelector('div.usa-search--big button')
+    ).toBeInTheDocument()
+    expect(
+      container.querySelector('div.usa-search--big input')
+    ).toBeInTheDocument()
   })
 })

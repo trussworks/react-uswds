@@ -15,12 +15,12 @@ jobs:
       url: ${{ steps.build-publish.outputs.page_url }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version-file: '.node-version'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

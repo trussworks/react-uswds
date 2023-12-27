@@ -1,6 +1,13 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const { BannerPlugin } = require('webpack')
+
+const uswdsIncludePaths = [
+  './node_modules/@uswds',
+  './node_modules/@uswds/uswds/packages',
+]
 
 module.exports = {
   mode: 'production',
@@ -13,6 +20,18 @@ module.exports = {
     library: 'ReactUSWDS',
     libraryTarget: 'umd',
     globalObject: 'this',
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            // Preserve directives like "use client"
+            directives: false,
+          },
+        },
+      }),
+    ],
   },
   externals: {
     react: {
@@ -34,6 +53,14 @@ module.exports = {
       chunkFilename: '[name].[id].css',
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new BannerPlugin({
+      // Support React Server Components
+      // See: https://react.dev/reference/react/use-client
+      banner: '"use client";',
+      raw: true,
+      entryOnly: true,
+      test: /\.js$/,
+    }),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
@@ -62,26 +89,33 @@ module.exports = {
               },
             },
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                includePaths: uswdsIncludePaths,
+              },
+            },
+          },
         ],
       },
       {
         test: /\.(sa|sc|c)ss$/i,
         exclude: /\.module\.(sa|sc|c)ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 
-        {
-          loader: "sass-loader",
-          options: {
-            sourceMap: true,
-            sassOptions: {
-              includePaths: [
-                "./node_modules/@uswds",
-                "./node_modules/@uswds/uswds/packages",
-              ],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                includePaths: uswdsIncludePaths,
+              },
             },
           },
-        },
-      ],
+        ],
       },
       {
         test: /\.svg$/,

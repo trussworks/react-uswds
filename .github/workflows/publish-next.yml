@@ -11,12 +11,12 @@ jobs:
     name: Publish next to Github Packages
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version-file: '.node-version'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -36,10 +36,10 @@ jobs:
 
       # Setup .npmrc file to publish to GitHub Packages
       - name: Set up node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           registry-url: 'https://npm.pkg.github.com'
-          node-version: '16.x'
+          node-version-file: '.node-version'
 
       # Publish to GitHub Packages
       - run: yarn publish --no-git-tag-version --prerelease --preid alpha-$(date +%Y%m%d%H%M%S) --tag next
