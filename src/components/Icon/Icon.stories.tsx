@@ -974,6 +974,10 @@ export const work = (args: StorybookArgs): React.ReactElement => (
   <Icon.Work {...args} />
 )
 
+export const x = (args: StorybookArgs): React.ReactElement => (
+  <Icon.X {...args} />
+)
+
 export const youtube = (args: StorybookArgs): React.ReactElement => (
   <Icon.Youtube {...args} />
 )
