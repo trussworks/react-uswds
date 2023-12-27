@@ -268,7 +268,7 @@ export const MultipleSignInOptions = (): React.ReactElement => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain="domain.gov">
-            An official website of the <Link href="#">{`<Parent agency>`}</Link>
+            <span aria-hidden="true">An</span> official website of the <Link href="#">{`<Parent agency>`}</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
