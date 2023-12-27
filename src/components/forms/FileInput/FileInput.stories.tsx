@@ -88,7 +88,7 @@ export const multipleFilesInput = (): React.ReactElement => (
 export const withError = (): React.ReactElement => (
   <div style={{ marginLeft: '1.25em' }}>
     <FormGroup error>
-      <Label htmlFor="file-input-multiple" error>
+      <Label htmlFor="file-input-error" error>
         Input has an error
       </Label>
       <span className="usa-hint" id="file-input-error-hint">

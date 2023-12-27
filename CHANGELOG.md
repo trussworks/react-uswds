@@ -2,6 +2,113 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/trussworks/react-uswds/compare/6.0.0...6.1.0) (2023-11-27)
+
+
+### Features
+
+* Add “use client” to fix React Server Components ([#2656](https://github.com/trussworks/react-uswds/issues/2656)) ([fad63b1](https://github.com/trussworks/react-uswds/commit/fad63b1d6f5f01ba742cdb093ee05dc117d1753b))
+* Added multiselect story ([#2648](https://github.com/trussworks/react-uswds/issues/2648)) ([03652fe](https://github.com/trussworks/react-uswds/commit/03652fe3663735229a676cda23aa751ec2ed452d))
+
+
+### Bug Fixes
+
+* **a11y:** move aria-label from svg icon to button ([#2640](https://github.com/trussworks/react-uswds/issues/2640)) ([fa18032](https://github.com/trussworks/react-uswds/commit/fa18032f538655452e501079b306e4a314480da6))
+* adding labels in combo box (default combo box, with default value) ([#2636](https://github.com/trussworks/react-uswds/issues/2636)) ([7714d14](https://github.com/trussworks/react-uswds/commit/7714d1474a3512328e6391b12434293421de408a))
+
+## [6.0.0](https://github.com/trussworks/react-uswds/compare/5.5.0...6.0.0) (2023-10-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* `<TimePicker>` implementations must specify a `label` prop
+* Dropdown has been removed use `<Select>` instead
+
+### Features
+
+* Delete deprecated Dropdown component ([#2644](https://github.com/trussworks/react-uswds/issues/2644)) ([59dffd1](https://github.com/trussworks/react-uswds/commit/59dffd138f745f38a222523360a4666c0c13b030))
+* in-page navigation ([#2551](https://github.com/trussworks/react-uswds/issues/2551)) ([d330a12](https://github.com/trussworks/react-uswds/commit/d330a121b5abcc63f25882d34900fa76f6330a49))
+
+
+### Bug Fixes
+
+* Label is mandatory for TimePicker component ([#2629](https://github.com/trussworks/react-uswds/issues/2629)) ([c7f00d3](https://github.com/trussworks/react-uswds/commit/c7f00d35175d4dd0b59288eb34685edc9525cb0f))
+* readme quick links ([#2646](https://github.com/trussworks/react-uswds/issues/2646)) ([d4c0b4e](https://github.com/trussworks/react-uswds/commit/d4c0b4e2f2b2c0924c35c96bea050ad8c2a2ae19))
+* Updates sign in stories to fix aria-controls issue of show password button ([#2627](https://github.com/trussworks/react-uswds/issues/2627)) ([67c1114](https://github.com/trussworks/react-uswds/commit/67c1114ab1eea857dc76271deb5c85672505e40a))
+
+
+### Documentation & Examples
+
+* add @AnnaGingle as a contributor ([#2649](https://github.com/trussworks/react-uswds/issues/2649)) ([c307f4b](https://github.com/trussworks/react-uswds/commit/c307f4b2a4989b911dd4339da8fe0181825925b1))
+
+## [5.5.0](https://github.com/trussworks/react-uswds/compare/5.4.0...5.5.0) (2023-10-20)
+
+
+### Features
+
+* added 4 icons ([#2525](https://github.com/trussworks/react-uswds/issues/2525)) ([c489814](https://github.com/trussworks/react-uswds/commit/c48981442b4bb65b403dc2009ed3cd28a72037a9))
+* Added LanguageDefinition to exports ([#2570](https://github.com/trussworks/react-uswds/issues/2570)) ([0f4688a](https://github.com/trussworks/react-uswds/commit/0f4688ae06afadd595689055750e65624868b1bd))
+* Added required marker ([#2524](https://github.com/trussworks/react-uswds/issues/2524)) ([c5f2b40](https://github.com/trussworks/react-uswds/commit/c5f2b40b4b79784340f66d66fceea365922648f8))
+* Allow Tooltip label to be a string or React component ([#2596](https://github.com/trussworks/react-uswds/issues/2596)) ([bc01008](https://github.com/trussworks/react-uswds/commit/bc0100816a0bcba797562a02ea3b32543f850904))
+* changed template links to buttons ([#2526](https://github.com/trussworks/react-uswds/issues/2526)) ([a4b8423](https://github.com/trussworks/react-uswds/commit/a4b8423f4d3a4b8dcb89b8dab8dea4363c6b567a))
+* replaced memorable date month input with select ([#2527](https://github.com/trussworks/react-uswds/issues/2527)) ([d38b31b](https://github.com/trussworks/react-uswds/commit/d38b31be9454a03a4605f69335daf19d376020a7))
+
+
+### Bug Fixes
+
+* Language selector: add prop for display lang for bug fix ([#2622](https://github.com/trussworks/react-uswds/issues/2622)) ([df68d0d](https://github.com/trussworks/react-uswds/commit/df68d0d8bc273533dcb5a85a5a699aca12404d67))
+* Sass modules bug ([#2555](https://github.com/trussworks/react-uswds/issues/2555)) ([a1ed9f7](https://github.com/trussworks/react-uswds/commit/a1ed9f758c151b639726b16fb74327299f7c09a2))
+* **storybook:** password label set to password input field id on sign in ([#2618](https://github.com/trussworks/react-uswds/issues/2618)) ([eae195e](https://github.com/trussworks/react-uswds/commit/eae195e73b71adb9b7849a25f8836c244e49ad21))
+* **storybook:** sufficient color contrast set in custom class button ([#2619](https://github.com/trussworks/react-uswds/issues/2619)) ([2878822](https://github.com/trussworks/react-uswds/commit/28788220761dc92243302bac72c0bd2b97872192))
+* Updates file input stories to set appropriate html for value of label ([#2628](https://github.com/trussworks/react-uswds/issues/2628)) ([7f51150](https://github.com/trussworks/react-uswds/commit/7f51150f1a12df261b18eb1d6ecf9e8faa3c4c0e))
+
+
+### Documentation & Examples
+
+* add design PR review documentation ([#2615](https://github.com/trussworks/react-uswds/issues/2615)) ([2892424](https://github.com/trussworks/react-uswds/commit/289242407c718fcfc157488492b0a9a942de00c0))
+* adds in information on how to test PRs in GitHub Codespaces ([#2617](https://github.com/trussworks/react-uswds/issues/2617)) ([ef944f8](https://github.com/trussworks/react-uswds/commit/ef944f8054e15f374b07fa73c26be827a89f5ef1))
+
+## [5.4.0](https://github.com/trussworks/react-uswds/compare/5.3.1...5.4.0) (2023-09-29)
+
+
+### Features
+
+* **deps:** Allow consumers to use newer uswds minor versions ([#2600](https://github.com/trussworks/react-uswds/issues/2600)) ([36c1c8a](https://github.com/trussworks/react-uswds/commit/36c1c8ab304b95a84538d9ce69405547caee4830))
+
+## [5.3.1](https://github.com/trussworks/react-uswds/compare/5.3.0...5.3.1) (2023-09-08)
+
+
+### Bug Fixes
+
+* text input mask fixes ([#2581](https://github.com/trussworks/react-uswds/issues/2581)) ([84cf4d0](https://github.com/trussworks/react-uswds/commit/84cf4d0e03dc65521a463a6c7326740a5509ba8b))
+
+## [5.3.0](https://github.com/trussworks/react-uswds/compare/5.2.0...5.3.0) (2023-08-29)
+
+
+### Features
+
+* input mask ([#2538](https://github.com/trussworks/react-uswds/issues/2538)) ([9d2fe14](https://github.com/trussworks/react-uswds/commit/9d2fe1414d3a99c3851031cdb0cd660cf39f5d8f))
+
+## [5.2.0](https://github.com/trussworks/react-uswds/compare/5.1.1...5.2.0) (2023-08-14)
+
+
+### Features
+
+* added language selector ([#2531](https://github.com/trussworks/react-uswds/issues/2531)) ([60bf797](https://github.com/trussworks/react-uswds/commit/60bf797ba2b4bbd4ef6380502a59d1f989b220b1))
+
+
+### Bug Fixes
+
+* Adds story using validation prop for Alert component ([#2504](https://github.com/trussworks/react-uswds/issues/2504)) ([c5176c9](https://github.com/trussworks/react-uswds/commit/c5176c9b4a7e94460f6cae518b73627f11f3647d))
+* Improve character count component's SR experience ([#2550](https://github.com/trussworks/react-uswds/issues/2550)) ([c612a1b](https://github.com/trussworks/react-uswds/commit/c612a1b7074f671cdf29faae9cd5ca042d3e72b5))
+* moved overrides to let us use utilities ([#2553](https://github.com/trussworks/react-uswds/issues/2553)) ([45e1430](https://github.com/trussworks/react-uswds/commit/45e1430fd96339aecce55aebf109e8ad72000f91))
+
+
+### Documentation & Examples
+
+* updated path ([#2521](https://github.com/trussworks/react-uswds/issues/2521)) ([7721e58](https://github.com/trussworks/react-uswds/commit/7721e5879cbb3443f8d37c974a9a33ac44454a9c))
+* Updated storybook templates ([#2522](https://github.com/trussworks/react-uswds/issues/2522)) ([e1c60cb](https://github.com/trussworks/react-uswds/commit/e1c60cbff90c484b1942675a459aaab2e581b0e1))
+
 ## [5.1.1](https://github.com/trussworks/react-uswds/compare/5.1.0...5.1.1) (2023-07-17)
 
 
