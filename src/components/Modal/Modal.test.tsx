@@ -202,7 +202,7 @@ describe('Modal component', () => {
     expect(modalWindow).not.toHaveAttribute('aria-describedby')
   })
 
-  it('throws an error if labelledby or describedby is null', async () => {
+  it('throws an error if labelledby or describedby is undefined', async () => {
     const consoleSpy = jest.spyOn(console, 'error')
     const testModalId = 'testModal'
 

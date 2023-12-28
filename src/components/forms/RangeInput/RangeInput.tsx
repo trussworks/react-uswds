@@ -30,12 +30,23 @@ export const RangeInput = ({
   const defaultVal = Math.round(defaultMax / 2)
   const defaultUnit = ''
   const defaultPreposition = 'of'
-  const { min, max } = inputProps
+  const { 
+    min,
+    max,
+    defaultValue,
+    value: valueProp,
+    ...remainingInputProps 
+  } = inputProps
   const rangeMin = min || defaultMin
   const rangeMax = max || defaultMax
   const rangeUnit = textUnit || defaultUnit
   const rangePreposition = textPreposition || defaultPreposition
-  const rangeValue = inputProps.defaultValue || defaultVal
+  const rangeValue =
+    valueProp !== undefined
+      ? valueProp
+      : defaultValue !== undefined
+      ? defaultValue
+      : defaultVal
   const [value, setValue] = useState(rangeValue)
   const callout = `${value} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
@@ -46,10 +57,10 @@ export const RangeInput = ({
       className={classes}
       ref={inputRef}
       type="range"
-      {...inputProps}
+      {...remainingInputProps}
       min={rangeMin}
       max={rangeMax}
-      defaultValue={value}
+      value={value}
       onChange={(e) => setValue(Number(e.target.value))}
     />
   )

@@ -141,10 +141,10 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   const ariaLabelledBy = divProps['aria-labelledby']
   const ariaDescribedBy = divProps['aria-describedby']
 
-  if (undefined === ariaLabelledBy) {
+  if (!ariaLabelledBy) {
     console.error(`${id} is missing aria-labelledby attribute`)
   }
-  if (undefined === ariaDescribedBy) {
+  if (!ariaDescribedBy) {
     console.error(`${id} is missing aria-describedby attribute`)
   }
 
