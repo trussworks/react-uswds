@@ -30,12 +30,12 @@ export const RangeInput = ({
   const defaultVal = Math.round(defaultMax / 2)
   const defaultUnit = ''
   const defaultPreposition = 'of'
-  const { 
+  const {
     min,
     max,
     defaultValue,
     value: valueProp,
-    ...remainingInputProps 
+    ...remainingInputProps
   } = inputProps
   const rangeMin = min || defaultMin
   const rangeMax = max || defaultMax
