@@ -14,8 +14,8 @@ export interface DatePickerLocalization {
   toggleCalendar: string
   backOneYear: string
   backOneMonth: string
-  clickToSelectMonth: string
-  clickToSelectYear: string
+  selectMonth: string
+  selectYear: string
   forwardOneYear: string
   forwardOneMonth: string
 }
@@ -38,8 +38,8 @@ export const EN_US = {
   backOneMonth: 'Navigate back one month',
   forwardOneYear: 'Navigate forward one year',
   forwardOneMonth: 'Navigate forward one month',
-  clickToSelectMonth: 'Click to select month',
-  clickToSelectYear: 'Click to select year',
+  selectMonth: 'Select month',
+  selectYear: 'Select year',
 }
 
 export const sampleLocalization = {
@@ -81,6 +81,6 @@ export const sampleLocalization = {
   backOneMonth: 'Navegar hacia atrás un mes',
   forwardOneYear: 'Navegar hacia adelante un año',
   forwardOneMonth: 'Navegar hacia adelante un mes',
-  clickToSelectMonth: 'Haga clic para seleccionar el mes',
-  clickToSelectYear: 'Haga clic para seleccionar el año',
+  selectMonth: 'Selecciona el mes',
+  selectYear: 'Selecciona el año',
 }
