@@ -287,7 +287,7 @@ export const NotFoundPage = (): React.ReactElement => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain={'<domain.gov>'}>
-            An official website of the{' '}
+            <span aria-hidden="true">An</span> official website of the{' '}
             <Link href="javascript:void(0);">{`<Parent agency>`}</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>

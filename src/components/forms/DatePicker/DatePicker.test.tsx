@@ -93,12 +93,12 @@ describe('DatePicker component', () => {
     )
   })
 
-  it('renders a hidden calendar dialog element', () => {
+  it('renders a hidden calendar application element', () => {
     const { getByTestId } = renderDatePicker()
     expect(getByTestId('date-picker-calendar')).toBeInstanceOf(HTMLDivElement)
     expect(getByTestId('date-picker-calendar')).toHaveAttribute(
       'role',
-      'dialog'
+      'application'
     )
     expect(getByTestId('date-picker-calendar')).not.toBeVisible()
   })

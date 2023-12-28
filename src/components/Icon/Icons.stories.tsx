@@ -269,6 +269,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <Icon.Wash {...args} />
     <Icon.Wifi {...args} />
     <Icon.Work {...args} />
+    <Icon.X {...args} />
     <Icon.Youtube {...args} />
     <Icon.ZoomIn {...args} />
     <Icon.ZoomOutMap {...args} />
