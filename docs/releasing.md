@@ -55,7 +55,7 @@ We use [release-please](https://github.com/googleapis/release-please) github act
   
 4. Publish storybook
 
-   - Manually run the [Deploy Storybook](https://github.com/trussworks/react-uswds/actions/workflows/deploy-storybook.yml) Github Action from the [tag](https://github.com/trussworks/react-uswds/tags) that release-please newly created 
+   - Manually run the [Deploy Storybook](https://github.com/trussworks/react-uswds/actions/workflows/deploy-storybook.yml) Github Action from the [tag](https://github.com/trussworks/react-uswds/tags) that release-please newly created.
 
 ## HELP  
  <details>
