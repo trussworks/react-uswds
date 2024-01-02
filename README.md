@@ -93,7 +93,7 @@ In the process, we expect to gain learnings around how to best abstract out UI c
 
 ## Active Maintainers
 
-- [Brandon Lenz](https://github.com/brandonlenz)
+- [Andrew Nelson](https://github.com/werdnanoslen)
 
 We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
