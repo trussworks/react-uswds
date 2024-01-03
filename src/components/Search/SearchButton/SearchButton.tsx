@@ -37,6 +37,7 @@ export const SearchButton = ({
         {!isSmall && (
           <span className="usa-search__submit-text">{buttonText}</span>
         )}
+        {isSmall && <span className="usa-sr-only">{buttonText}</span>}
         <Icon.Search
           className="usa-search__submit-icon"
           name={buttonText}
