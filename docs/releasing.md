@@ -53,6 +53,10 @@ We use [release-please](https://github.com/googleapis/release-please) github act
 
      > :information_source: While it would be desireable (and is very much possible) to automate the publishing step, there are security concerns with setting up an Automation Token for npm that would mandate maintaining a strict key rotation process, which at this time exceeds the commitment that maintainers have available. To keep consumers of React USWDS secure, this step remains manual.
   
+4. Publish storybook
+
+   - Manually run the [Deploy Storybook](https://github.com/trussworks/react-uswds/actions/workflows/deploy-storybook.yml) Github Action from the [tag](https://github.com/trussworks/react-uswds/tags) that release-please newly created.
+
 ## HELP  
  <details>
        <summary>Expand this section for instructions to make last minute bugfix</summary>
