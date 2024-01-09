@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.2.0](https://github.com/trussworks/react-uswds/compare/6.1.0...6.2.0) (2024-01-08)
+
+
+### Features
+
+* updates for USWDS v3.7 ([#2680](https://github.com/trussworks/react-uswds/issues/2680)) ([9a06e7d](https://github.com/trussworks/react-uswds/commit/9a06e7d308b46925894f4b5a67f575f68cf73985))
+
+
+### Bug Fixes
+
+* Remove image role attribute from Banner Icon component ([#2663](https://github.com/trussworks/react-uswds/issues/2663)) ([8ddf443](https://github.com/trussworks/react-uswds/commit/8ddf443fa65d216cc543f0f5373c9be33da5e0aa))
+
 ## [6.1.0](https://github.com/trussworks/react-uswds/compare/6.0.0...6.1.0) (2023-11-27)
 
 
