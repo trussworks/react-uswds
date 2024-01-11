@@ -187,8 +187,7 @@ export const NotFoundPage = (): React.ReactElement => {
         Skip to main content
       </a>
       <GovBanner />
-      <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
-      <Header basic>
+      <Header basic showMobileOverlay={mobileNavOpen}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title id="basic-logo">

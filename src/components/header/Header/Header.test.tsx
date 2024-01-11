@@ -13,4 +13,11 @@ describe('Header component', () => {
     const { getByText } = render(<Header>My Header</Header>)
     expect(getByText('My Header')).toBeInTheDocument()
   })
+
+  it('renders overlay if toggled', () => {
+    const { queryByTestId } = render(
+      <Header showMobileOverlay={true}>My Header</Header>
+    )
+    expect(queryByTestId('overlay')).toBeInTheDocument()
+  })
 })
