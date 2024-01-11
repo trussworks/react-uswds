@@ -33,7 +33,9 @@ export const Header = ({
 
   return (
     <>
-      <div className={overlayClasses} data-testid="overlay"></div>
+      {showMobileOverlay !== undefined && (
+        <div className={overlayClasses} data-testid="overlay"></div>
+      )}
       <header data-testid="header" className={classes} {...headerProps}>
         {children}
       </header>
