@@ -72,3 +72,12 @@ export const dataListRange = (): React.ReactElement => (
     </datalist>
   </>
 )
+
+export const WithUnitAndPreposition = (): React.ReactElement => (
+  <RangeInput
+    id="custom-range-slider"
+    name="rangeValue"
+    textPreposition="de"
+    textUnit="por ciento"
+  />
+)

@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-32-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -48,7 +48,10 @@ npm i @trussworks/react-uswds
 
 ### USWDS
 
-It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using. A version mismatch may result in unexpected markup & CSS combinations.
+It is strongly suggested applications use the same version of USWDS that was used to build the version of ReactUSWDS they're using (see this repo's uswds `devDependency` in [package.json](./package.json)).
+A version mismatch may result in unexpected markup & CSS combinations.
+For flexibility, ReactUSWDS will not trigger warnings if consumers choose to use a higher minor version of `uswds` (hence the careted uswds `peerDependency` in [package.json](./package.json)).
+If encountering unexpected markup issues when choosing _not_ to use the matching `devDependency` version of `uswds`, consumers should check whether aligning the versions resolves their issue(s).
 
 You can import ReactUSWDS components using ES6 syntax:
 
@@ -90,7 +93,7 @@ In the process, we expect to gain learnings around how to best abstract out UI c
 
 ## Active Maintainers
 
-- [John Gedeon](https://github.com/gidjin)
+- [Andrew Nelson](https://github.com/werdnanoslen)
 
 We are starting to rotate Trussel maintainer responsibilities. Check out the [maintainers README](./docs/for_maintainers.md).
 
@@ -104,7 +107,7 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 
 ### Quick links:
 
-- [Yarn scripts](./docs/contributing#available-commands)
+- [Yarn scripts](./docs/contributing.md#available-commands)
 - [PR commit guidelines](./docs/contributing.md#opening--merging-pull-requests)
 - [Adding new components](./docs/adding_new_components.md)
 - [Testing in an application](./docs/contributing.md#testing-in-an-application)
@@ -168,6 +171,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://andyhub.com/"><img src="https://avatars.githubusercontent.com/u/764090?v=4?s=100" width="100px;" alt="Andrew Nelson"/><br /><sub><b>Andrew Nelson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=werdnanoslen" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://sawyer.soy"><img src="https://avatars.githubusercontent.com/u/371943?v=4?s=100" width="100px;" alt="Sawyer Hollenshead"/><br /><sub><b>Sawyer Hollenshead</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=sawyerh" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://keybase.io/rpdelaney"><img src="https://avatars.githubusercontent.com/u/1139517?v=4?s=100" width="100px;" alt="Ryan Delaney"/><br /><sub><b>Ryan Delaney</b></sub></a><br /><a href="#maintenance-rpdelaney" title="Maintenance">🚧</a> <a href="#infra-rpdelaney" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/AnnaGingle"><img src="https://avatars.githubusercontent.com/u/48488699?v=4?s=100" width="100px;" alt="Anna Gingle"/><br /><sub><b>Anna Gingle</b></sub></a><br /><a href="#design-AnnaGingle" title="Design">🎨</a> <a href="https://github.com/trussworks/react-uswds/commits?author=AnnaGingle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aybeedee"><img src="https://avatars.githubusercontent.com/u/75930195?v=4?s=100" width="100px;" alt="Abdullah Umer"/><br /><sub><b>Abdullah Umer</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=aybeedee" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/m7adeel"><img src="https://avatars.githubusercontent.com/u/87698014?v=4?s=100" width="100px;" alt="Muhammad Adeel"/><br /><sub><b>Muhammad Adeel</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Am7adeel" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=m7adeel" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vinodkv2511"><img src="https://avatars.githubusercontent.com/u/44632502?v=4?s=100" width="100px;" alt="Vinod Krishna Vellampalli"/><br /><sub><b>Vinod Krishna Vellampalli</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=vinodkv2511" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://joeforyou.xyz"><img src="https://avatars.githubusercontent.com/u/57681819?v=4?s=100" width="100px;" alt="Joe Kleinschmidt"/><br /><sub><b>Joe Kleinschmidt</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kleinschmidtj" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://jhancock532.github.io/"><img src="https://avatars.githubusercontent.com/u/18164832?v=4?s=100" width="100px;" alt="James Hancock"/><br /><sub><b>James Hancock</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Ajhancock532" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=jhancock532" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

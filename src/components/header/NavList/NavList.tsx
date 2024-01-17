@@ -3,7 +3,13 @@ import classnames from 'classnames'
 
 type CustomNavListProps = {
   items: React.ReactNode[]
-  type?: 'primary' | 'secondary' | 'subnav' | 'megamenu' | 'footerSecondary'
+  type?:
+    | 'primary'
+    | 'secondary'
+    | 'subnav'
+    | 'megamenu'
+    | 'footerSecondary'
+    | 'language'
 }
 
 export type NavListProps = CustomNavListProps & JSX.IntrinsicElements['ul']
@@ -19,6 +25,7 @@ export const NavList = ({
   const isSubnav = type === 'subnav'
   const isMegamenu = type === 'megamenu'
   const isFooterSecondary = type === 'footerSecondary'
+  const isLanguage = type === 'language'
 
   const ulClasses = classnames(
     {
@@ -27,6 +34,7 @@ export const NavList = ({
       'usa-nav__submenu': isSubnav,
       'usa-nav__submenu-list': isMegamenu,
       'usa-list usa-list--unstyled': isFooterSecondary,
+      'usa-language__submenu': isLanguage,
     },
     className
   )
@@ -36,6 +44,7 @@ export const NavList = ({
     'usa-nav__secondary-item': isSecondary,
     'usa-nav__submenu-item': isSubnav || isMegamenu,
     'usa-footer__secondary-link': isFooterSecondary,
+    'usa-language__submenu-item': isLanguage,
   })
 
   return (
