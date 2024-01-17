@@ -14,7 +14,7 @@ describe('StepIndicator component', () => {
   })
 
   it('renders without errors', () => {
-    const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
+    const { getByRole, queryByText, queryAllByText, getByTestId } = render(
       <StepIndicator headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
@@ -22,7 +22,7 @@ describe('StepIndicator component', () => {
       </StepIndicator>
     )
 
-    const stepIndicator = queryByTestId('step-indicator')
+    const stepIndicator = getByTestId('step-indicator')
 
     expect(stepIndicator).toBeInTheDocument()
     expect(stepIndicator).toHaveClass('usa-step-indicator')
@@ -30,6 +30,11 @@ describe('StepIndicator component', () => {
     expect(queryAllByText(step2)).toHaveLength(2)
     expect(queryByText(step3)).toBeInTheDocument()
     expect(getByRole('list')).toHaveClass('usa-step-indicator__segments')
+    const stepSrOnly = within(stepIndicator).queryByText('Step')
+    expect(stepSrOnly).toHaveClass('usa-sr-only')
+    const totalSteps = queryByText(`of 3`)
+    expect(totalSteps).toBeInTheDocument()
+    expect(totalSteps).toHaveClass('usa-step-indicator__total-steps')
   })
 
   it('renders properly with no labels', () => {
