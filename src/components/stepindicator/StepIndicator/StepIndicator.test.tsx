@@ -164,7 +164,7 @@ describe('StepIndicator component', () => {
     )
   })
 
-  it('renders properly with translatable \'of\' string', () => {
+  it("renders properly with translatable 'of' string", () => {
     const ofText = 'de'
     const { queryByText } = render(
       <StepIndicator headingLevel="h4" ofText={ofText}>
@@ -178,7 +178,7 @@ describe('StepIndicator component', () => {
     expect(totalSteps).toHaveClass('usa-step-indicator__total-steps')
   })
 
-  it('renders properly with translatable \'step\' string', () => {
+  it("renders properly with translatable 'step' string", () => {
     const stepText = 'Paso'
     const { getByTestId } = render(
       <StepIndicator headingLevel="h4" stepText={stepText}>

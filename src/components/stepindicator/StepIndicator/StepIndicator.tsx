@@ -88,7 +88,9 @@ export const StepIndicator = (
       <div className="usa-step-indicator__header">
         <Heading className={headingClasses} {...remainingHeadingProps}>
           <span className="usa-step-indicator__heading-counter">
-            <span className="usa-sr-only" data-testid="step-text">{stepText}</span>
+            <span className="usa-sr-only" data-testid="step-text">
+              {stepText}
+            </span>
             <span className="usa-step-indicator__current-step">
               {currentStepNumber}
             </span>

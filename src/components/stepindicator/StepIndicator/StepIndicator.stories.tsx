@@ -29,7 +29,7 @@ Updates users on their progress through a multi-step process.
   args: {
     stepText: 'Step',
     ofText: 'of',
-  }
+  },
 }
 
 type StorybookArguments = {
@@ -37,8 +37,13 @@ type StorybookArguments = {
   ofText: string
 }
 
-export const defaultStepIndicator = (args: StorybookArguments): React.ReactElement => (
-  <StepIndicator headingLevel="h4" ofText={args.ofText} stepText={args.stepText}>
+export const defaultStepIndicator = (
+  args: StorybookArguments
+): React.ReactElement => (
+  <StepIndicator
+    headingLevel="h4"
+    ofText={args.ofText}
+    stepText={args.stepText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -48,7 +53,11 @@ export const defaultStepIndicator = (args: StorybookArguments): React.ReactEleme
 )
 
 export const noLabels = (args: StorybookArguments): React.ReactElement => (
-  <StepIndicator showLabels={false} headingLevel="h4" ofText={args.ofText} stepText={args.stepText}>
+  <StepIndicator
+    showLabels={false}
+    headingLevel="h4"
+    ofText={args.ofText}
+    stepText={args.stepText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -58,7 +67,11 @@ export const noLabels = (args: StorybookArguments): React.ReactElement => (
 )
 
 export const centered = (args: StorybookArguments): React.ReactElement => (
-  <StepIndicator centered headingLevel="h4" ofText={args.ofText} stepText={args.stepText}>
+  <StepIndicator
+    centered
+    headingLevel="h4"
+    ofText={args.ofText}
+    stepText={args.stepText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -68,7 +81,11 @@ export const centered = (args: StorybookArguments): React.ReactElement => (
 )
 
 export const counters = (args: StorybookArguments): React.ReactElement => (
-  <StepIndicator counters="default" headingLevel="h4" ofText={args.ofText} stepText={args.stepText}>
+  <StepIndicator
+    counters="default"
+    headingLevel="h4"
+    ofText={args.ofText}
+    stepText={args.stepText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -78,7 +95,11 @@ export const counters = (args: StorybookArguments): React.ReactElement => (
 )
 
 export const smallCounters = (args: StorybookArguments): React.ReactElement => (
-  <StepIndicator counters="small" headingLevel="h4" ofText={args.ofText} stepText={args.stepText}>
+  <StepIndicator
+    counters="small"
+    headingLevel="h4"
+    ofText={args.ofText}
+    stepText={args.stepText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -87,8 +108,13 @@ export const smallCounters = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const differentHeadingLevel = (args: StorybookArguments): React.ReactElement => (
-  <StepIndicator headingLevel="h2" ofText={args.ofText} stepText={args.stepText}>
+export const differentHeadingLevel = (
+  args: StorybookArguments
+): React.ReactElement => (
+  <StepIndicator
+    headingLevel="h2"
+    ofText={args.ofText}
+    stepText={args.stepText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
