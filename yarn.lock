@@ -2662,23 +2662,12 @@
     "@sinonjs/commons" "^3.0.0"
 
 "@storybook/addon-a11y@^7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.1.1.tgz#a3ea62b1764aa4d8fa805d77b14948c5b73d197b"
-  integrity sha512-wUf0ogOhoUIvZ3w8FbaRuJ4eIjmatw/JOc0PSuBbgMxlc3s6EjYALcYbVmrJx6zkvbQRXP7cFex3d3uGgimpkg==
+  version "7.6.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.6.10.tgz#ad2a266d52c0b9909f221133ea41b9ffb0e7d9f7"
+  integrity sha512-TP17m4TAWLSSd2x9cWNg7d0MCZZCojYIG83RZMXAb55jt8gKJBMDbupOoDLydBsABQa5Uk9ZP0D/CvumMon8RA==
   dependencies:
-    "@storybook/addon-highlight" "7.1.1"
-    "@storybook/channels" "7.1.1"
-    "@storybook/client-logger" "7.1.1"
-    "@storybook/components" "7.1.1"
-    "@storybook/core-events" "7.1.1"
-    "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.1.1"
-    "@storybook/preview-api" "7.1.1"
-    "@storybook/theming" "7.1.1"
-    "@storybook/types" "7.1.1"
+    "@storybook/addon-highlight" "7.6.10"
     axe-core "^4.2.0"
-    lodash "^4.17.21"
-    react-resize-detector "^7.1.2"
 
 "@storybook/addon-actions@7.1.1":
   version "7.1.1"
@@ -2788,6 +2777,13 @@
     "@storybook/core-events" "7.1.1"
     "@storybook/global" "^5.0.0"
     "@storybook/preview-api" "7.1.1"
+
+"@storybook/addon-highlight@7.6.10":
+  version "7.6.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-highlight/-/addon-highlight-7.6.10.tgz#19cad3d67655e9b9eef3d2f6760789fc29ba0790"
+  integrity sha512-dIuS5QmoT1R+gFOcf6CoBa6D9UR5/wHCfPqPRH8dNNcCLtIGSHWQ4v964mS5OCq1Huj7CghmR15lOUk7SaYwUA==
+  dependencies:
+    "@storybook/global" "^5.0.0"
 
 "@storybook/addon-measure@7.1.1":
   version "7.1.1"
@@ -11316,13 +11312,6 @@ react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
-
-react-resize-detector@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/react-resize-detector/-/react-resize-detector-7.1.2.tgz#8ef975dd8c3d56f9a5160ac382ef7136dcd2d86c"
-  integrity sha512-zXnPJ2m8+6oq9Nn8zsep/orts9vQv3elrpA+R8XTcW7DVVUJ9vwDwMXaBtykAYjMnkCIaOoK9vObyR7ZgFNlOw==
-  dependencies:
-    lodash "^4.17.21"
 
 react-shallow-renderer@^16.13.1:
   version "16.14.1"
