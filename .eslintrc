@@ -64,7 +64,7 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier",
-    "plugin:security/recommended"
+    "plugin:security/recommended-legacy"
   ],
   "rules": {
     "no-only-tests/no-only-tests": "error",
