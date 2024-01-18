@@ -43,10 +43,7 @@ export const Welcome = (): React.ReactElement => {
       </div>
       <div className="display-flex flex-align-center flex-justify-center padding-top-4">
         <div className="margin-right-3" style={{ width: '150px' }}>
-          <img
-            src="https://raw.githubusercontent.com/uswds/uswds-site/main/img/uswds-logo/4c-lg-white.svg"
-            alt="USWDS logo"
-          />
+          <img src="/uswds.svg" alt="USWDS logo" />
         </div>
         <div>
           <h1 className="margin-y-0" style={{ maxWidth: '527px' }}>
