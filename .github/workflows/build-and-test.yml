@@ -2,10 +2,11 @@ name: Build and Test
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
+
 
 jobs:
   build-and-test:
@@ -13,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node: ['16', '18']
+        node: [ '16', '18' ]
 
     name: Node ${{ matrix.node }} tests
 
@@ -58,6 +59,9 @@ jobs:
 
       - name: Check format
         run: yarn format:check
+
+      - name: Build Storybook
+        run: yarn build-storybook
 
       - name: Happo
         run: yarn happo-ci

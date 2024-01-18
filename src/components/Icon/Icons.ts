@@ -236,6 +236,7 @@ import WarningSvg from '@uswds/uswds/src/img/usa-icons/warning.svg?svgr'
 import WashSvg from '@uswds/uswds/src/img/usa-icons/wash.svg?svgr'
 import WifiSvg from '@uswds/uswds/src/img/usa-icons/wifi.svg?svgr'
 import WorkSvg from '@uswds/uswds/src/img/usa-icons/work.svg?svgr'
+import XSvg from '@uswds/uswds/src/img/usa-icons/x.svg?svgr'
 import YoutubeSvg from '@uswds/uswds/src/img/usa-icons/youtube.svg?svgr'
 import ZoomInSvg from '@uswds/uswds/src/img/usa-icons/zoom_in.svg?svgr'
 import ZoomOutMapSvg from '@uswds/uswds/src/img/usa-icons/zoom_out_map.svg?svgr'
@@ -909,6 +910,8 @@ export class Icon {
   public static Wifi: React.ComponentType<IconProps> = makeUSWDSIcon(WifiSvg)
 
   public static Work: React.ComponentType<IconProps> = makeUSWDSIcon(WorkSvg)
+
+  public static X: React.ComponentType<IconProps> = makeUSWDSIcon(XSvg)
 
   public static Youtube: React.ComponentType<IconProps> =
     makeUSWDSIcon(YoutubeSvg)

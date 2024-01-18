@@ -1,6 +1,5 @@
 import React from 'react'
 import { Label } from './Label'
-import { RequiredMarker } from './RequiredMarker'
 
 export default {
   title: 'Components/Form elements/Label',
