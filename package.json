@@ -92,7 +92,7 @@
     "eslint-plugin-no-only-tests": "^3.0.0",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-security": "^2.1.0",
     "focus-trap-react": "^8.8.1",
     "fork-ts-checker-webpack-plugin": "^9.0.0",
     "happo-plugin-storybook": "^3.3.0",
