@@ -22,9 +22,7 @@ Source: https://designsystem.digital.gov/components/language-selector/
   },
 }
 
-const TwoLanguagesTemplate: StoryFn<typeof LanguageSelector> = (
-  args
-) => {
+const TwoLanguagesTemplate: StoryFn<typeof LanguageSelector> = (args) => {
   const [lang, setLang] = useState<string | undefined>(args.displayLang)
 
   const languagesDisplayProp: LanguageDefinition[] = [
