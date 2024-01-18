@@ -24,8 +24,10 @@ Source: https://designsystem.digital.gov/components/icon/
         type: 'select',
         options: [3, 4, 5, 6, 7, 8, 9],
       },
-      defaultValue: 4,
     },
+  },
+  args: {
+    size: 4,
   },
 }
 

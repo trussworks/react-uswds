@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Select } from './Select'
 import { Label } from '../Label/Label'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
 
 export default {
   title: 'Components/Select',
@@ -25,7 +25,7 @@ export default {
     },
     disabled: { control: 'boolean' },
   },
-} as ComponentMeta<typeof Select>
+} as Meta<typeof Select>
 
 const options = (
   <>
@@ -40,25 +40,33 @@ const options = (
   </>
 )
 
-const Template: ComponentStory<typeof Select> = (args) => (
+const Template: StoryFn<typeof Select> = (args) => (
   <Select {...args}>{options}</Select>
 )
 
-export const Default = Template.bind({})
-Default.args = { id: 'input-select', name: 'input-select' }
-
-export const WithDefaultValue = Template.bind({})
-WithDefaultValue.args = {
-  id: 'input-select',
-  name: 'input-select',
-  defaultValue: 'value2',
+export const Default = {
+  render: Template,
+  args: { id: 'input-select', name: 'input-select' },
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-  id: 'input-select',
-  name: 'input-select',
-  disabled: true,
+export const WithDefaultValue = {
+  render: Template,
+
+  args: {
+    id: 'input-select',
+    name: 'input-select',
+    defaultValue: 'value2',
+  },
+}
+
+export const Disabled = {
+  render: Template,
+
+  args: {
+    id: 'input-select',
+    name: 'input-select',
+    disabled: true,
+  },
 }
 
 export const WithLabel = () => (
