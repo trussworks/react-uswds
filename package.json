@@ -11,39 +11,40 @@
     "design system",
     "component library"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.mjs"
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
       },
-      "browser": "./dist/index.iife.js",
-      "default": "./dist/index.umd.js"
+      "browser": "./lib/index.iife.js",
+      "default": "./lib/index.umd.js"
     }
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "engines": {
     "node": ">= 16.20.0"
   },
   "scripts": {
-    "test": "jest",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "test": "vitest",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build",
-    "build": "tsc -p tsconfig.build.json && webpack --progress",
-    "build:watch": "tsc -p tsconfig.build.json && webpack --watch",
+    "build": "vite build && yarn run build:uswds",
+    "build:uswds": "BUILD_USWDS=true vite build",
+    "build:watch": "vite dev",
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
@@ -85,7 +86,6 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.0.4",
     "@types/classnames": "^2.2.9",
-    "@types/jest": "^27.0.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-test-renderer": "^18.0.0",
@@ -93,7 +93,6 @@
     "@typescript-eslint/parser": "^6.2.0",
     "@uswds/uswds": "3.7.1",
     "all-contributors-cli": "^6.24.0",
-    "babel-jest": "^29.4.3",
     "classnames": "^2.3.2",
     "danger": "^11.2.3",
     "eslint": "^8.25.0",
@@ -107,8 +106,7 @@
     "focus-trap-react": "^8.8.1",
     "happo-plugin-storybook": "^3.3.0",
     "happo.io": "^8.3.1",
-    "jest": "^29.6.1",
-    "jest-environment-jsdom": "^29.6.1",
+    "jsdom": "^23.2.0",
     "prettier": "^2.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -122,12 +120,12 @@
     "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-prettier": "^1.1.1",
     "stylelint-scss": "^3.17.1",
-    "ts-jest": "^29.1.1",
     "typescript": "^5.1.6",
-    "vite": "^5.0.11",
+    "vite": "^5.0.12",
     "vite-plugin-checker": "^0.6.2",
     "vite-plugin-dts": "^3.7.1",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^1.2.1"
   },
   "resolutions": {
     "loader-utils": "2.0.4",

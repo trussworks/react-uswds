@@ -16,13 +16,12 @@ import { ModalToggleButton } from './ModalToggleButton'
 import { Button } from '../Button/Button'
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 
-jest.mock('./utils', () => {
-  const utils = jest.requireActual('./utils')
+vi.mock('./utils', async (importOriginal) => {
+  const utils = await importOriginal<typeof import('./utils')>()
 
   return {
-    __esModule: true,
     ...utils,
-    getScrollbarWidth: jest.fn().mockReturnValue('15px'),
+    getScrollbarWidth: vi.fn().mockReturnValue('15px'),
   }
 })
 
@@ -203,7 +202,7 @@ describe('Modal component', () => {
   })
 
   it('throws an error if labelledby or describedby is undefined', async () => {
-    const consoleSpy = jest.spyOn(console, 'error')
+    const consoleSpy = vi.spyOn(console, 'error')
     const testModalId = 'testModal'
 
     renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)

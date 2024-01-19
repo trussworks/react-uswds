@@ -13,7 +13,7 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "jest": true,
+    "vitest": true,
     "node": true
   },
   "parserOptions": {
@@ -26,11 +26,6 @@
   "settings": {
     "react": {
       "version": "detect"
-    },
-    "import/resolver": {
-      "webpack": {
-        "config": "./webpack.config.js"
-      }
     }
   },
   "overrides": [

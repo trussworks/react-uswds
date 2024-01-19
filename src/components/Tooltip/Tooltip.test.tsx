@@ -4,19 +4,17 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { Tooltip } from './Tooltip'
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
-jest.mock('./utils')
+vi.mock('./utils')
 
-const mockedIsElementInViewport = isElementInViewport as jest.MockedFunction<
-  typeof isElementInViewport
->
+const mockedIsElementInViewport = vi.mocked(isElementInViewport)
 mockedIsElementInViewport.mockReturnValue(true)
 
 const mockedCalculateMarginOffset =
-  calculateMarginOffset as jest.MockedFunction<typeof calculateMarginOffset>
+  vi.mocked(calculateMarginOffset)
 mockedCalculateMarginOffset.mockReturnValue(100)
 
 describe('Tooltip component', () => {
-  beforeEach(jest.clearAllMocks)
+  beforeEach(() => {vi.clearAllMocks()})
 
   it('renders without errors', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
@@ -213,7 +211,7 @@ describe('Tooltip component', () => {
   describe('positioning the tooltip', () => {
     describe('when position is top', () => {
       beforeEach(() => {
-        jest.clearAllMocks()
+        vi.clearAllMocks()
 
         render(
           <Tooltip label="Click me" position="top">
@@ -224,12 +222,12 @@ describe('Tooltip component', () => {
         const triggerEl = screen.getByTestId('triggerElement')
         const bodyEl = screen.getByTestId('tooltipBody')
 
-        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
-        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
-        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+        vi.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        vi.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        vi.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
 
-        jest.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
-        jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
+        vi.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
+        vi.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
       })
 
       it('positions on the top', () => {
@@ -247,7 +245,7 @@ describe('Tooltip component', () => {
 
     describe('when position is bottom', () => {
       beforeEach(() => {
-        jest.clearAllMocks()
+        vi.clearAllMocks()
 
         render(
           <Tooltip label="Click me" position="bottom">
@@ -258,12 +256,12 @@ describe('Tooltip component', () => {
         const triggerEl = screen.getByTestId('triggerElement')
         const bodyEl = screen.getByTestId('tooltipBody')
 
-        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
-        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
-        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+        vi.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        vi.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        vi.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
 
-        jest.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
-        jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
+        vi.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
+        vi.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
       })
 
       it('positions on the bottom', () => {
@@ -280,7 +278,7 @@ describe('Tooltip component', () => {
 
     describe('when position is right', () => {
       beforeEach(() => {
-        jest.clearAllMocks()
+        vi.clearAllMocks()
 
         render(
           <Tooltip label="Click me" position="right">
@@ -291,12 +289,12 @@ describe('Tooltip component', () => {
         const triggerEl = screen.getByTestId('triggerElement')
         const bodyEl = screen.getByTestId('tooltipBody')
 
-        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
-        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
-        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+        vi.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        vi.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        vi.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
 
-        jest.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
-        jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
+        vi.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
+        vi.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
       })
 
       it('positions on the right', () => {
@@ -314,7 +312,7 @@ describe('Tooltip component', () => {
 
     describe('when position is left', () => {
       beforeEach(() => {
-        jest.clearAllMocks()
+        vi.clearAllMocks()
 
         render(
           <Tooltip label="Click me" position="left">
@@ -325,12 +323,12 @@ describe('Tooltip component', () => {
         const triggerEl = screen.getByTestId('triggerElement')
         const bodyEl = screen.getByTestId('tooltipBody')
 
-        jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
-        jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
-        jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+        vi.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+        vi.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+        vi.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
 
-        jest.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
-        jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
+        vi.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
+        vi.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
       })
 
       it('positions on the left', () => {
@@ -349,7 +347,7 @@ describe('Tooltip component', () => {
 
   describe('finding the best position', () => {
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
 
       render(
         <Tooltip label="Click me" position="left">
@@ -360,12 +358,12 @@ describe('Tooltip component', () => {
       const triggerEl = screen.getByTestId('triggerElement')
       const bodyEl = screen.getByTestId('tooltipBody')
 
-      jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
-      jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
-      jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
+      vi.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
+      vi.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
+      vi.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
 
-      jest.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
-      jest.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
+      vi.spyOn(bodyEl, 'offsetHeight', 'get').mockReturnValue(225)
+      vi.spyOn(bodyEl, 'offsetWidth', 'get').mockReturnValue(300)
     })
 
     it('tries to position to the top first', () => {

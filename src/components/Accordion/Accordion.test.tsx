@@ -92,7 +92,7 @@ const testItems: AccordionItemProps[] = [
 
 describe('Accordion component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders without errors', () => {

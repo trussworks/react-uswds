@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react'
 import { CharacterCount } from './CharacterCount'
 
 describe('CharacterCount component', () => {
-  afterEach(() => jest.clearAllMocks())
+  afterEach(() => {vi.clearAllMocks()})
 
   it('renders without errors', () => {
     const { getByRole } = render(
@@ -62,8 +62,8 @@ describe('CharacterCount component', () => {
     })
 
     it('calls own onChange and onBlur functions', () => {
-      const onBlur = jest.fn()
-      const onChange = jest.fn()
+      const onBlur = vi.fn()
+      const onChange = vi.fn()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -178,8 +178,8 @@ describe('CharacterCount component', () => {
     })
 
     it('calls own onChange and onBlur functions', () => {
-      const onChange = jest.fn()
-      const onBlur = jest.fn()
+      const onChange = vi.fn()
+      const onBlur = vi.fn()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -359,7 +359,7 @@ describe('CharacterCount component', () => {
   })
 
   describe('with custom message', () => {
-    const customMessage = jest.fn(
+    const customMessage = vi.fn(
       (count: number, maxCount: number): string =>
         `${maxCount - count} characters remain`
     )
@@ -399,7 +399,7 @@ describe('CharacterCount component', () => {
   })
 
   describe('with custom character count', () => {
-    const customCharacterCount = jest.fn(
+    const customCharacterCount = vi.fn(
       (text: string): number => text.length + 2
     )
 

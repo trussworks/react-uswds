@@ -7,9 +7,9 @@ import { Day } from './Day'
 describe('Day', () => {
   const testProps = {
     date: new Date('January 20 2021'),
-    onClick: jest.fn(),
-    onKeyDown: jest.fn(),
-    onMouseMove: jest.fn(),
+    onClick: vi.fn(),
+    onKeyDown: vi.fn(),
+    onMouseMove: vi.fn(),
   }
 
   it('renders a date selection button', () => {
@@ -44,7 +44,7 @@ describe('Day', () => {
   })
 
   it('can be clicked to select the date', async () => {
-    const mockSelectDate = jest.fn()
+    const mockSelectDate = vi.fn()
     const { getByTestId } = render(
       <Day {...testProps} onClick={mockSelectDate} />
     )
@@ -54,7 +54,7 @@ describe('Day', () => {
   })
 
   it('implements the onKeyDown handler', async () => {
-    const mockKeyDown = jest.fn()
+    const mockKeyDown = vi.fn()
     const { getByTestId } = render(
       <Day {...testProps} onKeyDown={mockKeyDown} />
     )
@@ -90,7 +90,7 @@ describe('Day', () => {
     })
 
     it('cannot be clicked to select the date', async () => {
-      const mockSelectDate = jest.fn()
+      const mockSelectDate = vi.fn()
       const { getByTestId } = render(
         <Day {...testProps} onClick={mockSelectDate} isDisabled />
       )

@@ -6,14 +6,14 @@ import userEvent from '@testing-library/user-event'
 
 describe('TimePicker Component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   const testProps = {
     id: 'appointment-time',
     name: 'appointment-time',
     label: 'Appointment time',
-    onChange: jest.fn(),
+    onChange: vi.fn(),
   }
 
   it('renders without errors', () => {

@@ -11,7 +11,7 @@ describe('MonthPicker', () => {
   const testProps = {
     date: new Date('January 20 2021'),
     minDate: parseDateString('0000-01-01') as Date,
-    handleSelectMonth: jest.fn(),
+    handleSelectMonth: vi.fn(),
   }
 
   it('renders a button for each month', () => {
@@ -26,7 +26,7 @@ describe('MonthPicker', () => {
   })
 
   it('each button implements an onClick handler to select the month', async () => {
-    const mockSelectMonth = jest.fn()
+    const mockSelectMonth = vi.fn()
     const { getByText } = render(
       <MonthPicker {...testProps} handleSelectMonth={mockSelectMonth} />
     )
@@ -101,7 +101,7 @@ describe('MonthPicker', () => {
     })
 
     it('does not focus on a month when hovered over if on an iOS device', () => {
-      jest
+      vi
         .spyOn(navigator, 'userAgent', 'get')
         .mockImplementation(() => 'iPhone')
 
@@ -112,7 +112,7 @@ describe('MonthPicker', () => {
       expect(getByText('January')).toHaveFocus()
       fireEvent.mouseMove(getByText('March'))
       expect(getByText('March')).not.toHaveFocus()
-      jest.restoreAllMocks()
+      vi.restoreAllMocks()
     })
   })
 

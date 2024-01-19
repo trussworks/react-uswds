@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -12,11 +16,17 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "noImplicitAny": true,
     "declaration": true,
     "outDir": "./lib",
     "isolatedModules": true,
+    "types": [
+      "vitest/globals"
+    ]
   },
-  "include": ["src/**/*", "custom.d.ts"],
+  "include": [
+    "src/**/*",
+    "custom.d.ts",
+  ],
 }

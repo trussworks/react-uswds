@@ -56,7 +56,7 @@ describe('FileInput component', () => {
   })
 
   it('does not display drag text if on IE11', () => {
-    jest
+    vi
       .spyOn(navigator, 'userAgent', 'get')
       .mockImplementation(
         () =>
@@ -70,11 +70,11 @@ describe('FileInput component', () => {
     expect(getByTestId('file-input-instructions')).toHaveTextContent(
       /choose from folder/i
     )
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('does not display drag text if on Edge', () => {
-    jest
+    vi
       .spyOn(navigator, 'userAgent', 'get')
       .mockImplementation(
         () =>
@@ -88,7 +88,7 @@ describe('FileInput component', () => {
     expect(getByTestId('file-input-instructions')).toHaveTextContent(
       /choose from folder/i
     )
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('displays custom text when given', () => {
@@ -339,7 +339,7 @@ describe('FileInput component', () => {
   })
 
   it('implements an onChange handler when passed as a prop', async () => {
-    const mockOnChange = jest.fn()
+    const mockOnChange = vi.fn()
     const { getByTestId } = render(
       <FileInput {...testProps} onChange={mockOnChange} />
     )
@@ -351,7 +351,7 @@ describe('FileInput component', () => {
   })
 
   it('implements an onDrop handler when passed as a prop', () => {
-    const mockOnDrop = jest.fn()
+    const mockOnDrop = vi.fn()
     const { getByTestId } = render(
       <FileInput {...testProps} onDrop={mockOnDrop} />
     )

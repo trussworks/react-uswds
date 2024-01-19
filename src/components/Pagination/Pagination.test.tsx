@@ -245,9 +245,9 @@ describe('Pagination component', () => {
   })
 
   it('can click onClickNext, onClickPrevious and onClickPagenumber', () => {
-    const mockOnClickNext = jest.fn()
-    const mockOnClickPrevious = jest.fn()
-    const mockOnClickPageNumber = jest.fn()
+    const mockOnClickNext = vi.fn()
+    const mockOnClickPrevious = vi.fn()
+    const mockOnClickPageNumber = vi.fn()
 
     const { getByTestId, getAllByTestId } = render(
       <Pagination

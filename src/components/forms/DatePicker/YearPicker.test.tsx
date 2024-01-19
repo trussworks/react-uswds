@@ -9,8 +9,8 @@ describe('YearPicker', () => {
   const testProps = {
     date: new Date('January 20 2021'),
     minDate: parseDateString('0000-01-01') as Date,
-    handleSelectYear: jest.fn(),
-    setStatuses: jest.fn(),
+    handleSelectYear: vi.fn(),
+    setStatuses: vi.fn(),
   }
 
   it('renders a button for each year in the current chunk', () => {
@@ -28,7 +28,7 @@ describe('YearPicker', () => {
   })
 
   it('each button implements an onClick handler to select the year', async () => {
-    const mockSelectYear = jest.fn()
+    const mockSelectYear = vi.fn()
     const { getByText } = render(
       <YearPicker {...testProps} handleSelectYear={mockSelectYear} />
     )
@@ -221,7 +221,7 @@ describe('YearPicker', () => {
     })
 
     it('does not focus on a year when hovered over if on an iOS device', () => {
-      jest
+      vi
         .spyOn(navigator, 'userAgent', 'get')
         .mockImplementation(() => 'iPhone')
 
@@ -230,7 +230,7 @@ describe('YearPicker', () => {
       expect(getByText('2021')).toHaveFocus()
       fireEvent.mouseMove(getByText('2017'))
       expect(getByText('2017')).not.toHaveFocus()
-      jest.restoreAllMocks()
+      vi.restoreAllMocks()
     })
   })
 

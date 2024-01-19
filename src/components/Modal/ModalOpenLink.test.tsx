@@ -10,7 +10,7 @@ describe('ModalOpenLink', () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
-      toggleModal: jest.fn().mockReturnValue(true),
+      toggleModal: vi.fn().mockReturnValue(true),
     }
 
     const modalRef: React.RefObject<ModalRef> = {
@@ -30,7 +30,7 @@ describe('ModalOpenLink', () => {
   })
 
   it('throws an error if clicked when the modal ref is null', async () => {
-    const consoleSpy = jest.spyOn(console, 'error')
+    const consoleSpy = vi.spyOn(console, 'error')
 
     const modalRef: React.RefObject<ModalRef> = {
       current: null,
@@ -53,7 +53,7 @@ describe('ModalOpenLink', () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
-      toggleModal: jest.fn().mockReturnValue(true),
+      toggleModal: vi.fn().mockReturnValue(true),
     }
 
     const modalRef: React.RefObject<ModalRef> = {
@@ -92,7 +92,7 @@ describe('ModalOpenLink', () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
-      toggleModal: jest.fn().mockReturnValue(true),
+      toggleModal: vi.fn().mockReturnValue(true),
     }
 
     const modalRef: React.RefObject<ModalRef> = {
