@@ -11,10 +11,25 @@
     "design system",
     "component library"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "browser": "./dist/index.iife.js",
+      "default": "./dist/index.umd.js"
+    }
+  },
   "files": [
-    "lib"
+    "dist"
   ],
   "engines": {
     "node": ">= 16.20.0"
@@ -57,13 +72,13 @@
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
+    "@laynezh/vite-plugin-lib-assets": "^0.5.14",
     "@storybook/addon-a11y": "^7.1.1",
     "@storybook/addon-essentials": "^7.1.1",
     "@storybook/addons": "^7.1.1",
     "@storybook/react": "^7.1.1",
     "@storybook/react-webpack5": "^7.1.1",
     "@storybook/theming": "^7.1.1",
-    "@svgr/webpack": "^8.0.1",
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^12.1.0",
@@ -79,14 +94,10 @@
     "@uswds/uswds": "3.7.1",
     "all-contributors-cli": "^6.24.0",
     "babel-jest": "^29.4.3",
-    "babel-loader": "^9.1.2",
     "classnames": "^2.3.2",
-    "css-loader": "^6.7.3",
     "danger": "^11.2.3",
-    "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-import-resolver-webpack": "^0.13.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-no-only-tests": "^3.0.0",
@@ -94,22 +105,16 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-security": "^2.1.0",
     "focus-trap-react": "^8.8.1",
-    "fork-ts-checker-webpack-plugin": "^9.0.0",
     "happo-plugin-storybook": "^3.3.0",
     "happo.io": "^8.3.1",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
-    "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^2.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-test-renderer": "^17.0.1",
     "sass": "^1.26.0",
-    "sass-loader": "^13.0.0",
-    "sass-resources-loader": "^2.0.1",
-    "source-map-loader": "^4.0.1",
     "storybook": "^7.1.1",
-    "style-loader": "^3.2.1",
     "stylelint": "^13.3.0",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^9.0.5",
@@ -119,8 +124,10 @@
     "stylelint-scss": "^3.17.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6",
-    "webpack": "^5.52.1",
-    "webpack-cli": "^5.0.1"
+    "vite": "^5.0.11",
+    "vite-plugin-checker": "^0.6.2",
+    "vite-plugin-dts": "^3.7.1",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "resolutions": {
     "loader-utils": "2.0.4",
