@@ -64,3 +64,9 @@ export const fruits = {
   'white currant': 'White currant',
   yuzu: 'Yuzu',
 }
+
+export const veggies = {
+  celery: 'Celery',
+  onion: 'Onion',
+  pepper: 'Pepper',
+}
