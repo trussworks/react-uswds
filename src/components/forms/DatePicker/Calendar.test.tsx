@@ -155,9 +155,7 @@ describe('Calendar', () => {
     })
 
     it('does not focus on a date when hovered over if on an iOS device', async () => {
-      vi
-        .spyOn(navigator, 'userAgent', 'get')
-        .mockImplementation(() => 'iPhone')
+      vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(() => 'iPhone')
 
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />

@@ -9,12 +9,13 @@ vi.mock('./utils')
 const mockedIsElementInViewport = vi.mocked(isElementInViewport)
 mockedIsElementInViewport.mockReturnValue(true)
 
-const mockedCalculateMarginOffset =
-  vi.mocked(calculateMarginOffset)
+const mockedCalculateMarginOffset = vi.mocked(calculateMarginOffset)
 mockedCalculateMarginOffset.mockReturnValue(100)
 
 describe('Tooltip component', () => {
-  beforeEach(() => {vi.clearAllMocks()})
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   it('renders without errors', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)

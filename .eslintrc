@@ -1,4 +1,5 @@
 {
+  "root": true,
   "parser": "@babel/eslint-parser",
   "plugins": [
     "import",
@@ -13,7 +14,7 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "vitest": true,
+    "jest": true,
     "node": true
   },
   "parserOptions": {
@@ -21,7 +22,8 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "requireConfigFile": false
   },
   "settings": {
     "react": {
@@ -48,7 +50,10 @@
       "extends": [
         "plugin:@typescript-eslint/recommended",
         "prettier"
-      ]
+      ],
+      "rules": {
+        "import/no-unresolved": "off"
+      }
     }
   ],
   "extends": [
@@ -58,8 +63,8 @@
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "plugin:security/recommended-legacy"
+    "plugin:security/recommended-legacy",
+    "prettier"
   ],
   "rules": {
     "no-only-tests/no-only-tests": "error",

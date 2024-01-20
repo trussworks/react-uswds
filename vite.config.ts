@@ -61,6 +61,9 @@ const sharedOptions = {
     setupFiles: ['src/setupTests.ts'],
     environment: 'jsdom',
     coverage: {
+      all: false,
+      // same as jest default
+      provider: 'istanbul',
       thresholds: {
         global: {
           statements: 96,

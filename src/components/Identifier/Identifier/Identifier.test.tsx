@@ -190,9 +190,9 @@ describe('Identifier component', () => {
       </Identifier>
     )
 
-    expect(getByTestId('identifierMasthead-agency-description').innerHTML).not.toContain(
-      'img'
-    )
+    expect(
+      getByTestId('identifierMasthead-agency-description').innerHTML
+    ).not.toContain('img')
     expect(getAllByRole('link')).toHaveLength(9)
     expect(queryByText('Privacy policy')).toBeInTheDocument()
   })

@@ -4,7 +4,9 @@ import { render, fireEvent } from '@testing-library/react'
 import { CharacterCount } from './CharacterCount'
 
 describe('CharacterCount component', () => {
-  afterEach(() => {vi.clearAllMocks()})
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
 
   it('renders without errors', () => {
     const { getByRole } = render(

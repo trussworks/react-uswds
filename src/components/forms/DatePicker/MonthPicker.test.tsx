@@ -101,9 +101,7 @@ describe('MonthPicker', () => {
     })
 
     it('does not focus on a month when hovered over if on an iOS device', () => {
-      vi
-        .spyOn(navigator, 'userAgent', 'get')
-        .mockImplementation(() => 'iPhone')
+      vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(() => 'iPhone')
 
       const { getByText } = render(
         <MonthPicker {...testProps} date={new Date('January 20 2021')} />

@@ -56,12 +56,10 @@ describe('FileInput component', () => {
   })
 
   it('does not display drag text if on IE11', () => {
-    vi
-      .spyOn(navigator, 'userAgent', 'get')
-      .mockImplementation(
-        () =>
-          'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
-      )
+    vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(
+      () =>
+        'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    )
     const { getByTestId } = render(<FileInput {...testProps} />)
 
     expect(getByTestId('file-input-instructions')).not.toHaveTextContent(
@@ -74,12 +72,10 @@ describe('FileInput component', () => {
   })
 
   it('does not display drag text if on Edge', () => {
-    vi
-      .spyOn(navigator, 'userAgent', 'get')
-      .mockImplementation(
-        () =>
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582'
-      )
+    vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(
+      () =>
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582'
+    )
     const { getByTestId } = render(<FileInput {...testProps} />)
 
     expect(getByTestId('file-input-instructions')).not.toHaveTextContent(
