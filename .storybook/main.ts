@@ -6,7 +6,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
   ],
   framework: {
@@ -16,9 +15,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  viteFinal(config, options) {
-    console.log("DEBUG", config);
-    return config;
-  }
+  staticDirs: ['public'],
 }
 export default config

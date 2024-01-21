@@ -62,7 +62,7 @@ const sharedOptions = {
     environment: 'jsdom',
     coverage: {
       all: false,
-      // same as jest default
+      // same as jest default (labeled babel)
       provider: 'istanbul',
       thresholds: {
         global: {
@@ -101,7 +101,8 @@ export function createConfig(entryName: string, env: Record<string, string>) {
         // matches webpack names
         name: '[contenthash:20].[ext]',
       }),
-    svgr({ svgrOptions: { icon: true, memo: true } }),
+    // default svg url pattern is `*.svg?react`, updated to `*.svg?svgr`
+    svgr({ svgrOptions: { icon: true, memo: true }, include: '**/*.svg?svgr' }),
     !env.VITEST && dts({ tsconfigPath: 'tsconfig.build.json' }),
   ]
   config.build.emptyOutDir = entryName === 'index'

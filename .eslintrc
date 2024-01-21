@@ -1,6 +1,5 @@
 {
   "root": true,
-  "parser": "@babel/eslint-parser",
   "plugins": [
     "import",
     "@typescript-eslint",
