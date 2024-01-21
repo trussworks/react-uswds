@@ -32,7 +32,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run Jest tests with coverage
-        run: yarn test:coverage -w 1
+        run: yarn test:coverage
 
       - name: Run node server side tests
         run: yarn test:serverside
