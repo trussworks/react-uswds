@@ -24,9 +24,12 @@ export interface WithCustomTooltipProps<T> {
   asCustom: ForwardRefExoticComponent<T>
 }
 
-export type DefaultTooltipProps = BaseTooltipProps & JSX.IntrinsicElements['button']
+export type DefaultTooltipProps = BaseTooltipProps &
+  JSX.IntrinsicElements['button']
 
-export type CustomTooltipProps<T> = BaseTooltipProps & WithCustomTooltipProps<T> & T
+export type CustomTooltipProps<T> = BaseTooltipProps &
+  WithCustomTooltipProps<T> &
+  T
 
 export function isCustomProps<T>(
   props: DefaultTooltipProps | CustomTooltipProps<T>
