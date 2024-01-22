@@ -12,7 +12,7 @@ interface ModalWrapperProps {
 
 export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  ModalWrapperProps & JSX.IntrinsicElements['div']
+  ModalWrapperProps & Omit<JSX.IntrinsicElements['div'], 'placeholder'>
 > = (
   { id, children, isVisible, forceAction, className, handleClose, ...divProps },
   ref

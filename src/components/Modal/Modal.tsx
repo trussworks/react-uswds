@@ -23,7 +23,7 @@ interface ModalComponentProps {
   isInitiallyOpen?: boolean
 }
 
-export type ModalProps = ModalComponentProps & JSX.IntrinsicElements['div']
+export type ModalProps = ModalComponentProps & Omit<JSX.IntrinsicElements['div'], 'placeholder'>
 
 export type ModalRef = {
   modalId: string

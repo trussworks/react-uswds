@@ -14,7 +14,7 @@ interface ModalWindowProps {
 
 export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  ModalWindowProps & JSX.IntrinsicElements['div']
+  ModalWindowProps & Omit<JSX.IntrinsicElements['div'], 'placeholder'>
 > = (
   {
     modalId,
