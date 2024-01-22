@@ -2,19 +2,19 @@ import React from 'react'
 import classnames from 'classnames'
 
 // These props we want to require always, even on custom components
-type StyledLinkProps<T> = {
+export type StyledLinkProps<T> = {
   variant?: 'external' | 'unstyled' | 'nav'
   className?: string
   children: React.ReactNode
 } & T
 
 // These props are only required on the default Link
-interface WithDefaultLinkProps {
+export interface WithDefaultLinkProps {
   href: string
 }
 
 // Add `asCustom` to the provided custom props
-interface WithCustomLinkProps<T> {
+export interface WithCustomLinkProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
@@ -34,7 +34,7 @@ export function isCustomProps<T>(
   return 'asCustom' in props
 }
 
-function linkClasses<T>(
+export function linkClasses<T>(
   variant: StyledLinkProps<T>['variant'],
   className: StyledLinkProps<T>['className']
 ): string | undefined {
@@ -51,11 +51,15 @@ function linkClasses<T>(
       )
 }
 
+export type LinkProps<
+  FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
+> = DefaultLinkProps | CustomLinkProps<FCProps>
+
 export function Link(props: DefaultLinkProps): React.ReactElement
 export function Link<T>(props: CustomLinkProps<T>): React.ReactElement
 export function Link<
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
->(props: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
+>(props: LinkProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {
     const { variant, className, asCustom, children, ...remainingProps } = props
     // 1. We know props is AsCustomProps<FCProps>

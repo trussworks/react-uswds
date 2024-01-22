@@ -1,17 +1,21 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type ValidationChecklistProps = {
-  id: string
-  children: React.ReactNode
-}
+export interface BaseValidationChecklistProps {}
+
+export type RequiredValidationChecklistProps = Required<
+  Pick<JSX.IntrinsicElements['ul'], 'id' | 'children'>
+>
+
+export type ValidationChecklistProps = BaseValidationChecklistProps &
+  RequiredValidationChecklistProps &
+  Omit<JSX.IntrinsicElements['ul'], 'id' | 'children'>
 
 export const ValidationChecklist = ({
   children,
   className,
   ...ulProps
-}: ValidationChecklistProps &
-  JSX.IntrinsicElements['ul']): React.ReactElement => {
+}: ValidationChecklistProps): React.ReactElement => {
   const classes = classnames(className, 'usa-checklist')
   return (
     <ul className={classes} data-testid="validationChecklist" {...ulProps}>

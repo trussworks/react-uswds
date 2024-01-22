@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
 import { Button } from '../Button/Button'
 
-const generateMenuItems = (langs: LanguageDefinition[]) => {
+export const generateMenuItems = (langs: LanguageDefinition[]) => {
   return langs.map((lang, index) => {
     const label = (
       <>

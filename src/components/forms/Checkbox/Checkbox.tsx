@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type CheckboxProps = {
+export type CheckboxPropsBase = {
   id: string
   name: string
   className?: string
@@ -16,6 +16,8 @@ type CheckboxProps = {
   labelDescription?: React.ReactNode
 }
 
+export type CheckboxProps = CheckboxPropsBase & JSX.IntrinsicElements['input']
+
 export const Checkbox = ({
   id,
   name,
@@ -25,7 +27,7 @@ export const Checkbox = ({
   tile,
   labelDescription,
   ...inputProps
-}: CheckboxProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: CheckboxProps): React.ReactElement => {
   const classes = classnames('usa-checkbox', className)
   const checkboxClasses = classnames('usa-checkbox__input', {
     'usa-checkbox__input--tile': tile,

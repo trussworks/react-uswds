@@ -3,7 +3,7 @@ import './styles/index.scss'
 
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
-export { Accordion } from './components/Accordion/Accordion'
+export { Accordion, AccordionItem } from './components/Accordion/Accordion'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { InPageNavigation } from './components/InPageNavigation/InPageNavigation'
@@ -13,7 +13,11 @@ export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
-export { Pagination } from './components/Pagination/Pagination'
+export {
+  Pagination,
+  PaginationOverflow,
+  PaginationPage,
+} from './components/Pagination/Pagination'
 
 /** Banner components */
 export { Banner } from './components/banner/Banner/Banner'
@@ -23,7 +27,7 @@ export { BannerFlag } from './components/banner/BannerFlag/BannerFlag'
 export { BannerGuidance } from './components/banner/BannerGuidance/BannerGuidance'
 export { BannerHeader } from './components/banner/BannerHeader/BannerHeader'
 export { BannerIcon } from './components/banner/BannerIcon/BannerIcon'
-export { GovBanner } from './components/banner/GovBanner/GovBanner'
+export { GovBanner, getCopy } from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
 export { Collection } from './components/Collection/Collection'
@@ -34,14 +38,28 @@ export { CollectionMeta } from './components/Collection/CollectionMeta'
 export { CollectionMetaItem } from './components/Collection/CollectionMetaItem'
 export { CollectionMetaItemTag } from './components/Collection/CollectionMetaItemTag'
 export { CollectionThumbnail } from './components/Collection/CollectionThumbnail'
-export { CollectionCalendarDate } from './components/Collection/CollectionCalendarDate'
+export {
+  CollectionCalendarDate,
+  SHORT_MONTH_LABELS,
+} from './components/Collection/CollectionCalendarDate'
 
 /** Grid components */
-export { GridContainer } from './components/grid/GridContainer/GridContainer'
-export { Grid } from './components/grid/Grid/Grid'
+export {
+  GridContainer,
+  gridContainerClasses,
+} from './components/grid/GridContainer/GridContainer'
+export {
+  Grid,
+  applyGridClasses,
+  getGridClasses,
+} from './components/grid/Grid/Grid'
 
 /** Form components */
-export { CharacterCount } from './components/forms/CharacterCount/CharacterCount'
+export {
+  CharacterCount,
+  defaultCharacterCount,
+  defaultMessage,
+} from './components/forms/CharacterCount/CharacterCount'
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
 export { ComboBox } from './components/forms/ComboBox/ComboBox'
 export type {
@@ -71,7 +89,10 @@ export { RangeInput } from './components/forms/RangeInput/RangeInput'
 export { Select } from './components/forms/Select/Select'
 export { Textarea } from './components/forms/Textarea/Textarea'
 export { TextInput } from './components/forms/TextInput/TextInput'
-export { TextInputMask } from './components/forms/TextInputMask/TextInputMask'
+export {
+  TextInputMask,
+  maskString,
+} from './components/forms/TextInputMask/TextInputMask'
 export { TimePicker } from './components/forms/TimePicker/TimePicker'
 export { ValidationChecklist } from './components/forms/Validation/ValidationChecklist'
 export { ValidationItem } from './components/forms/Validation/ValidationItem'

@@ -3,17 +3,17 @@ import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
 
-export type GridProps = GridItemProps & {
+export type BaseGridProps = GridItemProps & {
   [P in BreakpointKeys]?: GridItemProps
 }
 
-export type GridComponentProps<T> = GridProps & { className?: string } & T
+export type GridComponentProps<T> = BaseGridProps & { className?: string } & T
 
 export type GridLayoutProp = {
-  gridLayout?: GridProps
+  gridLayout?: BaseGridProps
 }
 
-interface WithCustomGridProps<T> {
+export interface WithCustomGridProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
@@ -24,7 +24,7 @@ export type CustomGridProps<T> = GridComponentProps<
 > &
   WithCustomGridProps<React.PropsWithChildren<T>>
 
-type omittedProps =
+export type omittedProps =
   | 'mobile'
   | 'tablet'
   | 'desktop'
@@ -67,7 +67,7 @@ export const getGridClasses = (
   })
 }
 
-export const applyGridClasses = (gridLayout: GridProps): string => {
+export const applyGridClasses = (gridLayout: BaseGridProps): string => {
   let classes = getGridClasses(gridLayout)
 
   Object.keys(breakpoints).forEach((b) => {
@@ -82,10 +82,14 @@ export const applyGridClasses = (gridLayout: GridProps): string => {
   return classes
 }
 
+export type GridProps<FCProps = DefaultGridProps> =
+  | DefaultGridProps
+  | CustomGridProps<FCProps>
+
 export function Grid(props: DefaultGridProps): React.ReactElement
 export function Grid<T>(props: CustomGridProps<T>): React.ReactElement
 export function Grid<FCProps = DefaultGridProps>(
-  props: DefaultGridProps | CustomGridProps<FCProps>
+  props: GridProps<FCProps>
 ): React.ReactElement {
   const {
     children,

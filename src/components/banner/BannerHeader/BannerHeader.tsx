@@ -1,7 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
 
-type BannerHeaderProps = {
+export type BaseBannerHeaderProps = {
   isOpen: boolean
   flagImg: ReactNode
   innerDivProps?: JSX.IntrinsicElements['div']
@@ -10,6 +10,9 @@ type BannerHeaderProps = {
   headerActionText: ReactNode
   headerActionProps?: JSX.IntrinsicElements['p']
 }
+
+export type BannerHeaderProps = BaseBannerHeaderProps &
+  JSX.IntrinsicElements['header']
 
 export const BannerHeader = ({
   children,
@@ -22,7 +25,7 @@ export const BannerHeader = ({
   headerActionProps,
   className,
   ...headerProps
-}: BannerHeaderProps & JSX.IntrinsicElements['header']): ReactElement => {
+}: BannerHeaderProps): ReactElement => {
   const classes = classNames(
     'usa-banner__header',
     {

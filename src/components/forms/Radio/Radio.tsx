@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type RadioProps = {
+export type BaseRadioProps = {
   id: string
   name: string
   className?: string
@@ -16,6 +16,8 @@ type RadioProps = {
   labelDescription?: React.ReactNode
 }
 
+export type RadioProps = BaseRadioProps & JSX.IntrinsicElements['input']
+
 export const Radio = ({
   id,
   name,
@@ -25,7 +27,7 @@ export const Radio = ({
   tile,
   labelDescription,
   ...inputProps
-}: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: RadioProps): React.ReactElement => {
   const classes = classnames('usa-radio', className)
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,

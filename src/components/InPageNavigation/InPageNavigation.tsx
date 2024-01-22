@@ -4,7 +4,7 @@ import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'
 import styles from './InPageNavigation.module.scss'
 
-type InPageNavigationProps = {
+export type BaseInPageNavigationProps = {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel
@@ -15,6 +15,9 @@ type InPageNavigationProps = {
   threshold?: number
   title?: string
 }
+
+export type InPageNavigationProps = BaseInPageNavigationProps &
+  JSX.IntrinsicElements['div']
 
 export const InPageNavigation = ({
   className,
@@ -27,8 +30,7 @@ export const InPageNavigation = ({
   threshold = 1,
   title = 'On this page',
   ...divProps
-}: InPageNavigationProps &
-  JSX.IntrinsicElements['div']): React.ReactElement => {
+}: InPageNavigationProps): React.ReactElement => {
   const classes = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)

@@ -1,16 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export interface ProcessListItemProps {
-  className?: string
-  children?: React.ReactNode
-}
+export type ProcessListItemProps = JSX.IntrinsicElements['li']
 
 export const ProcessListItem = ({
   className,
   children,
   ...liProps
-}: ProcessListItemProps & JSX.IntrinsicElements['li']): React.ReactElement => {
+}: ProcessListItemProps): React.ReactElement => {
   const liClasses = classnames('usa-process-list__item', className)
   return (
     <li className={liClasses} {...liProps}>

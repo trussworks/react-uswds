@@ -14,11 +14,11 @@ import flagImg from '@uswds/uswds/src/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from '@uswds/uswds/src/img/icon-https.svg'
 
-type Language = 'english' | 'spanish'
+export type Language = 'english' | 'spanish'
 
-type TLD = '.gov' | '.mil'
+export type TLD = '.gov' | '.mil'
 
-interface GovBannerCopy {
+export interface GovBannerCopy {
   header: string
   ariaLabel: string
   headerAction: string
@@ -28,7 +28,7 @@ interface GovBannerCopy {
   httpsSectionContent: JSX.Element
 }
 
-const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
+export const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   switch (language) {
     case 'english':
       return {
@@ -107,17 +107,20 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   }
 }
 
-type GovBannerProps = {
+export type BaseGovBannerProps = {
   tld?: TLD
   language?: Language
 }
+
+export type GovBannerProps = BaseGovBannerProps &
+  JSX.IntrinsicElements['section']
 
 export const GovBanner = ({
   tld = '.gov',
   language = 'english',
   className,
   ...sectionProps
-}: GovBannerProps & JSX.IntrinsicElements['section']): ReactElement => {
+}: GovBannerProps): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
   const {

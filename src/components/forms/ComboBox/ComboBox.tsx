@@ -24,7 +24,7 @@ export interface ComboBoxOption {
   label: string
 }
 
-enum Direction {
+export enum Direction {
   Previous = -1,
   Next = 1,
 }
@@ -40,7 +40,7 @@ export interface CustomizableFilter {
   extras?: Record<string, string>
 }
 
-type ComboBoxProps = {
+export type ComboBoxProps = {
   id: string
   name: string
   className?: string
@@ -57,7 +57,7 @@ type ComboBoxProps = {
   disableFiltering?: boolean
 }
 
-interface InputProps {
+export interface InputProps {
   focused: boolean
 }
 

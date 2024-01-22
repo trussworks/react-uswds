@@ -9,8 +9,9 @@ import { Textarea, TextareaProps } from '../Textarea/Textarea'
   In many cases, though, props will be passed in by consumer 
   for example, to account for i18n-aware strings
 */
-const defaultCharacterCount = (text: string): number => Array.from(text).length
-const defaultMessage = (count: number, max: number): string => {
+export const defaultCharacterCount = (text: string): number =>
+  Array.from(text).length
+export const defaultMessage = (count: number, max: number): string => {
   const emptyMessageFormat = `${max} characters allowed`
   const remainingPluralFormat = '$0 characters left'
   const remainingSingularFormat = '$0 character left'
@@ -33,7 +34,7 @@ const defaultMessage = (count: number, max: number): string => {
 }
 
 /* Types */
-type BaseCharacterCountProps = {
+export type BaseCharacterCountProps = {
   id: string
   name: string
   maxLength: number
@@ -52,6 +53,10 @@ export type TextareaCharacterCountProps = BaseCharacterCountProps &
   TextareaProps &
   JSX.IntrinsicElements['textarea']
 
+export type CharacterCountProps =
+  | TextInputCharacterCountProps
+  | TextareaCharacterCountProps
+
 /* Main */
 export const CharacterCount = ({
   id,
@@ -64,9 +69,7 @@ export const CharacterCount = ({
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
   ...remainingProps
-}:
-  | TextInputCharacterCountProps
-  | TextareaCharacterCountProps): React.ReactElement => {
+}: CharacterCountProps): React.ReactElement => {
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))

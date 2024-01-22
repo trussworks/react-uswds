@@ -1,17 +1,18 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type TagProps = {
-  children: React.ReactNode
+export type BaseTagProps = {
   background?: string
 }
+
+export type TagProps = BaseTagProps & JSX.IntrinsicElements['span']
 
 export const Tag = ({
   children,
   background,
   className,
   ...spanProps
-}: TagProps & JSX.IntrinsicElements['span']): React.ReactElement => {
+}: TagProps): React.ReactElement => {
   const style: React.CSSProperties = {}
   if (background) {
     style.background = background

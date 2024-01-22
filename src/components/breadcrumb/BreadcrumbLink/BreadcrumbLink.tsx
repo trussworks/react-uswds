@@ -7,12 +7,16 @@ import {
   Link,
 } from '../../Link/Link'
 
+export type BreadcrumbLinkProps<FCProps = DefaultLinkProps> =
+  | DefaultLinkProps
+  | CustomLinkProps<FCProps>
+
 export function BreadcrumbLink(props: DefaultLinkProps): React.ReactElement
 export function BreadcrumbLink<T>(props: CustomLinkProps<T>): React.ReactElement
 export function BreadcrumbLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
-}: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
+}: BreadcrumbLinkProps<FCProps>): React.ReactElement {
   const classes = classnames(className, 'usa-breadcrumb__link')
 
   const linkProps = {

@@ -5,7 +5,7 @@ import { formatDate, isIosDevice } from './utils'
 
 import { DatePickerLocalization, EN_US } from './i18n'
 
-interface DayProps {
+export interface DayProps {
   date: Date
   onClick: (value: string) => void
   onKeyDown: (event: KeyboardEvent) => void

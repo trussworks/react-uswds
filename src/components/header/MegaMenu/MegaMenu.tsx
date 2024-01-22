@@ -3,17 +3,19 @@ import classnames from 'classnames'
 
 import { NavList, NavListProps } from '../NavList/NavList'
 
-type MegaMenuProps = {
+export type BaseMegaMenuProps = {
   items: React.ReactNode[][]
   isOpen: boolean
 }
+
+export type MegaMenuProps = BaseMegaMenuProps & NavListProps
 
 export const MegaMenu = ({
   items,
   isOpen,
   className,
   ...navListProps
-}: MegaMenuProps & NavListProps): React.ReactElement => {
+}: MegaMenuProps): React.ReactElement => {
   const classes = classnames('usa-nav__submenu usa-megamenu', className)
 
   return (

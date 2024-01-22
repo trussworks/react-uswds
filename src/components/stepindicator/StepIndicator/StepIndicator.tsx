@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-type StepIndicatorProps = {
+export type StepIndicatorProps = {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
   centered?: boolean
@@ -19,6 +19,7 @@ type StepIndicatorProps = {
   stepText?: string
   ofText?: string
 }
+
 export const StepIndicator = (
   props: StepIndicatorProps
 ): React.ReactElement => {

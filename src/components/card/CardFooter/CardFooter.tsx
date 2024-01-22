@@ -1,12 +1,18 @@
 import React from 'react'
 import classnames from 'classnames'
 
+export interface BaseCardFooterProps {
+  exdent?: boolean
+}
+
+export type CardFooterProps = BaseCardFooterProps & JSX.IntrinsicElements['div']
+
 export const CardFooter = ({
   exdent,
   children,
   className,
   ...footerProps
-}: { exdent?: boolean } & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: CardFooterProps): React.ReactElement => {
   const classes = classnames(
     'usa-card__footer',
     {

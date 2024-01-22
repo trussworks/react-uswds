@@ -12,7 +12,7 @@ import {
   isIosDevice,
 } from './utils'
 
-interface YearPickerProps {
+export interface YearPickerProps {
   date: Date
   minDate: Date
   maxDate?: Date

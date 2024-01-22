@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 
-export type AllProps = TextInputProps & {
+export interface BaseTextInputMaskProps {
   mask: string
   charset?: string
 }
 
-function maskString(value: string, mask: string, charset?: string) {
+export type TextInputMaskProps = BaseTextInputMaskProps & TextInputProps
+
+export type AllProps = TextInputMaskProps
+
+export function maskString(value: string, mask: string, charset?: string) {
   const maskData = charset || mask
 
   const strippedValue = charset

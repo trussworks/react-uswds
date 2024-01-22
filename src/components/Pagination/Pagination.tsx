@@ -4,7 +4,7 @@ import { Icon } from '../Icon/Icons'
 import { Link } from '../Link/Link'
 import { Button } from '../Button/Button'
 
-type PaginationProps = {
+export type BasePaginationProps = {
   pathname: string // pathname of results page
   totalPages?: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
@@ -17,12 +17,9 @@ type PaginationProps = {
   ) => void
 }
 
-const PaginationPage = ({
-  page,
-  isCurrent,
-  pathname,
-  onClickPageNumber,
-}: {
+export type PaginationProps = BasePaginationProps & JSX.IntrinsicElements['nav']
+
+export interface PaginationPageProps {
   pathname: string
   page: number
   isCurrent?: boolean
@@ -30,7 +27,14 @@ const PaginationPage = ({
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-}) => {
+}
+
+export const PaginationPage = ({
+  page,
+  isCurrent,
+  pathname,
+  onClickPageNumber,
+}: PaginationPageProps) => {
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent,
   })
@@ -65,7 +69,7 @@ const PaginationPage = ({
   )
 }
 
-const PaginationOverflow = () => (
+export const PaginationOverflow = () => (
   <li
     className="usa-pagination__item usa-pagination__overflow"
     role="presentation">
@@ -83,7 +87,7 @@ export const Pagination = ({
   onClickNext,
   onClickPageNumber,
   ...props
-}: PaginationProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
+}: PaginationProps): React.ReactElement => {
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1

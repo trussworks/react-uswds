@@ -2,37 +2,41 @@ import React from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-interface BaseProcessListHeadingProps {
+export interface BaseProcessListHeadingProps {
   type: string
   className?: string
   children?: React.ReactNode
 }
 
-interface HeadingProcessListHeadingProps extends BaseProcessListHeadingProps {
+export interface HeadingProcessListHeadingProps
+  extends BaseProcessListHeadingProps {
   type: HeadingLevel
 }
 
-interface ParagraphProcessListHeadingProps extends BaseProcessListHeadingProps {
+export interface ParagraphProcessListHeadingProps
+  extends BaseProcessListHeadingProps {
   type: 'p'
 }
 
-type ProcessListHeadingProps = HeadingProcessListHeadingProps &
+export type DetailedProcessListHeadingProps = HeadingProcessListHeadingProps &
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   >
 
-type ProcessListParagraphHeadingProps = ParagraphProcessListHeadingProps &
-  JSX.IntrinsicElements['p']
+export type ProcessListParagraphHeadingProps =
+  ParagraphProcessListHeadingProps & JSX.IntrinsicElements['p']
+
+export type ProcessListHeadingProps =
+  | DetailedProcessListHeadingProps
+  | ProcessListParagraphHeadingProps
 
 export const ProcessListHeading = ({
   type,
   className,
   children,
   ...headingProps
-}:
-  | ProcessListParagraphHeadingProps
-  | ProcessListHeadingProps): React.ReactElement => {
+}: ProcessListHeadingProps): React.ReactElement => {
   const classes = classnames('usa-process-list__heading', className)
   const Tag = type
   return (

@@ -1,14 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface USWDSIconProps {
+export interface BaseIconProps {
   focusable?: boolean
   role?: string
   size?: 3 | 4 | 5 | 6 | 7 | 8 | 9
   className?: string
 }
 
-export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
+export type IconProps = BaseIconProps & JSX.IntrinsicElements['svg']
 
 export const makeUSWDSIcon = (
   Component: React.ComponentType<IconProps>

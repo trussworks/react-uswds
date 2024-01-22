@@ -1,16 +1,19 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerContentProps = {
+export type BaseBannerContentProps = {
   isOpen: boolean
 }
+
+export type BannerContentProps = BaseBannerContentProps &
+  JSX.IntrinsicElements['div']
 
 export const BannerContent = ({
   children,
   isOpen,
   className,
   ...divProps
-}: BannerContentProps & JSX.IntrinsicElements['div']): ReactElement => {
+}: BannerContentProps): ReactElement => {
   const classes = classNames(
     'usa-banner__content usa-accordion__content',
     className

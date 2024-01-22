@@ -1,11 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { TextInput, OptionalTextInputProps } from '../TextInput/TextInput'
+import { TextInput, BaseTextInputProps } from '../TextInput/TextInput'
 import { Label } from '../Label/Label'
 import { FormGroup } from '../FormGroup/FormGroup'
 
-type DateInputElementProps = {
+export type DateInputPropsBase = {
   id: string
   name: string
   label: string
@@ -13,6 +13,10 @@ type DateInputElementProps = {
   maxLength: number
   minLength?: number
 }
+
+export type DateInputProps = DateInputPropsBase &
+  BaseTextInputProps &
+  JSX.IntrinsicElements['input']
 
 export const DateInput = ({
   id,
@@ -23,7 +27,7 @@ export const DateInput = ({
   minLength,
   className,
   ...inputProps
-}: DateInputElementProps & OptionalTextInputProps): React.ReactElement => {
+}: DateInputProps): React.ReactElement => {
   const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',

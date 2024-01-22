@@ -10,13 +10,16 @@ export type LanguageDefinition = {
   on_click: string | (() => void)
 }
 
-export type LanguageSelectorProps = {
+export type BaseLanguageSelectorProps = {
   label?: string
   langs: LanguageDefinition[]
   small?: boolean
   className?: string
   displayLang?: string
 }
+
+export type LanguageSelectorProps = BaseLanguageSelectorProps &
+  JSX.IntrinsicElements['div']
 
 export const LanguageSelector = ({
   label,
@@ -25,8 +28,7 @@ export const LanguageSelector = ({
   className,
   displayLang,
   ...divProps
-}: LanguageSelectorProps &
-  JSX.IntrinsicElements['div']): React.ReactElement => {
+}: LanguageSelectorProps): React.ReactElement => {
   const classes = classnames(
     'usa-language-container',
     {

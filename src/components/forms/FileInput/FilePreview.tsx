@@ -5,16 +5,18 @@ import classnames from 'classnames'
  * as webpack was exporting that entire file, including use of the File
  * WebAPI; this was causing server-side site generators to break (#1250). */
 
-const SPACER_GIF =
+export const SPACER_GIF =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+
+export interface FilePreviewProps {
+  imageId: string
+  file: File
+}
 
 export const FilePreview = ({
   imageId,
   file,
-}: {
-  imageId: string
-  file: File
-}): React.ReactElement => {
+}: FilePreviewProps): React.ReactElement => {
   const fileReaderRef = useRef<FileReader>(new FileReader())
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)

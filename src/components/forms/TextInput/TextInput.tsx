@@ -2,31 +2,27 @@ import React from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
-type TextInputRef =
+export type TextInputRef =
   | string
   | ((instance: HTMLInputElement | null) => void)
   | React.RefObject<HTMLInputElement>
   | null
   | undefined
 
-type RequiredTextInputProps = {
-  id: string
-  name: string
-  type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
-}
+export type RequiredTextInputProps = Required<
+  Pick<JSX.IntrinsicElements['input'], 'id' | 'name' | 'type'>
+>
 
-type CustomTextInputProps = {
-  className?: string
+export type BaseTextInputProps = {
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
   inputRef?: TextInputRef
   inputProps?: JSX.IntrinsicElements['input']
 }
 
-export type OptionalTextInputProps = CustomTextInputProps &
-  JSX.IntrinsicElements['input']
-
-export type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
+export type TextInputProps = BaseTextInputProps &
+  RequiredTextInputProps &
+  Omit<JSX.IntrinsicElements['input'], 'id' | 'name' | 'type'>
 
 export const TextInput = ({
   id,

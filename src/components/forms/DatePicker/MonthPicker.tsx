@@ -13,19 +13,21 @@ import {
 
 import { DatePickerLocalization, EN_US } from './i18n'
 
+export interface MonthPickerProps {
+  date: Date
+  minDate: Date
+  maxDate?: Date
+  handleSelectMonth: (value: number) => void
+  i18n?: DatePickerLocalization
+}
+
 export const MonthPicker = ({
   date,
   minDate,
   maxDate,
   handleSelectMonth,
   i18n = EN_US,
-}: {
-  date: Date
-  minDate: Date
-  maxDate?: Date
-  handleSelectMonth: (value: number) => void
-  i18n?: DatePickerLocalization
-}): React.ReactElement => {
+}: MonthPickerProps): React.ReactElement => {
   const selectedMonth = date.getMonth()
   const [monthToDisplay, setMonthToDisplay] = useState(selectedMonth)
   const monthPickerEl = useRef<HTMLDivElement>(null)

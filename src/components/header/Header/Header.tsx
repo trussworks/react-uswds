@@ -1,13 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type HeaderProps = {
+export type BaseHeaderProps = {
   basic?: boolean
   extended?: boolean
   basicWithMegaMenu?: boolean
   children: React.ReactNode
   showMobileOverlay?: boolean
 }
+
+export type HeaderProps = BaseHeaderProps & JSX.IntrinsicElements['header']
 
 export const Header = ({
   basic,
@@ -17,7 +19,7 @@ export const Header = ({
   showMobileOverlay,
   className,
   ...headerProps
-}: HeaderProps & JSX.IntrinsicElements['header']): React.ReactElement => {
+}: HeaderProps): React.ReactElement => {
   const classes = classnames(
     'usa-header',
     {

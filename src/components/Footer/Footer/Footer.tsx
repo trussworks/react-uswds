@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type FooterProps = {
+export type BaseFooterProps = {
   size?: 'big' | 'medium' | 'slim'
   /**
    * Component for "return to top" button/handling
@@ -17,13 +17,15 @@ type FooterProps = {
   secondary: React.ReactNode
 }
 
+export type FooterProps = BaseFooterProps & React.HTMLAttributes<HTMLElement>
+
 export const Footer = ({
   size,
   returnToTop,
   primary,
   secondary,
   ...footerAttributes
-}: FooterProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+}: FooterProps): React.ReactElement => {
   const classes = classnames(
     'usa-footer',
     {

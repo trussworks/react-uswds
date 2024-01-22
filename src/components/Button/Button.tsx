@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type ButtonProps = {
+export type BaseButtonProps = {
   type: 'button' | 'submit' | 'reset'
   children: React.ReactNode
   secondary?: boolean
@@ -12,6 +12,8 @@ export type ButtonProps = {
   size?: 'big'
   unstyled?: boolean
 }
+
+export type ButtonProps = BaseButtonProps & JSX.IntrinsicElements['button']
 
 export const Button = ({
   type,
@@ -26,7 +28,7 @@ export const Button = ({
   onClick,
   className,
   ...defaultProps
-}: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
+}: ButtonProps): React.ReactElement => {
   const classes = classnames(
     'usa-button',
     {

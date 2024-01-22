@@ -1,16 +1,16 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { Form, OptionalFormProps } from '../../forms/Form/Form'
+import { Form, BaseFormProps } from '../../forms/Form/Form'
 import { SearchField } from '../SearchField/SearchField'
 import { SearchButton } from '../SearchButton/SearchButton'
-import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
+import { BaseTextInputProps } from '../../forms/TextInput/TextInput'
 
-type SearchLocalization = {
+export type SearchLocalization = {
   buttonText: string
 }
 
-type SearchInputProps = {
+export type SearchInputProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
   className?: string
@@ -19,8 +19,12 @@ type SearchInputProps = {
   placeholder?: string
   label?: React.ReactNode
   i18n?: SearchLocalization
-  inputProps?: OptionalTextInputProps
+  inputProps?: BaseTextInputProps & JSX.IntrinsicElements['input']
 }
+
+export type SearchProps = SearchInputProps &
+  BaseFormProps &
+  JSX.IntrinsicElements['form']
 
 export const Search = ({
   onSubmit,
@@ -33,7 +37,7 @@ export const Search = ({
   i18n,
   inputProps,
   ...formProps
-}: SearchInputProps & OptionalFormProps): React.ReactElement => {
+}: SearchProps): React.ReactElement => {
   const classes = classnames('usa-search', className)
 
   return (

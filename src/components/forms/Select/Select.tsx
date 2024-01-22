@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
-type SelectProps = {
+export type BaseSelectProps = {
   id: string
   name: string
   className?: string
@@ -16,6 +16,8 @@ type SelectProps = {
     | undefined
 }
 
+export type SelectProps = BaseSelectProps & JSX.IntrinsicElements['select']
+
 export const Select = ({
   id,
   name,
@@ -24,7 +26,7 @@ export const Select = ({
   children,
   validationStatus,
   ...inputProps
-}: SelectProps & JSX.IntrinsicElements['select']): React.ReactElement => {
+}: SelectProps): React.ReactElement => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const classes = classnames(

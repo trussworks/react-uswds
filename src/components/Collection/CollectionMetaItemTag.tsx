@@ -1,17 +1,19 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface CollectionMetaItemTagProps {
+export interface BaseCollectionMetaItemTagProps {
   tagStyle?: 'new' | 'default'
 }
+
+export type CollectionMetaItemTagProps = BaseCollectionMetaItemTagProps &
+  JSX.IntrinsicElements['li']
 
 export const CollectionMetaItemTag = ({
   className,
   children,
   tagStyle,
   ...props
-}: CollectionMetaItemTagProps &
-  JSX.IntrinsicElements['li']): React.ReactElement => {
+}: CollectionMetaItemTagProps): React.ReactElement => {
   const classes = classnames(
     'usa-collection__meta-item',
     'usa-tag',

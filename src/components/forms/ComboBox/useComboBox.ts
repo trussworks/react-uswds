@@ -57,7 +57,7 @@ export interface State {
   statusText: string
 }
 
-interface FilterResults {
+export interface FilterResults {
   closestMatch: ComboBoxOption
   optionsToDisplay: ComboBoxOption[]
 }

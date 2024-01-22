@@ -1,16 +1,18 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerProps = {
+export type BaseBannerProps = {
   divProps?: JSX.IntrinsicElements['div']
 }
+
+export type BannerProps = BaseBannerProps & JSX.IntrinsicElements['section']
 
 export const Banner = ({
   children,
   divProps,
   className,
   ...sectionProps
-}: BannerProps & JSX.IntrinsicElements['section']): ReactElement => {
+}: BannerProps): ReactElement => {
   const classes = classNames('usa-banner', className)
 
   const { className: divClassName, ...remainingDivProps } = divProps || {}

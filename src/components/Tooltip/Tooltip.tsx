@@ -11,22 +11,22 @@ import classnames from 'classnames'
 
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
-type TooltipProps<T> = {
+export type BaseTooltipProps = {
   label: ReactNode
   title?: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   wrapperclasses?: string
   className?: string
   children: ReactNode
-} & T
+}
 
-interface WithCustomTooltipProps<T> {
+export interface WithCustomTooltipProps<T> {
   asCustom: ForwardRefExoticComponent<T>
 }
 
-export type DefaultTooltipProps = TooltipProps<JSX.IntrinsicElements['button']>
+export type DefaultTooltipProps = BaseTooltipProps & JSX.IntrinsicElements['button']
 
-export type CustomTooltipProps<T> = TooltipProps<T> & WithCustomTooltipProps<T>
+export type CustomTooltipProps<T> = BaseTooltipProps & WithCustomTooltipProps<T> & T
 
 export function isCustomProps<T>(
   props: DefaultTooltipProps | CustomTooltipProps<T>
@@ -34,13 +34,17 @@ export function isCustomProps<T>(
   return 'asCustom' in props
 }
 
-const TRIANGLE_SIZE = 5
+export const TRIANGLE_SIZE = 5
+
+export type TooltipProps<
+  FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps
+> = DefaultTooltipProps | CustomTooltipProps<FCProps>
 
 export function Tooltip(props: DefaultTooltipProps): ReactElement
 export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
 export function Tooltip<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps
->(props: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
+>(props: TooltipProps<FCProps>): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(

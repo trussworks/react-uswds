@@ -21,7 +21,7 @@ export const isElementInViewport = (
  * @param {String} propertyValue - this is the tooltip body
  */
 
-const offsetMargin = (target: HTMLElement, propertyValue: string) =>
+export const offsetMargin = (target: HTMLElement, propertyValue: string) =>
   parseInt(window.getComputedStyle(target).getPropertyValue(propertyValue), 10)
 
 // offsetLeft = the left position, and margin of the element, the left

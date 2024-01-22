@@ -25,14 +25,6 @@ import {
   handleTabKey,
 } from './utils'
 
-const CalendarModes = {
-  DATE_PICKER: 'DATE_PICKER',
-  MONTH_PICKER: 'MONTH_PICKER',
-  YEAR_PICKER: 'YEAR_PICKER',
-} as const
-
-type CalendarMode = (typeof CalendarModes)[keyof typeof CalendarModes]
-
 import { Day } from './Day'
 import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
@@ -40,7 +32,15 @@ import { FocusMode } from './DatePicker'
 
 import { DatePickerLocalization, EN_US } from './i18n'
 
-interface CalendarProps {
+export const CalendarModes = {
+  DATE_PICKER: 'DATE_PICKER',
+  MONTH_PICKER: 'MONTH_PICKER',
+  YEAR_PICKER: 'YEAR_PICKER',
+} as const
+
+export type CalendarMode = (typeof CalendarModes)[keyof typeof CalendarModes]
+
+export interface CalendarProps {
   date?: Date
   selectedDate?: Date
   handleSelectDate: (value: string) => void
