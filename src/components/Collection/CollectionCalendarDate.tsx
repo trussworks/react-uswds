@@ -19,10 +19,10 @@ export const SHORT_MONTH_LABELS = [
   'Dec',
 ]
 
-export const CollectionCalendarDateForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CollectionCalendarDateProps> = ({
-  datetime,
-  ...props
-}, ref): React.ReactElement => {
+export const CollectionCalendarDateForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  CollectionCalendarDateProps
+> = ({ datetime, ...props }, ref): React.ReactElement => {
   const dateObj = new Date(datetime)
   const isDateInvalid = dateObj && dateObj.getTime && isNaN(dateObj.getTime())
 
@@ -48,6 +48,8 @@ export const CollectionCalendarDateForwardRef: React.ForwardRefRenderFunction<HT
   )
 }
 
-export const CollectionCalendarDate = forwardRef(CollectionCalendarDateForwardRef)
+export const CollectionCalendarDate = forwardRef(
+  CollectionCalendarDateForwardRef
+)
 
 export default CollectionCalendarDate

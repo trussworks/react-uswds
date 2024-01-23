@@ -10,7 +10,8 @@ export interface BaseModalWrapperProps {
   className?: string
 }
 
-export type ModalWrapperProps = BaseModalWrapperProps & JSX.IntrinsicElements['div']
+export type ModalWrapperProps = BaseModalWrapperProps &
+  JSX.IntrinsicElements['div']
 
 export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,

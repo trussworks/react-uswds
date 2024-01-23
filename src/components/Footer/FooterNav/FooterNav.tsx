@@ -24,13 +24,13 @@ export type BaseFooterNavProps = {
 export type FooterNavProps = BaseFooterNavProps &
   React.HTMLAttributes<HTMLElement>
 
-export const FooterNavForwardRef: React.ForwardRefRenderFunction<HTMLElement, FooterNavProps> = ({
-  className,
-  size,
-  isMobile,
-  links,
-  ...elementAttributes
-}, ref): React.ReactElement => {
+export const FooterNavForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  FooterNavProps
+> = (
+  { className, size, isMobile, links, ...elementAttributes },
+  ref
+): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

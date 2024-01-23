@@ -29,12 +29,10 @@ export type IconListTitleProps =
   | IconListParagraphTitleProps
   | IconListHeadingTitleProps
 
-export const IconListTitleForwardRef: React.ForwardRefRenderFunction<HTMLElement, IconListTitleProps> = ({
-  type,
-  children,
-  className,
-  ...props
-}, ref): ReactElement => {
+export const IconListTitleForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  IconListTitleProps
+> = ({ type, children, className, ...props }, ref): ReactElement => {
   const classes = classnames(className, 'usa-icon-list__title')
   const Tag = type
   return (

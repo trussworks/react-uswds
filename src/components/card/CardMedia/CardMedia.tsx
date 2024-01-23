@@ -10,14 +10,13 @@ export interface BaseCardMediaProps {
 
 export type CardMediaProps = BaseCardMediaProps & JSX.IntrinsicElements['div']
 
-export const CardMediaForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CardMediaProps> = ({
-  exdent,
-  inset,
-  imageClass,
-  children,
-  className,
-  ...mediaProps
-}, ref): React.ReactElement => {
+export const CardMediaForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  CardMediaProps
+> = (
+  { exdent, inset, imageClass, children, className, ...mediaProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-card__media',
     {

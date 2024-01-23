@@ -16,15 +16,21 @@ export type BaseExtendedNavProps = {
 export type ExtendedNavProps = BaseExtendedNavProps &
   JSX.IntrinsicElements['nav']
 
-export const ExtendedNavForwardRef: React.ForwardRefRenderFunction<HTMLElement, ExtendedNavProps> = ({
-  primaryItems,
-  secondaryItems,
-  mobileExpanded = false,
-  children,
-  className,
-  onToggleMobileNav,
-  ...navProps
-}, ref): React.ReactElement => {
+export const ExtendedNavForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  ExtendedNavProps
+> = (
+  {
+    primaryItems,
+    secondaryItems,
+    mobileExpanded = false,
+    children,
+    className,
+    onToggleMobileNav,
+    ...navProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-nav',
     {

@@ -86,9 +86,10 @@ export type GridProps<FCProps = DefaultGridProps> =
   | DefaultGridProps
   | CustomGridProps<FCProps>
 
-export const GridForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, GridProps> = (
-  props, ref
-): React.ReactElement => {
+export const GridForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  GridProps
+> = (props, ref): React.ReactElement => {
   const {
     children,
     className,

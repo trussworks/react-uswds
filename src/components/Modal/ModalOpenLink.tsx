@@ -1,10 +1,7 @@
 import React, { forwardRef } from 'react'
 
 import { ModalRef } from './Modal'
-import Link, {
-  LinkProps,
-  isCustomProps,
-} from '../Link/Link'
+import Link, { LinkProps, isCustomProps } from '../Link/Link'
 
 export type BaseModalOpenLinkProps = {
   modalRef: React.RefObject<ModalRef>
@@ -12,10 +9,10 @@ export type BaseModalOpenLinkProps = {
 
 export type ModalOpenLinkProps = BaseModalOpenLinkProps & LinkProps
 
-export const ModalOpenLinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, ModalOpenLinkProps> = ({
-  modalRef,
-  ...props
-}, ref): React.ReactElement => {
+export const ModalOpenLinkForwardRef: React.ForwardRefRenderFunction<
+  HTMLAnchorElement,
+  ModalOpenLinkProps
+> = ({ modalRef, ...props }, ref): React.ReactElement => {
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     if (!modalRef || !modalRef.current) {
       console.error('ModalRef is required')

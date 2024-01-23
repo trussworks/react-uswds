@@ -19,16 +19,22 @@ export type SearchFieldProps = BaseSearchFieldProps &
   BaseTextInputProps &
   JSX.IntrinsicElements['input']
 
-export const SearchFieldForwardRef: React.ForwardRefRenderFunction<HTMLInputElement, SearchFieldProps> = ({
-  isBig,
-  className,
-  placeholder,
-  defaultValue,
-  inputName = 'search',
-  label = 'Search',
-  inputId = 'search-field',
-  inputProps,
-}, ref): React.ReactElement => {
+export const SearchFieldForwardRef: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  SearchFieldProps
+> = (
+  {
+    isBig,
+    className,
+    placeholder,
+    defaultValue,
+    inputName = 'search',
+    label = 'Search',
+    inputId = 'search-field',
+    inputProps,
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     {
       'usa-search--big': isBig,

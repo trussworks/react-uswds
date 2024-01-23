@@ -11,10 +11,10 @@ export type IdentifierLinkProps<FCProps = DefaultLinkProps> =
   | DefaultLinkProps
   | CustomLinkProps<FCProps>
 
-export const IdentifierLinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, IdentifierLinkProps> = ({
-  className,
-  ...passThroughProps
-}, ref): React.ReactElement => {
+export const IdentifierLinkForwardRef: React.ForwardRefRenderFunction<
+  HTMLAnchorElement,
+  IdentifierLinkProps
+> = ({ className, ...passThroughProps }, ref): React.ReactElement => {
   const classes = classnames(className, 'usa-identifier__required-link')
   const linkProps = {
     ...passThroughProps,

@@ -19,9 +19,10 @@ export type BaseDateRangePickerProps = {
 export type DateRangePickerProps = BaseDateRangePickerProps &
   JSX.IntrinsicElements['div']
 
-export const DateRangePicker: ForwardRefRenderFunction<HTMLDivElement, DateRangePickerProps> = (
-  props, ref
-): React.ReactElement => {
+export const DateRangePicker: ForwardRefRenderFunction<
+  HTMLDivElement,
+  DateRangePickerProps
+> = (props, ref): React.ReactElement => {
   const {
     startDateLabel,
     startDateHint,
@@ -137,7 +138,11 @@ export const DateRangePicker: ForwardRefRenderFunction<HTMLDivElement, DateRange
   const endDatePickerHintId = `${endDatePickerProps.id}-hint`
 
   return (
-    <div ref={ref} className={classes} data-testid="date-range-picker" {...props}>
+    <div
+      ref={ref}
+      className={classes}
+      data-testid="date-range-picker"
+      {...props}>
       <FormGroup>
         {startDateLabel && (
           <Label id={startDatePickerLabelId} htmlFor={startDatePickerProps.id}>

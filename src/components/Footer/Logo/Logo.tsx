@@ -9,13 +9,13 @@ export type BaseLogoProps = {
 
 export type LogoProps = BaseLogoProps & JSX.IntrinsicElements['div']
 
-export const LogoForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, LogoProps> = ({
-  size,
-  heading,
-  image,
-  className,
-  ...elementAttributes
-}, ref): React.ReactElement => {
+export const LogoForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  LogoProps
+> = (
+  { size, heading, image, className, ...elementAttributes },
+  ref
+): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
@@ -25,7 +25,8 @@ export const LogoForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, Logo
     {
       'mobile-lg:grid-col-6 mobile-lg:grid-gap-2': isBig || isMedium,
       'grid-gap-2': isSlim,
-    }, className
+    },
+    className
   )
 
   const columnClasses = classnames({
@@ -34,7 +35,11 @@ export const LogoForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, Logo
   })
 
   return (
-    <div ref={ref} className={containerClasses} data-testid="footerLogo" {...elementAttributes}>
+    <div
+      ref={ref}
+      className={containerClasses}
+      data-testid="footerLogo"
+      {...elementAttributes}>
       <>
         <div className={columnClasses}>{image}</div>
         {heading && <div className={columnClasses}>{heading}</div>}

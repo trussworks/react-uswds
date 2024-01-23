@@ -9,12 +9,13 @@ export interface BaseBreadcrumbProps {
 
 export type BreadcrumbProps = BaseBreadcrumbProps & JSX.IntrinsicElements['li']
 
-export const BreadcrumbForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, BreadcrumbProps> = ({
-  children,
-  current = false,
-  className,
-  ...listItemProps
-}, ref): React.ReactElement => {
+export const BreadcrumbForwardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  BreadcrumbProps
+> = (
+  { children, current = false, className, ...listItemProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb__list-item',
     {

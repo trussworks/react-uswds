@@ -22,13 +22,13 @@ export type BaseRangeInputProps = {
 export type RangeInputProps = BaseRangeInputProps &
   JSX.IntrinsicElements['input']
 
-export const RangeInputForwardRef: React.ForwardRefRenderFunction<HTMLInputElement, RangeInputProps> = ({
-  className,
-  inputRef,
-  textPreposition,
-  textUnit,
-  ...inputProps
-}, ref): React.ReactElement => {
+export const RangeInputForwardRef: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  RangeInputProps
+> = (
+  { className, inputRef, textPreposition, textUnit, ...inputProps },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-range', className)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0

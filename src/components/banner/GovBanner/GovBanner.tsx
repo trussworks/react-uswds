@@ -115,12 +115,13 @@ export type BaseGovBannerProps = {
 export type GovBannerProps = BaseGovBannerProps &
   JSX.IntrinsicElements['section']
 
-export const GovBannerForwardRef: React.ForwardRefRenderFunction<HTMLElement, GovBannerProps> = ({
-  tld = '.gov',
-  language = 'english',
-  className,
-  ...sectionProps
-}, ref): ReactElement => {
+export const GovBannerForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  GovBannerProps
+> = (
+  { tld = '.gov', language = 'english', className, ...sectionProps },
+  ref
+): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
   const {

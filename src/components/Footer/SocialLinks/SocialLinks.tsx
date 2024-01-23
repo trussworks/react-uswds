@@ -16,11 +16,10 @@ export type BaseSocialLinkProps = {
 
 export type SocialLinkProps = BaseSocialLinkProps & JSX.IntrinsicElements['a']
 
-export const SocialLinksForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, SocialLinksProps> = ({
-  className,
-  links,
-  ...props
-}, ref): React.ReactElement => {
+export const SocialLinksForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  SocialLinksProps
+> = ({ className, links, ...props }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-footer__social-links grid-row grid-gap-1',
     className
@@ -38,10 +37,10 @@ export const SocialLinksForwardRef: React.ForwardRefRenderFunction<HTMLDivElemen
 
 export const SocialLinks = forwardRef(SocialLinksForwardRef)
 
-export const SocialLinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, SocialLinkProps> = ({
-  name,
-  ...props
-}, ref): React.ReactElement => {
+export const SocialLinkForwardRef: React.ForwardRefRenderFunction<
+  HTMLAnchorElement,
+  SocialLinkProps
+> = ({ name, ...props }, ref): React.ReactElement => {
   let icon: Icon
   switch (name) {
     case 'Facebook':

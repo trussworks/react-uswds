@@ -17,19 +17,25 @@ export type BaseTableProps = {
 
 export type TableProps = BaseTableProps & JSX.IntrinsicElements['table']
 
-export const TableForwardRef: React.ForwardRefRenderFunction<HTMLTableElement, TableProps> = ({
-  bordered,
-  caption,
-  children,
-  className,
-  fullWidth,
-  fixed,
-  scrollable,
-  striped,
-  compact,
-  stackedStyle = 'none',
-  ...props
-}, ref): React.ReactElement => {
+export const TableForwardRef: React.ForwardRefRenderFunction<
+  HTMLTableElement,
+  TableProps
+> = (
+  {
+    bordered,
+    caption,
+    children,
+    className,
+    fullWidth,
+    fixed,
+    scrollable,
+    striped,
+    compact,
+    stackedStyle = 'none',
+    ...props
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-table',
     {

@@ -7,12 +7,13 @@ export interface BaseCardFooterProps {
 
 export type CardFooterProps = BaseCardFooterProps & JSX.IntrinsicElements['div']
 
-export const CardFooterForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CardFooterProps> = ({
-  exdent,
-  children,
-  className,
-  ...footerProps
-}, ref): React.ReactElement => {
+export const CardFooterForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  CardFooterProps
+> = (
+  { exdent, children, className, ...footerProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-card__footer',
     {
@@ -22,7 +23,11 @@ export const CardFooterForwardRef: React.ForwardRefRenderFunction<HTMLDivElement
   )
 
   return (
-    <div ref={ref} className={classes} {...footerProps} data-testid="CardFooter">
+    <div
+      ref={ref}
+      className={classes}
+      {...footerProps}
+      data-testid="CardFooter">
       {children}
     </div>
   )

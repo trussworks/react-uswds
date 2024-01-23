@@ -25,16 +25,13 @@ export interface BaseTextareaProps {
 export type TextareaProps = BaseTextareaProps &
   JSX.IntrinsicElements['textarea']
 
-export const TextareaForwardRef: React.ForwardRefRenderFunction<HTMLTextAreaElement, TextareaProps> = ({
-  id,
-  name,
-  className,
-  error,
-  success,
-  children,
-  inputRef,
-  ...inputProps
-}, ref): React.ReactElement => {
+export const TextareaForwardRef: React.ForwardRefRenderFunction<
+  HTMLTextAreaElement,
+  TextareaProps
+> = (
+  { id, name, className, error, success, children, inputRef, ...inputProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-textarea',
     {

@@ -44,7 +44,10 @@ export type TooltipProps<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps
 > = DefaultTooltipProps | CustomTooltipProps<FCProps>
 
-export const TooltipForwardRef: React.ForwardRefRenderFunction<HTMLSpanElement, TooltipProps> = (props, ref): ReactElement => {
+export const TooltipForwardRef: React.ForwardRefRenderFunction<
+  HTMLSpanElement,
+  TooltipProps
+> = (props, ref): ReactElement => {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
@@ -233,7 +236,11 @@ export const TooltipForwardRef: React.ForwardRefRenderFunction<HTMLSpanElement, 
     )
 
     return (
-      <span ref={ref} data-testid="tooltipWrapper" className={wrapperClasses} {...spanProps}>
+      <span
+        ref={ref}
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        {...spanProps}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -258,7 +265,11 @@ export const TooltipForwardRef: React.ForwardRefRenderFunction<HTMLSpanElement, 
     )
 
     return (
-      <span ref={ref} data-testid="tooltipWrapper" className={wrapperClasses} {...spanProps}>
+      <span
+        ref={ref}
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        {...spanProps}>
         <button
           {...remainingProps}
           data-testid="triggerElement"

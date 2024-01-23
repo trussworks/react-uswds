@@ -3,11 +3,10 @@ import classnames from 'classnames'
 
 export type ModalHeadingProps = React.HTMLProps<HTMLHeadingElement>
 
-export const ModalHeadingForwardRef: React.ForwardRefRenderFunction<HTMLHeadingElement, ModalHeadingProps> = ({
-  className,
-  children,
-  ...headingProps
-}, ref): React.ReactElement => {
+export const ModalHeadingForwardRef: React.ForwardRefRenderFunction<
+  HTMLHeadingElement,
+  ModalHeadingProps
+> = ({ className, children, ...headingProps }, ref): React.ReactElement => {
   const classes = classnames('usa-modal__heading', className)
 
   return (

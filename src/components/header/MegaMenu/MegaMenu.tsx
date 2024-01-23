@@ -10,12 +10,13 @@ export type BaseMegaMenuProps = {
 
 export type MegaMenuProps = BaseMegaMenuProps & NavListProps
 
-export const MegaMenuForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, MegaMenuProps> = ({
-  items,
-  isOpen,
-  className,
-  ...navListProps
-}, ref): React.ReactElement => {
+export const MegaMenuForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  MegaMenuProps
+> = (
+  { items, isOpen, className, ...navListProps },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-nav__submenu usa-megamenu', className)
 
   return (

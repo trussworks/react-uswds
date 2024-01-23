@@ -18,18 +18,24 @@ export type BaseAlertProps = {
 
 export type AlertProps = BaseAlertProps & React.HTMLAttributes<HTMLDivElement>
 
-export const AlertForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, AlertProps> = ({
-  type,
-  heading,
-  headingLevel,
-  cta,
-  children,
-  slim,
-  noIcon,
-  className,
-  validation,
-  ...props
-}, ref): React.ReactElement => {
+export const AlertForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  AlertProps
+> = (
+  {
+    type,
+    heading,
+    headingLevel,
+    cta,
+    children,
+    slim,
+    noIcon,
+    className,
+    validation,
+    ...props
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-alert',
     {

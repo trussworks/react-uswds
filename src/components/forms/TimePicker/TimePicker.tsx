@@ -31,19 +31,25 @@ export type BaseTimePickerProps = {
 export type TimePickerProps = BaseTimePickerProps &
   Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
-export const TimePickerForwardRef: React.ForwardRefRenderFunction<HTMLElement, TimePickerProps> = ({
-  id,
-  name,
-  onChange,
-  label,
-  defaultValue,
-  disabled,
-  minTime = DEFAULT_MIN_TIME,
-  maxTime = DEFAULT_MAX_TIME,
-  step = DEFAULT_STEP,
-  hint,
-  className,
-}, ref): React.ReactElement => {
+export const TimePickerForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  TimePickerProps
+> = (
+  {
+    id,
+    name,
+    onChange,
+    label,
+    defaultValue,
+    disabled,
+    minTime = DEFAULT_MIN_TIME,
+    maxTime = DEFAULT_MAX_TIME,
+    step = DEFAULT_STEP,
+    hint,
+    className,
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-time-picker', className)
 
   const parsedMinTime = parseTimeString(minTime) || DEFAULT_MIN_TIME_MINUTES

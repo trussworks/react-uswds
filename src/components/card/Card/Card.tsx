@@ -13,15 +13,21 @@ export type CardProps = BaseCardProps &
   JSX.IntrinsicElements['li'] &
   GridLayoutProp
 
-export const CardForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CardProps> = ({
-  layout = 'standardDefault',
-  headerFirst,
-  children,
-  className,
-  gridLayout,
-  containerProps,
-  ...liProps
-}, ref): React.ReactElement => {
+export const CardForwardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  CardProps
+> = (
+  {
+    layout = 'standardDefault',
+    headerFirst,
+    children,
+    className,
+    gridLayout,
+    containerProps,
+    ...liProps
+  },
+  ref
+): React.ReactElement => {
   const { className: containerClass, ...restContainerProps } =
     containerProps || {}
 

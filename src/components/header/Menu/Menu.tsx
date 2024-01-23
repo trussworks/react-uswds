@@ -15,13 +15,13 @@ export type BaseMenuProps = {
 
 export type MenuProps = BaseMenuProps & NavListProps
 
-export const MenuForwardRef: React.ForwardRefRenderFunction<HTMLElement, MenuProps> = ({
-  className,
-  items,
-  isOpen,
-  type,
-  ...navListProps
-}, ref): React.ReactElement => {
+export const MenuForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  MenuProps
+> = (
+  { className, items, isOpen, type, ...navListProps },
+  ref
+): React.ReactElement => {
   return (
     <NavList
       ref={ref}

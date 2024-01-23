@@ -12,12 +12,13 @@ export type SummaryBoxHeadingProps = BaseSummaryBoxHeadingProps &
     HTMLHeadingElement
   >
 
-export const SummaryBoxHeadingForwardRef: React.ForwardRefRenderFunction<HTMLHeadingElement, SummaryBoxHeadingProps> = ({
-  children,
-  className,
-  headingLevel,
-  ...h3Props
-}, ref): React.ReactElement => {
+export const SummaryBoxHeadingForwardRef: React.ForwardRefRenderFunction<
+  HTMLHeadingElement,
+  SummaryBoxHeadingProps
+> = (
+  { children, className, headingLevel, ...h3Props },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-summary-box__heading', className)
   const Heading = headingLevel
   return (

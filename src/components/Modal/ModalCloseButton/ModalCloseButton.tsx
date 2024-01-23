@@ -6,12 +6,13 @@ export interface BaseModalCloseButtonProps {
   handleClose: () => void
 }
 
-export type ModalCloseButtonProps = BaseModalCloseButtonProps & JSX.IntrinsicElements['button']
+export type ModalCloseButtonProps = BaseModalCloseButtonProps &
+  JSX.IntrinsicElements['button']
 
-export const ModalCloseButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, ModalCloseButtonProps> = ({
-  handleClose,
-  ...buttonProps
-}, ref): React.ReactElement => {
+export const ModalCloseButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  ModalCloseButtonProps
+> = ({ handleClose, ...buttonProps }, ref): React.ReactElement => {
   return (
     <Button
       ref={ref}

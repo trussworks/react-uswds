@@ -11,12 +11,10 @@ export type IdentifierLinksProps = {
   listProps?: JSX.IntrinsicElements['ul']
 }
 
-export const IdentifierLinksForwardRef: React.ForwardRefRenderFunction<HTMLElement, IdentifierLinksProps> = ({
-  children,
-  className,
-  navProps,
-  listProps,
-}, ref): React.ReactElement => {
+export const IdentifierLinksForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  IdentifierLinksProps
+> = ({ children, className, navProps, listProps }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--required-links',
     className

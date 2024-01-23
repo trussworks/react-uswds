@@ -18,16 +18,22 @@ export type BaseRadioProps = {
 
 export type RadioProps = BaseRadioProps & JSX.IntrinsicElements['input']
 
-export const RadioForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = ({
-  id,
-  name,
-  className,
-  label,
-  inputRef,
-  tile,
-  labelDescription,
-  ...inputProps
-}, ref): React.ReactElement => {
+export const RadioForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  RadioProps
+> = (
+  {
+    id,
+    name,
+    className,
+    label,
+    inputRef,
+    tile,
+    labelDescription,
+    ...inputProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-radio', className)
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,

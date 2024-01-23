@@ -29,12 +29,10 @@ export interface PaginationPageProps {
   ) => void
 }
 
-export const PaginationPageForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, PaginationPageProps> = ({
-  page,
-  isCurrent,
-  pathname,
-  onClickPageNumber,
-}, ref) => {
+export const PaginationPageForwardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  PaginationPageProps
+> = ({ page, isCurrent, pathname, onClickPageNumber }, ref) => {
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent,
   })
@@ -74,7 +72,10 @@ export const PaginationPage = forwardRef(PaginationPageForwardRef)
 
 export type PaginationOverflowProps = JSX.IntrinsicElements['li']
 
-export const PaginationOverflowForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, PaginationOverflowProps> = (props, ref) => (
+export const PaginationOverflowForwardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  PaginationOverflowProps
+> = (props, ref) => (
   <li
     ref={ref}
     className="usa-pagination__item usa-pagination__overflow"
@@ -86,17 +87,23 @@ export const PaginationOverflowForwardRef: React.ForwardRefRenderFunction<HTMLLI
 
 export const PaginationOverflow = forwardRef(PaginationOverflowForwardRef)
 
-export const PaginationForwardRef: React.ForwardRefRenderFunction<HTMLElement, PaginationProps> = ({
-  pathname,
-  totalPages,
-  currentPage,
-  className,
-  maxSlots = 7,
-  onClickPrevious,
-  onClickNext,
-  onClickPageNumber,
-  ...props
-}, ref): React.ReactElement => {
+export const PaginationForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  PaginationProps
+> = (
+  {
+    pathname,
+    totalPages,
+    currentPage,
+    className,
+    maxSlots = 7,
+    onClickPrevious,
+    onClickNext,
+    onClickPageNumber,
+    ...props
+  },
+  ref
+): React.ReactElement => {
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1

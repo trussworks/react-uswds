@@ -13,7 +13,10 @@ export type IconProps = BaseIconProps & JSX.IntrinsicElements['svg']
 export const makeUSWDSIcon = (
   Component: React.ForwardRefRenderFunction<SVGSVGElement, IconProps>
 ): React.ForwardRefRenderFunction<SVGSVGElement, IconProps> => {
-  const IconFunctionalComponentForwardRef: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = (props: IconProps, ref): JSX.Element => {
+  const IconFunctionalComponentForwardRef: React.ForwardRefRenderFunction<
+    SVGSVGElement,
+    IconProps
+  > = (props: IconProps, ref): JSX.Element => {
     const {
       size,
       className,

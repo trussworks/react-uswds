@@ -26,18 +26,24 @@ export type SearchProps = SearchInputProps &
   BaseFormProps &
   JSX.IntrinsicElements['form']
 
-export const SearchForwardRef: React.ForwardRefRenderFunction<HTMLFormElement, SearchProps> = ({
-  onSubmit,
-  size,
-  className,
-  placeholder,
-  inputName = 'search',
-  label = 'Search',
-  inputId = 'search-field',
-  i18n,
-  inputProps,
-  ...formProps
-}, ref): React.ReactElement => {
+export const SearchForwardRef: React.ForwardRefRenderFunction<
+  HTMLFormElement,
+  SearchProps
+> = (
+  {
+    onSubmit,
+    size,
+    className,
+    placeholder,
+    inputName = 'search',
+    label = 'Search',
+    inputId = 'search-field',
+    i18n,
+    inputProps,
+    ...formProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-search', className)
 
   return (

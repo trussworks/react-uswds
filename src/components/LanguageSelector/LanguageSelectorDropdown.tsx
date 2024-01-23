@@ -36,14 +36,10 @@ export const generateMenuItems = (langs: LanguageDefinition[]) => {
   })
 }
 
-export const LanguageSelectorDropdownForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, LanguageSelectorProps> = ({
-  label,
-  langs,
-  small,
-  className,
-  displayLang,
-  ...divProps
-}, ref) => {
+export const LanguageSelectorDropdownForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  LanguageSelectorProps
+> = ({ label, langs, small, className, displayLang, ...divProps }, ref) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const classes = classnames(
@@ -56,7 +52,11 @@ export const LanguageSelectorDropdownForwardRef: React.ForwardRefRenderFunction<
   const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
 
   return (
-    <div ref={ref} className={classes} data-testid="languageSelector" {...divProps}>
+    <div
+      ref={ref}
+      className={classes}
+      data-testid="languageSelector"
+      {...divProps}>
       <ul className="usa-language__primary usa-accordion">
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
@@ -77,6 +77,8 @@ export const LanguageSelectorDropdownForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const LanguageSelectorDropdown = forwardRef(LanguageSelectorDropdownForwardRef)
+export const LanguageSelectorDropdown = forwardRef(
+  LanguageSelectorDropdownForwardRef
+)
 
 export default LanguageSelectorDropdown

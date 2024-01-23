@@ -3,11 +3,10 @@ import classnames from 'classnames'
 
 export type CollectionMetaProps = JSX.IntrinsicElements['ul']
 
-export const CollectionMetaForwardRef: React.ForwardRefRenderFunction<HTMLUListElement, CollectionMetaProps> = ({
-  className,
-  children,
-  ...props
-}, ref): React.ReactElement => {
+export const CollectionMetaForwardRef: React.ForwardRefRenderFunction<
+  HTMLUListElement,
+  CollectionMetaProps
+> = ({ className, children, ...props }, ref): React.ReactElement => {
   const classes = classnames('usa-collection__meta', className)
 
   return (

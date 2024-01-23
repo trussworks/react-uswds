@@ -10,10 +10,10 @@ export type BreadcrumbLinkProps<FCProps = DefaultLinkProps> =
   | DefaultLinkProps
   | CustomLinkProps<FCProps>
 
-export const BreadcrumbLinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, BreadcrumbLinkProps> = ({
-  className,
-  ...passThroughProps
-}, ref): React.ReactElement => {
+export const BreadcrumbLinkForwardRef: React.ForwardRefRenderFunction<
+  HTMLAnchorElement,
+  BreadcrumbLinkProps
+> = ({ className, ...passThroughProps }, ref): React.ReactElement => {
   const classes = classnames(className, 'usa-breadcrumb__link')
 
   const linkProps = {

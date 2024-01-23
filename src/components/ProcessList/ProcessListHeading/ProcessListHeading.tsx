@@ -31,16 +31,21 @@ export type ProcessListHeadingProps =
   | DetailedProcessListHeadingProps
   | ProcessListParagraphHeadingProps
 
-export const ProcessListHeadingForwardRef: React.ForwardRefRenderFunction<HTMLElement, ProcessListHeadingProps> = ({
-  type,
-  className,
-  children,
-  ...headingProps
-}, ref): React.ReactElement => {
+export const ProcessListHeadingForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  ProcessListHeadingProps
+> = (
+  { type, className, children, ...headingProps },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-process-list__heading', className)
   const Tag = type
   return (
-    <Tag ref={ref} data-testid="processListHeading" className={classes} {...headingProps}>
+    <Tag
+      ref={ref}
+      data-testid="processListHeading"
+      className={classes}
+      {...headingProps}>
       {children}
     </Tag>
   )

@@ -8,11 +8,10 @@ export type BaseSideNavProps = {
 
 export type SideNavProps = BaseSideNavProps & JSX.IntrinsicElements['ul']
 
-export const SideNavForwardRef: React.ForwardRefRenderFunction<HTMLUListElement, SideNavProps> = ({
-  items,
-  isSubnav = false,
-  ...props
-}, ref): React.ReactElement => {
+export const SideNavForwardRef: React.ForwardRefRenderFunction<
+  HTMLUListElement,
+  SideNavProps
+> = ({ items, isSubnav = false, ...props }, ref): React.ReactElement => {
   const classes = classnames({
     'usa-sidenav': !isSubnav,
     'usa-sidenav__sublist': isSubnav,

@@ -58,18 +58,24 @@ export type CharacterCountProps =
   | TextareaCharacterCountProps
 
 /* Main */
-export const CharacterCountForwardRef: React.ForwardRefRenderFunction<HTMLElement, CharacterCountProps> = ({
-  id,
-  name,
-  className,
-  maxLength,
-  value = '',
-  defaultValue = '',
-  isTextArea = false,
-  getCharacterCount = defaultCharacterCount,
-  getMessage = defaultMessage,
-  ...remainingProps
-}, ref): React.ReactElement => {
+export const CharacterCountForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  CharacterCountProps
+> = (
+  {
+    id,
+    name,
+    className,
+    maxLength,
+    value = '',
+    defaultValue = '',
+    isTextArea = false,
+    getCharacterCount = defaultCharacterCount,
+    getMessage = defaultMessage,
+    ...remainingProps
+  },
+  ref
+): React.ReactElement => {
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))

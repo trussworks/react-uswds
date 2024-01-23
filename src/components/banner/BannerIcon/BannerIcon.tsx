@@ -3,12 +3,10 @@ import classNames from 'classnames'
 
 export type BannerIconProps = JSX.IntrinsicElements['img']
 
-export const BannerIconForwardRef: React.ForwardRefRenderFunction<HTMLImageElement, BannerIconProps> = ({
-  src,
-  alt,
-  className,
-  ...imgProps
-}, ref): ReactElement => {
+export const BannerIconForwardRef: React.ForwardRefRenderFunction<
+  HTMLImageElement,
+  BannerIconProps
+> = ({ src, alt, className, ...imgProps }, ref): ReactElement => {
   const classes = classNames('usa-banner__icon usa-media-block__img', className)
 
   return (

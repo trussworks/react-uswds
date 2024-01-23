@@ -4,11 +4,10 @@ import classnames from 'classnames'
 
 export type SummaryBoxProps = JSX.IntrinsicElements['div']
 
-export const SummaryBoxForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, SummaryBoxProps> = ({
-  children,
-  className,
-  ...divProps
-}, ref): React.ReactElement => {
+export const SummaryBoxForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  SummaryBoxProps
+> = ({ children, className, ...divProps }, ref): React.ReactElement => {
   const classes = classnames('usa-summary-box', className)
   return (
     <div ref={ref} className={classes} data-testid="summary-box" {...divProps}>

@@ -11,15 +11,21 @@ export type BaseHeaderProps = {
 
 export type HeaderProps = BaseHeaderProps & JSX.IntrinsicElements['header']
 
-export const HeaderForwardRef: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> = ({
-  basic,
-  extended,
-  basicWithMegaMenu,
-  children,
-  showMobileOverlay,
-  className,
-  ...headerProps
-}, ref): React.ReactElement => {
+export const HeaderForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  HeaderProps
+> = (
+  {
+    basic,
+    extended,
+    basicWithMegaMenu,
+    children,
+    showMobileOverlay,
+    className,
+    ...headerProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-header',
     {
@@ -38,7 +44,11 @@ export const HeaderForwardRef: React.ForwardRefRenderFunction<HTMLElement, Heade
       {showMobileOverlay !== undefined && (
         <div className={overlayClasses} data-testid="overlay"></div>
       )}
-      <header ref={ref} data-testid="header" className={classes} {...headerProps}>
+      <header
+        ref={ref}
+        data-testid="header"
+        className={classes}
+        {...headerProps}>
         {children}
       </header>
     </>

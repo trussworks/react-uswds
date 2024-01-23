@@ -6,12 +6,10 @@ export interface BaseErrorMessageProps {}
 export type ErrorMessageProps = BaseErrorMessageProps &
   JSX.IntrinsicElements['span']
 
-export const ErrorMessageForwardRef: React.ForwardRefRenderFunction<HTMLSpanElement, ErrorMessageProps> = ({
-  children,
-  className,
-  id,
-  ...spanProps
-}, ref): React.ReactElement => {
+export const ErrorMessageForwardRef: React.ForwardRefRenderFunction<
+  HTMLSpanElement,
+  ErrorMessageProps
+> = ({ children, className, id, ...spanProps }, ref): React.ReactElement => {
   const classes = classnames('usa-error-message', className)
 
   return (

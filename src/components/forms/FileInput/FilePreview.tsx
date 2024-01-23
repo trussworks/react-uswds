@@ -13,13 +13,13 @@ export interface BaseFilePreviewProps {
   file: File
 }
 
-export type FilePreviewProps = BaseFilePreviewProps & JSX.IntrinsicElements['div']
+export type FilePreviewProps = BaseFilePreviewProps &
+  JSX.IntrinsicElements['div']
 
-export const FilePreviewForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, FilePreviewProps> = ({
-  imageId,
-  file,
-  ...props
-}, ref): React.ReactElement => {
+export const FilePreviewForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  FilePreviewProps
+> = ({ imageId, file, ...props }, ref): React.ReactElement => {
   const fileReaderRef = useRef<FileReader>(new FileReader())
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)

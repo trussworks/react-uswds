@@ -8,12 +8,13 @@ export interface BaseCardHeaderProps {
 export type CardHeaderProps = BaseCardHeaderProps &
   JSX.IntrinsicElements['header']
 
-export const CardHeaderFowardRef: React.ForwardRefRenderFunction<HTMLElement, CardHeaderProps> = ({
-  exdent,
-  children,
-  className,
-  ...headerProps
-}, ref): React.ReactElement => {
+export const CardHeaderFowardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  CardHeaderProps
+> = (
+  { exdent, children, className, ...headerProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-card__header',
     {
@@ -23,7 +24,11 @@ export const CardHeaderFowardRef: React.ForwardRefRenderFunction<HTMLElement, Ca
   )
 
   return (
-    <header ref={ref} className={classes} {...headerProps} data-testid="CardHeader">
+    <header
+      ref={ref}
+      className={classes}
+      {...headerProps}
+      data-testid="CardHeader">
       {children}
     </header>
   )

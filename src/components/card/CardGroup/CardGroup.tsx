@@ -3,11 +3,10 @@ import classnames from 'classnames'
 
 export type CardGroupProps = JSX.IntrinsicElements['ul']
 
-export const CardGroupForwardRef: React.ForwardRefRenderFunction<HTMLUListElement, CardGroupProps> = ({
-  children,
-  className,
-  ...ulProps
-}, ref): React.ReactElement => {
+export const CardGroupForwardRef: React.ForwardRefRenderFunction<
+  HTMLUListElement,
+  CardGroupProps
+> = ({ children, className, ...ulProps }, ref): React.ReactElement => {
   const classes = classnames('usa-card-group', className)
 
   return (

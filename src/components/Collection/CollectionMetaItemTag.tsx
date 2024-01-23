@@ -8,12 +8,10 @@ export interface BaseCollectionMetaItemTagProps {
 export type CollectionMetaItemTagProps = BaseCollectionMetaItemTagProps &
   JSX.IntrinsicElements['li']
 
-export const CollectionMetaItemTagForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CollectionMetaItemTagProps> = ({
-  className,
-  children,
-  tagStyle,
-  ...props
-}, ref): React.ReactElement => {
+export const CollectionMetaItemTagForwardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  CollectionMetaItemTagProps
+> = ({ className, children, tagStyle, ...props }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-collection__meta-item',
     'usa-tag',

@@ -3,11 +3,10 @@ import classNames from 'classnames'
 
 export type MediaBlockBodyProps = JSX.IntrinsicElements['div']
 
-export const MediaBlockBodyForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, MediaBlockBodyProps> = ({
-  children,
-  className,
-  ...divProps
-}, ref): ReactElement => {
+export const MediaBlockBodyForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  MediaBlockBodyProps
+> = ({ children, className, ...divProps }, ref): ReactElement => {
   const classes = classNames('usa-media-block__body', className)
 
   return (

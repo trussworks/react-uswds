@@ -64,12 +64,13 @@ export const AccordionItem = ({
   )
 }
 
-export const AccordionForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, AccordionProps> = ({
-  bordered,
-  items,
-  className,
-  multiselectable = false,
-}, ref ): React.ReactElement => {
+export const AccordionForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  AccordionProps
+> = (
+  { bordered, items, className, multiselectable = false },
+  ref
+): React.ReactElement => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
@@ -120,6 +121,6 @@ export const AccordionForwardRef: React.ForwardRefRenderFunction<HTMLDivElement,
   )
 }
 
-export const Accordion = forwardRef(AccordionForwardRef);
+export const Accordion = forwardRef(AccordionForwardRef)
 
 export default Accordion

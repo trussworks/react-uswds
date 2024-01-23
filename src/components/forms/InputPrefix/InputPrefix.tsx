@@ -6,11 +6,10 @@ export interface BaseInputPrefixProps {}
 export type InputPrefixProps = BaseInputPrefixProps &
   JSX.IntrinsicElements['div']
 
-export const InputPrefixFowardRef: React.ForwardRefRenderFunction<HTMLDivElement, InputPrefixProps> = ({
-  className,
-  children,
-  ...divProps
-}, ref): React.ReactElement => {
+export const InputPrefixFowardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  InputPrefixProps
+> = ({ className, children, ...divProps }, ref): React.ReactElement => {
   const classes = classnames('usa-input-prefix', className)
 
   return (

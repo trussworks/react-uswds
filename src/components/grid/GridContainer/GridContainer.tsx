@@ -42,7 +42,10 @@ export type GridContainerProps<
   FCProps extends React.PropsWithChildren<object> = DefaultGridContainerProps
 > = DefaultGridContainerProps | CustomGridContainerProps<FCProps>
 
-export const GridContainerForwardRef: React.ForwardRefRenderFunction<HTMLElement, GridContainerProps> = (props, ref): React.ReactElement => {
+export const GridContainerForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  GridContainerProps
+> = (props, ref): React.ReactElement => {
   if (isCustomProps(props)) {
     const { className, containerSize, asCustom, children, ...remainingProps } =
       props

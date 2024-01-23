@@ -7,12 +7,10 @@ export type BaseFormGroupProps = {
 
 export type FormGroupProps = BaseFormGroupProps & JSX.IntrinsicElements['div']
 
-export const FormGroupForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, FormGroupProps> = ({
-  children,
-  className,
-  error,
-  ...props
-}, ref): React.ReactElement => {
+export const FormGroupForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  FormGroupProps
+> = ({ children, className, error, ...props }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-form-group',
     { 'usa-form-group--error': error },

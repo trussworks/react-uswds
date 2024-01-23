@@ -3,11 +3,10 @@ import classnames from 'classnames'
 
 export type IconListProps = JSX.IntrinsicElements['ul']
 
-export const IconListForwardRef: React.ForwardRefRenderFunction<HTMLUListElement, IconListProps> = ({
-  children,
-  className,
-  ...props
-}, ref): ReactElement => {
+export const IconListForwardRef: React.ForwardRefRenderFunction<
+  HTMLUListElement,
+  IconListProps
+> = ({ children, className, ...props }, ref): ReactElement => {
   const classes = classnames(className, 'usa-icon-list')
 
   return (

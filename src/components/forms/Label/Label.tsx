@@ -14,16 +14,22 @@ export type BaseLabelProps = {
 
 export type LabelProps = BaseLabelProps & JSX.IntrinsicElements['label']
 
-export const LabelForwardRef: React.ForwardRefRenderFunction<HTMLLabelElement, LabelProps> = ({
-  children,
-  htmlFor,
-  className,
-  error,
-  hint,
-  srOnly,
-  requiredMarker,
-  ...labelProps
-}, ref): React.ReactElement => {
+export const LabelForwardRef: React.ForwardRefRenderFunction<
+  HTMLLabelElement,
+  LabelProps
+> = (
+  {
+    children,
+    htmlFor,
+    className,
+    error,
+    hint,
+    srOnly,
+    requiredMarker,
+    ...labelProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     {
       'usa-label': !srOnly,

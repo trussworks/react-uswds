@@ -5,7 +5,10 @@ import Icon from '../../Icon/Icons'
 
 export type NavCloseButtonProps = JSX.IntrinsicElements['button']
 
-export const NavCloseButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, NavCloseButtonProps> = ({
+export const NavCloseButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  NavCloseButtonProps
+> = ({
   onClick,
   className,
   ...buttonProps

@@ -9,13 +9,13 @@ export type BaseBannerButtonProps = {
 export type BannerButtonProps = BaseBannerButtonProps &
   JSX.IntrinsicElements['button']
 
-export const BannerButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, BannerButtonProps> = ({
-  isOpen,
-  children,
-  className,
-  spanProps,
-  ...buttonProps
-}, ref): ReactElement => {
+export const BannerButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  BannerButtonProps
+> = (
+  { isOpen, children, className, spanProps, ...buttonProps },
+  ref
+): ReactElement => {
   const classes = classNames(
     'usa-accordion__button usa-banner__button',
     className

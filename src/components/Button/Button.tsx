@@ -15,20 +15,26 @@ export type BaseButtonProps = {
 
 export type ButtonProps = BaseButtonProps & JSX.IntrinsicElements['button']
 
-export const ButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = ({
-  type,
-  children,
-  secondary,
-  base,
-  accentStyle,
-  outline,
-  inverse,
-  size,
-  unstyled,
-  onClick,
-  className,
-  ...defaultProps
-}, ref): React.ReactElement => {
+export const ButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  ButtonProps
+> = (
+  {
+    type,
+    children,
+    secondary,
+    base,
+    accentStyle,
+    outline,
+    inverse,
+    size,
+    unstyled,
+    onClick,
+    className,
+    ...defaultProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-button',
     {

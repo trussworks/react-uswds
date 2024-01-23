@@ -55,9 +55,13 @@ export type LinkProps<
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
 > = DefaultLinkProps | CustomLinkProps<FCProps>
 
-export const LinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, LinkProps> = <
-  FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
->(props, ref): React.ReactElement => {
+export const LinkForwardRef: React.ForwardRefRenderFunction<
+  HTMLAnchorElement,
+  LinkProps
+> = <FCProps extends React.PropsWithChildren<object> = DefaultLinkProps>(
+  props,
+  ref
+): React.ReactElement => {
   if (isCustomProps(props)) {
     const { variant, className, asCustom, children, ...remainingProps } = props
     // 1. We know props is AsCustomProps<FCProps>

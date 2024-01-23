@@ -7,7 +7,10 @@ export interface BaseCardBodyProps {
 
 export type CardBodyProps = BaseCardBodyProps & JSX.IntrinsicElements['div']
 
-export const CardBodyForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CardBodyProps> = ({
+export const CardBodyForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  CardBodyProps
+> = ({
   exdent,
   children,
   className,

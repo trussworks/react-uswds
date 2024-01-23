@@ -11,14 +11,13 @@ export type BaseLanguageSelectorButtonProps = {
 export type LanguageSelectorButtonProps = BaseLanguageSelectorButtonProps &
   JSX.IntrinsicElements['button']
 
-export const LanguageSelectorButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, LanguageSelectorButtonProps> = ({
-  label,
-  labelAttr,
-  isOpen,
-  onToggle,
-  className,
-  ...buttonProps
-}, ref): React.ReactElement => {
+export const LanguageSelectorButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  LanguageSelectorButtonProps
+> = (
+  { label, labelAttr, isOpen, onToggle, className, ...buttonProps },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-button', 'usa-language__link', className)
   const buttonContents = labelAttr ? (
     <span lang={labelAttr}>{label}</span>
@@ -40,6 +39,8 @@ export const LanguageSelectorButtonForwardRef: React.ForwardRefRenderFunction<HT
   )
 }
 
-export const LanguageSelectorButton = forwardRef(LanguageSelectorButtonForwardRef)
+export const LanguageSelectorButton = forwardRef(
+  LanguageSelectorButtonForwardRef
+)
 
 export default LanguageSelectorButton

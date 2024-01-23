@@ -21,15 +21,13 @@ export type BaseSelectProps = {
 
 export type SelectProps = BaseSelectProps & JSX.IntrinsicElements['select']
 
-export const SelectForwardRef: React.ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = ({
-  id,
-  name,
-  className,
-  inputRef,
-  children,
-  validationStatus,
-  ...inputProps
-}, ref): React.ReactElement => {
+export const SelectForwardRef: React.ForwardRefRenderFunction<
+  HTMLSelectElement,
+  SelectProps
+> = (
+  { id, name, className, inputRef, children, validationStatus, ...inputProps },
+  ref
+): React.ReactElement => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const classes = classnames(

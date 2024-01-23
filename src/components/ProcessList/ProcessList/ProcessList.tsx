@@ -9,11 +9,10 @@ export type BaseProcessListProps = {
 export type ProcessListProps = BaseProcessListProps &
   JSX.IntrinsicElements['ol']
 
-export const ProcessListForwardRef: React.ForwardRefRenderFunction<HTMLOListElement, ProcessListItemProps> = ({
-  className,
-  children,
-  ...listProps
-}, ref): React.ReactElement => {
+export const ProcessListForwardRef: React.ForwardRefRenderFunction<
+  HTMLOListElement,
+  ProcessListItemProps
+> = ({ className, children, ...listProps }, ref): React.ReactElement => {
   const classes = classnames('usa-process-list', className)
   return (
     <ol ref={ref} className={classes} {...listProps}>

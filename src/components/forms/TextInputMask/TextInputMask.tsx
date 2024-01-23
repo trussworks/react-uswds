@@ -44,16 +44,22 @@ export function maskString(value: string, mask: string, charset?: string) {
   return newValue
 }
 
-export const TextInputMaskForwardRef: React.ForwardRefRenderFunction<HTMLElement, TextInputMaskProps> = ({
-  id,
-  className,
-  mask,
-  value: externalValue,
-  defaultValue,
-  charset,
-  onChange,
-  ...inputProps
-}, ref): React.ReactElement => {
+export const TextInputMaskForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  TextInputMaskProps
+> = (
+  {
+    id,
+    className,
+    mask,
+    value: externalValue,
+    defaultValue,
+    charset,
+    onChange,
+    ...inputProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     {
       'usa-masked': mask,

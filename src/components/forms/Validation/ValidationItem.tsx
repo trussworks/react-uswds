@@ -13,12 +13,10 @@ export type ValidationItemProps = BaseValidationItemProps &
   RequiredValidationItemProps &
   Omit<JSX.IntrinsicElements['li'], 'children' | 'id'>
 
-export const ValidationItemFowardRef: React.ForwardRefRenderFunction<HTMLLIElement, ValidationItemProps> = ({
-  children,
-  className,
-  isValid,
-  ...liProps
-}, ref): React.ReactElement => {
+export const ValidationItemFowardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  ValidationItemProps
+> = ({ children, className, isValid, ...liProps }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-checklist__item',
     { 'usa-checklist__item--checked': isValid },

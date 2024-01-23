@@ -12,12 +12,13 @@ export type CollectionHeadingProps = BaseCollectionHeadingProps &
     HTMLHeadingElement
   >
 
-export const CollectionHeadingForwardRef: React.ForwardRefRenderFunction<HTMLHeadingElement, CollectionHeadingProps> = ({
-  headingLevel,
-  className,
-  children,
-  ...props
-}, ref): React.ReactElement => {
+export const CollectionHeadingForwardRef: React.ForwardRefRenderFunction<
+  HTMLHeadingElement,
+  CollectionHeadingProps
+> = (
+  { headingLevel, className, children, ...props },
+  ref
+): React.ReactElement => {
   const Heading = headingLevel
 
   const classes = classnames('usa-collection__heading', className)

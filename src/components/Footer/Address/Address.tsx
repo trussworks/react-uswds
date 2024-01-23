@@ -11,12 +11,10 @@ export type BaseAddressProps = {
 
 export type AddressProps = BaseAddressProps & React.HTMLAttributes<HTMLElement>
 
-export const AddressFowardRef: React.ForwardRefRenderFunction<HTMLElement, AddressProps> = ({
-  size,
-  className,
-  items,
-  ...props
-},ref): React.ReactElement => {
+export const AddressFowardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  AddressProps
+> = ({ size, className, items, ...props }, ref): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

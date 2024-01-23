@@ -14,7 +14,10 @@ export type BasePrimaryNavProps = {
 
 export type PrimaryNavProps = BasePrimaryNavProps & JSX.IntrinsicElements['nav']
 
-export const PrimaryNavFowardRef: React.ForwardRefRenderFunction<HTMLElement, PrimaryNavProps> = ({
+export const PrimaryNavFowardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  PrimaryNavProps
+> = ({
   items,
   onToggleMobileNav,
   mobileExpanded,

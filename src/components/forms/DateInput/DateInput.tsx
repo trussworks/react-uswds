@@ -18,16 +18,13 @@ export type DateInputProps = DateInputPropsBase &
   BaseTextInputProps &
   JSX.IntrinsicElements['input']
 
-export const DateInputForwardRef: React.ForwardRefRenderFunction<HTMLInputElement, DateInputProps> = ({
-  id,
-  name,
-  label,
-  unit,
-  maxLength,
-  minLength,
-  className,
-  ...inputProps
-}, ref): React.ReactElement => {
+export const DateInputForwardRef: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  DateInputProps
+> = (
+  { id, name, label, unit, maxLength, minLength, className, ...inputProps },
+  ref
+): React.ReactElement => {
   const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',

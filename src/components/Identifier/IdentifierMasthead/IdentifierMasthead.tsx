@@ -3,11 +3,10 @@ import classnames from 'classnames'
 
 export type IdentifierMastheadProps = JSX.IntrinsicElements['section']
 
-export const IdentifierMastheadForwardRef: React.ForwardRefRenderFunction<HTMLElement, IdentifierMastheadProps> = ({
-  className,
-  children,
-  ...sectionProps
-}, ref): React.ReactElement => {
+export const IdentifierMastheadForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  IdentifierMastheadProps
+> = ({ className, children, ...sectionProps }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--masthead',
     className

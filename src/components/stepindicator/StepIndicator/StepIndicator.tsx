@@ -20,9 +20,10 @@ export type StepIndicatorProps = {
   ofText?: string
 }
 
-export const StepIndicatorForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, StepIndicatorProps> = (
-  props, ref
-): React.ReactElement => {
+export const StepIndicatorForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  StepIndicatorProps
+> = (props, ref): React.ReactElement => {
   const {
     showLabels = true,
     counters = 'none',

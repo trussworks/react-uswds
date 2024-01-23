@@ -8,12 +8,10 @@ export type BaseBannerContentProps = {
 export type BannerContentProps = BaseBannerContentProps &
   JSX.IntrinsicElements['div']
 
-export const BannerContentForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, BannerContentProps> = ({
-  children,
-  isOpen,
-  className,
-  ...divProps
-}, ref): ReactElement => {
+export const BannerContentForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  BannerContentProps
+> = ({ children, isOpen, className, ...divProps }, ref): ReactElement => {
   const classes = classNames(
     'usa-banner__content usa-accordion__content',
     className

@@ -12,7 +12,8 @@ export interface BaseModalWindowProps {
   forceAction?: boolean
 }
 
-export type ModalWindowProps = BaseModalWindowProps & JSX.IntrinsicElements['div']
+export type ModalWindowProps = BaseModalWindowProps &
+  JSX.IntrinsicElements['div']
 
 export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,

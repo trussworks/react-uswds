@@ -14,14 +14,13 @@ export type BaseSearchButtonProps = {
   i18n?: SearchLocalization
 }
 
-export type SearchButtonProps = BaseSearchButtonProps & JSX.IntrinsicElements['button']
+export type SearchButtonProps = BaseSearchButtonProps &
+  JSX.IntrinsicElements['button']
 
-export const SearchButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, SearchButtonProps> = ({
-  size,
-  className,
-  i18n,
-  ...props
-}, ref): React.ReactElement => {
+export const SearchButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  SearchButtonProps
+> = ({ size, className, i18n, ...props }, ref): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
   const isBig = size === 'big'

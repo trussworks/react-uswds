@@ -3,11 +3,10 @@ import classNames from 'classnames'
 
 export type BannerGuidanceProps = JSX.IntrinsicElements['div']
 
-export const BannerGuidanceForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, BannerGuidanceProps> = ({
-  children,
-  className,
-  ...divProps
-}, ref): ReactElement => {
+export const BannerGuidanceForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  BannerGuidanceProps
+> = ({ children, className, ...divProps }, ref): ReactElement => {
   const divClasses = classNames('usa-banner__guidance', className)
 
   return (

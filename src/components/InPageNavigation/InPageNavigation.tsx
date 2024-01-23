@@ -19,18 +19,24 @@ export type BaseInPageNavigationProps = {
 export type InPageNavigationProps = BaseInPageNavigationProps &
   JSX.IntrinsicElements['div']
 
-export const InPageNavigationForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, InPageNavigationProps> = ({
-  className,
-  content,
-  headingLevel = 'h4',
-  mainProps,
-  navProps,
-  rootMargin = '0px 0px 0px 0px',
-  scrollOffset,
-  threshold = 1,
-  title = 'On this page',
-  ...divProps
-}, ref): React.ReactElement => {
+export const InPageNavigationForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  InPageNavigationProps
+> = (
+  {
+    className,
+    content,
+    headingLevel = 'h4',
+    mainProps,
+    navProps,
+    rootMargin = '0px 0px 0px 0px',
+    scrollOffset,
+    threshold = 1,
+    title = 'On this page',
+    ...divProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)

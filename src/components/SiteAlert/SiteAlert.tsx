@@ -13,15 +13,21 @@ export type BaseSiteAlertProps = {
 export type SiteAlertProps = BaseSiteAlertProps &
   JSX.IntrinsicElements['section']
 
-export const SiteAlertForwardRef: React.ForwardRefRenderFunction<HTMLElement, SiteAlertProps> = ({
-  variant,
-  children,
-  heading,
-  showIcon = true,
-  slim = false,
-  className,
-  ...sectionProps
-}, ref): React.ReactElement => {
+export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  SiteAlertProps
+> = (
+  {
+    variant,
+    children,
+    heading,
+    showIcon = true,
+    slim = false,
+    className,
+    ...sectionProps
+  },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-site-alert',
     {

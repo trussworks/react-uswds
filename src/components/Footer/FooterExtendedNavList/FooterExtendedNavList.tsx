@@ -18,12 +18,13 @@ export type FooterExtendedNavListPropsBase = {
 export type FooterExtendedNavListProps = FooterExtendedNavListPropsBase &
   React.HTMLAttributes<HTMLElement>
 
-export const FooterExtendedNavListForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, FooterExtendedNavListProps> = ({
-  className,
-  isMobile,
-  nestedLinks,
-  ...props
-}, ref): React.ReactElement => {
+export const FooterExtendedNavListForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  FooterExtendedNavListProps
+> = (
+  { className, isMobile, nestedLinks, ...props },
+  ref
+): React.ReactElement => {
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 
@@ -88,12 +89,13 @@ export interface BaseSectionProps {
 
 export type SectionProps = BaseSectionProps & JSX.IntrinsicElements['section']
 
-export const SectionForwardRef: React.ForwardRefRenderFunction<HTMLElement, SectionProps> = ({
-  isOpen = false,
-  links,
-  onToggle,
-  ...props
-}, ref): React.ReactElement => {
+export const SectionForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  SectionProps
+> = (
+  { isOpen = false, links, onToggle, ...props },
+  ref
+): React.ReactElement => {
   const [primaryLinkOrHeading, ...secondaryLinks] = links
   const classes = classnames(
     'usa-footer__primary-content usa-footer__primary-content--collapsible',
@@ -102,7 +104,12 @@ export const SectionForwardRef: React.ForwardRefRenderFunction<HTMLElement, Sect
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-static-element-interactions
-    <section ref={ref} className={classes} onClick={onToggle} onKeyPress={onToggle} {...props}>
+    <section
+      ref={ref}
+      className={classes}
+      onClick={onToggle}
+      onKeyPress={onToggle}
+      {...props}>
       <h4 className="usa-footer__primary-link">{primaryLinkOrHeading}</h4>
       <NavList type="footerSecondary" items={secondaryLinks} />
     </section>

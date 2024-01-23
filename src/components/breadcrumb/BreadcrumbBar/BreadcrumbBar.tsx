@@ -10,13 +10,13 @@ export type BreadcrumbBarProps = {
   listProps?: JSX.IntrinsicElements['ol']
 }
 
-export const BreadcrumbBarForwardRef: React.ForwardRefRenderFunction<HTMLElement, BreadcrumbBarProps> = ({
-  variant = 'default',
-  children,
-  className,
-  navProps,
-  listProps,
-}, ref): React.ReactElement => {
+export const BreadcrumbBarForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  BreadcrumbBarProps
+> = (
+  { variant = 'default', children, className, navProps, listProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb',
     {

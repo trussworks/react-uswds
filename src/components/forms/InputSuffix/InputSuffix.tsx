@@ -6,11 +6,10 @@ export interface BaseInputSuffixProps {}
 export type InputSuffixProps = BaseInputSuffixProps &
   JSX.IntrinsicElements['div']
 
-export const InputSuffixFowardRef: React.ForwardRefRenderFunction<HTMLDivElement, InputSuffixProps> = ({
-  className,
-  children,
-  ...divProps
-}, ref): React.ReactElement => {
+export const InputSuffixFowardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  InputSuffixProps
+> = ({ className, children, ...divProps }, ref): React.ReactElement => {
   const classes = classnames('usa-input-suffix', className)
 
   return (

@@ -7,11 +7,10 @@ export type BaseNavMenuButtonProps = {
 export type NavMenuButtonProps = BaseNavMenuButtonProps &
   JSX.IntrinsicElements['button']
 
-export const NavMenuButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, NavMenuButtonProps> = ({
-  label,
-  onClick,
-  ...buttonProps
-}, ref): React.ReactElement => {
+export const NavMenuButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  NavMenuButtonProps
+> = ({ label, onClick, ...buttonProps }, ref): React.ReactElement => {
   return (
     <button
       ref={ref}

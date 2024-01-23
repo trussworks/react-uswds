@@ -15,15 +15,13 @@ export type BaseNavDropDownButtonProps = {
 export type NavDropDownButtonProps = BaseNavDropDownButtonProps &
   JSX.IntrinsicElements['button']
 
-export const NavDropDownButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, NavDropDownButtonProps> = ({
-  label,
-  menuId,
-  isOpen,
-  onToggle,
-  isCurrent,
-  className,
-  ...buttonProps
-}, ref): React.ReactElement => {
+export const NavDropDownButtonForwardRef: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  NavDropDownButtonProps
+> = (
+  { label, menuId, isOpen, onToggle, isCurrent, className, ...buttonProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-accordion__button',
     'usa-nav__link',

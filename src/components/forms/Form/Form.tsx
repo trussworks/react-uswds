@@ -14,14 +14,13 @@ export type FormProps = BaseFormProps &
   RequiredFormProps &
   Omit<JSX.IntrinsicElements['form'], 'children' | 'onSubmit'>
 
-export const FormForwardRef: React.ForwardRefRenderFunction<HTMLFormElement, FormProps> = ({
-  onSubmit,
-  children,
-  className,
-  large,
-  search,
-  ...formProps
-}, ref): React.ReactElement => {
+export const FormForwardRef: React.ForwardRefRenderFunction<
+  HTMLFormElement,
+  FormProps
+> = (
+  { onSubmit, children, className, large, search, ...formProps },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     {
       'usa-form': !search,

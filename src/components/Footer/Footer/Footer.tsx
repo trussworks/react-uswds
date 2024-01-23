@@ -19,13 +19,13 @@ export type BaseFooterProps = {
 
 export type FooterProps = BaseFooterProps & React.HTMLAttributes<HTMLElement>
 
-export const FooterForwardRef: React.ForwardRefRenderFunction<HTMLElement, FooterProps> = ({
-  size,
-  returnToTop,
-  primary,
-  secondary,
-  ...footerAttributes
-}, ref): React.ReactElement => {
+export const FooterForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  FooterProps
+> = (
+  { size, returnToTop, primary, secondary, ...footerAttributes },
+  ref
+): React.ReactElement => {
   const classes = classnames(
     'usa-footer',
     {

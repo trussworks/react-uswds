@@ -14,18 +14,24 @@ export type BaseBannerHeaderProps = {
 export type BannerHeaderProps = BaseBannerHeaderProps &
   JSX.IntrinsicElements['header']
 
-export const BannerHeaderForwardRef: React.ForwardRefRenderFunction<HTMLElement, BannerHeaderProps> = ({
-  children,
-  isOpen,
-  flagImg,
-  innerDivProps,
-  headerText,
-  headerTextProps,
-  headerActionText,
-  headerActionProps,
-  className,
-  ...headerProps
-}, ref): ReactElement => {
+export const BannerHeaderForwardRef: React.ForwardRefRenderFunction<
+  HTMLElement,
+  BannerHeaderProps
+> = (
+  {
+    children,
+    isOpen,
+    flagImg,
+    innerDivProps,
+    headerText,
+    headerTextProps,
+    headerActionText,
+    headerActionProps,
+    className,
+    ...headerProps
+  },
+  ref
+): ReactElement => {
   const classes = classNames(
     'usa-banner__header',
     {

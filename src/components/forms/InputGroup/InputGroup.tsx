@@ -7,12 +7,10 @@ export interface BaseInputGroupProps {
 
 export type InputGroupProps = BaseInputGroupProps & JSX.IntrinsicElements['div']
 
-export const InputGroupForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, InputGroupProps> = ({
-  children,
-  className,
-  error,
-  ...props
-}, ref): React.ReactElement => {
+export const InputGroupForwardRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  InputGroupProps
+> = ({ children, className, error, ...props }, ref): React.ReactElement => {
   const classes = classnames(
     'usa-input-group',
     { 'usa-input-group--error': error },

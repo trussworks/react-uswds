@@ -8,12 +8,13 @@ export interface BaseCollectionItemProps {
 export type CollectionItemProps = BaseCollectionItemProps &
   JSX.IntrinsicElements['li']
 
-export const CollectionItemForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CollectionItemProps> = ({
-  className,
-  children,
-  variantComponent,
-  ...props
-}, ref): React.ReactElement => {
+export const CollectionItemForwardRef: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  CollectionItemProps
+> = (
+  { className, children, variantComponent, ...props },
+  ref
+): React.ReactElement => {
   const classes = classnames('usa-collection__item', className)
 
   return (
