@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseValidationItemProps {
@@ -13,12 +13,12 @@ export type ValidationItemProps = BaseValidationItemProps &
   RequiredValidationItemProps &
   Omit<JSX.IntrinsicElements['li'], 'children' | 'id'>
 
-export const ValidationItem = ({
+export const ValidationItemFowardRef: React.ForwardRefRenderFunction<HTMLLIElement, ValidationItemProps> = ({
   children,
   className,
   isValid,
   ...liProps
-}: ValidationItemProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-checklist__item',
     { 'usa-checklist__item--checked': isValid },
@@ -26,10 +26,12 @@ export const ValidationItem = ({
   )
 
   return (
-    <li className={classes} {...liProps}>
+    <li ref={ref} className={classes} {...liProps}>
       {children}
     </li>
   )
 }
+
+export const ValidationItem = forwardRef(ValidationItemFowardRef)
 
 export default ValidationItem

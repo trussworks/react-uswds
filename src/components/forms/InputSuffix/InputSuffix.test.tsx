@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { InputSuffix } from './InputSuffix'
+import InputSuffix from './InputSuffix'
 
 describe('InputSuffix component', () => {
   it('renders without errors', () => {

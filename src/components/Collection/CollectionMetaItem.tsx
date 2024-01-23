@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type CollectionMetaItemProps = JSX.IntrinsicElements['li']
 
-export const CollectionMetaItem = ({
+export const CollectionMetaItemForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CollectionMetaItemProps> = ({
   className,
   children,
   ...props
-}: CollectionMetaItemProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-collection__meta-item', className)
 
   return (
-    <li className={classes} {...props}>
+    <li ref={ref} className={classes} {...props}>
       {children}
     </li>
   )
 }
+
+export const CollectionMetaItem = forwardRef(CollectionMetaItemForwardRef)
+
+export default CollectionMetaItem

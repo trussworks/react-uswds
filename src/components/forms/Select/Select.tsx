@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
@@ -8,6 +8,9 @@ export type BaseSelectProps = {
   className?: string
   children: React.ReactNode
   validationStatus?: ValidationStatus
+  /**
+   * @deprecated Use ref instead
+   */
   inputRef?:
     | string
     | ((instance: HTMLSelectElement | null) => void)
@@ -18,7 +21,7 @@ export type BaseSelectProps = {
 
 export type SelectProps = BaseSelectProps & JSX.IntrinsicElements['select']
 
-export const Select = ({
+export const SelectForwardRef: React.ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = ({
   id,
   name,
   className,
@@ -26,7 +29,7 @@ export const Select = ({
   children,
   validationStatus,
   ...inputProps
-}: SelectProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const classes = classnames(
@@ -44,9 +47,13 @@ export const Select = ({
       className={classes}
       id={id}
       name={name}
-      ref={inputRef}
+      ref={ref ?? inputRef}
       {...inputProps}>
       {children}
     </select>
   )
 }
+
+export const Select = forwardRef(SelectForwardRef)
+
+export default Select

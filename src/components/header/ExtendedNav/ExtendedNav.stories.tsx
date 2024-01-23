@@ -1,5 +1,5 @@
 import React from 'react'
-import { ExtendedNav } from './ExtendedNav'
+import ExtendedNav from './ExtendedNav'
 
 export default {
   title: 'Components/Header/ExtendedNav',

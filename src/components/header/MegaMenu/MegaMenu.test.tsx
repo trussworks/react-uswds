@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { MegaMenu } from './MegaMenu'
+import MegaMenu from './MegaMenu'
 
 const testItems = [
   [

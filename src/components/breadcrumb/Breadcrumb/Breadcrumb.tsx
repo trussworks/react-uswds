@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseBreadcrumbProps {
@@ -9,12 +9,12 @@ export interface BaseBreadcrumbProps {
 
 export type BreadcrumbProps = BaseBreadcrumbProps & JSX.IntrinsicElements['li']
 
-export const Breadcrumb = ({
+export const BreadcrumbForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, BreadcrumbProps> = ({
   children,
   current = false,
   className,
   ...listItemProps
-}: BreadcrumbProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb__list-item',
     {
@@ -25,6 +25,7 @@ export const Breadcrumb = ({
 
   return (
     <li
+      ref={ref}
       className={classes}
       aria-current={current ? 'page' : undefined}
       {...listItemProps}>
@@ -32,3 +33,7 @@ export const Breadcrumb = ({
     </li>
   )
 }
+
+export const Breadcrumb = forwardRef(BreadcrumbForwardRef)
+
+export default Breadcrumb

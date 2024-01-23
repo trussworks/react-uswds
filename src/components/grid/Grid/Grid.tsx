@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
@@ -86,11 +86,9 @@ export type GridProps<FCProps = DefaultGridProps> =
   | DefaultGridProps
   | CustomGridProps<FCProps>
 
-export function Grid(props: DefaultGridProps): React.ReactElement
-export function Grid<T>(props: CustomGridProps<T>): React.ReactElement
-export function Grid<FCProps = DefaultGridProps>(
-  props: GridProps<FCProps>
-): React.ReactElement {
+export const GridForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, GridProps> = (
+  props, ref
+): React.ReactElement => {
   const {
     children,
     className,
@@ -152,9 +150,13 @@ export function Grid<FCProps = DefaultGridProps>(
     )
   } else {
     return (
-      <div className={classes} data-testid="grid" {...otherProps}>
+      <div ref={ref} className={classes} data-testid="grid" {...otherProps}>
         {children}
       </div>
     )
   }
 }
+
+export const Grid = forwardRef(GridForwardRef)
+
+export default Grid

@@ -1,5 +1,6 @@
 import React, {
   createElement,
+  forwardRef,
   ForwardRefExoticComponent,
   ReactElement,
   ReactNode,
@@ -43,11 +44,7 @@ export type TooltipProps<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps
 > = DefaultTooltipProps | CustomTooltipProps<FCProps>
 
-export function Tooltip(props: DefaultTooltipProps): ReactElement
-export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
-export function Tooltip<
-  FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps
->(props: TooltipProps<FCProps>): ReactElement {
+export const TooltipForwardRef: React.ForwardRefRenderFunction<HTMLSpanElement, TooltipProps> = (props, ref): ReactElement => {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
@@ -63,7 +60,7 @@ export function Tooltip<
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
 
-  const { position, wrapperclasses, className } = props
+  const { position = 'top', wrapperclasses, className, ...spanProps } = props
 
   const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
     const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
@@ -236,7 +233,7 @@ export function Tooltip<
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span ref={ref} data-testid="tooltipWrapper" className={wrapperClasses} {...spanProps}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -261,7 +258,7 @@ export function Tooltip<
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span ref={ref} data-testid="tooltipWrapper" className={wrapperClasses} {...spanProps}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
@@ -295,6 +292,6 @@ export function Tooltip<
   }
 }
 
-Tooltip.defaultProps = {
-  position: 'top',
-}
+export const Tooltip = forwardRef(TooltipForwardRef)
+
+export default Tooltip

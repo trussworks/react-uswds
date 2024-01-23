@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 export type BaseNavMenuButtonProps = {
   label: React.ReactNode
@@ -7,13 +7,14 @@ export type BaseNavMenuButtonProps = {
 export type NavMenuButtonProps = BaseNavMenuButtonProps &
   JSX.IntrinsicElements['button']
 
-export const NavMenuButton = ({
+export const NavMenuButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, NavMenuButtonProps> = ({
   label,
   onClick,
   ...buttonProps
-}: NavMenuButtonProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   return (
     <button
+      ref={ref}
       className="usa-menu-btn"
       onClick={onClick}
       data-testid="navMenuButton"
@@ -23,3 +24,7 @@ export const NavMenuButton = ({
     </button>
   )
 }
+
+export const NavMenuButton = forwardRef(NavMenuButtonForwardRef)
+
+export default NavMenuButton

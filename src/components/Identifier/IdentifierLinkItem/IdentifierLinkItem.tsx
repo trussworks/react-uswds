@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type IdentifierLinkItemProps = JSX.IntrinsicElements['li']
 
-export const IdentifierLinkItem = ({
+export const IdentifierLinkItemForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, IdentifierLinkItemProps> = ({
   children,
   className,
   ...listItemProps
-}: IdentifierLinkItemProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-identifier__required-links-item', className)
   return (
-    <li className={classes} {...listItemProps}>
+    <li ref={ref} className={classes} {...listItemProps}>
       {children}
     </li>
   )
 }
+
+export const IdentifierLinkItem = forwardRef(IdentifierLinkItemForwardRef)
+
+export default IdentifierLinkItem

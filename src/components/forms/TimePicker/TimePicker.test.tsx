@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, waitFor, within } from '@testing-library/react'
 
-import { TimePicker } from './TimePicker'
+import TimePicker from './TimePicker'
 import userEvent from '@testing-library/user-event'
 
 describe('TimePicker Component', () => {

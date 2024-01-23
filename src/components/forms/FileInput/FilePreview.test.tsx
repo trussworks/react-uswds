@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, waitFor } from '@testing-library/react'
 
-import { FilePreview } from './FilePreview'
+import FilePreview from './FilePreview'
 import { SPACER_GIF, TEST_TEXT_FILE } from './constants'
 
 const INVALID_TEST_PDF_FILE = new File([], 'testFile.pdf')

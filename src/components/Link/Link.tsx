@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 // These props we want to require always, even on custom components
@@ -55,11 +55,9 @@ export type LinkProps<
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
 > = DefaultLinkProps | CustomLinkProps<FCProps>
 
-export function Link(props: DefaultLinkProps): React.ReactElement
-export function Link<T>(props: CustomLinkProps<T>): React.ReactElement
-export function Link<
+export const LinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, LinkProps> = <
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
->(props: LinkProps<FCProps>): React.ReactElement {
+>(props, ref): React.ReactElement => {
   if (isCustomProps(props)) {
     const { variant, className, asCustom, children, ...remainingProps } = props
     // 1. We know props is AsCustomProps<FCProps>
@@ -89,3 +87,7 @@ export function Link<
     )
   }
 }
+
+export const Link = forwardRef(LinkForwardRef)
+
+export default Link

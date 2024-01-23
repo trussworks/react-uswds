@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type CollectionThumbnailProps = JSX.IntrinsicElements['img']
 
-export const CollectionThumbnail = ({
+export const CollectionThumbnailFowardRef: React.ForwardRefRenderFunction<HTMLImageElement, CollectionThumbnailProps> = ({
   className,
   src,
   alt,
   ...props
-}: CollectionThumbnailProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-collection__img', className)
 
-  return <img className={classes} src={src} alt={alt} {...props} />
+  return <img ref={ref} className={classes} src={src} alt={alt} {...props} />
 }
+
+export const CollectionThumbnail = forwardRef(CollectionThumbnailFowardRef)
+
+export default CollectionThumbnail

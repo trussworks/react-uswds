@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, forwardRef } from 'react'
 import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
@@ -10,13 +10,13 @@ export type BreadcrumbBarProps = {
   listProps?: JSX.IntrinsicElements['ol']
 }
 
-export const BreadcrumbBar = ({
+export const BreadcrumbBarForwardRef: React.ForwardRefRenderFunction<HTMLElement, BreadcrumbBarProps> = ({
   variant = 'default',
   children,
   className,
   navProps,
   listProps,
-}: BreadcrumbBarProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb',
     {
@@ -26,10 +26,14 @@ export const BreadcrumbBar = ({
   )
 
   return (
-    <nav className={classes} aria-label="Breadcrumbs" {...navProps}>
+    <nav ref={ref} className={classes} aria-label="Breadcrumbs" {...navProps}>
       <ol className="usa-breadcrumb__list" {...listProps}>
         {children}
       </ol>
     </nav>
   )
 }
+
+export const BreadcrumbBar = forwardRef(BreadcrumbBarForwardRef)
+
+export default BreadcrumbBar

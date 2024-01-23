@@ -1,25 +1,27 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import { Icon } from '../../Icon/Icons'
 
-import { Button } from '../../Button/Button'
+import Button from '../../Button/Button'
 
 export type SearchLocalization = {
   buttonText: string
 }
 
-export type SearchButtonProps = {
+export type BaseSearchButtonProps = {
   size?: 'big' | 'small'
-  className?: string
   i18n?: SearchLocalization
 }
 
-export const SearchButton = ({
+export type SearchButtonProps = BaseSearchButtonProps & JSX.IntrinsicElements['button']
+
+export const SearchButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, SearchButtonProps> = ({
   size,
   className,
   i18n,
-}: SearchButtonProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
   const isBig = size === 'big'
@@ -33,7 +35,7 @@ export const SearchButton = ({
   )
   return (
     <div className={classes}>
-      <Button type="submit">
+      <Button type="submit" {...props} ref={ref}>
         {!isSmall && (
           <span className="usa-search__submit-text">{buttonText}</span>
         )}
@@ -46,5 +48,7 @@ export const SearchButton = ({
     </div>
   )
 }
+
+export const SearchButton = forwardRef(SearchButtonForwardRef)
 
 export default SearchButton

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type TextareaRef =
@@ -16,13 +16,16 @@ export interface BaseTextareaProps {
   error?: boolean
   success?: boolean
   children?: React.ReactNode
+  /**
+   * @deprecated Use ref instead
+   */
   inputRef?: TextareaRef
 }
 
 export type TextareaProps = BaseTextareaProps &
   JSX.IntrinsicElements['textarea']
 
-export const Textarea = ({
+export const TextareaForwardRef: React.ForwardRefRenderFunction<HTMLTextAreaElement, TextareaProps> = ({
   id,
   name,
   className,
@@ -31,7 +34,7 @@ export const Textarea = ({
   children,
   inputRef,
   ...inputProps
-}: TextareaProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-textarea',
     {
@@ -47,11 +50,13 @@ export const Textarea = ({
       className={classes}
       id={id}
       name={name}
-      ref={inputRef}
+      ref={ref ?? inputRef}
       {...inputProps}>
       {children}
     </textarea>
   )
 }
+
+export const Textarea = forwardRef(TextareaForwardRef)
 
 export default Textarea

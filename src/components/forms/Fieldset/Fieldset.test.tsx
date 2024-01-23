@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 jest.mock('../../../deprecation')
-import { Fieldset } from './Fieldset'
+import Fieldset from './Fieldset'
 
 describe('Fieldset component', () => {
   it('renders without errors', () => {

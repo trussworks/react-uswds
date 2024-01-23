@@ -10,12 +10,12 @@ export type BaseButtonGroupProps = {
 export type ButtonGroupProps = BaseButtonGroupProps &
   JSX.IntrinsicElements['ul']
 
-export const ButtonGroup = ({
+export const ButtonGroup: React.ForwardRefRenderFunction<HTMLUListElement, ButtonGroupProps> = ({
   className,
   children,
   type = 'default',
   ...restProps
-}: ButtonGroupProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-button-group',
     {
@@ -25,7 +25,7 @@ export const ButtonGroup = ({
   )
 
   return (
-    <ul className={classes} {...restProps}>
+    <ul ref={ref} className={classes} {...restProps}>
       {React.Children.map(children, (child: React.ReactNode) => {
         return <li className="usa-button-group__item">{child}</li>
       })}

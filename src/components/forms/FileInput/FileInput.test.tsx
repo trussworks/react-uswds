@@ -2,7 +2,7 @@ import React from 'react'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { FileInput, FileInputRef } from './FileInput'
+import FileInput, { FileInputRef } from './FileInput'
 import {
   TEST_TEXT_FILE,
   TEST_PNG_FILE,

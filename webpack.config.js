@@ -129,6 +129,7 @@ module.exports = {
                 options: {
                   icon: true,
                   memo: true,
+                  ref: true
                 },
               },
             ],

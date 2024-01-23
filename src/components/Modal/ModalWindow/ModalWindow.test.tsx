@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ModalWindow } from './ModalWindow'
+import ModalWindow from './ModalWindow'
 
 import { render, screen } from '@testing-library/react'
 

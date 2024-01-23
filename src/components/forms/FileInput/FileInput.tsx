@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
-import { FilePreview } from './FilePreview'
+import FilePreview from './FilePreview'
 import { makeSafeForID } from './utils'
 
 export type BaseFileInputProps = {
@@ -237,3 +237,5 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
 }
 
 export const FileInput = forwardRef(FileInputForwardRef)
+
+export default FileInput

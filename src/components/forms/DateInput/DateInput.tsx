@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { TextInput, BaseTextInputProps } from '../TextInput/TextInput'
-import { Label } from '../Label/Label'
-import { FormGroup } from '../FormGroup/FormGroup'
+import TextInput, { BaseTextInputProps } from '../TextInput/TextInput'
+import Label from '../Label/Label'
+import FormGroup from '../FormGroup/FormGroup'
 
 export type DateInputPropsBase = {
   id: string
@@ -18,7 +18,7 @@ export type DateInputProps = DateInputPropsBase &
   BaseTextInputProps &
   JSX.IntrinsicElements['input']
 
-export const DateInput = ({
+export const DateInputForwardRef: React.ForwardRefRenderFunction<HTMLInputElement, DateInputProps> = ({
   id,
   name,
   label,
@@ -27,7 +27,7 @@ export const DateInput = ({
   minLength,
   className,
   ...inputProps
-}: DateInputProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',
@@ -37,9 +37,10 @@ export const DateInput = ({
   const inputClasses = classnames(className)
 
   return (
-    <FormGroup className={formGroupClasses}>
+    <FormGroup ref={ref} className={formGroupClasses}>
       <Label htmlFor={id}>{label}</Label>
       <TextInput
+        ref={ref}
         {...inputProps}
         className={inputClasses}
         id={id}
@@ -53,5 +54,7 @@ export const DateInput = ({
     </FormGroup>
   )
 }
+
+export const DateInput = forwardRef(DateInputForwardRef)
 
 export default DateInput

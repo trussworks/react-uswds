@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
-import { Link } from '../Link/Link'
+import Link from '../Link/Link'
 import styles from './InPageNavigation.module.scss'
 
 export type BaseInPageNavigationProps = {
@@ -19,7 +19,7 @@ export type BaseInPageNavigationProps = {
 export type InPageNavigationProps = BaseInPageNavigationProps &
   JSX.IntrinsicElements['div']
 
-export const InPageNavigation = ({
+export const InPageNavigationForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, InPageNavigationProps> = ({
   className,
   content,
   headingLevel = 'h4',
@@ -30,7 +30,7 @@ export const InPageNavigation = ({
   threshold = 1,
   title = 'On this page',
   ...divProps
-}: InPageNavigationProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)
@@ -62,7 +62,7 @@ export const InPageNavigation = ({
   })
 
   return (
-    <div className="usa-in-page-nav-container" {...divProps}>
+    <div ref={ref} className="usa-in-page-nav-container" {...divProps}>
       <aside
         className={classes}
         aria-label={title}
@@ -102,5 +102,7 @@ export const InPageNavigation = ({
     </div>
   )
 }
+
+export const InPageNavigation = forwardRef(InPageNavigationForwardRef)
 
 export default InPageNavigation

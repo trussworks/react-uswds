@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
@@ -16,6 +16,9 @@ export type RequiredTextInputProps = Required<
 export type BaseTextInputProps = {
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
+  /**
+   * @deprecated Use ref instead
+   */
   inputRef?: TextInputRef
   inputProps?: JSX.IntrinsicElements['input']
 }
@@ -24,7 +27,7 @@ export type TextInputProps = BaseTextInputProps &
   RequiredTextInputProps &
   Omit<JSX.IntrinsicElements['input'], 'id' | 'name' | 'type'>
 
-export const TextInput = ({
+export const TextInputForwardRef: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = ({
   id,
   name,
   type,
@@ -33,7 +36,7 @@ export const TextInput = ({
   inputSize,
   inputRef,
   ...inputProps
-}: TextInputProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const isSmall = inputSize === 'small'
@@ -57,10 +60,12 @@ export const TextInput = ({
       id={id}
       name={name}
       type={type}
-      ref={inputRef}
+      ref={ref ?? inputRef}
       {...inputProps}
     />
   )
 }
+
+export const TextInput = forwardRef(TextInputForwardRef)
 
 export default TextInput

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
-import { NavList } from '../NavList/NavList'
+import NavCloseButton from '../NavCloseButton/NavCloseButton'
+import NavList from '../NavList/NavList'
 
 export type BasePrimaryNavProps = {
   items: React.ReactNode[]
@@ -14,7 +14,7 @@ export type BasePrimaryNavProps = {
 
 export type PrimaryNavProps = BasePrimaryNavProps & JSX.IntrinsicElements['nav']
 
-export const PrimaryNav = ({
+export const PrimaryNavFowardRef: React.ForwardRefRenderFunction<HTMLElement, PrimaryNavProps> = ({
   items,
   onToggleMobileNav,
   mobileExpanded,
@@ -38,5 +38,7 @@ export const PrimaryNav = ({
     </nav>
   )
 }
+
+export const PrimaryNav = forwardRef(PrimaryNavFowardRef)
 
 export default PrimaryNav

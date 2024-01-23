@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { Form, BaseFormProps } from '../../forms/Form/Form'
-import { SearchField } from '../SearchField/SearchField'
-import { SearchButton } from '../SearchButton/SearchButton'
+import Form, { BaseFormProps } from '../../forms/Form/Form'
+import SearchField from '../SearchField/SearchField'
+import SearchButton from '../SearchButton/SearchButton'
 import { BaseTextInputProps } from '../../forms/TextInput/TextInput'
 
 export type SearchLocalization = {
@@ -26,7 +26,7 @@ export type SearchProps = SearchInputProps &
   BaseFormProps &
   JSX.IntrinsicElements['form']
 
-export const Search = ({
+export const SearchForwardRef: React.ForwardRefRenderFunction<HTMLFormElement, SearchProps> = ({
   onSubmit,
   size,
   className,
@@ -37,11 +37,12 @@ export const Search = ({
   i18n,
   inputProps,
   ...formProps
-}: SearchProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-search', className)
 
   return (
     <Form
+      ref={ref}
       onSubmit={onSubmit}
       className={classes}
       role="search"
@@ -60,5 +61,7 @@ export const Search = ({
     </Form>
   )
 }
+
+export const Search = forwardRef(SearchForwardRef)
 
 export default Search

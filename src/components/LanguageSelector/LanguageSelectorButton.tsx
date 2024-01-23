@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseLanguageSelectorButtonProps = {
@@ -11,14 +11,14 @@ export type BaseLanguageSelectorButtonProps = {
 export type LanguageSelectorButtonProps = BaseLanguageSelectorButtonProps &
   JSX.IntrinsicElements['button']
 
-export const LanguageSelectorButton = ({
+export const LanguageSelectorButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, LanguageSelectorButtonProps> = ({
   label,
   labelAttr,
   isOpen,
   onToggle,
   className,
   ...buttonProps
-}: LanguageSelectorButtonProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-button', 'usa-language__link', className)
   const buttonContents = labelAttr ? (
     <span lang={labelAttr}>{label}</span>
@@ -27,6 +27,7 @@ export const LanguageSelectorButton = ({
   )
   return (
     <button
+      ref={ref}
       data-testid="languageSelectorButton"
       className={classes}
       aria-expanded={isOpen}
@@ -38,5 +39,7 @@ export const LanguageSelectorButton = ({
     </button>
   )
 }
+
+export const LanguageSelectorButton = forwardRef(LanguageSelectorButtonForwardRef)
 
 export default LanguageSelectorButton

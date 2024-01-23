@@ -1,21 +1,22 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-interface ModalFooterProps {
-  children: React.ReactNode
-  className?: string
-}
+export type ModalFooterProps = JSX.IntrinsicElements['div']
 
-export const ModalFooter = ({
+export const ModalFooterForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, ModalFooterProps> = ({
   children,
   className,
   ...divProps
-}: ModalFooterProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-modal__footer', className)
 
   return (
-    <div className={classes} data-testid="modalFooter" {...divProps}>
+    <div ref={ref} className={classes} data-testid="modalFooter" {...divProps}>
       {children}
     </div>
   )
 }
+
+export const ModalFooter = forwardRef(ModalFooterForwardRef)
+
+export default ModalFooter

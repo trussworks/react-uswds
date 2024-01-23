@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 
 /** Moving the SPACER_GIF definition here instead of the constants.ts file,
@@ -8,15 +8,18 @@ import classnames from 'classnames'
 export const SPACER_GIF =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
-export interface FilePreviewProps {
+export interface BaseFilePreviewProps {
   imageId: string
   file: File
 }
 
-export const FilePreview = ({
+export type FilePreviewProps = BaseFilePreviewProps & JSX.IntrinsicElements['div']
+
+export const FilePreviewForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, FilePreviewProps> = ({
   imageId,
   file,
-}: FilePreviewProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const fileReaderRef = useRef<FileReader>(new FileReader())
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)
@@ -59,9 +62,11 @@ export const FilePreview = ({
 
   return (
     <div
+      ref={ref}
       data-testid="file-input-preview"
       className="usa-file-input__preview"
-      aria-hidden="true">
+      aria-hidden="true"
+      {...props}>
       <img
         id={imageId}
         data-testid="file-input-preview-image"
@@ -74,3 +79,7 @@ export const FilePreview = ({
     </div>
   )
 }
+
+export const FilePreview = forwardRef(FilePreviewForwardRef)
+
+export default FilePreview

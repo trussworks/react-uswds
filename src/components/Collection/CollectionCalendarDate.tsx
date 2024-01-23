@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 export interface CollectionCalendarDateProps {
   datetime: string
@@ -19,9 +19,10 @@ export const SHORT_MONTH_LABELS = [
   'Dec',
 ]
 
-export const CollectionCalendarDate = ({
+export const CollectionCalendarDateForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CollectionCalendarDateProps> = ({
   datetime,
-}: CollectionCalendarDateProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const dateObj = new Date(datetime)
   const isDateInvalid = dateObj && dateObj.getTime && isNaN(dateObj.getTime())
 
@@ -31,6 +32,8 @@ export const CollectionCalendarDate = ({
 
   return (
     <div
+      {...props}
+      ref={ref}
       className="usa-collection__calendar-date"
       data-testid="collection-calendar-date">
       <time dateTime={datetime}>
@@ -44,3 +47,7 @@ export const CollectionCalendarDate = ({
     </div>
   )
 }
+
+export const CollectionCalendarDate = forwardRef(CollectionCalendarDateForwardRef)
+
+export default CollectionCalendarDate

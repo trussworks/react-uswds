@@ -1,12 +1,12 @@
-import React, { ReactElement, useState } from 'react'
-import { Banner } from '../Banner/Banner'
-import { BannerHeader } from '../BannerHeader/BannerHeader'
-import { BannerFlag } from '../BannerFlag/BannerFlag'
-import { BannerButton } from '../BannerButton/BannerButton'
-import { BannerContent } from '../BannerContent/BannerContent'
-import { BannerGuidance } from '../BannerGuidance/BannerGuidance'
-import { BannerIcon } from '../BannerIcon/BannerIcon'
-import { MediaBlockBody } from '../../mediablock/MediaBlockBody/MediaBlockBody'
+import React, { ReactElement, forwardRef, useState } from 'react'
+import Banner from '../Banner/Banner'
+import BannerHeader from '../BannerHeader/BannerHeader'
+import BannerFlag from '../BannerFlag/BannerFlag'
+import BannerButton from '../BannerButton/BannerButton'
+import BannerContent from '../BannerContent/BannerContent'
+import BannerGuidance from '../BannerGuidance/BannerGuidance'
+import BannerIcon from '../BannerIcon/BannerIcon'
+import MediaBlockBody from '../../mediablock/MediaBlockBody/MediaBlockBody'
 import { Icon } from '../../Icon/Icons'
 
 // assets
@@ -115,12 +115,12 @@ export type BaseGovBannerProps = {
 export type GovBannerProps = BaseGovBannerProps &
   JSX.IntrinsicElements['section']
 
-export const GovBanner = ({
+export const GovBannerForwardRef: React.ForwardRefRenderFunction<HTMLElement, GovBannerProps> = ({
   tld = '.gov',
   language = 'english',
   className,
   ...sectionProps
-}: GovBannerProps): ReactElement => {
+}, ref): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
   const {
@@ -135,6 +135,7 @@ export const GovBanner = ({
 
   return (
     <Banner
+      ref={ref}
       className={className}
       data-testid="govBanner"
       aria-label={ariaLabel}
@@ -180,5 +181,7 @@ export const GovBanner = ({
     </Banner>
   )
 }
+
+export const GovBanner = forwardRef(GovBannerForwardRef)
 
 export default GovBanner

@@ -3,7 +3,7 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 
-import { FooterExtendedNavList } from './FooterExtendedNavList'
+import FooterExtendedNavList from './FooterExtendedNavList'
 
 const links = [
   [

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { TextInput, TextInputProps } from '../TextInput/TextInput'
-import { Textarea, TextareaProps } from '../Textarea/Textarea'
+import TextInput, { TextInputProps } from '../TextInput/TextInput'
+import Textarea, { TextareaProps } from '../Textarea/Textarea'
 
 /* Defaults
   This is a fallback for character count and validation message.
@@ -58,7 +58,7 @@ export type CharacterCountProps =
   | TextareaCharacterCountProps
 
 /* Main */
-export const CharacterCount = ({
+export const CharacterCountForwardRef: React.ForwardRefRenderFunction<HTMLElement, CharacterCountProps> = ({
   id,
   name,
   className,
@@ -69,7 +69,7 @@ export const CharacterCount = ({
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
   ...remainingProps
-}: CharacterCountProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
@@ -137,7 +137,7 @@ export const CharacterCount = ({
       inputRef: inputRef,
       ...textAreaProps,
     }
-    InputComponent = <Textarea {...attributes} />
+    InputComponent = <Textarea ref={ref} {...attributes} />
   } else {
     const {
       onBlur,
@@ -159,7 +159,7 @@ export const CharacterCount = ({
       inputRef: inputRef,
       ...inputProps,
     }
-    InputComponent = <TextInput {...attributes} />
+    InputComponent = <TextInput ref={ref} {...attributes} />
   }
 
   return (
@@ -183,5 +183,7 @@ export const CharacterCount = ({
     </>
   )
 }
+
+export const CharacterCount = forwardRef(CharacterCountForwardRef)
 
 export default CharacterCount

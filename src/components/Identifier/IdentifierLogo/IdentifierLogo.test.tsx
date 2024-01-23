@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
 
-import { IdentifierLogo } from './IdentifierLogo'
+import IdentifierLogo from './IdentifierLogo'
 
 describe('IdentifierLogo component', () => {
   it('renders without errors', () => {

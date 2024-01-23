@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
@@ -12,19 +12,21 @@ export type SummaryBoxHeadingProps = BaseSummaryBoxHeadingProps &
     HTMLHeadingElement
   >
 
-export const SummaryBoxHeading = ({
+export const SummaryBoxHeadingForwardRef: React.ForwardRefRenderFunction<HTMLHeadingElement, SummaryBoxHeadingProps> = ({
   children,
   className,
   headingLevel,
   ...h3Props
-}: SummaryBoxHeadingProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-summary-box__heading', className)
   const Heading = headingLevel
   return (
-    <Heading className={classes} {...h3Props}>
+    <Heading ref={ref} className={classes} {...h3Props}>
       {children}
     </Heading>
   )
 }
+
+export const SummaryBoxHeading = forwardRef(SummaryBoxHeadingForwardRef)
 
 export default SummaryBoxHeading

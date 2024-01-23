@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Logo } from './Logo'
+import Logo from './Logo'
 
 // assets
 import logoImg from '@uswds/uswds/src/img/logo-img.png'

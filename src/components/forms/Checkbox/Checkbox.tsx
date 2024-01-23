@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type CheckboxPropsBase = {
@@ -18,7 +18,7 @@ export type CheckboxPropsBase = {
 
 export type CheckboxProps = CheckboxPropsBase & JSX.IntrinsicElements['input']
 
-export const Checkbox = ({
+export const CheckboxForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxProps> = ({
   id,
   name,
   className,
@@ -27,14 +27,14 @@ export const Checkbox = ({
   tile,
   labelDescription,
   ...inputProps
-}: CheckboxProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-checkbox', className)
   const checkboxClasses = classnames('usa-checkbox__input', {
     'usa-checkbox__input--tile': tile,
   })
 
   return (
-    <div data-testid="checkbox" className={classes}>
+    <div ref={ref} data-testid="checkbox" className={classes}>
       <input
         className={checkboxClasses}
         id={id}
@@ -54,5 +54,7 @@ export const Checkbox = ({
     </div>
   )
 }
+
+export const Checkbox = forwardRef(CheckboxForwardRef)
 
 export default Checkbox

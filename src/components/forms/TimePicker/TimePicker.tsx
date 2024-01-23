@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { forwardRef, useMemo } from 'react'
 import classnames from 'classnames'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
@@ -31,7 +31,7 @@ export type BaseTimePickerProps = {
 export type TimePickerProps = BaseTimePickerProps &
   Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
-export const TimePicker = ({
+export const TimePickerForwardRef: React.ForwardRefRenderFunction<HTMLElement, TimePickerProps> = ({
   id,
   name,
   onChange,
@@ -43,7 +43,7 @@ export const TimePicker = ({
   step = DEFAULT_STEP,
   hint,
   className,
-}: TimePickerProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-time-picker', className)
 
   const parsedMinTime = parseTimeString(minTime) || DEFAULT_MIN_TIME_MINUTES
@@ -68,6 +68,7 @@ export const TimePicker = ({
         </div>
       )}
       <ComboBox
+        ref={ref}
         id={id}
         name={name}
         className={classes}
@@ -81,3 +82,7 @@ export const TimePicker = ({
     </FormGroup>
   )
 }
+
+export const TimePicker = forwardRef(TimePickerForwardRef)
+
+export default TimePicker

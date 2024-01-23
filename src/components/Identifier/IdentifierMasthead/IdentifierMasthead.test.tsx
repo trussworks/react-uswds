@@ -3,11 +3,11 @@ import { render } from '@testing-library/react'
 
 import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
 
-import { IdentifierMasthead } from './IdentifierMasthead'
-import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
-import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
-import { IdentifierIdentity } from '../IdentifierIdentity/IdentifierIdentity'
-import { Link } from '../../Link/Link'
+import IdentifierMasthead from './IdentifierMasthead'
+import IdentifierLogo from '../IdentifierLogo/IdentifierLogo'
+import IdentifierLogos from '../IdentifierLogos/IdentifierLogos'
+import IdentifierIdentity from '../IdentifierIdentity/IdentifierIdentity'
+import Link from '../../Link/Link'
 
 const testIdentifierLogo = [
   <img

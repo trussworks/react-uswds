@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseCardFooterProps {
@@ -7,12 +7,12 @@ export interface BaseCardFooterProps {
 
 export type CardFooterProps = BaseCardFooterProps & JSX.IntrinsicElements['div']
 
-export const CardFooter = ({
+export const CardFooterForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CardFooterProps> = ({
   exdent,
   children,
   className,
   ...footerProps
-}: CardFooterProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-card__footer',
     {
@@ -22,10 +22,12 @@ export const CardFooter = ({
   )
 
   return (
-    <div className={classes} {...footerProps} data-testid="CardFooter">
+    <div ref={ref} className={classes} {...footerProps} data-testid="CardFooter">
       {children}
     </div>
   )
 }
+
+export const CardFooter = forwardRef(CardFooterForwardRef)
 
 export default CardFooter

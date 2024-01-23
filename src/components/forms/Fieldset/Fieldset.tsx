@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { RequiredMarker } from '../Label/RequiredMarker'
 
@@ -13,14 +13,14 @@ export type BaseFieldsetProps = {
 export type FieldsetProps = BaseFieldsetProps &
   JSX.IntrinsicElements['fieldset']
 
-export const Fieldset = ({
+export const FieldsetForwardRef: React.ForwardRefRenderFunction<HTMLFieldSetElement, FieldsetProps> = ({
   children,
   legend,
   className,
   legendStyle = 'default',
   requiredMarker,
   ...fieldsetProps
-}: FieldsetProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-fieldset', className)
 
   const legendClasses = classnames({
@@ -30,7 +30,7 @@ export const Fieldset = ({
   })
 
   return (
-    <fieldset data-testid="fieldset" className={classes} {...fieldsetProps}>
+    <fieldset ref={ref} data-testid="fieldset" className={classes} {...fieldsetProps}>
       {legend && (
         <legend className={legendClasses}>
           {legend}
@@ -46,3 +46,7 @@ export const Fieldset = ({
     </fieldset>
   )
 }
+
+export const Fieldset = forwardRef(FieldsetForwardRef)
+
+export default Fieldset

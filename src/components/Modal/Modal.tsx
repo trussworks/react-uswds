@@ -8,11 +8,11 @@ import React, {
 import FocusTrap from 'focus-trap-react'
 
 import { useModal, getScrollbarWidth } from './utils'
-import { ModalWindow } from './ModalWindow/ModalWindow'
-import { ModalWrapper } from './ModalWrapper/ModalWrapper'
+import ModalWindow from './ModalWindow/ModalWindow'
+import ModalWrapper from './ModalWrapper/ModalWrapper'
 import ReactDOM from 'react-dom'
 
-interface ModalComponentProps {
+export interface BaseModalProps {
   id: string
   children: React.ReactNode
   className?: string
@@ -23,7 +23,7 @@ interface ModalComponentProps {
   isInitiallyOpen?: boolean
 }
 
-export type ModalProps = ModalComponentProps & JSX.IntrinsicElements['div']
+export type ModalProps = BaseModalProps & JSX.IntrinsicElements['div']
 
 export type ModalRef = {
   modalId: string

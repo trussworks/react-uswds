@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-export type FormGroupProps = {
-  children: React.ReactNode
-  className?: string
+export type BaseFormGroupProps = {
   error?: boolean
 }
 
-export const FormGroup = ({
+export type FormGroupProps = BaseFormGroupProps & JSX.IntrinsicElements['div']
+
+export const FormGroupForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, FormGroupProps> = ({
   children,
   className,
   error,
-}: FormGroupProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-form-group',
     { 'usa-form-group--error': error },
@@ -19,8 +20,12 @@ export const FormGroup = ({
   )
 
   return (
-    <div data-testid="formGroup" className={classes}>
+    <div ref={ref} data-testid="formGroup" className={classes} {...props}>
       {children}
     </div>
   )
 }
+
+export const FormGroup = forwardRef(FormGroupForwardRef)
+
+export default FormGroup

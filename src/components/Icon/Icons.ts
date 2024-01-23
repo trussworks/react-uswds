@@ -246,683 +246,683 @@ import { makeUSWDSIcon, IconProps } from './Icon'
 import React from 'react'
 
 export class Icon {
-  public static AccessibilityNew: React.ComponentType<IconProps> =
+  public static AccessibilityNew: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AccessibilityNewSvg)
 
-  public static AccessibleForward: React.ComponentType<IconProps> =
+  public static AccessibleForward: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AccessibleForwardSvg)
 
-  public static AccountBalance: React.ComponentType<IconProps> =
+  public static AccountBalance: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AccountBalanceSvg)
 
-  public static AccountBox: React.ComponentType<IconProps> =
+  public static AccountBox: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AccountBoxSvg)
 
-  public static AccountCircle: React.ComponentType<IconProps> =
+  public static AccountCircle: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AccountCircleSvg)
 
-  public static Add: React.ComponentType<IconProps> = makeUSWDSIcon(AddSvg)
+  public static Add: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(AddSvg)
 
-  public static AddCircle: React.ComponentType<IconProps> =
+  public static AddCircle: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AddCircleSvg)
 
-  public static AddCircleOutline: React.ComponentType<IconProps> =
+  public static AddCircleOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AddCircleOutlineSvg)
 
-  public static Alarm: React.ComponentType<IconProps> = makeUSWDSIcon(AlarmSvg)
+  public static Alarm: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(AlarmSvg)
 
-  public static AlternateEmail: React.ComponentType<IconProps> =
+  public static AlternateEmail: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AlternateEmailSvg)
 
-  public static Announcement: React.ComponentType<IconProps> =
+  public static Announcement: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AnnouncementSvg)
 
-  public static ArrowBack: React.ComponentType<IconProps> =
+  public static ArrowBack: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ArrowBackSvg)
 
-  public static ArrowDownward: React.ComponentType<IconProps> =
+  public static ArrowDownward: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ArrowDownwardSvg)
 
-  public static ArrowDropDown: React.ComponentType<IconProps> =
+  public static ArrowDropDown: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ArrowDropDownSvg)
 
-  public static ArrowDropUp: React.ComponentType<IconProps> =
+  public static ArrowDropUp: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ArrowDropUpSvg)
 
-  public static ArrowForward: React.ComponentType<IconProps> =
+  public static ArrowForward: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ArrowForwardSvg)
 
-  public static ArrowUpward: React.ComponentType<IconProps> =
+  public static ArrowUpward: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ArrowUpwardSvg)
 
-  public static Api: React.ComponentType<IconProps> = makeUSWDSIcon(ApiSvg)
+  public static Api: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ApiSvg)
 
-  public static Assessment: React.ComponentType<IconProps> =
+  public static Assessment: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AssessmentSvg)
 
-  public static AttachFile: React.ComponentType<IconProps> =
+  public static AttachFile: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AttachFileSvg)
 
-  public static AttachMoney: React.ComponentType<IconProps> =
+  public static AttachMoney: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AttachMoneySvg)
 
-  public static Autorenew: React.ComponentType<IconProps> =
+  public static Autorenew: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(AutorenewSvg)
 
-  public static Backpack: React.ComponentType<IconProps> =
+  public static Backpack: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(BackpackSvg)
 
-  public static Bathtub: React.ComponentType<IconProps> =
+  public static Bathtub: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(BathtubSvg)
 
-  public static Bedding: React.ComponentType<IconProps> =
+  public static Bedding: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(BeddingSvg)
 
-  public static Bookmark: React.ComponentType<IconProps> =
+  public static Bookmark: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(BookmarkSvg)
 
-  public static BugReport: React.ComponentType<IconProps> =
+  public static BugReport: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(BugReportSvg)
 
-  public static Build: React.ComponentType<IconProps> = makeUSWDSIcon(BuildSvg)
+  public static Build: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(BuildSvg)
 
-  public static CalendarToday: React.ComponentType<IconProps> =
+  public static CalendarToday: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CalendarTodaySvg)
 
-  public static Campaign: React.ComponentType<IconProps> =
+  public static Campaign: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CampaignSvg)
 
-  public static Camping: React.ComponentType<IconProps> =
+  public static Camping: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CampingSvg)
 
-  public static Cancel: React.ComponentType<IconProps> =
+  public static Cancel: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CancelSvg)
 
-  public static Chat: React.ComponentType<IconProps> = makeUSWDSIcon(ChatSvg)
+  public static Chat: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ChatSvg)
 
-  public static Check: React.ComponentType<IconProps> = makeUSWDSIcon(CheckSvg)
+  public static Check: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(CheckSvg)
 
-  public static CheckBoxOutlineBlank: React.ComponentType<IconProps> =
+  public static CheckBoxOutlineBlank: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CheckBoxOutlineBlankSvg)
 
-  public static CheckCircle: React.ComponentType<IconProps> =
+  public static CheckCircle: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CheckCircleSvg)
 
-  public static CheckCircleOutline: React.ComponentType<IconProps> =
+  public static CheckCircleOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CheckCircleOutlineSvg)
 
-  public static Checkroom: React.ComponentType<IconProps> =
+  public static Checkroom: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CheckroomSvg)
 
-  public static CleanHands: React.ComponentType<IconProps> =
+  public static CleanHands: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CleanHandsSvg)
 
-  public static Clothes: React.ComponentType<IconProps> =
+  public static Clothes: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ClothesSvg)
 
-  public static Close: React.ComponentType<IconProps> = makeUSWDSIcon(CloseSvg)
+  public static Close: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(CloseSvg)
 
-  public static ClosedCaption: React.ComponentType<IconProps> =
+  public static ClosedCaption: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ClosedCaptionSvg)
 
-  public static Cloud: React.ComponentType<IconProps> = makeUSWDSIcon(CloudSvg)
+  public static Cloud: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(CloudSvg)
 
-  public static Code: React.ComponentType<IconProps> = makeUSWDSIcon(CodeSvg)
+  public static Code: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(CodeSvg)
 
-  public static Comment: React.ComponentType<IconProps> =
+  public static Comment: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CommentSvg)
 
-  public static ConnectWithoutContact: React.ComponentType<IconProps> =
+  public static ConnectWithoutContact: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ConnectWithoutContactSvg)
 
-  public static Construction: React.ComponentType<IconProps> =
+  public static Construction: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ConstructionSvg)
 
-  public static ConstructionWorker: React.ComponentType<IconProps> =
+  public static ConstructionWorker: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ConstructionWorkerSvg)
 
-  public static ContactPage: React.ComponentType<IconProps> =
+  public static ContactPage: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ContactPageSvg)
 
-  public static ContentCopy: React.ComponentType<IconProps> =
+  public static ContentCopy: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ContentCopySvg)
 
-  public static Coronavirus: React.ComponentType<IconProps> =
+  public static Coronavirus: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CoronavirusSvg)
 
-  public static CreditCard: React.ComponentType<IconProps> =
+  public static CreditCard: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(CreditCardSvg)
 
-  public static Deck: React.ComponentType<IconProps> = makeUSWDSIcon(DeckSvg)
+  public static Deck: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(DeckSvg)
 
-  public static Delete: React.ComponentType<IconProps> =
+  public static Delete: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DeleteSvg)
 
-  public static DeviceThermostat: React.ComponentType<IconProps> =
+  public static DeviceThermostat: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DeviceThermostatSvg)
 
-  public static Directions: React.ComponentType<IconProps> =
+  public static Directions: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DirectionsSvg)
 
-  public static DirectionsBike: React.ComponentType<IconProps> =
+  public static DirectionsBike: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DirectionsBikeSvg)
 
-  public static DirectionsBus: React.ComponentType<IconProps> =
+  public static DirectionsBus: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DirectionsBusSvg)
 
-  public static DirectionsCar: React.ComponentType<IconProps> =
+  public static DirectionsCar: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DirectionsCarSvg)
 
-  public static DirectionsWalk: React.ComponentType<IconProps> =
+  public static DirectionsWalk: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DirectionsWalkSvg)
 
-  public static DoNotDisturb: React.ComponentType<IconProps> =
+  public static DoNotDisturb: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DoNotDisturbSvg)
 
-  public static DoNotTouch: React.ComponentType<IconProps> =
+  public static DoNotTouch: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DoNotTouchSvg)
 
-  public static DragHandle: React.ComponentType<IconProps> =
+  public static DragHandle: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(DragHandleSvg)
 
-  public static Eco: React.ComponentType<IconProps> = makeUSWDSIcon(EcoSvg)
+  public static Eco: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(EcoSvg)
 
-  public static Edit: React.ComponentType<IconProps> = makeUSWDSIcon(EditSvg)
+  public static Edit: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(EditSvg)
 
-  public static ElectricalServices: React.ComponentType<IconProps> =
+  public static ElectricalServices: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ElectricalServicesSvg)
 
-  public static EmojiEvents: React.ComponentType<IconProps> =
+  public static EmojiEvents: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(EmojiEventsSvg)
 
-  public static Error: React.ComponentType<IconProps> = makeUSWDSIcon(ErrorSvg)
+  public static Error: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ErrorSvg)
 
-  public static ErrorOutline: React.ComponentType<IconProps> =
+  public static ErrorOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ErrorOutlineSvg)
 
-  public static Event: React.ComponentType<IconProps> = makeUSWDSIcon(EventSvg)
+  public static Event: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(EventSvg)
 
-  public static ExpandLess: React.ComponentType<IconProps> =
+  public static ExpandLess: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ExpandLessSvg)
 
-  public static ExpandMore: React.ComponentType<IconProps> =
+  public static ExpandMore: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ExpandMoreSvg)
 
-  public static Facebook: React.ComponentType<IconProps> =
+  public static Facebook: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FacebookSvg)
 
-  public static FastForward: React.ComponentType<IconProps> =
+  public static FastForward: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FastForwardSvg)
 
-  public static FastRewind: React.ComponentType<IconProps> =
+  public static FastRewind: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FastRewindSvg)
 
-  public static Favorite: React.ComponentType<IconProps> =
+  public static Favorite: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FavoriteSvg)
 
-  public static FavoriteBorder: React.ComponentType<IconProps> =
+  public static FavoriteBorder: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FavoriteBorderSvg)
 
-  public static Fax: React.ComponentType<IconProps> = makeUSWDSIcon(FaxSvg)
+  public static Fax: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(FaxSvg)
 
-  public static FileDownload: React.ComponentType<IconProps> =
+  public static FileDownload: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FileDownloadSvg)
 
-  public static FilePresent: React.ComponentType<IconProps> =
+  public static FilePresent: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FilePresentSvg)
 
-  public static FileUpload: React.ComponentType<IconProps> =
+  public static FileUpload: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FileUploadSvg)
 
-  public static FilterAlt: React.ComponentType<IconProps> =
+  public static FilterAlt: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FilterAltSvg)
 
-  public static FilterList: React.ComponentType<IconProps> =
+  public static FilterList: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FilterListSvg)
 
-  public static Fingerprint: React.ComponentType<IconProps> =
+  public static Fingerprint: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FingerprintSvg)
 
-  public static FirstPage: React.ComponentType<IconProps> =
+  public static FirstPage: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FirstPageSvg)
 
-  public static Flag: React.ComponentType<IconProps> = makeUSWDSIcon(FlagSvg)
+  public static Flag: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(FlagSvg)
 
-  public static Flickr: React.ComponentType<IconProps> =
+  public static Flickr: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FlickrSvg)
 
-  public static Flight: React.ComponentType<IconProps> =
+  public static Flight: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FlightSvg)
 
-  public static Flooding: React.ComponentType<IconProps> =
+  public static Flooding: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FloodingSvg)
 
-  public static Folder: React.ComponentType<IconProps> =
+  public static Folder: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FolderSvg)
 
-  public static FolderOpen: React.ComponentType<IconProps> =
+  public static FolderOpen: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FolderOpenSvg)
 
-  public static FormatQuote: React.ComponentType<IconProps> =
+  public static FormatQuote: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FormatQuoteSvg)
 
-  public static FormatSize: React.ComponentType<IconProps> =
+  public static FormatSize: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(FormatSizeSvg)
 
-  public static Forum: React.ComponentType<IconProps> = makeUSWDSIcon(ForumSvg)
+  public static Forum: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ForumSvg)
 
-  public static Github: React.ComponentType<IconProps> =
+  public static Github: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(GithubSvg)
 
-  public static GridView: React.ComponentType<IconProps> =
+  public static GridView: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(GridViewSvg)
 
-  public static GroupAdd: React.ComponentType<IconProps> =
+  public static GroupAdd: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(GroupAddSvg)
 
-  public static Groups: React.ComponentType<IconProps> =
+  public static Groups: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(GroupsSvg)
 
-  public static Hearing: React.ComponentType<IconProps> =
+  public static Hearing: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HearingSvg)
 
-  public static Help: React.ComponentType<IconProps> = makeUSWDSIcon(HelpSvg)
+  public static Help: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(HelpSvg)
 
-  public static HelpOutline: React.ComponentType<IconProps> =
+  public static HelpOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HelpOutlineSvg)
 
-  public static HighlightOff: React.ComponentType<IconProps> =
+  public static HighlightOff: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HighlightOffSvg)
 
-  public static History: React.ComponentType<IconProps> =
+  public static History: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HistorySvg)
 
-  public static Home: React.ComponentType<IconProps> = makeUSWDSIcon(HomeSvg)
+  public static Home: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(HomeSvg)
 
-  public static Hospital: React.ComponentType<IconProps> =
+  public static Hospital: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HospitalSvg)
 
-  public static Hotel: React.ComponentType<IconProps> = makeUSWDSIcon(HotelSvg)
+  public static Hotel: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(HotelSvg)
 
-  public static HourglassEmpty: React.ComponentType<IconProps> =
+  public static HourglassEmpty: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HourglassEmptySvg)
 
-  public static Hurricane: React.ComponentType<IconProps> =
+  public static Hurricane: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(HurricaneSvg)
 
-  public static Identification: React.ComponentType<IconProps> =
+  public static Identification: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(IdentificationSvg)
 
-  public static Image: React.ComponentType<IconProps> = makeUSWDSIcon(ImageSvg)
+  public static Image: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ImageSvg)
 
-  public static Info: React.ComponentType<IconProps> = makeUSWDSIcon(InfoSvg)
+  public static Info: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(InfoSvg)
 
-  public static InfoOutline: React.ComponentType<IconProps> =
+  public static InfoOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(InfoOutlineSvg)
 
-  public static Insights: React.ComponentType<IconProps> =
+  public static Insights: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(InsightsSvg)
 
-  public static Instagram: React.ComponentType<IconProps> =
+  public static Instagram: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(InstagramSvg)
 
-  public static Keyboard: React.ComponentType<IconProps> =
+  public static Keyboard: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(KeyboardSvg)
 
-  public static Label: React.ComponentType<IconProps> = makeUSWDSIcon(LabelSvg)
+  public static Label: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(LabelSvg)
 
-  public static Language: React.ComponentType<IconProps> =
+  public static Language: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LanguageSvg)
 
-  public static LastPage: React.ComponentType<IconProps> =
+  public static LastPage: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LastPageSvg)
 
-  public static Launch: React.ComponentType<IconProps> =
+  public static Launch: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LaunchSvg)
 
-  public static Lightbulb: React.ComponentType<IconProps> =
+  public static Lightbulb: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LightbulbSvg)
 
-  public static LightbulbOutline: React.ComponentType<IconProps> =
+  public static LightbulbOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LightbulbOutlineSvg)
 
-  public static LinkedIn: React.ComponentType<IconProps> =
+  public static LinkedIn: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LinkedInSvg)
 
-  public static Link: React.ComponentType<IconProps> = makeUSWDSIcon(LinkSvg)
+  public static Link: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(LinkSvg)
 
-  public static LinkOff: React.ComponentType<IconProps> =
+  public static LinkOff: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LinkOffSvg)
 
-  public static List: React.ComponentType<IconProps> = makeUSWDSIcon(ListSvg)
+  public static List: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ListSvg)
 
-  public static LocalCafe: React.ComponentType<IconProps> =
+  public static LocalCafe: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalCafeSvg)
 
-  public static LocalFireDepartment: React.ComponentType<IconProps> =
+  public static LocalFireDepartment: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalFireDepartmentSvg)
 
-  public static LocalGasStation: React.ComponentType<IconProps> =
+  public static LocalGasStation: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalGasStationSvg)
 
-  public static LocalGroceryStore: React.ComponentType<IconProps> =
+  public static LocalGroceryStore: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalGroceryStoreSvg)
 
-  public static LocalHospital: React.ComponentType<IconProps> =
+  public static LocalHospital: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalHospitalSvg)
 
-  public static LocalLaundryService: React.ComponentType<IconProps> =
+  public static LocalLaundryService: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalLaundryServiceSvg)
 
-  public static LocalLibrary: React.ComponentType<IconProps> =
+  public static LocalLibrary: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalLibrarySvg)
 
-  public static LocalOffer: React.ComponentType<IconProps> =
+  public static LocalOffer: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalOfferSvg)
 
-  public static LocalParking: React.ComponentType<IconProps> =
+  public static LocalParking: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalParkingSvg)
 
-  public static LocalPharmacy: React.ComponentType<IconProps> =
+  public static LocalPharmacy: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalPharmacySvg)
 
-  public static LocalPolice: React.ComponentType<IconProps> =
+  public static LocalPolice: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalPoliceSvg)
 
-  public static LocalTaxi: React.ComponentType<IconProps> =
+  public static LocalTaxi: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocalTaxiSvg)
 
-  public static LocationCity: React.ComponentType<IconProps> =
+  public static LocationCity: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocationCitySvg)
 
-  public static LocationOn: React.ComponentType<IconProps> =
+  public static LocationOn: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LocationOnSvg)
 
-  public static Lock: React.ComponentType<IconProps> = makeUSWDSIcon(LockSvg)
+  public static Lock: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(LockSvg)
 
-  public static LockOpen: React.ComponentType<IconProps> =
+  public static LockOpen: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LockOpenSvg)
 
-  public static LockOutline: React.ComponentType<IconProps> =
+  public static LockOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LockOutlineSvg)
 
-  public static Login: React.ComponentType<IconProps> = makeUSWDSIcon(LoginSvg)
+  public static Login: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(LoginSvg)
 
-  public static Logout: React.ComponentType<IconProps> =
+  public static Logout: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(LogoutSvg)
 
-  public static Loop: React.ComponentType<IconProps> = makeUSWDSIcon(LoopSvg)
+  public static Loop: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(LoopSvg)
 
-  public static Mail: React.ComponentType<IconProps> = makeUSWDSIcon(MailSvg)
+  public static Mail: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(MailSvg)
 
-  public static MailOutline: React.ComponentType<IconProps> =
+  public static MailOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(MailOutlineSvg)
 
-  public static Map: React.ComponentType<IconProps> = makeUSWDSIcon(MapSvg)
+  public static Map: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(MapSvg)
 
-  public static Masks: React.ComponentType<IconProps> = makeUSWDSIcon(MasksSvg)
+  public static Masks: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(MasksSvg)
 
-  public static MedicalServices: React.ComponentType<IconProps> =
+  public static MedicalServices: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(MedicalServicesSvg)
 
-  public static Menu: React.ComponentType<IconProps> = makeUSWDSIcon(MenuSvg)
+  public static Menu: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(MenuSvg)
 
-  public static MilitaryTech: React.ComponentType<IconProps> =
+  public static MilitaryTech: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(MilitaryTechSvg)
 
-  public static MoreHoriz: React.ComponentType<IconProps> =
+  public static MoreHoriz: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(MoreHorizSvg)
 
-  public static MoreVert: React.ComponentType<IconProps> =
+  public static MoreVert: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(MoreVertSvg)
 
-  public static MyLocation: React.ComponentType<IconProps> =
+  public static MyLocation: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(MyLocationSvg)
 
-  public static NavigateBefore: React.ComponentType<IconProps> =
+  public static NavigateBefore: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NavigateBeforeSvg)
 
-  public static NavigateNext: React.ComponentType<IconProps> =
+  public static NavigateNext: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NavigateNextSvg)
 
-  public static NavigateFarBefore: React.ComponentType<IconProps> =
+  public static NavigateFarBefore: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NavigateFarBeforeSvg)
 
-  public static NavigateFarNext: React.ComponentType<IconProps> =
+  public static NavigateFarNext: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NavigateFarNextSvg)
 
-  public static NearMe: React.ComponentType<IconProps> =
+  public static NearMe: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NearMeSvg)
 
-  public static Notifications: React.ComponentType<IconProps> =
+  public static Notifications: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NotificationsSvg)
 
-  public static NotificationsActive: React.ComponentType<IconProps> =
+  public static NotificationsActive: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NotificationsActiveSvg)
 
-  public static NotificationsNone: React.ComponentType<IconProps> =
+  public static NotificationsNone: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NotificationsNoneSvg)
 
-  public static NotificationsOff: React.ComponentType<IconProps> =
+  public static NotificationsOff: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(NotificationsOffSvg)
 
-  public static Park: React.ComponentType<IconProps> = makeUSWDSIcon(ParkSvg)
+  public static Park: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ParkSvg)
 
-  public static People: React.ComponentType<IconProps> =
+  public static People: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(PeopleSvg)
 
-  public static Person: React.ComponentType<IconProps> =
+  public static Person: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(PersonSvg)
 
-  public static Pets: React.ComponentType<IconProps> = makeUSWDSIcon(PetsSvg)
+  public static Pets: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(PetsSvg)
 
-  public static Phone: React.ComponentType<IconProps> = makeUSWDSIcon(PhoneSvg)
+  public static Phone: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(PhoneSvg)
 
-  public static PhotoCamera: React.ComponentType<IconProps> =
+  public static PhotoCamera: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(PhotoCameraSvg)
 
-  public static Print: React.ComponentType<IconProps> = makeUSWDSIcon(PrintSvg)
+  public static Print: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(PrintSvg)
 
-  public static PriorityHigh: React.ComponentType<IconProps> =
+  public static PriorityHigh: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(PriorityHighSvg)
 
-  public static Public: React.ComponentType<IconProps> =
+  public static Public: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(PublicSvg)
 
-  public static PushPin: React.ComponentType<IconProps> =
+  public static PushPin: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(PushPinSvg)
 
-  public static RadioButtonUnchecked: React.ComponentType<IconProps> =
+  public static RadioButtonUnchecked: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(RadioButtonUncheckedSvg)
 
-  public static Rain: React.ComponentType<IconProps> = makeUSWDSIcon(RainSvg)
+  public static Rain: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(RainSvg)
 
-  public static ReduceCapacity: React.ComponentType<IconProps> =
+  public static ReduceCapacity: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ReduceCapacitySvg)
 
-  public static RemoveCircle: React.ComponentType<IconProps> =
+  public static RemoveCircle: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(RemoveCircleSvg)
 
-  public static Remove: React.ComponentType<IconProps> =
+  public static Remove: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(RemoveSvg)
 
-  public static Report: React.ComponentType<IconProps> =
+  public static Report: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ReportSvg)
 
-  public static Restaurant: React.ComponentType<IconProps> =
+  public static Restaurant: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(RestaurantSvg)
 
-  public static RssFeed: React.ComponentType<IconProps> =
+  public static RssFeed: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(RssFeedSvg)
 
-  public static SafetyDivider: React.ComponentType<IconProps> =
+  public static SafetyDivider: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SafetyDividerSvg)
 
-  public static Sanitizer: React.ComponentType<IconProps> =
+  public static Sanitizer: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SanitizerSvg)
 
-  public static SaveAlt: React.ComponentType<IconProps> =
+  public static SaveAlt: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SaveAltSvg)
 
-  public static SevereWeather: React.ComponentType<IconProps> =
+  public static SevereWeather: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SevereWeatherSvg)
 
-  public static Schedule: React.ComponentType<IconProps> =
+  public static Schedule: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ScheduleSvg)
 
-  public static School: React.ComponentType<IconProps> =
+  public static School: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SchoolSvg)
 
-  public static Science: React.ComponentType<IconProps> =
+  public static Science: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ScienceSvg)
 
-  public static Search: React.ComponentType<IconProps> =
+  public static Search: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SearchSvg)
 
-  public static Security: React.ComponentType<IconProps> =
+  public static Security: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SecuritySvg)
 
-  public static Send: React.ComponentType<IconProps> = makeUSWDSIcon(SendSvg)
+  public static Send: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(SendSvg)
 
-  public static SentimentDissatisfied: React.ComponentType<IconProps> =
+  public static SentimentDissatisfied: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SentimentDissatisfiedSvg)
 
-  public static SentimentNeutral: React.ComponentType<IconProps> =
+  public static SentimentNeutral: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SentimentNeutralSvg)
 
-  public static SentimentSatisfied: React.ComponentType<IconProps> =
+  public static SentimentSatisfied: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SentimentSatisfiedSvg)
 
-  public static SentimentSatisfiedAlt: React.ComponentType<IconProps> =
+  public static SentimentSatisfiedAlt: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SentimentSatisfiedAltSvg)
 
-  public static SentimentVeryDissatisfied: React.ComponentType<IconProps> =
+  public static SentimentVeryDissatisfied: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SentimentVeryDissatisfiedSvg)
 
-  public static Settings: React.ComponentType<IconProps> =
+  public static Settings: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SettingsSvg)
 
-  public static Share: React.ComponentType<IconProps> = makeUSWDSIcon(ShareSvg)
+  public static Share: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(ShareSvg)
 
-  public static Shield: React.ComponentType<IconProps> =
+  public static Shield: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ShieldSvg)
 
-  public static ShoppingBasket: React.ComponentType<IconProps> =
+  public static ShoppingBasket: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ShoppingBasketSvg)
 
-  public static Snow: React.ComponentType<IconProps> = makeUSWDSIcon(SnowSvg)
+  public static Snow: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(SnowSvg)
 
-  public static Soap: React.ComponentType<IconProps> = makeUSWDSIcon(SoapSvg)
+  public static Soap: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(SoapSvg)
 
-  public static SocialDistance: React.ComponentType<IconProps> =
+  public static SocialDistance: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SocialDistanceSvg)
 
-  public static SortArrow: React.ComponentType<IconProps> =
+  public static SortArrow: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SortArrowSvg)
 
-  public static Spellcheck: React.ComponentType<IconProps> =
+  public static Spellcheck: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SpellcheckSvg)
 
-  public static Star: React.ComponentType<IconProps> = makeUSWDSIcon(StarSvg)
+  public static Star: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(StarSvg)
 
-  public static StarHalf: React.ComponentType<IconProps> =
+  public static StarHalf: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(StarHalfSvg)
 
-  public static StarOutline: React.ComponentType<IconProps> =
+  public static StarOutline: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(StarOutlineSvg)
 
-  public static Store: React.ComponentType<IconProps> = makeUSWDSIcon(StoreSvg)
+  public static Store: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(StoreSvg)
 
-  public static Support: React.ComponentType<IconProps> =
+  public static Support: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SupportSvg)
 
-  public static SupportAgent: React.ComponentType<IconProps> =
+  public static SupportAgent: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(SupportAgentSvg)
 
-  public static TextFields: React.ComponentType<IconProps> =
+  public static TextFields: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(TextFieldsSvg)
 
-  public static ThumbDownAlt: React.ComponentType<IconProps> =
+  public static ThumbDownAlt: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ThumbDownAltSvg)
 
-  public static ThumbUpAlt: React.ComponentType<IconProps> =
+  public static ThumbUpAlt: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ThumbUpAltSvg)
 
-  public static Timer: React.ComponentType<IconProps> = makeUSWDSIcon(TimerSvg)
+  public static Timer: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(TimerSvg)
 
-  public static ToggleOff: React.ComponentType<IconProps> =
+  public static ToggleOff: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ToggleOffSvg)
 
-  public static ToggleOn: React.ComponentType<IconProps> =
+  public static ToggleOn: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ToggleOnSvg)
 
-  public static Topic: React.ComponentType<IconProps> = makeUSWDSIcon(TopicSvg)
+  public static Topic: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(TopicSvg)
 
-  public static Tornado: React.ComponentType<IconProps> =
+  public static Tornado: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(TornadoSvg)
 
-  public static Translate: React.ComponentType<IconProps> =
+  public static Translate: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(TranslateSvg)
 
-  public static TrendingDown: React.ComponentType<IconProps> =
+  public static TrendingDown: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(TrendingDownSvg)
 
-  public static TrendingUp: React.ComponentType<IconProps> =
+  public static TrendingUp: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(TrendingUpSvg)
 
-  public static Twitter: React.ComponentType<IconProps> =
+  public static Twitter: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(TwitterSvg)
 
-  public static Undo: React.ComponentType<IconProps> = makeUSWDSIcon(UndoSvg)
+  public static Undo: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(UndoSvg)
 
-  public static UnfoldLess: React.ComponentType<IconProps> =
+  public static UnfoldLess: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(UnfoldLessSvg)
 
-  public static UnfoldMore: React.ComponentType<IconProps> =
+  public static UnfoldMore: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(UnfoldMoreSvg)
 
-  public static Update: React.ComponentType<IconProps> =
+  public static Update: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(UpdateSvg)
 
-  public static UploadFile: React.ComponentType<IconProps> =
+  public static UploadFile: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(UploadFileSvg)
 
-  public static Verified: React.ComponentType<IconProps> =
+  public static Verified: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(VerifiedSvg)
 
-  public static VerifiedUser: React.ComponentType<IconProps> =
+  public static VerifiedUser: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(VerifiedUserSvg)
 
-  public static Visibility: React.ComponentType<IconProps> =
+  public static Visibility: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(VisibilitySvg)
 
-  public static VisibilityOff: React.ComponentType<IconProps> =
+  public static VisibilityOff: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(VisibilityOffSvg)
 
-  public static VolumeOff: React.ComponentType<IconProps> =
+  public static VolumeOff: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(VolumeOffSvg)
 
-  public static Warning: React.ComponentType<IconProps> =
+  public static Warning: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(WarningSvg)
 
-  public static Wash: React.ComponentType<IconProps> = makeUSWDSIcon(WashSvg)
+  public static Wash: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(WashSvg)
 
-  public static Wifi: React.ComponentType<IconProps> = makeUSWDSIcon(WifiSvg)
+  public static Wifi: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(WifiSvg)
 
-  public static Work: React.ComponentType<IconProps> = makeUSWDSIcon(WorkSvg)
+  public static Work: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(WorkSvg)
 
-  public static X: React.ComponentType<IconProps> = makeUSWDSIcon(XSvg)
+  public static X: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = makeUSWDSIcon(XSvg)
 
-  public static Youtube: React.ComponentType<IconProps> =
+  public static Youtube: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(YoutubeSvg)
 
-  public static ZoomIn: React.ComponentType<IconProps> =
+  public static ZoomIn: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ZoomInSvg)
 
-  public static ZoomOutMap: React.ComponentType<IconProps> =
+  public static ZoomOutMap: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ZoomOutMapSvg)
 
-  public static ZoomOut: React.ComponentType<IconProps> =
+  public static ZoomOut: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> =
     makeUSWDSIcon(ZoomOutSvg)
 }
 

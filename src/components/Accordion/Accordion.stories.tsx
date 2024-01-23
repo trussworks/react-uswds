@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion, AccordionItemProps } from './Accordion'
+import Accordion, { AccordionItemProps } from './Accordion'
 
 export default {
   title: 'Components/Accordion',

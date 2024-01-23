@@ -1,8 +1,8 @@
 import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
-import {
+import 
   LanguageSelector,
-  LanguageDefinition,
+  {LanguageDefinition
 } from '../LanguageSelector/LanguageSelector'
 
 const voidLink = '#test'

@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-export interface InputGroupProps {
-  children: React.ReactNode
-  className?: string
+export interface BaseInputGroupProps {
   error?: boolean
 }
 
-export const InputGroup = ({
+export type InputGroupProps = BaseInputGroupProps & JSX.IntrinsicElements['div']
+
+export const InputGroupForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, InputGroupProps> = ({
   children,
   className,
   error,
-}: InputGroupProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-input-group',
     { 'usa-input-group--error': error },
@@ -19,8 +20,12 @@ export const InputGroup = ({
   )
 
   return (
-    <div data-testid="inputGroup" className={classes}>
+    <div ref={ref} data-testid="inputGroup" className={classes} {...props}>
       {children}
     </div>
   )
 }
+
+export const InputGroup = forwardRef(InputGroupForwardRef)
+
+export default InputGroup

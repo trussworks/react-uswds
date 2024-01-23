@@ -1,19 +1,22 @@
 import classnames from 'classnames'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, forwardRef } from 'react'
 
 export type IconListIconProps = JSX.IntrinsicElements['div']
 
-export const IconListIcon = ({
+export const IconListIconForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, IconListIconProps> = ({
   className,
   children,
   ...divProps
-}: IconListIconProps): ReactElement => {
+}, ref): ReactElement => {
   const classes = classnames(className, 'usa-icon-list__icon')
 
   return (
-    <div className={classes} {...divProps} data-testid="iconListIcon">
+    <div ref={ref} className={classes} {...divProps} data-testid="iconListIcon">
       {children}
     </div>
   )
 }
-export default IconListIconProps
+
+export const IconListIcon = forwardRef(IconListIconForwardRef)
+
+export default IconListIcon

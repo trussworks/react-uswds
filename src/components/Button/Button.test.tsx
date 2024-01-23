@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 jest.mock('../../deprecation')
-import { Button } from './Button'
+import Button from './Button'
 
 describe('Button component', () => {
   beforeEach(() => {

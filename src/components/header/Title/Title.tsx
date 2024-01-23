@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type TitleProps = JSX.IntrinsicElements['div']
 
-export const Title = ({
+export const TitleFowardRef: React.ForwardRefRenderFunction<HTMLDivElement, TitleProps> = ({
   className,
   children,
   ...divProps
-}: TitleProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-logo', className)
 
   return (
-    <div className={classes} {...divProps}>
+    <div ref={ref} className={classes} {...divProps}>
       <em className="usa-logo__text">{children}</em>
     </div>
   )
 }
+
+export const Title = forwardRef(TitleFowardRef)
 
 export default Title

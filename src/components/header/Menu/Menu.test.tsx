@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Menu } from './Menu'
+import Menu from './Menu'
 
 const testItems = [
   <a href="#linkOne" key="one">

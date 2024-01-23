@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { BreadcrumbLink } from './BreadcrumbLink'
+import BreadcrumbLink from './BreadcrumbLink'
 
 const testPageName = 'Test Page'
 

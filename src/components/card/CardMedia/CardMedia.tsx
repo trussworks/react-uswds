@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseCardMediaProps {
@@ -10,14 +10,14 @@ export interface BaseCardMediaProps {
 
 export type CardMediaProps = BaseCardMediaProps & JSX.IntrinsicElements['div']
 
-export const CardMedia = ({
+export const CardMediaForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CardMediaProps> = ({
   exdent,
   inset,
   imageClass,
   children,
   className,
   ...mediaProps
-}: CardMediaProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-card__media',
     {
@@ -30,10 +30,12 @@ export const CardMedia = ({
   const imageClasses = classnames('usa-card__img', imageClass)
 
   return (
-    <div className={classes} {...mediaProps} data-testid="CardMedia">
+    <div ref={ref} className={classes} {...mediaProps} data-testid="CardMedia">
       <div className={imageClasses}>{children}</div>
     </div>
   )
 }
+
+export const CardMedia = forwardRef(CardMediaForwardRef)
 
 export default CardMedia

@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { ModalRef } from './Modal'
-import { ModalToggleButton } from './ModalToggleButton'
+import ModalToggleButton from './ModalToggleButton'
 import userEvent from '@testing-library/user-event'
 
 describe('ModalToggleButton', () => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseCollectionMetaItemTagProps {
@@ -8,12 +8,12 @@ export interface BaseCollectionMetaItemTagProps {
 export type CollectionMetaItemTagProps = BaseCollectionMetaItemTagProps &
   JSX.IntrinsicElements['li']
 
-export const CollectionMetaItemTag = ({
+export const CollectionMetaItemTagForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CollectionMetaItemTagProps> = ({
   className,
   children,
   tagStyle,
   ...props
-}: CollectionMetaItemTagProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-collection__meta-item',
     'usa-tag',
@@ -22,8 +22,12 @@ export const CollectionMetaItemTag = ({
   )
 
   return (
-    <li className={classes} {...props}>
+    <li ref={ref} className={classes} {...props}>
       {children}
     </li>
   )
 }
+
+export const CollectionMetaItem = forwardRef(CollectionMetaItemTagForwardRef)
+
+export default CollectionMetaItem

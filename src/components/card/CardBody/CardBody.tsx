@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseCardBodyProps {
@@ -7,7 +7,7 @@ export interface BaseCardBodyProps {
 
 export type CardBodyProps = BaseCardBodyProps & JSX.IntrinsicElements['div']
 
-export const CardBody = ({
+export const CardBodyForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, CardBodyProps> = ({
   exdent,
   children,
   className,
@@ -27,5 +27,7 @@ export const CardBody = ({
     </div>
   )
 }
+
+export const CardBody = forwardRef(CardBodyForwardRef)
 
 export default CardBody

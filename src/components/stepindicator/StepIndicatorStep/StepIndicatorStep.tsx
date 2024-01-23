@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 export interface BaseStepIndicatorStepProps {
   label: string
@@ -9,7 +9,7 @@ export interface BaseStepIndicatorStepProps {
 export type StepIndicatorStepProps = BaseStepIndicatorStepProps &
   JSX.IntrinsicElements['li']
 
-export const StepIndicatorStep = (
+export const StepIndicatorStepForwardRef = (
   props: StepIndicatorStepProps
 ): React.ReactElement => {
   const { label, status = 'incomplete', className, ...liProps } = props
@@ -40,3 +40,7 @@ export const StepIndicatorStep = (
     </li>
   )
 }
+
+export const StepIndicatorStep = forwardRef(StepIndicatorStepForwardRef)
+
+export default StepIndicatorStep

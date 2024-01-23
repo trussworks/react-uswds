@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import classnames from 'classnames'
-import { LanguageSelectorButton } from './LanguageSelectorButton'
+import LanguageSelectorButton from './LanguageSelectorButton'
 import LanguageSelectorDropdown from './LanguageSelectorDropdown'
 
 export type LanguageDefinition = {
@@ -21,14 +21,14 @@ export type BaseLanguageSelectorProps = {
 export type LanguageSelectorProps = BaseLanguageSelectorProps &
   JSX.IntrinsicElements['div']
 
-export const LanguageSelector = ({
+export const LanguageSelectorForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, LanguageSelectorProps> = ({
   label,
   langs,
   small,
   className,
   displayLang,
   ...divProps
-}: LanguageSelectorProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-language-container',
     {
@@ -59,7 +59,7 @@ export const LanguageSelector = ({
           }
         : curLang.on_click
     return (
-      <div className={classes} data-testid="languageSelector" {...divProps}>
+      <div ref={ref} className={classes} data-testid="languageSelector" {...divProps}>
         <LanguageSelectorButton
           className={classes}
           label={curLang.label}
@@ -73,5 +73,7 @@ export const LanguageSelector = ({
     )
   }
 }
+
+export const LanguageSelector = forwardRef(LanguageSelectorForwardRef)
 
 export default LanguageSelector

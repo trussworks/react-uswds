@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import { CharacterCount } from './CharacterCount'
+import CharacterCount from './CharacterCount'
 
 describe('CharacterCount component', () => {
   afterEach(() => jest.clearAllMocks())

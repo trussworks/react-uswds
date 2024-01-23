@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseSiteAlertProps = {
@@ -13,7 +13,7 @@ export type BaseSiteAlertProps = {
 export type SiteAlertProps = BaseSiteAlertProps &
   JSX.IntrinsicElements['section']
 
-export const SiteAlert = ({
+export const SiteAlertForwardRef: React.ForwardRefRenderFunction<HTMLElement, SiteAlertProps> = ({
   variant,
   children,
   heading,
@@ -21,7 +21,7 @@ export const SiteAlert = ({
   slim = false,
   className,
   ...sectionProps
-}: SiteAlertProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-site-alert',
     {
@@ -41,6 +41,7 @@ export const SiteAlert = ({
 
   return (
     <section
+      ref={ref}
       data-testid="siteAlert"
       className={classes}
       aria-label="Site alert"
@@ -54,5 +55,7 @@ export const SiteAlert = ({
     </section>
   )
 }
+
+export const SiteAlert = forwardRef(SiteAlertForwardRef)
 
 export default SiteAlert

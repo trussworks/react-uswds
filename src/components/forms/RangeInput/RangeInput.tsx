@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import classnames from 'classnames'
 
 export type BaseRangeInputProps = {
@@ -8,6 +8,9 @@ export type BaseRangeInputProps = {
   max?: number
   textPreposition?: string
   textUnit?: string
+  /**
+   * @deprecated Use ref instead
+   */
   inputRef?:
     | string
     | ((instance: HTMLInputElement | null) => void)
@@ -19,13 +22,13 @@ export type BaseRangeInputProps = {
 export type RangeInputProps = BaseRangeInputProps &
   JSX.IntrinsicElements['input']
 
-export const RangeInput = ({
+export const RangeInputForwardRef: React.ForwardRefRenderFunction<HTMLInputElement, RangeInputProps> = ({
   className,
   inputRef,
   textPreposition,
   textUnit,
   ...inputProps
-}: RangeInputProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-range', className)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0
@@ -58,7 +61,7 @@ export const RangeInput = ({
       data-testid="range"
       aria-valuetext={callout}
       className={classes}
-      ref={inputRef}
+      ref={ref ?? inputRef}
       type="range"
       {...remainingInputProps}
       min={rangeMin}
@@ -68,5 +71,7 @@ export const RangeInput = ({
     />
   )
 }
+
+export const RangeInput = forwardRef(RangeInputForwardRef)
 
 export default RangeInput

@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type IdentifierMastheadProps = JSX.IntrinsicElements['section']
 
-export const IdentifierMasthead = ({
+export const IdentifierMastheadForwardRef: React.ForwardRefRenderFunction<HTMLElement, IdentifierMastheadProps> = ({
   className,
   children,
   ...sectionProps
-}: IdentifierMastheadProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--masthead',
     className
@@ -15,6 +15,7 @@ export const IdentifierMasthead = ({
 
   return (
     <section
+      ref={ref}
       data-testid="identifierMasthead"
       className={classes}
       {...sectionProps}>
@@ -22,5 +23,7 @@ export const IdentifierMasthead = ({
     </section>
   )
 }
+
+export const IdentifierMasthead = forwardRef(IdentifierMastheadForwardRef)
 
 export default IdentifierMasthead

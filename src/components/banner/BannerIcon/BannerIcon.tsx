@@ -1,18 +1,19 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, forwardRef } from 'react'
 import classNames from 'classnames'
 
 export type BannerIconProps = JSX.IntrinsicElements['img']
 
-export const BannerIcon = ({
+export const BannerIconForwardRef: React.ForwardRefRenderFunction<HTMLImageElement, BannerIconProps> = ({
   src,
   alt,
   className,
   ...imgProps
-}: BannerIconProps): ReactElement => {
+}, ref): ReactElement => {
   const classes = classNames('usa-banner__icon usa-media-block__img', className)
 
   return (
     <img
+      ref={ref}
       className={classes}
       src={src}
       alt={alt}
@@ -21,3 +22,7 @@ export const BannerIcon = ({
     />
   )
 }
+
+export const BannerIcon = forwardRef(BannerIconForwardRef)
+
+export default BannerIcon

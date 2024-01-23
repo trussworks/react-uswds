@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseIconProps {
@@ -11,9 +11,9 @@ export interface BaseIconProps {
 export type IconProps = BaseIconProps & JSX.IntrinsicElements['svg']
 
 export const makeUSWDSIcon = (
-  Component: React.ComponentType<IconProps>
-): React.FunctionComponent => {
-  const IconFunctionalComponent = (props: IconProps): JSX.Element => {
+  Component: React.ForwardRefRenderFunction<SVGSVGElement, IconProps>
+): React.ForwardRefRenderFunction<SVGSVGElement, IconProps> => {
+  const IconFunctionalComponentForwardRef: React.ForwardRefRenderFunction<SVGSVGElement, IconProps> = (props: IconProps, ref): JSX.Element => {
     const {
       size,
       className,
@@ -37,8 +37,9 @@ export const makeUSWDSIcon = (
       ...iconProps,
     }
 
-    return <Component {...finalProps} />
+    return <Component ref={ref} {...finalProps} />
   }
+  const IconFunctionalComponent = forwardRef(IconFunctionalComponentForwardRef)
   IconFunctionalComponent.displayName = Component.displayName
   return IconFunctionalComponent
 }

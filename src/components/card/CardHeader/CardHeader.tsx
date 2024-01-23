@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseCardHeaderProps {
@@ -8,12 +8,12 @@ export interface BaseCardHeaderProps {
 export type CardHeaderProps = BaseCardHeaderProps &
   JSX.IntrinsicElements['header']
 
-export const CardHeader = ({
+export const CardHeaderFowardRef: React.ForwardRefRenderFunction<HTMLElement, CardHeaderProps> = ({
   exdent,
   children,
   className,
   ...headerProps
-}: CardHeaderProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-card__header',
     {
@@ -23,10 +23,12 @@ export const CardHeader = ({
   )
 
   return (
-    <header className={classes} {...headerProps} data-testid="CardHeader">
+    <header ref={ref} className={classes} {...headerProps} data-testid="CardHeader">
       {children}
     </header>
   )
 }
+
+export const CardHeader = forwardRef(CardHeaderFowardRef)
 
 export default CardHeader

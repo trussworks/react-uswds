@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import { Menu } from '../header/Menu/Menu'
-import { LanguageSelectorButton } from './LanguageSelectorButton'
+import LanguageSelectorButton from './LanguageSelectorButton'
 import classnames from 'classnames'
 import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
-import { Button } from '../Button/Button'
+import Button from '../Button/Button'
 
 export const generateMenuItems = (langs: LanguageDefinition[]) => {
   return langs.map((lang, index) => {
@@ -36,14 +36,14 @@ export const generateMenuItems = (langs: LanguageDefinition[]) => {
   })
 }
 
-const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
+export const LanguageSelectorDropdownForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, LanguageSelectorProps> = ({
   label,
   langs,
   small,
   className,
   displayLang,
   ...divProps
-}) => {
+}, ref) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const classes = classnames(
@@ -56,7 +56,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
   const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
 
   return (
-    <div className={classes} data-testid="languageSelector" {...divProps}>
+    <div ref={ref} className={classes} data-testid="languageSelector" {...divProps}>
       <ul className="usa-language__primary usa-accordion">
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
@@ -76,5 +76,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
     </div>
   )
 }
+
+export const LanguageSelectorDropdown = forwardRef(LanguageSelectorDropdownForwardRef)
 
 export default LanguageSelectorDropdown

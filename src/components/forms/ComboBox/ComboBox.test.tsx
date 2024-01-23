@@ -2,8 +2,8 @@ import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { ComboBox, ComboBoxRef } from './ComboBox'
-import { TextInput } from '../TextInput/TextInput'
+import ComboBox, { ComboBoxRef } from './ComboBox'
+import TextInput from '../TextInput/TextInput'
 import { fruits } from './fruits'
 
 /*

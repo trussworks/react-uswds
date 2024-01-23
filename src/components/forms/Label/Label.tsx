@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
-import { RequiredMarker } from './RequiredMarker'
+import RequiredMarker from './RequiredMarker'
 
 export type BaseLabelProps = {
   children: React.ReactNode
@@ -14,7 +14,7 @@ export type BaseLabelProps = {
 
 export type LabelProps = BaseLabelProps & JSX.IntrinsicElements['label']
 
-export const Label = ({
+export const LabelForwardRef: React.ForwardRefRenderFunction<HTMLLabelElement, LabelProps> = ({
   children,
   htmlFor,
   className,
@@ -23,7 +23,7 @@ export const Label = ({
   srOnly,
   requiredMarker,
   ...labelProps
-}: LabelProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     {
       'usa-label': !srOnly,
@@ -35,6 +35,7 @@ export const Label = ({
 
   return (
     <label
+      ref={ref}
       {...labelProps}
       data-testid="label"
       className={classes}
@@ -50,5 +51,7 @@ export const Label = ({
     </label>
   )
 }
+
+export const Label = forwardRef(LabelForwardRef)
 
 export default Label

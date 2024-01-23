@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react'
+import React, { ReactElement, ReactNode, forwardRef } from 'react'
 import classNames from 'classnames'
 
 export type BaseBannerHeaderProps = {
@@ -14,7 +14,7 @@ export type BaseBannerHeaderProps = {
 export type BannerHeaderProps = BaseBannerHeaderProps &
   JSX.IntrinsicElements['header']
 
-export const BannerHeader = ({
+export const BannerHeaderForwardRef: React.ForwardRefRenderFunction<HTMLElement, BannerHeaderProps> = ({
   children,
   isOpen,
   flagImg,
@@ -25,7 +25,7 @@ export const BannerHeader = ({
   headerActionProps,
   className,
   ...headerProps
-}: BannerHeaderProps): ReactElement => {
+}, ref): ReactElement => {
   const classes = classNames(
     'usa-banner__header',
     {
@@ -53,7 +53,7 @@ export const BannerHeader = ({
   )
 
   return (
-    <header className={classes} {...headerProps}>
+    <header ref={ref} className={classes} {...headerProps}>
       <div
         className={innerDivClasses}
         {...remainingInnerDivProps}
@@ -82,3 +82,7 @@ export const BannerHeader = ({
     </header>
   )
 }
+
+export const BannerHeader = forwardRef(BannerHeaderForwardRef)
+
+export default BannerHeader

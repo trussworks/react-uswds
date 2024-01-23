@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseCollectionProps = {
@@ -7,20 +7,24 @@ export type BaseCollectionProps = {
 
 export type CollectionProps = BaseCollectionProps & JSX.IntrinsicElements['ul']
 
-export const Collection = ({
+export const CollectionForwardRef: React.ForwardRefRenderFunction<HTMLUListElement, CollectionProps> = ({
   children,
   className,
   condensed,
   ...ulProps
-}: CollectionProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-collection',
     { 'usa-collection--condensed': condensed },
     className
   )
   return (
-    <ul className={classes} data-testid="collection" {...ulProps}>
+    <ul ref={ref} className={classes} data-testid="collection" {...ulProps}>
       {children}
     </ul>
   )
 }
+
+export const Collection = forwardRef(CollectionForwardRef)
+
+export default Collection

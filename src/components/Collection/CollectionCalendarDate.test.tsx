@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { CollectionCalendarDate } from './CollectionCalendarDate'
+import CollectionCalendarDate from './CollectionCalendarDate'
 
 describe('CollectionCalendarDate', () => {
   it('renders without errors', () => {

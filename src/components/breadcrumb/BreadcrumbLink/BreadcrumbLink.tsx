@@ -1,22 +1,19 @@
 import classnames from 'classnames'
-import React from 'react'
-import {
+import React, { forwardRef } from 'react'
+import Link, {
   CustomLinkProps,
   DefaultLinkProps,
   isCustomProps,
-  Link,
 } from '../../Link/Link'
 
 export type BreadcrumbLinkProps<FCProps = DefaultLinkProps> =
   | DefaultLinkProps
   | CustomLinkProps<FCProps>
 
-export function BreadcrumbLink(props: DefaultLinkProps): React.ReactElement
-export function BreadcrumbLink<T>(props: CustomLinkProps<T>): React.ReactElement
-export function BreadcrumbLink<FCProps = DefaultLinkProps>({
+export const BreadcrumbLinkForwardRef: React.ForwardRefRenderFunction<HTMLAnchorElement, BreadcrumbLinkProps> = ({
   className,
   ...passThroughProps
-}: BreadcrumbLinkProps<FCProps>): React.ReactElement {
+}, ref): React.ReactElement => {
   const classes = classnames(className, 'usa-breadcrumb__link')
 
   const linkProps = {
@@ -25,8 +22,12 @@ export function BreadcrumbLink<FCProps = DefaultLinkProps>({
   } as DefaultLinkProps | CustomLinkProps<FCProps>
 
   if (isCustomProps(linkProps)) {
-    return <Link<FCProps> {...linkProps} variant="unstyled" />
+    return <Link ref={ref} {...linkProps} variant="unstyled" />
   }
 
-  return <Link {...linkProps} variant="unstyled" />
+  return <Link ref={ref} {...linkProps} variant="unstyled" />
 }
+
+export const BreadcrumbLink = forwardRef(BreadcrumbLinkForwardRef)
+
+export default BreadcrumbLink

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import {
   FooterExtendedNavList,
   ExtendedNavLinksType,
@@ -24,13 +24,13 @@ export type BaseFooterNavProps = {
 export type FooterNavProps = BaseFooterNavProps &
   React.HTMLAttributes<HTMLElement>
 
-export const FooterNav = ({
+export const FooterNavForwardRef: React.ForwardRefRenderFunction<HTMLElement, FooterNavProps> = ({
   className,
   size,
   isMobile,
   links,
   ...elementAttributes
-}: FooterNavProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
@@ -46,7 +46,7 @@ export const FooterNav = ({
   )
 
   return (
-    <nav className={navClasses} {...elementAttributes}>
+    <nav ref={ref} className={navClasses} {...elementAttributes}>
       {isBig && isExtendedNavLinks(links) && (
         <FooterExtendedNavList isMobile={isMobile} nestedLinks={links} />
       )}
@@ -63,3 +63,7 @@ export const FooterNav = ({
     </nav>
   )
 }
+
+export const FooterNav = forwardRef(FooterNavForwardRef)
+
+export default FooterNav

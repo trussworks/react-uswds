@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
@@ -13,12 +13,14 @@ export interface AccordionItemProps {
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export type AccordionProps = {
+export type BaseAccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
   className?: string
 }
+
+export type AccordionProps = BaseAccordionProps & JSX.IntrinsicElements['div']
 
 export const AccordionItem = ({
   title,
@@ -62,12 +64,12 @@ export const AccordionItem = ({
   )
 }
 
-export const Accordion = ({
+export const AccordionForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, AccordionProps> = ({
   bordered,
   items,
   className,
   multiselectable = false,
-}: AccordionProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}, ref ): React.ReactElement => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
@@ -100,6 +102,7 @@ export const Accordion = ({
 
   return (
     <div
+      ref={ref}
       className={classes}
       data-testid="accordion"
       data-allow-multiple={multiselectable || undefined}>
@@ -116,5 +119,7 @@ export const Accordion = ({
     </div>
   )
 }
+
+export const Accordion = forwardRef(AccordionForwardRef);
 
 export default Accordion

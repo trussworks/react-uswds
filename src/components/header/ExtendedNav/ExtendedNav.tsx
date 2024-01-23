@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
@@ -16,7 +16,7 @@ export type BaseExtendedNavProps = {
 export type ExtendedNavProps = BaseExtendedNavProps &
   JSX.IntrinsicElements['nav']
 
-export const ExtendedNav = ({
+export const ExtendedNavForwardRef: React.ForwardRefRenderFunction<HTMLElement, ExtendedNavProps> = ({
   primaryItems,
   secondaryItems,
   mobileExpanded = false,
@@ -24,7 +24,7 @@ export const ExtendedNav = ({
   className,
   onToggleMobileNav,
   ...navProps
-}: ExtendedNavProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-nav',
     {
@@ -34,7 +34,7 @@ export const ExtendedNav = ({
   )
 
   return (
-    <nav className={classes} {...navProps}>
+    <nav ref={ref} className={classes} {...navProps}>
       <div className="usa-nav__inner">
         <NavCloseButton onClick={onToggleMobileNav} />
         <NavList items={primaryItems} type="primary" />
@@ -46,5 +46,7 @@ export const ExtendedNav = ({
     </nav>
   )
 }
+
+export const ExtendedNav = forwardRef(ExtendedNavForwardRef)
 
 export default ExtendedNav

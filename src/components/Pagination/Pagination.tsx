@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { Icon } from '../Icon/Icons'
-import { Link } from '../Link/Link'
-import { Button } from '../Button/Button'
+import Link from '../Link/Link'
+import Button from '../Button/Button'
 
 export type BasePaginationProps = {
   pathname: string // pathname of results page
@@ -29,18 +29,19 @@ export interface PaginationPageProps {
   ) => void
 }
 
-export const PaginationPage = ({
+export const PaginationPageForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, PaginationPageProps> = ({
   page,
   isCurrent,
   pathname,
   onClickPageNumber,
-}: PaginationPageProps) => {
+}, ref) => {
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent,
   })
 
   return (
     <li
+      ref={ref}
       key={`pagination_page_${page}`}
       className="usa-pagination__item usa-pagination__page-no">
       {onClickPageNumber ? (
@@ -69,15 +70,23 @@ export const PaginationPage = ({
   )
 }
 
-export const PaginationOverflow = () => (
+export const PaginationPage = forwardRef(PaginationPageForwardRef)
+
+export type PaginationOverflowProps = JSX.IntrinsicElements['li']
+
+export const PaginationOverflowForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, PaginationOverflowProps> = (props, ref) => (
   <li
+    ref={ref}
     className="usa-pagination__item usa-pagination__overflow"
-    role="presentation">
+    role="presentation"
+    {...props}>
     <span>…</span>
   </li>
 )
 
-export const Pagination = ({
+export const PaginationOverflow = forwardRef(PaginationOverflowForwardRef)
+
+export const PaginationForwardRef: React.ForwardRefRenderFunction<HTMLElement, PaginationProps> = ({
   pathname,
   totalPages,
   currentPage,
@@ -87,7 +96,7 @@ export const Pagination = ({
   onClickNext,
   onClickPageNumber,
   ...props
-}: PaginationProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1
@@ -166,7 +175,7 @@ export const Pagination = ({
   const nextPage = !isOnLastPage && currentPage + 1
 
   return (
-    <nav aria-label="Pagination" className={navClasses} {...props}>
+    <nav ref={ref} aria-label="Pagination" className={navClasses} {...props}>
       <ul className="usa-pagination__list">
         {prevPage && (
           <li className="usa-pagination__item usa-pagination__arrow">
@@ -235,3 +244,7 @@ export const Pagination = ({
     </nav>
   )
 }
+
+export const Pagination = forwardRef(PaginationForwardRef)
+
+export default Pagination

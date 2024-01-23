@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Pagination } from './Pagination'
+import Pagination from './Pagination'
 import type { Meta, StoryFn } from '@storybook/react'
 
 export default {

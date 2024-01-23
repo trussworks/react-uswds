@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Banner } from './Banner'
+import Banner from './Banner'
 
 describe('Banner component', () => {
   it('renders properly', () => {

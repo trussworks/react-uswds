@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'
@@ -13,7 +13,7 @@ export type CardProps = BaseCardProps &
   JSX.IntrinsicElements['li'] &
   GridLayoutProp
 
-export const Card = ({
+export const CardForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CardProps> = ({
   layout = 'standardDefault',
   headerFirst,
   children,
@@ -21,7 +21,7 @@ export const Card = ({
   gridLayout,
   containerProps,
   ...liProps
-}: CardProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const { className: containerClass, ...restContainerProps } =
     containerProps || {}
 
@@ -41,12 +41,14 @@ export const Card = ({
   const containerClasses = classnames('usa-card__container', containerClass)
 
   return (
-    <li className={classes} data-testid="Card" {...liProps}>
+    <li ref={ref} className={classes} data-testid="Card" {...liProps}>
       <div className={containerClasses} {...restContainerProps}>
         {children}
       </div>
     </li>
   )
 }
+
+export const Card = forwardRef(CardForwardRef)
 
 export default Card

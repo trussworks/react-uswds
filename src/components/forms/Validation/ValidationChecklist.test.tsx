@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { ValidationChecklist } from './ValidationChecklist'
+import ValidationChecklist from './ValidationChecklist'
 
 describe('ValidationChecklist', () => {
   it('renders without errors', () => {

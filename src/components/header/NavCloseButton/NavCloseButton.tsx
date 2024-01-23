@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 // assets
-import { Icon } from '../../Icon/Icons'
+import Icon from '../../Icon/Icons'
 
-export type NavCloseButton = JSX.IntrinsicElements['button']
+export type NavCloseButtonProps = JSX.IntrinsicElements['button']
 
-export const NavCloseButton = ({
+export const NavCloseButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, NavCloseButtonProps> = ({
   onClick,
   className,
   ...buttonProps
-}: NavCloseButton): React.ReactElement => {
+}: NavCloseButtonProps): React.ReactElement => {
   const classes = classnames('usa-nav__close', className)
 
   return (
@@ -24,3 +24,7 @@ export const NavCloseButton = ({
     </button>
   )
 }
+
+export const NavCloseButton = forwardRef(NavCloseButtonForwardRef)
+
+export default NavCloseButton

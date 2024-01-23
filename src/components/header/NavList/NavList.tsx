@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseNavListProps = {
@@ -14,12 +14,12 @@ export type BaseNavListProps = {
 
 export type NavListProps = BaseNavListProps & JSX.IntrinsicElements['ul']
 
-export const NavList = ({
+export const NavListFowardRef: React.ForwardRefRenderFunction<HTMLUListElement, NavListProps> = ({
   items,
   type,
   className,
   ...ulProps
-}: NavListProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const isPrimary = type === 'primary'
   const isSecondary = type === 'secondary'
   const isSubnav = type === 'subnav'
@@ -48,7 +48,7 @@ export const NavList = ({
   })
 
   return (
-    <ul className={ulClasses} {...ulProps}>
+    <ul ref={ref} className={ulClasses} {...ulProps}>
       {items.map((item, i) => (
         <li key={`item_${i}`} className={liClasses}>
           {item}
@@ -57,3 +57,7 @@ export const NavList = ({
     </ul>
   )
 }
+
+export const NavList = forwardRef(NavListFowardRef)
+
+export default NavList

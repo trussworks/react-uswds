@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, forwardRef } from 'react'
 import classNames from 'classnames'
 
 export type BaseBannerContentProps = {
@@ -8,20 +8,24 @@ export type BaseBannerContentProps = {
 export type BannerContentProps = BaseBannerContentProps &
   JSX.IntrinsicElements['div']
 
-export const BannerContent = ({
+export const BannerContentForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, BannerContentProps> = ({
   children,
   isOpen,
   className,
   ...divProps
-}: BannerContentProps): ReactElement => {
+}, ref): ReactElement => {
   const classes = classNames(
     'usa-banner__content usa-accordion__content',
     className
   )
 
   return (
-    <div className={classes} hidden={!isOpen} {...divProps}>
+    <div ref={ref} className={classes} hidden={!isOpen} {...divProps}>
       {children}
     </div>
   )
 }
+
+export const BannerContent = forwardRef(BannerContentForwardRef)
+
+export default BannerContent

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 import { HeadingLevel } from '../../../types/headingLevel'
@@ -20,8 +20,8 @@ export type StepIndicatorProps = {
   ofText?: string
 }
 
-export const StepIndicator = (
-  props: StepIndicatorProps
+export const StepIndicatorForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, StepIndicatorProps> = (
+  props, ref
 ): React.ReactElement => {
   const {
     showLabels = true,
@@ -79,6 +79,7 @@ export const StepIndicator = (
 
   return (
     <div
+      ref={ref}
       className={divClasses}
       data-testid="step-indicator"
       aria-label="progress"
@@ -107,3 +108,7 @@ export const StepIndicator = (
     </div>
   )
 }
+
+export const StepIndicator = forwardRef(StepIndicatorForwardRef)
+
+export default StepIndicator

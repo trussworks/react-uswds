@@ -57,14 +57,16 @@ export type ComboBoxProps = {
   disableFiltering?: boolean
 }
 
-export interface InputProps {
+export interface BaseInputProps {
   focused: boolean
 }
 
-const Input = ({
+export type InputProps = BaseInputProps & JSX.IntrinsicElements['input']
+
+export const Input = ({
   focused,
   ...inputProps
-}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: InputProps): React.ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (focused && inputRef.current) {
@@ -90,7 +92,7 @@ export type ComboBoxRef = {
   clearSelection: () => void
 }
 
-const ComboBoxForwardRef: React.ForwardRefRenderFunction<
+export const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   ComboBoxRef,
   ComboBoxProps
 > = (

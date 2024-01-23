@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseValidationChecklistProps {}
@@ -11,17 +11,19 @@ export type ValidationChecklistProps = BaseValidationChecklistProps &
   RequiredValidationChecklistProps &
   Omit<JSX.IntrinsicElements['ul'], 'id' | 'children'>
 
-export const ValidationChecklist = ({
+export const ValidationChecklistForwardRef: React.ForwardRefRenderFunction<HTMLUListElement, ValidationChecklistProps> = ({
   children,
   className,
   ...ulProps
-}: ValidationChecklistProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(className, 'usa-checklist')
   return (
-    <ul className={classes} data-testid="validationChecklist" {...ulProps}>
+    <ul ref={ref} className={classes} data-testid="validationChecklist" {...ulProps}>
       {children}
     </ul>
   )
 }
+
+export const ValidationChecklist = forwardRef(ValidationChecklistForwardRef)
 
 export default ValidationChecklist

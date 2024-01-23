@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-object-injection */
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import classnames from 'classnames'
-import { TextInput, TextInputProps } from '../TextInput/TextInput'
+import TextInput, { TextInputProps } from '../TextInput/TextInput'
 
 export interface BaseTextInputMaskProps {
   mask: string
@@ -44,7 +44,7 @@ export function maskString(value: string, mask: string, charset?: string) {
   return newValue
 }
 
-export const TextInputMask = ({
+export const TextInputMaskForwardRef: React.ForwardRefRenderFunction<HTMLElement, TextInputMaskProps> = ({
   id,
   className,
   mask,
@@ -53,7 +53,7 @@ export const TextInputMask = ({
   charset,
   onChange,
   ...inputProps
-}: AllProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     {
       'usa-masked': mask,
@@ -89,7 +89,7 @@ export const TextInputMask = ({
   }
 
   return (
-    <span className="usa-input-mask">
+    <span ref={ref} className="usa-input-mask">
       <span
         className="usa-input-mask--content"
         aria-hidden
@@ -109,5 +109,7 @@ export const TextInputMask = ({
     </span>
   )
 }
+
+export const TextInputMask = forwardRef(TextInputMaskForwardRef)
 
 export default TextInputMask

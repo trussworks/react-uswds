@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { SideNav } from './SideNav'
+import SideNav from './SideNav'
 
 const testItems = [
   <a href="#one" className="usa-current" key="one">

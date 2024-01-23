@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { SiteAlert } from './SiteAlert'
-import { Link } from '../Link/Link'
+import SiteAlert from './SiteAlert'
+import Link from '../Link/Link'
 
 export default {
   title: 'Components/SiteAlert',

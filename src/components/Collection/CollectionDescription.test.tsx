@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { CollectionDescription } from './CollectionDescription'
+import CollectionDescription from './CollectionDescription'
 
 describe('CollectionDescription component', () => {
   it('renders without errors', () => {

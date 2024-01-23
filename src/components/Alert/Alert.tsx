@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
@@ -18,7 +18,7 @@ export type BaseAlertProps = {
 
 export type AlertProps = BaseAlertProps & React.HTMLAttributes<HTMLDivElement>
 
-export const Alert = ({
+export const AlertForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, AlertProps> = ({
   type,
   heading,
   headingLevel,
@@ -29,7 +29,7 @@ export const Alert = ({
   className,
   validation,
   ...props
-}: AlertProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-alert',
     {
@@ -48,7 +48,7 @@ export const Alert = ({
   const Heading = headingLevel
 
   return (
-    <div className={classes} data-testid="alert" {...props}>
+    <div className={classes} data-testid="alert" ref={ref} {...props}>
       <div className="usa-alert__body">
         {heading && <Heading className="usa-alert__heading">{heading}</Heading>}
         {children &&
@@ -62,5 +62,7 @@ export const Alert = ({
     </div>
   )
 }
+
+export const Alert = forwardRef(AlertForwardRef)
 
 export default Alert

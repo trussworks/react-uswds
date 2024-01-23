@@ -1,7 +1,7 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import { Tooltip } from './Tooltip'
+import Tooltip from './Tooltip'
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
 jest.mock('./utils')

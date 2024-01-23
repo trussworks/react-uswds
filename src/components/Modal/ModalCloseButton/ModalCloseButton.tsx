@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Icon } from '../../Icon/Icons'
-import { Button } from '../../Button/Button'
+import Button from '../../Button/Button'
 
-interface ModalCloseButtonProps {
+export interface BaseModalCloseButtonProps {
   handleClose: () => void
 }
 
-export const ModalCloseButton = ({
+export type ModalCloseButtonProps = BaseModalCloseButtonProps & JSX.IntrinsicElements['button']
+
+export const ModalCloseButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, ModalCloseButtonProps> = ({
   handleClose,
   ...buttonProps
-}: ModalCloseButtonProps &
-  JSX.IntrinsicElements['button']): React.ReactElement => {
+}, ref): React.ReactElement => {
   return (
     <Button
+      ref={ref}
       aria-label="Close this window"
       {...buttonProps}
       className="usa-modal__close"
@@ -23,3 +25,7 @@ export const ModalCloseButton = ({
     </Button>
   )
 }
+
+export const ModalCloseButton = forwardRef(ModalCloseButtonForwardRef)
+
+export default ModalCloseButton

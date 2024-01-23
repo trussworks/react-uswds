@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { StepIndicatorStep } from './StepIndicatorStep'
+import StepIndicatorStep from './StepIndicatorStep'
 
 describe('Step component', () => {
   it('renders without errors', () => {

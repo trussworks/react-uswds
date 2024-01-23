@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, forwardRef } from 'react'
 import classnames from 'classnames'
 import { IdentifierLinkItemProps } from '../IdentifierLinkItem/IdentifierLinkItem'
 
@@ -11,19 +11,19 @@ export type IdentifierLinksProps = {
   listProps?: JSX.IntrinsicElements['ul']
 }
 
-export const IdentifierLinks = ({
+export const IdentifierLinksForwardRef: React.ForwardRefRenderFunction<HTMLElement, IdentifierLinksProps> = ({
   children,
   className,
   navProps,
   listProps,
-}: IdentifierLinksProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--required-links',
     className
   )
 
   return (
-    <nav className={classes} {...navProps}>
+    <nav ref={ref} className={classes} {...navProps}>
       <div className="usa-identifier__container">
         <ul className="usa-identifier__required-links-list" {...listProps}>
           {children}
@@ -32,5 +32,7 @@ export const IdentifierLinks = ({
     </nav>
   )
 }
+
+export const IdentifierLinks = forwardRef(IdentifierLinksForwardRef)
 
 export default IdentifierLinks

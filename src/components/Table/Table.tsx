@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 import styles from './Table.module.scss'
 
-export type TableProps = {
+export type BaseTableProps = {
   bordered?: boolean
   caption?: React.ReactNode
   children: React.ReactNode
-  className?: string
   fullWidth?: boolean
   fixed?: boolean
   scrollable?: boolean
@@ -16,7 +15,9 @@ export type TableProps = {
   stackedStyle?: 'none' | 'default' | 'headers'
 }
 
-export const Table = ({
+export type TableProps = BaseTableProps & JSX.IntrinsicElements['table']
+
+export const TableForwardRef: React.ForwardRefRenderFunction<HTMLTableElement, TableProps> = ({
   bordered,
   caption,
   children,
@@ -27,7 +28,8 @@ export const Table = ({
   striped,
   compact,
   stackedStyle = 'none',
-}: TableProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-table',
     {
@@ -49,7 +51,7 @@ export const Table = ({
   }
 
   const table = (
-    <table className={classes} data-testid="table">
+    <table ref={ref} className={classes} data-testid="table" {...props}>
       {caption && <caption>{caption}</caption>}
       {children}
     </table>
@@ -82,5 +84,7 @@ export const Table = ({
     </>
   )
 }
+
+export const Table = forwardRef(TableForwardRef)
 
 export default Table

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { CardGroup } from './CardGroup'
+import CardGroup from './CardGroup'
 
 describe('CardGroup component', () => {
   it('renders without errors', () => {

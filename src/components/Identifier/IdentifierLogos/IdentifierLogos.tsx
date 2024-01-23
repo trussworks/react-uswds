@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type IdentifierLogosProps = JSX.IntrinsicElements['div']
 
-export const IdentifierLogos = ({
+export const IdentifierLogosForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, IdentifierLogosProps> = ({
   children,
   className,
   ...divProps
-}: IdentifierLogosProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-identifier__logos', className)
   return (
-    <div data-testid="identifierLogos" className={classes} {...divProps}>
+    <div ref={ref} data-testid="identifierLogos" className={classes} {...divProps}>
       {children}
     </div>
   )
 }
+
+export const IdentifierLogos = forwardRef(IdentifierLogosForwardRef)
 
 export default IdentifierLogos

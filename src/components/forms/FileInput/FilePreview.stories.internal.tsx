@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FilePreview } from './FilePreview'
+import FilePreview from './FilePreview'
 import {
   TEST_TEXT_FILE,
   TEST_PDF_FILE,

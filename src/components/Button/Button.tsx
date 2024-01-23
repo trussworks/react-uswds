@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseButtonProps = {
@@ -15,7 +15,7 @@ export type BaseButtonProps = {
 
 export type ButtonProps = BaseButtonProps & JSX.IntrinsicElements['button']
 
-export const Button = ({
+export const ButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = ({
   type,
   children,
   secondary,
@@ -28,7 +28,7 @@ export const Button = ({
   onClick,
   className,
   ...defaultProps
-}: ButtonProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-button',
     {
@@ -46,6 +46,7 @@ export const Button = ({
 
   return (
     <button
+      ref={ref}
       type={type}
       className={classes}
       onClick={onClick}
@@ -55,5 +56,7 @@ export const Button = ({
     </button>
   )
 }
+
+export const Button = forwardRef(ButtonForwardRef)
 
 export default Button

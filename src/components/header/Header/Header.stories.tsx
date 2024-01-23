@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Header } from './Header'
+import Header from './Header'
 
 import { Title } from '../Title/Title'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'

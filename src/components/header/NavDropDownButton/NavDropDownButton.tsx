@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseNavDropDownButtonProps = {
@@ -15,7 +15,7 @@ export type BaseNavDropDownButtonProps = {
 export type NavDropDownButtonProps = BaseNavDropDownButtonProps &
   JSX.IntrinsicElements['button']
 
-export const NavDropDownButton = ({
+export const NavDropDownButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, NavDropDownButtonProps> = ({
   label,
   menuId,
   isOpen,
@@ -23,7 +23,7 @@ export const NavDropDownButton = ({
   isCurrent,
   className,
   ...buttonProps
-}: NavDropDownButtonProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-accordion__button',
     'usa-nav__link',
@@ -35,6 +35,7 @@ export const NavDropDownButton = ({
 
   return (
     <button
+      ref={ref}
       data-testid="navDropDownButton"
       className={classes}
       aria-expanded={isOpen}
@@ -46,5 +47,7 @@ export const NavDropDownButton = ({
     </button>
   )
 }
+
+export const NavDropDownButton = forwardRef(NavDropDownButtonForwardRef)
 
 export default NavDropDownButton

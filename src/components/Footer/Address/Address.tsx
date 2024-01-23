@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseAddressProps = {
@@ -11,11 +11,12 @@ export type BaseAddressProps = {
 
 export type AddressProps = BaseAddressProps & React.HTMLAttributes<HTMLElement>
 
-export const Address = ({
+export const AddressFowardRef: React.ForwardRefRenderFunction<HTMLElement, AddressProps> = ({
   size,
   className,
   items,
-}: AddressProps): React.ReactElement => {
+  ...props
+},ref): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
@@ -27,7 +28,7 @@ export const Address = ({
     'grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto': isSlim,
   })
   return (
-    <address className={addressClasses}>
+    <address ref={ref} className={addressClasses} {...props}>
       {isSlim ? (
         <div className="grid-row grid-gap">
           {items.map((item, i) => (
@@ -48,3 +49,7 @@ export const Address = ({
     </address>
   )
 }
+
+export const Address = forwardRef(AddressFowardRef)
+
+export default Address

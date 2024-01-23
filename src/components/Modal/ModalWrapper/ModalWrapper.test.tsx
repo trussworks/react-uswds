@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { ModalWrapper } from './ModalWrapper'
+import ModalWrapper from './ModalWrapper'
 
 describe('ModalWrapper component', () => {
   it('renders without errors', () => {

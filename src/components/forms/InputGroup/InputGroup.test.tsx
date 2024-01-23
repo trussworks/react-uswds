@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { InputGroup } from './InputGroup'
+import InputGroup from './InputGroup'
 
 describe('InputGroup component', () => {
   it('renders without errors', () => {

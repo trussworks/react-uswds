@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 import classnames from 'classnames'
 import { NavList } from '../../header/NavList/NavList'
 
@@ -18,11 +18,12 @@ export type FooterExtendedNavListPropsBase = {
 export type FooterExtendedNavListProps = FooterExtendedNavListPropsBase &
   React.HTMLAttributes<HTMLElement>
 
-export const FooterExtendedNavList = ({
+export const FooterExtendedNavListForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, FooterExtendedNavListProps> = ({
   className,
   isMobile,
   nestedLinks,
-}: FooterExtendedNavListProps): React.ReactElement => {
+  ...props
+}, ref): React.ReactElement => {
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 
@@ -60,7 +61,7 @@ export const FooterExtendedNavList = ({
   }
 
   return (
-    <div className={classes}>
+    <div ref={ref} className={classes} {...props}>
       {nestedLinks.map((links, i) => (
         <div
           key={`linkSection-${i}`}
@@ -77,15 +78,22 @@ export const FooterExtendedNavList = ({
   )
 }
 
-const Section = ({
-  isOpen = false,
-  links,
-  onToggle,
-}: {
+export const FooterExtendedNavList = forwardRef(FooterExtendedNavListForwardRef)
+
+export interface BaseSectionProps {
   isOpen: boolean
   links: React.ReactNode[]
   onToggle?: () => void
-}): React.ReactElement => {
+}
+
+export type SectionProps = BaseSectionProps & JSX.IntrinsicElements['section']
+
+export const SectionForwardRef: React.ForwardRefRenderFunction<HTMLElement, SectionProps> = ({
+  isOpen = false,
+  links,
+  onToggle,
+  ...props
+}, ref): React.ReactElement => {
   const [primaryLinkOrHeading, ...secondaryLinks] = links
   const classes = classnames(
     'usa-footer__primary-content usa-footer__primary-content--collapsible',
@@ -94,9 +102,13 @@ const Section = ({
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-static-element-interactions
-    <section className={classes} onClick={onToggle} onKeyPress={onToggle}>
+    <section ref={ref} className={classes} onClick={onToggle} onKeyPress={onToggle} {...props}>
       <h4 className="usa-footer__primary-link">{primaryLinkOrHeading}</h4>
       <NavList type="footerSecondary" items={secondaryLinks} />
     </section>
   )
 }
+
+export const Section = forwardRef(SectionForwardRef)
+
+export default FooterExtendedNavList

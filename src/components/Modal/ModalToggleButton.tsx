@@ -1,23 +1,25 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 import { ModalRef } from './Modal'
-import { ButtonProps, Button } from '../Button/Button'
+import Button, { ButtonProps } from '../Button/Button'
 
-type ModalToggleButtonProps = {
+export type BaseModalToggleButtonProps = {
   modalRef: React.RefObject<ModalRef>
   opener?: boolean
   closer?: boolean
 }
 
-export const ModalToggleButton = ({
+export type ModalToggleButtonProps = BaseModalToggleButtonProps & Omit<ButtonProps, 'type'> &
+  JSX.IntrinsicElements['button']
+
+export const ModalToggleButtonForwardRef: React.ForwardRefRenderFunction<HTMLButtonElement, ModalToggleButtonProps> = ({
   modalRef,
   children,
   opener,
   closer,
   ...props
-}: ModalToggleButtonProps &
-  Omit<ButtonProps, 'type'> &
-  JSX.IntrinsicElements['button']): React.ReactElement<HTMLButtonElement> => {
+}, ref
+  ): React.ReactElement<HTMLButtonElement> => {
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     if (!modalRef || !modalRef.current) {
       console.error('ModalRef is required')
@@ -53,6 +55,7 @@ export const ModalToggleButton = ({
 
   return (
     <Button
+      ref={ref}
       {...props}
       {...dataProps}
       type="button"
@@ -62,3 +65,7 @@ export const ModalToggleButton = ({
     </Button>
   )
 }
+
+export const ModalToggleButton = forwardRef(ModalToggleButtonForwardRef)
+
+export default ModalToggleButton

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseRadioProps = {
@@ -18,7 +18,7 @@ export type BaseRadioProps = {
 
 export type RadioProps = BaseRadioProps & JSX.IntrinsicElements['input']
 
-export const Radio = ({
+export const RadioForwardRef: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = ({
   id,
   name,
   className,
@@ -27,14 +27,14 @@ export const Radio = ({
   tile,
   labelDescription,
   ...inputProps
-}: RadioProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-radio', className)
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,
   })
 
   return (
-    <div data-testid="radio" className={classes}>
+    <div ref={ref} data-testid="radio" className={classes}>
       <input
         className={radioClasses}
         id={id}
@@ -54,5 +54,7 @@ export const Radio = ({
     </div>
   )
 }
+
+export const Radio = forwardRef(RadioForwardRef)
 
 export default Radio

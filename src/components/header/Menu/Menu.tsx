@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavList, NavListProps } from '../NavList/NavList'
+import React, { forwardRef } from 'react'
+import NavList, { NavListProps } from '../NavList/NavList'
 
 export type BaseMenuProps = {
   items: React.ReactNode[]
@@ -15,15 +15,16 @@ export type BaseMenuProps = {
 
 export type MenuProps = BaseMenuProps & NavListProps
 
-export const Menu = ({
+export const MenuForwardRef: React.ForwardRefRenderFunction<HTMLElement, MenuProps> = ({
   className,
   items,
   isOpen,
   type,
   ...navListProps
-}: MenuProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   return (
     <NavList
+      ref={ref}
       className={className}
       items={items}
       type={type ? type : 'subnav'}
@@ -32,5 +33,7 @@ export const Menu = ({
     />
   )
 }
+
+export const Menu = forwardRef(MenuForwardRef)
 
 export default Menu

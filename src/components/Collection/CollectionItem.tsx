@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export interface BaseCollectionItemProps {
@@ -8,18 +8,22 @@ export interface BaseCollectionItemProps {
 export type CollectionItemProps = BaseCollectionItemProps &
   JSX.IntrinsicElements['li']
 
-export const CollectionItem = ({
+export const CollectionItemForwardRef: React.ForwardRefRenderFunction<HTMLLIElement, CollectionItemProps> = ({
   className,
   children,
   variantComponent,
   ...props
-}: CollectionItemProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames('usa-collection__item', className)
 
   return (
-    <li className={classes} {...props}>
+    <li ref={ref} className={classes} {...props}>
       {variantComponent}
       <div className="usa-collection__body">{children}</div>
     </li>
   )
 }
+
+export const CollectionItem = forwardRef(CollectionItemForwardRef)
+
+export default CollectionItem

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseFooterProps = {
@@ -19,13 +19,13 @@ export type BaseFooterProps = {
 
 export type FooterProps = BaseFooterProps & React.HTMLAttributes<HTMLElement>
 
-export const Footer = ({
+export const FooterForwardRef: React.ForwardRefRenderFunction<HTMLElement, FooterProps> = ({
   size,
   returnToTop,
   primary,
   secondary,
   ...footerAttributes
-}: FooterProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classnames(
     'usa-footer',
     {
@@ -37,7 +37,7 @@ export const Footer = ({
   )
 
   return (
-    <footer {...footerAttributes} className={classes}>
+    <footer ref={ref} {...footerAttributes} className={classes}>
       {returnToTop && returnToTop}
       <div className="usa-footer__primary-section">{primary}</div>
 
@@ -47,3 +47,7 @@ export const Footer = ({
     </footer>
   )
 }
+
+export const Footer = forwardRef(FooterForwardRef)
+
+export default Footer

@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classname from 'classnames'
 
 export type CollectionDescriptionProps = JSX.IntrinsicElements['p']
 
-export const CollectionDescription = ({
+export const CollectionDescriptionForwardRef: React.ForwardRefRenderFunction<HTMLParagraphElement, CollectionDescriptionProps> = ({
   className,
   children,
   ...props
-}: CollectionDescriptionProps): React.ReactElement => {
+}, ref): React.ReactElement => {
   const classes = classname('usa-collection__description', className)
   return (
-    <p className={classes} {...props}>
+    <p ref={ref} className={classes} {...props}>
       {children}
     </p>
   )
 }
+
+export const CollectionDescription = forwardRef(CollectionDescriptionForwardRef)
+
+export default CollectionDescription

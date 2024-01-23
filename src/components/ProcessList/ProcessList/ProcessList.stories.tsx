@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ProcessList } from './ProcessList'
-import { ProcessListItem } from '../ProcessListItem/ProcessListItem'
-import { ProcessListHeading } from '../ProcessListHeading/ProcessListHeading'
+import ProcessList from './ProcessList'
+import ProcessListItem from '../ProcessListItem/ProcessListItem'
+import ProcessListHeading from '../ProcessListHeading/ProcessListHeading'
 
 export default {
   title: 'Components/ProcessList',

@@ -1,9 +1,9 @@
 import React from 'react'
-import { FormGroup } from './FormGroup'
+import FormGroup from './FormGroup'
 
-import { Label } from '../Label/Label'
-import { TextInput } from '../TextInput/TextInput'
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
+import Label from '../Label/Label'
+import TextInput from '../TextInput/TextInput'
+import ErrorMessage from '../ErrorMessage/ErrorMessage'
 
 export default {
   title: 'Components/Form elements/FormGroup',
