@@ -50,7 +50,7 @@ export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { InPageNavigation } from './components/InPageNavigation/InPageNavigation'
 export { Link } from './components/Link/Link'
-export { MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
+export { default as MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
@@ -62,14 +62,63 @@ export {
 } from './components/Pagination/Pagination'
 
 /** Banner components */
-export { Banner } from './components/banner/Banner/Banner'
-export { BannerButton } from './components/banner/BannerButton/BannerButton'
-export { BannerContent } from './components/banner/BannerContent/BannerContent'
-export { BannerFlag } from './components/banner/BannerFlag/BannerFlag'
-export { BannerGuidance } from './components/banner/BannerGuidance/BannerGuidance'
-export { BannerHeader } from './components/banner/BannerHeader/BannerHeader'
-export { BannerIcon } from './components/banner/BannerIcon/BannerIcon'
-export { GovBanner, getCopy } from './components/banner/GovBanner/GovBanner'
+export {
+  default as Banner,
+  BannerForwardRef,
+} from './components/banner/Banner/Banner'
+export {
+  default as BannerBase,
+  BannerBaseForwardRef,
+} from './components/banner/BannerBase/BannerBase'
+export {
+  default as BannerButton,
+  BannerButtonForwardRef,
+} from './components/banner/BannerButton/BannerButton'
+export {
+  default as BannerButtonBase,
+  BannerButtonBaseForwardRef,
+} from './components/banner/BannerButtonBase/BannerButtonBase'
+export {
+  default as BannerContent,
+  BannerContentForwardRef,
+} from './components/banner/BannerContent/BannerContent'
+export {
+  default as BannerFlag,
+  BannerFlagForwardRef,
+} from './components/banner/BannerFlag/BannerFlag'
+export {
+  default as BannerGuidance,
+  BannerGuidanceForwardRef,
+} from './components/banner/BannerGuidance/BannerGuidance'
+export {
+  default as BannerHeader,
+  BannerHeaderForwardRef,
+} from './components/banner/BannerHeader/BannerHeader'
+export {
+  default as BannerHeaderAction,
+  BannerHeaderActionForwardRef,
+} from './components/banner/BannerHeaderAction/BannerHeaderAction'
+export {
+  default as BannerHeaderBase,
+  BannerHeaderBaseForwardRef,
+} from './components/banner/BannerHeaderBase/BannerHeaderBase'
+export {
+  default as BannerHeaderText,
+  BannerHeaderTextForwardRef,
+} from './components/banner/BannerHeaderText/BannerHeaderText'
+export {
+  default as BannerIcon,
+  BannerIconForwardRef,
+} from './components/banner/BannerIcon/BannerIcon'
+export {
+  default as BannerInner,
+  BannerInnerForwardRef,
+} from './components/banner/BannerInner/BannerInner'
+export {
+  default as GovBanner,
+  GovBannerForwardRef,
+  getCopy,
+} from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
 export { Collection } from './components/Collection/Collection'
@@ -78,7 +127,7 @@ export { CollectionHeading } from './components/Collection/CollectionHeading'
 export { CollectionDescription } from './components/Collection/CollectionDescription'
 export { CollectionMeta } from './components/Collection/CollectionMeta'
 export { CollectionMetaItem } from './components/Collection/CollectionMetaItem'
-export { CollectionMetaItemTag } from './components/Collection/CollectionMetaItemTag'
+export { default as CollectionMetaItemTag } from './components/Collection/CollectionMetaItemTag'
 export { CollectionThumbnail } from './components/Collection/CollectionThumbnail'
 export {
   CollectionCalendarDate,
@@ -91,7 +140,7 @@ export {
   gridContainerClasses,
 } from './components/grid/GridContainer/GridContainer'
 export {
-  Grid,
+  default as Grid,
   applyGridClasses,
   getGridClasses,
 } from './components/grid/Grid/Grid'
@@ -157,7 +206,7 @@ export { IconList } from './components/IconList/IconList'
 export { IconListContent } from './components/IconList/IconListContent/IconListContent'
 export { IconListIcon } from './components/IconList/IconListIcon/IconListIcon'
 export { IconListItem } from './components/IconList/IconListItem/IconListItem'
-export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
+export { default as IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
 
 // Icons
 export { Icon } from './components/Icon/Icons'

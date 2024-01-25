@@ -1,30 +1,35 @@
 import React, { ReactElement, forwardRef } from 'react'
-import classNames from 'classnames'
+import AccordionBase, {
+  AccordionBaseRef,
+} from '../../accordion/AccordionBase/AccordionBase'
+import BannerBase, { BannerBaseProps } from '../BannerBase/BannerBase'
+import { AccordionProps } from '../../accordion/Accordion/Accordion'
 
 export type BaseBannerProps = {
-  divProps?: JSX.IntrinsicElements['div']
+  /**
+   * @deprecated Use `accordionProps` instead
+   */
+  divProps?: AccordionProps
+  accordionProps?: AccordionProps
 }
 
-export type BannerProps = BaseBannerProps & JSX.IntrinsicElements['section']
+export type BannerProps = React.ComponentPropsWithRef<typeof Banner>
+
+export type BannerRef = React.ComponentRef<typeof Banner>
 
 export const BannerForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  BannerProps
-> = ({ children, divProps, className, ...sectionProps }, ref): ReactElement => {
-  const classes = classNames('usa-banner', className)
-
-  const { className: divClassName, ...remainingDivProps } = divProps || {}
-  const divClasses = classNames('usa-accordion', divClassName)
-
+  AccordionBaseRef,
+  BaseBannerProps & React.PropsWithoutRef<BannerBaseProps>
+> = ({ children, divProps, accordionProps, ...props }, ref): ReactElement => {
   return (
-    <section ref={ref} className={classes} {...sectionProps}>
-      <div className={divClasses} {...remainingDivProps}>
+    <BannerBase ref={ref} {...props}>
+      <AccordionBase {...(accordionProps ?? divProps)}>
         {children}
-      </div>
-    </section>
+      </AccordionBase>
+    </BannerBase>
   )
 }
 
-export const Banner = forwardRef(BannerForwardRef)
+const Banner = forwardRef(BannerForwardRef)
 
 export default Banner

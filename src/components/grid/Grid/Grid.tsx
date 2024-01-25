@@ -82,13 +82,14 @@ export const applyGridClasses = (gridLayout: BaseGridProps): string => {
   return classes
 }
 
-export type GridProps<FCProps = DefaultGridProps> =
-  | DefaultGridProps
-  | CustomGridProps<FCProps>
+export type GridProps = React.ComponentPropsWithRef<typeof Grid>
+
+export type GridRef = React.ComponentRef<typeof Grid>
 
 export const GridForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  GridProps
+  (DefaultGridProps | CustomGridProps<DefaultGridProps>) &
+    React.ComponentPropsWithoutRef<'div'>
 > = (props, ref): React.ReactElement => {
   const {
     children,
@@ -138,9 +139,8 @@ export const GridForwardRef: React.ForwardRefRenderFunction<
   classes = classnames(classes, className)
 
   if (isCustomProps(otherProps)) {
-    const { asCustom, ...remainingProps } = otherProps
+    const { asCustom, ...gridProps } = otherProps
 
-    const gridProps: FCProps = remainingProps as unknown as FCProps
     return React.createElement(
       asCustom,
       {
@@ -158,6 +158,6 @@ export const GridForwardRef: React.ForwardRefRenderFunction<
   }
 }
 
-export const Grid = forwardRef(GridForwardRef)
+const Grid = forwardRef(GridForwardRef)
 
 export default Grid

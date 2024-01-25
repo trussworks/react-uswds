@@ -16,6 +16,6 @@ export const MediaBlockBodyForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const MediaBlockBody = forwardRef(MediaBlockBodyForwardRef)
+const MediaBlockBody = forwardRef(MediaBlockBodyForwardRef)
 
 export default MediaBlockBody

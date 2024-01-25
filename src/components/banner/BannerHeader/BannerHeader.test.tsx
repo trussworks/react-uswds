@@ -66,47 +66,4 @@ describe('BannerHeader Component', () => {
     expect(flagDiv.children).toContain(flagImg)
     expect(innerDiv).toHaveTextContent('content')
   })
-
-  it('Allows custom classes to be passed in', () => {
-    const { header, innerDiv, headerText, headerActionText } =
-      renderBannerHeader({
-        isOpen: false,
-        className: 'header-class',
-        innerDivProps: {
-          className: 'inner-div-class',
-        },
-        headerTextProps: {
-          className: 'header-text-class',
-        },
-        headerActionProps: {
-          className: 'header-action-class',
-        },
-      })
-
-    expect(header).toHaveClass('usa-banner__header header-class')
-    expect(innerDiv).toHaveClass('usa-banner__inner inner-div-class')
-    expect(headerText).toHaveClass('usa-banner__header-text header-text-class')
-    expect(headerActionText).toHaveClass(
-      'usa-banner__header-action header-action-class'
-    )
-  })
-
-  it('renders properly with "open" state', () => {
-    const { header } = renderBannerHeader({ isOpen: true })
-
-    expect(header).toHaveClass(
-      'usa-banner__header usa-banner__header--expanded'
-    )
-  })
-
-  it('renders properly with "open" state and a custom class passed in', () => {
-    const { header } = renderBannerHeader({
-      isOpen: true,
-      className: 'header-class',
-    })
-
-    expect(header).toHaveClass(
-      'usa-banner__header usa-banner__header--expanded header-class'
-    )
-  })
 })

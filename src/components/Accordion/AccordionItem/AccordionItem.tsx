@@ -26,8 +26,8 @@ export interface BaseAccordionItemProps {
   id: string
   headingLevel: HeadingLevel
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  __buttonProps?: AccordionItemButtonProps
-  __headingProps?: { itemId?: string } & Omit<
+  buttonProps?: AccordionItemButtonProps
+  headingProps?: { itemId?: string } & Omit<
     AccordionItemHeadingProps,
     'itemId' | 'headingLevel'
   >
@@ -52,8 +52,8 @@ export const AccordionItemForwardRef: React.ForwardRefRenderFunction<
     headingLevel,
     handleToggle,
     children,
-    __buttonProps,
-    __headingProps,
+    buttonProps,
+    headingProps,
     ...props
   },
   ref
@@ -63,12 +63,12 @@ export const AccordionItemForwardRef: React.ForwardRefRenderFunction<
       <AccordionItemHeading
         headingLevel={headingLevel}
         itemId={id}
-        {...__headingProps}>
+        {...headingProps}>
         <AccordionItemButton
           itemId={id}
           isOpen={isOpen}
           onClick={handleToggle}
-          {...__buttonProps}>
+          {...buttonProps}>
           {title}
         </AccordionItemButton>
       </AccordionItemHeading>

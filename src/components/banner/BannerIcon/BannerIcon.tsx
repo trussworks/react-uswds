@@ -21,6 +21,6 @@ export const BannerIconForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const BannerIcon = forwardRef(BannerIconForwardRef)
+const BannerIcon = forwardRef(BannerIconForwardRef)
 
 export default BannerIcon

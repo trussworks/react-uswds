@@ -9,9 +9,7 @@ describe('AlertBase component', () => {
   })
 
   it('renders without errors', () => {
-    const { queryByTestId } = render(
-      <AlertBase type="success" />
-    )
+    const { queryByTestId } = render(<AlertBase type="success" />)
     expect(queryByTestId('alert')).toBeInTheDocument()
   })
 

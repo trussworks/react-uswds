@@ -1,17 +1,19 @@
 import React, { ReactElement, forwardRef } from 'react'
 import classNames from 'classnames'
 
-export type BannerFlagProps = JSX.IntrinsicElements['img']
+export type BannerFlagProps = React.ComponentPropsWithRef<typeof BannerFlag>
+
+export type BannerFlagRef = React.ComponentRef<typeof BannerFlag>
 
 export const BannerFlagForwardRef: React.ForwardRefRenderFunction<
   HTMLImageElement,
-  BannerFlagProps
-> = ({ alt, className, ...imgProps }, ref): ReactElement => {
+  React.ComponentPropsWithoutRef<'img'>
+> = ({ alt, className, ...props }, ref): ReactElement => {
   const classes = classNames('usa-banner__header-flag', className)
 
-  return <img ref={ref} className={classes} alt={alt} {...imgProps} />
+  return <img ref={ref} className={classes} alt={alt} {...props} />
 }
 
-export const BannerFlag = forwardRef(BannerFlagForwardRef)
+const BannerFlag = forwardRef(BannerFlagForwardRef)
 
 export default BannerFlag

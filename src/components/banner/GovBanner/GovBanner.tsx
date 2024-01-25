@@ -1,5 +1,5 @@
 import React, { ReactElement, forwardRef, useState } from 'react'
-import Banner from '../Banner/Banner'
+import Banner, { BannerProps, BannerRef } from '../Banner/Banner'
 import BannerHeader from '../BannerHeader/BannerHeader'
 import BannerFlag from '../BannerFlag/BannerFlag'
 import BannerButton from '../BannerButton/BannerButton'
@@ -13,6 +13,7 @@ import { Icon } from '../../Icon/Icons'
 import flagImg from '@uswds/uswds/src/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
 import httpsIcon from '@uswds/uswds/src/img/icon-https.svg'
+import Grid from '../../grid/Grid/Grid'
 
 export type Language = 'english' | 'spanish'
 
@@ -112,12 +113,13 @@ export type BaseGovBannerProps = {
   language?: Language
 }
 
-export type GovBannerProps = BaseGovBannerProps &
-  JSX.IntrinsicElements['section']
+export type GovBannerProps = React.ComponentPropsWithRef<typeof GovBanner>
+
+export type GovBannerRef = React.ComponentRef<typeof GovBanner>
 
 export const GovBannerForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  GovBannerProps
+  BannerRef,
+  BaseGovBannerProps & React.PropsWithoutRef<BannerProps>
 > = (
   { tld = '.gov', language = 'english', className, ...sectionProps },
   ref
@@ -156,7 +158,7 @@ export const GovBannerForwardRef: React.ForwardRefRenderFunction<
         </BannerButton>
       </BannerHeader>
       <BannerContent id="gov-banner" isOpen={isOpen}>
-        <div className="grid-row grid-gap-lg">
+        <Grid row gap="lg">
           <BannerGuidance className="tablet:grid-col-6">
             <BannerIcon src={dotGovIcon} alt="" />
             <MediaBlockBody>
@@ -177,12 +179,12 @@ export const GovBannerForwardRef: React.ForwardRefRenderFunction<
               </p>
             </MediaBlockBody>
           </BannerGuidance>
-        </div>
+        </Grid>
       </BannerContent>
     </Banner>
   )
 }
 
-export const GovBanner = forwardRef(GovBannerForwardRef)
+const GovBanner = forwardRef(GovBannerForwardRef)
 
 export default GovBanner

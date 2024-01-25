@@ -1,22 +1,31 @@
 import React, { ReactElement, ReactNode, forwardRef } from 'react'
-import classNames from 'classnames'
+import Grid from '../../grid/Grid/Grid'
+import BannerHeaderBase from '../BannerHeaderBase/BannerHeaderBase'
+import BannerInner, { BannerInnerProps } from '../BannerInner/BannerInner'
+import BannerHeaderText, {
+  BannerHeaderTextProps,
+} from '../BannerHeaderText/BannerHeaderText'
+import BannerHeaderAction, {
+  BannerHeaderActionProps,
+} from '../BannerHeaderAction/BannerHeaderAction'
 
 export type BaseBannerHeaderProps = {
-  isOpen: boolean
+  isOpen?: boolean
   flagImg: ReactNode
-  innerDivProps?: JSX.IntrinsicElements['div']
+  innerDivProps?: React.PropsWithRef<BannerInnerProps>
   headerText: ReactNode
-  headerTextProps?: JSX.IntrinsicElements['p']
+  headerTextProps?: React.PropsWithRef<BannerHeaderTextProps>
   headerActionText: ReactNode
-  headerActionProps?: JSX.IntrinsicElements['p']
+  headerActionProps?: React.PropsWithRef<BannerHeaderActionProps>
 }
 
-export type BannerHeaderProps = BaseBannerHeaderProps &
-  JSX.IntrinsicElements['header']
+export type BannerHeaderProps = React.ComponentPropsWithRef<typeof BannerHeader>
+
+export type BannerHeaderRef = React.ComponentRef<typeof BannerHeader>
 
 export const BannerHeaderForwardRef: React.ForwardRefRenderFunction<
   HTMLElement,
-  BannerHeaderProps
+  BaseBannerHeaderProps & React.ComponentPropsWithoutRef<'header'>
 > = (
   {
     children,
@@ -27,68 +36,34 @@ export const BannerHeaderForwardRef: React.ForwardRefRenderFunction<
     headerTextProps,
     headerActionText,
     headerActionProps,
-    className,
-    ...headerProps
+    ...props
   },
   ref
 ): ReactElement => {
-  const classes = classNames(
-    'usa-banner__header',
-    {
-      'usa-banner__header--expanded': isOpen,
-    },
-    className
-  )
-
-  const { className: innerDivClassName, ...remainingInnerDivProps } =
-    innerDivProps || {}
-  const innerDivClasses = classNames('usa-banner__inner', innerDivClassName)
-
-  const { className: headerTextClassName, ...remainingHeaderTextProps } =
-    headerTextProps || {}
-  const headerTextClasses = classNames(
-    'usa-banner__header-text',
-    headerTextClassName
-  )
-
-  const { className: headerActionClassName, ...remainingHeaderActionProps } =
-    headerActionProps || {}
-  const headerActionClasses = classNames(
-    'usa-banner__header-action',
-    headerActionClassName
-  )
-
   return (
-    <header ref={ref} className={classes} {...headerProps}>
-      <div
-        className={innerDivClasses}
-        {...remainingInnerDivProps}
-        data-testid="banner-header-inner-div">
+    <BannerHeaderBase ref={ref} isOpen={isOpen} {...props}>
+      <BannerInner {...innerDivProps}>
         {flagImg && (
-          <div className="grid-col-auto" data-testid="banner-header-flag-div">
+          <Grid col="auto" data-testid="banner-header-flag-div">
             {flagImg}
-          </div>
+          </Grid>
         )}
-        <div
-          className="grid-col-fill tablet:grid-col-auto"
+        <Grid
+          col="fill"
+          tablet={{ col: 'auto' }}
           aria-hidden
           data-testid="banner-header-grid-div">
-          <p className={headerTextClasses} {...remainingHeaderTextProps}>
-            {headerText}
-          </p>
-          <p
-            className={headerActionClasses}
-            aria-hidden="true"
-            {...remainingHeaderActionProps}>
+          <BannerHeaderText {...headerTextProps}>{headerText}</BannerHeaderText>
+          <BannerHeaderAction {...headerActionProps}>
             {headerActionText}
-          </p>
-        </div>
+          </BannerHeaderAction>
+        </Grid>
         {children}
-      </div>
-    </header>
+      </BannerInner>
+    </BannerHeaderBase>
   )
 }
 
-export const BannerHeader = forwardRef(BannerHeaderForwardRef)
+const BannerHeader = forwardRef(BannerHeaderForwardRef)
 
 export default BannerHeader

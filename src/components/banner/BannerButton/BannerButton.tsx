@@ -1,43 +1,35 @@
 import React, { ReactElement, forwardRef } from 'react'
-import classNames from 'classnames'
+import BannerButtonText from '../BannerButtonText/BannerButtonText'
+import BannerButtonBase, {
+  BannerButtonBaseProps,
+  BannerButtonBaseRef,
+} from '../BannerButtonBase/BannerButtonBase'
 
 export type BaseBannerButtonProps = {
-  isOpen: boolean
-  spanProps?: JSX.IntrinsicElements['span']
+  /**
+   * @deprecated Use `textProps` instead
+   */
+  spanProps?: React.PropsWithRef<BannerButtonBaseProps>
+  textProps?: React.PropsWithRef<BannerButtonBaseProps>
 }
 
-export type BannerButtonProps = BaseBannerButtonProps &
-  JSX.IntrinsicElements['button']
+export type BannerButtonProps = React.ComponentPropsWithRef<typeof BannerButton>
+
+export type BannerButtonRef = React.ComponentRef<typeof BannerButton>
 
 export const BannerButtonForwardRef: React.ForwardRefRenderFunction<
-  HTMLButtonElement,
-  BannerButtonProps
-> = (
-  { isOpen, children, className, spanProps, ...buttonProps },
-  ref
-): ReactElement => {
-  const classes = classNames(
-    'usa-accordion__button usa-banner__button',
-    className
-  )
-
-  const { className: spanClassName, ...remainingSpanProps } = spanProps || {}
-  const spanClasses = classNames('usa-banner__button-text', spanClassName)
-
+  BannerButtonBaseRef,
+  BaseBannerButtonProps & React.PropsWithoutRef<BannerButtonBaseProps>
+> = ({ children, spanProps, textProps, ...props }, ref): ReactElement => {
   return (
-    <button
-      ref={ref}
-      type="button"
-      className={classes}
-      aria-expanded={isOpen}
-      {...buttonProps}>
-      <span className={spanClasses} {...remainingSpanProps}>
+    <BannerButtonBase ref={ref} {...props}>
+      <BannerButtonText {...(textProps ?? spanProps)}>
         {children}
-      </span>
-    </button>
+      </BannerButtonText>
+    </BannerButtonBase>
   )
 }
 
-export const Banner = forwardRef(BannerButtonForwardRef)
+const BannerButton = forwardRef(BannerButtonForwardRef)
 
-export default Banner
+export default BannerButton

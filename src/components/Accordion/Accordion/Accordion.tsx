@@ -11,7 +11,7 @@ import AccordionBase, {
 export interface BaseAccordionProps {
   multiselectable?: boolean
   /**
-   * `expanded` property in items only considered on initial render
+   * `expanded` property in `items` only considered on initial render
    */
   items: Omit<AccordionItemProps, 'handleToggle'>[]
   className?: string
