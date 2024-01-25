@@ -2,7 +2,7 @@
 import React from 'react'
 import Form from './Form'
 
-import Alert from '../../Alert/Alert'
+import Alert from '../../alert/Alert/Alert'
 import Button from '../../Button/Button'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import Fieldset from '../Fieldset/Fieldset'

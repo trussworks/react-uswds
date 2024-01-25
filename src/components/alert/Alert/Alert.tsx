@@ -1,9 +1,12 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { HeadingLevel } from '../../types/headingLevel'
+import { HeadingLevel } from '../../../types/headingLevel'
 
 import styles from './Alert.module.scss'
+import AlertBody, { AlertBodyRef } from '../AlertBody/AlertBody'
+import AlertHeading, { AlertHeadingRef } from '../AlertHeading/AlertHeading'
+import AlertContent, { AlertContentRef } from '../AlertContent/AlertContent'
 
 export type BaseAlertProps = {
   type: 'success' | 'warning' | 'error' | 'info'
@@ -13,14 +16,24 @@ export type BaseAlertProps = {
   cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean
+  /**
+   * Can also be used to force using custom content as children by
+   * setting to `true`
+   */
   validation?: boolean
+  __headingRef?: React.Ref<AlertHeadingRef>
+  __bodyRef?: React.Ref<AlertBodyRef>
+  __contentRef?: React.Ref<AlertContentRef>
+  __ctaRef?: React.Ref<HTMLDivElement>
 }
 
-export type AlertProps = BaseAlertProps & React.HTMLAttributes<HTMLDivElement>
+export type AlertProps = React.ComponentPropsWithRef<typeof Alert>
+
+export type AlertRef = React.ComponentRef<typeof Alert>
 
 export const AlertForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  AlertProps
+  BaseAlertProps & React.ComponentPropsWithoutRef<'div'>
 > = (
   {
     type,
@@ -32,6 +45,10 @@ export const AlertForwardRef: React.ForwardRefRenderFunction<
     noIcon,
     className,
     validation,
+    __bodyRef,
+    __contentRef,
+    __headingRef,
+    __ctaRef,
     ...props
   },
   ref
@@ -51,24 +68,22 @@ export const AlertForwardRef: React.ForwardRefRenderFunction<
     className
   )
 
-  const Heading = headingLevel
-
   return (
     <div className={classes} data-testid="alert" ref={ref} {...props}>
-      <div className="usa-alert__body">
-        {heading && <Heading className="usa-alert__heading">{heading}</Heading>}
+      <AlertBody ref={__bodyRef}>
+        {heading && <AlertHeading ref={__headingRef} headingLevel={headingLevel}>{heading}</AlertHeading>}
         {children &&
           (validation ? (
             children
           ) : (
-            <p className="usa-alert__text">{children}</p>
+            <AlertContent ref={__contentRef}>{children}</AlertContent>
           ))}
-      </div>
-      {cta && <div>{cta}</div>}
+      </AlertBody>
+      {cta && <div ref={__ctaRef}>{cta}</div>}
     </div>
   )
 }
 
-export const Alert = forwardRef(AlertForwardRef)
+const Alert = forwardRef(AlertForwardRef)
 
 export default Alert
