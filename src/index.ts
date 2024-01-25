@@ -2,8 +2,27 @@
 import './styles/index.scss'
 
 /** USWDS basic components */
+export {
+  default as Accordion,
+  AccordionForwardRef,
+} from './components/accordion/Accordion/Accordion'
+export {
+  default as AccordionItem,
+  AccordionItemForwardRef,
+} from './components/accordion/AccordionItem/AccordionItem'
+export {
+  default as AccordionItemHeading,
+  AccordionItemHeadingForwardRef,
+} from './components/accordion/AccordionItemHeading/AccordionItemHeading'
+export {
+  default as AccordionItemButton,
+  AccordionItemButtonForwardRef,
+} from './components/accordion/AccordionItemButton/AccordionItemButton'
+export {
+  default as AccordionItemContent,
+  AccordionItemContentForwardRef,
+} from './components/accordion/AccordionItemContent/AccordionItemContent'
 export { Alert } from './components/Alert/Alert'
-export { Accordion, AccordionItem } from './components/Accordion/Accordion'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { InPageNavigation } from './components/InPageNavigation/InPageNavigation'
