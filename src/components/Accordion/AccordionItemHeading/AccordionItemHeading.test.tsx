@@ -7,12 +7,11 @@ import AccordionItemHeading, {
 } from './AccordionItemHeading'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-const { expanded, headingLevel, id, title } = testItems[0]
+const { headingLevel, id, title } = testItems[0]
 const testHeading = {
-  expanded,
   headingLevel,
   itemId: id,
-  title,
+  children: title,
 } satisfies AccordionItemHeadingProps
 
 describe('AccordionItemHeading component', () => {

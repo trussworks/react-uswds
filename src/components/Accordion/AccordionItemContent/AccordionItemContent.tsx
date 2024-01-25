@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 export interface BaseAccordionItemContentProps {
   className?: string
-  expanded?: boolean
+  isOpen?: boolean
   id: string
 }
 
@@ -18,7 +18,7 @@ export type AccordionItemContentRef = React.ComponentRef<
 export const AccordionItemContentForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
   BaseAccordionItemContentProps & React.ComponentPropsWithoutRef<'div'>
-> = ({ className, id, expanded, ...props }, ref) => {
+> = ({ className, id, isOpen, ...props }, ref) => {
   const classes = classnames('usa-accordion__content', 'usa-prose', className)
 
   return (
@@ -27,7 +27,7 @@ export const AccordionItemContentForwardRef: React.ForwardRefRenderFunction<
       id={id}
       data-testid={`accordionItem_${id}`} // Kept the same from when inlined inside Accordion
       className={classes}
-      hidden={!expanded}
+      hidden={!isOpen}
       {...props}
     />
   )

@@ -14,9 +14,7 @@ describe('Alert component', () => {
   })
 
   it('accepts className prop', () => {
-    const { queryByTestId } = render(
-      <AlertContent className="myClass" />
-    )
+    const { queryByTestId } = render(<AlertContent className="myClass" />)
     expect(queryByTestId('alertContent')).toHaveClass('myClass')
   })
 })

@@ -1,15 +1,17 @@
 import React, { forwardRef, useState } from 'react'
-import classnames from 'classnames'
 
 import AccordionItem, {
   AccordionItemProps,
 } from '../AccordionItem/AccordionItem'
+import AccordionBase, {
+  AccordionBaseRef,
+  AccordionBaseProps,
+} from '../AccordionBase/AccordionBase'
 
-export type BaseAccordionProps = {
-  bordered?: boolean
+export interface BaseAccordionProps {
   multiselectable?: boolean
   /**
-   * `expanded` property only considered on initial render
+   * `expanded` property in items only considered on initial render
    */
   items: Omit<AccordionItemProps, 'handleToggle'>[]
   className?: string
@@ -21,22 +23,14 @@ export type AccordionProps = React.ComponentPropsWithRef<typeof Accordion>
 export type AccordionRef = React.ComponentRef<typeof Accordion>
 
 export const AccordionForwardRef: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  BaseAccordionProps & React.ComponentPropsWithoutRef<'div'>
+  AccordionBaseRef,
+  BaseAccordionProps & React.PropsWithoutRef<AccordionBaseProps>
 > = (
-  { bordered, items, className, multiselectable = false, __onChange, ...props },
+  { items, multiselectable = false, __onChange, ...props },
   ref
 ): React.ReactElement => {
   const [openItems, setOpenItems] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
-  )
-
-  const classes = classnames(
-    'usa-accordion',
-    {
-      'usa-accordion--bordered': bordered,
-    },
-    className
   )
 
   const toggleItem = (itemId: AccordionItemProps['id']): void => {
@@ -59,10 +53,8 @@ export const AccordionForwardRef: React.ForwardRefRenderFunction<
   }
 
   return (
-    <div
+    <AccordionBase
       ref={ref}
-      className={classes}
-      data-testid="accordion"
       data-allow-multiple={multiselectable || undefined}
       {...props}>
       {items.map((item, i) => (
@@ -75,7 +67,7 @@ export const AccordionForwardRef: React.ForwardRefRenderFunction<
           }}
         />
       ))}
-    </div>
+    </AccordionBase>
   )
 }
 

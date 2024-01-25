@@ -34,9 +34,7 @@ describe('Alert component', () => {
       'can render with headingLevel %s',
       (headingLevel, expectedLevel) => {
         const { getByRole } = render(
-          <AlertHeading
-            headingLevel={headingLevel}
-          >Working Alert</AlertHeading>
+          <AlertHeading headingLevel={headingLevel}>Working Alert</AlertHeading>
         )
         expect(
           getByRole('heading', { level: expectedLevel })

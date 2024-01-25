@@ -30,18 +30,18 @@ Source: https://designsystem.digital.gov/components/accordion/
   },
 }
 
-export const borderless = (): React.ReactElement => (
+export const Borderless = (): React.ReactElement => (
   <Accordion bordered={false} items={testItems} />
 )
 
-export const bordered = (): React.ReactElement => (
+export const Bordered = (): React.ReactElement => (
   <Accordion bordered={true} items={testItems} />
 )
 
-export const multiselectable = (): React.ReactElement => (
+export const Multiselctable = (): React.ReactElement => (
   <Accordion items={testItems} multiselectable={true} />
 )
 
-export const customTitles = (): React.ReactElement => (
+export const CustomTitles = (): React.ReactElement => (
   <Accordion bordered={true} items={customTestItems} />
 )

@@ -8,20 +8,11 @@ export type AlertBodyRef = React.ComponentRef<typeof AlertBody>
 export const AlertBodyForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'>
-> = (
-  {
-    className,
-    ...props
-  },
-  ref
-): React.ReactElement => {
-  const classes = classnames(
-    "usa-alert__body",
-    className
-  )
+> = ({ className, ...props }, ref): React.ReactElement => {
+  const classes = classnames('usa-alert__body', className)
 
   return (
-      <div ref={ref} className={classes} data-testid="alertBody" {...props} />
+    <div ref={ref} className={classes} data-testid="alertBody" {...props} />
   )
 }
 

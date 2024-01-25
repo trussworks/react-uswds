@@ -8,20 +8,11 @@ export type AlertContentRef = React.ComponentRef<typeof AlertContent>
 export const AlertContentForwardRef: React.ForwardRefRenderFunction<
   HTMLParagraphElement,
   React.ComponentPropsWithoutRef<'p'>
-> = (
-  {
-    className,
-    ...props
-  },
-  ref
-): React.ReactElement => {
-  const classes = classnames(
-    "usa-alert__text",
-    className
-  )
+> = ({ className, ...props }, ref): React.ReactElement => {
+  const classes = classnames('usa-alert__text', className)
 
   return (
-      <p ref={ref} className={classes} data-testid="alertContent" {...props} />
+    <p ref={ref} className={classes} data-testid="alertContent" {...props} />
   )
 }
 

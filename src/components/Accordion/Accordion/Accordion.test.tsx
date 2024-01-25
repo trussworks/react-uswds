@@ -143,13 +143,4 @@ describe('Accordion component', () => {
       expect(changeHandler).toBeCalledWith([testItems[0].id, testItems[1].id])
     })
   })
-
-  describe('with a custom className', () => {
-    it('passes the class onto the root Accordion element', () => {
-      const { getByTestId } = render(
-        <Accordion items={testItems} className="myCustomAccordion" />
-      )
-      expect(getByTestId('accordion')).toHaveClass('myCustomAccordion')
-    })
-  })
 })

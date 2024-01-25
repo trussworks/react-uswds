@@ -7,6 +7,10 @@ export {
   AccordionForwardRef,
 } from './components/accordion/Accordion/Accordion'
 export {
+  default as AccordionBase,
+  AccordionBaseForwardRef,
+} from './components/accordion/AccordionBase/AccordionBase'
+export {
   default as AccordionItem,
   AccordionItemForwardRef,
 } from './components/accordion/AccordionItem/AccordionItem'
@@ -22,10 +26,26 @@ export {
   default as AccordionItemContent,
   AccordionItemContentForwardRef,
 } from './components/accordion/AccordionItemContent/AccordionItemContent'
-export { default as Alert, AlertForwardRef } from './components/alert/Alert/Alert'
-export { default as AlertBody, AlertBodyForwardRef } from './components/alert/AlertBody/AlertBody'
-export { default as AlertContent, AlertContentForwardRef } from './components/alert/AlertContent/AlertContent'
-export { default as AlertHeading, AlertHeadingForwardRef } from './components/alert/AlertHeading/AlertHeading'
+export {
+  default as Alert,
+  AlertForwardRef,
+} from './components/alert/Alert/Alert'
+export {
+  default as AlertBase,
+  AlertBaseForwardRef,
+} from './components/alert/AlertBase/AlertBase'
+export {
+  default as AlertBody,
+  AlertBodyForwardRef,
+} from './components/alert/AlertBody/AlertBody'
+export {
+  default as AlertContent,
+  AlertContentForwardRef,
+} from './components/alert/AlertContent/AlertContent'
+export {
+  default as AlertHeading,
+  AlertHeadingForwardRef,
+} from './components/alert/AlertHeading/AlertHeading'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { InPageNavigation } from './components/InPageNavigation/InPageNavigation'

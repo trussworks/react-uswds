@@ -31,14 +31,6 @@ describe('Alert component', () => {
     )
     expect(queryByTestId('alert')).toHaveTextContent('Test children')
     expect(queryByTestId('alert')).not.toContainHTML('p')
-    expect(queryByTestId('alert')).toHaveClass('usa-alert--validation')
-  })
-
-  it('accepts className prop', () => {
-    const { queryByTestId } = render(
-      <Alert type="success" headingLevel="h4" className="myClass" />
-    )
-    expect(queryByTestId('alert')).toHaveClass('myClass')
   })
 
   describe('with a CTA', () => {

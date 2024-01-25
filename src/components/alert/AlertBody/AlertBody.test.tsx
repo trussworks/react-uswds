@@ -14,9 +14,7 @@ describe('AlertBody component', () => {
   })
 
   it('accepts className prop', () => {
-    const { queryByTestId } = render(
-      <AlertBody className="myClass" />
-    )
+    const { queryByTestId } = render(<AlertBody className="myClass" />)
     expect(queryByTestId('alertBody')).toHaveClass('myClass')
   })
 })

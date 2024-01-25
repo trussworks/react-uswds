@@ -4,7 +4,7 @@ import classnames from 'classnames'
 export interface BaseAccordionItemButtonProps {
   className?: string
   itemId: string
-  expanded?: boolean
+  isOpen?: boolean
   children: React.ReactNode
 }
 
@@ -19,7 +19,7 @@ export type AccordionItemButtonRef = React.ComponentRef<
 export const AccordionItemButtonForwardRef: React.ForwardRefRenderFunction<
   HTMLButtonElement,
   BaseAccordionItemButtonProps & React.ComponentPropsWithoutRef<'button'>
-> = ({ className, itemId, expanded, ...props }, ref) => {
+> = ({ className, itemId, isOpen, ...props }, ref) => {
   const classNames = classnames('usa-accordion__button', className)
 
   return (
@@ -28,7 +28,7 @@ export const AccordionItemButtonForwardRef: React.ForwardRefRenderFunction<
       type="button"
       className={classNames}
       data-testid={`accordionButton_${itemId}`} // Kept the same from when inlined inside Accordion
-      aria-expanded={expanded}
+      aria-expanded={isOpen}
       aria-controls={itemId}
       {...props}
     />

@@ -2,9 +2,11 @@ import React, { forwardRef } from 'react'
 
 import { HeadingLevel } from '../../../types/headingLevel'
 import AccordionItemHeading, {
-  AccordionItemHeadingRef,
+  AccordionItemHeadingProps,
 } from '../AccordionItemHeading/AccordionItemHeading'
-import { AccordionItemButtonRef } from '../AccordionItemButton/AccordionItemButton'
+import AccordionItemButton, {
+  AccordionItemButtonProps,
+} from '../AccordionItemButton/AccordionItemButton'
 import AccordionItemContent, {
   AccordionItemContentRef,
 } from '../AccordionItemContent/AccordionItemContent'
@@ -12,16 +14,23 @@ import AccordionItemContent, {
 export interface BaseAccordionItemProps {
   title: React.ReactNode
   /**
-   * @deprecated Use children instead
+   * @deprecated Use `children` instead
    */
-  content: React.ReactNode
+  content?: React.ReactNode
   className?: string
+  /**
+   * @deprecated Use `isOpen` instead
+   */
   expanded?: boolean
+  isOpen?: boolean
   id: string
   headingLevel: HeadingLevel
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  __buttonRef?: React.Ref<AccordionItemButtonRef>
-  __headingRef?: React.Ref<AccordionItemHeadingRef>
+  __buttonProps?: AccordionItemButtonProps
+  __headingProps?: { itemId?: string } & Omit<
+    AccordionItemHeadingProps,
+    'itemId' | 'headingLevel'
+  >
 }
 
 export type AccordionItemProps = React.ComponentPropsWithRef<
@@ -39,11 +48,12 @@ export const AccordionItemForwardRef: React.ForwardRefRenderFunction<
     id,
     content,
     expanded,
+    isOpen,
     headingLevel,
     handleToggle,
     children,
-    __buttonRef,
-    __headingRef,
+    __buttonProps,
+    __headingProps,
     ...props
   },
   ref
@@ -51,15 +61,22 @@ export const AccordionItemForwardRef: React.ForwardRefRenderFunction<
   return (
     <>
       <AccordionItemHeading
-        ref={__headingRef}
         headingLevel={headingLevel}
         itemId={id}
-        title={title}
-        handleToggle={handleToggle}
-        expanded={expanded}
-        __buttonRef={__buttonRef}
-      />
-      <AccordionItemContent id={id} ref={ref} expanded={expanded} {...props}>
+        {...__headingProps}>
+        <AccordionItemButton
+          itemId={id}
+          isOpen={isOpen}
+          onClick={handleToggle}
+          {...__buttonProps}>
+          {title}
+        </AccordionItemButton>
+      </AccordionItemHeading>
+      <AccordionItemContent
+        id={id}
+        ref={ref}
+        isOpen={isOpen ?? expanded}
+        {...props}>
         {children ?? content}
       </AccordionItemContent>
     </>
