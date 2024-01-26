@@ -219,14 +219,15 @@ export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
 /** IconList component */
-export { IconList } from './components/IconList/IconList'
-export { IconListContent } from './components/IconList/IconListContent/IconListContent'
-export { IconListIcon } from './components/IconList/IconListIcon/IconListIcon'
-export { IconListItem } from './components/IconList/IconListItem/IconListItem'
-export { default as IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
+export { default as IconList } from './components/icon/IconList/IconList'
+export { default as IconListContent } from './components/icon/IconListContent/IconListContent'
+export { default as IconListIcon } from './components/icon/IconListIcon/IconListIcon'
+export { default as IconListItem } from './components/icon/IconListItem/IconListItem'
+export { default as IconListTitle } from './components/icon/IconListTitle/IconListTitle'
 
 // Icons
-export { Icon } from './components/Icon/Icons'
+export { default as Icons } from './components/icon/Icon/Icons'
+export {makeUSWDSIcon} from './components/icon/Icon/Icon'
 
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'

@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
+import { TagProps } from '../../Tag/Tag'
 
 export interface BaseIconListTitleProps {
   type: string
@@ -17,22 +18,22 @@ export interface ParagraphIconListTitleProps extends BaseIconListTitleProps {
 }
 
 export type IconListHeadingTitleProps = HeadingIconListTitleProps &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >
+  React.ComponentPropsWithoutRef<'h1'>
 
 export type IconListParagraphTitleProps = ParagraphIconListTitleProps &
-  JSX.IntrinsicElements['p']
+  React.ComponentPropsWithoutRef<'p'>
 
-export type IconListTitleProps =
-  | IconListParagraphTitleProps
-  | IconListHeadingTitleProps
+export type IconListTitleProps = React.ComponentPropsWithRef<
+  typeof IconListTitle
+>
+
+export type ButtonGroupItemRef = React.ComponentRef<typeof IconListTitle>
 
 export const IconListTitleForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  IconListTitleProps
-> = ({ type, children, className, ...props }, ref): ReactElement => {
+  HTMLParagraphElement | HTMLHeadingElement,
+  (IconListParagraphTitleProps | IconListHeadingTitleProps) &
+    React.PropsWithoutRef<TagProps>
+> = ({ type, children, className, ...props }, ref): React.ReactElement => {
   const classes = classnames(className, 'usa-icon-list__title')
   const Tag = type
   return (
@@ -41,5 +42,7 @@ export const IconListTitleForwardRef: React.ForwardRefRenderFunction<
     </Tag>
   )
 }
+
+const IconListTitle = forwardRef(IconListTitleForwardRef)
 
 export default IconListTitle

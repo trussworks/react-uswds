@@ -1,11 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Icon from './Icons'
+import Icons from './Icons'
 
 describe('Icon component', () => {
   it('renders without errors', () => {
-    render(<Icon.AccessibilityNew />)
+    render(<Icons.AccessibilityNew />)
 
     const icon = screen.getByRole('img')
 
@@ -14,31 +14,31 @@ describe('Icon component', () => {
   })
 
   it('accepts a size prop', () => {
-    render(<Icon.AccessibilityNew size={7} />)
+    render(<Icons.AccessibilityNew size={7} />)
 
     expect(screen.getByRole('img')).toHaveClass('usa-icon--size-7')
   })
 
   it('accepts a role prop', () => {
-    render(<Icon.AccessibilityNew role="slider" />)
+    render(<Icons.AccessibilityNew role="slider" />)
 
     expect(screen.getByRole('slider')).toBeInTheDocument()
   })
 
   it('accepts a focusable prop', () => {
-    render(<Icon.AccessibilityNew focusable />)
+    render(<Icons.AccessibilityNew focusable />)
 
     expect(screen.getByRole('img')).toHaveAttribute('focusable', 'true')
   })
 
   it('accepts a className', () => {
-    render(<Icon.AccessibilityNew className="custom-class" />)
+    render(<Icons.AccessibilityNew className="custom-class" />)
 
     expect(screen.getByRole('img')).toHaveClass('custom-class')
   })
 
   it('accepts an aria-label', () => {
-    render(<Icon.AccessibilityNew aria-label="build icon component" />)
+    render(<Icons.AccessibilityNew aria-label="build icon component" />)
 
     expect(screen.getByRole('img')).toHaveAttribute(
       'aria-label',

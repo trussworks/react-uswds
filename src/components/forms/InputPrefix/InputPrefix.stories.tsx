@@ -1,6 +1,6 @@
 import React from 'react'
 import InputPrefix from './InputPrefix'
-import Icon from '../../Icon/Icons'
+import Icon from '../../icon/Icon/Icons'
 import TextInput from '../TextInput/TextInput'
 import InputGroup from '../InputGroup/InputGroup'
 import FormGroup from '../FormGroup/FormGroup'

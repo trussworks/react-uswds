@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 // assets
-import Icon from '../../Icon/Icons'
+import Icon from '../../icon/Icon/Icons'
 
 export type NavCloseButtonProps = JSX.IntrinsicElements['button']
 

@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import { Icon } from '../Icon/Icons'
+import Icons from '../icon/Icon/Icons'
 import {
   Banner,
   BannerButton,
@@ -53,7 +53,7 @@ export const CustomBanner = (): ReactElement => {
                 <strong>Secure .gov websites use HTTPS</strong>
                 <br />A{' '}
                 <strong>
-                  lock (<Icon.Lock aria-label="Locked padlock icon" />)
+                  lock (<Icons.Lock aria-label="Locked padlock icon" />)
                 </strong>{' '}
                 or <strong>https://</strong> means you&apos;ve safely connected
                 to the .gov website. Share sensitive information only on

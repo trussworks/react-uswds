@@ -7,7 +7,7 @@ import BannerContent from '../BannerContent/BannerContent'
 import BannerGuidance from '../BannerGuidance/BannerGuidance'
 import BannerIcon from '../BannerIcon/BannerIcon'
 import MediaBlockBody from '../../mediablock/MediaBlockBody/MediaBlockBody'
-import { Icon } from '../../Icon/Icons'
+import Icons from '../../icon/Icon/Icons'
 
 // assets
 import flagImg from '@uswds/uswds/src/img/us_flag_small.png'
@@ -60,7 +60,7 @@ export const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
           <>
             A{' '}
             <strong>
-              lock (<Icon.Lock aria-label="Locked padlock icon" />)
+              lock (<Icons.Lock aria-label="Locked padlock icon" />)
             </strong>{' '}
             or <strong>https://</strong> means you’ve safely connected to the{' '}
             {tld} website. Share sensitive information only on official, secure
@@ -97,7 +97,8 @@ export const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
           <>
             Un{' '}
             <strong>
-              candado (<Icon.Lock aria-label="Icono de candado cerrado" />)
+              candado (
+              <Icons.Lock aria-label="Icono de candado cerrado" />)
             </strong>{' '}
             o <strong>https://</strong> significa que usted se conectó de forma
             segura a un sitio web {tld}. Comparta información sensible sólo en

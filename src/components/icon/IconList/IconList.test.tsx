@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 import IconList from './IconList'
-import { Icon } from '../Icon/Icons'
-import IconListItem from './IconListItem/IconListItem'
-import IconListIcon from './IconListIcon/IconListIcon'
-import IconListContent from './IconListContent/IconListContent'
-import IconListTitle from './IconListTitle/IconListTitle'
+import Icons from '../icon/Icon/Icons'
+import IconListItem from '../IconListItem/IconListItem'
+import IconListIcon from '../IconListIcon/IconListIcon'
+import IconListContent from '../IconListContent/IconListContent'
+import IconListTitle from '../IconListTitle/IconListTitle'
 
 describe('Icon List', () => {
   it('renders without errors', () => {
@@ -13,14 +13,14 @@ describe('Icon List', () => {
       <IconList className="my-custom-className">
         <IconListItem>
           <IconListIcon>
-            <Icon.CheckCircle />
+            <Icons.CheckCircle />
           </IconListIcon>
           <IconListTitle type="h1">A title</IconListTitle>
           <IconListContent>Some content</IconListContent>
         </IconListItem>
         <IconListItem>
           <IconListIcon>
-            <Icon.CheckCircle />
+            <Icons.CheckCircle />
           </IconListIcon>
           <IconListTitle type="h1">Another title</IconListTitle>
           <IconListContent>More content</IconListContent>

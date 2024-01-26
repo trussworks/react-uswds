@@ -20,6 +20,6 @@ export const IconListContentForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const IconListContent = forwardRef(IconListContentForwardRef)
+const IconListContent = forwardRef(IconListContentForwardRef)
 
 export default IconListContent

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { Icon } from '../../Icon/Icons'
+import Icons from '../../icon/Icon/Icons'
 
 import Button from '../../button/Button/Button'
 
@@ -38,7 +38,7 @@ export const SearchButtonForwardRef: React.ForwardRefRenderFunction<
         {!isSmall && (
           <span className="usa-search__submit-text">{buttonText}</span>
         )}
-        <Icon.Search
+        <Icons.Search
           className="usa-search__submit-icon"
           name={buttonText}
           size={3}

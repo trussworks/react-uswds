@@ -1,7 +1,7 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
-import { Icon } from '../../Icon/Icons'
+import Icons from '../../icon/Icon/Icons'
 
 export type BaseSocialLinksProps = {
   links: React.ReactNode[]
@@ -41,22 +41,22 @@ export const SocialLinkForwardRef: React.ForwardRefRenderFunction<
   HTMLAnchorElement,
   SocialLinkProps
 > = ({ name, ...props }, ref): React.ReactElement => {
-  let icon: Icon
+  let icon: Icons
   switch (name) {
     case 'Facebook':
-      icon = <Icon.Facebook className="usa-social-link__icon" name={name} />
+      icon = <Icons.Facebook className="usa-social-link__icon" name={name} />
       break
     case 'Twitter':
-      icon = <Icon.Twitter className="usa-social-link__icon" name={name} />
+      icon = <Icons.Twitter className="usa-social-link__icon" name={name} />
       break
     case 'YouTube':
-      icon = <Icon.Youtube className="usa-social-link__icon" name={name} />
+      icon = <Icons.Youtube className="usa-social-link__icon" name={name} />
       break
     case 'Instagram':
-      icon = <Icon.Instagram className="usa-social-link__icon" name={name} />
+      icon = <Icons.Instagram className="usa-social-link__icon" name={name} />
       break
     case 'RSS':
-      icon = <Icon.RssFeed className="usa-social-link__icon" name={name} />
+      icon = <Icons.RssFeed className="usa-social-link__icon" name={name} />
       break
   }
 

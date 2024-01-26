@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Icon } from '../../Icon/Icons'
+import Icons from '../../icon/Icon/Icons'
 import Button from '../../button/Button/Button'
 
 export interface BaseModalCloseButtonProps {
@@ -22,7 +22,7 @@ export const ModalCloseButtonForwardRef: React.ForwardRefRenderFunction<
       onClick={handleClose}
       data-close-modal
       type="button">
-      <Icon.Close aria-hidden="true" />
+      <Icons.Close aria-hidden="true" />
     </Button>
   )
 }

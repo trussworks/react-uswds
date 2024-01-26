@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
-import { Icon } from '../Icon/Icons'
+import Icons from '../icon/Icon/Icons'
 import Link from '../Link/Link'
 import Button from '../button/Button/Button'
 
@@ -194,7 +194,7 @@ export const PaginationForwardRef: React.ForwardRefRenderFunction<
                 aria-label="Previous page"
                 data-testid="pagination-previous"
                 onClick={onClickPrevious}>
-                <Icon.NavigateBefore />
+                <Icons.NavigateBefore />
                 <span className="usa-pagination__link-text">Previous</span>
               </Button>
             ) : (
@@ -202,7 +202,7 @@ export const PaginationForwardRef: React.ForwardRefRenderFunction<
                 href={`${pathname}?page=${prevPage}`}
                 className="usa-pagination__link usa-pagination__previous-page"
                 aria-label="Previous page">
-                <Icon.NavigateBefore />
+                <Icons.NavigateBefore />
                 <span className="usa-pagination__link-text">Previous</span>
               </Link>
             )}
@@ -234,7 +234,7 @@ export const PaginationForwardRef: React.ForwardRefRenderFunction<
                 data-testid="pagination-next"
                 onClick={onClickNext}>
                 <span className="usa-pagination__link-text">Next</span>
-                <Icon.NavigateNext />
+                <Icons.NavigateNext />
               </Button>
             ) : (
               <Link
@@ -242,7 +242,7 @@ export const PaginationForwardRef: React.ForwardRefRenderFunction<
                 className="usa-pagination__link usa-pagination__next-page"
                 aria-label="Next page">
                 <span className="usa-pagination__link-text">Next</span>
-                <Icon.NavigateNext />
+                <Icons.NavigateNext />
               </Link>
             )}
           </li>

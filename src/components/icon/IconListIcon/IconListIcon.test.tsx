@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import { Icon } from '../../Icon/Icons'
+import Icons from '../icon/Icon/Icons'
 import IconListIcon from './IconListIcon'
 
 describe('Icon List Icon', () => {
   it('renders without errors', () => {
     const { queryByTestId, queryByRole } = render(
       <IconListIcon className="my-custom-className">
-        <Icon.CheckCircle />
+        <Icons.CheckCircle />
       </IconListIcon>
     )
 
