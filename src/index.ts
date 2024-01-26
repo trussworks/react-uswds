@@ -15,12 +15,12 @@ export {
   AccordionItemForwardRef,
 } from './components/accordion/AccordionItem/AccordionItem'
 export {
-  default as AccordionItemHeading,
-  AccordionItemHeadingForwardRef,
+  default as AccordionHeading,
+  AccordionHeadingForwardRef,
 } from './components/accordion/AccordionHeading/AccordionHeading'
 export {
-  default as AccordionItemButton,
-  AccordionItemButtonForwardRef,
+  default as AccordionButton,
+  AccordionButtonForwardRef,
 } from './components/accordion/AccordionButton/AccordionButton'
 export {
   default as AccordionItemContent,
@@ -69,7 +69,7 @@ export { InPageNavigation } from './components/InPageNavigation/InPageNavigation
 export { default as Link, LinkForwardRef } from './components/Link/Link'
 export { default as MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 export { Table } from './components/Table/Table'
-export { Tag } from './components/Tag/Tag'
+export { default as Tag, TagForwardRef } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
 export {

@@ -2,37 +2,37 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseTagProps = {
+  /**
+   * @deprecated Use the `style` property directly
+   */
   background?: string
 }
 
-export type TagProps = BaseTagProps & JSX.IntrinsicElements['span']
+export type TagProps = React.ComponentPropsWithRef<typeof Tag>
+
+export type TagRef = React.ComponentRef<typeof Tag>
 
 export const TagForwardRef: React.ForwardRefRenderFunction<
   HTMLSpanElement,
-  TagProps
+  BaseTagProps & React.ComponentPropsWithoutRef<'span'>
 > = (
-  { children, background, className, ...spanProps },
+  { children, background, className, style = { background }, ...props },
   ref
 ): React.ReactElement => {
-  const style: React.CSSProperties = {}
-  if (background) {
-    style.background = background
-  }
-
-  const tagClasses = classnames('usa-tag', className)
+  const classes = classnames('usa-tag', className)
 
   return (
     <span
       ref={ref}
       data-testid="tag"
-      className={tagClasses}
+      className={classes}
       style={{ ...style }}
-      {...spanProps}>
+      {...props}>
       {children}
     </span>
   )
 }
 
-export const Tag = forwardRef(TagForwardRef)
+const Tag = forwardRef(TagForwardRef)
 
 export default Tag
