@@ -1,12 +1,12 @@
 import React, { forwardRef } from 'react'
 
 import { HeadingLevel } from '../../../types/headingLevel'
-import AccordionItemHeading, {
-  AccordionItemHeadingProps,
-} from '../AccordionItemHeading/AccordionItemHeading'
-import AccordionItemButton, {
-  AccordionItemButtonProps,
-} from '../AccordionItemButton/AccordionItemButton'
+import AccordionHeading, {
+  AccordionHeadingProps,
+} from '../AccordionHeading/AccordionHeading'
+import AccordionButton, {
+  AccordionButtonProps,
+} from '../AccordionButton/AccordionButton'
 import AccordionItemContent, {
   AccordionItemContentRef,
 } from '../AccordionItemContent/AccordionItemContent'
@@ -26,9 +26,9 @@ export interface BaseAccordionItemProps {
   id: string
   headingLevel: HeadingLevel
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  buttonProps?: AccordionItemButtonProps
+  buttonProps?: AccordionButtonProps
   headingProps?: { itemId?: string } & Omit<
-    AccordionItemHeadingProps,
+    AccordionHeadingProps,
     'itemId' | 'headingLevel'
   >
 }
@@ -48,7 +48,7 @@ export const AccordionItemForwardRef: React.ForwardRefRenderFunction<
     id,
     content,
     expanded,
-    isOpen,
+    isOpen = expanded,
     headingLevel,
     handleToggle,
     children,
@@ -60,23 +60,19 @@ export const AccordionItemForwardRef: React.ForwardRefRenderFunction<
 ): React.ReactElement => {
   return (
     <>
-      <AccordionItemHeading
+      <AccordionHeading
         headingLevel={headingLevel}
         itemId={id}
         {...headingProps}>
-        <AccordionItemButton
+        <AccordionButton
           itemId={id}
           isOpen={isOpen}
           onClick={handleToggle}
           {...buttonProps}>
           {title}
-        </AccordionItemButton>
-      </AccordionItemHeading>
-      <AccordionItemContent
-        id={id}
-        ref={ref}
-        isOpen={isOpen ?? expanded}
-        {...props}>
+        </AccordionButton>
+      </AccordionHeading>
+      <AccordionItemContent id={id} ref={ref} isOpen={isOpen} {...props}>
         {children ?? content}
       </AccordionItemContent>
     </>

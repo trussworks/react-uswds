@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import AccordionItemButton, {
   AccordionItemButtonProps,
   AccordionItemButtonRef,
-} from '../../accordion/AccordionItemButton/AccordionItemButton'
+} from '../../accordion/AccordionButton/AccordionButton'
 
 export type BannerButtonBaseProps = React.ComponentPropsWithRef<
   typeof BannerButtonBase

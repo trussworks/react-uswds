@@ -6,11 +6,11 @@ import AccordionItemContent, {
   AccordionItemContentProps,
 } from './AccordionItemContent'
 
-const { content, id, expanded } = testItems[0]
+const { children, id, isOpen } = testItems[0]
 const testContent = {
-  children: content,
+  children,
   id,
-  expanded,
+  isOpen,
 } satisfies AccordionItemContentProps
 
 describe('AccordionItemContent component', () => {
@@ -27,7 +27,7 @@ describe('AccordionItemContent component', () => {
 
   describe('with expanded on mount', () => {
     it('is unhidden by default', () => {
-      const customTestContent = { ...testContent, expanded: true }
+      const customTestContent = { ...testContent, isOpen: true }
       const { getByTestId } = render(
         <AccordionItemContent {...customTestContent} />
       )

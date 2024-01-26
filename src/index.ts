@@ -17,11 +17,11 @@ export {
 export {
   default as AccordionItemHeading,
   AccordionItemHeadingForwardRef,
-} from './components/accordion/AccordionItemHeading/AccordionItemHeading'
+} from './components/accordion/AccordionHeading/AccordionHeading'
 export {
   default as AccordionItemButton,
   AccordionItemButtonForwardRef,
-} from './components/accordion/AccordionItemButton/AccordionItemButton'
+} from './components/accordion/AccordionButton/AccordionButton'
 export {
   default as AccordionItemContent,
   AccordionItemContentForwardRef,
@@ -227,7 +227,7 @@ export { default as IconListTitle } from './components/icon/IconListTitle/IconLi
 
 // Icons
 export { default as Icons } from './components/icon/Icon/Icons'
-export {makeUSWDSIcon} from './components/icon/Icon/Icon'
+export { makeUSWDSIcon } from './components/icon/Icon/Icon'
 
 /** Identifier Components */
 export { Identifier } from './components/Identifier/Identifier/Identifier'

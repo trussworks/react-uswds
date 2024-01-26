@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useMemo, useState } from 'react'
 
 import AccordionItem, {
   AccordionItemProps,
@@ -29,11 +29,20 @@ export const AccordionForwardRef: React.ForwardRefRenderFunction<
   { items, multiselectable = false, __onChange, ...props },
   ref
 ): React.ReactElement => {
-  const [openItems, setOpenItems] = useState(
-    items.filter((i) => !!i.expanded).map((i) => i.id)
+  // not needed once expanded property removed
+  const fixedItems = useMemo(
+    () =>
+      items.map(({ expanded, isOpen, ...i }) => ({
+        ...i,
+        isOpen: isOpen ?? expanded,
+      })),
+    [items]
   )
 
-  const toggleItem = (itemId: AccordionItemProps['id']): void => {
+  const [openItems, setOpenItems] = useState(
+    fixedItems.filter((i) => !!i.isOpen).map((i) => i.id)
+  )
+  const toggleItem = (itemId: string): void => {
     const newOpenItems = [...openItems]
     const itemIndex = openItems.indexOf(itemId)
     const isMultiselectable = multiselectable
@@ -57,11 +66,11 @@ export const AccordionForwardRef: React.ForwardRefRenderFunction<
       ref={ref}
       data-allow-multiple={multiselectable || undefined}
       {...props}>
-      {items.map((item, i) => (
+      {fixedItems.map((item, i) => (
         <AccordionItem
           key={`accordionItem_${i}`}
           {...item}
-          expanded={openItems.indexOf(item.id) > -1}
+          isOpen={openItems.indexOf(item.id) > -1}
           handleToggle={(): void => {
             toggleItem(item.id)
           }}

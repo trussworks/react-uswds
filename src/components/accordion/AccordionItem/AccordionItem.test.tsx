@@ -8,14 +8,10 @@ import userEvent from '@testing-library/user-event'
 const testItem = testItems[0]
 
 function TestParent() {
-  const [expanded, setExpanded] = useState(false)
-  const toggleHandler = useCallback(() => setExpanded((e) => !e), [])
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleHandler = useCallback(() => setIsOpen((e) => !e), [])
   return (
-    <AccordionItem
-      {...testItem}
-      expanded={expanded}
-      handleToggle={toggleHandler}
-    />
+    <AccordionItem {...testItem} isOpen={isOpen} handleToggle={toggleHandler} />
   )
 }
 
@@ -27,9 +23,7 @@ describe('AccordionItem component', () => {
   it('renders without errors', () => {
     const { getByTestId } = render(<AccordionItem {...testItem} />)
     expect(getByTestId(`accordionItem_${testItem.id}`)).toBeInTheDocument()
-    expect(
-      getByTestId(`accordionItemHeading_${testItem.id}`)
-    ).toBeInTheDocument()
+    expect(getByTestId(`accordionHeading_${testItem.id}`)).toBeInTheDocument()
     expect(getByTestId(`accordionButton_${testItem.id}`)).toBeInTheDocument()
   })
 

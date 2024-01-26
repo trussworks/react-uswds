@@ -3,23 +3,21 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-export interface BaseAccordionItemHeadingProps {
+export interface BaseAccordionHeadingProps {
   headingLevel: HeadingLevel
   className?: string
   itemId: string
 }
 
-export type AccordionItemHeadingProps = React.ComponentPropsWithRef<
-  typeof AccordionItemHeading
+export type AccordionHeadingProps = React.ComponentPropsWithRef<
+  typeof AccordionHeading
 >
 
-export type AccordionItemHeadingRef = React.ComponentRef<
-  typeof AccordionItemHeading
->
+export type AccordionHeadingRef = React.ComponentRef<typeof AccordionHeading>
 
-export const AccordionItemHeadingForwardRef: React.ForwardRefRenderFunction<
+export const AccordionHeadingForwardRef: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
-  BaseAccordionItemHeadingProps &
+  BaseAccordionHeadingProps &
     Omit<React.ComponentPropsWithoutRef<'h1'>, 'title'>
 > = ({ className, headingLevel, itemId, ...props }, ref) => {
   const Heading = headingLevel
@@ -29,11 +27,11 @@ export const AccordionItemHeadingForwardRef: React.ForwardRefRenderFunction<
       ref={ref}
       className={classes}
       {...props}
-      data-testid={`accordionItemHeading_${itemId}`}
+      data-testid={`accordionHeading_${itemId}`}
     />
   )
 }
 
-const AccordionItemHeading = forwardRef(AccordionItemHeadingForwardRef)
+const AccordionHeading = forwardRef(AccordionHeadingForwardRef)
 
-export default AccordionItemHeading
+export default AccordionHeading

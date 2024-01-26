@@ -1,24 +1,22 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-export interface BaseAccordionItemButtonProps {
+export interface BaseAccordionButtonProps {
   className?: string
   itemId: string
   isOpen?: boolean
   children: React.ReactNode
 }
 
-export type AccordionItemButtonProps = React.ComponentPropsWithRef<
-  typeof AccordionItemButton
+export type AccordionButtonProps = React.ComponentPropsWithRef<
+  typeof AccordionButton
 >
 
-export type AccordionItemButtonRef = React.ComponentRef<
-  typeof AccordionItemButton
->
+export type AccordionButtonRef = React.ComponentRef<typeof AccordionButton>
 
-export const AccordionItemButtonForwardRef: React.ForwardRefRenderFunction<
+export const AccordionButtonForwardRef: React.ForwardRefRenderFunction<
   HTMLButtonElement,
-  BaseAccordionItemButtonProps & React.ComponentPropsWithoutRef<'button'>
+  BaseAccordionButtonProps & React.ComponentPropsWithoutRef<'button'>
 > = ({ className, itemId, isOpen, ...props }, ref) => {
   const classNames = classnames('usa-accordion__button', className)
 
@@ -35,6 +33,6 @@ export const AccordionItemButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-const AccordionItemButton = forwardRef(AccordionItemButtonForwardRef)
+const AccordionButton = forwardRef(AccordionButtonForwardRef)
 
-export default AccordionItemButton
+export default AccordionButton
