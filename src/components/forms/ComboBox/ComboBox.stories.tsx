@@ -4,7 +4,7 @@ import ComboBox, { ComboBoxRef } from './ComboBox'
 import Form from '../Form/Form'
 import Label from '../Label/Label'
 import TextInput from '../TextInput/TextInput'
-import Button from '../../Button/Button'
+import Button from '../../button/Button/Button'
 import { fruits } from './fruits'
 
 export default {

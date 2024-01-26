@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { Icon } from '../Icon/Icons'
 import Link from '../Link/Link'
-import Button from '../Button/Button'
+import Button from '../button/Button/Button'
 
 export type BasePaginationProps = {
   pathname: string // pathname of results page

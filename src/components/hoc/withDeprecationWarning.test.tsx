@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 jest.mock('../../deprecation')
 import { deprecationWarning } from '../../deprecation'
-import { Button } from '../Button/Button'
+import { Button } from '../button/Button/Button'
 import { withDeprecationWarning } from './withDeprecationWarning'
 
 describe('withDeprecationWarning HOC', () => {

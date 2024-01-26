@@ -139,26 +139,17 @@ export const CustomBreadcrumbLinks = (): React.ReactElement => {
   return (
     <BreadcrumbBar>
       <Breadcrumb>
-        <BreadcrumbLink<MockLinkProps>
-          className="abc"
-          asCustom={CustomLink}
-          to="#">
+        <BreadcrumbLink className="abc" asCustom={CustomLink} to="#">
           Home
         </BreadcrumbLink>
       </Breadcrumb>
       <Breadcrumb>
-        <BreadcrumbLink<MockLinkProps>
-          className="abc"
-          asCustom={CustomLink}
-          to="#">
+        <BreadcrumbLink className="abc" asCustom={CustomLink} to="#">
           Federal Contracting
         </BreadcrumbLink>
       </Breadcrumb>
       <Breadcrumb>
-        <BreadcrumbLink<MockLinkProps>
-          className="abc"
-          asCustom={CustomLink}
-          to="#">
+        <BreadcrumbLink className="abc" asCustom={CustomLink} to="#">
           Contracting assistance programs
         </BreadcrumbLink>
       </Breadcrumb>

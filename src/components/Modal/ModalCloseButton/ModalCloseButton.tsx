@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { Icon } from '../../Icon/Icons'
-import Button from '../../Button/Button'
+import Button from '../../button/Button/Button'
 
 export interface BaseModalCloseButtonProps {
   handleClose: () => void

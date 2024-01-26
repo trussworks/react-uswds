@@ -21,7 +21,9 @@ export interface WithCustomLinkProps<T> {
 // Default props means allow the StyledLinkProps as well as any
 // props allowed on the `a` element, plus the required props on
 // WithDefaultLinkProps
-export type DefaultLinkProps = StyledLinkProps<JSX.IntrinsicElements['a']> &
+export type DefaultLinkProps = StyledLinkProps<
+  React.ComponentPropsWithoutRef<'a'>
+> &
   WithDefaultLinkProps
 
 // Custom props means allow the StyledLinkProps as well as the custom
@@ -51,34 +53,34 @@ export function linkClasses<T>(
       )
 }
 
-export type LinkProps<
-  FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
-> = DefaultLinkProps | CustomLinkProps<FCProps>
+export type LinkProps = React.ComponentPropsWithRef<typeof Link>
+
+export type LinkRef = React.ComponentRef<typeof Link>
 
 export const LinkForwardRef: React.ForwardRefRenderFunction<
   HTMLAnchorElement,
-  LinkProps
-> = <FCProps extends React.PropsWithChildren<object> = DefaultLinkProps>(
-  props,
-  ref
-): React.ReactElement => {
+  (DefaultLinkProps | CustomLinkProps<DefaultLinkProps>) &
+    React.ComponentPropsWithoutRef<'a'>
+> = (props, ref): React.ReactElement => {
   if (isCustomProps(props)) {
-    const { variant, className, asCustom, children, ...remainingProps } = props
+    const {
+      variant,
+      className,
+      asCustom: CustomComponent,
+      children,
+      ...remainingProps
+    } = props
     // 1. We know props is AsCustomProps<FCProps>
     // 2. We know AsCustomProps<FCProps> is
     //    FCProps & { variant: ..., className: ..., children: ..., asCustom: ... }
     // 3. Therefore we know that removing those props leaves us
     //    with FCProps
     //
-    const linkProps: FCProps = remainingProps as unknown as FCProps
     const classes = linkClasses(variant, className)
-    return React.createElement(
-      asCustom,
-      {
-        className: classes,
-        ...linkProps,
-      },
-      children
+    return (
+      <CustomComponent ref={ref} className={classes} {...remainingProps}>
+        {children}
+      </CustomComponent>
     )
   } else {
     const { children, className, variant, ...linkProps } = props
@@ -92,6 +94,6 @@ export const LinkForwardRef: React.ForwardRefRenderFunction<
   }
 }
 
-export const Link = forwardRef(LinkForwardRef)
+const Link = forwardRef(LinkForwardRef)
 
 export default Link

@@ -5,7 +5,7 @@ import ModalHeading from './ModalHeading/ModalHeading'
 import ModalFooter from './ModalFooter/ModalFooter'
 import ModalToggleButton from './ModalToggleButton'
 
-import ButtonGroup from '../ButtonGroup/ButtonGroup'
+import ButtonGroup from '../button/ButtonGroup/ButtonGroup'
 
 export default {
   title: 'Components/Modal',

@@ -33,10 +33,7 @@ describe('BreadcrumbLink component', () => {
     )
 
     const { getByRole, queryByText } = render(
-      <BreadcrumbLink<CustomLinkProps>
-        to="#"
-        className="custom-class"
-        asCustom={CustomLink}>
+      <BreadcrumbLink to="#" className="custom-class" asCustom={CustomLink}>
         {testPageName}
       </BreadcrumbLink>
     )

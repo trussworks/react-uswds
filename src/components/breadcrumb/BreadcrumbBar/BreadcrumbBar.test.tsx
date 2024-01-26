@@ -26,7 +26,7 @@ describe('BreadcrumbBar component', () => {
         <Breadcrumb>
           <BreadcrumbLink href="#">{testParentPageName}</BreadcrumbLink>
         </Breadcrumb>
-        <Breadcrumb current>{testPageName}</Breadcrumb>
+        <Breadcrumb isCurrent>{testPageName}</Breadcrumb>
       </BreadcrumbBar>
     )
     expect(queryByText(testParentPageName)).toBeInTheDocument()
@@ -55,7 +55,7 @@ describe('BreadcrumbBar component', () => {
     const { getByRole, queryByText } = render(
       <BreadcrumbBar>
         <Breadcrumb>
-          <BreadcrumbLink<CustomLinkProps> to="#" asCustom={CustomLink}>
+          <BreadcrumbLink to="#" asCustom={CustomLink}>
             {testParentPageName}
           </BreadcrumbLink>
         </Breadcrumb>

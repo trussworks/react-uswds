@@ -46,10 +46,27 @@ export {
   default as AlertHeading,
   AlertHeadingForwardRef,
 } from './components/alert/AlertHeading/AlertHeading'
-export { Button } from './components/Button/Button'
-export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
+
+/** Button components */
+export {
+  default as Button,
+  ButtonForwardRef,
+} from './components/button/Button/Button'
+export {
+  default as ButtonGroup,
+  ButtonGroupForwardRef,
+} from './components/button/ButtonGroup/ButtonGroup'
+export {
+  default as ButtonGroupBase,
+  ButtonGroupBaseForwardRef,
+} from './components/button/ButtonGroupBase/ButtonGroupBase'
+export {
+  default as ButtonGroupItem,
+  ButtonGroupItemForwardRef,
+} from './components/button/ButtonGroupItem/ButtonGroupItem'
+
 export { InPageNavigation } from './components/InPageNavigation/InPageNavigation'
-export { Link } from './components/Link/Link'
+export { default as Link, LinkForwardRef } from './components/Link/Link'
 export { default as MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 export { Table } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
@@ -250,9 +267,26 @@ export { CardBody } from './components/card/CardBody/CardBody'
 export { CardFooter } from './components/card/CardFooter/CardFooter'
 
 /** Breadcrumb components */
-export { BreadcrumbBar } from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
-export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
-export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
+export {
+  default as Breadcrumb,
+  BreadcrumbForwardRef,
+} from './components/breadcrumb/Breadcrumb/Breadcrumb'
+export {
+  default as BreadcrumbBar,
+  BreadcrumbBarForwardRef,
+} from './components/breadcrumb/BreadcrumbBar/BreadcrumbBar'
+export {
+  default as BreadcrumbBarBase,
+  BreadcrumbBarBaseForwardRef,
+} from './components/breadcrumb/BreadcrumbBarBase/BreadcrumbBarBase'
+export {
+  default as BreadcrumbLink,
+  BreadcrumbLinkForwardRef,
+} from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
+export {
+  default as BreadcrumbList,
+  BreadcrumbListForwardRef,
+} from './components/breadcrumb/BreadcrumbList/BreadcrumbList'
 
 /** StepIndicator components */
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'

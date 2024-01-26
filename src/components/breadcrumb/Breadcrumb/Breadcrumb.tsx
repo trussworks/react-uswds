@@ -4,16 +4,22 @@ import classnames from 'classnames'
 export interface BaseBreadcrumbProps {
   children: React.ReactNode
   className?: string
+  /**
+   * @deprecated Use `isCurrent` instead
+   */
   current?: boolean
+  isCurrent?: boolean
 }
 
-export type BreadcrumbProps = BaseBreadcrumbProps & JSX.IntrinsicElements['li']
+export type BreadcrumbProps = React.ComponentPropsWithRef<typeof Breadcrumb>
+
+export type BreadcrumbRef = React.ComponentRef<typeof Breadcrumb>
 
 export const BreadcrumbForwardRef: React.ForwardRefRenderFunction<
   HTMLLIElement,
-  BreadcrumbProps
+  BaseBreadcrumbProps & React.ComponentPropsWithoutRef<'li'>
 > = (
-  { children, current = false, className, ...listItemProps },
+  { children, current = false, isCurrent = false, className, ...props },
   ref
 ): React.ReactElement => {
   const classes = classnames(
@@ -28,13 +34,13 @@ export const BreadcrumbForwardRef: React.ForwardRefRenderFunction<
     <li
       ref={ref}
       className={classes}
-      aria-current={current ? 'page' : undefined}
-      {...listItemProps}>
+      aria-current={isCurrent || current ? 'page' : undefined}
+      {...props}>
       {children}
     </li>
   )
 }
 
-export const Breadcrumb = forwardRef(BreadcrumbForwardRef)
+const Breadcrumb = forwardRef(BreadcrumbForwardRef)
 
 export default Breadcrumb

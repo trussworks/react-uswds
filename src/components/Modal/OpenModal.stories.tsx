@@ -3,8 +3,8 @@ import React from 'react'
 import ModalWindow from './ModalWindow/ModalWindow'
 import ModalHeading from './ModalHeading/ModalHeading'
 import ModalFooter from './ModalFooter/ModalFooter'
-import ButtonGroup from '../ButtonGroup/ButtonGroup'
-import Button from '../Button/Button'
+import ButtonGroup from '../button/ButtonGroup/ButtonGroup'
+import Button from '../button/Button/Button'
 import ModalWrapper from './ModalWrapper/ModalWrapper'
 
 type StorybookArguments = {

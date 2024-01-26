@@ -13,8 +13,8 @@ import Modal, { ModalRef } from './Modal'
 import ModalHeading from './ModalHeading/ModalHeading'
 import ModalFooter from './ModalFooter/ModalFooter'
 import ModalToggleButton from './ModalToggleButton'
-import Button from '../Button/Button'
-import ButtonGroup from '../ButtonGroup/ButtonGroup'
+import Button from '../button/Button/Button'
+import ButtonGroup from '../button/ButtonGroup/ButtonGroup'
 
 jest.mock('./utils', () => {
   const utils = jest.requireActual('./utils')

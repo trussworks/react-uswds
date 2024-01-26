@@ -3,7 +3,7 @@ import { Menu } from '../header/Menu/Menu'
 import LanguageSelectorButton from './LanguageSelectorButton'
 import classnames from 'classnames'
 import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
-import Button from '../Button/Button'
+import Button from '../button/Button/Button'
 
 export const generateMenuItems = (langs: LanguageDefinition[]) => {
   return langs.map((lang, index) => {

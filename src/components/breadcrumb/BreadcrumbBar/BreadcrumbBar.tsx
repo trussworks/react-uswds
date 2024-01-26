@@ -1,39 +1,41 @@
 import React, { ReactElement, forwardRef } from 'react'
-import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
+import BreadcrumbBarBase, {
+  BreadcrumbBarBaseProps,
+  BreadcrumbBarBaseRef,
+} from '../BreadcrumbBarBase/BreadcrumbBarBase'
+import BreadcrumbList, {
+  BreadcrumbListProps,
+} from '../BreadcrumbList/BreadcrumbList'
 
-export type BreadcrumbBarProps = {
+export type BaseBreadcrumbBarProps = {
   children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
   variant?: 'default' | 'wrap'
   className?: string
-  navProps?: JSX.IntrinsicElements['nav']
-  listProps?: JSX.IntrinsicElements['ol']
+  /**
+   * @deprecated Use root properties
+   */
+  navProps?: React.PropsWithRef<BreadcrumbBarBaseProps>
+  listProps?: React.PropsWithRef<BreadcrumbListProps>
 }
+
+export type BreadcrumbBarProps = React.ComponentPropsWithRef<
+  typeof BreadcrumbBar
+>
+
+export type BreadcrumbBarRef = React.ComponentRef<typeof BreadcrumbBar>
 
 export const BreadcrumbBarForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  BreadcrumbBarProps
-> = (
-  { variant = 'default', children, className, navProps, listProps },
-  ref
-): React.ReactElement => {
-  const classes = classnames(
-    'usa-breadcrumb',
-    {
-      'usa-breadcrumb--wrap': variant === 'wrap',
-    },
-    className
-  )
-
+  BreadcrumbBarBaseRef,
+  BaseBreadcrumbBarProps & React.PropsWithoutRef<BreadcrumbBarBaseProps>
+> = ({ children, navProps, listProps, ...props }, ref): React.ReactElement => {
   return (
-    <nav ref={ref} className={classes} aria-label="Breadcrumbs" {...navProps}>
-      <ol className="usa-breadcrumb__list" {...listProps}>
-        {children}
-      </ol>
-    </nav>
+    <BreadcrumbBarBase ref={ref} {...(navProps ?? props)}>
+      <BreadcrumbList {...listProps}>{children}</BreadcrumbList>
+    </BreadcrumbBarBase>
   )
 }
 
-export const BreadcrumbBar = forwardRef(BreadcrumbBarForwardRef)
+const BreadcrumbBar = forwardRef(BreadcrumbBarForwardRef)
 
 export default BreadcrumbBar

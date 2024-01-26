@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 
 import { ModalRef } from './Modal'
-import Button, { ButtonProps } from '../Button/Button'
+import Button, { ButtonProps } from '../button/Button/Button'
 
 export type BaseModalToggleButtonProps = {
   modalRef: React.RefObject<ModalRef>

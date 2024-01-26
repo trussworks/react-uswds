@@ -13,11 +13,13 @@ export type BaseButtonProps = {
   unstyled?: boolean
 }
 
-export type ButtonProps = BaseButtonProps & JSX.IntrinsicElements['button']
+export type ButtonProps = React.ComponentPropsWithRef<typeof Button>
+
+export type ButtonRef = React.ComponentRef<typeof Button>
 
 export const ButtonForwardRef: React.ForwardRefRenderFunction<
   HTMLButtonElement,
-  ButtonProps
+  BaseButtonProps & React.ComponentPropsWithoutRef<'button'>
 > = (
   {
     type,
@@ -31,7 +33,7 @@ export const ButtonForwardRef: React.ForwardRefRenderFunction<
     unstyled,
     onClick,
     className,
-    ...defaultProps
+    ...props
   },
   ref
 ): React.ReactElement => {
@@ -57,12 +59,12 @@ export const ButtonForwardRef: React.ForwardRefRenderFunction<
       className={classes}
       onClick={onClick}
       data-testid="button"
-      {...defaultProps}>
+      {...props}>
       {children}
     </button>
   )
 }
 
-export const Button = forwardRef(ButtonForwardRef)
+const Button = forwardRef(ButtonForwardRef)
 
 export default Button

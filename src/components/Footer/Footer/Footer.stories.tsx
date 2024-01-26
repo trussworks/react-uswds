@@ -2,7 +2,7 @@
 import React from 'react'
 
 import Address from '../Address/Address'
-import Button from '../../Button/Button'
+import Button from '../../button/Button/Button'
 import Footer from './Footer'
 import FooterNav from '../FooterNav/FooterNav'
 import Form from '../../forms/Form/Form'
