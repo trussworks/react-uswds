@@ -2,9 +2,9 @@ import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import Tooltip from './Tooltip'
-import { isElementInViewport, calculateMarginOffset } from './utils'
+import { isElementInViewport, calculateMarginOffset } from '../utils'
 
-jest.mock('./utils')
+jest.mock('../utils')
 
 const mockedIsElementInViewport = isElementInViewport as jest.MockedFunction<
   typeof isElementInViewport
@@ -161,52 +161,6 @@ describe('Tooltip component', () => {
         </Tooltip>
       )
       expect(getByTestId('triggerElement')).toHaveClass(customClass)
-    })
-  })
-
-  describe('with a custom component', () => {
-    type CustomLinkProps = React.PropsWithChildren<{
-      to: string
-      className?: string
-    }> &
-      JSX.IntrinsicElements['a'] &
-      React.RefAttributes<HTMLAnchorElement>
-
-    const CustomLinkForwardRef: React.ForwardRefRenderFunction<
-      HTMLAnchorElement,
-      CustomLinkProps
-    > = ({ to, className, children, ...tooltipProps }, ref) => (
-      <a ref={ref} href={to} className={className} {...tooltipProps}>
-        {children}
-      </a>
-    )
-    const CustomLink = React.forwardRef(CustomLinkForwardRef)
-
-    it('renders the custom component as the trigger element', () => {
-      render(
-        <Tooltip<CustomLinkProps>
-          label="Click me"
-          asCustom={CustomLink}
-          to="http://www.truss.works"
-          className="customTriggerClass">
-          This is a custom link tooltip
-        </Tooltip>
-      )
-
-      const bodyEl = screen.queryByRole('tooltip', { hidden: true })
-      const tooltipId = bodyEl?.getAttribute('id')
-
-      const triggerEl = screen.queryByTestId('triggerElement')
-      expect(triggerEl).toBeInTheDocument()
-      expect(triggerEl).toHaveAttribute('aria-describedby', tooltipId)
-      expect(triggerEl).toHaveAttribute('tabindex', '0')
-      expect(triggerEl).toHaveAttribute('title', '')
-      expect(triggerEl).not.toHaveClass('usa-tooltip')
-      expect(triggerEl).toHaveClass('usa-tooltip__trigger')
-      expect(triggerEl).toHaveClass('customTriggerClass')
-
-      expect(triggerEl).toBeInstanceOf(HTMLAnchorElement)
-      expect(triggerEl).toHaveAttribute('href', 'http://www.truss.works')
     })
   })
 

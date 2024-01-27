@@ -2,8 +2,6 @@ import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type BaseButtonProps = {
-  type: 'button' | 'submit' | 'reset'
-  children: React.ReactNode
   secondary?: boolean
   base?: boolean
   accentStyle?: 'cool' | 'warm'
