@@ -15,7 +15,7 @@ describe('AlertBase component', () => {
 
   it('renders validation style alert', () => {
     const { queryByTestId } = render(
-      <AlertBase type="success" validation className="myClass">
+      <AlertBase type="success" isValidation className="myClass">
         Test children
       </AlertBase>
     )

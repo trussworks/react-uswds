@@ -30,7 +30,7 @@ export interface BaseSiteAlertProps {
 /**
  * @todo Remove and replace usage with {@link BaseSiteAlertProps}
  */
-export type SiteAlertPropsWithDeprecation = 
+export type SiteAlertPropsWithDeprecation =
   | ({
       /**
        * @deprecated Use `type` instead
@@ -39,7 +39,6 @@ export type SiteAlertPropsWithDeprecation =
       type?: never
     } & Omit<BaseSiteAlertProps, 'variant' | 'type'>)
   | ({
-
       /**
        * @deprecated Use `type` instead
        */
@@ -47,24 +46,24 @@ export type SiteAlertPropsWithDeprecation =
       type: SiteAlertType
     } & Omit<BaseSiteAlertProps, 'variant' | 'type'>)
 
-
 export type SiteAlertProps = React.ComponentPropsWithoutRef<typeof SiteAlert>
 
 export type SiteAlertRef = React.ComponentRef<typeof SiteAlert>
 
 export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
   HTMLElement,
-  SiteAlertPropsWithDeprecation & JSX.IntrinsicElements['section']
+  SiteAlertPropsWithDeprecation & React.ComponentPropsWithoutRef<'section'>
 > = (
   {
     children,
     heading,
     className,
+    headingLevel = 'h3',
     variant,
     showIcon,
     slim,
     isSlim = slim,
-    isNoIcon = typeof showIcon === "boolean" ? !showIcon : false,
+    isNoIcon = typeof showIcon === 'boolean' ? !showIcon : false,
     type = variant,
     ...sectionProps
   },
@@ -81,6 +80,7 @@ export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
     },
     className
   )
+  const isWrapped = typeof children === 'string'
 
   return (
     <section
@@ -90,8 +90,8 @@ export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
       aria-label="Site alert"
       {...sectionProps}>
       <Alert
-        isValidation={typeof children !== 'string'}
-        headingLevel="h3"
+        isValidation={!isWrapped}
+        headingLevel={headingLevel}
         heading={heading}>
         {children}
       </Alert>

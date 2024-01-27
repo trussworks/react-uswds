@@ -78,7 +78,7 @@ export const AlertForwardRef: React.ForwardRefRenderFunction<
           </AlertHeading>
         )}
         {children &&
-          (validation ? (
+          (isValidation ? (
             children
           ) : (
             <AlertContent {...contentProps}>{children}</AlertContent>
