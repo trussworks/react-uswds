@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import classnames from 'classnames'
-import LanguageSelectorButton from './LanguageSelectorButton'
-import LanguageSelectorDropdown from './LanguageSelectorDropdown'
+import LanguageSelectorButton from '../LanguageSelectorButton/LanguageSelectorButton'
+import LanguageSelectorDropdown from '../LanguageSelectorDropdown/LanguageSelectorDropdown'
 
 export type LanguageDefinition = {
   label: string
@@ -77,6 +77,6 @@ export const LanguageSelectorForwardRef: React.ForwardRefRenderFunction<
   }
 }
 
-export const LanguageSelector = forwardRef(LanguageSelectorForwardRef)
+const LanguageSelector = forwardRef(LanguageSelectorForwardRef)
 
 export default LanguageSelector

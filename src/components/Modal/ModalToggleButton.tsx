@@ -66,6 +66,6 @@ export const ModalToggleButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalToggleButton = forwardRef(ModalToggleButtonForwardRef)
+const ModalToggleButton = forwardRef(ModalToggleButtonForwardRef)
 
 export default ModalToggleButton

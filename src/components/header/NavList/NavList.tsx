@@ -12,11 +12,13 @@ export type BaseNavListProps = {
     | 'language'
 }
 
-export type NavListProps = BaseNavListProps & JSX.IntrinsicElements['ul']
+export type NavListProps = React.ComponentPropsWithRef<typeof NavList>
+
+export type NavListRef = React.ComponentRef<typeof NavList>
 
 export const NavListFowardRef: React.ForwardRefRenderFunction<
   HTMLUListElement,
-  NavListProps
+  BaseNavListProps & React.ComponentPropsWithoutRef<'ul'>
 > = ({ items, type, className, ...ulProps }, ref): React.ReactElement => {
   const isPrimary = type === 'primary'
   const isSecondary = type === 'secondary'
@@ -56,6 +58,6 @@ export const NavListFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const NavList = forwardRef(NavListFowardRef)
+const NavList = forwardRef(NavListFowardRef)
 
 export default NavList

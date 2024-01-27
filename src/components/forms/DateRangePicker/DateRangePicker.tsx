@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { ForwardRefRenderFunction, useState } from 'react'
+import React, { ForwardRefRenderFunction, forwardRef, useState } from 'react'
 import { DEFAULT_EXTERNAL_DATE_FORMAT } from '../DatePicker/constants'
 import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker'
 import { formatDate, parseDateString } from '../DatePicker/utils'
@@ -19,7 +19,7 @@ export type BaseDateRangePickerProps = {
 export type DateRangePickerProps = BaseDateRangePickerProps &
   JSX.IntrinsicElements['div']
 
-export const DateRangePicker: ForwardRefRenderFunction<
+const DateRangePickerForwardRef: ForwardRefRenderFunction<
   HTMLDivElement,
   DateRangePickerProps
 > = (props, ref): React.ReactElement => {
@@ -142,7 +142,7 @@ export const DateRangePicker: ForwardRefRenderFunction<
       ref={ref}
       className={classes}
       data-testid="date-range-picker"
-      {...props}>
+      {...divProps}>
       <FormGroup>
         {startDateLabel && (
           <Label id={startDatePickerLabelId} htmlFor={startDatePickerProps.id}>
@@ -189,3 +189,7 @@ export const DateRangePicker: ForwardRefRenderFunction<
     </div>
   )
 }
+
+const DateRangePicker = forwardRef(DateRangePickerForwardRef)
+
+export default DateRangePicker

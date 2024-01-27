@@ -15,6 +15,6 @@ export const CollectionDescriptionForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CollectionDescription = forwardRef(CollectionDescriptionForwardRef)
+const CollectionDescription = forwardRef(CollectionDescriptionForwardRef)
 
 export default CollectionDescription

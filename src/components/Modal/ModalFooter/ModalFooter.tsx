@@ -16,6 +16,6 @@ export const ModalFooterForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalFooter = forwardRef(ModalFooterForwardRef)
+const ModalFooter = forwardRef(ModalFooterForwardRef)
 
 export default ModalFooter

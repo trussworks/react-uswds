@@ -12,6 +12,6 @@ export const CollectionThumbnailFowardRef: React.ForwardRefRenderFunction<
   return <img ref={ref} className={classes} src={src} alt={alt} {...props} />
 }
 
-export const CollectionThumbnail = forwardRef(CollectionThumbnailFowardRef)
+const CollectionThumbnail = forwardRef(CollectionThumbnailFowardRef)
 
 export default CollectionThumbnail

@@ -24,6 +24,6 @@ export const FormGroupForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const FormGroup = forwardRef(FormGroupForwardRef)
+const FormGroup = forwardRef(FormGroupForwardRef)
 
 export default FormGroup

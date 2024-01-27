@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { DatePicker } from './DatePicker'
+import DatePicker from './DatePicker'
 import { sampleLocalization } from './i18n'
-import { Form } from '../Form/Form'
-import { FormGroup } from '../FormGroup/FormGroup'
-import { Label } from '../Label/Label'
-import { TextInput } from '../TextInput/TextInput'
+import Form from '../Form/Form'
+import FormGroup from '../FormGroup/FormGroup'
+import Label from '../Label/Label'
+import TextInput from '../TextInput/TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
 
 export default {

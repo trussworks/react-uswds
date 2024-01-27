@@ -55,6 +55,6 @@ export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalWindow = forwardRef(ModalWindowForwardRef)
+const ModalWindow = forwardRef(ModalWindowForwardRef)
 
 export default ModalWindow

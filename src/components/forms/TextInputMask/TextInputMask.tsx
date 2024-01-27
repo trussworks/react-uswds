@@ -45,8 +45,8 @@ export function maskString(value: string, mask: string, charset?: string) {
 }
 
 export const TextInputMaskForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  TextInputMaskProps
+  HTMLSpanElement,
+  React.PropsWithoutRef<TextInputMaskProps>
 > = (
   {
     id,
@@ -116,6 +116,6 @@ export const TextInputMaskForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const TextInputMask = forwardRef(TextInputMaskForwardRef)
+const TextInputMask = forwardRef(TextInputMaskForwardRef)
 
 export default TextInputMask

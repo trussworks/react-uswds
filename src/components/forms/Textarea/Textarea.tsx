@@ -23,7 +23,7 @@ export interface BaseTextareaProps {
 }
 
 export type TextareaProps = BaseTextareaProps &
-  JSX.IntrinsicElements['textarea']
+  React.ComponentPropsWithoutRef<'textarea'>
 
 export const TextareaForwardRef: React.ForwardRefRenderFunction<
   HTMLTextAreaElement,
@@ -54,6 +54,6 @@ export const TextareaForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Textarea = forwardRef(TextareaForwardRef)
+const Textarea = forwardRef(TextareaForwardRef)
 
 export default Textarea

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react'
-import {
-  FooterExtendedNavList,
+import FooterExtendedNavList, {
   ExtendedNavLinksType,
 } from '../FooterExtendedNavList/FooterExtendedNavList'
 import classnames from 'classnames'
@@ -64,6 +63,6 @@ export const FooterNavForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const FooterNav = forwardRef(FooterNavForwardRef)
+const FooterNav = forwardRef(FooterNavForwardRef)
 
 export default FooterNav

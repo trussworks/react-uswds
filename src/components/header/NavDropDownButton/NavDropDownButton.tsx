@@ -46,6 +46,6 @@ export const NavDropDownButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const NavDropDownButton = forwardRef(NavDropDownButtonForwardRef)
+const NavDropDownButton = forwardRef(NavDropDownButtonForwardRef)
 
 export default NavDropDownButton

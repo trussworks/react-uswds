@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import Icons from '../icon/Icon/Icons'
+import Icons from '../Icon/Icons'
 import IconList from './IconList'
 import IconListItem from '../IconListItem/IconListItem'
 import IconListIcon from '../IconListIcon/IconListIcon'

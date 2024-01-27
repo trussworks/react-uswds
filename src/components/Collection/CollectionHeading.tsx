@@ -29,6 +29,6 @@ export const CollectionHeadingForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CollectionHeading = forwardRef(CollectionHeadingForwardRef)
+const CollectionHeading = forwardRef(CollectionHeadingForwardRef)
 
 export default CollectionHeading

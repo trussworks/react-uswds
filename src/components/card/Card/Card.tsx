@@ -55,6 +55,6 @@ export const CardForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Card = forwardRef(CardForwardRef)
+const Card = forwardRef(CardForwardRef)
 
 export default Card

@@ -35,6 +35,6 @@ export const CardMediaForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CardMedia = forwardRef(CardMediaForwardRef)
+const CardMedia = forwardRef(CardMediaForwardRef)
 
 export default CardMedia

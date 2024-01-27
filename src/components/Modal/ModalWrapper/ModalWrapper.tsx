@@ -44,6 +44,6 @@ export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalWrapper = forwardRef(ModalWrapperForwardRef)
+const ModalWrapper = forwardRef(ModalWrapperForwardRef)
 
 export default ModalWrapper

@@ -55,6 +55,6 @@ export const HeaderForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Header = forwardRef(HeaderForwardRef)
+const Header = forwardRef(HeaderForwardRef)
 
 export default Header

@@ -24,6 +24,6 @@ export const NavMenuButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const NavMenuButton = forwardRef(NavMenuButtonForwardRef)
+const NavMenuButton = forwardRef(NavMenuButtonForwardRef)
 
 export default NavMenuButton

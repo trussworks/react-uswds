@@ -26,6 +26,6 @@ export const CollectionMetaItemTagForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CollectionMetaItem = forwardRef(CollectionMetaItemTagForwardRef)
+const CollectionMetaItem = forwardRef(CollectionMetaItemTagForwardRef)
 
 export default CollectionMetaItem

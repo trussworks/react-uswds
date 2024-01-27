@@ -32,6 +32,6 @@ export const MegaMenuForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const MegaMenu = forwardRef(MegaMenuForwardRef)
+const MegaMenu = forwardRef(MegaMenuForwardRef)
 
 export default MegaMenu

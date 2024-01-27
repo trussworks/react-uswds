@@ -25,7 +25,7 @@ import {
   handleTabKey,
 } from './utils'
 
-import { Day } from './Day'
+import Day from './Day'
 import { MonthPicker } from './MonthPicker'
 import { YearPicker } from './YearPicker'
 import { FocusMode } from './DatePicker'

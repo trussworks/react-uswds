@@ -16,6 +16,6 @@ export const CardGroupForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CardGroup = forwardRef(CardGroupForwardRef)
+const CardGroup = forwardRef(CardGroupForwardRef)
 
 export default CardGroup

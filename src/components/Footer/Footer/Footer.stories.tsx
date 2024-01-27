@@ -8,7 +8,7 @@ import FooterNav from '../FooterNav/FooterNav'
 import Form from '../../forms/Form/Form'
 import Label from '../../forms/Label/Label'
 import Logo from '../Logo/Logo'
-import { SocialLinks, SocialLink } from '../SocialLinks/SocialLinks'
+import SocialLinks, { SocialLink } from '../SocialLinks/SocialLinks'
 import TextInput from '../../forms/TextInput/TextInput'
 
 // assets

@@ -1,9 +1,12 @@
 import React, { forwardRef, useState } from 'react'
-import { Menu } from '../header/Menu/Menu'
-import LanguageSelectorButton from './LanguageSelectorButton'
+import Menu from '../../header/Menu/Menu'
+import LanguageSelectorButton from '../LanguageSelectorButton/LanguageSelectorButton'
 import classnames from 'classnames'
-import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
-import Button from '../button/Button/Button'
+import {
+  LanguageDefinition,
+  LanguageSelectorProps,
+} from '../LanguageSelector/LanguageSelector'
+import Button from '../../button/Button/Button'
 
 export const generateMenuItems = (langs: LanguageDefinition[]) => {
   return langs.map((lang, index) => {
@@ -77,8 +80,6 @@ export const LanguageSelectorDropdownForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const LanguageSelectorDropdown = forwardRef(
-  LanguageSelectorDropdownForwardRef
-)
+const LanguageSelectorDropdown = forwardRef(LanguageSelectorDropdownForwardRef)
 
 export default LanguageSelectorDropdown

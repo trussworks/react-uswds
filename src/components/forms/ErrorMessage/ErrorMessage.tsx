@@ -25,6 +25,6 @@ export const ErrorMessageForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ErrorMessage = forwardRef(ErrorMessageForwardRef)
+const ErrorMessage = forwardRef(ErrorMessageForwardRef)
 
 export default ErrorMessage

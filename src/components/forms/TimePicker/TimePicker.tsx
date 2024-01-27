@@ -1,8 +1,8 @@
 import React, { forwardRef, useMemo } from 'react'
 import classnames from 'classnames'
-import { FormGroup } from '../FormGroup/FormGroup'
-import { Label } from '../Label/Label'
-import { ComboBox } from '../ComboBox/ComboBox'
+import FormGroup from '../FormGroup/FormGroup'
+import Label from '../Label/Label'
+import ComboBox, { ComboBoxProps } from '../ComboBox/ComboBox'
 import { getTimeOptions, parseTimeString } from './utils'
 import {
   DEFAULT_MAX_TIME,
@@ -26,14 +26,17 @@ export type BaseTimePickerProps = {
   step?: number
   hint?: string
   className?: string
+  inputProps?: React.PropsWithRef<ComboBoxProps>
 }
 
-export type TimePickerProps = BaseTimePickerProps &
-  Omit<JSX.IntrinsicElements['input'], 'onChange'>
+export type TimePickerProps = React.ComponentPropsWithRef<typeof TimePicker>
+
+export type TimePickerRef = React.ComponentRef<typeof TimePicker>
 
 export const TimePickerForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  TimePickerProps
+  React.ComponentRef<typeof FormGroup>,
+  BaseTimePickerProps &
+    Omit<React.ComponentPropsWithoutRef<typeof FormGroup>, 'onChange'>
 > = (
   {
     id,
@@ -47,6 +50,8 @@ export const TimePickerForwardRef: React.ForwardRefRenderFunction<
     step = DEFAULT_STEP,
     hint,
     className,
+    inputProps,
+    ...props
   },
   ref
 ): React.ReactElement => {
@@ -64,7 +69,7 @@ export const TimePickerForwardRef: React.ForwardRefRenderFunction<
   const hintId = `${name}-hint`
 
   return (
-    <FormGroup>
+    <FormGroup ref={ref} {...props}>
       <Label className="usa-label" id={labelId} htmlFor={id}>
         {label}
       </Label>
@@ -74,7 +79,6 @@ export const TimePickerForwardRef: React.ForwardRefRenderFunction<
         </div>
       )}
       <ComboBox
-        ref={ref}
         id={id}
         name={name}
         className={classes}
@@ -84,11 +88,12 @@ export const TimePickerForwardRef: React.ForwardRefRenderFunction<
         disabled={disabled}
         customFilter={TIME_PICKER_CUSTOM_FILTER}
         disableFiltering
+        {...inputProps}
       />
     </FormGroup>
   )
 }
 
-export const TimePicker = forwardRef(TimePickerForwardRef)
+const TimePicker = forwardRef(TimePickerForwardRef)
 
 export default TimePicker

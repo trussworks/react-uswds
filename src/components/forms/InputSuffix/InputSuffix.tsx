@@ -24,6 +24,6 @@ export const InputSuffixFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const InputSuffix = forwardRef(InputSuffixFowardRef)
+const InputSuffix = forwardRef(InputSuffixFowardRef)
 
 export default InputSuffix

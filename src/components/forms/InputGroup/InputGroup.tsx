@@ -24,6 +24,6 @@ export const InputGroupForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const InputGroup = forwardRef(InputGroupForwardRef)
+const InputGroup = forwardRef(InputGroupForwardRef)
 
 export default InputGroup

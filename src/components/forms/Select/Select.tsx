@@ -52,6 +52,6 @@ export const SelectForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Select = forwardRef(SelectForwardRef)
+const Select = forwardRef(SelectForwardRef)
 
 export default Select

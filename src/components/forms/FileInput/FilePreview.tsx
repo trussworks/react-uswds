@@ -80,6 +80,6 @@ export const FilePreviewForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const FilePreview = forwardRef(FilePreviewForwardRef)
+const FilePreview = forwardRef(FilePreviewForwardRef)
 
 export default FilePreview

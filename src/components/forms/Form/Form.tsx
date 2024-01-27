@@ -41,6 +41,6 @@ export const FormForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Form = forwardRef(FormForwardRef)
+const Form = forwardRef(FormForwardRef)
 
 export default Form

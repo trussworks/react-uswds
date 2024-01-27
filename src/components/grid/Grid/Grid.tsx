@@ -1,19 +1,19 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
 
-export type BaseGridProps = GridItemProps & {
+export type GridProps = GridItemProps & {
   [P in BreakpointKeys]?: GridItemProps
 }
 
-export type GridComponentProps<T> = BaseGridProps & { className?: string } & T
+export type GridComponentProps<T> = GridProps & { className?: string } & T
 
 export type GridLayoutProp = {
-  gridLayout?: BaseGridProps
+  gridLayout?: GridProps
 }
 
-export interface WithCustomGridProps<T> {
+interface WithCustomGridProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
@@ -67,7 +67,7 @@ export const getGridClasses = (
   })
 }
 
-export const applyGridClasses = (gridLayout: BaseGridProps): string => {
+export const applyGridClasses = (gridLayout: GridProps): string => {
   let classes = getGridClasses(gridLayout)
 
   Object.keys(breakpoints).forEach((b) => {
@@ -82,15 +82,11 @@ export const applyGridClasses = (gridLayout: BaseGridProps): string => {
   return classes
 }
 
-export type GridProps = React.ComponentPropsWithRef<typeof Grid>
-
-export type GridRef = React.ComponentRef<typeof Grid>
-
-export const GridForwardRef: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  (DefaultGridProps | CustomGridProps<DefaultGridProps>) &
-    React.ComponentPropsWithoutRef<'div'>
-> = (props, ref): React.ReactElement => {
+function Grid(props: DefaultGridProps): React.ReactElement
+function Grid<T>(props: CustomGridProps<T>): React.ReactElement
+function Grid<FCProps = DefaultGridProps>(
+  props: DefaultGridProps | CustomGridProps<FCProps>
+): React.ReactElement {
   const {
     children,
     className,
@@ -139,8 +135,9 @@ export const GridForwardRef: React.ForwardRefRenderFunction<
   classes = classnames(classes, className)
 
   if (isCustomProps(otherProps)) {
-    const { asCustom, ...gridProps } = otherProps
+    const { asCustom, ...remainingProps } = otherProps
 
+    const gridProps: FCProps = remainingProps as unknown as FCProps
     return React.createElement(
       asCustom,
       {
@@ -151,13 +148,11 @@ export const GridForwardRef: React.ForwardRefRenderFunction<
     )
   } else {
     return (
-      <div ref={ref} className={classes} data-testid="grid" {...otherProps}>
+      <div className={classes} data-testid="grid" {...otherProps}>
         {children}
       </div>
     )
   }
 }
-
-const Grid = forwardRef(GridForwardRef)
 
 export default Grid

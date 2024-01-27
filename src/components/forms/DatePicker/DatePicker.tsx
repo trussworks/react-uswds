@@ -52,7 +52,7 @@ export enum FocusMode {
   Input,
 }
 
-export const DatePicker = ({
+const DatePicker = ({
   id,
   name,
   className,
@@ -349,3 +349,5 @@ export const DatePicker = ({
 DatePicker.defaultProps = {
   minDate: DEFAULT_MIN_DATE,
 }
+
+export default DatePicker

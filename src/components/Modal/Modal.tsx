@@ -203,6 +203,6 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   }
 }
 
-export const Modal = forwardRef(ModalForwardRef)
+const Modal = forwardRef(ModalForwardRef)
 
 export default Modal

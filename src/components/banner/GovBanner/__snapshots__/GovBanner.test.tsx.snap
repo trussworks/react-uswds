@@ -8,6 +8,7 @@ exports[`GovBanner component static content renders consistently in English for 
 >
   <div
     className="usa-accordion"
+    data-testid="accordion"
   >
     <header
       className="usa-banner__header"
@@ -34,6 +35,7 @@ exports[`GovBanner component static content renders consistently in English for 
         >
           <p
             className="usa-banner__header-text"
+            data-testid="bannerHeaderText"
           >
             An official website of the United States government
           </p>
@@ -48,6 +50,7 @@ exports[`GovBanner component static content renders consistently in English for 
           aria-controls="gov-banner"
           aria-expanded={false}
           className="usa-accordion__button usa-banner__button"
+          data-testid="accordionButton_banner"
           onClick={[Function]}
           type="button"
         >
@@ -60,12 +63,14 @@ exports[`GovBanner component static content renders consistently in English for 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
+      className="usa-accordion__content usa-prose usa-banner__content"
+      data-testid="accordionItem_gov-banner"
       hidden={true}
       id="gov-banner"
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -147,6 +152,7 @@ exports[`GovBanner component static content renders consistently in English for 
 >
   <div
     className="usa-accordion"
+    data-testid="accordion"
   >
     <header
       className="usa-banner__header"
@@ -173,6 +179,7 @@ exports[`GovBanner component static content renders consistently in English for 
         >
           <p
             className="usa-banner__header-text"
+            data-testid="bannerHeaderText"
           >
             An official website of the United States government
           </p>
@@ -187,6 +194,7 @@ exports[`GovBanner component static content renders consistently in English for 
           aria-controls="gov-banner"
           aria-expanded={false}
           className="usa-accordion__button usa-banner__button"
+          data-testid="accordionButton_banner"
           onClick={[Function]}
           type="button"
         >
@@ -199,12 +207,14 @@ exports[`GovBanner component static content renders consistently in English for 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
+      className="usa-accordion__content usa-prose usa-banner__content"
+      data-testid="accordionItem_gov-banner"
       hidden={true}
       id="gov-banner"
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -286,6 +296,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 >
   <div
     className="usa-accordion"
+    data-testid="accordion"
   >
     <header
       className="usa-banner__header"
@@ -312,6 +323,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
         >
           <p
             className="usa-banner__header-text"
+            data-testid="bannerHeaderText"
           >
             Un sitio oficial del Gobierno de Estados Unidos
           </p>
@@ -326,6 +338,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           aria-controls="gov-banner"
           aria-expanded={false}
           className="usa-accordion__button usa-banner__button"
+          data-testid="accordionButton_banner"
           onClick={[Function]}
           type="button"
         >
@@ -338,12 +351,14 @@ exports[`GovBanner component static content renders consistently in Spanish for 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
+      className="usa-accordion__content usa-prose usa-banner__content"
+      data-testid="accordionItem_gov-banner"
       hidden={true}
       id="gov-banner"
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -424,6 +439,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 >
   <div
     className="usa-accordion"
+    data-testid="accordion"
   >
     <header
       className="usa-banner__header"
@@ -450,6 +466,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
         >
           <p
             className="usa-banner__header-text"
+            data-testid="bannerHeaderText"
           >
             Un sitio oficial del Gobierno de Estados Unidos
           </p>
@@ -464,6 +481,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
           aria-controls="gov-banner"
           aria-expanded={false}
           className="usa-accordion__button usa-banner__button"
+          data-testid="accordionButton_banner"
           onClick={[Function]}
           type="button"
         >
@@ -476,12 +494,14 @@ exports[`GovBanner component static content renders consistently in Spanish for 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
+      className="usa-accordion__content usa-prose usa-banner__content"
+      data-testid="accordionItem_gov-banner"
       hidden={true}
       id="gov-banner"
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -562,6 +582,7 @@ exports[`GovBanner component static content renders consistently with default pr
 >
   <div
     className="usa-accordion"
+    data-testid="accordion"
   >
     <header
       className="usa-banner__header"
@@ -588,6 +609,7 @@ exports[`GovBanner component static content renders consistently with default pr
         >
           <p
             className="usa-banner__header-text"
+            data-testid="bannerHeaderText"
           >
             An official website of the United States government
           </p>
@@ -602,6 +624,7 @@ exports[`GovBanner component static content renders consistently with default pr
           aria-controls="gov-banner"
           aria-expanded={false}
           className="usa-accordion__button usa-banner__button"
+          data-testid="accordionButton_banner"
           onClick={[Function]}
           type="button"
         >
@@ -614,12 +637,14 @@ exports[`GovBanner component static content renders consistently with default pr
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
+      className="usa-accordion__content usa-prose usa-banner__content"
+      data-testid="accordionItem_gov-banner"
       hidden={true}
       id="gov-banner"
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"

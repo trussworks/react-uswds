@@ -61,6 +61,6 @@ export const RadioForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Radio = forwardRef(RadioForwardRef)
+const Radio = forwardRef(RadioForwardRef)
 
 export default Radio

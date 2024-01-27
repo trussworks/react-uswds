@@ -42,6 +42,6 @@ export const PrimaryNavFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const PrimaryNav = forwardRef(PrimaryNavFowardRef)
+const PrimaryNav = forwardRef(PrimaryNavFowardRef)
 
 export default PrimaryNav

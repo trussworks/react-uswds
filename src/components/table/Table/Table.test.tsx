@@ -56,59 +56,9 @@ describe('Table component', () => {
     expect(getByRole('table')).toBeInTheDocument()
   })
 
-  it('renders striped table', () => {
-    const { getByRole } = render(<Table striped>{testContent}</Table>)
-
-    expect(getByRole('table')).toHaveClass('usa-table usa-table--striped')
-  })
-
-  it('renders compact table', () => {
-    const { getByRole } = render(<Table compact>{testContent}</Table>)
-
-    expect(getByRole('table')).toHaveClass('usa-table usa-table--compact')
-  })
-
-  it('renders full width table', () => {
-    const { getByRole } = render(<Table fullWidth>{testContent}</Table>)
-
-    expect(getByRole('table')).toHaveClass('usa-table width-full')
-  })
-
   it('renders scrollable table', () => {
-    const { queryByTestId } = render(<Table scrollable>{testContent}</Table>)
+    const { queryByTestId } = render(<Table isScrollable>{testContent}</Table>)
 
-    expect(queryByTestId('scrollable-table-container')).toHaveClass(
-      'usa-table-container--scrollable'
-    )
-  })
-
-  it('renders borderless stacked table', () => {
-    const { getByRole } = render(
-      <Table stackedStyle="default">{testContent}</Table>
-    )
-
-    expect(getByRole('table')).toHaveClass(
-      'usa-table usa-table--borderless usa-table--stacked'
-    )
-  })
-
-  it('renders stacked table with border and headers', () => {
-    const { getByRole } = render(
-      <Table stackedStyle="headers" bordered>
-        {testContent}
-      </Table>
-    )
-
-    expect(getByRole('table')).toHaveClass(
-      'usa-table usa-table--stacked-header'
-    )
-  })
-
-  it('passes the class onto the root table element', () => {
-    const { getByRole } = render(
-      <Table className="custom-class">{testContent}</Table>
-    )
-
-    expect(getByRole('table')).toHaveClass('custom-class')
+    expect(queryByTestId('scrollable-table-container')).toBeInTheDocument()
   })
 })

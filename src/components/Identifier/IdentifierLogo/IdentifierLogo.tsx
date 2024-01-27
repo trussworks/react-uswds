@@ -15,6 +15,6 @@ export const IdentifierLogoForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const IdentifierLogo = forwardRef(IdentifierLogoForwardRef)
+const IdentifierLogo = forwardRef(IdentifierLogoForwardRef)
 
 export default IdentifierLogo

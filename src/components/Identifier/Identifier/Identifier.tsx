@@ -15,6 +15,6 @@ export const IdentifierForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Identifier = forwardRef(IdentifierForwardRef)
+const Identifier = forwardRef(IdentifierForwardRef)
 
 export default Identifier

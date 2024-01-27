@@ -15,6 +15,6 @@ export const SummaryBoxContentForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SummaryBoxContent = forwardRef(SummaryBoxContentForwardRef)
+const SummaryBoxContent = forwardRef(SummaryBoxContentForwardRef)
 
 export default SummaryBoxContent

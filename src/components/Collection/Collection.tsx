@@ -26,6 +26,6 @@ export const CollectionForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Collection = forwardRef(CollectionForwardRef)
+const Collection = forwardRef(CollectionForwardRef)
 
 export default Collection

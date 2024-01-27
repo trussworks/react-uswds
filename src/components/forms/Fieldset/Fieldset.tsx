@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
-import { RequiredMarker } from '../Label/RequiredMarker'
+import RequiredMarker from '../Label/RequiredMarker'
 
 export type BaseFieldsetProps = {
   children: React.ReactNode
@@ -57,6 +57,6 @@ export const FieldsetForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Fieldset = forwardRef(FieldsetForwardRef)
+const Fieldset = forwardRef(FieldsetForwardRef)
 
 export default Fieldset

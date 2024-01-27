@@ -62,6 +62,6 @@ export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SiteAlert = forwardRef(SiteAlertForwardRef)
+const SiteAlert = forwardRef(SiteAlertForwardRef)
 
 export default SiteAlert

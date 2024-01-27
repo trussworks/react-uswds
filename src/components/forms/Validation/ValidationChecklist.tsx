@@ -27,6 +27,6 @@ export const ValidationChecklistForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ValidationChecklist = forwardRef(ValidationChecklistForwardRef)
+const ValidationChecklist = forwardRef(ValidationChecklistForwardRef)
 
 export default ValidationChecklist

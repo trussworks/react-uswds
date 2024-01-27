@@ -20,7 +20,7 @@ export type DateInputProps = DateInputPropsBase &
 
 export const DateInputForwardRef: React.ForwardRefRenderFunction<
   HTMLInputElement,
-  DateInputProps
+  React.PropsWithoutRef<DateInputProps>
 > = (
   { id, name, label, unit, maxLength, minLength, className, ...inputProps },
   ref
@@ -38,7 +38,6 @@ export const DateInputForwardRef: React.ForwardRefRenderFunction<
       <Label htmlFor={id}>{label}</Label>
       <TextInput
         ref={ref}
-        {...inputProps}
         className={inputClasses}
         id={id}
         name={name}
@@ -47,11 +46,12 @@ export const DateInputForwardRef: React.ForwardRefRenderFunction<
         minLength={minLength}
         pattern="[0-9]*"
         inputMode="numeric"
+        {...inputProps}
       />
     </FormGroup>
   )
 }
 
-export const DateInput = forwardRef(DateInputForwardRef)
+const DateInput = forwardRef(DateInputForwardRef)
 
 export default DateInput

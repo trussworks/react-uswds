@@ -1,5 +1,5 @@
 import React from 'react'
-import { Fieldset } from './Fieldset'
+import Fieldset from './Fieldset'
 
 import Label from '../Label/Label'
 import TextInput from '../TextInput/TextInput'

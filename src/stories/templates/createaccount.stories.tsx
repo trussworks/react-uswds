@@ -32,7 +32,7 @@ import {
 
 import logoImg from '@uswds/uswds/src/img/logo-img.png'
 import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
-import { MediaBlockBody } from '../../components/mediablock/MediaBlockBody/MediaBlockBody'
+import MediaBlockBody from '../../components/mediablock/MediaBlockBody/MediaBlockBody'
 
 export default {
   title: 'Page Templates/Authentication Pages',

@@ -35,7 +35,7 @@ export const SocialLinksForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SocialLinks = forwardRef(SocialLinksForwardRef)
+const SocialLinks = forwardRef(SocialLinksForwardRef)
 
 export const SocialLinkForwardRef: React.ForwardRefRenderFunction<
   HTMLAnchorElement,

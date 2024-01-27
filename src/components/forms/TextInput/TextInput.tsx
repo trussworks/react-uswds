@@ -25,7 +25,7 @@ export type BaseTextInputProps = {
 
 export type TextInputProps = BaseTextInputProps &
   RequiredTextInputProps &
-  Omit<JSX.IntrinsicElements['input'], 'id' | 'name' | 'type'>
+  Omit<React.ComponentPropsWithoutRef<'input'>, 'id' | 'name' | 'type'>
 
 export const TextInputForwardRef: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -72,6 +72,6 @@ export const TextInputForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const TextInput = forwardRef(TextInputForwardRef)
+const TextInput = forwardRef(TextInputForwardRef)
 
 export default TextInput

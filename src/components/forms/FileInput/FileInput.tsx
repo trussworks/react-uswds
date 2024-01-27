@@ -236,6 +236,6 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const FileInput = forwardRef(FileInputForwardRef)
+const FileInput = forwardRef(FileInputForwardRef)
 
 export default FileInput

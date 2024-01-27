@@ -23,6 +23,6 @@ export const DateInputGroupForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const DateInputGroup = forwardRef(DateInputGroupForwardRef)
+const DateInputGroup = forwardRef(DateInputGroupForwardRef)
 
 export default DateInputGroup

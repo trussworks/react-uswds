@@ -110,4 +110,6 @@ const DayForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Day = forwardRef(DayForwardRef)
+const Day = forwardRef(DayForwardRef)
+
+export default Day

@@ -34,6 +34,6 @@ export const CardHeaderFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CardHeader = forwardRef(CardHeaderFowardRef)
+const CardHeader = forwardRef(CardHeaderFowardRef)
 
 export default CardHeader

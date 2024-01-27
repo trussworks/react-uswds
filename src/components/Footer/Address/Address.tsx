@@ -48,6 +48,6 @@ export const AddressFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Address = forwardRef(AddressFowardRef)
+const Address = forwardRef(AddressFowardRef)
 
 export default Address

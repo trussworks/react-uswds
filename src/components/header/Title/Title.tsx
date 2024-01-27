@@ -16,6 +16,6 @@ export const TitleFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Title = forwardRef(TitleFowardRef)
+const Title = forwardRef(TitleFowardRef)
 
 export default Title

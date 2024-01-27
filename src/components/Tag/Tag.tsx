@@ -26,7 +26,7 @@ export const TagForwardRef: React.ForwardRefRenderFunction<
       ref={ref}
       data-testid="tag"
       className={classes}
-      style={{ ...style }}
+      style={style}
       {...props}>
       {children}
     </span>

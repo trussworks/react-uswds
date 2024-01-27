@@ -110,6 +110,6 @@ export const StepIndicatorForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const StepIndicator = forwardRef(StepIndicatorForwardRef)
+const StepIndicator = forwardRef(StepIndicatorForwardRef)
 
 export default StepIndicator

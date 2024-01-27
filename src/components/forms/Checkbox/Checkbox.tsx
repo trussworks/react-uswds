@@ -61,6 +61,6 @@ export const CheckboxForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Checkbox = forwardRef(CheckboxForwardRef)
+const Checkbox = forwardRef(CheckboxForwardRef)
 
 export default Checkbox

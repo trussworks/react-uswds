@@ -28,6 +28,6 @@ export const SideNavForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SideNav = forwardRef(SideNavForwardRef)
+const SideNav = forwardRef(SideNavForwardRef)
 
 export default SideNav

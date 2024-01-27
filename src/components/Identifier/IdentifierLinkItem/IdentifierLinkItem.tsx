@@ -15,6 +15,6 @@ export const IdentifierLinkItemForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const IdentifierLinkItem = forwardRef(IdentifierLinkItemForwardRef)
+const IdentifierLinkItem = forwardRef(IdentifierLinkItemForwardRef)
 
 export default IdentifierLinkItem

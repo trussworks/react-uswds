@@ -1,8 +1,8 @@
 import React, { ReactElement, forwardRef } from 'react'
 import classNames from 'classnames'
 import AccordionItemButton, {
-  AccordionItemButtonProps,
-  AccordionItemButtonRef,
+  AccordionButtonProps,
+  AccordionButtonRef,
 } from '../../accordion/AccordionButton/AccordionButton'
 
 export type BannerButtonBaseProps = React.ComponentPropsWithRef<
@@ -12,8 +12,8 @@ export type BannerButtonBaseProps = React.ComponentPropsWithRef<
 export type BannerButtonBaseRef = React.ComponentRef<typeof BannerButtonBase>
 
 export const BannerButtonBaseForwardRef: React.ForwardRefRenderFunction<
-  AccordionItemButtonRef,
-  Omit<React.PropsWithoutRef<AccordionItemButtonProps>, 'itemId'>
+  AccordionButtonRef,
+  Omit<React.PropsWithoutRef<AccordionButtonProps>, 'itemId'>
 > = ({ className, ...props }, ref): ReactElement => {
   const classes = classNames('usa-banner__button', className)
 

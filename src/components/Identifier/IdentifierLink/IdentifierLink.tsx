@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import Link, {
@@ -7,14 +7,12 @@ import Link, {
   isCustomProps,
 } from '../../Link/Link'
 
-export type IdentifierLinkProps<FCProps = DefaultLinkProps> =
-  | DefaultLinkProps
-  | CustomLinkProps<FCProps>
-
-export const IdentifierLinkForwardRef: React.ForwardRefRenderFunction<
-  HTMLAnchorElement,
-  IdentifierLinkProps
-> = ({ className, ...passThroughProps }, ref): React.ReactElement => {
+function IdentifierLink(props: DefaultLinkProps): React.ReactElement
+function IdentifierLink<T>(props: CustomLinkProps<T>): React.ReactElement
+function IdentifierLink<FCProps = DefaultLinkProps>({
+  className,
+  ...passThroughProps
+}: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
   const classes = classnames(className, 'usa-identifier__required-link')
   const linkProps = {
     ...passThroughProps,
@@ -22,12 +20,10 @@ export const IdentifierLinkForwardRef: React.ForwardRefRenderFunction<
   } as DefaultLinkProps | CustomLinkProps<FCProps>
 
   if (isCustomProps(linkProps)) {
-    return <Link ref={ref} {...linkProps} />
+    return <Link<FCProps> {...linkProps} />
   }
 
-  return <Link ref={ref} {...linkProps} />
+  return <Link {...linkProps} />
 }
-
-export const IdentifierLink = forwardRef(IdentifierLinkForwardRef)
 
 export default IdentifierLink

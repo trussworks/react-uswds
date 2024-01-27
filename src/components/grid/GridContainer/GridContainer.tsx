@@ -1,21 +1,21 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import { ContainerSizes } from '../types'
 
-export type BaseGridContainerProps = {
+type GridContainerProps = {
   containerSize?: ContainerSizes
   className?: string
   children: React.ReactNode
 }
 
-export interface WithCustomGridContainerProps<T> {
+interface WithCustomGridContainerProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
-export type DefaultGridContainerProps = BaseGridContainerProps
+export type DefaultGridContainerProps = GridContainerProps
 
-export type CustomGridContainerProps<T> = BaseGridContainerProps &
+export type CustomGridContainerProps<T> = GridContainerProps &
   WithCustomGridContainerProps<T>
 
 export function isCustomProps<T>(
@@ -25,8 +25,8 @@ export function isCustomProps<T>(
 }
 
 export function gridContainerClasses(
-  className: BaseGridContainerProps['className'],
-  containerSize: BaseGridContainerProps['containerSize']
+  className: GridContainerProps['className'],
+  containerSize: GridContainerProps['containerSize']
 ): string | undefined {
   const classes = classnames(
     {
@@ -38,14 +38,15 @@ export function gridContainerClasses(
   return classes
 }
 
-export type GridContainerProps<
+function GridContainer(props: DefaultGridContainerProps): React.ReactElement
+function GridContainer<T>(
+  props: CustomGridContainerProps<T>
+): React.ReactElement
+function GridContainer<
   FCProps extends React.PropsWithChildren<object> = DefaultGridContainerProps
-> = DefaultGridContainerProps | CustomGridContainerProps<FCProps>
-
-export const GridContainerForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  GridContainerProps
-> = (props, ref): React.ReactElement => {
+>(
+  props: DefaultGridContainerProps | CustomGridContainerProps<FCProps>
+): React.ReactElement {
   if (isCustomProps(props)) {
     const { className, containerSize, asCustom, children, ...remainingProps } =
       props
@@ -66,7 +67,6 @@ export const GridContainerForwardRef: React.ForwardRefRenderFunction<
     const classes = gridContainerClasses(className, containerSize)
     return (
       <div
-        ref={ref}
         data-testid="gridContainer"
         className={classes}
         {...gridContainerProps}>
@@ -75,7 +75,5 @@ export const GridContainerForwardRef: React.ForwardRefRenderFunction<
     )
   }
 }
-
-export const GridContainer = forwardRef(GridContainerForwardRef)
 
 export default GridContainer

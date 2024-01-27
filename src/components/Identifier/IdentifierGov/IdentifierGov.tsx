@@ -23,6 +23,6 @@ export const IdentifierGovForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const IdentifierGov = forwardRef(IdentifierGovForwardRef)
+const IdentifierGov = forwardRef(IdentifierGovForwardRef)
 
 export default IdentifierGov

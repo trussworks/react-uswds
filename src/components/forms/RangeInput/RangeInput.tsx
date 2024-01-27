@@ -72,6 +72,6 @@ export const RangeInputForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const RangeInput = forwardRef(RangeInputForwardRef)
+const RangeInput = forwardRef(RangeInputForwardRef)
 
 export default RangeInput

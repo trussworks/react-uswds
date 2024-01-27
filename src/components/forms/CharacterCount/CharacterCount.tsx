@@ -51,15 +51,16 @@ export type TextInputCharacterCountProps = BaseCharacterCountProps &
 
 export type TextareaCharacterCountProps = BaseCharacterCountProps &
   TextareaProps &
-  JSX.IntrinsicElements['textarea']
+  React.ComponentPropsWithoutRef<'textarea'>
 
 export type CharacterCountProps =
   | TextInputCharacterCountProps
   | TextareaCharacterCountProps
 
+// TODO: Fix refs
 /* Main */
 export const CharacterCountForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
+  HTMLTextAreaElement | HTMLInputElement,
   CharacterCountProps
 > = (
   {
@@ -143,7 +144,12 @@ export const CharacterCountForwardRef: React.ForwardRefRenderFunction<
       inputRef: inputRef,
       ...textAreaProps,
     }
-    InputComponent = <Textarea ref={ref} {...attributes} />
+    InputComponent = (
+      <Textarea
+        ref={ref as React.ForwardedRef<HTMLTextAreaElement>}
+        {...attributes}
+      />
+    )
   } else {
     const {
       onBlur,
@@ -165,7 +171,12 @@ export const CharacterCountForwardRef: React.ForwardRefRenderFunction<
       inputRef: inputRef,
       ...inputProps,
     }
-    InputComponent = <TextInput ref={ref} {...attributes} />
+    InputComponent = (
+      <TextInput
+        ref={ref as React.ForwardedRef<HTMLInputElement>}
+        {...attributes}
+      />
+    )
   }
 
   return (
@@ -190,6 +201,6 @@ export const CharacterCountForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CharacterCount = forwardRef(CharacterCountForwardRef)
+const CharacterCount = forwardRef(CharacterCountForwardRef)
 
 export default CharacterCount

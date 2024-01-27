@@ -48,8 +48,6 @@ export const CollectionCalendarDateForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CollectionCalendarDate = forwardRef(
-  CollectionCalendarDateForwardRef
-)
+const CollectionCalendarDate = forwardRef(CollectionCalendarDateForwardRef)
 
 export default CollectionCalendarDate

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import Icons from '../icon/Icon/Icons'
+import Icons from '../Icon/Icons'
 import IconListIcon from './IconListIcon'
 
 describe('Icon List Icon', () => {

@@ -39,8 +39,6 @@ export const LanguageSelectorButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const LanguageSelectorButton = forwardRef(
-  LanguageSelectorButtonForwardRef
-)
+const LanguageSelectorButton = forwardRef(LanguageSelectorButtonForwardRef)
 
 export default LanguageSelectorButton

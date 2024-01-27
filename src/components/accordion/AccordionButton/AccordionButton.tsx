@@ -5,7 +5,6 @@ export interface BaseAccordionButtonProps {
   className?: string
   itemId: string
   isOpen?: boolean
-  children: React.ReactNode
 }
 
 export type AccordionButtonProps = React.ComponentPropsWithRef<

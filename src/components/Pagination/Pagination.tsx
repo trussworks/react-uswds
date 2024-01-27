@@ -252,6 +252,6 @@ export const PaginationForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Pagination = forwardRef(PaginationForwardRef)
+const Pagination = forwardRef(PaginationForwardRef)
 
 export default Pagination

@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import NavList, { NavListProps } from '../NavList/NavList'
+import NavList, { NavListProps, NavListRef } from '../NavList/NavList'
 
 export type BaseMenuProps = {
   items: React.ReactNode[]
@@ -13,11 +13,13 @@ export type BaseMenuProps = {
     | 'language'
 }
 
-export type MenuProps = BaseMenuProps & NavListProps
+export type MenuProps = React.ComponentPropsWithRef<typeof Menu>
+
+export type MenuRef = React.ComponentRef<typeof Menu>
 
 export const MenuForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  MenuProps
+  NavListRef,
+  BaseMenuProps & NavListProps
 > = (
   { className, items, isOpen, type, ...navListProps },
   ref
@@ -34,6 +36,6 @@ export const MenuForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Menu = forwardRef(MenuForwardRef)
+const Menu = forwardRef(MenuForwardRef)
 
 export default Menu

@@ -58,6 +58,6 @@ export const LabelForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Label = forwardRef(LabelForwardRef)
+const Label = forwardRef(LabelForwardRef)
 
 export default Label

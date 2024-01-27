@@ -41,6 +41,6 @@ export const StepIndicatorStepForwardRef = (
   )
 }
 
-export const StepIndicatorStep = forwardRef(StepIndicatorStepForwardRef)
+const StepIndicatorStep = forwardRef(StepIndicatorStepForwardRef)
 
 export default StepIndicatorStep

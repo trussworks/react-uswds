@@ -23,6 +23,6 @@ export const IdentifierMastheadForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const IdentifierMasthead = forwardRef(IdentifierMastheadForwardRef)
+const IdentifierMasthead = forwardRef(IdentifierMastheadForwardRef)
 
 export default IdentifierMasthead

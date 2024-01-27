@@ -6,12 +6,13 @@ export type BaseProcessListProps = {
   children: React.ReactElement<ProcessListItemProps>[]
 }
 
-export type ProcessListProps = BaseProcessListProps &
-  JSX.IntrinsicElements['ol']
+export type ProcessListProps = React.ComponentPropsWithRef<typeof ProcessList>
+
+export type ProcessListRef = React.ComponentRef<typeof ProcessList>
 
 export const ProcessListForwardRef: React.ForwardRefRenderFunction<
   HTMLOListElement,
-  ProcessListItemProps
+  BaseProcessListProps & React.ComponentPropsWithoutRef<'ol'>
 > = ({ className, children, ...listProps }, ref): React.ReactElement => {
   const classes = classnames('usa-process-list', className)
   return (
@@ -21,6 +22,6 @@ export const ProcessListForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ProcessList = forwardRef(ProcessListForwardRef)
+const ProcessList = forwardRef(ProcessListForwardRef)
 
 export default ProcessList

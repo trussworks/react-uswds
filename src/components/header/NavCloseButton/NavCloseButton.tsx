@@ -28,6 +28,6 @@ export const NavCloseButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const NavCloseButton = forwardRef(NavCloseButtonForwardRef)
+const NavCloseButton = forwardRef(NavCloseButtonForwardRef)
 
 export default NavCloseButton

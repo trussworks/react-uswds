@@ -121,7 +121,7 @@ function useTooltip(
     } else {
       // Show tooltip
       if (triggerElementRef.current && tooltipBodyRef.current) {
-        console.log("recalc position")
+        console.log('recalc position')
         const tooltipTrigger = triggerElementRef.current
         const tooltipBody = tooltipBodyRef.current
 

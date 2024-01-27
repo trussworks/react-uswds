@@ -48,6 +48,6 @@ export const LogoForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Logo = forwardRef(LogoForwardRef)
+const Logo = forwardRef(LogoForwardRef)
 
 export default Logo

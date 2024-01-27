@@ -109,6 +109,6 @@ export const InPageNavigationForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const InPageNavigation = forwardRef(InPageNavigationForwardRef)
+const InPageNavigation = forwardRef(InPageNavigationForwardRef)
 
 export default InPageNavigation

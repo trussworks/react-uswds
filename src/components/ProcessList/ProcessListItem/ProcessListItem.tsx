@@ -15,6 +15,6 @@ export const ProcessListItemForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ProcessListItem = forwardRef(ProcessListItemForwardRef)
+const ProcessListItem = forwardRef(ProcessListItemForwardRef)
 
 export default ProcessListItem

@@ -14,12 +14,15 @@ const mockedCalculateMarginOffset =
   calculateMarginOffset as jest.MockedFunction<typeof calculateMarginOffset>
 mockedCalculateMarginOffset.mockReturnValue(100)
 
-function setup(position?: 'top' | 'bottom' | 'left' | 'right', isMockOffsets = false) {
+function setup(
+  position?: 'top' | 'bottom' | 'left' | 'right',
+  isMockOffsets = false
+) {
   const render = renderHook(() => useTooltip(position))
   const triggerEl = document.createElement('div')
   const bodyEl = document.createElement('div')
 
-  if(isMockOffsets) {
+  if (isMockOffsets) {
     jest.spyOn(triggerEl, 'offsetHeight', 'get').mockReturnValue(250)
     jest.spyOn(triggerEl, 'offsetWidth', 'get').mockReturnValue(350)
     jest.spyOn(triggerEl, 'offsetLeft', 'get').mockReturnValue(100)
@@ -29,9 +32,9 @@ function setup(position?: 'top' | 'bottom' | 'left' | 'right', isMockOffsets = f
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (render.result.current.triggerElementRef as any).current = triggerEl;
+  ;(render.result.current.triggerElementRef as any).current = triggerEl
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (render.result.current.tooltipBodyRef as any).current = bodyEl;
+  ;(render.result.current.tooltipBodyRef as any).current = bodyEl
 
   return render
 }
@@ -41,7 +44,7 @@ describe('Tooltip component', () => {
 
   it('defaults the position to top if no position prop is given', async () => {
     const { result, waitForNextUpdate } = setup()
-    
+
     result.current.setVisible(true)
     await waitForNextUpdate()
 

@@ -1,17 +1,18 @@
 import React, { forwardRef } from 'react'
 import Icons from '../../icon/Icon/Icons'
-import Button from '../../button/Button/Button'
+import Button, { ButtonProps, ButtonRef } from '../../button/Button/Button'
 
 export interface BaseModalCloseButtonProps {
   handleClose: () => void
 }
 
-export type ModalCloseButtonProps = BaseModalCloseButtonProps &
-  JSX.IntrinsicElements['button']
+export type ModalCloseButtonProps = React.ComponentPropsWithRef<typeof Button>
+
+export type ModalCloseButtonRef = React.ComponentRef<typeof Button>
 
 export const ModalCloseButtonForwardRef: React.ForwardRefRenderFunction<
-  HTMLButtonElement,
-  ModalCloseButtonProps
+  ButtonRef,
+  BaseModalCloseButtonProps & ButtonProps
 > = ({ handleClose, ...buttonProps }, ref): React.ReactElement => {
   return (
     <Button
@@ -27,6 +28,6 @@ export const ModalCloseButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalCloseButton = forwardRef(ModalCloseButtonForwardRef)
+const ModalCloseButton = forwardRef(ModalCloseButtonForwardRef)
 
 export default ModalCloseButton

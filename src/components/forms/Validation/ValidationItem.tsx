@@ -30,6 +30,6 @@ export const ValidationItemFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ValidationItem = forwardRef(ValidationItemFowardRef)
+const ValidationItem = forwardRef(ValidationItemFowardRef)
 
 export default ValidationItem

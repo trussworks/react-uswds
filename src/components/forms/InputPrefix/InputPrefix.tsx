@@ -24,6 +24,6 @@ export const InputPrefixFowardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const InputPrefix = forwardRef(InputPrefixFowardRef)
+const InputPrefix = forwardRef(InputPrefixFowardRef)
 
 export default InputPrefix

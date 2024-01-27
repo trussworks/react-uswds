@@ -31,6 +31,6 @@ export const CardBodyForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CardBody = forwardRef(CardBodyForwardRef)
+const CardBody = forwardRef(CardBodyForwardRef)
 
 export default CardBody

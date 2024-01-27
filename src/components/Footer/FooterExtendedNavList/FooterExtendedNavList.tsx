@@ -1,6 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react'
 import classnames from 'classnames'
-import { NavList } from '../../header/NavList/NavList'
+import NavList from '../../header/NavList/NavList'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
@@ -79,7 +79,7 @@ export const FooterExtendedNavListForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const FooterExtendedNavList = forwardRef(FooterExtendedNavListForwardRef)
+const FooterExtendedNavList = forwardRef(FooterExtendedNavListForwardRef)
 
 export interface BaseSectionProps {
   isOpen: boolean
@@ -116,6 +116,6 @@ export const SectionForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Section = forwardRef(SectionForwardRef)
+const Section = forwardRef(SectionForwardRef)
 
 export default FooterExtendedNavList

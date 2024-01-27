@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
-import { NavList } from '../NavList/NavList'
+import NavCloseButton from '../NavCloseButton/NavCloseButton'
+import NavList from '../NavList/NavList'
 
 export type BaseExtendedNavProps = {
   primaryItems: React.ReactNode[]
@@ -53,6 +53,6 @@ export const ExtendedNavForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ExtendedNav = forwardRef(ExtendedNavForwardRef)
+const ExtendedNav = forwardRef(ExtendedNavForwardRef)
 
 export default ExtendedNav

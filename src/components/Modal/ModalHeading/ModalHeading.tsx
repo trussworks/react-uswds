@@ -16,6 +16,6 @@ export const ModalHeadingForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalHeading = forwardRef(ModalHeadingForwardRef)
+const ModalHeading = forwardRef(ModalHeadingForwardRef)
 
 export default ModalHeading

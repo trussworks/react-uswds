@@ -19,21 +19,22 @@ export interface ParagraphProcessListHeadingProps
 }
 
 export type DetailedProcessListHeadingProps = HeadingProcessListHeadingProps &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >
+  React.ComponentPropsWithoutRef<'h1'>
 
 export type ProcessListParagraphHeadingProps =
   ParagraphProcessListHeadingProps & JSX.IntrinsicElements['p']
 
-export type ProcessListHeadingProps =
-  | DetailedProcessListHeadingProps
-  | ProcessListParagraphHeadingProps
+export type ProcessListHeadingProps = React.ComponentPropsWithRef<
+  typeof ProcessListHeading
+>
+
+export type ProcessListHeadingRef = React.ComponentRef<
+  typeof ProcessListHeading
+>
 
 export const ProcessListHeadingForwardRef: React.ForwardRefRenderFunction<
-  HTMLElement,
-  ProcessListHeadingProps
+  HTMLHeadingElement | HTMLParagraphElement,
+  DetailedProcessListHeadingProps | ProcessListParagraphHeadingProps
 > = (
   { type, className, children, ...headingProps },
   ref
@@ -51,6 +52,6 @@ export const ProcessListHeadingForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ProcessListHeading = forwardRef(ProcessListHeadingForwardRef)
+const ProcessListHeading = forwardRef(ProcessListHeadingForwardRef)
 
 export default ProcessListHeading

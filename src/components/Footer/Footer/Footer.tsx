@@ -48,6 +48,6 @@ export const FooterForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Footer = forwardRef(FooterForwardRef)
+const Footer = forwardRef(FooterForwardRef)
 
 export default Footer

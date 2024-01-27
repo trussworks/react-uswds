@@ -33,6 +33,6 @@ export const CardFooterForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const CardFooter = forwardRef(CardFooterForwardRef)
+const CardFooter = forwardRef(CardFooterForwardRef)
 
 export default CardFooter

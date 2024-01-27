@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { Label } from '../../forms/Label/Label'
+import Label from '../../forms/Label/Label'
 import TextInput, { BaseTextInputProps } from '../../forms/TextInput/TextInput'
 
 export type BaseSearchFieldProps = {
@@ -12,16 +12,18 @@ export type BaseSearchFieldProps = {
   placeholder?: string
   defaultValue?: React.ReactNode
   label?: React.ReactNode
-  inputProps?: JSX.IntrinsicElements['input']
+  inputProps?: React.ComponentPropsWithRef<'input'>
 }
 
-export type SearchFieldProps = BaseSearchFieldProps &
-  BaseTextInputProps &
-  JSX.IntrinsicElements['input']
+export type SearchFieldProps = React.ComponentPropsWithRef<typeof SearchField>
+
+export type SearchFieldRef = React.ComponentRef<typeof SearchField>
 
 export const SearchFieldForwardRef: React.ForwardRefRenderFunction<
   HTMLInputElement,
-  SearchFieldProps
+  BaseSearchFieldProps &
+    BaseTextInputProps &
+    React.ComponentPropsWithoutRef<'input'>
 > = (
   {
     isBig,
@@ -60,6 +62,6 @@ export const SearchFieldForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SearchField = forwardRef(SearchFieldForwardRef)
+const SearchField = forwardRef(SearchFieldForwardRef)
 
 export default SearchField

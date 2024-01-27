@@ -48,6 +48,6 @@ export const SearchButtonForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SearchButton = forwardRef(SearchButtonForwardRef)
+const SearchButton = forwardRef(SearchButtonForwardRef)
 
 export default SearchButton

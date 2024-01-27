@@ -16,6 +16,6 @@ export const RequiredMarkerForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const RequiredMarker = forwardRef(RequiredMarkerForwardRef)
+const RequiredMarker = forwardRef(RequiredMarkerForwardRef)
 
 export default RequiredMarker

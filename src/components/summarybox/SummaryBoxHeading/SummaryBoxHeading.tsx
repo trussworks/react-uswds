@@ -28,6 +28,6 @@ export const SummaryBoxHeadingForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const SummaryBoxHeading = forwardRef(SummaryBoxHeadingForwardRef)
+const SummaryBoxHeading = forwardRef(SummaryBoxHeadingForwardRef)
 
 export default SummaryBoxHeading

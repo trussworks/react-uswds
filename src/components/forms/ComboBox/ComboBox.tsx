@@ -509,6 +509,6 @@ export const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ComboBox = forwardRef(ComboBoxForwardRef)
+const ComboBox = forwardRef(ComboBoxForwardRef)
 
 export default ComboBox
