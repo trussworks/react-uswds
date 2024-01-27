@@ -101,7 +101,7 @@ export const SlimNoIcon = (): React.ReactElement => (
   </>
 )
 
-export const headingLevels = (): React.ReactElement => (
+export const HeadingLevels = (): React.ReactElement => (
   <>
     <h1>Heading Level 1</h1>
     <Alert type="info" heading="Heading level 2" headingLevel="h2">

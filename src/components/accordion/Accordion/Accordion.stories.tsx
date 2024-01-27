@@ -38,7 +38,7 @@ export const Bordered = (): React.ReactElement => (
   <Accordion bordered={true} items={testItems} />
 )
 
-export const Multiselctable = (): React.ReactElement => (
+export const Multiselectable = (): React.ReactElement => (
   <Accordion items={testItems} multiselectable={true} />
 )
 

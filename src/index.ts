@@ -65,7 +65,7 @@ export {
   ButtonGroupItemForwardRef,
 } from './components/button/ButtonGroupItem/ButtonGroupItem'
 
-export { default as InPageNavigation } from './components/InPageNavigation/InPageNavigation'
+export { default as InPageNavigation } from './components/inpagenavigation/InPageNavigation/InPageNavigation'
 export { default as Link } from './components/Link/Link'
 export { default as MediaBlockBody } from './components/mediablock/MediaBlockBody/MediaBlockBody'
 
@@ -84,14 +84,14 @@ export { default as TooltipTrigger } from './components/tooltip/TooltipTrigger/T
 export { default as useTooltip } from './components/tooltip/useTooltip'
 export * from './components/tooltip/utils'
 
-export { default as SideNav } from './components/SideNav/SideNav'
+export { default as SideNav } from './components/sidenav/SideNav/SideNav'
 
 /** Pagination components */
 export {
   default as Pagination,
   PaginationOverflow,
   PaginationPage,
-} from './components/Pagination/Pagination'
+} from './components/pagination/Pagination/Pagination'
 
 /** Banner components */
 export {
@@ -153,18 +153,18 @@ export {
 } from './components/banner/GovBanner/GovBanner'
 
 /** Collection components */
-export { default as Collection } from './components/Collection/Collection'
-export { default as CollectionItem } from './components/Collection/CollectionItem'
-export { default as CollectionHeading } from './components/Collection/CollectionHeading'
-export { default as CollectionDescription } from './components/Collection/CollectionDescription'
-export { default as CollectionMeta } from './components/Collection/CollectionMeta'
-export { default as CollectionMetaItem } from './components/Collection/CollectionMetaItem'
-export { default as CollectionMetaItemTag } from './components/Collection/CollectionMetaItemTag'
-export { default as CollectionThumbnail } from './components/Collection/CollectionThumbnail'
+export { default as Collection } from './components/collection/Collection/Collection'
+export { default as CollectionItem } from './components/collection/CollectionItem/CollectionItem'
+export { default as CollectionHeading } from './components/collection/CollectionHeading/CollectionHeading'
+export { default as CollectionDescription } from './components/collection/CollectionDescription/CollectionDescription'
+export { default as CollectionMeta } from './components/collection/CollectionMeta/CollectionMeta'
+export { default as CollectionMetaItem } from './components/collection/CollectionMetaItem/CollectionMetaItem'
+export { default as CollectionMetaItemTag } from './components/collection/CollectionMetaItemTag/CollectionMetaItemTag'
+export { default as CollectionThumbnail } from './components/collection/CollectionThumbnail/CollectionThumbnail'
 export {
   default as CollectionCalendarDate,
   SHORT_MONTH_LABELS,
-} from './components/Collection/CollectionCalendarDate'
+} from './components/collection/CollectionCalendarDate/CollectionCalendarDate'
 
 /** Grid components */
 export {
@@ -255,34 +255,34 @@ export { default as IconListItem } from './components/icon/IconListItem/IconList
 export { default as IconListTitle } from './components/icon/IconListTitle/IconListTitle'
 
 /** Identifier Components */
-export { default as Identifier } from './components/Identifier/Identifier/Identifier'
-export { default as IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
-export { default as IdentifierIdentity } from './components/Identifier/IdentifierIdentity/IdentifierIdentity'
-export { default as IdentifierLink } from './components/Identifier/IdentifierLink/IdentifierLink'
-export { default as IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
-export { default as IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
-export { default as IdentifierLogo } from './components/Identifier/IdentifierLogo/IdentifierLogo'
-export { default as IdentifierLogos } from './components/Identifier/IdentifierLogos/IdentifierLogos'
-export { default as IdentifierMasthead } from './components/Identifier/IdentifierMasthead/IdentifierMasthead'
+export { default as Identifier } from './components/identifier/Identifier/Identifier'
+export { default as IdentifierGov } from './components/identifier/IdentifierGov/IdentifierGov'
+export { default as IdentifierIdentity } from './components/identifier/IdentifierIdentity/IdentifierIdentity'
+export { default as IdentifierLink } from './components/identifier/IdentifierLink/IdentifierLink'
+export { default as IdentifierLinkItem } from './components/identifier/IdentifierLinkItem/IdentifierLinkItem'
+export { default as IdentifierLinks } from './components/identifier/IdentifierLinks/IdentifierLinks'
+export { default as IdentifierLogo } from './components/identifier/IdentifierLogo/IdentifierLogo'
+export { default as IdentifierLogos } from './components/identifier/IdentifierLogos/IdentifierLogos'
+export { default as IdentifierMasthead } from './components/identifier/IdentifierMasthead/IdentifierMasthead'
 
 /** Footer components */
-export { default as Address } from './components/Footer/Address/Address'
-export { default as Footer } from './components/Footer/Footer/Footer'
-export { default as FooterExtendedNavList } from './components/Footer/FooterExtendedNavList/FooterExtendedNavList'
-export { default as FooterNav } from './components/Footer/FooterNav/FooterNav'
-export { default as Logo } from './components/Footer/Logo/Logo'
+export { default as Address } from './components/footer/Address/Address'
+export { default as Footer } from './components/footer/Footer/Footer'
+export { default as FooterExtendedNavList } from './components/footer/FooterExtendedNavList/FooterExtendedNavList'
+export { default as FooterNav } from './components/footer/FooterNav/FooterNav'
+export { default as Logo } from './components/footer/Logo/Logo'
 export {
   default as SocialLinks,
   SocialLink,
-} from './components/Footer/SocialLinks/SocialLinks'
+} from './components/footer/SocialLinks/SocialLinks'
 
 /** Modal components */
-export { default as Modal } from './components/Modal/Modal'
-export { default as ModalToggleButton } from './components/Modal/ModalToggleButton'
-export { default as ModalOpenLink } from './components/Modal/ModalOpenLink'
-export { default as ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
-export { default as ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
-export type { ModalProps, ModalRef } from './components/Modal/Modal'
+export { default as Modal } from './components/modal/Modal/Modal'
+export { default as ModalToggleButton } from './components/modal/ModalToggleButton/ModalToggleButton'
+export { default as ModalOpenLink } from './components/modal/ModalOpenLink/ModalOpenLink'
+export { default as ModalHeading } from './components/modal/ModalHeading/ModalHeading'
+export { default as ModalFooter } from './components/modal/ModalFooter/ModalFooter'
+export type { ModalProps, ModalRef } from './components/modal/Modal/Modal'
 
 /** Card components */
 export { default as CardGroup } from './components/card/CardGroup/CardGroup'
@@ -315,7 +315,7 @@ export {
 export { default as StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
 export { default as StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
-export { default as Search } from './components/Search/Search/Search'
+export { default as Search } from './components/search/Search/Search'
 
 /** SummaryBox components */
 export { default as SummaryBox } from './components/summarybox/SummaryBox/SummaryBox'
@@ -325,11 +325,11 @@ export { default as SummaryBoxContent } from './components/summarybox/SummaryBox
 export { default as SummaryBoxHeading } from './components/summarybox/SummaryBoxHeading/SummaryBoxHeading'
 
 /** ProcessList components */
-export { default as ProcessList } from './components/ProcessList/ProcessList/ProcessList'
-export { default as ProcessListItem } from './components/ProcessList/ProcessListItem/ProcessListItem'
-export { default as ProcessListHeading } from './components/ProcessList/ProcessListHeading/ProcessListHeading'
+export { default as ProcessList } from './components/processlist/ProcessList/ProcessList'
+export { default as ProcessListItem } from './components/processlist/ProcessListItem/ProcessListItem'
+export { default as ProcessListHeading } from './components/processlist/ProcessListHeading/ProcessListHeading'
 
-export { default as SiteAlert } from './components/SiteAlert/SiteAlert'
+export { default as SiteAlert } from './components/sitealert/SiteAlert/SiteAlert'
 
 /** Types */
 export type * from './types/headingLevel'
