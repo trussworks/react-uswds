@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { YearPicker } from './YearPicker'
+import { YearPicker as YearPickerComponent } from './YearPicker'
 import { parseDateString } from './utils'
 
 /*
@@ -26,20 +26,20 @@ const testProps = {
   minDate: parseDateString('0000-01-01') as Date,
 }
 
-export const yearPicker = (
+export const YearPicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
-  <YearPicker
+  <YearPickerComponent
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}
   />
 )
 
-export const withMinAndMaxInCurrentChunk = (
+export const WithMinAndMaxInCurrentChunk = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
-  <YearPicker
+  <YearPickerComponent
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}
@@ -48,10 +48,10 @@ export const withMinAndMaxInCurrentChunk = (
   />
 )
 
-export const withMinInCurrentChunk = (
+export const WithMinInCurrentChunk = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
-  <YearPicker
+  <YearPickerComponent
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}
@@ -59,10 +59,10 @@ export const withMinInCurrentChunk = (
   />
 )
 
-export const withMaxInCurrentChunk = (
+export const WithMaxInCurrentChunk = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
-  <YearPicker
+  <YearPickerComponent
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}

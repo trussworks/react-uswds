@@ -27,7 +27,7 @@ const defaultProps = {
   focusMode: FocusMode.None,
 }
 
-export const defaultCalendar = (
+export const DefaultCalendar = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Calendar
@@ -37,7 +37,7 @@ export const defaultCalendar = (
   />
 )
 
-export const givenDate = (argTypes: StorybookArguments): React.ReactElement => (
+export const GivenDate = (argTypes: StorybookArguments): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}
@@ -46,7 +46,7 @@ export const givenDate = (argTypes: StorybookArguments): React.ReactElement => (
   />
 )
 
-export const selectedDate = (
+export const SelectedDate = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Calendar
@@ -57,7 +57,7 @@ export const selectedDate = (
   />
 )
 
-export const minAndMax = (argTypes: StorybookArguments): React.ReactElement => (
+export const MinAndMax = (argTypes: StorybookArguments): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}
@@ -68,7 +68,7 @@ export const minAndMax = (argTypes: StorybookArguments): React.ReactElement => (
   />
 )
 
-export const rangeDate = (argTypes: StorybookArguments): React.ReactElement => (
+export const RangeDate = (argTypes: StorybookArguments): React.ReactElement => (
   <Calendar
     {...defaultProps}
     handleSelectDate={argTypes.handleSelectDate}

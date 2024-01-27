@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MonthPicker } from './MonthPicker'
+import { MonthPicker as MonthPickerComponent } from './MonthPicker'
 import { parseDateString } from './utils'
 
 /*
@@ -22,16 +22,19 @@ const testProps = {
   minDate: parseDateString('0000-01-01') as Date,
 }
 
-export const monthPicker = (
+export const MonthPicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
-  <MonthPicker {...testProps} handleSelectMonth={argTypes.handleSelectMonth} />
+  <MonthPickerComponent
+    {...testProps}
+    handleSelectMonth={argTypes.handleSelectMonth}
+  />
 )
 
-export const withMinAndMax = (
+export const WithMinAndMax = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
-  <MonthPicker
+  <MonthPickerComponent
     {...testProps}
     handleSelectMonth={argTypes.handleSelectMonth}
     minDate={parseDateString('2021-04-01') as Date}

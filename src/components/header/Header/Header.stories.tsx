@@ -83,22 +83,20 @@ export const BasicHeader = (): React.ReactElement => {
   ]
 
   return (
-    <>
-      <Header basic={true} showMobileOverlay={expanded}>
-        <div className="usa-nav-container">
-          <div className="usa-navbar">
-            <Title>Project Title</Title>
-            <NavMenuButton onClick={onClick} label="Menu" />
-          </div>
-          <PrimaryNav
-            items={testItemsMenu}
-            mobileExpanded={expanded}
-            onToggleMobileNav={onClick}>
-            <Search size="small" onSubmit={mockSubmit} />
-          </PrimaryNav>
+    <Header basic={true} showMobileOverlay={expanded}>
+      <div className="usa-nav-container">
+        <div className="usa-navbar">
+          <Title>Project Title</Title>
+          <NavMenuButton onClick={onClick} label="Menu" />
         </div>
-      </Header>
-    </>
+        <PrimaryNav
+          items={testItemsMenu}
+          mobileExpanded={expanded}
+          onToggleMobileNav={onClick}>
+          <Search size="small" onSubmit={mockSubmit} />
+        </PrimaryNav>
+      </div>
+    </Header>
   )
 }
 
@@ -189,29 +187,24 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
   ]
 
   return (
-    <>
-      <Header
-        basic={true}
-        basicWithMegaMenu={true}
-        showMobileOverlay={expanded}>
-        <div className="usa-nav-container">
-          <div className="usa-navbar">
-            <Title>Project Title</Title>
-            <NavMenuButton onClick={onClick} label="Menu" />
-          </div>
-          <PrimaryNav
-            items={testItemsMegaMenu}
-            mobileExpanded={expanded}
-            onToggleMobileNav={onClick}>
-            <Search size="small" onSubmit={mockSubmit} />
-          </PrimaryNav>
+    <Header basic={true} basicWithMegaMenu={true} showMobileOverlay={expanded}>
+      <div className="usa-nav-container">
+        <div className="usa-navbar">
+          <Title>Project Title</Title>
+          <NavMenuButton onClick={onClick} label="Menu" />
         </div>
-      </Header>
-    </>
+        <PrimaryNav
+          items={testItemsMegaMenu}
+          mobileExpanded={expanded}
+          onToggleMobileNav={onClick}>
+          <Search size="small" onSubmit={mockSubmit} />
+        </PrimaryNav>
+      </div>
+    </Header>
   )
 }
 
-export const extendedHeader = (): React.ReactElement => {
+export const ExtendedHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
   const [isOpen, setIsOpen] = useState([false])
@@ -251,25 +244,23 @@ export const extendedHeader = (): React.ReactElement => {
     </a>,
   ]
   return (
-    <>
-      <Header extended={true} showMobileOverlay={expanded}>
-        <div className="usa-navbar">
-          <Title>Project Title</Title>
-          <NavMenuButton onClick={onClick} label="Menu" />
-        </div>
-        <ExtendedNav
-          primaryItems={testItemsMenu}
-          secondaryItems={testMenuItems}
-          mobileExpanded={expanded}
-          onToggleMobileNav={onClick}>
-          <Search size="small" onSubmit={mockSubmit} />
-        </ExtendedNav>
-      </Header>
-    </>
+    <Header extended={true} showMobileOverlay={expanded}>
+      <div className="usa-navbar">
+        <Title>Project Title</Title>
+        <NavMenuButton onClick={onClick} label="Menu" />
+      </div>
+      <ExtendedNav
+        primaryItems={testItemsMenu}
+        secondaryItems={testMenuItems}
+        mobileExpanded={expanded}
+        onToggleMobileNav={onClick}>
+        <Search size="small" onSubmit={mockSubmit} />
+      </ExtendedNav>
+    </Header>
   )
 }
 
-export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
+export const ExtendedHeaderWithMegaMenu = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
@@ -329,20 +320,18 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
     </a>,
   ]
   return (
-    <>
-      <Header extended={true} showMobileOverlay={expanded}>
-        <div className="usa-navbar">
-          <Title>Project Title</Title>
-          <NavMenuButton onClick={onClick} label="Menu" />
-        </div>
-        <ExtendedNav
-          primaryItems={testItemsMenu}
-          secondaryItems={testMenuItems}
-          mobileExpanded={expanded}
-          onToggleMobileNav={onClick}>
-          <Search size="small" onSubmit={mockSubmit} />
-        </ExtendedNav>
-      </Header>
-    </>
+    <Header extended={true} showMobileOverlay={expanded}>
+      <div className="usa-navbar">
+        <Title>Project Title</Title>
+        <NavMenuButton onClick={onClick} label="Menu" />
+      </div>
+      <ExtendedNav
+        primaryItems={testItemsMenu}
+        secondaryItems={testMenuItems}
+        mobileExpanded={expanded}
+        onToggleMobileNav={onClick}>
+        <Search size="small" onSubmit={mockSubmit} />
+      </ExtendedNav>
+    </Header>
   )
 }

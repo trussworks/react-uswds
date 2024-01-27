@@ -6,7 +6,7 @@ import {
   waitFor,
   screen,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import DatePicker from './DatePicker'
 import { sampleLocalization } from './i18n'

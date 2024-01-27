@@ -4,11 +4,15 @@ import classnames from 'classnames'
 import styles from './AlertBase.module.scss'
 
 export type BaseAlertBaseProps = {
-  type: 'success' | 'warning' | 'error' | 'info'
-  cta?: React.ReactNode
-  slim?: boolean
-  noIcon?: boolean
-  validation?: boolean
+  type?: 'success' | 'warning' | 'error' | 'info' | 'emergency'
+  isCta?: boolean
+  isSlim?: boolean
+  isNoIcon?: boolean
+  /**
+   * Can also be used to force using custom content as children by
+   * setting to `true`
+   */
+  isValidation?: boolean
 }
 
 export type AlertBaseProps = React.ComponentPropsWithRef<typeof AlertBase>
@@ -19,7 +23,7 @@ export const AlertBaseForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
   BaseAlertBaseProps & React.ComponentPropsWithoutRef<'div'>
 > = (
-  { type, cta, slim, noIcon, className, validation, ...props },
+  { type, isCta, className, isSlim, isNoIcon, isValidation, ...props },
   ref
 ): React.ReactElement => {
   const classes = classnames(
@@ -29,10 +33,11 @@ export const AlertBaseForwardRef: React.ForwardRefRenderFunction<
       'usa-alert--warning': type === 'warning',
       'usa-alert--error': type === 'error',
       'usa-alert--info': type === 'info',
-      'usa-alert--slim': slim,
-      'usa-alert--no-icon': noIcon,
-      'usa-alert--validation': validation,
-      [styles.alertWithCTA]: !!cta,
+      'usa-alert--emergency': type === 'emergency',
+      'usa-alert--slim': isSlim,
+      'usa-alert--no-icon': isNoIcon,
+      'usa-alert--validation': isValidation,
+      [styles.alertWithCTA]: isCta,
     },
     className
   )

@@ -17,11 +17,11 @@ Source: https://designsystem.digital.gov/components/text-input
   },
 }
 
-export const defaultTextInput = (): React.ReactElement => (
+export const DefaultTextInput = (): React.ReactElement => (
   <TextInput id="input-type-text" name="input-type-text" type="text" />
 )
 
-export const withDefaultValue = (): React.ReactElement => (
+export const WithDefaultValue = (): React.ReactElement => (
   <TextInput
     id="input-value"
     name="input-value"
@@ -30,7 +30,7 @@ export const withDefaultValue = (): React.ReactElement => (
   />
 )
 
-export const withPlaceholder = (): React.ReactElement => (
+export const WithPlaceholder = (): React.ReactElement => (
   <TextInput
     id="input-placeholder"
     name="input-placeholder"
@@ -39,7 +39,7 @@ export const withPlaceholder = (): React.ReactElement => (
   />
 )
 
-export const error = (): React.ReactElement => (
+export const Error = (): React.ReactElement => (
   <TextInput
     id="input-error"
     name="input-error"
@@ -48,7 +48,7 @@ export const error = (): React.ReactElement => (
   />
 )
 
-export const success = (): React.ReactElement => (
+export const Success = (): React.ReactElement => (
   <TextInput
     id="input-success"
     name="input-success"
@@ -57,14 +57,14 @@ export const success = (): React.ReactElement => (
   />
 )
 
-export const disabled = (): React.ReactElement => (
+export const Disabled = (): React.ReactElement => (
   <TextInput id="input-disabled" name="input-disabled" type="text" disabled />
 )
 
-export const readonly = (): React.ReactElement => (
+export const Readonly = (): React.ReactElement => (
   <TextInput id="input-readonly" name="input-readonly" type="text" readOnly />
 )
 
-export const password = (): React.ReactElement => (
+export const Password = (): React.ReactElement => (
   <TextInput id="input-type-text" name="input-type-text" type="password" />
 )

@@ -23,26 +23,26 @@ const testProps = {
   file: TEST_TEXT_FILE,
 }
 
-export const loadingPreview = (): React.ReactElement => (
+export const LoadingPreview = (): React.ReactElement => (
   <FilePreview {...testProps} />
 )
 
-export const pdfPreview = (): React.ReactElement => (
+export const PdfPreview = (): React.ReactElement => (
   <FilePreview {...testProps} file={TEST_PDF_FILE} />
 )
 
-export const docPreview = (): React.ReactElement => (
+export const DocPreview = (): React.ReactElement => (
   <FilePreview {...testProps} file={TEST_DOC_FILE} />
 )
 
-export const xlsPreview = (): React.ReactElement => (
+export const XlsPreview = (): React.ReactElement => (
   <FilePreview {...testProps} file={TEST_XLS_FILE} />
 )
 
-export const videoPreview = (): React.ReactElement => (
+export const VideoPreview = (): React.ReactElement => (
   <FilePreview {...testProps} file={TEST_VIDEO_FILE} />
 )
 
-export const imagePreview = (): React.ReactElement => (
+export const ImagePreview = (): React.ReactElement => (
   <FilePreview {...testProps} file={TEST_PNG_FILE} />
 )

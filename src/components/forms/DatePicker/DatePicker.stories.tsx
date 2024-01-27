@@ -55,47 +55,46 @@ type StorybookArguments = {
   validationStatus?: ValidationStatus
 }
 
-export const completeDatePicker = {
-  render: (argTypes: StorybookArguments): React.ReactElement => (
-    <Form onSubmit={argTypes.onSubmit}>
-      <FormGroup error={argTypes.validationStatus === 'error'}>
-        <Label
-          id="appointment-date-label"
-          htmlFor="appointment-date"
-          error={argTypes.validationStatus === 'error'}>
-          Appointment date
-        </Label>
-        <div className="usa-hint" id="appointment-date-hint">
-          mm/dd/yyyy
-        </div>
-        <DatePicker
-          id="appointment-date"
-          name="appointment-date"
-          aria-describedby="appointment-date-hint"
-          aria-labelledby="appointment-date-label"
-          disabled={argTypes.disabled}
-          validationStatus={argTypes.validationStatus}
-        />
-      </FormGroup>
-      <Label htmlFor="otherInput">Another unrelated input</Label>
-      <TextInput id="otherInput" name="otherInput" type="tel" />
-    </Form>
-  ),
-}
+export const CompleteDatePicker = (
+  argTypes: StorybookArguments
+): React.ReactElement => (
+  <Form onSubmit={argTypes.onSubmit}>
+    <FormGroup error={argTypes.validationStatus === 'error'}>
+      <Label
+        id="appointment-date-label"
+        htmlFor="appointment-date"
+        error={argTypes.validationStatus === 'error'}>
+        Appointment date
+      </Label>
+      <div className="usa-hint" id="appointment-date-hint">
+        mm/dd/yyyy
+      </div>
+      <DatePicker
+        id="appointment-date"
+        name="appointment-date"
+        aria-describedby="appointment-date-hint"
+        aria-labelledby="appointment-date-label"
+        disabled={argTypes.disabled}
+        validationStatus={argTypes.validationStatus}
+      />
+    </FormGroup>
+    <Label htmlFor="otherInput">Another unrelated input</Label>
+    <TextInput id="otherInput" name="otherInput" type="tel" />
+  </Form>
+)
 
-export const defaultDatePicker = (): React.ReactElement => (
+export const DefaultDatePicker = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" />
 )
 
-export const disabled = (): React.ReactElement => (
+export const Disabled = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" disabled />
 )
 
-export const withDefaultValue = {
+export const WithDefaultValue = {
   render: (): React.ReactElement => (
     <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
   ),
-
   parameters: {
     happo: {
       waitForContent: '05/16/1988',
@@ -103,7 +102,7 @@ export const withDefaultValue = {
   },
 }
 
-const withDefaultInvalidValue = (): React.ReactElement => (
+const WithDefaultInvalidValue = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -111,9 +110,9 @@ const withDefaultInvalidValue = (): React.ReactElement => (
     minDate="2020-01-01"
   />
 )
-export { withDefaultInvalidValue }
+export { WithDefaultInvalidValue }
 
-export const withMinMaxInSameMonth = (): React.ReactElement => (
+export const WithMinMaxInSameMonth = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -122,7 +121,7 @@ export const withMinMaxInSameMonth = (): React.ReactElement => (
   />
 )
 
-export const withMinMax = (): React.ReactElement => (
+export const WithMinMax = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -131,7 +130,7 @@ export const withMinMax = (): React.ReactElement => (
   />
 )
 
-const withRangeDate = (): React.ReactElement => (
+const WithRangeDate = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -139,13 +138,13 @@ const withRangeDate = (): React.ReactElement => (
     rangeDate="2021-01-08"
   />
 )
-withRangeDate.parameters = {
+WithRangeDate.parameters = {
   happo: {
     waitForContent: '01/20/2021',
   },
 }
-export { withRangeDate }
+export { WithRangeDate }
 
-export const withLocalizations = (): React.ReactElement => (
+export const WithLocalizations = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />
 )

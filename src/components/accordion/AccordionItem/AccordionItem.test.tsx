@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import AccordionItem from './AccordionItem'
 import { testItems } from '../test-fixtures'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 const testItem = testItems[0]
 

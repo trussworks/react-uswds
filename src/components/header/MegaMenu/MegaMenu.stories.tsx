@@ -36,6 +36,6 @@ const testItems = [
   ],
 ]
 
-export const defaultMegaMenu = (): React.ReactElement => (
+export const DefaultMegaMenu = (): React.ReactElement => (
   <MegaMenu items={testItems} key="testItemOne" isOpen={true} />
 )

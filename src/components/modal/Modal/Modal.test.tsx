@@ -7,7 +7,7 @@ import {
   fireEvent,
   RenderOptions,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import Modal, { ModalRef } from './Modal'
 import ModalHeading from '../ModalHeading/ModalHeading'

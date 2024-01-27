@@ -1,24 +1,39 @@
 import React, { forwardRef } from 'react'
 
 import AlertBody from '../AlertBody/AlertBody'
-import AlertHeading, { AlertHeadingProps } from '../AlertHeading/AlertHeading'
+import AlertHeading, {
+  AlertHeadingProps,
+  BaseAlertHeadingProps,
+} from '../AlertHeading/AlertHeading'
 import AlertContent, { AlertContentProps } from '../AlertContent/AlertContent'
-import AlertBase, { AlertBaseProps } from '../AlertBase/AlertBase'
+import AlertBase, {
+  AlertBaseProps,
+  BaseAlertBaseProps,
+} from '../AlertBase/AlertBase'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-export type BaseAlertProps = {
+export interface BaseAlertProps
+  extends BaseAlertBaseProps,
+    BaseAlertHeadingProps {
   heading?: React.ReactNode
-  headingLevel: HeadingLevel
   cta?: React.ReactNode
-  /**
-   * Can also be used to force using custom content as children by
-   * setting to `true`
-   */
-  validation?: boolean
   headingProps?: { headingLevel?: HeadingLevel } & AlertHeadingProps
   bodyProps?: AlertBaseProps
   contentProps?: AlertContentProps
   ctaProps?: React.ComponentPropsWithRef<'div'>
+
+  /**
+   * @deprecated Use `isSlim` instead
+   */
+  slim?: boolean
+  /**
+   * @deprecated Use `isNoIcon` instead
+   */
+  noIcon?: boolean
+  /**
+   * @deprecated Use `isValidation` instead
+   */
+  validation?: boolean
 }
 
 export type AlertProps = React.ComponentPropsWithRef<typeof Alert>
@@ -34,16 +49,28 @@ export const AlertForwardRef: React.ForwardRefRenderFunction<
     headingLevel,
     cta,
     children,
-    validation,
     bodyProps,
     contentProps,
     ctaProps,
+    validation,
+    noIcon,
+    slim,
+    isCta = !!cta,
+    isValidation = validation,
+    isNoIcon = noIcon,
+    isSlim = slim,
     ...props
   },
   ref
 ): React.ReactElement => {
   return (
-    <AlertBase ref={ref} {...props}>
+    <AlertBase
+      isCta={isCta}
+      isNoIcon={isNoIcon}
+      isSlim={isSlim}
+      isValidation={isValidation}
+      ref={ref}
+      {...props}>
       <AlertBody {...bodyProps}>
         {heading && (
           <AlertHeading headingLevel={headingLevel} {...contentProps}>

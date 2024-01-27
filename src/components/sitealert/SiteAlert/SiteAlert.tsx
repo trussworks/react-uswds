@@ -1,29 +1,71 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
+import Alert from '../../alert/Alert/Alert'
+import { HeadingLevel } from '../../../types/headingLevel'
 
-export type BaseSiteAlertProps = {
-  variant: 'info' | 'emergency'
-  children: string | React.ReactNode | React.ReactNode[]
+export type SiteAlertType = 'info' | 'emergency'
+
+export interface BaseSiteAlertProps {
+  type: SiteAlertType
   heading?: string
-  showIcon?: boolean
-  slim?: boolean
+  isNoIcon?: boolean
+  isSlim?: boolean
   className?: string
+  headingLevel?: HeadingLevel
+
+  /**
+   * @deprecated Use `type` instead
+   */
+  variant?: SiteAlertType
+  /**
+   * @deprecated Use `isSlim` instead
+   */
+  slim?: boolean
+  /**
+   * @deprecated Use `isNoIcon` instead
+   */
+  showIcon?: boolean
 }
 
-export type SiteAlertProps = BaseSiteAlertProps &
-  JSX.IntrinsicElements['section']
+/**
+ * @todo Remove and replace usage with {@link BaseSiteAlertProps}
+ */
+export type SiteAlertPropsWithDeprecation = 
+  | ({
+      /**
+       * @deprecated Use `type` instead
+       */
+      variant: SiteAlertType
+      type?: never
+    } & Omit<BaseSiteAlertProps, 'variant' | 'type'>)
+  | ({
+
+      /**
+       * @deprecated Use `type` instead
+       */
+      variant?: never
+      type: SiteAlertType
+    } & Omit<BaseSiteAlertProps, 'variant' | 'type'>)
+
+
+export type SiteAlertProps = React.ComponentPropsWithoutRef<typeof SiteAlert>
+
+export type SiteAlertRef = React.ComponentRef<typeof SiteAlert>
 
 export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
   HTMLElement,
-  SiteAlertProps
+  SiteAlertPropsWithDeprecation & JSX.IntrinsicElements['section']
 > = (
   {
-    variant,
     children,
     heading,
-    showIcon = true,
-    slim = false,
     className,
+    variant,
+    showIcon,
+    slim,
+    isSlim = slim,
+    isNoIcon = typeof showIcon === "boolean" ? !showIcon : false,
+    type = variant,
     ...sectionProps
   },
   ref
@@ -31,19 +73,14 @@ export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
   const classes = classnames(
     'usa-site-alert',
     {
-      'usa-site-alert--info': variant === 'info',
-      'usa-site-alert--emergency': variant === 'emergency',
-      'usa-site-alert--no-heading': heading === undefined && !slim,
-      'usa-site-alert--no-icon': !showIcon,
-      'usa-site-alert--slim': slim,
+      'usa-site-alert--info': type === 'info',
+      'usa-site-alert--emergency': type === 'emergency',
+      'usa-site-alert--no-heading': heading === undefined && !isSlim,
+      'usa-site-alert--no-icon': isNoIcon,
+      'usa-site-alert--slim': isSlim,
     },
     className
   )
-
-  let content = children
-  if (typeof children === 'string') {
-    content = <p className="usa-alert__text">{children}</p>
-  }
 
   return (
     <section
@@ -52,12 +89,12 @@ export const SiteAlertForwardRef: React.ForwardRefRenderFunction<
       className={classes}
       aria-label="Site alert"
       {...sectionProps}>
-      <div className="usa-alert">
-        <div className="usa-alert__body">
-          {heading && <h3 className="usa-alert__heading">{heading}</h3>}
-          {content}
-        </div>
-      </div>
+      <Alert
+        isValidation={typeof children !== 'string'}
+        headingLevel="h3"
+        heading={heading}>
+        {children}
+      </Alert>
     </section>
   )
 }

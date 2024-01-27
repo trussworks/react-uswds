@@ -196,7 +196,7 @@ export const collectionWithThumbnailItems = (): React.ReactElement => (
   </div>
 )
 
-export const collectionWithHeadingItems = (): React.ReactElement => (
+export const CollectionWithHeadingItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
@@ -382,7 +382,7 @@ export const collectionWithMixedItems = (): React.ReactElement => (
   </div>
 )
 
-export const condensedCollection = (): React.ReactElement => (
+export const CondensedCollection = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection condensed>
       <CollectionItem>

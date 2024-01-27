@@ -125,7 +125,7 @@ const testIdentifierGovContentSpanish = (
   </>
 )
 
-export const identifierDefault = (): React.ReactElement => (
+export const IdentifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -146,7 +146,7 @@ export const identifierDefault = (): React.ReactElement => (
   </Identifier>
 )
 
-export const identifierSpanish = (): React.ReactElement => (
+export const IdentifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -166,7 +166,7 @@ export const identifierSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const multipleParentsAndLogos = (): React.ReactElement => (
+export const MultipleParentsAndLogos = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -190,7 +190,7 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
   </Identifier>
 )
 
-export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
+export const MultipleParentsAndLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -211,7 +211,7 @@ export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
+export const MoreThanTwoParentsAndLogos = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -238,7 +238,7 @@ export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
   </Identifier>
 )
 
-export const noLogosEnglish = (): React.ReactElement => (
+export const NoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierIdentity domain="domain.edu.mil.gov">
