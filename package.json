@@ -105,7 +105,7 @@
     "react-dom": "^17.0.1",
     "react-test-renderer": "^17.0.1",
     "sass": "^1.26.0",
-    "sass-loader": "^13.0.0",
+    "sass-loader": "^14.0.0",
     "sass-resources-loader": "^2.0.1",
     "source-map-loader": "^4.0.1",
     "storybook": "^7.1.1",
