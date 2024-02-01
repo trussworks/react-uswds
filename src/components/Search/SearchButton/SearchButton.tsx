@@ -13,12 +13,14 @@ type SearchButtonProps = {
   size?: 'big' | 'small'
   className?: string
   i18n?: SearchLocalization
+  buttonAriaLabel?: string
 }
 
 export const SearchButton = ({
   size,
   className,
   i18n,
+  buttonAriaLabel,
 }: SearchButtonProps): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
@@ -41,6 +43,7 @@ export const SearchButton = ({
           className="usa-search__submit-icon"
           name={buttonText}
           size={3}
+          aria-label={buttonAriaLabel || 'Search'}
         />
       </Button>
     </div>
