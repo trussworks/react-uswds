@@ -69,7 +69,7 @@
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.0.4",
     "@types/classnames": "^2.2.9",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^29.5.11",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/react-test-renderer": "^18.0.7",
