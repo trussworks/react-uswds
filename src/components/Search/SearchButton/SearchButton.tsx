@@ -47,7 +47,7 @@ export const SearchButton = ({
           className="usa-search__submit-icon"
           name={buttonText}
           size={3}
-          aria-label={buttonAriaLabel || 'Search'}
+          aria-label={buttonAriaLabel || buttonText}
         />
       </Button>
     </div>
