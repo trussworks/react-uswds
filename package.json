@@ -35,9 +35,9 @@
     "node": ">= 18"
   },
   "scripts": {
-    "test": "vitest",
+    "test": "vitest --run",
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
-    "test:watch": "vitest --watch",
+    "test:watch": "vitest",
     "test:coverage": "vitest --coverage",
     "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "storybook dev -p 9009",
@@ -48,7 +48,7 @@
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "prepare": "yarn build",
+    "prepare": "husky",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo",
     "happo-ci": "happo-ci-github-actions",
@@ -107,6 +107,7 @@
     "focus-trap-react": "^10.2.3",
     "happo-plugin-storybook": "^4.0.2",
     "happo.io": "^8.4.4",
+    "husky": "^9.0.10",
     "jsdom": "^23.2.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
