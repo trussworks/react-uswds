@@ -34,7 +34,10 @@ describe('IdentifierMasthead component', () => {
         className="usa-identifier__custom-class-name"
         aria-label="Agency identifier">
         <IdentifierLogos>
-          <IdentifierLogo href="#" className="custom-class-name">
+          <IdentifierLogo
+            data-testid="identifierMasthead-logo"
+            href="#"
+            className="custom-class-name">
             {testIdentifierLogo}
           </IdentifierLogo>
         </IdentifierLogos>

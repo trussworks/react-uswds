@@ -1,7 +1,8 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
 
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 
 import { FooterExtendedNavList } from './FooterExtendedNavList'
 
@@ -25,44 +26,49 @@ const links = [
 ]
 
 describe('FooterExtendedNavList component', () => {
+  function setup(
+    props: Omit<
+      React.ComponentPropsWithoutRef<typeof FooterExtendedNavList>,
+      'nestedLinks'
+    > = {}
+  ) {
+    return render(
+      <>
+        <style>{'.hidden { display: none; }'}</style>
+        <FooterExtendedNavList nestedLinks={links} {...props} />
+      </>
+    )
+  }
   it('renders without errors', () => {
-    const { container } = render(<FooterExtendedNavList nestedLinks={links} />)
+    const { container } = setup()
     expect(container.querySelector('ul')).toBeInTheDocument()
   })
 
   it('renders headings', () => {
-    const { container, getByText } = render(
-      <FooterExtendedNavList nestedLinks={links} />
-    )
+    const { container, getByText } = setup()
     expect(container.querySelectorAll('h4')).toHaveLength(2)
     expect(getByText('Types of Cats')).toBeInTheDocument()
     expect(getByText('Musical Gifts')).toBeInTheDocument()
   })
 
   it('renders links', () => {
-    const { container, getAllByText } = render(
-      <FooterExtendedNavList nestedLinks={links} />
-    )
+    const { container, getAllByText } = setup()
     expect(container.querySelectorAll('a')).toHaveLength(5)
     expect(getAllByText('Purple Rain')).toHaveLength(3)
     expect(getAllByText('Cheetah')).toHaveLength(2)
   })
 
-  it('does not toggle section visiblity onClick in desktop view', () => {
-    const { getAllByText, getByText } = render(
-      <FooterExtendedNavList nestedLinks={links} />
-    )
+  it('does not toggle section visiblity onClick in desktop view', async () => {
+    const { getAllByText, getByText } = setup()
 
-    fireEvent.click(getByText('Types of Cats'))
+    await userEvent.click(getByText('Types of Cats'))
     expect(getAllByText('Purple Rain')).toHaveLength(3)
     expect(getAllByText('Cheetah')).toHaveLength(2)
   })
 
   describe('isMobile prop', () => {
     it('renders mobile styles on all sections on initial load', () => {
-      const { container } = render(
-        <FooterExtendedNavList isMobile nestedLinks={links} />
-      )
+      const { container } = setup({ isMobile: true })
 
       const sections = container.querySelectorAll('section')
       const elementsWithHiddenClass = container.querySelectorAll('.hidden')
@@ -70,50 +76,42 @@ describe('FooterExtendedNavList component', () => {
     })
 
     it('renders headings', () => {
-      const { container, getByText } = render(
-        <FooterExtendedNavList isMobile nestedLinks={links} />
-      )
+      const { container, getByText } = setup({ isMobile: true })
+
       expect(container.querySelectorAll('h4')).toHaveLength(2)
       expect(getByText('Types of Cats')).toBeInTheDocument()
       expect(getByText('Musical Gifts')).toBeInTheDocument()
     })
 
     it('hides secondary links on initial load', () => {
-      const { getAllByText } = render(
-        <FooterExtendedNavList isMobile nestedLinks={links} />
-      )
-      expect(getAllByText('Cheetah')).not.toBeInTheDocument()
-      expect(getAllByText('Purple Rain')).not.toBeInTheDocument()
+      const { getAllByText } = setup({ isMobile: true })
+
+      getAllByText('Cheetah').forEach((e) => expect(e).not.toBeVisible())
+      getAllByText('Purple Rain').forEach((e) => expect(e).not.toBeVisible())
     })
 
-    it('toggles section visibility onClick', () => {
-      const { getByText, getAllByText } = render(
-        <FooterExtendedNavList isMobile nestedLinks={links} />
-      )
+    it('toggles section visibility onClick', async () => {
+      const { getByText, getAllByText } = setup({ isMobile: true })
 
-      fireEvent.click(getByText('Types of Cats'))
+      await userEvent.click(getByText('Types of Cats'))
 
-      expect(getAllByText('Cheetah')).toHaveLength(2)
-      expect(getAllByText('Purple Rain')).not.toBeInTheDocument()
+      getAllByText('Cheetah').forEach((e) => expect(e).toBeVisible())
+      getAllByText('Purple Rain').forEach((e) => expect(e).not.toBeVisible())
     })
 
-    it('toggles one section expanded at a time onClick', () => {
-      const { getAllByText, getByText } = render(
-        <FooterExtendedNavList isMobile nestedLinks={links} />
-      )
+    it('toggles one section expanded at a time onClick', async () => {
+      const { getAllByText, getByText } = setup({ isMobile: true })
 
-      fireEvent.click(getByText('Types of Cats'))
-      fireEvent.click(getByText('Musical Gifts'))
+      await userEvent.click(getByText('Types of Cats'))
+      await userEvent.click(getByText('Musical Gifts'))
 
-      expect(getAllByText('Purple Rain')).toBeInTheDocument()
-      expect(getAllByText('Cheetah')).not.toBeInTheDocument()
+      getAllByText('Purple Rain').forEach((e) => expect(e).toBeVisible())
+      getAllByText('Cheetah').forEach((e) => expect(e).not.toBeVisible())
     })
 
     it('does not render mobile styles when isMobile is undefined in desktop view', () => {
       // JSDOM window.innerWidth default is 1024
-      const { container } = render(
-        <FooterExtendedNavList nestedLinks={links} />
-      )
+      const { container } = setup()
 
       const elementsWithHiddenClass = container.querySelectorAll('.hidden')
       expect(elementsWithHiddenClass.length).toEqual(0)
@@ -122,22 +120,16 @@ describe('FooterExtendedNavList component', () => {
     describe('when client window width is less than mobile threshold', () => {
       beforeEach(() => {
         // Mobile width is less than 480
-        //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        window.innerWidth = 479
+        vi.stubGlobal('innerWidth', 479)
       })
 
       afterEach(() => {
         // Return to JSDOM default
-        //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        window.innerWidth = 1024
+        vi.unstubAllGlobals()
       })
 
       it('renders mobile styles if isMobile is undefined', () => {
-        const { container } = render(
-          <FooterExtendedNavList nestedLinks={links} />
-        )
+        const { container } = setup()
 
         const sections = container.querySelectorAll('section')
         const elementsWithHiddenClass = container.querySelectorAll('.hidden')
@@ -145,9 +137,7 @@ describe('FooterExtendedNavList component', () => {
       })
 
       it('does not render mobile styles when isMobile is false', () => {
-        const { container } = render(
-          <FooterExtendedNavList isMobile={false} nestedLinks={links} />
-        )
+        const { container } = setup({ isMobile: false })
 
         const elementsWithHiddenClass = container.querySelectorAll('.hidden')
         expect(elementsWithHiddenClass.length).toEqual(0)

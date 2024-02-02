@@ -1,10 +1,8 @@
 import React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 
 import { FilePreview } from './FilePreview'
 import { SPACER_GIF, TEST_TEXT_FILE } from './constants'
-
-const INVALID_TEST_PDF_FILE = new File([], 'testFile.pdf')
 
 describe('FilePreview component', () => {
   const testProps = {
@@ -63,19 +61,30 @@ describe('FilePreview component', () => {
       expect(imageEl).toHaveAttribute('src', expectedSrc)
     })
 
-    // TODO - how to force an image error on load? test each file type class
-    describe.skip('for a PDF file', () => {
-      it('shows the PDF generic preview', async () => {
-        const { getByTestId } = await waitFor(() =>
-          render(
-            <FilePreview {...testProps} file={INVALID_TEST_PDF_FILE as File} />
+    describe.each([
+      { type: 'pdf', exts: ['pdf'] },
+      { type: 'word', exts: ['doc', 'pages'] },
+      { type: 'video', exts: ['mp4', 'mov'] },
+      { type: 'excel', exts: ['xls', 'numbers'] },
+      { type: 'generic', exts: ['dat'] },
+    ])('for a $type file', ({ type, exts }) => {
+      describe.each(exts)('using extension: %s', (ext) => {
+        it(`shows the ${type} ${
+          type !== 'generic' ? 'generic' : ''
+        } preview`, async () => {
+          const testFile = new File([], `testFile.${ext}`)
+          const { getByTestId } = await waitFor(() =>
+            render(<FilePreview {...testProps} file={testFile} />)
           )
-        )
 
-        const imageEl = getByTestId('file-input-preview-image')
-        await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
-        await waitFor(() => expect(imageEl).toHaveAttribute('src', SPACER_GIF))
-        expect(imageEl).toHaveClass('usa-file-input__preview-image--pdf')
+          const imageEl = getByTestId('file-input-preview-image')
+          await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
+          fireEvent.error(imageEl)
+          await waitFor(() =>
+            expect(imageEl).toHaveAttribute('src', SPACER_GIF)
+          )
+          expect(imageEl).toHaveClass(`usa-file-input__preview-image--${type}`)
+        })
       })
     })
   })
