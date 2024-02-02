@@ -239,7 +239,9 @@ describe('DatePicker component', () => {
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       getByTestId('test-external-element').focus()
-      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      await waitFor(() =>
+        expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      )
       expect(mockOnBlur).toHaveBeenCalled()
     })
   })
