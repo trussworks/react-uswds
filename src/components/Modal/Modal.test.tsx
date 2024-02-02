@@ -25,6 +25,12 @@ vi.mock('./utils', async (importOriginal) => {
   }
 })
 
+/*
+ * Modal relies on focus-trap-react, which cannot be reliably tested
+ * in JSDom. A __mocks__/tabbable.js file ensures that a displayCheck setting
+ * for the library is set so that tests do not fail due to this
+ * incompatibility. See: https://github.com/focus-trap/tabbable#testing-in-jsdom
+ */
 const renderWithModalRoot = (
   ui: React.ReactElement,
   options: RenderOptions = {}
@@ -343,12 +349,16 @@ describe('Modal component', () => {
 
       await waitFor(() => handleOpen())
 
-      expect(baseElement).toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 15px')
 
       await waitFor(() => handleClose())
 
-      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 0px')
     })
 
@@ -369,12 +379,16 @@ describe('Modal component', () => {
 
       await waitFor(() => handleOpen())
 
-      expect(baseElement).toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 35px')
 
       await waitFor(() => handleClose())
 
-      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 20px')
     })
 
@@ -410,7 +424,9 @@ describe('Modal component', () => {
 
       await waitFor(() => handleOpen())
 
-      expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
+      await waitFor(() =>
+        expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
+      )
       expect(screen.getByTestId('nonhidden')).toHaveAttribute(
         'data-modal-hidden'
       )
@@ -418,7 +434,11 @@ describe('Modal component', () => {
 
       await waitFor(() => handleClose())
 
-      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+      await waitFor(() =>
+        expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
+          'aria-hidden'
+        )
+      )
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
         'data-modal-hidden'
       )
@@ -461,7 +481,9 @@ describe('Modal component', () => {
 
       await waitFor(() => handleOpen())
 
-      expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
+      await waitFor(() =>
+        expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
+      )
       expect(screen.getByTestId('nonhidden')).toHaveAttribute(
         'data-modal-hidden'
       )
@@ -469,7 +491,11 @@ describe('Modal component', () => {
 
       await waitFor(() => handleClose())
 
-      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+      await waitFor(() =>
+        expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
+          'aria-hidden'
+        )
+      )
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
         'data-modal-hidden'
       )
@@ -635,7 +661,9 @@ describe('Modal component', () => {
 
         await waitFor(() => handleClose())
 
-        expect(baseElement).not.toHaveClass('usa-js-no-click')
+        await waitFor(() =>
+          expect(baseElement).not.toHaveClass('usa-js-no-click')
+        )
       })
 
       it('cannot click on the overlay to close', async () => {
@@ -651,7 +679,7 @@ describe('Modal component', () => {
         )
 
         await waitFor(() => handleOpen())
-        expect(modalRef.current?.modalIsOpen).toBe(true)
+        await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
 
         const overlay = screen.getByTestId('modalOverlay')
         userEvent.click(overlay)
@@ -698,12 +726,16 @@ describe('Modal component', () => {
 
       await waitFor(() => handleOpen())
 
-      expect(baseElement).toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 15px')
 
       await waitFor(() => unmount())
 
-      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 0px')
     })
 
@@ -730,12 +762,16 @@ describe('Modal component', () => {
 
       await waitFor(() => handleClose())
 
-      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 0px')
 
       await waitFor(() => unmount())
 
-      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      await waitFor(() =>
+        expect(baseElement).not.toHaveClass('usa-js-modal--active')
+      )
       expect(baseElement).toHaveStyle('padding-right: 0px')
     })
   })

@@ -167,8 +167,7 @@ export const LandingPage = (): React.ReactElement => {
         Skip to main content
       </a>
       <GovBanner />
-      <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
-      <Header extended>
+      <Header extended showMobileOverlay={mobileNavOpen}>
         <div className="usa-navbar">
           <Title id="extended-logo">
             <a href="/" title="Home" aria-label="Home">
