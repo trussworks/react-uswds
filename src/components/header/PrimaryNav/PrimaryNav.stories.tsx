@@ -29,6 +29,6 @@ const testBasicHeaderItems = [
   </a>,
 ]
 
-export const defaultPrimaryNav = (): React.ReactElement => (
+export const DefaultPrimaryNav = (): React.ReactElement => (
   <PrimaryNav items={testBasicHeaderItems} onToggleMobileNav={mockToggle} />
 )

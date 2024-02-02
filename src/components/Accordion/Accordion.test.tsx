@@ -122,7 +122,7 @@ describe('Accordion component', () => {
   })
 
   describe('when you toggle a closed item', () => {
-    it('it opens', () => {
+    it('opens', () => {
       const { getByTestId, getByText } = render(<Accordion items={testItems} />)
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
@@ -142,7 +142,7 @@ describe('Accordion component', () => {
   })
 
   describe('when you toggle an open item', () => {
-    it('it closes', () => {
+    it('closes', () => {
       const { getByText, getByTestId } = render(<Accordion items={testItems} />)
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()

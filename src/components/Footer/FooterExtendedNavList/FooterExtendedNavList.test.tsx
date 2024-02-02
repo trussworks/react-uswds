@@ -82,8 +82,8 @@ describe('FooterExtendedNavList component', () => {
       const { getAllByText } = render(
         <FooterExtendedNavList isMobile nestedLinks={links} />
       )
-      expect(getAllByText('Cheetah')).not.toBeInTheDocument
-      expect(getAllByText('Purple Rain')).not.toBeInTheDocument
+      expect(getAllByText('Cheetah')).not.toBeInTheDocument()
+      expect(getAllByText('Purple Rain')).not.toBeInTheDocument()
     })
 
     it('toggles section visibility onClick', () => {
@@ -94,7 +94,7 @@ describe('FooterExtendedNavList component', () => {
       fireEvent.click(getByText('Types of Cats'))
 
       expect(getAllByText('Cheetah')).toHaveLength(2)
-      expect(getAllByText('Purple Rain')).not.toBeInTheDocument
+      expect(getAllByText('Purple Rain')).not.toBeInTheDocument()
     })
 
     it('toggles one section expanded at a time onClick', () => {
@@ -105,8 +105,8 @@ describe('FooterExtendedNavList component', () => {
       fireEvent.click(getByText('Types of Cats'))
       fireEvent.click(getByText('Musical Gifts'))
 
-      expect(getAllByText('Purple Rain')).toBeInTheDocument
-      expect(getAllByText('Cheetah')).not.toBeInTheDocument
+      expect(getAllByText('Purple Rain')).toBeInTheDocument()
+      expect(getAllByText('Cheetah')).not.toBeInTheDocument()
     })
 
     it('does not render mobile styles when isMobile is undefined in desktop view', () => {

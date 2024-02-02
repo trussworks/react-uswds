@@ -272,7 +272,7 @@ describe('Pagination component', () => {
   })
 
   describe('for fewer pages than the max slots', () => {
-    it('renders pagination with no overflow', () => {
+    it('renders pagination with no overflow 1', () => {
       render(
         <Pagination
           totalPages={testThreePages}
@@ -284,7 +284,7 @@ describe('Pagination component', () => {
       expect(screen.queryAllByText('…')).toHaveLength(0)
     })
 
-    it('renders pagination with no overflow', () => {
+    it('renders pagination with no overflow 2', () => {
       render(
         <Pagination
           totalPages={testSevenPages}

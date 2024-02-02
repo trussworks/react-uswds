@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen, render, getByRole } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 import { InPageNavigation } from './InPageNavigation'
 import { HeadingLevel } from '../../types/headingLevel'
 import { CONTENT } from './content'

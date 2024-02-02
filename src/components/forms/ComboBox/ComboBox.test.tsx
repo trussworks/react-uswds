@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
 import { TextInput } from '../TextInput/TextInput'
@@ -1751,7 +1751,7 @@ describe('ComboBox component', () => {
       await waitFor(() => expect(input).not.toHaveFocus())
 
       await userEvent.click(getByTestId('focus-button'))
-      await waitFor(() => expect(input).toHaveFocus)
+      await waitFor(() => expect(input).toHaveFocus())
     })
 
     it('can be used to clear the selected value', async () => {

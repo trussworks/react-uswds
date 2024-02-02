@@ -6,7 +6,7 @@ import {
   waitFor,
   screen,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
 import { sampleLocalization } from './i18n'
@@ -600,7 +600,7 @@ describe('DatePicker component', () => {
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
 
-    it('entering a non-date value sets a validation message', async () => {
+    it('entering an invald date value sets a validation message', async () => {
       const mockOnChange = vi.fn()
       const { getByTestId } = renderDatePicker({ onChange: mockOnChange })
       const externalInput = getByTestId(

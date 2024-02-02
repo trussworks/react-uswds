@@ -7,7 +7,8 @@
     "react",
     "react-hooks",
     "no-only-tests",
-    "security"
+    "security",
+    "vitest"
   ],
   "env": {
     "browser": true,
@@ -64,6 +65,7 @@
     "plugin:jsx-a11y/recommended",
     "plugin:security/recommended-legacy",
     "plugin:storybook/recommended",
+    "plugin:vitest/recommended",
     "prettier"
   ],
   "rules": {

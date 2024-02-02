@@ -46,7 +46,7 @@ describe('IdentifierMasthead component', () => {
       </IdentifierMasthead>
     )
 
-    expect(queryByTestId('identifierMasthead-logo')).toBeInTheDocument
+    expect(queryByTestId('identifierMasthead-logo')).toBeInTheDocument()
     expect(getAllByRole('link')).toHaveLength(2)
     expect(queryByTestId('identifierMasthead')).toBeInTheDocument()
     expect(queryByTestId('identifierMasthead')).toHaveClass(
