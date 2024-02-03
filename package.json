@@ -53,7 +53,7 @@
     "prepare": "husky && yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo --config ./.happo.cjs",
-    "happo-ci": "happo-ci-github-actions --config ./.happo.cjs",
+    "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' happo-ci-github-actions --config ./.happo.cjs",
     "contributors:add": "all-contributors add"
   },
   "repository": {
@@ -71,6 +71,7 @@
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
     "@laynezh/vite-plugin-lib-assets": "^0.5.14",
     "@storybook/addon-a11y": "^7.6.10",
     "@storybook/addon-essentials": "^7.6.10",
