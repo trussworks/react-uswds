@@ -43,7 +43,7 @@
     "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build",
     "build": "vite build && yarn run build:uswds",
-    "build:uswds": "BUILD_USWDS=true vite build",
+    "build:uswds": "vite build --mode uswds",
     "build:watch": "vite dev",
     "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
     "lint:fix": "tsc && eslint --ext js,jsx,ts,tsx src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
