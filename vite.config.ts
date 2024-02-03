@@ -1,10 +1,13 @@
 /// <reference types="vitest" />
 import { resolve } from 'path'
+import url from 'url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets'
 import { checker } from 'vite-plugin-checker'
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 const uswdsIncludePaths = [
   'node_modules/@uswds',

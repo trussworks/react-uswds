@@ -11,18 +11,19 @@
     "design system",
     "component library"
   ],
-  "main": "./lib/index.js",
-  "module": "./lib/index.mjs",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": {
         "types": "./lib/index.d.ts",
-        "default": "./lib/index.mjs"
+        "default": "./lib/index.js"
       },
       "require": {
         "types": "./lib/index.d.ts",
-        "default": "./lib/index.js"
+        "default": "./lib/index.cjs"
       },
       "browser": "./lib/index.iife.js",
       "default": "./lib/index.umd.js"
@@ -49,7 +50,7 @@
     "lint:fix": "tsc && eslint --ext js,jsx,ts,tsx src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "prepare": "husky",
+    "prepare": "husky && yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo",
     "happo-ci": "happo-ci-github-actions",
