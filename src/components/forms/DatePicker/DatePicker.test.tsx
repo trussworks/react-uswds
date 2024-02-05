@@ -238,7 +238,7 @@ describe('DatePicker component', () => {
 
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
-      getByTestId('test-external-element').focus()
+      await userEvent.click(getByTestId('test-external-element'))
       await waitFor(() =>
         expect(getByTestId('date-picker-calendar')).not.toBeVisible()
       )
@@ -534,7 +534,7 @@ describe('DatePicker component', () => {
         getByTestId('date-picker-external-input'),
         '05/16/1988'
       )
-      getByTestId('date-picker-external-input').blur()
+      await userEvent.tab()
       expect(mockOnBlur).toHaveBeenCalled()
     })
 
@@ -549,7 +549,7 @@ describe('DatePicker component', () => {
       expect(externalInput).toBeValid()
       await userEvent.type(externalInput, '05/16/1988')
       expect(externalInput).toBeValid()
-      externalInput.blur()
+      await userEvent.tab()
       expect(externalInput).toBeInvalid()
     })
 
@@ -576,7 +576,8 @@ describe('DatePicker component', () => {
         'date-picker-external-input'
       ) as HTMLInputElement
       await userEvent.type(externalInput, '{space}{backspace}')
-      externalInput.blur()
+      // cause 'blur' event to occur on externalInput
+      await userEvent.tab()
       expect(externalInput).toHaveTextContent('')
       expect(externalInput).toBeValid()
       expect(externalInput.validationMessage).toEqual('')

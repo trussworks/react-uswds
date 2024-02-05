@@ -19,7 +19,8 @@ const uswdsIncludePaths = [
  */
 export default defineConfig(({ mode: _mode }) => {
   const isUswds = _mode === 'uswds'
-  const mode = isUswds ? 'production' : _mode
+  const isBundles = _mode === 'bundles'
+  const mode = isUswds ? 'production' : isBundles ? 'test' : _mode
   const entryName = isUswds ? 'uswds' : 'index'
   const isTest = mode === 'test' || mode === 'benchmark'
 
@@ -105,6 +106,15 @@ export default defineConfig(({ mode: _mode }) => {
       ],
     },
     test: {
+      // bundles test added to default exclude list (so that it can be ran manually after build)
+      exclude: [
+        'node_modules',
+        'dist',
+        '.idea',
+        '.git',
+        '.cache',
+        !isBundles ? 'src/bundles.test.tsx' : '',
+      ],
       globals: true,
       setupFiles: ['src/setupTests.ts'],
       environment: 'jsdom',
