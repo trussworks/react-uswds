@@ -32,6 +32,7 @@ export default defineConfig(({ mode: _mode }) => {
           typescript: true,
         }),
       !isTest &&
+        isUswds &&
         libAssetsPlugin({
           // ignore svg files as they will be inlined via svgr
           exclude: /\.svg(\?.*)?$/,

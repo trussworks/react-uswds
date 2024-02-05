@@ -12,7 +12,7 @@ import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 import { Link } from '../../Link/Link'
 
-import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 const testIdentifierLogo = (
   <img
