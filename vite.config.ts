@@ -2,6 +2,7 @@
 import { resolve } from 'path'
 import url from 'url'
 import { defineConfig } from 'vite'
+import { configDefaults } from 'vitest/config'
 import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets'
@@ -108,11 +109,7 @@ export default defineConfig(({ mode: _mode }) => {
     test: {
       // bundles test added to default exclude list (so that it can be ran manually after build)
       exclude: [
-        'node_modules',
-        'dist',
-        '.idea',
-        '.git',
-        '.cache',
+        ...configDefaults.exclude,
         !isBundles ? 'src/bundles.test.tsx' : '',
       ],
       globals: true,
