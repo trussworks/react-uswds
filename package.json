@@ -39,7 +39,7 @@
     "test": "vitest --run",
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
     "test:watch": "vitest",
-    "test:coverage": "vitest --coverage",
+    "test:coverage": "vitest --run --coverage",
     "test:bundles": "vitest --run bundles.test.tsx --mode bundles",
     "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "storybook dev -p 9009",
