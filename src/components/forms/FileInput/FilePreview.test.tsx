@@ -39,12 +39,30 @@ describe('FilePreview component', () => {
 
   describe('while the file is loading', () => {
     it('renders a loading image', async () => {
+      const spy = vi.spyOn(window.FileReader.prototype, 'readAsDataURL')
+      let fr: FileReader | undefined, blob: Blob | undefined
+      // Prevent loadend event from being dispatched until we're ready.
+      // Grab the blob and FileReader instance when called.
+      spy.mockImplementationOnce(function (this: FileReader, _blob) {
+        blob = _blob
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
+        fr = this
+      })
       const { getByTestId } = await waitFor(() =>
         render(<FilePreview {...testProps} />)
       )
       const imageEl = getByTestId('file-input-preview-image')
+
       expect(imageEl).toHaveClass('is-loading')
       expect(imageEl).toHaveAttribute('src', SPACER_GIF)
+
+      // Call real `readAsDataURL` with blob to dispatch loadend
+      expect(fr).toBeDefined()
+      expect(blob).toBeDefined()
+      fr!.readAsDataURL(blob!)
+
+      await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
+      expect(imageEl).not.toHaveAttribute('src', SPACER_GIF)
     })
   })
 
