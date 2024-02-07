@@ -7,11 +7,23 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
+import {
+  DEFAULT_EXTERNAL_DATE_FORMAT,
+  DateFormat,
+  INTERNAL_DATE_FORMAT,
+} from './constants'
 
 export default {
   title: 'Components/Date picker',
   component: DatePicker,
   argTypes: {
+    dateFormat: {
+      control: 'radio',
+      options: [
+        DEFAULT_EXTERNAL_DATE_FORMAT as DateFormat,
+        INTERNAL_DATE_FORMAT as DateFormat,
+      ],
+    },
     onSubmit: { action: 'submitted' },
     disabled: { control: { type: 'boolean' } },
     validationStatus: {
@@ -50,6 +62,7 @@ We may find that we want to expose props for custom event handlers or even a ref
 }
 
 type StorybookArguments = {
+  dateFormat: DateFormat
   onSubmit: React.FormEventHandler<HTMLFormElement>
   disabled?: boolean
   validationStatus?: ValidationStatus
@@ -66,7 +79,7 @@ export const CompleteDatePicker = {
           Appointment date
         </Label>
         <div className="usa-hint" id="appointment-date-hint">
-          mm/dd/yyyy
+          {argTypes.dateFormat ?? DEFAULT_EXTERNAL_DATE_FORMAT}
         </div>
         <DatePicker
           id="appointment-date"
@@ -75,6 +88,7 @@ export const CompleteDatePicker = {
           aria-labelledby="appointment-date-label"
           disabled={argTypes.disabled}
           validationStatus={argTypes.validationStatus}
+          dateFormat={argTypes.dateFormat}
         />
       </FormGroup>
       <Label htmlFor="otherInput">Another unrelated input</Label>
