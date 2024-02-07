@@ -66,8 +66,8 @@ export const StyledAsButton = (): React.ReactElement => (
       href={'#'}>
       This
     </Link>
-    is a link styled to look like a button. <br />
-    This link can be activated with the spacebar.
+    is a link styled to look like a button; it can be activated with the
+    spacebar.
   </p>
 )
 

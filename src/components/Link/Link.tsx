@@ -35,13 +35,10 @@ export function isCustomProps<T>(
   return 'asCustom' in props
 }
 // keyboard handler for 'link as a button'
-const handleKeyDown = (
-  e: React.KeyboardEvent & { target: HTMLAnchorElement }
-) => {
+const handleKeyDown = (e: React.KeyboardEvent) => {
   if (e.key === ' ' && e.target) {
     e.preventDefault()
-
-    e.target.click()
+    ;(e.target as HTMLElement).click()
   }
 }
 
