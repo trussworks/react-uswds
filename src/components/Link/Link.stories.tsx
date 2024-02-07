@@ -62,7 +62,7 @@ export const StyledAsButton = (): React.ReactElement => (
     <Link
       className="usa-button"
       variant="unstyled"
-      allowSpacebarActivation={true}
+      allowSpacebarActivation
       href={'#'}>
       This
     </Link>

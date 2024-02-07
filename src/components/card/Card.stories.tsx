@@ -50,7 +50,7 @@ const card = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -73,7 +73,7 @@ const cardWithMedia = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -99,7 +99,7 @@ const mediaWithSetAspectRatio = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -125,7 +125,7 @@ const mediaAndHeaderFirst = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -151,7 +151,7 @@ const insetMedia = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -177,7 +177,7 @@ const exdentMedia = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -203,7 +203,7 @@ const exdentCard = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -226,7 +226,7 @@ const flagDefault = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -251,7 +251,7 @@ const flagMediaOnRight = (
       <Link
         href={'#'}
         variant="unstyled"
-        allowSpacebarActivation={true}
+        allowSpacebarActivation
         className="usa-button">
         Example Button
       </Link>
@@ -312,7 +312,7 @@ export const cardTest = (): React.ReactElement => (
         <Link
           href={'#'}
           variant="unstyled"
-          allowSpacebarActivation={true}
+          allowSpacebarActivation
           className="usa-button usa-button--secondary">
           Stick out
         </Link>
@@ -356,7 +356,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Help the less fortunate
         </Link>
       </CardFooter>
@@ -381,7 +381,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Make some inquiries
         </Link>
       </CardFooter>
@@ -410,7 +410,7 @@ export const cardTest = (): React.ReactElement => (
         <Link
           href={'#'}
           variant="unstyled"
-          allowSpacebarActivation={true}
+          allowSpacebarActivation
           className="usa-button usa-button--outline">
           Give me good-day
         </Link>
@@ -438,7 +438,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Rouse Simon
         </Link>
       </CardFooter>
@@ -473,7 +473,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Express gentleness
         </Link>
       </CardFooter>
@@ -507,7 +507,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Read more
         </Link>
       </CardFooter>
@@ -540,7 +540,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Read more
         </Link>
       </CardFooter>
@@ -574,7 +574,7 @@ export const cardTest = (): React.ReactElement => (
           href={'#'}
           variant="unstyled"
           className="usa-button"
-          allowSpacebarActivation={true}>
+          allowSpacebarActivation>
           Read more
         </Link>
       </CardFooter>
