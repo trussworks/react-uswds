@@ -47,7 +47,11 @@ const card = (
       <p> This is a standard card with a button in the footer. </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -66,7 +70,11 @@ const cardWithMedia = (
       <p> This is a standard card with media and a button in the footer. </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -88,7 +96,11 @@ const mediaWithSetAspectRatio = (
       </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -110,7 +122,11 @@ const mediaAndHeaderFirst = (
       </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -132,7 +148,11 @@ const insetMedia = (
       </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -154,7 +174,11 @@ const exdentMedia = (
       </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -176,7 +200,11 @@ const exdentCard = (
       </p>
     </CardBody>
     <CardFooter exdent>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -195,7 +223,11 @@ const flagDefault = (
       <p> This is a flag card with a button in the footer. </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -216,7 +248,11 @@ const flagMediaOnRight = (
       </p>
     </CardBody>
     <CardFooter>
-      <Link href={'#'} allowSpacebarActivation={true} className="usa-button">
+      <Link
+        href={'#'}
+        variant="unstyled"
+        allowSpacebarActivation={true}
+        className="usa-button">
         Example Button
       </Link>
     </CardFooter>
@@ -273,7 +309,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true} secondary>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          allowSpacebarActivation={true}
+          className="usa-button usa-button--secondary">
           Stick out
         </Link>
       </CardFooter>
@@ -312,7 +352,11 @@ export const cardTest = (): React.ReactElement => (
         </ol>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Help the less fortunate
         </Link>
       </CardFooter>
@@ -333,7 +377,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Make some inquiries
         </Link>
       </CardFooter>
@@ -359,7 +407,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true} outline>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          allowSpacebarActivation={true}
+          className="usa-button usa-button--outline">
           Give me good-day
         </Link>
       </CardFooter>
@@ -382,7 +434,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Rouse Simon
         </Link>
       </CardFooter>
@@ -413,7 +469,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Express gentleness
         </Link>
       </CardFooter>
@@ -443,7 +503,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Read more
         </Link>
       </CardFooter>
@@ -472,7 +536,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Read more
         </Link>
       </CardFooter>
@@ -502,7 +570,11 @@ export const cardTest = (): React.ReactElement => (
         </p>
       </CardBody>
       <CardFooter>
-        <Link href={'#'} allowSpacebarActivation={true}>
+        <Link
+          href={'#'}
+          variant="unstyled"
+          className="usa-button"
+          allowSpacebarActivation={true}>
           Read more
         </Link>
       </CardFooter>
