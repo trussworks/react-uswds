@@ -34,11 +34,13 @@ export function isCustomProps<T>(
 ): props is CustomLinkProps<T> {
   return 'asCustom' in props
 }
-const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === ' ') {
-      e.preventDefault()
-      e.target.click()
-    }
+// keyboard handler for 'link as a button'
+const handleKeyDown = (e: React.KeyboardEvent) => {
+  if (e.key === ' ' && e.target && e.target.click) {
+    e.preventDefault()
+
+    e.target.click()
+  }
 }
 
 function linkClasses<T>(
@@ -94,7 +96,7 @@ export function Link<
     return (
       <a
         className={classes}
-        onKeyDown={allowSpacebarActivation && handleKeyDown}
+        {...(allowSpacebarActivation && { onKeyDown: handleKeyDown })}
         {...linkProps}>
         {children}
       </a>
