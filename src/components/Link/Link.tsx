@@ -34,7 +34,12 @@ export function isCustomProps<T>(
 ): props is CustomLinkProps<T> {
   return 'asCustom' in props
 }
-const handleKeyDown = (e: KeyboardEvent) => {}
+const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === ' ') {
+      e.preventDefault()
+      e.target.click()
+    }
+}
 
 function linkClasses<T>(
   variant: StyledLinkProps<T>['variant'],
