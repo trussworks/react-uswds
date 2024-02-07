@@ -59,10 +59,15 @@ export const NavLink = (): React.ReactElement => (
 
 export const StyledAsButton = (): React.ReactElement => (
   <p>
-    <Link className="usa-button" variant="unstyled" href={'#'}>
+    <Link
+      className="usa-button"
+      variant="unstyled"
+      allowSpacebarActivation={true}
+      href={'#'}>
       This
     </Link>
-    is a link styled to look like a button.
+    is a link styled to look like a button. <br />
+    This link can be activated with the spacebar.
   </p>
 )
 
