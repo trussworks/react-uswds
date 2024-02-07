@@ -5,6 +5,7 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/lib/'],
   testRegex: '(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  testEnvironment: "jsdom",
   moduleNameMapper: {
     '^react$': '<rootDir>/node_modules/react',
     '\\.svg\\?svgr$': '<rootDir>/__mocks__/svgrMock.js',

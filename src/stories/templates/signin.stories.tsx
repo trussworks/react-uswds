@@ -169,7 +169,7 @@ export const SignIn = (): React.ReactElement => {
                         title="Show password"
                         type="button"
                         className="usa-show-password"
-                        aria-controls="password-create-account password-create-account-confirm"
+                        aria-controls="password-sign-in"
                         onClick={(): void =>
                           setShowPassword((showPassword) => !showPassword)
                         }>
@@ -229,7 +229,8 @@ export const SignIn = (): React.ReactElement => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain="domain.gov">
-            An official website of the <Link href="#">{`<Parent agency>`}</Link>
+            <span aria-hidden="true">An</span> official website of the{' '}
+            <Link href="#">{`<Parent agency>`}</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>

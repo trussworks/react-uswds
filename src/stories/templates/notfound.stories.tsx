@@ -187,8 +187,7 @@ export const NotFoundPage = (): React.ReactElement => {
         Skip to main content
       </a>
       <GovBanner />
-      <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
-      <Header basic>
+      <Header basic showMobileOverlay={mobileNavOpen}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title id="basic-logo">
@@ -287,7 +286,7 @@ export const NotFoundPage = (): React.ReactElement => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain={'<domain.gov>'}>
-            An official website of the{' '}
+            <span aria-hidden="true">An</span> official website of the{' '}
             <Link href="javascript:void(0);">{`<Parent agency>`}</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>

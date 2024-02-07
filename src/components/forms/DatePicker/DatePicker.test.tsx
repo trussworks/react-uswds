@@ -93,12 +93,12 @@ describe('DatePicker component', () => {
     )
   })
 
-  it('renders a hidden calendar dialog element', () => {
+  it('renders a hidden calendar application element', () => {
     const { getByTestId } = renderDatePicker()
     expect(getByTestId('date-picker-calendar')).toBeInstanceOf(HTMLDivElement)
     expect(getByTestId('date-picker-calendar')).toHaveAttribute(
       'role',
-      'dialog'
+      'application'
     )
     expect(getByTestId('date-picker-calendar')).not.toBeVisible()
   })
@@ -239,7 +239,9 @@ describe('DatePicker component', () => {
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       getByTestId('test-external-element').focus()
-      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      await waitFor(() =>
+        expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      )
       expect(mockOnBlur).toHaveBeenCalled()
     })
   })

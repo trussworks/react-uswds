@@ -1,6 +1,5 @@
 import React from 'react'
-import userEvent from '@testing-library/user-event'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { RangeInput } from './RangeInput'
 
@@ -18,9 +17,6 @@ describe('RangeInput component', () => {
     expect(rangeElement).toBeInTheDocument()
     expect(rangeElement).toHaveAttribute('id', 'range-slider-id')
     expect(rangeElement).toHaveAttribute('name', 'rangeName')
-    expect(rangeElement).toHaveAttribute('aria-valuemin', '0')
-    expect(rangeElement).toHaveAttribute('aria-valuemax', '100')
-    expect(rangeElement).toHaveAttribute('aria-valuenow', '50')
     expect(rangeElement).toHaveClass('usa-range')
     expect(rangeElement).toHaveClass('additional-class')
   })
@@ -42,12 +38,6 @@ describe('RangeInput component', () => {
 
     expect(rangeElement).toHaveAttribute('min', '-15')
     expect(rangeElement).toHaveAttribute('max', '60')
-    expect(rangeElement).toHaveAttribute('aria-valuemin', String(min))
-    expect(rangeElement).toHaveAttribute('aria-valuemax', String(max))
-    expect(rangeElement).toHaveAttribute(
-      'aria-valuenow',
-      String(min + (max - min) / 2)
-    )
     expect(rangeElement).toHaveAttribute('step', '15')
   })
 
@@ -56,30 +46,7 @@ describe('RangeInput component', () => {
       <RangeInput id="range-slider-id" name="rangeName" defaultValue={75} />
     )
 
-    expect(queryByTestId('range')).toHaveAttribute('aria-valuenow', '75')
-  })
-
-  it('renders with custom aria values and updates aria-valuenow on keyboard actions', () => {
-    render(
-      <RangeInput
-        id="range-slider-id"
-        name="rangeName"
-        aria-valuemin={12}
-        aria-valuemax={58}
-        aria-valuenow={23}
-      />
-    )
-    const rangeInput = screen.getByTestId('range')
-    expect(rangeInput).toHaveAttribute('aria-valuemin', '12')
-    expect(rangeInput).toHaveAttribute('aria-valuemax', '58')
-    expect(rangeInput).toHaveAttribute('aria-valuenow', '23')
-
-    userEvent.type(rangeInput, '{arrowright}')
-
-    waitFor(() => expect(rangeInput).toHaveAttribute('aria-valuenow', '24'))
-    userEvent.type(rangeInput, '{arrowleft}')
-    userEvent.type(rangeInput, '{arrowleft}')
-    waitFor(() => expect(rangeInput).toHaveAttribute('aria-valuenow', '22'))
+    expect(queryByTestId('range')).toHaveAttribute('value', '75')
   })
 
   it('renders with step attribute set to value any', () => {
@@ -107,5 +74,26 @@ describe('RangeInput component', () => {
       <RangeInput id="range-slider-id" name="rangeName" inputRef={rangeRef} />
     )
     expect(queryByTestId('range')).toEqual(rangeRef.current)
+  })
+
+  it('renders with callout', () => {
+    const max = 100
+    const val = 50
+    const prep = 'de'
+    const unit = 'por ciento'
+    const { queryByTestId } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        defaultValue={val}
+        max={max}
+        textPreposition={prep}
+        textUnit={unit}
+      />
+    )
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-valuetext',
+      '50 por ciento de 100'
+    )
   })
 })

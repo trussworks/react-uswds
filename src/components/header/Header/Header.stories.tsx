@@ -84,8 +84,7 @@ export const BasicHeader = (): React.ReactElement => {
 
   return (
     <>
-      <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
-      <Header basic={true}>
+      <Header basic={true} showMobileOverlay={expanded}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title>Project Title</Title>
@@ -191,8 +190,10 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
 
   return (
     <>
-      <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
-      <Header basic={true} basicWithMegaMenu={true}>
+      <Header
+        basic={true}
+        basicWithMegaMenu={true}
+        showMobileOverlay={expanded}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             <Title>Project Title</Title>
@@ -251,8 +252,7 @@ export const extendedHeader = (): React.ReactElement => {
   ]
   return (
     <>
-      <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
-      <Header extended={true}>
+      <Header extended={true} showMobileOverlay={expanded}>
         <div className="usa-navbar">
           <Title>Project Title</Title>
           <NavMenuButton onClick={onClick} label="Menu" />
@@ -330,8 +330,7 @@ export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
   ]
   return (
     <>
-      <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
-      <Header extended={true}>
+      <Header extended={true} showMobileOverlay={expanded}>
         <div className="usa-navbar">
           <Title>Project Title</Title>
           <NavMenuButton onClick={onClick} label="Menu" />

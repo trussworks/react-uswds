@@ -26,8 +26,10 @@ Source: https://designsystem.digital.gov/components/icon/
         type: 'select',
         options: [3, 4, 5, 6, 7, 8, 9],
       },
-      defaultValue: 4,
     },
+  },
+  args: {
+    size: 4,
   },
 }
 
@@ -972,6 +974,10 @@ export const wifi = (args: StorybookArgs): React.ReactElement => (
 
 export const work = (args: StorybookArgs): React.ReactElement => (
   <Icon.Work {...args} />
+)
+
+export const x = (args: StorybookArgs): React.ReactElement => (
+  <Icon.X {...args} />
 )
 
 export const youtube = (args: StorybookArgs): React.ReactElement => (
