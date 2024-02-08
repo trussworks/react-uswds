@@ -54,7 +54,7 @@ export const Search = ({
         label={label}
         defaultValue={formProps.defaultValue}
       />
-      <SearchButton size={size} i18n={i18n} aria-label={buttonAriaLabel} />
+      <SearchButton size={size} i18n={i18n} buttonAriaLabel={buttonAriaLabel} />
     </Form>
   )
 }
