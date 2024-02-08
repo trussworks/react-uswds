@@ -28,7 +28,7 @@ export const InPageNavigation = ({
   title = 'On this page',
   ...divProps
 }: InPageNavigationProps &
-  JSX.IntrinsicElements['div']): React.ReactElement => {
+  Omit<JSX.IntrinsicElements['div'], 'content'>): React.ReactElement => {
   const classes = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)
