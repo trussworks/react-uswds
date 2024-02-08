@@ -119,6 +119,13 @@ export const withOtherFields = (): React.ReactElement => {
 
   const [options, setOptions] = useState(fruitList)
 
+  const ref = useRef<ComboBoxRef>(null)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    ref.current?.clearSelection()
+    const selection = e.target.id
+    setOptions(selection === 'fruit' ? fruitList : veggieList)
+  }
+
   return (
     <Form onSubmit={noop}>
       <Label htmlFor="food">Select a group</Label>
@@ -126,15 +133,21 @@ export const withOtherFields = (): React.ReactElement => {
         name="food"
         id="fruit"
         label="Fruits"
-        onChange={() => setOptions(fruitList)}
+        onChange={handleChange}
         defaultChecked></Radio>
       <Radio
         name="food"
         id="veggie"
         label="Vegetables"
-        onChange={() => setOptions(veggieList)}></Radio>
+        onChange={handleChange}></Radio>
       <Label htmlFor="food">Select a food</Label>
-      <ComboBox id="fruit" name="fruit" options={options} onChange={noop} />
+      <ComboBox
+        id="fruit"
+        name="fruit"
+        options={options}
+        onChange={noop}
+        ref={ref}
+      />
     </Form>
   )
 }
