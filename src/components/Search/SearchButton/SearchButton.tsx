@@ -40,7 +40,7 @@ export const SearchButton = ({
         {!isSmall && (
           <span
             className="usa-search__submit-text"
-            aria-label={buttonAriaLabel || buttonText}>
+            aria-label={ariaLabel}>
             {buttonText}
           </span>
         )}
