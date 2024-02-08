@@ -495,7 +495,7 @@ export const isDateInvalid = (
 export const listToTable = (
   list: React.ReactNode[],
   rowSize: number
-): React.ReactFragment => {
+): React.ReactNode => {
   const rows = []
   let i = 0
 
