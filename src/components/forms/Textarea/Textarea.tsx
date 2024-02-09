@@ -10,8 +10,6 @@ type TextareaRef =
   | undefined
 
 export interface TextareaProps {
-  id: string
-  name: string
   className?: string
   error?: boolean
   success?: boolean
@@ -20,8 +18,6 @@ export interface TextareaProps {
 }
 
 export const Textarea = ({
-  id,
-  name,
   className,
   error,
   success,
@@ -42,8 +38,6 @@ export const Textarea = ({
     <textarea
       data-testid="textarea"
       className={classes}
-      id={id}
-      name={name}
       ref={inputRef}
       {...inputProps}>
       {children}
