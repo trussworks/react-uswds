@@ -19,13 +19,14 @@ describe('Tooltip component', () => {
   beforeEach(jest.clearAllMocks)
 
   it('renders without errors', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
 
     const wrapperEl = screen.queryByTestId('tooltipWrapper')
     expect(wrapperEl).toBeInTheDocument()
     expect(wrapperEl).toHaveClass('usa-tooltip')
 
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+    const tooltipId = bodyEl?.getAttribute('id')
     expect(bodyEl).toBeInTheDocument()
     expect(bodyEl).toHaveAttribute('role', 'tooltip')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
@@ -33,15 +34,29 @@ describe('Tooltip component', () => {
 
     const triggerEl = screen.queryByTestId('triggerElement')
     expect(triggerEl).toBeInTheDocument()
-    expect(triggerEl).toHaveAttribute('aria-describedby', "test-id")
+    expect(triggerEl).toHaveAttribute('aria-describedby', tooltipId)
     expect(triggerEl).toHaveAttribute('tabindex', '0')
     expect(triggerEl).toHaveAttribute('title', '')
     expect(triggerEl).not.toHaveClass('usa-tooltip')
     expect(triggerEl).toHaveClass('usa-tooltip__trigger')
   })
 
+  it('adds ID if given', () => {
+    const id = 'test-id'
+    render(
+      <Tooltip id={id} label="Click me">
+        My Tooltip
+      </Tooltip>
+    )
+    const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+    const tooltipId = bodyEl?.getAttribute('id')
+    expect(tooltipId).toBe(id)
+    const triggerEl = screen.queryByTestId('triggerElement')
+    expect(triggerEl).toHaveAttribute('aria-describedby', id)
+  })
+
   it('defaults the position to top if no position prop is given', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
 
     fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
     expect(screen.getByTestId('tooltipBody')).toHaveClass(
@@ -50,7 +65,7 @@ describe('Tooltip component', () => {
   })
 
   it('hides tooltip body by default', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
 
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
     expect(bodyEl).not.toHaveClass('is-visible')
@@ -64,7 +79,7 @@ describe('Tooltip component', () => {
   })
 
   it('shows tooltip body on mouse enter', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
 
     const bodyEl = screen.queryByRole('tooltip')
@@ -74,7 +89,7 @@ describe('Tooltip component', () => {
   })
 
   it('hides tooltip on mouse leave', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
 
     fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
@@ -87,7 +102,7 @@ describe('Tooltip component', () => {
   })
 
   it('shows tooltip on focus', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     fireEvent.focus(screen.getByTestId('triggerElement'))
 
     const bodyEl = screen.queryByRole('tooltip')
@@ -97,7 +112,7 @@ describe('Tooltip component', () => {
   })
 
   it('hides tooltip on blur', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
 
     fireEvent.focus(screen.getByTestId('triggerElement'))
@@ -111,7 +126,7 @@ describe('Tooltip component', () => {
   })
 
   it('hides tooltip on keydown after focus', () => {
-    render(<Tooltip id="test-id" label="Click me">My Tooltip</Tooltip>)
+    render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
 
     fireEvent.focus(screen.getByTestId('triggerElement'))
@@ -126,7 +141,7 @@ describe('Tooltip component', () => {
 
   it('applies custom classes to the wrapper element', () => {
     render(
-      <Tooltip id="test-id" label="Click me" wrapperclasses="customWrapperClass">
+      <Tooltip label="Click me" wrapperclasses="customWrapperClass">
         My Tooltip
       </Tooltip>
     )
@@ -139,7 +154,7 @@ describe('Tooltip component', () => {
   describe('with a position prop', () => {
     it('applies the correct tooltip position when position prop is defined', () => {
       const { getByTestId } = render(
-        <Tooltip id="test-id" position="bottom" label="Click me">
+        <Tooltip position="bottom" label="Click me">
           My Tooltip
         </Tooltip>
       )
@@ -155,7 +170,7 @@ describe('Tooltip component', () => {
     it('applies the className to the trigger element', () => {
       const customClass = 'custom-class'
       const { getByTestId } = render(
-        <Tooltip id="test-id" className={customClass} position="left" label="Click me">
+        <Tooltip className={customClass} position="left" label="Click me">
           My Tooltip
         </Tooltip>
       )
@@ -184,7 +199,6 @@ describe('Tooltip component', () => {
     it('renders the custom component as the trigger element', () => {
       render(
         <Tooltip<CustomLinkProps>
-          id="test-id"
           label="Click me"
           asCustom={CustomLink}
           to="http://www.truss.works"
@@ -193,9 +207,12 @@ describe('Tooltip component', () => {
         </Tooltip>
       )
 
+      const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+      const tooltipId = bodyEl?.getAttribute('id')
+
       const triggerEl = screen.queryByTestId('triggerElement')
       expect(triggerEl).toBeInTheDocument()
-      expect(triggerEl).toHaveAttribute('aria-describedby', "test-id")
+      expect(triggerEl).toHaveAttribute('aria-describedby', tooltipId)
       expect(triggerEl).toHaveAttribute('tabindex', '0')
       expect(triggerEl).toHaveAttribute('title', '')
       expect(triggerEl).not.toHaveClass('usa-tooltip')
@@ -213,7 +230,7 @@ describe('Tooltip component', () => {
         jest.clearAllMocks()
 
         render(
-          <Tooltip id="test-id" label="Click me" position="top">
+          <Tooltip label="Click me" position="top">
             My Tooltip
           </Tooltip>
         )
@@ -247,7 +264,7 @@ describe('Tooltip component', () => {
         jest.clearAllMocks()
 
         render(
-          <Tooltip id="test-id" label="Click me" position="bottom">
+          <Tooltip label="Click me" position="bottom">
             My Tooltip
           </Tooltip>
         )
@@ -280,7 +297,7 @@ describe('Tooltip component', () => {
         jest.clearAllMocks()
 
         render(
-          <Tooltip id="test-id" label="Click me" position="right">
+          <Tooltip label="Click me" position="right">
             My Tooltip
           </Tooltip>
         )
@@ -314,7 +331,7 @@ describe('Tooltip component', () => {
         jest.clearAllMocks()
 
         render(
-          <Tooltip id="test-id" label="Click me" position="left">
+          <Tooltip label="Click me" position="left">
             My Tooltip
           </Tooltip>
         )
@@ -349,7 +366,7 @@ describe('Tooltip component', () => {
       jest.clearAllMocks()
 
       render(
-        <Tooltip id="test-id" label="Click me" position="left">
+        <Tooltip label="Click me" position="left">
           My Tooltip
         </Tooltip>
       )

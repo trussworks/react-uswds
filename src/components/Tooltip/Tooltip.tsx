@@ -12,7 +12,7 @@ import classnames from 'classnames'
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
 type TooltipProps<T> = {
-  id: string
+  id?: string
   label: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   wrapperclasses?: string
@@ -43,6 +43,9 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
 ): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
+  const tooltipID = useRef(
+    `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
+  )
 
   const [isVisible, setVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
@@ -53,7 +56,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
 
-  const { id, position, wrapperclasses, className } = props
+  const { id = tooltipID.current, position, wrapperclasses, className } = props
 
   const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
     const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
