@@ -13,7 +13,8 @@ import { isElementInViewport, calculateMarginOffset } from './utils'
 
 type TooltipProps<T> = {
   id?: string
-  label: string
+  label: ReactNode
+  title?: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
   wrapperclasses?: string
   className?: string
@@ -38,9 +39,9 @@ const TRIANGLE_SIZE = 5
 
 export function Tooltip(props: DefaultTooltipProps): ReactElement
 export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
-export function Tooltip<FCProps = DefaultTooltipProps>(
-  props: DefaultTooltipProps | CustomTooltipProps<FCProps>
-): ReactElement {
+export function Tooltip<
+  FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps
+>(props: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
@@ -203,7 +204,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
   })
 
   if (isCustomProps(props)) {
-    const { label, asCustom, children, ...remainingProps } = props
+    const { label, title, asCustom, children, ...remainingProps } = props
     const customProps: FCProps = remainingProps as unknown as FCProps
 
     const triggerClasses = classnames('usa-tooltip__trigger', className)
@@ -233,7 +234,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         {triggerElement}
         <span
           data-testid="tooltipBody"
-          title={label}
+          title={title ?? (typeof label === 'string' ? label : undefined)}
           id={id}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
@@ -245,7 +246,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
       </span>
     )
   } else {
-    const { label, children, ...remainingProps } = props
+    const { label, title, children, ...remainingProps } = props
 
     const triggerClasses = classnames(
       'usa-button',
@@ -274,7 +275,7 @@ export function Tooltip<FCProps = DefaultTooltipProps>(
         </button>
         <span
           data-testid="tooltipBody"
-          title={label}
+          title={title ?? (typeof label === 'string' ? label : undefined)}
           id={id}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}

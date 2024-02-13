@@ -27,11 +27,17 @@
     "react": {
       "version": "detect"
     },
-    "import/resolver": "webpack"
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.js"
+      }
+    }
   },
   "overrides": [
     {
-      "files": ["**/*.ts?(x)"],
+      "files": [
+        "**/*.ts?(x)"
+      ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "ecmaVersion": 2018,
@@ -41,8 +47,13 @@
         },
         "warnOnUnsupportedTypeScriptVersion": true
       },
-      "plugins": ["@typescript-eslint"],
-      "extends": ["plugin:@typescript-eslint/recommended", "prettier"]
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+      ]
     }
   ],
   "extends": [
@@ -53,7 +64,7 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier",
-    "plugin:security/recommended"
+    "plugin:security/recommended-legacy"
   ],
   "rules": {
     "no-only-tests/no-only-tests": "error",

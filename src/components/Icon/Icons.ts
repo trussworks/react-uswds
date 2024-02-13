@@ -75,6 +75,7 @@ import FastForwardSvg from '@uswds/uswds/src/img/usa-icons/fast_forward.svg?svgr
 import FastRewindSvg from '@uswds/uswds/src/img/usa-icons/fast_rewind.svg?svgr'
 import FavoriteSvg from '@uswds/uswds/src/img/usa-icons/favorite.svg?svgr'
 import FavoriteBorderSvg from '@uswds/uswds/src/img/usa-icons/favorite_border.svg?svgr'
+import FaxSvg from '@uswds/uswds/src/img/usa-icons/fax.svg?svgr'
 import FileDownloadSvg from '@uswds/uswds/src/img/usa-icons/file_download.svg?svgr'
 import FilePresentSvg from '@uswds/uswds/src/img/usa-icons/file_present.svg?svgr'
 import FileUploadSvg from '@uswds/uswds/src/img/usa-icons/file_upload.svg?svgr'
@@ -118,6 +119,7 @@ import LastPageSvg from '@uswds/uswds/src/img/usa-icons/last_page.svg?svgr'
 import LaunchSvg from '@uswds/uswds/src/img/usa-icons/launch.svg?svgr'
 import LightbulbSvg from '@uswds/uswds/src/img/usa-icons/lightbulb.svg?svgr'
 import LightbulbOutlineSvg from '@uswds/uswds/src/img/usa-icons/lightbulb_outline.svg?svgr'
+import LinkedInSvg from '@uswds/uswds/src/img/usa-icons/linkedin.svg?svgr'
 import LinkSvg from '@uswds/uswds/src/img/usa-icons/link.svg?svgr'
 import LinkOffSvg from '@uswds/uswds/src/img/usa-icons/link_off.svg?svgr'
 import ListSvg from '@uswds/uswds/src/img/usa-icons/list.svg?svgr'
@@ -173,6 +175,7 @@ import PushPinSvg from '@uswds/uswds/src/img/usa-icons/push_pin.svg?svgr'
 import RadioButtonUncheckedSvg from '@uswds/uswds/src/img/usa-icons/radio_button_unchecked.svg?svgr'
 import RainSvg from '@uswds/uswds/src/img/usa-icons/rain.svg?svgr'
 import ReduceCapacitySvg from '@uswds/uswds/src/img/usa-icons/reduce_capacity.svg?svgr'
+import RemoveCircleSvg from '@uswds/uswds/src/img/usa-icons/remove_circle.svg?svgr'
 import RemoveSvg from '@uswds/uswds/src/img/usa-icons/remove.svg?svgr'
 import ReportSvg from '@uswds/uswds/src/img/usa-icons/report.svg?svgr'
 import RestaurantSvg from '@uswds/uswds/src/img/usa-icons/restaurant.svg?svgr'
@@ -233,6 +236,7 @@ import WarningSvg from '@uswds/uswds/src/img/usa-icons/warning.svg?svgr'
 import WashSvg from '@uswds/uswds/src/img/usa-icons/wash.svg?svgr'
 import WifiSvg from '@uswds/uswds/src/img/usa-icons/wifi.svg?svgr'
 import WorkSvg from '@uswds/uswds/src/img/usa-icons/work.svg?svgr'
+import XSvg from '@uswds/uswds/src/img/usa-icons/x.svg?svgr'
 import YoutubeSvg from '@uswds/uswds/src/img/usa-icons/youtube.svg?svgr'
 import ZoomInSvg from '@uswds/uswds/src/img/usa-icons/zoom_in.svg?svgr'
 import ZoomOutMapSvg from '@uswds/uswds/src/img/usa-icons/zoom_out_map.svg?svgr'
@@ -459,6 +463,8 @@ export class Icon {
   public static FavoriteBorder: React.ComponentType<IconProps> =
     makeUSWDSIcon(FavoriteBorderSvg)
 
+  public static Fax: React.ComponentType<IconProps> = makeUSWDSIcon(FaxSvg)
+
   public static FileDownload: React.ComponentType<IconProps> =
     makeUSWDSIcon(FileDownloadSvg)
 
@@ -579,6 +585,9 @@ export class Icon {
 
   public static LightbulbOutline: React.ComponentType<IconProps> =
     makeUSWDSIcon(LightbulbOutlineSvg)
+
+  public static LinkedIn: React.ComponentType<IconProps> =
+    makeUSWDSIcon(LinkedInSvg)
 
   public static Link: React.ComponentType<IconProps> = makeUSWDSIcon(LinkSvg)
 
@@ -730,6 +739,9 @@ export class Icon {
 
   public static ReduceCapacity: React.ComponentType<IconProps> =
     makeUSWDSIcon(ReduceCapacitySvg)
+
+  public static RemoveCircle: React.ComponentType<IconProps> =
+    makeUSWDSIcon(RemoveCircleSvg)
 
   public static Remove: React.ComponentType<IconProps> =
     makeUSWDSIcon(RemoveSvg)
@@ -898,6 +910,8 @@ export class Icon {
   public static Wifi: React.ComponentType<IconProps> = makeUSWDSIcon(WifiSvg)
 
   public static Work: React.ComponentType<IconProps> = makeUSWDSIcon(WorkSvg)
+
+  public static X: React.ComponentType<IconProps> = makeUSWDSIcon(XSvg)
 
   public static Youtube: React.ComponentType<IconProps> =
     makeUSWDSIcon(YoutubeSvg)

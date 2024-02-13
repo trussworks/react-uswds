@@ -1,9 +1,8 @@
-// Import react-uswds scss
-@import '../src/styles/index.scss';
+@use 'uswds-core' as *;
 
 // Add custom styles for storybook implementation
 .custom-class {
-  background: #fa9441;
+  background: #bf5906;
 }
 
 .usa-color-text-visited {

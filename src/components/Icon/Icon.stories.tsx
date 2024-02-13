@@ -26,8 +26,10 @@ Source: https://designsystem.digital.gov/components/icon/
         type: 'select',
         options: [3, 4, 5, 6, 7, 8, 9],
       },
-      defaultValue: 4,
     },
+  },
+  args: {
+    size: 4,
   },
 }
 
@@ -285,6 +287,10 @@ export const eco = (args: StorybookArgs): React.ReactElement => (
   <Icon.Eco {...args} />
 )
 
+export const edit = (args: StorybookArgs): React.ReactElement => (
+  <Icon.Edit {...args} />
+)
+
 export const electricalServices = (args: StorybookArgs): React.ReactElement => (
   <Icon.ElectricalServices {...args} />
 )
@@ -331,6 +337,10 @@ export const favorite = (args: StorybookArgs): React.ReactElement => (
 
 export const favoriteBorder = (args: StorybookArgs): React.ReactElement => (
   <Icon.FavoriteBorder {...args} />
+)
+
+export const fax = (args: StorybookArgs): React.ReactElement => (
+  <Icon.Fax {...args} />
 )
 
 export const fileDownload = (args: StorybookArgs): React.ReactElement => (
@@ -507,6 +517,10 @@ export const lightbulbOutline = (args: StorybookArgs): React.ReactElement => (
 
 export const link = (args: StorybookArgs): React.ReactElement => (
   <Icon.Link {...args} />
+)
+
+export const linkedIn = (args: StorybookArgs): React.ReactElement => (
+  <Icon.LinkedIn {...args} />
 )
 
 export const linkOff = (args: StorybookArgs): React.ReactElement => (
@@ -723,6 +737,10 @@ export const reduceCapacity = (args: StorybookArgs): React.ReactElement => (
 
 export const remove = (args: StorybookArgs): React.ReactElement => (
   <Icon.Remove {...args} />
+)
+
+export const removeCircle = (args: StorybookArgs): React.ReactElement => (
+  <Icon.RemoveCircle {...args} />
 )
 
 export const report = (args: StorybookArgs): React.ReactElement => (
@@ -956,6 +974,10 @@ export const wifi = (args: StorybookArgs): React.ReactElement => (
 
 export const work = (args: StorybookArgs): React.ReactElement => (
   <Icon.Work {...args} />
+)
+
+export const x = (args: StorybookArgs): React.ReactElement => (
+  <Icon.X {...args} />
 )
 
 export const youtube = (args: StorybookArgs): React.ReactElement => (

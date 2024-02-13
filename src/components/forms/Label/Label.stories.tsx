@@ -32,3 +32,9 @@ export const withHint = (): React.ReactElement => (
     Text input
   </Label>
 )
+
+export const withRequiredMarker = (): React.ReactElement => (
+  <Label htmlFor="testInputRequired" requiredMarker>
+    Text input
+  </Label>
+)

@@ -1,26 +1,37 @@
+import type { StorybookConfig } from '@storybook/react-webpack5'
+
 const path = require('path')
 
+const uswdsIncludePaths = [
+  './node_modules/@uswds',
+  './node_modules/@uswds/uswds/packages',
+]
+
 const webpackConfig = (config) => {
-  config.resolve.alias.uswds = path.resolve(__dirname, '../node_modules/@uswds/uswds')
+  config.resolve.alias.uswds = path.resolve(
+    __dirname,
+    '../node_modules/@uswds/uswds'
+  )
 
   config.module.rules = config.module.rules.filter(
-    (rule) => rule.test.toString() !== '/\\.css$/'
+    (rule) => rule.test && rule.test.toString() !== '/\\.css$/'
   )
   config.module.rules.push({
     test: /\.(sa|sc|c)ss$/,
     exclude: /\.module\.(sa|sc|c)ss$/i,
-    use: ['style-loader', 'css-loader', {
-      loader: "sass-loader",
-      options: {
-        sourceMap: true,
-        sassOptions: {
-          includePaths: [
-            "./node_modules/@uswds",
-            "./node_modules/@uswds/uswds/packages",
-          ],
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+          sassOptions: {
+            includePaths: uswdsIncludePaths,
+          },
         },
       },
-    },],
+    ],
     include: path.resolve(__dirname, '../'),
   })
 
@@ -37,7 +48,15 @@ const webpackConfig = (config) => {
           },
         },
       },
-      "sass-loader",
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+          sassOptions: {
+            includePaths: uswdsIncludePaths,
+          },
+        },
+      },
     ],
   })
 
@@ -71,9 +90,6 @@ const webpackConfig = (config) => {
 }
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   typescript: {
@@ -87,4 +103,12 @@ module.exports = {
   webpackFinal: async (config) => {
     return webpackConfig(config)
   },
-}
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: { strictMode: false },
+  },
+  docs: {
+    autodocs: 'tag',
+  },
+  staticDirs: ['./public'],
+} as StorybookConfig

@@ -7,9 +7,6 @@ updates:
     pull-request-branch-name:
       separator: '-'
     open-pull-requests-limit: 10
-    reviewers:
-      - "haworku"
-      - "ahobson"
     labels:
       - 'type: dependencies'
       - 'type: automerge'

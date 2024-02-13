@@ -33,8 +33,10 @@ Source: http://designsystem.digital.gov/components/site-alert
     variant: {
       options: ['info', 'emergency'],
       control: { type: 'radio' },
-      defaultValue: 'info',
     },
+  },
+  args: {
+    variant: 'info',
   },
 }
 
@@ -143,16 +145,16 @@ export const emergencyAlertNoIcon = (): React.ReactElement => (
   </SiteAlert>
 )
 
-export const alertWithCustomControls = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <SiteAlert
-    slim={argTypes.slim}
-    showIcon={argTypes.showIcon}
-    variant={argTypes.variant}>
-    {shortAlertContent}
-  </SiteAlert>
-)
+export const alertWithCustomControls = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <SiteAlert
+      slim={argTypes.slim}
+      showIcon={argTypes.showIcon}
+      variant={argTypes.variant}>
+      {shortAlertContent}
+    </SiteAlert>
+  ),
+}
 
 export const alertWithStringContent = (): React.ReactElement => (
   <SiteAlert variant="info">Short alert content</SiteAlert>

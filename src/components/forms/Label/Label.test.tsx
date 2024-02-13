@@ -31,4 +31,18 @@ describe('Label component', () => {
     expect(hint).toBeInTheDocument()
     expect(hint).toHaveClass('usa-hint')
   })
+
+  it('renders with required marker', () => {
+    const { queryByText } = render(
+      <Label htmlFor="testInput" requiredMarker>
+        My Text Input
+      </Label>
+    )
+
+    expect(queryByText('My Text Input')).toBeInTheDocument()
+
+    const marker = queryByText('*')
+    expect(marker).toBeInTheDocument()
+    expect(marker).toHaveClass('usa-hint--required')
+  })
 })

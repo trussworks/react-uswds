@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import styles from './Table.module.css'
+import styles from './Table.module.scss'
 
 type TableProps = {
   bordered?: boolean
