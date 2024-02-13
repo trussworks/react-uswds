@@ -111,7 +111,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vitest": "^0.3.21",
     "focus-trap-react": "^10.2.3",
-    "happo-plugin-storybook": "^4.0.2",
+    "happo-plugin-storybook": "^4.1.0",
     "happo.io": "^9.0.0",
     "husky": "^9.0.10",
     "jsdom": "^24.0.0",
@@ -134,7 +134,8 @@
     "vite-plugin-dts": "^3.7.1",
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^1.2.1",
-    "webpack": "^5.90.1"
+    "webpack": "^5.90.1",
+    "yarn": "^1.22.21"
   },
   "resolutions": {
     "loader-utils": "2.0.4",
@@ -146,5 +147,6 @@
     "trim-newlines": "3.0.1",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18"
-  }
+  },
+  "packageManager": "yarn@1.22.1"
 }
