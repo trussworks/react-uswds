@@ -23,7 +23,6 @@ export const SearchButton = ({
   buttonAriaLabel,
 }: SearchButtonProps): React.ReactElement => {
   const buttonText = i18n?.buttonText || 'Search'
-  const ariaLabel = buttonAriaLabel || buttonText
   const isSmall = size === 'small'
   const isBig = size === 'big'
 
@@ -38,7 +37,9 @@ export const SearchButton = ({
     <div className={classes}>
       <Button aria-label={ariaLabel} type="submit">
         {!isSmall && (
-          <span className="usa-search__submit-text" aria-label={ariaLabel}>
+          <span
+            className="usa-search__submit-text"
+            aria-label={buttonAriaLabel || buttonText}>
             {buttonText}
           </span>
         )}
@@ -46,6 +47,7 @@ export const SearchButton = ({
           className="usa-search__submit-icon"
           name={buttonText}
           size={3}
+          aria-label={buttonAriaLabel || buttonText}
         />
       </Button>
     </div>
