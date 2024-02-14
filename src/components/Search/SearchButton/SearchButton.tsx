@@ -35,19 +35,14 @@ export const SearchButton = ({
   )
   return (
     <div className={classes}>
-      <Button aria-label={ariaLabel} type="submit">
+      <Button aria-label={buttonAriaLabel || buttonText} type="submit">
         {!isSmall && (
-          <span
-            className="usa-search__submit-text"
-            aria-label={buttonAriaLabel || buttonText}>
-            {buttonText}
-          </span>
+          <span className="usa-search__submit-text">{buttonText}</span>
         )}
         <Icon.Search
           className="usa-search__submit-icon"
           name={buttonText}
           size={3}
-          aria-label={buttonAriaLabel || buttonText}
         />
       </Button>
     </div>

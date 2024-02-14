@@ -54,7 +54,7 @@ describe('Search component', () => {
         i18n={sampleLocalization}></Search>
     )
 
-    expect(queryAllByLabelText('Buscar')).toHaveLength(3)
+    expect(queryAllByLabelText('Buscar')).toHaveLength(2)
   })
 
   it('does not render button text when small', () => {
