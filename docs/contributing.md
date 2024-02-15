@@ -12,16 +12,17 @@ We welcome contributions in the form of comments, issues, or pull requests with 
   - [Development](#development)
     - [Working on an issue](#working-on-an-issue)
     - [General guidelines](#general-guidelines)
-    - [Linting, formatting, & automated tests](#linting-formatting--automated-tests)
+    - [Linting, formatting, \& automated tests](#linting-formatting--automated-tests)
     - [Testing in an application](#testing-in-an-application)
       - [`yarn link`](#yarn-link)
       - [Install from a ReactUSWDS branch](#install-from-a-reactuswds-branch)
-    - [Opening & merging pull requests](#opening--merging-pull-requests)
+    - [Opening \& merging pull requests](#opening--merging-pull-requests)
+      - [Formatting your commits](#formatting-your-commits)
       - [`type`:](#type)
       - [`scope`:](#scope)
       - [`body`:](#body)
       - [`footer`:](#footer)
-  - [All-contributors](#all-contributors)
+  - [All Contributors](#all-contributors)
 
 ## Environment setup
 
@@ -69,6 +70,8 @@ For example: `hw-accordion-component-112`
 - Maintain a high standard of unit test coverage and cross-browser/device support, so that projects including this dependency can focus on integration and implementation.
 - Provide thorough documentation (in Storybook) so that users can view the components as they render in the UI, the source code required to use them, and specifications such as how props are used, a11y support, and test coverage.
 - Consistent and transparent versioning so that multiple projects can rely on this package, and it can be maintained as React and USWDS release new versions while also providing backwards compatibility.
+- If you are introducing a breaking change, consider taking a staged approach if it gives consumers a chance to change their code to avoid the break. That is, create a non-breaking change using [`withDeprecationWarning`](../src/components/hoc/withDeprecationWarning.tsx) to be merged first, and create a follow-up PR or issue with a due date to finally implement the breaking change.
+  - For example, if you are [deprecating](https://github.com/trussworks/react-uswds/pull/825) or [renaming](https://github.com/trussworks/react-uswds/pull/2415) a component, you may wrap it (or the new component, if renaming) with `withDeprecationWarning`. Your message will show up as a console warning in consumers' development environments, so describe what they should do and by when, and link to the PR/issue for the eventual breaking change.
 
 More guidance for preferred React practices can be found in the [adding new components](./adding_new_components.md) documentation.
 
