@@ -18,11 +18,14 @@
 .usa-language__submenu .usa-language__submenu-item button {
   color: color('white');
   display: block;
+  // stylelint-disable-next-line scss/function-no-unknown
   line-height: line-height($theme-navigation-font-family, 3);
+  // stylelint-disable-next-line scss/function-no-unknown
   padding: units(1);
   text-decoration: none;
   width: 100%; /* this is something that was actually missing when we were doing the extend because button widths hve different default widths than block element links */
   &:focus {
+    // stylelint-disable-next-line scss/function-no-unknown
     outline-offset: units('neg-05');
   }
 
