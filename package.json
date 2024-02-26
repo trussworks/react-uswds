@@ -95,7 +95,7 @@
     "focus-trap-react": "^10.2.3",
     "fork-ts-checker-webpack-plugin": "^9.0.0",
     "happo-plugin-storybook": "^4.1.0",
-    "happo.io": "^8.3.1",
+    "happo.io": "^9.1.2",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
     "mini-css-extract-plugin": "^2.6.1",
