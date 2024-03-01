@@ -87,7 +87,7 @@ export function Link<
       children,
       className,
       variant,
-      allowSpacebarActivation,
+      allowSpacebarActivation = false,
       ...linkProps
     } = props
 
