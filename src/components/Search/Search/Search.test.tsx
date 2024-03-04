@@ -47,14 +47,14 @@ describe('Search component', () => {
 
   it('renders a label', () => {
     const mockSubmit = vi.fn()
-    const { queryByLabelText } = render(
+    const { queryAllByLabelText } = render(
       <Search
         onSubmit={mockSubmit}
         label="Buscar"
         i18n={sampleLocalization}></Search>
     )
 
-    expect(queryByLabelText('Buscar')).toBeInTheDocument()
+    expect(queryAllByLabelText('Buscar')).toHaveLength(2)
   })
 
   it('does not render button text when small', () => {

@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "6.2.0",
+  "version": "7.0.0",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -91,7 +91,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/react-test-renderer": "^18.0.7",
-    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@uswds/uswds": "3.7.1",
     "@vitejs/plugin-react": "^4.2.1",
@@ -112,7 +112,7 @@
     "eslint-plugin-vitest": "^0.3.21",
     "focus-trap-react": "^10.2.3",
     "happo-plugin-storybook": "^4.1.0",
-    "happo.io": "^9.0.0",
+    "happo.io": "^9.1.2",
     "husky": "^9.0.10",
     "jsdom": "^24.0.0",
     "prettier": "^3.2.5",
