@@ -3134,7 +3134,7 @@
     telejson "^7.0.3"
     ts-dedent "^2.0.0"
 
-"@storybook/manager-api@7.6.17":
+"@storybook/manager-api@7.6.17", "@storybook/manager-api@^7.1.1":
   version "7.6.17"
   resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-7.6.17.tgz#cdf0bb8e5bdc3da2559150125b3d6a3ff72f0def"
   integrity sha512-IJIV1Yc6yw1dhCY4tReHCfBnUKDqEBnMyHp3mbXpsaHxnxJZrXO45WjRAZIKlQKhl/Ge1CrnznmHRCmYgqmrWg==

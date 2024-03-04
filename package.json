@@ -60,6 +60,7 @@
     "@storybook/addon-a11y": "^7.1.1",
     "@storybook/addon-essentials": "^7.1.1",
     "@storybook/addons": "^7.1.1",
+    "@storybook/manager-api": "^7.1.1",
     "@storybook/react": "^7.1.1",
     "@storybook/react-webpack5": "^7.1.1",
     "@storybook/theming": "^7.1.1",
