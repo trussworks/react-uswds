@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/trussworks/react-uswds/compare/6.2.0...7.0.0) (2024-02-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714))
+* Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532))
+
+### Features
+
+* moved overlay into header component ([#2701](https://github.com/trussworks/react-uswds/issues/2701)) ([3433eac](https://github.com/trussworks/react-uswds/commit/3433eac9976b20ee6e3a76404079c23e85f84875))
+* parametrized StepIndicator strings ([#2707](https://github.com/trussworks/react-uswds/issues/2707)) ([94912bd](https://github.com/trussworks/react-uswds/commit/94912bd772c69ed1dac7c6d9f59b9a1a4f337e53))
+* React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714)) ([af2d2d6](https://github.com/trussworks/react-uswds/commit/af2d2d6445ef05675066134a6933a607ce2196a2))
+* **storybook:** storybook 7 ([#2533](https://github.com/trussworks/react-uswds/issues/2533)) ([8f65ec4](https://github.com/trussworks/react-uswds/commit/8f65ec461d14db1350fc11d24d2676367d5b0294))
+* Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532)) ([6ce4bbb](https://github.com/trussworks/react-uswds/commit/6ce4bbb1091670988691d10bb1e99725d96f10e7))
+
+
+### Bug Fixes
+
+* a11y: search component submit accessible naming ([#2737](https://github.com/trussworks/react-uswds/issues/2737)) ([b5fb85d](https://github.com/trussworks/react-uswds/commit/b5fb85d0ec17c1a02b1d4c2e373d2204342aac38))
+* fixed lint warnings ([#2774](https://github.com/trussworks/react-uswds/issues/2774)) ([d4b30d8](https://github.com/trussworks/react-uswds/commit/d4b30d8e87858dc1b8e5fa424c89aa14eb5309f4))
+
 ## [6.2.0](https://github.com/trussworks/react-uswds/compare/6.1.0...6.2.0) (2024-01-08)
 
 
