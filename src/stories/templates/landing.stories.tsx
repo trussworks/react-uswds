@@ -39,6 +39,7 @@ Page templates
       },
     },
   },
+  tags: ['autodocs']
 }
 
 export const LandingPage = (): React.ReactElement => {

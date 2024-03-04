@@ -30,7 +30,7 @@ import logoImg from '@uswds/uswds/src/img/logo-img.png'
 import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
 
 export default {
-  title: 'Page Templates/Authentication Pages',
+  title: 'Page Templates/Multiple Sign In Options',
   parameters: {
     options: {
       showPanel: false,
@@ -44,6 +44,7 @@ export default {
       },
     },
   },
+  tags: ['autodocs']
 }
 
 const returnToTop = (
