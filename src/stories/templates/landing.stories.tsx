@@ -38,7 +38,7 @@ Page templates
 `,
       },
     },
-  }
+  },
 }
 
 export const LandingPage = (): React.ReactElement => {

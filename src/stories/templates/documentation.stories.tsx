@@ -35,7 +35,7 @@ Page templates
 `,
       },
     },
-  }
+  },
 }
 
 export const DocumentationPage = (): React.ReactElement => {
