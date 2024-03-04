@@ -49,7 +49,6 @@ export default {
       },
     },
   },
-  tags: ['autodocs']
 }
 
 const returnToTop = (

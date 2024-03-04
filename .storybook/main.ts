@@ -90,8 +90,11 @@ const webpackConfig = (config) => {
 }
 
 module.exports = {
-  stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(ts|tsx)'
+  ],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-docs'],
   typescript: {
     check: false,
     checkOptions: {},
@@ -108,7 +111,7 @@ module.exports = {
     options: { strictMode: false },
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
   },
   staticDirs: ['./public'],
 } as StorybookConfig

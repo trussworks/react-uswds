@@ -48,7 +48,6 @@ Page templates
       },
     },
   },
-  tags: ['autodocs']
 }
 
 export const NotFoundPage = (): React.ReactElement => {

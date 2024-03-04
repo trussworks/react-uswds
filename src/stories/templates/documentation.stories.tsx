@@ -35,8 +35,7 @@ Page templates
 `,
       },
     },
-  },
-  tags: ['autodocs']
+  }
 }
 
 export const DocumentationPage = (): React.ReactElement => {
