@@ -1,14 +1,14 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-jest.mock('../../deprecation')
+vi.mock('../../deprecation')
 import { deprecationWarning } from '../../deprecation'
 import { Button } from '../Button/Button'
 import { withDeprecationWarning } from './withDeprecationWarning'
 
 describe('withDeprecationWarning HOC', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('should call deprecationWarning before rendering the wrapped component', () => {

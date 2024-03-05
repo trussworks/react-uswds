@@ -11,11 +11,11 @@ import {
   MediaBlockBody,
 } from '../../index'
 
-import flagImg from '@uswds/uswds/src/img/us_flag_small.png'
-import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
-import httpsIcon from '@uswds/uswds/src/img/icon-https.svg'
+import flagImg from '@uswds/uswds/img/us_flag_small.png'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
+import httpsIcon from '@uswds/uswds/img/icon-https.svg'
 
-const CustomBanner = (): ReactElement => {
+export const CustomBanner = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -82,5 +82,3 @@ Source: https://designsystem.digital.gov/components/banner/
     },
   },
 }
-
-export const customBanner = (): React.ReactElement => <CustomBanner />

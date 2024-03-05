@@ -73,7 +73,7 @@ describe('ExtendedNav component', () => {
   })
 
   it('implements an onClick handler', () => {
-    const onToggleMobileNav = jest.fn()
+    const onToggleMobileNav = vi.fn()
     const { getByTestId } = render(
       <ExtendedNav
         onToggleMobileNav={onToggleMobileNav}

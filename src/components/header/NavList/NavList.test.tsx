@@ -22,7 +22,7 @@ describe('NavList component', () => {
 
   describe('renders with type prop', () => {
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
     })
 
     it.each([

@@ -2,7 +2,8 @@ import * as child from 'child_process'
 
 import { danger, fail, schedule, warn } from 'danger'
 
-const shouldRun = !danger.github || (danger.github && danger.github.pr.user.type !== 'Bot');
+const shouldRun =
+  !danger.github || (danger.github && danger.github.pr?.user.type !== 'Bot')
 
 // Load all modified and new files
 const allFiles = danger.git.modified_files.concat(danger.git.created_files)
@@ -45,7 +46,7 @@ const checkYarnAudit: () => void = () => {
       })
       fail(
         `${issuesFound}${summary.data.vulnerabilities.high} high vulnerabilities and ` +
-        `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
+          `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
       )
     }
   } else {
@@ -131,13 +132,12 @@ const checkDependencyChanges: () => void = () => {
 // Check for any changes to the contributors section of package.json
 schedule(async () => {
   if (!shouldRun) {
-    return;
+    return
   }
   const pd = await danger.git.JSONDiffForFile('package.json')
 
   if (pd.contributors) {
-    const message =
-      'Do not make changes to package.json around contributors.'
+    const message = 'Do not make changes to package.json around contributors.'
     const idea =
       'This project only uses .all-contributorsrc for tracking contributors.'
     fail(`${message} - <i>${idea}</i>`)

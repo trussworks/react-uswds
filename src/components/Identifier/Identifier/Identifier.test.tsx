@@ -12,7 +12,7 @@ import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
 import { IdentifierGov } from '../IdentifierGov/IdentifierGov'
 import { Link } from '../../Link/Link'
 
-import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 const testIdentifierLogo = (
   <img
@@ -190,9 +190,9 @@ describe('Identifier component', () => {
       </Identifier>
     )
 
-    expect(getByTestId('identifierMasthead-agency-description')).not.toContain(
-      'img'
-    )
+    expect(
+      getByTestId('identifierMasthead-agency-description').innerHTML
+    ).not.toContain('img')
     expect(getAllByRole('link')).toHaveLength(9)
     expect(queryByText('Privacy policy')).toBeInTheDocument()
   })

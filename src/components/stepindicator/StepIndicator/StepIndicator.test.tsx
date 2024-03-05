@@ -10,7 +10,7 @@ const step3 = 'Step 3'
 
 describe('StepIndicator component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders without errors', () => {

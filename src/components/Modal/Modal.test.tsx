@@ -16,13 +16,12 @@ import { ModalToggleButton } from './ModalToggleButton'
 import { Button } from '../Button/Button'
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 
-jest.mock('./utils', () => {
-  const utils = jest.requireActual('./utils')
+vi.mock('./utils', async (importOriginal) => {
+  const utils = await importOriginal<typeof import('./utils')>()
 
   return {
-    __esModule: true,
     ...utils,
-    getScrollbarWidth: jest.fn().mockReturnValue('15px'),
+    getScrollbarWidth: vi.fn().mockReturnValue('15px'),
   }
 })
 
@@ -209,7 +208,7 @@ describe('Modal component', () => {
   })
 
   it('throws an error if labelledby or describedby is undefined', async () => {
-    const consoleSpy = jest.spyOn(console, 'error')
+    const consoleSpy = vi.spyOn(console, 'error')
     const testModalId = 'testModal'
 
     renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)
@@ -403,47 +402,35 @@ describe('Modal component', () => {
         id: 'testModal',
       }
 
-      render(
+      const { container } = render(
         <>
           <p data-testid="nonhidden">Some other element</p>
           <div data-testid="hidden" aria-hidden="true">
             Element that is normally hidden
           </div>
           <Modal {...modalProps}>Test modal</Modal>
-        </>,
-        {
-          container: document.body,
-        }
+        </>
       )
+
+      expect(container).not.toHaveAttribute('aria-hidden')
+      expect(container).not.toHaveAttribute('data-modal-hidden')
 
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
-      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
-        'data-modal-hidden'
-      )
-
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
       await waitFor(() => handleOpen())
 
-      await waitFor(() =>
-        expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
-      )
-      expect(screen.getByTestId('nonhidden')).toHaveAttribute(
-        'data-modal-hidden'
-      )
+      await waitFor(() => expect(container).toHaveAttribute('aria-hidden'))
+      expect(container).toHaveAttribute('data-modal-hidden')
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
       await waitFor(() => handleClose())
 
-      await waitFor(() =>
-        expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
-          'aria-hidden'
-        )
-      )
-      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
-        'data-modal-hidden'
-      )
-
+      await waitFor(() => expect(container).not.toHaveAttribute('aria-hidden'))
+      expect(container).not.toHaveAttribute('data-modal-hidden')
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
     })
 
@@ -458,7 +445,7 @@ describe('Modal component', () => {
         modalRoot: '#modal-root',
       }
 
-      render(
+      const { container } = render(
         <>
           <p data-testid="nonhidden">Some other element</p>
           <div data-testid="hidden" aria-hidden="true">
@@ -467,39 +454,31 @@ describe('Modal component', () => {
           <div id="#modal-root">
             <Modal {...modalProps}>Test modal</Modal>
           </div>
-        </>,
-        {
-          container: document.body,
-        }
+        </>
       )
 
+      expect(container).not.toHaveAttribute('aria-hidden')
+      expect(container).not.toHaveAttribute('data-modal-hidden')
+
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
-      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
-        'data-modal-hidden'
-      )
 
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
       await waitFor(() => handleOpen())
 
-      await waitFor(() =>
-        expect(screen.getByTestId('nonhidden')).toHaveAttribute('aria-hidden')
-      )
-      expect(screen.getByTestId('nonhidden')).toHaveAttribute(
-        'data-modal-hidden'
-      )
+      await waitFor(() => expect(container).toHaveAttribute('aria-hidden'))
+      expect(container).toHaveAttribute('data-modal-hidden')
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
+
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
       await waitFor(() => handleClose())
 
-      await waitFor(() =>
-        expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
-          'aria-hidden'
-        )
-      )
-      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute(
-        'data-modal-hidden'
-      )
+      await waitFor(() => expect(container).not.toHaveAttribute('aria-hidden'))
+      expect(container).not.toHaveAttribute('data-modal-hidden')
+
+      expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
 
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
     })

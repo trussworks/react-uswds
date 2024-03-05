@@ -13,7 +13,7 @@ describe('TextInput component', () => {
 
   describe('renders inputSize classes', () => {
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
     })
 
     it.each([
@@ -38,7 +38,7 @@ describe('TextInput component', () => {
 
   describe('renders validationStatus classes', () => {
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
     })
 
     it.each<[ValidationStatus, string]>([
