@@ -1,12 +1,12 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-jest.mock('../../deprecation')
+vi.mock('../../deprecation')
 import { Button } from './Button'
 
 describe('Button component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders without errors', () => {
@@ -71,7 +71,7 @@ describe('Button component', () => {
   })
 
   it('implements an onClick handler', () => {
-    const onClickFn = jest.fn()
+    const onClickFn = vi.fn()
     const { getByText } = render(
       <Button type="button" onClick={onClickFn}>
         Click Me

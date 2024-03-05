@@ -242,8 +242,8 @@ describe('DateRangePicker component', () => {
   })
 
   it('allows a date range to be selected by using both date pickers to pick start and end dates', async () => {
-    const mockStartDatePickerOnChange = jest.fn()
-    const mockEndDatePickerOnChange = jest.fn()
+    const mockStartDatePickerOnChange = vi.fn()
+    const mockEndDatePickerOnChange = vi.fn()
     const { getAllByTestId, getByText } = render(
       <DateRangePicker
         startDatePickerProps={{
@@ -313,8 +313,8 @@ describe('DateRangePicker component', () => {
   })
 
   it('prevents the selection of a date range where the end date is before the start date', async () => {
-    const mockStartDatePickerOnChange = jest.fn()
-    const mockEndDatePickerOnChange = jest.fn()
+    const mockStartDatePickerOnChange = vi.fn()
+    const mockEndDatePickerOnChange = vi.fn()
     const { getAllByTestId, getByText } = render(
       <DateRangePicker
         startDatePickerProps={{
@@ -378,8 +378,8 @@ describe('DateRangePicker component', () => {
   })
 
   it('clears the range-determining date of the opposite DatePicker when the input is cleared', async () => {
-    const mockStartDatePickerOnChange = jest.fn()
-    const mockEndDatePickerOnChange = jest.fn()
+    const mockStartDatePickerOnChange = vi.fn()
+    const mockEndDatePickerOnChange = vi.fn()
     const { getAllByTestId, getByText } = render(
       <DateRangePicker
         startDateLabel="Event start date"

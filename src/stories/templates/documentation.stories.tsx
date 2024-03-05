@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from '@uswds/uswds/src/img/logo-img.png'
+import logoImg from '@uswds/uswds/img/logo-img.png'
 
 import { GovBanner, GridContainer, Grid } from '../../index'
 

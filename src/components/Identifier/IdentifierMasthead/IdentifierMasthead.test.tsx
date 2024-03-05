@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 import { IdentifierMasthead } from './IdentifierMasthead'
 import { IdentifierLogo } from '../IdentifierLogo/IdentifierLogo'
@@ -34,7 +34,10 @@ describe('IdentifierMasthead component', () => {
         className="usa-identifier__custom-class-name"
         aria-label="Agency identifier">
         <IdentifierLogos>
-          <IdentifierLogo href="#" className="custom-class-name">
+          <IdentifierLogo
+            data-testid="identifierMasthead-logo"
+            href="#"
+            className="custom-class-name">
             {testIdentifierLogo}
           </IdentifierLogo>
         </IdentifierLogos>
@@ -46,7 +49,7 @@ describe('IdentifierMasthead component', () => {
       </IdentifierMasthead>
     )
 
-    expect(queryByTestId('identifierMasthead-logo')).toBeInTheDocument
+    expect(queryByTestId('identifierMasthead-logo')).toBeInTheDocument()
     expect(getAllByRole('link')).toHaveLength(2)
     expect(queryByTestId('identifierMasthead')).toBeInTheDocument()
     expect(queryByTestId('identifierMasthead')).toHaveClass(

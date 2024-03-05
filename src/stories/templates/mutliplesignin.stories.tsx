@@ -26,8 +26,8 @@ import {
   Button,
 } from '../../index'
 
-import logoImg from '@uswds/uswds/src/img/logo-img.png'
-import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/img/logo-img.png'
+import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
 
 export default {
   title: 'Page Templates/Multiple Sign In Options',

@@ -211,7 +211,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
   )
 }
 
-export const extendedHeader = (): React.ReactElement => {
+export const ExtendedHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
   const [isOpen, setIsOpen] = useState([false])
@@ -269,7 +269,7 @@ export const extendedHeader = (): React.ReactElement => {
   )
 }
 
-export const extendedHeaderWithMegaMenu = (): React.ReactElement => {
+export const ExtendedHeaderWithMegaMenu = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 

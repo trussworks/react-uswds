@@ -39,7 +39,7 @@ type StorybookArguments = {
   endDatePickerDisabled: boolean
 }
 
-export const completeDateRangePicker = {
+export const CompleteDateRangePicker = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
     <Form onSubmit={argTypes.onSubmit}>
       <DateRangePicker
@@ -62,7 +62,7 @@ export const completeDateRangePicker = {
   ),
 }
 
-export const withDefaultValues = {
+export const WithDefaultValues = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
     <Form onSubmit={argTypes.onSubmit}>
       <DateRangePicker
@@ -87,7 +87,7 @@ export const withDefaultValues = {
   ),
 }
 
-export const withAllowableRanges = {
+export const WithAllowableRanges = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
     <Form onSubmit={argTypes.onSubmit}>
       <DateRangePicker

@@ -47,7 +47,7 @@ describe('Footer component', () => {
 
   describe('renders size classes', () => {
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
     })
 
     it.each([

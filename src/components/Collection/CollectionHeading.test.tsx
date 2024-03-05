@@ -5,7 +5,7 @@ import { HeadingLevel } from '../../types/headingLevel'
 
 describe('CollectionHeading component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders without errors', () => {

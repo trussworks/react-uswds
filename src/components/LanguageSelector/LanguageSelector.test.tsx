@@ -26,7 +26,7 @@ const languages: LanguageDefinition[] = [
   },
 ]
 
-const voidButton = jest.fn()
+const voidButton = vi.fn()
 const languagesButton: LanguageDefinition[] = [
   {
     label: 'العربية',

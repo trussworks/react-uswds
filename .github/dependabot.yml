@@ -28,10 +28,4 @@ updates:
       - dependency-name: '@types/react-dom'
         versions:
           - '>=18.0.0'
-      - dependency-name: '@storybook/react'
-        versions:
-          - '>=7.0.0'
-      - dependency-name: '@storybook/addon-essentials'
-        versions:
-          - '>=7.0.0'
       - dependency-name: 'uswds'
