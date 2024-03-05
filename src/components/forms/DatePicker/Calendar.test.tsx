@@ -8,12 +8,12 @@ import { MONTH_LABELS } from './constants'
 import { FocusMode } from './DatePicker'
 
 describe('Calendar', () => {
-  const mockSelectDate = jest.fn()
+  const mockSelectDate = vi.fn()
   const testProps = {
     date: new Date('January 2021'),
     handleSelectDate: mockSelectDate,
     minDate: parseDateString('0000-01-01') as Date,
-    setStatuses: jest.fn(),
+    setStatuses: vi.fn(),
     focusMode: FocusMode.None,
   }
 
@@ -155,9 +155,7 @@ describe('Calendar', () => {
     })
 
     it('does not focus on a date when hovered over if on an iOS device', async () => {
-      jest
-        .spyOn(navigator, 'userAgent', 'get')
-        .mockImplementation(() => 'iPhone')
+      vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(() => 'iPhone')
 
       const { getByLabelText } = render(
         <Calendar {...testProps} date={new Date('January 20 2021')} />
@@ -166,7 +164,7 @@ describe('Calendar', () => {
       expect(getByLabelText(/^20 January 2021/)).toHaveFocus()
       await userEvent.hover(getByLabelText(/^13 January 2021/))
       expect(getByLabelText(/^13 January 2021/)).not.toHaveFocus()
-      jest.restoreAllMocks()
+      vi.restoreAllMocks()
     })
   })
 

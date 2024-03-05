@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`IdentifierGov component renders consistently in Spanish 1`] = `
+exports[`IdentifierGov component > renders consistently in Spanish 1`] = `
 <section
   className="usa-identifier__section usa-identifier__section--usagov"
   data-testid="identifierGov"

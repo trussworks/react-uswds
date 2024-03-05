@@ -15,7 +15,7 @@ describe('NavCloseButton component', () => {
   })
 
   it('implements an onClick handler', () => {
-    const onClickFn = jest.fn()
+    const onClickFn = vi.fn()
     const { getByTestId } = render(<NavCloseButton onClick={onClickFn} />)
 
     fireEvent.click(getByTestId('navCloseButton'))

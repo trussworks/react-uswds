@@ -23,7 +23,7 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const textInput = (): React.ReactElement => (
+export const TextInput = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
     <FormGroup>
       <Label htmlFor="with-hint-input">Text input</Label>
@@ -40,7 +40,7 @@ export const textInput = (): React.ReactElement => (
   </Form>
 )
 
-export const textarea = (): React.ReactElement => (
+export const Textarea = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
     <FormGroup>
       <Label htmlFor="with-hint-textarea">Textarea</Label>

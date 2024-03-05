@@ -41,7 +41,7 @@ describe('PrimaryNav component', () => {
   })
 
   it('implements an onClick handler for nav close button', () => {
-    const onToggleMobileNav = jest.fn()
+    const onToggleMobileNav = vi.fn()
     const { getByTestId } = render(
       <PrimaryNav items={testItems} onToggleMobileNav={onToggleMobileNav} />
     )
