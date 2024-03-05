@@ -103,7 +103,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={props.options}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
     }
