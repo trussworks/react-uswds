@@ -6,7 +6,7 @@ import { HeadingLevel } from '../../types/headingLevel'
 
 describe('Alert component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders without errors', () => {

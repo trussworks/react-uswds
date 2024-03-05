@@ -17,15 +17,15 @@ Source: https://designsystem.digital.gov/components/text-input
   },
 }
 
-export const defaultTextarea = (): React.ReactElement => (
+export const DefaultTextarea = (): React.ReactElement => (
   <Textarea id="input-type-text" name="input-type-text" />
 )
 
-export const withDefaultValue = (): React.ReactElement => (
+export const WithDefaultValue = (): React.ReactElement => (
   <Textarea id="input-value" name="input-value" defaultValue="Change me" />
 )
 
-export const withPlaceholder = (): React.ReactElement => (
+export const WithPlaceholder = (): React.ReactElement => (
   <Textarea
     id="input-type-text"
     name="input-type-text"
@@ -33,18 +33,18 @@ export const withPlaceholder = (): React.ReactElement => (
   />
 )
 
-export const error = (): React.ReactElement => (
+export const Error = (): React.ReactElement => (
   <Textarea id="input-error" name="input-error" error />
 )
 
-export const success = (): React.ReactElement => (
+export const Success = (): React.ReactElement => (
   <Textarea id="input-success" name="input-success" success />
 )
 
-export const disabled = (): React.ReactElement => (
+export const Disabled = (): React.ReactElement => (
   <Textarea id="input-disabled" name="input-disabled" disabled />
 )
 
-export const readonly = (): React.ReactElement => (
+export const Readonly = (): React.ReactElement => (
   <Textarea id="input-readonly" name="input-readonly" readOnly />
 )

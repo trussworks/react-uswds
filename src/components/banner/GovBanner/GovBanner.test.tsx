@@ -27,7 +27,7 @@ describe('GovBanner component', () => {
     const { queryByTestId } = render(
       <GovBanner language="english" tld=".mil" />
     )
-    expect(queryByTestId('govBanner')).toBeInTheDocument
+    expect(queryByTestId('govBanner')).toBeInTheDocument()
   })
 
   describe('static content', () => {

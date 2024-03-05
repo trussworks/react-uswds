@@ -32,7 +32,7 @@ const noop = (): void => {
   return
 }
 
-export const completeTimePicker = (
+export const CompleteTimePicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
@@ -47,7 +47,7 @@ export const completeTimePicker = (
   </Form>
 )
 
-export const defaultTimePicker = (
+export const DefaultTimePicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
@@ -61,7 +61,7 @@ export const defaultTimePicker = (
   </Form>
 )
 
-export const withMinAndMaxTimes = (
+export const WithMinAndMaxTimes = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
@@ -78,7 +78,7 @@ export const withMinAndMaxTimes = (
   </Form>
 )
 
-export const withDefaultValue = (
+export const WithDefaultValue = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
