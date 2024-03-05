@@ -2957,13 +2957,23 @@
     chai "^4.3.7"
     util "^0.12.4"
 
-"@storybook/theming@7.6.15", "@storybook/theming@^7.6.10":
+"@storybook/theming@7.6.15":
   version "7.6.15"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.6.15.tgz#31aa488333d1e689dfb7771514d3def37a0d8b5a"
   integrity sha512-9PpsHAbUf6o0w33/P3mnb7QheTmfGlTYCismj5HMM1O2/zY0kQK9XcG9W+Cyvu56D/lFC19fz9YHQY8W4AbfnQ==
   dependencies:
     "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
     "@storybook/client-logger" "7.6.15"
+    "@storybook/global" "^5.0.0"
+    memoizerific "^1.11.3"
+
+"@storybook/theming@^7.6.10":
+  version "7.6.17"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.6.17.tgz#8170e3e72b921380c51a3970890d4cb479a65c2f"
+  integrity sha512-ZbaBt3KAbmBtfjNqgMY7wPMBshhSJlhodyMNQypv+95xLD/R+Az6aBYbpVAOygLaUQaQk4ar7H/Ww6lFIoiFbA==
+  dependencies:
+    "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
+    "@storybook/client-logger" "7.6.17"
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
 
