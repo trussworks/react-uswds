@@ -2339,13 +2339,13 @@
     memoizerific "^1.11.3"
 
 "@storybook/addons@^7.6.10":
-  version "7.6.15"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-7.6.15.tgz#675284d9034c8a01aaedd1f8d0b378b57a2a16ad"
-  integrity sha512-Zp4r3OjQsmtIVgzELo3lk8jDpNVxSgFY2RqkNiW1/GVnrnxld+0B7wvSM1R/hzvDBIeQI8W54BpH81KKawNQFA==
+  version "7.6.17"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-7.6.17.tgz#6fd78ae3a3419bd91fdacbebd40062eb94f92155"
+  integrity sha512-Ok18Y698Ccyg++MoUNJNHY0cXUvo8ETFIRLJk1g9ElJ70j6kPgNnzW2pAtZkBNmswHtofZ7pT156cj96k/LgfA==
   dependencies:
-    "@storybook/manager-api" "7.6.15"
-    "@storybook/preview-api" "7.6.15"
-    "@storybook/types" "7.6.15"
+    "@storybook/manager-api" "7.6.17"
+    "@storybook/preview-api" "7.6.17"
+    "@storybook/types" "7.6.17"
 
 "@storybook/blocks@7.6.15":
   version "7.6.15"
