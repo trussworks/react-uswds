@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-2xDJh5tt.js";import{c}from"./index-Bl6ORisp.js";const a=({className:s,children:o,...r})=>{const t=c("usa-logo",s);return e("div",{className:t,...r,children:e("em",{className:"usa-logo__text",children:o})})};try{a.displayName="Title",a.__docgenInfo={description:"",displayName:"Title",props:{}}}catch{}export{a as T};
