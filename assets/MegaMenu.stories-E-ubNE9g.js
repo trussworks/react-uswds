@@ -1,5 +1,0 @@
-import{j as e}from"./jsx-runtime-2xDJh5tt.js";import{M as s}from"./MegaMenu-GoBckSTc.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-Bl6ORisp.js";import"./NavList-VQCA2U0H.js";const d={title:"Components/Header/MegaMenu",component:s,parameters:{docs:{description:{component:`
-### USWDS 3.0 MegaMenu component used within the Header component
-
-Source: https://designsystem.digital.gov/components/header/
-`}}}},i=[[e("a",{href:"#linkOne",children:"Simple link"},"one"),e("a",{href:"#linkTwo",children:"Simple link"},"two")],[e("a",{href:"#linkThree",children:"Simple link Two"},"three"),e("a",{href:"#linkFour",children:"Simple link Two"},"four")]],t=()=>e(s,{items:i,isOpen:!0},"testItemOne");var n,r,o;t.parameters={...t.parameters,docs:{...(n=t.parameters)==null?void 0:n.docs,source:{originalSource:'(): React.ReactElement => <MegaMenu items={testItems} key="testItemOne" isOpen={true} />',...(o=(r=t.parameters)==null?void 0:r.docs)==null?void 0:o.source}}};const M=["DefaultMegaMenu"];export{t as DefaultMegaMenu,M as __namedExportsOrder,d as default};
