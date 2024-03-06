@@ -33,7 +33,7 @@ Source: http://designsystem.digital.gov/components/modal
   },
 }
 
-export const defaultModal = {
+export const DefaultModal = {
   render: (argTypes: StorybookArguments): React.ReactElement => {
     return (
       <ModalWrapper
@@ -76,7 +76,7 @@ export const defaultModal = {
   },
 }
 
-export const largeModal = {
+export const LargeModal = {
   render: (argTypes: StorybookArguments): React.ReactElement => {
     return (
       <ModalWrapper
@@ -120,7 +120,7 @@ export const largeModal = {
   },
 }
 
-export const forceActionModal = {
+export const ForceActionModal = {
   render: (argTypes: StorybookArguments): React.ReactElement => {
     return (
       <ModalWrapper

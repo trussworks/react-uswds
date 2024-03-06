@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
 import { TextInput } from '../TextInput/TextInput'
@@ -24,7 +24,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        onChange={jest.fn()}
+        onChange={vi.fn()}
       />
     )
 
@@ -72,7 +72,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        onChange={jest.fn()}
+        onChange={vi.fn()}
         defaultValue="avocado"
       />
     )
@@ -96,7 +96,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitAbridged}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -125,7 +125,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -140,7 +140,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -155,7 +155,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -169,7 +169,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -190,7 +190,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           defaultValue="avocado"
         />
       )
@@ -210,7 +210,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={[]}
-        onChange={jest.fn()}
+        onChange={vi.fn()}
         disabled={true}
       />
     )
@@ -232,7 +232,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        onChange={jest.fn()}
+        onChange={vi.fn()}
         disabled={true}
       />
     )
@@ -247,7 +247,7 @@ describe('ComboBox component', () => {
         id="favorite-fruit"
         name="favorite-fruit"
         options={fruitOptions}
-        onChange={jest.fn()}
+        onChange={vi.fn()}
         defaultValue="apple"
       />
     )
@@ -262,7 +262,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           selectProps={{ required: true, role: 'testing' }}
         />
       )
@@ -277,7 +277,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           inputProps={{ required: true, type: 'url' }}
         />
       )
@@ -288,14 +288,14 @@ describe('ComboBox component', () => {
     })
 
     it('allows a custom input onChange handler to be called', async () => {
-      const mockOnInputChange = jest.fn()
+      const mockOnInputChange = vi.fn()
 
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           inputProps={{ onChange: mockOnInputChange }}
         />
       )
@@ -311,7 +311,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           ulProps={{ 'aria-labelledby': 'test-label-id' }}
         />
       )
@@ -331,12 +331,12 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
       const listEl = getByTestId('combo-box-option-list')
-      jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
+      vi.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
       listEl.scrollTop = 2000 // Scroll list 2000px down
 
       await userEvent.click(getByTestId('combo-box-toggle'))
@@ -350,7 +350,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           defaultValue={'mango'}
         />
       )
@@ -358,9 +358,9 @@ describe('ComboBox component', () => {
       const mango = getByTestId('combo-box-option-mango')
       const listEl = getByTestId('combo-box-option-list')
 
-      jest.spyOn(mango, 'offsetTop', 'get').mockReturnValue(1365)
-      jest.spyOn(mango, 'offsetHeight', 'get').mockReturnValue(39)
-      jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
+      vi.spyOn(mango, 'offsetTop', 'get').mockReturnValue(1365)
+      vi.spyOn(mango, 'offsetHeight', 'get').mockReturnValue(39)
+      vi.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
       listEl.scrollTop = 0 // Scroll list to the top
 
       await userEvent.click(getByTestId('combo-box-toggle'))
@@ -377,7 +377,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           defaultValue={'mango'}
         />
       )
@@ -385,9 +385,9 @@ describe('ComboBox component', () => {
       const mango = getByTestId('combo-box-option-mango')
       const listEl = getByTestId('combo-box-option-list')
 
-      jest.spyOn(mango, 'offsetTop', 'get').mockReturnValue(1365)
-      jest.spyOn(mango, 'offsetHeight', 'get').mockReturnValue(39)
-      jest.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
+      vi.spyOn(mango, 'offsetTop', 'get').mockReturnValue(1365)
+      vi.spyOn(mango, 'offsetHeight', 'get').mockReturnValue(39)
+      vi.spyOn(listEl, 'offsetHeight', 'get').mockReturnValue(205)
       listEl.scrollTop = 2292 // Scroll list 2292px down
 
       await userEvent.click(getByTestId('combo-box-toggle'))
@@ -406,7 +406,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -424,7 +424,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="banana"
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -441,7 +441,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -457,7 +457,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -477,7 +477,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -498,7 +498,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -530,7 +530,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -548,7 +548,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -568,7 +568,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -590,7 +590,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           disableFiltering
         />
       )
@@ -612,7 +612,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -628,7 +628,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -642,7 +642,7 @@ describe('ComboBox component', () => {
     })
 
     it('calls onChange prop with undefined on click', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -663,7 +663,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -675,7 +675,7 @@ describe('ComboBox component', () => {
     })
 
     it('works as expected when input is loaded with default value', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -706,7 +706,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -727,7 +727,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -751,7 +751,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       </>
     )
@@ -774,7 +774,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -792,7 +792,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -809,7 +809,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="avocado"
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -830,7 +830,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="avocado"
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -854,7 +854,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -872,7 +872,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -885,7 +885,7 @@ describe('ComboBox component', () => {
     })
 
     it('selects the focused option with tab', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -911,7 +911,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -923,7 +923,7 @@ describe('ComboBox component', () => {
     })
 
     it('selects the focused option with enter', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -948,7 +948,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -970,7 +970,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -994,7 +994,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           defaultValue="watermelon"
         />
       )
@@ -1018,7 +1018,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1041,7 +1041,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1062,7 +1062,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1081,7 +1081,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="banana"
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
       // first tab goes to input
@@ -1099,7 +1099,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="banana"
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
       await userEvent.click(getByTestId('combo-box-input'))
@@ -1119,7 +1119,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           defaultValue="mango"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1141,7 +1141,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           defaultValue="apricot"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1167,7 +1167,7 @@ describe('ComboBox component', () => {
             name="favorite-fruit"
             options={fruitOptions}
             defaultValue="avocado"
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -1192,7 +1192,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
           <TextInput
             id="input-Text"
@@ -1223,7 +1223,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1238,7 +1238,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1253,7 +1253,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
       const input = getByTestId('combo-box-input')
@@ -1274,7 +1274,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
       const input = getByTestId('combo-box-input')
@@ -1293,7 +1293,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1314,7 +1314,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -1336,7 +1336,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -1360,7 +1360,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1379,7 +1379,7 @@ describe('ComboBox component', () => {
     })
 
     it('selects an item by clicking on an option', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1399,7 +1399,7 @@ describe('ComboBox component', () => {
     })
 
     it('persists input text when items list is blurred', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <>
           <div data-testid="outside" />
@@ -1429,7 +1429,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1445,7 +1445,7 @@ describe('ComboBox component', () => {
     })
 
     it('updates input with item selected on click', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
@@ -1469,7 +1469,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1508,7 +1508,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -1531,7 +1531,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
       const list = getByTestId('combo-box-option-list')
@@ -1557,7 +1557,7 @@ describe('ComboBox component', () => {
           name="favorite-fruit"
           options={fruitOptions}
           defaultValue="apricot"
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
       const list = getByTestId('combo-box-option-list')
@@ -1583,7 +1583,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1603,7 +1603,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1621,7 +1621,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={[]}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1642,7 +1642,7 @@ describe('ComboBox component', () => {
             id="favorite-fruit"
             name="favorite-fruit"
             options={fruitOptions}
-            onChange={jest.fn()}
+            onChange={vi.fn()}
           />
         </>
       )
@@ -1668,7 +1668,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
         />
       )
 
@@ -1701,7 +1701,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           assistiveHint="Customized assistive hint"
         />
       )
@@ -1716,7 +1716,7 @@ describe('ComboBox component', () => {
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
-          onChange={jest.fn()}
+          onChange={vi.fn()}
           noResults="NOTHING"
         />
       )
@@ -1729,7 +1729,7 @@ describe('ComboBox component', () => {
   describe('exposed ref', () => {
     it('can be used to focus on the text input', async () => {
       const comboRef = React.createRef<ComboBoxRef>()
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const handleFocus = (): void => comboRef.current?.focus()
 
       const { getByTestId } = render(
@@ -1748,15 +1748,15 @@ describe('ComboBox component', () => {
       )
 
       const input = getByTestId('combo-box-input')
-      expect(input).not.toHaveFocus()
+      await waitFor(() => expect(input).not.toHaveFocus())
 
       await userEvent.click(getByTestId('focus-button'))
-      await waitFor(expect(input).toHaveFocus)
+      await waitFor(() => expect(input).toHaveFocus())
     })
 
     it('can be used to clear the selected value', async () => {
       const comboRef = React.createRef<ComboBoxRef>()
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const handleClearSelection = (): void =>
         comboRef.current?.clearSelection()
 

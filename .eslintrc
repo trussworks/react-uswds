@@ -1,5 +1,5 @@
 {
-  "parser": "@babel/eslint-parser",
+  "root": true,
   "plugins": [
     "import",
     "@typescript-eslint",
@@ -7,7 +7,8 @@
     "react",
     "react-hooks",
     "no-only-tests",
-    "security"
+    "security",
+    "vitest"
   ],
   "env": {
     "browser": true,
@@ -21,16 +22,12 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "requireConfigFile": false
   },
   "settings": {
     "react": {
       "version": "detect"
-    },
-    "import/resolver": {
-      "webpack": {
-        "config": "./webpack.config.js"
-      }
     }
   },
   "overrides": [
@@ -53,7 +50,10 @@
       "extends": [
         "plugin:@typescript-eslint/recommended",
         "prettier"
-      ]
+      ],
+      "rules": {
+        "import/no-unresolved": "off"
+      }
     }
   ],
   "extends": [
@@ -63,8 +63,10 @@
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "plugin:security/recommended-legacy"
+    "plugin:security/recommended-legacy",
+    "plugin:storybook/recommended",
+    "plugin:vitest/recommended",
+    "prettier"
   ],
   "rules": {
     "no-only-tests/no-only-tests": "error",
