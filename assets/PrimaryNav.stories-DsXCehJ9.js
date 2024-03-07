@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-2xDJh5tt.js";import{P as s}from"./PrimaryNav-JqZTjbNg.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-Bl6ORisp.js";import"./NavCloseButton-Bmhbi0qY.js";import"./Icons-CMWhi0me.js";import"./NavList-VQCA2U0H.js";const v={title:"Components/Header/PrimaryNav",component:s,parameters:{docs:{description:{component:`
+### USWDS 3.0 PrimaryNav component used within the Header component
+
+Source: https://designsystem.digital.gov/components/header/
+`}}}},i=()=>{},m=[e("a",{className:"usa-current",href:"#linkOne",children:e("span",{children:"Current link"})},"one"),e("a",{href:"#linkTwo",children:e("span",{children:"Simple link Two"})},"two")],r=()=>e(s,{items:m,onToggleMobileNav:i});var o,t,a;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:"(): React.ReactElement => <PrimaryNav items={testBasicHeaderItems} onToggleMobileNav={mockToggle} />",...(a=(t=r.parameters)==null?void 0:t.docs)==null?void 0:a.source}}};const N=["DefaultPrimaryNav"];export{r as DefaultPrimaryNav,N as __namedExportsOrder,v as default};

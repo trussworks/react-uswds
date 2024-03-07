@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-2xDJh5tt.js";import{S as n,a as o}from"./SocialLinks-B6VBY4FT.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-Bl6ORisp.js";import"./Icons-CMWhi0me.js";const k={title:"Components/Footer/SocialLinks",component:n,parameters:{docs:{description:{component:`
+Display social links in styled row. Used in USWDS 3.0 Footer component.
+
+Source: https://designsystem.digital.gov/components/footer
+`}}}},i=[e(o,{name:"Facebook",href:"#"},"facebook"),e(o,{name:"Twitter",href:"#"},"twitter"),e(o,{name:"YouTube",href:"#"},"youtube"),e(o,{name:"Instagram",href:"#"},"instagram"),e(o,{name:"RSS",href:"#"},"rss")],s=()=>e(n,{links:i});var t,r,a;s.parameters={...s.parameters,docs:{...(t=s.parameters)==null?void 0:t.docs,source:{originalSource:"(): React.ReactElement => <SocialLinks links={links} />",...(a=(r=s.parameters)==null?void 0:r.docs)==null?void 0:a.source}}};const f=["Example"];export{s as Example,f as __namedExportsOrder,k as default};
