@@ -46,7 +46,7 @@ export const tooltipDefault = (args: StorybookArgs): React.ReactElement => (
   </div>
 )
 
-export const tooltipTop = (): React.ReactElement => (
+export const TooltipTop = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip position="top" label="Top">
       Show on top
@@ -54,7 +54,7 @@ export const tooltipTop = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipBottom = (): React.ReactElement => (
+export const TooltipBottom = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip position="bottom" label="Bottom">
       Show on bottom
@@ -62,7 +62,7 @@ export const tooltipBottom = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipRight = (): React.ReactElement => (
+export const TooltipRight = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip position="right" label="Right">
       Show on right
@@ -70,7 +70,7 @@ export const tooltipRight = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipLeft = (): React.ReactElement => (
+export const TooltipLeft = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip position="left" label="Left">
       Show on left
@@ -78,7 +78,7 @@ export const tooltipLeft = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipWithUtilityClass = (): React.ReactElement => (
+export const TooltipWithUtilityClass = (): React.ReactElement => (
   <div className="margin-4">
     <Tooltip
       wrapperclasses="width-full tablet:width-auto"
@@ -121,7 +121,7 @@ export const CustomComponent = (): React.ReactElement => {
   )
 }
 
-export const tooltipTopLeftWrap = (): React.ReactElement => (
+export const TooltipTopLeftWrap = (): React.ReactElement => (
   <div style={{ marginTop: '32px' }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
@@ -129,7 +129,7 @@ export const tooltipTopLeftWrap = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipBottomLeftWrap = (): React.ReactElement => (
+export const TooltipBottomLeftWrap = (): React.ReactElement => (
   <div style={{ position: 'absolute', bottom: '32px' }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
@@ -137,7 +137,7 @@ export const tooltipBottomLeftWrap = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipTopRightWrap = (): React.ReactElement => (
+export const TooltipTopRightWrap = (): React.ReactElement => (
   <div style={{ marginTop: '32px', textAlign: 'right' }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
@@ -145,7 +145,7 @@ export const tooltipTopRightWrap = (): React.ReactElement => (
   </div>
 )
 
-export const tooltipBottomRightWrap = (): React.ReactElement => (
+export const TooltipBottomRightWrap = (): React.ReactElement => (
   <div
     style={{
       position: 'absolute',

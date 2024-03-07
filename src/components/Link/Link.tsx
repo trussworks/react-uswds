@@ -6,6 +6,7 @@ type StyledLinkProps<T> = {
   variant?: 'external' | 'unstyled' | 'nav'
   className?: string
   children: React.ReactNode
+  allowSpacebarActivation?: boolean
 } & T
 
 // These props are only required on the default Link
@@ -33,6 +34,13 @@ export function isCustomProps<T>(
 ): props is CustomLinkProps<T> {
   return 'asCustom' in props
 }
+// keyboard handler for 'link as a button'
+const handleKeyDown = (e: React.KeyboardEvent) => {
+  if (e.key === ' ' && e.target) {
+    e.preventDefault()
+    ;(e.target as HTMLElement).click()
+  }
+}
 
 function linkClasses<T>(
   variant: StyledLinkProps<T>['variant'],
@@ -54,7 +62,7 @@ function linkClasses<T>(
 export function Link(props: DefaultLinkProps): React.ReactElement
 export function Link<T>(props: CustomLinkProps<T>): React.ReactElement
 export function Link<
-  FCProps extends React.PropsWithChildren<object> = DefaultLinkProps
+  FCProps extends React.PropsWithChildren<object> = DefaultLinkProps,
 >(props: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {
     const { variant, className, asCustom, children, ...remainingProps } = props
@@ -75,11 +83,20 @@ export function Link<
       children
     )
   } else {
-    const { children, className, variant, ...linkProps } = props
+    const {
+      children,
+      className,
+      variant,
+      allowSpacebarActivation = false,
+      ...linkProps
+    } = props
 
     const classes = linkClasses(variant, className)
     return (
-      <a className={classes} {...linkProps}>
+      <a
+        className={classes}
+        {...(allowSpacebarActivation && { onKeyDown: handleKeyDown })}
+        {...linkProps}>
         {children}
       </a>
     )

@@ -22,7 +22,7 @@ describe('NavDropDownButton component', () => {
   })
 
   it('implements an onClick handler', () => {
-    const onClickFn = jest.fn()
+    const onClickFn = vi.fn()
     const { getByText } = render(
       <NavDropDownButton
         label={testLabel}
@@ -37,7 +37,7 @@ describe('NavDropDownButton component', () => {
   })
 
   it('renders when isOpen is set to false', () => {
-    const onClickFn = jest.fn()
+    const onClickFn = vi.fn()
     const { getByTestId } = render(
       <NavDropDownButton
         label={testLabel}
@@ -53,7 +53,7 @@ describe('NavDropDownButton component', () => {
   })
 
   it('renders the usa-current class when isCurrent is true', () => {
-    const onClickFn = jest.fn()
+    const onClickFn = vi.fn()
     const { getByTestId } = render(
       <NavDropDownButton
         label={testLabel}

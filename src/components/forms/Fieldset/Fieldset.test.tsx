@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-jest.mock('../../../deprecation')
+vi.mock('../../../deprecation')
 import { Fieldset } from './Fieldset'
 
 describe('Fieldset component', () => {

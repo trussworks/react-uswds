@@ -5,7 +5,7 @@ import { Link } from './Link'
 
 describe('Link component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('with default anchor tag', () => {

@@ -8,7 +8,7 @@ describe('ProcessListHeading component', () => {
     const { queryByTestId } = render(
       <ProcessListHeading type="h4">a heading</ProcessListHeading>
     )
-    expect(queryByTestId('processListHeading')).toBeInTheDocument
+    expect(queryByTestId('processListHeading')).toBeInTheDocument()
     expect(queryByTestId('processListHeading')).toHaveClass(
       'usa-process-list__heading'
     )
@@ -17,7 +17,7 @@ describe('ProcessListHeading component', () => {
     const { queryByTestId } = render(
       <ProcessListHeading type="p">a heading</ProcessListHeading>
     )
-    expect(queryByTestId('processListHeading')).toBeInTheDocument
+    expect(queryByTestId('processListHeading')).toBeInTheDocument()
     expect(queryByTestId('processListHeading')).toHaveClass(
       'usa-process-list__heading'
     )

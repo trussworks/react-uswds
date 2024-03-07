@@ -23,7 +23,7 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const nameFieldset = (): React.ReactElement => (
+export const NameFieldset = (): React.ReactElement => (
   <Fieldset legend="Name" legendStyle="large">
     <Label htmlFor="title" hint=" (optional)">
       Title
@@ -40,7 +40,7 @@ export const nameFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const checkboxFieldset = (): React.ReactElement => (
+export const CheckboxFieldset = (): React.ReactElement => (
   <Fieldset legend="Historical figures 1" legendStyle="srOnly">
     <Checkbox
       id="truth"
@@ -70,7 +70,7 @@ export const checkboxFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const checkboxFieldsetWithDefaultLegend = (): React.ReactElement => (
+export const CheckboxFieldsetWithDefaultLegend = (): React.ReactElement => (
   <>
     <p>
       Required fields are marked with an asterisk (<RequiredMarker />
@@ -107,7 +107,7 @@ export const checkboxFieldsetWithDefaultLegend = (): React.ReactElement => (
   </>
 )
 
-export const radioFieldset = (): React.ReactElement => (
+export const RadioFieldset = (): React.ReactElement => (
   <Fieldset legend="Historical figures 2" legendStyle="srOnly">
     <Radio
       id="stanton"
@@ -138,7 +138,7 @@ export const radioFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const radioFieldsetWithDefaultLegend = (): React.ReactElement => (
+export const RadioFieldsetWithDefaultLegend = (): React.ReactElement => (
   <Fieldset legend="Historical figures 2">
     <Radio
       id="stanton"
