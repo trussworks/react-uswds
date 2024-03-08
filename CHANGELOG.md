@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/trussworks/react-uswds/compare/7.0.0...8.0.0) (2024-03-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716))
+
+### Features
+
+* Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716)) ([17dde0a](https://github.com/trussworks/react-uswds/commit/17dde0a03c6c23b2e145b78ee8ef3faf86867431))
+
+
+### Bug Fixes
+
+* replace card button with link ([#2750](https://github.com/trussworks/react-uswds/issues/2750)) ([59d5f14](https://github.com/trussworks/react-uswds/commit/59d5f14b85ae96ee4fd5c89c6084bbc1c663d1e7))
+
+
+### Documentation & Examples
+
+* Made storybook docs available again, small org changes elsewhere ([#2795](https://github.com/trussworks/react-uswds/issues/2795)) ([e77fe30](https://github.com/trussworks/react-uswds/commit/e77fe30f7feaf8a52816ade8fad93923b5a0e7fb))
+* removed circleci references ([#2777](https://github.com/trussworks/react-uswds/issues/2777)) ([b3e79f2](https://github.com/trussworks/react-uswds/commit/b3e79f2fe4c5d043af0053cf41d288dfe8758cd9))
+
 ## [7.0.0](https://github.com/trussworks/react-uswds/compare/6.2.0...7.0.0) (2024-02-22)
 
 

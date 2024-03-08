@@ -26,11 +26,8 @@ import {
 import { SideNav } from '../../components/SideNav/SideNav'
 
 export default {
-  title: 'Page Templates/Documentation Page',
+  title: 'Page Templates/Documentation',
   parameters: {
-    options: {
-      showPanel: false,
-    },
     docs: {
       description: {
         component: `

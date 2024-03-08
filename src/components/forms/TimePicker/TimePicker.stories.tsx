@@ -4,7 +4,7 @@ import { Form } from '../Form/Form'
 import { TimePicker } from './TimePicker'
 
 export default {
-  title: 'Components/Form controls/Time picker',
+  title: 'Components/Time picker',
   component: TimePicker,
   argTypes: {
     onsubmit: { action: 'submitted' },

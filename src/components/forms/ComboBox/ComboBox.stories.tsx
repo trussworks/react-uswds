@@ -1,11 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
 import { Form } from '../Form/Form'
 import { Label } from '../Label/Label'
-import { TextInput } from '../TextInput/TextInput'
 import { Button } from '../../Button/Button'
-import { fruits } from './fruits'
+import { fruits, veggies } from './foods'
+import { Radio } from '../Radio/Radio'
 
 export default {
   title: 'Components/Combo box',
@@ -112,12 +112,42 @@ export const WithOtherFields = (): React.ReactElement => {
     label: key,
   }))
 
+  const veggieList = Object.entries(veggies).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  const [options, setOptions] = useState(fruitList)
+
+  const ref = useRef<ComboBoxRef>(null)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    ref.current?.clearSelection()
+    const selection = e.target.id
+    setOptions(selection === 'fruit' ? fruitList : veggieList)
+  }
+
   return (
     <Form onSubmit={noop}>
-      <Label htmlFor="fruit">Select a fruit</Label>
-      <ComboBox id="fruit" name="fruit" options={fruitList} onChange={noop} />
-      <Label htmlFor="fruitDescription">Description</Label>
-      <TextInput id="fruitDescription" name="fruitDescription" type="text" />
+      <Label htmlFor="food">Select a group</Label>
+      <Radio
+        name="food"
+        id="fruit"
+        label="Fruits"
+        onChange={handleChange}
+        defaultChecked></Radio>
+      <Radio
+        name="food"
+        id="veggie"
+        label="Vegetables"
+        onChange={handleChange}></Radio>
+      <Label htmlFor="food">Select a food</Label>
+      <ComboBox
+        id="fruit"
+        name="fruit"
+        options={options}
+        onChange={noop}
+        ref={ref}
+      />
     </Form>
   )
 }

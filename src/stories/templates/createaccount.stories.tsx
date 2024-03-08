@@ -35,7 +35,7 @@ import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
 import { MediaBlockBody } from '../../components/mediablock/MediaBlockBody/MediaBlockBody'
 
 export default {
-  title: 'Page Templates/Authentication Pages',
+  title: 'Page Templates/Create Account',
   parameters: {
     options: {
       showPanel: false,

@@ -9,9 +9,9 @@ export default {
   },
 }
 
-export const BackgroundColors = (): React.ReactElement => (
+export const Swatches = (): React.ReactElement => (
   <div className="grid-container">
-    <h1>Background color</h1>
+    <h1>Color swatches</h1>
     <h2>Primary</h2>
     <hr />
     <div className="grid-row">

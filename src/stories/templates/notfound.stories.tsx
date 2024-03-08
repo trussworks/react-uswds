@@ -35,7 +35,7 @@ import {
 } from '../../index'
 
 export default {
-  title: 'Page Templates/Not Found Page',
+  title: 'Page Templates/Not Found',
   parameters: {
     options: {
       showPanel: false,

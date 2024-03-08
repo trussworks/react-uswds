@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -80,6 +80,7 @@
     "@storybook/addon-links": "^7.6.10",
     "@storybook/addons": "^7.6.10",
     "@storybook/blocks": "^7.6.10",
+    "@storybook/manager-api": "^7.1.1",
     "@storybook/react": "^7.6.10",
     "@storybook/react-vite": "^7.6.10",
     "@storybook/test": "^7.6.10",

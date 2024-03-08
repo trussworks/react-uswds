@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run Jest tests with coverage
+      - name: Run tests with coverage
         run: yarn test:coverage
 
       - name: Run node server side tests

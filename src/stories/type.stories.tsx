@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default {
-  title: 'Components/Typography/Type Styles',
+  title: 'Design tokens/Type Styles',
   parameters: {
     options: {
       showPanel: false,
