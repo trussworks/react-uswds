@@ -12,16 +12,17 @@ We welcome contributions in the form of comments, issues, or pull requests with 
   - [Development](#development)
     - [Working on an issue](#working-on-an-issue)
     - [General guidelines](#general-guidelines)
-    - [Linting, formatting, & automated tests](#linting-formatting--automated-tests)
+    - [Linting, formatting, \& automated tests](#linting-formatting--automated-tests)
     - [Testing in an application](#testing-in-an-application)
       - [`yarn link`](#yarn-link)
       - [Install from a ReactUSWDS branch](#install-from-a-reactuswds-branch)
-    - [Opening & merging pull requests](#opening--merging-pull-requests)
+    - [Opening \& merging pull requests](#opening--merging-pull-requests)
+      - [Formatting your commits](#formatting-your-commits)
       - [`type`:](#type)
       - [`scope`:](#scope)
       - [`body`:](#body)
       - [`footer`:](#footer)
-  - [All-contributors](#all-contributors)
+  - [All Contributors](#all-contributors)
 
 ## Environment setup
 
@@ -44,7 +45,7 @@ These should all be run from within the project directory.
   - Starts Storybook server and watches for changed files
   - This will most likely be what you use for active development of components
 - `yarn test`
-  - Starts Jest test runner
+  - Starts test runner
   - `yarn test:watch` is also available
   - Use `yarn test:coverage` to generate a coverage report
 - `yarn build`
@@ -97,7 +98,7 @@ Because this project exports a library that will be used by other projects, it i
   - Package dependency changes should include `yarn.lock` updates and
     `yarn audit` will be run by danger to ensure no high or critical
     vulnerabilities are found
-- [Jest tests](https://jestjs.io/) are run in CI and must pass before the branch can be merged
+- [Vite tests](https://vitest.dev/) are run in CI and must pass before the branch can be merged
 - [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) are run CI against Storybook stories. All diffs must be approved before the branch can be merged. Developers with access (maintainers and many codeowners) log in to Happo.io account to approve/reject diffs.
 - PR titles must follow conventional commits specification.
   - We use [release-please](https://github.com/googleapis/release-please). This auto-generates version numbers and changelog based on commits. We [squash & merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) PR commits, so the title must be correct.
@@ -259,7 +260,6 @@ Optional, can be one of the following:
 - `deps`: Updating a package listed in dependencies
 - `deps-dev`: Updating a package listed in devDependencies
 - `release`: Releasing a new version
-- `circleci`: Changes to CircleCI config and/or scripts
 - `storybook`: Changes to Storybook or stories files only
 
 #### `body`:

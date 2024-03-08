@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GovBanner component static content renders consistently in English for .gov sites 1`] = `
+exports[`GovBanner component > static content > renders consistently in English for .gov sites 1`] = `
 <section
   aria-label="Official website of the United States government"
   className="usa-banner"
@@ -74,7 +74,6 @@ exports[`GovBanner component static content renders consistently in English for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -100,7 +99,6 @@ exports[`GovBanner component static content renders consistently in English for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -141,7 +139,7 @@ exports[`GovBanner component static content renders consistently in English for 
 </section>
 `;
 
-exports[`GovBanner component static content renders consistently in English for .mil sites 1`] = `
+exports[`GovBanner component > static content > renders consistently in English for .mil sites 1`] = `
 <section
   aria-label="Official website of the United States government"
   className="usa-banner"
@@ -215,7 +213,6 @@ exports[`GovBanner component static content renders consistently in English for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -241,7 +238,6 @@ exports[`GovBanner component static content renders consistently in English for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -282,7 +278,7 @@ exports[`GovBanner component static content renders consistently in English for 
 </section>
 `;
 
-exports[`GovBanner component static content renders consistently in Spanish for .gov sites 1`] = `
+exports[`GovBanner component > static content > renders consistently in Spanish for .gov sites 1`] = `
 <section
   aria-label="Un sitio oficial del Gobierno de Estados Unidos"
   className="usa-banner"
@@ -356,7 +352,6 @@ exports[`GovBanner component static content renders consistently in Spanish for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -382,7 +377,6 @@ exports[`GovBanner component static content renders consistently in Spanish for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -422,7 +416,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 </section>
 `;
 
-exports[`GovBanner component static content renders consistently in Spanish for .mil sites 1`] = `
+exports[`GovBanner component > static content > renders consistently in Spanish for .mil sites 1`] = `
 <section
   aria-label="Un sitio oficial del Gobierno de Estados Unidos"
   className="usa-banner"
@@ -496,7 +490,6 @@ exports[`GovBanner component static content renders consistently in Spanish for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -522,7 +515,6 @@ exports[`GovBanner component static content renders consistently in Spanish for 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -562,7 +554,7 @@ exports[`GovBanner component static content renders consistently in Spanish for 
 </section>
 `;
 
-exports[`GovBanner component static content renders consistently with default props 1`] = `
+exports[`GovBanner component > static content > renders consistently with default props 1`] = `
 <section
   aria-label="Official website of the United States government"
   className="usa-banner"
@@ -636,7 +628,6 @@ exports[`GovBanner component static content renders consistently with default pr
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div
@@ -662,7 +653,6 @@ exports[`GovBanner component static content renders consistently with default pr
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            role="img"
             src="test-file-stub"
           />
           <div

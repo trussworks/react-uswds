@@ -4,7 +4,7 @@ import { Form } from '../Form/Form'
 import { TimePicker } from './TimePicker'
 
 export default {
-  title: 'Components/Form controls/Time picker',
+  title: 'Components/Time picker',
   component: TimePicker,
   argTypes: {
     onsubmit: { action: 'submitted' },
@@ -32,14 +32,14 @@ const noop = (): void => {
   return
 }
 
-export const completeTimePicker = (
+export const CompleteTimePicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       hint="hh:mm"
       onChange={noop}
       disabled={argTypes.disabled}
@@ -47,27 +47,28 @@ export const completeTimePicker = (
   </Form>
 )
 
-export const defaultTimePicker = (
+export const DefaultTimePicker = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
       name="appointment-time"
+      label="Appointment time"
       onChange={noop}
       disabled={argTypes.disabled}
     />
   </Form>
 )
 
-export const withMinAndMaxTimes = (
+export const WithMinAndMaxTimes = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       hint="hh:mm (9:00am - 5:00pm)"
       minTime="9:00"
       maxTime="17:00"
@@ -77,14 +78,14 @@ export const withMinAndMaxTimes = (
   </Form>
 )
 
-export const withDefaultValue = (
+export const WithDefaultValue = (
   argTypes: StorybookArguments
 ): React.ReactElement => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
       name="appointment-time"
-      label="Appointment Time"
+      label="Appointment time"
       hint="hh:mm"
       defaultValue="12:00"
       onChange={noop}

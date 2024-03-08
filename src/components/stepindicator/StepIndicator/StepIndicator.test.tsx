@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, within } from '@testing-library/react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator } from '../StepIndicator/StepIndicator'
 import { HeadingLevel } from '../../../types/headingLevel'
@@ -10,11 +10,11 @@ const step3 = 'Step 3'
 
 describe('StepIndicator component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders without errors', () => {
-    const { getByRole, queryByText, queryAllByText, queryByTestId } = render(
+    const { getByRole, queryByText, queryAllByText, getByTestId } = render(
       <StepIndicator headingLevel="h4">
         <StepIndicatorStep label={step1} status="complete" />
         <StepIndicatorStep label={step2} status="current" />
@@ -22,7 +22,7 @@ describe('StepIndicator component', () => {
       </StepIndicator>
     )
 
-    const stepIndicator = queryByTestId('step-indicator')
+    const stepIndicator = getByTestId('step-indicator')
 
     expect(stepIndicator).toBeInTheDocument()
     expect(stepIndicator).toHaveClass('usa-step-indicator')
@@ -30,6 +30,11 @@ describe('StepIndicator component', () => {
     expect(queryAllByText(step2)).toHaveLength(2)
     expect(queryByText(step3)).toBeInTheDocument()
     expect(getByRole('list')).toHaveClass('usa-step-indicator__segments')
+    const stepSrOnly = within(stepIndicator).queryByText('Step')
+    expect(stepSrOnly).toHaveClass('usa-sr-only')
+    const totalSteps = queryByText(`of 3`)
+    expect(totalSteps).toBeInTheDocument()
+    expect(totalSteps).toHaveClass('usa-step-indicator__total-steps')
   })
 
   it('renders properly with no labels', () => {
@@ -162,5 +167,33 @@ describe('StepIndicator component', () => {
     expect(heading).toHaveClass(
       'usa-step-indicator__heading my-custom-className'
     )
+  })
+
+  it("renders properly with translatable 'of' string", () => {
+    const ofText = 'de'
+    const { queryByText } = render(
+      <StepIndicator headingLevel="h4" ofText={ofText}>
+        <StepIndicatorStep label={step1} status="complete" />
+        <StepIndicatorStep label={step2} status="current" />
+        <StepIndicatorStep label={step3} status="incomplete" />
+      </StepIndicator>
+    )
+    const totalSteps = queryByText(`${ofText} 3`)
+    expect(totalSteps).toBeInTheDocument()
+    expect(totalSteps).toHaveClass('usa-step-indicator__total-steps')
+  })
+
+  it("renders properly with translatable 'step' string", () => {
+    const stepText = 'Paso'
+    const { getByTestId } = render(
+      <StepIndicator headingLevel="h4" stepText={stepText}>
+        <StepIndicatorStep label={step1} status="complete" />
+        <StepIndicatorStep label={step2} status="current" />
+        <StepIndicatorStep label={step3} status="incomplete" />
+      </StepIndicator>
+    )
+    const stepIndicator = getByTestId('step-indicator')
+    const stepSrOnly = within(stepIndicator).queryByText(stepText)
+    expect(stepSrOnly).toHaveClass('usa-sr-only')
   })
 })

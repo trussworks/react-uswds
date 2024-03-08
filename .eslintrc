@@ -1,5 +1,5 @@
 {
-  "parser": "@babel/eslint-parser",
+  "root": true,
   "plugins": [
     "import",
     "@typescript-eslint",
@@ -7,13 +7,13 @@
     "react",
     "react-hooks",
     "no-only-tests",
-    "security"
+    "security",
+    "vitest"
   ],
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "jest": true,
     "node": true
   },
   "parserOptions": {
@@ -21,17 +21,19 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "requireConfigFile": false
   },
   "settings": {
     "react": {
       "version": "detect"
-    },
-    "import/resolver": "webpack"
+    }
   },
   "overrides": [
     {
-      "files": ["**/*.ts?(x)"],
+      "files": [
+        "**/*.ts?(x)"
+      ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "ecmaVersion": 2018,
@@ -41,8 +43,16 @@
         },
         "warnOnUnsupportedTypeScriptVersion": true
       },
-      "plugins": ["@typescript-eslint"],
-      "extends": ["plugin:@typescript-eslint/recommended", "prettier"]
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "import/no-unresolved": "off"
+      }
     }
   ],
   "extends": [
@@ -52,8 +62,10 @@
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "plugin:security/recommended"
+    "plugin:security/recommended-legacy",
+    "plugin:storybook/recommended",
+    "plugin:vitest/recommended",
+    "prettier"
   ],
   "rules": {
     "no-only-tests/no-only-tests": "error",

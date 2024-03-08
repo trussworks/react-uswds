@@ -7,7 +7,7 @@ import { render, screen } from '@testing-library/react'
 describe('Modal component', () => {
   const testProps = {
     modalId: 'testModalId',
-    handleClose: jest.fn(),
+    handleClose: vi.fn(),
   }
 
   it('renders without errors', () => {

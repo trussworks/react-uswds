@@ -5,10 +5,10 @@
  * and takes place after a webpack build.
  */
 
-const library = require('../lib')
+import library from '../lib/index.cjs'
 
 console.log('server-side test running')
 
 /** This will throw a ReferenceError if there's any use of a Web API
  * that node doesn't know about, which will cause CircleCI to fail a build. */
-module.exports = library
+export default library

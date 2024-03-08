@@ -147,6 +147,10 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   const focusedItemRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
+    state.filteredOptions = options
+  }, [options])
+
+  useEffect(() => {
     onChange && onChange(state.selectedOption?.value || undefined)
   }, [state.selectedOption])
 

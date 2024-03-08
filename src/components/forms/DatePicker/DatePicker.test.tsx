@@ -6,7 +6,7 @@ import {
   waitFor,
   screen,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import { DatePicker } from './DatePicker'
 import { sampleLocalization } from './i18n'
@@ -19,7 +19,7 @@ import {
 
 describe('DatePicker component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   const testProps = {
@@ -93,12 +93,12 @@ describe('DatePicker component', () => {
     )
   })
 
-  it('renders a hidden calendar dialog element', () => {
+  it('renders a hidden calendar application element', () => {
     const { getByTestId } = renderDatePicker()
     expect(getByTestId('date-picker-calendar')).toBeInstanceOf(HTMLDivElement)
     expect(getByTestId('date-picker-calendar')).toHaveAttribute(
       'role',
-      'dialog'
+      'application'
     )
     expect(getByTestId('date-picker-calendar')).not.toBeVisible()
   })
@@ -122,7 +122,7 @@ describe('DatePicker component', () => {
       bubbles: true,
       code: 13,
     })
-    const preventDefaultSpy = jest.spyOn(keyUpEvent, 'preventDefault')
+    const preventDefaultSpy = vi.spyOn(keyUpEvent, 'preventDefault')
     fireEvent(calendarEl, keyUpEvent)
     expect(preventDefaultSpy).toHaveBeenCalled()
   })
@@ -228,7 +228,7 @@ describe('DatePicker component', () => {
     })
 
     it('hides the calendar if focus moves to another element', async () => {
-      const mockOnBlur = jest.fn()
+      const mockOnBlur = vi.fn()
       const { getByTestId } = render(
         <>
           <DatePicker {...testProps} onBlur={mockOnBlur} />
@@ -238,8 +238,10 @@ describe('DatePicker component', () => {
 
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
-      getByTestId('test-external-element').focus()
-      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      await userEvent.click(getByTestId('test-external-element'))
+      await waitFor(() =>
+        expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      )
       expect(mockOnBlur).toHaveBeenCalled()
     })
   })
@@ -429,7 +431,7 @@ describe('DatePicker component', () => {
 
   describe('selecting a date', () => {
     it('clicking a date button selects that date and closes the calendar and focuses the external input', async () => {
-      const mockOnChange = jest.fn()
+      const mockOnChange = vi.fn()
       const { getByText, getByTestId } = renderDatePicker({
         defaultValue: '2021-01-20',
         onChange: mockOnChange,
@@ -473,7 +475,7 @@ describe('DatePicker component', () => {
 
   describe('typing in a date', () => {
     it('typing a date in the external input updates the selected date', async () => {
-      const mockOnChange = jest.fn()
+      const mockOnChange = vi.fn()
       const { getByTestId, getByText } = renderDatePicker({
         onChange: mockOnChange,
       })
@@ -525,14 +527,14 @@ describe('DatePicker component', () => {
     })
 
     it('implements a custom onBlur handler', async () => {
-      const mockOnBlur = jest.fn()
+      const mockOnBlur = vi.fn()
       const { getByTestId } = renderDatePicker({ onBlur: mockOnBlur })
 
       await userEvent.type(
         getByTestId('date-picker-external-input'),
         '05/16/1988'
       )
-      getByTestId('date-picker-external-input').blur()
+      await userEvent.tab()
       expect(mockOnBlur).toHaveBeenCalled()
     })
 
@@ -547,7 +549,7 @@ describe('DatePicker component', () => {
       expect(externalInput).toBeValid()
       await userEvent.type(externalInput, '05/16/1988')
       expect(externalInput).toBeValid()
-      externalInput.blur()
+      await userEvent.tab()
       expect(externalInput).toBeInvalid()
     })
 
@@ -574,14 +576,15 @@ describe('DatePicker component', () => {
         'date-picker-external-input'
       ) as HTMLInputElement
       await userEvent.type(externalInput, '{space}{backspace}')
-      externalInput.blur()
+      // cause 'blur' event to occur on externalInput
+      await userEvent.tab()
       expect(externalInput).toHaveTextContent('')
       expect(externalInput).toBeValid()
       expect(externalInput.validationMessage).toEqual('')
     })
 
     it('entering a non-date value sets a validation message', async () => {
-      const mockOnChange = jest.fn()
+      const mockOnChange = vi.fn()
       const { getByTestId } = renderDatePicker({ onChange: mockOnChange })
       const externalInput = getByTestId(
         'date-picker-external-input'
@@ -598,8 +601,8 @@ describe('DatePicker component', () => {
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
 
-    it('entering a non-date value sets a validation message', async () => {
-      const mockOnChange = jest.fn()
+    it('entering an invald date value sets a validation message', async () => {
+      const mockOnChange = vi.fn()
       const { getByTestId } = renderDatePicker({ onChange: mockOnChange })
       const externalInput = getByTestId(
         'date-picker-external-input'
@@ -612,7 +615,7 @@ describe('DatePicker component', () => {
     })
 
     it('entering an invalid date sets a validation message and becomes valid when selecting a date in the calendar', async () => {
-      const mockOnChange = jest.fn()
+      const mockOnChange = vi.fn()
       const { getByTestId, getByLabelText } = renderDatePicker({
         onChange: mockOnChange,
       })
@@ -636,7 +639,7 @@ describe('DatePicker component', () => {
     })
 
     it('entering a valid date outside of the min/max date sets a validation message', async () => {
-      const mockOnChange = jest.fn()
+      const mockOnChange = vi.fn()
       const { getByTestId } = renderDatePicker({
         minDate: '2021-01-20',
         maxDate: '2021-02-14',

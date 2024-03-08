@@ -103,8 +103,8 @@ export const Calendar = ({
   const dayOfWeekLabels = i18n.daysOfWeek
   const backOneYear = i18n.backOneYear
   const backOneMonth = i18n.backOneMonth
-  const clickToSelectMonth = `${monthLabel}. ${i18n.clickToSelectMonth}`
-  const clickToSelectYear = `${focusedYear}. ${i18n.clickToSelectYear}`
+  const selectMonth = `${monthLabel}. ${i18n.selectMonth}`
+  const selectYear = `${focusedYear}. ${i18n.selectYear}`
   const forwardOneMonth = i18n.forwardOneMonth
   const forwardOneYear = i18n.forwardOneYear
 
@@ -382,7 +382,7 @@ export const Calendar = ({
             onClick={handleToggleMonthSelection}
             ref={selectMonthEl}
             className="usa-date-picker__calendar__month-selection"
-            aria-label={clickToSelectMonth}>
+            aria-label={selectMonth}>
             {monthLabel}
           </button>
           <button
@@ -391,7 +391,7 @@ export const Calendar = ({
             onClick={handleToggleYearSelection}
             ref={selectYearEl}
             className="usa-date-picker__calendar__year-selection"
-            aria-label={clickToSelectYear}>
+            aria-label={selectYear}>
             {focusedYear}
           </button>
         </div>
@@ -416,7 +416,7 @@ export const Calendar = ({
             disabled={nextButtonsDisabled}></button>
         </div>
       </div>
-      <table className="usa-date-picker__calendar__table" role="presentation">
+      <table className="usa-date-picker__calendar__table">
         <thead>
           <tr>
             {dayOfWeekShortLabels.map((d, i) => (

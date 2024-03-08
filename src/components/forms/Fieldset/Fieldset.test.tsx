@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-jest.mock('../../../deprecation')
+vi.mock('../../../deprecation')
 import { Fieldset } from './Fieldset'
 
 describe('Fieldset component', () => {
@@ -24,6 +24,17 @@ describe('Fieldset component', () => {
 
     expect(myFieldset).toBeInTheDocument()
     expect(myFieldset).toHaveAttribute('aria-live', 'polite')
+  })
+
+  it('renders with required marker', () => {
+    const { queryByText } = render(
+      <Fieldset legend="Historical figures 1" requiredMarker>
+        My Fieldset
+      </Fieldset>
+    )
+    const marker = queryByText('*')
+    expect(marker).toBeInTheDocument()
+    expect(marker).toHaveClass('usa-hint--required')
   })
 
   describe('renders uswds classes', () => {

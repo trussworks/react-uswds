@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/// <reference types="vite/client" />
+
 declare module '*.png' {
   const content: any
   export default content
@@ -21,4 +24,10 @@ declare module '*.module.css' {
 declare module '*.module.scss' {
   const classes: { [key: string]: string }
   export default classes
+}
+
+declare namespace globalThis {
+  interface Window {
+    MSStream: object
+  }
 }

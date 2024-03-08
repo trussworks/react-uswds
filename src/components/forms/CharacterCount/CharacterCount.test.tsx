@@ -4,7 +4,9 @@ import { render, fireEvent } from '@testing-library/react'
 import { CharacterCount } from './CharacterCount'
 
 describe('CharacterCount component', () => {
-  afterEach(() => jest.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
 
   it('renders without errors', () => {
     const { getByRole } = render(
@@ -62,8 +64,8 @@ describe('CharacterCount component', () => {
     })
 
     it('calls own onChange and onBlur functions', () => {
-      const onBlur = jest.fn()
-      const onChange = jest.fn()
+      const onBlur = vi.fn()
+      const onChange = vi.fn()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -96,8 +98,21 @@ describe('CharacterCount component', () => {
         />
       )
       const message = getByTestId('characterCountMessage')
-      expect(message).toHaveClass('usa-character-count__message')
-      expect(message).toHaveAttribute('id', 'character-count-id-info')
+      expect(message).toHaveClass('usa-hint usa-character-count__status')
+      expect(message).toHaveAttribute('aria-hidden', 'true')
+    })
+
+    it('includes the screen reader message', () => {
+      const { getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="character-count"
+          maxLength={10}
+        />
+      )
+      const message = getByTestId('characterCountSRMessage')
+      expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
+      expect(message).toHaveAttribute('aria-live', 'polite')
     })
   })
 
@@ -165,8 +180,8 @@ describe('CharacterCount component', () => {
     })
 
     it('calls own onChange and onBlur functions', () => {
-      const onChange = jest.fn()
-      const onBlur = jest.fn()
+      const onChange = vi.fn()
+      const onBlur = vi.fn()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -202,8 +217,22 @@ describe('CharacterCount component', () => {
         />
       )
       const message = getByTestId('characterCountMessage')
-      expect(message).toHaveClass('usa-character-count__message')
-      expect(message).toHaveAttribute('id', 'character-count-info')
+      expect(message).toHaveClass('usa-character-count__status')
+      expect(message).toHaveAttribute('aria-hidden', 'true')
+    })
+
+    it('includes the screen reader message hint', () => {
+      const { getByTestId } = render(
+        <CharacterCount
+          id="character-count"
+          name="character-count"
+          maxLength={10}
+          isTextArea
+        />
+      )
+      const message = getByTestId('characterCountSRMessage')
+      expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
+      expect(message).toHaveAttribute('aria-live', 'polite')
     })
   })
 
@@ -219,8 +248,8 @@ describe('CharacterCount component', () => {
       expect(getByText('20 characters allowed')).toBeInTheDocument()
     })
 
-    it('updates message text with characters left onChange', () => {
-      const { getByRole, getByText } = render(
+    it('updates message text with characters left onChange', async () => {
+      const { getByRole, getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -232,17 +261,23 @@ describe('CharacterCount component', () => {
         target: { value: 'a' },
       })
 
-      expect(getByText('4 characters left')).toBeInTheDocument()
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('4 characters left')).toHaveLength(2)
+      expect(getAllByText('4 characters left')[0]).toBeInTheDocument()
 
       fireEvent.change(input, {
         target: { value: 'abcd' },
       })
 
-      expect(getByText('1 character left')).toBeInTheDocument()
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('1 character left')).toHaveLength(2)
+      expect(getAllByText('1 character left')[0]).toBeInTheDocument()
     })
 
-    it('updates message text with characters over the limit when expected ', () => {
-      const { getByRole, getByText } = render(
+    it('updates message text with characters over the limit when expected', async () => {
+      const { getByRole, getAllByText } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -255,16 +290,22 @@ describe('CharacterCount component', () => {
         target: { value: 'abcdef' },
       })
 
-      expect(getByText('1 character over limit')).toBeInTheDocument()
-      expect(getByText('1 character over limit')).toHaveClass(
-        'usa-character-count__message--invalid'
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('1 character over limit')).toHaveLength(2)
+      expect(getAllByText('1 character over limit')[0]).toBeInTheDocument()
+      expect(getAllByText('1 character over limit')[0]).toHaveClass(
+        'usa-character-count__status--invalid'
       )
 
       fireEvent.change(input, {
         target: { value: 'abcdefg' },
       })
 
-      expect(getByText('2 characters over limit')).toBeInTheDocument()
+      await new Promise((res) => setTimeout(res, 1000))
+
+      expect(getAllByText('2 characters over limit')).toHaveLength(2)
+      expect(getAllByText('2 characters over limit')[0]).toBeInTheDocument()
     })
 
     it('updates input validity', () => {
@@ -306,7 +347,7 @@ describe('CharacterCount component', () => {
         target: { value: 'abcdef' },
       })
       expect(getByTestId('characterCountMessage')).toHaveClass(
-        'usa-character-count__message--invalid'
+        'usa-character-count__status--invalid'
       )
 
       fireEvent.change(input, {
@@ -314,13 +355,13 @@ describe('CharacterCount component', () => {
       })
 
       expect(getByTestId('characterCountMessage')).not.toHaveClass(
-        'usa-character-count__message--invalid'
+        'usa-character-count__status--invalid'
       )
     })
   })
 
   describe('with custom message', () => {
-    const customMessage = jest.fn(
+    const customMessage = vi.fn(
       (count: number, maxCount: number): string =>
         `${maxCount - count} characters remain`
     )
@@ -360,7 +401,7 @@ describe('CharacterCount component', () => {
   })
 
   describe('with custom character count', () => {
-    const customCharacterCount = jest.fn(
+    const customCharacterCount = vi.fn(
       (text: string): number => text.length + 2
     )
 
@@ -388,14 +429,14 @@ describe('CharacterCount component', () => {
       )
 
       const input = getByRole('textbox')
-      expect(input).toBeValid
+      expect(input).toBeValid()
 
       fireEvent.change(input, {
         target: { value: 'abcad' },
       })
       fireEvent.blur(input)
 
-      expect(input).toBeInvalid
+      expect(input).toBeInvalid()
     })
   })
 })

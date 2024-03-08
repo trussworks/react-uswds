@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 
 type RangeInputProps = {
@@ -6,6 +6,8 @@ type RangeInputProps = {
   name: string
   min?: number
   max?: number
+  textPreposition?: string
+  textUnit?: string
   inputRef?:
     | string
     | ((instance: HTMLInputElement | null) => void)
@@ -17,47 +19,49 @@ type RangeInputProps = {
 export const RangeInput = ({
   className,
   inputRef,
+  textPreposition,
+  textUnit,
   ...inputProps
 }: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-range', className)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0
   const defaultMax = 100
-  const { min, max, defaultValue } = inputProps
+  const defaultVal = Math.round(defaultMax / 2)
+  const defaultUnit = ''
+  const defaultPreposition = 'of'
+  const {
+    min,
+    max,
+    defaultValue,
+    value: valueProp,
+    ...remainingInputProps
+  } = inputProps
   const rangeMin = min || defaultMin
   const rangeMax = max || defaultMax
-  const ariaMin = inputProps['aria-valuemin'] || rangeMin
-  const ariaMax = inputProps['aria-valuemax'] || rangeMax
-  const calculatedAriaValueNow =
-    inputProps['aria-valuenow'] ||
-    defaultValue ||
-    (rangeMax < rangeMin ? rangeMin : rangeMin + (rangeMax - rangeMin) / 2)
-  const convertValueType = (
-    value: string | number | readonly string[]
-  ): number | undefined => {
-    if (typeof value === 'number' || typeof value === 'string') {
-      return Number(value)
-    }
-    return undefined
-  }
-  const [ariaValue, setAriaValue] = React.useState<number | undefined>(
-    convertValueType(calculatedAriaValueNow)
-  )
-  const onValueChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    if (!inputProps['aria-valuenow']) setAriaValue(e.target.valueAsNumber)
-  }
+  const rangeUnit = textUnit || defaultUnit
+  const rangePreposition = textPreposition || defaultPreposition
+  const rangeValue =
+    valueProp !== undefined
+      ? valueProp
+      : defaultValue !== undefined
+        ? defaultValue
+        : defaultVal
+  const [value, setValue] = useState(rangeValue)
+  const callout = `${value} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
   return (
     <input
       data-testid="range"
+      aria-valuetext={callout}
       className={classes}
       ref={inputRef}
       type="range"
-      {...inputProps}
-      aria-valuemin={ariaMin}
-      aria-valuemax={ariaMax}
-      aria-valuenow={ariaValue}
-      onChange={(e): void => onValueChange(e)}
+      {...remainingInputProps}
+      min={rangeMin}
+      max={rangeMax}
+      value={value}
+      onChange={(e) => setValue(Number(e.target.value))}
     />
   )
 }

@@ -19,7 +19,6 @@ export default {
         type: 'select',
         options: [undefined, 'success', 'error'],
       },
-      defaultValue: undefined,
     },
   },
   parameters: {
@@ -56,45 +55,53 @@ type StorybookArguments = {
   validationStatus?: ValidationStatus
 }
 
-export const completeDatePicker = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Form onSubmit={argTypes.onSubmit}>
-    <FormGroup error={argTypes.validationStatus === 'error'}>
-      <Label
-        id="appointment-date-label"
-        htmlFor="appointment-date"
-        error={argTypes.validationStatus === 'error'}>
-        Appointment date
-      </Label>
-      <div className="usa-hint" id="appointment-date-hint">
-        mm/dd/yyyy
-      </div>
-      <DatePicker
-        id="appointment-date"
-        name="appointment-date"
-        aria-describedby="appointment-date-hint"
-        aria-labelledby="appointment-date-label"
-        disabled={argTypes.disabled}
-        validationStatus={argTypes.validationStatus}
-      />
-    </FormGroup>
-    <Label htmlFor="otherInput">Another unrelated input</Label>
-    <TextInput id="otherInput" name="otherInput" type="tel" />
-  </Form>
-)
+export const CompleteDatePicker = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Form onSubmit={argTypes.onSubmit}>
+      <FormGroup error={argTypes.validationStatus === 'error'}>
+        <Label
+          id="appointment-date-label"
+          htmlFor="appointment-date"
+          error={argTypes.validationStatus === 'error'}>
+          Appointment date
+        </Label>
+        <div className="usa-hint" id="appointment-date-hint">
+          mm/dd/yyyy
+        </div>
+        <DatePicker
+          id="appointment-date"
+          name="appointment-date"
+          aria-describedby="appointment-date-hint"
+          aria-labelledby="appointment-date-label"
+          disabled={argTypes.disabled}
+          validationStatus={argTypes.validationStatus}
+        />
+      </FormGroup>
+      <Label htmlFor="otherInput">Another unrelated input</Label>
+      <TextInput id="otherInput" name="otherInput" type="tel" />
+    </Form>
+  ),
+}
 
-export const defaultDatePicker = (): React.ReactElement => (
+export const DefaultDatePicker = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" />
 )
 
-export const disabled = (): React.ReactElement => (
+export const Disabled = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" disabled />
 )
 
-export const withDefaultValue = (): React.ReactElement => (
-  <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
-)
+export const WithDefaultValue = {
+  render: (): React.ReactElement => (
+    <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
+  ),
+
+  parameters: {
+    happo: {
+      waitForContent: '05/16/1988',
+    },
+  },
+}
 
 const withDefaultInvalidValue = (): React.ReactElement => (
   <DatePicker
@@ -104,14 +111,9 @@ const withDefaultInvalidValue = (): React.ReactElement => (
     minDate="2020-01-01"
   />
 )
-withDefaultValue.parameters = {
-  happo: {
-    waitForContent: '05/16/1988',
-  },
-}
 export { withDefaultInvalidValue }
 
-export const withMinMaxInSameMonth = (): React.ReactElement => (
+export const WithMinMaxInSameMonth = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -120,7 +122,7 @@ export const withMinMaxInSameMonth = (): React.ReactElement => (
   />
 )
 
-export const withMinMax = (): React.ReactElement => (
+export const WithMinMax = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -144,6 +146,6 @@ withRangeDate.parameters = {
 }
 export { withRangeDate }
 
-export const withLocalizations = (): React.ReactElement => (
+export const WithLocalizations = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />
 )

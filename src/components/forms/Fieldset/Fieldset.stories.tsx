@@ -5,6 +5,7 @@ import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { Radio } from '../Radio/Radio'
+import { RequiredMarker } from '../Label/RequiredMarker'
 
 export default {
   title: 'Components/Form elements/Fieldset',
@@ -22,7 +23,7 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const nameFieldset = (): React.ReactElement => (
+export const NameFieldset = (): React.ReactElement => (
   <Fieldset legend="Name" legendStyle="large">
     <Label htmlFor="title" hint=" (optional)">
       Title
@@ -39,7 +40,7 @@ export const nameFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const checkboxFieldset = (): React.ReactElement => (
+export const CheckboxFieldset = (): React.ReactElement => (
   <Fieldset legend="Historical figures 1" legendStyle="srOnly">
     <Checkbox
       id="truth"
@@ -69,37 +70,44 @@ export const checkboxFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const checkboxFieldsetWithDefaultLegend = (): React.ReactElement => (
-  <Fieldset legend="Historical figures 1">
-    <Checkbox
-      id="truth"
-      name="historical-figures-1"
-      value="truth"
-      defaultChecked
-      label="Sojourner Truth"
-    />
-    <Checkbox
-      id="douglass"
-      name="historical-figures-1"
-      value="douglass"
-      label="Frederick Douglass"
-    />
-    <Checkbox
-      id="washington"
-      name="historical-figures-1"
-      value="washington"
-      label="Booker T. Washington"
-    />
-    <Checkbox
-      id="carver"
-      name="historical-figures-1"
-      label="George Washington Carver"
-      disabled
-    />
-  </Fieldset>
+export const CheckboxFieldsetWithDefaultLegend = (): React.ReactElement => (
+  <>
+    <p>
+      Required fields are marked with an asterisk (<RequiredMarker />
+      ).
+    </p>
+    <Fieldset legend="Historical figures 1" requiredMarker>
+      <Checkbox
+        required
+        id="truth"
+        name="historical-figures-1"
+        value="truth"
+        defaultChecked
+        label="Sojourner Truth"
+      />
+      <Checkbox
+        id="douglass"
+        name="historical-figures-1"
+        value="douglass"
+        label="Frederick Douglass"
+      />
+      <Checkbox
+        id="washington"
+        name="historical-figures-1"
+        value="washington"
+        label="Booker T. Washington"
+      />
+      <Checkbox
+        id="carver"
+        name="historical-figures-1"
+        label="George Washington Carver"
+        disabled
+      />
+    </Fieldset>
+  </>
 )
 
-export const radioFieldset = (): React.ReactElement => (
+export const RadioFieldset = (): React.ReactElement => (
   <Fieldset legend="Historical figures 2" legendStyle="srOnly">
     <Radio
       id="stanton"
@@ -130,7 +138,7 @@ export const radioFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const radioFieldsetWithDefaultLegend = (): React.ReactElement => (
+export const RadioFieldsetWithDefaultLegend = (): React.ReactElement => (
   <Fieldset legend="Historical figures 2">
     <Radio
       id="stanton"

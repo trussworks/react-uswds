@@ -13,7 +13,7 @@ import { IdentifierLogos } from '../IdentifierLogos/IdentifierLogos'
 
 import { Link } from '../../Link/Link'
 
-import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 export default {
   title: 'Components/Identifier',
@@ -125,14 +125,15 @@ const testIdentifierGovContentSpanish = (
   </>
 )
 
-export const identifierDefault = (): React.ReactElement => (
+export const IdentifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`An official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
@@ -145,7 +146,7 @@ export const identifierDefault = (): React.ReactElement => (
   </Identifier>
 )
 
-export const identifierSpanish = (): React.ReactElement => (
+export const IdentifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -165,7 +166,7 @@ export const identifierSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const multipleParentsAndLogos = (): React.ReactElement => (
+export const MultipleParentsAndLogos = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -173,7 +174,8 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`An official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
         {` and the `}
         <Link href="#">Other Test Agency Name</Link>
@@ -188,7 +190,7 @@ export const multipleParentsAndLogos = (): React.ReactElement => (
   </Identifier>
 )
 
-export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
+export const MultipleParentsAndLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -209,7 +211,7 @@ export const multipleParentsAndLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
+export const MoreThanTwoParentsAndLogos = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -218,7 +220,8 @@ export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`An official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
         {`, `}
         <Link href="#">Second Test Agency Name</Link>
@@ -235,11 +238,12 @@ export const moreThanTwoParentsAndLogos = (): React.ReactElement => (
   </Identifier>
 )
 
-export const noLogosEnglish = (): React.ReactElement => (
+export const NoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`An official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
       </IdentifierIdentity>
     </IdentifierMasthead>
@@ -252,7 +256,7 @@ export const noLogosEnglish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const noLogosSpanish = (): React.ReactElement => (
+export const NoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierIdentity domain="domain.edu.mil.gov">
@@ -269,14 +273,15 @@ export const noLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const taxDisclaimerEnglish = (): React.ReactElement => (
+export const TaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
         <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
       </IdentifierLogos>
       <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`An official website of the `}
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
         <Link href="#">Test Agency Name</Link>
         {`. Produced and published at taxpayer expense.`}
       </IdentifierIdentity>
@@ -290,7 +295,7 @@ export const taxDisclaimerEnglish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const taxDisclaimerSpanish = (): React.ReactElement => (
+export const TaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -311,7 +316,7 @@ export const taxDisclaimerSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const taxDisclaimerAndMultipleParentsAndLogos =
+export const TaxDisclaimerAndMultipleParentsAndLogos =
   (): React.ReactElement => (
     <Identifier>
       <IdentifierMasthead aria-label="Agency identifier">
@@ -320,7 +325,8 @@ export const taxDisclaimerAndMultipleParentsAndLogos =
           <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
         </IdentifierLogos>
         <IdentifierIdentity domain="domain.edu.mil.gov">
-          {`An official website of the `}
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
           <Link href="#">Test Agency Name</Link>
           {` and the `}
           <Link href="#">Other Test Agency Name</Link>

@@ -31,8 +31,10 @@ Source: https://designsystem.digital.gov/components/table/
         type: 'select',
         options: ['default', 'headers'],
       },
-      defaultValue: 'default',
     },
+  },
+  args: {
+    stackedStyle: 'default',
   },
 }
 
@@ -218,27 +220,27 @@ const scrollableTestContent = (
   </>
 )
 
-export const bordered = (): React.ReactElement => (
+export const Bordered = (): React.ReactElement => (
   <Table bordered>{testContent}</Table>
 )
 
-export const borderless = (): React.ReactElement => (
+export const Borderless = (): React.ReactElement => (
   <Table bordered={false}>{testContent}</Table>
 )
 
-export const borderedWithCaption = (): React.ReactElement => (
+export const BorderedWithCaption = (): React.ReactElement => (
   <Table bordered caption="This is a bordered table with a caption">
     {testContent}
   </Table>
 )
 
-export const borderlessWithCaption = (): React.ReactElement => (
+export const BorderlessWithCaption = (): React.ReactElement => (
   <Table bordered={false} caption="This is a borderless table with a caption">
     {testContent}
   </Table>
 )
 
-export const contentWidth = (): React.ReactElement => (
+export const ContentWidth = (): React.ReactElement => (
   <Table bordered caption="This table demonstrates the default layout (width)">
     <thead>
       <tr>
@@ -267,7 +269,7 @@ export const contentWidth = (): React.ReactElement => (
   </Table>
 )
 
-export const fullWidth = (): React.ReactElement => (
+export const FullWidth = (): React.ReactElement => (
   <Table
     bordered
     caption="This table uses the fullWidth prop to increase to 100% width"
@@ -299,7 +301,7 @@ export const fullWidth = (): React.ReactElement => (
   </Table>
 )
 
-export const fixed = (): React.ReactElement => (
+export const Fixed = (): React.ReactElement => (
   <Table
     bordered
     caption="This table uses the fixed prop to force equal width columns"
@@ -332,7 +334,7 @@ export const fixed = (): React.ReactElement => (
   </Table>
 )
 
-export const scrollable = (): React.ReactElement => (
+export const Scrollable = (): React.ReactElement => (
   <>
     <Table scrollable bordered striped caption="This is a scrollable table">
       {scrollableTestContent}
@@ -341,62 +343,70 @@ export const scrollable = (): React.ReactElement => (
   </>
 )
 
-export const striped = (argTypes: StorybookArguments): React.ReactElement => (
-  <Table striped bordered={argTypes.bordered} caption="This is a striped table">
-    {testContent}
-  </Table>
-)
+export const Striped = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table
+      striped
+      bordered={argTypes.bordered}
+      caption="This is a striped table">
+      {testContent}
+    </Table>
+  ),
+}
 
-export const compact = (argTypes: StorybookArguments): React.ReactElement => (
-  <Table
-    compact
-    bordered={argTypes.bordered}
-    striped={argTypes.striped}
-    caption="This is a compact table">
-    {testContent}
-  </Table>
-)
+export const Compact = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table
+      compact
+      bordered={argTypes.bordered}
+      striped={argTypes.striped}
+      caption="This is a compact table">
+      {testContent}
+    </Table>
+  ),
+}
 
-export const stackedStylesDemo = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
-  <Table
-    bordered={argTypes.bordered}
-    stackedStyle={argTypes.stackedStyle}
-    caption="This is a stacked table (when on a mobile-width screen)">
-    <thead>
-      <tr>
-        <th scope="col">Document title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Year</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th data-label="Document title" scope="row">
-          Declaration of Independence
-        </th>
-        <td data-label="Description">
-          Statement adopted by the Continental Congress declaring independence
-          from the British Empire.
-        </td>
-        <td data-label="Year">1776</td>
-      </tr>
-      <tr>
-        <th data-label="Document title" scope="row">
-          Bill of Rights
-        </th>
-        <td data-label="Description">
-          The first ten amendments of the U.S. Constitution guaranteeing rights
-          and freedoms.
-        </td>
-        <td data-label="Year">1791</td>
-      </tr>
-    </tbody>
-  </Table>
-)
-stackedStylesDemo.parameters = {
-  viewport: {
-    defaultViewport: 'iphone6',
+export const StackedStylesDemo = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table
+      bordered={argTypes.bordered}
+      stackedStyle={argTypes.stackedStyle}
+      caption="This is a stacked table (when on a mobile-width screen)">
+      <thead>
+        <tr>
+          <th scope="col">Document title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-label="Document title" scope="row">
+            Declaration of Independence
+          </th>
+          <td data-label="Description">
+            Statement adopted by the Continental Congress declaring independence
+            from the British Empire.
+          </td>
+          <td data-label="Year">1776</td>
+        </tr>
+        <tr>
+          <th data-label="Document title" scope="row">
+            Bill of Rights
+          </th>
+          <td data-label="Description">
+            The first ten amendments of the U.S. Constitution guaranteeing
+            rights and freedoms.
+          </td>
+          <td data-label="Year">1791</td>
+        </tr>
+      </tbody>
+    </Table>
+  ),
+
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone6',
+    },
   },
 }
