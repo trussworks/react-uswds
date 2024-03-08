@@ -17,12 +17,12 @@ Source: https://designsystem.digital.gov/components/tag/
   },
 }
 
-export const defaultTag = (): React.ReactElement => <Tag>My Tag</Tag>
+export const DefaultTag = (): React.ReactElement => <Tag>My Tag</Tag>
 
-export const customBg = (): React.ReactElement => (
+export const CustomBg = (): React.ReactElement => (
   <Tag background="#e44608">My Tag</Tag>
 )
 
-export const customClass = (): React.ReactElement => (
+export const CustomClass = (): React.ReactElement => (
   <Tag className="custom-class">My Tag</Tag>
 )

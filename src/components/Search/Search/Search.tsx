@@ -19,6 +19,7 @@ type SearchInputProps = {
   placeholder?: string
   label?: React.ReactNode
   i18n?: SearchLocalization
+  buttonAriaLabel?: string
   inputProps?: OptionalTextInputProps
 }
 
@@ -31,6 +32,7 @@ export const Search = ({
   label = 'Search',
   inputId = 'search-field',
   i18n,
+  buttonAriaLabel,
   inputProps,
   ...formProps
 }: SearchInputProps & OptionalFormProps): React.ReactElement => {
@@ -52,7 +54,7 @@ export const Search = ({
         label={label}
         defaultValue={formProps.defaultValue}
       />
-      <SearchButton size={size} i18n={i18n} />
+      <SearchButton size={size} i18n={i18n} buttonAriaLabel={buttonAriaLabel} />
     </Form>
   )
 }

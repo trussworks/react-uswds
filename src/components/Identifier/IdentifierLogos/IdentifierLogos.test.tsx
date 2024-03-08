@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { IdentifierLogos } from './IdentifierLogos'
 
-import dotGovIcon from '@uswds/uswds/src/img/icon-dot-gov.svg'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 const testIdentifierLogo = (
   <img

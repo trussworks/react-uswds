@@ -55,7 +55,7 @@ type StorybookArguments = {
   validationStatus?: ValidationStatus
 }
 
-export const completeDatePicker = {
+export const CompleteDatePicker = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
     <Form onSubmit={argTypes.onSubmit}>
       <FormGroup error={argTypes.validationStatus === 'error'}>
@@ -83,15 +83,15 @@ export const completeDatePicker = {
   ),
 }
 
-export const defaultDatePicker = (): React.ReactElement => (
+export const DefaultDatePicker = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" />
 )
 
-export const disabled = (): React.ReactElement => (
+export const Disabled = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" disabled />
 )
 
-export const withDefaultValue = {
+export const WithDefaultValue = {
   render: (): React.ReactElement => (
     <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
   ),
@@ -113,7 +113,7 @@ const withDefaultInvalidValue = (): React.ReactElement => (
 )
 export { withDefaultInvalidValue }
 
-export const withMinMaxInSameMonth = (): React.ReactElement => (
+export const WithMinMaxInSameMonth = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -122,7 +122,7 @@ export const withMinMaxInSameMonth = (): React.ReactElement => (
   />
 )
 
-export const withMinMax = (): React.ReactElement => (
+export const WithMinMax = (): React.ReactElement => (
   <DatePicker
     id="birthdate"
     name="birthdate"
@@ -146,6 +146,6 @@ withRangeDate.parameters = {
 }
 export { withRangeDate }
 
-export const withLocalizations = (): React.ReactElement => (
+export const WithLocalizations = (): React.ReactElement => (
   <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />
 )

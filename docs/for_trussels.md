@@ -4,7 +4,11 @@ Below is documentation specifically to provide guidance for contributors who wor
 
 ## Internal Communication
 
-We have a Truss Slack channel dedicated to discussing this project (**#react-uswds**), as well as a channel for automated updates such as new issues, pull requests, and releases (**#react-uswds-feed**). Anyone is welcome to join and participate in these channels, whether or not they are an active maintainer.
+We have a Truss Slack channel dedicated to discussing this project (**#g-uswds**), as well as a channel for automated updates such as new issues, pull requests, and releases (**#react-uswds-feed**). Anyone is welcome to join and participate in these channels, whether or not they are an active maintainer.
+
+## External Communication
+
+We also have a public Slack channel (#g-uswds-public) for the community to engage with Trussels, similar to the [repo's Discussions](https://github.com/trussworks/react-uswds/discussions). This is particularly helpful for live conversations and rapid async discussions that a public Discussion or Issue might not be appropriate for. Participation in the channel should abide by our [code of conduct](../CODE_OF_CONDUCT.md) and requires a direct email invitation from a Trussel via Slack.
 
 ## Active Maintainers
 

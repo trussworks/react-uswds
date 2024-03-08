@@ -12,7 +12,7 @@ describe('NavMenuButton component', () => {
   })
 
   it('implements an onClick handler', () => {
-    const onClickFn = jest.fn()
+    const onClickFn = vi.fn()
     const { getByText } = render(
       <NavMenuButton label={label} onClick={onClickFn} />
     )

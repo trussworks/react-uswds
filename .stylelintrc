@@ -1,10 +1,12 @@
 {
-  "plugins": ["stylelint-scss", "stylelint-prettier"],
+  "plugins": ["stylelint-prettier"],
   "rules": {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "prettier/prettier": true,
-    "selector-class-pattern": ""
+    "selector-class-pattern": "",
+    "scss/function-no-unknown": null,
+    "at-rule-empty-line-before": null
   },
-  "extends": ["stylelint-config-recommended", "stylelint-prettier/recommended", "stylelint-config-sass-guidelines", "stylelint-config-css-modules"],
+  "extends": ["stylelint-config-recommended", "stylelint-prettier/recommended", "stylelint-config-sass-guidelines", "stylelint-config-css-modules", "stylelint-config-standard-scss"]
 }
