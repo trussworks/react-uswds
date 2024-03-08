@@ -6,6 +6,7 @@ type LanguageSelectorButtonProps = {
   labelAttr?: string
   isOpen?: boolean
   onToggle: () => void
+  controls?: string
 }
 
 export const LanguageSelectorButton = ({
@@ -14,6 +15,7 @@ export const LanguageSelectorButton = ({
   isOpen,
   onToggle,
   className,
+  controls,
   ...buttonProps
 }: LanguageSelectorButtonProps &
   JSX.IntrinsicElements['button']): React.ReactElement => {
@@ -28,7 +30,7 @@ export const LanguageSelectorButton = ({
       data-testid="languageSelectorButton"
       className={classes}
       aria-expanded={isOpen}
-      aria-controls="language-options"
+      aria-controls={controls}
       onClick={(): void => onToggle()}
       type="button"
       {...buttonProps}>
