@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from '@uswds/uswds/src/img/logo-img.png'
-import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/img/logo-img.png'
+import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
 
 import {
   GovBanner,
@@ -35,7 +35,7 @@ import {
 } from '../../index'
 
 export default {
-  title: 'Page Templates/Not Found Page',
+  title: 'Page Templates/Not Found',
   parameters: {
     options: {
       showPanel: false,

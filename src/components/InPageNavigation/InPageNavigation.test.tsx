@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen, render, getByRole } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 import { InPageNavigation } from './InPageNavigation'
 import { HeadingLevel } from '../../types/headingLevel'
 import { CONTENT } from './content'
@@ -33,7 +33,7 @@ describe('InPageNavigation component', () => {
 
   beforeEach(() => {
     // IntersectionObserver isn't available in test environment
-    const mockIntersectionObserver = jest.fn()
+    const mockIntersectionObserver = vi.fn()
     mockIntersectionObserver.mockReturnValue({
       observe: () => null,
       unobserve: () => null,

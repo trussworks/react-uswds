@@ -3,14 +3,14 @@ import { render, screen } from '@testing-library/react'
 
 import { ModalRef } from './Modal'
 import { ModalToggleButton } from './ModalToggleButton'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 describe('ModalToggleButton', () => {
   it('renders a button with the modal control attributes', () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
-      toggleModal: jest.fn().mockReturnValue(true),
+      toggleModal: vi.fn().mockReturnValue(true),
     }
 
     const modalRef: React.RefObject<ModalRef> = {
@@ -30,7 +30,7 @@ describe('ModalToggleButton', () => {
   })
 
   it('throws an error if clicked when the modal ref is null', async () => {
-    const consoleSpy = jest.spyOn(console, 'error')
+    const consoleSpy = vi.spyOn(console, 'error')
 
     const modalRef: React.RefObject<ModalRef> = {
       current: null,
@@ -49,7 +49,7 @@ describe('ModalToggleButton', () => {
     const mockRef: ModalRef = {
       modalIsOpen: false,
       modalId: 'testModal',
-      toggleModal: jest.fn().mockReturnValue(true),
+      toggleModal: vi.fn().mockReturnValue(true),
     }
 
     const modalRef: React.RefObject<ModalRef> = {
@@ -70,7 +70,7 @@ describe('ModalToggleButton', () => {
       const mockRef: ModalRef = {
         modalIsOpen: false,
         modalId: 'testModal',
-        toggleModal: jest.fn().mockReturnValue(true),
+        toggleModal: vi.fn().mockReturnValue(true),
       }
 
       const modalRef: React.RefObject<ModalRef> = {
@@ -92,14 +92,14 @@ describe('ModalToggleButton', () => {
       const mockRef: ModalRef = {
         modalIsOpen: false,
         modalId: 'testModal',
-        toggleModal: jest.fn().mockReturnValue(true),
+        toggleModal: vi.fn().mockReturnValue(true),
       }
 
       const modalRef: React.RefObject<ModalRef> = {
         current: mockRef,
       }
 
-      const handleClick = jest.fn()
+      const handleClick = vi.fn()
 
       render(
         <ModalToggleButton modalRef={modalRef} opener onClick={handleClick}>
@@ -119,7 +119,7 @@ describe('ModalToggleButton', () => {
       const mockRef: ModalRef = {
         modalIsOpen: false,
         modalId: 'testModal',
-        toggleModal: jest.fn().mockReturnValue(true),
+        toggleModal: vi.fn().mockReturnValue(true),
       }
 
       const modalRef: React.RefObject<ModalRef> = {
@@ -141,14 +141,14 @@ describe('ModalToggleButton', () => {
       const mockRef: ModalRef = {
         modalIsOpen: false,
         modalId: 'testModal',
-        toggleModal: jest.fn().mockReturnValue(true),
+        toggleModal: vi.fn().mockReturnValue(true),
       }
 
       const modalRef: React.RefObject<ModalRef> = {
         current: mockRef,
       }
 
-      const handleClick = jest.fn()
+      const handleClick = vi.fn()
 
       render(
         <ModalToggleButton modalRef={modalRef} closer onClick={handleClick}>

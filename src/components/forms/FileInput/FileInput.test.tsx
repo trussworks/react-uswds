@@ -1,6 +1,6 @@
 import React from 'react'
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import { FileInput, FileInputRef } from './FileInput'
 import {
@@ -56,12 +56,10 @@ describe('FileInput component', () => {
   })
 
   it('does not display drag text if on IE11', () => {
-    jest
-      .spyOn(navigator, 'userAgent', 'get')
-      .mockImplementation(
-        () =>
-          'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
-      )
+    vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(
+      () =>
+        'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    )
     const { getByTestId } = render(<FileInput {...testProps} />)
 
     expect(getByTestId('file-input-instructions')).not.toHaveTextContent(
@@ -70,16 +68,14 @@ describe('FileInput component', () => {
     expect(getByTestId('file-input-instructions')).toHaveTextContent(
       /choose from folder/i
     )
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('does not display drag text if on Edge', () => {
-    jest
-      .spyOn(navigator, 'userAgent', 'get')
-      .mockImplementation(
-        () =>
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582'
-      )
+    vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(
+      () =>
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582'
+    )
     const { getByTestId } = render(<FileInput {...testProps} />)
 
     expect(getByTestId('file-input-instructions')).not.toHaveTextContent(
@@ -88,7 +84,7 @@ describe('FileInput component', () => {
     expect(getByTestId('file-input-instructions')).toHaveTextContent(
       /choose from folder/i
     )
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('displays custom text when given', () => {
@@ -339,7 +335,7 @@ describe('FileInput component', () => {
   })
 
   it('implements an onChange handler when passed as a prop', async () => {
-    const mockOnChange = jest.fn()
+    const mockOnChange = vi.fn()
     const { getByTestId } = render(
       <FileInput {...testProps} onChange={mockOnChange} />
     )
@@ -351,7 +347,7 @@ describe('FileInput component', () => {
   })
 
   it('implements an onDrop handler when passed as a prop', () => {
-    const mockOnDrop = jest.fn()
+    const mockOnDrop = vi.fn()
     const { getByTestId } = render(
       <FileInput {...testProps} onDrop={mockOnDrop} />
     )

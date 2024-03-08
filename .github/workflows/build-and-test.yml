@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [ '16', '18' ]
+        node: [ '18' ]
 
     name: Node ${{ matrix.node }} tests
 
@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run Jest tests with coverage
-        run: yarn test:coverage -w 1
+      - name: Run tests with coverage
+        run: yarn test:coverage
 
       - name: Run node server side tests
         run: yarn test:serverside

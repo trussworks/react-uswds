@@ -7,7 +7,6 @@
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
 [![uswds version](https://img.shields.io/github/package-json/dependency-version/trussworks/react-uswds/dev/@uswds/uswds)](https://www.npmjs.com/package/@uswds/uswds)
 
-[![CircleCI](https://img.shields.io/circleci/build/github/trussworks/react-uswds/main)](https://circleci.com/gh/trussworks/react-uswds)
 [![npm downloads](https://img.shields.io/npm/dm/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
 
 **ReactUSWDS Component Library**
@@ -21,6 +20,8 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 - [@trussworks/react-uswds](#trussworksreact-uswds)
   - [Install](#install)
   - [Usage](#usage)
+    - [USWDS](#uswds)
+    - [NodeJS](#nodejs)
     - [Pre-Release](#pre-release)
   - [Background](#background)
     - [Non-Goals](#non-goals)

@@ -45,8 +45,8 @@ export const RangeInput = ({
     valueProp !== undefined
       ? valueProp
       : defaultValue !== undefined
-      ? defaultValue
-      : defaultVal
+        ? defaultValue
+        : defaultVal
   const [value, setValue] = useState(rangeValue)
   const callout = `${value} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
