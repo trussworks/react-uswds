@@ -26,7 +26,7 @@ describe('SearchButton component', () => {
 
   describe('renders size classes', () => {
     beforeEach(() => {
-      jest.clearAllMocks()
+      vi.clearAllMocks()
     })
     it.each([
       ['big', 'usa-search--big'],

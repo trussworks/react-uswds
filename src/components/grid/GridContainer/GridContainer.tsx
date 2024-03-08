@@ -44,7 +44,9 @@ export function GridContainer(
 export function GridContainer<T>(
   props: CustomGridContainerProps<T>
 ): React.ReactElement
-export function GridContainer<FCProps = DefaultGridContainerProps>(
+export function GridContainer<
+  FCProps extends React.PropsWithChildren<object> = DefaultGridContainerProps,
+>(
   props: DefaultGridContainerProps | CustomGridContainerProps<FCProps>
 ): React.ReactElement {
   if (isCustomProps(props)) {

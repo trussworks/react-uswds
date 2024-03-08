@@ -1,5 +1,5 @@
-// Import react-uswds scss
-@import '../src/styles/index.scss';
+@forward '../src/styles/uswds-theme';
+@use 'uswds-core' as *;
 
 // Add custom styles for storybook implementation
 .custom-class {

@@ -2,7 +2,6 @@ import React from 'react'
 import { InPageNavigation } from './InPageNavigation'
 import { CONTENT } from './content'
 import { HeadingLevel } from '../../types/headingLevel'
-import classNames from 'classnames'
 
 export default {
   title: 'Components/In-Page Navigation',

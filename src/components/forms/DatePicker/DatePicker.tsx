@@ -314,8 +314,7 @@ export const DatePicker = ({
         <div
           data-testid="date-picker-calendar"
           className="usa-date-picker__calendar"
-          role="dialog"
-          aria-modal="true"
+          role="application"
           hidden={!showCalendar}
           data-value={calendarDisplayValue && formatDate(calendarDisplayValue)}
           style={{ top: `${calendarPosY}px` }}

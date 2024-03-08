@@ -29,11 +29,11 @@ import {
   Button,
 } from '../../index'
 
-import logoImg from '@uswds/uswds/src/img/logo-img.png'
-import circleSvg from '@uswds/uswds/src/img/circle-gray-20.svg'
+import logoImg from '@uswds/uswds/img/logo-img.png'
+import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
 
 export default {
-  title: 'Page Templates/Authentication Pages',
+  title: 'Page Templates/Sign In',
   parameters: {
     options: {
       showPanel: false,
@@ -229,7 +229,8 @@ export const SignIn = (): React.ReactElement => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain="domain.gov">
-            An official website of the <Link href="#">{`<Parent agency>`}</Link>
+            <span aria-hidden="true">An</span> official website of the{' '}
+            <Link href="#">{`<Parent agency>`}</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>

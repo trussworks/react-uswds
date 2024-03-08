@@ -1,6 +1,5 @@
 import React from 'react'
 import { Label } from './Label'
-import { RequiredMarker } from './RequiredMarker'
 
 export default {
   title: 'Components/Form elements/Label',
@@ -18,23 +17,23 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const defaultLabel = (): React.ReactElement => (
+export const DefaultLabel = (): React.ReactElement => (
   <Label htmlFor="testInput">Text input label</Label>
 )
 
-export const error = (): React.ReactElement => (
+export const Error = (): React.ReactElement => (
   <Label htmlFor="testInputError" error>
     Text input error
   </Label>
 )
 
-export const withHint = (): React.ReactElement => (
+export const WithHint = (): React.ReactElement => (
   <Label htmlFor="testInputHint" hint={<> (optional)</>}>
     Text input
   </Label>
 )
 
-export const withRequiredMarker = (): React.ReactElement => (
+export const WithRequiredMarker = (): React.ReactElement => (
   <Label htmlFor="testInputRequired" requiredMarker>
     Text input
   </Label>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { LanguageSelector, LanguageDefinition } from './LanguageSelector'
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 
 export default {
   title: 'Components/LanguageSelector',
@@ -22,9 +22,7 @@ Source: https://designsystem.digital.gov/components/language-selector/
   },
 }
 
-const TwoLanguagesTemplate: ComponentStory<typeof LanguageSelector> = (
-  args
-) => {
+const TwoLanguagesTemplate: StoryFn<typeof LanguageSelector> = (args) => {
   const [lang, setLang] = useState<string | undefined>(args.displayLang)
 
   const languagesDisplayProp: LanguageDefinition[] = [
@@ -53,7 +51,7 @@ LanguagesDisplayPropSandbox.args = {
   displayLang: `en`,
 }
 
-const MoreThanTwoLanguagesTemplate: ComponentStory<typeof LanguageSelector> = (
+const MoreThanTwoLanguagesTemplate: StoryFn<typeof LanguageSelector> = (
   args
 ) => {
   const [lang, setLang] = useState<string | undefined>(args.displayLang)

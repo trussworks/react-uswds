@@ -29,14 +29,14 @@ type StorybookArguments = {
   onDrop: React.DragEventHandler<Element>
 }
 
-export const singleFileInput = (): React.ReactElement => (
+export const SingleFileInput = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-single">Input accepts a single file</Label>
     <FileInput id="file-input-single" name="file-input-single" />
   </FormGroup>
 )
 
-export const acceptTextAndPDF = (): React.ReactElement => (
+export const AcceptTextAndPDF = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-specific">
       Input accepts only specific file types
@@ -54,7 +54,7 @@ export const acceptTextAndPDF = (): React.ReactElement => (
   </FormGroup>
 )
 
-export const acceptImages = (): React.ReactElement => (
+export const AcceptImages = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-wildcard">Input accepts any kind of image</Label>
     <span className="usa-hint" id="file-input-wildcard-hint">
@@ -70,7 +70,7 @@ export const acceptImages = (): React.ReactElement => (
   </FormGroup>
 )
 
-export const multipleFilesInput = (): React.ReactElement => (
+export const MultipleFilesInput = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-multiple">Input accepts multiple files</Label>
     <span className="usa-hint" id="file-input-multiple-hint">
@@ -85,7 +85,7 @@ export const multipleFilesInput = (): React.ReactElement => (
   </FormGroup>
 )
 
-export const withError = (): React.ReactElement => (
+export const WithError = (): React.ReactElement => (
   <div style={{ marginLeft: '1.25em' }}>
     <FormGroup error>
       <Label htmlFor="file-input-error" error>
@@ -106,60 +106,60 @@ export const withError = (): React.ReactElement => (
   </div>
 )
 
-export const disabled = (): React.ReactElement => (
+export const Disabled = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-disabled">Input in a disabled state</Label>
     <FileInput id="file-input-disabled" name="file-input-disabled" disabled />
   </FormGroup>
 )
 
-export const withRefAndCustomHandlers = (
-  argTypes: StorybookArguments
-): React.ReactElement => {
-  const [files, setFiles] = useState<FileList | null>(null)
-  const fileInputRef = useRef<FileInputRef>(null)
+export const WithRefAndCustomHandlers = {
+  render: (argTypes: StorybookArguments): React.ReactElement => {
+    const [files, setFiles] = useState<FileList | null>(null)
+    const fileInputRef = useRef<FileInputRef>(null)
 
-  const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
+    const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    argTypes.onChange(e)
-    setFiles(e.target?.files)
-  }
-
-  const fileList = []
-  if (files) {
-    for (let i = 0; i < files?.length; i++) {
-      fileList.push(<li key={`file_${i}`}>{files?.[Number(i)].name}</li>)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+      argTypes.onChange(e)
+      setFiles(e.target?.files)
     }
-  }
 
-  return (
-    <>
-      <FormGroup>
-        <Label htmlFor="file-input-async">
-          Input implements custom handlers
-        </Label>
-        <FileInput
-          id="file-input-async"
-          name="file-input-async"
-          multiple
-          onChange={handleChange}
-          onDrop={argTypes.onDrop}
-          ref={fileInputRef}
-        />
-      </FormGroup>
+    const fileList = []
+    if (files) {
+      for (let i = 0; i < files?.length; i++) {
+        fileList.push(<li key={`file_${i}`}>{files?.[Number(i)].name}</li>)
+      }
+    }
 
-      <button type="button" onClick={handleClearFiles}>
-        Clear files
-      </button>
+    return (
+      <>
+        <FormGroup>
+          <Label htmlFor="file-input-async">
+            Input implements custom handlers
+          </Label>
+          <FileInput
+            id="file-input-async"
+            name="file-input-async"
+            multiple
+            onChange={handleChange}
+            onDrop={argTypes.onDrop}
+            ref={fileInputRef}
+          />
+        </FormGroup>
 
-      <p>{files?.length || 0} files added:</p>
-      <ul>{fileList}</ul>
-    </>
-  )
+        <button type="button" onClick={handleClearFiles}>
+          Clear files
+        </button>
+
+        <p>{files?.length || 0} files added:</p>
+        <ul>{fileList}</ul>
+      </>
+    )
+  },
 }
 
-export const customText = (): React.ReactElement => (
+export const CustomText = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="file-input-single">La entrada acepta un solo archivo</Label>
     <FileInput

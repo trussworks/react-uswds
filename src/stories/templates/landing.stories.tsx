@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from '@uswds/uswds/src/img/logo-img.png'
-import circleImg from '@uswds/uswds/src/img/circle-124.png'
+import logoImg from '@uswds/uswds/img/logo-img.png'
+import circleImg from '@uswds/uswds/img/circle-124.png'
 
 import { GovBanner, GridContainer, Grid, MediaBlockBody } from '../../index'
 
@@ -167,8 +167,7 @@ export const LandingPage = (): React.ReactElement => {
         Skip to main content
       </a>
       <GovBanner />
-      <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
-      <Header extended>
+      <Header extended showMobileOverlay={mobileNavOpen}>
         <div className="usa-navbar">
           <Title id="extended-logo">
             <a href="/" title="Home" aria-label="Home">

@@ -6,6 +6,7 @@ export type HeaderProps = {
   extended?: boolean
   basicWithMegaMenu?: boolean
   children: React.ReactNode
+  showMobileOverlay?: boolean
 }
 
 export const Header = ({
@@ -13,6 +14,7 @@ export const Header = ({
   extended,
   basicWithMegaMenu,
   children,
+  showMobileOverlay,
   className,
   ...headerProps
 }: HeaderProps & JSX.IntrinsicElements['header']): React.ReactElement => {
@@ -25,10 +27,18 @@ export const Header = ({
     },
     className
   )
+  const overlayClasses = classnames('usa-overlay', {
+    'is-visible': showMobileOverlay,
+  })
 
   return (
-    <header data-testid="header" className={classes} {...headerProps}>
-      {children}
-    </header>
+    <>
+      {showMobileOverlay !== undefined && (
+        <div className={overlayClasses} data-testid="overlay"></div>
+      )}
+      <header data-testid="header" className={classes} {...headerProps}>
+        {children}
+      </header>
+    </>
   )
 }

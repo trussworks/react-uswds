@@ -300,6 +300,26 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jhancock532",
+      "name": "James Hancock",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18164832?v=4",
+      "profile": "https://jhancock532.github.io/",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "jpandersen87",
+      "name": "Joseph Andersen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12385932?v=4",
+      "profile": "https://github.com/jpandersen87",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,

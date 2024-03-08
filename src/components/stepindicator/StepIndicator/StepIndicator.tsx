@@ -16,6 +16,8 @@ export type StepIndicatorProps = {
     HTMLHeadingElement
   >
   headingLevel: HeadingLevel
+  stepText?: string
+  ofText?: string
 }
 export const StepIndicator = (
   props: StepIndicatorProps
@@ -30,6 +32,8 @@ export const StepIndicator = (
     listProps,
     headingProps,
     headingLevel,
+    stepText = 'Step',
+    ofText = 'of',
   } = props
 
   const Heading = headingLevel
@@ -84,12 +88,14 @@ export const StepIndicator = (
       <div className="usa-step-indicator__header">
         <Heading className={headingClasses} {...remainingHeadingProps}>
           <span className="usa-step-indicator__heading-counter">
-            <span className="usa-sr-only">Step</span>
+            <span className="usa-sr-only" data-testid="step-text">
+              {stepText}
+            </span>
             <span className="usa-step-indicator__current-step">
               {currentStepNumber}
             </span>
             &nbsp;
-            <span className="usa-step-indicator__total-steps">{`of ${totalNumberOfSteps}`}</span>
+            <span className="usa-step-indicator__total-steps">{`${ofText} ${totalNumberOfSteps}`}</span>
             &nbsp;
           </span>
           <span className="usa-step-indicator__heading-text">

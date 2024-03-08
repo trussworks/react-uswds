@@ -2,6 +2,76 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/trussworks/react-uswds/compare/7.0.0...8.0.0) (2024-03-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716))
+
+### Features
+
+* Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716)) ([17dde0a](https://github.com/trussworks/react-uswds/commit/17dde0a03c6c23b2e145b78ee8ef3faf86867431))
+
+
+### Bug Fixes
+
+* replace card button with link ([#2750](https://github.com/trussworks/react-uswds/issues/2750)) ([59d5f14](https://github.com/trussworks/react-uswds/commit/59d5f14b85ae96ee4fd5c89c6084bbc1c663d1e7))
+
+
+### Documentation & Examples
+
+* Made storybook docs available again, small org changes elsewhere ([#2795](https://github.com/trussworks/react-uswds/issues/2795)) ([e77fe30](https://github.com/trussworks/react-uswds/commit/e77fe30f7feaf8a52816ade8fad93923b5a0e7fb))
+* removed circleci references ([#2777](https://github.com/trussworks/react-uswds/issues/2777)) ([b3e79f2](https://github.com/trussworks/react-uswds/commit/b3e79f2fe4c5d043af0053cf41d288dfe8758cd9))
+
+## [7.0.0](https://github.com/trussworks/react-uswds/compare/6.2.0...7.0.0) (2024-02-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714))
+* Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532))
+
+### Features
+
+* moved overlay into header component ([#2701](https://github.com/trussworks/react-uswds/issues/2701)) ([3433eac](https://github.com/trussworks/react-uswds/commit/3433eac9976b20ee6e3a76404079c23e85f84875))
+* parametrized StepIndicator strings ([#2707](https://github.com/trussworks/react-uswds/issues/2707)) ([94912bd](https://github.com/trussworks/react-uswds/commit/94912bd772c69ed1dac7c6d9f59b9a1a4f337e53))
+* React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714)) ([af2d2d6](https://github.com/trussworks/react-uswds/commit/af2d2d6445ef05675066134a6933a607ce2196a2))
+* **storybook:** storybook 7 ([#2533](https://github.com/trussworks/react-uswds/issues/2533)) ([8f65ec4](https://github.com/trussworks/react-uswds/commit/8f65ec461d14db1350fc11d24d2676367d5b0294))
+* Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532)) ([6ce4bbb](https://github.com/trussworks/react-uswds/commit/6ce4bbb1091670988691d10bb1e99725d96f10e7))
+
+
+### Bug Fixes
+
+* a11y: search component submit accessible naming ([#2737](https://github.com/trussworks/react-uswds/issues/2737)) ([b5fb85d](https://github.com/trussworks/react-uswds/commit/b5fb85d0ec17c1a02b1d4c2e373d2204342aac38))
+* fixed lint warnings ([#2774](https://github.com/trussworks/react-uswds/issues/2774)) ([d4b30d8](https://github.com/trussworks/react-uswds/commit/d4b30d8e87858dc1b8e5fa424c89aa14eb5309f4))
+
+## [6.2.0](https://github.com/trussworks/react-uswds/compare/6.1.0...6.2.0) (2024-01-08)
+
+
+### Features
+
+* updates for USWDS v3.7 ([#2680](https://github.com/trussworks/react-uswds/issues/2680)) ([9a06e7d](https://github.com/trussworks/react-uswds/commit/9a06e7d308b46925894f4b5a67f575f68cf73985))
+
+
+### Bug Fixes
+
+* Remove image role attribute from Banner Icon component ([#2663](https://github.com/trussworks/react-uswds/issues/2663)) ([8ddf443](https://github.com/trussworks/react-uswds/commit/8ddf443fa65d216cc543f0f5373c9be33da5e0aa))
+
+## [6.1.0](https://github.com/trussworks/react-uswds/compare/6.0.0...6.1.0) (2023-11-27)
+
+
+### Features
+
+* Add “use client” to fix React Server Components ([#2656](https://github.com/trussworks/react-uswds/issues/2656)) ([fad63b1](https://github.com/trussworks/react-uswds/commit/fad63b1d6f5f01ba742cdb093ee05dc117d1753b))
+* Added multiselect story ([#2648](https://github.com/trussworks/react-uswds/issues/2648)) ([03652fe](https://github.com/trussworks/react-uswds/commit/03652fe3663735229a676cda23aa751ec2ed452d))
+
+
+### Bug Fixes
+
+* **a11y:** move aria-label from svg icon to button ([#2640](https://github.com/trussworks/react-uswds/issues/2640)) ([fa18032](https://github.com/trussworks/react-uswds/commit/fa18032f538655452e501079b306e4a314480da6))
+* adding labels in combo box (default combo box, with default value) ([#2636](https://github.com/trussworks/react-uswds/issues/2636)) ([7714d14](https://github.com/trussworks/react-uswds/commit/7714d1474a3512328e6391b12434293421de408a))
+
 ## [6.0.0](https://github.com/trussworks/react-uswds/compare/5.5.0...6.0.0) (2023-10-31)
 
 

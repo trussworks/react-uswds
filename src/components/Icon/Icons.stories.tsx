@@ -24,12 +24,14 @@ Source: https://designsystem.digital.gov/components/icon/
         type: 'select',
         options: [3, 4, 5, 6, 7, 8, 9],
       },
-      defaultValue: 4,
     },
+  },
+  args: {
+    size: 4,
   },
 }
 
-export const allIcons = (args: StorybookArgs): React.ReactElement => (
+export const AllIcons = (args: StorybookArgs): React.ReactElement => (
   <div>
     <Icon.AccessibilityNew {...args} />
     <Icon.AccessibleForward {...args} />
@@ -269,6 +271,7 @@ export const allIcons = (args: StorybookArgs): React.ReactElement => (
     <Icon.Wash {...args} />
     <Icon.Wifi {...args} />
     <Icon.Work {...args} />
+    <Icon.X {...args} />
     <Icon.Youtube {...args} />
     <Icon.ZoomIn {...args} />
     <Icon.ZoomOutMap {...args} />

@@ -44,29 +44,32 @@ export const MediumFooterNav = (): React.ReactElement => (
   />
 )
 
-export const BigFooterNav = (): React.ReactElement => (
-  <Footer
-    size="big"
-    primary={
-      <FooterNav
-        aria-label="Footer navigation"
-        size="big"
-        links={[
-          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-          [
-            'Topic',
-            <a key="2" href="#">
-              Secondary link that is pretty long
-            </a>,
-            ...Array(2).fill(<a href="#">Secondary link</a>),
-          ],
-          ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-        ]}
-      />
-    }
-    secondary={<></>}
-  />
-)
-BigFooterNav.parameters = {
-  happo: { waitForContent: 'Secondary link that is pretty long' },
+export const BigFooterNav = {
+  render: (): React.ReactElement => (
+    <Footer
+      size="big"
+      primary={
+        <FooterNav
+          aria-label="Footer navigation"
+          size="big"
+          links={[
+            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+            [
+              'Topic',
+              <a key="2" href="#">
+                Secondary link that is pretty long
+              </a>,
+              ...Array(2).fill(<a href="#">Secondary link</a>),
+            ],
+            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+          ]}
+        />
+      }
+      secondary={<></>}
+    />
+  ),
+
+  parameters: {
+    happo: { waitForContent: 'Secondary link that is pretty long' },
+  },
 }

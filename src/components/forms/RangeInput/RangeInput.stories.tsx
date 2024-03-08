@@ -31,7 +31,7 @@ const labelChildren = (
 
 const labelHint = <>(drag to adjust or use arrow keys)</>
 
-export const defaultRange = (): React.ReactElement => (
+export const DefaultRange = (): React.ReactElement => (
   <>
     <Label htmlFor="range-slider" hint={labelHint}>
       {labelChildren}
@@ -40,7 +40,7 @@ export const defaultRange = (): React.ReactElement => (
   </>
 )
 
-export const customRange = (): React.ReactElement => (
+export const CustomRange = (): React.ReactElement => (
   <RangeInput
     id="custom-range-slider"
     name="rangeValue"
@@ -53,7 +53,7 @@ export const customRange = (): React.ReactElement => (
 )
 
 // Only tick marks are shown in Chrome but not with usa-range class currently because the appearance property is set to none
-export const dataListRange = (): React.ReactElement => (
+export const DataListRange = (): React.ReactElement => (
   <>
     <RangeInput
       id="range-slider"
@@ -71,4 +71,13 @@ export const dataListRange = (): React.ReactElement => (
       <option>4</option>
     </datalist>
   </>
+)
+
+export const WithUnitAndPreposition = (): React.ReactElement => (
+  <RangeInput
+    id="custom-range-slider"
+    name="rangeValue"
+    textPreposition="de"
+    textUnit="por ciento"
+  />
 )

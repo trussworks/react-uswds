@@ -2,6 +2,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { Icon } from '../../Icon/Icons'
+import { IconProps } from '../../Icon/Icon'
 
 export type SocialLinksProps = {
   links: React.ReactNode[]
@@ -34,28 +35,30 @@ export const SocialLink = ({
   name,
   ...props
 }: SocialLinkProps & JSX.IntrinsicElements['a']): React.ReactElement => {
-  let icon: Icon
+  let IconComponent: React.ComponentType<IconProps>
   switch (name) {
     case 'Facebook':
-      icon = <Icon.Facebook className="usa-social-link__icon" name={name} />
+      IconComponent = Icon.Facebook
       break
     case 'Twitter':
-      icon = <Icon.Twitter className="usa-social-link__icon" name={name} />
+      IconComponent = Icon.Twitter
       break
     case 'YouTube':
-      icon = <Icon.Youtube className="usa-social-link__icon" name={name} />
+      IconComponent = Icon.Youtube
       break
     case 'Instagram':
-      icon = <Icon.Instagram className="usa-social-link__icon" name={name} />
+      IconComponent = Icon.Instagram
       break
     case 'RSS':
-      icon = <Icon.RssFeed className="usa-social-link__icon" name={name} />
+      IconComponent = Icon.RssFeed
       break
   }
 
   return (
     <a className="usa-social-link" {...props} title={name}>
-      {icon}
+      {IconComponent && (
+        <IconComponent className="usa-social-link__icon" name={name} />
+      )}
     </a>
   )
 }
