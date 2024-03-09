@@ -60,6 +60,9 @@ jobs:
       - name: Check format
         run: yarn format:check
 
+      - name: Check a11y
+        run: yarn test-storybook
+
       - name: Build Storybook
         run: yarn build-storybook
 
