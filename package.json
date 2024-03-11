@@ -109,7 +109,7 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-security": "^2.1.0",
-    "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vitest": "^0.3.21",
     "focus-trap-react": "^10.2.3",
     "happo-plugin-storybook": "^4.1.0",
