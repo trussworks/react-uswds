@@ -1591,9 +1591,9 @@
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
 "@laynezh/vite-plugin-lib-assets@^0.5.14":
-  version "0.5.20"
-  resolved "https://registry.yarnpkg.com/@laynezh/vite-plugin-lib-assets/-/vite-plugin-lib-assets-0.5.20.tgz#a4dd033f7b33ad4e62fe102dfef3937393a063fa"
-  integrity sha512-qhS0F/IYAQdvg1KdMb+x5xH2eGvgeG4y7zywqUAHkSofxiHtX06Fu3g17dSZS5y9BuNoiARs0f5FjZnqDKE6Pw==
+  version "0.5.21"
+  resolved "https://registry.yarnpkg.com/@laynezh/vite-plugin-lib-assets/-/vite-plugin-lib-assets-0.5.21.tgz#b5445b71954bb597564bdb572339ea71a6646865"
+  integrity sha512-XeOSCwzh0JqMNPchPRX2U/aAcO7S13LAK3GDuBn8T5AuKF5lbeJoUd7iqdlcYfUJjhPwqXoK8UwM1NCoAj1eaA==
   dependencies:
     escape-string-regexp "^4.0.0"
     loader-utils "^3.2.1"
