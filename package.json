@@ -139,7 +139,7 @@
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^1.2.1",
     "webpack": "^5.90.1",
-    "yarn": "^1.22.21"
+    "yarn": "^1.22.22"
   },
   "resolutions": {
     "loader-utils": "2.0.4",
@@ -152,5 +152,5 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18"
   },
-  "packageManager": "yarn@1.22.1"
+  "packageManager": "yarn@1.22.22"
 }
