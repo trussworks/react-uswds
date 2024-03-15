@@ -38,13 +38,13 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 Install this package with npm or yarn:
 
 ```
-yarn add @trussworks/react-uswds react-focus-trap@^10.2.3
+yarn add @trussworks/react-uswds focus-trap-react@^10.2.3
 ```
 
 or
 
 ```
-npm i @trussworks/react-uswds react-focus-trap@^10.2.3
+npm i @trussworks/react-uswds focus-trap-react@^10.2.3
 ```
 
 ## Usage
