@@ -68,7 +68,7 @@ const PaginationPage = ({
 const PaginationOverflow = () => (
   <li
     className="usa-pagination__item usa-pagination__overflow"
-    role="presentation">
+    aria-label="ellipsis indicating non-visible pages">
     <span>…</span>
   </li>
 )
