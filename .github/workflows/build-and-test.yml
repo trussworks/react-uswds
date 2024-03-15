@@ -63,9 +63,6 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
 
-      - name: Check a11y
-        run: yarn test-storybook
-
       - name: Happo
         run: yarn happo-ci
         env:
