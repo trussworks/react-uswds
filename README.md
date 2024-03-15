@@ -1,7 +1,9 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-33-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -36,13 +38,13 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 Install this package with npm or yarn:
 
 ```
-yarn add @trussworks/react-uswds
+yarn add @trussworks/react-uswds react-focus-trap@^10.2.3
 ```
 
 or
 
 ```
-npm i @trussworks/react-uswds
+npm i @trussworks/react-uswds react-focus-trap@^10.2.3
 ```
 
 ## Usage
