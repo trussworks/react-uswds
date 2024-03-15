@@ -64,7 +64,12 @@ export default defineConfig(({ mode: _mode }) => {
       cssCodeSplit: isUswds,
       assetsDir: './',
       rollupOptions: {
-        external: ['react', 'react-dom', 'react/jsx-runtime'],
+        external: [
+          'react',
+          'react-dom',
+          'react/jsx-runtime',
+          'focus-trap-react',
+        ],
         output: {
           // Support React Server Components
           // See: https://react.dev/reference/react/use-client
@@ -77,6 +82,7 @@ export default defineConfig(({ mode: _mode }) => {
             react: 'React',
             'react-dom': 'ReactDOM',
             'react/jsx-runtime': 'jsxRuntime',
+            'focus-trap-react': 'FocusTrap',
           },
           assetFileNames: (assetInfo) => {
             if (assetInfo.name === 'style.css') return `${entryName}.css`
