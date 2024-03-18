@@ -79,7 +79,7 @@
     "@storybook/addon-interactions": "^7.6.10",
     "@storybook/addon-links": "^7.6.10",
     "@storybook/addons": "^7.6.10",
-    "@storybook/blocks": "^7.6.10",
+    "@storybook/blocks": "^8.0.0",
     "@storybook/manager-api": "^7.1.1",
     "@storybook/react": "^7.6.10",
     "@storybook/react-vite": "^7.6.10",
