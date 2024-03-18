@@ -11139,12 +11139,12 @@ stylelint-config-recommended@^14.0.0:
   integrity sha512-jSkx290CglS8StmrLp2TxAppIajzIBZKYm3IxT89Kg6fGlxbPiTiyH9PS5YUuVAFwaJLl1ikiXX0QWjI0jmgZQ==
 
 stylelint-config-sass-guidelines@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-11.0.0.tgz#67180abf45d74c99d07da8e01c135c64d4f906dc"
-  integrity sha512-ZFaIDq8Qd6SO1p7Cmg+TM7E2B8t3vDZgEIX+dribR2y+H3bJJ8Oh0poFJGSOIAVdbg6FiI7xQf//8riBZVhIhg==
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-11.1.0.tgz#0106f3ec4991a598823b55841bf45fce63268c8c"
+  integrity sha512-mVE3UmN8MlshK4Gb3eYk6f8tw9DkQ9yjMF4W9krlmpaNZpSXOdh13AL0sU7l/9l4Pnpt4KMobNNIRI0tJl56Cw==
   dependencies:
     postcss-scss "^4.0.9"
-    stylelint-scss "^6.0.0"
+    stylelint-scss "^6.2.1"
 
 stylelint-config-standard-scss@^13.0.0:
   version "13.0.0"
@@ -11168,7 +11168,7 @@ stylelint-prettier@^5.0.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-stylelint-scss@^6.0.0:
+stylelint-scss@^6.0.0, stylelint-scss@^6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-6.2.1.tgz#7675f3f5034a3b1d7d064d480e0d834ef9353244"
   integrity sha512-ZoGLbVb1keZYRVGQlhB8G6sZOoNqw61whzzzGFWp05N12ErqLFfBv3JPrXiMLZaW98sBS7K/vUQhRnvUj4vwdw==
