@@ -2,9 +2,9 @@ import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { ComboBox, ComboBoxRef } from './ComboBox'
+import { ComboBox, ComboBoxOption, ComboBoxRef } from './ComboBox'
 import { TextInput } from '../TextInput/TextInput'
-import { fruits } from './fruits'
+import { fruits, veggies } from './foods'
 
 /*
   Source of truth for combo box behavior is USWDS storybook examples and tests. For more:
@@ -12,10 +12,19 @@ import { fruits } from './fruits'
   - https://github.com/uswds/uswds/tree/7a89611fe649650922e4d431b78c39fed6a867e1/spec/unit/combo-box
 */
 
-const fruitOptions = Object.entries(fruits).map(([value, key]) => ({
-  value: value,
-  label: key,
-}))
+const fruitOptions: ComboBoxOption[] = Object.entries(fruits).map(
+  ([value, key]) => ({
+    value: value,
+    label: key,
+  })
+)
+
+const veggieOptions: ComboBoxOption[] = Object.entries(veggies).map(
+  ([value, key]) => ({
+    value: value,
+    label: key,
+  })
+)
 
 describe('ComboBox component', () => {
   it('renders the expected markup without errors', () => {
@@ -85,6 +94,24 @@ describe('ComboBox component', () => {
 
     const comboBoxInput = screen.getByRole('combobox')
     expect(comboBoxInput).toHaveValue('Avocado')
+  })
+
+  it('updates options when prop changes', async () => {
+    const Wrapper = (props: { options: ComboBoxOption[] }) => {
+      return (
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={props.options}
+          onChange={vi.fn()}
+        />
+      )
+    }
+    const { rerender } = render(<Wrapper options={fruitOptions} />)
+    const comboBoxSelect = screen.getByTestId('combo-box-select')
+    expect(comboBoxSelect).toHaveValue(fruitOptions[0].value)
+    rerender(<Wrapper options={veggieOptions} />)
+    expect(comboBoxSelect).toHaveValue(veggieOptions[0].value)
   })
 
   describe('toggling the list', () => {
