@@ -5,6 +5,7 @@ _.log
 npm-debug.log_
 yarn-debug.log*
 yarn-error.log*
+doctor-storybook.log
 
 # Runtime data
 

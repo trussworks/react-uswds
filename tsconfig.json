@@ -22,7 +22,8 @@
     "outDir": "./lib",
     "isolatedModules": true,
     "types": [
-      "vitest/globals"
+      "vitest/globals",
+      "@testing-library/jest-dom"
     ]
   },
   "include": [
