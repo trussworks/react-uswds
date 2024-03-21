@@ -21,6 +21,7 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 
 - [@trussworks/react-uswds](#trussworksreact-uswds)
   - [Install](#install)
+  - [Peer Dependencies](#peer-dependencies)
   - [Usage](#usage)
     - [USWDS](#uswds)
     - [NodeJS](#nodejs)
@@ -38,14 +39,25 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 Install this package with npm or yarn:
 
 ```
-yarn add @trussworks/react-uswds focus-trap-react@^10.2.3
+yarn add @trussworks/react-uswds
 ```
 
 or
 
 ```
-npm i @trussworks/react-uswds focus-trap-react@^10.2.3
+npm i @trussworks/react-uswds
 ```
+
+## Peer Dependencies
+
+This library relies on the following peer dependencies:
+
+- @uswds/uswds: ^3.7.1
+- focus-trap-react: ^10.2.3
+- react: ^16.x || ^17.x || ^18.x
+- react-dom: ^16.x || ^17.x || ^18.x
+
+Please verify these peer dependencies were added to your project (if they did not already exist) after adding this library.
 
 ## Usage
 
