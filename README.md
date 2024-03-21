@@ -1,7 +1,9 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-33-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -19,6 +21,7 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 
 - [@trussworks/react-uswds](#trussworksreact-uswds)
   - [Install](#install)
+  - [Peer Dependencies](#peer-dependencies)
   - [Usage](#usage)
     - [USWDS](#uswds)
     - [NodeJS](#nodejs)
@@ -44,6 +47,10 @@ or
 ```
 npm i @trussworks/react-uswds
 ```
+
+## Peer Dependencies
+
+This library relies on some [peer dependencies](./package.json). Please verify these peer dependencies were added to your project (if they did not already exist) after adding this library.
 
 ## Usage
 

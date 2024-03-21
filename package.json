@@ -70,6 +70,7 @@
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
     "@uswds/uswds": "^3.7.1",
+    "focus-trap-react": "^10.2.3",
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
@@ -80,15 +81,16 @@
     "@storybook/addon-essentials": "^7.6.10",
     "@storybook/addon-interactions": "^7.6.10",
     "@storybook/addon-links": "^7.6.10",
+    "@storybook/addon-mdx-gfm": "^7.6.10",
     "@storybook/addons": "^7.6.10",
     "@storybook/blocks": "^8.0.0",
-    "@storybook/manager-api": "^7.1.1",
+    "@storybook/manager-api": "^7.6.10",
     "@storybook/react": "^7.6.10",
     "@storybook/react-vite": "^7.6.10",
     "@storybook/test": "^7.6.10",
     "@storybook/theming": "^7.6.10",
     "@testing-library/dom": "^9.0.0",
-    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.0.4",
     "@types/react": "^18.2.48",
@@ -138,7 +140,7 @@
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^1.2.1",
     "webpack": "^5.90.1",
-    "yarn": "^1.22.21"
+    "yarn": "^1.22.22"
   },
   "resolutions": {
     "loader-utils": "2.0.4",
@@ -151,5 +153,5 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18"
   },
-  "packageManager": "yarn@1.22.1"
+  "packageManager": "yarn@1.22.22"
 }
