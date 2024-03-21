@@ -1,0 +1,11 @@
+import{j as e}from"./jsx-runtime-CKrituN3.js";import{L as s}from"./Label-CfwuEpQt.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-Bl6ORisp.js";const _={title:"Components/Form elements/Label",component:s,parameters:{docs:{description:{component:`
+### USWDS 3.0 Label component
+
+Source: https://designsystem.digital.gov/components/form-controls/
+`}}}},t=()=>e.jsx(s,{htmlFor:"testInput",children:"Text input label"}),r=()=>e.jsx(s,{htmlFor:"testInputError",error:!0,children:"Text input error"}),o=()=>e.jsx(s,{htmlFor:"testInputHint",hint:e.jsx(e.Fragment,{children:" (optional)"}),children:"Text input"}),a=()=>e.jsx(s,{htmlFor:"testInputRequired",requiredMarker:!0,children:"Text input"});t.__docgenInfo={description:"",methods:[],displayName:"DefaultLabel"};r.__docgenInfo={description:"",methods:[],displayName:"Error"};o.__docgenInfo={description:"",methods:[],displayName:"WithHint"};a.__docgenInfo={description:"",methods:[],displayName:"WithRequiredMarker"};var n,i,c;t.parameters={...t.parameters,docs:{...(n=t.parameters)==null?void 0:n.docs,source:{originalSource:'(): React.ReactElement => <Label htmlFor="testInput">Text input label</Label>',...(c=(i=t.parameters)==null?void 0:i.docs)==null?void 0:c.source}}};var p,m,l;r.parameters={...r.parameters,docs:{...(p=r.parameters)==null?void 0:p.docs,source:{originalSource:`(): React.ReactElement => <Label htmlFor="testInputError" error>
+    Text input error
+  </Label>`,...(l=(m=r.parameters)==null?void 0:m.docs)==null?void 0:l.source}}};var d,u,h;o.parameters={...o.parameters,docs:{...(d=o.parameters)==null?void 0:d.docs,source:{originalSource:`(): React.ReactElement => <Label htmlFor="testInputHint" hint={<> (optional)</>}>
+    Text input
+  </Label>`,...(h=(u=o.parameters)==null?void 0:u.docs)==null?void 0:h.source}}};var b,x,L;a.parameters={...a.parameters,docs:{...(b=a.parameters)==null?void 0:b.docs,source:{originalSource:`(): React.ReactElement => <Label htmlFor="testInputRequired" requiredMarker>
+    Text input
+  </Label>`,...(L=(x=a.parameters)==null?void 0:x.docs)==null?void 0:L.source}}};const F=["DefaultLabel","Error","WithHint","WithRequiredMarker"];export{t as DefaultLabel,r as Error,o as WithHint,a as WithRequiredMarker,F as __namedExportsOrder,_ as default};

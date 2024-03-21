@@ -1,0 +1,6 @@
+import{j as o}from"./jsx-runtime-CKrituN3.js";import{c as t}from"./index-Bl6ORisp.js";const g=({items:m,type:a,className:l,...c})=>{const e=a==="primary",s=a==="secondary",n=a==="subnav",r=a==="megamenu",u=a==="footerSecondary",i=a==="language",d=t({"usa-nav__primary usa-accordion":e,"usa-nav__secondary-links":s,"usa-nav__submenu":n,"usa-nav__submenu-list":r,"usa-list usa-list--unstyled":u,"usa-language__submenu":i},l),_=t({"usa-nav__primary-item":e,"usa-nav__secondary-item":s,"usa-nav__submenu-item":n||r,"usa-footer__secondary-link":u,"usa-language__submenu-item":i});return o.jsx("ul",{className:d,...c,children:m.map((v,y)=>o.jsx("li",{className:_,children:v},`item_${y}`))})};g.__docgenInfo={description:"",methods:[],displayName:"NavList",props:{items:{required:!0,tsType:{name:"Array",elements:[{name:"ReactReactNode",raw:"React.ReactNode"}],raw:"React.ReactNode[]"},description:""},type:{required:!1,tsType:{name:"union",raw:`| 'primary'
+| 'secondary'
+| 'subnav'
+| 'megamenu'
+| 'footerSecondary'
+| 'language'`,elements:[{name:"literal",value:"'primary'"},{name:"literal",value:"'secondary'"},{name:"literal",value:"'subnav'"},{name:"literal",value:"'megamenu'"},{name:"literal",value:"'footerSecondary'"},{name:"literal",value:"'language'"}]},description:""}}};export{g as N};

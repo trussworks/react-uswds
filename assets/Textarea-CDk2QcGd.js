@@ -1,0 +1,6 @@
+import{j as o}from"./jsx-runtime-CKrituN3.js";import{c as d}from"./index-Bl6ORisp.js";const u=({id:e,name:n,className:t,error:a,success:s,children:r,inputRef:i,...c})=>{const m=d("usa-textarea",{"usa-input--error":a,"usa-input--success":s},t);return o.jsx("textarea",{"data-testid":"textarea",className:m,id:e,name:n,ref:i,...c,children:r})};u.__docgenInfo={description:"",methods:[],displayName:"Textarea",props:{id:{required:!0,tsType:{name:"string"},description:""},name:{required:!0,tsType:{name:"string"},description:""},className:{required:!1,tsType:{name:"string"},description:""},error:{required:!1,tsType:{name:"boolean"},description:""},success:{required:!1,tsType:{name:"boolean"},description:""},children:{required:!1,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},inputRef:{required:!1,tsType:{name:"union",raw:`| string
+| string
+| ((instance: HTMLTextAreaElement | null) => void)
+| React.RefObject<HTMLTextAreaElement>
+| null
+| undefined`,elements:[{name:"string"},{name:"string"},{name:"unknown"},{name:"ReactRefObject",raw:"React.RefObject<HTMLTextAreaElement>",elements:[{name:"HTMLTextAreaElement"}]},{name:"null"},{name:"undefined"}]},description:""}}};export{u as T};

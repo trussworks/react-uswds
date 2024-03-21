@@ -1,0 +1,9 @@
+import{j as o}from"./jsx-runtime-CKrituN3.js";import{L as a}from"./Logo-B25uI6Rj.js";import{l as g}from"./logo-img-CoX76WCd.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-Bl6ORisp.js";const N={title:"Components/Footer/Logo",component:a,parameters:{docs:{description:{component:`
+Display logo image with optional heading.  Used in USWDS 3.0 Footer component.
+
+Source: https://designsystem.digital.gov/components/footer
+`}}}},e=()=>o.jsx("div",{className:"usa-footer__secondary-section",children:o.jsx(a,{size:"slim",image:o.jsx("img",{className:"usa-footer__logo-img",src:g,alt:"Mock logo"}),heading:o.jsx("p",{className:"usa-footer__logo-heading",children:"Name of Agency"})})}),s=()=>o.jsx("div",{className:"usa-footer__secondary-section",children:o.jsx(a,{image:o.jsx("img",{className:"usa-footer__logo-img",src:g,alt:"Mock logo"})})});e.__docgenInfo={description:"",methods:[],displayName:"Slim"};s.__docgenInfo={description:"",methods:[],displayName:"NoHeading"};var t,i,r;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`(): React.ReactElement => <div className="usa-footer__secondary-section">
+    <Logo size="slim" image={<img className="usa-footer__logo-img" src={logoImg} alt="Mock logo" />} heading={<p className="usa-footer__logo-heading">Name of Agency</p>} />
+  </div>`,...(r=(i=e.parameters)==null?void 0:i.docs)==null?void 0:r.source}}};var m,c,n;s.parameters={...s.parameters,docs:{...(m=s.parameters)==null?void 0:m.docs,source:{originalSource:`(): React.ReactElement => <div className="usa-footer__secondary-section">
+    <Logo image={<img className="usa-footer__logo-img" src={logoImg} alt="Mock logo" />} />
+  </div>`,...(n=(c=s.parameters)==null?void 0:c.docs)==null?void 0:n.source}}};const h=["Slim","NoHeading"];export{s as NoHeading,e as Slim,h as __namedExportsOrder,N as default};

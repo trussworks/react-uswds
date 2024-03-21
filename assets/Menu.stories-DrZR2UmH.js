@@ -1,0 +1,5 @@
+import{j as t}from"./jsx-runtime-CKrituN3.js";import{M as r}from"./Menu-Ca0dejC6.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./NavList-CQFzsEUl.js";import"./index-Bl6ORisp.js";const l={title:"Components/Header/Menu",component:r,parameters:{docs:{description:{component:`
+### USWDS 3.0 Menu component used within the Header component
+
+Source: https://designsystem.digital.gov/components/header/
+`}}}},i=[t.jsx("a",{href:"#linkOne",children:"Simple link"},"one"),t.jsx("a",{href:"#linkTwo",children:"Simple link Two"},"two")],e=()=>t.jsx(r,{items:i,isOpen:!0});e.__docgenInfo={description:"",methods:[],displayName:"DefaultDropDownMenu"};var o,n,s;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:"(): React.ReactElement => <Menu items={testItems} isOpen={true} />",...(s=(n=e.parameters)==null?void 0:n.docs)==null?void 0:s.source}}};const D=["DefaultDropDownMenu"];export{e as DefaultDropDownMenu,D as __namedExportsOrder,l as default};

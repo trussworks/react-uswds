@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-CKrituN3.js";import{N as r}from"./NavList-CQFzsEUl.js";import"./index-CBqU2yxZ.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-Bl6ORisp.js";const l={title:"Components/Header/NavList",component:r,parameters:{docs:{description:{component:`
+### USWDS 3.0 NavList component used within the Header component
+
+Source: https://designsystem.digital.gov/components/header/
+`}}}},a=[e.jsx("a",{href:"#linkOne",children:e.jsx("span",{children:"Test link"})},"one"),e.jsx("a",{href:"#linkTwo",children:e.jsx("span",{children:"Test Link Two"})},"two")],t=()=>e.jsx(r,{items:a,type:"primary"});t.__docgenInfo={description:"",methods:[],displayName:"BasicNavList"};var s,o,i;t.parameters={...t.parameters,docs:{...(s=t.parameters)==null?void 0:s.docs,source:{originalSource:'(): React.ReactElement => <NavList items={testItems} type="primary" />',...(i=(o=t.parameters)==null?void 0:o.docs)==null?void 0:i.source}}};const h=["BasicNavList"];export{t as BasicNavList,h as __namedExportsOrder,l as default};
