@@ -50,14 +50,7 @@ npm i @trussworks/react-uswds
 
 ## Peer Dependencies
 
-This library relies on the following peer dependencies:
-
-- @uswds/uswds: ^3.7.1
-- focus-trap-react: ^10.2.3
-- react: ^16.x || ^17.x || ^18.x
-- react-dom: ^16.x || ^17.x || ^18.x
-
-Please verify these peer dependencies were added to your project (if they did not already exist) after adding this library.
+This library relies on some [peer dependencies](./package.json). Please verify these peer dependencies were added to your project (if they did not already exist) after adding this library.
 
 ## Usage
 
