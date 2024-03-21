@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/trussworks/react-uswds/compare/8.0.0...9.0.0) (2024-03-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820))
+
+### Bug Fixes
+
+* Added hook to combobox for when options change ([#2715](https://github.com/trussworks/react-uswds/issues/2715)) ([031b9fb](https://github.com/trussworks/react-uswds/commit/031b9fba59708236d6e1e4ec0caf3f53aeadfe9f))
+* Allow importing css from npm package ([#2807](https://github.com/trussworks/react-uswds/issues/2807)) ([8551f35](https://github.com/trussworks/react-uswds/commit/8551f35cef631185bb9a4672b742651e1cb4e023))
+* fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820)) ([e05061e](https://github.com/trussworks/react-uswds/commit/e05061e5a302137fd699fe4f716c9036b327fbcb))
+
+
+### Documentation & Examples
+
+* added docs for breaking changes and using withDeprecationWarning ([#2763](https://github.com/trussworks/react-uswds/issues/2763)) ([305e116](https://github.com/trussworks/react-uswds/commit/305e11629288307cafcc2bfb289ce109c777a092))
+
 ## [8.0.0](https://github.com/trussworks/react-uswds/compare/7.0.0...8.0.0) (2024-03-06)
 
 
