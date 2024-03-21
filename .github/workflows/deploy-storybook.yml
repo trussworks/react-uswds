@@ -6,6 +6,11 @@ on:
       - '[1-9].*'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   deploy-storybook:
     runs-on: ubuntu-latest
@@ -42,9 +47,9 @@ jobs:
         run: yarn build-storybook
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          clean: true
-          clean-exclude: |
-            CNAME
-          folder: storybook-static # The folder the action should deploy.
+          install_command: yarn install
+          build_command: yarn build-storybook
+          path: storybook-static
+          checkout: false
