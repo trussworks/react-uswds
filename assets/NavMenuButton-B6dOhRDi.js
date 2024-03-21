@@ -1,1 +1,0 @@
-import{j as a}from"./jsx-runtime-CKrituN3.js";const o=({label:t,onClick:e,...n})=>a.jsx("button",{className:"usa-menu-btn",onClick:e,"data-testid":"navMenuButton",...n,type:"button",children:t});o.__docgenInfo={description:"",methods:[],displayName:"NavMenuButton",props:{label:{required:!0,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""}}};export{o as N};
