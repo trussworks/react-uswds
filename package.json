@@ -38,6 +38,7 @@
     "node": ">= 18"
   },
   "scripts": {
+    "dev": "vite",
     "test": "vitest --run",
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
     "test:watch": "vitest",
