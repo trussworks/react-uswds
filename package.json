@@ -54,8 +54,8 @@
     "lint:fix": "tsc && eslint --ext js,jsx,ts,tsx src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "prepack": "husky && yarn build",
-    "prepublish": "yarn test && yarn lint",
+    "prepack": "yarn test && yarn lint && yarn build",
+    "prepublish": "husky",
     "happo": "happo --config ./.happo.cjs",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' happo-ci-github-actions --config ./.happo.cjs",
     "contributors:add": "all-contributors add"
