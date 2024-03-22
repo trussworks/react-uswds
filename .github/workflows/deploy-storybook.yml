@@ -38,14 +38,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
-
-      - name: Build Storybook
-        run: yarn build-storybook
-
+            
       - name: Deploy 🚀
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
