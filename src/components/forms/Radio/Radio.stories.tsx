@@ -1,7 +1,8 @@
 import React from 'react'
 import { Radio } from './Radio'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
-export default {
+const meta: Meta<typeof Radio> = {
   title: 'Components/Radio buttons',
   component: Radio,
   parameters: {
@@ -16,43 +17,55 @@ Source: https://designsystem.digital.gov/components/radio-buttons
     },
   },
 }
+export default meta
+type Story = StoryObj<typeof Radio>
 
-export const DefaultRadio = (): React.ReactElement => (
-  <Radio id="input-radio" name="input-radio" label="My Radio Button" />
-)
-
-export const Selected = (): React.ReactElement => (
+const Template: StoryFn<typeof Radio> = (args) => (
   <Radio
+    {...args}
     id="input-radio"
     name="input-radio"
     label="My Radio Button"
-    defaultChecked
   />
 )
 
-export const Disabled = (): React.ReactElement => (
-  <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
-)
+export const Default: Story = {
+  render: Template,
+}
 
-export const WithLabelDescription = (): React.ReactElement => (
-  <Radio
-    id="input-radio"
-    name="input-radio"
-    label="My Radio Button"
-    labelDescription="This is optional text that can be used to describe the label in more detail."
-  />
-)
+export const Selected: Story = {
+  render: Template,
+  args: { defaultChecked: true },
+}
 
-export const Tile = (): React.ReactElement => (
-  <Radio id="input-radio" name="input-radio" label="My Radio Button" tile />
-)
+export const Indeterminate: Story = {
+  render: Template,
+  args: { indeterminate: true },
+}
 
-export const TileWithLabelDescription = (): React.ReactElement => (
-  <Radio
-    id="input-radio"
-    name="input-radio"
-    label="My Radio Button"
-    labelDescription="This is optional text that can be used to describe the label in more detail."
-    tile
-  />
-)
+export const Disabled: Story = {
+  render: Template,
+  args: { disabled: true },
+}
+
+export const WithLabelDescription: Story = {
+  render: Template,
+  args: {
+    labelDescription:
+      'This is optional text that can be used to describe the label in more detail.',
+  },
+}
+
+export const Tile: Story = {
+  render: Template,
+  args: { tile: true },
+}
+
+export const TileWithLabelDescription: Story = {
+  render: Template,
+  args: {
+    labelDescription:
+      'This is optional text that can be used to describe the label in more detail.',
+    tile: true,
+  },
+}
