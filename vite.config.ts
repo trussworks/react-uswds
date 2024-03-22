@@ -19,7 +19,7 @@ const uswdsIncludePaths = [
 /**
  * Pass `--mode uswds` to build uswds assets
  */
-export default defineConfig(({ mode: _mode }) => {
+export const lib = defineConfig(({ mode: _mode }) => {
   const isUswds = _mode === 'uswds'
   const isBundles = _mode === 'bundles'
   const mode = isUswds ? 'production' : isBundles ? 'test' : _mode
@@ -149,4 +149,8 @@ export default defineConfig(({ mode: _mode }) => {
       ],
     },
   }
+})
+
+export default defineConfig({
+  plugins: [react()],
 })
