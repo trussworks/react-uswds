@@ -77,7 +77,8 @@ export const InPageNavigation = ({
               const heading: JSX.Element = el.props.children
               const href: string = el.props.id
               const hClass = classnames('usa-in-page-nav__item', {
-                'usa-in-page-nav__item--sub-item': el.type === 'h3',
+                'usa-in-page-nav__item--primary':
+                  el.type === headingElements[0],
               })
               const lClass = classnames('usa-in-page-nav__link', {
                 'usa-current': href === currentSection,
