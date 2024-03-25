@@ -31,3 +31,49 @@
     text-decoration: underline;
   }
 }
+
+// general
+.full-percent {
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+// components
+.usa-button,
+.usa-label,
+.usa-input,
+.usa-accordion__button {
+  transition: all 0.1s ease-in-out;
+}
+
+// button
+.usa-button {
+  display: flex;
+  align-items: center;
+  &.clear {
+    background-color: transparent;
+    border: 1px solid color('base-light');
+    color: inherit;
+    &:hover {
+      background-color: color('base-light');
+    }
+  }
+}
+
+// input
+.usa-input {
+  border-radius: 5px;
+}

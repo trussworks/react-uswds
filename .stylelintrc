@@ -6,7 +6,15 @@
     "prettier/prettier": true,
     "selector-class-pattern": "",
     "scss/function-no-unknown": null,
-    "at-rule-empty-line-before": null
+    "at-rule-empty-line-before": null,
+    "max-nesting-depth": 5,
+    "rule-empty-line-before": null
   },
-  "extends": ["stylelint-config-recommended", "stylelint-prettier/recommended", "stylelint-config-sass-guidelines", "stylelint-config-css-modules", "stylelint-config-standard-scss"]
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-prettier/recommended",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-css-modules",
+    "stylelint-config-standard-scss"
+  ]
 }
