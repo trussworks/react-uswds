@@ -2,8 +2,60 @@
   <head>
     <title>React USWDS Playground</title>
     <script type="module" src="./src/playground.tsx"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"
+      integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      data-manual></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
+      integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.0.3/standalone.js"
+      integrity="sha512-kZgYwuJlmuFDs982ccZLP9D+TIz/FqkxFQe+G0/TY11X4WqwUZn6P263vtzyt56GThngcoOD9JFvdJsT+D52ow=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.0.3/parser-html.min.js"
+      integrity="sha512-DrpA7iAMX9jbdDayBwvC+lNpTJRrjb7p1YoK+R0qLmdKOSwLkg6n7cjHOfGP5gnB4RxGdUim1CeKG3UD2PYO5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script>
+      Prism.hooks.add('before-highlight', function (env) {
+        env.code = env.element.innerText
+      })
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      async function format(str) {
+        const formatStr = await prettier.format(str, {
+          parser: 'html',
+          plugins: prettierPlugins,
+        })
+
+        return formatStr
+      }
+
+      async function showHtml(uswdsStr, reactUswdsStr) {
+        const uswdsBox = document.getElementById('uswdsBox')
+        const reactUswdsBox = document.getElementById('reactUswdsBox')
+
+        uswdsBox.innerText = await format(uswdsStr)
+        reactUswdsBox.innerText = await format(reactUswdsStr)
+
+        Prism.highlightAll()
+      }
+    </script>
   </body>
 </html>
