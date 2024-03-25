@@ -14,6 +14,7 @@ type InPageNavigationProps = {
   scrollOffset?: string
   threshold?: number
   title?: string
+  headingElements?: HeadingLevel[]
 }
 
 export const InPageNavigation = ({
@@ -26,6 +27,7 @@ export const InPageNavigation = ({
   scrollOffset,
   threshold = 1,
   title = 'On this page',
+  headingElements = ['h2', 'h3'],
   ...divProps
 }: InPageNavigationProps &
   Omit<JSX.IntrinsicElements['div'], 'content'>): React.ReactElement => {
@@ -39,8 +41,9 @@ export const InPageNavigation = ({
     '--margin-offset': scrollOffset,
   } as React.CSSProperties
   const [currentSection, setCurrentSection] = useState('')
+  if (headingElements.length === 0) headingElements = ['h2', 'h3']
   const sectionHeadings: JSX.Element[] = content.props.children.filter(
-    (el: JSX.Element) => el.type === 'h2' || el.type === 'h3'
+    (el: JSX.Element) => headingElements.includes(el.type)
   )
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
