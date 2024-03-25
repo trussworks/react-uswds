@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, render, getByRole } from '@testing-library/react'
+import { screen, render, getByRole, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import { InPageNavigation } from './InPageNavigation'
 import { HeadingLevel } from '../../types/headingLevel'
@@ -12,7 +12,7 @@ describe('InPageNavigation component', () => {
     title: 'What do we have <i>here</i>?',
   }
 
-  const setup = (plain?: boolean) => {
+  const setup = (plain?: boolean, headingElements?: HeadingLevel[]) => {
     const utils = plain
       ? render(<InPageNavigation content={props.content} />)
       : render(
@@ -20,6 +20,7 @@ describe('InPageNavigation component', () => {
             content={props.content}
             headingLevel={props.headingLevel}
             title={props.title}
+            headingElements={headingElements}
           />
         )
     const nav = screen.getByTestId('InPageNavigation')
@@ -59,5 +60,23 @@ describe('InPageNavigation component', () => {
       name: props.title,
     })
     expect(heading).toBeInTheDocument()
+  })
+
+  describe('lists the right heading types if', () => {
+    it('is undefined', () => {
+      const { nav } = setup(true)
+      const contentHeadingsTwo = screen.getAllByRole('heading', { level: 2 })
+      const contentHeadingsThree = screen.getAllByRole('heading', { level: 3 })
+      const contentHeadings = contentHeadingsTwo.concat(contentHeadingsThree)
+      const headingLinks = within(nav).getAllByRole('link')
+      expect(contentHeadings.length).toBe(headingLinks.length)
+    })
+
+    it('is defined', () => {
+      const { nav } = setup(false, ['h2' as HeadingLevel])
+      const contentHeadingsTwo = screen.getAllByRole('heading', { level: 2 })
+      const headingLinks = within(nav).getAllByRole('link')
+      expect(contentHeadingsTwo.length).toBe(headingLinks.length)
+    })
   })
 })

@@ -14,6 +14,7 @@ type CheckboxProps = {
     | undefined
   tile?: boolean
   labelDescription?: React.ReactNode
+  indeterminate?: boolean
 }
 
 export const Checkbox = ({
@@ -24,6 +25,7 @@ export const Checkbox = ({
   inputRef,
   tile,
   labelDescription,
+  indeterminate,
   ...inputProps
 }: CheckboxProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-checkbox', className)
@@ -39,6 +41,7 @@ export const Checkbox = ({
         type="checkbox"
         name={name}
         ref={inputRef}
+        data-indeterminate={indeterminate}
         {...inputProps}
       />
       <label className="usa-checkbox__label" htmlFor={id}>
