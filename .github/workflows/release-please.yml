@@ -18,7 +18,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
-          package-name: '@trussworks/react-uswds'
+          package-name: '@alphaomegaintegration/react-uswds'
           release-labels: 'type: release'
           include-v-in-tag: false
           changelog-types: >

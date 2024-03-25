@@ -37,6 +37,6 @@ jobs:
       - name: Upload package
         uses: actions/upload-artifact@v2
         with:
-          path: trussworks-react-uswds-v*.*.*.tgz
+          path: react-uswds-v*.*.*.tgz
           if-no-files-found: error
           retention-days: 5
