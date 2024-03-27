@@ -232,7 +232,10 @@
       "profile": "https://andyhub.com/",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug",
+        "a11y"
       ]
     },
     {
