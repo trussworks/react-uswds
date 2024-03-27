@@ -1,4 +1,4 @@
-# Using Codesapces to review PRs without pulling a repo to your machine
+# Using Codespaces to review PRs without pulling a repo to your machine
 
 1. go to the PR
 2. click the `Code` button in the top right corner
