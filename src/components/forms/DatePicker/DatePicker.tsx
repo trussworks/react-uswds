@@ -26,7 +26,7 @@ import {
 import { Calendar } from './Calendar'
 import { ValidationStatus } from '../../../types/validationStatus'
 
-type BaseDatePickerProps = {
+export type BaseDatePickerProps = {
   id: string
   name: string
   className?: string

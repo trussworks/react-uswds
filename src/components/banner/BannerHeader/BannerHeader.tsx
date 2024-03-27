@@ -1,7 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
 
-type BannerHeaderProps = {
+export type BannerHeaderProps = {
   isOpen: boolean
   flagImg: ReactNode
   innerDivProps?: JSX.IntrinsicElements['div']

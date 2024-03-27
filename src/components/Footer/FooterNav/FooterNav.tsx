@@ -11,7 +11,7 @@ function isExtendedNavLinks(
   return (links as ExtendedNavLinksType)[0].constructor === Array
 }
 
-type FooterNavProps = {
+export type FooterNavProps = {
   size?: 'big' | 'medium' | 'slim'
   isMobile?: boolean
   /*

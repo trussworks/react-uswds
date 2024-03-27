@@ -1,7 +1,7 @@
-import React from 'react'
 import classnames from 'classnames'
+import React from 'react'
 
-type HeaderProps = {
+export type HeaderProps = {
   basic?: boolean
   extended?: boolean
   basicWithMegaMenu?: boolean

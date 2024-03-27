@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type IdentifierProps = {
+export type IdentifierProps = {
   className?: string
   children: React.ReactNode
 }

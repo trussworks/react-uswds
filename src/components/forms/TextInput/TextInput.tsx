@@ -2,20 +2,20 @@ import React from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
-type TextInputRef =
+export type TextInputRef =
   | string
   | ((instance: HTMLInputElement | null) => void)
   | React.RefObject<HTMLInputElement>
   | null
   | undefined
 
-type RequiredTextInputProps = {
+export type RequiredTextInputProps = {
   id: string
   name: string
   type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
 }
 
-type CustomTextInputProps = {
+export type CustomTextInputProps = {
   className?: string
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'

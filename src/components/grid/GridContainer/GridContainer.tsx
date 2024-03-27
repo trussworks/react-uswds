@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { ContainerSizes } from '../types'
 
-type GridContainerProps = {
+export type GridContainerProps = {
   containerSize?: ContainerSizes
   className?: string
   children: React.ReactNode

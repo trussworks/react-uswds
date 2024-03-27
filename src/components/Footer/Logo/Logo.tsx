@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type LogoProps = {
+export type LogoProps = {
   size?: 'big' | 'medium' | 'slim'
   heading?: React.ReactNode
   image: React.ReactNode

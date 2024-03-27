@@ -1,6 +1,6 @@
 import React from 'react'
 
-type NavMenuButtonProps = {
+export type NavMenuButtonProps = {
   label: React.ReactNode
 }
 

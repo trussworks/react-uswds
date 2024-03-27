@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type CustomNavListProps = {
+export type CustomNavListProps = {
   items: React.ReactNode[]
   type?:
     | 'primary'

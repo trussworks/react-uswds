@@ -4,7 +4,7 @@ import { NavList } from '../../header/NavList/NavList'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
-type FooterExtendedNavListProps = {
+export type FooterExtendedNavListProps = {
   isMobile?: boolean
   /* 
     Turn on mobile styles via prop. If undefined, a fallback is used based on the client window width.

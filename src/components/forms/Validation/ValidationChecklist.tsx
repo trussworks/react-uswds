@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type ValidationChecklistProps = {
+export type ValidationChecklistProps = {
   id: string
   children: React.ReactNode
 }

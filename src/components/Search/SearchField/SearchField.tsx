@@ -7,7 +7,7 @@ import {
   OptionalTextInputProps,
 } from '../../forms/TextInput/TextInput'
 
-type SearchFieldProps = {
+export type SearchFieldProps = {
   isBig?: boolean
   className?: string
   inputName?: string

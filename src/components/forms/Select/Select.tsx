@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
-type SelectProps = {
+export type SelectProps = {
   id: string
   name: string
   className?: string

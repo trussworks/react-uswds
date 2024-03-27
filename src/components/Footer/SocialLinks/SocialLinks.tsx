@@ -4,11 +4,11 @@ import classnames from 'classnames'
 import { Icon } from '../../Icon/Icons'
 import { IconProps } from '../../Icon/Icon'
 
-type SocialLinksProps = {
+export type SocialLinksProps = {
   links: React.ReactNode[]
 }
 
-type SocialLinkProps = {
+export type SocialLinkProps = {
   name: 'Facebook' | 'Twitter' | 'YouTube' | 'Instagram' | 'RSS'
 }
 

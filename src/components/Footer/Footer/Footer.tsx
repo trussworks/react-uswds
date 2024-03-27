@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type FooterProps = {
+export type FooterProps = {
   size?: 'big' | 'medium' | 'slim'
   /**
    * Component for "return to top" button/handling

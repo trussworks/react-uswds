@@ -6,11 +6,11 @@ import { SearchField } from '../SearchField/SearchField'
 import { SearchButton } from '../SearchButton/SearchButton'
 import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
 
-type SearchLocalization = {
+export type SearchLocalization = {
   buttonText: string
 }
 
-type SearchInputProps = {
+export type SearchInputProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
   className?: string

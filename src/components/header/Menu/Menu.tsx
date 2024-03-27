@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavList, NavListProps } from '../NavList/NavList'
 
-type MenuProps = {
+export type MenuProps = {
   items: React.ReactNode[]
   isOpen: boolean
   type?:
