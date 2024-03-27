@@ -43,6 +43,7 @@ export const SearchButton = ({
           className="usa-search__submit-icon"
           name={buttonText}
           size={3}
+          aria-hidden={true}
         />
       </Button>
     </div>

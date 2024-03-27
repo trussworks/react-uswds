@@ -24,7 +24,7 @@ export const Default = (): ReactElement => (
   <IconList>
     <IconListItem>
       <IconListIcon className="text-green">
-        <Icon.CheckCircle />
+        <Icon.CheckCircle aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         Wash your hands for 20 seconds with soap
@@ -32,13 +32,13 @@ export const Default = (): ReactElement => (
     </IconListItem>
     <IconListItem>
       <IconListIcon className="text-green">
-        <Icon.CheckCircle />
+        <Icon.CheckCircle aria-hidden="true" />
       </IconListIcon>
       <IconListContent>Stay six feet away from others</IconListContent>
     </IconListItem>
     <IconListItem>
       <IconListIcon className="text-red">
-        <Icon.Cancel />
+        <Icon.Cancel aria-hidden="true" />
       </IconListIcon>
       <IconListContent>Avoid large gatherings</IconListContent>
     </IconListItem>
@@ -51,13 +51,13 @@ export const SimpleContent = (): ReactElement => (
     <IconList className="usa-icon-list--primary">
       <IconListItem>
         <IconListIcon>
-          <Icon.ThumbUpAlt />
+          <Icon.ThumbUpAlt aria-hidden="true" />
         </IconListIcon>
         <IconListContent>No processing lines</IconListContent>
       </IconListItem>
       <IconListItem>
         <IconListIcon>
-          <Icon.ThumbUpAlt />
+          <Icon.ThumbUpAlt aria-hidden="true" />
         </IconListIcon>
         <IconListContent>
           Access to expedited entry benefits in other countries
@@ -65,13 +65,13 @@ export const SimpleContent = (): ReactElement => (
       </IconListItem>
       <IconListItem>
         <IconListIcon>
-          <Icon.ThumbUpAlt />
+          <Icon.ThumbUpAlt aria-hidden="true" />
         </IconListIcon>
         <IconListContent>Available at major U.S. airports</IconListContent>
       </IconListItem>
       <IconListItem>
         <IconListIcon>
-          <Icon.ThumbUpAlt />
+          <Icon.ThumbUpAlt aria-hidden="true" />
         </IconListIcon>
         <IconListContent>Reduced wait times</IconListContent>
       </IconListItem>
@@ -83,7 +83,7 @@ export const RichContent = (): ReactElement => (
   <IconList>
     <IconListItem>
       <IconListIcon className="text-ink">
-        <Icon.CheckCircle />
+        <Icon.CheckCircle aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         <IconListTitle type="h3">Donate cash when possible.</IconListTitle>
@@ -98,7 +98,7 @@ export const RichContent = (): ReactElement => (
     </IconListItem>
     <IconListItem>
       <IconListIcon className="text-ink">
-        <Icon.CheckCircle />
+        <Icon.CheckCircle aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         <IconListTitle type="h3">
@@ -113,7 +113,7 @@ export const RichContent = (): ReactElement => (
     </IconListItem>
     <IconListItem>
       <IconListIcon className="text-ink">
-        <Icon.CheckCircle />
+        <Icon.CheckCircle aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         <IconListTitle type="h3">
@@ -140,7 +140,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
     <IconList className="usa-icon-list--size-lg">
       <IconListItem>
         <IconListIcon className="text-green">
-          <Icon.AttachMoney />
+          <Icon.AttachMoney aria-hidden="true" />
         </IconListIcon>
         <IconListContent>
           <IconListTitle type="h3">Let the sun shine.</IconListTitle>
@@ -154,7 +154,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
       </IconListItem>
       <IconListItem>
         <IconListIcon className="text-green">
-          <Icon.AttachMoney />
+          <Icon.AttachMoney aria-hidden="true" />
         </IconListIcon>
         <IconListContent>
           <IconListTitle type="h3">Adjust your schedule.</IconListTitle>
@@ -168,7 +168,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
       </IconListItem>
       <IconListItem>
         <IconListIcon className="text-green">
-          <Icon.AttachMoney />
+          <Icon.AttachMoney aria-hidden="true" />
         </IconListIcon>
         <IconListContent>
           <IconListTitle type="h3">Fill it up.</IconListTitle>
@@ -188,7 +188,7 @@ export const CustomSize = (): ReactElement => (
   <IconList className="usa-icon-list--size-lg">
     <IconListItem>
       <IconListIcon className="text-blue">
-        <Icon.Help />
+        <Icon.Help aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         <span className="text-bold">Timing.</span> Is now the right time to
@@ -197,7 +197,7 @@ export const CustomSize = (): ReactElement => (
     </IconListItem>
     <IconListItem>
       <IconListIcon className="text-blue">
-        <Icon.Help />
+        <Icon.Help aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         <span className="text-bold">Funding.</span> Do I have enough money to
@@ -206,7 +206,7 @@ export const CustomSize = (): ReactElement => (
     </IconListItem>
     <IconListItem>
       <IconListIcon className="text-blue">
-        <Icon.Help />
+        <Icon.Help aria-hidden="true" />
       </IconListIcon>
       <IconListContent>
         <span className="text-bold">Need.</span> Will this business fill a real

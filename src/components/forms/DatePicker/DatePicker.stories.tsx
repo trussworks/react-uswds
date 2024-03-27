@@ -83,19 +83,27 @@ export const CompleteDatePicker = {
   ),
 }
 
-export const DefaultDatePicker = (): React.ReactElement => (
-  <DatePicker id="birthdate" name="birthdate" />
+const Template = ({ ...args }) => (
+  <>
+    <Label htmlFor="birthdate">
+      {args.i18n ? 'Fecha de nacimiento' : 'Birthdate'}
+    </Label>
+    <DatePicker id="birthdate" name="birthdate" {...args} />
+  </>
 )
 
-export const Disabled = (): React.ReactElement => (
-  <DatePicker id="birthdate" name="birthdate" disabled />
-)
+export const Basic = {
+  render: Template,
+}
+
+export const Disabled = {
+  render: Template,
+  args: { disabled: true },
+}
 
 export const WithDefaultValue = {
-  render: (): React.ReactElement => (
-    <DatePicker id="birthdate" name="birthdate" defaultValue="1988-05-16" />
-  ),
-
+  render: Template,
+  args: { defaultValue: '1988-05-16' },
   parameters: {
     happo: {
       waitForContent: '05/16/1988',
@@ -103,49 +111,32 @@ export const WithDefaultValue = {
   },
 }
 
-const withDefaultInvalidValue = (): React.ReactElement => (
-  <DatePicker
-    id="birthdate"
-    name="birthdate"
-    defaultValue="1988-05-16"
-    minDate="2020-01-01"
-  />
-)
-export { withDefaultInvalidValue }
+export const WithDefaultInvalidValue = {
+  render: Template,
+  args: { defaultValue: '1988-05-16', minDate: '2020-01-01' },
+}
 
-export const WithMinMaxInSameMonth = (): React.ReactElement => (
-  <DatePicker
-    id="birthdate"
-    name="birthdate"
-    minDate="2021-01-10"
-    maxDate="2021-01-20"
-  />
-)
+export const WithMinMaxInSameMonth = {
+  render: Template,
+  args: { minDate: '2021-01-01', maxDate: '2021-01-20' },
+}
 
-export const WithMinMax = (): React.ReactElement => (
-  <DatePicker
-    id="birthdate"
-    name="birthdate"
-    minDate="2020-01-01"
-    maxDate="2021-5-31"
-  />
-)
+export const WithMinMax = {
+  render: Template,
+  args: { minDate: '2020-01-01', maxDate: '2021-5-31' },
+}
 
-const withRangeDate = (): React.ReactElement => (
-  <DatePicker
-    id="birthdate"
-    name="birthdate"
-    defaultValue="2021-01-20"
-    rangeDate="2021-01-08"
-  />
-)
-withRangeDate.parameters = {
-  happo: {
-    waitForContent: '01/20/2021',
+export const WithRangeDate = {
+  render: Template,
+  args: { defaultValue: '2021-01-20', rangeDate: '2021-01-08' },
+  parameters: {
+    happo: {
+      waitForContent: '01/20/2021',
+    },
   },
 }
-export { withRangeDate }
 
-export const WithLocalizations = (): React.ReactElement => (
-  <DatePicker id="birthdate" name="birthdate" i18n={sampleLocalization} />
-)
+export const WithLocalizations = {
+  render: Template,
+  args: { i18n: sampleLocalization },
+}

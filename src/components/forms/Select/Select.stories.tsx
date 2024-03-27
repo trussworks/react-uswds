@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Select } from './Select'
 import { Label } from '../Label/Label'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
+const meta: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
   parameters: {
@@ -24,34 +24,37 @@ export default {
       control: 'radio',
     },
     disabled: { control: 'boolean' },
+    defaultValue: { control: 'text' },
+    multiple: { control: 'boolean' },
   },
-} as Meta<typeof Select>
+}
 
-const options = (
+export default meta
+type Story = StoryObj<typeof Select>
+
+const Template = ({ ...args }) => (
   <>
-    <option>- Select - </option>
-    <option value="value1">Option A</option>
-    <option value="value2">Option B</option>
-    <option value="value3">Option C</option>
-    <option value="valueBIG">
-      Option of extra length to demonstrate how content like this will look
-      different
-    </option>
+    <Label htmlFor={args.id}>Select label</Label>
+    <Select id={args.id} name={args.name} {...args}>
+      <option>- Select - </option>
+      <option value="value1">Option A</option>
+      <option value="value2">Option B</option>
+      <option value="value3">Option C</option>
+      <option value="valueBIG">
+        Option of extra length to demonstrate how content like this will look
+        different
+      </option>
+    </Select>
   </>
 )
 
-const Template: StoryFn<typeof Select> = (args) => (
-  <Select {...args}>{options}</Select>
-)
-
-export const Default = {
+export const Basic: Story = {
   render: Template,
   args: { id: 'input-select', name: 'input-select' },
 }
 
-export const WithDefaultValue = {
+export const WithDefaultValue: Story = {
   render: Template,
-
   args: {
     id: 'input-select',
     name: 'input-select',
@@ -59,9 +62,8 @@ export const WithDefaultValue = {
   },
 }
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
-
   args: {
     id: 'input-select',
     name: 'input-select',
@@ -69,17 +71,11 @@ export const Disabled = {
   },
 }
 
-export const WithLabel = () => (
-  <>
-    <Label htmlFor="input-select">Select label</Label>
-    <Select id="input-select" name="input-select">
-      {options}
-    </Select>
-  </>
-)
-
-export const Multiselect = () => (
-  <Select id="input-multiselect" name="input-multiselect" multiple>
-    {options}
-  </Select>
-)
+export const Multiselect: Story = {
+  render: Template,
+  args: {
+    id: 'input-multiselect',
+    name: 'input-multiselect',
+    multiple: true,
+  },
+}

@@ -162,9 +162,9 @@ export const NotFoundPage = (): React.ReactElement => {
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
           <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">
+          <p className="usa-footer__contact-heading">
             {'<Agency Contact Center>'}
-          </h3>
+          </p>
           <Address
             size="medium"
             items={[

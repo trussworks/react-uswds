@@ -144,8 +144,8 @@ export const TypeStyles = (): React.ReactElement => (
     <h3>State</h3>
     <p className="text-info-lighter bg-ink">text info lighter</p>
     <p className="text-info-light bg-ink">text info light</p>
-    <p className="text-info">text info</p>
-    <p className="text-info-dark">text info dark</p>
+    <p className="text-info bg-ink">text info</p>
+    <p className="text-info-dark bg-ink">text info dark</p>
     <p className="text-info-darker">text info darker</p>
     <p className="text-error-lighter bg-ink">text error lighter</p>
     <p className="text-error-light bg-ink">text error light</p>
@@ -154,12 +154,12 @@ export const TypeStyles = (): React.ReactElement => (
     <p className="text-error-darker">text error darker</p>
     <p className="text-warning-lighter bg-ink">text warning lighter</p>
     <p className="text-warning-light bg-ink">text warning light</p>
-    <p className="text-warning">text warning</p>
-    <p className="text-warning-dark">text warning dark</p>
+    <p className="text-warning bg-ink">text warning</p>
+    <p className="text-warning-dark bg-ink">text warning dark</p>
     <p className="text-warning-darker">text warning darker</p>
     <p className="text-success-lighter bg-ink">text success lighter</p>
     <p className="text-success-light bg-ink">text success light</p>
-    <p className="text-success">text success</p>
+    <p className="text-success bg-ink">text success</p>
     <p className="text-success-dark">text success dark</p>
     <p className="text-success-darker">text success darker</p>
     <p className="text-disabled-light bg-ink">text disabled light</p>

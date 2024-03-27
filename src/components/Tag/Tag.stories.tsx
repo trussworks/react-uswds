@@ -20,9 +20,9 @@ Source: https://designsystem.digital.gov/components/tag/
 export const DefaultTag = (): React.ReactElement => <Tag>My Tag</Tag>
 
 export const CustomBg = (): React.ReactElement => (
-  <Tag background="#e44608">My Tag</Tag>
+  <Tag background="#d83933">My Tag</Tag>
 )
 
 export const CustomClass = (): React.ReactElement => (
-  <Tag className="custom-class">My Tag</Tag>
+  <Tag className="bg-secondary">My Tag</Tag>
 )

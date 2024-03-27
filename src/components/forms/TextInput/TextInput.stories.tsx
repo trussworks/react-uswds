@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextInput } from './TextInput'
+import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/Text input',
@@ -17,54 +18,48 @@ Source: https://designsystem.digital.gov/components/text-input
   },
 }
 
-export const DefaultTextInput = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="text" />
+const Template = ({ ...args }) => (
+  <>
+    <Label htmlFor="input-type-text">Input label</Label>
+    <TextInput
+      id="input-type-text"
+      name="input-type-text"
+      type={args.type || 'text'}
+      {...args}
+    />
+  </>
 )
 
-export const WithDefaultValue = (): React.ReactElement => (
-  <TextInput
-    id="input-value"
-    name="input-value"
-    type="text"
-    defaultValue="Change me"
-  />
-)
+export const Basic = {
+  render: Template,
+}
 
-export const WithPlaceholder = (): React.ReactElement => (
-  <TextInput
-    id="input-placeholder"
-    name="input-placeholder"
-    type="text"
-    placeholder="Enter value"
-  />
-)
+export const WithDefaultValue = {
+  render: Template,
+  args: { defaultValue: 'Change me' },
+}
 
-export const Error = (): React.ReactElement => (
-  <TextInput
-    id="input-error"
-    name="input-error"
-    type="text"
-    validationStatus="error"
-  />
-)
+export const WithPlaceholder = {
+  render: Template,
+  args: { placeholder: 'Enter value' },
+}
 
-export const Success = (): React.ReactElement => (
-  <TextInput
-    id="input-success"
-    name="input-success"
-    type="text"
-    validationStatus="success"
-  />
-)
+export const Error = {
+  render: Template,
+  args: { validationStatus: 'error' },
+}
 
-export const Disabled = (): React.ReactElement => (
-  <TextInput id="input-disabled" name="input-disabled" type="text" disabled />
-)
+export const Success = {
+  render: Template,
+  args: { validationStatus: 'success' },
+}
 
-export const Readonly = (): React.ReactElement => (
-  <TextInput id="input-readonly" name="input-readonly" type="text" readOnly />
-)
+export const Readonly = {
+  render: Template,
+  args: { readOnly: true },
+}
 
-export const Password = (): React.ReactElement => (
-  <TextInput id="input-type-text" name="input-type-text" type="password" />
-)
+export const Password = {
+  render: Template,
+  args: { type: 'password' },
+}

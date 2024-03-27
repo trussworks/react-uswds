@@ -14,6 +14,11 @@ Source: https://designsystem.digital.gov/components/header/
 `,
       },
     },
+    a11y: {
+      config: {
+        rules: [{ id: 'skip-link', enabled: false }], // Otherwise false-positive on its own
+      },
+    },
   },
 }
 
@@ -41,6 +46,7 @@ const testSecondaryItems = [
 
 export const DefaultExtendedNav = (): React.ReactElement => (
   <ExtendedNav
+    id="extended-nav"
     onToggleMobileNav={mockToggle}
     primaryItems={testPrimaryItems}
     secondaryItems={testSecondaryItems}

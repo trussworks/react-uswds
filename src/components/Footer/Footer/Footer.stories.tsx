@@ -139,7 +139,7 @@ export const MediumFooter = (): React.ReactElement => (
         />
         <div className="usa-footer__contact-links mobile-lg:grid-col-6">
           <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
+          <p className="usa-footer__contact-heading">Agency Contact Center</p>
           <Address
             size="medium"
             items={[
@@ -225,7 +225,7 @@ export const BigFooter = (): React.ReactElement => (
         />
         <div className="usa-footer__contact-links mobile-lg:grid-col-6">
           <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
+          <p className="usa-footer__contact-heading">Agency Contact Center</p>
           <Address
             size="big"
             items={[
