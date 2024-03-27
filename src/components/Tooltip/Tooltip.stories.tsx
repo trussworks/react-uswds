@@ -29,11 +29,20 @@ Source: https://designsystem.digital.gov/components/tooltip/
       },
     },
   },
+  argTypes: {
+    id: { control: { type: 'text' } },
+  },
 }
 
-export const TooltipDefault = (): React.ReactElement => (
+type StorybookArgs = {
+  id: string
+}
+
+export const tooltipDefault = (args: StorybookArgs): React.ReactElement => (
   <div className="margin-4">
-    <Tooltip label="Default">Default</Tooltip>
+    <Tooltip id={args.id} label="Default">
+      Default
+    </Tooltip>
   </div>
 )
 
