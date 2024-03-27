@@ -321,6 +321,15 @@
         "maintenance",
         "infra"
       ]
+    },
+    {
+      "login": "crwallace",
+      "name": "Courtney Eimerman-Wallace",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3453669?v=4",
+      "profile": "https://github.com/crwallace",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
