@@ -114,7 +114,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-security": "^2.1.0",
     "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-vitest": "^0.3.21",
+    "eslint-plugin-vitest": "^0.4.1",
     "focus-trap-react": "^10.2.3",
     "happo-plugin-storybook": "^4.1.0",
     "happo.io": "^9.1.2",
