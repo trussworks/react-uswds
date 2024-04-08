@@ -56,7 +56,7 @@
     "postinstall": "husky",
     "prepack": "yarn lint && yarn test && yarn build",
     "happo": "happo --config ./.happo.cjs",
-    "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' happo-ci-github-actions --config ./.happo.cjs",
+    "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' npx -p happo.io happo-ci-github-actions --config ./.happo.cjs",
     "contributors:add": "all-contributors add"
   },
   "repository": {
