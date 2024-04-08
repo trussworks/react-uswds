@@ -54,7 +54,7 @@
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "postinstall": "husky",
-    "prepublishOnly": "yarn lint && yarn test && yarn build",
+    "prepack": "yarn lint && yarn test && yarn build",
     "happo": "happo --config ./.happo.cjs",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' happo-ci-github-actions --config ./.happo.cjs",
     "contributors:add": "all-contributors add"
