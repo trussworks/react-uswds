@@ -12,9 +12,10 @@ const allFiles = (danger.git.modified_files ?? []).concat(
 
 const checkYarnAudit: () => void = () => {
   const result = child.spawnSync('yarn', [
+    'npm',
     'audit',
-    '--groups=dependencies',
-    '--level=high',
+    '--environment=production',
+    '--severity=high',
     '--json',
   ])
   const output = result.stdout.toString().split('\n')
