@@ -232,7 +232,10 @@
       "profile": "https://andyhub.com/",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug",
+        "a11y"
       ]
     },
     {
@@ -320,6 +323,15 @@
         "code",
         "maintenance",
         "infra"
+      ]
+    },
+    {
+      "login": "crwallace",
+      "name": "Courtney Eimerman-Wallace",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3453669?v=4",
+      "profile": "https://github.com/crwallace",
+      "contributions": [
+        "maintenance"
       ]
     }
   ],
