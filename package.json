@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "React USWDS 3.0 component library",
   "keywords": [
     "react",
@@ -27,7 +27,9 @@
       },
       "browser": "./lib/index.iife.js",
       "default": "./lib/index.umd.cjs"
-    }
+    },
+    "./lib/index.css": "./lib/index.css",
+    "./lib/uswds.css": "./lib/uswds.css"
   },
   "files": [
     "lib"
@@ -68,25 +70,26 @@
   "homepage": "https://github.com/trussworks/react-uswds#readme",
   "peerDependencies": {
     "@uswds/uswds": "^3.7.1",
+    "focus-trap-react": "^10.2.3",
     "react": "^16.x || ^17.x || ^18.x",
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@laynezh/vite-plugin-lib-assets": "^0.5.14",
-    "@storybook/addon-a11y": "^8.0.1",
-    "@storybook/addon-essentials": "^8.0.1",
-    "@storybook/addon-interactions": "^8.0.1",
-    "@storybook/addon-links": "^8.0.1",
-    "@storybook/addon-mdx-gfm": "^8.0.1",
-    "@storybook/blocks": "^8.0.1",
-    "@storybook/manager-api": "^8.0.1",
-    "@storybook/react": "^8.0.1",
-    "@storybook/react-vite": "^8.0.1",
-    "@storybook/test": "^8.0.1",
-    "@storybook/theming": "^8.0.1",
+    "@storybook/addon-a11y": "^8.0.4",
+    "@storybook/addon-essentials": "^8.0.4",
+    "@storybook/addon-interactions": "^8.0.4",
+    "@storybook/addon-links": "^8.0.4",
+    "@storybook/addon-mdx-gfm": "^8.0.4",
+    "@storybook/blocks": "^8.0.4",
+    "@storybook/manager-api": "^8.0.4",
+    "@storybook/react": "^8.0.4",
+    "@storybook/react-vite": "^8.0.4",
+    "@storybook/test": "^8.0.4",
+    "@storybook/theming": "^8.0.4",
     "@testing-library/dom": "^9.0.0",
-    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.0.4",
     "@types/react": "^18.2.48",
@@ -121,7 +124,7 @@
     "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
     "sass": "^1.26.0",
-    "storybook": "^8.0.1",
+    "storybook": "^8.0.4",
     "stylelint": "^16.2.1",
     "stylelint-config-css-modules": "^4.4.0",
     "stylelint-config-prettier": "^9.0.5",
@@ -136,7 +139,7 @@
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^1.2.1",
     "webpack": "^5.90.1",
-    "yarn": "^1.22.21"
+    "yarn": "^1.22.22"
   },
   "resolutions": {
     "loader-utils": "2.0.4",
@@ -149,5 +152,5 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18"
   },
-  "packageManager": "yarn@1.22.1"
+  "packageManager": "yarn@1.22.22"
 }

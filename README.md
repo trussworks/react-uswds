@@ -19,6 +19,7 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
 
 - [@trussworks/react-uswds](#trussworksreact-uswds)
   - [Install](#install)
+  - [Peer Dependencies](#peer-dependencies)
   - [Usage](#usage)
     - [USWDS](#uswds)
     - [NodeJS](#nodejs)
@@ -44,6 +45,10 @@ or
 ```
 npm i @trussworks/react-uswds
 ```
+
+## Peer Dependencies
+
+This library relies on some [peer dependencies](./package.json). Please verify these peer dependencies were added to your project (if they did not already exist) after adding this library.
 
 ## Usage
 
@@ -180,7 +185,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/vinodkv2511"><img src="https://avatars.githubusercontent.com/u/44632502?v=4?s=100" width="100px;" alt="Vinod Krishna Vellampalli"/><br /><sub><b>Vinod Krishna Vellampalli</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=vinodkv2511" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://joeforyou.xyz"><img src="https://avatars.githubusercontent.com/u/57681819?v=4?s=100" width="100px;" alt="Joe Kleinschmidt"/><br /><sub><b>Joe Kleinschmidt</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kleinschmidtj" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://jhancock532.github.io/"><img src="https://avatars.githubusercontent.com/u/18164832?v=4?s=100" width="100px;" alt="James Hancock"/><br /><sub><b>James Hancock</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Ajhancock532" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=jhancock532" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jpandersen87"><img src="https://avatars.githubusercontent.com/u/12385932?v=4?s=100" width="100px;" alt="Joseph Andersen"/><br /><sub><b>Joseph Andersen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jpandersen87" title="Code">💻</a> <a href="#maintenance-jpandersen87" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jpandersen87"><img src="https://avatars.githubusercontent.com/u/12385932?v=4?s=100" width="100px;" alt="Joseph Andersen"/><br /><sub><b>Joseph Andersen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jpandersen87" title="Code">💻</a> <a href="#maintenance-jpandersen87" title="Maintenance">🚧</a> <a href="#infra-jpandersen87" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     </tr>
   </tbody>
 </table>
