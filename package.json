@@ -53,10 +53,10 @@
     "lint:fix": "tsc && eslint --ext js,jsx,ts,tsx src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "prepare": "husky && yarn build",
-    "prepublishOnly": "yarn test && yarn lint",
+    "postinstall": "husky",
+    "prepack": "yarn lint && yarn test && yarn build",
     "happo": "happo --config ./.happo.cjs",
-    "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' happo-ci-github-actions --config ./.happo.cjs",
+    "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' npx -p happo.io happo-ci-github-actions --config ./.happo.cjs",
     "contributors:add": "all-contributors add"
   },
   "repository": {
@@ -143,15 +143,8 @@
     "yarn": "^1.22.22"
   },
   "resolutions": {
-    "loader-utils": "2.0.4",
-    "parse-url": "8.1.0",
-    "jackspeak": "2.1.1",
-    "json-schema": "0.4.0",
-    "glob-parent": "5.1.2",
-    "trim": "0.0.3",
-    "trim-newlines": "3.0.1",
-    "@types/react": "18.2.48",
-    "@types/react-dom": "18.2.18"
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@3.8.1"
 }
