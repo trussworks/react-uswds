@@ -3,6 +3,11 @@ import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 import { HeadingLevel } from '../../../types/headingLevel'
 
+export type StepStatusText = {
+  complete: string
+  incomplete: string
+}
+
 type StepIndicatorProps = {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
@@ -18,6 +23,7 @@ type StepIndicatorProps = {
   headingLevel: HeadingLevel
   stepText?: string
   ofText?: string
+  statusText?: StepStatusText
 }
 export const StepIndicator = (
   props: StepIndicatorProps
