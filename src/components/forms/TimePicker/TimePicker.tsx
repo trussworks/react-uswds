@@ -14,7 +14,7 @@ import {
   TIME_PICKER_CUSTOM_FILTER,
 } from './constants'
 
-type BaseTimePickerProps = {
+export type BaseTimePickerProps = {
   id: string
   name: string
   onChange: (val?: string) => void
@@ -28,7 +28,7 @@ type BaseTimePickerProps = {
   className?: string
 }
 
-type TimePickerProps = BaseTimePickerProps &
+export type TimePickerProps = BaseTimePickerProps &
   Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
 export const TimePicker = ({

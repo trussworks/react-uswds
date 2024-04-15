@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { RequiredMarker } from '../Label/RequiredMarker'
 
-type FieldsetProps = {
+export type FieldsetProps = {
   children: React.ReactNode
   legend?: React.ReactNode
   legendStyle?: 'default' | 'large' | 'srOnly'

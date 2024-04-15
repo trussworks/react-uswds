@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type NavDropDownButtonProps = {
+export type NavDropDownButtonProps = {
   label: string
   /*
     Element (i.e. menu) id already present in DOM that will be controlled by this button

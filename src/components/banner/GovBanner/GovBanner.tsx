@@ -14,9 +14,9 @@ import flagImg from '@uswds/uswds/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 import httpsIcon from '@uswds/uswds/img/icon-https.svg'
 
-type Language = 'english' | 'spanish'
+export type Language = 'english' | 'spanish'
 
-type TLD = '.gov' | '.mil'
+export type TLD = '.gov' | '.mil'
 
 interface GovBannerCopy {
   header: string
@@ -107,7 +107,7 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   }
 }
 
-type GovBannerProps = {
+export type GovBannerProps = {
   tld?: TLD
   language?: Language
 }

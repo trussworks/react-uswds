@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
-type RangeInputProps = {
+export type RangeInputProps = {
   id: string
   name: string
   min?: number

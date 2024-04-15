@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerButtonProps = {
+export type BannerButtonProps = {
   isOpen: boolean
   spanProps?: JSX.IntrinsicElements['span']
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { RequiredMarker } from './RequiredMarker'
 
-type LabelProps = {
+export type LabelProps = {
   children: React.ReactNode
   htmlFor: string
   className?: string

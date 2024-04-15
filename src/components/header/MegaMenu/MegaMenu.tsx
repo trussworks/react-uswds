@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { NavList, NavListProps } from '../NavList/NavList'
 
-type MegaMenuProps = {
+export type MegaMenuProps = {
   items: React.ReactNode[][]
   isOpen: boolean
 }

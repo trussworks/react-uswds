@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerContentProps = {
+export type BannerContentProps = {
   isOpen: boolean
 }
 

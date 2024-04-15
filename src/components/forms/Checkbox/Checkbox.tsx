@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   id: string
   name: string
   className?: string

@@ -6,7 +6,7 @@ type RequiredFormProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
-type CustomFormProps = {
+export type CustomFormProps = {
   className?: string
   large?: boolean
   search?: boolean
@@ -14,7 +14,7 @@ type CustomFormProps = {
 
 export type OptionalFormProps = CustomFormProps & JSX.IntrinsicElements['form']
 
-type FormProps = RequiredFormProps & OptionalFormProps
+export type FormProps = RequiredFormProps & OptionalFormProps
 
 export const Form = ({
   onSubmit,

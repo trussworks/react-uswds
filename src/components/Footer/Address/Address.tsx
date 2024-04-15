@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type AddressProps = {
+export type AddressProps = {
   size?: 'big' | 'medium' | 'slim'
   /*
      Contact info items - e.g. anchor tags or text for email, phone, website, etc.
