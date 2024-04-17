@@ -1,16 +1,25 @@
 import classnames from 'classnames'
 import React from 'react'
 
+import { StepStatusText } from '../StepIndicator/StepIndicator'
+
 export interface StepIndicatorStepProps {
   label: string
   status?: 'complete' | 'current' | 'incomplete'
+  statusText?: StepStatusText
   className?: string
 }
 
 export const StepIndicatorStep = (
   props: StepIndicatorStepProps & JSX.IntrinsicElements['li']
 ): React.ReactElement => {
-  const { label, status = 'incomplete', className, ...liProps } = props
+  const {
+    label,
+    status = 'incomplete',
+    statusText = { complete: 'completed', incomplete: 'not completed' },
+    className,
+    ...liProps
+  } = props
 
   const classes = classnames(
     'usa-step-indicator__segment',
@@ -30,8 +39,10 @@ export const StepIndicatorStep = (
         {label}
         &nbsp;
         {status !== 'current' && (
-          <span className="usa-sr-only">
-            {status === 'complete' ? 'completed' : 'not completed'}
+          <span data-testid="srStatusText" className="usa-sr-only">
+            {status === 'complete'
+              ? statusText.complete
+              : statusText.incomplete}
           </span>
         )}
       </span>
