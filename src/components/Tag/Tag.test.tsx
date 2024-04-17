@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Tag } from './Tag'
+import Tag from './Tag'
 
 describe('Tag component', () => {
   it('renders without errors', () => {

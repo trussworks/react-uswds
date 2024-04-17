@@ -1,7 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
 
-type BannerHeaderProps = {
+export type BannerHeaderProps = {
   isOpen: boolean
   flagImg: ReactNode
   innerDivProps?: JSX.IntrinsicElements['div']
@@ -11,7 +11,7 @@ type BannerHeaderProps = {
   headerActionProps?: JSX.IntrinsicElements['p']
 }
 
-export const BannerHeader = ({
+const BannerHeader = ({
   children,
   isOpen,
   flagImg,
@@ -79,3 +79,5 @@ export const BannerHeader = ({
     </header>
   )
 }
+
+export default BannerHeader

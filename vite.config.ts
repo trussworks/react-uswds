@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
-import { resolve, dirname } from 'path'
+import { resolve, relative, extname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import url from 'url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -14,21 +15,21 @@ const uswdsIncludePaths = [
   'node_modules/@uswds/uswds/packages',
 ]
 
-const entries = new Map<string, string>()
-for (const file of glob.sync(
-  'src/components/**/!(*.spec|*.stories|*.test).{ts,tsx}'
-)) {
-  const fileName = file.split('/').at(-1)?.split('.')[0]
-  const path = dirname(file).replace('src/', '')
-  const libPath = `${path}/${fileName}`
-  if (!fileName) continue
+const input = Object.fromEntries([
+  ['index', 'src/index.ts'],
+  ...glob
+    .sync('src/components/**/!(*.spec|*.stories|*.test).{ts,tsx}')
+    .map((file) => [
+      // The name of the entry point
+      // lib/nested/foo.ts becomes nested/foo
+      relative('src', file.slice(0, file.length - extname(file).length)),
+      // The absolute path to the entry file
+      // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
+      fileURLToPath(new URL(file, import.meta.url)),
+    ]),
+])
 
-  entries.set(libPath, url.fileURLToPath(new URL(file, import.meta.url)))
-}
-entries.set(
-  'index',
-  url.fileURLToPath(new URL('src/index.ts', import.meta.url))
-)
+console.log(input)
 
 export default defineConfig(({ mode }) => {
   const isTest = mode === 'test' || mode === 'benchmark'
@@ -50,7 +51,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'lib',
       lib: {
-        entry: Object.fromEntries(entries),
+        entry: resolve(__dirname, 'src/index.ts'),
         formats: ['cjs', 'es'],
       },
       rollupOptions: {
@@ -61,10 +62,10 @@ export default defineConfig(({ mode }) => {
           'focus-trap-react',
           '@uswds/uswds',
         ],
+        input,
         output: {
           assetFileNames: 'assets/[name][extname]',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
+          entryFileNames: '[name].[format].js',
         },
       },
       sourcemap: true,

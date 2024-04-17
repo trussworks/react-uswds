@@ -1,13 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { Label } from '../../forms/Label/Label'
-import {
-  TextInput,
+import Label from '../../forms/Label/Label'
+import TextInput, {
   OptionalTextInputProps,
 } from '../../forms/TextInput/TextInput'
 
-type SearchFieldProps = {
+export type SearchFieldProps = {
   isBig?: boolean
   className?: string
   inputName?: string
@@ -16,9 +15,9 @@ type SearchFieldProps = {
   defaultValue?: React.ReactNode
   label?: React.ReactNode
   inputProps?: JSX.IntrinsicElements['input']
-}
+} & OptionalTextInputProps
 
-export const SearchField = ({
+const SearchField = ({
   isBig,
   className,
   placeholder,
@@ -27,7 +26,7 @@ export const SearchField = ({
   label = 'Search',
   inputId = 'search-field',
   inputProps,
-}: SearchFieldProps & OptionalTextInputProps): React.ReactElement => {
+}: SearchFieldProps): React.ReactElement => {
   const classes = classnames(
     {
       'usa-search--big': isBig,

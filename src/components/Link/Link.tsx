@@ -1,8 +1,8 @@
 import React from 'react'
-import classnames from 'classnames'
+import { handleKeyDown, isCustomProps, linkClasses } from './utils'
 
 // These props we want to require always, even on custom components
-type StyledLinkProps<T> = {
+export type StyledLinkProps<T> = {
   variant?: 'external' | 'unstyled' | 'nav'
   className?: string
   children: React.ReactNode
@@ -10,12 +10,12 @@ type StyledLinkProps<T> = {
 } & T
 
 // These props are only required on the default Link
-interface WithDefaultLinkProps {
+export interface WithDefaultLinkProps {
   href: string
 }
 
 // Add `asCustom` to the provided custom props
-interface WithCustomLinkProps<T> {
+export interface WithCustomLinkProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
@@ -29,39 +29,9 @@ export type DefaultLinkProps = StyledLinkProps<JSX.IntrinsicElements['a']> &
 // props, plus the required props on WithCustomLinkProps
 export type CustomLinkProps<T> = StyledLinkProps<T> & WithCustomLinkProps<T>
 
-export function isCustomProps<T>(
-  props: DefaultLinkProps | CustomLinkProps<T>
-): props is CustomLinkProps<T> {
-  return 'asCustom' in props
-}
-// keyboard handler for 'link as a button'
-const handleKeyDown = (e: React.KeyboardEvent) => {
-  if (e.key === ' ' && e.target) {
-    e.preventDefault()
-    ;(e.target as HTMLElement).click()
-  }
-}
-
-function linkClasses<T>(
-  variant: StyledLinkProps<T>['variant'],
-  className: StyledLinkProps<T>['className']
-): string | undefined {
-  const unstyled = variant === 'unstyled'
-  const isExternalLink = variant === 'external'
-  const isNavLink = variant === 'nav'
-
-  return unstyled
-    ? className
-    : classnames(
-        'usa-link',
-        { 'usa-link--external': isExternalLink, 'usa-nav__link': isNavLink },
-        className
-      )
-}
-
-export function Link(props: DefaultLinkProps): React.ReactElement
-export function Link<T>(props: CustomLinkProps<T>): React.ReactElement
-export function Link<
+export default function Link(props: DefaultLinkProps): React.ReactElement
+export default function Link<T>(props: CustomLinkProps<T>): React.ReactElement
+export default function Link<
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps,
 >(props: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {

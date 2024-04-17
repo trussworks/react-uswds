@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import { Icon } from '../Icon/Icons'
+import Icon from '../Icon/Icons'
 import {
   Banner,
   BannerButton,

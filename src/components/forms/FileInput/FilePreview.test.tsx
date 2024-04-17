@@ -1,7 +1,7 @@
 import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 
-import { FilePreview } from './FilePreview'
+import FilePreview from './FilePreview'
 import { SPACER_GIF, TEST_TEXT_FILE } from './constants'
 
 describe('FilePreview component', () => {

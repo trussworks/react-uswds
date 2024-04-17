@@ -1,11 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const ModalHeading = ({
+export type ModalHeadingProps = React.HTMLProps<HTMLHeadingElement>
+
+const ModalHeading = ({
   className,
   children,
   ...headingProps
-}: React.HTMLProps<HTMLHeadingElement>): React.ReactElement => {
+}: ModalHeadingProps): React.ReactElement => {
   const classes = classnames('usa-modal__heading', className)
 
   return (
@@ -14,3 +16,5 @@ export const ModalHeading = ({
     </h2>
   )
 }
+
+export default ModalHeading

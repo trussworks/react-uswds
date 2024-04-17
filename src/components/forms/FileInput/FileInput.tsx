@@ -7,10 +7,10 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
-import { FilePreview } from './FilePreview'
+import FilePreview from './FilePreview'
 import { makeSafeForID } from './utils'
 
-type FileInputProps = {
+export type FileInputProps = {
   id: string
   name: string
   dragText?: string
@@ -21,7 +21,7 @@ type FileInputProps = {
   accept?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onDrop?: (e: React.DragEvent) => void
-}
+} & JSX.IntrinsicElements['input']
 
 export type FileInputRef = {
   clearFiles: () => void
@@ -31,7 +31,7 @@ export type FileInputRef = {
 
 export const FileInputForwardRef: React.ForwardRefRenderFunction<
   FileInputRef,
-  FileInputProps & JSX.IntrinsicElements['input']
+  FileInputProps
 > = (
   {
     name,
@@ -234,4 +234,6 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const FileInput = forwardRef(FileInputForwardRef)
+const FileInput = forwardRef(FileInputForwardRef)
+
+export default FileInput

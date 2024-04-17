@@ -1,12 +1,12 @@
 import classnames from 'classnames'
 import React, { useState } from 'react'
 import { DEFAULT_EXTERNAL_DATE_FORMAT } from '../DatePicker/constants'
-import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker'
+import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker'
 import { formatDate, parseDateString } from '../DatePicker/utils'
-import { FormGroup } from '../FormGroup/FormGroup'
-import { Label } from '../Label/Label'
+import FormGroup from '../FormGroup/FormGroup'
+import Label from '../Label/Label'
 
-type DateRangePickerProps = {
+export type DateRangePickerProps = {
   startDateLabel?: string
   startDateHint?: string
   startDatePickerProps: Omit<DatePickerProps, 'rangeDate'>
@@ -14,11 +14,9 @@ type DateRangePickerProps = {
   endDateHint?: string
   endDatePickerProps: Omit<DatePickerProps, 'rangeDate'>
   className?: string
-}
+} & JSX.IntrinsicElements['div']
 
-export const DateRangePicker = (
-  props: DateRangePickerProps & JSX.IntrinsicElements['div']
-): React.ReactElement => {
+const DateRangePicker = (props: DateRangePickerProps): React.ReactElement => {
   const {
     startDateLabel,
     startDateHint,
@@ -180,3 +178,5 @@ export const DateRangePicker = (
     </div>
   )
 }
+
+export default DateRangePicker

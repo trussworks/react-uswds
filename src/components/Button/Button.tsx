@@ -13,7 +13,7 @@ export type ButtonProps = {
   unstyled?: boolean
 }
 
-export const Button = ({
+const Button = ({
   type,
   children,
   secondary,

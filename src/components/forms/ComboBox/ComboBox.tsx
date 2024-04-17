@@ -8,7 +8,8 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
-import { ActionTypes, Action, State, useComboBox } from './useComboBox'
+import useComboBox, { ActionTypes, Action, State } from './useComboBox'
+import ComboBoxInput from './ComboBoxInput'
 
 /*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
     The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
@@ -17,14 +18,14 @@ import { ActionTypes, Action, State, useComboBox } from './useComboBox'
     This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
 */
 
-const DEFAULT_FILTER = '.*{{query}}.*'
+export const DEFAULT_FILTER = '.*{{query}}.*'
 
 export interface ComboBoxOption {
   value: string
   label: string
 }
 
-enum Direction {
+export enum Direction {
   Previous = -1,
   Next = 1,
 }
@@ -40,7 +41,7 @@ export interface CustomizableFilter {
   extras?: Record<string, string>
 }
 
-type ComboBoxProps = {
+export type ComboBoxProps = {
   id: string
   name: string
   className?: string
@@ -57,40 +58,12 @@ type ComboBoxProps = {
   disableFiltering?: boolean
 }
 
-interface InputProps {
-  focused: boolean
-}
-
-const Input = ({
-  focused,
-  ...inputProps
-}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
-  const inputRef = useRef<HTMLInputElement>(null)
-  useEffect(() => {
-    if (focused && inputRef.current) {
-      inputRef.current.focus()
-    }
-  })
-
-  return (
-    <input
-      type="text"
-      {...inputProps}
-      className="usa-combo-box__input"
-      data-testid="combo-box-input"
-      autoCapitalize="off"
-      autoComplete="off"
-      ref={inputRef}
-    />
-  )
-}
-
 export type ComboBoxRef = {
   focus: () => void
   clearSelection: () => void
 }
 
-const ComboBoxForwardRef: React.ForwardRefRenderFunction<
+export const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   ComboBoxRef,
   ComboBoxProps
 > = (
@@ -388,7 +361,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
           </option>
         ))}
       </select>
-      <Input
+      <ComboBoxInput
         {...inputProps}
         role="combobox"
         onChange={(e): void => {
@@ -511,6 +484,6 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ComboBox = forwardRef(ComboBoxForwardRef)
+const ComboBox = forwardRef(ComboBoxForwardRef)
 
 export default ComboBox

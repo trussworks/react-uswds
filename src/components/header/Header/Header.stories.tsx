@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { Header } from './Header'
+import Header from './Header'
 
-import { Title } from '../Title/Title'
-import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
-import { Search } from '../../Search/Search/Search'
-import { Menu } from '../Menu/Menu'
-import { MegaMenu } from '../MegaMenu/MegaMenu'
-import { NavMenuButton } from '../NavMenuButton/NavMenuButton'
-import { NavDropDownButton } from '../NavDropDownButton/NavDropDownButton'
-import { ExtendedNav } from '../ExtendedNav/ExtendedNav'
+import Title from '../Title/Title'
+import PrimaryNav from '../PrimaryNav/PrimaryNav'
+import Search from '../../Search/Search/Search'
+import Menu from '../Menu/Menu'
+import MegaMenu from '../MegaMenu/MegaMenu'
+import NavMenuButton from '../NavMenuButton/NavMenuButton'
+import NavDropDownButton from '../NavDropDownButton/NavDropDownButton'
+import ExtendedNav from '../ExtendedNav/ExtendedNav'
 
 export default {
   title: 'Components/Header',

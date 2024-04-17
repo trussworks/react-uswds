@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface SummaryBoxTextProps {
+export interface SummaryBoxTextProps {
   children?: React.ReactNode
   className?: string
 }
 
-export const SummaryBoxContent = ({
+const SummaryBoxContent = ({
   children,
   className,
   ...divProps

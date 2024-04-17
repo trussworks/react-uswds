@@ -13,7 +13,7 @@ export interface AccordionItemProps {
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-type AccordionProps = {
+export type AccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
@@ -62,7 +62,7 @@ export const AccordionItem = ({
   )
 }
 
-export const Accordion = ({
+const Accordion = ({
   bordered,
   items,
   className,

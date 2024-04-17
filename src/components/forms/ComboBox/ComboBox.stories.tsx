@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 
-import { ComboBox, ComboBoxRef } from './ComboBox'
-import { Form } from '../Form/Form'
-import { Label } from '../Label/Label'
-import { Button } from '../../Button/Button'
+import ComboBox, { ComboBoxRef } from './ComboBox'
+import Form from '../Form/Form'
+import Label from '../Label/Label'
+import Button from '../../Button/Button'
 import { fruits, veggies } from './foods'
-import { Radio } from '../Radio/Radio'
+import Radio from '../Radio/Radio'
 
 export default {
   title: 'Components/Combo box',

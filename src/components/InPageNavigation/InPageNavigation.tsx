@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
-import { Link } from '../Link/Link'
+import Link from '../Link/Link'
 import styles from './InPageNavigation.module.scss'
 
-type InPageNavigationProps = {
+export type InPageNavigationProps = {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel
@@ -16,7 +16,7 @@ type InPageNavigationProps = {
   title?: string
 }
 
-export const InPageNavigation = ({
+const InPageNavigation = ({
   className,
   content,
   headingLevel = 'h4',

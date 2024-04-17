@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { DateRangePicker } from './DateRangePicker'
-import { Form } from '../Form/Form'
+import DateRangePicker from './DateRangePicker'
+import Form from '../Form/Form'
 
 export default {
   title: 'Components/Date range picker',

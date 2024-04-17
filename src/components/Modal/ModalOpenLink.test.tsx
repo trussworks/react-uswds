@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 
 import { ModalRef } from './Modal'
-import { ModalOpenLink } from './ModalOpenLink'
+import ModalOpenLink from './ModalOpenLink'
 import { userEvent } from '@testing-library/user-event'
 
 describe('ModalOpenLink', () => {

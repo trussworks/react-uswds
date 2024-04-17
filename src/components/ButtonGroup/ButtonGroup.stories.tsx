@@ -1,7 +1,7 @@
 import React from 'react'
-import { ButtonGroup } from './ButtonGroup'
-import { Button } from '../Button/Button'
-import { Link } from '../Link/Link'
+import ButtonGroup from './ButtonGroup'
+import Button from '../Button/Button'
+import Link from '../Link/Link'
 
 export default {
   title: 'Components/Button groups',

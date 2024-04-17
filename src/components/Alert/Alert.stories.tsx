@@ -1,7 +1,7 @@
 import React from 'react'
-import { Alert } from './Alert'
+import Alert from './Alert'
 
-import { Button } from '../Button/Button'
+import Button from '../Button/Button'
 
 export default {
   title: 'Components/Alert',

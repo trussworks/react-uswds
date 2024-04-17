@@ -23,10 +23,10 @@ import {
   isSameDay,
   addDays,
 } from './utils'
-import { Calendar } from './Calendar'
+import Calendar from './Calendar'
 import { ValidationStatus } from '../../../types/validationStatus'
 
-type BaseDatePickerProps = {
+export type BaseDatePickerProps = {
   id: string
   name: string
   className?: string
@@ -52,7 +52,7 @@ export enum FocusMode {
   Input,
 }
 
-export const DatePicker = ({
+const DatePicker = ({
   id,
   name,
   className,
@@ -349,3 +349,5 @@ export const DatePicker = ({
 DatePicker.defaultProps = {
   minDate: DEFAULT_MIN_DATE,
 }
+
+export default DatePicker

@@ -6,24 +6,22 @@ import circleImg from '@uswds/uswds/img/circle-124.png'
 import { GovBanner, GridContainer, Grid, MediaBlockBody } from '../../index'
 
 /** HEADER */
-import { Header } from '../../components/header/Header/Header'
-import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search/Search'
-import { Menu } from '../../components/header/Menu/Menu'
-import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
-import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
+import Header from '../../components/header/Header/Header'
+import Title from '../../components/header/Title/Title'
+import Search from '../../components/header/../Search/Search/Search'
+import Menu from '../../components/header/Menu/Menu'
+import NavMenuButton from '../../components/header/NavMenuButton/NavMenuButton'
+import NavDropDownButton from '../../components/header/NavDropDownButton/NavDropDownButton'
 
-import { ExtendedNav } from '../../components/header/ExtendedNav/ExtendedNav'
+import ExtendedNav from '../../components/header/ExtendedNav/ExtendedNav'
 
 /** FOOTER */
-import { Address } from '../../components/Footer/Address/Address'
-import { Footer } from '../../components/Footer/Footer/Footer'
-import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
-import { Logo } from '../../components/Footer/Logo/Logo'
-import {
-  SocialLinks,
-  SocialLink,
-} from '../../components/Footer/SocialLinks/SocialLinks'
+import Address from '../../components/Footer/Address/Address'
+import Footer from '../../components/Footer/Footer/Footer'
+import FooterNav from '../../components/Footer/FooterNav/FooterNav'
+import Logo from '../../components/Footer/Logo/Logo'
+import SocialLink from '../../components/Footer/SocialLinks/SocialLink'
+import SocialLinks from '../../components/Footer/SocialLinks/SocialLinks'
 
 export default {
   title: 'Page Templates/Landing Page',

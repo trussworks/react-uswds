@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { RangeInput } from './RangeInput'
+import RangeInput from './RangeInput'
 
 describe('RangeInput component', () => {
   it('renders without errors', () => {

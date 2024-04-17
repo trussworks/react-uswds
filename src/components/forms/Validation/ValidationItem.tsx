@@ -1,18 +1,18 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type ValidationItemProps = {
+export type ValidationItemProps = {
   children: React.ReactNode
   id: string
   isValid: boolean
-}
+} & JSX.IntrinsicElements['li']
 
-export const ValidationItem = ({
+const ValidationItem = ({
   children,
   className,
   isValid,
   ...liProps
-}: ValidationItemProps & JSX.IntrinsicElements['li']): React.ReactElement => {
+}: ValidationItemProps): React.ReactElement => {
   const classes = classnames(
     'usa-checklist__item',
     { 'usa-checklist__item--checked': isValid },

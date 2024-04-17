@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type TextareaRef =
+export type TextareaRef =
   | string
   | string
   | ((instance: HTMLTextAreaElement | null) => void)
@@ -9,7 +9,7 @@ type TextareaRef =
   | null
   | undefined
 
-export interface TextareaProps {
+export type TextareaProps = {
   id: string
   name: string
   className?: string
@@ -17,9 +17,9 @@ export interface TextareaProps {
   success?: boolean
   children?: React.ReactNode
   inputRef?: TextareaRef
-}
+} & JSX.IntrinsicElements['textarea']
 
-export const Textarea = ({
+const Textarea = ({
   id,
   name,
   className,
@@ -28,7 +28,7 @@ export const Textarea = ({
   children,
   inputRef,
   ...inputProps
-}: TextareaProps & JSX.IntrinsicElements['textarea']): React.ReactElement => {
+}: TextareaProps): React.ReactElement => {
   const classes = classnames(
     'usa-textarea',
     {

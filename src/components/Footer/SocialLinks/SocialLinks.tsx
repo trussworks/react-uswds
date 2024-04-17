@@ -1,21 +1,15 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import classnames from 'classnames'
-import { Icon } from '../../Icon/Icons'
-import { IconProps } from '../../Icon/Icon'
 
-type SocialLinksProps = {
+export type SocialLinksProps = {
   links: React.ReactNode[]
-}
+} & JSX.IntrinsicElements['div']
 
-type SocialLinkProps = {
-  name: 'Facebook' | 'Twitter' | 'YouTube' | 'Instagram' | 'RSS'
-}
-
-export const SocialLinks = ({
+const SocialLinks = ({
   className,
   links,
-}: SocialLinksProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: SocialLinksProps): React.ReactElement => {
   const classes = classnames(
     'usa-footer__social-links grid-row grid-gap-1',
     className
@@ -31,34 +25,4 @@ export const SocialLinks = ({
   )
 }
 
-export const SocialLink = ({
-  name,
-  ...props
-}: SocialLinkProps & JSX.IntrinsicElements['a']): React.ReactElement => {
-  let IconComponent: React.ComponentType<IconProps>
-  switch (name) {
-    case 'Facebook':
-      IconComponent = Icon.Facebook
-      break
-    case 'Twitter':
-      IconComponent = Icon.Twitter
-      break
-    case 'YouTube':
-      IconComponent = Icon.Youtube
-      break
-    case 'Instagram':
-      IconComponent = Icon.Instagram
-      break
-    case 'RSS':
-      IconComponent = Icon.RssFeed
-      break
-  }
-
-  return (
-    <a className="usa-social-link" {...props} title={name}>
-      {IconComponent && (
-        <IconComponent className="usa-social-link__icon" name={name} />
-      )}
-    </a>
-  )
-}
+export default SocialLinks

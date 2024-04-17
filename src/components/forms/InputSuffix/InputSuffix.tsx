@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type InputSuffixProps = {
+export type InputSuffixProps = {
   className?: string
   children: React.ReactNode
 } & JSX.IntrinsicElements['div']
 
-export const InputSuffix = ({
+const InputSuffix = ({
   className,
   children,
   ...divProps
@@ -23,3 +23,5 @@ export const InputSuffix = ({
     </div>
   )
 }
+
+export default InputSuffix

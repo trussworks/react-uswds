@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { YearPicker } from './YearPicker'
+import YearPicker from './YearPicker'
 import { parseDateString } from './utils'
 
 describe('YearPicker', () => {

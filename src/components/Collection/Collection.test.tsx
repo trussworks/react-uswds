@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Collection } from './Collection'
+import Collection from './Collection'
 
 describe('Collection component', () => {
   it('renders without errors', () => {

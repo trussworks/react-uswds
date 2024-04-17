@@ -1,6 +1,6 @@
 import React from 'react'
-import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
-import { StepIndicator } from '../StepIndicator/StepIndicator'
+import StepIndicatorStep from '../StepIndicatorStep/StepIndicatorStep'
+import StepIndicator from '../StepIndicator/StepIndicator'
 
 export default {
   title: 'Components/Step Indicator',

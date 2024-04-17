@@ -7,7 +7,7 @@ export interface StepIndicatorStepProps {
   className?: string
 }
 
-export const StepIndicatorStep = (
+const StepIndicatorStep = (
   props: StepIndicatorStepProps & JSX.IntrinsicElements['li']
 ): React.ReactElement => {
   const { label, status = 'incomplete', className, ...liProps } = props
@@ -38,3 +38,5 @@ export const StepIndicatorStep = (
     </li>
   )
 }
+
+export default StepIndicatorStep

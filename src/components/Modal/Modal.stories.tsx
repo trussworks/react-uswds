@@ -1,11 +1,11 @@
 import React, { useRef } from 'react'
 
-import { Modal, ModalRef } from './Modal'
-import { ModalHeading } from './ModalHeading/ModalHeading'
-import { ModalFooter } from './ModalFooter/ModalFooter'
-import { ModalToggleButton } from './ModalToggleButton'
+import Modal, { ModalRef } from './Modal'
+import ModalHeading from './ModalHeading/ModalHeading'
+import ModalFooter from './ModalFooter/ModalFooter'
+import ModalToggleButton from './ModalToggleButton'
 
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
+import ButtonGroup from '../ButtonGroup/ButtonGroup'
 
 export default {
   title: 'Components/Modal',

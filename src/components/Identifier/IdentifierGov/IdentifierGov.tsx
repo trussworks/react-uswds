@@ -1,17 +1,16 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface IdentifierGovProps {
+export type IdentifierGovProps = {
   children?: React.ReactNode
   className?: string
-}
+} & JSX.IntrinsicElements['section']
 
-export const IdentifierGov = ({
+const IdentifierGov = ({
   children,
   className,
   ...sectionProps
-}: IdentifierGovProps &
-  JSX.IntrinsicElements['section']): React.ReactElement => {
+}: IdentifierGovProps): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--usagov',
     className

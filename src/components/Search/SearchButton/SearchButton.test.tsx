@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { SearchButton } from './SearchButton'
+import SearchButton from './SearchButton'
 
 const sampleLocalization = {
   buttonText: 'Buscar',

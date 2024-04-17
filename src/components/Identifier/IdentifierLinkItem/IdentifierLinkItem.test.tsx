@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { IdentifierLink } from '../IdentifierLink/IdentifierLink'
-import { IdentifierLinkItem } from '../IdentifierLinkItem/IdentifierLinkItem'
+import IdentifierLink from '../IdentifierLink/IdentifierLink'
+import IdentifierLinkItem from '../IdentifierLinkItem/IdentifierLinkItem'
 
 describe('IdentifierLinkItem component', () => {
   it('renders without errors', () => {

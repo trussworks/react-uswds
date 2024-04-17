@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { NavList } from '../../header/NavList/NavList'
+import FooterExtendedNavListSection from './FooterExtendedNavListSection'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
-type FooterExtendedNavListProps = {
+export type FooterExtendedNavListProps = {
   isMobile?: boolean
   /* 
     Turn on mobile styles via prop. If undefined, a fallback is used based on the client window width.
@@ -13,14 +13,13 @@ type FooterExtendedNavListProps = {
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType
-}
+} & React.HTMLAttributes<HTMLElement>
 
-export const FooterExtendedNavList = ({
+const FooterExtendedNavList = ({
   className,
   isMobile,
   nestedLinks,
-}: FooterExtendedNavListProps &
-  React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+}: FooterExtendedNavListProps): React.ReactElement => {
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 
@@ -63,7 +62,7 @@ export const FooterExtendedNavList = ({
         <div
           key={`linkSection-${i}`}
           className="mobile-lg:grid-col-6 desktop:grid-col-3">
-          <Section
+          <FooterExtendedNavListSection
             onToggle={useMobile ? (): void => onToggle(i) : undefined}
             // eslint-disable-next-line security/detect-object-injection
             isOpen={useMobile ? sectionsOpenState[i] : true}
@@ -75,26 +74,4 @@ export const FooterExtendedNavList = ({
   )
 }
 
-const Section = ({
-  isOpen = false,
-  links,
-  onToggle,
-}: {
-  isOpen: boolean
-  links: React.ReactNode[]
-  onToggle?: () => void
-}): React.ReactElement => {
-  const [primaryLinkOrHeading, ...secondaryLinks] = links
-  const classes = classnames(
-    'usa-footer__primary-content usa-footer__primary-content--collapsible',
-    { hidden: !isOpen }
-  )
-
-  return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-static-element-interactions
-    <section className={classes} onClick={onToggle} onKeyPress={onToggle}>
-      <h4 className="usa-footer__primary-link">{primaryLinkOrHeading}</h4>
-      <NavList type="footerSecondary" items={secondaryLinks} />
-    </section>
-  )
-}
+export default FooterExtendedNavList

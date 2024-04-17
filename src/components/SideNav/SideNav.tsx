@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type SideNavProps = {
+export type SideNavProps = {
   items: React.ReactNode[]
   isSubnav?: boolean
 }
 
-export const SideNav = ({
+const SideNav = ({
   items,
   isSubnav = false,
 }: SideNavProps): React.ReactElement => {
@@ -25,3 +25,5 @@ export const SideNav = ({
     </ul>
   )
 }
+
+export default SideNav

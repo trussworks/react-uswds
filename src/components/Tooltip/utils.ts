@@ -1,3 +1,5 @@
+import { DefaultTooltipProps, CustomTooltipProps } from './Tooltip'
+
 export const isElementInViewport = (
   el: HTMLElement,
   win = window,
@@ -49,4 +51,10 @@ export const calculateMarginOffset = (
       : tooltipBodyOffset
 
   return offset
+}
+
+export function isCustomProps<T>(
+  props: DefaultTooltipProps | CustomTooltipProps<T>
+): props is CustomTooltipProps<T> {
+  return 'asCustom' in props
 }

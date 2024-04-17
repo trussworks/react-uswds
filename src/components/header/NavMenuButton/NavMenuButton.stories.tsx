@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavMenuButton } from './NavMenuButton'
+import NavMenuButton from './NavMenuButton'
 
 export default {
   title: 'Components/Header/NavMenuButton',

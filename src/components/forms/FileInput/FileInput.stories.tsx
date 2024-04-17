@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react'
 
-import { FileInput, FileInputRef } from './FileInput'
-import { FormGroup } from '../FormGroup/FormGroup'
-import { Label } from '../Label/Label'
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
+import FileInput, { FileInputRef } from './FileInput'
+import FormGroup from '../FormGroup/FormGroup'
+import Label from '../Label/Label'
+import ErrorMessage from '../ErrorMessage/ErrorMessage'
 
 export default {
   title: 'Components/File input',

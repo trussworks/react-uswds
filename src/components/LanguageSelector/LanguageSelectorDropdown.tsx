@@ -1,40 +1,9 @@
 import React, { useState } from 'react'
-import { Menu } from '../header/Menu/Menu'
-import { LanguageSelectorButton } from './LanguageSelectorButton'
+import Menu from '../header/Menu/Menu'
+import LanguageSelectorButton from './LanguageSelectorButton'
 import classnames from 'classnames'
-import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
-import { Button } from '../Button/Button'
-
-const generateMenuItems = (langs: LanguageDefinition[]) => {
-  return langs.map((lang, index) => {
-    const label = (
-      <>
-        <span lang={lang.attr}>
-          <strong>{lang.label}</strong>
-        </span>
-        {lang.label_local && ` (${lang.label_local})`}
-      </>
-    )
-    if (typeof lang.on_click === 'string') {
-      return (
-        <a key={index} href={lang.on_click} data-testid={lang.attr}>
-          {label}
-        </a>
-      )
-    } else {
-      return (
-        <Button
-          key={index}
-          onClick={lang.on_click}
-          data-testid={lang.attr}
-          type="button"
-          unstyled>
-          {label}
-        </Button>
-      )
-    }
-  })
-}
+import { LanguageSelectorProps } from './LanguageSelector'
+import { generateMenuItems } from './utils'
 
 const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
   label,

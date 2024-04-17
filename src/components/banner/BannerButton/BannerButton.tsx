@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerButtonProps = {
+export type BannerButtonProps = {
   isOpen: boolean
   spanProps?: JSX.IntrinsicElements['span']
 }
 
-export const BannerButton = ({
+const BannerButton = ({
   isOpen,
   children,
   className,
@@ -33,3 +33,5 @@ export const BannerButton = ({
     </button>
   )
 }
+
+export default BannerButton

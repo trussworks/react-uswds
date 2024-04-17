@@ -1,11 +1,13 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-export const BannerGuidance = ({
+export type BannerGuidanceProps = JSX.IntrinsicElements['div']
+
+const BannerGuidance = ({
   children,
   className,
   ...divProps
-}: JSX.IntrinsicElements['div']): ReactElement => {
+}: BannerGuidanceProps): ReactElement => {
   const divClasses = classNames('usa-banner__guidance', className)
 
   return (
@@ -14,3 +16,5 @@ export const BannerGuidance = ({
     </div>
   )
 }
+
+export default BannerGuidance

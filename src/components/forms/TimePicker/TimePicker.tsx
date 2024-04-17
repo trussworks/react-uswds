@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import classnames from 'classnames'
-import { FormGroup } from '../FormGroup/FormGroup'
-import { Label } from '../Label/Label'
-import { ComboBox } from '../ComboBox/ComboBox'
+import FormGroup from '../FormGroup/FormGroup'
+import Label from '../Label/Label'
+import ComboBox from '../ComboBox/ComboBox'
 import { getTimeOptions, parseTimeString } from './utils'
 import {
   DEFAULT_MAX_TIME,
@@ -14,7 +14,7 @@ import {
   TIME_PICKER_CUSTOM_FILTER,
 } from './constants'
 
-type BaseTimePickerProps = {
+export type BaseTimePickerProps = {
   id: string
   name: string
   onChange: (val?: string) => void
@@ -28,10 +28,10 @@ type BaseTimePickerProps = {
   className?: string
 }
 
-type TimePickerProps = BaseTimePickerProps &
+export type TimePickerProps = BaseTimePickerProps &
   Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
-export const TimePicker = ({
+const TimePicker = ({
   id,
   name,
   onChange,
@@ -81,3 +81,5 @@ export const TimePicker = ({
     </FormGroup>
   )
 }
+
+export default TimePicker

@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react'
-import { Icon } from '../Icon/Icons'
-import { IconList } from './IconList'
-import { IconListItem } from './IconListItem/IconListItem'
-import { IconListIcon } from './IconListIcon/IconListIcon'
-import { IconListTitle } from './IconListTitle/IconListTitle'
-import { IconListContent } from './IconListContent/IconListContent'
+import Icon from '../Icon/Icons'
+import IconList from './IconList'
+import IconListItem from './IconListItem/IconListItem'
+import IconListIcon from './IconListIcon/IconListIcon'
+import IconListTitle from './IconListTitle/IconListTitle'
+import IconListContent from './IconListContent/IconListContent'
 
 export default {
   title: 'Components/Icon list',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { DateInputGroup } from './DateInputGroup'
+import DateInputGroup from './DateInputGroup'
 
 describe('DateInputGroup component', () => {
   it('renders without errors', () => {

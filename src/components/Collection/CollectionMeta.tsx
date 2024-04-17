@@ -1,11 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const CollectionMeta = ({
+export type CollectionMetaProps = JSX.IntrinsicElements['ul']
+
+const CollectionMeta = ({
   className,
   children,
   ...props
-}: JSX.IntrinsicElements['ul']): React.ReactElement => {
+}: CollectionMetaProps): React.ReactElement => {
   const classes = classnames('usa-collection__meta', className)
 
   return (
@@ -14,3 +16,5 @@ export const CollectionMeta = ({
     </ul>
   )
 }
+
+export default CollectionMeta

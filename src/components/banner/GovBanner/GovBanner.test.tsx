@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 
-import { GovBanner } from './GovBanner'
+import GovBanner from './GovBanner'
 
 describe('GovBanner component', () => {
   it('renders without errors', () => {

@@ -1,20 +1,20 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'
+import ModalCloseButton from '../ModalCloseButton/ModalCloseButton'
 
-interface ModalWindowProps {
+export type ModalWindowProps = {
   modalId: string
   children: React.ReactNode
   handleClose: () => void
   className?: string
   isLarge?: boolean
   forceAction?: boolean
-}
+} & JSX.IntrinsicElements['div']
 
 export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  ModalWindowProps & JSX.IntrinsicElements['div']
+  ModalWindowProps
 > = (
   {
     modalId,
@@ -52,4 +52,6 @@ export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const ModalWindow = forwardRef(ModalWindowForwardRef)
+const ModalWindow = forwardRef(ModalWindowForwardRef)
+
+export default ModalWindow

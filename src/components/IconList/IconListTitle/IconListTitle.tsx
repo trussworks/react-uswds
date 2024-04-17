@@ -2,30 +2,30 @@ import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-interface BaseIconListTitleProps {
+export interface BaseIconListTitleProps {
   type: string
   children: React.ReactNode
   className?: string
 }
 
-interface HeadingIconListTitleProps extends BaseIconListTitleProps {
+export interface HeadingIconListTitleProps extends BaseIconListTitleProps {
   type: HeadingLevel
 }
 
-interface ParagraphIconListTitleProps extends BaseIconListTitleProps {
+export interface ParagraphIconListTitleProps extends BaseIconListTitleProps {
   type: 'p'
 }
 
-type IconListHeadingTitleProps = HeadingIconListTitleProps &
+export type IconListHeadingTitleProps = HeadingIconListTitleProps &
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   >
 
-type IconListParagraphTitleProps = ParagraphIconListTitleProps &
+export type IconListParagraphTitleProps = ParagraphIconListTitleProps &
   JSX.IntrinsicElements['p']
 
-export const IconListTitle = ({
+const IconListTitle = ({
   type,
   children,
   className,

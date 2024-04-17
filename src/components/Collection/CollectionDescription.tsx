@@ -1,11 +1,13 @@
 import React from 'react'
 import classname from 'classnames'
 
-export const CollectionDescription = ({
+export type CollectionDescriptionProps = JSX.IntrinsicElements['p']
+
+const CollectionDescription = ({
   className,
   children,
   ...props
-}: JSX.IntrinsicElements['p']): React.ReactElement => {
+}: CollectionDescriptionProps): React.ReactElement => {
   const classes = classname('usa-collection__description', className)
   return (
     <p className={classes} {...props}>
@@ -13,3 +15,5 @@ export const CollectionDescription = ({
     </p>
   )
 }
+
+export default CollectionDescription

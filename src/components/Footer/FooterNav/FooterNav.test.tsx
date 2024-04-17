@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-import { FooterNav } from './FooterNav'
+import FooterNav from './FooterNav'
 
 const links = Array(4).fill(
   <a className="usa-footer__primary-link" href="#">

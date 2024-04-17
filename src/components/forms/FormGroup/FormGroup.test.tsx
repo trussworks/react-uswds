@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { FormGroup } from './FormGroup'
+import FormGroup from './FormGroup'
 
 describe('FormGroup component', () => {
   it('renders without errors', () => {

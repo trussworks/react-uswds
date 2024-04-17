@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerProps = {
+export type BannerProps = {
   divProps?: JSX.IntrinsicElements['div']
 }
 
-export const Banner = ({
+const Banner = ({
   children,
   divProps,
   className,
@@ -24,3 +24,5 @@ export const Banner = ({
     </section>
   )
 }
+
+export default Banner

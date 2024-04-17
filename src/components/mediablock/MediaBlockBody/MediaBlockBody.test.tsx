@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { MediaBlockBody } from './MediaBlockBody'
+import MediaBlockBody from './MediaBlockBody'
 
 describe('MediaBlockBody Component', () => {
   it('renders properly', () => {

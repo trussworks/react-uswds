@@ -1,15 +1,16 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'
+import { GridLayoutProp } from '../../grid/Grid/Grid'
+import { applyGridClasses } from '../../grid/Grid/utils'
 
-type CardProps = {
+export type CardProps = {
   layout?: 'standardDefault' | 'flagDefault' | 'flagMediaRight'
   headerFirst?: boolean
   containerProps?: React.HTMLAttributes<HTMLDivElement>
 }
 
-export const Card = ({
+const Card = ({
   layout = 'standardDefault',
   headerFirst,
   children,

@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { MonthPicker } from './MonthPicker'
+import MonthPicker from './MonthPicker'
 import { MONTH_LABELS } from './constants'
 import { parseDateString } from './utils'
 import { sampleLocalization } from './i18n'

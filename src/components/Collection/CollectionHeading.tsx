@@ -1,19 +1,20 @@
 import React from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
-interface CollectionHeadingProps {
+
+export type CollectionHeadingProps = {
   headingLevel: HeadingLevel
-}
-export const CollectionHeading = ({
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  HTMLHeadingElement
+>
+
+const CollectionHeading = ({
   headingLevel,
   className,
   children,
   ...props
-}: CollectionHeadingProps &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >): React.ReactElement => {
+}: CollectionHeadingProps): React.ReactElement => {
   const Heading = headingLevel
 
   const classes = classnames('usa-collection__heading', className)
@@ -23,3 +24,5 @@ export const CollectionHeading = ({
     </Heading>
   )
 }
+
+export default CollectionHeading

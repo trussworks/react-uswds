@@ -5,7 +5,7 @@ import { HeadingLevel } from '../../types/headingLevel'
 
 import styles from './Alert.module.scss'
 
-type AlertProps = {
+export type AlertProps = {
   type: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
   headingLevel: HeadingLevel
@@ -16,7 +16,7 @@ type AlertProps = {
   validation?: boolean
 }
 
-export const Alert = ({
+const Alert = ({
   type,
   heading,
   headingLevel,

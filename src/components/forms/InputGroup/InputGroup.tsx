@@ -7,7 +7,7 @@ export interface InputGroupProps {
   error?: boolean
 }
 
-export const InputGroup = ({
+const InputGroup = ({
   children,
   className,
   error,
@@ -24,3 +24,5 @@ export const InputGroup = ({
     </div>
   )
 }
+
+export default InputGroup

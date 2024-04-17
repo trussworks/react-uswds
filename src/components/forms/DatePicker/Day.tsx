@@ -5,7 +5,7 @@ import { formatDate, isIosDevice } from './utils'
 
 import { DatePickerLocalization, EN_US } from './i18n'
 
-interface DayProps {
+export interface DayProps {
   date: Date
   onClick: (value: string) => void
   onKeyDown: (event: KeyboardEvent) => void
@@ -24,7 +24,7 @@ interface DayProps {
   i18n?: DatePickerLocalization
 }
 
-const DayForwardRef: React.ForwardRefRenderFunction<
+export const DayForwardRef: React.ForwardRefRenderFunction<
   HTMLButtonElement,
   DayProps
 > = (
@@ -110,4 +110,6 @@ const DayForwardRef: React.ForwardRefRenderFunction<
   )
 }
 
-export const Day = forwardRef(DayForwardRef)
+const Day = forwardRef(DayForwardRef)
+
+export default Day

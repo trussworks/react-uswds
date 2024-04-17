@@ -1,16 +1,16 @@
 import classnames from 'classnames'
 import React, { ReactElement, ReactNode } from 'react'
 
-interface IconListContentProps {
+export type IconListContentProps = {
   className?: string
   children?: ReactNode
-}
+} & JSX.IntrinsicElements['div']
 
-export const IconListContent = ({
+const IconListContent = ({
   className,
   children,
   ...divProps
-}: IconListContentProps & JSX.IntrinsicElements['div']): ReactElement => {
+}: IconListContentProps): ReactElement => {
   const classes = classnames(className, 'usa-icon-list__content')
 
   return (

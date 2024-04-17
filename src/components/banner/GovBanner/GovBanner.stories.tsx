@@ -1,5 +1,5 @@
 import React from 'react'
-import { GovBanner } from './GovBanner'
+import GovBanner from './GovBanner'
 
 export default {
   title: 'Components/Banner',

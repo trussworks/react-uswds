@@ -2,7 +2,7 @@ import React, { ComponentType, useEffect } from 'react'
 
 import { deprecationWarning } from '../../deprecation'
 
-export function withDeprecationWarning<P extends JSX.IntrinsicAttributes>(
+function withDeprecationWarning<P extends JSX.IntrinsicAttributes>(
   Component: ComponentType<P>,
   warning: string
 ) {
@@ -15,3 +15,5 @@ export function withDeprecationWarning<P extends JSX.IntrinsicAttributes>(
     return <Component {...props} />
   }
 }
+
+export default withDeprecationWarning

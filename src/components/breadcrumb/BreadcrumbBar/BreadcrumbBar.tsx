@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
-type BreadcrumbBarProps = {
+export type BreadcrumbBarProps = {
   children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
   variant?: 'default' | 'wrap'
   className?: string
@@ -10,7 +10,7 @@ type BreadcrumbBarProps = {
   listProps?: JSX.IntrinsicElements['ol']
 }
 
-export const BreadcrumbBar = ({
+const BreadcrumbBar = ({
   variant = 'default',
   children,
   className,
@@ -33,3 +33,5 @@ export const BreadcrumbBar = ({
     </nav>
   )
 }
+
+export default BreadcrumbBar

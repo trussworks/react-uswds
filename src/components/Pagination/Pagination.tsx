@@ -1,10 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Icon } from '../Icon/Icons'
-import { Link } from '../Link/Link'
-import { Button } from '../Button/Button'
+import Icon from '../Icon/Icons'
+import Link from '../Link/Link'
+import Button from '../Button/Button'
+import PaginationOverflow from './PaginationOverflow'
+import PaginationPage from './PaginationPage'
 
-type PaginationProps = {
+export type PaginationProps = {
   pathname: string // pathname of results page
   totalPages?: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
@@ -15,65 +17,9 @@ type PaginationProps = {
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-}
+} & JSX.IntrinsicElements['nav']
 
-const PaginationPage = ({
-  page,
-  isCurrent,
-  pathname,
-  onClickPageNumber,
-}: {
-  pathname: string
-  page: number
-  isCurrent?: boolean
-  onClickPageNumber?: (
-    event: React.MouseEvent<HTMLButtonElement>,
-    page: number
-  ) => void
-}) => {
-  const linkClasses = classnames('usa-pagination__button', {
-    'usa-current': isCurrent,
-  })
-
-  return (
-    <li
-      key={`pagination_page_${page}`}
-      className="usa-pagination__item usa-pagination__page-no">
-      {onClickPageNumber ? (
-        <Button
-          type="button"
-          unstyled
-          data-testid="pagination-page-number"
-          className={linkClasses}
-          aria-label={`Page ${page}`}
-          aria-current={isCurrent ? 'page' : undefined}
-          onClick={(event) => {
-            onClickPageNumber(event, page)
-          }}>
-          {page}
-        </Button>
-      ) : (
-        <Link
-          href={`${pathname}?page=${page}`}
-          className={linkClasses}
-          aria-label={`Page ${page}`}
-          aria-current={isCurrent ? 'page' : undefined}>
-          {page}
-        </Link>
-      )}
-    </li>
-  )
-}
-
-const PaginationOverflow = () => (
-  <li
-    className="usa-pagination__item usa-pagination__overflow"
-    role="presentation">
-    <span>…</span>
-  </li>
-)
-
-export const Pagination = ({
+const Pagination = ({
   pathname,
   totalPages,
   currentPage,
@@ -83,7 +29,7 @@ export const Pagination = ({
   onClickNext,
   onClickPageNumber,
   ...props
-}: PaginationProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
+}: PaginationProps): React.ReactElement => {
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1
@@ -231,3 +177,5 @@ export const Pagination = ({
     </nav>
   )
 }
+
+export default Pagination

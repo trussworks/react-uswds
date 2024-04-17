@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Alert } from './Alert'
+import Alert from './Alert'
 import { HeadingLevel } from '../../types/headingLevel'
 
 describe('Alert component', () => {

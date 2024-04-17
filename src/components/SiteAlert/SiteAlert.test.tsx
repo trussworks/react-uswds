@@ -2,9 +2,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Link } from '../Link/Link'
+import Link from '../Link/Link'
 
-import { SiteAlert } from './SiteAlert'
+import SiteAlert from './SiteAlert'
 
 const testChildren = (
   <p className="usa-alert__text">

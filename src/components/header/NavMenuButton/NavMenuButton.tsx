@@ -1,15 +1,14 @@
 import React from 'react'
 
-type NavMenuButtonProps = {
+export type NavMenuButtonProps = {
   label: React.ReactNode
-}
+} & JSX.IntrinsicElements['button']
 
-export const NavMenuButton = ({
+const NavMenuButton = ({
   label,
   onClick,
   ...buttonProps
-}: NavMenuButtonProps &
-  JSX.IntrinsicElements['button']): React.ReactElement => {
+}: NavMenuButtonProps): React.ReactElement => {
   return (
     <button
       className="usa-menu-btn"
@@ -21,3 +20,5 @@ export const NavMenuButton = ({
     </button>
   )
 }
+
+export default NavMenuButton

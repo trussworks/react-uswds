@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type RequiredFormProps = {
+export type RequiredFormProps = {
   children: React.ReactNode
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
-type CustomFormProps = {
+export type CustomFormProps = {
   className?: string
   large?: boolean
   search?: boolean
@@ -14,9 +14,9 @@ type CustomFormProps = {
 
 export type OptionalFormProps = CustomFormProps & JSX.IntrinsicElements['form']
 
-type FormProps = RequiredFormProps & OptionalFormProps
+export type FormProps = RequiredFormProps & OptionalFormProps
 
-export const Form = ({
+const Form = ({
   onSubmit,
   children,
   className,
@@ -42,3 +42,5 @@ export const Form = ({
     </form>
   )
 }
+
+export default Form

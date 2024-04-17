@@ -57,12 +57,12 @@ export interface State {
   statusText: string
 }
 
-interface FilterResults {
+export interface FilterResults {
   closestMatch: ComboBoxOption
   optionsToDisplay: ComboBoxOption[]
 }
 
-export const useComboBox = (
+const useComboBox = (
   initialState: State,
   optionsList: ComboBoxOption[],
   disableFiltering: boolean,
@@ -243,3 +243,5 @@ export const useComboBox = (
 
   return useReducer(reducer, initialState)
 }
+
+export default useComboBox

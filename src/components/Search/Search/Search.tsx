@@ -1,16 +1,16 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { Form, OptionalFormProps } from '../../forms/Form/Form'
-import { SearchField } from '../SearchField/SearchField'
-import { SearchButton } from '../SearchButton/SearchButton'
+import Form, { OptionalFormProps } from '../../forms/Form/Form'
+import SearchField from '../SearchField/SearchField'
+import SearchButton from '../SearchButton/SearchButton'
 import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
 
-type SearchLocalization = {
+export type SearchLocalization = {
   buttonText: string
 }
 
-type SearchInputProps = {
+export type SearchInputProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
   className?: string
@@ -23,7 +23,7 @@ type SearchInputProps = {
   inputProps?: OptionalTextInputProps
 }
 
-export const Search = ({
+const Search = ({
   onSubmit,
   size,
   className,

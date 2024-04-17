@@ -1,24 +1,27 @@
 import React from 'react'
 
 import { ModalRef } from './Modal'
-import {
-  CustomLinkProps,
-  DefaultLinkProps,
-  isCustomProps,
-  Link,
-} from '../Link/Link'
+import Link, { CustomLinkProps, DefaultLinkProps } from '../Link/Link'
+import { isCustomProps } from '../Link/utils'
 
-type ModalOpenLinkProps = {
+export type ModalOpenLinkProps = {
   modalRef: React.RefObject<ModalRef>
 }
 
-export function ModalOpenLink(
-  props: DefaultLinkProps & ModalOpenLinkProps
+export type DefaultModalOpenLinkProps = ModalOpenLinkProps & DefaultLinkProps
+
+export type CustomModalOpenLinkProps<T> = CustomLinkProps<T> &
+  ModalOpenLinkProps
+
+export default function ModalOpenLink(
+  props: DefaultModalOpenLinkProps
 ): React.ReactElement
-export function ModalOpenLink<T>(
-  props: CustomLinkProps<T> & ModalOpenLinkProps
+export default function ModalOpenLink<T>(
+  props: CustomModalOpenLinkProps<T>
 ): React.ReactElement
-export function ModalOpenLink<FCProps = DefaultLinkProps & ModalOpenLinkProps>({
+export default function ModalOpenLink<
+  FCProps = DefaultLinkProps & ModalOpenLinkProps,
+>({
   modalRef,
   ...props
 }:

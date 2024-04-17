@@ -1,22 +1,22 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { Icon } from '../../Icon/Icons'
+import Icon from '../../Icon/Icons'
 
-import { Button } from '../../Button/Button'
+import Button from '../../Button/Button'
 
-type SearchLocalization = {
+export type SearchLocalization = {
   buttonText: string
 }
 
-type SearchButtonProps = {
+export type SearchButtonProps = {
   size?: 'big' | 'small'
   className?: string
   i18n?: SearchLocalization
   buttonAriaLabel?: string
 }
 
-export const SearchButton = ({
+const SearchButton = ({
   size,
   className,
   i18n,

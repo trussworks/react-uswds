@@ -1,13 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type ErrorMessageProps = {
+export type ErrorMessageProps = {
   children: React.ReactNode
   id?: string
   className?: string
 }
 
-export const ErrorMessage = ({
+const ErrorMessage = ({
   children,
   className,
   id,

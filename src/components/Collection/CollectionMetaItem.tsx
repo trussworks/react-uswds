@@ -1,11 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const CollectionMetaItem = ({
+export type CollectionMetaItemProps = JSX.IntrinsicElements['li']
+
+const CollectionMetaItem = ({
   className,
   children,
   ...props
-}: JSX.IntrinsicElements['li']): React.ReactElement => {
+}: CollectionMetaItemProps): React.ReactElement => {
   const classes = classnames('usa-collection__meta-item', className)
 
   return (
@@ -14,3 +16,5 @@ export const CollectionMetaItem = ({
     </li>
   )
 }
+
+export default CollectionMetaItem

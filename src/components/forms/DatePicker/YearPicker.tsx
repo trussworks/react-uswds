@@ -20,7 +20,7 @@ interface YearPickerProps {
   setStatuses: (statuses: string[]) => void
 }
 
-export const YearPicker = ({
+const YearPicker = ({
   date,
   minDate,
   maxDate,
@@ -270,3 +270,5 @@ export const YearPicker = ({
     </div>
   )
 }
+
+export default YearPicker

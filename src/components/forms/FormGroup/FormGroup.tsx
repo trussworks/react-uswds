@@ -1,13 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type FormGroupProps = {
+export type FormGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean
 }
 
-export const FormGroup = ({
+const FormGroup = ({
   children,
   className,
   error,
@@ -24,3 +24,5 @@ export const FormGroup = ({
     </div>
   )
 }
+
+export default FormGroup

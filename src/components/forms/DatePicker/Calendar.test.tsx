@@ -2,7 +2,7 @@ import React from 'react'
 import { render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { Calendar } from './Calendar'
+import Calendar from './Calendar'
 import { parseDateString, today } from './utils'
 import { MONTH_LABELS } from './constants'
 import { FocusMode } from './DatePicker'

@@ -1,7 +1,6 @@
 import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
-import {
-  LanguageSelector,
+import LanguageSelector, {
   LanguageDefinition,
 } from '../LanguageSelector/LanguageSelector'
 

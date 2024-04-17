@@ -25,14 +25,14 @@ export const parseTimeString = (timeStr: string): number | undefined => {
   return minutes
 }
 
-interface TimeContext {
+export interface TimeContext {
   minute: number
   hour12: number
   hour24: number
   ampm: 'am' | 'pm'
 }
 
-const getTimeContext = (minutes: number): TimeContext => {
+export const getTimeContext = (minutes: number): TimeContext => {
   const minute = minutes % 60
   const hour24 = Math.floor(minutes / 60)
   const hour12 = hour24 % 12 || 12
@@ -46,7 +46,7 @@ const getTimeContext = (minutes: number): TimeContext => {
   }
 }
 
-const padZeros = (value: number, length: number): string => {
+export const padZeros = (value: number, length: number): string => {
   return `0000${value}`.slice(-length)
 }
 

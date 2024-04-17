@@ -1,16 +1,15 @@
 import React from 'react'
-import { Icon } from '../../Icon/Icons'
-import { Button } from '../../Button/Button'
+import Icon from '../../Icon/Icons'
+import Button from '../../Button/Button'
 
-interface ModalCloseButtonProps {
+export type ModalCloseButtonProps = {
   handleClose: () => void
-}
+} & JSX.IntrinsicElements['button']
 
-export const ModalCloseButton = ({
+const ModalCloseButton = ({
   handleClose,
   ...buttonProps
-}: ModalCloseButtonProps &
-  JSX.IntrinsicElements['button']): React.ReactElement => {
+}: ModalCloseButtonProps): React.ReactElement => {
   return (
     <Button
       aria-label="Close this window"
@@ -23,3 +22,5 @@ export const ModalCloseButton = ({
     </Button>
   )
 }
+
+export default ModalCloseButton

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import { LanguageSelectorButton } from './LanguageSelectorButton'
+import LanguageSelectorButton from './LanguageSelectorButton'
 import LanguageSelectorDropdown from './LanguageSelectorDropdown'
 
 export type LanguageDefinition = {
@@ -16,17 +16,16 @@ export type LanguageSelectorProps = {
   small?: boolean
   className?: string
   displayLang?: string
-}
+} & JSX.IntrinsicElements['div']
 
-export const LanguageSelector = ({
+const LanguageSelector = ({
   label,
   langs,
   small,
   className,
   displayLang,
   ...divProps
-}: LanguageSelectorProps &
-  JSX.IntrinsicElements['div']): React.ReactElement => {
+}: LanguageSelectorProps): React.ReactElement => {
   const classes = classnames(
     'usa-language-container',
     {

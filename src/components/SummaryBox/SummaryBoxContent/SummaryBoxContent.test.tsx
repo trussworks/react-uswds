@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { SummaryBoxContent } from './SummaryBoxContent'
+import SummaryBoxContent from './SummaryBoxContent'
 
 describe('SummaryBoxContent component', () => {
   it('renders without errors', () => {

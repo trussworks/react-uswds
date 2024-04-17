@@ -1,17 +1,11 @@
 import React from 'react'
-import {
-  FooterExtendedNavList,
+import FooterExtendedNavList, {
   ExtendedNavLinksType,
 } from '../FooterExtendedNavList/FooterExtendedNavList'
 import classnames from 'classnames'
+import { isExtendedNavLinks } from './utils'
 
-function isExtendedNavLinks(
-  links: React.ReactNode[] | ExtendedNavLinksType
-): links is ExtendedNavLinksType {
-  return (links as ExtendedNavLinksType)[0].constructor === Array
-}
-
-type FooterNavProps = {
+export type FooterNavProps = {
   size?: 'big' | 'medium' | 'slim'
   isMobile?: boolean
   /*
@@ -19,15 +13,15 @@ type FooterNavProps = {
      FooterExtendedNavList can only be used with multidimensional array (ExtendedNavLinksType) and size="big" prop.
    */
   links: React.ReactNode[] | ExtendedNavLinksType
-}
+} & React.HTMLAttributes<HTMLElement>
 
-export const FooterNav = ({
+const FooterNav = ({
   className,
   size,
   isMobile,
   links,
   ...elementAttributes
-}: FooterNavProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+}: FooterNavProps): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
@@ -60,3 +54,5 @@ export const FooterNav = ({
     </nav>
   )
 }
+
+export default FooterNav

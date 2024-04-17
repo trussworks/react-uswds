@@ -1,18 +1,18 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type LogoProps = {
+export type LogoProps = {
   size?: 'big' | 'medium' | 'slim'
   heading?: React.ReactNode
   image: React.ReactNode
-}
+} & React.HtmlHTMLAttributes<HTMLElement>
 
-export const Logo = ({
+const Logo = ({
   size,
   heading,
   image,
   ...elementAttributes
-}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement => {
+}: LogoProps): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
@@ -40,3 +40,5 @@ export const Logo = ({
     </div>
   )
 }
+
+export default Logo

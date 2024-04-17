@@ -1,12 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
+
 export interface BreadcrumbProps {
   children: React.ReactNode
   className?: string
   current?: boolean
 }
 
-export const Breadcrumb = ({
+const Breadcrumb = ({
   children,
   current = false,
   className,
@@ -29,3 +30,5 @@ export const Breadcrumb = ({
     </li>
   )
 }
+
+export default Breadcrumb

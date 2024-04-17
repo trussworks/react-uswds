@@ -8,11 +8,11 @@ import React, {
 import FocusTrap from 'focus-trap-react'
 
 import { useModal, getScrollbarWidth } from './utils'
-import { ModalWindow } from './ModalWindow/ModalWindow'
-import { ModalWrapper } from './ModalWrapper/ModalWrapper'
+import ModalWindow from './ModalWindow/ModalWindow'
+import ModalWrapper from './ModalWrapper/ModalWrapper'
 import ReactDOM from 'react-dom'
 
-interface ModalComponentProps {
+export interface ModalComponentProps {
   id: string
   children: React.ReactNode
   className?: string
@@ -203,6 +203,6 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   }
 }
 
-export const Modal = forwardRef(ModalForwardRef)
+const Modal = forwardRef(ModalForwardRef)
 
 export default Modal

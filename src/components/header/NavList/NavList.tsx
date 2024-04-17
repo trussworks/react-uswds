@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type CustomNavListProps = {
+export type CustomNavListProps = {
   items: React.ReactNode[]
   type?:
     | 'primary'
@@ -14,7 +14,7 @@ type CustomNavListProps = {
 
 export type NavListProps = CustomNavListProps & JSX.IntrinsicElements['ul']
 
-export const NavList = ({
+const NavList = ({
   items,
   type,
   className,
@@ -57,3 +57,5 @@ export const NavList = ({
     </ul>
   )
 }
+
+export default NavList

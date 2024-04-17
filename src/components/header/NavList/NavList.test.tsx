@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { NavList } from './NavList'
+import NavList from './NavList'
 
 const testItems = ['item 1', 'item 2', 'item 3']
 

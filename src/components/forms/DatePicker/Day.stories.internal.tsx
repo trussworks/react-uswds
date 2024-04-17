@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Day } from './Day'
+import Day from './Day'
 
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-type NavDropDownButtonProps = {
+export type NavDropDownButtonProps = {
   label: string
   /*
     Element (i.e. menu) id already present in DOM that will be controlled by this button
@@ -10,9 +10,9 @@ type NavDropDownButtonProps = {
   isOpen: boolean
   onToggle: () => void
   isCurrent?: boolean
-}
+} & JSX.IntrinsicElements['button']
 
-export const NavDropDownButton = ({
+const NavDropDownButton = ({
   label,
   menuId,
   isOpen,
@@ -20,8 +20,7 @@ export const NavDropDownButton = ({
   isCurrent,
   className,
   ...buttonProps
-}: NavDropDownButtonProps &
-  JSX.IntrinsicElements['button']): React.ReactElement => {
+}: NavDropDownButtonProps): React.ReactElement => {
   const classes = classnames(
     'usa-accordion__button',
     'usa-nav__link',

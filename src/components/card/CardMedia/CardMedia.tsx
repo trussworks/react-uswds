@@ -1,14 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface CardMediaProps {
+export interface CardMediaProps {
   exdent?: boolean
   inset?: boolean
   imageClass?: string
   children: React.ReactNode
 }
 
-export const CardMedia = ({
+const CardMedia = ({
   exdent,
   inset,
   imageClass,

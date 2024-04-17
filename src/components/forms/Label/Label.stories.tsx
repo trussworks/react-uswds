@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label } from './Label'
+import Label from './Label'
 
 export default {
   title: 'Components/Form elements/Label',

@@ -1,11 +1,13 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-export const MediaBlockBody = ({
+export type MediaBlockBodyProps = JSX.IntrinsicElements['div']
+
+const MediaBlockBody = ({
   children,
   className,
   ...divProps
-}: JSX.IntrinsicElements['div']): ReactElement => {
+}: MediaBlockBodyProps): ReactElement => {
   const classes = classNames('usa-media-block__body', className)
 
   return (
@@ -14,3 +16,5 @@ export const MediaBlockBody = ({
     </div>
   )
 }
+
+export default MediaBlockBody

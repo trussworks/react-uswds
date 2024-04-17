@@ -1,12 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const CardBody = ({
+export type CardBodyProps = { exdent?: boolean } & JSX.IntrinsicElements['div']
+
+const CardBody = ({
   exdent,
   children,
   className,
   ...bodyProps
-}: { exdent?: boolean } & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: CardBodyProps): React.ReactElement => {
   const classes = classnames(
     'usa-card__body',
     {

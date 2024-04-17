@@ -1,7 +1,7 @@
 import React from 'react'
-import { NavList, NavListProps } from '../NavList/NavList'
+import NavList, { NavListProps } from '../NavList/NavList'
 
-type MenuProps = {
+export type MenuProps = {
   items: React.ReactNode[]
   isOpen: boolean
   type?:
@@ -11,15 +11,15 @@ type MenuProps = {
     | 'megamenu'
     | 'footerSecondary'
     | 'language'
-}
+} & NavListProps
 
-export const Menu = ({
+const Menu = ({
   className,
   items,
   isOpen,
   type,
   ...navListProps
-}: MenuProps & NavListProps): React.ReactElement => {
+}: MenuProps): React.ReactElement => {
   return (
     <NavList
       className={className}

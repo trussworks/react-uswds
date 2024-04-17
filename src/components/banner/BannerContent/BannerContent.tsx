@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-type BannerContentProps = {
+export type BannerContentProps = {
   isOpen: boolean
 }
 
-export const BannerContent = ({
+const BannerContent = ({
   children,
   isOpen,
   className,
@@ -22,3 +22,5 @@ export const BannerContent = ({
     </div>
   )
 }
+
+export default BannerContent
