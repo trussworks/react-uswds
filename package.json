@@ -12,28 +12,28 @@
     "component library"
   ],
   "type": "module",
-  "main": "./lib/index.cjs.js",
-  "module": "./lib/index.es.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/cjs/index.cjs.js",
+  "module": "./dist/es/index.es.js",
+  "types": "./dist/es/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/index.d.ts",
-        "default": "./lib/index.es.js"
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/es/index.js"
       },
       "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./lib/index.cjs.js"
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
       }
     },
     "./lib/index.css": "./lib/assets/style.css",
     "./lib/uswds.css": "./lib/assets/uswds/css/styles.css"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "sideEffects": [
-    "/lib/assets/**/*"
+    "/dist/assets/**/*"
   ],
   "engines": {
     "node": ">= 18"
@@ -43,16 +43,16 @@
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
-    "test:serverside": "yarn build && node src/serverSideTest.js",
+    "test:serverside": "yarn build && tsx scripts/serverSideTest.ts",
     "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build",
-    "build": "vite build && yarn run build:uswds",
+    "build": "vite build && LIB_FORMAT=cjs vite build && yarn run build:uswds",
     "build:uswds": "gulp init",
     "build:watch": "vite dev",
-    "lint": "tsc && eslint \"{scripts,src}/**.{js,jsx,ts,tsx}\" && stylelint \"{scripts,src}/**/*.{css,scss}\"",
-    "lint:fix": "tsc && eslint \"{scripts,src}/**.{js,jsx,ts,tsx}\" --fix && stylelint \"{scripts,src}/**/*.{css,scss}\" --fix",
-    "format:check": "prettier --check \"{scripts,src}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "format:fix": "prettier --write \"{scripts,src}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "lint": "tsc && eslint \"{scripts,lib}/**.{js,jsx,ts,tsx}\" && stylelint \"{scripts,lib}/**/*.{css,scss}\"",
+    "lint:fix": "tsc && eslint \"{scripts,lib}/**.{js,jsx,ts,tsx}\" --fix && stylelint \"{scripts,lib}/**/*.{css,scss}\" --fix",
+    "format:check": "prettier --check \"{scripts,lib}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "format:fix": "prettier --write \"{scripts,lib}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "prepare": "husky && yarn build && yarn test:serverside",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo --config ./.happo.cjs",

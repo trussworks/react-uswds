@@ -5,7 +5,7 @@
  * and takes place after a webpack build.
  */
 
-import * as library from '../lib/index.cjs.js'
+import library from '../dist/cjs/index.cjs'
 
 console.log('server-side test running')
 

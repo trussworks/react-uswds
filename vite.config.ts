@@ -16,23 +16,22 @@ const uswdsIncludePaths = [
 ]
 
 const input = Object.fromEntries([
-  ['index', 'src/index.ts'],
-  ...glob
-    .sync('src/components/**/!(*.spec|*.stories|*.test).{ts,tsx}')
-    .map((file) => [
-      // The name of the entry point
-      // lib/nested/foo.ts becomes nested/foo
-      relative('src', file.slice(0, file.length - extname(file).length)),
-      // The absolute path to the entry file
-      // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-      fileURLToPath(new URL(file, import.meta.url)),
-    ]),
+  //['index', 'lib/index.ts'],
+  ...glob.sync('lib/**/!(*.spec|*.stories|*.test).{ts,tsx}').map((file) => [
+    // The name of the entry point
+    // lib/nested/foo.ts becomes nested/foo
+    relative('lib', file.slice(0, file.length - extname(file).length)),
+    // The absolute path to the entry file
+    // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
+    fileURLToPath(new URL(file, import.meta.url)),
+  ]),
 ])
 
-console.log(input)
+const LIB_FORMAT = process.env.LIB_FORMAT ?? 'es'
 
 export default defineConfig(({ mode }) => {
   const isTest = mode === 'test' || mode === 'benchmark'
+  const isCjs = LIB_FORMAT === 'cjs'
 
   return {
     // ignore some plugins if running tests
@@ -46,13 +45,14 @@ export default defineConfig(({ mode }) => {
         dts({
           tsconfigPath: 'tsconfig.build.json',
           exclude: 'src/setupTests.ts',
+          outDir: `dist/${isCjs ? 'cjs' : 'es'}`,
         }),
     ],
     build: {
-      outDir: 'lib',
+      emptyOutDir: !isCjs,
       lib: {
-        entry: resolve(__dirname, 'src/index.ts'),
-        formats: ['cjs', 'es'],
+        entry: resolve(__dirname, 'lib/index.ts'),
+        formats: [LIB_FORMAT],
       },
       rollupOptions: {
         external: [
@@ -65,7 +65,7 @@ export default defineConfig(({ mode }) => {
         input,
         output: {
           assetFileNames: 'assets/[name][extname]',
-          entryFileNames: '[name].[format].js',
+          entryFileNames: `[format]/[name].${isCjs ? 'cjs' : 'js'}`,
         },
       },
       sourcemap: true,

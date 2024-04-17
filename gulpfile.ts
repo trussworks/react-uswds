@@ -3,11 +3,11 @@ import uswds from '@uswds/compile'
 uswds.settings.version = 3
 uswds.paths.dist = {
   ...uswds.paths.dist,
-  theme: 'lib/assets/uswds/sass',
-  img: 'lib/assets/uswds/img',
-  fonts: 'lib/assets/uswds/fonts',
-  js: 'lib/assets/uswds/js',
-  css: 'lib/assets/uswds/css',
+  theme: 'dist/assets/uswds/sass',
+  img: 'dist/assets/uswds/img',
+  fonts: 'dist/assets/uswds/fonts',
+  js: 'dist/assets/uswds/js',
+  css: 'dist/assets/uswds/css',
 }
 
 export {

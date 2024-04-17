@@ -19,7 +19,7 @@
     "jsx": "react-jsx",
     "noImplicitAny": true,
     "declaration": true,
-    "outDir": "./lib",
+    "outDir": "./dist",
     "isolatedModules": true,
     "types": [
       "vitest/globals",
@@ -27,7 +27,7 @@
     ]
   },
   "include": [
-    "src/**/*",
-    "custom.d.ts",
+    "lib/**/*",
+    "custom.d.ts", "scripts/serverSideTest.js",
   ],
 }
