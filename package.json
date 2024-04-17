@@ -12,18 +12,18 @@
     "component library"
   ],
   "type": "module",
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
+  "main": "./lib/index.cjs.js",
+  "module": "./lib/index.es.js",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": {
         "types": "./lib/index.d.ts",
-        "default": "./lib/index.js"
+        "default": "./lib/index.es.js"
       },
       "require": {
         "types": "./lib/index.d.ts",
-        "default": "./lib/index.cjs"
+        "default": "./lib/index.cjs.js"
       }
     },
     "./lib/index.css": "./lib/assets/style.css",
