@@ -8,11 +8,7 @@ import { BannerGuidance } from '../BannerGuidance/BannerGuidance'
 import { BannerIcon } from '../BannerIcon/BannerIcon'
 import { MediaBlockBody } from '../../mediablock/MediaBlockBody/MediaBlockBody'
 import { Icon } from '../../Icon/Icons'
-
-// assets
-import flagImg from '@uswds/uswds/img/us_flag_small.png'
-import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
-import httpsIcon from '@uswds/uswds/img/icon-https.svg'
+import { USWDS_IMAGES } from '../../../utils/uswdsImages'
 
 type Language = 'english' | 'spanish'
 
@@ -138,7 +134,13 @@ export const GovBanner = ({
       {...sectionProps}>
       <BannerHeader
         isOpen={isOpen}
-        flagImg={<BannerFlag src={flagImg} aria-hidden alt="" />}
+        flagImg={
+          <BannerFlag
+            src={USWDS_IMAGES.otherImages.UsFlagSmall}
+            aria-hidden
+            alt=""
+          />
+        }
         headerText={header}
         headerActionText={headerAction}>
         <BannerButton
@@ -153,7 +155,7 @@ export const GovBanner = ({
       <BannerContent id="gov-banner" isOpen={isOpen}>
         <div className="grid-row grid-gap-lg">
           <BannerGuidance className="tablet:grid-col-6">
-            <BannerIcon src={dotGovIcon} alt="" />
+            <BannerIcon src={USWDS_IMAGES.otherImages.IconDotGov} alt="" />
             <MediaBlockBody>
               <p>
                 <strong>{tldSectionHeader}</strong>
@@ -163,7 +165,7 @@ export const GovBanner = ({
             </MediaBlockBody>
           </BannerGuidance>
           <BannerGuidance className="tablet:grid-col-6">
-            <BannerIcon src={httpsIcon} alt="" />
+            <BannerIcon src={USWDS_IMAGES.otherImages.IconHttps} alt="" />
             <MediaBlockBody>
               <p>
                 <strong>{httpsSectionHeader}</strong>

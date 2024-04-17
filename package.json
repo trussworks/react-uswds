@@ -24,15 +24,16 @@
       "require": {
         "types": "./lib/index.d.ts",
         "default": "./lib/index.cjs"
-      },
-      "browser": "./lib/index.iife.js",
-      "default": "./lib/index.umd.cjs"
+      }
     },
-    "./lib/index.css": "./lib/index.css",
-    "./lib/uswds.css": "./lib/uswds.css"
+    "./lib/index.css": "./lib/assets/style.css",
+    "./lib/uswds.css": "./lib/assets/uswds/css/styles.css"
   },
   "files": [
     "lib"
+  ],
+  "sideEffects": [
+    "/lib/assets/**/*"
   ],
   "engines": {
     "node": ">= 18"
@@ -42,18 +43,17 @@
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
-    "test:bundles": "vitest --run bundles.test.tsx --mode bundles",
     "test:serverside": "yarn build && node src/serverSideTest.js",
     "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build",
-    "build": "vite build && yarn run build:uswds && yarn run test:bundles",
-    "build:uswds": "vite build --mode uswds",
+    "build": "vite build && yarn run build:uswds",
+    "build:uswds": "gulp init",
     "build:watch": "vite dev",
-    "lint": "tsc && eslint --ext js,jsx,ts,tsx src && stylelint \"src/**/*.{css,scss}\"",
-    "lint:fix": "tsc && eslint --ext js,jsx,ts,tsx src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "prepare": "husky && yarn build",
+    "lint": "tsc && eslint \"{scripts,src}/**.{js,jsx,ts,tsx}\" && stylelint \"{scripts,src}/**/*.{css,scss}\"",
+    "lint:fix": "tsc && eslint \"{scripts,src}/**.{js,jsx,ts,tsx}\" --fix && stylelint \"{scripts,src}/**/*.{css,scss}\" --fix",
+    "format:check": "prettier --check \"{scripts,src}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "format:fix": "prettier --write \"{scripts,src}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "prepare": "husky && yarn build && yarn test:serverside",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo --config ./.happo.cjs",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' happo-ci-github-actions --config ./.happo.cjs",
@@ -98,6 +98,7 @@
     "@types/react-test-renderer": "^18.0.7",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.1.1",
+    "@uswds/compile": "^1.1.0",
     "@uswds/uswds": "3.7.1",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-istanbul": "^1.2.1",
@@ -115,7 +116,10 @@
     "eslint-plugin-security": "^2.1.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vitest": "^0.3.21",
+    "fast-case": "^1.7.0",
     "focus-trap-react": "^10.2.3",
+    "glob": "^10.3.12",
+    "gulp": "^5.0.0",
     "happo-plugin-storybook": "^4.1.0",
     "happo.io": "^9.1.2",
     "husky": "^9.0.10",
@@ -133,6 +137,7 @@
     "stylelint-config-sass-guidelines": "^11.0.0",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-prettier": "^5.0.0",
+    "tsx": "^4.7.2",
     "typescript": "^5.1.6",
     "vite": "^5.0.12",
     "vite-plugin-checker": "^0.6.2",

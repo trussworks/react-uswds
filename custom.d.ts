@@ -31,3 +31,5 @@ declare namespace globalThis {
     MSStream: object
   }
 }
+
+declare module '@uswds/compile'

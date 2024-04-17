@@ -11,7 +11,9 @@ interface USWDSIconProps {
 export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
 
 export const makeUSWDSIcon = (
-  Component: React.ComponentType<IconProps>
+  name: string,
+  displayName: string,
+  spriteUrl: string
 ): React.FunctionComponent => {
   const IconFunctionalComponent = (props: IconProps): JSX.Element => {
     const {
@@ -37,8 +39,13 @@ export const makeUSWDSIcon = (
       ...iconProps,
     }
 
-    return <Component {...finalProps} />
+    return (
+      <svg {...finalProps}>
+        <title>{displayName}</title>
+        <use href={`${spriteUrl}#${name}`} />
+      </svg>
+    )
   }
-  IconFunctionalComponent.displayName = Component.displayName
+  IconFunctionalComponent.displayName = displayName
   return IconFunctionalComponent
 }
