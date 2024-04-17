@@ -14,15 +14,25 @@
   "type": "module",
   "main": "./dist/cjs/index.cjs.js",
   "module": "./dist/es/index.es.js",
-  "types": "./dist/es/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/es/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/es/index.js"
       },
       "require": {
-        "types": "./dist/cjs/index.d.ts",
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    },
+    "./lib": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/es/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/cjs/index.cjs"
       }
     },

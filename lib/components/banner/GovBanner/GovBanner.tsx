@@ -43,7 +43,7 @@ const GovBanner = ({
         isOpen={isOpen}
         flagImg={
           <BannerFlag
-            src={USWDS_IMAGES.otherImages.UsFlagSmall}
+            src={`${USWDS_IMAGES.imageDir}/${USWDS_IMAGES.otherImages.UsFlagSmall}`}
             aria-hidden
             alt=""
           />
@@ -62,7 +62,10 @@ const GovBanner = ({
       <BannerContent id="gov-banner" isOpen={isOpen}>
         <div className="grid-row grid-gap-lg">
           <BannerGuidance className="tablet:grid-col-6">
-            <BannerIcon src={USWDS_IMAGES.otherImages.IconDotGov} alt="" />
+            <BannerIcon
+              src={`${USWDS_IMAGES.imageDir}/${USWDS_IMAGES.otherImages.IconDotGov}`}
+              alt=""
+            />
             <MediaBlockBody>
               <p>
                 <strong>{tldSectionHeader}</strong>
@@ -72,7 +75,10 @@ const GovBanner = ({
             </MediaBlockBody>
           </BannerGuidance>
           <BannerGuidance className="tablet:grid-col-6">
-            <BannerIcon src={USWDS_IMAGES.otherImages.IconHttps} alt="" />
+            <BannerIcon
+              src={`${USWDS_IMAGES.imageDir}/${USWDS_IMAGES.otherImages.IconHttps}`}
+              alt=""
+            />
             <MediaBlockBody>
               <p>
                 <strong>{httpsSectionHeader}</strong>

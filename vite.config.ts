@@ -42,10 +42,11 @@ export default defineConfig(({ mode }) => {
           typescript: true,
         }),
       !isTest &&
+        !isCjs &&
         dts({
           tsconfigPath: 'tsconfig.build.json',
           exclude: 'src/setupTests.ts',
-          outDir: `dist/${isCjs ? 'cjs' : 'es'}`,
+          outDir: `dist/types`,
         }),
     ],
     build: {
