@@ -26,8 +26,8 @@
         "default": "./dist/cjs/index.cjs"
       }
     },
-    "./lib/index.css": "./lib/assets/style.css",
-    "./lib/uswds.css": "./lib/assets/uswds/css/styles.css"
+    "./lib/index.css": "./dist/assets/style.css",
+    "./lib/uswds.css": "./dist/assets/uswds/css/styles.css"
   },
   "files": [
     "dist"
