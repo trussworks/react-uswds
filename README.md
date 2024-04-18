@@ -24,6 +24,7 @@ A deployed instance of the ReactUSWDS Storybook is located at: [https://trusswor
     - [USWDS](#uswds)
     - [NodeJS](#nodejs)
     - [Pre-Release](#pre-release)
+    - [Implementation examples](#implementation-examples)
   - [Background](#background)
     - [Non-Goals](#non-goals)
   - [Active Maintainers](#active-maintainers)
@@ -86,6 +87,36 @@ Having issues? See [FAQs](./docs/faqs.md).
 ### Pre-Release
 
 See [prelease.md](docs/prerelease.md)
+
+### Implementation examples
+
+[We decided](https://github.com/trussworks/react-uswds/issues/2001) to focus on our [storybook](https://trussworks.github.io/react-uswds/) over hosting an example/boilerplate implementation, but you can find a few such things from our friends:
+
+* [NASA's Americana Remix stack](https://github.com/nasa-gcn/americana-stack?tab=readme-ov-file)
+* [USDS's Gatsby starter template](https://github.com/usds/gatsby-uswds-ts-starter)
+* [Nava's NextJS starter template](https://github.com/navapbc/template-application-nextjs)
+
+You can also check out some open source projects using React-USWDS across federal and state governments:
+
+* DOL
+  * [Unemployment Insurance Claimant Experience Pilot](https://github.com/USDepartmentofLabor/ui-claimant-experience-pilot)
+  * [New Jersey's Unemployment Insurance Claimant Intake](https://github.com/USDepartmentofLabor/UI-Claimant-Experience-NJ-Pilot)
+* USA.gov
+  * [Vote.gov](https://vote.gov/)
+  * [Search.gov](https://search.gov/)
+* CDC
+  * [ReportStream](https://github.com/CDCgov/prime-reportstream)
+  * [EpiSync](https://github.com/CDCgov/EpiSync)
+  * [National Electronic Disease Surveillance System Base System](https://github.com/CDCgov/NEDSS-Modernization)
+* Centers for Medicare & Medicaid Services (CMS):
+  * [EASi Application](https://github.com/CMSgov/easi-app)
+  * [Model Innovation Tool (MINT)](https://github.com/CMSgov/mint-app)
+* Others
+  * [DoD and TRANSCOM's MilMove](https://github.com/transcom/mymove)
+  * [OMB's Environment Justice Scorecard](https://github.com/usds/ej-scorecard)
+  * [U.S. Office of Head Start's Training & Technical Assistance Smart Hub](https://github.com/HHS/Head-Start-TTADP)
+  * [CISA's XFD application](https://github.com/cisagov/XFD)
+  * ...and more on our [dependents page](https://github.com/trussworks/react-uswds/network/dependents)
 
 ## Background
 
