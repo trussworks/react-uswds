@@ -14,6 +14,9 @@ export type LanguageSelectorProps = {
   label?: string
   langs: LanguageDefinition[]
   small?: boolean
+  /**
+   * Custom classes for the call-to-action
+   */
   className?: string
   displayLang?: string
 }
@@ -27,18 +30,22 @@ export const LanguageSelector = ({
   ...divProps
 }: LanguageSelectorProps &
   JSX.IntrinsicElements['div']): React.ReactElement => {
-  const classes = classnames(
-    'usa-language-container',
-    {
-      [`usa-language--small`]: small !== undefined,
-    },
-    className
-  )
+  const containerClasses = classnames('usa-language-container', {
+    [`usa-language--small`]: small !== undefined,
+  })
 
   const [langIndex, setLangIndex] = useState(false)
+
   if (langs.length > 2) {
     const dropdownProps = { label, langs, small, displayLang }
-    return <LanguageSelectorDropdown {...dropdownProps} className={className} />
+    return (
+      <div
+        className={containerClasses}
+        data-testid="languageSelector"
+        {...divProps}>
+        <LanguageSelectorDropdown {...dropdownProps} className={className} />
+      </div>
+    )
   } else {
     if (label) {
       console.warn(
@@ -57,9 +64,12 @@ export const LanguageSelector = ({
           }
         : curLang.on_click
     return (
-      <div className={classes} data-testid="languageSelector" {...divProps}>
+      <div
+        className={containerClasses}
+        data-testid="languageSelector"
+        {...divProps}>
         <LanguageSelectorButton
-          className={classes}
+          className={className}
           label={curLang.label}
           labelAttr={curLang.attr}
           onToggle={() => {
