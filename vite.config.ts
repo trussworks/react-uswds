@@ -76,7 +76,7 @@ export default defineConfig(({ mode: _mode }) => {
           banner: (assetInfo) =>
             assetInfo.fileName.endsWith('.js') ||
             assetInfo.fileName.endsWith('.mjs')
-              ? '"use client;"'
+              ? '"use client";'
               : '',
           globals: {
             react: 'React',
