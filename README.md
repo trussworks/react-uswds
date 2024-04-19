@@ -100,7 +100,7 @@ You can also check out some open source projects using React-USWDS across federa
 
 * DOL
   * [Unemployment Insurance Claimant Experience Pilot](https://github.com/USDepartmentofLabor/ui-claimant-experience-pilot)
-  * [New Jersey's Unemployment Insurance Claimant Intake](https://github.com/USDepartmentofLabor/UI-Claimant-Experience-NJ-Pilot)
+  * [New Jersey's Unemployment Insurance Claimant Intake Pilot](https://github.com/USDepartmentofLabor/UI-Claimant-Experience-NJ-Pilot)
 * USA.gov
   * [Vote.gov](https://vote.gov/)
   * [Search.gov](https://search.gov/)
