@@ -94,7 +94,7 @@ See [prelease.md](docs/prerelease.md)
 
 * [NASA's Americana Remix stack](https://github.com/nasa-gcn/americana-stack?tab=readme-ov-file)
 * [USDS's Gatsby starter template](https://github.com/usds/gatsby-uswds-ts-starter)
-* [Nava's NextJS starter template](https://github.com/navapbc/template-application-nextjs)
+* [Nava's Next.js starter template](https://github.com/navapbc/template-application-nextjs)
 
 You can also check out some open source projects using React-USWDS across federal and state governments:
 
