@@ -1,10 +1,16 @@
 import classnames from 'classnames'
 import React from 'react'
-import Link, { CustomLinkProps, DefaultLinkProps } from '../../Link/Link'
-import { isCustomProps } from '../../Link/utils'
+import Link, { CustomLinkProps, DefaultLinkProps } from '../../Link/Link.js'
+import { isCustomProps } from '../../Link/utils.js'
+
+export type BreadcrumbDefaultLinkProps = DefaultLinkProps
+export type BreadcrumbCustomLinkProps<T> = CustomLinkProps<T>
+export type BreadcrumbLinkProps<T = DefaultLinkProps> =
+  | DefaultLinkProps
+  | CustomLinkProps<T>
 
 export default function BreadcrumbLink(
-  props: DefaultLinkProps
+  props: BreadcrumbLinkProps
 ): React.ReactElement
 export default function BreadcrumbLink<T>(
   props: CustomLinkProps<T>
@@ -12,7 +18,7 @@ export default function BreadcrumbLink<T>(
 export default function BreadcrumbLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
-}: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
+}: BreadcrumbLinkProps): React.ReactElement {
   const classes = classnames(className, 'usa-breadcrumb__link')
 
   const linkProps = {

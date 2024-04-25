@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import Alert from '../Alert/Alert.js'
 
 export type SiteAlertProps = {
   variant: 'info' | 'emergency'
@@ -31,10 +32,7 @@ const SiteAlert = ({
     className
   )
 
-  let content = children
-  if (typeof children === 'string') {
-    content = <p className="usa-alert__text">{children}</p>
-  }
+  const isValidation = typeof children !== 'string'
 
   return (
     <section
@@ -42,12 +40,9 @@ const SiteAlert = ({
       className={classes}
       aria-label="Site alert"
       {...sectionProps}>
-      <div className="usa-alert">
-        <div className="usa-alert__body">
-          {heading && <h3 className="usa-alert__heading">{heading}</h3>}
-          {content}
-        </div>
-      </div>
+      <Alert headingLevel="h3" heading={heading} validation={isValidation}>
+        {children}
+      </Alert>
     </section>
   )
 }

@@ -1,8 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import Link, { CustomLinkProps, DefaultLinkProps } from '../../Link/Link'
-import { isCustomProps } from '../../Link/utils'
+import Link, { CustomLinkProps, DefaultLinkProps } from '../../Link/Link.js'
+import { isCustomProps } from '../../Link/utils.js'
+
+export type IdentifierLinkProps<T = DefaultLinkProps> =
+  | DefaultLinkProps
+  | CustomLinkProps<T>
 
 export default function IdentifierLink(
   props: DefaultLinkProps
@@ -13,7 +17,7 @@ export default function IdentifierLink<T>(
 export default function IdentifierLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
-}: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
+}: IdentifierLinkProps<FCProps>): React.ReactElement {
   const classes = classnames(className, 'usa-identifier__required-link')
   const linkProps = {
     ...passThroughProps,

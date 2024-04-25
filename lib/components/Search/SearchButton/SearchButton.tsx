@@ -1,9 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import Icon from '../../Icon/Icons'
+import Icon from '../../Icon/Icons.js'
 
-import Button from '../../Button/Button'
+import Button from '../../Button/Button.js'
 
 export type SearchLocalization = {
   buttonText: string
@@ -33,6 +33,7 @@ const SearchButton = ({
     },
     className
   )
+
   return (
     <div className={classes}>
       <Button aria-label={buttonAriaLabel || buttonText} type="submit">

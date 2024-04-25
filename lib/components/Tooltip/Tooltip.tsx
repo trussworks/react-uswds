@@ -13,9 +13,11 @@ import {
   isElementInViewport,
   calculateMarginOffset,
   isCustomProps,
-} from './utils'
+} from './utils.js'
+import { TRIANGLE_SIZE } from './constants.js'
+import Button from '../Button/Button.js'
 
-export type TooltipProps<T> = {
+export type BaseTooltipProps<T> = {
   label: ReactNode
   title?: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
@@ -28,17 +30,20 @@ export interface WithCustomTooltipProps<T> {
   asCustom: ForwardRefExoticComponent<T>
 }
 
-export type DefaultTooltipProps = TooltipProps<JSX.IntrinsicElements['button']>
+export type DefaultTooltipProps = BaseTooltipProps<
+  JSX.IntrinsicElements['button']
+>
 
-export type CustomTooltipProps<T> = TooltipProps<T> & WithCustomTooltipProps<T>
+export type CustomTooltipProps<T> = BaseTooltipProps<T> &
+  WithCustomTooltipProps<T>
 
-export const TRIANGLE_SIZE = 5
+export type TooltipProps<T> = DefaultTooltipProps | CustomTooltipProps<T>
 
-export default function Tooltip(props: DefaultTooltipProps): ReactElement
-export default function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
-export default function Tooltip<
+function Tooltip(props: DefaultTooltipProps): ReactElement
+function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
+function Tooltip<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps,
->(props: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
+>(props: TooltipProps<FCProps>): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
@@ -201,7 +206,8 @@ export default function Tooltip<
   })
 
   if (isCustomProps(props)) {
-    const { label, title, asCustom, children, ...remainingProps } = props
+    const { label, title, asCustom, children, className, ...remainingProps } =
+      props
     const customProps: FCProps = remainingProps as unknown as FCProps
 
     const triggerClasses = classnames('usa-tooltip__trigger', className)
@@ -209,7 +215,6 @@ export default function Tooltip<
     const triggerElement = createElement(
       asCustom,
       {
-        ...customProps,
         ref: triggerElementRef,
         'data-testid': 'triggerElement',
         'aria-describedby': tooltipID.current,
@@ -222,6 +227,7 @@ export default function Tooltip<
         onBlur: hideTooltip,
         onKeyDown: hideTooltip,
         className: triggerClasses,
+        ...customProps,
       },
       children
     )
@@ -245,16 +251,11 @@ export default function Tooltip<
   } else {
     const { label, title, children, ...remainingProps } = props
 
-    const triggerClasses = classnames(
-      'usa-button',
-      'usa-tooltip__trigger',
-      className
-    )
+    const triggerClasses = classnames('usa-tooltip__trigger', className)
 
     return (
       <span data-testid="tooltipWrapper" className={wrapperClasses}>
-        <button
-          {...remainingProps}
+        <Button
           data-testid="triggerElement"
           ref={triggerElementRef}
           aria-describedby={tooltipID.current}
@@ -267,9 +268,10 @@ export default function Tooltip<
           onFocus={showTooltip}
           onMouseLeave={hideTooltip}
           onBlur={hideTooltip}
-          onKeyDown={hideTooltip}>
+          onKeyDown={hideTooltip}
+          {...remainingProps}>
           {children}
-        </button>
+        </Button>
         <span
           data-testid="tooltipBody"
           title={title ?? (typeof label === 'string' ? label : undefined)}
@@ -289,3 +291,5 @@ export default function Tooltip<
 Tooltip.defaultProps = {
   position: 'top',
 }
+
+export default Tooltip

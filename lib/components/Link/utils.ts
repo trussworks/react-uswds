@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { DefaultLinkProps, CustomLinkProps, StyledLinkProps } from './Link'
+import { DefaultLinkProps, CustomLinkProps, StyledLinkProps } from './Link.js'
 
 export function isCustomProps<T>(
   props: DefaultLinkProps | CustomLinkProps<T>

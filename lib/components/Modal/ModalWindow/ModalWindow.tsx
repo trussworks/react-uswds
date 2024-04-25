@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
-import ModalCloseButton from '../ModalCloseButton/ModalCloseButton'
+import ModalCloseButton from '../ModalCloseButton/ModalCloseButton.js'
 
 export type ModalWindowProps = {
   modalId: string
@@ -37,11 +37,11 @@ export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
 
   return (
     <div
-      {...divProps}
       data-testid="modalWindow"
       className={classes}
       ref={ref}
-      data-force-action={forceAction}>
+      data-force-action={forceAction}
+      {...divProps}>
       <div className="usa-modal__content">
         <div className="usa-modal__main">{children}</div>
         {!forceAction && (

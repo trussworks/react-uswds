@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 
 export type ButtonProps = {
-  type: 'button' | 'submit' | 'reset'
+  type?: 'button' | 'submit' | 'reset'
   children: React.ReactNode
   secondary?: boolean
   base?: boolean
@@ -11,22 +11,24 @@ export type ButtonProps = {
   inverse?: boolean
   size?: 'big'
   unstyled?: boolean
-}
+} & JSX.IntrinsicElements['button']
 
-const Button = ({
-  type,
-  children,
-  secondary,
-  base,
-  accentStyle,
-  outline,
-  inverse,
-  size,
-  unstyled,
-  onClick,
-  className,
-  ...defaultProps
-}: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    type = 'button',
+    children,
+    secondary,
+    base,
+    accentStyle,
+    outline,
+    inverse,
+    size,
+    unstyled,
+    className,
+    ...defaultProps
+  }: ButtonProps,
+  ref
+): React.ReactElement {
   const classes = classnames(
     'usa-button',
     {
@@ -46,12 +48,12 @@ const Button = ({
     <button
       type={type}
       className={classes}
-      onClick={onClick}
       data-testid="button"
+      ref={ref}
       {...defaultProps}>
       {children}
     </button>
   )
-}
+})
 
 export default Button

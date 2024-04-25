@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import classnames from 'classnames'
-import FooterExtendedNavListSection from './FooterExtendedNavListSection'
+import FooterExtendedNavListSection from './FooterExtendedNavListSection.js'
+import Grid, { GridProps } from '../../grid/Grid/Grid.js'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
@@ -13,14 +13,13 @@ export type FooterExtendedNavListProps = {
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType
-} & React.HTMLAttributes<HTMLElement>
+} & GridProps
 
 const FooterExtendedNavList = ({
-  className,
   isMobile,
   nestedLinks,
+  ...props
 }: FooterExtendedNavListProps): React.ReactElement => {
-  const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 
   const [isMobileFallback, setIsMobileFallback] = React.useState<boolean>(
@@ -57,20 +56,21 @@ const FooterExtendedNavList = ({
   }
 
   return (
-    <div className={classes}>
+    <Grid row gap={4} {...props}>
       {nestedLinks.map((links, i) => (
-        <div
-          key={`linkSection-${i}`}
-          className="mobile-lg:grid-col-6 desktop:grid-col-3">
+        <Grid
+          mobileLg={{ col: 6 }}
+          desktop={{ col: 3 }}
+          key={`linkSection-${i}`}>
           <FooterExtendedNavListSection
             onToggle={useMobile ? (): void => onToggle(i) : undefined}
             // eslint-disable-next-line security/detect-object-injection
             isOpen={useMobile ? sectionsOpenState[i] : true}
             links={links}
           />
-        </div>
+        </Grid>
       ))}
-    </div>
+    </Grid>
   )
 }
 

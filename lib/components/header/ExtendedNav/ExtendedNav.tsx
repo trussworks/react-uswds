@@ -1,8 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import NavCloseButton from '../NavCloseButton/NavCloseButton'
-import NavList from '../NavList/NavList'
+import NavCloseButton from '../NavCloseButton/NavCloseButton.js'
+import NavList from '../NavList/NavList.js'
 
 export type ExtendedNavProps = {
   primaryItems: React.ReactNode[]

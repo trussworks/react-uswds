@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { HeadingLevel } from '../../types/headingLevel'
+import { HeadingLevel } from '../../types/headingLevel.js'
 
 import styles from './Alert.module.scss'
 
 export type AlertProps = {
-  type: 'success' | 'warning' | 'error' | 'info'
+  type?: 'success' | 'warning' | 'error' | 'info'
   heading?: React.ReactNode
   headingLevel: HeadingLevel
   children?: React.ReactNode
@@ -14,7 +14,7 @@ export type AlertProps = {
   slim?: boolean
   noIcon?: boolean
   validation?: boolean
-}
+} & JSX.IntrinsicElements['div']
 
 const Alert = ({
   type,
@@ -27,7 +27,7 @@ const Alert = ({
   className,
   validation,
   ...props
-}: AlertProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
+}: AlertProps): React.ReactElement => {
   const classes = classnames(
     'usa-alert',
     {

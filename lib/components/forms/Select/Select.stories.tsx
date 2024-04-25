@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Select from './Select'
-import Label from '../Label/Label'
+import Label from '../label/Label/Label'
 import type { Meta, StoryFn } from '@storybook/react'
 
 export default {

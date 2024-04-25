@@ -1,15 +1,11 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import classnames from 'classnames'
-import { IdentifierLinkItemProps } from '../IdentifierLinkItem/IdentifierLinkItem'
 
-export interface IdentifierLinksProps {
-  children:
-    | ReactElement<IdentifierLinkItemProps>
-    | ReactElement<IdentifierLinkItemProps>[]
+export type IdentifierLinksProps = React.PropsWithChildren<{
   className?: string
   navProps?: JSX.IntrinsicElements['nav']
   listProps?: JSX.IntrinsicElements['ul']
-}
+}>
 
 const IdentifierLinks = ({
   children,

@@ -1,11 +1,11 @@
 import React from 'react'
 import Fieldset from './Fieldset'
 
-import Label from '../Label/Label'
+import Label from '../label/Label/Label'
 import TextInput from '../TextInput/TextInput'
 import Checkbox from '../Checkbox/Checkbox'
 import Radio from '../Radio/Radio'
-import RequiredMarker from '../Label/RequiredMarker'
+import RequiredMarker from '../label/RequiredMarker/RequiredMarker'
 
 export default {
   title: 'Components/Form elements/Fieldset',

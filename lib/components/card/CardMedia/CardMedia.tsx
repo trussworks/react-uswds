@@ -1,12 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export interface CardMediaProps {
+export type CardMediaProps = {
   exdent?: boolean
   inset?: boolean
   imageClass?: string
   children: React.ReactNode
-}
+} & JSX.IntrinsicElements['div']
 
 const CardMedia = ({
   exdent,
@@ -15,7 +15,7 @@ const CardMedia = ({
   children,
   className,
   ...mediaProps
-}: CardMediaProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: CardMediaProps): React.ReactElement => {
   const classes = classnames(
     'usa-card__media',
     {

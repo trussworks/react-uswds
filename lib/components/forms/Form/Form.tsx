@@ -2,7 +2,6 @@ import React from 'react'
 import classnames from 'classnames'
 
 export type RequiredFormProps = {
-  children: React.ReactNode
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 

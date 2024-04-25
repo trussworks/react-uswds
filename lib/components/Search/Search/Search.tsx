@@ -1,16 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import Form, { OptionalFormProps } from '../../forms/Form/Form'
-import SearchField from '../SearchField/SearchField'
-import SearchButton from '../SearchButton/SearchButton'
-import { OptionalTextInputProps } from '../../forms/TextInput/TextInput'
+import Form, { FormProps } from '../../forms/Form/Form.js'
+import SearchField, { SearchFieldProps } from '../SearchField/SearchField.js'
+import SearchButton from '../SearchButton/SearchButton.js'
 
 export type SearchLocalization = {
   buttonText: string
 }
 
-export type SearchInputProps = {
+export type BaseSearchProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
   className?: string
@@ -20,8 +19,10 @@ export type SearchInputProps = {
   label?: React.ReactNode
   i18n?: SearchLocalization
   buttonAriaLabel?: string
-  inputProps?: OptionalTextInputProps
+  inputProps?: SearchFieldProps['inputProps']
 }
+
+export type SearchProps = BaseSearchProps & FormProps
 
 const Search = ({
   onSubmit,
@@ -34,8 +35,9 @@ const Search = ({
   i18n,
   buttonAriaLabel,
   inputProps,
+  defaultValue,
   ...formProps
-}: SearchInputProps & OptionalFormProps): React.ReactElement => {
+}: SearchProps): React.ReactElement => {
   const classes = classnames('usa-search', className)
 
   return (
@@ -46,13 +48,13 @@ const Search = ({
       search={true}
       {...formProps}>
       <SearchField
-        {...inputProps}
         isBig={size == 'big'}
         inputId={inputId}
         placeholder={placeholder}
-        name={inputName}
         label={label}
-        defaultValue={formProps.defaultValue}
+        defaultValue={defaultValue}
+        inputProps={inputProps}
+        inputName={inputName}
       />
       <SearchButton size={size} i18n={i18n} buttonAriaLabel={buttonAriaLabel} />
     </Form>

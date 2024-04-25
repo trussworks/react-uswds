@@ -4,7 +4,13 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import Tooltip from './Tooltip'
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
-vi.mock('./utils')
+vi.mock('./utils', async (importActual) => {
+  return {
+    ...(await importActual<typeof import('./utils')>()),
+    isElementInViewport: vi.fn(),
+    calculateMarginOffset: vi.fn(),
+  }
+})
 
 const mockedIsElementInViewport = vi.mocked(isElementInViewport)
 mockedIsElementInViewport.mockReturnValue(true)

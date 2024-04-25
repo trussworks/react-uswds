@@ -1,6 +1,9 @@
 import React, { KeyboardEvent } from 'react'
 
-import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
+import {
+  DEFAULT_EXTERNAL_DATE_FORMAT,
+  INTERNAL_DATE_FORMAT,
+} from './constants.js'
 
 /**
  * This file contains the USWDS DatePicker date manipulation functions converted to TypeScript
@@ -564,3 +567,11 @@ export const isIosDevice = (): boolean =>
   (navigator.userAgent.match(/(iPod|iPhone|iPad)/g) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
   !window.MSStream
+
+export const CalendarModes = {
+  DATE_PICKER: 'DATE_PICKER',
+  MONTH_PICKER: 'MONTH_PICKER',
+  YEAR_PICKER: 'YEAR_PICKER',
+} as const
+
+export type CalendarMode = (typeof CalendarModes)[keyof typeof CalendarModes]

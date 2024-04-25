@@ -12,6 +12,7 @@ const IdentifierLogos = ({
   ...divProps
 }: IdentifierLogosProps): React.ReactElement => {
   const classes = classnames('usa-identifier__logos', className)
+
   return (
     <div data-testid="identifierLogos" className={classes} {...divProps}>
       {children}

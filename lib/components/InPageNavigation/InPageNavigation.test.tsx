@@ -3,7 +3,7 @@ import { screen, render, getByRole } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import InPageNavigation from './InPageNavigation'
 import { HeadingLevel } from '../../types/headingLevel'
-import { CONTENT } from './content'
+import { CONTENT } from './fixtures'
 
 describe('InPageNavigation component', () => {
   const props = {

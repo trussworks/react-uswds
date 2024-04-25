@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import GridContainer from '../../grid/GridContainer/GridContainer.js'
 
 export type FooterProps = {
   size?: 'big' | 'medium' | 'slim'
@@ -15,7 +16,7 @@ export type FooterProps = {
    * Content in lower footer section, e.g. contact information
    */
   secondary: React.ReactNode
-} & React.HTMLAttributes<HTMLElement>
+} & JSX.IntrinsicElements['footer']
 
 const Footer = ({
   size,
@@ -40,7 +41,7 @@ const Footer = ({
       <div className="usa-footer__primary-section">{primary}</div>
 
       <div className="usa-footer__secondary-section">
-        <div className="grid-container">{secondary}</div>
+        <GridContainer>{secondary}</GridContainer>
       </div>
     </footer>
   )

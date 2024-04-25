@@ -1,6 +1,6 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import SocialLink from './SocialLink'
+import SocialLink from '../SocialLink/SocialLink'
 import SocialLinks from './SocialLinks'
 
 export default {

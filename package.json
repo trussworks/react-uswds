@@ -12,33 +12,16 @@
     "component library"
   ],
   "type": "module",
-  "main": "./dist/cjs/index.cjs.js",
-  "module": "./dist/es/index.es.js",
-  "types": "./dist/types/index.d.ts",
   "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/es/index.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.cjs"
-      }
-    },
-    "./lib": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/es/index.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.cjs"
-      }
+    "./lib/**": {
+      "import": "./dist/es",
+      "require": "./dist/cjs"
     },
     "./lib/index.css": "./dist/assets/style.css",
     "./lib/uswds.css": "./dist/assets/uswds/css/styles.css"
   },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.js",
   "files": [
     "dist"
   ],
@@ -148,6 +131,7 @@
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-prettier": "^5.0.0",
     "tsx": "^4.7.2",
+    "type-fest": "^4.17.0",
     "typescript": "^5.1.6",
     "vite": "^5.0.12",
     "vite-plugin-checker": "^0.6.2",

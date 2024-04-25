@@ -1,6 +1,6 @@
 import React from 'react'
 import InPageNavigation from './InPageNavigation'
-import { CONTENT } from './content'
+import { CONTENT } from './fixtures'
 import { HeadingLevel } from '../../types/headingLevel'
 
 export default {

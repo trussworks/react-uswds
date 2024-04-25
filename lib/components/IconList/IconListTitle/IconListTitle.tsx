@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
-import { HeadingLevel } from '../../../types/headingLevel'
+import { HeadingLevel } from '../../../types/headingLevel.js'
 
 export interface BaseIconListTitleProps {
   type: string
@@ -25,15 +25,20 @@ export type IconListHeadingTitleProps = HeadingIconListTitleProps &
 export type IconListParagraphTitleProps = ParagraphIconListTitleProps &
   JSX.IntrinsicElements['p']
 
+export type IconListTitleProps =
+  | IconListParagraphTitleProps
+  | IconListHeadingTitleProps
+
 const IconListTitle = ({
   type,
   children,
   className,
-}: IconListParagraphTitleProps | IconListHeadingTitleProps): ReactElement => {
+  ...props
+}: IconListTitleProps): ReactElement => {
   const classes = classnames(className, 'usa-icon-list__title')
   const Tag = type
   return (
-    <Tag className={classes} data-testid="iconListTitle">
+    <Tag className={classes} data-testid="iconListTitle" {...props}>
       {children}
     </Tag>
   )

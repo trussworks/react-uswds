@@ -1,7 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import NavList, { NavListProps } from '../NavList/NavList'
+import NavList, { NavListProps } from '../NavList/NavList.js'
+import Grid from '../../grid/Grid/Grid.js'
 
 export type MegaMenuProps = {
   items: React.ReactNode[][]
@@ -18,13 +19,13 @@ const MegaMenu = ({
 
   return (
     <div className={classes} hidden={!isOpen} data-testid="megamenu">
-      <div className="grid-row grid-gap-4">
+      <Grid row gap={4}>
         {items.map((listItems, i) => (
-          <div className="usa-col" key={`subnav_col_${i}`}>
+          <Grid col key={`subnav_col_${i}`}>
             <NavList items={listItems} type="megamenu" {...navListProps} />
-          </div>
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </div>
   )
 }

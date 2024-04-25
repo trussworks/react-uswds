@@ -4,7 +4,7 @@ import classNames from 'classnames'
 export type BannerButtonProps = {
   isOpen: boolean
   spanProps?: JSX.IntrinsicElements['span']
-}
+} & JSX.IntrinsicElements['button']
 
 const BannerButton = ({
   isOpen,
@@ -12,7 +12,7 @@ const BannerButton = ({
   className,
   spanProps,
   ...buttonProps
-}: BannerButtonProps & JSX.IntrinsicElements['button']): ReactElement => {
+}: BannerButtonProps): ReactElement => {
   const classes = classNames(
     'usa-accordion__button usa-banner__button',
     className

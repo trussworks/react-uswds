@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import Grid, { GridProps } from '../../grid/Grid/Grid.js'
 
 export type AddressProps = {
   size?: 'big' | 'medium' | 'slim'
@@ -7,12 +8,13 @@ export type AddressProps = {
      Contact info items - e.g. anchor tags or text for email, phone, website, etc.
    */
   items: React.ReactNode[]
-} & React.HTMLAttributes<HTMLElement>
+} & JSX.IntrinsicElements['address']
 
 const Address = ({
   size,
   className,
   items,
+  ...props
 }: AddressProps): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
@@ -20,28 +22,30 @@ const Address = ({
 
   const addressClasses = classnames('usa-footer__address', className)
 
-  const itemClasses = classnames({
-    'grid-col-auto': isBig || isMedium,
-    'grid-col-auto mobile-lg:grid-col-12 desktop:grid-col-auto': isSlim,
-  })
+  const itemGridProps = {
+    col: isBig || isMedium || isSlim ? 'auto' : undefined,
+    mobileLg: isSlim ? { col: 12 } : undefined,
+    desktop: isSlim ? { col: 'auto' } : undefined,
+  } satisfies GridProps
+
   return (
-    <address className={addressClasses}>
+    <address className={addressClasses} {...props}>
       {isSlim ? (
-        <div className="grid-row grid-gap">
+        <Grid row gap>
           {items.map((item, i) => (
-            <div className={itemClasses} key={`addressItem-${i}`}>
+            <Grid key={`addressItem-${i}`} {...itemGridProps}>
               <div className="usa-footer__contact-info">{item}</div>
-            </div>
+            </Grid>
           ))}
-        </div>
+        </Grid>
       ) : (
-        <div className="usa-footer__contact-info grid-row grid-gap">
+        <Grid row gap className="usa-footer__contact-info">
           {items.map((item, i) => (
-            <div className={itemClasses} key={`addressItem-${i}`}>
+            <Grid key={`addressItem-${i}`} {...itemGridProps}>
               {item}
-            </div>
+            </Grid>
           ))}
-        </div>
+        </Grid>
       )}
     </address>
   )

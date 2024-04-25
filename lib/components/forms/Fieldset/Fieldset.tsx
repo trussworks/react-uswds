@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import RequiredMarker from '../Label/RequiredMarker'
+import RequiredMarker from '../label/RequiredMarker/RequiredMarker.js'
 
 export type FieldsetProps = {
   children: React.ReactNode

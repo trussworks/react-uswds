@@ -1,4 +1,4 @@
-import { ExtendedNavLinksType } from '../FooterExtendedNavList/FooterExtendedNavList'
+import { ExtendedNavLinksType } from '../FooterExtendedNavList/FooterExtendedNavList.js'
 
 export function isExtendedNavLinks(
   links: React.ReactNode[] | ExtendedNavLinksType

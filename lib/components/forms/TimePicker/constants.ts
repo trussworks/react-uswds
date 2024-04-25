@@ -1,4 +1,4 @@
-import { CustomizableFilter } from '../ComboBox/ComboBox'
+import { CustomizableFilter } from '../combobox/ComboBox/ComboBox.js'
 
 export const DEFAULT_MAX_TIME = '23:59'
 export const DEFAULT_MAX_TIME_MINUTES = 24 * 60 - 1

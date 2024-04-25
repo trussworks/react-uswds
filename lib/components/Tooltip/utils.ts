@@ -1,4 +1,4 @@
-import { DefaultTooltipProps, CustomTooltipProps } from './Tooltip'
+import { DefaultTooltipProps, CustomTooltipProps } from './Tooltip.js'
 
 export const isElementInViewport = (
   el: HTMLElement,

@@ -2,7 +2,7 @@ import {
   MONTH_LABELS,
   DAY_OF_WEEK_LABELS,
   DAY_OF_WEEK_SHORT_LABELS,
-} from './constants'
+} from './constants.js'
 
 export interface DatePickerLocalization {
   months: string[]

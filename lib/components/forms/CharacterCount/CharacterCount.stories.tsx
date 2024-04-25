@@ -2,7 +2,7 @@ import React from 'react'
 import CharacterCount from './CharacterCount'
 import Form from '../Form/Form'
 import FormGroup from '../FormGroup/FormGroup'
-import Label from '../Label/Label'
+import Label from '../label/Label/Label'
 
 export default {
   title: 'Components/CharacterCount',

@@ -2,7 +2,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import SocialLinks from './SocialLinks'
-import SocialLink from './SocialLink'
+import SocialLink from '../SocialLink/SocialLink'
 
 const links = [
   <a key="fb" href="#">

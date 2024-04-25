@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { ProcessListItemProps } from '../ProcessListItem/ProcessListItem'
+import { ProcessListItemProps } from '../ProcessListItem/ProcessListItem.js'
 
 export type ProcessListProps = {
   className?: string

@@ -3,7 +3,7 @@ import {
   DefaultGridContainerProps,
   CustomGridContainerProps,
   GridContainerProps,
-} from './GridContainer'
+} from './GridContainer.js'
 
 export function isCustomProps<T>(
   props: DefaultGridContainerProps | CustomGridContainerProps<T>

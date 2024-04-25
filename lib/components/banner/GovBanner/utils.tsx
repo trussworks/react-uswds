@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../../Icon/Icons'
+import Icon from '../../Icon/Icons.js'
 
 export type Language = 'english' | 'spanish'
 

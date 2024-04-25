@@ -1,6 +1,7 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import classnames from 'classnames'
+import Grid from '../../grid/Grid/Grid.js'
 
 export type SocialLinksProps = {
   links: React.ReactNode[]
@@ -10,18 +11,16 @@ const SocialLinks = ({
   className,
   links,
 }: SocialLinksProps): React.ReactElement => {
-  const classes = classnames(
-    'usa-footer__social-links grid-row grid-gap-1',
-    className
-  )
+  const classes = classnames('usa-footer__social-links', className)
+
   return (
-    <div className={classes}>
+    <Grid row gap={1} className={classes}>
       {links.map((link, i) => (
-        <div key={`socialLink${i}`} className="grid-col-auto">
+        <Grid col="auto" key={`socialLink${i}`}>
           {link}
-        </div>
+        </Grid>
       ))}
-    </div>
+    </Grid>
   )
 }
 

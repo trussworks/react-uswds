@@ -6,10 +6,10 @@ import Button from '../../Button/Button'
 import Footer from './Footer'
 import FooterNav from '../FooterNav/FooterNav'
 import Form from '../../forms/Form/Form'
-import Label from '../../forms/Label/Label'
+import Label from '../../forms/label/Label/Label'
 import Logo from '../Logo/Logo'
 import TextInput from '../../forms/TextInput/TextInput'
-import SocialLink from '../SocialLinks/SocialLink'
+import SocialLink from '../SocialLink/SocialLink'
 import SocialLinks from '../SocialLinks/SocialLinks'
 
 // assets

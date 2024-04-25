@@ -4,9 +4,13 @@ import { fileURLToPath } from 'node:url'
 import url from 'url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import svgr from 'vite-plugin-svgr'
 import { checker } from 'vite-plugin-checker'
 import react from '@vitejs/plugin-react'
 import { glob } from 'glob'
+import { renameSync } from 'node:fs'
+import pkg from 'typescript'
+const { ModuleKind, ModuleResolutionKind } = pkg
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -42,12 +46,32 @@ export default defineConfig(({ mode }) => {
           typescript: true,
         }),
       !isTest &&
-        !isCjs &&
         dts({
-          tsconfigPath: 'tsconfig.build.json',
-          exclude: 'src/setupTests.ts',
-          outDir: `dist/types`,
+          //tsconfigPath: 'tsconfig.build.json',
+          outDir: `dist/${isCjs ? 'cjs' : 'es'}`,
+          insertTypesEntry: true,
+          entryRoot: './lib',
+          exclude: ['node_modules/**', 'src/**'],
+          /*afterBuild(emittedFiles) {
+            if (isCjs) {
+              for (const [file] of emittedFiles) {
+                // eslint-disable-next-line security/detect-non-literal-fs-filename
+                renameSync(file, file.replace('.d.ts', '.d.cts'))
+              }
+            }
+          },*/
+          compilerOptions: isCjs
+            ? {
+                module: ModuleKind.CommonJS,
+                moduleResolution: ModuleResolutionKind.Node16,
+              }
+            : {},
         }),
+      // default svg url pattern is `*.svg?react`, updated to `*.svg?svgr`
+      svgr({
+        svgrOptions: { icon: true, memo: true },
+        include: '**/*.svg?svgr',
+      }),
     ],
     build: {
       emptyOutDir: !isCjs,
@@ -66,7 +90,8 @@ export default defineConfig(({ mode }) => {
         input,
         output: {
           assetFileNames: 'assets/[name][extname]',
-          entryFileNames: `[format]/[name].${isCjs ? 'cjs' : 'js'}`,
+          entryFileNames: `[format]/[name].js`,
+          exports: 'named',
         },
       },
       sourcemap: true,
@@ -111,12 +136,6 @@ export default defineConfig(({ mode }) => {
         },
       },
       css: false,
-      alias: [
-        {
-          find: /.+\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|svg|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$/,
-          replacement: resolve(__dirname, '__mocks__/fileMock.js'),
-        },
-      ],
     },
   }
 })

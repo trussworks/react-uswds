@@ -14,7 +14,7 @@ const IconListContent = ({
   const classes = classnames(className, 'usa-icon-list__content')
 
   return (
-    <div className={classes} {...divProps} data-testid="iconListContent">
+    <div className={classes} data-testid="iconListContent" {...divProps}>
       {children}
     </div>
   )

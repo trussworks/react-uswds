@@ -3,10 +3,10 @@ import Alert from '../../Alert/Alert'
 import Button from '../../Button/Button'
 import Fieldset from '../Fieldset/Fieldset'
 import Form from '../Form/Form'
-import Label from '../Label/Label'
+import Label from '../label/Label/Label'
 import TextInput from '../TextInput/TextInput'
-import ValidationChecklist from './ValidationChecklist'
-import ValidationItem from './ValidationItem'
+import ValidationChecklist from './ValidationChecklist/ValidationChecklist'
+import ValidationItem from './ValidationItem/ValidationItem'
 
 export default {
   title: 'Components/Validation',

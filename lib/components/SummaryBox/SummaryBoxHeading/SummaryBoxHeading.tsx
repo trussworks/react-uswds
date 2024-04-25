@@ -1,15 +1,12 @@
 import React, { ReactNode } from 'react'
 import classnames from 'classnames'
-import { HeadingLevel } from '../../../types/headingLevel'
+import { HeadingLevel } from '../../../types/headingLevel.js'
 
 export type SummaryBoxHeadingProps = {
   children: ReactNode
   className?: string
   headingLevel: HeadingLevel
-} & React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLHeadingElement>,
-  HTMLHeadingElement
->
+} & JSX.IntrinsicElements['h1']
 
 const SummaryBoxHeading = ({
   children,

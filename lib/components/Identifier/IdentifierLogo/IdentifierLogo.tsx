@@ -12,6 +12,7 @@ const IdentifierLogo = ({
   ...anchorProps
 }: IdentifierLogoProps): React.ReactElement => {
   const classes = classnames('usa-identifier__logo', className)
+
   return (
     <a className={classes} {...anchorProps}>
       {children}

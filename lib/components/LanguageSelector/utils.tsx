@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from '../..'
-import { LanguageDefinition } from './LanguageSelector'
+import Button from '../Button/Button.js'
+import { LanguageDefinition } from './LanguageSelector/LanguageSelector.js'
 
 export const generateMenuItems = (langs: LanguageDefinition[]) => {
   return langs.map((lang, index) => {

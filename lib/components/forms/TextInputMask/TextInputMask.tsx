@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
-import TextInput, { TextInputProps } from '../TextInput/TextInput'
-import { maskString } from './utils'
+import TextInput, { TextInputProps } from '../TextInput/TextInput.js'
+import { maskString } from './utils.js'
 
 export type TextInputMaskProps = TextInputProps & {
   mask: string

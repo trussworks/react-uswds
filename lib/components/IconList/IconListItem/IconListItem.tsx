@@ -14,7 +14,7 @@ const IconListItem = ({
   const classes = classnames(className, 'usa-icon-list__item')
 
   return (
-    <li className={classes} {...liProps} data-testid="iconListItem">
+    <li className={classes} data-testid="iconListItem" {...liProps}>
       {children}
     </li>
   )

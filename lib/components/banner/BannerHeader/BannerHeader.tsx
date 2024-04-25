@@ -1,5 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
+import Grid from '../../grid/Grid/Grid.js'
 
 export type BannerHeaderProps = {
   isOpen: boolean
@@ -9,7 +10,7 @@ export type BannerHeaderProps = {
   headerTextProps?: JSX.IntrinsicElements['p']
   headerActionText: ReactNode
   headerActionProps?: JSX.IntrinsicElements['p']
-}
+} & JSX.IntrinsicElements['header']
 
 const BannerHeader = ({
   children,
@@ -22,7 +23,7 @@ const BannerHeader = ({
   headerActionProps,
   className,
   ...headerProps
-}: BannerHeaderProps & JSX.IntrinsicElements['header']): ReactElement => {
+}: BannerHeaderProps): ReactElement => {
   const classes = classNames(
     'usa-banner__header',
     {
@@ -56,12 +57,13 @@ const BannerHeader = ({
         {...remainingInnerDivProps}
         data-testid="banner-header-inner-div">
         {flagImg && (
-          <div className="grid-col-auto" data-testid="banner-header-flag-div">
+          <Grid col="auto" data-testid="banner-header-flag-div">
             {flagImg}
-          </div>
+          </Grid>
         )}
-        <div
-          className="grid-col-fill tablet:grid-col-auto"
+        <Grid
+          col="fill"
+          tablet={{ col: 'auto' }}
           aria-hidden
           data-testid="banner-header-grid-div">
           <p className={headerTextClasses} {...remainingHeaderTextProps}>
@@ -73,7 +75,7 @@ const BannerHeader = ({
             {...remainingHeaderActionProps}>
             {headerActionText}
           </p>
-        </div>
+        </Grid>
         {children}
       </div>
     </header>

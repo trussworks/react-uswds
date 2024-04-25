@@ -1,11 +1,11 @@
 import classnames from 'classnames'
-import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
+import { GridItemProps, BreakpointKeys, breakpoints } from '../types.js'
 import {
   DefaultGridProps,
   omittedProps,
   CustomGridProps,
-  GridProps,
-} from './Grid'
+  GridBreakpointProps,
+} from './Grid.js'
 
 export function isCustomProps<T>(
   props:
@@ -35,7 +35,7 @@ export const getGridClasses = (
   })
 }
 
-export const applyGridClasses = (gridLayout: GridProps): string => {
+export const applyGridClasses = (gridLayout: GridBreakpointProps): string => {
   let classes = getGridClasses(gridLayout)
 
   Object.keys(breakpoints).forEach((b) => {

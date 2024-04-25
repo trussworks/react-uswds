@@ -14,7 +14,7 @@ export type TableProps = {
   striped?: boolean
   compact?: boolean
   stackedStyle?: 'none' | 'default' | 'headers'
-}
+} & JSX.IntrinsicElements['table']
 
 const Table = ({
   bordered,
@@ -27,6 +27,7 @@ const Table = ({
   striped,
   compact,
   stackedStyle = 'none',
+  ...props
 }: TableProps): React.ReactElement => {
   const classes = classnames(
     'usa-table',
@@ -49,7 +50,7 @@ const Table = ({
   }
 
   const table = (
-    <table className={classes} data-testid="table">
+    <table className={classes} data-testid="table" {...props}>
       {caption && <caption>{caption}</caption>}
       {children}
     </table>

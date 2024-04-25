@@ -1,10 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
+import { SetOptional } from 'type-fest'
 
-import Label from '../../forms/Label/Label'
-import TextInput, {
-  OptionalTextInputProps,
-} from '../../forms/TextInput/TextInput'
+import Label from '../../forms/label/Label/Label.js'
+import TextInput, { TextInputProps } from '../../forms/TextInput/TextInput.js'
 
 export type SearchFieldProps = {
   isBig?: boolean
@@ -14,8 +13,8 @@ export type SearchFieldProps = {
   placeholder?: string
   defaultValue?: React.ReactNode
   label?: React.ReactNode
-  inputProps?: JSX.IntrinsicElements['input']
-} & OptionalTextInputProps
+  inputProps?: SetOptional<TextInputProps, 'id' | 'name'>
+} & JSX.IntrinsicElements['div']
 
 const SearchField = ({
   isBig,
@@ -26,6 +25,7 @@ const SearchField = ({
   label = 'Search',
   inputId = 'search-field',
   inputProps,
+  ...props
 }: SearchFieldProps): React.ReactElement => {
   const classes = classnames(
     {
@@ -35,17 +35,17 @@ const SearchField = ({
   )
 
   return (
-    <div className={classes} data-testid="searchField">
+    <div className={classes} data-testid="searchField" {...props}>
       <Label srOnly={true} htmlFor={inputId}>
         {label}
       </Label>
       <TextInput
-        {...inputProps}
         id={inputId}
         name={inputName}
         type="search"
         placeholder={placeholder}
         defaultValue={defaultValue}
+        {...inputProps}
       />
     </div>
   )

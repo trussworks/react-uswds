@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
-import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
+import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.js'
 
 export type BreadcrumbBarProps = {
   children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]

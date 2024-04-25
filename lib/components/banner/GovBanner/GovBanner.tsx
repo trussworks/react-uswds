@@ -1,19 +1,24 @@
 import React, { ReactElement, useState } from 'react'
-import Banner from '../Banner/Banner'
-import BannerHeader from '../BannerHeader/BannerHeader'
-import BannerFlag from '../BannerFlag/BannerFlag'
-import BannerButton from '../BannerButton/BannerButton'
-import BannerContent from '../BannerContent/BannerContent'
-import BannerGuidance from '../BannerGuidance/BannerGuidance'
-import BannerIcon from '../BannerIcon/BannerIcon'
-import MediaBlockBody from '../../mediablock/MediaBlockBody/MediaBlockBody'
-import { USWDS_IMAGES } from '../../../utils/uswdsImages'
-import { Language, TLD, getCopy } from './utils'
+import Banner, { BannerProps } from '../Banner/Banner.js'
+import BannerHeader from '../BannerHeader/BannerHeader.js'
+import BannerFlag from '../BannerFlag/BannerFlag.js'
+import BannerButton from '../BannerButton/BannerButton.js'
+import BannerContent from '../BannerContent/BannerContent.js'
+import BannerGuidance from '../BannerGuidance/BannerGuidance.js'
+import BannerIcon from '../BannerIcon/BannerIcon.js'
+import MediaBlockBody from '../../mediablock/MediaBlockBody/MediaBlockBody.js'
+import { Language, TLD, getCopy } from './utils.js'
+import Grid from '../../grid/Grid/Grid.js'
+
+// assets
+import flagImg from '@uswds/uswds/img/us_flag_small.png'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
+import httpsIcon from '@uswds/uswds/img/icon-https.svg'
 
 export type GovBannerProps = {
   tld?: TLD
   language?: Language
-} & JSX.IntrinsicElements['section']
+} & BannerProps
 
 const GovBanner = ({
   tld = '.gov',
@@ -41,13 +46,7 @@ const GovBanner = ({
       {...sectionProps}>
       <BannerHeader
         isOpen={isOpen}
-        flagImg={
-          <BannerFlag
-            src={`${USWDS_IMAGES.imageDir}/${USWDS_IMAGES.otherImages.UsFlagSmall}`}
-            aria-hidden
-            alt=""
-          />
-        }
+        flagImg={<BannerFlag src={flagImg} aria-hidden alt="" />}
         headerText={header}
         headerActionText={headerAction}>
         <BannerButton
@@ -60,12 +59,9 @@ const GovBanner = ({
         </BannerButton>
       </BannerHeader>
       <BannerContent id="gov-banner" isOpen={isOpen}>
-        <div className="grid-row grid-gap-lg">
+        <Grid row gap="lg">
           <BannerGuidance className="tablet:grid-col-6">
-            <BannerIcon
-              src={`${USWDS_IMAGES.imageDir}/${USWDS_IMAGES.otherImages.IconDotGov}`}
-              alt=""
-            />
+            <BannerIcon src={dotGovIcon} alt="" />
             <MediaBlockBody>
               <p>
                 <strong>{tldSectionHeader}</strong>
@@ -75,10 +71,7 @@ const GovBanner = ({
             </MediaBlockBody>
           </BannerGuidance>
           <BannerGuidance className="tablet:grid-col-6">
-            <BannerIcon
-              src={`${USWDS_IMAGES.imageDir}/${USWDS_IMAGES.otherImages.IconHttps}`}
-              alt=""
-            />
+            <BannerIcon src={httpsIcon} alt="" />
             <MediaBlockBody>
               <p>
                 <strong>{httpsSectionHeader}</strong>
@@ -87,7 +80,7 @@ const GovBanner = ({
               </p>
             </MediaBlockBody>
           </BannerGuidance>
-        </div>
+        </Grid>
       </BannerContent>
     </Banner>
   )

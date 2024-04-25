@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 
-import TextInput, { TextInputProps } from '../TextInput/TextInput'
-import Textarea, { TextareaProps } from '../Textarea/Textarea'
-import { defaultCharacterCount, defaultMessage } from './utils'
+import TextInput, { TextInputProps } from '../TextInput/TextInput.js'
+import Textarea, { TextareaProps } from '../Textarea/Textarea.js'
+import { defaultCharacterCount, defaultMessage } from './utils.js'
 
 /* Types */
 export type BaseCharacterCountProps = {
@@ -25,6 +25,10 @@ export type TextareaCharacterCountProps = BaseCharacterCountProps &
   TextareaProps &
   JSX.IntrinsicElements['textarea']
 
+export type CharacterCountProps =
+  | TextInputCharacterCountProps
+  | TextareaCharacterCountProps
+
 /* Main */
 const CharacterCount = ({
   id,
@@ -37,9 +41,7 @@ const CharacterCount = ({
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
   ...remainingProps
-}:
-  | TextInputCharacterCountProps
-  | TextareaCharacterCountProps): React.ReactElement => {
+}: CharacterCountProps): React.ReactElement => {
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))

@@ -1,9 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import TextInput, { OptionalTextInputProps } from '../TextInput/TextInput'
-import Label from '../Label/Label'
-import FormGroup from '../FormGroup/FormGroup'
+import TextInput, { TextInputProps } from '../TextInput/TextInput.js'
+import Label from '../label/Label/Label.js'
+import FormGroup from '../FormGroup/FormGroup.js'
 
 export type DateInputElementProps = {
   id: string
@@ -12,7 +12,7 @@ export type DateInputElementProps = {
   unit: 'month' | 'day' | 'year'
   maxLength: number
   minLength?: number
-} & OptionalTextInputProps
+} & TextInputProps
 
 const DateInput = ({
   id,
@@ -36,7 +36,6 @@ const DateInput = ({
     <FormGroup className={formGroupClasses}>
       <Label htmlFor={id}>{label}</Label>
       <TextInput
-        {...inputProps}
         className={inputClasses}
         id={id}
         name={name}
@@ -45,6 +44,7 @@ const DateInput = ({
         minLength={minLength}
         pattern="[0-9]*"
         inputMode="numeric"
+        {...inputProps}
       />
     </FormGroup>
   )

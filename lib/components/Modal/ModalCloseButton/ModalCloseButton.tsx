@@ -1,6 +1,6 @@
 import React from 'react'
-import Icon from '../../Icon/Icons'
-import Button from '../../Button/Button'
+import Icon from '../../Icon/Icons.js'
+import Button from '../../Button/Button.js'
 
 export type ModalCloseButtonProps = {
   handleClose: () => void
@@ -13,11 +13,11 @@ const ModalCloseButton = ({
   return (
     <Button
       aria-label="Close this window"
-      {...buttonProps}
       className="usa-modal__close"
       onClick={handleClose}
       data-close-modal
-      type="button">
+      type="button"
+      {...buttonProps}>
       <Icon.Close aria-hidden="true" />
     </Button>
   )

@@ -5,6 +5,7 @@
 */
 export const defaultCharacterCount = (text: string): number =>
   Array.from(text).length
+
 export const defaultMessage = (count: number, max: number): string => {
   const emptyMessageFormat = `${max} characters allowed`
   const remainingPluralFormat = '$0 characters left'

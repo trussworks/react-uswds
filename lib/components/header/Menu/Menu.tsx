@@ -1,5 +1,5 @@
 import React from 'react'
-import NavList, { NavListProps } from '../NavList/NavList'
+import NavList, { NavListProps } from '../NavList/NavList.js'
 
 export type MenuProps = {
   items: React.ReactNode[]

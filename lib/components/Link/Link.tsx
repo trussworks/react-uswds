@@ -1,5 +1,5 @@
 import React from 'react'
-import { handleKeyDown, isCustomProps, linkClasses } from './utils'
+import { handleKeyDown, isCustomProps, linkClasses } from './utils.js'
 
 // These props we want to require always, even on custom components
 export type StyledLinkProps<T> = {
@@ -29,11 +29,15 @@ export type DefaultLinkProps = StyledLinkProps<JSX.IntrinsicElements['a']> &
 // props, plus the required props on WithCustomLinkProps
 export type CustomLinkProps<T> = StyledLinkProps<T> & WithCustomLinkProps<T>
 
+export type LinkProps<T = DefaultLinkProps> =
+  | DefaultLinkProps
+  | CustomLinkProps<T>
+
 export default function Link(props: DefaultLinkProps): React.ReactElement
 export default function Link<T>(props: CustomLinkProps<T>): React.ReactElement
 export default function Link<
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps,
->(props: DefaultLinkProps | CustomLinkProps<FCProps>): React.ReactElement {
+>(props: LinkProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {
     const { variant, className, asCustom, children, ...remainingProps } = props
     // 1. We know props is AsCustomProps<FCProps>

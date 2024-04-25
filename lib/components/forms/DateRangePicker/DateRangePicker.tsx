@@ -1,10 +1,12 @@
 import classnames from 'classnames'
 import React, { useState } from 'react'
-import { DEFAULT_EXTERNAL_DATE_FORMAT } from '../DatePicker/constants'
-import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker'
-import { formatDate, parseDateString } from '../DatePicker/utils'
-import FormGroup from '../FormGroup/FormGroup'
-import Label from '../Label/Label'
+import { DEFAULT_EXTERNAL_DATE_FORMAT } from '../datepicker/constants.js'
+import DatePicker, {
+  DatePickerProps,
+} from '../datepicker/DatePicker/DatePicker.js'
+import { formatDate, parseDateString } from '../datepicker/utils.js'
+import FormGroup from '../FormGroup/FormGroup.js'
+import Label from '../label/Label/Label.js'
 
 export type DateRangePickerProps = {
   startDateLabel?: string
@@ -16,17 +18,16 @@ export type DateRangePickerProps = {
   className?: string
 } & JSX.IntrinsicElements['div']
 
-const DateRangePicker = (props: DateRangePickerProps): React.ReactElement => {
-  const {
-    startDateLabel,
-    startDateHint,
-    startDatePickerProps,
-    endDateLabel,
-    endDateHint,
-    endDatePickerProps,
-    className,
-  } = props
-
+const DateRangePicker = ({
+  startDateLabel,
+  startDateHint,
+  startDatePickerProps,
+  endDateLabel,
+  endDateHint,
+  endDatePickerProps,
+  className,
+  ...props
+}: DateRangePickerProps): React.ReactElement => {
   const [startDateInternalValue, setStartDateInternalValue] = useState<
     string | undefined
   >(startDatePickerProps.defaultValue)
@@ -131,7 +132,7 @@ const DateRangePicker = (props: DateRangePickerProps): React.ReactElement => {
   const endDatePickerHintId = `${endDatePickerProps.id}-hint`
 
   return (
-    <div className={classes} data-testid="date-range-picker">
+    <div className={classes} data-testid="date-range-picker" {...props}>
       <FormGroup>
         {startDateLabel && (
           <Label id={startDatePickerLabelId} htmlFor={startDatePickerProps.id}>

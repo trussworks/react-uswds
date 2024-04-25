@@ -1,43 +1,46 @@
 import React from 'react'
 import classnames from 'classnames'
+import Grid, { GridProps } from '../../grid/Grid/Grid.js'
 
 export type LogoProps = {
   size?: 'big' | 'medium' | 'slim'
   heading?: React.ReactNode
   image: React.ReactNode
-} & React.HtmlHTMLAttributes<HTMLElement>
+} & JSX.IntrinsicElements['div']
 
 const Logo = ({
   size,
   heading,
   image,
-  ...elementAttributes
+  className,
+  ...props
 }: LogoProps): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
 
-  const containerClasses = classnames(
-    'usa-footer__logo grid-row',
-    {
-      'mobile-lg:grid-col-6 mobile-lg:grid-gap-2': isBig || isMedium,
-      'grid-gap-2': isSlim,
-    },
-    elementAttributes.className
-  )
+  const containerClasses = classnames('usa-footer__logo', className)
 
-  const columnClasses = classnames({
-    'mobile-lg:grid-col-auto': isBig || isMedium,
-    'grid-col-auto': isSlim,
-  })
+  const containerGridProps = {
+    row: true,
+    mobileLg: isBig || isMedium ? { col: 6, gap: 2 } : undefined,
+    gap: isSlim ? 2 : undefined,
+  } satisfies GridProps
+
+  const columnGridProps = {
+    mobileLg: isBig || isMedium ? { col: 'auto' } : undefined,
+    col: isSlim ? 'auto' : undefined,
+  } satisfies GridProps
 
   return (
-    <div className={containerClasses} data-testid="footerLogo">
-      <>
-        <div className={columnClasses}>{image}</div>
-        {heading && <div className={columnClasses}>{heading}</div>}
-      </>
-    </div>
+    <Grid
+      className={containerClasses}
+      data-testid="footerLogo"
+      {...containerGridProps}
+      {...props}>
+      <Grid {...columnGridProps}>{image}</Grid>
+      {heading && <Grid {...columnGridProps}>{heading}</Grid>}
+    </Grid>
   )
 }
 

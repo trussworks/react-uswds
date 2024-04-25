@@ -1,29 +1,33 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
-import { getGridClasses, isCustomProps } from './utils'
+import { GridItemProps, BreakpointKeys, breakpoints } from '../types.js'
+import { getGridClasses, isCustomProps } from './utils.js'
 
-export type GridProps = GridItemProps & {
+export type GridBreakpointProps = GridItemProps & {
   [P in BreakpointKeys]?: GridItemProps
 }
 
-export type GridComponentProps<T> = GridProps & { className?: string } & T
+export type BaseGridProps<T> = GridBreakpointProps & {
+  className?: string
+} & T
 
-export type GridLayoutProp = {
-  gridLayout?: GridProps
+export type GridLayoutProps = {
+  gridLayout?: GridBreakpointProps
 }
 
 export interface WithCustomGridProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
-export type DefaultGridProps = GridComponentProps<JSX.IntrinsicElements['div']>
+export type DefaultGridProps = BaseGridProps<JSX.IntrinsicElements['div']>
 
-export type CustomGridProps<T> = GridComponentProps<
-  React.PropsWithChildren<T>
-> &
+export type CustomGridProps<T> = BaseGridProps<React.PropsWithChildren<T>> &
   WithCustomGridProps<React.PropsWithChildren<T>>
+
+export type GridProps<T = DefaultGridProps> =
+  | DefaultGridProps
+  | CustomGridProps<T>
 
 export type omittedProps =
   | 'mobile'
@@ -43,7 +47,7 @@ export type omittedProps =
 export default function Grid(props: DefaultGridProps): React.ReactElement
 export default function Grid<T>(props: CustomGridProps<T>): React.ReactElement
 export default function Grid<FCProps = DefaultGridProps>(
-  props: DefaultGridProps | CustomGridProps<FCProps>
+  props: GridProps<FCProps>
 ): React.ReactElement {
   const {
     children,

@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
 import classnames from 'classnames'
-import FormGroup from '../FormGroup/FormGroup'
-import Label from '../Label/Label'
-import ComboBox from '../ComboBox/ComboBox'
-import { getTimeOptions, parseTimeString } from './utils'
+import FormGroup from '../FormGroup/FormGroup.js'
+import Label from '../label/Label/Label.js'
+import ComboBox, { ComboBoxProps } from '../combobox/ComboBox/ComboBox.js'
+import { getTimeOptions, parseTimeString } from './utils.js'
 import {
   DEFAULT_MAX_TIME,
   DEFAULT_MAX_TIME_MINUTES,
@@ -12,7 +12,7 @@ import {
   DEFAULT_STEP,
   MIN_STEP,
   TIME_PICKER_CUSTOM_FILTER,
-} from './constants'
+} from './constants.js'
 
 export type BaseTimePickerProps = {
   id: string
@@ -29,7 +29,7 @@ export type BaseTimePickerProps = {
 }
 
 export type TimePickerProps = BaseTimePickerProps &
-  Omit<JSX.IntrinsicElements['input'], 'onChange'>
+  Omit<ComboBoxProps, 'onChange' | 'options'>
 
 const TimePicker = ({
   id,
@@ -43,6 +43,7 @@ const TimePicker = ({
   step = DEFAULT_STEP,
   hint,
   className,
+  ...props
 }: TimePickerProps): React.ReactElement => {
   const classes = classnames('usa-time-picker', className)
 
@@ -59,7 +60,7 @@ const TimePicker = ({
 
   return (
     <FormGroup>
-      <Label className="usa-label" id={labelId} htmlFor={id}>
+      <Label id={labelId} htmlFor={id}>
         {label}
       </Label>
       {hint && (
@@ -77,6 +78,7 @@ const TimePicker = ({
         disabled={disabled}
         customFilter={TIME_PICKER_CUSTOM_FILTER}
         disableFiltering
+        {...props}
       />
     </FormGroup>
   )

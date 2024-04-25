@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import NavList from '../../header/NavList/NavList'
+import NavList from '../../header/NavList/NavList.js'
 
 export type FooterExtendedNavListSectionProps = {
   isOpen: boolean

@@ -1,4 +1,4 @@
-import { ComboBoxOption } from '../ComboBox/ComboBox'
+import { ComboBoxOption } from '../combobox/ComboBox/ComboBox.js'
 
 /**
  * Parse a string of hh:mm into minutes

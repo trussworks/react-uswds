@@ -1,14 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { GridLayoutProp } from '../../grid/Grid/Grid'
-import { applyGridClasses } from '../../grid/Grid/utils'
+import { GridLayoutProps } from '../../grid/Grid/Grid.js'
+import { applyGridClasses } from '../../grid/Grid/utils.js'
 
 export type CardProps = {
   layout?: 'standardDefault' | 'flagDefault' | 'flagMediaRight'
   headerFirst?: boolean
   containerProps?: React.HTMLAttributes<HTMLDivElement>
-}
+} & JSX.IntrinsicElements['li'] &
+  GridLayoutProps
 
 const Card = ({
   layout = 'standardDefault',
@@ -18,9 +19,7 @@ const Card = ({
   gridLayout,
   containerProps,
   ...liProps
-}: CardProps &
-  JSX.IntrinsicElements['li'] &
-  GridLayoutProp): React.ReactElement => {
+}: CardProps): React.ReactElement => {
   const { className: containerClass, ...restContainerProps } =
     containerProps || {}
 

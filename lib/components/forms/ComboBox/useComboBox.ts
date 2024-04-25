@@ -1,19 +1,8 @@
 import React, { useReducer } from 'react'
-import type { ComboBoxOption, CustomizableFilter } from './ComboBox'
-import { FocusMode } from './ComboBox'
-import { generateDynamicRegExp } from './utils'
-
-export enum ActionTypes {
-  SELECT_OPTION,
-  CLEAR,
-  OPEN_LIST,
-  CLOSE_LIST,
-  FOCUS_OPTION,
-  UPDATE_FILTER,
-  BLUR,
-  CLEAR_SELECTION,
-  FOCUS_INPUT,
-}
+import type { ComboBoxOption, CustomizableFilter } from './ComboBox/ComboBox.js'
+import { generateDynamicRegExp } from './ComboBox/utils.js'
+import { FocusMode } from '../../../utils/constants.js'
+import { ActionTypes } from './constants.js'
 
 export type Action =
   | {

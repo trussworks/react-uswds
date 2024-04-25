@@ -5,12 +5,13 @@ export type FormGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean
-}
+} & JSX.IntrinsicElements['div']
 
 const FormGroup = ({
   children,
   className,
   error,
+  ...props
 }: FormGroupProps): React.ReactElement => {
   const classes = classnames(
     'usa-form-group',
@@ -19,7 +20,7 @@ const FormGroup = ({
   )
 
   return (
-    <div data-testid="formGroup" className={classes}>
+    <div data-testid="formGroup" className={classes} {...props}>
       {children}
     </div>
   )

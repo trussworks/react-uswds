@@ -24,7 +24,7 @@ exports[`GovBanner component > static content > renders consistently in English 
             alt=""
             aria-hidden={true}
             className="usa-banner__header-flag"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/us_flag_small.png"
           />
         </div>
         <div
@@ -66,6 +66,7 @@ exports[`GovBanner component > static content > renders consistently in English 
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -74,7 +75,7 @@ exports[`GovBanner component > static content > renders consistently in English 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg"
           />
           <div
             className="usa-media-block__body"
@@ -99,7 +100,7 @@ exports[`GovBanner component > static content > renders consistently in English 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-https.svg"
           />
           <div
             className="usa-media-block__body"
@@ -117,8 +118,16 @@ exports[`GovBanner component > static content > renders consistently in English 
                   aria-label="Locked padlock icon"
                   className="usa-icon"
                   focusable={false}
+                  height="1em"
                   role="img"
-                />
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+                  />
+                </svg>
                 )
               </strong>
                
@@ -163,7 +172,7 @@ exports[`GovBanner component > static content > renders consistently in English 
             alt=""
             aria-hidden={true}
             className="usa-banner__header-flag"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/us_flag_small.png"
           />
         </div>
         <div
@@ -205,6 +214,7 @@ exports[`GovBanner component > static content > renders consistently in English 
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -213,7 +223,7 @@ exports[`GovBanner component > static content > renders consistently in English 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg"
           />
           <div
             className="usa-media-block__body"
@@ -238,7 +248,7 @@ exports[`GovBanner component > static content > renders consistently in English 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-https.svg"
           />
           <div
             className="usa-media-block__body"
@@ -256,8 +266,16 @@ exports[`GovBanner component > static content > renders consistently in English 
                   aria-label="Locked padlock icon"
                   className="usa-icon"
                   focusable={false}
+                  height="1em"
                   role="img"
-                />
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+                  />
+                </svg>
                 )
               </strong>
                
@@ -302,7 +320,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
             alt=""
             aria-hidden={true}
             className="usa-banner__header-flag"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/us_flag_small.png"
           />
         </div>
         <div
@@ -344,6 +362,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -352,7 +371,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg"
           />
           <div
             className="usa-media-block__body"
@@ -377,7 +396,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-https.svg"
           />
           <div
             className="usa-media-block__body"
@@ -395,8 +414,16 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
                   aria-label="Icono de candado cerrado"
                   className="usa-icon"
                   focusable={false}
+                  height="1em"
                   role="img"
-                />
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+                  />
+                </svg>
                 )
               </strong>
                
@@ -440,7 +467,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
             alt=""
             aria-hidden={true}
             className="usa-banner__header-flag"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/us_flag_small.png"
           />
         </div>
         <div
@@ -482,6 +509,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -490,7 +518,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg"
           />
           <div
             className="usa-media-block__body"
@@ -515,7 +543,7 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-https.svg"
           />
           <div
             className="usa-media-block__body"
@@ -533,8 +561,16 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
                   aria-label="Icono de candado cerrado"
                   className="usa-icon"
                   focusable={false}
+                  height="1em"
                   role="img"
-                />
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+                  />
+                </svg>
                 )
               </strong>
                
@@ -578,7 +614,7 @@ exports[`GovBanner component > static content > renders consistently with defaul
             alt=""
             aria-hidden={true}
             className="usa-banner__header-flag"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/us_flag_small.png"
           />
         </div>
         <div
@@ -620,6 +656,7 @@ exports[`GovBanner component > static content > renders consistently with defaul
     >
       <div
         className="grid-row grid-gap-lg"
+        data-testid="grid"
       >
         <div
           className="usa-banner__guidance tablet:grid-col-6"
@@ -628,7 +665,7 @@ exports[`GovBanner component > static content > renders consistently with defaul
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg"
           />
           <div
             className="usa-media-block__body"
@@ -653,7 +690,7 @@ exports[`GovBanner component > static content > renders consistently with defaul
             alt=""
             aria-hidden="true"
             className="usa-banner__icon usa-media-block__img"
-            src="test-file-stub"
+            src="/node_modules/@uswds/uswds/dist/img/icon-https.svg"
           />
           <div
             className="usa-media-block__body"
@@ -671,8 +708,16 @@ exports[`GovBanner component > static content > renders consistently with defaul
                   aria-label="Locked padlock icon"
                   className="usa-icon"
                   focusable={false}
+                  height="1em"
                   role="img"
-                />
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+                  />
+                </svg>
                 )
               </strong>
                

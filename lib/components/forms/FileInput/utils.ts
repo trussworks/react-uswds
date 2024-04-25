@@ -11,10 +11,3 @@ export const makeSafeForID = (name: string): string => {
     return `__${c.toString(16).slice(-4)}`
   })
 }
-
-/** Moving the SPACER_GIF definition here instead of the constants.ts file,
- * as webpack was exporting that entire file, including use of the File
- * WebAPI; this was causing server-side site generators to break (#1250). */
-
-export const SPACER_GIF =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'

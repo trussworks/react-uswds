@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { ValidationStatus } from '../../../types/validationStatus'
+import { ValidationStatus } from '../../../types/validationStatus.js'
 
 export type TextInputRef =
   | string
@@ -12,7 +12,7 @@ export type TextInputRef =
 export type RequiredTextInputProps = {
   id: string
   name: string
-  type: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
+  type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
 }
 
 export type CustomTextInputProps = {
@@ -29,9 +29,6 @@ export type OptionalTextInputProps = CustomTextInputProps &
 export type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
 
 const TextInput = ({
-  id,
-  name,
-  type,
   className,
   validationStatus,
   inputSize,
@@ -58,9 +55,6 @@ const TextInput = ({
     <input
       data-testid="textInput"
       className={classes}
-      id={id}
-      name={name}
-      type={type}
       ref={inputRef}
       {...inputProps}
     />

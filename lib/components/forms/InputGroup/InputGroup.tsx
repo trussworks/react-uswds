@@ -1,16 +1,17 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export interface InputGroupProps {
+export type InputGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean
-}
+} & JSX.IntrinsicElements['div']
 
 const InputGroup = ({
   children,
   className,
   error,
+  ...props
 }: InputGroupProps): React.ReactElement => {
   const classes = classnames(
     'usa-input-group',
@@ -19,7 +20,7 @@ const InputGroup = ({
   )
 
   return (
-    <div data-testid="inputGroup" className={classes}>
+    <div data-testid="inputGroup" className={classes} {...props}>
       {children}
     </div>
   )

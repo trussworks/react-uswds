@@ -1,7 +1,7 @@
 import React from 'react'
 import FormGroup from './FormGroup'
 
-import Label from '../Label/Label'
+import Label from '../label/Label/Label'
 import TextInput from '../TextInput/TextInput'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 

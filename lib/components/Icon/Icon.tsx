@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-interface USWDSIconProps {
+export interface USWDSIconProps {
   focusable?: boolean
   role?: string
   size?: 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -11,9 +11,7 @@ interface USWDSIconProps {
 export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
 
 export const makeUSWDSIcon = (
-  name: string,
-  displayName: string,
-  spriteUrl: string
+  Component: React.ComponentType<IconProps>
 ): React.FunctionComponent => {
   const IconFunctionalComponent = (props: IconProps): JSX.Element => {
     const {
@@ -39,13 +37,8 @@ export const makeUSWDSIcon = (
       ...iconProps,
     }
 
-    return (
-      <svg {...finalProps}>
-        <title>{displayName}</title>
-        <use href={`${spriteUrl}#${name}`} />
-      </svg>
-    )
+    return <Component {...finalProps} />
   }
-  IconFunctionalComponent.displayName = displayName
+  IconFunctionalComponent.displayName = Component.displayName
   return IconFunctionalComponent
 }

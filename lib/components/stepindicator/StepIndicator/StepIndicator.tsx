@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
-import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
-import { HeadingLevel } from '../../../types/headingLevel'
+import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep.js'
+import { HeadingLevel } from '../../../types/headingLevel.js'
 
 export type StepIndicatorProps = {
   showLabels?: boolean
@@ -20,21 +20,19 @@ export type StepIndicatorProps = {
   ofText?: string
 }
 
-const StepIndicator = (props: StepIndicatorProps): React.ReactElement => {
-  const {
-    showLabels = true,
-    counters = 'none',
-    centered = false,
-    children,
-    className,
-    divProps,
-    listProps,
-    headingProps,
-    headingLevel,
-    stepText = 'Step',
-    ofText = 'of',
-  } = props
-
+const StepIndicator = ({
+  showLabels = true,
+  counters = 'none',
+  centered = false,
+  children,
+  className,
+  divProps,
+  listProps,
+  headingProps,
+  headingLevel,
+  stepText = 'Step',
+  ofText = 'of',
+}: StepIndicatorProps): React.ReactElement => {
   const Heading = headingLevel
 
   const { className: additionalDivClasses, ...remainingDivProps } =

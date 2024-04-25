@@ -1,22 +1,26 @@
 import React from 'react'
 
-import { ContainerSizes } from '../types'
-import { isCustomProps, gridContainerClasses } from './utils'
-
-export type GridContainerProps = {
-  containerSize?: ContainerSizes
-  className?: string
-  children: React.ReactNode
-}
+import { ContainerSizes } from '../types.js'
+import { isCustomProps, gridContainerClasses } from './utils.js'
 
 export interface WithCustomGridContainerProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
-export type DefaultGridContainerProps = GridContainerProps
+export type BaseGridContainerProps = {
+  containerSize?: ContainerSizes
+  className?: string
+  children: React.ReactNode
+}
 
-export type CustomGridContainerProps<T> = GridContainerProps &
+export type DefaultGridContainerProps = BaseGridContainerProps
+
+export type CustomGridContainerProps<T> = BaseGridContainerProps &
   WithCustomGridContainerProps<T>
+
+export type GridContainerProps<T = BaseGridContainerProps> =
+  | DefaultGridContainerProps
+  | CustomGridContainerProps<T>
 
 export default function GridContainer(
   props: DefaultGridContainerProps
@@ -26,9 +30,7 @@ export default function GridContainer<T>(
 ): React.ReactElement
 export default function GridContainer<
   FCProps extends React.PropsWithChildren<object> = DefaultGridContainerProps,
->(
-  props: DefaultGridContainerProps | CustomGridContainerProps<FCProps>
-): React.ReactElement {
+>(props: GridContainerProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {
     const { className, containerSize, asCustom, children, ...remainingProps } =
       props

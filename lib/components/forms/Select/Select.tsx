@@ -1,12 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
-import { ValidationStatus } from '../../../types/validationStatus'
+import { ValidationStatus } from '../../../types/validationStatus.js'
 
 export type SelectProps = {
-  id: string
   name: string
   className?: string
-  children: React.ReactNode
   validationStatus?: ValidationStatus
   inputRef?:
     | string
