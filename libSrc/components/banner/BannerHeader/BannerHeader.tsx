@@ -2,7 +2,7 @@ import React, { type ReactElement, type ReactNode } from 'react'
 import classNames from 'classnames'
 import Grid from '../../grid/Grid/Grid.js'
 
-export type BannerHeaderProps = {
+export interface BaseBannerHeaderProps {
   isOpen: boolean
   flagImg: ReactNode
   innerDivProps?: JSX.IntrinsicElements['div']
@@ -10,7 +10,10 @@ export type BannerHeaderProps = {
   headerTextProps?: JSX.IntrinsicElements['p']
   headerActionText: ReactNode
   headerActionProps?: JSX.IntrinsicElements['p']
-} & JSX.IntrinsicElements['header']
+}
+
+export type BannerHeaderProps = BaseBannerHeaderProps &
+  JSX.IntrinsicElements['header']
 
 const BannerHeader = ({
   children,

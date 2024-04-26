@@ -27,7 +27,7 @@ import Calendar from '../Calendar/Calendar.js'
 import type { ValidationStatus } from '../../../../types/validationStatus.js'
 import { FocusMode } from '../../../../utils/constants.js'
 
-export type BaseDatePickerProps = {
+export interface BaseDatePickerProps {
   id: string
   name: string
   className?: string

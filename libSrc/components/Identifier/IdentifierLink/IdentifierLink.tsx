@@ -7,17 +7,14 @@ import Link, {
 } from '../../Link/Link.js'
 import { isCustomProps } from '../../Link/utils.js'
 
-export type IdentifierLinkProps<T = DefaultLinkProps> =
-  | DefaultLinkProps
-  | CustomLinkProps<T>
+export interface BaseIdentifierLinkProps {}
 
-export default function IdentifierLink(
-  props: DefaultLinkProps
-): React.ReactElement
-export default function IdentifierLink<T>(
-  props: CustomLinkProps<T>
-): React.ReactElement
-export default function IdentifierLink<FCProps = DefaultLinkProps>({
+export type IdentifierLinkProps<T = DefaultLinkProps> =
+  BaseIdentifierLinkProps & (DefaultLinkProps | CustomLinkProps<T>)
+
+function IdentifierLink(props: DefaultLinkProps): React.ReactElement
+function IdentifierLink<T>(props: CustomLinkProps<T>): React.ReactElement
+function IdentifierLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
 }: IdentifierLinkProps<FCProps>): React.ReactElement {
@@ -33,3 +30,5 @@ export default function IdentifierLink<FCProps = DefaultLinkProps>({
 
   return <Link {...linkProps} />
 }
+
+export default IdentifierLink

@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
-export type ButtonProps = {
+export interface BaseButtonProps {
   type?: 'button' | 'submit' | 'reset'
   children: React.ReactNode
   secondary?: boolean
@@ -11,9 +11,11 @@ export type ButtonProps = {
   inverse?: boolean
   size?: 'big'
   unstyled?: boolean
-} & JSX.IntrinsicElements['button']
+}
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+export type ButtonProps = BaseButtonProps & JSX.IntrinsicElements['button']
+
+function Button(
   {
     type = 'button',
     children,
@@ -27,7 +29,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
     className,
     ...defaultProps
   }: ButtonProps,
-  ref
+  ref?: React.ForwardedRef<HTMLButtonElement>
 ): React.ReactElement {
   const classes = classnames(
     'usa-button',
@@ -54,6 +56,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
       {children}
     </button>
   )
-})
+}
 
 export default Button

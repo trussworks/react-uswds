@@ -7,7 +7,7 @@ import TextInput, {
   type TextInputProps,
 } from '../../forms/TextInput/TextInput.js'
 
-export type SearchFieldProps = {
+export interface BaseSearchFieldProps {
   isBig?: boolean
   className?: string
   inputName?: string
@@ -16,7 +16,10 @@ export type SearchFieldProps = {
   defaultValue?: React.ReactNode
   label?: React.ReactNode
   inputProps?: SetOptional<TextInputProps, 'id' | 'name'>
-} & JSX.IntrinsicElements['div']
+}
+
+export type SearchFieldProps = BaseSearchFieldProps &
+  JSX.IntrinsicElements['div']
 
 const SearchField = ({
   isBig,

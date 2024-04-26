@@ -5,14 +5,16 @@ import TextInput, { type TextInputProps } from '../TextInput/TextInput.js'
 import Label from '../label/Label/Label.js'
 import FormGroup from '../FormGroup/FormGroup.js'
 
-export type DateInputElementProps = {
+export interface BaseDateInputElementProps {
   id: string
   name: string
   label: string
   unit: 'month' | 'day' | 'year'
   maxLength: number
   minLength?: number
-} & TextInputProps
+}
+
+export type DateInputElementProps = BaseDateInputElementProps & TextInputProps
 
 const DateInput = ({
   id,

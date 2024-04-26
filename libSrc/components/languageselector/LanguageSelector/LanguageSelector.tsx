@@ -10,13 +10,16 @@ export type LanguageDefinition = {
   on_click: string | (() => void)
 }
 
-export type LanguageSelectorProps = {
+export interface BaseLanguageSelectorProps {
   label?: string
   langs: LanguageDefinition[]
   small?: boolean
   className?: string
   displayLang?: string
-} & JSX.IntrinsicElements['div']
+}
+
+export type LanguageSelectorProps = BaseLanguageSelectorProps &
+  JSX.IntrinsicElements['div']
 
 const LanguageSelector = ({
   label,

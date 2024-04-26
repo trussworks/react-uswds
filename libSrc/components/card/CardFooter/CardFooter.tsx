@@ -1,9 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CardFooterProps = {
+export interface BaseCardFooterProps {
   exdent?: boolean
-} & JSX.IntrinsicElements['div']
+}
+
+export type CardFooterProps = BaseCardFooterProps & JSX.IntrinsicElements['div']
 
 const CardFooter = ({
   exdent,

@@ -9,11 +9,12 @@ import {
 } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import Modal, { type ModalRef } from './Modal'
+import { type ModalRef } from './Modal'
+import Modal from './ModalForwardRef.js'
 import ModalHeading from '../ModalHeading/ModalHeading'
 import ModalFooter from '../ModalFooter/ModalFooter'
 import ModalToggleButton from '../ModalToggleButton/ModalToggleButton'
-import Button from '../../Button/Button'
+import Button from '../../Button/ButtonForwardRef.js'
 import ButtonGroup from '../../ButtonGroup/ButtonGroup'
 
 vi.mock('../utils', async (importActual) => {

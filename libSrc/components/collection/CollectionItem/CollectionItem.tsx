@@ -1,9 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CollectionItemProps = {
+export interface BaseCollectionItemProps {
   variantComponent?: React.ReactNode
-} & JSX.IntrinsicElements['li']
+}
+
+export type CollectionItemProps = BaseCollectionItemProps &
+  JSX.IntrinsicElements['li']
 
 const CollectionItem = ({
   className,

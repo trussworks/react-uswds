@@ -1,11 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type AccordionButtonProps = {
+export interface BaseAccordionButtonProps {
   expanded: boolean
   id: string
   className?: string
-} & JSX.IntrinsicElements['button']
+}
+
+export type AccordionButtonProps = BaseAccordionButtonProps &
+  JSX.IntrinsicElements['button']
 
 const AccordionButton = ({
   children,

@@ -1,9 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CardHeaderProps = {
+export interface BaseCardHeaderProps {
   exdent?: boolean
-} & JSX.IntrinsicElements['header']
+}
+
+export type CardHeaderProps = BaseCardHeaderProps &
+  JSX.IntrinsicElements['header']
 
 const CardHeader = ({
   exdent,

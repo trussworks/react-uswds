@@ -2,10 +2,12 @@ import React from 'react'
 
 import classnames from 'classnames'
 
-export type SummaryBoxProps = {
+export interface BaseSummaryBoxProps {
   children?: React.ReactNode
   className?: string
-} & JSX.IntrinsicElements['div']
+}
+
+export type SummaryBoxProps = BaseSummaryBoxProps & JSX.IntrinsicElements['div']
 
 const SummaryBox = ({
   children,

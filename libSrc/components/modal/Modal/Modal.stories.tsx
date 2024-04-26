@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 
-import Modal, { type ModalRef } from './Modal'
+import { type ModalRef } from './Modal'
+import Modal from './ModalForwardRef.js'
 import ModalHeading from '../ModalHeading/ModalHeading'
 import ModalFooter from '../ModalFooter/ModalFooter'
 import ModalToggleButton from '../ModalToggleButton/ModalToggleButton'

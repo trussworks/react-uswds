@@ -2,7 +2,8 @@ import React, { useMemo } from 'react'
 import classnames from 'classnames'
 import FormGroup from '../FormGroup/FormGroup.js'
 import Label from '../label/Label/Label.js'
-import ComboBox, { type ComboBoxProps } from '../combobox/ComboBox/ComboBox.js'
+import { type ComboBoxProps } from '../combobox/ComboBox/ComboBox.js'
+import ComboBox from '../combobox/ComboBox/ComboBoxForwardRef.js'
 import { getTimeOptions, parseTimeString } from './utils.js'
 import {
   DEFAULT_MAX_TIME,
@@ -14,7 +15,7 @@ import {
   TIME_PICKER_CUSTOM_FILTER,
 } from './constants.js'
 
-export type BaseTimePickerProps = {
+export interface BaseTimePickerProps {
   id: string
   name: string
   onChange: (val?: string) => void

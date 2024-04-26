@@ -12,13 +12,9 @@ export type BreadcrumbLinkProps<T = DefaultLinkProps> =
   | DefaultLinkProps
   | CustomLinkProps<T>
 
-export default function BreadcrumbLink(
-  props: BreadcrumbLinkProps
-): React.ReactElement
-export default function BreadcrumbLink<T>(
-  props: CustomLinkProps<T>
-): React.ReactElement
-export default function BreadcrumbLink<FCProps = DefaultLinkProps>({
+function BreadcrumbLink(props: BreadcrumbLinkProps): React.ReactElement
+function BreadcrumbLink<T>(props: CustomLinkProps<T>): React.ReactElement
+function BreadcrumbLink<FCProps = DefaultLinkProps>({
   className,
   ...passThroughProps
 }: BreadcrumbLinkProps): React.ReactElement {
@@ -35,3 +31,5 @@ export default function BreadcrumbLink<FCProps = DefaultLinkProps>({
 
   return <Link {...linkProps} variant="unstyled" />
 }
+
+export default BreadcrumbLink

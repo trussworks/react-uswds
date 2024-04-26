@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import type { ValidationStatus } from '../../../types/validationStatus.js'
 
-export type SelectProps = {
+export interface BaseSelectProps {
   name: string
   className?: string
   validationStatus?: ValidationStatus
@@ -12,7 +12,9 @@ export type SelectProps = {
     | React.RefObject<HTMLSelectElement>
     | null
     | undefined
-} & JSX.IntrinsicElements['select']
+}
+
+export type SelectProps = BaseSelectProps & JSX.IntrinsicElements['select']
 
 const Select = ({
   id,

@@ -1,7 +1,10 @@
 import classnames from 'classnames'
 import React from 'react'
 
-export type PaginationOverflowProps = JSX.IntrinsicElements['li']
+export interface BasePaginationOverflowProps {}
+
+export type PaginationOverflowProps = BasePaginationOverflowProps &
+  JSX.IntrinsicElements['li']
 
 const PaginationOverflow = ({
   className,

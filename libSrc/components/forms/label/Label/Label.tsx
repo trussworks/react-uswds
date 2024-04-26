@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import RequiredMarker from '../RequiredMarker/RequiredMarker.js'
 
-export type LabelProps = {
+export interface BaseLabelProps {
   children: React.ReactNode
   htmlFor: string
   className?: string
@@ -10,7 +10,9 @@ export type LabelProps = {
   hint?: React.ReactNode
   srOnly?: boolean
   requiredMarker?: boolean
-} & JSX.IntrinsicElements['label']
+}
+
+export type LabelProps = BaseLabelProps & JSX.IntrinsicElements['label']
 
 const Label = ({
   children,

@@ -1,11 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type ValidationItemProps = {
+export interface BaseValidationItemProps {
   children: React.ReactNode
   id: string
   isValid: boolean
-} & JSX.IntrinsicElements['li']
+}
+
+export type ValidationItemProps = BaseValidationItemProps &
+  JSX.IntrinsicElements['li']
 
 const ValidationItem = ({
   children,

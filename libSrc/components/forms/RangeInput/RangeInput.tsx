@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
-export type RangeInputProps = {
+export interface BaseRangeInputProps {
   id: string
   name: string
   min?: number
@@ -14,7 +14,10 @@ export type RangeInputProps = {
     | React.RefObject<HTMLInputElement>
     | null
     | undefined
-} & JSX.IntrinsicElements['input']
+}
+
+export type RangeInputProps = BaseRangeInputProps &
+  JSX.IntrinsicElements['input']
 
 const RangeInput = ({
   className,

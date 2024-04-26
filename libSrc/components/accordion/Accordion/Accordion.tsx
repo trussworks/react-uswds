@@ -4,12 +4,14 @@ import AccordionItem, {
   type AccordionItemProps,
 } from '../AccordionItem/AccordionItem.js'
 
-export type AccordionProps = {
+export interface BaseAccordionProps {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
   className?: string
-} & JSX.IntrinsicElements['div']
+}
+
+export type AccordionProps = BaseAccordionProps & JSX.IntrinsicElements['div']
 
 const Accordion = ({
   bordered,

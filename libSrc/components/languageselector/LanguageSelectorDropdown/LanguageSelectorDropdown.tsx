@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import Menu from '../../header/Menu/Menu.js'
 import LanguageSelectorButton from '../LanguageSelectorButton/LanguageSelectorButton.js'
 import classnames from 'classnames'
-import type { LanguageSelectorProps } from '../LanguageSelector/LanguageSelector.js'
+import type { BaseLanguageSelectorProps } from '../LanguageSelector/LanguageSelector.js'
 import { generateMenuItems } from '../utils.js'
 
-export type LanguageSelectorDropdownProps = LanguageSelectorProps &
+export interface BaseLanguageSelectorDropdownProps {}
+
+export type LanguageSelectorDropdownProps = BaseLanguageSelectorDropdownProps &
+  BaseLanguageSelectorProps &
   JSX.IntrinsicElements['div']
 
 const LanguageSelectorDropdown = ({

@@ -1,10 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type InputSuffixProps = {
+export interface BaseInputSuffixProps {
   className?: string
   children: React.ReactNode
-} & JSX.IntrinsicElements['div']
+}
+
+export type InputSuffixProps = BaseInputSuffixProps &
+  JSX.IntrinsicElements['div']
 
 const InputSuffix = ({
   className,

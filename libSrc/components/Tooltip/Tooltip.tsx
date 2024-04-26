@@ -15,7 +15,7 @@ import {
   isCustomProps,
 } from './utils.js'
 import { TRIANGLE_SIZE } from './constants.js'
-import Button from '../Button/Button.js'
+import Button from '../Button/ButtonForwardRef.js'
 
 export type BaseTooltipProps<T> = {
   label: ReactNode

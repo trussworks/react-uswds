@@ -12,13 +12,15 @@ import {
   isIosDevice,
 } from '../utils.js'
 
-export interface YearPickerProps {
+export interface BaseYearPickerProps {
   date: Date
   minDate: Date
   maxDate?: Date
   handleSelectYear: (year: number) => void
   setStatuses: (statuses: string[]) => void
 }
+
+export type YearPickerProps = BaseYearPickerProps
 
 const YearPicker = ({
   date,

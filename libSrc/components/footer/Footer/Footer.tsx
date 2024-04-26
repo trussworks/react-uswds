@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import GridContainer from '../../grid/GridContainer/GridContainer.js'
 
-export type FooterProps = {
+export interface BaseFooterProps {
   size?: 'big' | 'medium' | 'slim'
   /**
    * Component for "return to top" button/handling
@@ -16,7 +16,9 @@ export type FooterProps = {
    * Content in lower footer section, e.g. contact information
    */
   secondary: React.ReactNode
-} & JSX.IntrinsicElements['footer']
+}
+
+export type FooterProps = BaseFooterProps & JSX.IntrinsicElements['footer']
 
 const Footer = ({
   size,

@@ -2,13 +2,15 @@ import React from 'react'
 import classnames from 'classnames'
 import Grid, { type GridProps } from '../../grid/Grid/Grid.js'
 
-export type AddressProps = {
+export interface BaseAddressProps {
   size?: 'big' | 'medium' | 'slim'
   /*
      Contact info items - e.g. anchor tags or text for email, phone, website, etc.
    */
   items: React.ReactNode[]
-} & JSX.IntrinsicElements['address']
+}
+
+export type AddressProps = BaseAddressProps & JSX.IntrinsicElements['address']
 
 const Address = ({
   size,

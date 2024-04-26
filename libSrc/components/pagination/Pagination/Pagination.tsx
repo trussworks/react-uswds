@@ -2,11 +2,11 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from '../../Icon/Icons.js'
 import Link from '../../Link/Link.js'
-import Button from '../../Button/Button.js'
+import Button from '../../Button/ButtonForwardRef.js'
 import PaginationOverflow from '../PaginationOverflow/PaginationOverflow.js'
 import PaginationPage from '../PaginationPage/PaginationPage.js'
 
-export type PaginationProps = {
+export interface BasePaginationProps {
   pathname: string // pathname of results page
   totalPages?: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
@@ -17,7 +17,9 @@ export type PaginationProps = {
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-} & JSX.IntrinsicElements['nav']
+}
+
+export type PaginationProps = BasePaginationProps & JSX.IntrinsicElements['nav']
 
 const Pagination = ({
   pathname,

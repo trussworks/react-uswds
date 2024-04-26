@@ -2,14 +2,17 @@ import React from 'react'
 import classnames from 'classnames'
 import Alert from '../Alert/Alert.js'
 
-export type SiteAlertProps = {
+export interface BaseSiteAlertProps {
   variant: 'info' | 'emergency'
   children: string | React.ReactNode | React.ReactNode[]
   heading?: string
   showIcon?: boolean
   slim?: boolean
   className?: string
-} & JSX.IntrinsicElements['section']
+}
+
+export type SiteAlertProps = BaseSiteAlertProps &
+  JSX.IntrinsicElements['section']
 
 const SiteAlert = ({
   variant,

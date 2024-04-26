@@ -1,7 +1,10 @@
 import classNames from 'classnames'
 import React from 'react'
 
-export type RequiredMarkerProps = JSX.IntrinsicElements['abbr']
+export interface BaseRequiredMarkerProps {}
+
+export type RequiredMarkerProps = BaseRequiredMarkerProps &
+  JSX.IntrinsicElements['abbr']
 
 const RequiredMarker = ({
   className,

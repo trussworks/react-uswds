@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type NavDropDownButtonProps = {
+export interface BaseNavDropDownButtonProps {
   label: string
   /*
     Element (i.e. menu) id already present in DOM that will be controlled by this button
@@ -10,7 +10,10 @@ export type NavDropDownButtonProps = {
   isOpen: boolean
   onToggle: () => void
   isCurrent?: boolean
-} & JSX.IntrinsicElements['button']
+}
+
+export type NavDropDownButtonProps = BaseNavDropDownButtonProps &
+  JSX.IntrinsicElements['button']
 
 const NavDropDownButton = ({
   label,

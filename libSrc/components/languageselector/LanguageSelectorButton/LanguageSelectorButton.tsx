@@ -1,13 +1,17 @@
 import React from 'react'
 import classnames from 'classnames'
-import Button, { type ButtonProps } from '../../Button/Button.js'
+import { type ButtonProps } from '../../Button/Button.js'
+import Button from '../../Button/ButtonForwardRef.js'
 
-export type LanguageSelectorButtonProps = {
+export interface BaseLanguageSelectorButtonProps {
   label: string
   labelAttr?: string
   isOpen?: boolean
   onToggle: () => void
-} & Omit<ButtonProps, 'children'>
+}
+
+export type LanguageSelectorButtonProps = BaseLanguageSelectorButtonProps &
+  Omit<ButtonProps, 'children'>
 
 const LanguageSelectorButton = ({
   label,

@@ -3,7 +3,7 @@ import React from 'react'
 import Form from './Form'
 
 import Alert from '../../Alert/Alert'
-import Button from '../../Button/Button'
+import Button from '../../Button/ButtonForwardRef.js'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import Fieldset from '../Fieldset/Fieldset'
 import FormGroup from '../FormGroup/FormGroup'

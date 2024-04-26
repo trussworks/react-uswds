@@ -1,8 +1,11 @@
 import React from 'react'
 
-export type NavMenuButtonProps = {
+export interface BaseNavMenuButtonProps {
   label: React.ReactNode
-} & JSX.IntrinsicElements['button']
+}
+
+export type NavMenuButtonProps = BaseNavMenuButtonProps &
+  JSX.IntrinsicElements['button']
 
 const NavMenuButton = ({
   label,

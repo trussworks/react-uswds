@@ -7,7 +7,7 @@ export interface WithCustomGridContainerProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
-export type BaseGridContainerProps = {
+export interface BaseGridContainerProps {
   containerSize?: ContainerSizes
   className?: string
   children: React.ReactNode
@@ -22,13 +22,11 @@ export type GridContainerProps<T = BaseGridContainerProps> =
   | DefaultGridContainerProps
   | CustomGridContainerProps<T>
 
-export default function GridContainer(
-  props: DefaultGridContainerProps
-): React.ReactElement
-export default function GridContainer<T>(
+function GridContainer(props: DefaultGridContainerProps): React.ReactElement
+function GridContainer<T>(
   props: CustomGridContainerProps<T>
 ): React.ReactElement
-export default function GridContainer<
+function GridContainer<
   FCProps extends React.PropsWithChildren<object> = DefaultGridContainerProps,
 >(props: GridContainerProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {
@@ -59,3 +57,5 @@ export default function GridContainer<
     )
   }
 }
+
+export default GridContainer

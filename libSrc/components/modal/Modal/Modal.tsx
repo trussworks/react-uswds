@@ -1,18 +1,12 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-} from 'react'
+import React, { useEffect, useState, useRef, useImperativeHandle } from 'react'
+import ReactDOM from 'react-dom'
 import FocusTrap from 'focus-trap-react'
 
 import { useModal, getScrollbarWidth } from '../utils.js'
-import ModalWindow from '../ModalWindow/ModalWindow.js'
-import ModalWrapper from '../ModalWrapper/ModalWrapper.js'
-import ReactDOM from 'react-dom'
+import ModalWindow from '../ModalWindow/ModalWindowForwardRef.js'
+import ModalWrapper from '../ModalWrapper/ModalWrapperForwardRef.js'
 
-export interface ModalComponentProps {
+export interface BaseModalProps {
   id: string
   children: React.ReactNode
   className?: string
@@ -23,7 +17,7 @@ export interface ModalComponentProps {
   isInitiallyOpen?: boolean
 }
 
-export type ModalProps = ModalComponentProps & JSX.IntrinsicElements['div']
+export type ModalProps = BaseModalProps & JSX.IntrinsicElements['div']
 
 export type ModalRef = {
   modalId: string
@@ -37,10 +31,7 @@ export type ModalRef = {
 // If you wish to override this behavior, `renderToPortal` to `false` and the modal
 // will render in its normal location in the document. Note that this may cause the modal to
 // be inaccessible due to no longer being in the document's accessibility tree.
-export const ModalForwardRef: React.ForwardRefRenderFunction<
-  ModalRef,
-  ModalProps
-> = (
+const Modal = (
   {
     id,
     children,
@@ -50,8 +41,8 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     renderToPortal = true,
     isInitiallyOpen,
     ...divProps
-  },
-  ref
+  }: ModalProps,
+  ref?: React.ForwardedRef<ModalRef>
 ): React.ReactElement => {
   const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
@@ -202,7 +193,5 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     return modal
   }
 }
-
-const Modal = forwardRef(ModalForwardRef)
 
 export default Modal

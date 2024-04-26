@@ -1,7 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CollectionMetaProps = JSX.IntrinsicElements['ul']
+export interface BaseCollectionMetaProps {}
+
+export type CollectionMetaProps = BaseCollectionMetaProps &
+  JSX.IntrinsicElements['ul']
 
 const CollectionMeta = ({
   className,

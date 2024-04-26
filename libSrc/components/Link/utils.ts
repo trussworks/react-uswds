@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import type {
   DefaultLinkProps,
   CustomLinkProps,
-  StyledLinkProps,
+  BaseLinkProps,
 } from './Link.js'
 
 export function isCustomProps<T>(
@@ -19,8 +19,8 @@ export const handleKeyDown = (e: React.KeyboardEvent) => {
 }
 
 export function linkClasses<T>(
-  variant: StyledLinkProps<T>['variant'],
-  className: StyledLinkProps<T>['className']
+  variant: BaseLinkProps<T>['variant'],
+  className: BaseLinkProps<T>['className']
 ): string | undefined {
   const unstyled = variant === 'unstyled'
   const isExternalLink = variant === 'external'

@@ -4,10 +4,12 @@ import classnames from 'classnames'
 import NavList, { type NavListProps } from '../NavList/NavList.js'
 import Grid from '../../grid/Grid/Grid.js'
 
-export type MegaMenuProps = {
+export interface BaseMegaMenuProps {
   items: React.ReactNode[][]
   isOpen: boolean
-} & NavListProps
+}
+
+export type MegaMenuProps = BaseMegaMenuProps & NavListProps
 
 const MegaMenu = ({
   items,

@@ -1,9 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CollectionProps = {
+export interface BaseCollectionProps {
   condensed?: boolean
-} & JSX.IntrinsicElements['ul']
+}
+
+export type CollectionProps = BaseCollectionProps & JSX.IntrinsicElements['ul']
 
 const Collection = ({
   children,

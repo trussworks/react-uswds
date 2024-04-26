@@ -8,7 +8,7 @@ import { formatDate, parseDateString } from '../datepicker/utils.js'
 import FormGroup from '../FormGroup/FormGroup.js'
 import Label from '../label/Label/Label.js'
 
-export type DateRangePickerProps = {
+export interface BaseDateRangePickerProps {
   startDateLabel?: string
   startDateHint?: string
   startDatePickerProps: Omit<DatePickerProps, 'rangeDate'>
@@ -16,7 +16,10 @@ export type DateRangePickerProps = {
   endDateHint?: string
   endDatePickerProps: Omit<DatePickerProps, 'rangeDate'>
   className?: string
-} & JSX.IntrinsicElements['div']
+}
+
+export type DateRangePickerProps = BaseDateRangePickerProps &
+  JSX.IntrinsicElements['div']
 
 const DateRangePicker = ({
   startDateLabel,

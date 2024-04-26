@@ -1,10 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type InputPrefixProps = {
+export interface BaseInputPrefixProps {
   className?: string
   children: React.ReactNode
-} & JSX.IntrinsicElements['div']
+}
+
+export type InputPrefixProps = BaseInputPrefixProps &
+  JSX.IntrinsicElements['div']
 
 const InputPrefix = ({
   className,

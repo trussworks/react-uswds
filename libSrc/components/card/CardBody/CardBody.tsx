@@ -1,7 +1,11 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CardBodyProps = { exdent?: boolean } & JSX.IntrinsicElements['div']
+export interface BaseCardBodyProps {
+  exdent?: boolean
+}
+
+export type CardBodyProps = BaseCardBodyProps & JSX.IntrinsicElements['div']
 
 const CardBody = ({
   exdent,

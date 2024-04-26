@@ -1,8 +1,11 @@
 import React, { useRef, useEffect } from 'react'
 
-export type ComboBoxInputProps = {
+export interface BaseComboBoxInputProps {
   focused?: boolean
-} & JSX.IntrinsicElements['input']
+}
+
+export type ComboBoxInputProps = BaseComboBoxInputProps &
+  JSX.IntrinsicElements['input']
 
 const ComboBoxInput = ({
   focused,

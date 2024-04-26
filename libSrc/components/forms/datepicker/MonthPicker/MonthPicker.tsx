@@ -13,13 +13,15 @@ import {
 
 import { type DatePickerLocalization, EN_US } from '../i18n.js'
 
-export type MonthPickerProps = {
+export interface BaseMonthPickerProps {
   date: Date
   minDate: Date
   maxDate?: Date
   handleSelectMonth: (value: number) => void
   i18n?: DatePickerLocalization
 }
+
+export type MonthPickerProps = BaseMonthPickerProps
 
 const MonthPicker = ({
   date,

@@ -3,18 +3,20 @@ import classnames from 'classnames'
 
 import Icon from '../../Icon/Icons.js'
 
-import Button from '../../Button/Button.js'
+import Button from '../../Button/ButtonForwardRef.js'
 
 export type SearchLocalization = {
   buttonText: string
 }
 
-export type SearchButtonProps = {
+export interface BaseSearchButtonProps {
   size?: 'big' | 'small'
   className?: string
   i18n?: SearchLocalization
   buttonAriaLabel?: string
 }
+
+export type SearchButtonProps = BaseSearchButtonProps
 
 const SearchButton = ({
   size,

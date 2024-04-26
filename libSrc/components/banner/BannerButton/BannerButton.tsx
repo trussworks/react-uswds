@@ -1,10 +1,13 @@
 import React, { type ReactElement } from 'react'
 import classNames from 'classnames'
 
-export type BannerButtonProps = {
+export interface BaseBannerButtonProps {
   isOpen: boolean
   spanProps?: JSX.IntrinsicElements['span']
-} & JSX.IntrinsicElements['button']
+}
+
+export type BannerButtonProps = BaseBannerButtonProps &
+  JSX.IntrinsicElements['button']
 
 const BannerButton = ({
   isOpen,

@@ -7,29 +7,28 @@ import Link, {
 } from '../../Link/Link.js'
 import { isCustomProps } from '../../Link/utils.js'
 
-export type ModalOpenLinkProps = {
+export interface BaseModalOpenLinkProps {
   modalRef: React.RefObject<ModalRef>
 }
 
-export type DefaultModalOpenLinkProps = ModalOpenLinkProps & DefaultLinkProps
+export type DefaultModalOpenLinkProps = BaseModalOpenLinkProps &
+  DefaultLinkProps
 
 export type CustomModalOpenLinkProps<T> = CustomLinkProps<T> &
-  ModalOpenLinkProps
+  BaseModalOpenLinkProps
 
-export default function ModalOpenLink(
-  props: DefaultModalOpenLinkProps
-): React.ReactElement
-export default function ModalOpenLink<T>(
+export type ModalOpenLinkProps<T = DefaultLinkProps & BaseModalOpenLinkProps> =
+  | (DefaultLinkProps & BaseModalOpenLinkProps)
+  | (CustomLinkProps<T> & BaseModalOpenLinkProps)
+
+function ModalOpenLink(props: DefaultModalOpenLinkProps): React.ReactElement
+function ModalOpenLink<T>(
   props: CustomModalOpenLinkProps<T>
 ): React.ReactElement
-export default function ModalOpenLink<
-  FCProps = DefaultLinkProps & ModalOpenLinkProps,
->({
+function ModalOpenLink<FCProps = DefaultLinkProps & BaseModalOpenLinkProps>({
   modalRef,
   ...props
-}:
-  | (DefaultLinkProps & ModalOpenLinkProps)
-  | (CustomLinkProps<FCProps> & ModalOpenLinkProps)): React.ReactElement {
+}: ModalOpenLinkProps<FCProps>): React.ReactElement {
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     if (!modalRef || !modalRef.current) {
       console.error('ModalRef is required')
@@ -56,3 +55,5 @@ export default function ModalOpenLink<
 
   return <Link {...definitelyLinkProps} />
 }
+
+export default ModalOpenLink

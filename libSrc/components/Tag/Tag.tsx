@@ -1,10 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type TagProps = {
+export interface BaseTagProps {
   children: React.ReactNode
   background?: string
-} & JSX.IntrinsicElements['span']
+}
+
+export type TagProps = BaseTagProps & JSX.IntrinsicElements['span']
 
 const Tag = ({
   children,

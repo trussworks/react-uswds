@@ -3,7 +3,6 @@ import React, {
   type FocusEvent,
   useEffect,
   useRef,
-  forwardRef,
   useImperativeHandle,
 } from 'react'
 import classnames from 'classnames'
@@ -56,10 +55,7 @@ export type ComboBoxRef = {
   clearSelection: () => void
 }
 
-export const ComboBoxForwardRef: React.ForwardRefRenderFunction<
-  ComboBoxRef,
-  ComboBoxProps
-> = (
+const ComboBox = (
   {
     id,
     name,
@@ -76,8 +72,8 @@ export const ComboBoxForwardRef: React.ForwardRefRenderFunction<
     customFilter,
     disableFiltering = false,
     ...props
-  },
-  ref
+  }: ComboBoxProps,
+  ref?: React.ForwardedRef<ComboBoxRef>
 ): React.ReactElement => {
   const isDisabled = !!disabled
 
@@ -478,7 +474,5 @@ export const ComboBoxForwardRef: React.ForwardRefRenderFunction<
     </div>
   )
 }
-
-const ComboBox = forwardRef(ComboBoxForwardRef)
 
 export default ComboBox

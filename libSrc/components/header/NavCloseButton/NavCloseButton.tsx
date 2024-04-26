@@ -2,7 +2,10 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from '../../Icon/Icons.js'
 
-export type NavCloseButtonProps = JSX.IntrinsicElements['button']
+export interface BaseNavCloseButtonProps {}
+
+export type NavCloseButtonProps = BaseNavCloseButtonProps &
+  JSX.IntrinsicElements['button']
 
 const NavCloseButton = ({
   onClick,

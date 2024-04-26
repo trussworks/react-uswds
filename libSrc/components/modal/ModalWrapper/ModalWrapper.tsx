@@ -1,21 +1,29 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
-export type ModalWrapperProps = {
+export interface BaseModalWrapperProps {
   id: string
   children: React.ReactNode
   isVisible: boolean
   forceAction: boolean
   handleClose: () => void
   className?: string
-} & JSX.IntrinsicElements['div']
+}
 
-export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  ModalWrapperProps
-> = (
-  { id, children, isVisible, forceAction, className, handleClose, ...divProps },
-  ref
+export type ModalWrapperProps = BaseModalWrapperProps &
+  JSX.IntrinsicElements['div']
+
+const ModalWrapper = (
+  {
+    id,
+    children,
+    isVisible,
+    forceAction,
+    className,
+    handleClose,
+    ...divProps
+  }: ModalWrapperProps,
+  ref?: React.ForwardedRef<HTMLDivElement>
 ): React.ReactElement => {
   const classes = classnames(
     'usa-modal-wrapper',
@@ -40,7 +48,5 @@ export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
     </div>
   )
 }
-
-const ModalWrapper = forwardRef(ModalWrapperForwardRef)
 
 export default ModalWrapper

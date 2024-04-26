@@ -2,7 +2,7 @@ import React from 'react'
 import { handleKeyDown, isCustomProps, linkClasses } from './utils.js'
 
 // These props we want to require always, even on custom components
-export type StyledLinkProps<T> = {
+export type BaseLinkProps<T> = {
   variant?: 'external' | 'unstyled' | 'nav'
   className?: string
   children: React.ReactNode
@@ -22,20 +22,20 @@ export interface WithCustomLinkProps<T> {
 // Default props means allow the StyledLinkProps as well as any
 // props allowed on the `a` element, plus the required props on
 // WithDefaultLinkProps
-export type DefaultLinkProps = StyledLinkProps<JSX.IntrinsicElements['a']> &
+export type DefaultLinkProps = BaseLinkProps<JSX.IntrinsicElements['a']> &
   WithDefaultLinkProps
 
 // Custom props means allow the StyledLinkProps as well as the custom
 // props, plus the required props on WithCustomLinkProps
-export type CustomLinkProps<T> = StyledLinkProps<T> & WithCustomLinkProps<T>
+export type CustomLinkProps<T> = BaseLinkProps<T> & WithCustomLinkProps<T>
 
 export type LinkProps<T = DefaultLinkProps> =
   | DefaultLinkProps
   | CustomLinkProps<T>
 
-export default function Link(props: DefaultLinkProps): React.ReactElement
-export default function Link<T>(props: CustomLinkProps<T>): React.ReactElement
-export default function Link<
+function Link(props: DefaultLinkProps): React.ReactElement
+function Link<T>(props: CustomLinkProps<T>): React.ReactElement
+function Link<
   FCProps extends React.PropsWithChildren<object> = DefaultLinkProps,
 >(props: LinkProps<FCProps>): React.ReactElement {
   if (isCustomProps(props)) {
@@ -76,3 +76,5 @@ export default function Link<
     )
   }
 }
+
+export default Link

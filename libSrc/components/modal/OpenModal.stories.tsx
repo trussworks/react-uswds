@@ -1,11 +1,11 @@
 import React from 'react'
 
-import ModalWindow from './ModalWindow/ModalWindow'
+import ModalWindow from './ModalWindow/ModalWindowForwardRef.js'
 import ModalHeading from './ModalHeading/ModalHeading'
 import ModalFooter from './ModalFooter/ModalFooter'
 import ButtonGroup from '../ButtonGroup/ButtonGroup'
-import Button from '../Button/Button'
-import ModalWrapper from './ModalWrapper/ModalWrapper'
+import Button from '../Button/ButtonForwardRef.js'
+import ModalWrapper from './ModalWrapper/ModalWrapperForwardRef.js'
 
 type StorybookArguments = {
   handleClose: () => void

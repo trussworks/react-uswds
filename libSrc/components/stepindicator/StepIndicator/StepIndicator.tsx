@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import type { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep.js'
 import type { HeadingLevel } from '../../../types/headingLevel.js'
 
-export type StepIndicatorProps = {
+export interface BaseStepIndicatorProps {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
   centered?: boolean
@@ -19,6 +19,8 @@ export type StepIndicatorProps = {
   stepText?: string
   ofText?: string
 }
+
+export type StepIndicatorProps = BaseStepIndicatorProps
 
 const StepIndicator = ({
   showLabels = true,

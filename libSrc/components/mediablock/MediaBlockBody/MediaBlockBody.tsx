@@ -1,7 +1,10 @@
 import React, { type ReactElement } from 'react'
 import classNames from 'classnames'
 
-export type MediaBlockBodyProps = JSX.IntrinsicElements['div']
+export interface BaseMediaBlockBodyProps {}
+
+export type MediaBlockBodyProps = BaseMediaBlockBodyProps &
+  JSX.IntrinsicElements['div']
 
 const MediaBlockBody = ({
   children,

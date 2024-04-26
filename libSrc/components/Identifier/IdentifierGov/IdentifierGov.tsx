@@ -1,10 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type IdentifierGovProps = {
+export interface BaseIdentifierGovProps {
   children?: React.ReactNode
   className?: string
-} & JSX.IntrinsicElements['section']
+}
+
+export type IdentifierGovProps = BaseIdentifierGovProps &
+  JSX.IntrinsicElements['section']
 
 const IdentifierGov = ({
   children,

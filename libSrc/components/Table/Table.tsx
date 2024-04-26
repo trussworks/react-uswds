@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import styles from './Table.module.scss'
 
-export type TableProps = {
+export interface BaseTableProps {
   bordered?: boolean
   caption?: React.ReactNode
   children: React.ReactNode
@@ -14,7 +14,9 @@ export type TableProps = {
   striped?: boolean
   compact?: boolean
   stackedStyle?: 'none' | 'default' | 'headers'
-} & JSX.IntrinsicElements['table']
+}
+
+export type TableProps = BaseTableProps & JSX.IntrinsicElements['table']
 
 const Table = ({
   bordered,

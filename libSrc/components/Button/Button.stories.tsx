@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './Button'
+import Button from './ButtonForwardRef.js'
 
 export default {
   title: 'Components/Button',

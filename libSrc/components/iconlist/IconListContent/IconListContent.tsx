@@ -1,10 +1,13 @@
 import classnames from 'classnames'
 import React, { type ReactElement, type ReactNode } from 'react'
 
-export type IconListContentProps = {
+export interface BaseIconListContentProps {
   className?: string
   children?: ReactNode
-} & JSX.IntrinsicElements['div']
+}
+
+export type IconListContentProps = BaseIconListContentProps &
+  JSX.IntrinsicElements['div']
 
 const IconListContent = ({
   className,

@@ -1,16 +1,10 @@
 /// <reference types="vitest" />
-import { resolve, relative, extname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 import url from 'url'
 import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 import { checker } from 'vite-plugin-checker'
 import react from '@vitejs/plugin-react'
-import { glob } from 'glob'
-import { renameSync, rmSync } from 'node:fs'
-import pkg from 'typescript'
-const { ModuleKind, ModuleResolutionKind, ModuleDetectionKind } = pkg
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -19,23 +13,16 @@ const uswdsIncludePaths = [
   'node_modules/@uswds/uswds/packages',
 ]
 
-const input = Object.fromEntries([
-  //['index', 'lib/index.ts'],
-  ...glob.sync('libSrc/**/!(*.spec|*.stories|*.test).{ts,tsx}').map((file) => [
-    // The name of the entry point
-    // lib/nested/foo.ts becomes nested/foo
-    relative('libSrc', file.slice(0, file.length - extname(file).length)),
-    // The absolute path to the entry file
-    // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-    fileURLToPath(new URL(file, import.meta.url)),
-  ]),
-])
-
-const LIB_FORMAT = process.env.LIB_FORMAT ?? 'es'
+const VITE_MODE = {
+  dev: 'dev',
+  preview: 'preview',
+  build: 'build',
+  test: 'test',
+  benchmark: 'benchmark',
+}
 
 export default defineConfig(({ mode }) => {
-  const isTest = mode === 'test' || mode === 'benchmark'
-  const isCjs = LIB_FORMAT === 'cjs'
+  const isTest = [VITE_MODE.test, VITE_MODE.benchmark].includes(mode)
 
   return {
     // ignore some plugins if running tests
@@ -45,32 +32,6 @@ export default defineConfig(({ mode }) => {
         checker({
           typescript: true,
         }),
-      !isTest &&
-        dts({
-          //tsconfigPath: 'tsconfig.build.json',
-          outDir: `./lib${isCjs ? '/cjs' : ''}`,
-          entryRoot: `./libSrc`,
-          exclude: [
-            'node_modules/**',
-            'src/**',
-            'libSrc/**/*.test.*',
-            'libSrc/**/*.stories/*',
-          ],
-
-          afterBuild(emittedFiles) {
-            if (isCjs) {
-              for (const [file] of emittedFiles) {
-                // eslint-disable-next-line security/detect-non-literal-fs-filename
-                renameSync(
-                  file,
-                  file.replace('.d.ts', '.d.cts').replace('lib/cjs', 'lib/')
-                )
-              }
-              rmSync('./lib/cjs', { recursive: true, force: true })
-            }
-          },
-          compilerOptions: isCjs ? {} : {},
-        }),
       // default svg url pattern is `*.svg?react`, updated to `*.svg?svgr`
       svgr({
         svgrOptions: { icon: true, memo: true },
@@ -79,15 +40,6 @@ export default defineConfig(({ mode }) => {
     ],
     build: {
       outDir: 'lib',
-      emptyOutDir: !isCjs,
-      lib: isCjs
-        ? {
-            entry: {
-              index: 'libSrc/index.ts',
-            },
-            name: 'ReactUSWDS',
-          }
-        : { entry: input, formats: ['es'] },
       rollupOptions: {
         external: [
           'react',
@@ -96,11 +48,6 @@ export default defineConfig(({ mode }) => {
           'focus-trap-react',
           '@uswds/uswds',
         ],
-        //input: !isCjs ? input : undefined,
-        output: {
-          assetFileNames: 'assets/[name][extname]',
-          entryFileNames: `[name].${isCjs ? 'cjs' : 'js'}`,
-        },
       },
       sourcemap: true,
       terserOptions: {

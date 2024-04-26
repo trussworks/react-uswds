@@ -17,8 +17,8 @@
       "require": "./lib/index.cjs",
       "import": "./lib/index.js"
     },
-    "./lib/index.css": "./lib/assets/style.css",
-    "./lib/uswds.css": "./lib/assets/uswds/css/styles.css"
+    "./lib/index.css": "./lib/dist/assets/style.css",
+    "./lib/uswds.css": "./lib/dist/assets/uswds/css/styles.css"
   },
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
@@ -27,7 +27,7 @@
     "lib"
   ],
   "sideEffects": [
-    "/lib/assets/**/*"
+    "/lib/dist/assets/**/*"
   ],
   "engines": {
     "node": ">= 18"
@@ -40,7 +40,7 @@
     "test:serverside": "yarn build && tsx scripts/serverSideTest.ts",
     "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build",
-    "build": "vite build && LIB_FORMAT=cjs vite build && yarn run build:uswds",
+    "build": "tsx scripts/cli build && yarn run build:uswds",
     "build:uswds": "gulp init",
     "build:watch": "vite dev",
     "lint": "tsc && eslint \"{scripts,libSrc}/**.{js,jsx,ts,tsx}\" && stylelint \"{scripts,libSrc}/**/*.{css,scss}\"",
@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
+    "@commander-js/extra-typings": "^12.0.1",
     "@laynezh/vite-plugin-lib-assets": "^0.5.14",
     "@storybook/addon-a11y": "^8.0.4",
     "@storybook/addon-essentials": "^8.0.4",
@@ -99,6 +100,7 @@
     "all-contributors-cli": "^6.24.0",
     "babel-loader": "^9.1.3",
     "classnames": "^2.3.2",
+    "commander": "^12.0.0",
     "danger": "^11.2.3",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^9.0.0",
@@ -131,7 +133,7 @@
     "stylelint-config-sass-guidelines": "^11.0.0",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-prettier": "^5.0.0",
-    "tsx": "^4.7.2",
+    "tsx": "^4.7.3",
     "type-fest": "^4.17.0",
     "typescript": "^5.1.6",
     "vite": "^5.0.12",

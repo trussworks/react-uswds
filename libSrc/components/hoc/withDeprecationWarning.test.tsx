@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 vi.mock('../../deprecation')
 import { deprecationWarning } from '../../deprecation'
-import Button from '../Button/Button'
+import Button from '../Button/ButtonForwardRef.js'
 import withDeprecationWarning from './withDeprecationWarning'
 
 describe('withDeprecationWarning HOC', () => {

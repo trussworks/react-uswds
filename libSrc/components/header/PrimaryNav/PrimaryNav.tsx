@@ -4,13 +4,15 @@ import classnames from 'classnames'
 import NavCloseButton from '../NavCloseButton/NavCloseButton.js'
 import NavList from '../NavList/NavList.js'
 
-export type PrimaryNavProps = {
+export interface BasePrimaryNavProps {
   items: React.ReactNode[]
   onToggleMobileNav?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void
   mobileExpanded?: boolean
-} & JSX.IntrinsicElements['nav']
+}
+
+export type PrimaryNavProps = BasePrimaryNavProps & JSX.IntrinsicElements['nav']
 
 const PrimaryNav = ({
   items,

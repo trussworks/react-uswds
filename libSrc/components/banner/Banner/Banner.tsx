@@ -1,9 +1,11 @@
 import React, { type ReactElement } from 'react'
 import classNames from 'classnames'
 
-export type BannerProps = {
+export interface BaseBannerProps {
   divProps?: JSX.IntrinsicElements['div']
-} & JSX.IntrinsicElements['section']
+}
+
+export type BannerProps = BaseBannerProps & JSX.IntrinsicElements['section']
 
 const Banner = ({
   children,

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type RadioProps = {
+export interface BaseRadioProps {
   id: string
   name: string
   className?: string
@@ -14,7 +14,9 @@ export type RadioProps = {
     | undefined
   tile?: boolean
   labelDescription?: React.ReactNode
-} & JSX.IntrinsicElements['input']
+}
+
+export type RadioProps = BaseRadioProps & JSX.IntrinsicElements['input']
 
 const Radio = ({
   id,

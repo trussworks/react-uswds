@@ -3,9 +3,12 @@ import React from 'react'
 import classnames from 'classnames'
 import Grid from '../../grid/Grid/Grid.js'
 
-export type SocialLinksProps = {
+export interface BaseSocialLinksProps {
   links: React.ReactNode[]
-} & JSX.IntrinsicElements['div']
+}
+
+export type SocialLinksProps = BaseSocialLinksProps &
+  JSX.IntrinsicElements['div']
 
 const SocialLinks = ({
   className,

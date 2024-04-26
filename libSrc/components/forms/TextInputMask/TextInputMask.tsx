@@ -3,10 +3,12 @@ import classnames from 'classnames'
 import TextInput, { type TextInputProps } from '../TextInput/TextInput.js'
 import { maskString } from './utils.js'
 
-export type TextInputMaskProps = TextInputProps & {
+export interface BaseTextInputMaskProps {
   mask: string
   charset?: string
 }
+
+export type TextInputMaskProps = BaseTextInputMaskProps & TextInputProps
 
 const TextInputMask = ({
   id,

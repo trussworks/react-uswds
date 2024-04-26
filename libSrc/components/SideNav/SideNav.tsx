@@ -1,10 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type SideNavProps = {
+export interface BaseSideNavProps {
   items: React.ReactNode[]
   isSubnav?: boolean
-} & JSX.IntrinsicElements['ul']
+}
+
+export type SideNavProps = BaseSideNavProps & JSX.IntrinsicElements['ul']
 
 const SideNav = ({
   items,

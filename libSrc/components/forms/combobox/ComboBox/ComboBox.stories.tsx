@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 
-import ComboBox, { type ComboBoxRef } from './ComboBox'
+import { type ComboBoxRef } from './ComboBox'
+import ComboBox from './ComboBoxForwardRef.js'
 import Form from '../../Form/Form'
 import Label from '../../label/Label/Label'
-import Button from '../../../Button/Button'
+import Button from '../../../Button/ButtonForwardRef.js'
 import { fruits, veggies } from './fixtures'
 import Radio from '../../Radio/Radio'
 

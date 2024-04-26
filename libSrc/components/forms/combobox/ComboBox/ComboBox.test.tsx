@@ -2,7 +2,8 @@ import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import ComboBox, { type ComboBoxOption, type ComboBoxRef } from './ComboBox'
+import { type ComboBoxOption, type ComboBoxRef } from './ComboBox'
+import ComboBox from './ComboBoxForwardRef.js'
 import TextInput from '../../TextInput/TextInput'
 import { fruits, veggies } from './fixtures'
 

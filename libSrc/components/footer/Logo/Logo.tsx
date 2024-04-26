@@ -2,11 +2,13 @@ import React from 'react'
 import classnames from 'classnames'
 import Grid, { type GridProps } from '../../grid/Grid/Grid.js'
 
-export type LogoProps = {
+export interface BaseLogoProps {
   size?: 'big' | 'medium' | 'slim'
   heading?: React.ReactNode
   image: React.ReactNode
-} & JSX.IntrinsicElements['div']
+}
+
+export type LogoProps = BaseLogoProps & JSX.IntrinsicElements['div']
 
 const Logo = ({
   size,

@@ -1,7 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type ModalHeadingProps = React.HTMLProps<HTMLHeadingElement>
+export interface BaseModalHeadingProps {}
+
+export type ModalHeadingProps = BaseModalHeadingProps &
+  JSX.IntrinsicElements['h1']
 
 const ModalHeading = ({
   className,

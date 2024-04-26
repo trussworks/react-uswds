@@ -1,11 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type FormGroupProps = {
+export interface BaseFormGroupProps {
   children: React.ReactNode
   className?: string
   error?: boolean
-} & JSX.IntrinsicElements['div']
+}
+
+export type FormGroupProps = BaseFormGroupProps & JSX.IntrinsicElements['div']
 
 const FormGroup = ({
   children,

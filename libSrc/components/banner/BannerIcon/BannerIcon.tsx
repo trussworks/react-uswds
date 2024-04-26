@@ -1,7 +1,9 @@
 import React, { type ReactElement } from 'react'
 import classNames from 'classnames'
 
-export type BannerIconProps = JSX.IntrinsicElements['img']
+export interface BaseBannerIconProps {}
+
+export type BannerIconProps = BaseBannerIconProps & JSX.IntrinsicElements['img']
 
 const BannerIcon = ({
   src,

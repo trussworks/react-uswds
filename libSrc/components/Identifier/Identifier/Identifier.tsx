@@ -1,10 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type IdentifierProps = {
+export interface BaseIdentifierProps {
   className?: string
   children: React.ReactNode
-} & JSX.IntrinsicElements['div']
+}
+
+export type IdentifierProps = BaseIdentifierProps & JSX.IntrinsicElements['div']
 
 const Identifier = ({
   className,

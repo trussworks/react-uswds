@@ -1,11 +1,11 @@
-import React, { forwardRef, type KeyboardEvent } from 'react'
+import React, { type KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { formatDate, isIosDevice } from '../utils.js'
 
 import { type DatePickerLocalization, EN_US } from '../i18n.js'
 
-export interface DayProps {
+export interface BaseDayProps {
   date: Date
   onClick: (value: string) => void
   onKeyDown: (event: KeyboardEvent) => void
@@ -24,10 +24,9 @@ export interface DayProps {
   i18n?: DatePickerLocalization
 }
 
-export const DayForwardRef: React.ForwardRefRenderFunction<
-  HTMLButtonElement,
-  DayProps
-> = (
+export type DayProps = BaseDayProps
+
+const Day = (
   {
     date,
     onClick,
@@ -45,8 +44,8 @@ export const DayForwardRef: React.ForwardRefRenderFunction<
     isRangeEnd = false,
     isWithinRange = false,
     i18n = EN_US,
-  },
-  ref
+  }: DayProps,
+  ref?: React.ForwardedRef<HTMLButtonElement>
 ): React.ReactElement => {
   const day = date.getDate()
   const month = date.getMonth()
@@ -109,7 +108,5 @@ export const DayForwardRef: React.ForwardRefRenderFunction<
     </button>
   )
 }
-
-const Day = forwardRef(DayForwardRef)
 
 export default Day

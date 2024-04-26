@@ -43,7 +43,7 @@ export { default as Grid } from './components/grid/Grid/Grid.js'
 /** Form components */
 export { default as CharacterCount } from './components/forms/CharacterCount/CharacterCount.js'
 export { default as Checkbox } from './components/forms/Checkbox/Checkbox.js'
-export { default as ComboBox } from './components/forms/combobox/ComboBox/ComboBox.js'
+export { default as ComboBox } from './components/forms/combobox/ComboBox/ComboBoxForwardRef.js'
 export type {
   ComboBoxRef,
   ComboBoxOption,
@@ -54,7 +54,7 @@ export { default as DatePicker } from './components/forms/datepicker/DatePicker/
 export { default as DateRangePicker } from './components/forms/DateRangePicker/DateRangePicker.js'
 export { default as ErrorMessage } from './components/forms/ErrorMessage/ErrorMessage.js'
 export { default as Fieldset } from './components/forms/Fieldset/Fieldset.js'
-export { default as FileInput } from './components/forms/fileinput/FileInput/FileInput.js'
+export { default as FileInput } from './components/forms/fileinput/FileInput/FileInputForwardRef.js'
 export type { FileInputRef } from './components/forms/fileinput/FileInput/FileInput.js'
 export { default as Form } from './components/forms/Form/Form.js'
 export { default as FormGroup } from './components/forms/FormGroup/FormGroup.js'
@@ -120,7 +120,7 @@ export { default as SocialLink } from './components/footer/SocialLink/SocialLink
 export { default as SocialLinks } from './components/footer/SocialLinks/SocialLinks.js'
 
 /** Modal components */
-export { default as Modal } from './components/modal/Modal/Modal.js'
+export { default as Modal } from './components/modal/Modal/ModalForwardRef.js'
 export { default as ModalToggleButton } from './components/modal/ModalToggleButton/ModalToggleButton.js'
 export { default as ModalOpenLink } from './components/modal/ModalOpenLink/ModalOpenLink.js'
 export { default as ModalHeading } from './components/modal/ModalHeading/ModalHeading.js'

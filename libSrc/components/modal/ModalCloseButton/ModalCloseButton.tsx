@@ -1,10 +1,13 @@
 import React from 'react'
 import Icon from '../../Icon/Icons.js'
-import Button from '../../Button/Button.js'
+import Button from '../../Button/ButtonForwardRef.js'
 
-export type ModalCloseButtonProps = {
+export interface BaseModalCloseButtonProps {
   handleClose: () => void
-} & JSX.IntrinsicElements['button']
+}
+
+export type ModalCloseButtonProps = BaseModalCloseButtonProps &
+  JSX.IntrinsicElements['button']
 
 const ModalCloseButton = ({
   handleClose,

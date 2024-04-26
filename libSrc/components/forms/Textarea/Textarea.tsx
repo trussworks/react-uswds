@@ -9,7 +9,7 @@ export type TextareaRef =
   | null
   | undefined
 
-export type TextareaProps = {
+export interface BaseTextareaProps {
   id: string
   name: string
   className?: string
@@ -17,7 +17,10 @@ export type TextareaProps = {
   success?: boolean
   children?: React.ReactNode
   inputRef?: TextareaRef
-} & JSX.IntrinsicElements['textarea']
+}
+
+export type TextareaProps = BaseTextareaProps &
+  JSX.IntrinsicElements['textarea']
 
 const Textarea = ({
   id,

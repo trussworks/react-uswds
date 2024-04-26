@@ -2,10 +2,13 @@ import React from 'react'
 import classnames from 'classnames'
 import type { ProcessListItemProps } from '../ProcessListItem/ProcessListItem.js'
 
-export type ProcessListProps = {
+export interface BaseProcessListProps {
   className?: string
   children: React.ReactElement<ProcessListItemProps>[]
-} & JSX.IntrinsicElements['ol']
+}
+
+export type ProcessListProps = BaseProcessListProps &
+  JSX.IntrinsicElements['ol']
 
 const ProcessList = ({
   className,

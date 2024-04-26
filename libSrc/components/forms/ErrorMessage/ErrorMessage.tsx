@@ -1,11 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type ErrorMessageProps = {
+export interface BaseErrorMessageProps {
   children: React.ReactNode
   id?: string
   className?: string
-} & JSX.IntrinsicElements['span']
+}
+
+export type ErrorMessageProps = BaseErrorMessageProps &
+  JSX.IntrinsicElements['span']
 
 const ErrorMessage = ({
   children,

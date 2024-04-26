@@ -15,7 +15,7 @@ export type RequiredTextInputProps = {
   type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url'
 }
 
-export type CustomTextInputProps = {
+export interface BaseTextInputProps {
   className?: string
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
@@ -23,7 +23,7 @@ export type CustomTextInputProps = {
   inputProps?: JSX.IntrinsicElements['input']
 }
 
-export type OptionalTextInputProps = CustomTextInputProps &
+export type OptionalTextInputProps = BaseTextInputProps &
   JSX.IntrinsicElements['input']
 
 export type TextInputProps = RequiredTextInputProps & OptionalTextInputProps

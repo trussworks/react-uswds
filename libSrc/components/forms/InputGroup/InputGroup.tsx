@@ -1,11 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type InputGroupProps = {
+export interface BaseInputGroupProps {
   children: React.ReactNode
   className?: string
   error?: boolean
-} & JSX.IntrinsicElements['div']
+}
+
+export type InputGroupProps = BaseInputGroupProps & JSX.IntrinsicElements['div']
 
 const InputGroup = ({
   children,

@@ -1,13 +1,17 @@
 import React from 'react'
 
 import type { ModalRef } from '../Modal/Modal.js'
-import Button, { type ButtonProps } from '../../Button/Button.js'
+import { type ButtonProps } from '../../Button/Button.js'
+import Button from '../../Button/ButtonForwardRef.js'
 
-export type ModalToggleButtonProps = {
+export interface BaseModalToggleButtonProps {
   modalRef: React.RefObject<ModalRef>
   opener?: boolean
   closer?: boolean
-} & Omit<ButtonProps, 'type'> &
+}
+
+export type ModalToggleButtonProps = BaseModalToggleButtonProps &
+  Omit<ButtonProps, 'type'> &
   JSX.IntrinsicElements['button']
 
 const ModalToggleButton = ({

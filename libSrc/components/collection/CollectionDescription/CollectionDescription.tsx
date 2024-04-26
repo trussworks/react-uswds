@@ -1,7 +1,10 @@
 import React from 'react'
 import classname from 'classnames'
 
-export type CollectionDescriptionProps = JSX.IntrinsicElements['p']
+export interface BaseCollectionDescriptionProps {}
+
+export type CollectionDescriptionProps = BaseCollectionDescriptionProps &
+  JSX.IntrinsicElements['p']
 
 const CollectionDescription = ({
   className,

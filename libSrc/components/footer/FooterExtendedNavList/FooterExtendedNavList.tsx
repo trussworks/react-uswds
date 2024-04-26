@@ -4,7 +4,7 @@ import Grid, { type GridProps } from '../../grid/Grid/Grid.js'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
-export type FooterExtendedNavListProps = {
+export interface BaseFooterExtendedNavListProps {
   isMobile?: boolean
   /* 
     Turn on mobile styles via prop. If undefined, a fallback is used based on the client window width.
@@ -13,7 +13,10 @@ export type FooterExtendedNavListProps = {
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType
-} & GridProps
+}
+
+export type FooterExtendedNavListProps = BaseFooterExtendedNavListProps &
+  GridProps
 
 const FooterExtendedNavList = ({
   isMobile,

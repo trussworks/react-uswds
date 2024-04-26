@@ -1,11 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type ButtonGroupProps = {
+export interface BaseButtonGroupProps {
   children: React.ReactNode
   className?: string
   type?: 'default' | 'segmented'
-} & JSX.IntrinsicElements['ul']
+}
+
+export type ButtonGroupProps = BaseButtonGroupProps &
+  JSX.IntrinsicElements['ul']
 
 const ButtonGroup = ({
   className,

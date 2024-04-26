@@ -2,9 +2,11 @@ import React from 'react'
 import type { IconProps } from '../../Icon/Icon.js'
 import Icon from '../../Icon/Icons.js'
 
-export type SocialLinkProps = {
+export interface BaseSocialLinkProps {
   name: 'Facebook' | 'Twitter' | 'YouTube' | 'Instagram' | 'RSS'
-} & JSX.IntrinsicElements['a']
+}
+
+export type SocialLinkProps = BaseSocialLinkProps & JSX.IntrinsicElements['a']
 
 const SocialLink = ({
   name,

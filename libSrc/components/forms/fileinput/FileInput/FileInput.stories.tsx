@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 
-import FileInput, { type FileInputRef } from './FileInput'
+import { type FileInputRef } from './FileInput'
+import FileInput from './FileInputForwardRef.js'
 import FormGroup from '../../FormGroup/FormGroup'
 import Label from '../../label/Label/Label'
 import ErrorMessage from '../../ErrorMessage/ErrorMessage'

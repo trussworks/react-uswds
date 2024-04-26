@@ -27,14 +27,14 @@ import {
   CalendarModes,
 } from '../utils.js'
 
-import Day from '../Day/Day.js'
+import DayForwardRef from '../Day/DayForwardRef.js'
 import MonthPicker from '../MonthPicker/MonthPicker.js'
 import YearPicker from '../YearPicker/YearPicker.js'
 
 import { type DatePickerLocalization, EN_US } from '../i18n.js'
 import { FocusMode } from '../../../../utils/constants.js'
 
-export interface CalendarProps {
+export interface BaseCalendarProps {
   date?: Date
   selectedDate?: Date
   handleSelectDate: (value: string) => void
@@ -45,6 +45,8 @@ export interface CalendarProps {
   focusMode: FocusMode
   i18n?: DatePickerLocalization
 }
+
+export type CalendarProps = BaseCalendarProps
 
 const Calendar = ({
   date,
@@ -307,7 +309,7 @@ const Calendar = ({
     const isFocused = isSameDay(dateIterator, focusedDate)
 
     days.push(
-      <Day
+      <DayForwardRef
         date={dateIterator}
         onClick={handleSelectDate}
         onKeyDown={handleKeyDownFromDay}

@@ -1,9 +1,11 @@
 import React from 'react'
 import { SHORT_MONTH_LABELS } from '../constants.js'
 
-export interface CollectionCalendarDateProps {
+export interface BaseCollectionCalendarDateProps {
   datetime: string
 }
+
+export type CollectionCalendarDateProps = BaseCollectionCalendarDateProps
 
 const CollectionCalendarDate = ({
   datetime,

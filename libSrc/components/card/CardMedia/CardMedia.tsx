@@ -1,12 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CardMediaProps = {
+export interface BaseCardMediaProps {
   exdent?: boolean
   inset?: boolean
   imageClass?: string
   children: React.ReactNode
-} & JSX.IntrinsicElements['div']
+}
+
+export type CardMediaProps = BaseCardMediaProps & JSX.IntrinsicElements['div']
 
 const CardMedia = ({
   exdent,

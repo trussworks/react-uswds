@@ -1,7 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type DateInputGroupProps = JSX.IntrinsicElements['div']
+export interface BaseDateInputGroupProps {}
+
+export type DateInputGroupProps = BaseDateInputGroupProps &
+  JSX.IntrinsicElements['div']
 
 const DateInputGroup = ({
   children,

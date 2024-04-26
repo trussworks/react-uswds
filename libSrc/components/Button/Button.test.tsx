@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 vi.mock('../../deprecation')
-import Button from './Button'
+import Button from './ButtonForwardRef.js'
 
 describe('Button component', () => {
   beforeEach(() => {

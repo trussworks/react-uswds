@@ -1,10 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type IdentifierLinkItemProps = {
+export interface BaseIdentifierLinkItemProps {
   children: React.ReactNode
   className?: string
-} & JSX.IntrinsicElements['li']
+}
+
+export type IdentifierLinkItemProps = BaseIdentifierLinkItemProps &
+  JSX.IntrinsicElements['li']
 
 const IdentifierLinkItem = ({
   children,

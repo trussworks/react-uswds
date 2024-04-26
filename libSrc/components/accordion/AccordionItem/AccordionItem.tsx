@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import type { HeadingLevel } from '../../../types/headingLevel.js'
 import AccordionButton from '../AccordionButton/AccordionButton.js'
 
-export interface AccordionItemProps {
+export interface BaseAccordionItemProps {
   title: React.ReactNode | string
   content: React.ReactNode
   expanded: boolean
@@ -12,6 +12,8 @@ export interface AccordionItemProps {
   headingLevel: HeadingLevel
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
+
+export type AccordionItemProps = BaseAccordionItemProps
 
 const AccordionItem = ({
   title,

@@ -1,9 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 import Link from '../../Link/Link.js'
-import Button from '../../Button/Button.js'
+import Button from '../../Button/ButtonForwardRef.js'
 
-export type PaginationPageProps = {
+export interface BasePaginationPageProps {
   pathname: string
   page: number
   isCurrent?: boolean
@@ -11,7 +11,10 @@ export type PaginationPageProps = {
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-} & JSX.IntrinsicElements['li']
+}
+
+export type PaginationPageProps = BasePaginationPageProps &
+  JSX.IntrinsicElements['li']
 
 const PaginationPage = ({
   page,

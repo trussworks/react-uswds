@@ -1,7 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CollectionThumbnailProps = JSX.IntrinsicElements['img']
+export interface BaseCollectionThumbnailProps {}
+
+export type CollectionThumbnailProps = BaseCollectionThumbnailProps &
+  JSX.IntrinsicElements['img']
 
 const CollectionThumbnail = ({
   className,

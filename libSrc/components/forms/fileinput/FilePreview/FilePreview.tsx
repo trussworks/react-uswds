@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { SPACER_GIF } from '../../../../utils/constants.js'
 
-export type FilePreviewProps = {
+export interface BaseFilePreviewProps {
   imageId: string
   file: File
-} & JSX.IntrinsicElements['div']
+}
+
+export type FilePreviewProps = BaseFilePreviewProps &
+  JSX.IntrinsicElements['div']
 
 const FilePreview = ({
   imageId,

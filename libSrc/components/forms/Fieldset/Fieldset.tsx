@@ -2,13 +2,16 @@ import React from 'react'
 import classnames from 'classnames'
 import RequiredMarker from '../label/RequiredMarker/RequiredMarker.js'
 
-export type FieldsetProps = {
+export interface BaseFieldsetProps {
   children: React.ReactNode
   legend?: React.ReactNode
   legendStyle?: 'default' | 'large' | 'srOnly'
   className?: string
   requiredMarker?: boolean
-} & JSX.IntrinsicElements['fieldset']
+}
+
+export type FieldsetProps = BaseFieldsetProps &
+  JSX.IntrinsicElements['fieldset']
 
 const Fieldset = ({
   children,

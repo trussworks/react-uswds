@@ -1,11 +1,14 @@
 import classnames from 'classnames'
 import React from 'react'
 
-export type StepIndicatorStepProps = {
+export interface BaseStepIndicatorStepProps {
   label: string
   status?: 'complete' | 'current' | 'incomplete'
   className?: string
-} & JSX.IntrinsicElements['li']
+}
+
+export type StepIndicatorStepProps = BaseStepIndicatorStepProps &
+  JSX.IntrinsicElements['li']
 
 const StepIndicatorStep = ({
   label,

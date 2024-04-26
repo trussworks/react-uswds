@@ -5,7 +5,7 @@ import Link from '../Link/Link.js'
 
 import styles from './InPageNavigation.module.scss'
 
-export type InPageNavigationProps = {
+export interface BaseInPageNavigationProps {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel
@@ -15,7 +15,10 @@ export type InPageNavigationProps = {
   scrollOffset?: string
   threshold?: number
   title?: string
-} & Omit<JSX.IntrinsicElements['div'], 'content'>
+}
+
+export type InPageNavigationProps = BaseInPageNavigationProps &
+  Omit<JSX.IntrinsicElements['div'], 'content'>
 
 const InPageNavigation = ({
   className,

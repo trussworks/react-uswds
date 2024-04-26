@@ -1,7 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CardGroupProps = JSX.IntrinsicElements['ul']
+export interface BaseCardGroupProps {}
+
+export type CardGroupProps = BaseCardGroupProps & JSX.IntrinsicElements['ul']
 
 const CardGroup = ({
   children,

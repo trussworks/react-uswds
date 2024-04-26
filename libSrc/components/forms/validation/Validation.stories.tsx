@@ -1,6 +1,6 @@
 import React, { useState, type ChangeEvent } from 'react'
 import Alert from '../../Alert/Alert'
-import Button from '../../Button/Button'
+import Button from '../../Button/ButtonForwardRef.js'
 import Fieldset from '../Fieldset/Fieldset'
 import Form from '../Form/Form'
 import Label from '../label/Label/Label'

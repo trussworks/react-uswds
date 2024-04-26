@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export type CheckboxProps = {
+export interface BaseCheckboxProps {
   id: string
   name: string
   className?: string
@@ -14,7 +14,9 @@ export type CheckboxProps = {
     | undefined
   tile?: boolean
   labelDescription?: React.ReactNode
-} & JSX.IntrinsicElements['input']
+}
+
+export type CheckboxProps = BaseCheckboxProps & JSX.IntrinsicElements['input']
 
 const Checkbox = ({
   id,

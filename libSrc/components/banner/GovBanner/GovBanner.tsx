@@ -15,10 +15,12 @@ import flagImg from '@uswds/uswds/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 import httpsIcon from '@uswds/uswds/img/icon-https.svg'
 
-export type GovBannerProps = {
+export interface BaseGovBannerProps {
   tld?: TLD
   language?: Language
-} & BannerProps
+}
+
+export type GovBannerProps = BaseGovBannerProps & BannerProps
 
 const GovBanner = ({
   tld = '.gov',
