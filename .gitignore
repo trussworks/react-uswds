@@ -53,7 +53,7 @@ typings/
 
 # Build output
 
-dist/
+lib/
 storybook-static/
 
 .awcache
