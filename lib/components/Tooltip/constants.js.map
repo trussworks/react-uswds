@@ -1,1 +1,0 @@
-{"version":3,"file":"constants.js","sources":["../../../libSrc/components/Tooltip/constants.ts"],"sourcesContent":["export const TRIANGLE_SIZE = 5\n"],"names":["TRIANGLE_SIZE"],"mappings":"AAAO,MAAMA,IAAgB;"}
