@@ -135,7 +135,6 @@
     "stylelint-config-sass-guidelines": "^11.0.0",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-prettier": "^5.0.0",
-    "terser": "^5.30.4",
     "tsx": "^4.7.3",
     "type-fest": "^4.17.0",
     "typescript": "^5.1.6",
