@@ -1,9 +1,11 @@
 import React from 'react'
 import { screen, render, getByRole } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import InPageNavigation from './InPageNavigation'
-import type { HeadingLevel } from '../../types/headingLevel'
-import { CONTENT } from './fixtures'
+
+import InPageNavigation from './InPageNavigation.js'
+import { HeadingLevel } from '../../types/headingLevel.js'
+import { CONTENT } from './fixtures.js'
+import styles from './InPageNavigation.module.scss'
 
 describe('InPageNavigation component', () => {
   const props = {
@@ -50,6 +52,7 @@ describe('InPageNavigation component', () => {
       name: 'On this page',
     })
     expect(heading).toBeInTheDocument()
+    expect(document.querySelector('html')).toHaveClass(styles['smooth-scroll'])
   })
 
   it('sets the heading and title', () => {

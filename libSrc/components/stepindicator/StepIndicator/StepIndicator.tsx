@@ -3,6 +3,11 @@ import classnames from 'classnames'
 import type { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep.js'
 import type { HeadingLevel } from '../../../types/headingLevel.js'
 
+export type StepStatusText = {
+  complete: string
+  incomplete: string
+}
+
 export interface BaseStepIndicatorProps {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
@@ -18,6 +23,7 @@ export interface BaseStepIndicatorProps {
   headingLevel: HeadingLevel
   stepText?: string
   ofText?: string
+  statusText?: StepStatusText
 }
 
 export type StepIndicatorProps = BaseStepIndicatorProps
@@ -34,6 +40,7 @@ const StepIndicator = ({
   headingLevel,
   stepText = 'Step',
   ofText = 'of',
+  statusText = { complete: 'completed', incomplete: 'not completed' },
 }: StepIndicatorProps): React.ReactElement => {
   const Heading = headingLevel
 
@@ -75,6 +82,10 @@ const StepIndicator = ({
   const currentStepLabel = children[parseInt(`${currentStepIndex}`)].props.label
   const totalNumberOfSteps = children.length
 
+  const stepChildren = React.Children.map(children, (child) =>
+    React.cloneElement(child, { statusText: statusText })
+  )
+
   return (
     <div
       className={divClasses}
@@ -82,7 +93,7 @@ const StepIndicator = ({
       aria-label="progress"
       {...remainingDivProps}>
       <ol className={listClasses} {...remainingListProps}>
-        {children}
+        {stepChildren}
       </ol>
       <div className="usa-step-indicator__header">
         <Heading className={headingClasses} {...remainingHeadingProps}>

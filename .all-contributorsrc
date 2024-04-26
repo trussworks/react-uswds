@@ -147,7 +147,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/13249580?v=4",
       "profile": "https://github.com/kimallen",
       "contributions": [
-        "code"
+        "code",
+        "a11y"
       ]
     },
     {
@@ -244,7 +245,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/371943?v=4",
       "profile": "https://sawyer.soy",
       "contributions": [
-        "code"
+        "code",
+        "bug"
       ]
     },
     {

@@ -1,6 +1,8 @@
 import React from 'react'
-import StepIndicatorStep from '../StepIndicatorStep/StepIndicatorStep'
-import StepIndicator from '../StepIndicator/StepIndicator'
+import StepIndicatorStep from '../StepIndicatorStep/StepIndicatorStep.js'
+import StepIndicator, {
+  type StepStatusText,
+} from '../StepIndicator/StepIndicator.js'
 
 export default {
   title: 'Components/Step Indicator',
@@ -35,6 +37,7 @@ Updates users on their progress through a multi-step process.
 type StorybookArguments = {
   stepText: string
   ofText: string
+  statusText: StepStatusText
 }
 
 export const DefaultStepIndicator = (
@@ -43,7 +46,8 @@ export const DefaultStepIndicator = (
   <StepIndicator
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -57,7 +61,8 @@ export const NoLabels = (args: StorybookArguments): React.ReactElement => (
     showLabels={false}
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -71,7 +76,8 @@ export const Centered = (args: StorybookArguments): React.ReactElement => (
     centered
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -85,7 +91,8 @@ export const Counters = (args: StorybookArguments): React.ReactElement => (
     counters="default"
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -99,7 +106,8 @@ export const SmallCounters = (args: StorybookArguments): React.ReactElement => (
     counters="small"
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -114,7 +122,8 @@ export const DifferentHeadingLevel = (
   <StepIndicator
     headingLevel="h2"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />

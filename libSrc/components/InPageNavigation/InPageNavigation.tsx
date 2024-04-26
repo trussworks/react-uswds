@@ -32,7 +32,7 @@ const InPageNavigation = ({
   title = 'On this page',
   ...divProps
 }: InPageNavigationProps): React.ReactElement => {
-  const classes = classnames('usa-in-page-nav', styles.target, className)
+  const asideClasses = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)
   const { className: mainClassName, ...remainingMainProps } = mainProps || {}
@@ -60,12 +60,16 @@ const InPageNavigation = ({
   const observer = new IntersectionObserver(handleIntersection, observerOptions)
   useEffect(() => {
     document.querySelectorAll('h2,h3').forEach((h) => observer.observe(h))
+    document.querySelector('html')?.classList.add(styles['smooth-scroll'])
+    return () => {
+      document.querySelector('html')?.classList.remove(styles['smooth-scroll'])
+    }
   })
 
   return (
     <div className="usa-in-page-nav-container" {...divProps}>
       <aside
-        className={classes}
+        className={asideClasses}
         aria-label={title}
         data-testid="InPageNavigation">
         <nav className={navClasses} {...remainingNavProps}>
