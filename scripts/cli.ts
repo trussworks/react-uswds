@@ -87,12 +87,20 @@ const buildCommand = new Command('build').action(async () => {
   } satisfies InlineConfig
 
   const bundleConfig = { build: structuredClone(baseBuildConfig) }
-  ;(esConfig as any).build.outDir = 'lib/dist'
-  ;(esConfig as any).build.lib = {
+  ;(bundleConfig as any).build.outDir = 'lib/dist'
+  ;(bundleConfig as any).build.lib = {
     entry: 'libSrc/index.ts',
     name: 'ReactUSWDS',
   }
-  delete (esConfig as any).build.rollupOptions.output.entryFileNames
+  delete (bundleConfig as any).build.rollupOptions.output.entryFileNames
+  // Support React Server Components
+  // See: https://react.dev/reference/react/use-client
+  ;(bundleConfig as any).build.rollupOptions.output.banner = (
+    assetInfo: any
+  ) =>
+    assetInfo.fileName.endsWith('.js') || assetInfo.fileName.endsWith('.cjs')
+      ? '"use client";'
+      : ''
 
   // cjs
   await build(cjsConfig)

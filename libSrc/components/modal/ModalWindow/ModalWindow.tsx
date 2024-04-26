@@ -15,7 +15,7 @@ export interface BaseModalWindowProps {
 export type ModalWindowProps = BaseModalWindowProps &
   JSX.IntrinsicElements['div']
 
-export const ModalWindow = (
+const ModalWindow = (
   {
     modalId,
     className,

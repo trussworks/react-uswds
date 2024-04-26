@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState, useRef, useImperativeHandle } from 'react'
 import ReactDOM from 'react-dom'
 import FocusTrap from 'focus-trap-react'

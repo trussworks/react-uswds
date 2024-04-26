@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useRef, useImperativeHandle, useEffect } from 'react'
 import classnames from 'classnames'
 

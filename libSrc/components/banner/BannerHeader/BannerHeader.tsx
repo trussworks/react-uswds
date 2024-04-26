@@ -36,18 +36,18 @@ const BannerHeader = ({
   )
 
   const { className: innerDivClassName, ...remainingInnerDivProps } =
-    innerDivProps || {}
+    innerDivProps ?? {}
   const innerDivClasses = classNames('usa-banner__inner', innerDivClassName)
 
   const { className: headerTextClassName, ...remainingHeaderTextProps } =
-    headerTextProps || {}
+    headerTextProps ?? {}
   const headerTextClasses = classNames(
     'usa-banner__header-text',
     headerTextClassName
   )
 
   const { className: headerActionClassName, ...remainingHeaderActionProps } =
-    headerActionProps || {}
+    headerActionProps ?? {}
   const headerActionClasses = classNames(
     'usa-banner__header-action',
     headerActionClassName

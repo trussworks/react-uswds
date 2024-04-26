@@ -1,3 +1,5 @@
+'use client'
+
 // Global CSS
 import './styles/index.scss'
 

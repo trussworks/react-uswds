@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 import svgr from 'vite-plugin-svgr'
 import { checker } from 'vite-plugin-checker'
 import react from '@vitejs/plugin-react'
+import preserveDirectives from 'rollup-preserve-directives'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -37,6 +38,7 @@ export default defineConfig(({ mode }) => {
         svgrOptions: { icon: true, memo: true },
         include: '**/*.svg?svgr',
       }),
+      preserveDirectives(),
     ],
     build: {
       outDir: 'lib',
@@ -50,12 +52,6 @@ export default defineConfig(({ mode }) => {
         ],
       },
       sourcemap: true,
-      terserOptions: {
-        compress: {
-          // Preserve directives like "use client"
-          directives: false,
-        },
-      },
     },
     css: {
       devSourcemap: true,

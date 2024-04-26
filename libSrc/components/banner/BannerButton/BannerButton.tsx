@@ -21,7 +21,7 @@ const BannerButton = ({
     className
   )
 
-  const { className: spanClassName, ...remainingSpanProps } = spanProps || {}
+  const { className: spanClassName, ...remainingSpanProps } = spanProps ?? {}
   const spanClasses = classNames('usa-banner__button-text', spanClassName)
 
   return (

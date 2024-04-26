@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { SPACER_GIF } from '../../../../utils/constants.js'
