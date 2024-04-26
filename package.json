@@ -17,6 +17,7 @@
       "require": "./lib/index.cjs",
       "import": "./lib/index.js"
     },
+    "./lib/*": "./lib/*",
     "./lib/index.css": "./lib/dist/assets/style.css",
     "./lib/uswds.css": "./lib/dist/assets/uswds/css/styles.css"
   },

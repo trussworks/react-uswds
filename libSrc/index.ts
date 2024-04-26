@@ -4,7 +4,7 @@ import './styles/index.scss'
 /** USWDS basic components */
 export { default as Alert } from './components/Alert/Alert.js'
 export { default as Accordion } from './components/accordion/Accordion/Accordion.js'
-export { default as Button } from './components/Button/Button.js'
+export { default as Button } from './components/Button/ButtonForwardRef.js'
 export { default as ButtonGroup } from './components/ButtonGroup/ButtonGroup.js'
 export { default as InPageNavigation } from './components/InPageNavigation/InPageNavigation.js'
 export { default as Link } from './components/Link/Link.js'
