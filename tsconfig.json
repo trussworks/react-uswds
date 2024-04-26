@@ -6,29 +6,26 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ES2015",
-    "moduleResolution": "Bundler",
+    "module": "Preserve",
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "noImplicitAny": true,
-    "declaration": true,
     "outDir": "./dist",
     "isolatedModules": true,
     "types": [
       "vitest/globals",
       "@testing-library/jest-dom"
     ],
-    //"verbatimModuleSyntax": true
   },
   "include": [
-    "lib/**/*",
+    "libSrc/**/*",
     "custom.d.ts", "scripts/serverSideTest.js", "src/setupTests.ts",
   ],
 }

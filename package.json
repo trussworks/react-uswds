@@ -13,20 +13,21 @@
   ],
   "type": "module",
   "exports": {
-    "./lib/**": {
-      "import": "./dist/es",
-      "require": "./dist/cjs"
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.js"
     },
-    "./lib/index.css": "./dist/assets/style.css",
-    "./lib/uswds.css": "./dist/assets/uswds/css/styles.css"
+    "./lib/index.css": "./lib/assets/style.css",
+    "./lib/uswds.css": "./lib/assets/uswds/css/styles.css"
   },
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/es/index.js",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "sideEffects": [
-    "/dist/assets/**/*"
+    "/lib/assets/**/*"
   ],
   "engines": {
     "node": ">= 18"
@@ -42,10 +43,10 @@
     "build": "vite build && LIB_FORMAT=cjs vite build && yarn run build:uswds",
     "build:uswds": "gulp init",
     "build:watch": "vite dev",
-    "lint": "tsc && eslint \"{scripts,lib}/**.{js,jsx,ts,tsx}\" && stylelint \"{scripts,lib}/**/*.{css,scss}\"",
-    "lint:fix": "tsc && eslint \"{scripts,lib}/**.{js,jsx,ts,tsx}\" --fix && stylelint \"{scripts,lib}/**/*.{css,scss}\" --fix",
-    "format:check": "prettier --check \"{scripts,lib}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "format:fix": "prettier --write \"{scripts,lib}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "lint": "tsc && eslint \"{scripts,libSrc}/**.{js,jsx,ts,tsx}\" && stylelint \"{scripts,libSrc}/**/*.{css,scss}\"",
+    "lint:fix": "tsc && eslint \"{scripts,libSrc}/**.{js,jsx,ts,tsx}\" --fix && stylelint \"{scripts,libSrc}/**/*.{css,scss}\" --fix",
+    "format:check": "prettier --check \"{scripts,libSrc}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "format:fix": "prettier --write \"{scripts,libSrc}/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "prepare": "husky && yarn build && yarn test:serverside",
     "prepublishOnly": "yarn test && yarn lint",
     "happo": "happo --config ./.happo.cjs",

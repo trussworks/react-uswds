@@ -8,9 +8,9 @@ import svgr from 'vite-plugin-svgr'
 import { checker } from 'vite-plugin-checker'
 import react from '@vitejs/plugin-react'
 import { glob } from 'glob'
-import { renameSync } from 'node:fs'
+import { renameSync, rmSync } from 'node:fs'
 import pkg from 'typescript'
-const { ModuleKind, ModuleResolutionKind } = pkg
+const { ModuleKind, ModuleResolutionKind, ModuleDetectionKind } = pkg
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -21,10 +21,10 @@ const uswdsIncludePaths = [
 
 const input = Object.fromEntries([
   //['index', 'lib/index.ts'],
-  ...glob.sync('lib/**/!(*.spec|*.stories|*.test).{ts,tsx}').map((file) => [
+  ...glob.sync('libSrc/**/!(*.spec|*.stories|*.test).{ts,tsx}').map((file) => [
     // The name of the entry point
     // lib/nested/foo.ts becomes nested/foo
-    relative('lib', file.slice(0, file.length - extname(file).length)),
+    relative('libSrc', file.slice(0, file.length - extname(file).length)),
     // The absolute path to the entry file
     // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
     fileURLToPath(new URL(file, import.meta.url)),
@@ -48,24 +48,28 @@ export default defineConfig(({ mode }) => {
       !isTest &&
         dts({
           //tsconfigPath: 'tsconfig.build.json',
-          outDir: `dist/${isCjs ? 'cjs' : 'es'}`,
-          insertTypesEntry: true,
-          entryRoot: './lib',
-          exclude: ['node_modules/**', 'src/**'],
-          /*afterBuild(emittedFiles) {
+          outDir: `./lib${isCjs ? '/cjs' : ''}`,
+          entryRoot: `./libSrc`,
+          exclude: [
+            'node_modules/**',
+            'src/**',
+            'libSrc/**/*.test.*',
+            'libSrc/**/*.stories/*',
+          ],
+
+          afterBuild(emittedFiles) {
             if (isCjs) {
               for (const [file] of emittedFiles) {
                 // eslint-disable-next-line security/detect-non-literal-fs-filename
-                renameSync(file, file.replace('.d.ts', '.d.cts'))
+                renameSync(
+                  file,
+                  file.replace('.d.ts', '.d.cts').replace('lib/cjs', 'lib/')
+                )
               }
+              rmSync('./lib/cjs', { recursive: true, force: true })
             }
-          },*/
-          compilerOptions: isCjs
-            ? {
-                module: ModuleKind.CommonJS,
-                moduleResolution: ModuleResolutionKind.Node16,
-              }
-            : {},
+          },
+          compilerOptions: isCjs ? {} : {},
         }),
       // default svg url pattern is `*.svg?react`, updated to `*.svg?svgr`
       svgr({
@@ -74,11 +78,16 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     build: {
+      outDir: 'lib',
       emptyOutDir: !isCjs,
-      lib: {
-        entry: resolve(__dirname, 'lib/index.ts'),
-        formats: [LIB_FORMAT],
-      },
+      lib: isCjs
+        ? {
+            entry: {
+              index: 'libSrc/index.ts',
+            },
+            name: 'ReactUSWDS',
+          }
+        : { entry: input, formats: ['es'] },
       rollupOptions: {
         external: [
           'react',
@@ -87,11 +96,10 @@ export default defineConfig(({ mode }) => {
           'focus-trap-react',
           '@uswds/uswds',
         ],
-        input,
+        //input: !isCjs ? input : undefined,
         output: {
           assetFileNames: 'assets/[name][extname]',
-          entryFileNames: `[format]/[name].js`,
-          exports: 'named',
+          entryFileNames: `[name].${isCjs ? 'cjs' : 'js'}`,
         },
       },
       sourcemap: true,
