@@ -17,6 +17,8 @@ export interface BaseFileInputProps {
   accept?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onDrop?: (e: React.DragEvent) => void
+  // TODO: Remove underscore, or remove property entirely if handled by new React 19 typing
+  _ref?: React.ForwardedRef<FileInputRef>
 }
 
 export type FileInputProps = BaseFileInputProps &
@@ -28,23 +30,21 @@ export type FileInputRef = {
   files: File[]
 }
 
-const FileInput = (
-  {
-    name,
-    id,
-    dragText,
-    chooseText,
-    errorText,
-    disabled,
-    multiple,
-    className,
-    accept,
-    onChange,
-    onDrop,
-    ...inputProps
-  }: FileInputProps,
-  ref?: React.ForwardedRef<FileInputRef>
-): React.ReactElement => {
+const FileInput = ({
+  name,
+  id,
+  dragText,
+  chooseText,
+  errorText,
+  disabled,
+  multiple,
+  className,
+  accept,
+  onChange,
+  onDrop,
+  _ref,
+  ...inputProps
+}: FileInputProps): React.ReactElement => {
   const internalRef = useRef<HTMLInputElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
@@ -62,7 +62,7 @@ const FileInput = (
   }, [typeof navigator])
 
   useImperativeHandle(
-    ref,
+    _ref,
     () => ({
       input: internalRef.current,
       clearFiles: (): void => setFiles([]),

@@ -1,7 +1,12 @@
-import { forwardRef } from 'react'
-import FileInput from './FileInput.js'
+import React, { forwardRef } from 'react'
+import FileInput, { FileInputProps, FileInputRef } from './FileInput.js'
 
-const FileInputForwardRef = forwardRef(FileInput)
+const FileInputForwardRef = forwardRef(function FileInputForwardRef(
+  props: FileInputProps,
+  ref: React.ForwardedRef<FileInputRef>
+) {
+  return <FileInput _ref={ref} {...props} />
+})
 
 export type {
   BaseFileInputProps,

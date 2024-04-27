@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import ModalWindow from './ModalWindowForwardRef.js'
+import ModalWindow from './ModalWindow.js'
 
 describe('Modal component', () => {
   const testProps = {

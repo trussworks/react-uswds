@@ -9,8 +9,7 @@ import {
 } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { type ModalRef } from './Modal.js'
-import Modal from './ModalForwardRef.js'
+import Modal, { type ModalRef } from './Modal.js'
 import ModalHeading from '../ModalHeading/ModalHeading.js'
 import ModalFooter from '../ModalFooter/ModalFooter.js'
 import ModalToggleButton from '../ModalToggleButton/ModalToggleButton.js'
@@ -65,7 +64,7 @@ const ExampleModal = ({
         Open default modal
       </ModalToggleButton>
       <Modal
-        ref={modalRef}
+        _ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
@@ -111,7 +110,7 @@ const ExampleModalWithFocusElement = (): React.ReactElement => {
         Open default modal
       </ModalToggleButton>
       <Modal
-        ref={modalRef}
+        _ref={modalRef}
         id="example-modal-1"
         aria-labelledby="modal-1-heading"
         aria-describedby="modal-1-description"
@@ -232,7 +231,7 @@ describe('Modal component', () => {
     const testModalId = 'testModal'
 
     renderWithModalRoot(
-      <Modal id={testModalId} ref={modalRef} modalRoot="#modal-root">
+      <Modal id={testModalId} _ref={modalRef} modalRoot="#modal-root">
         Test modal
       </Modal>
     )
@@ -251,7 +250,7 @@ describe('Modal component', () => {
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
     renderWithModalRoot(
-      <Modal id={testModalId} ref={modalRef} modalRoot="#modal-root">
+      <Modal id={testModalId} _ref={modalRef} modalRoot="#modal-root">
         Test modal
       </Modal>
     )
@@ -273,7 +272,7 @@ describe('Modal component', () => {
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
     renderWithModalRoot(
-      <Modal id={testModalId} ref={modalRef}>
+      <Modal id={testModalId} _ref={modalRef}>
         Test modal
       </Modal>
     )
@@ -304,7 +303,7 @@ describe('Modal component', () => {
     const testModalId = 'testModal'
 
     renderWithModalRoot(
-      <Modal id={testModalId} isInitiallyOpen={true} ref={modalRef}>
+      <Modal id={testModalId} isInitiallyOpen={true} _ref={modalRef}>
         Test modal
       </Modal>
     )
@@ -340,7 +339,7 @@ describe('Modal component', () => {
       const handleClose = () => modalRef.current?.toggleModal(undefined, false)
 
       const { baseElement } = renderWithModalRoot(
-        <Modal id="testModal" ref={modalRef}>
+        <Modal id="testModal" _ref={modalRef}>
           Test modal
         </Modal>
       )
@@ -370,7 +369,7 @@ describe('Modal component', () => {
       document.body.style.paddingRight = '20px'
 
       const { baseElement } = renderWithModalRoot(
-        <Modal id="testModal" ref={modalRef}>
+        <Modal id="testModal" _ref={modalRef}>
           Test modal
         </Modal>
       )
@@ -489,7 +488,7 @@ describe('Modal component', () => {
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
       renderWithModalRoot(
-        <Modal id="testModal" ref={modalRef}>
+        <Modal id="testModal" _ref={modalRef}>
           Test modal
         </Modal>
       )
@@ -627,7 +626,7 @@ describe('Modal component', () => {
           modalRef.current?.toggleModal(undefined, false)
 
         const { baseElement } = renderWithModalRoot(
-          <Modal id="testModal" ref={modalRef} forceAction>
+          <Modal id="testModal" _ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>
         )
@@ -654,7 +653,7 @@ describe('Modal component', () => {
         const testModalId = 'testModal'
 
         renderWithModalRoot(
-          <Modal id={testModalId} ref={modalRef} forceAction>
+          <Modal id={testModalId} _ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>
         )
@@ -697,7 +696,7 @@ describe('Modal component', () => {
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
       const { baseElement, unmount } = renderWithModalRoot(
-        <Modal id="testModal" ref={modalRef}>
+        <Modal id="testModal" _ref={modalRef}>
           Test modal
         </Modal>
       )
@@ -726,7 +725,7 @@ describe('Modal component', () => {
       const handleClose = () => modalRef.current?.toggleModal(undefined, false)
 
       const { baseElement, unmount } = renderWithModalRoot(
-        <Modal id="testModal" ref={modalRef}>
+        <Modal id="testModal" _ref={modalRef}>
           Test modal
         </Modal>
       )

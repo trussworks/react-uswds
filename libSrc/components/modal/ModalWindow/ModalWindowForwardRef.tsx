@@ -1,7 +1,12 @@
-import { forwardRef } from 'react'
-import ModalWindow from './ModalWindow.js'
+import React, { forwardRef } from 'react'
+import ModalWindow, { ModalWindowProps } from './ModalWindow.js'
 
-const ModalWindowForwardRef = forwardRef(ModalWindow)
+const ModalWindowForwardRef = forwardRef(function ModalWindowForwardRef(
+  props: ModalWindowProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) {
+  return <ModalWindow _ref={ref} {...props} />
+})
 
 export type { BaseModalWindowProps, ModalWindowProps } from './ModalWindow.js'
 

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import Button from './ButtonForwardRef.js'
+import Button from './Button.js'
 
 vi.mock('../../deprecation')
 
@@ -13,6 +13,17 @@ describe('Button component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<Button type="button">Click Me</Button>)
     expect(queryByTestId('button')).toBeInTheDocument()
+  })
+
+  it('renders ref', () => {
+    const testRef = createRef<HTMLButtonElement>()
+    const { queryByTestId } = render(
+      <Button type="button" _ref={testRef}>
+        Click Me
+      </Button>
+    )
+    expect(queryByTestId('button')).toBeInTheDocument()
+    expect(testRef.current).toBeInstanceOf(HTMLButtonElement)
   })
 
   describe('renders uswds classes', () => {

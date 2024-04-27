@@ -17,6 +17,8 @@ export interface BaseModalProps {
   modalRoot?: string
   renderToPortal?: boolean
   isInitiallyOpen?: boolean
+  // TODO: Remove underscore, or remove property entirely if handled by new React 19 typing
+  _ref?: React.ForwardedRef<ModalRef>
 }
 
 export type ModalProps = BaseModalProps &
@@ -34,19 +36,17 @@ export type ModalRef = {
 // If you wish to override this behavior, `renderToPortal` to `false` and the modal
 // will render in its normal location in the document. Note that this may cause the modal to
 // be inaccessible due to no longer being in the document's accessibility tree.
-const Modal = (
-  {
-    id,
-    children,
-    isLarge = false,
-    forceAction = false,
-    modalRoot = '.usa-modal-wrapper',
-    renderToPortal = true,
-    isInitiallyOpen,
-    ...divProps
-  }: ModalProps,
-  ref?: React.ForwardedRef<ModalRef>
-): React.ReactElement => {
+const Modal = ({
+  id,
+  children,
+  isLarge = false,
+  forceAction = false,
+  modalRoot = '.usa-modal-wrapper',
+  renderToPortal = true,
+  isInitiallyOpen,
+  _ref,
+  ...divProps
+}: ModalProps): React.ReactElement => {
   const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
   const initialPaddingRef = useRef<string>()
@@ -63,7 +63,7 @@ const Modal = (
   }
 
   useImperativeHandle(
-    ref,
+    _ref,
     () => ({
       modalId: id,
       modalIsOpen: isOpen,

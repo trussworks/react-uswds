@@ -10,23 +10,23 @@ export interface BaseModalWindowProps {
   className?: string
   isLarge?: boolean
   forceAction?: boolean
+  // TODO: Remove underscore, or remove property entirely if handled by new React 19 typing
+  _ref?: React.ForwardedRef<HTMLDivElement>
 }
 
 export type ModalWindowProps = BaseModalWindowProps &
   JSX.IntrinsicElements['div']
 
-const ModalWindow = (
-  {
-    modalId,
-    className,
-    children,
-    handleClose,
-    isLarge = false,
-    forceAction = false,
-    ...divProps
-  }: ModalWindowProps,
-  ref?: React.ForwardedRef<HTMLDivElement>
-): React.ReactElement => {
+const ModalWindow = ({
+  modalId,
+  className,
+  children,
+  handleClose,
+  isLarge = false,
+  forceAction = false,
+  _ref,
+  ...divProps
+}: ModalWindowProps): React.ReactElement => {
   const classes = classnames(
     'usa-modal',
     {
@@ -39,7 +39,7 @@ const ModalWindow = (
     <div
       data-testid="modalWindow"
       className={classes}
-      ref={ref}
+      ref={_ref}
       data-force-action={forceAction}
       {...divProps}>
       <div className="usa-modal__content">

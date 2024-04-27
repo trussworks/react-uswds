@@ -2,8 +2,7 @@ import React from 'react'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { type FileInputRef } from './FileInput.js'
-import FileInput from './FileInputForwardRef.js'
+import FileInput, { type FileInputRef } from './FileInput.js'
 import {
   TEST_TEXT_FILE,
   TEST_PNG_FILE,
@@ -367,7 +366,7 @@ describe('FileInput component', () => {
     it('can be used to access the files', async () => {
       const fileInputRef = React.createRef<FileInputRef>()
 
-      render(<FileInput {...testProps} ref={fileInputRef} />)
+      render(<FileInput {...testProps} _ref={fileInputRef} />)
 
       // Upload a file
       const inputEl = screen.getByTestId('file-input-input')
@@ -383,7 +382,7 @@ describe('FileInput component', () => {
 
       render(
         <>
-          <FileInput {...testProps} ref={fileInputRef} />
+          <FileInput {...testProps} _ref={fileInputRef} />
           <button onClick={handleClearFiles}>Clear files</button>
         </>
       )

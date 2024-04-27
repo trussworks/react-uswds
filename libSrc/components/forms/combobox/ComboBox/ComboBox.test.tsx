@@ -2,8 +2,7 @@ import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { type ComboBoxOption, type ComboBoxRef } from './ComboBox.js'
-import ComboBox from './ComboBoxForwardRef.js'
+import ComboBox, { type ComboBoxOption, type ComboBoxRef } from './ComboBox.js'
 import TextInput from '../../TextInput/TextInput.js'
 import { fruits, veggies } from './fixtures.js'
 
@@ -1767,7 +1766,7 @@ describe('ComboBox component', () => {
             name="favorite-fruit"
             options={fruitOptions}
             onChange={onChange}
-            ref={comboRef}
+            _ref={comboRef}
           />
           <button data-testid="focus-button" onClick={handleFocus}>
             Focus
@@ -1795,7 +1794,7 @@ describe('ComboBox component', () => {
             name="favorite-fruit"
             options={fruitOptions}
             onChange={onChange}
-            ref={comboRef}
+            _ref={comboRef}
           />
           <button data-testid="clear-button" onClick={handleClearSelection}>
             Clear

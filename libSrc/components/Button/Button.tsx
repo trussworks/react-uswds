@@ -11,26 +11,26 @@ export interface BaseButtonProps {
   inverse?: boolean
   size?: 'big'
   unstyled?: boolean
+  // TODO: Remove underscore, or remove property entirely if handled by new React 19 typing
+  _ref?: React.ForwardedRef<HTMLButtonElement>
 }
 
 export type ButtonProps = BaseButtonProps & JSX.IntrinsicElements['button']
 
-function Button(
-  {
-    type = 'button',
-    children,
-    secondary,
-    base,
-    accentStyle,
-    outline,
-    inverse,
-    size,
-    unstyled,
-    className,
-    ...defaultProps
-  }: ButtonProps,
-  ref?: React.ForwardedRef<HTMLButtonElement>
-): React.ReactElement {
+function Button({
+  type = 'button',
+  children,
+  secondary,
+  base,
+  accentStyle,
+  outline,
+  inverse,
+  size,
+  unstyled,
+  className,
+  _ref,
+  ...defaultProps
+}: ButtonProps): React.ReactElement {
   const classes = classnames(
     'usa-button',
     {
@@ -51,7 +51,7 @@ function Button(
       type={type}
       className={classes}
       data-testid="button"
-      ref={ref}
+      ref={_ref}
       {...defaultProps}>
       {children}
     </button>

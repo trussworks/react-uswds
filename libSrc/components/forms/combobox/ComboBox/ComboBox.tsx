@@ -48,6 +48,9 @@ export interface BaseComboBoxProps {
   ulProps?: JSX.IntrinsicElements['ul']
   customFilter?: CustomizableFilter
   disableFiltering?: boolean
+
+  // TODO: Remove underscore, or remove property entirely if handled by new React 19 typing
+  _ref?: React.ForwardedRef<ComboBoxRef>
 }
 
 export type ComboBoxProps = BaseComboBoxProps &
@@ -58,26 +61,24 @@ export type ComboBoxRef = {
   clearSelection: () => void
 }
 
-const ComboBox = (
-  {
-    id,
-    name,
-    className,
-    options,
-    defaultValue,
-    disabled,
-    onChange,
-    assistiveHint,
-    noResults,
-    selectProps,
-    inputProps,
-    ulProps,
-    customFilter,
-    disableFiltering = false,
-    ...props
-  }: ComboBoxProps,
-  ref?: React.ForwardedRef<ComboBoxRef>
-): React.ReactElement => {
+const ComboBox = ({
+  id,
+  name,
+  className,
+  options,
+  defaultValue,
+  disabled,
+  onChange,
+  assistiveHint,
+  noResults,
+  selectProps,
+  inputProps,
+  ulProps,
+  customFilter,
+  disableFiltering = false,
+  _ref,
+  ...props
+}: ComboBoxProps): React.ReactElement => {
   const isDisabled = !!disabled
 
   let defaultOption
@@ -167,7 +168,7 @@ const ComboBox = (
   }, [state.focusMode])
 
   useImperativeHandle(
-    ref,
+    _ref,
     () => ({
       focus: (): void => dispatch({ type: ActionTypes.FOCUS_INPUT }),
       clearSelection: (): void =>
