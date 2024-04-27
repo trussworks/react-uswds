@@ -76,6 +76,7 @@ const buildCommand = new Command('build').action(async () => {
       'src/**',
       'libSrc/**/*.test.*',
       'libSrc/**/*.stories.*',
+      'libSrc/**/fixtures.*',
     ],
   } satisfies PluginOptions
 
