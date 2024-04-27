@@ -19,7 +19,8 @@ export interface BaseFileInputProps {
   onDrop?: (e: React.DragEvent) => void
 }
 
-export type FileInputProps = BaseFileInputProps & JSX.IntrinsicElements['input']
+export type FileInputProps = BaseFileInputProps &
+  Omit<JSX.IntrinsicElements['input'], 'ref'>
 
 export type FileInputRef = {
   clearFiles: () => void
