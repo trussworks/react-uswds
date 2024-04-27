@@ -23,9 +23,9 @@ const MegaMenu = ({
     <div className={classes} hidden={!isOpen} data-testid="megamenu">
       <Grid row gap={4}>
         {items.map((listItems, i) => (
-          <Grid col key={`subnav_col_${i}`}>
+          <div className="usa-col" key={`subnav_col_${i}`}>
             <NavList items={listItems} type="megamenu" {...navListProps} />
-          </Grid>
+          </div>
         ))}
       </Grid>
     </div>
