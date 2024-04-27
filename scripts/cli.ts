@@ -54,13 +54,6 @@ const buildCommand = new Command('build').action(async () => {
     emptyOutDir: false,
     lib: { entry: input, formats: ['es'] },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'focus-trap-react',
-        '@uswds/uswds',
-      ],
       output: {
         assetFileNames: 'dist/assets/[name][extname]',
         entryFileNames: `[name].js`,
