@@ -1,7 +1,8 @@
 import React from 'react'
-import Breadcrumb from '../Breadcrumb/Breadcrumb'
-import BreadcrumbBar from './BreadcrumbBar'
-import BreadcrumbLink from '../BreadcrumbLink/BreadcrumbLink'
+
+import Breadcrumb from '../Breadcrumb/Breadcrumb.js'
+import BreadcrumbBar from './BreadcrumbBar.js'
+import BreadcrumbLink from '../BreadcrumbLink/BreadcrumbLink.js'
 
 export default {
   title: 'Components/Breadcrumb',

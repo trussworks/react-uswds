@@ -2,10 +2,10 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import MonthPicker from './MonthPicker'
-import { MONTH_LABELS } from '../constants'
-import { parseDateString } from '../utils'
-import { sampleLocalization } from '../i18n'
+import MonthPicker from './MonthPicker.js'
+import { MONTH_LABELS } from '../constants.js'
+import { parseDateString } from '../utils.js'
+import { sampleLocalization } from '../i18n.js'
 
 describe('MonthPicker', () => {
   const testProps = {

@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 
-import IdentifierGov from './IdentifierGov'
+import IdentifierGov from './IdentifierGov.js'
 
 describe('IdentifierGov component', () => {
   it('renders without errors', () => {

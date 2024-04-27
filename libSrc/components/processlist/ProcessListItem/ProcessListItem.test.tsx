@@ -2,8 +2,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ProcessListItem from './ProcessListItem'
-import ProcessListHeading from '../ProcessListHeading/ProcessListHeading'
+import ProcessListItem from './ProcessListItem.js'
+import ProcessListHeading from '../ProcessListHeading/ProcessListHeading.js'
 
 const testData = (
   <>

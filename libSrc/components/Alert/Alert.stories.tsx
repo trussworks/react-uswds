@@ -1,6 +1,6 @@
 import React from 'react'
-import Alert from './Alert'
 
+import Alert from './Alert.js'
 import Button from '../Button/ButtonForwardRef.js'
 
 export default {

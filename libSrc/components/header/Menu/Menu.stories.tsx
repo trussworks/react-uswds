@@ -1,5 +1,6 @@
 import React from 'react'
-import Menu from './Menu'
+
+import Menu from './Menu.js'
 
 export default {
   title: 'Components/Header/Menu',

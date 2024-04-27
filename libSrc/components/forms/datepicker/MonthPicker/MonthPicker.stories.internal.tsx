@@ -1,7 +1,7 @@
 import React from 'react'
 
-import MonthPicker from './MonthPicker'
-import { parseDateString } from '../utils'
+import MonthPicker from './MonthPicker.js'
+import { parseDateString } from '../utils.js'
 
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY

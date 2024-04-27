@@ -1,5 +1,6 @@
 import React from 'react'
-import SearchButton from './SearchButton'
+
+import SearchButton from './SearchButton.js'
 
 export default {
   title: 'Components/Search/SearchButton',

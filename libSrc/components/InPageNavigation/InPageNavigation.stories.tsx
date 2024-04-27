@@ -1,7 +1,8 @@
 import React from 'react'
-import InPageNavigation from './InPageNavigation'
-import { CONTENT } from './fixtures'
-import type { HeadingLevel } from '../../types/headingLevel'
+
+import InPageNavigation from './InPageNavigation.js'
+import { CONTENT } from './fixtures.js'
+import type { HeadingLevel } from '../../types/headingLevel.js'
 
 export default {
   title: 'Components/In-Page Navigation',

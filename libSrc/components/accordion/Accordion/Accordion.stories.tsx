@@ -1,6 +1,7 @@
 import React from 'react'
-import Accordion from './Accordion'
-import type { AccordionItemProps } from '../AccordionItem/AccordionItem'
+
+import Accordion from './Accordion.js'
+import type { AccordionItemProps } from '../AccordionItem/AccordionItem.js'
 
 export default {
   title: 'Components/Accordion',

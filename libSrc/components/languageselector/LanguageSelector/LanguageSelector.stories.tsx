@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-import LanguageSelector, { type LanguageDefinition } from './LanguageSelector'
 import type { StoryFn } from '@storybook/react'
+
+import LanguageSelector, {
+  type LanguageDefinition,
+} from './LanguageSelector.js'
 
 export default {
   title: 'Components/LanguageSelector',

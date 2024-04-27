@@ -1,8 +1,9 @@
 import React from 'react'
-import CharacterCount from './CharacterCount'
-import Form from '../Form/Form'
-import FormGroup from '../FormGroup/FormGroup'
-import Label from '../label/Label/Label'
+
+import CharacterCount from './CharacterCount.js'
+import Form from '../Form/Form.js'
+import FormGroup from '../FormGroup/FormGroup.js'
+import Label from '../label/Label/Label.js'
 
 export default {
   title: 'Components/CharacterCount',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import PrimaryNav from './PrimaryNav'
+import PrimaryNav from './PrimaryNav.js'
 
 const testItems = [
   <a className="usa-current" href="#linkOne" key="one">

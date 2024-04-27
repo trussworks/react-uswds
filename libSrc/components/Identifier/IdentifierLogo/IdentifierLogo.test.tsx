@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
+import IdentifierLogo from './IdentifierLogo.js'
 
-import IdentifierLogo from './IdentifierLogo'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 describe('IdentifierLogo component', () => {
   it('renders without errors', () => {

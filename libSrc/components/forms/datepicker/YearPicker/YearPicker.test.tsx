@@ -2,8 +2,8 @@ import React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import YearPicker from './YearPicker'
-import { parseDateString } from '../utils'
+import YearPicker from './YearPicker.js'
+import { parseDateString } from '../utils.js'
 
 describe('YearPicker', () => {
   const testProps = {

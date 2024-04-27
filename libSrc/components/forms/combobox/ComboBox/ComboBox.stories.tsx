@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
 
-import { type ComboBoxRef } from './ComboBox'
+import { type ComboBoxRef } from './ComboBox.js'
 import ComboBox from './ComboBoxForwardRef.js'
-import Form from '../../Form/Form'
-import Label from '../../label/Label/Label'
+import Form from '../../Form/Form.js'
+import Label from '../../label/Label/Label.js'
 import Button from '../../../Button/ButtonForwardRef.js'
-import { fruits, veggies } from './fixtures'
-import Radio from '../../Radio/Radio'
+import Radio from '../../Radio/Radio.js'
+import { fruits, veggies } from './fixtures.js'
 
 export default {
   title: 'Components/Combo box',

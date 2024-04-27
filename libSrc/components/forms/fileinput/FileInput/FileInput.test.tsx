@@ -2,14 +2,14 @@ import React from 'react'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { type FileInputRef } from './FileInput'
+import { type FileInputRef } from './FileInput.js'
 import FileInput from './FileInputForwardRef.js'
 import {
   TEST_TEXT_FILE,
   TEST_PNG_FILE,
   TEST_XLS_FILE,
   TEST_PDF_FILE,
-} from '../fixtures'
+} from '../fixtures.js'
 
 describe('FileInput component', () => {
   const testProps = {

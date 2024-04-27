@@ -1,5 +1,6 @@
 import React from 'react'
-import Address from './Address'
+
+import Address from './Address.js'
 
 export default {
   title: 'Components/Footer/Address',

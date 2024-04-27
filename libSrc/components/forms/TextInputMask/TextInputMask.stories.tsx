@@ -1,7 +1,8 @@
 import React from 'react'
-import TextInputMask from './TextInputMask'
-import Label from '../label/Label/Label'
-import Form from '../../forms/Form/Form'
+
+import TextInputMask from './TextInputMask.js'
+import Label from '../label/Label/Label.js'
+import Form from '../../forms/Form/Form.js'
 
 export default {
   title: 'Components/Text input mask',

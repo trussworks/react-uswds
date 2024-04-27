@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import BannerIcon from './BannerIcon'
+
+import BannerIcon from './BannerIcon.js'
 
 describe('BannerIcon Component', () => {
   it('renders properly', () => {

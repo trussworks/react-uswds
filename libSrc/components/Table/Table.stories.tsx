@@ -1,5 +1,6 @@
 import React from 'react'
-import Table from './Table'
+
+import Table from './Table.js'
 
 export default {
   title: 'Components/Table',

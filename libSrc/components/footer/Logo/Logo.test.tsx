@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Logo from './Logo'
+
+import Logo from './Logo.js'
 
 const heading = <p className="usa-footer__logo-heading">Swoosh Branding</p>
 const logoImage = (

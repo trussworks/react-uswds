@@ -22,6 +22,10 @@ const VITE_MODE = {
   benchmark: 'benchmark',
 }
 
+/**
+ * Set options here that are not specific to the format it's being exported to.
+ * Otherwise, please set those settings inside `scripts/cli.ts`.
+ */
 export default defineConfig(({ mode }) => {
   const isTest = [VITE_MODE.test, VITE_MODE.benchmark].includes(mode)
 
@@ -38,6 +42,7 @@ export default defineConfig(({ mode }) => {
         svgrOptions: { icon: true, memo: true },
         include: '**/*.svg?svgr',
       }),
+      // rollup will remove our `use client` directives without this plugin
       preserveDirectives(),
     ],
     build: {
@@ -57,12 +62,14 @@ export default defineConfig(({ mode }) => {
       devSourcemap: true,
       preprocessorOptions: {
         scss: {
+          // ensure scss can resolve uswds sub-packages
           includePaths: uswdsIncludePaths,
         },
       },
     },
     resolve: {
       alias: [
+        // ensure js modules can resolve uswds sub-packages
         {
           find: 'uswds',
           replacement: resolve(__dirname, './node_modules/@uswds/uswds'),

@@ -1,5 +1,6 @@
 import React from 'react'
-import Textarea from './Textarea'
+
+import Textarea from './Textarea.js'
 
 export default {
   title: 'Components/Textarea',

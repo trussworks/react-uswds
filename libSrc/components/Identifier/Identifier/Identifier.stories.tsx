@@ -1,17 +1,16 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
-import Identifier from './Identifier'
-import IdentifierMasthead from '../IdentifierMasthead/IdentifierMasthead'
-import IdentifierIdentity from '../IdentifierIdentity/IdentifierIdentity'
-import IdentifierLinks from '../IdentifierLinks/IdentifierLinks'
-import IdentifierGov from '../IdentifierGov/IdentifierGov'
-import IdentifierLinkItem from '../IdentifierLinkItem/IdentifierLinkItem'
-import IdentifierLink from '../IdentifierLink/IdentifierLink'
-import IdentifierLogo from '../IdentifierLogo/IdentifierLogo'
-import IdentifierLogos from '../IdentifierLogos/IdentifierLogos'
-
-import Link from '../../Link/Link'
+import Identifier from './Identifier.js'
+import IdentifierMasthead from '../IdentifierMasthead/IdentifierMasthead.js'
+import IdentifierIdentity from '../IdentifierIdentity/IdentifierIdentity.js'
+import IdentifierLinks from '../IdentifierLinks/IdentifierLinks.js'
+import IdentifierGov from '../IdentifierGov/IdentifierGov.js'
+import IdentifierLinkItem from '../IdentifierLinkItem/IdentifierLinkItem.js'
+import IdentifierLink from '../IdentifierLink/IdentifierLink.js'
+import IdentifierLogo from '../IdentifierLogo/IdentifierLogo.js'
+import IdentifierLogos from '../IdentifierLogos/IdentifierLogos.js'
+import Link from '../../Link/Link.js'
 
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 

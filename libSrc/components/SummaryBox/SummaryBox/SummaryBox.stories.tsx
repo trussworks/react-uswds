@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import SummaryBox from './SummaryBox'
-import SummaryBoxHeading from '../SummaryBoxHeading/SummaryBoxHeading'
-import SummaryBoxContent from '../SummaryBoxContent/SummaryBoxContent'
+
+import SummaryBox from './SummaryBox.js'
+import SummaryBoxHeading from '../SummaryBoxHeading/SummaryBoxHeading.js'
+import SummaryBoxContent from '../SummaryBoxContent/SummaryBoxContent.js'
 
 export default {
   title: 'Components/Summary box',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import CardBody from './CardBody'
+import CardBody from './CardBody.js'
 
 describe('CardBody component', () => {
   it('renders without errors', () => {

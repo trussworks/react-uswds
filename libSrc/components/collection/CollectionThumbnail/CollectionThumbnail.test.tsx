@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import CollectionThumbnail from './CollectionThumbnail'
+
+import CollectionThumbnail from './CollectionThumbnail.js'
 
 describe('CollectionThumbnail component', () => {
   it('renders without errors', () => {

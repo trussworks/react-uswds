@@ -1,8 +1,8 @@
 import React from 'react'
-
-import Select from './Select'
-import Label from '../label/Label/Label'
 import type { Meta, StoryFn } from '@storybook/react'
+
+import Select from './Select.js'
+import Label from '../label/Label/Label.js'
 
 export default {
   title: 'Components/Select',

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Calendar from './Calendar'
-import { parseDateString } from '../utils'
-import { FocusMode } from '../../../../utils/constants'
+import Calendar from './Calendar.js'
+import { parseDateString } from '../utils.js'
+import { FocusMode } from '../../../../utils/constants.js'
 
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY

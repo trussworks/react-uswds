@@ -1,5 +1,5 @@
 import React from 'react'
-import PrimaryNav from './PrimaryNav'
+import PrimaryNav from './PrimaryNav.js'
 
 export default {
   title: 'Components/Header/PrimaryNav',

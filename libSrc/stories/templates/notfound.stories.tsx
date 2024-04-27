@@ -1,38 +1,37 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
+
+import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.js'
+import Identifier from '../../components/Identifier/Identifier/Identifier.js'
+import IdentifierGov from '../../components/Identifier/IdentifierGov/IdentifierGov.js'
+import IdentifierIdentity from '../../components/Identifier/IdentifierIdentity/IdentifierIdentity.js'
+import IdentifierLink from '../../components/Identifier/IdentifierLink/IdentifierLink.js'
+import IdentifierLinkItem from '../../components/Identifier/IdentifierLinkItem/IdentifierLinkItem.js'
+import IdentifierLinks from '../../components/Identifier/IdentifierLinks/IdentifierLinks.js'
+import IdentifierLogo from '../../components/Identifier/IdentifierLogo/IdentifierLogo.js'
+import IdentifierLogos from '../../components/Identifier/IdentifierLogos/IdentifierLogos.js'
+import IdentifierMasthead from '../../components/Identifier/IdentifierMasthead/IdentifierMasthead.js'
+import Link from '../../components/Link/Link.js'
+import GovBanner from '../../components/banner/GovBanner/GovBanner.js'
+import Address from '../../components/footer/Address/Address.js'
+import Footer from '../../components/footer/Footer/Footer.js'
+import FooterNav from '../../components/footer/FooterNav/FooterNav.js'
+import Logo from '../../components/footer/Logo/Logo.js'
+import SocialLink from '../../components/footer/SocialLink/SocialLink.js'
+import SocialLinks from '../../components/footer/SocialLinks/SocialLinks.js'
+import Grid from '../../components/grid/Grid/Grid.js'
+import GridContainer from '../../components/grid/GridContainer/GridContainer.js'
+import Header from '../../components/header/Header/Header.js'
+import NavDropDownButton from '../../components/header/NavDropDownButton/NavDropDownButton.js'
+import NavMenuButton from '../../components/header/NavMenuButton/NavMenuButton.js'
+import PrimaryNav from '../../components/header/PrimaryNav/PrimaryNav.js'
+import Button from '../../components/Button/ButtonForwardRef.js'
+import Title from '../../components/header/Title/Title.js'
+import Menu from '../../components/header/Menu/Menu.js'
+import Search from '../../components/search/Search/Search.js'
+
 import logoImg from '@uswds/uswds/img/logo-img.png'
 import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
-
-import {
-  GovBanner,
-  GridContainer,
-  Grid,
-  ButtonGroup,
-  Link,
-  Button,
-  Identifier,
-  IdentifierMasthead,
-  IdentifierLogos,
-  IdentifierLogo,
-  IdentifierIdentity,
-  IdentifierLinks,
-  IdentifierLinkItem,
-  IdentifierLink,
-  IdentifierGov,
-  Header,
-  Title,
-  Search,
-  Menu,
-  NavMenuButton,
-  NavDropDownButton,
-  PrimaryNav,
-  Address,
-  Footer,
-  FooterNav,
-  Logo,
-  SocialLink,
-  SocialLinks,
-} from '../../index'
 
 export default {
   title: 'Page Templates/Not Found',

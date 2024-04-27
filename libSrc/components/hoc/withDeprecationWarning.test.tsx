@@ -1,10 +1,11 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-vi.mock('../../deprecation')
-import { deprecationWarning } from '../../deprecation'
+import { deprecationWarning } from '../../deprecation.js'
 import Button from '../Button/ButtonForwardRef.js'
-import withDeprecationWarning from './withDeprecationWarning'
+import withDeprecationWarning from './withDeprecationWarning.js'
+
+vi.mock('../../deprecation')
 
 describe('withDeprecationWarning HOC', () => {
   beforeEach(() => {

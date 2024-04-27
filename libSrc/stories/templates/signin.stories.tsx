@@ -1,33 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {
-  GridContainer,
-  Grid,
-  FooterNav,
-  Logo,
-  SocialLink,
-  SocialLinks,
-  Address,
-  GovBanner,
-  Header,
-  Title,
-  Link,
-  Footer,
-  Identifier,
-  IdentifierMasthead,
-  IdentifierLogos,
-  IdentifierLogo,
-  IdentifierIdentity,
-  IdentifierLinks,
-  IdentifierLinkItem,
-  IdentifierLink,
-  IdentifierGov,
-  Form,
-  Fieldset,
-  TextInput,
-  Label,
-  Button,
-} from '../../index'
+
+import Identifier from '../../components/Identifier/Identifier/Identifier.js'
+import IdentifierGov from '../../components/Identifier/IdentifierGov/IdentifierGov.js'
+import IdentifierIdentity from '../../components/Identifier/IdentifierIdentity/IdentifierIdentity.js'
+import IdentifierLink from '../../components/Identifier/IdentifierLink/IdentifierLink.js'
+import IdentifierLinkItem from '../../components/Identifier/IdentifierLinkItem/IdentifierLinkItem.js'
+import IdentifierLinks from '../../components/Identifier/IdentifierLinks/IdentifierLinks.js'
+import IdentifierLogo from '../../components/Identifier/IdentifierLogo/IdentifierLogo.js'
+import IdentifierLogos from '../../components/Identifier/IdentifierLogos/IdentifierLogos.js'
+import IdentifierMasthead from '../../components/Identifier/IdentifierMasthead/IdentifierMasthead.js'
+import Link from '../../components/Link/Link.js'
+import GovBanner from '../../components/banner/GovBanner/GovBanner.js'
+import Address from '../../components/footer/Address/Address.js'
+import Footer from '../../components/footer/Footer/Footer.js'
+import FooterNav from '../../components/footer/FooterNav/FooterNav.js'
+import Logo from '../../components/footer/Logo/Logo.js'
+import SocialLink from '../../components/footer/SocialLink/SocialLink.js'
+import SocialLinks from '../../components/footer/SocialLinks/SocialLinks.js'
+import Fieldset from '../../components/forms/Fieldset/Fieldset.js'
+import Form from '../../components/forms/Form/Form.js'
+import TextInput from '../../components/forms/TextInput/TextInput.js'
+import Grid from '../../components/grid/Grid/Grid.js'
+import GridContainer from '../../components/grid/GridContainer/GridContainer.js'
+import Header from '../../components/header/Header/Header.js'
+import Button from '../../components/Button/ButtonForwardRef.js'
+import Title from '../../components/header/Title/Title.js'
+import Label from '../../components/forms/label/Label/Label.js'
 
 import logoImg from '@uswds/uswds/img/logo-img.png'
 import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'

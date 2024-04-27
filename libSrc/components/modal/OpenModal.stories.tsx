@@ -1,9 +1,9 @@
 import React from 'react'
 
 import ModalWindow from './ModalWindow/ModalWindowForwardRef.js'
-import ModalHeading from './ModalHeading/ModalHeading'
-import ModalFooter from './ModalFooter/ModalFooter'
-import ButtonGroup from '../ButtonGroup/ButtonGroup'
+import ModalHeading from './ModalHeading/ModalHeading.js'
+import ModalFooter from './ModalFooter/ModalFooter.js'
+import ButtonGroup from '../ButtonGroup/ButtonGroup.js'
 import Button from '../Button/ButtonForwardRef.js'
 import ModalWrapper from './ModalWrapper/ModalWrapperForwardRef.js'
 

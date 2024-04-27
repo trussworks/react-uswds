@@ -1,16 +1,16 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
-import Address from '../Address/Address'
+import Address from '../Address/Address.js'
 import Button from '../../Button/ButtonForwardRef.js'
-import Footer from './Footer'
-import FooterNav from '../FooterNav/FooterNav'
-import Form from '../../forms/Form/Form'
-import Label from '../../forms/label/Label/Label'
-import Logo from '../Logo/Logo'
-import TextInput from '../../forms/TextInput/TextInput'
-import SocialLink from '../SocialLink/SocialLink'
-import SocialLinks from '../SocialLinks/SocialLinks'
+import Footer from './Footer.js'
+import FooterNav from '../FooterNav/FooterNav.js'
+import Form from '../../forms/Form/Form.js'
+import Label from '../../forms/label/Label/Label.js'
+import Logo from '../Logo/Logo.js'
+import TextInput from '../../forms/TextInput/TextInput.js'
+import SocialLink from '../SocialLink/SocialLink.js'
+import SocialLinks from '../SocialLinks/SocialLinks.js'
 
 // assets
 import logoImg from '@uswds/uswds/img/logo-img.png'

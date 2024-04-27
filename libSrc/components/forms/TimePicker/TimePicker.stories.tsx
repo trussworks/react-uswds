@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Form from '../Form/Form'
-import TimePicker from './TimePicker'
+import Form from '../Form/Form.js'
+import TimePicker from './TimePicker.js'
 
 export default {
   title: 'Components/Time picker',

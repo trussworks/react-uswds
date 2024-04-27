@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Pagination from './Pagination'
 import type { Meta, StoryFn } from '@storybook/react'
+
+import Pagination from './Pagination.js'
 
 export default {
   title: 'Components/Pagination',

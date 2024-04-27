@@ -1,7 +1,8 @@
 import React from 'react'
-import ButtonGroup from './ButtonGroup'
+
+import ButtonGroup from './ButtonGroup.js'
 import Button from '../Button/ButtonForwardRef.js'
-import Link from '../Link/Link'
+import Link from '../Link/Link.js'
 
 export default {
   title: 'Components/Button groups',

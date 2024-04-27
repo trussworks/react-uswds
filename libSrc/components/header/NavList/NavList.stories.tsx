@@ -1,5 +1,5 @@
 import React from 'react'
-import NavList from './NavList'
+import NavList from './NavList.js'
 
 export default {
   title: 'Components/Header/NavList',

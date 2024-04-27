@@ -1,17 +1,17 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import Form from './Form'
 
-import Alert from '../../Alert/Alert'
+import Form from './Form.js'
+import Alert from '../../Alert/Alert.js'
 import Button from '../../Button/ButtonForwardRef.js'
-import ErrorMessage from '../ErrorMessage/ErrorMessage'
-import Fieldset from '../Fieldset/Fieldset'
-import FormGroup from '../FormGroup/FormGroup'
-import Label from '../label/Label/Label'
-import RequiredMarker from '../label/RequiredMarker/RequiredMarker'
-import TextInput from '../TextInput/TextInput'
-import Textarea from '../Textarea/Textarea'
-import Select from '../Select/Select'
+import ErrorMessage from '../ErrorMessage/ErrorMessage.js'
+import Fieldset from '../Fieldset/Fieldset.js'
+import FormGroup from '../FormGroup/FormGroup.js'
+import Label from '../label/Label/Label.js'
+import RequiredMarker from '../label/RequiredMarker/RequiredMarker.js'
+import TextInput from '../TextInput/TextInput.js'
+import Textarea from '../Textarea/Textarea.js'
+import Select from '../Select/Select.js'
 
 export default {
   title: 'Components/Form templates',

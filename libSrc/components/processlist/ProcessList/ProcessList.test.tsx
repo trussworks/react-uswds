@@ -2,9 +2,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ProcessList from './ProcessList'
-import ProcessListItem from '../ProcessListItem/ProcessListItem'
-import ProcessListHeading from '../ProcessListHeading/ProcessListHeading'
+import ProcessList from './ProcessList.js'
+import ProcessListItem from '../ProcessListItem/ProcessListItem.js'
+import ProcessListHeading from '../ProcessListHeading/ProcessListHeading.js'
 
 const testListItems = [
   <li key="one">some text</li>,

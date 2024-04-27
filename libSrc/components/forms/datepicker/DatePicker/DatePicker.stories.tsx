@@ -1,12 +1,12 @@
 import React from 'react'
 
-import DatePicker from './DatePicker'
-import { sampleLocalization } from '../i18n'
-import Form from '../../Form/Form'
-import FormGroup from '../../FormGroup/FormGroup'
-import Label from '../../label/Label/Label'
-import TextInput from '../../TextInput/TextInput'
-import type { ValidationStatus } from '../../../../types/validationStatus'
+import DatePicker from './DatePicker.js'
+import { sampleLocalization } from '../i18n.js'
+import Form from '../../Form/Form.js'
+import FormGroup from '../../FormGroup/FormGroup.js'
+import Label from '../../label/Label/Label.js'
+import TextInput from '../../TextInput/TextInput.js'
+import type { ValidationStatus } from '../../../../types/validationStatus.js'
 
 export default {
   title: 'Components/Date picker',

@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import CollectionMetaItemTag from './CollectionMetaItemTag'
+
+import CollectionMetaItemTag from './CollectionMetaItemTag.js'
 
 describe('CollectionMetaItemTag', () => {
   it('renders without errors', () => {

@@ -12,7 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "Preserve",
+    "module": "Node16",
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react-jsx",

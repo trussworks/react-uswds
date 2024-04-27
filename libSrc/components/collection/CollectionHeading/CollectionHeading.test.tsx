@@ -1,7 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import CollectionHeading from './CollectionHeading'
-import type { HeadingLevel } from '../../../types/headingLevel'
+
+import CollectionHeading from './CollectionHeading.js'
+import type { HeadingLevel } from '../../../types/headingLevel.js'
 
 describe('CollectionHeading component', () => {
   beforeEach(() => {

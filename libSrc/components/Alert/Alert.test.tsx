@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Alert from './Alert'
-import type { HeadingLevel } from '../../types/headingLevel'
+import Alert from './Alert.js'
+import type { HeadingLevel } from '../../types/headingLevel.js'
 
 describe('Alert component', () => {
   beforeEach(() => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ValidationItem from './ValidationItem'
+import ValidationItem from './ValidationItem.js'
 
 describe('ValidationItem', () => {
   it('renders without errors', () => {

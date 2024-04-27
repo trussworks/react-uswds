@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react'
 
-import { useModal } from './utils'
+import { useModal } from './utils.js'
 
 describe('the useModal hook', () => {
   it('isOpen defaults to false', () => {

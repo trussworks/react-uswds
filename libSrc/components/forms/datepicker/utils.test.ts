@@ -1,4 +1,7 @@
-import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
+import {
+  DEFAULT_EXTERNAL_DATE_FORMAT,
+  INTERNAL_DATE_FORMAT,
+} from './constants.js'
 import {
   keepDateWithinMonth,
   setDate,
@@ -7,7 +10,7 @@ import {
   formatDate,
   isDateInvalid,
   isDateWithinMinAndMax,
-} from './utils'
+} from './utils.js'
 
 describe('keepDateWithinMonth', () => {
   it('returns the original date if the month matches', () => {

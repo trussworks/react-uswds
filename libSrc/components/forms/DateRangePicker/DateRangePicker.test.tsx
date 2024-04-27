@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-
-import DateRangePicker from './DateRangePicker'
 import { userEvent } from '@testing-library/user-event'
+
+import DateRangePicker from './DateRangePicker.js'
 
 const startDatePickerTestProps = {
   id: 'start-date',

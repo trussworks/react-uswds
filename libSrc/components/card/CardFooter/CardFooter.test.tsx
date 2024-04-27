@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import CardFooter from './CardFooter'
+import CardFooter from './CardFooter.js'
 
 describe('CardFooter component', () => {
   it('renders without errors', () => {

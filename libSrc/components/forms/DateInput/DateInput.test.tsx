@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import DateInput from './DateInput'
+import DateInput from './DateInput.js'
 
 describe('DateInput component', () => {
   it('renders without errors', () => {

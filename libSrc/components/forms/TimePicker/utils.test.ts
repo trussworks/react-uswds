@@ -2,8 +2,8 @@ import {
   DEFAULT_MAX_TIME_MINUTES,
   DEFAULT_MIN_TIME_MINUTES,
   DEFAULT_STEP,
-} from './constants'
-import { getTimeOptions, parseTimeString } from './utils'
+} from './constants.js'
+import { getTimeOptions, parseTimeString } from './utils.js'
 
 describe('getTimeOptions', () => {
   it('returns the expected list of default times options', () => {

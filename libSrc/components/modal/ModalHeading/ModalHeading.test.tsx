@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import ModalHeading from './ModalHeading'
+import ModalHeading from './ModalHeading.js'
 
 describe('ModalHeading component', () => {
   it('renders without errors', () => {

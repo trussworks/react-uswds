@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import CollectionItem from './CollectionItem'
+
+import CollectionItem from './CollectionItem.js'
 
 describe('CollectionItem component', () => {
   it('renders without errors', () => {

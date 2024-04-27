@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-
-import type { ModalRef } from '../Modal/Modal'
-import ModalOpenLink from './ModalOpenLink'
 import { userEvent } from '@testing-library/user-event'
+
+import type { ModalRef } from '../Modal/Modal.js'
+import ModalOpenLink from './ModalOpenLink.js'
 
 describe('ModalOpenLink', () => {
   it('renders an anchor tag with the modal control attributes', () => {

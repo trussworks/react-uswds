@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Logo from './Logo'
+import Logo from './Logo.js'
 
 // assets
 import logoImg from '@uswds/uswds/img/logo-img.png'

@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Grid from './Grid'
-import { getGridClasses, applyGridClasses } from './utils'
+import Grid from './Grid.js'
+import { getGridClasses, applyGridClasses } from './utils.js'
 
 describe('getGridClasses function', () => {
   it('returns the classes with no breakpoint', () => {

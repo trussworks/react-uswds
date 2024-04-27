@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Address from './Address'
+
+import Address from './Address.js'
 
 const addressItems = [
   <a key="phone" href="tel:123-456-7890">

@@ -1,6 +1,7 @@
 import React from 'react'
-import RangeInput from './RangeInput'
-import Label from '../label/Label/Label'
+
+import RangeInput from './RangeInput.js'
+import Label from '../label/Label/Label.js'
 
 export default {
   title: 'Components/Range slider',

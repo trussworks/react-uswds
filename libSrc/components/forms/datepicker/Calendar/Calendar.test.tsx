@@ -2,10 +2,10 @@ import React from 'react'
 import { render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import Calendar from './Calendar'
-import { parseDateString, today } from '../utils'
-import { MONTH_LABELS } from '../constants'
-import { FocusMode } from '../../../../utils/constants'
+import Calendar from './Calendar.js'
+import { parseDateString, today } from '../utils.js'
+import { MONTH_LABELS } from '../constants.js'
+import { FocusMode } from '../../../../utils/constants.js'
 
 describe('Calendar', () => {
   const mockSelectDate = vi.fn()

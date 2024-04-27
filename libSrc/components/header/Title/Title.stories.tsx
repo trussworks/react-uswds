@@ -1,5 +1,6 @@
 import React from 'react'
-import Title from './Title'
+
+import Title from './Title.js'
 
 export default {
   title: 'Components/Header/Title',

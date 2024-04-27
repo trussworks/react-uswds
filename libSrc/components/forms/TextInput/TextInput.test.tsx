@@ -1,7 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import TextInput from './TextInput'
-import type { ValidationStatus } from '../../../types/validationStatus'
+
+import TextInput from './TextInput.js'
+import type { ValidationStatus } from '../../../types/validationStatus.js'
 
 describe('TextInput component', () => {
   it('renders without errors', () => {

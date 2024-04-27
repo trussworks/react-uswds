@@ -1,7 +1,8 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import SocialLink from '../SocialLink/SocialLink'
-import SocialLinks from './SocialLinks'
+
+import SocialLink from '../SocialLink/SocialLink.js'
+import SocialLinks from './SocialLinks.js'
 
 export default {
   title: 'Components/Footer/SocialLinks',

@@ -8,14 +8,14 @@ import {
 } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import DatePicker from './DatePicker'
-import { sampleLocalization } from '../i18n'
-import { today } from '../utils'
+import DatePicker from './DatePicker.js'
+import { sampleLocalization } from '../i18n.js'
+import { today } from '../utils.js'
 import {
   DAY_OF_WEEK_LABELS,
   MONTH_LABELS,
   VALIDATION_MESSAGE,
-} from '../constants'
+} from '../constants.js'
 
 describe('DatePicker component', () => {
   beforeEach(() => {

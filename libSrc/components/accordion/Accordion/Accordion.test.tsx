@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import Accordion from './Accordion'
-import type { HeadingLevel } from '../../../types/headingLevel'
-import type { AccordionItemProps } from '../AccordionItem/AccordionItem'
+import Accordion from './Accordion.js'
+import type { HeadingLevel } from '../../../types/headingLevel.js'
+import type { AccordionItemProps } from '../AccordionItem/AccordionItem.js'
 
 const firstAmendment = (
   <p>

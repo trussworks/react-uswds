@@ -1,8 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Breadcrumb from '../Breadcrumb/Breadcrumb'
-import BreadcrumbBar from './BreadcrumbBar'
-import BreadcrumbLink from '../BreadcrumbLink/BreadcrumbLink'
+
+import Breadcrumb from '../Breadcrumb/Breadcrumb.js'
+import BreadcrumbBar from './BreadcrumbBar.js'
+import BreadcrumbLink from '../BreadcrumbLink/BreadcrumbLink.js'
 
 const testPageName = 'Test Page'
 const testParentPageName = 'Test Parent Page'

@@ -1,7 +1,8 @@
 import React, { type ComponentProps } from 'react'
 import { render, screen, within } from '@testing-library/react'
-import BannerHeader from './BannerHeader'
-import BannerFlag from '../BannerFlag/BannerFlag'
+
+import BannerHeader from './BannerHeader.js'
+import BannerFlag from '../BannerFlag/BannerFlag.js'
 
 describe('BannerHeader Component', () => {
   const renderBannerHeader = ({

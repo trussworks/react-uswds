@@ -1,10 +1,11 @@
 import React from 'react'
-import DateInput from './DateInput'
-import DateInputGroup from '../DateInputGroup/DateInputGroup'
-import Fieldset from '../Fieldset/Fieldset'
-import Label from '../label/Label/Label'
-import Select from '../Select/Select'
-import FormGroup from '../FormGroup/FormGroup'
+
+import DateInput from './DateInput.js'
+import DateInputGroup from '../DateInputGroup/DateInputGroup.js'
+import Fieldset from '../Fieldset/Fieldset.js'
+import Label from '../label/Label/Label.js'
+import Select from '../Select/Select.js'
+import FormGroup from '../FormGroup/FormGroup.js'
 
 export default {
   title: 'Components/Date input',

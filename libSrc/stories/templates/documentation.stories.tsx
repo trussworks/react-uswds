@@ -1,27 +1,29 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-import logoImg from '@uswds/uswds/img/logo-img.png'
-
-import { GovBanner, GridContainer, Grid } from '../../index'
 
 /** HEADER */
-import Header from '../../components/header/Header/Header'
-import Title from '../../components/header/Title/Title'
-import Search from '../../components/search/Search/Search'
-import Menu from '../../components/header/Menu/Menu'
-import NavMenuButton from '../../components/header/NavMenuButton/NavMenuButton'
-import NavDropDownButton from '../../components/header/NavDropDownButton/NavDropDownButton'
-import PrimaryNav from '../../components/header/PrimaryNav/PrimaryNav'
+import Header from '../../components/header/Header/Header.js'
+import Title from '../../components/header/Title/Title.js'
+import Search from '../../components/search/Search/Search.js'
+import Menu from '../../components/header/Menu/Menu.js'
+import NavMenuButton from '../../components/header/NavMenuButton/NavMenuButton.js'
+import NavDropDownButton from '../../components/header/NavDropDownButton/NavDropDownButton.js'
+import PrimaryNav from '../../components/header/PrimaryNav/PrimaryNav.js'
 
 /** FOOTER */
-import Address from '../../components/footer/Address/Address'
-import Footer from '../../components/footer/Footer/Footer'
-import FooterNav from '../../components/footer/FooterNav/FooterNav'
-import Logo from '../../components/footer/Logo/Logo'
-import SocialLink from '../../components/footer/SocialLink/SocialLink'
-import SocialLinks from '../../components/footer/SocialLinks/SocialLinks'
+import Address from '../../components/footer/Address/Address.js'
+import Footer from '../../components/footer/Footer/Footer.js'
+import FooterNav from '../../components/footer/FooterNav/FooterNav.js'
+import Logo from '../../components/footer/Logo/Logo.js'
+import SocialLink from '../../components/footer/SocialLink/SocialLink.js'
+import SocialLinks from '../../components/footer/SocialLinks/SocialLinks.js'
 
-import SideNav from '../../components/SideNav/SideNav'
+import SideNav from '../../components/SideNav/SideNav.js'
+import GovBanner from '../../components/banner/GovBanner/GovBanner.js'
+import Grid from '../../components/grid/Grid/Grid.js'
+import GridContainer from '../../components/grid/GridContainer/GridContainer.js'
+
+import logoImg from '@uswds/uswds/img/logo-img.png'
 
 export default {
   title: 'Page Templates/Documentation',

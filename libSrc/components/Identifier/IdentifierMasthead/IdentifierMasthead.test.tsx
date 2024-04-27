@@ -1,13 +1,13 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
+import IdentifierMasthead from './IdentifierMasthead.js'
+import IdentifierLogo from '../IdentifierLogo/IdentifierLogo.js'
+import IdentifierLogos from '../IdentifierLogos/IdentifierLogos.js'
+import IdentifierIdentity from '../IdentifierIdentity/IdentifierIdentity.js'
+import Link from '../../Link/Link.js'
 
-import IdentifierMasthead from './IdentifierMasthead'
-import IdentifierLogo from '../IdentifierLogo/IdentifierLogo'
-import IdentifierLogos from '../IdentifierLogos/IdentifierLogos'
-import IdentifierIdentity from '../IdentifierIdentity/IdentifierIdentity'
-import Link from '../../Link/Link'
+import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
 const testIdentifierLogo = [
   <img

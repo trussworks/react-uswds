@@ -1,8 +1,8 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
-import Footer from '../Footer/Footer'
-import FooterNav from './FooterNav'
+import Footer from '../Footer/Footer.js'
+import FooterNav from './FooterNav.js'
 
 export default {
   title: 'Components/Footer/FooterNav',

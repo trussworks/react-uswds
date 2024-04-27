@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import IdentifierLink from './IdentifierLink'
+
+import IdentifierLink from './IdentifierLink.js'
 
 const testPageName = 'Test Page'
 

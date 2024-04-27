@@ -1,6 +1,6 @@
 import React from 'react'
 
-import FilePreview from './FilePreview'
+import FilePreview from './FilePreview.js'
 import {
   TEST_TEXT_FILE,
   TEST_PDF_FILE,
@@ -8,7 +8,7 @@ import {
   TEST_XLS_FILE,
   TEST_VIDEO_FILE,
   TEST_PNG_FILE,
-} from '../fixtures'
+} from '../fixtures.js'
 
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import CardMedia from './CardMedia'
+import CardMedia from './CardMedia.js'
 
 describe('CardMedia component', () => {
   it('renders without errors', () => {

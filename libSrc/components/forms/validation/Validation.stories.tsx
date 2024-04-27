@@ -1,12 +1,13 @@
 import React, { useState, type ChangeEvent } from 'react'
-import Alert from '../../Alert/Alert'
+
+import Alert from '../../Alert/Alert.js'
 import Button from '../../Button/ButtonForwardRef.js'
-import Fieldset from '../Fieldset/Fieldset'
-import Form from '../Form/Form'
-import Label from '../label/Label/Label'
-import TextInput from '../TextInput/TextInput'
-import ValidationChecklist from './ValidationChecklist/ValidationChecklist'
-import ValidationItem from './ValidationItem/ValidationItem'
+import Fieldset from '../Fieldset/Fieldset.js'
+import Form from '../Form/Form.js'
+import Label from '../label/Label/Label.js'
+import TextInput from '../TextInput/TextInput.js'
+import ValidationChecklist from './ValidationChecklist/ValidationChecklist.js'
+import ValidationItem from './ValidationItem/ValidationItem.js'
 
 export default {
   title: 'Components/Validation',

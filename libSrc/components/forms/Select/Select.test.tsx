@@ -1,7 +1,7 @@
 import React, { type ComponentProps } from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Select from './Select'
+import Select from './Select.js'
 
 describe('Select component', () => {
   const renderSelect = (

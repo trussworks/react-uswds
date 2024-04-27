@@ -1,8 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
+import Fieldset from './Fieldset.js'
+
 vi.mock('../../../deprecation')
-import Fieldset from './Fieldset'
 
 describe('Fieldset component', () => {
   it('renders without errors', () => {

@@ -2,8 +2,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import IdentifierIdentity from './IdentifierIdentity'
-import Link from '../../Link/Link'
+import IdentifierIdentity from './IdentifierIdentity.js'
+import Link from '../../Link/Link.js'
 
 describe('IdentifierIdentity component', () => {
   it('renders without errors', () => {

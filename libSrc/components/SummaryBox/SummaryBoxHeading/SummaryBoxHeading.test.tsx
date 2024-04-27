@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import SummaryBoxHeading from './SummaryBoxHeading'
+
+import SummaryBoxHeading from './SummaryBoxHeading.js'
 
 describe('SummaryBoxHeading component', () => {
   it('renders without errors', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ModalFooter from './ModalFooter'
+import ModalFooter from './ModalFooter.js'
 
 describe('ModalFooter component', () => {
   it('renders without errors', () => {

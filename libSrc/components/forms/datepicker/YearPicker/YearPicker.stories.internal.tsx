@@ -1,7 +1,7 @@
 import React from 'react'
 
-import YearPicker from './YearPicker'
-import { parseDateString } from '../utils'
+import YearPicker from './YearPicker.js'
+import { parseDateString } from '../utils.js'
 
 /*
 // THIS STORY FOR INTERNAL DEVELOPMENT ONLY

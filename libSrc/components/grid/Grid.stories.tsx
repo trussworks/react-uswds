@@ -1,7 +1,7 @@
 import React from 'react'
 
-import GridContainer from './GridContainer/GridContainer'
-import Grid from './Grid/Grid'
+import GridContainer from './GridContainer/GridContainer.js'
+import Grid from './Grid/Grid.js'
 
 export default {
   title: 'Components/Grid',

@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import BannerFlag from './BannerFlag'
+
+import BannerFlag from './BannerFlag.js'
 
 describe('BannerFlag Component', () => {
   it('renders properly', () => {

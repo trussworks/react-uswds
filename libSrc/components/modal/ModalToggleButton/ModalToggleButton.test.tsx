@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-
-import type { ModalRef } from '../Modal/Modal'
-import ModalToggleButton from './ModalToggleButton'
 import { userEvent } from '@testing-library/user-event'
+
+import type { ModalRef } from '../Modal/Modal.js'
+import ModalToggleButton from './ModalToggleButton.js'
 
 describe('ModalToggleButton', () => {
   it('renders a button with the modal control attributes', () => {

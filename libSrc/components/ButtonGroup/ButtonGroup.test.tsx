@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ButtonGroup from './ButtonGroup'
+import ButtonGroup from './ButtonGroup.js'
 
 describe('ButtonGroup component', () => {
   it('renders without errors', () => {

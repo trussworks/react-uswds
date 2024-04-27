@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import InputPrefix from './InputPrefix'
+import InputPrefix from './InputPrefix.js'
 
 describe('InputPrefix component', () => {
   it('renders without errors', () => {

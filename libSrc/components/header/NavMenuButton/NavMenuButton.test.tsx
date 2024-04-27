@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import NavMenuButton from './NavMenuButton'
+import NavMenuButton from './NavMenuButton.js'
 
 const label = 'Menu'
 

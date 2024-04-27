@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import NavCloseButton from './NavCloseButton'
+import NavCloseButton from './NavCloseButton.js'
 
 describe('NavCloseButton component', () => {
   it('renders without errors', () => {

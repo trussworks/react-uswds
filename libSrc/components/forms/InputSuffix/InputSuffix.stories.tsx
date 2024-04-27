@@ -1,9 +1,10 @@
 import React from 'react'
-import InputSuffix from './InputSuffix'
-import InputGroup from '../InputGroup/InputGroup'
-import FormGroup from '../FormGroup/FormGroup'
-import TextInput from '../TextInput/TextInput'
-import Icon from '../../Icon/Icons'
+
+import InputSuffix from './InputSuffix.js'
+import InputGroup from '../InputGroup/InputGroup.js'
+import FormGroup from '../FormGroup/FormGroup.js'
+import TextInput from '../TextInput/TextInput.js'
+import Icon from '../../Icon/Icons.js'
 
 export default {
   title: 'Components/Input prefix or suffix/InputSuffix',

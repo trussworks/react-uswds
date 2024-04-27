@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
-import type { StepStatusText } from '../StepIndicator/StepIndicator'
+
+import type { StepStatusText } from '../StepIndicator/StepIndicator.js'
 
 export interface BaseStepIndicatorStepProps {
   label: string

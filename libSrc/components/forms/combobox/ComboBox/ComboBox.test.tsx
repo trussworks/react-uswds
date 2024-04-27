@@ -2,10 +2,10 @@ import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { type ComboBoxOption, type ComboBoxRef } from './ComboBox'
+import { type ComboBoxOption, type ComboBoxRef } from './ComboBox.js'
 import ComboBox from './ComboBoxForwardRef.js'
-import TextInput from '../../TextInput/TextInput'
-import { fruits, veggies } from './fixtures'
+import TextInput from '../../TextInput/TextInput.js'
+import { fruits, veggies } from './fixtures.js'
 
 /*
   Source of truth for combo box behavior is USWDS storybook examples and tests. For more:

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import NavDropDownButton from './NavDropDownButton'
-import Header from '../Header/Header'
-import PrimaryNav from '../PrimaryNav/PrimaryNav'
+
+import NavDropDownButton from './NavDropDownButton.js'
+import Header from '../Header/Header.js'
+import PrimaryNav from '../PrimaryNav/PrimaryNav.js'
 
 export default {
   title: 'Components/Header/NavDropDownButton',

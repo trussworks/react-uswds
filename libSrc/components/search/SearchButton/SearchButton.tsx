@@ -2,7 +2,6 @@ import React from 'react'
 import classnames from 'classnames'
 
 import Icon from '../../Icon/Icons.js'
-
 import Button from '../../Button/ButtonForwardRef.js'
 
 export type SearchLocalization = {

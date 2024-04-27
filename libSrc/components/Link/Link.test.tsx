@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Link from './Link'
+import Link from './Link.js'
 
 describe('Link component', () => {
   beforeEach(() => {

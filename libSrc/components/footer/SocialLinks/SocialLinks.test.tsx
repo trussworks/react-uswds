@@ -1,8 +1,9 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import SocialLinks from './SocialLinks'
-import SocialLink from '../SocialLink/SocialLink'
+
+import SocialLinks from './SocialLinks.js'
+import SocialLink from '../SocialLink/SocialLink.js'
 
 const links = [
   <a key="fb" href="#">

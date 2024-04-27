@@ -1,15 +1,13 @@
 import React, { type ReactElement, useState } from 'react'
-import Icon from '../Icon/Icons'
-import {
-  Banner,
-  BannerButton,
-  BannerContent,
-  BannerFlag,
-  BannerGuidance,
-  BannerHeader,
-  BannerIcon,
-  MediaBlockBody,
-} from '../../index'
+import Icon from '../Icon/Icons.js'
+import MediaBlockBody from '../mediablock/MediaBlockBody/MediaBlockBody.js'
+import Banner from './Banner/Banner.js'
+import BannerButton from './BannerButton/BannerButton.js'
+import BannerContent from './BannerContent/BannerContent.js'
+import BannerFlag from './BannerFlag/BannerFlag.js'
+import BannerGuidance from './BannerGuidance/BannerGuidance.js'
+import BannerHeader from './BannerHeader/BannerHeader.js'
+import BannerIcon from './BannerIcon/BannerIcon.js'
 
 import flagImg from '@uswds/uswds/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'

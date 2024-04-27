@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
 
-import { type ModalRef } from './Modal'
+import { type ModalRef } from './Modal.js'
 import Modal from './ModalForwardRef.js'
-import ModalHeading from '../ModalHeading/ModalHeading'
-import ModalFooter from '../ModalFooter/ModalFooter'
-import ModalToggleButton from '../ModalToggleButton/ModalToggleButton'
-
-import ButtonGroup from '../../ButtonGroup/ButtonGroup'
+import ModalHeading from '../ModalHeading/ModalHeading.js'
+import ModalFooter from '../ModalFooter/ModalFooter.js'
+import ModalToggleButton from '../ModalToggleButton/ModalToggleButton.js'
+import ButtonGroup from '../../ButtonGroup/ButtonGroup.js'
 
 export default {
   title: 'Components/Modal',

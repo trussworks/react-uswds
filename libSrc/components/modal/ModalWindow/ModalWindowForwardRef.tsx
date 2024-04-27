@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import ModalWindow from './ModalWindow'
+import ModalWindow from './ModalWindow.js'
 
 const ModalWindowForwardRef = forwardRef(ModalWindow)
 

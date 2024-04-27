@@ -1,5 +1,6 @@
 import React from 'react'
-import Link from './Link'
+
+import Link from './Link.js'
 
 export default {
   title: 'Components/Link',

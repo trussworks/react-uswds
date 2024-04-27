@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Label from './Label'
+import Label from './Label.js'
 
 describe('Label component', () => {
   it('renders without errors', () => {

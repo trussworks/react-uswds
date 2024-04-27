@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ProcessListHeading from './ProcessListHeading'
+import ProcessListHeading from './ProcessListHeading.js'
 
 describe('ProcessListHeading component', () => {
   it('renders without errors', () => {

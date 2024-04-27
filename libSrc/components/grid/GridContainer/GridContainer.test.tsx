@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import GridContainer from './GridContainer'
-import Grid from '../Grid/Grid'
+import GridContainer from './GridContainer.js'
+import Grid from '../Grid/Grid.js'
 
 const testContent = 'a grid container item'
 const testGridContent = (

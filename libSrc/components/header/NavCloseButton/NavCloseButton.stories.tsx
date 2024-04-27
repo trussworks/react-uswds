@@ -1,5 +1,5 @@
 import React from 'react'
-import NavCloseButton from './NavCloseButton'
+import NavCloseButton from './NavCloseButton.js'
 
 export default {
   title: 'Components/Header/NavCloseButton',

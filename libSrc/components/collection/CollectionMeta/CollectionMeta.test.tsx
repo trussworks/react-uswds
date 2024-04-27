@@ -1,7 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import CollectionMeta from './CollectionMeta'
-import CollectionMetaItem from '../CollectionMetaItem/CollectionMetaItem'
+
+import CollectionMeta from './CollectionMeta.js'
+import CollectionMetaItem from '../CollectionMetaItem/CollectionMetaItem.js'
 
 describe('CollectionMeta component', () => {
   it('renders without errors', () => {

@@ -1,5 +1,6 @@
 import React from 'react'
-import MegaMenu from './MegaMenu'
+
+import MegaMenu from './MegaMenu.js'
 
 export default {
   title: 'Components/Header/MegaMenu',
