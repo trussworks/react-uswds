@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Icon from './Icons.js'
+import Icon from './Icon.js'
 
 type StorybookArgs = {
   size: 3 | 4 | 5 | 6 | 7 | 8 | 9

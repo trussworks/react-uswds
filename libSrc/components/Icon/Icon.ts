@@ -242,7 +242,7 @@ import ZoomInSvg from '@uswds/uswds/img/usa-icons/zoom_in.svg?svgr'
 import ZoomOutMapSvg from '@uswds/uswds/img/usa-icons/zoom_out_map.svg?svgr'
 import ZoomOutSvg from '@uswds/uswds/img/usa-icons/zoom_out.svg?svgr'
 
-import { makeUSWDSIcon, type IconProps } from './Icon.js'
+import { makeUSWDSIcon, type IconProps } from './utils.js'
 import React from 'react'
 
 class Icon {
@@ -925,5 +925,7 @@ class Icon {
   public static ZoomOut: React.ComponentType<IconProps> =
     makeUSWDSIcon(ZoomOutSvg)
 }
+
+export type { BaseIconProps, IconProps } from './utils.js'
 
 export default Icon

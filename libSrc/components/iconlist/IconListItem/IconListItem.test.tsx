@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Icon from '../../Icon/Icons.js'
+import Icon from '../../Icon/Icon.js'
 import IconListItem from './IconListItem.js'
 import IconListIcon from '../IconListIcon/IconListIcon.js'
 import IconListContent from '../IconListContent/IconListContent.js'

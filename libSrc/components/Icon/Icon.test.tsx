@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Icon from './Icons.js'
+import Icon from './Icon.js'
 
 describe('Icon component', () => {
   it('renders without errors', () => {

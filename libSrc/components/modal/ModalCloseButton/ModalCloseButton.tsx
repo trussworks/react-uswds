@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../../Icon/Icons.js'
+import Icon from '../../Icon/Icon.js'
 import Button from '../../Button/ButtonForwardRef.js'
 
 export interface BaseModalCloseButtonProps {

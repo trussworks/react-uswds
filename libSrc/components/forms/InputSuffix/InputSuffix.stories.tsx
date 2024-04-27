@@ -4,7 +4,7 @@ import InputSuffix from './InputSuffix.js'
 import InputGroup from '../InputGroup/InputGroup.js'
 import FormGroup from '../FormGroup/FormGroup.js'
 import TextInput from '../TextInput/TextInput.js'
-import Icon from '../../Icon/Icons.js'
+import Icon from '../../Icon/Icon.js'
 
 export default {
   title: 'Components/Input prefix or suffix/InputSuffix',

@@ -99,7 +99,7 @@ export { default as IconListItem } from './components/iconlist/IconListItem/Icon
 export { default as IconListTitle } from './components/iconlist/IconListTitle/IconListTitle.js'
 
 // Icons
-export { default as Icon } from './components/Icon/Icons.js'
+export { default as Icon } from './components/Icon/Icon.js'
 
 /** Identifier Components */
 export { default as Identifier } from './components/Identifier/Identifier/Identifier.js'

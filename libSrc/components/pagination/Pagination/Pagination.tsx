@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import Icon from '../../Icon/Icons.js'
+import Icon from '../../Icon/Icon.js'
 import Link from '../../Link/Link.js'
 import Button from '../../Button/ButtonForwardRef.js'
 import PaginationOverflow from '../PaginationOverflow/PaginationOverflow.js'

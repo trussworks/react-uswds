@@ -1,6 +1,6 @@
 import React from 'react'
-import type { IconProps } from '../../Icon/Icon.js'
-import Icon from '../../Icon/Icons.js'
+import type { IconProps } from '../../Icon/utils.js'
+import Icon from '../../Icon/Icon.js'
 
 export interface BaseSocialLinkProps {
   name: 'Facebook' | 'Twitter' | 'YouTube' | 'Instagram' | 'RSS'

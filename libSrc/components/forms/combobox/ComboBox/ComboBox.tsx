@@ -33,7 +33,7 @@ export interface CustomizableFilter {
   extras?: Record<string, string>
 }
 
-export type ComboBoxProps = {
+export interface BaseComboBoxProps {
   id: string
   name: string
   className?: string
@@ -49,6 +49,9 @@ export type ComboBoxProps = {
   customFilter?: CustomizableFilter
   disableFiltering?: boolean
 }
+
+export type ComboBoxProps = BaseComboBoxProps &
+  Omit<JSX.IntrinsicElements['div'], 'onChange' | 'ref'>
 
 export type ComboBoxRef = {
   focus: () => void

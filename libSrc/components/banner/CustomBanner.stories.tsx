@@ -1,5 +1,5 @@
 import React, { type ReactElement, useState } from 'react'
-import Icon from '../Icon/Icons.js'
+import Icon from '../Icon/Icon.js'
 import MediaBlockBody from '../mediablock/MediaBlockBody/MediaBlockBody.js'
 import Banner from './Banner/Banner.js'
 import BannerButton from './BannerButton/BannerButton.js'

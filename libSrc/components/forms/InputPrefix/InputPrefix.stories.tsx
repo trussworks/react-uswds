@@ -1,7 +1,7 @@
 import React from 'react'
 
 import InputPrefix from './InputPrefix.js'
-import Icon from '../../Icon/Icons.js'
+import Icon from '../../Icon/Icon.js'
 import TextInput from '../TextInput/TextInput.js'
 import InputGroup from '../InputGroup/InputGroup.js'
 import FormGroup from '../FormGroup/FormGroup.js'
