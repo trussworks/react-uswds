@@ -1,0 +1,11 @@
+export enum ActionTypes {
+  SELECT_OPTION,
+  CLEAR,
+  OPEN_LIST,
+  CLOSE_LIST,
+  FOCUS_OPTION,
+  UPDATE_FILTER,
+  BLUR,
+  CLEAR_SELECTION,
+  FOCUS_INPUT,
+}
