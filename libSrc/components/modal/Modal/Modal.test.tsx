@@ -398,7 +398,7 @@ describe('Modal component', () => {
       const handleClose = () => modalRef.current?.toggleModal(undefined, false)
 
       const modalProps = {
-        ref: modalRef,
+        _ref: modalRef,
         id: 'testModal',
       }
 
@@ -440,7 +440,7 @@ describe('Modal component', () => {
       const handleClose = () => modalRef.current?.toggleModal(undefined, false)
 
       const modalProps = {
-        ref: modalRef,
+        _ref: modalRef,
         id: 'testModal',
         modalRoot: '#modal-root',
       }
