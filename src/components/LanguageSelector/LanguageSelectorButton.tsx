@@ -28,7 +28,6 @@ export const LanguageSelectorButton = ({
       data-testid="languageSelectorButton"
       className={classes}
       aria-expanded={isOpen}
-      aria-controls="language-options"
       onClick={(): void => onToggle()}
       type="button"
       {...buttonProps}>
