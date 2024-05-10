@@ -36,7 +36,7 @@ Source: https://designsystem.digital.gov/components/table/
       control: {
         type: 'boolean',
       },
-      description: 'This is not compatible with stacked and scrollable'
+      description: 'This is not compatible with stacked and scrollable',
     },
   },
   args: {
@@ -352,7 +352,9 @@ export const Scrollable = (): React.ReactElement => (
 
 export const StickyHeader = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
-    <Table stickyHeader={argTypes.stickyHeader} bordered={argTypes.bordered}>{testContent}</Table>
+    <Table stickyHeader={argTypes.stickyHeader} bordered={argTypes.bordered}>
+      {testContent}
+    </Table>
   ),
 }
 
