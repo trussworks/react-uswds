@@ -174,7 +174,7 @@ export const CharacterCount = ({
       <div
         ref={srMessageRef}
         className="usa-character-count__sr-status usa-sr-only"
-        aria-live="polite"
+        aria-live="off" //https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#:~:text=Unintuitively%2C%20aria,inside%2C%20the%20element.
         data-testid="characterCountSRMessage"
       />
     </>
