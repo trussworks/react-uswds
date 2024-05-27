@@ -97,7 +97,12 @@ export const DatePicker = ({
   const parsedRangeDate = rangeDate ? parseDateString(rangeDate) : undefined
 
   const validateInput = (): void => {
-    const isInvalid = isDateInvalid(externalValue, parsedMinDate, parsedMaxDate)
+    const isInvalid = isDateInvalid(
+      externalValue,
+      dateFormat,
+      parsedMinDate,
+      parsedMaxDate
+    )
 
     if (isInvalid && !externalInputEl?.current?.validationMessage) {
       externalInputEl?.current?.setCustomValidity(VALIDATION_MESSAGE)
@@ -134,7 +139,10 @@ export const DatePicker = ({
 
     const inputDate = parseDateString(value, dateFormat, true)
     let newValue = ''
-    if (inputDate && !isDateInvalid(value, parsedMinDate, parsedMaxDate)) {
+    if (
+      inputDate &&
+      !isDateInvalid(value, dateFormat, parsedMinDate, parsedMaxDate)
+    ) {
       newValue = formatDate(inputDate)
     }
 
