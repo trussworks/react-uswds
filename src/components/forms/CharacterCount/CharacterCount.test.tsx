@@ -112,7 +112,7 @@ describe('CharacterCount component', () => {
       )
       const message = getByTestId('characterCountSRMessage')
       expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
-      expect(message).toHaveAttribute('aria-live', 'polite')
+      expect(message).toHaveAttribute('aria-live', 'off')
     })
   })
 
@@ -232,7 +232,7 @@ describe('CharacterCount component', () => {
       )
       const message = getByTestId('characterCountSRMessage')
       expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
-      expect(message).toHaveAttribute('aria-live', 'polite')
+      expect(message).toHaveAttribute('aria-live', 'off')
     })
   })
 

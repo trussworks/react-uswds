@@ -68,7 +68,7 @@ const PaginationPage = ({
 const PaginationOverflow = () => (
   <li
     className="usa-pagination__item usa-pagination__overflow"
-    role="presentation">
+    aria-label="ellipsis indicating non-visible pages">
     <span>…</span>
   </li>
 )
@@ -174,7 +174,7 @@ export const Pagination = ({
                 aria-label="Previous page"
                 data-testid="pagination-previous"
                 onClick={onClickPrevious}>
-                <Icon.NavigateBefore />
+                <Icon.NavigateBefore aria-label="Previous Arrow" />
                 <span className="usa-pagination__link-text">Previous</span>
               </Button>
             ) : (
@@ -182,7 +182,7 @@ export const Pagination = ({
                 href={`${pathname}?page=${prevPage}`}
                 className="usa-pagination__link usa-pagination__previous-page"
                 aria-label="Previous page">
-                <Icon.NavigateBefore />
+                <Icon.NavigateBefore aria-label="Previous Arrow" />
                 <span className="usa-pagination__link-text">Previous</span>
               </Link>
             )}
@@ -214,7 +214,7 @@ export const Pagination = ({
                 data-testid="pagination-next"
                 onClick={onClickNext}>
                 <span className="usa-pagination__link-text">Next</span>
-                <Icon.NavigateNext />
+                <Icon.NavigateNext aria-label="Next Arrow" />
               </Button>
             ) : (
               <Link
@@ -222,7 +222,7 @@ export const Pagination = ({
                 className="usa-pagination__link usa-pagination__next-page"
                 aria-label="Next page">
                 <span className="usa-pagination__link-text">Next</span>
-                <Icon.NavigateNext />
+                <Icon.NavigateNext aria-label="Next Arrow" />
               </Link>
             )}
           </li>
