@@ -4,14 +4,12 @@ import classnames from 'classnames'
 type LanguageSelectorButtonProps = {
   label: string
   labelAttr?: string
-  isOpen?: boolean
   onToggle: () => void
 }
 
 export const LanguageSelectorButton = ({
   label,
   labelAttr,
-  isOpen,
   onToggle,
   className,
   ...buttonProps
@@ -27,8 +25,6 @@ export const LanguageSelectorButton = ({
     <button
       data-testid="languageSelectorButton"
       className={classes}
-      aria-expanded={isOpen}
-      aria-controls="language-options"
       onClick={(): void => onToggle()}
       type="button"
       {...buttonProps}>

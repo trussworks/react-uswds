@@ -53,11 +53,24 @@ describe('LanguageSelector component', () => {
     expect(getByTestId('languageSelector')).toBeInTheDocument()
   })
 
-  it('renders custom styles', () => {
+  it('renders custom styles on the button', () => {
     const { getByTestId } = render(
       <LanguageSelector langs={languages} className="custom-class" />
     )
-    expect(getByTestId('languageSelector')).toHaveClass('custom-class')
+    expect(getByTestId('languageSelector')).not.toHaveClass('custom-class')
+    expect(getByTestId('languageSelectorButton')).toHaveClass('custom-class')
+  })
+
+  it('renders container styles on the parent', () => {
+    const { getByTestId } = render(
+      <LanguageSelector langs={languages} className="custom-class" />
+    )
+    expect(getByTestId('languageSelector')).toHaveClass(
+      'usa-language-container'
+    )
+    expect(getByTestId('languageSelectorButton')).not.toHaveClass(
+      'usa-language-container'
+    )
   })
 
   it('renders small', () => {
