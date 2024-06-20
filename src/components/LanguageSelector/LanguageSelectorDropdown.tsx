@@ -54,6 +54,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
     className
   )
   const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
+  const menuID = 'language-options'
 
   return (
     <div className={classes} data-testid="languageSelector" {...divProps}>
@@ -63,12 +64,13 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
             className={classes}
             label={displayLabel?.label || label || langs[0].label}
             isOpen={isOpen}
+            controls={menuID}
             onToggle={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
           />
           <Menu
             items={generateMenuItems(langs)}
             isOpen={isOpen}
-            id="language-options"
+            id={menuID}
             type="language"
           />
         </li>

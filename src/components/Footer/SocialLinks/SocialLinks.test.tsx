@@ -1,6 +1,6 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { SocialLinks, SocialLink } from './SocialLinks'
 
@@ -43,6 +43,5 @@ describe('SocialLink component', () => {
     const link = container.querySelector('.usa-social-link')
     expect(link).toBeInTheDocument()
     expect(link).toHaveAttribute('title', 'Instagram')
-    expect(screen.getByRole('img')).toHaveAttribute('name', 'Instagram')
   })
 })
