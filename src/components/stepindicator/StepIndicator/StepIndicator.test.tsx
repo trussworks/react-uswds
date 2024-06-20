@@ -196,4 +196,26 @@ describe('StepIndicator component', () => {
     const stepSrOnly = within(stepIndicator).queryByText(stepText)
     expect(stepSrOnly).toHaveClass('usa-sr-only')
   })
+  it('renders properly with translated statusText for screen reader', () => {
+    const statusText = { complete: 'completado', incomplete: 'no completado' }
+
+    const { getByTestId } = render(
+      <StepIndicator headingLevel="h4" statusText={statusText}>
+        <StepIndicatorStep label={step1} status="complete" />
+        <StepIndicatorStep label={step2} status="current" />
+        <StepIndicatorStep label={step3} status="incomplete" />
+      </StepIndicator>
+    )
+    const stepIndicator = getByTestId('step-indicator')
+
+    const completedStatusSrOnly = within(stepIndicator).queryByText(
+      statusText.complete
+    )
+    expect(completedStatusSrOnly).toHaveClass('usa-sr-only')
+
+    const incompleteStatusSrOnly = within(stepIndicator).queryByText(
+      statusText.incomplete
+    )
+    expect(incompleteStatusSrOnly).toHaveClass('usa-sr-only')
+  })
 })
