@@ -27,7 +27,7 @@ vi.mock('./utils', async (importOriginal) => {
 
 /*
  * Modal relies on focus-trap-react, which cannot be reliably tested
- * in JSDom. A __mocks__/tabbable.js file ensures that a displayCheck setting
+ * in JSDom. A __mocks__/focus-trap-react.tsx file ensures that a displayCheck setting
  * for the library is set so that tests do not fail due to this
  * incompatibility. See: https://github.com/focus-trap/tabbable#testing-in-jsdom
  */

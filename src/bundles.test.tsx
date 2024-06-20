@@ -1,6 +1,7 @@
 import React from 'react'
 import jsxRuntime from 'react/jsx-runtime'
 import reactDom from 'react-dom'
+import FocusTrap from 'focus-trap-react'
 import { render, within } from '@testing-library/react'
 import fs from 'node:fs'
 
@@ -32,6 +33,7 @@ describe('test lib bundles', () => {
     vi.stubGlobal('jsxRuntime', jsxRuntime)
     vi.stubGlobal('React', React)
     vi.stubGlobal('ReactDOM', reactDom)
+    vi.stubGlobal('FocusTrap', FocusTrap)
   })
   afterEach(() => {
     vi.unstubAllGlobals()

@@ -6,7 +6,9 @@ const shouldRun =
   !danger.github || (danger.github && danger.github.pr?.user.type !== 'Bot')
 
 // Load all modified and new files
-const allFiles = danger.git.modified_files.concat(danger.git.created_files)
+const allFiles = (danger.git.modified_files ?? []).concat(
+  danger.git.created_files
+)
 
 const checkYarnAudit: () => void = () => {
   const result = child.spawnSync('yarn', [
@@ -104,7 +106,7 @@ const checkDependencyChanges: () => void = () => {
     danger.git
       .structuredDiffForFile('package.json')
       .then((sdiff) => {
-        return sdiff.chunks.every((chunk) => {
+        return sdiff?.chunks.every((chunk) => {
           return chunk.changes
             .filter((change) => {
               // filter out changes that are context lines in the diff
