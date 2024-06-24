@@ -1572,9 +1572,9 @@
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@laynezh/vite-plugin-lib-assets@^0.5.14":
-  version "0.5.21"
-  resolved "https://registry.yarnpkg.com/@laynezh/vite-plugin-lib-assets/-/vite-plugin-lib-assets-0.5.21.tgz#b5445b71954bb597564bdb572339ea71a6646865"
-  integrity sha512-XeOSCwzh0JqMNPchPRX2U/aAcO7S13LAK3GDuBn8T5AuKF5lbeJoUd7iqdlcYfUJjhPwqXoK8UwM1NCoAj1eaA==
+  version "0.5.23"
+  resolved "https://registry.yarnpkg.com/@laynezh/vite-plugin-lib-assets/-/vite-plugin-lib-assets-0.5.23.tgz#841a5c751115191b0a22c0f88dc38271e0f3d798"
+  integrity sha512-17df7hIpAM/wO+2z6cI7OIBuoJCHz1pRtY5A6g+R72KVKhjp8KrqCObDapuWEGY+RliSTBjvwi6rfQfFj/1JKg==
   dependencies:
     escape-string-regexp "^4.0.0"
     loader-utils "^3.2.1"
