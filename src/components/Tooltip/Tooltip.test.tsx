@@ -110,13 +110,18 @@ describe('Tooltip component', () => {
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
   })
 
-  it('hides tooltip on keydown after focus', () => {
+  it('hides tooltip on Escape keydown after focus', () => {
     render(<Tooltip label="Click me">My Tooltip</Tooltip>)
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
 
     fireEvent.focus(screen.getByTestId('triggerElement'))
     expect(bodyEl).toHaveClass('is-visible')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
+
+    fireEvent.keyDown(screen.getByTestId('triggerElement'), { key: 'a' })
+
+    expect(bodyEl).toHaveClass('is-visible')
+    expect(bodyEl).not.toHaveAttribute('aria-hidden', 'true')
 
     fireEvent.keyDown(screen.getByTestId('triggerElement'), { key: 'Escape' })
 
