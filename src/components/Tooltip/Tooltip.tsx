@@ -220,7 +220,6 @@ export function Tooltip<
         onMouseEnter: showTooltip,
         onMouseOver: showTooltip,
         onFocus: showTooltip,
-        onMouseLeave: hideTooltip,
         onBlur: hideTooltip,
         onKeyDown: hideTooltip,
         className: triggerClasses,
@@ -229,7 +228,10 @@ export function Tooltip<
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        onMouseLeave={hideTooltip}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -254,7 +256,10 @@ export function Tooltip<
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        onMouseLeave={hideTooltip}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
@@ -267,7 +272,6 @@ export function Tooltip<
           onMouseEnter={showTooltip}
           onMouseOver={showTooltip}
           onFocus={showTooltip}
-          onMouseLeave={hideTooltip}
           onBlur={hideTooltip}
           onKeyDown={hideTooltip}>
           {children}

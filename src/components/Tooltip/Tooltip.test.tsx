@@ -81,7 +81,7 @@ describe('Tooltip component', () => {
     expect(bodyEl).toHaveClass('is-visible')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'false')
 
-    fireEvent.mouseLeave(screen.getByTestId('triggerElement'))
+    fireEvent.mouseLeave(screen.getByTestId('tooltipWrapper'))
     expect(bodyEl).not.toHaveClass('is-visible')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
   })
