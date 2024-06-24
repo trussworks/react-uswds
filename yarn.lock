@@ -3301,10 +3301,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@uswds/uswds@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@uswds/uswds/-/uswds-3.7.1.tgz#455dee2d7a9c7b316192bb2e21ecd0df6fad3085"
-  integrity sha512-32u2S50bf5dwIujebqL+f1Jgx2rmRrpxcaccSZzdo3Qv9HaDUdcmeavlrxHqN30edHc7p8kRPjvjevOmOJKB7w==
+"@uswds/uswds@3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@uswds/uswds/-/uswds-3.8.1.tgz#3d834559498ae1bb7d3a618f3f85a5f4e9818497"
+  integrity sha512-bKG/B9mJF1v0yoqth48wQDzST5Xyu3OxxpePIPDyhKWS84oDrCehnu3Z88JhSjdIAJMl8dtjtH8YvdO9kZUpAg==
   dependencies:
     classlist-polyfill "1.2.0"
     object-assign "4.1.1"
