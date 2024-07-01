@@ -220,13 +220,15 @@ export const DocumentationPage = (): React.ReactElement => {
       <div className="usa-section">
         <GridContainer>
           <Grid row gap>
-            <Grid className="usa-layout-docs__sidenav" desktop={{ col: 3 }}>
+            <Grid
+              className="usa-layout-docs__sidenav display-none desktop:display-block"
+              desktop={{ col: 3 }}>
               <nav aria-label="Secondary navigation">
                 <SideNav items={sideNavItems} />
               </nav>
             </Grid>
             <main
-              className="usa-layout-docs__main desktop:grid-col-9 usa-prose usa-layout-docs"
+              className="usa-layout-docs desktop:grid-col-9 usa-prose usa-layout-docs"
               id="main-content">
               <h1>Page heading (h1)</h1>
 
@@ -272,6 +274,11 @@ export const DocumentationPage = (): React.ReactElement => {
                 component page.
               </p>
             </main>
+          </Grid>
+          <Grid className="usa-layout-docs__sidenav desktop:display-none">
+            <nav aria-label="Secondary navigation">
+              <SideNav items={sideNavItems} />
+            </nav>
           </Grid>
         </GridContainer>
       </div>
