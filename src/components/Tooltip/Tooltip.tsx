@@ -12,6 +12,7 @@ import classnames from 'classnames'
 import { isElementInViewport, calculateMarginOffset } from './utils'
 
 type TooltipProps<T> = {
+  id?: string
   label: ReactNode
   title?: string
   position?: 'top' | 'bottom' | 'left' | 'right' | undefined
@@ -56,7 +57,7 @@ export function Tooltip<
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
 
-  const { position, wrapperclasses, className } = props
+  const { id = tooltipID.current, position, wrapperclasses, className } = props
 
   const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
     const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
@@ -214,7 +215,7 @@ export function Tooltip<
         ...customProps,
         ref: triggerElementRef,
         'data-testid': 'triggerElement',
-        'aria-describedby': tooltipID.current,
+        'aria-describedby': id,
         tabIndex: 0,
         title: '',
         onMouseEnter: showTooltip,
@@ -234,7 +235,7 @@ export function Tooltip<
         <span
           data-testid="tooltipBody"
           title={title ?? (typeof label === 'string' ? label : undefined)}
-          id={tooltipID.current}
+          id={id}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"
@@ -259,7 +260,7 @@ export function Tooltip<
           {...remainingProps}
           data-testid="triggerElement"
           ref={triggerElementRef}
-          aria-describedby={tooltipID.current}
+          aria-describedby={id}
           tabIndex={0}
           type="button"
           className={triggerClasses}
@@ -275,7 +276,7 @@ export function Tooltip<
         <span
           data-testid="tooltipBody"
           title={title ?? (typeof label === 'string' ? label : undefined)}
-          id={tooltipID.current}
+          id={id}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"

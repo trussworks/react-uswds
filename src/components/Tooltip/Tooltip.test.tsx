@@ -25,8 +25,8 @@ describe('Tooltip component', () => {
     expect(wrapperEl).toHaveClass('usa-tooltip')
 
     const bodyEl = screen.queryByRole('tooltip', { hidden: true })
-    expect(bodyEl).toBeInTheDocument()
     const tooltipId = bodyEl?.getAttribute('id')
+    expect(bodyEl).toBeInTheDocument()
     expect(bodyEl).toHaveAttribute('role', 'tooltip')
     expect(bodyEl).toHaveAttribute('aria-hidden', 'true')
     expect(bodyEl).toHaveTextContent('Click me')
@@ -38,6 +38,20 @@ describe('Tooltip component', () => {
     expect(triggerEl).toHaveAttribute('title', '')
     expect(triggerEl).not.toHaveClass('usa-tooltip')
     expect(triggerEl).toHaveClass('usa-tooltip__trigger')
+  })
+
+  it('adds ID if given', () => {
+    const id = 'test-id'
+    render(
+      <Tooltip id={id} label="Click me">
+        My Tooltip
+      </Tooltip>
+    )
+    const bodyEl = screen.queryByRole('tooltip', { hidden: true })
+    const tooltipId = bodyEl?.getAttribute('id')
+    expect(tooltipId).toBe(id)
+    const triggerEl = screen.queryByTestId('triggerElement')
+    expect(triggerEl).toHaveAttribute('aria-describedby', id)
   })
 
   it('defaults the position to top if no position prop is given', () => {
