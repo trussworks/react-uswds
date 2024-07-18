@@ -43,6 +43,8 @@ export function Tooltip<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps,
 >({
   position = DEFAULT_POSITION,
+  wrapperclasses,
+  className,
   ...props
 }: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
@@ -59,8 +61,6 @@ export function Tooltip<
   const [positioningAttempts, setPositionAttempts] = useState(0)
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
-
-  const { wrapperclasses, className } = props
 
   const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
     const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
