@@ -2,8 +2,8 @@ import * as child from 'child_process'
 
 import { danger, fail, schedule, warn } from 'danger'
 
-const shouldRun =
-  !danger.github || (danger.github && danger.github.pr?.user.type !== 'Bot')
+// Only run on PRs from non-bots
+const shouldRun = !!danger.github?.pr && danger.github.pr.user.type !== 'Bot'
 
 // Load all modified and new files
 const allFiles = (danger.git.modified_files ?? []).concat(
