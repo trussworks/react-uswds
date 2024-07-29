@@ -5,6 +5,7 @@
  * and takes place after a webpack build.
  */
 
+// eslint-disable-next-line import/no-unresolved
 import library from '../lib/index.cjs'
 
 console.log('server-side test running')
