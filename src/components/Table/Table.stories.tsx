@@ -29,8 +29,14 @@ Source: https://designsystem.digital.gov/components/table/
     stackedStyle: {
       control: {
         type: 'select',
-        options: ['default', 'headers'],
+        options: ['default', 'headers', 'none'],
       },
+    },
+    stickyHeader: {
+      control: {
+        type: 'boolean',
+      },
+      description: 'This is not compatible with stacked and scrollable',
     },
   },
   args: {
@@ -41,7 +47,8 @@ Source: https://designsystem.digital.gov/components/table/
 type StorybookArguments = {
   bordered: boolean
   striped: boolean
-  stackedStyle: 'default' | 'headers'
+  stackedStyle: 'default' | 'headers' | 'none'
+  stickyHeader: boolean
 }
 
 const testContent = (
@@ -342,6 +349,14 @@ export const Scrollable = (): React.ReactElement => (
     <p>* in billions of dollars. Data for illustration purposes only.</p>
   </>
 )
+
+export const StickyHeader = {
+  render: (argTypes: StorybookArguments): React.ReactElement => (
+    <Table stickyHeader={argTypes.stickyHeader} bordered={argTypes.bordered}>
+      {testContent}
+    </Table>
+  ),
+}
 
 export const Striped = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
