@@ -3,7 +3,7 @@ import './styles/index.scss'
 
 /** USWDS basic components */
 export { Alert } from './components/Alert/Alert'
-export { Accordion } from './components/Accordion/Accordion'
+export { Accordion, AccordionItem } from './components/Accordion/Accordion'
 export { Button } from './components/Button/Button'
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup'
 export { InPageNavigation } from './components/InPageNavigation/InPageNavigation'
