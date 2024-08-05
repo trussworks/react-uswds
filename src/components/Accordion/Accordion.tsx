@@ -108,7 +108,8 @@ export const Accordion = ({
           key={`accordionItem_${i}`}
           {...item}
           expanded={openItems.indexOf(item.id) > -1}
-          handleToggle={(): void => {
+          handleToggle={(e): void => {
+            if (item.handleToggle) item.handleToggle(e)
             toggleItem(item.id)
           }}
         />
