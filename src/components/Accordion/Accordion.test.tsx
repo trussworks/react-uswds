@@ -377,4 +377,26 @@ describe('Accordion component', () => {
       }
     )
   })
+
+  describe('with a custom click handler', () => {
+    const customToggleFunction = vi.fn()
+
+    const customTestItems: AccordionItemProps[] = [
+      {
+        title: 'First Amendment',
+        content: firstAmendment,
+        expanded: false,
+        id: '123',
+        headingLevel: 'h4',
+        handleToggle: () => {
+          customToggleFunction()
+        },
+      },
+    ]
+    it('fires the handler successfully', () => {
+      const { getByText } = render(<Accordion items={customTestItems} />)
+      fireEvent.click(getByText(testItems[0].title as string))
+      expect(customToggleFunction).toHaveBeenCalledOnce()
+    })
+  })
 })
