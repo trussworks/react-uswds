@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -218,6 +218,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://jhancock532.github.io/"><img src="https://avatars.githubusercontent.com/u/18164832?v=4?s=100" width="100px;" alt="James Hancock"/><br /><sub><b>James Hancock</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Ajhancock532" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=jhancock532" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jpandersen87"><img src="https://avatars.githubusercontent.com/u/12385932?v=4?s=100" width="100px;" alt="Joseph Andersen"/><br /><sub><b>Joseph Andersen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jpandersen87" title="Code">💻</a> <a href="#maintenance-jpandersen87" title="Maintenance">🚧</a> <a href="#infra-jpandersen87" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/crwallace"><img src="https://avatars.githubusercontent.com/u/3453669?v=4?s=100" width="100px;" alt="Courtney Eimerman-Wallace"/><br /><sub><b>Courtney Eimerman-Wallace</b></sub></a><br /><a href="#maintenance-crwallace" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ocoutts-usds"><img src="https://avatars.githubusercontent.com/u/174364898?v=4?s=100" width="100px;" alt="Owen Coutts"/><br /><sub><b>Owen Coutts</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Aocoutts-usds" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=ocoutts-usds" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
