@@ -193,6 +193,9 @@ export function Tooltip<
   const hideTooltip = (): void => {
     setVisible(false)
   }
+  const escapeTooltip = (e: React.KeyboardEvent<HTMLButtonElement>): void => {
+    if (e.key === 'Escape') hideTooltip()
+  }
 
   const wrapperClasses = classnames('usa-tooltip', wrapperclasses)
 
@@ -224,16 +227,18 @@ export function Tooltip<
         onMouseEnter: showTooltip,
         onMouseOver: showTooltip,
         onFocus: showTooltip,
-        onMouseLeave: hideTooltip,
         onBlur: hideTooltip,
-        onKeyDown: hideTooltip,
+        onKeyDown: escapeTooltip,
         className: triggerClasses,
       },
       children
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        onMouseLeave={hideTooltip}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -258,7 +263,10 @@ export function Tooltip<
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        onMouseLeave={hideTooltip}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
@@ -271,9 +279,8 @@ export function Tooltip<
           onMouseEnter={showTooltip}
           onMouseOver={showTooltip}
           onFocus={showTooltip}
-          onMouseLeave={hideTooltip}
           onBlur={hideTooltip}
-          onKeyDown={hideTooltip}>
+          onKeyDown={escapeTooltip}>
           {children}
         </button>
         <span

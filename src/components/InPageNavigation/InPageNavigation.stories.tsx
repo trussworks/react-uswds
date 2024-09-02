@@ -20,12 +20,17 @@ export default {
     title: {
       control: 'text',
     },
+    headingElements: {
+      control: 'check',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    },
   },
   args: {
     headingLevel: 'h4',
     rootMargin: '0px 0px 0px 0px',
     threshold: 1,
     title: 'On this page',
+    headingElements: ['h2', 'h3'],
   },
   parameters: {
     docs: {
@@ -46,6 +51,7 @@ type StorybookArguments = {
   scrollOffset: string
   threshold: number
   title: string
+  headingElements: HeadingLevel[]
 }
 
 export const Default = (argTypes: StorybookArguments): React.ReactElement => (
@@ -56,6 +62,7 @@ export const Default = (argTypes: StorybookArguments): React.ReactElement => (
     rootMargin={argTypes.rootMargin}
     threshold={argTypes.threshold}
     title={argTypes.title}
+    headingElements={argTypes.headingElements}
   />
 )
 
@@ -72,5 +79,6 @@ export const ScrollOffset = (
     scrollOffset="2rem"
     threshold={argTypes.threshold}
     title={argTypes.title}
+    headingElements={argTypes.headingElements}
   />
 )
