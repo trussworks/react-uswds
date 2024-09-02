@@ -1606,9 +1606,9 @@
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@laynezh/vite-plugin-lib-assets@^0.5.14":
-  version "0.5.23"
-  resolved "https://registry.yarnpkg.com/@laynezh/vite-plugin-lib-assets/-/vite-plugin-lib-assets-0.5.23.tgz#841a5c751115191b0a22c0f88dc38271e0f3d798"
-  integrity sha512-17df7hIpAM/wO+2z6cI7OIBuoJCHz1pRtY5A6g+R72KVKhjp8KrqCObDapuWEGY+RliSTBjvwi6rfQfFj/1JKg==
+  version "0.5.24"
+  resolved "https://registry.yarnpkg.com/@laynezh/vite-plugin-lib-assets/-/vite-plugin-lib-assets-0.5.24.tgz#0b1bb19e1890f9c1e68aa803a0d654b57f6607ae"
+  integrity sha512-z1M8reWte/xP7xw+aFN0Euh9OinCjCzJ8HhLkvpz+6h6MSTyyA54xrxGmECx5QNd3bCwQlkGd7WAgkozjublCg==
   dependencies:
     escape-string-regexp "^4.0.0"
     loader-utils "^3.2.1"
@@ -10979,9 +10979,9 @@ vite-plugin-checker@^0.7.0:
     vscode-uri "^3.0.2"
 
 vite-plugin-dts@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-4.0.3.tgz#0f452be5ea81a50fa27ade4e0f3a0d750873affc"
-  integrity sha512-+xnTsaONwU2kV6zhRjtbRJSGN41uFR/whqmcb4k4fftLFDJElxthp0PP5Fq8gMeM9ytWMt1yk5gGgekLREWYQQ==
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-4.1.0.tgz#616ba66a3793e71f12a80c7df2fd9ec5d98e1f35"
+  integrity sha512-sRlmt9k2q8MrX4F2058N3KmB6WyJ3Ao6QaExOv1X99F3j0GhPziEz1zscWQ1q2r1PeFc96L7GIUu8Pl2DPr2Hg==
   dependencies:
     "@microsoft/api-extractor" "7.47.4"
     "@rollup/pluginutils" "^5.1.0"
