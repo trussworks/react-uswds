@@ -1,6 +1,10 @@
 import React, { KeyboardEvent } from 'react'
 
-import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
+import {
+  type DateFormat,
+  DEFAULT_EXTERNAL_DATE_FORMAT,
+  INTERNAL_DATE_FORMAT,
+} from './constants'
 
 /**
  * This file contains the USWDS DatePicker date manipulation functions converted to TypeScript
@@ -355,13 +359,13 @@ export const isDatesYearOutsideMinOrMax = (
  * Parse a date with format M-D-YY
  *
  * @param {string} dateString the date string to parse
- * @param {string} dateFormat the format of the date string
+ * @param {DateFormat} dateFormat the format of the date string
  * @param {boolean} adjustDate should the date be adjusted
  * @returns {Date} the parsed date
  */
 export const parseDateString = (
   dateString: string,
-  dateFormat: string = INTERNAL_DATE_FORMAT,
+  dateFormat: DateFormat = INTERNAL_DATE_FORMAT,
   adjustDate = false
 ): Date | undefined => {
   let date
@@ -430,12 +434,12 @@ export const parseDateString = (
  * Format a date to format YYYY-MM-DD
  *
  * @param {Date} date the date to format
- * @param {string} dateFormat the format of the date string
+ * @param {DateFormat} dateFormat the format of the date string
  * @returns {string} the formatted date string
  */
 export const formatDate = (
   date: Date,
-  dateFormat: string = INTERNAL_DATE_FORMAT
+  dateFormat: DateFormat = INTERNAL_DATE_FORMAT
 ): string => {
   const padZeros = (value: number, length: number): string => {
     return `0000${value}`.slice(-length)
@@ -456,6 +460,7 @@ export const formatDate = (
 
 export const isDateInvalid = (
   dateString: string,
+  dateFormat: DateFormat,
   minDate: Date,
   maxDate?: Date
 ): boolean => {
@@ -464,13 +469,24 @@ export const isDateInvalid = (
   if (dateString) {
     isInvalid = true
 
-    const dateStringParts = dateString.split('/')
-    const [month, day, year] = dateStringParts.map((str) => {
+    const dateStringParts = dateString.split(
+      dateFormat === DEFAULT_EXTERNAL_DATE_FORMAT ? '/' : '-'
+    )
+    const dateParts = dateStringParts.map((str) => {
       let value
       const parsed = parseInt(str, 10)
       if (!Number.isNaN(parsed)) value = parsed
       return value
     })
+
+    let month, day, year, yearStringPart
+    if (dateFormat === DEFAULT_EXTERNAL_DATE_FORMAT) {
+      yearStringPart = dateStringParts[2]
+      ;[month, day, year] = dateParts
+    } else {
+      yearStringPart = dateStringParts[0]
+      ;[year, month, day] = dateParts
+    }
 
     if (month && day && year != null) {
       const checkDate = setDate(year, month - 1, day)
@@ -479,7 +495,7 @@ export const isDateInvalid = (
         checkDate.getMonth() === month - 1 &&
         checkDate.getDate() === day &&
         checkDate.getFullYear() === year &&
-        dateStringParts[2].length === 4 &&
+        yearStringPart.length === 4 &&
         isDateWithinMinAndMax(checkDate, minDate, maxDate)
       ) {
         isInvalid = false
