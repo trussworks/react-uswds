@@ -62,6 +62,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
             className={classes}
+            aria-controls="language-options"
             label={displayLabel?.label || label || langs[0].label}
             isOpen={isOpen}
             controls={menuID}

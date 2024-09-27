@@ -44,6 +44,7 @@ export const SearchButton = ({
           name={buttonText}
           size={3}
           aria-hidden={true}
+          aria-label="Magnifying glass search icon"
         />
       </Button>
     </div>
