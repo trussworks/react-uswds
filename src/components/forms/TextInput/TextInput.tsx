@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
@@ -28,43 +28,51 @@ export type OptionalTextInputProps = CustomTextInputProps &
 
 export type TextInputProps = RequiredTextInputProps & OptionalTextInputProps
 
-export const TextInput = ({
-  id,
-  name,
-  type,
-  className,
-  validationStatus,
-  inputSize,
-  inputRef,
-  ...inputProps
-}: TextInputProps): React.ReactElement => {
-  const isError = validationStatus === 'error'
-  const isSuccess = validationStatus === 'success'
-  const isSmall = inputSize === 'small'
-  const isMedium = inputSize === 'medium'
+export const TextInput = forwardRef(
+  (
+    props: TextInputProps,
+    ref: React.ForwardedRef<HTMLInputElement> | undefined
+  ): React.ReactElement => {
+    const {
+      id,
+      name,
+      type,
+      className,
+      validationStatus,
+      inputSize,
+      inputRef,
+      ...inputProps
+    } = props
 
-  const classes = classnames(
-    'usa-input',
-    {
-      'usa-input--error': isError,
-      'usa-input--success': isSuccess,
-      'usa-input--small': isSmall,
-      'usa-input--medium': isMedium,
-    },
-    className
-  )
+    const isError = validationStatus === 'error'
+    const isSuccess = validationStatus === 'success'
+    const isSmall = inputSize === 'small'
+    const isMedium = inputSize === 'medium'
 
-  return (
-    <input
-      data-testid="textInput"
-      className={classes}
-      id={id}
-      name={name}
-      type={type}
-      ref={inputRef}
-      {...inputProps}
-    />
-  )
-}
+    const classes = classnames(
+      'usa-input',
+      {
+        'usa-input--error': isError,
+        'usa-input--success': isSuccess,
+        'usa-input--small': isSmall,
+        'usa-input--medium': isMedium,
+      },
+      className
+    )
 
+    return (
+      <input
+        data-testid="textInput"
+        className={classes}
+        id={id}
+        name={name}
+        type={type}
+        ref={inputRef || ref}
+        {...inputProps}
+      />
+    )
+  }
+)
+
+TextInput.displayName = 'TextInput'
 export default TextInput
