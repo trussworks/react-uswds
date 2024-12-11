@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { JSX } from 'react'
 
 type TitleProps = {
   children: React.ReactNode

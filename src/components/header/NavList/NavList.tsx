@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { JSX } from 'react'
 
 type CustomNavListProps = {
   items: React.ReactNode[]

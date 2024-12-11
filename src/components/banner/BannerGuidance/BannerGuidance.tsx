@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
+import { JSX } from 'react'
 
 export const BannerGuidance = ({
   children,
