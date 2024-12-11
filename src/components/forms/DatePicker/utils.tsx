@@ -1,4 +1,4 @@
-import React, { KeyboardEvent } from 'react'
+import { KeyboardEvent } from 'react'
 
 import { DEFAULT_EXTERNAL_DATE_FORMAT, INTERNAL_DATE_FORMAT } from './constants'
 

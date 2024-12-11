@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
 import { Form } from '../Form/Form'

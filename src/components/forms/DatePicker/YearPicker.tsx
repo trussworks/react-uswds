@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, KeyboardEvent } from 'react'
+import { useEffect, useState, useRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { YEAR_CHUNK } from './constants'

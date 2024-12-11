@@ -1,6 +1,5 @@
-import React, { ReactElement } from 'react'
+import { JSX, ReactElement } from 'react'
 import classNames from 'classnames'
-import { JSX } from 'react'
 
 type BannerProps = {
   divProps?: JSX.IntrinsicElements['div']

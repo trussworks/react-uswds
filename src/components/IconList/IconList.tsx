@@ -1,4 +1,4 @@
-import React, { ReactElement, JSX } from 'react'
+import { ReactElement, JSX } from 'react'
 import classnames from 'classnames'
 
 interface IconListProps {

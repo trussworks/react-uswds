@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react'
+import { ComponentProps } from 'react'
 import { render, screen, within } from '@testing-library/react'
 import { BannerHeader } from './BannerHeader'
 import { BannerFlag } from '../BannerFlag/BannerFlag'

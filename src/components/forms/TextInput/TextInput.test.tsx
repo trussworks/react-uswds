@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useRef } from 'react'
+import { MutableRefObject, useRef } from 'react'
 import { render } from '@testing-library/react'
 import { TextInput } from './TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'

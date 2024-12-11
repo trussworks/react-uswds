@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { ReactElement, ReactNode, JSX } from 'react'
+import { ReactElement, ReactNode, JSX } from 'react'
 
 interface IconListContentProps {
   className?: string

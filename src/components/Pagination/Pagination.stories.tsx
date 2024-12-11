@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Pagination } from './Pagination'
 import type { Meta, StoryObj } from '@storybook/react'
 

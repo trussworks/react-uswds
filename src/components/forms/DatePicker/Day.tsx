@@ -1,4 +1,4 @@
-import React, { forwardRef, KeyboardEvent } from 'react'
+import { forwardRef, KeyboardEvent } from 'react'
 import classnames from 'classnames'
 
 import { formatDate, isIosDevice } from './utils'

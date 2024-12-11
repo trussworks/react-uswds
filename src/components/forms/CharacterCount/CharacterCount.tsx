@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, JSX } from 'react'
+import { useState, useEffect, useRef, JSX } from 'react'
 import classnames from 'classnames'
 
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
@@ -6,7 +6,7 @@ import { Textarea, TextareaProps } from '../Textarea/Textarea'
 
 /* Defaults
   This is a fallback for character count and validation message.
-  In many cases, though, props will be passed in by consumer 
+  In many cases, though, props will be passed in by consumer
   for example, to account for i18n-aware strings
 */
 const defaultCharacterCount = (text: string): number => Array.from(text).length

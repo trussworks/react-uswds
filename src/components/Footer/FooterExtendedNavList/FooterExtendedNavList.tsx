@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { NavList } from '../../header/NavList/NavList'
 
@@ -6,10 +6,10 @@ export type ExtendedNavLinksType = React.ReactNode[][]
 
 type FooterExtendedNavListProps = {
   isMobile?: boolean
-  /* 
+  /*
     Turn on mobile styles via prop. If undefined, a fallback is used based on the client window width.
   */
-  /* 
+  /*
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType

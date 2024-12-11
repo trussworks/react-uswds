@@ -1,4 +1,4 @@
-import React, {
+import {
   KeyboardEvent,
   FocusEvent,
   useEffect,
@@ -15,7 +15,7 @@ import { ActionTypes, Action, State, useComboBox } from './useComboBox'
     The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
 
     There is the ability to pass in custom props directly to the select and input.
-    This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
+    This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue.
 */
 
 const DEFAULT_FILTER = '.*{{query}}.*'

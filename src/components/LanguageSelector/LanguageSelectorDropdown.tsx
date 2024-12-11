@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Menu } from '../header/Menu/Menu'
 import { LanguageSelectorButton } from './LanguageSelectorButton'
 import classnames from 'classnames'

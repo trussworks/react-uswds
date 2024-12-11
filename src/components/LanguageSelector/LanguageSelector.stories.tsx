@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { LanguageSelector, LanguageDefinition } from './LanguageSelector'
 import { StoryFn } from '@storybook/react'
 

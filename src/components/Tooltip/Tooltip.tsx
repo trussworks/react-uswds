@@ -1,4 +1,4 @@
-import React, {
+import {
   createElement,
   ForwardRefExoticComponent,
   ReactElement,
@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useRef,
   useState,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 

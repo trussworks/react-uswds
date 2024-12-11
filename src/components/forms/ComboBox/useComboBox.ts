@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import { useReducer } from 'react'
 import type { ComboBoxOption, CustomizableFilter } from './ComboBox'
 import { FocusMode } from './ComboBox'
 import { generateDynamicRegExp } from './utils'

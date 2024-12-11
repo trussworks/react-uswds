@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 import { Modal, ModalRef } from './Modal'
 import { ModalHeading } from './ModalHeading/ModalHeading'

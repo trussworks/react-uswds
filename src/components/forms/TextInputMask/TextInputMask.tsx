@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 

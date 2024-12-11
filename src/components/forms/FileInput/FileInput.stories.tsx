@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 
 import { FileInput, FileInputRef } from './FileInput'
 import { FormGroup } from '../FormGroup/FormGroup'

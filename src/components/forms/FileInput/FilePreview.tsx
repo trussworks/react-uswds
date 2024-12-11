@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 
 /** Moving the SPACER_GIF definition here instead of the constants.ts file,

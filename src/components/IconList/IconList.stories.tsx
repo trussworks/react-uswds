@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import { Icon } from '../Icon/Icons'
 import { IconList } from './IconList'
 import { IconListItem } from './IconListItem/IconListItem'

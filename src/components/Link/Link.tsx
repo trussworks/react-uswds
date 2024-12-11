@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import classnames from 'classnames'
 
 // These props we want to require always, even on custom components
