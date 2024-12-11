@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
 import { render } from '@testing-library/react'
 
 import { ProcessListItem } from './ProcessListItem'

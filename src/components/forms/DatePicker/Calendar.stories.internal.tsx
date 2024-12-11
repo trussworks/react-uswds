@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { Calendar } from './Calendar'
 import { FocusMode } from './DatePicker'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { GovBanner } from './GovBanner'
 
 export default {

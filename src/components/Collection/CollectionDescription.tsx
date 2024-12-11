@@ -1,4 +1,3 @@
-import React from 'react'
 import classname from 'classnames'
 
 export const CollectionDescription = ({

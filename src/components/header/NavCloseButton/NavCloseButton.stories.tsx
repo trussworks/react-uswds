@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavCloseButton } from './NavCloseButton'
 
 export default {

@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import React from 'react'
 import { IconList } from './IconList'
 import { Icon } from '../Icon/Icons'
 import { IconListItem } from './IconListItem/IconListItem'

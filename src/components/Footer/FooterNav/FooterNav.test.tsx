@@ -1,6 +1,5 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid, react/jsx-key */
 
-import React from 'react'
 import { render } from '@testing-library/react'
 import { FooterNav } from './FooterNav'
 

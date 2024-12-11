@@ -1,4 +1,3 @@
-import React from 'react'
 import { TextInputMask } from './TextInputMask'
 import { Label } from '../Label/Label'
 import { Form } from '../../..'

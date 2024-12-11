@@ -1,5 +1,4 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
 
 import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'

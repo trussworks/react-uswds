@@ -1,4 +1,3 @@
-import React from 'react'
 import { DateInput } from './DateInput'
 import { DateInputGroup } from '../DateInputGroup/DateInputGroup'
 import { Fieldset } from '../Fieldset/Fieldset'

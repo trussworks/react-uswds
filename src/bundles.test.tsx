@@ -1,4 +1,3 @@
-import React from 'react'
 import jsxRuntime from 'react/jsx-runtime'
 import reactDom from 'react-dom'
 import FocusTrap from 'focus-trap-react'

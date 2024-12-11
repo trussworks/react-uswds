@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputSuffix } from './InputSuffix'
 import { InputGroup } from '../InputGroup/InputGroup'
 import { FormGroup } from '../FormGroup/FormGroup'

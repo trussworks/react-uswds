@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalHeading } from './ModalHeading/ModalHeading'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Address } from './Address'
 
 export default {

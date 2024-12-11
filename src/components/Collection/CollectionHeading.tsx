@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
 interface CollectionHeadingProps {

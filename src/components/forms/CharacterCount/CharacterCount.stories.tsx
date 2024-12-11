@@ -1,4 +1,3 @@
-import React from 'react'
 import { CharacterCount } from './CharacterCount'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'

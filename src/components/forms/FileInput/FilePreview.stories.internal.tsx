@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { FilePreview } from './FilePreview'
 import {

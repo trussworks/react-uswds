@@ -243,7 +243,6 @@ import ZoomOutMapSvg from '@uswds/uswds/img/usa-icons/zoom_out_map.svg?svgr'
 import ZoomOutSvg from '@uswds/uswds/img/usa-icons/zoom_out.svg?svgr'
 
 import { makeUSWDSIcon, IconProps } from './Icon'
-import React from 'react'
 
 export class Icon {
   public static AccessibilityNew: React.ComponentType<IconProps> =

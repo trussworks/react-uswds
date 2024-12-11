@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 
 import { Form, OptionalFormProps } from '../../forms/Form/Form'

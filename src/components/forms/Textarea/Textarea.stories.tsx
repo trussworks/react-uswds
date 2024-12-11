@@ -1,4 +1,3 @@
-import React from 'react'
 import { Textarea } from './Textarea'
 import { Label } from '../Label/Label'
 

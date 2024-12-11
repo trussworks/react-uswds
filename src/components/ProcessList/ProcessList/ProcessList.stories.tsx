@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { ProcessList } from './ProcessList'
 import { ProcessListItem } from '../ProcessListItem/ProcessListItem'

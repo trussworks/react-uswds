@@ -1,4 +1,3 @@
-import React from 'react'
 import { RangeInput } from './RangeInput'
 import { Label } from '../Label/Label'
 

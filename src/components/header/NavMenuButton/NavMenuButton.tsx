@@ -1,4 +1,3 @@
-import React from 'react'
 
 type NavMenuButtonProps = {
   label: React.ReactNode

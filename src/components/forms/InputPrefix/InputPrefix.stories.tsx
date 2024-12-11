@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputPrefix } from './InputPrefix'
 import { Icon } from '../../Icon/Icons'
 import { TextInput } from '../TextInput/TextInput'

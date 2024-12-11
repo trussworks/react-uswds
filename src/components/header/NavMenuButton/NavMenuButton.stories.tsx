@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavMenuButton } from './NavMenuButton'
 
 export default {

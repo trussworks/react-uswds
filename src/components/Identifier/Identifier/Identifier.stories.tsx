@@ -1,5 +1,4 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
 
 import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
@@ -23,7 +22,7 @@ export default {
       description: {
         component: `
 ### USWDS 3.0 Identifier component
-        
+
 Source: https://designsystem.digital.gov/components/identifier/
 `,
       },

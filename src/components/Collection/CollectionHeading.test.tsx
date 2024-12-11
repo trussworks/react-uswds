@@ -1,4 +1,3 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import { CollectionHeading } from './CollectionHeading'
 import { HeadingLevel } from '../../types/headingLevel'

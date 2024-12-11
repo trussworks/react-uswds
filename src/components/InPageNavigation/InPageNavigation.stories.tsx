@@ -1,4 +1,3 @@
-import React from 'react'
 import { InPageNavigation } from './InPageNavigation'
 import { CONTENT } from './content'
 import { HeadingLevel } from '../../types/headingLevel'

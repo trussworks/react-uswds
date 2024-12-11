@@ -1,4 +1,3 @@
-import React from 'react'
 import { FormGroup } from './FormGroup'
 
 import { Label } from '../Label/Label'

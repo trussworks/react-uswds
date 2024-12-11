@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { YearPicker } from './YearPicker'
 import { parseDateString } from './utils'

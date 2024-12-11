@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { ModalRef } from './Modal'
 import {

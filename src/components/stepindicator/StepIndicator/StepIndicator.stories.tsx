@@ -1,4 +1,3 @@
-import React from 'react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator, StepStatusText } from '../StepIndicator/StepIndicator'
 

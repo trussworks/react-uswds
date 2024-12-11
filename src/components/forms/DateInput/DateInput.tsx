@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 
 import { TextInput, OptionalTextInputProps } from '../TextInput/TextInput'

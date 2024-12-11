@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 
 import { ContainerSizes } from '../types'

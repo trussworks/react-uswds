@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, waitFor, within } from '@testing-library/react'
 
 import { TimePicker } from './TimePicker'

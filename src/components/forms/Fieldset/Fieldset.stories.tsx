@@ -1,4 +1,3 @@
-import React from 'react'
 import { Fieldset } from './Fieldset'
 
 import { Label } from '../Label/Label'

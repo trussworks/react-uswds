@@ -1,4 +1,3 @@
-import React from 'react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
 import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'
@@ -14,7 +13,7 @@ export default {
 ### USWDS 3.0 Breadcrumb component
 
 Provide secondary navigation to help users understand where they are in a website.
-    
+
 Source: https://designsystem.digital.gov/components/breadcrumb/
         `,
       },

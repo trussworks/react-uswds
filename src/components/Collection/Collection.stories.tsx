@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from './../Link/Link'
 import { Collection } from './Collection'
 import { CollectionItem } from './CollectionItem'

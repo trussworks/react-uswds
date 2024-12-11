@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 import { HeadingLevel } from '../../../types/headingLevel'

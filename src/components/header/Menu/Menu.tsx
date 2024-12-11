@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavList, NavListProps } from '../NavList/NavList'
 
 type MenuProps = {
