@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import { render } from '@testing-library/react'
 
 import { GridContainer } from './GridContainer'

@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import { render } from '@testing-library/react'
 
 import { Grid, getGridClasses, applyGridClasses } from './Grid'

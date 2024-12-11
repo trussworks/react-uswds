@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import classnames from 'classnames'
 // assets
 import { Icon } from '../../Icon/Icons'

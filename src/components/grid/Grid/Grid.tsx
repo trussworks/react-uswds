@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
