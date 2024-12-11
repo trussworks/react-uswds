@@ -1,3 +1,4 @@
+import React, { JSX } from 'react'
 import classnames from 'classnames'
 
 type ButtonGroupProps = {

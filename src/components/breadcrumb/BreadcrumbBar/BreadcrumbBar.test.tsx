@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import { render } from '@testing-library/react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
