@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, JSX } from 'react'
 import classnames from 'classnames'
 import { IdentifierLinkItemProps } from '../IdentifierLinkItem/IdentifierLinkItem'
 
