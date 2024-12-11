@@ -1,4 +1,5 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
+import { JSX } from 'react'
 import classnames from 'classnames'
 import { Icon } from '../../Icon/Icons'
 import { IconProps } from '../../Icon/Icon'
