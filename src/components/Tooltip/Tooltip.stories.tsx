@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef, JSX } from 'react'
 import { Tooltip } from './Tooltip'
 
 export default {

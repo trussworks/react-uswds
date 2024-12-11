@@ -1,3 +1,4 @@
+import { createRef } from 'react'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
@@ -363,7 +364,7 @@ describe('FileInput component', () => {
 
   describe('exposed ref', () => {
     it('can be used to access the files', async () => {
-      const fileInputRef = React.createRef<FileInputRef>()
+      const fileInputRef = createRef<FileInputRef>()
 
       render(<FileInput {...testProps} ref={fileInputRef} />)
 
@@ -376,7 +377,7 @@ describe('FileInput component', () => {
     })
 
     it('can be used to clear the files', async () => {
-      const fileInputRef = React.createRef<FileInputRef>()
+      const fileInputRef = createRef<FileInputRef>()
       const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
 
       render(

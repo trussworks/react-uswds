@@ -1,3 +1,4 @@
+import { createRef } from 'react'
 import { render } from '@testing-library/react'
 
 import { RangeInput } from './RangeInput'
@@ -67,7 +68,7 @@ describe('RangeInput component', () => {
   })
 
   it('renders with attached ref', () => {
-    const rangeRef: React.RefObject<HTMLInputElement> = React.createRef()
+    const rangeRef: React.RefObject<HTMLInputElement> = createRef()
 
     const { queryByTestId } = render(
       <RangeInput id="range-slider-id" name="rangeName" inputRef={rangeRef} />

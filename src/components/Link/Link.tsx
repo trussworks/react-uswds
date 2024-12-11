@@ -1,4 +1,4 @@
-import { JSX } from 'react'
+import { createElement, JSX } from 'react'
 import classnames from 'classnames'
 
 // These props we want to require always, even on custom components
@@ -74,7 +74,7 @@ export function Link<
     //
     const linkProps: FCProps = remainingProps as unknown as FCProps
     const classes = linkClasses(variant, className)
-    return React.createElement(
+    return createElement(
       asCustom,
       {
         className: classes,

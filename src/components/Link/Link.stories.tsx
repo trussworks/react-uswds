@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import { Link } from './Link'
 
 export default {

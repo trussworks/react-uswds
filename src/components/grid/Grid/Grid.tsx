@@ -1,4 +1,4 @@
-import { JSX } from 'react'
+import { createElement, JSX } from 'react'
 import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
@@ -138,7 +138,7 @@ export function Grid<FCProps = DefaultGridProps>(
     const { asCustom, ...remainingProps } = otherProps
 
     const gridProps: FCProps = remainingProps as unknown as FCProps
-    return React.createElement(
+    return createElement(
       asCustom,
       {
         className: classes,

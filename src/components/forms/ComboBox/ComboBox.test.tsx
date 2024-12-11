@@ -1,3 +1,4 @@
+import { createRef } from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
@@ -1754,7 +1755,7 @@ describe('ComboBox component', () => {
 
   describe('exposed ref', () => {
     it('can be used to focus on the text input', async () => {
-      const comboRef = React.createRef<ComboBoxRef>()
+      const comboRef = createRef<ComboBoxRef>()
       const onChange = vi.fn()
       const handleFocus = (): void => comboRef.current?.focus()
 
@@ -1781,7 +1782,7 @@ describe('ComboBox component', () => {
     })
 
     it('can be used to clear the selected value', async () => {
-      const comboRef = React.createRef<ComboBoxRef>()
+      const comboRef = createRef<ComboBoxRef>()
       const onChange = vi.fn()
       const handleClearSelection = (): void =>
         comboRef.current?.clearSelection()

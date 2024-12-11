@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, JSX } from 'react'
 import classnames from 'classnames'
 import { LanguageSelectorButton } from './LanguageSelectorButton'
 import LanguageSelectorDropdown from './LanguageSelectorDropdown'

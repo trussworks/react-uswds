@@ -1,6 +1,6 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
+import { useState } from 'react'
 import { Form } from './Form'
-
 import { Alert } from '../../Alert/Alert'
 import { Button } from '../../Button/Button'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
@@ -205,7 +205,7 @@ export const AddressForm = (): React.ReactElement => (
 )
 
 export const SignInForm = (): React.ReactElement => {
-  const [showPassword, setShowPassword] = React.useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   return (
     <Form onSubmit={mockSubmit} large>
@@ -254,7 +254,7 @@ export const SignInForm = (): React.ReactElement => {
   )
 }
 export const PasswordResetForm = (): React.ReactElement => {
-  const [showPassword, setShowPassword] = React.useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   return (
     <Form onSubmit={mockSubmit} large>

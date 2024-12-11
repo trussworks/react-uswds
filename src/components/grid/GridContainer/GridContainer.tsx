@@ -1,3 +1,4 @@
+import { createElement } from 'react'
 import classnames from 'classnames'
 
 import { ContainerSizes } from '../types'
@@ -53,7 +54,7 @@ export function GridContainer<
       props
     const gridContainerProps: FCProps = remainingProps as unknown as FCProps
     const classes = gridContainerClasses(className, containerSize)
-    return React.createElement(
+    return createElement(
       asCustom,
       {
         'data-testid': 'gridContainer',

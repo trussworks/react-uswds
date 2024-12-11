@@ -24,7 +24,7 @@ export const FooterExtendedNavList = ({
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 
-  const [isMobileFallback, setIsMobileFallback] = React.useState<boolean>(
+  const [isMobileFallback, setIsMobileFallback] = useState<boolean>(
     isClient && window.innerWidth < 480
   )
   const [sectionsOpenState, setSectionsOpenState] = useState<boolean[]>(

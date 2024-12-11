@@ -1,3 +1,4 @@
+import { createRef } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import { CharacterCount } from './CharacterCount'
@@ -46,7 +47,7 @@ describe('CharacterCount component', () => {
     })
 
     it('handles own props', () => {
-      const tRef = React.createRef<HTMLTextAreaElement>()
+      const tRef = createRef<HTMLTextAreaElement>()
       const { getByRole } = render(
         <CharacterCount
           id="character-count-id"
@@ -145,7 +146,7 @@ describe('CharacterCount component', () => {
     })
 
     it('handles own props', () => {
-      const tRef = React.createRef<HTMLTextAreaElement>()
+      const tRef = createRef<HTMLTextAreaElement>()
       const { getByDisplayValue } = render(
         <>
           <CharacterCount

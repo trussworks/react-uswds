@@ -1,4 +1,4 @@
-import { JSX } from 'react'
+import { Children, JSX } from 'react'
 import classnames from 'classnames'
 
 type ButtonGroupProps = {
@@ -23,7 +23,7 @@ export const ButtonGroup = ({
 
   return (
     <ul className={classes} {...restProps}>
-      {React.Children.map(children, (child: React.ReactNode) => {
+      {Children.map(children, (child: React.ReactNode) => {
         return <li className="usa-button-group__item">{child}</li>
       })}
     </ul>
