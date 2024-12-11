@@ -72,8 +72,8 @@
   "peerDependencies": {
     "@uswds/uswds": "^3.7.1",
     "focus-trap-react": "^10.2.3",
-    "react": "^16.x || ^17.x || ^18.x",
-    "react-dom": "^16.x || ^17.x || ^18.x"
+    "react": "^16.x || ^17.x || ^18.x || ^19.x",
+    "react-dom": "^16.x || ^17.x || ^18.x || ^19.x"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
