@@ -76,7 +76,7 @@
     "react-dom": "^16.x || ^17.x || ^18.x || ^19.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^7.26.0",
     "@laynezh/vite-plugin-lib-assets": "^0.5.14",
     "@storybook/addon-a11y": "^8.0.4",
     "@storybook/addon-essentials": "^8.0.4",
@@ -94,9 +94,9 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.0.4",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@types/react-test-renderer": "^18.0.7",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@types/react-test-renderer": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.1.1",
     "@uswds/uswds": "3.7.1",
@@ -154,5 +154,5 @@
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@4.5.3"
 }
