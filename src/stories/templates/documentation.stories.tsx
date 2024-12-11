@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react'
+import React, { useState, Fragment, type ReactElement } from 'react'
 import logoImg from '@uswds/uswds/img/logo-img.png'
 
 import { GovBanner, GridContainer, Grid } from '../../index'
@@ -38,7 +38,7 @@ Page templates
   },
 }
 
-export const DocumentationPage = (): React.ReactElement => {
+export const DocumentationPage = (): ReactElement => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 

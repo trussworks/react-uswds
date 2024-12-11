@@ -1,3 +1,4 @@
+import React, { forwardRef, type ReactElement } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import { Tooltip } from './Tooltip'

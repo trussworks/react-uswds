@@ -1,3 +1,4 @@
+import React, { forwardRef, type ReactElement } from 'react'
 import { Tooltip } from './Tooltip'
 
 export default {
@@ -94,7 +95,7 @@ export const CustomComponent = (): React.ReactElement => {
       {children}
     </a>
   )
-  const CustomLink = React.forwardRef(CustomLinkForwardRef)
+  const CustomLink = forwardRef(CustomLinkForwardRef)
 
   return (
     <div className="margin-4">
