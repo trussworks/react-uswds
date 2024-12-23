@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type RadioProps = {
@@ -6,12 +6,7 @@ type RadioProps = {
   name: string
   className?: string
   label: React.ReactNode
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement | null>
-    | null
-    | undefined
+  inputRef?: React.RefObject<HTMLInputElement>
   tile?: boolean
   labelDescription?: React.ReactNode
 }
@@ -25,7 +20,7 @@ export const Radio = ({
   tile,
   labelDescription,
   ...inputProps
-}: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement<any> => {
+}: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const classes = classnames('usa-radio', className)
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,

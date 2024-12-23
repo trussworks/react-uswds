@@ -20,7 +20,7 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const SlimFooterNav = (): React.ReactElement<any> => (
+export const SlimFooterNav = (): React.ReactElement => (
   <FooterNav
     aria-label="Footer navigation"
     size="slim"
@@ -32,7 +32,7 @@ export const SlimFooterNav = (): React.ReactElement<any> => (
   />
 )
 
-export const MediumFooterNav = (): React.ReactElement<any> => (
+export const MediumFooterNav = (): React.ReactElement => (
   <FooterNav
     aria-label="Footer navigation"
     size="medium"
@@ -45,7 +45,7 @@ export const MediumFooterNav = (): React.ReactElement<any> => (
 )
 
 export const BigFooterNav = {
-  render: (): React.ReactElement<any> => (
+  render: (): React.ReactElement => (
     <Footer
       size="big"
       primary={

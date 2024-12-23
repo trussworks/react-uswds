@@ -56,7 +56,7 @@ type StorybookArguments = {
 }
 
 export const CompleteDatePicker = {
-  render: (argTypes: StorybookArguments): React.ReactElement<any> => (
+  render: (argTypes: StorybookArguments): React.ReactElement => (
     <Form onSubmit={argTypes.onSubmit}>
       <FormGroup error={argTypes.validationStatus === 'error'}>
         <Label

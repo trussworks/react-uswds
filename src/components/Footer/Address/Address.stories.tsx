@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const WithLinks = (): React.ReactElement<any> => (
+export const WithLinks = (): React.ReactElement => (
   <Address
     items={[
       <a key="phone" href="tel:123-456-7890">

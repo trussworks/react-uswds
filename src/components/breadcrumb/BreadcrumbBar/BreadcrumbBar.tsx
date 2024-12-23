@@ -1,4 +1,4 @@
-import React, { ReactElement, type JSX } from 'react';
+import React, { ReactElement, type JSX } from 'react'
 import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
@@ -16,7 +16,7 @@ export const BreadcrumbBar = ({
   className,
   navProps,
   listProps,
-}: BreadcrumbBarProps): React.ReactElement<any> => {
+}: BreadcrumbBarProps): React.ReactElement => {
   const classes = classnames(
     'usa-breadcrumb',
     {

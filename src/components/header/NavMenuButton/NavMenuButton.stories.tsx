@@ -17,6 +17,6 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-export const DefaultMenuNavMenuButton = (): React.ReactElement<any> => (
+export const DefaultMenuNavMenuButton = (): React.ReactElement => (
   <NavMenuButton label="Menu" />
 )

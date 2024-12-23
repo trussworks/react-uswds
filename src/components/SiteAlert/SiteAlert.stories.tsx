@@ -98,33 +98,33 @@ const shortAlertContent = (
   </p>
 )
 
-export const StandardInformationalSiteAlert = (): React.ReactElement<any> => (
+export const StandardInformationalSiteAlert = (): React.ReactElement => (
   <SiteAlert variant="info" heading={infoHeading}>
     {additionalContext}
   </SiteAlert>
 )
 
-export const StandardEmergencySiteAlert = (): React.ReactElement<any> => (
+export const StandardEmergencySiteAlert = (): React.ReactElement => (
   <SiteAlert variant="emergency" heading={emergencyHeading}>
     {additionalContext}
   </SiteAlert>
 )
 
-export const InformationalAlertWithNoHeader = (): React.ReactElement<any> => (
+export const InformationalAlertWithNoHeader = (): React.ReactElement => (
   <SiteAlert variant="info">{shortAlertContent}</SiteAlert>
 )
 
-export const EmergencyAlertWithNoHeader = (): React.ReactElement<any> => (
+export const EmergencyAlertWithNoHeader = (): React.ReactElement => (
   <SiteAlert variant="emergency">{shortAlertContent}</SiteAlert>
 )
 
-export const InformationalAlertWithList = (): React.ReactElement<any> => (
+export const InformationalAlertWithList = (): React.ReactElement => (
   <SiteAlert variant="info" heading={infoHeading}>
     {infoWithList}
   </SiteAlert>
 )
 
-export const EmergencyAlertWithList = (): React.ReactElement<any> => (
+export const EmergencyAlertWithList = (): React.ReactElement => (
   <SiteAlert
     variant="emergency"
     heading={emergencyHeading}
@@ -133,20 +133,20 @@ export const EmergencyAlertWithList = (): React.ReactElement<any> => (
   </SiteAlert>
 )
 
-export const SlimEmergencyAlert = (): React.ReactElement<any> => (
+export const SlimEmergencyAlert = (): React.ReactElement => (
   <SiteAlert slim variant="emergency">
     {shortAlertContent}
   </SiteAlert>
 )
 
-export const EmergencyAlertNoIcon = (): React.ReactElement<any> => (
+export const EmergencyAlertNoIcon = (): React.ReactElement => (
   <SiteAlert showIcon={false} variant="emergency">
     {shortAlertContent}
   </SiteAlert>
 )
 
 export const AlertWithCustomControls = {
-  render: (argTypes: StorybookArguments): React.ReactElement<any> => (
+  render: (argTypes: StorybookArguments): React.ReactElement => (
     <SiteAlert
       slim={argTypes.slim}
       showIcon={argTypes.showIcon}
@@ -156,11 +156,11 @@ export const AlertWithCustomControls = {
   ),
 }
 
-export const AlertWithStringContent = (): React.ReactElement<any> => (
+export const AlertWithStringContent = (): React.ReactElement => (
   <SiteAlert variant="info">Short alert content</SiteAlert>
 )
 
-export const AlertWithMultipleChildContent = (): React.ReactElement<any> => (
+export const AlertWithMultipleChildContent = (): React.ReactElement => (
   <SiteAlert variant="info">
     <p className="usa-alert__text">Alert content</p>
     <em>which includes</em> <strong>formatting tags</strong> and{' '}

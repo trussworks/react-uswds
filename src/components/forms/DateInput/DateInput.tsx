@@ -23,7 +23,7 @@ export const DateInput = ({
   minLength,
   className,
   ...inputProps
-}: DateInputElementProps & OptionalTextInputProps): React.ReactElement<any> => {
+}: DateInputElementProps & OptionalTextInputProps): React.ReactElement => {
   const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',

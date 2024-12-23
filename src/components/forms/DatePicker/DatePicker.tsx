@@ -6,7 +6,7 @@ import React, {
   FormEvent,
   KeyboardEvent,
   type JSX,
-} from 'react';
+} from 'react'
 import classnames from 'classnames'
 
 import {
@@ -68,7 +68,7 @@ export const DatePicker = ({
   onBlur,
   i18n = EN_US,
   ...inputProps
-}: DatePickerProps): React.ReactElement<any> => {
+}: DatePickerProps): React.ReactElement => {
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
@@ -263,7 +263,7 @@ export const DatePicker = ({
     // Ignoring error: "Static HTML elements with event handlers require a role."
     // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L828)
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    (<div
+    <div
       data-testid="date-picker"
       className={datePickerClasses}
       ref={datePickerEl}
@@ -343,6 +343,6 @@ export const DatePicker = ({
           {statuses.join('. ')}
         </div>
       </div>
-    </div>)
-  );
+    </div>
+  )
 }

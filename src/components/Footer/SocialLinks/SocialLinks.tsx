@@ -1,5 +1,5 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { Icon } from '../../Icon/Icons'
 import { IconProps } from '../../Icon/Icon'
@@ -15,7 +15,7 @@ type SocialLinkProps = {
 export const SocialLinks = ({
   className,
   links,
-}: SocialLinksProps & JSX.IntrinsicElements['div']): React.ReactElement<any> => {
+}: SocialLinksProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-footer__social-links grid-row grid-gap-1',
     className
@@ -34,7 +34,7 @@ export const SocialLinks = ({
 export const SocialLink = ({
   name,
   ...props
-}: SocialLinkProps & JSX.IntrinsicElements['a']): React.ReactElement<any> => {
+}: SocialLinkProps & JSX.IntrinsicElements['a']): React.ReactElement => {
   let IconComponent: React.ComponentType<IconProps>
   switch (name) {
     case 'Facebook':

@@ -41,7 +41,7 @@ Page templates
   },
 }
 
-export const LandingPage = (): React.ReactElement<any> => {
+export const LandingPage = (): React.ReactElement => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 

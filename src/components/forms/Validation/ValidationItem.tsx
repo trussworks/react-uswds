@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type ValidationItemProps = {
@@ -12,7 +12,7 @@ export const ValidationItem = ({
   className,
   isValid,
   ...liProps
-}: ValidationItemProps & JSX.IntrinsicElements['li']): React.ReactElement<any> => {
+}: ValidationItemProps & JSX.IntrinsicElements['li']): React.ReactElement => {
   const classes = classnames(
     'usa-checklist__item',
     { 'usa-checklist__item--checked': isValid },

@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 interface IdentifierMastheadProps {
@@ -11,7 +11,7 @@ export const IdentifierMasthead = ({
   children,
   ...sectionProps
 }: IdentifierMastheadProps &
-  JSX.IntrinsicElements['section']): React.ReactElement<any> => {
+  JSX.IntrinsicElements['section']): React.ReactElement => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--masthead',
     className

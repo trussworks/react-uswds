@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 export const CollectionThumbnail = ({
@@ -6,7 +6,7 @@ export const CollectionThumbnail = ({
   src,
   alt,
   ...props
-}: JSX.IntrinsicElements['img']): React.ReactElement<any> => {
+}: JSX.IntrinsicElements['img']): React.ReactElement => {
   const classes = classnames('usa-collection__img', className)
 
   return <img className={classes} src={src} alt={alt} {...props} />

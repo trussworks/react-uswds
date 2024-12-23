@@ -20,7 +20,7 @@ Source: https://designsystem.digital.gov/components/icon-list/
   },
 }
 
-export const Default = (): ReactElement<any> => (
+export const Default = (): ReactElement => (
   <IconList>
     <IconListItem>
       <IconListIcon className="text-green">
@@ -45,7 +45,7 @@ export const Default = (): ReactElement<any> => (
   </IconList>
 )
 
-export const SimpleContent = (): ReactElement<any> => (
+export const SimpleContent = (): ReactElement => (
   <>
     <p className="margin-bottom-2">Benefits of joining Global Entry program:</p>
     <IconList className="usa-icon-list--primary">
@@ -79,7 +79,7 @@ export const SimpleContent = (): ReactElement<any> => (
   </>
 )
 
-export const RichContent = (): ReactElement<any> => (
+export const RichContent = (): ReactElement => (
   <IconList>
     <IconListItem>
       <IconListIcon className="text-ink">
@@ -131,7 +131,7 @@ export const RichContent = (): ReactElement<any> => (
   </IconList>
 )
 
-export const CustomSizeWithRichContent = (): ReactElement<any> => (
+export const CustomSizeWithRichContent = (): ReactElement => (
   <>
     <p className="margin-bottom-2">
       Here are a few easy ways you can help reduce energy use and costs while
@@ -184,7 +184,7 @@ export const CustomSizeWithRichContent = (): ReactElement<any> => (
   </>
 )
 
-export const CustomSize = (): ReactElement<any> => (
+export const CustomSize = (): ReactElement => (
   <IconList className="usa-icon-list--size-lg">
     <IconListItem>
       <IconListIcon className="text-blue">

@@ -41,7 +41,7 @@ const onToggle = (
     return newIsOpen
   })
 }
-export const BasicHeader = (): React.ReactElement<any> => {
+export const BasicHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
@@ -102,7 +102,7 @@ export const BasicHeader = (): React.ReactElement<any> => {
   )
 }
 
-export const BasicHeaderWithMegaMenu = (): React.ReactElement<any> => {
+export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
@@ -211,7 +211,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement<any> => {
   )
 }
 
-export const ExtendedHeader = (): React.ReactElement<any> => {
+export const ExtendedHeader = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
   const [isOpen, setIsOpen] = useState([false])
@@ -269,7 +269,7 @@ export const ExtendedHeader = (): React.ReactElement<any> => {
   )
 }
 
-export const ExtendedHeaderWithMegaMenu = (): React.ReactElement<any> => {
+export const ExtendedHeaderWithMegaMenu = (): React.ReactElement => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 

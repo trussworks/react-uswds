@@ -35,7 +35,7 @@ export const Search = ({
   buttonAriaLabel,
   inputProps,
   ...formProps
-}: SearchInputProps & OptionalFormProps): React.ReactElement<any> => {
+}: SearchInputProps & OptionalFormProps): React.ReactElement => {
   const classes = classnames('usa-search', className)
 
   return (

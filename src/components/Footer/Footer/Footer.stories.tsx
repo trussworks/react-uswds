@@ -50,7 +50,7 @@ const socialLinkItems = [
   <SocialLink key="rss" name="RSS" href="#" />,
 ]
 
-const SignUpForm = (): React.ReactElement<any> => {
+const SignUpForm = (): React.ReactElement => {
   return (
     <div className="usa-sign-up">
       <h3 className="usa-sign-up__heading">Sign up</h3>
@@ -63,7 +63,7 @@ const SignUpForm = (): React.ReactElement<any> => {
   )
 }
 
-export const SlimFooter = (): React.ReactElement<any> => (
+export const SlimFooter = (): React.ReactElement => (
   <Footer
     size="slim"
     returnToTop={returnToTop}
@@ -110,7 +110,7 @@ export const SlimFooter = (): React.ReactElement<any> => (
   />
 )
 
-export const MediumFooter = (): React.ReactElement<any> => (
+export const MediumFooter = (): React.ReactElement => (
   <Footer
     size="medium"
     returnToTop={returnToTop}
@@ -157,7 +157,7 @@ export const MediumFooter = (): React.ReactElement<any> => (
   />
 )
 
-export const BigFooter = (): React.ReactElement<any> => (
+export const BigFooter = (): React.ReactElement => (
   <Footer
     size="big"
     returnToTop={returnToTop}

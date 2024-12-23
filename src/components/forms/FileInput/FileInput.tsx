@@ -1,4 +1,11 @@
-import React, { useState, forwardRef, useRef, useImperativeHandle, useEffect, type JSX } from 'react';
+import React, {
+  useState,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+  type JSX,
+} from 'react'
 import classnames from 'classnames'
 
 import { FilePreview } from './FilePreview'
@@ -42,7 +49,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     ...inputProps
   },
   ref
-): React.ReactElement<any> => {
+): React.ReactElement => {
   const internalRef = useRef<HTMLInputElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)

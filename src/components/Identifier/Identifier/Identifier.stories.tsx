@@ -125,7 +125,7 @@ const testIdentifierGovContentSpanish = (
   </>
 )
 
-export const IdentifierDefault = (): React.ReactElement<any> => (
+export const IdentifierDefault = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -146,7 +146,7 @@ export const IdentifierDefault = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const IdentifierSpanish = (): React.ReactElement<any> => (
+export const IdentifierSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -166,7 +166,7 @@ export const IdentifierSpanish = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const MultipleParentsAndLogos = (): React.ReactElement<any> => (
+export const MultipleParentsAndLogos = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -190,7 +190,7 @@ export const MultipleParentsAndLogos = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const MultipleParentsAndLogosSpanish = (): React.ReactElement<any> => (
+export const MultipleParentsAndLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -211,7 +211,7 @@ export const MultipleParentsAndLogosSpanish = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const MoreThanTwoParentsAndLogos = (): React.ReactElement<any> => (
+export const MoreThanTwoParentsAndLogos = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -238,7 +238,7 @@ export const MoreThanTwoParentsAndLogos = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const NoLogosEnglish = (): React.ReactElement<any> => (
+export const NoLogosEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierIdentity domain="domain.edu.mil.gov">
@@ -256,7 +256,7 @@ export const NoLogosEnglish = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const NoLogosSpanish = (): React.ReactElement<any> => (
+export const NoLogosSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierIdentity domain="domain.edu.mil.gov">
@@ -273,7 +273,7 @@ export const NoLogosSpanish = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const TaxDisclaimerEnglish = (): React.ReactElement<any> => (
+export const TaxDisclaimerEnglish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -295,7 +295,7 @@ export const TaxDisclaimerEnglish = (): React.ReactElement<any> => (
   </Identifier>
 )
 
-export const TaxDisclaimerSpanish = (): React.ReactElement<any> => (
+export const TaxDisclaimerSpanish = (): React.ReactElement => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -317,7 +317,7 @@ export const TaxDisclaimerSpanish = (): React.ReactElement<any> => (
 )
 
 export const TaxDisclaimerAndMultipleParentsAndLogos =
-  (): React.ReactElement<any> => (
+  (): React.ReactElement => (
     <Identifier>
       <IdentifierMasthead aria-label="Agency identifier">
         <IdentifierLogos>

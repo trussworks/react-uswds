@@ -33,7 +33,7 @@ export default {
   },
 }
 
-export const CollectionWithDefaultItems = (): React.ReactElement<any> => (
+export const CollectionWithDefaultItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
@@ -110,7 +110,7 @@ export const CollectionWithDefaultItems = (): React.ReactElement<any> => (
   </div>
 )
 
-export const CollectionWithThumbnailItems = (): React.ReactElement<any> => (
+export const CollectionWithThumbnailItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem
@@ -196,7 +196,7 @@ export const CollectionWithThumbnailItems = (): React.ReactElement<any> => (
   </div>
 )
 
-export const CollectionWithHeadingItems = (): React.ReactElement<any> => (
+export const CollectionWithHeadingItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
@@ -251,7 +251,7 @@ export const CollectionWithHeadingItems = (): React.ReactElement<any> => (
   </div>
 )
 
-export const CollectionWithMixedItems = (): React.ReactElement<any> => (
+export const CollectionWithMixedItems = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection>
       <CollectionItem>
@@ -382,7 +382,7 @@ export const CollectionWithMixedItems = (): React.ReactElement<any> => (
   </div>
 )
 
-export const CondensedCollection = (): React.ReactElement<any> => (
+export const CondensedCollection = (): React.ReactElement => (
   <div className="tablet:grid-col-6">
     <Collection condensed>
       <CollectionItem>

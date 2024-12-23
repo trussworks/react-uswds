@@ -1,13 +1,6 @@
-import React, { forwardRef, type JSX } from 'react';
+import React, { forwardRef, type JSX } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
-
-type TextInputRef =
-  | string
-  | ((instance: HTMLInputElement | null) => void)
-  | React.RefObject<HTMLInputElement | null>
-  | null
-  | undefined
 
 type RequiredTextInputProps = {
   id: string
@@ -19,7 +12,7 @@ type CustomTextInputProps = {
   className?: string
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
-  inputRef?: TextInputRef
+  inputRef?: React.RefObject<HTMLInputElement>
   inputProps?: JSX.IntrinsicElements['input']
 }
 
@@ -32,7 +25,7 @@ export const TextInput = forwardRef(
   (
     props: TextInputProps,
     ref: React.ForwardedRef<HTMLInputElement> | undefined
-  ): React.ReactElement<any> => {
+  ): React.ReactElement => {
     const {
       id,
       name,

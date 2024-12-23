@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type ButtonGroupProps = {
@@ -12,7 +12,7 @@ export const ButtonGroup = ({
   children,
   type = 'default',
   ...restProps
-}: ButtonGroupProps): React.ReactElement<any> => {
+}: ButtonGroupProps): React.ReactElement => {
   const classes = classnames(
     'usa-button-group',
     {

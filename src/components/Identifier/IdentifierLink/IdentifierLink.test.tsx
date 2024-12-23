@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import { render } from '@testing-library/react'
 import { IdentifierLink } from './IdentifierLink'
 
@@ -26,7 +26,7 @@ describe('IdentifierLink component', () => {
       children,
       className,
       ...linkProps
-    }: CustomLinkProps): React.ReactElement<any> => (
+    }: CustomLinkProps): React.ReactElement => (
       <a href={to} className={className} {...linkProps}>
         {children}
       </a>

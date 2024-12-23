@@ -1,4 +1,4 @@
-import React, { forwardRef, type JSX } from 'react';
+import React, { forwardRef, type JSX } from 'react'
 import classnames from 'classnames'
 
 interface ModalWrapperProps {
@@ -16,7 +16,7 @@ export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
 > = (
   { id, children, isVisible, forceAction, className, handleClose, ...divProps },
   ref
-): React.ReactElement<any> => {
+): React.ReactElement => {
   const classes = classnames(
     'usa-modal-wrapper',
     {

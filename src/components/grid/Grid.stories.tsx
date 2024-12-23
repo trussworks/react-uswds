@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 
 import { GridContainer } from './GridContainer/GridContainer'
 import { Grid } from './Grid/Grid'
@@ -33,7 +33,7 @@ const CustomGrid: React.FunctionComponent<CustomGridProps> = ({
   children,
   className,
   ...liProps
-}: CustomGridProps): React.ReactElement<any> => (
+}: CustomGridProps): React.ReactElement => (
   <li className={className} {...liProps}>
     {children}
   </li>
@@ -47,13 +47,13 @@ const CustomGridContainer: React.FunctionComponent<
   children,
   className,
   ...ulProps
-}: CustomGridContainerProps): React.ReactElement<any> => (
+}: CustomGridContainerProps): React.ReactElement => (
   <ul className={className} {...ulProps}>
     {children}
   </ul>
 )
 
-export const DefaultContainer = (): React.ReactElement<any> => (
+export const DefaultContainer = (): React.ReactElement => (
   <GridContainer>
     <Grid row>
       <Grid tablet={{ col: true }}>{testContent}</Grid>
@@ -63,7 +63,7 @@ export const DefaultContainer = (): React.ReactElement<any> => (
   </GridContainer>
 )
 
-export const CustomElements = (): React.ReactElement<any> => (
+export const CustomElements = (): React.ReactElement => (
   <GridContainer<CustomGridContainerProps> asCustom={CustomGridContainer}>
     <Grid<CustomGridProps> asCustom={CustomGrid}>
       <Grid col={11}>{testContent}</Grid>
@@ -111,7 +111,7 @@ export const CustomElements = (): React.ReactElement<any> => (
   </GridContainer>
 )
 
-export const ColumnSpans = (): React.ReactElement<any> => (
+export const ColumnSpans = (): React.ReactElement => (
   <GridContainer>
     <Grid row>
       <Grid col={1}>{testContent}</Grid>
@@ -173,7 +173,7 @@ export const ColumnSpans = (): React.ReactElement<any> => (
   </GridContainer>
 )
 
-export const AutoLayoutColumns = (): React.ReactElement<any> => (
+export const AutoLayoutColumns = (): React.ReactElement => (
   <GridContainer>
     <Grid row>
       <Grid col="auto">{testContent}</Grid>
@@ -184,7 +184,7 @@ export const AutoLayoutColumns = (): React.ReactElement<any> => (
   </GridContainer>
 )
 
-export const Responsive = (): React.ReactElement<any> => (
+export const Responsive = (): React.ReactElement => (
   <>
     <h2>Same at all breakpoints</h2>
     <GridContainer>
@@ -242,7 +242,7 @@ export const Responsive = (): React.ReactElement<any> => (
   </>
 )
 
-export const OffsetColumns = (): React.ReactElement<any> => (
+export const OffsetColumns = (): React.ReactElement => (
   <GridContainer>
     <Grid row>
       <Grid col>{testContent}</Grid>
@@ -313,7 +313,7 @@ export const OffsetColumns = (): React.ReactElement<any> => (
   </GridContainer>
 )
 
-export const ColumnWrapping = (): React.ReactElement<any> => (
+export const ColumnWrapping = (): React.ReactElement => (
   <GridContainer>
     <Grid row>
       <Grid col={8}>{testContent}</Grid>
@@ -323,7 +323,7 @@ export const ColumnWrapping = (): React.ReactElement<any> => (
   </GridContainer>
 )
 
-export const Gutters = (): React.ReactElement<any> => (
+export const Gutters = (): React.ReactElement => (
   <>
     <h2>Default gutter</h2>
     <GridContainer>
@@ -435,43 +435,43 @@ export const Gutters = (): React.ReactElement<any> => (
   </>
 )
 
-export const CardContainer = (): React.ReactElement<any> => (
+export const CardContainer = (): React.ReactElement => (
   <GridContainer containerSize="card">{testContent}</GridContainer>
 )
 
-export const CardLgContainer = (): React.ReactElement<any> => (
+export const CardLgContainer = (): React.ReactElement => (
   <GridContainer containerSize="card-lg">{testContent}</GridContainer>
 )
 
-export const MobileContainer = (): React.ReactElement<any> => (
+export const MobileContainer = (): React.ReactElement => (
   <GridContainer containerSize="mobile">{testContent}</GridContainer>
 )
 
-export const MobileLgContainer = (): React.ReactElement<any> => (
+export const MobileLgContainer = (): React.ReactElement => (
   <GridContainer containerSize="mobile-lg">{testContent}</GridContainer>
 )
 
-export const TabletContainer = (): React.ReactElement<any> => (
+export const TabletContainer = (): React.ReactElement => (
   <GridContainer containerSize="tablet">{testContent}</GridContainer>
 )
 
-export const TabletLgContainer = (): React.ReactElement<any> => (
+export const TabletLgContainer = (): React.ReactElement => (
   <GridContainer containerSize="tablet-lg">{testContent}</GridContainer>
 )
 
-export const DesktopContainer = (): React.ReactElement<any> => (
+export const DesktopContainer = (): React.ReactElement => (
   <GridContainer containerSize="desktop">{testContent}</GridContainer>
 )
 
-export const DesktopLgContainer = (): React.ReactElement<any> => (
+export const DesktopLgContainer = (): React.ReactElement => (
   <GridContainer containerSize="desktop-lg">{testContent}</GridContainer>
 )
 
-export const WidescreenContainer = (): React.ReactElement<any> => (
+export const WidescreenContainer = (): React.ReactElement => (
   <GridContainer containerSize="widescreen">{testContent}</GridContainer>
 )
 
-export const FooterLayout = (): React.ReactElement<any> => (
+export const FooterLayout = (): React.ReactElement => (
   <GridContainer>
     <Grid row gap>
       <Grid tablet={{ col: 8 }}>

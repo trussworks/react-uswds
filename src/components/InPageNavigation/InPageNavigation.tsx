@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type JSX } from 'react';
+import React, { useEffect, useState, type JSX } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'
@@ -28,7 +28,7 @@ export const InPageNavigation = ({
   title = 'On this page',
   ...divProps
 }: InPageNavigationProps &
-  Omit<JSX.IntrinsicElements['div'], 'content'>): React.ReactElement<any> => {
+  Omit<JSX.IntrinsicElements['div'], 'content'>): React.ReactElement => {
   const asideClasses = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)

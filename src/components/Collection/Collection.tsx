@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type CollectionProps = {
@@ -10,7 +10,7 @@ export const Collection = ({
   className,
   condensed,
   ...ulProps
-}: CollectionProps & JSX.IntrinsicElements['ul']): React.ReactElement<any> => {
+}: CollectionProps & JSX.IntrinsicElements['ul']): React.ReactElement => {
   const classes = classnames(
     'usa-collection',
     { 'usa-collection--condensed': condensed },

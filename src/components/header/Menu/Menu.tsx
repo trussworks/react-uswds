@@ -19,7 +19,7 @@ export const Menu = ({
   isOpen,
   type,
   ...navListProps
-}: MenuProps & NavListProps): React.ReactElement<any> => {
+}: MenuProps & NavListProps): React.ReactElement => {
   return (
     <NavList
       className={className}

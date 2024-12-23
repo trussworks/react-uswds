@@ -1,11 +1,11 @@
-import React, { ReactElement, type JSX } from 'react';
+import React, { ReactElement, type JSX } from 'react'
 import classNames from 'classnames'
 
 export const MediaBlockBody = ({
   children,
   className,
   ...divProps
-}: JSX.IntrinsicElements['div']): ReactElement<any> => {
+}: JSX.IntrinsicElements['div']): ReactElement => {
   const classes = classNames('usa-media-block__body', className)
 
   return (

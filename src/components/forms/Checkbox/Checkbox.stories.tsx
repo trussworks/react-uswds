@@ -17,19 +17,19 @@ Source: https://designsystem.digital.gov/components/checkbox
   },
 }
 
-export const DefaultCheckbox = (): React.ReactElement<any> => (
+export const DefaultCheckbox = (): React.ReactElement => (
   <Checkbox id="checkbox" name="checkbox" label="My Checkbox" />
 )
 
-export const Checked = (): React.ReactElement<any> => (
+export const Checked = (): React.ReactElement => (
   <Checkbox id="checkbox" name="checkbox" label="My Checkbox" defaultChecked />
 )
 
-export const Disabled = (): React.ReactElement<any> => (
+export const Disabled = (): React.ReactElement => (
   <Checkbox id="checkbox" name="checkbox" label="My Checkbox" disabled />
 )
 
-export const WithRichLabel = (): React.ReactElement<any> => (
+export const WithRichLabel = (): React.ReactElement => (
   <Checkbox
     id="checkbox"
     name="checkbox"
@@ -37,7 +37,7 @@ export const WithRichLabel = (): React.ReactElement<any> => (
   />
 )
 
-export const WithLabelDescription = (): React.ReactElement<any> => (
+export const WithLabelDescription = (): React.ReactElement => (
   <Checkbox
     id="checkbox"
     name="checkbox"
@@ -46,11 +46,11 @@ export const WithLabelDescription = (): React.ReactElement<any> => (
   />
 )
 
-export const Tile = (): React.ReactElement<any> => (
+export const Tile = (): React.ReactElement => (
   <Checkbox id="checkbox" name="checkbox" label="My Checkbox" tile />
 )
 
-export const TileWithLabelDescription = (): React.ReactElement<any> => (
+export const TileWithLabelDescription = (): React.ReactElement => (
   <Checkbox
     id="checkbox"
     name="checkbox"

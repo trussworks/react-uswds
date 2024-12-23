@@ -50,7 +50,7 @@ Page templates
   },
 }
 
-export const NotFoundPage = (): React.ReactElement<any> => {
+export const NotFoundPage = (): React.ReactElement => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 

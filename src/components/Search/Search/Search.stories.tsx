@@ -25,15 +25,15 @@ const sampleLocalization = {
   buttonText: 'Buscar',
 }
 
-export const DefaultSearch = (): React.ReactElement<any> => (
+export const DefaultSearch = (): React.ReactElement => (
   <Search onSubmit={mockSubmit} />
 )
 
-export const BigSearch = (): React.ReactElement<any> => (
+export const BigSearch = (): React.ReactElement => (
   <Search size="big" onSubmit={mockSubmit} />
 )
 
-export const SmallSearch = (): React.ReactElement<any> => (
+export const SmallSearch = (): React.ReactElement => (
   <Search
     placeholder="(Optional) Placeholder Text"
     size="small"
@@ -41,15 +41,15 @@ export const SmallSearch = (): React.ReactElement<any> => (
   />
 )
 
-export const DefaultSpanishSearch = (): React.ReactElement<any> => (
+export const DefaultSpanishSearch = (): React.ReactElement => (
   <Search onSubmit={mockSubmit} i18n={sampleLocalization} />
 )
 
-export const BigSpanishSearch = (): React.ReactElement<any> => (
+export const BigSpanishSearch = (): React.ReactElement => (
   <Search size="big" onSubmit={mockSubmit} i18n={sampleLocalization} />
 )
 
-export const SmallSpanishSearch = (): React.ReactElement<any> => (
+export const SmallSpanishSearch = (): React.ReactElement => (
   <Search
     placeholder="(Optional) Spanish Placeholder Text"
     size="small"

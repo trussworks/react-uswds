@@ -33,7 +33,7 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const TextInputForm = (): React.ReactElement<any> => (
+export const TextInputForm = (): React.ReactElement => (
   <div style={{ marginLeft: '4rem' }}>
     <Form onSubmit={mockSubmit}>
       <Label htmlFor="input-type-text">Text input label</Label>
@@ -77,7 +77,7 @@ export const TextInputForm = (): React.ReactElement<any> => (
   </div>
 )
 
-export const NameForm = (): React.ReactElement<any> => (
+export const NameForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
     <Fieldset legend="Name" legendStyle="large">
       <Label htmlFor="first-name">First or given name</Label>
@@ -108,7 +108,7 @@ export const NameForm = (): React.ReactElement<any> => (
   </Form>
 )
 
-export const AddressForm = (): React.ReactElement<any> => (
+export const AddressForm = (): React.ReactElement => (
   <Form onSubmit={mockSubmit} large>
     <Fieldset legend="Mailing address" legendStyle="large">
       <p>
@@ -205,7 +205,7 @@ export const AddressForm = (): React.ReactElement<any> => (
   </Form>
 )
 
-export const SignInForm = (): React.ReactElement<any> => {
+export const SignInForm = (): React.ReactElement => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (
@@ -254,7 +254,7 @@ export const SignInForm = (): React.ReactElement<any> => {
     </Form>
   )
 }
-export const PasswordResetForm = (): React.ReactElement<any> => {
+export const PasswordResetForm = (): React.ReactElement => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (

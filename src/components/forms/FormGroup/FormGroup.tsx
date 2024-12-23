@@ -11,7 +11,7 @@ export const FormGroup = ({
   children,
   className,
   error,
-}: FormGroupProps): React.ReactElement<any> => {
+}: FormGroupProps): React.ReactElement => {
   const classes = classnames(
     'usa-form-group',
     { 'usa-form-group--error': error },

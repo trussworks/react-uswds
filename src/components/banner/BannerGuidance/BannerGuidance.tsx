@@ -1,11 +1,11 @@
-import React, { ReactElement, type JSX } from 'react';
+import React, { ReactElement, type JSX } from 'react'
 import classNames from 'classnames'
 
 export const BannerGuidance = ({
   children,
   className,
   ...divProps
-}: JSX.IntrinsicElements['div']): ReactElement<any> => {
+}: JSX.IntrinsicElements['div']): ReactElement => {
   const divClasses = classNames('usa-banner__guidance', className)
 
   return (

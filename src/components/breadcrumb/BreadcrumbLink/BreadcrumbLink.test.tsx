@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import { render } from '@testing-library/react'
 import { BreadcrumbLink } from './BreadcrumbLink'
 
@@ -26,7 +26,7 @@ describe('BreadcrumbLink component', () => {
       children,
       className,
       ...linkProps
-    }: CustomLinkProps): React.ReactElement<any> => (
+    }: CustomLinkProps): React.ReactElement => (
       <a href={to} className={className} {...linkProps}>
         {children}
       </a>

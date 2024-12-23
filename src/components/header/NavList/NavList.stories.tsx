@@ -26,6 +26,6 @@ const testItems = [
   </a>,
 ]
 
-export const BasicNavList = (): React.ReactElement<any> => (
+export const BasicNavList = (): React.ReactElement => (
   <NavList items={testItems} type="primary" />
 )

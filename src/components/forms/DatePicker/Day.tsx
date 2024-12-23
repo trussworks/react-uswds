@@ -47,7 +47,7 @@ const DayForwardRef: React.ForwardRefRenderFunction<
     i18n = EN_US,
   },
   ref
-): React.ReactElement<any> => {
+): React.ReactElement => {
   const day = date.getDate()
   const month = date.getMonth()
   const year = date.getFullYear()
@@ -89,7 +89,7 @@ const DayForwardRef: React.ForwardRefRenderFunction<
     // Ignoring error: "The attribute aria-selected is not supported by the role button. This role is implicit on the element button."
     // Ignoring because this attribute is present in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1017)
     // eslint-disable-next-line jsx-a11y/role-supports-aria-props
-    (<button
+    <button
       type="button"
       data-testid="select-date"
       ref={ref}
@@ -106,8 +106,8 @@ const DayForwardRef: React.ForwardRefRenderFunction<
       onKeyDown={handleKeyDown}
       onMouseMove={isFocusedMonth ? handleMouseMove : undefined}>
       {day}
-    </button>)
-  );
+    </button>
+  )
 }
 
 export const Day = forwardRef(DayForwardRef)

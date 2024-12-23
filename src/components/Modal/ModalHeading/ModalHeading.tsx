@@ -5,7 +5,7 @@ export const ModalHeading = ({
   className,
   children,
   ...headingProps
-}: React.HTMLProps<HTMLHeadingElement>): React.ReactElement<any> => {
+}: React.HTMLProps<HTMLHeadingElement>): React.ReactElement => {
   const classes = classnames('usa-modal__heading', className)
 
   return (

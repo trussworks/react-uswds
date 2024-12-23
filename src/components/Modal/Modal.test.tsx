@@ -32,7 +32,7 @@ vi.mock('./utils', async (importOriginal) => {
  * incompatibility. See: https://github.com/focus-trap/tabbable#testing-in-jsdom
  */
 const renderWithModalRoot = (
-  ui: React.ReactElement<any>,
+  ui: React.ReactElement,
   options: RenderOptions = {}
 ) => {
   const appContainer = document.createElement('div')
@@ -55,7 +55,7 @@ const ExampleModal = ({
   forceAction = false,
 }: {
   forceAction?: boolean
-}): React.ReactElement<any> => {
+}): React.ReactElement => {
   const modalRef = useRef<ModalRef>(null)
 
   return (
@@ -101,7 +101,7 @@ const ExampleModal = ({
   )
 }
 
-const ExampleModalWithFocusElement = (): React.ReactElement<any> => {
+const ExampleModalWithFocusElement = (): React.ReactElement => {
   const modalRef = useRef<ModalRef>(null)
 
   return (

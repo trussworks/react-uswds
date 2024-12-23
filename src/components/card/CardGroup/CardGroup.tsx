@@ -1,11 +1,11 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 export const CardGroup = ({
   children,
   className,
   ...ulProps
-}: JSX.IntrinsicElements['ul']): React.ReactElement<any> => {
+}: JSX.IntrinsicElements['ul']): React.ReactElement => {
   const classes = classnames('usa-card-group', className)
 
   return (

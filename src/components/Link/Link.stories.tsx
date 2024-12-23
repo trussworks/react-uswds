@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import { Link } from './Link'
 
 export default {
@@ -15,13 +15,13 @@ Based on Typography guide: https://designsystem.digital.gov/components/typograph
   },
 }
 
-export const Default = (): React.ReactElement<any> => (
+export const Default = (): React.ReactElement => (
   <p>
     <Link href={'#'}> This</Link> is a text link.
   </p>
 )
 
-export const Visited = (): React.ReactElement<any> => (
+export const Visited = (): React.ReactElement => (
   <p>
     <Link className="usa-color-text-visited" href={'#'}>
       This
@@ -30,7 +30,7 @@ export const Visited = (): React.ReactElement<any> => (
   </p>
 )
 
-export const DarkBackground = (): React.ReactElement<any> => (
+export const DarkBackground = (): React.ReactElement => (
   <div className="usa-dark-background" style={{ padding: '10px' }}>
     <p>
       <Link href={'#'}>This</Link> is a text link on a dark background
@@ -38,7 +38,7 @@ export const DarkBackground = (): React.ReactElement<any> => (
   </div>
 )
 
-export const ExternalLink = (): React.ReactElement<any> => (
+export const ExternalLink = (): React.ReactElement => (
   <p>
     This is a link that goes to an&nbsp;
     <Link variant="external" href={'http://www.truss.works'}>
@@ -48,7 +48,7 @@ export const ExternalLink = (): React.ReactElement<any> => (
   </p>
 )
 
-export const NavLink = (): React.ReactElement<any> => (
+export const NavLink = (): React.ReactElement => (
   <p>
     This is a&nbsp;
     <Link variant="nav" href={'#'}>
@@ -57,7 +57,7 @@ export const NavLink = (): React.ReactElement<any> => (
   </p>
 )
 
-export const StyledAsButton = (): React.ReactElement<any> => (
+export const StyledAsButton = (): React.ReactElement => (
   <p>
     <Link
       className="usa-button"
@@ -71,7 +71,7 @@ export const StyledAsButton = (): React.ReactElement<any> => (
   </p>
 )
 
-export const CustomComponentLink = (): React.ReactElement<any> => {
+export const CustomComponentLink = (): React.ReactElement => {
   type MockLinkProps = React.PropsWithChildren<{
     to: string
     className: string
@@ -83,7 +83,7 @@ export const CustomComponentLink = (): React.ReactElement<any> => {
     className,
     children,
     ...linkProps
-  }: MockLinkProps): React.ReactElement<any> => (
+  }: MockLinkProps): React.ReactElement => (
     <a href={to} className={className} {...linkProps}>
       {children}
     </a>

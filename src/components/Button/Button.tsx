@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 export type ButtonProps = {
@@ -26,7 +26,7 @@ export const Button = ({
   onClick,
   className,
   ...defaultProps
-}: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement<any> => {
+}: ButtonProps & JSX.IntrinsicElements['button']): React.ReactElement => {
   const classes = classnames(
     'usa-button',
     {

@@ -1,4 +1,11 @@
-import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle, type JSX } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  type JSX,
+} from 'react'
 import FocusTrap from 'focus-trap-react'
 
 import { useModal, getScrollbarWidth } from './utils'
@@ -46,11 +53,11 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     ...divProps
   },
   ref
-): React.ReactElement<any> => {
+): React.ReactElement => {
   const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
-  const initialPaddingRef = useRef<string>(undefined)
-  const tempPaddingRef = useRef<string>(undefined)
+  const initialPaddingRef = useRef<string>()
+  const tempPaddingRef = useRef<string>()
   const modalEl = useRef<HTMLDivElement>(null)
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'

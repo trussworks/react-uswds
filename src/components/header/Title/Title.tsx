@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type TitleProps = {
@@ -9,7 +9,7 @@ export const Title = ({
   className,
   children,
   ...divProps
-}: TitleProps & JSX.IntrinsicElements['div']): React.ReactElement<any> => {
+}: TitleProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-logo', className)
 
   return (

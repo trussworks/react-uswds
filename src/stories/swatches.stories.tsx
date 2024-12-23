@@ -9,7 +9,7 @@ export default {
   },
 }
 
-export const Swatches = (): React.ReactElement<any> => (
+export const Swatches = (): React.ReactElement => (
   <div className="grid-container">
     <h1>Color swatches</h1>
     <h2>Primary</h2>

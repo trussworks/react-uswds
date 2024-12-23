@@ -23,7 +23,7 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const TextInput = (): React.ReactElement<any> => (
+export const TextInput = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
     <FormGroup>
       <Label htmlFor="with-hint-input">Text input</Label>
@@ -40,7 +40,7 @@ export const TextInput = (): React.ReactElement<any> => (
   </Form>
 )
 
-export const Textarea = (): React.ReactElement<any> => (
+export const Textarea = (): React.ReactElement => (
   <Form onSubmit={mockSubmit}>
     <FormGroup>
       <Label htmlFor="with-hint-textarea">Textarea</Label>
@@ -59,7 +59,7 @@ export const Textarea = (): React.ReactElement<any> => (
   </Form>
 )
 
-const withCustomCharacterCount = (): React.ReactElement<any> => {
+const withCustomCharacterCount = (): React.ReactElement => {
   const customEmojiCharacterCount = (text: string): number => {
     const starCount = (text.match(/⭐️/g) || []).length
     return Array.from(text).length - starCount * 2

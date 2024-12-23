@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { GridItemProps, BreakpointKeys, breakpoints } from '../types'
@@ -82,11 +82,11 @@ export const applyGridClasses = (gridLayout: GridProps): string => {
   return classes
 }
 
-export function Grid(props: DefaultGridProps): React.ReactElement<any>
-export function Grid<T>(props: CustomGridProps<T>): React.ReactElement<any>
+export function Grid(props: DefaultGridProps): React.ReactElement
+export function Grid<T>(props: CustomGridProps<T>): React.ReactElement
 export function Grid<FCProps = DefaultGridProps>(
   props: DefaultGridProps | CustomGridProps<FCProps>
-): React.ReactElement<any> {
+): React.ReactElement {
   const {
     children,
     className,

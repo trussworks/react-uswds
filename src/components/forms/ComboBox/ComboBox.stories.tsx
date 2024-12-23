@@ -27,7 +27,7 @@ const noop = (): void => {
   return
 }
 
-export const DefaultComboBoxWithPropOptions = (): React.ReactElement<any> => {
+export const DefaultComboBoxWithPropOptions = (): React.ReactElement => {
   const fruitList = Object.entries(fruits).map(([key, value]) => ({
     value: key,
     label: value,
@@ -46,7 +46,7 @@ export const DefaultComboBoxWithPropOptions = (): React.ReactElement<any> => {
   )
 }
 
-export const WithDefaultValue = (): React.ReactElement<any> => {
+export const WithDefaultValue = (): React.ReactElement => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -66,7 +66,7 @@ export const WithDefaultValue = (): React.ReactElement<any> => {
   )
 }
 
-export const WithLabel = (): React.ReactElement<any> => {
+export const WithLabel = (): React.ReactElement => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -86,7 +86,7 @@ export const WithLabel = (): React.ReactElement<any> => {
   )
 }
 
-export const Disabled = (): React.ReactElement<any> => {
+export const Disabled = (): React.ReactElement => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -106,7 +106,7 @@ export const Disabled = (): React.ReactElement<any> => {
   )
 }
 
-export const WithOtherFields = (): React.ReactElement<any> => {
+export const WithOtherFields = (): React.ReactElement => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -152,7 +152,7 @@ export const WithOtherFields = (): React.ReactElement<any> => {
   )
 }
 
-export const ExposedRefMethods = (): React.ReactElement<any> => {
+export const ExposedRefMethods = (): React.ReactElement => {
   const ref = useRef<ComboBoxRef>(null)
 
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
@@ -184,7 +184,7 @@ export const ExposedRefMethods = (): React.ReactElement<any> => {
   )
 }
 
-export const CustomInputChangeHandler = (): React.ReactElement<any> => {
+export const CustomInputChangeHandler = (): React.ReactElement => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,

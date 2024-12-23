@@ -27,7 +27,7 @@ export const Alert = ({
   className,
   validation,
   ...props
-}: AlertProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement<any> => {
+}: AlertProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
   const classes = classnames(
     'usa-alert',
     {

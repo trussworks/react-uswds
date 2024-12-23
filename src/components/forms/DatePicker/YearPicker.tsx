@@ -26,7 +26,7 @@ export const YearPicker = ({
   maxDate,
   handleSelectYear,
   setStatuses,
-}: YearPickerProps): React.ReactElement<any> => {
+}: YearPickerProps): React.ReactElement => {
   const prevYearChunkEl = useRef<HTMLButtonElement>(null)
   const nextYearChunkEl = useRef<HTMLButtonElement>(null)
   const focusedYearEl = useRef<HTMLButtonElement>(null)
@@ -228,7 +228,7 @@ export const YearPicker = ({
     // Ignoring error: "Static HTML elements with event handlers require a role."
     // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1457)
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    (<div
+    <div
       tabIndex={-1}
       className="usa-date-picker__calendar__year-picker"
       data-testid="calendar-year-picker"
@@ -267,6 +267,6 @@ export const YearPicker = ({
           </tr>
         </tbody>
       </table>
-    </div>)
-  );
+    </div>
+  )
 }

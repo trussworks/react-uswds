@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { Label } from '../../forms/Label/Label'
@@ -27,7 +27,7 @@ export const SearchField = ({
   label = 'Search',
   inputId = 'search-field',
   inputProps,
-}: SearchFieldProps & OptionalTextInputProps): React.ReactElement<any> => {
+}: SearchFieldProps & OptionalTextInputProps): React.ReactElement => {
   const classes = classnames(
     {
       'usa-search--big': isBig,

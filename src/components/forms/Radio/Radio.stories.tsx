@@ -17,11 +17,11 @@ Source: https://designsystem.digital.gov/components/radio-buttons
   },
 }
 
-export const DefaultRadio = (): React.ReactElement<any> => (
+export const DefaultRadio = (): React.ReactElement => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" />
 )
 
-export const Selected = (): React.ReactElement<any> => (
+export const Selected = (): React.ReactElement => (
   <Radio
     id="input-radio"
     name="input-radio"
@@ -30,11 +30,11 @@ export const Selected = (): React.ReactElement<any> => (
   />
 )
 
-export const Disabled = (): React.ReactElement<any> => (
+export const Disabled = (): React.ReactElement => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
 )
 
-export const WithLabelDescription = (): React.ReactElement<any> => (
+export const WithLabelDescription = (): React.ReactElement => (
   <Radio
     id="input-radio"
     name="input-radio"
@@ -43,11 +43,11 @@ export const WithLabelDescription = (): React.ReactElement<any> => (
   />
 )
 
-export const Tile = (): React.ReactElement<any> => (
+export const Tile = (): React.ReactElement => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" tile />
 )
 
-export const TileWithLabelDescription = (): React.ReactElement<any> => (
+export const TileWithLabelDescription = (): React.ReactElement => (
   <Radio
     id="input-radio"
     name="input-radio"

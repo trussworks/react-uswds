@@ -25,4 +25,4 @@ const links = [
   <SocialLink key="instagram" name="Instagram" href="#" />,
   <SocialLink key="rss" name="RSS" href="#" />,
 ]
-export const Example = (): React.ReactElement<any> => <SocialLinks links={links} />
+export const Example = (): React.ReactElement => <SocialLinks links={links} />

@@ -17,7 +17,7 @@ export const SummaryBoxHeading = ({
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
-  >): React.ReactElement<any> => {
+  >): React.ReactElement => {
   const classes = classnames('usa-summary-box__heading', className)
   const Heading = headingLevel
   return (

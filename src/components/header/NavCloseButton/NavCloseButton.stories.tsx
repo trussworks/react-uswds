@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-export const DefaultMenuNavCloseButton = (): React.ReactElement<any> => (
+export const DefaultMenuNavCloseButton = (): React.ReactElement => (
   <nav className="usa-nav is-visible">
     <NavCloseButton />
   </nav>

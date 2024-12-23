@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { RequiredMarker } from './RequiredMarker'
 
@@ -21,7 +21,7 @@ export const Label = ({
   srOnly,
   requiredMarker,
   ...labelProps
-}: LabelProps & JSX.IntrinsicElements['label']): React.ReactElement<any> => {
+}: LabelProps & JSX.IntrinsicElements['label']): React.ReactElement => {
   const classes = classnames(
     {
       'usa-label': !srOnly,

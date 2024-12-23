@@ -21,7 +21,7 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const Slim = (): React.ReactElement<any> => (
+export const Slim = (): React.ReactElement => (
   <div className="usa-footer__secondary-section">
     <Logo
       size="slim"
@@ -33,7 +33,7 @@ export const Slim = (): React.ReactElement<any> => (
   </div>
 )
 
-export const NoHeading = (): React.ReactElement<any> => (
+export const NoHeading = (): React.ReactElement => (
   <div className="usa-footer__secondary-section">
     <Logo
       image={

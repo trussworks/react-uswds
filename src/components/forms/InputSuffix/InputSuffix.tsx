@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type InputSuffixProps = {
@@ -10,7 +10,7 @@ export const InputSuffix = ({
   className,
   children,
   ...divProps
-}: InputSuffixProps): React.ReactElement<any> => {
+}: InputSuffixProps): React.ReactElement => {
   const classes = classnames('usa-input-suffix', className)
 
   return (

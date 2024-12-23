@@ -21,7 +21,7 @@ const SHORT_MONTH_LABELS = [
 
 export const CollectionCalendarDate = ({
   datetime,
-}: CollectionCalendarDateProps): React.ReactElement<any> => {
+}: CollectionCalendarDateProps): React.ReactElement => {
   const dateObj = new Date(datetime)
   const isDateInvalid = dateObj && dateObj.getTime && isNaN(dateObj.getTime())
 

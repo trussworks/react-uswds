@@ -40,15 +40,15 @@ function gridContainerClasses(
 
 export function GridContainer(
   props: DefaultGridContainerProps
-): React.ReactElement<any>
+): React.ReactElement
 export function GridContainer<T>(
   props: CustomGridContainerProps<T>
-): React.ReactElement<any>
+): React.ReactElement
 export function GridContainer<
   FCProps extends React.PropsWithChildren<object> = DefaultGridContainerProps,
 >(
   props: DefaultGridContainerProps | CustomGridContainerProps<FCProps>
-): React.ReactElement<any> {
+): React.ReactElement {
   if (isCustomProps(props)) {
     const { className, containerSize, asCustom, children, ...remainingProps } =
       props

@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { type JSX } from 'react'
 
 import classnames from 'classnames'
 
@@ -11,7 +11,7 @@ export const SummaryBox = ({
   children,
   className,
   ...divProps
-}: SummaryBoxProps & JSX.IntrinsicElements['div']): React.ReactElement<any> => {
+}: SummaryBoxProps & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames('usa-summary-box', className)
   return (
     <div className={classes} data-testid="summary-box" {...divProps}>

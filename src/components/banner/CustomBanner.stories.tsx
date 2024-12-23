@@ -15,7 +15,7 @@ import flagImg from '@uswds/uswds/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 import httpsIcon from '@uswds/uswds/img/icon-https.svg'
 
-export const CustomBanner = (): ReactElement<any> => {
+export const CustomBanner = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

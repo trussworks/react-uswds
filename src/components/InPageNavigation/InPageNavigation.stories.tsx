@@ -48,7 +48,7 @@ type StorybookArguments = {
   title: string
 }
 
-export const Default = (argTypes: StorybookArguments): React.ReactElement<any> => (
+export const Default = (argTypes: StorybookArguments): React.ReactElement => (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}
@@ -63,7 +63,7 @@ export const Default = (argTypes: StorybookArguments): React.ReactElement<any> =
 // so this story is just to demonstrate how the scroll offset works
 export const ScrollOffset = (
   argTypes: StorybookArguments
-): React.ReactElement<any> => (
+): React.ReactElement => (
   <InPageNavigation
     content={CONTENT}
     headingLevel={argTypes.headingLevel}

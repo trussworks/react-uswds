@@ -6,7 +6,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
   type JSX,
-} from 'react';
+} from 'react'
 import classnames from 'classnames'
 
 import { ActionTypes, Action, State, useComboBox } from './useComboBox'
@@ -65,7 +65,7 @@ interface InputProps {
 const Input = ({
   focused,
   ...inputProps
-}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement<any> => {
+}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (focused && inputRef.current) {
@@ -112,7 +112,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
     disableFiltering = false,
   },
   ref
-): React.ReactElement<any> => {
+): React.ReactElement => {
   const isDisabled = !!disabled
 
   let defaultOption

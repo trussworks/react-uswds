@@ -12,7 +12,7 @@ export const Logo = ({
   heading,
   image,
   ...elementAttributes
-}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement<any> => {
+}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

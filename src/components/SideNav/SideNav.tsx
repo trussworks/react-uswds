@@ -9,7 +9,7 @@ type SideNavProps = {
 export const SideNav = ({
   items,
   isSubnav = false,
-}: SideNavProps): React.ReactElement<any> => {
+}: SideNavProps): React.ReactElement => {
   const classes = classnames({
     'usa-sidenav': !isSubnav,
     'usa-sidenav__sublist': isSubnav,

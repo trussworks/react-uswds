@@ -21,14 +21,14 @@ Source: https://designsystem.digital.gov/components/form-templates/
   },
 }
 
-export const TextInputFormGroup = (): React.ReactElement<any> => (
+export const TextInputFormGroup = (): React.ReactElement => (
   <FormGroup>
     <Label htmlFor="input-type-text">Text input label</Label>
     <TextInput id="input-type-text" name="input-type-text" type="text" />
   </FormGroup>
 )
 
-export const TextInputErrorFormGroup = (): React.ReactElement<any> => (
+export const TextInputErrorFormGroup = (): React.ReactElement => (
   <FormGroup error>
     <Label htmlFor="input-type-text" error>
       Text input label
