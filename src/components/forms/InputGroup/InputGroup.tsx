@@ -11,7 +11,7 @@ export const InputGroup = ({
   children,
   className,
   error,
-}: InputGroupProps): React.ReactElement => {
+}: InputGroupProps): React.ReactElement<any> => {
   const classes = classnames(
     'usa-input-group',
     { 'usa-input-group--error': error },

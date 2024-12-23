@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 import { HeadingLevel } from '../../../types/headingLevel'
@@ -27,7 +27,7 @@ type StepIndicatorProps = {
 }
 export const StepIndicator = (
   props: StepIndicatorProps
-): React.ReactElement => {
+): React.ReactElement<any> => {
   const {
     showLabels = true,
     counters = 'none',

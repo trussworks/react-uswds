@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 
@@ -11,7 +11,7 @@ type SelectProps = {
   inputRef?:
     | string
     | ((instance: HTMLSelectElement | null) => void)
-    | React.RefObject<HTMLSelectElement>
+    | React.RefObject<HTMLSelectElement | null>
     | null
     | undefined
 }
@@ -24,7 +24,7 @@ export const Select = ({
   children,
   validationStatus,
   ...inputProps
-}: SelectProps & JSX.IntrinsicElements['select']): React.ReactElement => {
+}: SelectProps & JSX.IntrinsicElements['select']): React.ReactElement<any> => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const classes = classnames(

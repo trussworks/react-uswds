@@ -61,7 +61,7 @@ const summaryBoxContent = (
   </ul>
 )
 
-export const SummaryBoxDefault = (): React.ReactElement => (
+export const SummaryBoxDefault = (): React.ReactElement<any> => (
   <SummaryBox>
     <SummaryBoxHeading headingLevel="h3">Key Information</SummaryBoxHeading>
     <SummaryBoxContent>{summaryBoxContent}</SummaryBoxContent>

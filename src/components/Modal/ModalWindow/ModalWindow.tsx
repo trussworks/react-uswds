@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, type JSX } from 'react';
 import classnames from 'classnames'
 
 import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'
@@ -26,7 +26,7 @@ export const ModalWindowForwardRef: React.ForwardRefRenderFunction<
     ...divProps
   },
   ref
-): React.ReactElement => {
+): React.ReactElement<any> => {
   const classes = classnames(
     'usa-modal',
     {

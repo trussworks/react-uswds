@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import classnames from 'classnames'
 
 type ValidationChecklistProps = {
@@ -11,7 +11,7 @@ export const ValidationChecklist = ({
   className,
   ...ulProps
 }: ValidationChecklistProps &
-  JSX.IntrinsicElements['ul']): React.ReactElement => {
+  JSX.IntrinsicElements['ul']): React.ReactElement<any> => {
   const classes = classnames(className, 'usa-checklist')
   return (
     <ul className={classes} data-testid="validationChecklist" {...ulProps}>

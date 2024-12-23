@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import classnames from 'classnames'
 
 interface SummaryBoxTextProps {
@@ -10,7 +10,7 @@ export const SummaryBoxContent = ({
   children,
   className,
   ...divProps
-}: SummaryBoxTextProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: SummaryBoxTextProps & JSX.IntrinsicElements['div']): React.ReactElement<any> => {
   const classes = classnames('usa-summary-box__text', className)
   return (
     <div className={classes} {...divProps}>

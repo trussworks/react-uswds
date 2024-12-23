@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import classnames from 'classnames'
 
 export interface IdentifierLinkItemProps {
@@ -11,7 +11,7 @@ export const IdentifierLinkItem = ({
   className,
   ...listItemProps
 }: IdentifierLinkItemProps &
-  JSX.IntrinsicElements['li']): React.ReactElement => {
+  JSX.IntrinsicElements['li']): React.ReactElement<any> => {
   const classes = classnames('usa-identifier__required-links-item', className)
   return (
     <li className={classes} {...listItemProps}>

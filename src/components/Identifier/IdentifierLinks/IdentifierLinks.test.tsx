@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import { render } from '@testing-library/react'
 
 import { IdentifierLinks } from './IdentifierLinks'
@@ -50,7 +50,7 @@ describe('IdentifierLinks component', () => {
       children,
       className,
       ...linkProps
-    }: CustomLinkProps): React.ReactElement => (
+    }: CustomLinkProps): React.ReactElement<any> => (
       <a href={to} className={className} {...linkProps}>
         {children}
       </a>

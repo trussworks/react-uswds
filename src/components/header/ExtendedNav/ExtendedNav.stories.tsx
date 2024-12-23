@@ -44,7 +44,7 @@ const testSecondaryItems = [
   </a>,
 ]
 
-export const DefaultExtendedNav = (): React.ReactElement => (
+export const DefaultExtendedNav = (): React.ReactElement<any> => (
   <ExtendedNav
     id="extended-nav"
     onToggleMobileNav={mockToggle}

@@ -9,21 +9,21 @@ import {
 } from '../Link/Link'
 
 type ModalOpenLinkProps = {
-  modalRef: React.RefObject<ModalRef>
+  modalRef: React.RefObject<ModalRef | null>
 }
 
 export function ModalOpenLink(
   props: DefaultLinkProps & ModalOpenLinkProps
-): React.ReactElement
+): React.ReactElement<any>
 export function ModalOpenLink<T>(
   props: CustomLinkProps<T> & ModalOpenLinkProps
-): React.ReactElement
+): React.ReactElement<any>
 export function ModalOpenLink<FCProps = DefaultLinkProps & ModalOpenLinkProps>({
   modalRef,
   ...props
 }:
   | (DefaultLinkProps & ModalOpenLinkProps)
-  | (CustomLinkProps<FCProps> & ModalOpenLinkProps)): React.ReactElement {
+  | (CustomLinkProps<FCProps> & ModalOpenLinkProps)): React.ReactElement<any> {
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     if (!modalRef || !modalRef.current) {
       console.error('ModalRef is required')

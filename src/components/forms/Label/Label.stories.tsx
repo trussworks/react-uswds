@@ -17,23 +17,23 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const DefaultLabel = (): React.ReactElement => (
+export const DefaultLabel = (): React.ReactElement<any> => (
   <Label htmlFor="testInput">Text input label</Label>
 )
 
-export const Error = (): React.ReactElement => (
+export const Error = (): React.ReactElement<any> => (
   <Label htmlFor="testInputError" error>
     Text input error
   </Label>
 )
 
-export const WithHint = (): React.ReactElement => (
+export const WithHint = (): React.ReactElement<any> => (
   <Label htmlFor="testInputHint" hint={<> (optional)</>}>
     Text input
   </Label>
 )
 
-export const WithRequiredMarker = (): React.ReactElement => (
+export const WithRequiredMarker = (): React.ReactElement<any> => (
   <Label htmlFor="testInputRequired" requiredMarker>
     Text input
   </Label>

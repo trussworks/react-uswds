@@ -38,7 +38,7 @@ Page templates
   },
 }
 
-export const DocumentationPage = (): React.ReactElement => {
+export const DocumentationPage = (): React.ReactElement<any> => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 

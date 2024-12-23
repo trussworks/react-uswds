@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import classnames from 'classnames'
 
 type TextareaRef =
   | string
   | string
   | ((instance: HTMLTextAreaElement | null) => void)
-  | React.RefObject<HTMLTextAreaElement>
+  | React.RefObject<HTMLTextAreaElement | null>
   | null
   | undefined
 
@@ -28,7 +28,7 @@ export const Textarea = ({
   children,
   inputRef,
   ...inputProps
-}: TextareaProps & JSX.IntrinsicElements['textarea']): React.ReactElement => {
+}: TextareaProps & JSX.IntrinsicElements['textarea']): React.ReactElement<any> => {
   const classes = classnames(
     'usa-textarea',
     {

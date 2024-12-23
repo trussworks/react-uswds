@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 
 type NavMenuButtonProps = {
   label: React.ReactNode
@@ -9,7 +9,7 @@ export const NavMenuButton = ({
   onClick,
   ...buttonProps
 }: NavMenuButtonProps &
-  JSX.IntrinsicElements['button']): React.ReactElement => {
+  JSX.IntrinsicElements['button']): React.ReactElement<any> => {
   return (
     <button
       className="usa-menu-btn"

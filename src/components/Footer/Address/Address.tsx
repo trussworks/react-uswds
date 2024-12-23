@@ -13,7 +13,7 @@ export const Address = ({
   size,
   className,
   items,
-}: AddressProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+}: AddressProps & React.HTMLAttributes<HTMLElement>): React.ReactElement<any> => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

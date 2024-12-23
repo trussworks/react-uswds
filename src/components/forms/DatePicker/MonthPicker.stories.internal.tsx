@@ -24,13 +24,13 @@ const testProps = {
 
 export const monthPicker = (
   argTypes: StorybookArguments
-): React.ReactElement => (
+): React.ReactElement<any> => (
   <MonthPicker {...testProps} handleSelectMonth={argTypes.handleSelectMonth} />
 )
 
 export const withMinAndMax = (
   argTypes: StorybookArguments
-): React.ReactElement => (
+): React.ReactElement<any> => (
   <MonthPicker
     {...testProps}
     handleSelectMonth={argTypes.handleSelectMonth}

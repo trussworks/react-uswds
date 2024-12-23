@@ -21,7 +21,7 @@ export const SearchButton = ({
   className,
   i18n,
   buttonAriaLabel,
-}: SearchButtonProps): React.ReactElement => {
+}: SearchButtonProps): React.ReactElement<any> => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
   const isBig = size === 'big'

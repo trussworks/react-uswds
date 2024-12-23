@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, type JSX } from 'react';
 import classnames from 'classnames'
 
 type RangeInputProps = {
@@ -11,7 +11,7 @@ type RangeInputProps = {
   inputRef?:
     | string
     | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
+    | React.RefObject<HTMLInputElement | null>
     | null
     | undefined
 }
@@ -22,7 +22,7 @@ export const RangeInput = ({
   textPreposition,
   textUnit,
   ...inputProps
-}: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement<any> => {
   const classes = classnames('usa-range', className)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0

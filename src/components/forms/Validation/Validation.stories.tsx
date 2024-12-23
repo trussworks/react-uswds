@@ -29,16 +29,16 @@ Source: https://designsystem.digital.gov/components/validation
 const validate = (type: string, value: string): boolean => {
   switch (type) {
     case 'uppercase':
-      return /[A-Z]/.test(value)
+      return /[A-Z]/.test(value);
     case 'numerical':
-      return /\d/.test(value)
+      return /\d/.test(value);
     default:
       console.warn(`No validation item found for: "${type}"`)
       return false
   }
 }
 
-export const Default = (): React.ReactElement => {
+export const Default = (): React.ReactElement<any> => {
   const [validations, setValidations] = useState({
     uppercase: false,
     numerical: false,

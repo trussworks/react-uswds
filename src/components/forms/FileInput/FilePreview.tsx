@@ -14,7 +14,7 @@ export const FilePreview = ({
 }: {
   imageId: string
   file: File
-}): React.ReactElement => {
+}): React.ReactElement<any> => {
   const fileReaderRef = useRef<FileReader>(new FileReader())
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)

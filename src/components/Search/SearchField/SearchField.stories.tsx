@@ -17,10 +17,10 @@ Source: https://designsystem.digital.gov/components/search/
   },
 }
 
-export const DefaultSearchField = (): React.ReactElement => (
+export const DefaultSearchField = (): React.ReactElement<any> => (
   <SearchField placeholder="Search..." />
 )
 
-export const BigSearchField = (): React.ReactElement => (
+export const BigSearchField = (): React.ReactElement<any> => (
   <SearchField placeholder="Type something here..." isBig />
 )

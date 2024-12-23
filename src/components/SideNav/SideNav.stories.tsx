@@ -60,14 +60,14 @@ const testItemsThreeLevels = [
   </a>,
 ]
 
-export const SingleLevel = (): React.ReactElement => (
+export const SingleLevel = (): React.ReactElement<any> => (
   <SideNav items={testItems} />
 )
 
-export const TwoLevels = (): React.ReactElement => (
+export const TwoLevels = (): React.ReactElement<any> => (
   <SideNav items={testItemsWithSubnav} />
 )
 
-export const ThreeLevels = (): React.ReactElement => (
+export const ThreeLevels = (): React.ReactElement<any> => (
   <SideNav items={testItemsThreeLevels} />
 )

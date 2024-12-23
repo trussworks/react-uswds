@@ -40,7 +40,7 @@ type StorybookArguments = {
 
 export const DefaultStepIndicator = (
   args: StorybookArguments
-): React.ReactElement => (
+): React.ReactElement<any> => (
   <StepIndicator
     headingLevel="h4"
     ofText={args.ofText}
@@ -54,7 +54,7 @@ export const DefaultStepIndicator = (
   </StepIndicator>
 )
 
-export const NoLabels = (args: StorybookArguments): React.ReactElement => (
+export const NoLabels = (args: StorybookArguments): React.ReactElement<any> => (
   <StepIndicator
     showLabels={false}
     headingLevel="h4"
@@ -69,7 +69,7 @@ export const NoLabels = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const Centered = (args: StorybookArguments): React.ReactElement => (
+export const Centered = (args: StorybookArguments): React.ReactElement<any> => (
   <StepIndicator
     centered
     headingLevel="h4"
@@ -84,7 +84,7 @@ export const Centered = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const Counters = (args: StorybookArguments): React.ReactElement => (
+export const Counters = (args: StorybookArguments): React.ReactElement<any> => (
   <StepIndicator
     counters="default"
     headingLevel="h4"
@@ -99,7 +99,7 @@ export const Counters = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const SmallCounters = (args: StorybookArguments): React.ReactElement => (
+export const SmallCounters = (args: StorybookArguments): React.ReactElement<any> => (
   <StepIndicator
     counters="small"
     headingLevel="h4"
@@ -116,7 +116,7 @@ export const SmallCounters = (args: StorybookArguments): React.ReactElement => (
 
 export const DifferentHeadingLevel = (
   args: StorybookArguments
-): React.ReactElement => (
+): React.ReactElement<any> => (
   <StepIndicator
     headingLevel="h2"
     ofText={args.ofText}

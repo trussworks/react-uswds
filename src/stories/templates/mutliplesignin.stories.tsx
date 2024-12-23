@@ -109,7 +109,7 @@ const identifierLinksText = [
   'Privacy policy',
 ]
 
-export const MultipleSignInOptions = (): React.ReactElement => {
+export const MultipleSignInOptions = (): React.ReactElement<any> => {
   return (
     <>
       <a className="usa-skipnav" href="#main-content">

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, type JSX } from 'react';
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
@@ -29,7 +29,7 @@ export const IconListTitle = ({
   type,
   children,
   className,
-}: IconListParagraphTitleProps | IconListHeadingTitleProps): ReactElement => {
+}: IconListParagraphTitleProps | IconListHeadingTitleProps): ReactElement<any> => {
   const classes = classnames(className, 'usa-icon-list__title')
   const Tag = type
   return (

@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { type JSX } from 'react';
 
 import { StepStatusText } from '../StepIndicator/StepIndicator'
 
@@ -12,7 +12,7 @@ export interface StepIndicatorStepProps {
 
 export const StepIndicatorStep = (
   props: StepIndicatorStepProps & JSX.IntrinsicElements['li']
-): React.ReactElement => {
+): React.ReactElement<any> => {
   const {
     label,
     status = 'incomplete',

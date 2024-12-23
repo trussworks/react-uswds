@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import { render, screen, waitFor } from '@testing-library/react'
 
 import { ModalRef } from './Modal'
@@ -13,7 +13,7 @@ describe('ModalOpenLink', () => {
       toggleModal: vi.fn().mockReturnValue(true),
     }
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: mockRef,
     }
 
@@ -32,7 +32,7 @@ describe('ModalOpenLink', () => {
   it('throws an error if clicked when the modal ref is null', async () => {
     const consoleSpy = vi.spyOn(console, 'error')
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: null,
     }
 
@@ -56,7 +56,7 @@ describe('ModalOpenLink', () => {
       toggleModal: vi.fn().mockReturnValue(true),
     }
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: mockRef,
     }
 
@@ -83,7 +83,7 @@ describe('ModalOpenLink', () => {
       children,
       className,
       ...linkProps
-    }: CustomLinkProps): React.ReactElement => (
+    }: CustomLinkProps): React.ReactElement<any> => (
       <a href={to} className={className} {...linkProps}>
         {children}
       </a>
@@ -95,7 +95,7 @@ describe('ModalOpenLink', () => {
       toggleModal: vi.fn().mockReturnValue(true),
     }
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: mockRef,
     }
 

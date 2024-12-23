@@ -27,7 +27,7 @@ export const FooterNav = ({
   isMobile,
   links,
   ...elementAttributes
-}: FooterNavProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+}: FooterNavProps & React.HTMLAttributes<HTMLElement>): React.ReactElement<any> => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

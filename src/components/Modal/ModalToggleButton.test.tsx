@@ -13,7 +13,7 @@ describe('ModalToggleButton', () => {
       toggleModal: vi.fn().mockReturnValue(true),
     }
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: mockRef,
     }
 
@@ -32,7 +32,7 @@ describe('ModalToggleButton', () => {
   it('throws an error if clicked when the modal ref is null', async () => {
     const consoleSpy = vi.spyOn(console, 'error')
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: null,
     }
 
@@ -52,7 +52,7 @@ describe('ModalToggleButton', () => {
       toggleModal: vi.fn().mockReturnValue(true),
     }
 
-    const modalRef: React.RefObject<ModalRef> = {
+    const modalRef: React.RefObject<ModalRef | null> = {
       current: mockRef,
     }
 
@@ -73,7 +73,7 @@ describe('ModalToggleButton', () => {
         toggleModal: vi.fn().mockReturnValue(true),
       }
 
-      const modalRef: React.RefObject<ModalRef> = {
+      const modalRef: React.RefObject<ModalRef | null> = {
         current: mockRef,
       }
 
@@ -95,7 +95,7 @@ describe('ModalToggleButton', () => {
         toggleModal: vi.fn().mockReturnValue(true),
       }
 
-      const modalRef: React.RefObject<ModalRef> = {
+      const modalRef: React.RefObject<ModalRef | null> = {
         current: mockRef,
       }
 
@@ -122,7 +122,7 @@ describe('ModalToggleButton', () => {
         toggleModal: vi.fn().mockReturnValue(true),
       }
 
-      const modalRef: React.RefObject<ModalRef> = {
+      const modalRef: React.RefObject<ModalRef | null> = {
         current: mockRef,
       }
 
@@ -144,7 +144,7 @@ describe('ModalToggleButton', () => {
         toggleModal: vi.fn().mockReturnValue(true),
       }
 
-      const modalRef: React.RefObject<ModalRef> = {
+      const modalRef: React.RefObject<ModalRef | null> = {
         current: mockRef,
       }
 

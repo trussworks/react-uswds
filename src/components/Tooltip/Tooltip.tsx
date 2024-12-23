@@ -6,7 +6,8 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from 'react'
+  type JSX,
+} from 'react';
 import classnames from 'classnames'
 
 import { isElementInViewport, calculateMarginOffset } from './utils'
@@ -37,8 +38,8 @@ export function isCustomProps<T>(
 const TRIANGLE_SIZE = 5
 const DEFAULT_POSITION = 'top'
 
-export function Tooltip(props: DefaultTooltipProps): ReactElement
-export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
+export function Tooltip(props: DefaultTooltipProps): ReactElement<any>
+export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement<any>
 export function Tooltip<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps,
 >({
@@ -46,7 +47,7 @@ export function Tooltip<
   wrapperclasses,
   className,
   ...props
-}: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
+}: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement<any> {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(
@@ -258,7 +259,8 @@ export function Tooltip<
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      // the span that wraps the element with have the tooltip class
+      (<span data-testid="tooltipWrapper" className={wrapperClasses}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
@@ -287,7 +289,7 @@ export function Tooltip<
           style={positionStyles}>
           {label}
         </span>
-      </span> // the span that wraps the element with have the tooltip class
-    )
+      </span>)
+    );
   }
 }

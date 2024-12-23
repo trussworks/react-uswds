@@ -34,7 +34,7 @@ Source: https://designsystem.digital.gov/components/icon/
   },
 }
 
-export const AllIcons = (args: StorybookArgs): React.ReactElement => (
+export const AllIcons = (args: StorybookArgs): React.ReactElement<any> => (
   <div>
     <Icon.AccessibilityNew {...args} />
     <Icon.AccessibleForward {...args} />

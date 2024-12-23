@@ -25,7 +25,7 @@ const mockToggle = (): void => {
   /* mock submit fn */
 }
 
-export const DefaultDropDownMenu = (): React.ReactElement => {
+export const DefaultDropDownMenu = (): React.ReactElement<any> => {
   const [isOpen, setIsOpen] = useState([false, false])
 
   const onToggle = (index: number): void => {

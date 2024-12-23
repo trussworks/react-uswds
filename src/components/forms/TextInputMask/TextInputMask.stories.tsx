@@ -19,7 +19,7 @@ Source: https://designsystem.digital.gov/components/input-mask/
   },
 }
 
-export const Default = (): React.ReactElement => (
+export const Default = (): React.ReactElement<any> => (
   <Form
     onSubmit={(): void => {
       return

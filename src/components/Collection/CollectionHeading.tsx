@@ -13,7 +13,7 @@ export const CollectionHeading = ({
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
-  >): React.ReactElement => {
+  >): React.ReactElement<any> => {
   const Heading = headingLevel
 
   const classes = classnames('usa-collection__heading', className)

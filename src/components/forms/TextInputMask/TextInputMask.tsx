@@ -49,7 +49,7 @@ export const TextInputMask = ({
   charset,
   onChange,
   ...inputProps
-}: AllProps): React.ReactElement => {
+}: AllProps): React.ReactElement<any> => {
   const classes = classnames(
     {
       'usa-masked': mask,

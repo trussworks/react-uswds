@@ -62,7 +62,7 @@ export const Calendar = ({
   setStatuses,
   focusMode,
   i18n = EN_US,
-}: CalendarProps): React.ReactElement => {
+}: CalendarProps): React.ReactElement<any> => {
   const prevYearEl = useRef<HTMLButtonElement>(null)
   const prevMonthEl = useRef<HTMLButtonElement>(null)
   const nextMonthEl = useRef<HTMLButtonElement>(null)
@@ -348,7 +348,7 @@ export const Calendar = ({
     // Ignoring error: "Static HTML elements with event handlers require a role."
     // Ignoring because this element does not have a role in the USWDS implementation (https://github.com/uswds/uswds/blob/develop/src/js/components/date-picker.js#L1042)
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
+    (<div
       tabIndex={-1}
       className="usa-date-picker__calendar__date-picker"
       data-testid="calendar-date-picker"
@@ -432,6 +432,6 @@ export const Calendar = ({
         </thead>
         <tbody>{listToTable(days, 7)}</tbody>
       </table>
-    </div>
-  )
+    </div>)
+  );
 }

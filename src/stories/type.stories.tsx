@@ -9,7 +9,7 @@ export default {
   },
 }
 
-export const TypeStyles = (): React.ReactElement => (
+export const TypeStyles = (): React.ReactElement<any> => (
   <div className="grid-container">
     <h1>Typography</h1>
     <h2>Headers</h2>

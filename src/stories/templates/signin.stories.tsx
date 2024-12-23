@@ -116,7 +116,7 @@ const mockSubmit = (): void => {
   /* Blank function for mocking form submission */
 }
 
-export const SignIn = (): React.ReactElement => {
+export const SignIn = (): React.ReactElement<any> => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (
