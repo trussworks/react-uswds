@@ -1,4 +1,4 @@
-import React, { ReactElement, type JSX } from 'react'
+import React, { ReactElement, JSX } from 'react'
 import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 

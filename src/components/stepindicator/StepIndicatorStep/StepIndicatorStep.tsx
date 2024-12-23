@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { type JSX } from 'react'
+import React, { JSX } from 'react'
 
 import { StepStatusText } from '../StepIndicator/StepIndicator'
 

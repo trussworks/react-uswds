@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, type JSX } from 'react'
+import React, { ReactElement, useState, JSX } from 'react'
 import { Banner } from '../Banner/Banner'
 import { BannerHeader } from '../BannerHeader/BannerHeader'
 import { BannerFlag } from '../BannerFlag/BannerFlag'

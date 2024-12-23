@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useRef,
   useState,
-  type JSX,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 

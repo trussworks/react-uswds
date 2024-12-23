@@ -1,4 +1,4 @@
-import React, { useState, type JSX } from 'react'
+import React, { useState, JSX } from 'react'
 import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'

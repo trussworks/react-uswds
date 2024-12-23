@@ -4,7 +4,7 @@ import React, {
   useRef,
   useImperativeHandle,
   useEffect,
-  type JSX,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 

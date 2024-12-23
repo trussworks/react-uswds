@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, type JSX } from 'react'
+import React, { ReactElement, ReactNode, JSX } from 'react'
 import classNames from 'classnames'
 
 type BannerHeaderProps = {

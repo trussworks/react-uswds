@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { useState, type JSX } from 'react'
+import React, { useState, JSX } from 'react'
 import { DEFAULT_EXTERNAL_DATE_FORMAT } from '../DatePicker/constants'
 import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker'
 import { formatDate, parseDateString } from '../DatePicker/utils'

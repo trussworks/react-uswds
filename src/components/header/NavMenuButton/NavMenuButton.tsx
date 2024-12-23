@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import React, { JSX } from 'react'
 
 type NavMenuButtonProps = {
   label: React.ReactNode

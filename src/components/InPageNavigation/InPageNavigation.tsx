@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type JSX } from 'react'
+import React, { useEffect, useState, JSX } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'

@@ -4,7 +4,7 @@ import React, {
   useRef,
   forwardRef,
   useImperativeHandle,
-  type JSX,
+  JSX,
 } from 'react'
 import FocusTrap from 'focus-trap-react'
 

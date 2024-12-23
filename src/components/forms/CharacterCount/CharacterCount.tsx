@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, type JSX } from 'react'
+import React, { useState, useEffect, useRef, JSX } from 'react'
 import classnames from 'classnames'
 
 import { TextInput, TextInputProps } from '../TextInput/TextInput'

@@ -1,4 +1,4 @@
-import React, { forwardRef, type JSX } from 'react'
+import React, { forwardRef, JSX } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 

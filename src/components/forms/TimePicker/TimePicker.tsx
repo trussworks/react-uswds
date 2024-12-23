@@ -1,4 +1,4 @@
-import React, { useMemo, type JSX } from 'react'
+import React, { useMemo, JSX } from 'react'
 import classnames from 'classnames'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'

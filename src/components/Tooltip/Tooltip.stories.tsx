@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import React, { JSX } from 'react'
 import { Tooltip } from './Tooltip'
 
 export default {

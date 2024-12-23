@@ -5,7 +5,7 @@ import React, {
   FocusEvent,
   FormEvent,
   KeyboardEvent,
-  type JSX,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 
