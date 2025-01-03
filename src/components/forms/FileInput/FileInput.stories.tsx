@@ -118,7 +118,10 @@ export const WithRefAndCustomHandlers = {
     const [files, setFiles] = useState<FileList | null>(null)
     const fileInputRef = useRef<FileInputRef>(null)
 
-    const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
+    const handleClearFiles = (): void => {
+      fileInputRef.current?.clearFiles()
+      setFiles(null)
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       argTypes.onChange(e)
