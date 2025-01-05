@@ -408,9 +408,10 @@ describe('FileInput component', () => {
         'display-none'
       )
 
-      // Notice how input.files still exist because we can't programmatically set the value
-      expect(fileInputRef.current?.input?.files).toHaveLength(1)
-      // But the files state of the React "input" is cleared out
+      // Inputs files should be cleared out and reset
+      expect(fileInputRef.current?.input?.files).toHaveLength(0)
+      expect(fileInputRef.current?.input?.value).toEqual('')
+      // Files state of the React "input" is cleared out
       expect(fileInputRef.current?.files).toHaveLength(0)
     })
   })
