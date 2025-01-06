@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Pagination } from './Pagination'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
+const meta: Meta<typeof Pagination> = {
   title: 'Components/Pagination',
   component: Pagination,
   argTypes: {
@@ -11,10 +11,12 @@ export default {
     pathname: { control: 'string' },
     totalPages: { control: 'number' },
   },
-} as Meta<typeof Pagination>
+}
+export default meta
+type Story = StoryObj<typeof Pagination>
 
 const pathname = '/test-pathname'
-const Template: StoryFn<typeof Pagination> = (args) => {
+const Template = ({ ...args }) => {
   const [current, setCurrentPage] = useState<number>(args.currentPage)
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const Template: StoryFn<typeof Pagination> = (args) => {
       totalPages={args.totalPages}
       currentPage={current}
       maxSlots={args.maxSlots}
-      pathname={args.pathname}
+      pathname={pathname}
       onClickNext={handleNext}
       onClickPrevious={handlePrevious}
       onClickPageNumber={handlePageNumber}
@@ -54,68 +56,78 @@ const Template: StoryFn<typeof Pagination> = (args) => {
   )
 }
 
-export const Sandbox = {
+export const Sandbox: Story = {
   render: Template,
-
   args: {
     currentPage: 10,
     maxSlots: 7,
   },
 }
 
-export const Default = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={10} currentPage={10} />
-)
+export const Basic: Story = {
+  render: Template,
+  args: {
+    currentPage: 10,
+    totalPages: 10,
+  },
+}
 
-export const Unbounded = (): React.ReactElement => (
-  <Pagination pathname={pathname} currentPage={10} />
-)
+export const Unbounded: Story = {
+  render: Template,
+  args: { currentPage: 10 },
+}
 
-export const ThreePagesFirst = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={3} currentPage={1} />
-)
+export const ThreePagesFirst: Story = {
+  render: Template,
+  args: { currentPage: 1, totalPages: 3 },
+}
 
-export const ThreePages = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={3} currentPage={2} />
-)
+export const ThreePages: Story = {
+  render: Template,
+  args: { currentPage: 2, totalPages: 3 },
+}
 
-export const ThreePagesLast = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={3} currentPage={3} />
-)
+export const ThreePagesLast: Story = {
+  render: Template,
+  args: { currentPage: 3, totalPages: 3 },
+}
 
-export const SevenPages = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={7} currentPage={4} />
-)
+export const SevenPages: Story = {
+  render: Template,
+  args: { currentPage: 4, totalPages: 7 },
+}
 
-export const EightPagesFirst = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={8} currentPage={1} />
-)
+export const EightPagesFirst: Story = {
+  render: Template,
+  args: { currentPage: 1, totalPages: 8 },
+}
 
-export const EightPagesFour = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={8} currentPage={4} />
-)
+export const EightPagesFour: Story = {
+  render: Template,
+  args: { currentPage: 4, totalPages: 8 },
+}
 
-export const EightPagesFive = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={8} currentPage={5} />
-)
+export const EightPagesFive: Story = {
+  render: Template,
+  args: { currentPage: 5, totalPages: 8 },
+}
 
-export const EightPagesSix = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={8} currentPage={6} />
-)
+export const EightPagesSix: Story = {
+  render: Template,
+  args: { currentPage: 6, totalPages: 8 },
+}
 
-export const EightPagesLast = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={8} currentPage={8} />
-)
+export const EightPagesLast: Story = {
+  render: Template,
+  args: { currentPage: 8, totalPages: 8 },
+}
 
-export const NinePagesFive = (): React.ReactElement => (
-  <Pagination pathname={pathname} totalPages={9} currentPage={5} />
-)
+export const NinePagesFive: Story = {
+  render: Template,
+  args: { currentPage: 5, totalPages: 9 },
+}
 
-export const TenSlots = (): React.ReactElement => (
-  <Pagination
-    pathname={pathname}
-    totalPages={24}
-    currentPage={10}
-    maxSlots={10}
-  />
-)
+export const TenSlots: Story = {
+  render: Template,
+  args: { currentPage: 10, totalPages: 24, maxSlots: 10 },
+}

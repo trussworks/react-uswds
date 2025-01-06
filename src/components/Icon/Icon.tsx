@@ -37,6 +37,16 @@ export const makeUSWDSIcon = (
       ...iconProps,
     }
 
+    if (
+      'img' === role &&
+      !iconProps['aria-hidden'] &&
+      !iconProps['aria-label'] &&
+      !iconProps['aria-labelledby']
+    ) {
+      console.warn(
+        `Icon with img role is missing an accessible label. https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Img_role#associated_wai-aria_roles_states_and_properties`
+      )
+    }
     return <Component {...finalProps} />
   }
   IconFunctionalComponent.displayName = Component.displayName

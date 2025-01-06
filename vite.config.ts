@@ -7,6 +7,7 @@ import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets'
 import { checker } from 'vite-plugin-checker'
+import react from '@vitejs/plugin-react'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -29,6 +30,7 @@ export default defineConfig(({ mode: _mode }) => {
     mode,
     // ignore some plugins if running tests
     plugins: [
+      react(),
       !isTest &&
         checker({
           typescript: true,
@@ -62,19 +64,25 @@ export default defineConfig(({ mode: _mode }) => {
       cssCodeSplit: isUswds,
       assetsDir: './',
       rollupOptions: {
-        external: ['react', 'react-dom', 'react/jsx-runtime'],
+        external: [
+          'react',
+          'react-dom',
+          'react/jsx-runtime',
+          'focus-trap-react',
+        ],
         output: {
           // Support React Server Components
           // See: https://react.dev/reference/react/use-client
           banner: (assetInfo) =>
             assetInfo.fileName.endsWith('.js') ||
             assetInfo.fileName.endsWith('.mjs')
-              ? '"use client;"'
+              ? '"use client";'
               : '',
           globals: {
             react: 'React',
             'react-dom': 'ReactDOM',
             'react/jsx-runtime': 'jsxRuntime',
+            'focus-trap-react': 'FocusTrap',
           },
           assetFileNames: (assetInfo) => {
             if (assetInfo.name === 'style.css') return `${entryName}.css`

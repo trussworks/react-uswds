@@ -147,7 +147,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/13249580?v=4",
       "profile": "https://github.com/kimallen",
       "contributions": [
-        "code"
+        "code",
+        "a11y"
       ]
     },
     {
@@ -232,7 +233,10 @@
       "profile": "https://andyhub.com/",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug",
+        "a11y"
       ]
     },
     {
@@ -241,7 +245,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/371943?v=4",
       "profile": "https://sawyer.soy",
       "contributions": [
-        "code"
+        "code",
+        "bug"
       ]
     },
     {
@@ -318,7 +323,27 @@
       "profile": "https://github.com/jpandersen87",
       "contributions": [
         "code",
+        "maintenance",
+        "infra"
+      ]
+    },
+    {
+      "login": "crwallace",
+      "name": "Courtney Eimerman-Wallace",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3453669?v=4",
+      "profile": "https://github.com/crwallace",
+      "contributions": [
         "maintenance"
+      ]
+    },
+    {
+      "login": "ocoutts-usds",
+      "name": "Owen Coutts",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174364898?v=4",
+      "profile": "https://github.com/ocoutts-usds",
+      "contributions": [
+        "bug",
+        "code"
       ]
     }
   ],

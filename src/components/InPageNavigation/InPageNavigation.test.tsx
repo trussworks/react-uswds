@@ -4,6 +4,7 @@ import { userEvent } from '@testing-library/user-event'
 import { InPageNavigation } from './InPageNavigation'
 import { HeadingLevel } from '../../types/headingLevel'
 import { CONTENT } from './content'
+import styles from './InPageNavigation.module.scss'
 
 describe('InPageNavigation component', () => {
   const props = {
@@ -50,6 +51,7 @@ describe('InPageNavigation component', () => {
       name: 'On this page',
     })
     expect(heading).toBeInTheDocument()
+    expect(document.querySelector('html')).toHaveClass(styles['smooth-scroll'])
   })
 
   it('sets the heading and title', () => {

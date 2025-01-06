@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MutableRefObject, useRef } from 'react'
 import { render } from '@testing-library/react'
 import { TextInput } from './TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
@@ -58,5 +58,33 @@ describe('TextInput component', () => {
         expect(container.querySelector('input')).toHaveClass(uswdsClass)
       }
     )
+  })
+
+  describe('forwarding refs', () => {
+    beforeEach(() => {
+      vi.clearAllMocks()
+    })
+
+    it('appropriateley renders a ref', () => {
+      let ref
+      const Parent = () => {
+        ref = useRef(null)
+        return (
+          <TextInput
+            id="input-type-text"
+            name="input-type-text"
+            type="text"
+            ref={ref}
+          />
+        )
+      }
+
+      render(<Parent />)
+
+      const parentRef = ref as unknown as MutableRefObject<HTMLElement>
+
+      expect(parentRef.current).toBeInTheDocument()
+      expect(parentRef.current.tagName).toBe('INPUT')
+    })
   })
 })
