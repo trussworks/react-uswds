@@ -71,8 +71,8 @@
   "peerDependencies": {
     "@uswds/uswds": "^3.7.1",
     "focus-trap-react": "^10.2.3",
-    "react": "^16.x || ^17.x || ^18.x",
-    "react-dom": "^16.x || ^17.x || ^18.x"
+    "react": "^16.x || ^17.x || ^18.x || ^19.x",
+    "react-dom": "^16.x || ^17.x || ^18.x || ^19.x"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
@@ -126,9 +126,8 @@
     "react-test-renderer": "^18.2.0",
     "sass": "^1.26.0",
     "storybook": "^8.0.4",
-    "stylelint": "^16.2.1",
+    "stylelint": "^16.12.0",
     "stylelint-config-css-modules": "^4.4.0",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended": "^14.0.0",
     "stylelint-config-sass-guidelines": "^12.0.0",
     "stylelint-config-standard-scss": "^13.0.0",

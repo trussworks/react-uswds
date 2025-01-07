@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useRef,
   useState,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 
@@ -258,6 +259,7 @@ export function Tooltip<
     )
 
     return (
+      // the span that wraps the element with have the tooltip class
       <span data-testid="tooltipWrapper" className={wrapperClasses}>
         <button
           {...remainingProps}
@@ -287,7 +289,7 @@ export function Tooltip<
           style={positionStyles}>
           {label}
         </span>
-      </span> // the span that wraps the element with have the tooltip class
+      </span>
     )
   }
 }

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, JSX } from 'react'
 import classNames from 'classnames'
 
 export const BannerIcon = ({

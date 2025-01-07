@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, JSX } from 'react'
 import classnames from 'classnames'
 
 type RangeInputProps = {
@@ -8,12 +8,7 @@ type RangeInputProps = {
   max?: number
   textPreposition?: string
   textUnit?: string
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 export const RangeInput = ({

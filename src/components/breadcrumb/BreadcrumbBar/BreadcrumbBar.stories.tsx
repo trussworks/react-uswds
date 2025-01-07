@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { JSX } from 'react'
 import { Breadcrumb } from '../Breadcrumb/Breadcrumb'
 import { BreadcrumbBar } from './BreadcrumbBar'
 import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink'

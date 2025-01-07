@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, JSX } from 'react'
 import classnames from 'classnames'
 
 import { ModalCloseButton } from '../ModalCloseButton/ModalCloseButton'

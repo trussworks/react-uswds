@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { JSX } from 'react'
 import classnames from 'classnames'
 
 import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { JSX } from 'react'
 
 import { GridContainer } from './GridContainer/GridContainer'
 import { Grid } from './Grid/Grid'

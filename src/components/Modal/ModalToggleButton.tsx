@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { JSX } from 'react'
 
 import { ModalRef } from './Modal'
 import { ButtonProps, Button } from '../Button/Button'
 
 type ModalToggleButtonProps = {
-  modalRef: React.RefObject<ModalRef>
+  modalRef: React.RefObject<ModalRef | null>
   opener?: boolean
   closer?: boolean
 }

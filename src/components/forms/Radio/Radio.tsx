@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { JSX } from 'react'
 import classnames from 'classnames'
 
 type RadioProps = {
@@ -6,12 +6,7 @@ type RadioProps = {
   name: string
   className?: string
   label: React.ReactNode
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined
+  inputRef?: React.RefObject<HTMLInputElement>
   tile?: boolean
   labelDescription?: React.ReactNode
 }

@@ -9,7 +9,7 @@ import {
 } from '../Link/Link'
 
 type ModalOpenLinkProps = {
-  modalRef: React.RefObject<ModalRef>
+  modalRef: React.RefObject<ModalRef | null>
 }
 
 export function ModalOpenLink(
