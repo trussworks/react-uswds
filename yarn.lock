@@ -6476,10 +6476,10 @@ happo-plugin-storybook@^4.1.0:
     "@babel/runtime" ">=7.0.0"
     rimraf "^2.6.3"
 
-happo.io@^9.1.2:
-  version "9.1.6"
-  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-9.1.6.tgz#7caecc13c257831b261814626e7783e87d947256"
-  integrity sha512-vhOEaG691D3Npylx/Ra1xurTBV8lNX40ix6Pl8+/q5zJFlEWw1082nME6ly6yhtU6QgUVRUsLRjKntCA+D/YkA==
+happo.io@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/happo.io/-/happo.io-10.1.0.tgz#f4704baf7b5e8859cf24d16060b9c1f32602421b"
+  integrity sha512-8JeE5Or3W08NGloBd1tBV0M27Y90qiKdz7eqdj6EZiaMmcWNNrO+nO6S+80gtCAN3XZEebyxDTaW3mybYDH4yQ==
   dependencies:
     "@babel/preset-react" "^7.12.1"
     abort-controller "^3.0.0"
@@ -6490,8 +6490,8 @@ happo.io@^9.1.2:
     form-data "^4.0.0"
     glob "^7.1.2"
     https-proxy-agent "^5.0.0"
+    jose "^5.4.1"
     jsdom "^16.4.0"
-    jsonwebtoken "^9.0.0"
     lcs-image-diff "^2.0.0"
     node-fetch "^2.6.6"
     parse-srcset "^1.0.2"
@@ -7181,6 +7181,11 @@ jju@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/jju/-/jju-1.4.0.tgz#a3abe2718af241a2b2904f84a625970f389ae32a"
   integrity sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==
+
+jose@^5.4.1:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.6.2.tgz#b03628593d3a3c6486b37f4788faa6cc235cec79"
+  integrity sha512-F1t1/WZJ4JdmCE/XoMYw1dPOW5g8JF0xGm6Ox2fwaCAPlCzt+4Bh0EWP59iQuZNHHauDkCdjx+kCZSh5z/PGow==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
