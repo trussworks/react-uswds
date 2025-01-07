@@ -12,6 +12,7 @@ import {
   DEFAULT_EXTERNAL_DATE_FORMAT,
   VALIDATION_MESSAGE,
   DEFAULT_MIN_DATE,
+  type DateFormat,
 } from './constants'
 import { DatePickerLocalization, EN_US } from './i18n'
 import {
@@ -33,6 +34,7 @@ type BaseDatePickerProps = {
   validationStatus?: ValidationStatus
   disabled?: boolean
   required?: boolean
+  dateFormat?: DateFormat
   defaultValue?: string
   minDate?: string
   maxDate?: string
@@ -57,6 +59,7 @@ export const DatePicker = ({
   name,
   className,
   validationStatus,
+  dateFormat = DEFAULT_EXTERNAL_DATE_FORMAT,
   defaultValue,
   disabled,
   required,
@@ -68,6 +71,8 @@ export const DatePicker = ({
   i18n = EN_US,
   ...inputProps
 }: DatePickerProps): React.ReactElement => {
+  dateFormat ??= DEFAULT_EXTERNAL_DATE_FORMAT
+
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
@@ -92,7 +97,12 @@ export const DatePicker = ({
   const parsedRangeDate = rangeDate ? parseDateString(rangeDate) : undefined
 
   const validateInput = (): void => {
-    const isInvalid = isDateInvalid(externalValue, parsedMinDate, parsedMaxDate)
+    const isInvalid = isDateInvalid(
+      externalValue,
+      dateFormat,
+      parsedMinDate,
+      parsedMaxDate
+    )
 
     if (isInvalid && !externalInputEl?.current?.validationMessage) {
       externalInputEl?.current?.setCustomValidity(VALIDATION_MESSAGE)
@@ -108,8 +118,7 @@ export const DatePicker = ({
 
   const handleSelectDate = (dateString: string, closeCalendar = true): void => {
     const parsedValue = parseDateString(dateString)
-    const formattedValue =
-      parsedValue && formatDate(parsedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
+    const formattedValue = parsedValue && formatDate(parsedValue, dateFormat)
 
     if (parsedValue) setInternalValue(dateString)
     if (formattedValue) setExternalValue(formattedValue)
@@ -128,9 +137,12 @@ export const DatePicker = ({
     setExternalValue(value)
     if (onChange) onChange(value)
 
-    const inputDate = parseDateString(value, DEFAULT_EXTERNAL_DATE_FORMAT, true)
+    const inputDate = parseDateString(value, dateFormat, true)
     let newValue = ''
-    if (inputDate && !isDateInvalid(value, parsedMinDate, parsedMaxDate)) {
+    if (
+      inputDate &&
+      !isDateInvalid(value, dateFormat, parsedMinDate, parsedMaxDate)
+    ) {
       newValue = formatDate(inputDate)
     }
 
@@ -179,11 +191,7 @@ export const DatePicker = ({
       setStatuses([])
     } else {
       // calendar is closed, show it
-      const inputDate = parseDateString(
-        externalValue,
-        DEFAULT_EXTERNAL_DATE_FORMAT,
-        true
-      )
+      const inputDate = parseDateString(externalValue, dateFormat, true)
 
       const displayDate = keepDateBetweenMinAndMax(
         inputDate || (defaultValue && parseDateString(defaultValue)) || today(),
