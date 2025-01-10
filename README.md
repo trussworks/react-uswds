@@ -80,7 +80,7 @@ Having issues? See [FAQs](./docs/faqs.md).
 
 ### NodeJS
 
-We develop on this library with the version of node defined in `.node-version`. We run the test suite against the major released versions of node that are still in active LTS and not development releases. Specific versions are defined in the workflow: `.github/workflows/build-and-test.yml`. Those are the versions we exxpect to support, if you are using a pre-release or development version of node you may run into unexpected issues.
+We develop on this library with the version of node defined in [`.node-version`](.node-version). We run the test suite against the major released versions of node that are still in active LTS and not development releases. Specific versions are defined in the workflow: `.github/workflows/build-and-test.yml`. Those are the versions we expect to support, if you are using a pre-release or development version of node you may run into unexpected issues.
 
 Having issues? See [FAQs](./docs/faqs.md).
 
