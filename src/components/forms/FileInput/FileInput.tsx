@@ -69,7 +69,12 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     ref,
     () => ({
       input: internalRef.current,
-      clearFiles: (): void => setFiles([]),
+      clearFiles: (): void => {
+        setFiles([])
+        if (internalRef.current) {
+          internalRef.current.value = ''
+        }
+      },
       files,
     }),
     [files]
