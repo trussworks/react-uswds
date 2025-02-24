@@ -49,9 +49,7 @@ export function Tooltip<
 }: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
-  const tooltipID = useRef(
-    `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
-  )
+  const tooltipID = `tooltip-${useId()}`
 
   const [isVisible, setVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
@@ -290,4 +288,7 @@ export function Tooltip<
       </span> // the span that wraps the element with have the tooltip class
     )
   }
+}
+function useId() {
+  throw new Error('Function not implemented.')
 }
