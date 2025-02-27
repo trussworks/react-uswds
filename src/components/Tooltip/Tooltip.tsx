@@ -40,7 +40,7 @@ const DEFAULT_POSITION = 'top'
 // useId was introduced in React 18 - polyfill for older versions
 const genId = (): string => {
   if (React.useId) {
-    return React.useId();
+    return React.useId()
   } else {
     return `${Math.floor(Math.random() * 900000) + 100000}`
   }
