@@ -38,12 +38,8 @@ const TRIANGLE_SIZE = 5
 const DEFAULT_POSITION = 'top'
 
 // useId was introduced in React 18 - polyfill for older versions
-const genId = (): string => {
-  if (React.useId) {
-    return React.useId()
-  } else {
-    return `${Math.floor(Math.random() * 900000) + 100000}`
-  }
+const useGenId = (): string => {
+  return React.useId?.() ?? `${Math.floor(Math.random() * 900000) + 100000}`
 }
 
 export function Tooltip(props: DefaultTooltipProps): JSX.Element
@@ -58,7 +54,8 @@ export function Tooltip<
 }: DefaultTooltipProps | CustomTooltipProps<FCProps>): JSX.Element {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
-  const tooltipID = useRef(`tooltip-${genId()}`)
+  const id = useGenId()
+  const tooltipID = useRef(`tooltip-${id}`)
 
   const [isVisible, setVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
