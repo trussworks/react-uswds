@@ -4,6 +4,7 @@ import { Icon } from '../../Icon/Icons'
 import { TextInput } from '../TextInput/TextInput'
 import { InputGroup } from '../InputGroup/InputGroup'
 import { FormGroup } from '../FormGroup/FormGroup'
+import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/Input prefix or suffix/InputPrefix',
@@ -21,31 +22,22 @@ Source: https://designsystem.digital.gov/components/input-prefix-suffix/
   },
 }
 
-export const InputWithTextInputPrefix = (): React.ReactElement => (
+const Template = ({ ...args }) => (
   <FormGroup>
+    <Label htmlFor="cvc">Input label</Label>
     <InputGroup>
-      <InputPrefix>cvc</InputPrefix>
+      <InputPrefix>{args.prefix}</InputPrefix>
       <TextInput id="cvc" name="cvc" type="text" />
     </InputGroup>
   </FormGroup>
 )
 
-export const InputWithTextInputPrefixError = (): React.ReactElement => (
-  <FormGroup>
-    <InputGroup error>
-      <InputPrefix>cvc</InputPrefix>
-      <TextInput id="cvc" name="cvc" type="text" validationStatus="error" />
-    </InputGroup>
-  </FormGroup>
-)
+export const AsText = {
+  render: Template,
+  args: { prefix: 'cvc' },
+}
 
-export const InputWithIconInputPrefix = (): React.ReactElement => (
-  <FormGroup>
-    <InputGroup>
-      <InputPrefix>
-        <Icon.CreditCard />
-      </InputPrefix>
-      <TextInput id="card" name="card" type="text" />
-    </InputGroup>
-  </FormGroup>
-)
+export const AsIcon = {
+  render: Template,
+  args: { prefix: <Icon.CreditCard /> },
+}

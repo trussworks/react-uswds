@@ -57,7 +57,11 @@ export const SocialLink = ({
   return (
     <a className="usa-social-link" {...props} title={name}>
       {IconComponent && (
-        <IconComponent className="usa-social-link__icon" name={name} />
+        <IconComponent
+          className="usa-social-link__icon"
+          name={name}
+          aria-hidden="true"
+        />
       )}
     </a>
   )

@@ -18,66 +18,61 @@ Source: https://designsystem.digital.gov/components/range-slider
   },
 }
 
-const labelChildren = (
+const Template = ({ ...args }) => (
   <>
-    <div>
-      <span>Start:</span> <span>0</span>
-    </div>
-    <div>
-      <span>End:</span> <span>100</span>
-    </div>
-  </>
-)
-
-const labelHint = <>(drag to adjust or use arrow keys)</>
-
-export const DefaultRange = (): React.ReactElement => (
-  <>
-    <Label htmlFor="range-slider" hint={labelHint}>
-      {labelChildren}
+    <Label htmlFor="range-slider" hint=" (drag to adjust or use arrow keys)">
+      Slider input
     </Label>
-    <RangeInput id="range-slider" name="range" />
+    <RangeInput id="range-slider" name="range" {...args} />
+    {args.list && (
+      <datalist id="range-list">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </datalist>
+    )}
   </>
 )
 
-export const CustomRange = (): React.ReactElement => (
-  <RangeInput
-    id="custom-range-slider"
-    name="rangeValue"
-    className="dark-theme"
-    min={1}
-    max={11}
-    step={2}
-    defaultValue={3}
-  />
-)
+export const Basic = {
+  render: Template,
+}
 
-// Only tick marks are shown in Chrome but not with usa-range class currently because the appearance property is set to none
-export const DataListRange = (): React.ReactElement => (
-  <>
-    <RangeInput
-      id="range-slider"
-      name="range"
-      min={0}
-      max={4}
-      defaultValue={2}
-      list="range-list-id"
-    />
-    <datalist id="range-list-id">
-      <option>0</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-    </datalist>
-  </>
-)
+export const CustomRange = {
+  render: Template,
+  args: {
+    min: 1,
+    max: 11,
+    step: 2,
+    defaultValue: 3,
+  },
+}
 
-export const WithUnitAndPreposition = (): React.ReactElement => (
-  <RangeInput
-    id="custom-range-slider"
-    name="rangeValue"
-    textPreposition="de"
-    textUnit="por ciento"
-  />
-)
+export const DataListRange = {
+  render: Template,
+  args: {
+    list: 'range-list',
+    defaultValue: 2,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Only tick marks are shown in Chrome but not with usa-range class currently because the appearance property is set to none',
+      },
+    },
+  },
+}
+
+export const WithUnitAndPreposition = {
+  render: Template,
+  args: {
+    textPreposition: 'de',
+    textUnit: 'por ciento',
+    max: 11,
+    step: 2,
+    defaultValue: 3,
+  },
+}
