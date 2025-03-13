@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { Icon } from './Icons'
 
@@ -34,7 +34,7 @@ Source: https://designsystem.digital.gov/components/icon/
   },
 }
 
-export const AllIcons = (args: StorybookArgs): React.ReactElement => (
+export const AllIcons = (args: StorybookArgs): JSX.Element => (
   <div>
     <Icon.AccessibilityNew {...args} />
     <Icon.AccessibleForward {...args} />

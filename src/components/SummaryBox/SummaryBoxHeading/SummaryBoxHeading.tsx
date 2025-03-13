@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { type JSX, ReactNode } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
@@ -17,7 +17,7 @@ export const SummaryBoxHeading = ({
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
-  >): React.ReactElement => {
+  >): JSX.Element => {
   const classes = classnames('usa-summary-box__heading', className)
   const Heading = headingLevel
   return (

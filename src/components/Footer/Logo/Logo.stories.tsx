@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { Logo } from './Logo'
 
@@ -21,7 +21,7 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const Slim = (): React.ReactElement => (
+export const Slim = (): JSX.Element => (
   <div className="usa-footer__secondary-section">
     <Logo
       size="slim"
@@ -33,7 +33,7 @@ export const Slim = (): React.ReactElement => (
   </div>
 )
 
-export const NoHeading = (): React.ReactElement => (
+export const NoHeading = (): JSX.Element => (
   <div className="usa-footer__secondary-section">
     <Logo
       image={

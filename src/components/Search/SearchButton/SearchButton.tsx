@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { Icon } from '../../Icon/Icons'
@@ -21,7 +21,7 @@ export const SearchButton = ({
   className,
   i18n,
   buttonAriaLabel,
-}: SearchButtonProps): React.ReactElement => {
+}: SearchButtonProps): JSX.Element => {
   const buttonText = i18n?.buttonText || 'Search'
   const isSmall = size === 'small'
   const isBig = size === 'big'

@@ -1,4 +1,4 @@
-import React, { ReactElement, JSX } from 'react'
+import React, { ReactElement, type JSX } from 'react'
 import classnames from 'classnames'
 import { IdentifierLinkItemProps } from '../IdentifierLinkItem/IdentifierLinkItem'
 
@@ -16,7 +16,7 @@ export const IdentifierLinks = ({
   className,
   navProps,
   listProps,
-}: IdentifierLinksProps): React.ReactElement => {
+}: IdentifierLinksProps): JSX.Element => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--required-links',
     className

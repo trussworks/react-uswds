@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { NavList } from './NavList'
 
 export default {
@@ -26,6 +26,6 @@ const testItems = [
   </a>,
 ]
 
-export const BasicNavList = (): React.ReactElement => (
+export const BasicNavList = (): JSX.Element => (
   <NavList items={testItems} type="primary" />
 )

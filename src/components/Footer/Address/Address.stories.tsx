@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Address } from './Address'
 
 export default {
@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const WithLinks = (): React.ReactElement => (
+export const WithLinks = (): JSX.Element => (
   <Address
     items={[
       <a key="phone" href="tel:123-456-7890">

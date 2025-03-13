@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { SearchField } from './SearchField'
 
 export default {
@@ -17,10 +17,10 @@ Source: https://designsystem.digital.gov/components/search/
   },
 }
 
-export const DefaultSearchField = (): React.ReactElement => (
+export const DefaultSearchField = (): JSX.Element => (
   <SearchField placeholder="Search..." />
 )
 
-export const BigSearchField = (): React.ReactElement => (
+export const BigSearchField = (): JSX.Element => (
   <SearchField placeholder="Type something here..." isBig />
 )

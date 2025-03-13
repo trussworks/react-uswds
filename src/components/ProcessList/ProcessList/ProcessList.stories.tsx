@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { ProcessList } from './ProcessList'
 import { ProcessListItem } from '../ProcessListItem/ProcessListItem'
@@ -20,7 +20,7 @@ Source: https://designsystem.digital.gov/components/process-list
   },
 }
 
-export const ProcessListDefault = (): React.ReactElement => (
+export const ProcessListDefault = (): JSX.Element => (
   <ProcessList>
     <ProcessListItem>
       <ProcessListHeading type="h4">Start a process</ProcessListHeading>
@@ -66,7 +66,7 @@ export const ProcessListDefault = (): React.ReactElement => (
   </ProcessList>
 )
 
-export const ProcessListNoTextCustomSizing = (): React.ReactElement => (
+export const ProcessListNoTextCustomSizing = (): JSX.Element => (
   <ProcessList>
     <ProcessListItem className="padding-bottom-4">
       <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
@@ -86,7 +86,7 @@ export const ProcessListNoTextCustomSizing = (): React.ReactElement => (
   </ProcessList>
 )
 
-export const ProcessListCustomSizing = (): React.ReactElement => (
+export const ProcessListCustomSizing = (): JSX.Element => (
   <ProcessList>
     <ProcessListItem className="padding-bottom-4">
       <ProcessListHeading type="h4" className="font-sans-xl line-height-sans-1">

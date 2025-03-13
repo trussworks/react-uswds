@@ -1,4 +1,4 @@
-import React, { JSX } from 'react'
+import React, { type JSX } from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 
 import { ModalRef } from './Modal'
@@ -83,7 +83,7 @@ describe('ModalOpenLink', () => {
       children,
       className,
       ...linkProps
-    }: CustomLinkProps): React.ReactElement => (
+    }: CustomLinkProps): JSX.Element => (
       <a href={to} className={className} {...linkProps}>
         {children}
       </a>

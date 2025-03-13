@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type LogoProps = {
@@ -12,7 +12,7 @@ export const Logo = ({
   heading,
   image,
   ...elementAttributes
-}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): React.ReactElement => {
+}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): JSX.Element => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

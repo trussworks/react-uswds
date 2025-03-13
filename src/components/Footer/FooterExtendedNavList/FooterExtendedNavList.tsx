@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { type JSX, useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { NavList } from '../../header/NavList/NavList'
 
@@ -20,7 +20,7 @@ export const FooterExtendedNavList = ({
   isMobile,
   nestedLinks,
 }: FooterExtendedNavListProps &
-  React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+  React.HTMLAttributes<HTMLElement>): JSX.Element => {
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 
@@ -83,7 +83,7 @@ const Section = ({
   isOpen: boolean
   links: React.ReactNode[]
   onToggle?: () => void
-}): React.ReactElement => {
+}): JSX.Element => {
   const [primaryLinkOrHeading, ...secondaryLinks] = links
   const classes = classnames(
     'usa-footer__primary-content usa-footer__primary-content--collapsible',

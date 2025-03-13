@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type AddressProps = {
@@ -13,7 +13,7 @@ export const Address = ({
   size,
   className,
   items,
-}: AddressProps & React.HTMLAttributes<HTMLElement>): React.ReactElement => {
+}: AddressProps & React.HTMLAttributes<HTMLElement>): JSX.Element => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

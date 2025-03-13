@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalHeading } from './ModalHeading/ModalHeading'
@@ -34,7 +34,7 @@ Source: http://designsystem.digital.gov/components/modal
 }
 
 export const DefaultModal = {
-  render: (argTypes: StorybookArguments): React.ReactElement => {
+  render: (argTypes: StorybookArguments): JSX.Element => {
     return (
       <ModalWrapper
         role="dialog"
@@ -77,7 +77,7 @@ export const DefaultModal = {
 }
 
 export const LargeModal = {
-  render: (argTypes: StorybookArguments): React.ReactElement => {
+  render: (argTypes: StorybookArguments): JSX.Element => {
     return (
       <ModalWrapper
         role="dialog"
@@ -121,7 +121,7 @@ export const LargeModal = {
 }
 
 export const ForceActionModal = {
-  render: (argTypes: StorybookArguments): React.ReactElement => {
+  render: (argTypes: StorybookArguments): JSX.Element => {
     return (
       <ModalWrapper
         role="dialog"

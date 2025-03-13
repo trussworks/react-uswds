@@ -1,5 +1,5 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'
@@ -20,7 +20,7 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const SlimFooterNav = (): React.ReactElement => (
+export const SlimFooterNav = (): JSX.Element => (
   <FooterNav
     aria-label="Footer navigation"
     size="slim"
@@ -32,7 +32,7 @@ export const SlimFooterNav = (): React.ReactElement => (
   />
 )
 
-export const MediumFooterNav = (): React.ReactElement => (
+export const MediumFooterNav = (): JSX.Element => (
   <FooterNav
     aria-label="Footer navigation"
     size="medium"
@@ -45,7 +45,7 @@ export const MediumFooterNav = (): React.ReactElement => (
 )
 
 export const BigFooterNav = {
-  render: (): React.ReactElement => (
+  render: (): JSX.Element => (
     <Footer
       size="big"
       primary={

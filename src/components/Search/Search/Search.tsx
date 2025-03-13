@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { Form, OptionalFormProps } from '../../forms/Form/Form'
@@ -35,7 +35,7 @@ export const Search = ({
   buttonAriaLabel,
   inputProps,
   ...formProps
-}: SearchInputProps & OptionalFormProps): React.ReactElement => {
+}: SearchInputProps & OptionalFormProps): JSX.Element => {
   const classes = classnames('usa-search', className)
 
   return (

@@ -2,20 +2,20 @@
 
 exports[`IdentifierGov component > renders consistently in Spanish 1`] = `
 <section
-  className="usa-identifier__section usa-identifier__section--usagov"
+  class="usa-identifier__section usa-identifier__section--usagov"
   data-testid="identifierGov"
 >
   <div
-    className="usa-identifier__container"
+    class="usa-identifier__container"
   >
     <div
-      className="usa-identifier__usagov-description"
+      class="usa-identifier__usagov-description"
     >
       ¿Necesita información y servicios del Gobierno?
     </div>
      
     <a
-      className="usa-link"
+      class="usa-link"
       href="https://www.usa.gov/espanol/"
     >
       Visite USAGov en Español

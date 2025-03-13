@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { SearchButton } from './SearchButton'
 
 export default {
@@ -21,24 +21,20 @@ const sampleLocalization = {
   buttonText: 'Buscar',
 }
 
-export const DefaultSearchButton = (): React.ReactElement => <SearchButton />
+export const DefaultSearchButton = (): JSX.Element => <SearchButton />
 
-export const BigSearchButton = (): React.ReactElement => (
-  <SearchButton size="big" />
-)
+export const BigSearchButton = (): JSX.Element => <SearchButton size="big" />
 
-export const SmallSearch = (): React.ReactElement => (
-  <SearchButton size="small" />
-)
+export const SmallSearch = (): JSX.Element => <SearchButton size="small" />
 
-export const DefaultSpanishSearchButton = (): React.ReactElement => (
+export const DefaultSpanishSearchButton = (): JSX.Element => (
   <SearchButton i18n={sampleLocalization} />
 )
 
-export const BigSpanishSearchButton = (): React.ReactElement => (
+export const BigSpanishSearchButton = (): JSX.Element => (
   <SearchButton size="big" i18n={sampleLocalization} />
 )
 
-export const SmallSpanishSearch = (): React.ReactElement => (
+export const SmallSpanishSearch = (): JSX.Element => (
   <SearchButton size="small" i18n={sampleLocalization} />
 )

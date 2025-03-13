@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Radio } from './Radio'
 
 export default {
@@ -17,11 +17,11 @@ Source: https://designsystem.digital.gov/components/radio-buttons
   },
 }
 
-export const DefaultRadio = (): React.ReactElement => (
+export const DefaultRadio = (): JSX.Element => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" />
 )
 
-export const Selected = (): React.ReactElement => (
+export const Selected = (): JSX.Element => (
   <Radio
     id="input-radio"
     name="input-radio"
@@ -30,11 +30,11 @@ export const Selected = (): React.ReactElement => (
   />
 )
 
-export const Disabled = (): React.ReactElement => (
+export const Disabled = (): JSX.Element => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
 )
 
-export const WithLabelDescription = (): React.ReactElement => (
+export const WithLabelDescription = (): JSX.Element => (
   <Radio
     id="input-radio"
     name="input-radio"
@@ -43,11 +43,11 @@ export const WithLabelDescription = (): React.ReactElement => (
   />
 )
 
-export const Tile = (): React.ReactElement => (
+export const Tile = (): JSX.Element => (
   <Radio id="input-radio" name="input-radio" label="My Radio Button" tile />
 )
 
-export const TileWithLabelDescription = (): React.ReactElement => (
+export const TileWithLabelDescription = (): JSX.Element => (
   <Radio
     id="input-radio"
     name="input-radio"

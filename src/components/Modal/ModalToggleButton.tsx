@@ -1,4 +1,4 @@
-import React, { JSX } from 'react'
+import React, { type JSX } from 'react'
 
 import { ModalRef } from './Modal'
 import { ButtonProps, Button } from '../Button/Button'

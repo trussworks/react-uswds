@@ -1,5 +1,5 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
@@ -125,7 +125,7 @@ const testIdentifierGovContentSpanish = (
   </>
 )
 
-export const IdentifierDefault = (): React.ReactElement => (
+export const IdentifierDefault = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -146,7 +146,7 @@ export const IdentifierDefault = (): React.ReactElement => (
   </Identifier>
 )
 
-export const IdentifierSpanish = (): React.ReactElement => (
+export const IdentifierSpanish = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -166,7 +166,7 @@ export const IdentifierSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const MultipleParentsAndLogos = (): React.ReactElement => (
+export const MultipleParentsAndLogos = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -190,7 +190,7 @@ export const MultipleParentsAndLogos = (): React.ReactElement => (
   </Identifier>
 )
 
-export const MultipleParentsAndLogosSpanish = (): React.ReactElement => (
+export const MultipleParentsAndLogosSpanish = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -211,7 +211,7 @@ export const MultipleParentsAndLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const MoreThanTwoParentsAndLogos = (): React.ReactElement => (
+export const MoreThanTwoParentsAndLogos = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -238,7 +238,7 @@ export const MoreThanTwoParentsAndLogos = (): React.ReactElement => (
   </Identifier>
 )
 
-export const NoLogosEnglish = (): React.ReactElement => (
+export const NoLogosEnglish = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierIdentity domain="domain.edu.mil.gov">
@@ -256,7 +256,7 @@ export const NoLogosEnglish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const NoLogosSpanish = (): React.ReactElement => (
+export const NoLogosSpanish = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierIdentity domain="domain.edu.mil.gov">
@@ -273,7 +273,7 @@ export const NoLogosSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const TaxDisclaimerEnglish = (): React.ReactElement => (
+export const TaxDisclaimerEnglish = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Agency identifier">
       <IdentifierLogos>
@@ -295,7 +295,7 @@ export const TaxDisclaimerEnglish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const TaxDisclaimerSpanish = (): React.ReactElement => (
+export const TaxDisclaimerSpanish = (): JSX.Element => (
   <Identifier>
     <IdentifierMasthead aria-label="Identificador de la agencia">
       <IdentifierLogos>
@@ -316,28 +316,27 @@ export const TaxDisclaimerSpanish = (): React.ReactElement => (
   </Identifier>
 )
 
-export const TaxDisclaimerAndMultipleParentsAndLogos =
-  (): React.ReactElement => (
-    <Identifier>
-      <IdentifierMasthead aria-label="Agency identifier">
-        <IdentifierLogos>
-          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        </IdentifierLogos>
-        <IdentifierIdentity domain="domain.edu.mil.gov">
-          <span aria-hidden="true">An</span>
-          {` official website of the `}
-          <Link href="#">Test Agency Name</Link>
-          {` and the `}
-          <Link href="#">Other Test Agency Name</Link>
-          {`. Produced and published at taxpayer expense.`}
-        </IdentifierIdentity>
-      </IdentifierMasthead>
-      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-        {testLinks}
-      </IdentifierLinks>
-      <IdentifierGov aria-label="U.S. government information and services">
-        {testIdentifierGovContent}
-      </IdentifierGov>
-    </Identifier>
-  )
+export const TaxDisclaimerAndMultipleParentsAndLogos = (): JSX.Element => (
+  <Identifier>
+    <IdentifierMasthead aria-label="Agency identifier">
+      <IdentifierLogos>
+        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+      </IdentifierLogos>
+      <IdentifierIdentity domain="domain.edu.mil.gov">
+        <span aria-hidden="true">An</span>
+        {` official website of the `}
+        <Link href="#">Test Agency Name</Link>
+        {` and the `}
+        <Link href="#">Other Test Agency Name</Link>
+        {`. Produced and published at taxpayer expense.`}
+      </IdentifierIdentity>
+    </IdentifierMasthead>
+    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+      {testLinks}
+    </IdentifierLinks>
+    <IdentifierGov aria-label="U.S. government information and services">
+      {testIdentifierGovContent}
+    </IdentifierGov>
+  </Identifier>
+)

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { type JSX, useRef } from 'react'
 
 import { Modal, ModalRef } from './Modal'
 import { ModalHeading } from './ModalHeading/ModalHeading'
@@ -44,7 +44,7 @@ You can also use the provided ModalToggleButton and/or ModalOpenLink components,
   },
 }
 
-export const DefaultModal = (): React.ReactElement => {
+export const DefaultModal = (): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (
@@ -86,7 +86,7 @@ export const DefaultModal = (): React.ReactElement => {
   )
 }
 
-export const LargeModal = (): React.ReactElement => {
+export const LargeModal = (): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (
@@ -127,7 +127,7 @@ export const LargeModal = (): React.ReactElement => {
   )
 }
 
-export const ForceActionModal = (): React.ReactElement => {
+export const ForceActionModal = (): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (
@@ -170,7 +170,7 @@ export const ForceActionModal = (): React.ReactElement => {
   )
 }
 
-export const CustomFocusElementModal = (): React.ReactElement => {
+export const CustomFocusElementModal = (): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (
@@ -214,7 +214,7 @@ export const CustomFocusElementModal = (): React.ReactElement => {
   )
 }
 
-export const InitiallyOpenModal = (): React.ReactElement => {
+export const InitiallyOpenModal = (): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (

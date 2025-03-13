@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Menu } from './Menu'
 
 export default {
@@ -26,6 +26,6 @@ const testItems = [
   </a>,
 ]
 
-export const DefaultDropDownMenu = (): React.ReactElement => (
+export const DefaultDropDownMenu = (): JSX.Element => (
   <Menu items={testItems} isOpen={true} />
 )

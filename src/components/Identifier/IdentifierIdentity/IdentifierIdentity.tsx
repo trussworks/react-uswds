@@ -1,4 +1,4 @@
-import React, { JSX } from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 interface IdentifierIdentityProps {
@@ -12,8 +12,7 @@ export const IdentifierIdentity = ({
   domain,
   className,
   ...divProps
-}: IdentifierIdentityProps &
-  JSX.IntrinsicElements['div']): React.ReactElement => {
+}: IdentifierIdentityProps & JSX.IntrinsicElements['div']): JSX.Element => {
   const classes = classnames('usa-identifier__identity', className)
   return (
     <div data-testid="identifierIdentity" className={classes} {...divProps}>

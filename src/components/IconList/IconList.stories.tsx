@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { type JSX } from 'react'
 import { Icon } from '../Icon/Icons'
 import { IconList } from './IconList'
 import { IconListItem } from './IconListItem/IconListItem'
@@ -20,7 +20,7 @@ Source: https://designsystem.digital.gov/components/icon-list/
   },
 }
 
-export const Default = (): ReactElement => (
+export const Default = (): JSX.Element => (
   <IconList>
     <IconListItem>
       <IconListIcon className="text-green">
@@ -45,7 +45,7 @@ export const Default = (): ReactElement => (
   </IconList>
 )
 
-export const SimpleContent = (): ReactElement => (
+export const SimpleContent = (): JSX.Element => (
   <>
     <p className="margin-bottom-2">Benefits of joining Global Entry program:</p>
     <IconList className="usa-icon-list--primary">
@@ -79,7 +79,7 @@ export const SimpleContent = (): ReactElement => (
   </>
 )
 
-export const RichContent = (): ReactElement => (
+export const RichContent = (): JSX.Element => (
   <IconList>
     <IconListItem>
       <IconListIcon className="text-ink">
@@ -131,7 +131,7 @@ export const RichContent = (): ReactElement => (
   </IconList>
 )
 
-export const CustomSizeWithRichContent = (): ReactElement => (
+export const CustomSizeWithRichContent = (): JSX.Element => (
   <>
     <p className="margin-bottom-2">
       Here are a few easy ways you can help reduce energy use and costs while
@@ -184,7 +184,7 @@ export const CustomSizeWithRichContent = (): ReactElement => (
   </>
 )
 
-export const CustomSize = (): ReactElement => (
+export const CustomSize = (): JSX.Element => (
   <IconList className="usa-icon-list--size-lg">
     <IconListItem>
       <IconListIcon className="text-blue">

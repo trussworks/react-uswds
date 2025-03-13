@@ -49,7 +49,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     ...inputProps
   },
   ref
-): React.ReactElement => {
+): JSX.Element => {
   const internalRef = useRef<HTMLInputElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)

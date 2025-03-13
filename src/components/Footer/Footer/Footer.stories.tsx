@@ -1,5 +1,5 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { Address } from '../Address/Address'
 import { Button } from '../../Button/Button'
@@ -50,7 +50,7 @@ const socialLinkItems = [
   <SocialLink key="rss" name="RSS" href="#" />,
 ]
 
-const SignUpForm = (): React.ReactElement => {
+const SignUpForm = (): JSX.Element => {
   return (
     <div className="usa-sign-up">
       <h3 className="usa-sign-up__heading">Sign up</h3>
@@ -63,7 +63,7 @@ const SignUpForm = (): React.ReactElement => {
   )
 }
 
-export const SlimFooter = (): React.ReactElement => (
+export const SlimFooter = (): JSX.Element => (
   <Footer
     size="slim"
     returnToTop={returnToTop}
@@ -110,7 +110,7 @@ export const SlimFooter = (): React.ReactElement => (
   />
 )
 
-export const MediumFooter = (): React.ReactElement => (
+export const MediumFooter = (): JSX.Element => (
   <Footer
     size="medium"
     returnToTop={returnToTop}
@@ -157,7 +157,7 @@ export const MediumFooter = (): React.ReactElement => (
   />
 )
 
-export const BigFooter = (): React.ReactElement => (
+export const BigFooter = (): JSX.Element => (
   <Footer
     size="big"
     returnToTop={returnToTop}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import renderer from 'react-test-renderer'
 
 import { IdentifierGov } from './IdentifierGov'
 
@@ -22,19 +21,17 @@ describe('IdentifierGov component', () => {
   })
 
   it('renders consistently in Spanish', () => {
-    const tree = renderer
-      .create(
-        <IdentifierGov>
-          <div className="usa-identifier__usagov-description">
-            ¿Necesita información y servicios del Gobierno?
-          </div>
-          &nbsp;
-          <a href="https://www.usa.gov/espanol/" className="usa-link">
-            Visite USAGov en Español
-          </a>
-        </IdentifierGov>
-      )
-      .toJSON()
-    expect(tree).toMatchSnapshot()
+    const { container } = render(
+      <IdentifierGov>
+        <div className="usa-identifier__usagov-description">
+          ¿Necesita información y servicios del Gobierno?
+        </div>
+        &nbsp;
+        <a href="https://www.usa.gov/espanol/" className="usa-link">
+          Visite USAGov en Español
+        </a>
+      </IdentifierGov>
+    )
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

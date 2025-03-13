@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { TextInput, OptionalTextInputProps } from '../TextInput/TextInput'
@@ -23,7 +23,7 @@ export const DateInput = ({
   minLength,
   className,
   ...inputProps
-}: DateInputElementProps & OptionalTextInputProps): React.ReactElement => {
+}: DateInputElementProps & OptionalTextInputProps): JSX.Element => {
   const formGroupClasses = classnames({
     'usa-form-group--month': unit == 'month',
     'usa-form-group--day': unit == 'day',

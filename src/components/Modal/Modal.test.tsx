@@ -1,4 +1,4 @@
-import React, { createRef, useRef } from 'react'
+import React, { type JSX, createRef, useRef } from 'react'
 import {
   cleanup,
   render,
@@ -31,10 +31,7 @@ vi.mock('./utils', async (importOriginal) => {
  * for the library is set so that tests do not fail due to this
  * incompatibility. See: https://github.com/focus-trap/tabbable#testing-in-jsdom
  */
-const renderWithModalRoot = (
-  ui: React.ReactElement,
-  options: RenderOptions = {}
-) => {
+const renderWithModalRoot = (ui: JSX.Element, options: RenderOptions = {}) => {
   const appContainer = document.createElement('div')
   appContainer.setAttribute('id', 'app-root')
 
@@ -55,7 +52,7 @@ const ExampleModal = ({
   forceAction = false,
 }: {
   forceAction?: boolean
-}): React.ReactElement => {
+}): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (
@@ -101,7 +98,7 @@ const ExampleModal = ({
   )
 }
 
-const ExampleModalWithFocusElement = (): React.ReactElement => {
+const ExampleModalWithFocusElement = (): JSX.Element => {
   const modalRef = useRef<ModalRef>(null)
 
   return (

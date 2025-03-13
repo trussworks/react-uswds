@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type SideNavProps = {
@@ -9,7 +9,7 @@ type SideNavProps = {
 export const SideNav = ({
   items,
   isSubnav = false,
-}: SideNavProps): React.ReactElement => {
+}: SideNavProps): JSX.Element => {
   const classes = classnames({
     'usa-sidenav': !isSubnav,
     'usa-sidenav__sublist': isSubnav,
