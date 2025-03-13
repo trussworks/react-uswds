@@ -35,17 +35,30 @@ export function isCustomProps<T>(
 }
 
 const TRIANGLE_SIZE = 5
+const DEFAULT_POSITION = 'top'
+
+// useId was introduced in React 18 - polyfill for older versions
+const genId = (): string => {
+  if (React.useId) {
+    return React.useId()
+  } else {
+    return `${Math.floor(Math.random() * 900000) + 100000}`
+  }
+}
 
 export function Tooltip(props: DefaultTooltipProps): ReactElement
 export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
 export function Tooltip<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps,
->(props: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
+>({
+  position = DEFAULT_POSITION,
+  wrapperclasses,
+  className,
+  ...props
+}: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
-  const tooltipID = useRef(
-    `tooltip-${Math.floor(Math.random() * 900000) + 100000}`
-  )
+  const tooltipID = useRef(`tooltip-${genId()}`)
 
   const [isVisible, setVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
@@ -55,8 +68,6 @@ export function Tooltip<
   const [positioningAttempts, setPositionAttempts] = useState(0)
   const [wrapTooltip, setWrapTooltip] = useState(false)
   const [positionStyles, setPositionStyles] = useState({})
-
-  const { position, wrapperclasses, className } = props
 
   const positionTop = (e: HTMLElement, triggerEl: HTMLElement): void => {
     const topMargin = calculateMarginOffset('top', e.offsetHeight, triggerEl)
@@ -286,8 +297,4 @@ export function Tooltip<
       </span> // the span that wraps the element with have the tooltip class
     )
   }
-}
-
-Tooltip.defaultProps = {
-  position: 'top',
 }

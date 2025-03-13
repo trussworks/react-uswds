@@ -8,7 +8,7 @@ export const CardHeader = ({
   ...headerProps
 }: {
   exdent?: boolean
-} & JSX.IntrinsicElements['header']): React.ReactElement => {
+} & JSX.IntrinsicElements['div']): React.ReactElement => {
   const classes = classnames(
     'usa-card__header',
     {
@@ -18,9 +18,9 @@ export const CardHeader = ({
   )
 
   return (
-    <header className={classes} {...headerProps} data-testid="CardHeader">
+    <div className={classes} {...headerProps} data-testid="CardHeader">
       {children}
-    </header>
+    </div>
   )
 }
 

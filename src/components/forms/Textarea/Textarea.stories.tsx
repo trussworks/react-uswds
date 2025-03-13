@@ -1,5 +1,6 @@
 import React from 'react'
 import { Textarea } from './Textarea'
+import { Label } from '../Label/Label'
 
 export default {
   title: 'Components/Textarea',
@@ -17,34 +18,43 @@ Source: https://designsystem.digital.gov/components/text-input
   },
 }
 
-export const DefaultTextarea = (): React.ReactElement => (
-  <Textarea id="input-type-text" name="input-type-text" />
+const Template = ({ ...args }) => (
+  <>
+    <Label htmlFor="input-textarea">Textarea label</Label>
+    <Textarea id="input-textarea" name="input-textarea" {...args} />
+  </>
 )
 
-export const WithDefaultValue = (): React.ReactElement => (
-  <Textarea id="input-value" name="input-value" defaultValue="Change me" />
-)
+export const Basic = {
+  render: Template,
+}
 
-export const WithPlaceholder = (): React.ReactElement => (
-  <Textarea
-    id="input-type-text"
-    name="input-type-text"
-    placeholder="Enter value"
-  />
-)
+export const WithDefaultValue = {
+  render: Template,
+  args: { defaultValue: 'Change me' },
+}
 
-export const Error = (): React.ReactElement => (
-  <Textarea id="input-error" name="input-error" error />
-)
+export const WithPlaceholder = {
+  render: Template,
+  args: { placeholder: 'Enter value' },
+}
 
-export const Success = (): React.ReactElement => (
-  <Textarea id="input-success" name="input-success" success />
-)
+export const Error = {
+  render: Template,
+  args: { error: true },
+}
 
-export const Disabled = (): React.ReactElement => (
-  <Textarea id="input-disabled" name="input-disabled" disabled />
-)
+export const Success = {
+  render: Template,
+  args: { success: true },
+}
 
-export const Readonly = (): React.ReactElement => (
-  <Textarea id="input-readonly" name="input-readonly" readOnly />
-)
+export const Disabled = {
+  render: Template,
+  args: { disabled: true },
+}
+
+export const Readonly = {
+  render: Template,
+  args: { defaultValue: 'Readonly value', readOnly: true },
+}

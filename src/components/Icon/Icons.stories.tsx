@@ -21,13 +21,16 @@ Source: https://designsystem.digital.gov/components/icon/
   argTypes: {
     size: {
       control: {
-        type: 'select',
-        options: [3, 4, 5, 6, 7, 8, 9],
+        type: 'number',
+        min: 3,
+        max: 9,
+        step: 1,
       },
     },
   },
   args: {
     size: 4,
+    'aria-hidden': true,
   },
 }
 
