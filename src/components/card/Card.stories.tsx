@@ -290,7 +290,7 @@ export const CardTest = (): JSX.Element => (
         </p>
       </CardHeader>
       <CardMedia imageClass="add-aspect-16x9">
-        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+        {}
         <img
           src={sparklerImage}
           alt="An image's description"

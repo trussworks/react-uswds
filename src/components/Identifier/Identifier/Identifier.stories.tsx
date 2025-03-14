@@ -1,4 +1,3 @@
-/*  eslint-disable jsx-a11y/anchor-is-valid */
 import React, { type JSX } from 'react'
 
 import { Identifier } from './Identifier'
