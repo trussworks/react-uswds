@@ -87,7 +87,6 @@ describe('Link component', () => {
           Click Me
         </Link>
       )
-      expect
       expect(getByTestId('customComponent')).toHaveTextContent('Click Me')
       expect(getByTestId('customComponent')).toHaveAttribute(
         'href',
