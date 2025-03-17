@@ -1,6 +1,6 @@
 import React, { type JSX } from 'react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
-import { StepIndicator, StepStatusText } from '../StepIndicator/StepIndicator'
+import { StepIndicator, StepStatusText } from './StepIndicator'
 
 export default {
   title: 'Components/Step Indicator',

@@ -2,7 +2,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { ProcessList } from '../ProcessList/ProcessList'
+import { ProcessList } from './ProcessList'
 import { ProcessListItem } from '../ProcessListItem/ProcessListItem'
 import { ProcessListHeading } from '../ProcessListHeading/ProcessListHeading'
 

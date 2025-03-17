@@ -3,7 +3,7 @@ import { Header } from './Header'
 
 import { Title } from '../Title/Title'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
-import { Search } from '../../Search/Search/Search'
+import { Search } from '../../search/Search/Search'
 import { Menu } from '../Menu/Menu'
 import { MegaMenu } from '../MegaMenu/MegaMenu'
 import { NavMenuButton } from '../NavMenuButton/NavMenuButton'

@@ -8,7 +8,7 @@ import { GovBanner, GridContainer, Grid, MediaBlockBody } from '../../index'
 /** HEADER */
 import { Header } from '../../components/header/Header/Header'
 import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search/Search'
+import { Search } from '../../components/search/Search/Search'
 import { Menu } from '../../components/header/Menu/Menu'
 import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
 import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
@@ -16,14 +16,14 @@ import { NavDropDownButton } from '../../components/header/NavDropDownButton/Nav
 import { ExtendedNav } from '../../components/header/ExtendedNav/ExtendedNav'
 
 /** FOOTER */
-import { Address } from '../../components/Footer/Address/Address'
-import { Footer } from '../../components/Footer/Footer/Footer'
-import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
-import { Logo } from '../../components/Footer/Logo/Logo'
+import { Address } from '../../components/footer/Address/Address'
+import { Footer } from '../../components/footer/Footer/Footer'
+import { FooterNav } from '../../components/footer/FooterNav/FooterNav'
+import { Logo } from '../../components/footer/Logo/Logo'
 import {
   SocialLinks,
   SocialLink,
-} from '../../components/Footer/SocialLinks/SocialLinks'
+} from '../../components/footer/SocialLinks/SocialLinks'
 
 export default {
   title: 'Page Templates/Landing Page',
