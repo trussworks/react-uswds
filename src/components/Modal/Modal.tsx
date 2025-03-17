@@ -56,8 +56,8 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
 ): JSX.Element => {
   const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
-  const initialPaddingRef = useRef<string|undefined>(undefined)
-  const tempPaddingRef = useRef<string|undefined>(undefined)
+  const initialPaddingRef = useRef<string | undefined>(undefined)
+  const tempPaddingRef = useRef<string | undefined>(undefined)
   const modalEl = useRef<HTMLDivElement>(null)
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'
