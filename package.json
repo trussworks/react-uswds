@@ -86,17 +86,16 @@
     "@storybook/addon-essentials": "^8.6.4",
     "@storybook/addon-interactions": "^8.6.4",
     "@storybook/addon-links": "^8.6.4",
-    "@storybook/addon-mdx-gfm": "^8.6.4",
     "@storybook/blocks": "^8.6.4",
     "@storybook/manager-api": "^8.6.4",
     "@storybook/react": "^8.6.4",
     "@storybook/react-vite": "^8.6.4",
     "@storybook/test": "^8.6.4",
     "@storybook/theming": "^8.6.4",
-    "@testing-library/dom": "^9.0.0",
-    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
-    "@testing-library/user-event": "^14.0.4",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
@@ -147,8 +146,7 @@
     "parse-url": "8.1.0",
     "json-schema": "0.4.0",
     "trim": "0.0.3",
-    "trim-newlines": "3.0.1",
-    "@typescript-eslint/utils": "8.26.1"
+    "trim-newlines": "3.0.1"
   },
   "packageManager": "yarn@1.22.22"
 }
