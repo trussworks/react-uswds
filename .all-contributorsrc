@@ -258,6 +258,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/7841661?v=4",
       "profile": "http://github.com/ajfarkas",
       "contributions": ["code", "maintenance", "review"]
+    },
+    {
+      "login": "lea-m-truss",
+      "name": "lea-m-truss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/202806705?v=4",
+      "profile": "https://github.com/lea-m-truss",
+      "contributions": ["code", "doc"]
     }
   ],
   "contributorsPerLine": 7,
