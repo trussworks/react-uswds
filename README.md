@@ -222,7 +222,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://github.com/ajfarkas"><img src="https://avatars.githubusercontent.com/u/7841661?v=4?s=100" width="100px;" alt="AJ Farkas"/><br /><sub><b>AJ Farkas</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ajfarkas" title="Code">💻</a> <a href="#maintenance-ajfarkas" title="Maintenance">🚧</a> <a href="https://github.com/trussworks/react-uswds/pulls?q=is%3Apr+reviewed-by%3Aajfarkas" title="Reviewed Pull Requests">👀</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lea-m-truss"><img src="https://avatars.githubusercontent.com/u/202806705?v=4?s=100" width="100px;" alt="lea-m-truss"/><br /><sub><b>lea-m-truss</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lea-m-truss"><img src="https://avatars.githubusercontent.com/u/202806705?v=4?s=100" width="100px;" alt="Lea Melendez"/><br /><sub><b>Lea Melendez</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
