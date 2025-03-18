@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { ErrorMessage } from './ErrorMessage'
 
 export default {
@@ -17,6 +17,6 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const DefaultErrorMessage = (): React.ReactElement => (
+export const DefaultErrorMessage = (): JSX.Element => (
   <ErrorMessage>Helpful error message</ErrorMessage>
 )

@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react'
+import React, { ReactNode, type JSX } from 'react'
 import classNames from 'classnames'
 
 type BannerHeaderProps = {
@@ -22,7 +22,7 @@ export const BannerHeader = ({
   headerActionProps,
   className,
   ...headerProps
-}: BannerHeaderProps & JSX.IntrinsicElements['header']): ReactElement => {
+}: BannerHeaderProps & JSX.IntrinsicElements['header']): JSX.Element => {
   const classes = classNames(
     'usa-banner__header',
     {

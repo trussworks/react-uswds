@@ -90,44 +90,44 @@ export { PrimaryNav } from './components/header/PrimaryNav/PrimaryNav'
 export { Title } from './components/header/Title/Title'
 
 /** IconList component */
-export { IconList } from './components/IconList/IconList'
-export { IconListContent } from './components/IconList/IconListContent/IconListContent'
-export { IconListIcon } from './components/IconList/IconListIcon/IconListIcon'
-export { IconListItem } from './components/IconList/IconListItem/IconListItem'
-export { IconListTitle } from './components/IconList/IconListTitle/IconListTitle'
+export { IconList } from './components/iconlist/IconList'
+export { IconListContent } from './components/iconlist/IconListContent/IconListContent'
+export { IconListIcon } from './components/iconlist/IconListIcon/IconListIcon'
+export { IconListItem } from './components/iconlist/IconListItem/IconListItem'
+export { IconListTitle } from './components/iconlist/IconListTitle/IconListTitle'
 
 // Icons
 export { Icon } from './components/Icon/Icons'
 
 /** Identifier Components */
-export { Identifier } from './components/Identifier/Identifier/Identifier'
-export { IdentifierGov } from './components/Identifier/IdentifierGov/IdentifierGov'
-export { IdentifierIdentity } from './components/Identifier/IdentifierIdentity/IdentifierIdentity'
-export { IdentifierLink } from './components/Identifier/IdentifierLink/IdentifierLink'
-export { IdentifierLinkItem } from './components/Identifier/IdentifierLinkItem/IdentifierLinkItem'
-export { IdentifierLinks } from './components/Identifier/IdentifierLinks/IdentifierLinks'
-export { IdentifierLogo } from './components/Identifier/IdentifierLogo/IdentifierLogo'
-export { IdentifierLogos } from './components/Identifier/IdentifierLogos/IdentifierLogos'
-export { IdentifierMasthead } from './components/Identifier/IdentifierMasthead/IdentifierMasthead'
+export { Identifier } from './components/identifier/Identifier/Identifier'
+export { IdentifierGov } from './components/identifier/IdentifierGov/IdentifierGov'
+export { IdentifierIdentity } from './components/identifier/IdentifierIdentity/IdentifierIdentity'
+export { IdentifierLink } from './components/identifier/IdentifierLink/IdentifierLink'
+export { IdentifierLinkItem } from './components/identifier/IdentifierLinkItem/IdentifierLinkItem'
+export { IdentifierLinks } from './components/identifier/IdentifierLinks/IdentifierLinks'
+export { IdentifierLogo } from './components/identifier/IdentifierLogo/IdentifierLogo'
+export { IdentifierLogos } from './components/identifier/IdentifierLogos/IdentifierLogos'
+export { IdentifierMasthead } from './components/identifier/IdentifierMasthead/IdentifierMasthead'
 
 /** Footer components */
-export { Address } from './components/Footer/Address/Address'
-export { Footer } from './components/Footer/Footer/Footer'
-export { FooterExtendedNavList } from './components/Footer/FooterExtendedNavList/FooterExtendedNavList'
-export { FooterNav } from './components/Footer/FooterNav/FooterNav'
-export { Logo } from './components/Footer/Logo/Logo'
+export { Address } from './components/footer/Address/Address'
+export { Footer } from './components/footer/Footer/Footer'
+export { FooterExtendedNavList } from './components/footer/FooterExtendedNavList/FooterExtendedNavList'
+export { FooterNav } from './components/footer/FooterNav/FooterNav'
+export { Logo } from './components/footer/Logo/Logo'
 export {
   SocialLinks,
   SocialLink,
-} from './components/Footer/SocialLinks/SocialLinks'
+} from './components/footer/SocialLinks/SocialLinks'
 
 /** Modal components */
-export { Modal } from './components/Modal/Modal'
-export { ModalToggleButton } from './components/Modal/ModalToggleButton'
-export { ModalOpenLink } from './components/Modal/ModalOpenLink'
-export { ModalHeading } from './components/Modal/ModalHeading/ModalHeading'
-export { ModalFooter } from './components/Modal/ModalFooter/ModalFooter'
-export type { ModalProps, ModalRef } from './components/Modal/Modal'
+export { Modal } from './components/modal/Modal'
+export { ModalToggleButton } from './components/modal/ModalToggleButton'
+export { ModalOpenLink } from './components/modal/ModalOpenLink'
+export { ModalHeading } from './components/modal/ModalHeading/ModalHeading'
+export { ModalFooter } from './components/modal/ModalFooter/ModalFooter'
+export type { ModalProps, ModalRef } from './components/modal/Modal'
 
 /** Card components */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
@@ -146,16 +146,16 @@ export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/Breadcrum
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
 export { StepIndicatorStep } from './components/stepindicator/StepIndicatorStep/StepIndicatorStep'
 
-export { Search } from './components/Search/Search/Search'
+export { Search } from './components/search/Search/Search'
 
-export { SummaryBox } from './components/SummaryBox/SummaryBox/SummaryBox'
-export { SummaryBoxHeading } from './components/SummaryBox/SummaryBoxHeading/SummaryBoxHeading'
-export { SummaryBoxContent } from './components/SummaryBox/SummaryBoxContent/SummaryBoxContent'
+export { SummaryBox } from './components/summarybox/SummaryBox/SummaryBox'
+export { SummaryBoxHeading } from './components/summarybox/SummaryBoxHeading/SummaryBoxHeading'
+export { SummaryBoxContent } from './components/summarybox/SummaryBoxContent/SummaryBoxContent'
 
 /** ProcessList components */
-export { ProcessList } from './components/ProcessList/ProcessList/ProcessList'
-export { ProcessListItem } from './components/ProcessList/ProcessListItem/ProcessListItem'
-export { ProcessListHeading } from './components/ProcessList/ProcessListHeading/ProcessListHeading'
+export { ProcessList } from './components/processlist/ProcessList/ProcessList'
+export { ProcessListItem } from './components/processlist/ProcessListItem/ProcessListItem'
+export { ProcessListHeading } from './components/processlist/ProcessListHeading/ProcessListHeading'
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
 

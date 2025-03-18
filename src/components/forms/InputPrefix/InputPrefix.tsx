@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type InputPrefixProps = {
@@ -10,7 +10,7 @@ export const InputPrefix = ({
   className,
   children,
   ...divProps
-}: InputPrefixProps): React.ReactElement => {
+}: InputPrefixProps): JSX.Element => {
   const classes = classnames('usa-input-prefix', className)
 
   return (

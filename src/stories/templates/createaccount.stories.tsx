@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 import {
   GovBanner,
   Header,
@@ -127,7 +127,7 @@ const mockSubmit = (): void => {
   /* Blank function for mocking form submission */
 }
 
-export const CreateAccount = (): React.ReactElement => {
+export const CreateAccount = (): JSX.Element => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (

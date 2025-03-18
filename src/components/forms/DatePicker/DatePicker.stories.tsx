@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { DatePicker } from './DatePicker'
 import { sampleLocalization } from './i18n'
@@ -56,7 +56,7 @@ type StorybookArguments = {
 }
 
 export const CompleteDatePicker = {
-  render: (argTypes: StorybookArguments): React.ReactElement => (
+  render: (argTypes: StorybookArguments): JSX.Element => (
     <Form onSubmit={argTypes.onSubmit}>
       <FormGroup error={argTypes.validationStatus === 'error'}>
         <Label

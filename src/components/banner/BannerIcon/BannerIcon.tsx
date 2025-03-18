@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { type JSX } from 'react'
 import classNames from 'classnames'
 
 export const BannerIcon = ({
@@ -6,7 +6,7 @@ export const BannerIcon = ({
   alt,
   className,
   ...imgProps
-}: JSX.IntrinsicElements['img']): ReactElement => {
+}: JSX.IntrinsicElements['img']): JSX.Element => {
   const classes = classNames('usa-banner__icon usa-media-block__img', className)
 
   return (

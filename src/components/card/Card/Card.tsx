@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { GridLayoutProp, applyGridClasses } from '../../grid/Grid/Grid'
@@ -17,9 +17,7 @@ export const Card = ({
   gridLayout,
   containerProps,
   ...liProps
-}: CardProps &
-  JSX.IntrinsicElements['li'] &
-  GridLayoutProp): React.ReactElement => {
+}: CardProps & JSX.IntrinsicElements['li'] & GridLayoutProp): JSX.Element => {
   const { className: containerClass, ...restContainerProps } =
     containerProps || {}
 

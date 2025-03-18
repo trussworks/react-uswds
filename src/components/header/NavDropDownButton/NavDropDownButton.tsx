@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type NavDropDownButtonProps = {
@@ -20,8 +20,7 @@ export const NavDropDownButton = ({
   isCurrent,
   className,
   ...buttonProps
-}: NavDropDownButtonProps &
-  JSX.IntrinsicElements['button']): React.ReactElement => {
+}: NavDropDownButtonProps & JSX.IntrinsicElements['button']): JSX.Element => {
   const classes = classnames(
     'usa-accordion__button',
     'usa-nav__link',

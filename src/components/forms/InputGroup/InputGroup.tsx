@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 export interface InputGroupProps {
@@ -11,7 +11,7 @@ export const InputGroup = ({
   children,
   className,
   error,
-}: InputGroupProps): React.ReactElement => {
+}: InputGroupProps): JSX.Element => {
   const classes = classnames(
     'usa-input-group',
     { 'usa-input-group--error': error },

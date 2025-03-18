@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 import {
   GridContainer,
   Grid,
@@ -109,7 +109,7 @@ const identifierLinksText = [
   'Privacy policy',
 ]
 
-export const MultipleSignInOptions = (): React.ReactElement => {
+export const MultipleSignInOptions = (): JSX.Element => {
   return (
     <>
       <a className="usa-skipnav" href="#main-content">

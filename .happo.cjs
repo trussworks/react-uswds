@@ -1,8 +1,6 @@
 const { RemoteBrowserTarget } = require('happo.io')
 const happoPluginStorybook = require('happo-plugin-storybook')
 
-require('dotenv').config()
-
 module.exports = {
   apiKey: process.env.HAPPO_API_KEY,
   apiSecret: process.env.HAPPO_API_SECRET,

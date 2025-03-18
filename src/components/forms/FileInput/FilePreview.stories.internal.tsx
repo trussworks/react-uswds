@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { FilePreview } from './FilePreview'
 import {
@@ -23,26 +23,24 @@ const testProps = {
   file: TEST_TEXT_FILE,
 }
 
-export const loadingPreview = (): React.ReactElement => (
-  <FilePreview {...testProps} />
-)
+export const loadingPreview = (): JSX.Element => <FilePreview {...testProps} />
 
-export const pdfPreview = (): React.ReactElement => (
+export const pdfPreview = (): JSX.Element => (
   <FilePreview {...testProps} file={TEST_PDF_FILE} />
 )
 
-export const docPreview = (): React.ReactElement => (
+export const docPreview = (): JSX.Element => (
   <FilePreview {...testProps} file={TEST_DOC_FILE} />
 )
 
-export const xlsPreview = (): React.ReactElement => (
+export const xlsPreview = (): JSX.Element => (
   <FilePreview {...testProps} file={TEST_XLS_FILE} />
 )
 
-export const videoPreview = (): React.ReactElement => (
+export const videoPreview = (): JSX.Element => (
   <FilePreview {...testProps} file={TEST_VIDEO_FILE} />
 )
 
-export const imagePreview = (): React.ReactElement => (
+export const imagePreview = (): JSX.Element => (
   <FilePreview {...testProps} file={TEST_PNG_FILE} />
 )
