@@ -24,9 +24,7 @@
       "require": {
         "types": "./lib/index.d.ts",
         "default": "./lib/index.cjs"
-      },
-      "browser": "./lib/index.iife.js",
-      "default": "./lib/index.umd.cjs"
+      }
     },
     "./lib/index.css": "./lib/index.css",
     "./lib/uswds.css": "./lib/uswds.css"
