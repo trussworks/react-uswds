@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import React, { useEffect, useRef } from 'react'
-import { Search } from './components/Search/Search/Search'
+import { Search } from './components/search/Search/Search'
 
 import '@uswds/uswds/css/uswds.css'
 import './styles/index.scss'
