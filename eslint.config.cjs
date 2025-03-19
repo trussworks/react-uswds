@@ -1,3 +1,4 @@
+const { defineConfig, globalIgnores } = require('eslint/config');
 const _import = require('eslint-plugin-import');
 const typescriptEslint = require('@typescript-eslint/eslint-plugin');
 const jsxA11Y = require('eslint-plugin-jsx-a11y');
@@ -19,10 +20,11 @@ const {
 const compat = new FlatCompat({
     baseDirectory: __dirname,
     recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
+    allConfig: js.configs.all,
 });
 
-module.exports = [
+module.exports = defineConfig([
+    globalIgnores(['src/serverSideTest.js']),
     ...fixupConfigRules(compat.extends(
         'eslint:recommended',
         'plugin:import/errors',
@@ -46,7 +48,7 @@ module.exports = [
         },
 
         ignores: [
-            'node_modules/*'
+            'node_modules/*',
         ],
 
         languageOptions: {
@@ -107,4 +109,4 @@ module.exports = [
             'import/no-unresolved': 'off',
         },
     }
-];
+]);
