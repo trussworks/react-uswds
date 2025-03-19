@@ -137,8 +137,7 @@
     "vite-plugin-dts": "^4.0.3",
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^2.0.4",
-    "webpack": "^5.90.1",
-    "yarn": "^1.22.22"
+    "webpack": "^5.90.1"
   },
   "resolutions": {
     "parse-url": "8.1.0",
