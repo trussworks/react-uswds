@@ -3,56 +3,55 @@
 exports[`GovBanner component > static content > renders consistently in English for .gov sites 1`] = `
 <section
   aria-label="Official website of the United States government"
-  className="usa-banner"
+  class="usa-banner"
   data-testid="govBanner"
 >
   <div
-    className="usa-accordion"
+    class="usa-accordion"
   >
     <header
-      className="usa-banner__header"
+      class="usa-banner__header"
     >
       <div
-        className="usa-banner__inner"
+        class="usa-banner__inner"
         data-testid="banner-header-inner-div"
       >
         <div
-          className="grid-col-auto"
+          class="grid-col-auto"
           data-testid="banner-header-flag-div"
         >
           <img
             alt=""
-            aria-hidden={true}
-            className="usa-banner__header-flag"
+            aria-hidden="true"
+            class="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
-          aria-hidden={true}
-          className="grid-col-fill tablet:grid-col-auto"
+          aria-hidden="true"
+          class="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
           <p
-            className="usa-banner__header-text"
+            class="usa-banner__header-text"
           >
             An official website of the United States government
           </p>
           <p
             aria-hidden="true"
-            className="usa-banner__header-action"
+            class="usa-banner__header-action"
           >
             Here’s how you know
           </p>
         </div>
         <button
           aria-controls="gov-banner"
-          aria-expanded={false}
-          className="usa-accordion__button usa-banner__button"
-          onClick={[Function]}
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
           type="button"
         >
           <span
-            className="usa-banner__button-text"
+            class="usa-banner__button-text"
           >
             Here’s how you know
           </span>
@@ -60,24 +59,24 @@ exports[`GovBanner component > static content > renders consistently in English 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
-      hidden={true}
+      class="usa-banner__content usa-accordion__content"
+      hidden=""
       id="gov-banner"
     >
       <div
-        className="grid-row grid-gap-lg"
+        class="grid-row grid-gap-lg"
       >
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -93,16 +92,16 @@ exports[`GovBanner component > static content > renders consistently in English 
           </div>
         </div>
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -115,8 +114,8 @@ exports[`GovBanner component > static content > renders consistently in English 
                 lock (
                 <svg
                   aria-label="Locked padlock icon"
-                  className="usa-icon"
-                  focusable={false}
+                  class="usa-icon"
+                  focusable="false"
                   role="img"
                 />
                 )
@@ -142,56 +141,55 @@ exports[`GovBanner component > static content > renders consistently in English 
 exports[`GovBanner component > static content > renders consistently in English for .mil sites 1`] = `
 <section
   aria-label="Official website of the United States government"
-  className="usa-banner"
+  class="usa-banner"
   data-testid="govBanner"
 >
   <div
-    className="usa-accordion"
+    class="usa-accordion"
   >
     <header
-      className="usa-banner__header"
+      class="usa-banner__header"
     >
       <div
-        className="usa-banner__inner"
+        class="usa-banner__inner"
         data-testid="banner-header-inner-div"
       >
         <div
-          className="grid-col-auto"
+          class="grid-col-auto"
           data-testid="banner-header-flag-div"
         >
           <img
             alt=""
-            aria-hidden={true}
-            className="usa-banner__header-flag"
+            aria-hidden="true"
+            class="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
-          aria-hidden={true}
-          className="grid-col-fill tablet:grid-col-auto"
+          aria-hidden="true"
+          class="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
           <p
-            className="usa-banner__header-text"
+            class="usa-banner__header-text"
           >
             An official website of the United States government
           </p>
           <p
             aria-hidden="true"
-            className="usa-banner__header-action"
+            class="usa-banner__header-action"
           >
             Here’s how you know
           </p>
         </div>
         <button
           aria-controls="gov-banner"
-          aria-expanded={false}
-          className="usa-accordion__button usa-banner__button"
-          onClick={[Function]}
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
           type="button"
         >
           <span
-            className="usa-banner__button-text"
+            class="usa-banner__button-text"
           >
             Here’s how you know
           </span>
@@ -199,24 +197,24 @@ exports[`GovBanner component > static content > renders consistently in English 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
-      hidden={true}
+      class="usa-banner__content usa-accordion__content"
+      hidden=""
       id="gov-banner"
     >
       <div
-        className="grid-row grid-gap-lg"
+        class="grid-row grid-gap-lg"
       >
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -232,16 +230,16 @@ exports[`GovBanner component > static content > renders consistently in English 
           </div>
         </div>
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -254,8 +252,8 @@ exports[`GovBanner component > static content > renders consistently in English 
                 lock (
                 <svg
                   aria-label="Locked padlock icon"
-                  className="usa-icon"
-                  focusable={false}
+                  class="usa-icon"
+                  focusable="false"
                   role="img"
                 />
                 )
@@ -281,56 +279,55 @@ exports[`GovBanner component > static content > renders consistently in English 
 exports[`GovBanner component > static content > renders consistently in Spanish for .gov sites 1`] = `
 <section
   aria-label="Un sitio oficial del Gobierno de Estados Unidos"
-  className="usa-banner"
+  class="usa-banner"
   data-testid="govBanner"
 >
   <div
-    className="usa-accordion"
+    class="usa-accordion"
   >
     <header
-      className="usa-banner__header"
+      class="usa-banner__header"
     >
       <div
-        className="usa-banner__inner"
+        class="usa-banner__inner"
         data-testid="banner-header-inner-div"
       >
         <div
-          className="grid-col-auto"
+          class="grid-col-auto"
           data-testid="banner-header-flag-div"
         >
           <img
             alt=""
-            aria-hidden={true}
-            className="usa-banner__header-flag"
+            aria-hidden="true"
+            class="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
-          aria-hidden={true}
-          className="grid-col-fill tablet:grid-col-auto"
+          aria-hidden="true"
+          class="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
           <p
-            className="usa-banner__header-text"
+            class="usa-banner__header-text"
           >
             Un sitio oficial del Gobierno de Estados Unidos
           </p>
           <p
             aria-hidden="true"
-            className="usa-banner__header-action"
+            class="usa-banner__header-action"
           >
             Así es como usted puede verificarlo
           </p>
         </div>
         <button
           aria-controls="gov-banner"
-          aria-expanded={false}
-          className="usa-accordion__button usa-banner__button"
-          onClick={[Function]}
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
           type="button"
         >
           <span
-            className="usa-banner__button-text"
+            class="usa-banner__button-text"
           >
             Así es como usted puede verificarlo
           </span>
@@ -338,24 +335,24 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
-      hidden={true}
+      class="usa-banner__content usa-accordion__content"
+      hidden=""
       id="gov-banner"
     >
       <div
-        className="grid-row grid-gap-lg"
+        class="grid-row grid-gap-lg"
       >
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -371,16 +368,16 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
           </div>
         </div>
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -393,8 +390,8 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
                 candado (
                 <svg
                   aria-label="Icono de candado cerrado"
-                  className="usa-icon"
-                  focusable={false}
+                  class="usa-icon"
+                  focusable="false"
                   role="img"
                 />
                 )
@@ -419,56 +416,55 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
 exports[`GovBanner component > static content > renders consistently in Spanish for .mil sites 1`] = `
 <section
   aria-label="Un sitio oficial del Gobierno de Estados Unidos"
-  className="usa-banner"
+  class="usa-banner"
   data-testid="govBanner"
 >
   <div
-    className="usa-accordion"
+    class="usa-accordion"
   >
     <header
-      className="usa-banner__header"
+      class="usa-banner__header"
     >
       <div
-        className="usa-banner__inner"
+        class="usa-banner__inner"
         data-testid="banner-header-inner-div"
       >
         <div
-          className="grid-col-auto"
+          class="grid-col-auto"
           data-testid="banner-header-flag-div"
         >
           <img
             alt=""
-            aria-hidden={true}
-            className="usa-banner__header-flag"
+            aria-hidden="true"
+            class="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
-          aria-hidden={true}
-          className="grid-col-fill tablet:grid-col-auto"
+          aria-hidden="true"
+          class="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
           <p
-            className="usa-banner__header-text"
+            class="usa-banner__header-text"
           >
             Un sitio oficial del Gobierno de Estados Unidos
           </p>
           <p
             aria-hidden="true"
-            className="usa-banner__header-action"
+            class="usa-banner__header-action"
           >
             Así es como usted puede verificarlo
           </p>
         </div>
         <button
           aria-controls="gov-banner"
-          aria-expanded={false}
-          className="usa-accordion__button usa-banner__button"
-          onClick={[Function]}
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
           type="button"
         >
           <span
-            className="usa-banner__button-text"
+            class="usa-banner__button-text"
           >
             Así es como usted puede verificarlo
           </span>
@@ -476,24 +472,24 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
-      hidden={true}
+      class="usa-banner__content usa-accordion__content"
+      hidden=""
       id="gov-banner"
     >
       <div
-        className="grid-row grid-gap-lg"
+        class="grid-row grid-gap-lg"
       >
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -509,16 +505,16 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
           </div>
         </div>
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -531,8 +527,8 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
                 candado (
                 <svg
                   aria-label="Icono de candado cerrado"
-                  className="usa-icon"
-                  focusable={false}
+                  class="usa-icon"
+                  focusable="false"
                   role="img"
                 />
                 )
@@ -557,56 +553,55 @@ exports[`GovBanner component > static content > renders consistently in Spanish 
 exports[`GovBanner component > static content > renders consistently with default props 1`] = `
 <section
   aria-label="Official website of the United States government"
-  className="usa-banner"
+  class="usa-banner"
   data-testid="govBanner"
 >
   <div
-    className="usa-accordion"
+    class="usa-accordion"
   >
     <header
-      className="usa-banner__header"
+      class="usa-banner__header"
     >
       <div
-        className="usa-banner__inner"
+        class="usa-banner__inner"
         data-testid="banner-header-inner-div"
       >
         <div
-          className="grid-col-auto"
+          class="grid-col-auto"
           data-testid="banner-header-flag-div"
         >
           <img
             alt=""
-            aria-hidden={true}
-            className="usa-banner__header-flag"
+            aria-hidden="true"
+            class="usa-banner__header-flag"
             src="test-file-stub"
           />
         </div>
         <div
-          aria-hidden={true}
-          className="grid-col-fill tablet:grid-col-auto"
+          aria-hidden="true"
+          class="grid-col-fill tablet:grid-col-auto"
           data-testid="banner-header-grid-div"
         >
           <p
-            className="usa-banner__header-text"
+            class="usa-banner__header-text"
           >
             An official website of the United States government
           </p>
           <p
             aria-hidden="true"
-            className="usa-banner__header-action"
+            class="usa-banner__header-action"
           >
             Here’s how you know
           </p>
         </div>
         <button
           aria-controls="gov-banner"
-          aria-expanded={false}
-          className="usa-accordion__button usa-banner__button"
-          onClick={[Function]}
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
           type="button"
         >
           <span
-            className="usa-banner__button-text"
+            class="usa-banner__button-text"
           >
             Here’s how you know
           </span>
@@ -614,24 +609,24 @@ exports[`GovBanner component > static content > renders consistently with defaul
       </div>
     </header>
     <div
-      className="usa-banner__content usa-accordion__content"
-      hidden={true}
+      class="usa-banner__content usa-accordion__content"
+      hidden=""
       id="gov-banner"
     >
       <div
-        className="grid-row grid-gap-lg"
+        class="grid-row grid-gap-lg"
       >
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -647,16 +642,16 @@ exports[`GovBanner component > static content > renders consistently with defaul
           </div>
         </div>
         <div
-          className="usa-banner__guidance tablet:grid-col-6"
+          class="usa-banner__guidance tablet:grid-col-6"
         >
           <img
             alt=""
             aria-hidden="true"
-            className="usa-banner__icon usa-media-block__img"
+            class="usa-banner__icon usa-media-block__img"
             src="test-file-stub"
           />
           <div
-            className="usa-media-block__body"
+            class="usa-media-block__body"
           >
             <p>
               <strong>
@@ -669,8 +664,8 @@ exports[`GovBanner component > static content > renders consistently with defaul
                 lock (
                 <svg
                   aria-label="Locked padlock icon"
-                  className="usa-icon"
-                  focusable={false}
+                  class="usa-icon"
+                  focusable="false"
                   role="img"
                 />
                 )

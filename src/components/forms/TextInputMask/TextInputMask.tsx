@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import React, { useEffect, useState } from 'react'
+import React, { type JSX, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 
@@ -49,7 +49,7 @@ export const TextInputMask = ({
   charset,
   onChange,
   ...inputProps
-}: AllProps): React.ReactElement => {
+}: AllProps): JSX.Element => {
   const classes = classnames(
     {
       'usa-masked': mask,

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { useState, type JSX } from 'react'
 import { Banner } from '../Banner/Banner'
 import { BannerHeader } from '../BannerHeader/BannerHeader'
 import { BannerFlag } from '../BannerFlag/BannerFlag'
@@ -117,7 +117,7 @@ export const GovBanner = ({
   language = 'english',
   className,
   ...sectionProps
-}: GovBannerProps & JSX.IntrinsicElements['section']): ReactElement => {
+}: GovBannerProps & JSX.IntrinsicElements['section']): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   const {

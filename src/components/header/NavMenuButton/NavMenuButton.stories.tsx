@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { NavMenuButton } from './NavMenuButton'
 
 export default {
@@ -17,6 +17,6 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-export const DefaultMenuNavMenuButton = (): React.ReactElement => (
+export const DefaultMenuNavMenuButton = (): JSX.Element => (
   <NavMenuButton label="Menu" />
 )

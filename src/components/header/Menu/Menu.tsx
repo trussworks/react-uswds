@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { NavList, NavListProps } from '../NavList/NavList'
 
 type MenuProps = {
@@ -19,7 +19,7 @@ export const Menu = ({
   isOpen,
   type,
   ...navListProps
-}: MenuProps & NavListProps): React.ReactElement => {
+}: MenuProps & NavListProps): JSX.Element => {
   return (
     <NavList
       className={className}

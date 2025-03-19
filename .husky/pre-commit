@@ -1,3 +1,5 @@
 yarn run lint
 yarn run format:check
-yarn run test related --silent
+yarn run test
+yarn run test:serverside --silent
+

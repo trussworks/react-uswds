@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { RequiredMarker } from '../Label/RequiredMarker'
 
@@ -17,7 +17,7 @@ export const Fieldset = ({
   legendStyle = 'default',
   requiredMarker,
   ...fieldsetProps
-}: FieldsetProps & JSX.IntrinsicElements['fieldset']): React.ReactElement => {
+}: FieldsetProps & JSX.IntrinsicElements['fieldset']): JSX.Element => {
   const classes = classnames('usa-fieldset', className)
 
   const legendClasses = classnames({

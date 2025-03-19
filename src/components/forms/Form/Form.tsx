@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type RequiredFormProps = {
@@ -23,7 +23,7 @@ export const Form = ({
   large,
   search,
   ...formProps
-}: FormProps): React.ReactElement => {
+}: FormProps): JSX.Element => {
   const classes = classnames(
     {
       'usa-form': !search,

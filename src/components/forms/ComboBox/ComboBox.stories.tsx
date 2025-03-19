@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { type JSX, useRef, useState } from 'react'
 
 import { ComboBox, ComboBoxRef } from './ComboBox'
 import { Form } from '../Form/Form'
@@ -27,7 +27,7 @@ const noop = (): void => {
   return
 }
 
-export const DefaultComboBoxWithPropOptions = (): React.ReactElement => {
+export const DefaultComboBoxWithPropOptions = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([key, value]) => ({
     value: key,
     label: value,
@@ -46,7 +46,7 @@ export const DefaultComboBoxWithPropOptions = (): React.ReactElement => {
   )
 }
 
-export const WithDefaultValue = (): React.ReactElement => {
+export const WithDefaultValue = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -66,7 +66,7 @@ export const WithDefaultValue = (): React.ReactElement => {
   )
 }
 
-export const WithLabel = (): React.ReactElement => {
+export const WithLabel = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -86,7 +86,7 @@ export const WithLabel = (): React.ReactElement => {
   )
 }
 
-export const Disabled = (): React.ReactElement => {
+export const Disabled = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -106,7 +106,7 @@ export const Disabled = (): React.ReactElement => {
   )
 }
 
-export const WithOtherFields = (): React.ReactElement => {
+export const WithOtherFields = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,
@@ -152,7 +152,7 @@ export const WithOtherFields = (): React.ReactElement => {
   )
 }
 
-export const ExposedRefMethods = (): React.ReactElement => {
+export const ExposedRefMethods = (): JSX.Element => {
   const ref = useRef<ComboBoxRef>(null)
 
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
@@ -184,7 +184,7 @@ export const ExposedRefMethods = (): React.ReactElement => {
   )
 }
 
-export const CustomInputChangeHandler = (): React.ReactElement => {
+export const CustomInputChangeHandler = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
     label: key,

@@ -1,17 +1,13 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
+import { LegacyInputRef } from '../../../types/legacyInputRef'
 
 type RadioProps = {
   id: string
   name: string
   className?: string
   label: React.ReactNode
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined
+  inputRef?: LegacyInputRef
   tile?: boolean
   labelDescription?: React.ReactNode
 }
@@ -25,7 +21,7 @@ export const Radio = ({
   tile,
   labelDescription,
   ...inputProps
-}: RadioProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: RadioProps & JSX.IntrinsicElements['input']): JSX.Element => {
   const classes = classnames('usa-radio', className)
   const radioClasses = classnames('usa-radio__input', {
     'usa-radio__input--tile': tile,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { Form } from '../Form/Form'
 import { TimePicker } from './TimePicker'
@@ -34,7 +34,7 @@ const noop = (): void => {
 
 export const CompleteTimePicker = (
   argTypes: StorybookArguments
-): React.ReactElement => (
+): JSX.Element => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
@@ -49,7 +49,7 @@ export const CompleteTimePicker = (
 
 export const DefaultTimePicker = (
   argTypes: StorybookArguments
-): React.ReactElement => (
+): JSX.Element => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
@@ -63,7 +63,7 @@ export const DefaultTimePicker = (
 
 export const WithMinAndMaxTimes = (
   argTypes: StorybookArguments
-): React.ReactElement => (
+): JSX.Element => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"
@@ -78,9 +78,7 @@ export const WithMinAndMaxTimes = (
   </Form>
 )
 
-export const WithDefaultValue = (
-  argTypes: StorybookArguments
-): React.ReactElement => (
+export const WithDefaultValue = (argTypes: StorybookArguments): JSX.Element => (
   <Form onSubmit={argTypes.onSubmit}>
     <TimePicker
       id="appointment-time"

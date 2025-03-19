@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type ErrorMessageProps = {
@@ -11,7 +11,7 @@ export const ErrorMessage = ({
   children,
   className,
   id,
-}: ErrorMessageProps): React.ReactElement => {
+}: ErrorMessageProps): JSX.Element => {
   const classes = classnames('usa-error-message', className)
 
   return (

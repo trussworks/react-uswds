@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import styles from './Table.module.scss'
@@ -27,7 +27,7 @@ export const Table = ({
   striped,
   compact,
   stackedStyle = 'none',
-}: TableProps): React.ReactElement => {
+}: TableProps): JSX.Element => {
   const classes = classnames(
     'usa-table',
     {
