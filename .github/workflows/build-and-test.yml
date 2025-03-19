@@ -28,7 +28,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable --immutable-cache
 
       - name: Run tests with coverage
         run: yarn test:coverage
@@ -51,7 +51,7 @@ jobs:
 
       # The yarn cache is not node_modules
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable --immutable-cache
 
       - name: Lint code
         run: yarn lint
