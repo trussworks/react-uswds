@@ -42,6 +42,6 @@ jobs:
           node-version-file: '.node-version'
 
       # Publish to GitHub Packages
-      - run: yarn publish --no-git-tag-version --prerelease --preid alpha-$(date +%Y%m%d%H%M%S) --tag next
+      - run: yarn npm publish --no-git-tag-version --prerelease --preid alpha-$(date +%Y%m%d%H%M%S) --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
