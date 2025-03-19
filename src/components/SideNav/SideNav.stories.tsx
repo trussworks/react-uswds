@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { SideNav } from './SideNav'
 
 export default {
@@ -60,14 +60,12 @@ const testItemsThreeLevels = [
   </a>,
 ]
 
-export const SingleLevel = (): React.ReactElement => (
-  <SideNav items={testItems} />
-)
+export const SingleLevel = (): JSX.Element => <SideNav items={testItems} />
 
-export const TwoLevels = (): React.ReactElement => (
+export const TwoLevels = (): JSX.Element => (
   <SideNav items={testItemsWithSubnav} />
 )
 
-export const ThreeLevels = (): React.ReactElement => (
+export const ThreeLevels = (): JSX.Element => (
   <SideNav items={testItemsThreeLevels} />
 )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
@@ -21,7 +21,7 @@ export const ExtendedNav = ({
   className,
   onToggleMobileNav,
   ...navProps
-}: ExtendedNavProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
+}: ExtendedNavProps & JSX.IntrinsicElements['nav']): JSX.Element => {
   const classes = classnames(
     'usa-nav',
     {

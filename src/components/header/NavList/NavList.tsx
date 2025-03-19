@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type CustomNavListProps = {
@@ -19,7 +19,7 @@ export const NavList = ({
   type,
   className,
   ...ulProps
-}: NavListProps): React.ReactElement => {
+}: NavListProps): JSX.Element => {
   const isPrimary = type === 'primary'
   const isSecondary = type === 'secondary'
   const isSubnav = type === 'subnav'

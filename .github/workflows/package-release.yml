@@ -26,7 +26,7 @@ jobs:
       
       # The yarn cache is not node_modules
       - name: Install Dependencies
-        run: yarn --prefer-offline
+        run: yarn add --cached
       
       - name: Run tests
         run: yarn test

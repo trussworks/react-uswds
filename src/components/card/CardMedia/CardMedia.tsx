@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 interface CardMediaProps {
@@ -15,7 +15,7 @@ export const CardMedia = ({
   children,
   className,
   ...mediaProps
-}: CardMediaProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: CardMediaProps & JSX.IntrinsicElements['div']): JSX.Element => {
   const classes = classnames(
     'usa-card__media',
     {

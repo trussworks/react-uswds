@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { CharacterCount } from './CharacterCount'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
@@ -23,7 +23,7 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const TextInput = (): React.ReactElement => (
+export const TextInput = (): JSX.Element => (
   <Form onSubmit={mockSubmit}>
     <FormGroup>
       <Label htmlFor="with-hint-input">Text input</Label>
@@ -40,7 +40,7 @@ export const TextInput = (): React.ReactElement => (
   </Form>
 )
 
-export const Textarea = (): React.ReactElement => (
+export const Textarea = (): JSX.Element => (
   <Form onSubmit={mockSubmit}>
     <FormGroup>
       <Label htmlFor="with-hint-textarea">Textarea</Label>
@@ -59,7 +59,7 @@ export const Textarea = (): React.ReactElement => (
   </Form>
 )
 
-const withCustomCharacterCount = (): React.ReactElement => {
+const withCustomCharacterCount = (): JSX.Element => {
   const customEmojiCharacterCount = (text: string): number => {
     const starCount = (text.match(/⭐️/g) || []).length
     return Array.from(text).length - starCount * 2

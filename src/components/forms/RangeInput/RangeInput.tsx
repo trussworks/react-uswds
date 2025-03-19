@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, type JSX } from 'react'
 import classnames from 'classnames'
+import { LegacyInputRef } from '../../../types/legacyInputRef'
 
 type RangeInputProps = {
   id: string
@@ -8,12 +9,7 @@ type RangeInputProps = {
   max?: number
   textPreposition?: string
   textUnit?: string
-  inputRef?:
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined
+  inputRef?: LegacyInputRef
 }
 
 export const RangeInput = ({
@@ -22,7 +18,7 @@ export const RangeInput = ({
   textPreposition,
   textUnit,
   ...inputProps
-}: RangeInputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: RangeInputProps & JSX.IntrinsicElements['input']): JSX.Element => {
   const classes = classnames('usa-range', className)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0

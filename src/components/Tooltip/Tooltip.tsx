@@ -1,11 +1,11 @@
 import React, {
   createElement,
   ForwardRefExoticComponent,
-  ReactElement,
   ReactNode,
   useEffect,
   useRef,
   useState,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 
@@ -46,8 +46,8 @@ const genId = (): string => {
   }
 }
 
-export function Tooltip(props: DefaultTooltipProps): ReactElement
-export function Tooltip<T>(props: CustomTooltipProps<T>): ReactElement
+export function Tooltip(props: DefaultTooltipProps): JSX.Element
+export function Tooltip<T>(props: CustomTooltipProps<T>): JSX.Element
 export function Tooltip<
   FCProps extends React.PropsWithChildren<object> = DefaultTooltipProps,
 >({
@@ -55,7 +55,7 @@ export function Tooltip<
   wrapperclasses,
   className,
   ...props
-}: DefaultTooltipProps | CustomTooltipProps<FCProps>): ReactElement {
+}: DefaultTooltipProps | CustomTooltipProps<FCProps>): JSX.Element {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
   const tooltipID = useRef(`tooltip-${genId()}`)
@@ -265,6 +265,7 @@ export function Tooltip<
     )
 
     return (
+      // the span that wraps the element will have the tooltip class
       <span data-testid="tooltipWrapper" className={wrapperClasses}>
         <button
           {...remainingProps}
@@ -294,7 +295,7 @@ export function Tooltip<
           style={positionStyles}>
           {label}
         </span>
-      </span> // the span that wraps the element with have the tooltip class
+      </span>
     )
   }
 }

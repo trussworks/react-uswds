@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
 type HeaderProps = {
@@ -17,7 +17,7 @@ export const Header = ({
   showMobileOverlay,
   className,
   ...headerProps
-}: HeaderProps & JSX.IntrinsicElements['header']): React.ReactElement => {
+}: HeaderProps & JSX.IntrinsicElements['header']): JSX.Element => {
   const classes = classnames(
     'usa-header',
     {

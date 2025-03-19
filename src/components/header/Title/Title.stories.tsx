@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Title } from './Title'
 
 export default {
@@ -19,4 +19,4 @@ Source: https://designsystem.digital.gov/components/header/
 
 const testTitle = <a href="#testlink">Project Title</a>
 
-export const DefaultTitle = (): React.ReactElement => <Title>{testTitle}</Title>
+export const DefaultTitle = (): JSX.Element => <Title>{testTitle}</Title>

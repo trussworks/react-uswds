@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { type JSX, useState } from 'react'
 import { Header } from './Header'
 
 import { Title } from '../Title/Title'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
-import { Search } from '../../Search/Search/Search'
+import { Search } from '../../search/Search/Search'
 import { Menu } from '../Menu/Menu'
 import { MegaMenu } from '../MegaMenu/MegaMenu'
 import { NavMenuButton } from '../NavMenuButton/NavMenuButton'
@@ -41,7 +41,8 @@ const onToggle = (
     return newIsOpen
   })
 }
-export const BasicHeader = (): React.ReactElement => {
+
+export const BasicHeader = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
@@ -102,7 +103,7 @@ export const BasicHeader = (): React.ReactElement => {
   )
 }
 
-export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
+export const BasicHeaderWithMegaMenu = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
@@ -211,7 +212,7 @@ export const BasicHeaderWithMegaMenu = (): React.ReactElement => {
   )
 }
 
-export const ExtendedHeader = (): React.ReactElement => {
+export const ExtendedHeader = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
   const [isOpen, setIsOpen] = useState([false])
@@ -269,7 +270,7 @@ export const ExtendedHeader = (): React.ReactElement => {
   )
 }
 
-export const ExtendedHeaderWithMegaMenu = (): React.ReactElement => {
+export const ExtendedHeaderWithMegaMenu = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false)
   const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 

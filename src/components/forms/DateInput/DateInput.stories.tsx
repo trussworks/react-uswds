@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { DateInput } from './DateInput'
 import { DateInputGroup } from '../DateInputGroup/DateInputGroup'
 import { Fieldset } from '../Fieldset/Fieldset'
@@ -22,7 +22,7 @@ Source: https://designsystem.digital.gov/components/text-input/
   },
 }
 
-export const MonthDateInput = (): React.ReactElement => (
+export const MonthDateInput = (): JSX.Element => (
   <DateInput
     id="testDateInput"
     name="testName"
@@ -33,7 +33,7 @@ export const MonthDateInput = (): React.ReactElement => (
   />
 )
 
-export const DayDateInput = (): React.ReactElement => (
+export const DayDateInput = (): JSX.Element => (
   <DateInput
     id="testDateInput"
     name="testName"
@@ -44,7 +44,7 @@ export const DayDateInput = (): React.ReactElement => (
   />
 )
 
-export const YearDateInput = (): React.ReactElement => (
+export const YearDateInput = (): JSX.Element => (
   <DateInput
     id="testDateInput"
     name="testName"
@@ -55,7 +55,7 @@ export const YearDateInput = (): React.ReactElement => (
   />
 )
 
-export const DateOfBirthExample = (): React.ReactElement => (
+export const DateOfBirthExample = (): JSX.Element => (
   <Fieldset legend="Date of birth">
     <span className="usa-hint" id="dateOfBirthHint">
       For example: April 28 1986

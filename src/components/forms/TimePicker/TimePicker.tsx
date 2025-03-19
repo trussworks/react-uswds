@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, type JSX } from 'react'
 import classnames from 'classnames'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
@@ -43,7 +43,7 @@ export const TimePicker = ({
   step = DEFAULT_STEP,
   hint,
   className,
-}: TimePickerProps): React.ReactElement => {
+}: TimePickerProps): JSX.Element => {
   const classes = classnames('usa-time-picker', className)
 
   const parsedMinTime = parseTimeString(minTime) || DEFAULT_MIN_TIME_MINUTES

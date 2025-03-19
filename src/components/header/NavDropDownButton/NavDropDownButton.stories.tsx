@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { type JSX, useState } from 'react'
 import { NavDropDownButton } from './NavDropDownButton'
 import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
@@ -25,7 +25,7 @@ const mockToggle = (): void => {
   /* mock submit fn */
 }
 
-export const DefaultDropDownMenu = (): React.ReactElement => {
+export const DefaultDropDownMenu = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState([false, false])
 
   const onToggle = (index: number): void => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { render } from '@testing-library/react'
 
 import { GridContainer } from './GridContainer'
@@ -46,7 +46,7 @@ describe('GridContainer component', () => {
       children,
       className,
       ...ulProps
-    }: CustomGridContainerProps): React.ReactElement => (
+    }: CustomGridContainerProps): JSX.Element => (
       <ul className={className} {...ulProps}>
         {children}
       </ul>

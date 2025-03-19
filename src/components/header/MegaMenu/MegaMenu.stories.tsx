@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { MegaMenu } from './MegaMenu'
 
 export default {
@@ -36,6 +36,6 @@ const testItems = [
   ],
 ]
 
-export const DefaultMegaMenu = (): React.ReactElement => (
+export const DefaultMegaMenu = (): JSX.Element => (
   <MegaMenu items={testItems} key="testItemOne" isOpen={true} />
 )

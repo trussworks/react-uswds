@@ -1,13 +1,6 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
-
-type TextareaRef =
-  | string
-  | string
-  | ((instance: HTMLTextAreaElement | null) => void)
-  | React.RefObject<HTMLTextAreaElement>
-  | null
-  | undefined
+import { LegacyInputRef } from '../../../types/legacyInputRef'
 
 export interface TextareaProps {
   id: string
@@ -16,7 +9,7 @@ export interface TextareaProps {
   error?: boolean
   success?: boolean
   children?: React.ReactNode
-  inputRef?: TextareaRef
+  inputRef?: LegacyInputRef<HTMLTextAreaElement>
 }
 
 export const Textarea = ({
@@ -28,7 +21,7 @@ export const Textarea = ({
   children,
   inputRef,
   ...inputProps
-}: TextareaProps & JSX.IntrinsicElements['textarea']): React.ReactElement => {
+}: TextareaProps & JSX.IntrinsicElements['textarea']): JSX.Element => {
   const classes = classnames(
     'usa-textarea',
     {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Alert } from './Alert'
 
 import { Button } from '../Button/Button'
@@ -26,31 +26,31 @@ const testText = (
   </>
 )
 
-export const Success = (): React.ReactElement => (
+export const Success = (): JSX.Element => (
   <Alert type="success" heading="Success status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
-export const Warning = (): React.ReactElement => (
+export const Warning = (): JSX.Element => (
   <Alert type="warning" heading="Warning status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
-export const Error = (): React.ReactElement => (
+export const Error = (): JSX.Element => (
   <Alert type="error" heading="Error status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
-export const Info = (): React.ReactElement => (
+export const Info = (): JSX.Element => (
   <Alert type="info" heading="Informative status" headingLevel="h4">
     {testText}
   </Alert>
 )
 
-export const Slim = (): React.ReactElement => (
+export const Slim = (): JSX.Element => (
   <>
     <Alert type="success" headingLevel="h4" slim>
       {testText}
@@ -67,7 +67,7 @@ export const Slim = (): React.ReactElement => (
   </>
 )
 
-export const NoIcon = (): React.ReactElement => (
+export const NoIcon = (): JSX.Element => (
   <>
     <Alert type="success" headingLevel="h4" noIcon>
       {testText}
@@ -84,7 +84,7 @@ export const NoIcon = (): React.ReactElement => (
   </>
 )
 
-export const SlimNoIcon = (): React.ReactElement => (
+export const SlimNoIcon = (): JSX.Element => (
   <>
     <Alert type="success" headingLevel="h4" slim noIcon>
       {testText}
@@ -101,7 +101,7 @@ export const SlimNoIcon = (): React.ReactElement => (
   </>
 )
 
-export const HeadingLevels = (): React.ReactElement => (
+export const HeadingLevels = (): JSX.Element => (
   <>
     <h1>Heading Level 1</h1>
     <Alert type="info" heading="Heading level 2" headingLevel="h2">
@@ -109,7 +109,8 @@ export const HeadingLevels = (): React.ReactElement => (
     </Alert>
   </>
 )
-export const WithCTA = (): React.ReactElement => (
+
+export const WithCTA = (): JSX.Element => (
   <Alert
     type="warning"
     heading="Warning status"
@@ -123,7 +124,7 @@ export const WithCTA = (): React.ReactElement => (
   </Alert>
 )
 
-export const WithValidation = (): React.ReactElement => (
+export const WithValidation = (): JSX.Element => (
   <Alert type="info" heading="Code requirements" headingLevel="h4" validation>
     <ul>
       <li>Use at least one uppercase character</li>

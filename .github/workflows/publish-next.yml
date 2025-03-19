@@ -32,7 +32,7 @@ jobs:
 
       # The yarn cache is not node_modules
       - name: Install dependencies
-        run: yarn --prefer-offline
+        run: yarn add --cached
 
       # Setup .npmrc file to publish to GitHub Packages
       - name: Set up node

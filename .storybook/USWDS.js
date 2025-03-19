@@ -3,7 +3,7 @@ import { create } from '@storybook/theming/create';
 export default create({
   brandTitle: 'U.S. Web Design System (USWDS)',
   brandUrl: 'https://github.com/trussworks/react-uswds',
-  brandImage: '/uswds.svg',
+  brandImage: 'uswds.svg',
   brandTarget: '_self',
   base: 'light',
 
