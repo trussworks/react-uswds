@@ -102,7 +102,7 @@ export default defineConfig(({ mode: _mode }) => {
       devSourcemap: true,
       preprocessorOptions: {
         scss: {
-          includePaths: uswdsIncludePaths,
+          loadPaths: uswdsIncludePaths,
         },
       },
     },
