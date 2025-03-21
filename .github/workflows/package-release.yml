@@ -13,7 +13,10 @@ jobs:
     if: |
       startsWith(github.head_ref, 'release-')
       && github.event.pull_request.merged
-      
+
+    strategy:
+      fail-fast: false
+
     steps: 
       - name: Checkout out repository
         uses: actions/checkout@v3

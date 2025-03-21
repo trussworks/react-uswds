@@ -8,6 +8,8 @@ on:
 jobs:
   publish-next:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     name: Publish next to Github Packages
     steps:
       - name: Check out repository
