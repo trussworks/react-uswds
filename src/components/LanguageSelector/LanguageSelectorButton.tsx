@@ -1,13 +1,13 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type LanguageSelectorButtonProps = {
+export type LanguageSelectorButtonProps = {
   label: string
   labelAttr?: string
   isOpen?: boolean
   onToggle: () => void
   controls?: string
-}
+} & JSX.IntrinsicElements['button']
 
 export const LanguageSelectorButton = ({
   label,
@@ -17,8 +17,7 @@ export const LanguageSelectorButton = ({
   className,
   controls,
   ...buttonProps
-}: LanguageSelectorButtonProps &
-  JSX.IntrinsicElements['button']): JSX.Element => {
+}: LanguageSelectorButtonProps): JSX.Element => {
   const classes = classnames('usa-button', 'usa-language__link', className)
   const buttonContents = labelAttr ? (
     <span lang={labelAttr}>{label}</span>

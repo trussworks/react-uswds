@@ -2,7 +2,7 @@ import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { RequiredMarker } from './RequiredMarker'
 
-type LabelProps = {
+export type LabelProps = {
   children: React.ReactNode
   htmlFor: string
   className?: string
@@ -10,7 +10,7 @@ type LabelProps = {
   hint?: React.ReactNode
   srOnly?: boolean
   requiredMarker?: boolean
-}
+} & JSX.IntrinsicElements['label']
 
 export const Label = ({
   children,
@@ -21,7 +21,7 @@ export const Label = ({
   srOnly,
   requiredMarker,
   ...labelProps
-}: LabelProps & JSX.IntrinsicElements['label']): JSX.Element => {
+}: LabelProps): JSX.Element => {
   const classes = classnames(
     {
       'usa-label': !srOnly,

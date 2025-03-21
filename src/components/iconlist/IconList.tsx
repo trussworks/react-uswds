@@ -1,15 +1,17 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface IconListProps {
+interface IconListPropsInterface {
   children: React.ReactNode
   className?: string
 }
 
+export type IconListProps = IconListPropsInterface & JSX.IntrinsicElements['ul']
+
 export const IconList = ({
   children,
   className,
-}: IconListProps & JSX.IntrinsicElements['ul']): JSX.Element => {
+}: IconListProps): JSX.Element => {
   const classes = classnames(className, 'usa-icon-list')
 
   return (

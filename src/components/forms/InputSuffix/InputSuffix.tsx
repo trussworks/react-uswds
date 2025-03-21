@@ -1,7 +1,7 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type InputSuffixProps = {
+export type InputSuffixProps = {
   className?: string
   children: React.ReactNode
 } & JSX.IntrinsicElements['div']

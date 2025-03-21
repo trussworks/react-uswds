@@ -1,16 +1,19 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface IdentifierLogosProps {
+interface IdentifierLogosPropsInterface {
   children: React.ReactNode
   className?: string
 }
+
+export type IdentifierLogosProps = IdentifierLogosPropsInterface &
+  JSX.IntrinsicElements['div']
 
 export const IdentifierLogos = ({
   children,
   className,
   ...divProps
-}: IdentifierLogosProps & JSX.IntrinsicElements['div']): JSX.Element => {
+}: IdentifierLogosProps): JSX.Element => {
   const classes = classnames('usa-identifier__logos', className)
   return (
     <div data-testid="identifierLogos" className={classes} {...divProps}>

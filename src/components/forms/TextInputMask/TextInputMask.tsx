@@ -3,7 +3,7 @@ import React, { type JSX, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 
-export type AllProps = TextInputProps & {
+export type TextInputMaskProps = TextInputProps & {
   mask: string
   charset?: string
 }
@@ -49,7 +49,7 @@ export const TextInputMask = ({
   charset,
   onChange,
   ...inputProps
-}: AllProps): JSX.Element => {
+}: TextInputMaskProps): JSX.Element => {
   const classes = classnames(
     {
       'usa-masked': mask,

@@ -1,19 +1,19 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type AddressProps = {
+export type AddressProps = {
   size?: 'big' | 'medium' | 'slim'
   /*
      Contact info items - e.g. anchor tags or text for email, phone, website, etc.
    */
   items: React.ReactNode[]
-}
+} & React.HTMLAttributes<HTMLElement>
 
 export const Address = ({
   size,
   className,
   items,
-}: AddressProps & React.HTMLAttributes<HTMLElement>): JSX.Element => {
+}: AddressProps): JSX.Element => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'

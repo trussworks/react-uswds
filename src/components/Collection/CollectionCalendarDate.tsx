@@ -1,8 +1,11 @@
 import React, { type JSX } from 'react'
 
-interface CollectionCalendarDateProps {
+interface CollectionCalendarDatePropsInterface {
   datetime: string
 }
+
+export type CollectionCalendarDateProps = CollectionCalendarDatePropsInterface &
+  React.HTMLProps<HTMLDivElement>
 
 const SHORT_MONTH_LABELS = [
   'Jan',

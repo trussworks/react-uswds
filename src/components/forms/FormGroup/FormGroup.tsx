@@ -1,11 +1,11 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type FormGroupProps = {
+export type FormGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean
-}
+} & JSX.IntrinsicElements['div']
 
 export const FormGroup = ({
   children,

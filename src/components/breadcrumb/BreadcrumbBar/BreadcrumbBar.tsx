@@ -2,7 +2,7 @@ import React, { ReactElement, type JSX } from 'react'
 import classnames from 'classnames'
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
-type BreadcrumbBarProps = {
+export type BreadcrumbBarProps = {
   children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
   variant?: 'default' | 'wrap'
   className?: string

@@ -3,19 +3,21 @@ import classnames from 'classnames'
 
 import { ContainerSizes } from '../types'
 
-type GridContainerProps = {
+type GridContainerProps<T> = {
   containerSize?: ContainerSizes
   className?: string
   children: React.ReactNode
-}
+} & T
 
 interface WithCustomGridContainerProps<T> {
   asCustom: React.FunctionComponent<T>
 }
 
-export type DefaultGridContainerProps = GridContainerProps
+export type DefaultGridContainerProps = GridContainerProps<
+  JSX.IntrinsicElements['div']
+>
 
-export type CustomGridContainerProps<T> = GridContainerProps &
+export type CustomGridContainerProps<T> = GridContainerProps<T> &
   WithCustomGridContainerProps<T>
 
 export function isCustomProps<T>(
@@ -25,8 +27,8 @@ export function isCustomProps<T>(
 }
 
 function gridContainerClasses(
-  className: GridContainerProps['className'],
-  containerSize: GridContainerProps['containerSize']
+  className: DefaultGridContainerProps['className'],
+  containerSize: DefaultGridContainerProps['containerSize']
 ): string | undefined {
   const classes = classnames(
     {

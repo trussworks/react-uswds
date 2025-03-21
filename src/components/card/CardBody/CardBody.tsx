@@ -1,6 +1,8 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
+export type CardBodyProps = JSX.IntrinsicElements['div']
+
 export const CardBody = ({
   exdent,
   children,
@@ -8,7 +10,7 @@ export const CardBody = ({
   ...bodyProps
 }: {
   exdent?: boolean
-} & JSX.IntrinsicElements['div']): JSX.Element => {
+} & CardBodyProps): JSX.Element => {
   const classes = classnames(
     'usa-card__body',
     {

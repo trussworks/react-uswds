@@ -4,7 +4,7 @@ import { Icon } from '../Icon/Icons'
 import { Link } from '../Link/Link'
 import { Button } from '../Button/Button'
 
-type PaginationProps = {
+export type PaginationProps = {
   pathname: string // pathname of results page
   totalPages?: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
@@ -15,7 +15,7 @@ type PaginationProps = {
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-}
+} & JSX.IntrinsicElements['nav']
 
 const PaginationPage = ({
   page,
@@ -83,7 +83,7 @@ export const Pagination = ({
   onClickNext,
   onClickPageNumber,
   ...props
-}: PaginationProps & JSX.IntrinsicElements['nav']): JSX.Element => {
+}: PaginationProps): JSX.Element => {
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1

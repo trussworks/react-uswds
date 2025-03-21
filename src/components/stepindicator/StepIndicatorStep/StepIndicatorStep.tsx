@@ -3,15 +3,18 @@ import React, { type JSX } from 'react'
 
 import { StepStatusText } from '../StepIndicator/StepIndicator'
 
-export interface StepIndicatorStepProps {
+export interface StepIndicatorStepPropsInterface {
   label: string
   status?: 'complete' | 'current' | 'incomplete'
   statusText?: StepStatusText
   className?: string
 }
 
+export type StepIndicatorStepProps = StepIndicatorStepPropsInterface &
+  JSX.IntrinsicElements['li']
+
 export const StepIndicatorStep = (
-  props: StepIndicatorStepProps & JSX.IntrinsicElements['li']
+  props: StepIndicatorStepProps
 ): JSX.Element => {
   const {
     label,

@@ -8,7 +8,7 @@ export type StepStatusText = {
   incomplete: string
 }
 
-type StepIndicatorProps = {
+export type StepIndicatorProps = {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
   centered?: boolean
@@ -25,6 +25,7 @@ type StepIndicatorProps = {
   ofText?: string
   statusText?: StepStatusText
 }
+
 export const StepIndicator = (props: StepIndicatorProps): JSX.Element => {
   const {
     showLabels = true,

@@ -8,6 +8,11 @@ import {
   Link,
 } from '../../Link/Link'
 
+export type {
+  DefaultLinkProps as DefaultIdentifierLinkProps,
+  CustomLinkProps as CustomIdentifierLinkProps,
+} from '../../Link/Link'
+
 export function IdentifierLink(props: DefaultLinkProps): JSX.Element
 export function IdentifierLink<T>(props: CustomLinkProps<T>): JSX.Element
 export function IdentifierLink<FCProps = DefaultLinkProps>({

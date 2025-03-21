@@ -1,5 +1,7 @@
 import React, { type JSX } from 'react'
 
+export type RequiredMarkerProps = JSX.IntrinsicElements['abbr']
+
 export const RequiredMarker = (): JSX.Element => {
   return (
     <abbr title="required" className="usa-hint usa-hint--required">

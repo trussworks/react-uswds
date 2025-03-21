@@ -1,7 +1,7 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type ButtonGroupProps = {
+export type ButtonGroupProps = {
   children: React.ReactNode
   className?: string
   type?: 'default' | 'segmented'

@@ -4,7 +4,7 @@ import { NavList } from '../../header/NavList/NavList'
 
 export type ExtendedNavLinksType = React.ReactNode[][]
 
-type FooterExtendedNavListProps = {
+export type FooterExtendedNavListProps = {
   isMobile?: boolean
   /* 
     Turn on mobile styles via prop. If undefined, a fallback is used based on the client window width.
@@ -13,14 +13,13 @@ type FooterExtendedNavListProps = {
     Multidimensional array of grouped nav links. Sub-arrays are column sections, first element is used as a heading.
   */
   nestedLinks: ExtendedNavLinksType
-}
+} & React.HTMLAttributes<HTMLElement>
 
 export const FooterExtendedNavList = ({
   className,
   isMobile,
   nestedLinks,
-}: FooterExtendedNavListProps &
-  React.HTMLAttributes<HTMLElement>): JSX.Element => {
+}: FooterExtendedNavListProps): JSX.Element => {
   const classes = classnames('grid-row grid-gap-4', className)
   const isClient = window && typeof window === 'object'
 

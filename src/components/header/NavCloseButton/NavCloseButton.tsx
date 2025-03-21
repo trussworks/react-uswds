@@ -3,11 +3,13 @@ import classnames from 'classnames'
 // assets
 import { Icon } from '../../Icon/Icons'
 
+export type NavCloseButtonProps = JSX.IntrinsicElements['button']
+
 export const NavCloseButton = ({
   onClick,
   className,
   ...buttonProps
-}: JSX.IntrinsicElements['button']): JSX.Element => {
+}: NavCloseButtonProps): JSX.Element => {
   const classes = classnames('usa-nav__close', className)
 
   return (

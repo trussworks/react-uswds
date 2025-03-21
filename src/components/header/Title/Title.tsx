@@ -1,9 +1,9 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type TitleProps = {
+export type TitleProps = {
   children: React.ReactNode
-}
+} & JSX.IntrinsicElements['div']
 
 export const Title = ({
   className,

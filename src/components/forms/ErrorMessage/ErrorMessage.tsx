@@ -1,11 +1,11 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type ErrorMessageProps = {
+export type ErrorMessageProps = {
   children: React.ReactNode
   id?: string
   className?: string
-}
+} & JSX.IntrinsicElements['span']
 
 export const ErrorMessage = ({
   children,
