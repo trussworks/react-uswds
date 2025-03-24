@@ -36,6 +36,7 @@
     "node": ">= 20"
   },
   "scripts": {
+    "dev": "vite",
     "test": "vitest --run",
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
     "test:watch": "vitest",
@@ -51,8 +52,8 @@
     "lint:fix": "tsc && eslint src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "postinstall": "husky",
     "prepack": "yarn lint && yarn test && yarn build",
+    "prepare": "husky",
     "happo": "happo --config ./.happo.cjs",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.cjs' npx -p happo.io happo-ci-github-actions --config ./.happo.cjs",
     "contributors:add": "all-contributors add"
