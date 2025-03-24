@@ -171,6 +171,23 @@ describe('FileInput component', () => {
       expect(previewHeading).toHaveTextContent('Selected file Change file')
     })
 
+    it('renders a custom header text when a single file is chosen', async () => {
+      const { getByTestId } = render(
+        <FileInput
+          {...testProps}
+          previewSingleSelectedFileText="Selected photo"
+          previewMultipleSelectedFileText="Photos selected"
+          changeSelectedFileText="Change photo"
+        />
+      )
+      const inputEl = getByTestId('file-input-input')
+      await userEvent.upload(inputEl, TEST_PNG_FILE)
+      expect(getByTestId('file-input-preview')).toBeInTheDocument()
+      expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
+      const previewHeading = getByTestId('file-input-preview-heading')
+      expect(previewHeading).toHaveTextContent('Selected photo Change photo')
+    })
+
     it('renders a preview for each file and header text when multiple files are chosen', async () => {
       const { getByTestId, getAllByTestId } = render(
         <FileInput {...testProps} multiple={true} />
