@@ -14,7 +14,7 @@ export type TableProps = {
   striped?: boolean
   compact?: boolean
   stackedStyle?: 'none' | 'default' | 'headers'
-} & JSX.IntrinsicElements['table']
+}
 
 export const Table = ({
   bordered,

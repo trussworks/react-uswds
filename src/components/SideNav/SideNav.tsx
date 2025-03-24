@@ -4,7 +4,7 @@ import classnames from 'classnames'
 export type SideNavProps = {
   items: React.ReactNode[]
   isSubnav?: boolean
-} & JSX.IntrinsicElements['ul']
+}
 
 export const SideNav = ({
   items,

@@ -5,7 +5,7 @@ export type ErrorMessageProps = {
   children: React.ReactNode
   id?: string
   className?: string
-} & JSX.IntrinsicElements['span']
+}
 
 export const ErrorMessage = ({
   children,

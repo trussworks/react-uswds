@@ -5,7 +5,7 @@ export type FormGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean
-} & JSX.IntrinsicElements['div']
+}
 
 export const FormGroup = ({
   children,

@@ -3,7 +3,7 @@ import './styles/index.scss'
 
 /** USWDS basic components/types */
 export { Alert } from './components/Alert/Alert'
-export type { AlertProps } from './components/Alert/Alert';
+export type { AlertProps } from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'
 export type { AccordionProps } from './components/Accordion/Accordion'
 export { Button } from './components/Button/Button'
@@ -21,7 +21,10 @@ export type { TableProps } from './components/Table/Table'
 export { Tag } from './components/Tag/Tag'
 export type { TagProps } from './components/Tag/Tag'
 export { Tooltip } from './components/Tooltip/Tooltip'
-export type { DefaultTooltipProps, CustomTooltipProps } from './components/Tooltip/Tooltip'
+export type {
+  DefaultTooltipProps,
+  CustomTooltipProps,
+} from './components/Tooltip/Tooltip'
 export { SideNav } from './components/SideNav/SideNav'
 export type { SideNavProps } from './components/SideNav/SideNav'
 export { Pagination } from './components/Pagination/Pagination'
@@ -68,13 +71,22 @@ export type { CollectionCalendarDateProps } from './components/Collection/Collec
 
 /** Grid components/types */
 export { GridContainer } from './components/grid/GridContainer/GridContainer'
-export type { DefaultGridContainerProps, CustomGridContainerProps } from './components/grid/GridContainer/GridContainer'
+export type {
+  DefaultGridContainerProps,
+  CustomGridContainerProps,
+} from './components/grid/GridContainer/GridContainer'
 export { Grid } from './components/grid/Grid/Grid'
-export type { DefaultGridProps, CustomGridProps } from './components/grid/Grid/Grid'
+export type {
+  DefaultGridProps,
+  CustomGridProps,
+} from './components/grid/Grid/Grid'
 
 /** Form components/types */
 export { CharacterCount } from './components/forms/CharacterCount/CharacterCount'
-export type { TextInputCharacterCountProps, TextareaCharacterCountProps } from './components/forms/CharacterCount/CharacterCount'
+export type {
+  TextInputCharacterCountProps,
+  TextareaCharacterCountProps,
+} from './components/forms/CharacterCount/CharacterCount'
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
 export type { CheckboxProps } from './components/forms/Checkbox/Checkbox'
 export { ComboBox } from './components/forms/ComboBox/ComboBox'
@@ -96,7 +108,10 @@ export type { ErrorMessageProps } from './components/forms/ErrorMessage/ErrorMes
 export { Fieldset } from './components/forms/Fieldset/Fieldset'
 export type { FieldsetProps } from './components/forms/Fieldset/Fieldset'
 export { FileInput } from './components/forms/FileInput/FileInput'
-export type { FileInputRef, FileInputProps } from './components/forms/FileInput/FileInput'
+export type {
+  FileInputRef,
+  FileInputProps,
+} from './components/forms/FileInput/FileInput'
 export { Form } from './components/forms/Form/Form'
 export type { FormProps } from './components/forms/Form/Form'
 export { FormGroup } from './components/forms/FormGroup/FormGroup'
@@ -112,13 +127,16 @@ export type { LabelProps } from './components/forms/Label/Label'
 export { RequiredMarker } from './components/forms/Label/RequiredMarker'
 export type { RequiredMarkerProps } from './components/forms/Label/RequiredMarker'
 export { LanguageSelector } from './components/LanguageSelector/LanguageSelector'
-export type { LanguageDefinition, LanguageSelectorProps } from './components/LanguageSelector/LanguageSelector'
+export type {
+  LanguageDefinition,
+  LanguageSelectorProps,
+} from './components/LanguageSelector/LanguageSelector'
 export { LanguageSelectorButton } from './components/LanguageSelector/LanguageSelectorButton'
 export type { LanguageSelectorButtonProps } from './components/LanguageSelector/LanguageSelectorButton'
 export { Radio } from './components/forms/Radio/Radio'
 export type { RadioProps } from './components/forms/Radio/Radio'
 export { RangeInput } from './components/forms/RangeInput/RangeInput'
-export type{ RangeInputProps } from './components/forms/RangeInput/RangeInput'
+export type { RangeInputProps } from './components/forms/RangeInput/RangeInput'
 export { Select } from './components/forms/Select/Select'
 export type { SelectProps } from './components/forms/Select/Select'
 export { Textarea } from './components/forms/Textarea/Textarea'
@@ -167,10 +185,14 @@ export type { IconListIconProps } from './components/iconlist/IconListIcon/IconL
 export { IconListItem } from './components/iconlist/IconListItem/IconListItem'
 export type { IconListItemProps } from './components/iconlist/IconListItem/IconListItem'
 export { IconListTitle } from './components/iconlist/IconListTitle/IconListTitle'
-export type { IconListHeadingTitleProps, IconListParagraphTitleProps } from './components/iconlist/IconListTitle/IconListTitle'
+export type {
+  IconListHeadingTitleProps,
+  IconListParagraphTitleProps,
+} from './components/iconlist/IconListTitle/IconListTitle'
 
 // Icons
 export { Icon } from './components/Icon/Icons'
+export type { IconProps } from './components/Icon/Icon'
 
 /** Identifier Components/types */
 export { Identifier } from './components/identifier/Identifier/Identifier'
@@ -180,7 +202,10 @@ export type { IdentifierGovProps } from './components/identifier/IdentifierGov/I
 export { IdentifierIdentity } from './components/identifier/IdentifierIdentity/IdentifierIdentity'
 export type { IdentifierIdentityProps } from './components/identifier/IdentifierIdentity/IdentifierIdentity'
 export { IdentifierLink } from './components/identifier/IdentifierLink/IdentifierLink'
-export type { DefaultIdentifierLinkProps, CustomIdentifierLinkProps } from './components/identifier/IdentifierLink/IdentifierLink'
+export type {
+  DefaultIdentifierLinkProps,
+  CustomIdentifierLinkProps,
+} from './components/identifier/IdentifierLink/IdentifierLink'
 export { IdentifierLinkItem } from './components/identifier/IdentifierLinkItem/IdentifierLinkItem'
 export type { IdentifierLinkItemProps } from './components/identifier/IdentifierLinkItem/IdentifierLinkItem'
 export { IdentifierLinks } from './components/identifier/IdentifierLinks/IdentifierLinks'
@@ -207,7 +232,10 @@ export {
   SocialLinks,
   SocialLink,
 } from './components/footer/SocialLinks/SocialLinks'
-export type { SocialLinksProps, SocialLinkProps } from './components/footer/SocialLinks/SocialLinks'
+export type {
+  SocialLinksProps,
+  SocialLinkProps,
+} from './components/footer/SocialLinks/SocialLinks'
 
 /** Modal components/types */
 export { Modal } from './components/modal/Modal'
@@ -239,7 +267,10 @@ export type { BreadcrumbBarProps } from './components/breadcrumb/BreadcrumbBar/B
 export { Breadcrumb } from './components/breadcrumb/Breadcrumb/Breadcrumb'
 export type { BreadcrumbProps } from './components/breadcrumb/Breadcrumb/Breadcrumb'
 export { BreadcrumbLink } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
-export type { DefaultBreadcrumbLinkProps, CustomBreadcrumbLinkProps } from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
+export type {
+  DefaultBreadcrumbLinkProps,
+  CustomBreadcrumbLinkProps,
+} from './components/breadcrumb/BreadcrumbLink/BreadcrumbLink'
 
 /** StepIndicator components/types */
 export { StepIndicator } from './components/stepindicator/StepIndicator/StepIndicator'
@@ -263,7 +294,10 @@ export type { ProcessListProps } from './components/processlist/ProcessList/Proc
 export { ProcessListItem } from './components/processlist/ProcessListItem/ProcessListItem'
 export type { ProcessListItemProps } from './components/processlist/ProcessListItem/ProcessListItem'
 export { ProcessListHeading } from './components/processlist/ProcessListHeading/ProcessListHeading'
-export type { ProcessListHeadingProps, ProcessListParagraphHeadingProps } from './components/processlist/ProcessListHeading/ProcessListHeading'
+export type {
+  ProcessListHeadingProps,
+  ProcessListParagraphHeadingProps,
+} from './components/processlist/ProcessListHeading/ProcessListHeading'
 
 export { SiteAlert } from './components/SiteAlert/SiteAlert'
 export type { SiteAlertProps } from './components/SiteAlert/SiteAlert'
