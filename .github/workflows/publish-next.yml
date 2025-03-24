@@ -44,6 +44,6 @@ jobs:
           node-version-file: '.node-version'
 
       # Publish to GitHub Packages
-      - run: yarn npm publish --tag alpha-$(date +%Y%m%d%H%M%S)
+      - run: yarn npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
