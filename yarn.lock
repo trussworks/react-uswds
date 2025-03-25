@@ -2164,7 +2164,7 @@ __metadata:
     eslint-plugin-storybook: ^0.11.4
     focus-trap-react: ^11.0.3
     globals: ^16.0.0
-    happo-plugin-storybook: ^4.4.2
+    happo-plugin-storybook: ^4.4.3
     happo.io: ^12.1.0
     husky: ^9.0.10
     jsdom: ^24.0.0
@@ -5719,10 +5719,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happo-plugin-storybook@npm:^4.4.2":
-  version: 4.4.2
-  resolution: "happo-plugin-storybook@npm:4.4.2"
-  checksum: 3297ed0f588f75f814a6efad80a23c149b243fa602299f51816b5517a1a5a1d14c88ccc6944d2f2c026eec6499f8f682be67cfa1ba3b825c170288fbcb81a498
+"happo-plugin-storybook@npm:^4.4.3":
+  version: 4.4.3
+  resolution: "happo-plugin-storybook@npm:4.4.3"
+  checksum: ff5a2b70ab18c7286202df40203fe16a0f1a22fd89b2e2a0be49127eed6e6d7fe78ee907ef3706a55fef692efd967ba7fba9c2cdce4cd028c2a622b36b701bc4
   languageName: node
   linkType: hard
 

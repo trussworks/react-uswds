@@ -117,7 +117,7 @@
     "eslint-plugin-storybook": "^0.11.4",
     "focus-trap-react": "^11.0.3",
     "globals": "^16.0.0",
-    "happo-plugin-storybook": "^4.4.2",
+    "happo-plugin-storybook": "^4.4.3",
     "happo.io": "^12.1.0",
     "husky": "^9.0.10",
     "jsdom": "^24.0.0",
