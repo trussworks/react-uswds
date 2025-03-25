@@ -17,22 +17,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: google-github-actions/release-please-action@v4
         with:
-          release-type: node
-          package-name: '@trussworks/react-uswds'
-          release-labels: 'type: release'
-          include-v-in-tag: false
-          changelog-types: >
-            [
-              { "type": "build", "hidden": true },
-              { "type": "chore", "hidden": true },
-              { "type": "ci", "hidden": true },
-              { "type": "feat", "section": "Features" },
-              { "type": "fix", "section": "Bug Fixes" },
-              { "type": "docs", "section": "Documentation & Examples" },
-              { "type": "style", "hidden": true },
-              { "type": "refactor", "hidden": true },
-              { "type": "perf", "section": "Performance Improvements" },
-              { "type": "test", "hidden": true }
-            ]
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
