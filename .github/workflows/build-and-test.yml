@@ -64,11 +64,6 @@ jobs:
         run: yarn build-storybook
 
       - name: Happo
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.ref }}
-          fetch-depth: 100
-        uses: actions/setup-node@v4
         run: yarn happo-ci
         env:
           HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
