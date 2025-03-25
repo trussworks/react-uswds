@@ -44,6 +44,6 @@ jobs:
           node-version-file: '.node-version'
 
       # Publish to GitHub Packages
-      - run: yarn npm publish --tag next
+      - run: yarn npm publish --tag next --tolerate-republish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
