@@ -39,7 +39,7 @@ export default defineConfig(({ mode: _mode }) => {
         isUswds &&
         libAssetsPlugin({
           // ignore svg files as they will be inlined via svgr
-          exclude: /\.svg(\?.*)?$/,
+          exclude: /\.svg/,
           // matches webpack names
           name: '[contenthash:20].[ext]',
         }),
@@ -102,7 +102,7 @@ export default defineConfig(({ mode: _mode }) => {
       devSourcemap: true,
       preprocessorOptions: {
         scss: {
-          includePaths: uswdsIncludePaths,
+          loadPaths: uswdsIncludePaths,
         },
       },
     },

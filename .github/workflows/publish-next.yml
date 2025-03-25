@@ -8,6 +8,8 @@ on:
 jobs:
   publish-next:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     name: Publish next to Github Packages
     steps:
       - name: Check out repository
@@ -42,6 +44,6 @@ jobs:
           node-version-file: '.node-version'
 
       # Publish to GitHub Packages
-      - run: yarn npm publish --no-git-tag-version --prerelease --preid alpha-$(date +%Y%m%d%H%M%S) --tag next
+      - run: yarn npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
