@@ -1,13 +1,10 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface IdentifierMastheadPropsInterface {
+export type IdentifierMastheadProps = {
   className?: string
   children?: React.ReactNode
-}
-
-export type IdentifierMastheadProps = IdentifierMastheadPropsInterface &
-  JSX.IntrinsicElements['section']
+} & JSX.IntrinsicElements['section']
 
 export const IdentifierMasthead = ({
   className,

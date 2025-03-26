@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
 
-export interface AccordionItemProps {
+export type AccordionItemProps = {
   title: React.ReactNode | string
   content: React.ReactNode
   expanded: boolean

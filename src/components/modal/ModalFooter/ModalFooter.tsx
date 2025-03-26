@@ -1,13 +1,10 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface ModalFooterPropsInterface {
+export type ModalFooterProps = {
   children: React.ReactNode
   className?: string
-}
-
-export type ModalFooterProps = ModalFooterPropsInterface &
-  JSX.IntrinsicElements['div']
+} & JSX.IntrinsicElements['div']
 
 export const ModalFooter = ({
   children,

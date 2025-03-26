@@ -1,14 +1,11 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-export interface BreadcrumbPropsInterface {
+export type BreadcrumbProps = {
   children: React.ReactNode
   className?: string
   current?: boolean
-}
-
-export type BreadcrumbProps = BreadcrumbPropsInterface &
-  JSX.IntrinsicElements['li']
+} & JSX.IntrinsicElements['li']
 
 export const Breadcrumb = ({
   children,

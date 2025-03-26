@@ -2,7 +2,7 @@ import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { LegacyInputRef } from '../../../types/legacyInputRef'
 
-export interface TextareaPropsInterface {
+export type TextareaProps = {
   id: string
   name: string
   className?: string
@@ -10,10 +10,7 @@ export interface TextareaPropsInterface {
   success?: boolean
   children?: React.ReactNode
   inputRef?: LegacyInputRef<HTMLTextAreaElement>
-}
-
-export type TextareaProps = TextareaPropsInterface &
-  JSX.IntrinsicElements['textarea']
+} & JSX.IntrinsicElements['textarea']
 
 export const Textarea = ({
   id,

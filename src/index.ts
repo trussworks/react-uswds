@@ -125,7 +125,6 @@ export type { InputSuffixProps } from './components/forms/InputSuffix/InputSuffi
 export { Label } from './components/forms/Label/Label'
 export type { LabelProps } from './components/forms/Label/Label'
 export { RequiredMarker } from './components/forms/Label/RequiredMarker'
-export type { RequiredMarkerProps } from './components/forms/Label/RequiredMarker'
 export { LanguageSelector } from './components/LanguageSelector/LanguageSelector'
 export type {
   LanguageDefinition,

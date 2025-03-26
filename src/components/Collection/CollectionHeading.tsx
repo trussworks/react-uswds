@@ -2,15 +2,12 @@ import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
 
-interface CollectionHeadingPropsInterface {
+export type CollectionHeadingProps = {
   headingLevel: HeadingLevel
-}
-
-export type CollectionHeadingProps = CollectionHeadingPropsInterface &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  HTMLHeadingElement
+>
 
 export const CollectionHeading = ({
   headingLevel,

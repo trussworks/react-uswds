@@ -2,17 +2,14 @@ import React, { type JSX, ReactNode } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-interface SummaryBoxHeadingPropsInterface {
+export type SummaryBoxHeadingProps = {
   children: ReactNode
   className?: string
   headingLevel: HeadingLevel
-}
-
-export type SummaryBoxHeadingProps = SummaryBoxHeadingPropsInterface &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  HTMLHeadingElement
+>
 
 export const SummaryBoxHeading = ({
   children,
