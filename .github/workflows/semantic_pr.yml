@@ -6,10 +6,12 @@ on:
       - opened
       - edited
       - synchronize
+    branches:
+      - main
 
 jobs:
-  main:
-    name: lint
+  lint:
+    name: Validate PR title
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
