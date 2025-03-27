@@ -1,7 +1,7 @@
-const { RemoteBrowserTarget } = require('happo.io')
-const happoPluginStorybook = require('happo-plugin-storybook')
+import { RemoteBrowserTarget } from 'happo.io'
+import happoPluginStorybook from'happo-plugin-storybook'
 
-module.exports = {
+export default {
   apiKey: process.env.HAPPO_API_KEY,
   apiSecret: process.env.HAPPO_API_SECRET,
   targets: {

@@ -1,16 +1,19 @@
 {
   "plugins": [],
   "rules": {
+    "at-rule-empty-line-before": null,
     "at-rule-no-unknown": null,
+    "color-no-invalid-hex": true,
+    "declaration-property-value-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "selector-class-pattern": "",
     "scss/function-no-unknown": null,
-    "at-rule-empty-line-before": null
+    "selector-class-pattern": "",
+    "unit-no-unknown": true
   },
   "extends": [
+    "stylelint-config-css-modules",
     "stylelint-config-recommended",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-css-modules",
     "stylelint-config-standard-scss"
   ]
 }
