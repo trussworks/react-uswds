@@ -12,6 +12,7 @@ on:
 
 jobs:
   lint:
+    name: action-semantic-pull-request
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
