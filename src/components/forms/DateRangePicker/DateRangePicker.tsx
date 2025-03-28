@@ -14,7 +14,7 @@ export type DateRangePickerProps = {
   endDateHint?: string
   endDatePickerProps: Omit<DatePickerProps, 'rangeDate'>
   className?: string
-} & JSX.IntrinsicElements['div']
+}
 
 export const DateRangePicker = (props: DateRangePickerProps): JSX.Element => {
   const {

@@ -5,13 +5,13 @@ export type LogoProps = {
   size?: 'big' | 'medium' | 'slim'
   heading?: React.ReactNode
   image: React.ReactNode
-} & React.HtmlHTMLAttributes<HTMLElement>
-
+  className?: string
+}
 export const Logo = ({
   size,
   heading,
   image,
-  ...elementAttributes
+  className,
 }: LogoProps): JSX.Element => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
@@ -23,7 +23,7 @@ export const Logo = ({
       'mobile-lg:grid-col-6 mobile-lg:grid-gap-2': isBig || isMedium,
       'grid-gap-2': isSlim,
     },
-    elementAttributes.className
+    className
   )
 
   const columnClasses = classnames({

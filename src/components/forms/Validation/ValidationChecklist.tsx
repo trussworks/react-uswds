@@ -1,10 +1,7 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-export type ValidationChecklistProps = {
-  id: string
-  children: React.ReactNode
-} & JSX.IntrinsicElements['ul']
+export type ValidationChecklistProps = JSX.IntrinsicElements['ul']
 
 export const ValidationChecklist = ({
   children,

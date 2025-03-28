@@ -6,7 +6,7 @@ import { TextInput, TextInputProps } from '../TextInput/TextInput'
 export type TextInputMaskProps = TextInputProps & {
   mask: string
   charset?: string
-}
+} & JSX.IntrinsicElements['input']
 
 function maskString(value: string, mask: string, charset?: string) {
   const maskData = charset || mask
