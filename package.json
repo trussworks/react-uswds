@@ -126,7 +126,7 @@
     "react-dom": "^19.0.0",
     "sass-embedded": "^1.86.0",
     "storybook": "^8.6.7",
-    "stylelint": "^16.16.0",
+    "stylelint": "^16.17.0",
     "stylelint-config-css-modules": "^4.4.0",
     "stylelint-config-recommended": "^15.0.0",
     "stylelint-config-sass-guidelines": "^12.1.0",
