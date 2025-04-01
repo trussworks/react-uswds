@@ -2,7 +2,7 @@ import React, { ReactElement, type JSX } from 'react'
 import classnames from 'classnames'
 import { IdentifierLinkItemProps } from '../IdentifierLinkItem/IdentifierLinkItem'
 
-interface IdentifierLinksProps {
+export type IdentifierLinksProps = {
   children:
     | ReactElement<IdentifierLinkItemProps>
     | ReactElement<IdentifierLinkItemProps>[]

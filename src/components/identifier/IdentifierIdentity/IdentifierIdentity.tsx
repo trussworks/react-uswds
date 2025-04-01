@@ -1,18 +1,18 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface IdentifierIdentityProps {
+export type IdentifierIdentityProps = {
   children: React.ReactNode
   domain: string
   className?: string
-}
+} & JSX.IntrinsicElements['div']
 
 export const IdentifierIdentity = ({
   children,
   domain,
   className,
   ...divProps
-}: IdentifierIdentityProps & JSX.IntrinsicElements['div']): JSX.Element => {
+}: IdentifierIdentityProps): JSX.Element => {
   const classes = classnames('usa-identifier__identity', className)
   return (
     <div data-testid="identifierIdentity" className={classes} {...divProps}>

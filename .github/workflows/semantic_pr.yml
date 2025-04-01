@@ -8,10 +8,11 @@ on:
       - synchronize
     branches:
       - main
+      - sr-update-semantic-pr-config
 
 jobs:
   lint:
-    name: Validate PR title
+    name: action-semantic-pull-request
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read

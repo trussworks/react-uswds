@@ -1,16 +1,16 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface IdentifierMastheadProps {
+export type IdentifierMastheadProps = {
   className?: string
   children?: React.ReactNode
-}
+} & JSX.IntrinsicElements['section']
 
 export const IdentifierMasthead = ({
   className,
   children,
   ...sectionProps
-}: IdentifierMastheadProps & JSX.IntrinsicElements['section']): JSX.Element => {
+}: IdentifierMastheadProps): JSX.Element => {
   const classes = classnames(
     'usa-identifier__section usa-identifier__section--masthead',
     className

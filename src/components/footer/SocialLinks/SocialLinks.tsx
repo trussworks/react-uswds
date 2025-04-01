@@ -3,18 +3,18 @@ import classnames from 'classnames'
 import { Icon } from '../../Icon/Icons'
 import { IconProps } from '../../Icon/Icon'
 
-type SocialLinksProps = {
+export type SocialLinksProps = {
   links: React.ReactNode[]
-}
+} & JSX.IntrinsicElements['div']
 
-type SocialLinkProps = {
+export type SocialLinkProps = {
   name: 'Facebook' | 'Twitter' | 'YouTube' | 'Instagram' | 'RSS'
-}
+} & JSX.IntrinsicElements['a']
 
 export const SocialLinks = ({
   className,
   links,
-}: SocialLinksProps & JSX.IntrinsicElements['div']): JSX.Element => {
+}: SocialLinksProps): JSX.Element => {
   const classes = classnames(
     'usa-footer__social-links grid-row grid-gap-1',
     className
@@ -33,7 +33,7 @@ export const SocialLinks = ({
 export const SocialLink = ({
   name,
   ...props
-}: SocialLinkProps & JSX.IntrinsicElements['a']): JSX.Element => {
+}: SocialLinkProps): JSX.Element => {
   let IconComponent: React.ComponentType<IconProps>
   switch (name) {
     case 'Facebook':

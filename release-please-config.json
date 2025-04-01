@@ -8,6 +8,7 @@
   "release-type": "node",
   "release-label": "type: release",
   "include-v-in-tag": false,
+  "changelog-path": "CHANGELOG.md",
   "changelog-sections": [
     { "type": "build", "hidden": true },
     { "type": "chore", "hidden": true },

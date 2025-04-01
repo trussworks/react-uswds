@@ -10,7 +10,7 @@ type SearchLocalization = {
   buttonText: string
 }
 
-type SearchInputProps = {
+export type SearchProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   size?: 'big' | 'small'
   className?: string
@@ -21,7 +21,7 @@ type SearchInputProps = {
   i18n?: SearchLocalization
   buttonAriaLabel?: string
   inputProps?: OptionalTextInputProps
-}
+} & OptionalFormProps
 
 export const Search = ({
   onSubmit,
@@ -35,7 +35,7 @@ export const Search = ({
   buttonAriaLabel,
   inputProps,
   ...formProps
-}: SearchInputProps & OptionalFormProps): JSX.Element => {
+}: SearchProps): JSX.Element => {
   const classes = classnames('usa-search', className)
 
   return (

@@ -16,13 +16,13 @@ interface ParagraphIconListTitleProps extends BaseIconListTitleProps {
   type: 'p'
 }
 
-type IconListHeadingTitleProps = HeadingIconListTitleProps &
+export type IconListHeadingTitleProps = HeadingIconListTitleProps &
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   >
 
-type IconListParagraphTitleProps = ParagraphIconListTitleProps &
+export type IconListParagraphTitleProps = ParagraphIconListTitleProps &
   JSX.IntrinsicElements['p']
 
 export const IconListTitle = ({

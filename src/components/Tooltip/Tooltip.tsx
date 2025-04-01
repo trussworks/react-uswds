@@ -38,12 +38,10 @@ const TRIANGLE_SIZE = 5
 const DEFAULT_POSITION = 'top'
 
 // useId was introduced in React 18 - polyfill for older versions
-const genId = (): string => {
-  if (React.useId) {
-    return React.useId()
-  } else {
-    return `${Math.floor(Math.random() * 900000) + 100000}`
-  }
+const useId = (): string => {
+  const id1 = React.useId?.()
+  const [id2] = React.useState(`${Math.floor(Math.random() * 900000) + 100000}`)
+  return id1 ?? id2
 }
 
 export function Tooltip(props: DefaultTooltipProps): JSX.Element
@@ -58,7 +56,8 @@ export function Tooltip<
 }: DefaultTooltipProps | CustomTooltipProps<FCProps>): JSX.Element {
   const triggerElementRef = useRef<HTMLElement & HTMLButtonElement>(null)
   const tooltipBodyRef = useRef<HTMLElement>(null)
-  const tooltipID = useRef(`tooltip-${genId()}`)
+  const id = useId()
+  const tooltipID = `tooltip-${id}`
 
   const [isVisible, setVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
@@ -225,7 +224,7 @@ export function Tooltip<
         ...customProps,
         ref: triggerElementRef,
         'data-testid': 'triggerElement',
-        'aria-describedby': tooltipID.current,
+        'aria-describedby': tooltipID,
         tabIndex: 0,
         title: '',
         onMouseEnter: showTooltip,
@@ -245,7 +244,7 @@ export function Tooltip<
         <span
           data-testid="tooltipBody"
           title={title ?? (typeof label === 'string' ? label : undefined)}
-          id={tooltipID.current}
+          id={tooltipID}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"
@@ -271,7 +270,7 @@ export function Tooltip<
           {...remainingProps}
           data-testid="triggerElement"
           ref={triggerElementRef}
-          aria-describedby={tooltipID.current}
+          aria-describedby={tooltipID}
           tabIndex={0}
           type="button"
           className={triggerClasses}
@@ -287,7 +286,7 @@ export function Tooltip<
         <span
           data-testid="tooltipBody"
           title={title ?? (typeof label === 'string' ? label : undefined)}
-          id={tooltipID.current}
+          id={tooltipID}
           ref={tooltipBodyRef}
           className={tooltipBodyClasses}
           role="tooltip"

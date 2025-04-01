@@ -3,14 +3,14 @@ import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 import { LegacyInputRef } from '../../../types/legacyInputRef'
 
-type SelectProps = {
+export type SelectProps = {
   id: string
   name: string
   className?: string
   children: React.ReactNode
   validationStatus?: ValidationStatus
   inputRef?: LegacyInputRef<HTMLSelectElement>
-}
+} & JSX.IntrinsicElements['select']
 
 export const Select = ({
   id,
@@ -20,7 +20,7 @@ export const Select = ({
   children,
   validationStatus,
   ...inputProps
-}: SelectProps & JSX.IntrinsicElements['select']): JSX.Element => {
+}: SelectProps): JSX.Element => {
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
   const classes = classnames(

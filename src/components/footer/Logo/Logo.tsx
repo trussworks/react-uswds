@@ -1,18 +1,18 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type LogoProps = {
+export type LogoProps = {
   size?: 'big' | 'medium' | 'slim'
   heading?: React.ReactNode
   image: React.ReactNode
+  className?: string
 }
-
 export const Logo = ({
   size,
   heading,
   image,
-  ...elementAttributes
-}: LogoProps & React.HtmlHTMLAttributes<HTMLElement>): JSX.Element => {
+  className,
+}: LogoProps): JSX.Element => {
   const isBig = size === 'big'
   const isMedium = size === 'medium'
   const isSlim = size === 'slim'
@@ -23,7 +23,7 @@ export const Logo = ({
       'mobile-lg:grid-col-6 mobile-lg:grid-gap-2': isBig || isMedium,
       'grid-gap-2': isSlim,
     },
-    elementAttributes.className
+    className
   )
 
   const columnClasses = classnames({

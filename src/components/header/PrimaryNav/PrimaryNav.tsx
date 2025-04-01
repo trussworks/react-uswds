@@ -4,13 +4,13 @@ import classnames from 'classnames'
 import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
 import { NavList } from '../NavList/NavList'
 
-type PrimaryNavProps = {
+export type PrimaryNavProps = {
   items: React.ReactNode[]
   onToggleMobileNav?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void
   mobileExpanded?: boolean
-}
+} & JSX.IntrinsicElements['nav']
 
 export const PrimaryNav = ({
   items,
@@ -19,7 +19,7 @@ export const PrimaryNav = ({
   children,
   className,
   ...navProps
-}: PrimaryNavProps & JSX.IntrinsicElements['nav']): JSX.Element => {
+}: PrimaryNavProps): JSX.Element => {
   const classes = classnames(
     'usa-nav',
     {

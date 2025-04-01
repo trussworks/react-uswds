@@ -28,7 +28,7 @@ type BaseTimePickerProps = {
   className?: string
 }
 
-type TimePickerProps = BaseTimePickerProps &
+export type TimePickerProps = BaseTimePickerProps &
   Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
 export const TimePicker = ({

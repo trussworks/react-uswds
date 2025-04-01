@@ -16,14 +16,14 @@ interface ParagraphProcessListHeadingProps extends BaseProcessListHeadingProps {
   type: 'p'
 }
 
-type ProcessListHeadingProps = HeadingProcessListHeadingProps &
+export type ProcessListHeadingProps = HeadingProcessListHeadingProps &
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   >
 
-type ProcessListParagraphHeadingProps = ParagraphProcessListHeadingProps &
-  JSX.IntrinsicElements['p']
+export type ProcessListParagraphHeadingProps =
+  ParagraphProcessListHeadingProps & JSX.IntrinsicElements['p']
 
 export const ProcessListHeading = ({
   type,
