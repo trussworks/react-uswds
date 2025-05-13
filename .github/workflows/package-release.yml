@@ -35,11 +35,13 @@ jobs:
         run: yarn test
 
       - name: Package library
-        run: yarn pack
+        # %s-%v.tgz => @trussworks-react-uswds-v*.*.*.tgz
+        # https://v3.yarnpkg.com/cli/pack
+        run: yarn pack --out %s-%v.tgz
 
       - name: Upload package
         uses: actions/upload-artifact@v4
         with:
-          path: trussworks-react-uswds-v*.*.*.tgz
+          path: @trussworks-react-uswds-v*.*.*.tgz
           if-no-files-found: error
           retention-days: 5
