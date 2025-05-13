@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [9.2.0](https://github.com/trussworks/react-uswds/compare/react-uswds-9.1.0...react-uswds-9.2.0) (2025-03-29)
+## [10.0.0](https://github.com/trussworks/react-uswds/compare/react-uswds-9.1.0...react-uswds-9.2.0) (2025-05-13)
 
 
 ### Features
@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file. See [standa
 * [#2620](https://github.com/trussworks/react-uswds/issues/2620) Move form templates in Storybook ([#3097](https://github.com/trussworks/react-uswds/issues/3097)) ([0262854](https://github.com/trussworks/react-uswds/commit/026285419bcf99a85099436202e65cf535adbcba))
 * tooltip ID cleanup ([#3096](https://github.com/trussworks/react-uswds/issues/3096)) ([c161e1e](https://github.com/trussworks/react-uswds/commit/c161e1ee5855792feb77557303bf4f61de3bea86))
 * useId instead of random number for tooltip ID ([#3094](https://github.com/trussworks/react-uswds/issues/3094)) ([d769610](https://github.com/trussworks/react-uswds/commit/d7696108154fd644371f0b06b5b2348f9603a619))
+* update yarn pack configuration in package-release.yaml([#3148](https://github.com/trussworks/react-uswds/pull/3148/commits/3505da786c920b858fe2d86ff5b3f6dffb560e1c))
 
 
 ### Documentation & Examples
