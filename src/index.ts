@@ -245,6 +245,8 @@ export { ModalHeading } from './components/modal/ModalHeading/ModalHeading'
 export type { ModalHeadingProps } from './components/modal/ModalHeading/ModalHeading'
 export { ModalFooter } from './components/modal/ModalFooter/ModalFooter'
 export type { ModalFooterProps } from './components/modal/ModalFooter/ModalFooter'
+export { ModalToggleButton } from './components/modal/ModalToggleButton'
+export type { ModalToggleButtonProps } from './components/modal/ModalToggleButton'
 
 /** Card components/types */
 export { CardGroup } from './components/card/CardGroup/CardGroup'
