@@ -3,10 +3,8 @@ import * as child from 'child_process'
 import { danger, fail, schedule, warn } from 'danger'
 
 // README:
-// This parses the structure of the npm audit response, but that response has no schema and is subject to change, so this might break with npm version upgrades:
-// https://github.com/orgs/community/discussions/153882#discussioncomment-12491480
-// The TS types below correspond to what the shape of the json-ified audit report looks like at the time of this commit, which was found here:
-// https://github.com/npm/npm-audit-report/blob/main/tap-snapshots/test-reporters-json.js-TAP.test.js
+// This parses the structure of the `yarn npm audit` response, but that response has no schema and is subject to change, so this might break with yarn version upgrades
+// The TS types below correspond to what the shape of the json-ified audit report looks like at the time of this commit.
 
 // Only run on PRs from non-bots
 const shouldRun = !!danger.github?.pr && danger.github.pr.user.type !== 'Bot'
@@ -16,7 +14,7 @@ const allFiles = (danger.git.modified_files ?? []).concat(
   danger.git.created_files
 )
 
-type NpmAuditMetaData = Partial<{
+type YarnAuditMetaData = Partial<{
   vulnerabilities: {
     info: number
     low: number
@@ -30,36 +28,37 @@ type NpmAuditMetaData = Partial<{
   totalDependencies: number
 }>
 
-type NpmAdvisoryDetail = Partial<{
-  id: number
-  url: string
-  title: string
-  severity: string
-  vulnerable_versions: string
+type YarnAuditAdvisoryDetail = Partial<{
+  id: number | null
+  title: string | null
+  findings: [] | null
+  references: string | null
+  created: string | null
+  overview: string | null
+  cves: string[] | null
+  access: string | null
+  severity: string | null
+  module_name: string | null
+  vulnerable_versions: string | null
+  github_advisory_id: string | null
+  recommendation: string | null
+  patched_versions: string | null
+  updated: string | null
+  cvss: object | null
+  cwe: string[] | null
+  url: string | null
 }>
 
-type NpmVulnerabilityDetail = Partial<{
-  name: string
-  severity: string
-  via: NpmAdvisoryDetail[]
-  effects: []
-  range: string
-  nodes: string[]
-  fixAvailable: boolean
-}>
-
-type NpmAuditOutput = Partial<{
+type YawnAuditOutput = Partial<{
   actions: []
-  advisories: object
+  advisories: Record<string, YarnAuditAdvisoryDetail>
   muted: []
-  metadata: NpmAuditMetaData
-  vulnerabilities: Record<string, NpmVulnerabilityDetail>
+  metadata: YarnAuditMetaData
+  dependencies: number
+  devDependencies: number
+  optionalDependencies: number
+  totalDependencies: number
 }>
-
-type ConsolidatedAdvisoryDetails = {
-  advisoryNames: string[]
-  advisoryUrls: string[]
-}
 
 const checkYarnAudit: () => void = () => {
   const result = child.spawnSync('yarn', [
@@ -70,47 +69,33 @@ const checkYarnAudit: () => void = () => {
     '--json',
   ])
   const output = result.stdout.toString()
-  const summary = JSON.parse(output) as NpmAuditOutput
-  const highVulnerabilities = summary.metadata?.vulnerabilities?.high || 0
-  const criticalVulnerabilities =
-    summary.metadata?.vulnerabilities?.critical || 0
+  const summary = JSON.parse(output) as YawnAuditOutput
+
+  if (!summary.metadata?.vulnerabilities || !summary.advisories) {
+    warn(
+      `Unable to parse the yarn npm audit response. Dangerfile.ts likely needs updating`
+    )
+    return
+  }
+
+  const highVulnerabilities = summary.metadata.vulnerabilities.high || 0
+  const criticalVulnerabilities = summary.metadata.vulnerabilities.critical || 0
   if (highVulnerabilities > 0 || criticalVulnerabilities > 0) {
     let issuesFound = 'Yarn Audit Issues Found:\n'
-    if (summary.vulnerabilities) {
-      Object.values(summary.vulnerabilities).forEach(
-        (npmVulnerabilityDetail) => {
-          const { advisoryNames, advisoryUrls } = npmVulnerabilityDetail.via
-            ? npmVulnerabilityDetail.via.reduce<ConsolidatedAdvisoryDetails>(
-                (accumulator, currentValue) => {
-                  if (currentValue.title) {
-                    accumulator.advisoryNames.push(currentValue.title)
-                  }
-
-                  if (currentValue.url) {
-                    accumulator.advisoryUrls.push(currentValue.url)
-                  }
-
-                  return accumulator
-                },
-                { advisoryNames: [], advisoryUrls: [] }
-              )
-            : {}
-          issuesFound +=
-            `${npmVulnerabilityDetail.severity} - ${advisoryNames}\n` +
-            `Package ${npmVulnerabilityDetail.name}\n` +
-            `Fix available? ${npmVulnerabilityDetail.fixAvailable}\n` +
-            `Dependency of ${npmVulnerabilityDetail.nodes}\n` +
-            `More info ${advisoryUrls}\n\n` +
-            `(🤖If this output looks weird, see dangerfile.ts to fix)\n\n`
-        }
-      )
+    if (summary.advisories) {
+      Object.values(summary.advisories).forEach((advisory) => {
+        issuesFound +=
+          `${advisory.severity} - ${advisory.title}\n` +
+          `Package ${advisory.module_name}\n` +
+          `Patched in ${advisory.patched_versions}\n` +
+          `More info ${advisory.url}\n\n` +
+          `(🤖If this output looks weird, see dangerfile.ts to fix)\n\n`
+      })
     }
     fail(
       `${issuesFound}${highVulnerabilities} high vulnerabilities and ` +
         `${criticalVulnerabilities} critical vulnerabilities found`
     )
-  } else {
-    warn(`Couldn't find summary of vulnerabilities from npm audit`)
   }
 }
 
