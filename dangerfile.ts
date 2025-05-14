@@ -73,7 +73,8 @@ const checkYarnAudit: () => void = () => {
 
   if (!summary.metadata?.vulnerabilities || !summary.advisories) {
     warn(
-      `Unable to parse the yarn npm audit response. Dangerfile.ts likely needs updating`
+      `Unable to parse the yarn npm audit response.\n" + 
+      "dangerfile.ts likely needs updating`
     )
     return
   }
