@@ -2,14 +2,64 @@ import * as child from 'child_process'
 
 import { danger, fail, schedule, warn } from 'danger'
 
+// README:
+// This parses the structure of the npm audit response, but that response has no schema and is subject to change, so this might break with npm version upgrades:
+// https://github.com/orgs/community/discussions/153882#discussioncomment-12491480
+// The TS types below correspond to what the shape of the json-ified audit report looks like at the time of this commit, which was found here:
+// https://github.com/npm/npm-audit-report/blob/main/tap-snapshots/test-reporters-json.js-TAP.test.js
+
 // Only run on PRs from non-bots
-const shouldRun = 
-  !!danger.github?.pr && danger.github.pr.user.type !== 'Bot'
+const shouldRun = !!danger.github?.pr && danger.github.pr.user.type !== 'Bot'
 
 // Load all modified and new files
 const allFiles = (danger.git.modified_files ?? []).concat(
   danger.git.created_files
 )
+
+type NpmAuditMetaData = Partial<{
+  vulnerabilities: {
+    info: number
+    low: number
+    moderate: number
+    high: number
+    critical: number
+  }
+  dependencies: number
+  devDependencies: number
+  optionalDependencies: number
+  totalDependencies: number
+}>
+
+type NpmAdvisoryDetail = Partial<{
+  id: number
+  url: string
+  title: string
+  severity: string
+  vulnerable_versions: string
+}>
+
+type NpmVulnerabilityDetail = Partial<{
+  name: string
+  severity: string
+  via: NpmAdvisoryDetail[]
+  effects: []
+  range: string
+  nodes: string[]
+  fixAvailable: boolean
+}>
+
+type NpmAuditOutput = Partial<{
+  actions: []
+  advisories: object
+  muted: []
+  metadata: NpmAuditMetaData
+  vulnerabilities: Record<string, NpmVulnerabilityDetail>
+}>
+
+type ConsolidatedAdvisoryDetails = {
+  advisoryNames: string[]
+  advisoryUrls: string[]
+}
 
 const checkYarnAudit: () => void = () => {
   const result = child.spawnSync('yarn', [
@@ -19,42 +69,48 @@ const checkYarnAudit: () => void = () => {
     '--severity=high',
     '--json',
   ])
-  const output = result.stdout.toString().split('\n')
-  const summary = JSON.parse(output[output.length - 2])
-  if (
-    'data' in summary &&
-    'vulnerabilities' in summary.data &&
-    'high' in summary.data.vulnerabilities &&
-    'critical' in summary.data.vulnerabilities
-  ) {
-    if (
-      summary.data.vulnerabilities.high > 0 ||
-      summary.data.vulnerabilities.critical > 0
-    ) {
-      let issuesFound = 'Yarn Audit Issues Found:\n'
-      output.forEach((rawAudit) => {
-        try {
-          const audit = JSON.parse(rawAudit)
-          if (audit.type === 'auditAdvisory') {
-            issuesFound +=
-              `${audit.data.advisory.severity} - ${audit.data.advisory.title}\n` +
-              `Package ${audit.data.advisory.module_name}\n` +
-              `Patched in ${audit.data.advisory.patched_versions}\n` +
-              `Dependency of ${audit.data.resolution.path.split('>')[0]}\n` +
-              `Path ${audit.data.resolution.path.replace(/>/g, ' > ')}\n` +
-              `More info ${audit.data.advisory.url}\n\n`
-          }
-        } catch {
-          // not all outputs maybe json and that's okay
+  const output = result.stdout.toString()
+  const summary = JSON.parse(output) as NpmAuditOutput
+  const highVulnerabilities = summary.metadata?.vulnerabilities?.high || 0
+  const criticalVulnerabilities =
+    summary.metadata?.vulnerabilities?.critical || 0
+  if (highVulnerabilities > 0 || criticalVulnerabilities > 0) {
+    let issuesFound = 'Yarn Audit Issues Found:\n'
+    if (summary.vulnerabilities) {
+      Object.values(summary.vulnerabilities).forEach(
+        (npmVulnerabilityDetail) => {
+          const { advisoryNames, advisoryUrls } = npmVulnerabilityDetail.via
+            ? npmVulnerabilityDetail.via.reduce<ConsolidatedAdvisoryDetails>(
+                (accumulator, currentValue) => {
+                  if (currentValue.title) {
+                    accumulator.advisoryNames.push(currentValue.title)
+                  }
+
+                  if (currentValue.url) {
+                    accumulator.advisoryUrls.push(currentValue.url)
+                  }
+
+                  return accumulator
+                },
+                { advisoryNames: [], advisoryUrls: [] }
+              )
+            : {}
+          issuesFound +=
+            `${npmVulnerabilityDetail.severity} - ${advisoryNames}\n` +
+            `Package ${npmVulnerabilityDetail.name}\n` +
+            `Fix available? ${npmVulnerabilityDetail.fixAvailable}\n` +
+            `Dependency of ${npmVulnerabilityDetail.nodes}\n` +
+            `More info ${advisoryUrls}\n\n` +
+            `(🤖If this output looks weird, see dangerfile.ts to fix)\n\n`
         }
-      })
-      fail(
-        `${issuesFound}${summary.data.vulnerabilities.high} high vulnerabilities and ` +
-          `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
       )
     }
+    fail(
+      `${issuesFound}${highVulnerabilities} high vulnerabilities and ` +
+        `${criticalVulnerabilities} critical vulnerabilities found`
+    )
   } else {
-    warn(`Couldn't find summary of vulnerabilities from yarn audit`)
+    warn(`Couldn't find summary of vulnerabilities from npm audit`)
   }
 }
 
