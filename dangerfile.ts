@@ -2,14 +2,63 @@ import * as child from 'child_process'
 
 import { danger, fail, schedule, warn } from 'danger'
 
+// README:
+// This parses the structure of the `yarn npm audit` response, but that response has no schema and is subject to change, so this might break with yarn version upgrades
+// The TS types below correspond to what the shape of the json-ified audit report looks like at the time of this commit.
+
 // Only run on PRs from non-bots
-const shouldRun = 
-  !!danger.github?.pr && danger.github.pr.user.type !== 'Bot'
+const shouldRun = !!danger.github?.pr && danger.github.pr.user.type !== 'Bot'
 
 // Load all modified and new files
 const allFiles = (danger.git.modified_files ?? []).concat(
   danger.git.created_files
 )
+
+type YarnAuditMetaData = Partial<{
+  vulnerabilities: {
+    info: number
+    low: number
+    moderate: number
+    high: number
+    critical: number
+  }
+  dependencies: number
+  devDependencies: number
+  optionalDependencies: number
+  totalDependencies: number
+}>
+
+type YarnAuditAdvisoryDetail = Partial<{
+  id: number | null
+  title: string | null
+  findings: [] | null
+  references: string | null
+  created: string | null
+  overview: string | null
+  cves: string[] | null
+  access: string | null
+  severity: string | null
+  module_name: string | null
+  vulnerable_versions: string | null
+  github_advisory_id: string | null
+  recommendation: string | null
+  patched_versions: string | null
+  updated: string | null
+  cvss: object | null
+  cwe: string[] | null
+  url: string | null
+}>
+
+type YawnAuditOutput = Partial<{
+  actions: []
+  advisories: Record<string, YarnAuditAdvisoryDetail>
+  muted: []
+  metadata: YarnAuditMetaData
+  dependencies: number
+  devDependencies: number
+  optionalDependencies: number
+  totalDependencies: number
+}>
 
 const checkYarnAudit: () => void = () => {
   const result = child.spawnSync('yarn', [
@@ -19,42 +68,35 @@ const checkYarnAudit: () => void = () => {
     '--severity=high',
     '--json',
   ])
-  const output = result.stdout.toString().split('\n')
-  const summary = JSON.parse(output[output.length - 2])
-  if (
-    'data' in summary &&
-    'vulnerabilities' in summary.data &&
-    'high' in summary.data.vulnerabilities &&
-    'critical' in summary.data.vulnerabilities
-  ) {
-    if (
-      summary.data.vulnerabilities.high > 0 ||
-      summary.data.vulnerabilities.critical > 0
-    ) {
-      let issuesFound = 'Yarn Audit Issues Found:\n'
-      output.forEach((rawAudit) => {
-        try {
-          const audit = JSON.parse(rawAudit)
-          if (audit.type === 'auditAdvisory') {
-            issuesFound +=
-              `${audit.data.advisory.severity} - ${audit.data.advisory.title}\n` +
-              `Package ${audit.data.advisory.module_name}\n` +
-              `Patched in ${audit.data.advisory.patched_versions}\n` +
-              `Dependency of ${audit.data.resolution.path.split('>')[0]}\n` +
-              `Path ${audit.data.resolution.path.replace(/>/g, ' > ')}\n` +
-              `More info ${audit.data.advisory.url}\n\n`
-          }
-        } catch {
-          // not all outputs maybe json and that's okay
-        }
+  const output = result.stdout.toString()
+  const summary = JSON.parse(output) as YawnAuditOutput
+
+  if (!summary.metadata?.vulnerabilities || !summary.advisories) {
+    warn(
+      `Unable to parse the yarn npm audit response.\n" + 
+      "dangerfile.ts likely needs updating`
+    )
+    return
+  }
+
+  const highVulnerabilities = summary.metadata.vulnerabilities.high || 0
+  const criticalVulnerabilities = summary.metadata.vulnerabilities.critical || 0
+  if (highVulnerabilities > 0 || criticalVulnerabilities > 0) {
+    let issuesFound = 'Yarn Audit Issues Found:\n'
+    if (summary.advisories) {
+      Object.values(summary.advisories).forEach((advisory) => {
+        issuesFound +=
+          `${advisory.severity} - ${advisory.title}\n` +
+          `Package ${advisory.module_name}\n` +
+          `Patched in ${advisory.patched_versions}\n` +
+          `More info ${advisory.url}\n\n` +
+          `(🤖If this output looks weird, see dangerfile.ts to fix)\n\n`
       })
-      fail(
-        `${issuesFound}${summary.data.vulnerabilities.high} high vulnerabilities and ` +
-          `${summary.data.vulnerabilities.critical} critical vulnerabilities found`
-      )
     }
-  } else {
-    warn(`Couldn't find summary of vulnerabilities from yarn audit`)
+    fail(
+      `${issuesFound}${highVulnerabilities} high vulnerabilities and ` +
+        `${criticalVulnerabilities} critical vulnerabilities found`
+    )
   }
 }
 
