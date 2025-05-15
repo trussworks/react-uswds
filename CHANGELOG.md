@@ -2,26 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [9.2.0](https://github.com/trussworks/react-uswds/compare/react-uswds-9.1.0...react-uswds-9.2.0) (2025-03-29)
-
-
-### Features
-
-* Export component props ([#3118](https://github.com/trussworks/react-uswds/issues/3118)) ([2941f8c](https://github.com/trussworks/react-uswds/commit/2941f8ca88fcb96b919feae0c185a28c132e16a9))
-* Upgrade to React 19 ([#3088](https://github.com/trussworks/react-uswds/issues/3088)) ([2ad0462](https://github.com/trussworks/react-uswds/commit/2ad046278848d3499580a61c954496556f45ec30))
-
-
-### Bug Fixes
-
-* [#2620](https://github.com/trussworks/react-uswds/issues/2620) Move form templates in Storybook ([#3097](https://github.com/trussworks/react-uswds/issues/3097)) ([0262854](https://github.com/trussworks/react-uswds/commit/026285419bcf99a85099436202e65cf535adbcba))
-* tooltip ID cleanup ([#3096](https://github.com/trussworks/react-uswds/issues/3096)) ([c161e1e](https://github.com/trussworks/react-uswds/commit/c161e1ee5855792feb77557303bf4f61de3bea86))
-* useId instead of random number for tooltip ID ([#3094](https://github.com/trussworks/react-uswds/issues/3094)) ([d769610](https://github.com/trussworks/react-uswds/commit/d7696108154fd644371f0b06b5b2348f9603a619))
-
-
-### Documentation & Examples
-
-* add [@lea-m-truss](https://github.com/lea-m-truss) as a contributor ([#3108](https://github.com/trussworks/react-uswds/issues/3108)) ([0285f25](https://github.com/trussworks/react-uswds/commit/0285f2583c9d3c963a9e7518e6a901841ba2df80))
-
 ## [9.1.0](https://github.com/trussworks/react-uswds/compare/9.0.0...9.1.0) (2024-08-26)
 
 

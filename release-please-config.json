@@ -20,5 +20,6 @@
     { "type": "refactor", "hidden": true },
     { "type": "perf", "section": "Performance Improvements" },
     { "type": "test", "hidden": true }
-  ]
+  ],
+  "include-component-in-tag": false
 }
