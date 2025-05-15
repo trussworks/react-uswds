@@ -1,5 +1,0 @@
-yarn run lint
-yarn run format:check
-yarn run test
-yarn run test:serverside --silent
-

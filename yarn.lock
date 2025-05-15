@@ -2481,7 +2481,6 @@ __metadata:
     globals: ^16.0.0
     happo-plugin-storybook: ^4.4.3
     happo.io: ^12.1.0
-    husky: ^9.0.10
     jsdom: ^24.0.0
     pinst: ^3.0.0
     prettier: ^3.2.5
@@ -6300,15 +6299,6 @@ __metadata:
     agent-base: ^7.1.2
     debug: 4
   checksum: b882377a120aa0544846172e5db021fa8afbf83fea2a897d397bd2ddd8095ab268c24bc462f40a15f2a8c600bf4aa05ce52927f70038d4014e68aefecfa94e8d
-  languageName: node
-  linkType: hard
-
-"husky@npm:^9.0.10":
-  version: 9.1.7
-  resolution: "husky@npm:9.1.7"
-  bin:
-    husky: bin.js
-  checksum: c2412753f15695db369634ba70f50f5c0b7e5cb13b673d0826c411ec1bd9ddef08c1dad89ea154f57da2521d2605bd64308af748749b27d08c5f563bcd89975f
   languageName: node
   linkType: hard
 
