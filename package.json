@@ -52,7 +52,8 @@
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "postinstall": "husky",
-    "prepack": "yarn lint && yarn test && yarn build",
+    "prepack": "pinst --disable && yarn lint && yarn test && yarn build",
+    "postpack": "pinst --enable",
     "happo": "happo run --config ./.happo.js",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.js' npx -p happo.io happo-ci-github-actions --config ./.happo.js",
     "contributors:add": "all-contributors add"
@@ -121,6 +122,7 @@
     "happo.io": "^12.1.0",
     "husky": "^9.0.10",
     "jsdom": "^24.0.0",
+    "pinst": "^3.0.0",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
