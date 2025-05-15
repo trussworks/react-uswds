@@ -608,15 +608,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/compat@npm:^1.2.7":
-  version: 1.2.7
-  resolution: "@eslint/compat@npm:1.2.7"
+"@eslint/compat@npm:^1.2.9":
+  version: 1.2.9
+  resolution: "@eslint/compat@npm:1.2.9"
   peerDependencies:
     eslint: ^9.10.0
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: bdb5102a1e2328fa5c2bcfa56b6f56cd21f861115c8ead6fd7ffb8e41594d0c4c9036d8403b5f828e0fb5464e3458f54c73b840445b81e79867339f2516928b1
+  checksum: 5c1b792cba07caa274987517ed69461b9c91728021f65a49248bec41d3f715090c6d6266479d20b0aa646f269d5e58c9f7f4d9eeb086ec45caebc80e704d2378
   languageName: node
   linkType: hard
 
@@ -2130,7 +2130,7 @@ __metadata:
   resolution: "@trussworks/react-uswds@workspace:."
   dependencies:
     "@babel/core": ^7.23.9
-    "@eslint/compat": ^1.2.7
+    "@eslint/compat": ^1.2.9
     "@eslint/eslintrc": ^3.3.0
     "@eslint/js": ^9.22.0
     "@laynezh/vite-plugin-lib-assets": ^1.1.0

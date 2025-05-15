@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^1.2.9",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.22.0",
     "@laynezh/vite-plugin-lib-assets": "^1.1.0",
