@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-37-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-38-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -222,7 +222,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://github.com/ajfarkas"><img src="https://avatars.githubusercontent.com/u/7841661?v=4?s=100" width="100px;" alt="AJ Farkas"/><br /><sub><b>AJ Farkas</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ajfarkas" title="Code">💻</a> <a href="#maintenance-ajfarkas" title="Maintenance">🚧</a> <a href="https://github.com/trussworks/react-uswds/pulls?q=is%3Apr+reviewed-by%3Aajfarkas" title="Reviewed Pull Requests">👀</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lea-m-truss"><img src="https://avatars.githubusercontent.com/u/202806705?v=4?s=100" width="100px;" alt="Lea Melendez"/><br /><sub><b>Lea Melendez</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lea-m-truss"><img src="https://avatars.githubusercontent.com/u/202806705?v=4?s=100" width="100px;" alt="Lea Melendez"/><br /><sub><b>Lea Melendez</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Alea-m-truss" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Code">💻</a> <a href="#maintenance-lea-m-truss" title="Maintenance">🚧</a> <a href="https://github.com/trussworks/react-uswds/pulls?q=is%3Apr+reviewed-by%3Alea-m-truss" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ivcota"><img src="https://avatars.githubusercontent.com/u/18635074?v=4?s=100" width="100px;" alt="Iverson Diles"/><br /><sub><b>Iverson Diles</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3AIvcota" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Ivcota" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
