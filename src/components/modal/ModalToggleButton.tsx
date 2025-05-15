@@ -3,7 +3,7 @@ import React, { type JSX } from 'react'
 import { ModalRef } from './Modal'
 import { ButtonProps, Button } from '../Button/Button'
 
-type ModalToggleButtonProps = {
+export type ModalToggleButtonProps = {
   modalRef: React.RefObject<ModalRef | null>
   opener?: boolean
   closer?: boolean
