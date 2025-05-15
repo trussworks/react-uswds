@@ -7,13 +7,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* **release:** Fix react-uswds release pipeline ([#3148](https://github.com/trussworks/react-uswds/issues/3148))
+* Upgrade to React 19 ([#3088](https://github.com/trussworks/react-uswds/issues/3088)) ([2ad0462](https://github.com/trussworks/react-uswds/commit/2ad046278848d3499580a61c954496556f45ec30))
 
 ### Features
 
 * Export component props ([#3118](https://github.com/trussworks/react-uswds/issues/3118)) ([2941f8c](https://github.com/trussworks/react-uswds/commit/2941f8ca88fcb96b919feae0c185a28c132e16a9))
-* Upgrade to React 19 ([#3088](https://github.com/trussworks/react-uswds/issues/3088)) ([2ad0462](https://github.com/trussworks/react-uswds/commit/2ad046278848d3499580a61c954496556f45ec30))
-
 
 ### Bug Fixes
 
