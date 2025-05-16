@@ -51,6 +51,7 @@
     "lint:fix": "tsc && eslint src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
+    "prepack": "yarn lint && yarn test && yarn build",
     "happo": "happo run --config ./.happo.js",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.js' npx -p happo.io happo-ci-github-actions --config ./.happo.js",
     "contributors:add": "all-contributors add"
