@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.0.1](https://github.com/trussworks/react-uswds/compare/10.0.0...10.0.1) (2025-05-16)
+
+### Bug Fixes
+
+* Fix an issue where the built package was not included in the published release artifact [#3161](https://github.com/trussworks/react-uswds/issues/3161) ([cfe7a6d](https://github.com/trussworks/react-uswds/commit/cfe7a6dbea4b6063a96abdf31a663e23791dc0da))
+
 ## [10.0.0](https://github.com/trussworks/react-uswds/compare/9.1.0...10.0.0) (2025-05-15)
 
 
