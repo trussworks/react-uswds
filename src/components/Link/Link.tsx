@@ -10,12 +10,12 @@ type StyledLinkProps<T> = {
 } & T
 
 // These props are only required on the default Link
-interface WithDefaultLinkProps {
+type WithDefaultLinkProps = {
   href: string
 }
 
 // Add `asCustom` to the provided custom props
-interface WithCustomLinkProps<T> {
+type WithCustomLinkProps<T> = {
   asCustom: React.FunctionComponent<T>
 }
 

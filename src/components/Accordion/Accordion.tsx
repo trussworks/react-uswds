@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
 
-export interface AccordionItemProps {
+export type AccordionItemProps = {
   title: React.ReactNode | string
   content: React.ReactNode
   expanded: boolean
@@ -13,12 +13,12 @@ export interface AccordionItemProps {
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-type AccordionProps = {
+export type AccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
   className?: string
-}
+} & JSX.IntrinsicElements['div']
 
 export const AccordionItem = ({
   title,
@@ -67,7 +67,7 @@ export const Accordion = ({
   items,
   className,
   multiselectable = false,
-}: AccordionProps & JSX.IntrinsicElements['div']): JSX.Element => {
+}: AccordionProps): JSX.Element => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )

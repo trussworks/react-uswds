@@ -11,7 +11,7 @@ export type ButtonProps = {
   inverse?: boolean
   size?: 'big'
   unstyled?: boolean
-}
+} & JSX.IntrinsicElements['button']
 
 export const Button = ({
   type,
@@ -26,7 +26,7 @@ export const Button = ({
   onClick,
   className,
   ...defaultProps
-}: ButtonProps & JSX.IntrinsicElements['button']): JSX.Element => {
+}: ButtonProps): JSX.Element => {
   const classes = classnames(
     'usa-button',
     {

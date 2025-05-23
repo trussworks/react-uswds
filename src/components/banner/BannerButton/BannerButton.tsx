@@ -1,10 +1,10 @@
 import React, { type JSX } from 'react'
 import classNames from 'classnames'
 
-type BannerButtonProps = {
+export type BannerButtonProps = {
   isOpen: boolean
   spanProps?: JSX.IntrinsicElements['span']
-}
+} & JSX.IntrinsicElements['button']
 
 export const BannerButton = ({
   isOpen,
@@ -12,7 +12,7 @@ export const BannerButton = ({
   className,
   spanProps,
   ...buttonProps
-}: BannerButtonProps & JSX.IntrinsicElements['button']): JSX.Element => {
+}: BannerButtonProps): JSX.Element => {
   const classes = classNames(
     'usa-accordion__button usa-banner__button',
     className

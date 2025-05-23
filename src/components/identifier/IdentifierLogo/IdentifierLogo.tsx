@@ -1,16 +1,16 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-export interface IdentifierLogoProps {
+export type IdentifierLogoProps = {
   children: React.ReactNode
   className?: string
-}
+} & JSX.IntrinsicElements['a']
 
 export const IdentifierLogo = ({
   children,
   className,
   ...anchorProps
-}: IdentifierLogoProps & JSX.IntrinsicElements['a']): JSX.Element => {
+}: IdentifierLogoProps): JSX.Element => {
   const classes = classnames('usa-identifier__logo', className)
   return (
     <a className={classes} {...anchorProps}>

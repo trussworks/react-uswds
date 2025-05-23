@@ -16,7 +16,7 @@ export type LanguageSelectorProps = {
   small?: boolean
   className?: string
   displayLang?: string
-}
+} & JSX.IntrinsicElements['div']
 
 export const LanguageSelector = ({
   label,
@@ -25,7 +25,7 @@ export const LanguageSelector = ({
   className,
   displayLang,
   ...divProps
-}: LanguageSelectorProps & JSX.IntrinsicElements['div']): JSX.Element => {
+}: LanguageSelectorProps): JSX.Element => {
   const classes = classnames(
     'usa-language-container',
     {

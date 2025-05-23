@@ -8,7 +8,7 @@ import {
   Link,
 } from '../Link/Link'
 
-type ModalOpenLinkProps = {
+export type ModalOpenLinkProps = {
   modalRef: React.RefObject<ModalRef | null>
 }
 

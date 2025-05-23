@@ -1,7 +1,7 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type InputPrefixProps = {
+export type InputPrefixProps = {
   className?: string
   children: React.ReactNode
 } & JSX.IntrinsicElements['div']

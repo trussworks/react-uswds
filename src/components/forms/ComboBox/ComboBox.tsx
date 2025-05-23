@@ -41,7 +41,7 @@ export interface CustomizableFilter {
   extras?: Record<string, string>
 }
 
-type ComboBoxProps = {
+export type ComboBoxProps = {
   id: string
   name: string
   className?: string

@@ -14,6 +14,8 @@ permissions:
 jobs:
   deploy-storybook:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     name: Deploy Storybook
     environment:
       name: github-pages

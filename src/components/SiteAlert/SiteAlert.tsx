@@ -1,14 +1,14 @@
 import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type SiteAlertProps = {
+export type SiteAlertProps = {
   variant: 'info' | 'emergency'
   children: string | React.ReactNode | React.ReactNode[]
   heading?: string
   showIcon?: boolean
   slim?: boolean
   className?: string
-}
+} & JSX.IntrinsicElements['section']
 
 export const SiteAlert = ({
   variant,
@@ -18,7 +18,7 @@ export const SiteAlert = ({
   slim = false,
   className,
   ...sectionProps
-}: SiteAlertProps & JSX.IntrinsicElements['section']): JSX.Element => {
+}: SiteAlertProps): JSX.Element => {
   const classes = classnames(
     'usa-site-alert',
     {

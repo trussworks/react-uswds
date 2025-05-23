@@ -1,6 +1,6 @@
 import React, { type JSX } from 'react'
 
-interface CollectionCalendarDateProps {
+export type CollectionCalendarDateProps = {
   datetime: string
 }
 
