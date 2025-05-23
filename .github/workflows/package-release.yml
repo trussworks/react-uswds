@@ -35,7 +35,8 @@ jobs:
         run: yarn test
 
       - name: Package library
-        run: yarn pack
+        # https://v3.yarnpkg.com/cli/pack
+        run: yarn pack --out trussworks-react-uswds-v%v.tgz
 
       - name: Upload package
         uses: actions/upload-artifact@v4
