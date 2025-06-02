@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 
 export default {
   title: 'Design tokens/Type Styles',
@@ -9,7 +9,7 @@ export default {
   },
 }
 
-export const TypeStyles = (): React.ReactElement => (
+export const TypeStyles = (): JSX.Element => (
   <div className="grid-container">
     <h1>Typography</h1>
     <h2>Headers</h2>

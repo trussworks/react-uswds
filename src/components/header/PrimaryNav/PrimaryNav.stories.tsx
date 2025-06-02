@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { PrimaryNav } from './PrimaryNav'
 
 export default {
@@ -29,6 +29,6 @@ const testBasicHeaderItems = [
   </a>,
 ]
 
-export const DefaultPrimaryNav = (): React.ReactElement => (
+export const DefaultPrimaryNav = (): JSX.Element => (
   <PrimaryNav items={testBasicHeaderItems} onToggleMobileNav={mockToggle} />
 )

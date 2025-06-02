@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, type JSX } from 'react'
 import classnames from 'classnames'
 
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
@@ -64,9 +64,7 @@ export const CharacterCount = ({
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
   ...remainingProps
-}:
-  | TextInputCharacterCountProps
-  | TextareaCharacterCountProps): React.ReactElement => {
+}: TextInputCharacterCountProps | TextareaCharacterCountProps): JSX.Element => {
   const initialCount = getCharacterCount(value || defaultValue)
   const [length, setLength] = useState(initialCount)
   const [message, setMessage] = useState(getMessage(initialCount, maxLength))
@@ -117,7 +115,7 @@ export const CharacterCount = ({
     if (callback) callback(e)
   }
 
-  let InputComponent: React.ReactElement
+  let InputComponent: JSX.Element
   if (isTextArea) {
     const { onBlur, onChange, inputRef, ...textAreaProps } =
       remainingProps as Partial<TextareaCharacterCountProps>

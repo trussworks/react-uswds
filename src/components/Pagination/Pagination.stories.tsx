@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { Pagination } from './Pagination'
 import type { Meta, StoryObj } from '@storybook/react'
 
+const pathname = '/test-pathname'
+
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Pagination',
   component: Pagination,
+  args: {
+    pathname,
+  },
   argTypes: {
     currentPage: { control: 'number' },
     maxSlots: { control: 'number' },
-    pathname: { control: 'string' },
     totalPages: { control: 'number' },
   },
 }
 export default meta
 type Story = StoryObj<typeof Pagination>
 
-const pathname = '/test-pathname'
 const Template = ({ ...args }) => {
   const [current, setCurrentPage] = useState<number>(args.currentPage)
 

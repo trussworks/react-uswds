@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-38-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -219,6 +219,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jpandersen87"><img src="https://avatars.githubusercontent.com/u/12385932?v=4?s=100" width="100px;" alt="Joseph Andersen"/><br /><sub><b>Joseph Andersen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=jpandersen87" title="Code">💻</a> <a href="#maintenance-jpandersen87" title="Maintenance">🚧</a> <a href="#infra-jpandersen87" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/crwallace"><img src="https://avatars.githubusercontent.com/u/3453669?v=4?s=100" width="100px;" alt="Courtney Eimerman-Wallace"/><br /><sub><b>Courtney Eimerman-Wallace</b></sub></a><br /><a href="#maintenance-crwallace" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ocoutts-usds"><img src="https://avatars.githubusercontent.com/u/174364898?v=4?s=100" width="100px;" alt="Owen Coutts"/><br /><sub><b>Owen Coutts</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Aocoutts-usds" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=ocoutts-usds" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://github.com/ajfarkas"><img src="https://avatars.githubusercontent.com/u/7841661?v=4?s=100" width="100px;" alt="AJ Farkas"/><br /><sub><b>AJ Farkas</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ajfarkas" title="Code">💻</a> <a href="#maintenance-ajfarkas" title="Maintenance">🚧</a> <a href="https://github.com/trussworks/react-uswds/pulls?q=is%3Apr+reviewed-by%3Aajfarkas" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lea-m-truss"><img src="https://avatars.githubusercontent.com/u/202806705?v=4?s=100" width="100px;" alt="Lea Melendez"/><br /><sub><b>Lea Melendez</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Alea-m-truss" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lea-m-truss" title="Code">💻</a> <a href="#maintenance-lea-m-truss" title="Maintenance">🚧</a> <a href="https://github.com/trussworks/react-uswds/pulls?q=is%3Apr+reviewed-by%3Alea-m-truss" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://aliglenesk.dev"><img src="https://avatars.githubusercontent.com/u/7331495?v=4?s=100" width="100px;" alt="Ali"/><br /><sub><b>Ali</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=aligg" title="Code">💻</a> <a href="#maintenance-aligg" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>

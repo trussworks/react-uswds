@@ -1,3 +1,0 @@
-yarn run lint
-yarn run format:check
-yarn run test related --silent

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Accordion, AccordionItemProps } from './Accordion'
 
 export default {
@@ -100,15 +100,15 @@ const testItems: AccordionItemProps[] = [
   },
 ]
 
-export const Borderless = (): React.ReactElement => (
+export const Borderless = (): JSX.Element => (
   <Accordion bordered={false} items={testItems} />
 )
 
-export const Bordered = (): React.ReactElement => (
+export const Bordered = (): JSX.Element => (
   <Accordion bordered={true} items={testItems} />
 )
 
-export const Multiselectable = (): React.ReactElement => (
+export const Multiselectable = (): JSX.Element => (
   <Accordion items={testItems} multiselectable={true} />
 )
 
@@ -166,6 +166,6 @@ const customTestItems: AccordionItemProps[] = [
   },
 ]
 
-export const CustomTitles = (): React.ReactElement => (
+export const CustomTitles = (): JSX.Element => (
   <Accordion bordered={true} items={customTestItems} />
 )

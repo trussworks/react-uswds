@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import { Tooltip } from './Tooltip'

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { type JSX, useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 
 /** Moving the SPACER_GIF definition here instead of the constants.ts file,
@@ -14,7 +14,7 @@ export const FilePreview = ({
 }: {
   imageId: string
   file: File
-}): React.ReactElement => {
+}): JSX.Element => {
   const fileReaderRef = useRef<FileReader>(new FileReader())
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)

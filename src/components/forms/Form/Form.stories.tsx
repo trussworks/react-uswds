@@ -1,20 +1,17 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Form } from './Form'
 
 import { Alert } from '../../Alert/Alert'
 import { Button } from '../../Button/Button'
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 import { Fieldset } from '../Fieldset/Fieldset'
-import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { RequiredMarker } from '../Label/RequiredMarker'
 import { TextInput } from '../TextInput/TextInput'
-import { Textarea } from '../Textarea/Textarea'
 import { Select } from '../Select/Select'
 
 export default {
-  title: 'Components/Form templates',
+  title: 'Page Templates/Forms',
   component: Form,
   parameters: {
     docs: {
@@ -33,51 +30,7 @@ const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const TextInputForm = (): React.ReactElement => (
-  <div style={{ marginLeft: '4rem' }}>
-    <Form onSubmit={mockSubmit}>
-      <Label htmlFor="input-type-text">Text input label</Label>
-      <TextInput id="input-type-text" name="input-type-text" type="text" />
-
-      <Label htmlFor="input-focus">Text input focused</Label>
-      <TextInput
-        id="input-focus"
-        name="input-focus"
-        className="usa-focus"
-        type="text"
-      />
-
-      <FormGroup error>
-        <Label htmlFor="input-error" error>
-          Text input error
-        </Label>
-        <ErrorMessage id="input-error-message">
-          Helpful error message
-        </ErrorMessage>
-        <TextInput
-          id="input-error"
-          name="input-error"
-          type="text"
-          validationStatus="error"
-          aria-describedby="input-error-message"
-        />
-      </FormGroup>
-
-      <Label htmlFor="input-success">Text input success</Label>
-      <TextInput
-        id="input-success"
-        name="input-success"
-        type="text"
-        validationStatus="success"
-      />
-
-      <Label htmlFor="input-type-textarea">Text area label</Label>
-      <Textarea id="input-type-textarea" name="input-type-textarea"></Textarea>
-    </Form>
-  </div>
-)
-
-export const NameForm = (): React.ReactElement => (
+export const NameForm = (): JSX.Element => (
   <Form onSubmit={mockSubmit}>
     <Fieldset legend="Name" legendStyle="large">
       <Label htmlFor="first-name">First or given name</Label>
@@ -108,7 +61,7 @@ export const NameForm = (): React.ReactElement => (
   </Form>
 )
 
-export const AddressForm = (): React.ReactElement => (
+export const AddressForm = (): JSX.Element => (
   <Form onSubmit={mockSubmit} large>
     <Fieldset legend="Mailing address" legendStyle="large">
       <p>
@@ -205,7 +158,7 @@ export const AddressForm = (): React.ReactElement => (
   </Form>
 )
 
-export const SignInForm = (): React.ReactElement => {
+export const SignInForm = (): JSX.Element => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (
@@ -254,7 +207,8 @@ export const SignInForm = (): React.ReactElement => {
     </Form>
   )
 }
-export const PasswordResetForm = (): React.ReactElement => {
+
+export const PasswordResetForm = (): JSX.Element => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (

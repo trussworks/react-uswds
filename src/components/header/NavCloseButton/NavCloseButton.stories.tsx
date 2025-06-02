@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { NavCloseButton } from './NavCloseButton'
 
 export default {
@@ -17,7 +17,7 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
-export const DefaultMenuNavCloseButton = (): React.ReactElement => (
+export const DefaultMenuNavCloseButton = (): JSX.Element => (
   <nav className="usa-nav is-visible">
     <NavCloseButton />
   </nav>

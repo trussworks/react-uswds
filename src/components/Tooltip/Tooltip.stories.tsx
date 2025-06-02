@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Tooltip } from './Tooltip'
 
 export default {
@@ -31,13 +31,13 @@ Source: https://designsystem.digital.gov/components/tooltip/
   },
 }
 
-export const TooltipDefault = (): React.ReactElement => (
+export const TooltipDefault = (): JSX.Element => (
   <div className="margin-4">
     <Tooltip label="Default">Default</Tooltip>
   </div>
 )
 
-export const TooltipTop = (): React.ReactElement => (
+export const TooltipTop = (): JSX.Element => (
   <div className="margin-4">
     <Tooltip position="top" label="Top">
       Show on top
@@ -45,7 +45,7 @@ export const TooltipTop = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipBottom = (): React.ReactElement => (
+export const TooltipBottom = (): JSX.Element => (
   <div className="margin-4">
     <Tooltip position="bottom" label="Bottom">
       Show on bottom
@@ -53,7 +53,7 @@ export const TooltipBottom = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipRight = (): React.ReactElement => (
+export const TooltipRight = (): JSX.Element => (
   <div className="margin-4">
     <Tooltip position="right" label="Right">
       Show on right
@@ -61,7 +61,7 @@ export const TooltipRight = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipLeft = (): React.ReactElement => (
+export const TooltipLeft = (): JSX.Element => (
   <div className="margin-4">
     <Tooltip position="left" label="Left">
       Show on left
@@ -69,7 +69,7 @@ export const TooltipLeft = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipWithUtilityClass = (): React.ReactElement => (
+export const TooltipWithUtilityClass = (): JSX.Element => (
   <div className="margin-4">
     <Tooltip
       wrapperclasses="width-full tablet:width-auto"
@@ -80,7 +80,7 @@ export const TooltipWithUtilityClass = (): React.ReactElement => (
   </div>
 )
 
-export const CustomComponent = (): React.ReactElement => {
+export const CustomComponent = (): JSX.Element => {
   type CustomLinkProps = React.PropsWithChildren<{
     to: string
     className?: string
@@ -112,7 +112,7 @@ export const CustomComponent = (): React.ReactElement => {
   )
 }
 
-export const TooltipTopLeftWrap = (): React.ReactElement => (
+export const TooltipTopLeftWrap = (): JSX.Element => (
   <div style={{ marginTop: '32px' }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
@@ -120,7 +120,7 @@ export const TooltipTopLeftWrap = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipBottomLeftWrap = (): React.ReactElement => (
+export const TooltipBottomLeftWrap = (): JSX.Element => (
   <div style={{ position: 'absolute', bottom: '32px' }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
@@ -128,7 +128,7 @@ export const TooltipBottomLeftWrap = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipTopRightWrap = (): React.ReactElement => (
+export const TooltipTopRightWrap = (): JSX.Element => (
   <div style={{ marginTop: '32px', textAlign: 'right' }}>
     <Tooltip label="You can only add 10 links to a collection. To add more links, please create a new collection.">
       Default
@@ -136,7 +136,7 @@ export const TooltipTopRightWrap = (): React.ReactElement => (
   </div>
 )
 
-export const TooltipBottomRightWrap = (): React.ReactElement => (
+export const TooltipBottomRightWrap = (): JSX.Element => (
   <div
     style={{
       position: 'absolute',

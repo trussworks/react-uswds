@@ -7,29 +7,29 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        node: [ '18' ]
+        node: [ '20', '22' ]
 
     name: Node ${{ matrix.node }} tests
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       - name: Run tests with coverage
         run: yarn test:coverage
@@ -42,17 +42,17 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
           cache: 'yarn'
 
       # The yarn cache is not node_modules
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       - name: Lint code
         run: yarn lint

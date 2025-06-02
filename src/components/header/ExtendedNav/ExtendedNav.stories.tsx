@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { ExtendedNav } from './ExtendedNav'
 
 export default {
@@ -44,7 +44,7 @@ const testSecondaryItems = [
   </a>,
 ]
 
-export const DefaultExtendedNav = (): React.ReactElement => (
+export const DefaultExtendedNav = (): JSX.Element => (
   <ExtendedNav
     id="extended-nav"
     onToggleMobileNav={mockToggle}

@@ -345,6 +345,39 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "ajfarkas",
+      "name": "AJ Farkas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7841661?v=4",
+      "profile": "http://github.com/ajfarkas",
+      "contributions": [
+        "code",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "lea-m-truss",
+      "name": "Lea Melendez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/202806705?v=4",
+      "profile": "https://github.com/lea-m-truss",
+      "contributions": [
+        "bug",
+        "code",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "aligg",
+      "name": "Ali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7331495?v=4",
+      "profile": "http://aliglenesk.dev",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,

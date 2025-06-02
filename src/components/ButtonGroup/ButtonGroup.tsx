@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type ButtonGroupProps = {
+export type ButtonGroupProps = {
   children: React.ReactNode
   className?: string
   type?: 'default' | 'segmented'
@@ -12,7 +12,7 @@ export const ButtonGroup = ({
   children,
   type = 'default',
   ...restProps
-}: ButtonGroupProps): React.ReactElement => {
+}: ButtonGroupProps): JSX.Element => {
   const classes = classnames(
     'usa-button-group',
     {

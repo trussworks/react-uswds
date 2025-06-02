@@ -1,18 +1,18 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import { StepStatusText } from '../StepIndicator/StepIndicator'
 
-export interface StepIndicatorStepProps {
+export type StepIndicatorStepProps = {
   label: string
   status?: 'complete' | 'current' | 'incomplete'
   statusText?: StepStatusText
   className?: string
-}
+} & JSX.IntrinsicElements['li']
 
 export const StepIndicatorStep = (
-  props: StepIndicatorStepProps & JSX.IntrinsicElements['li']
-): React.ReactElement => {
+  props: StepIndicatorStepProps
+): JSX.Element => {
   const {
     label,
     status = 'incomplete',
