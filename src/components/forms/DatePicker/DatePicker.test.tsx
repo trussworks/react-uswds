@@ -399,12 +399,14 @@ describe('DatePicker component', () => {
       expect(getByTestId('date-picker-external-input')).toBeValid()
     })
 
-    it('validates an invalid default value', () => {
+    it('validates an invalid default value', async () => {
       const { getByTestId } = renderDatePicker({
         defaultValue: '1990-01-01',
         minDate: '2020-01-01',
       })
 
+      await userEvent.click(getByTestId('date-picker-external-input'))
+      await userEvent.tab()
       expect(getByTestId('date-picker-external-input')).toBeInvalid()
     })
   })
@@ -538,8 +540,7 @@ describe('DatePicker component', () => {
       expect(mockOnBlur).toHaveBeenCalled()
     })
 
-    // TODO - this is an outstanding difference in behavior from USWDS. Fails because validation happens onChange.
-    it.skip('typing in the external input does not validate until blurring', async () => {
+    it('typing in the external input does not validate until blurring', async () => {
       const { getByTestId } = renderDatePicker({
         minDate: '2021-01-20',
         maxDate: '2021-02-14',
@@ -553,8 +554,7 @@ describe('DatePicker component', () => {
       expect(externalInput).toBeInvalid()
     })
 
-    // TODO - this can be implemented if the above test case is implemented
-    it.skip('pressing the Enter key in the external input validates the date', async () => {
+    it('pressing the Enter key in the external input validates the date', async () => {
       const { getByTestId } = renderDatePicker({
         minDate: '2021-01-20',
         maxDate: '2021-02-14',
@@ -597,6 +597,7 @@ describe('DatePicker component', () => {
         'abcdefg... That means the convo is done'
       )
 
+      await userEvent.tab()
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
@@ -610,6 +611,7 @@ describe('DatePicker component', () => {
       await userEvent.type(externalInput, 'ab/cd/efg')
       expect(mockOnChange).toHaveBeenCalledWith('ab/cd/efg')
 
+      await userEvent.tab()
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
@@ -625,12 +627,14 @@ describe('DatePicker component', () => {
       await userEvent.type(externalInput, '2/31/2019')
       expect(mockOnChange).toHaveBeenCalledWith('2/31/2019')
 
+      await userEvent.tab()
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
       await userEvent.click(getByTestId('date-picker-button'))
       expect(getByTestId('date-picker-calendar')).toBeVisible()
       await userEvent.click(getByLabelText(/^10 February 2019/))
       expect(mockOnChange).toHaveBeenCalledWith('02/10/2019')
+      await userEvent.tab()
 
       await waitFor(() => {
         expect(externalInput).toBeValid()
@@ -651,6 +655,7 @@ describe('DatePicker component', () => {
       await userEvent.type(externalInput, '05/16/1988')
       expect(mockOnChange).toHaveBeenCalledWith('05/16/1988')
 
+      await userEvent.tab()
       expect(externalInput).toBeInvalid()
       expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
     })
