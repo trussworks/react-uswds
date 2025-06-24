@@ -46,6 +46,54 @@ export const DefaultComboBoxWithPropOptions = (): JSX.Element => {
   )
 }
 
+export const WithCustomOptions = (): JSX.Element => {
+  const veggieList = Object.entries(veggies).map(([key, value]) => ({
+    value: key,
+    label: value,
+    render: () => {
+      return (
+        <div className="padding-2 border border-base-lighter radius-md bg-white">
+          <div className="font-sans-md text-bold">
+            {value}
+          </div>
+          <div className="font-sans-sm text-base">
+            Category: Veggies 
+          </div>
+        </div>
+      )
+    }
+  }))
+
+  const fruitList = Object.entries(fruits).map(([key, value]) => ({
+    value: key,
+    label: value,
+    render: () => {
+      return (
+        <div className="padding-2 border border-base-lighter radius-md bg-white">
+          <div className="font-sans-md text-bold">
+            {value}
+          </div>
+          <div className="font-sans-sm text-base">
+            Category: Fruit
+          </div>
+        </div>
+      )
+    }
+  }))
+
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="input-ComboBox">Select a fruit or veggie</Label>
+      <ComboBox
+        id="input-ComboBox"
+        name="input-ComboBox"
+        options={veggieList.concat(fruitList)}
+        onChange={noop}
+      />
+    </Form>
+  )
+}
+
 export const WithDefaultValue = (): JSX.Element => {
   const fruitList = Object.entries(fruits).map(([value, key]) => ({
     value: value,
