@@ -8525,7 +8525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.5, postcss@npm:^8.5.6":
+"postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -10001,8 +10001,8 @@ __metadata:
   linkType: hard
 
 "stylelint-config-css-modules@npm:^4.4.0":
-  version: 4.5.0
-  resolution: "stylelint-config-css-modules@npm:4.5.0"
+  version: 4.5.1
+  resolution: "stylelint-config-css-modules@npm:4.5.1"
   dependencies:
     stylelint-scss: ^6.12.1
   peerDependencies:
@@ -10010,7 +10010,7 @@ __metadata:
   dependenciesMeta:
     stylelint-scss:
       optional: true
-  checksum: 8d4492b81009f756c882bca532857ba91cf153b7aad79a1bac901c5fe0f2ca2beff1071212434f65068e0e8626d84cd81ab5d19944654a1a4d637697d7457e9b
+  checksum: 5358a7b44aa8c790d5597dae56192219593ef5aad6eed7cd39d86f20a738c82ce139d02b19ccc0fabee9745b89a6ba803c40d38d3e25e2cc727c425aadae1799
   languageName: node
   linkType: hard
 
@@ -10118,8 +10118,8 @@ __metadata:
   linkType: hard
 
 "stylelint@npm:^16.16.0, stylelint@npm:^16.8.2":
-  version: 16.21.0
-  resolution: "stylelint@npm:16.21.0"
+  version: 16.22.0
+  resolution: "stylelint@npm:16.22.0"
   dependencies:
     "@csstools/css-parser-algorithms": ^3.0.5
     "@csstools/css-tokenizer": ^3.0.4
@@ -10148,7 +10148,7 @@ __metadata:
     micromatch: ^4.0.8
     normalize-path: ^3.0.0
     picocolors: ^1.1.1
-    postcss: ^8.5.5
+    postcss: ^8.5.6
     postcss-resolve-nested-selector: ^0.1.6
     postcss-safe-parser: ^7.0.1
     postcss-selector-parser: ^7.1.0
@@ -10161,7 +10161,7 @@ __metadata:
     write-file-atomic: ^5.0.1
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 3401ebf59979710486b4f3ce53e2acc57dc39c8e08b76475bf8ae0958ad1f93a3b9920100ec96c6e44a84cfff05716ef682f1a295baf690c4ed88c03087171bd
+  checksum: 93289cfa34f2071300919f1692fa109b41b3f1d9a090e3bedae785757081324bc15096187cf56c277e1860ddbd15b62c97fa2de456a16a509e59f1b87ad24605
   languageName: node
   linkType: hard
 
