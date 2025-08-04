@@ -1134,12 +1134,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keyv/serialize@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@keyv/serialize@npm:1.0.3"
-  dependencies:
-    buffer: ^6.0.3
-  checksum: 5f7b90e8ae76d2a1850a1982cf382aea3ff7cef1f82bea793657e47d8f700609597f317607de07245b40c30b764a19fc7d4efa177d4dc42f6ed4d0a7b5f4e173
+"@keyv/serialize@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@keyv/serialize@npm:1.1.0"
+  checksum: 84533dc994ff1b9585fb7593542f1d7a9746b843c13c9341a8d2feb2e1fc0136d42e0146f8ff751ad9decc64da4792538e270b95a126f6d0dbb48e349ee462ab
   languageName: node
   linkType: hard
 
@@ -2438,7 +2436,7 @@ __metadata:
     storybook: ^8.6.11
     stylelint: ^16.16.0
     stylelint-config-css-modules: ^4.4.0
-    stylelint-config-recommended: ^16.0.0
+    stylelint-config-recommended: ^17.0.0
     stylelint-config-sass-guidelines: ^12.1.0
     stylelint-config-standard-scss: ^15.0.1
     typescript: ^5.8.3
@@ -4128,13 +4126,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacheable@npm:^1.10.0":
-  version: 1.10.0
-  resolution: "cacheable@npm:1.10.0"
+"cacheable@npm:^1.10.3":
+  version: 1.10.3
+  resolution: "cacheable@npm:1.10.3"
   dependencies:
-    hookified: ^1.8.2
-    keyv: ^5.3.3
-  checksum: 407c15881c9f5ec15bfe6fa8dbe564bb9c90e3cb2f0a17d3c3d949e117467ed63748aa3685dfcaf8b8fb52727ed176c4a190f7bd7aa644f8b4da8c7ed6593df3
+    hookified: ^1.10.0
+    keyv: ^5.4.0
+  checksum: 5b59140b9aad35a78556661101c8274c315e001f4521003a88f5d6865aa62c4000e63bedbffb79444c4e09097679efef04823ba88585ae7c19eb108b08e9e5b1
   languageName: node
   linkType: hard
 
@@ -5759,12 +5757,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-entry-cache@npm:^10.1.1":
-  version: 10.1.1
-  resolution: "file-entry-cache@npm:10.1.1"
+"file-entry-cache@npm:^10.1.3":
+  version: 10.1.3
+  resolution: "file-entry-cache@npm:10.1.3"
   dependencies:
-    flat-cache: ^6.1.10
-  checksum: fcd950f7a24c439ce1c6fb95877d9816dcb76397710782ff8fbfce21023408379824be251a62f4407b06c961c99acbd43df160e978ac283f1b2e3d5b06eb6df3
+    flat-cache: ^6.1.12
+  checksum: 5fbd9d50658c5eb9611f0be426a03b7953edf645fbedc77cca514105ee0e6e0fff427b82ba9cad5cca709dfc27b0b03f0dd42691ba2fad2a401f9b56e497d335
   languageName: node
   linkType: hard
 
@@ -5816,14 +5814,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flat-cache@npm:^6.1.10":
-  version: 6.1.10
-  resolution: "flat-cache@npm:6.1.10"
+"flat-cache@npm:^6.1.12":
+  version: 6.1.12
+  resolution: "flat-cache@npm:6.1.12"
   dependencies:
-    cacheable: ^1.10.0
+    cacheable: ^1.10.3
     flatted: ^3.3.3
-    hookified: ^1.9.1
-  checksum: 4cf2e26f25c721cfc2b40ba2dfef278121066b33f484feecd8287b79eea2609a49d5a266201616d3ed203c830cbbab07b2558f9904fa7138c07eed649d1a71e9
+    hookified: ^1.10.0
+  checksum: 9f6d55116a6380b73034d8d955a0f3960fded49b9ff7e9bfa8824a3946fac809653f2c1cd99c9139cea12f7fc0ffec56ce977abe7c1044b3716c22fb613eb555
   languageName: node
   linkType: hard
 
@@ -6284,10 +6282,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hookified@npm:^1.8.2, hookified@npm:^1.9.1":
-  version: 1.9.1
-  resolution: "hookified@npm:1.9.1"
-  checksum: 9c2538a88f584e403d9b5c84741fb9731dd99734a71d86b44453789fcadacfe4c5ed10b70efd69a253286e26c54c96eae4b809120a3eb855e1d0ac7dda73bbdc
+"hookified@npm:^1.10.0":
+  version: 1.11.0
+  resolution: "hookified@npm:1.11.0"
+  checksum: 237189d87d3ebafacdb3b27ecdbb7060d359a16ccf6d27896920e6f8b53890c831ff5bafc2224bfcd6562a1effdca28a3edf819af46cf30cc58c142f1ce9b67d
   languageName: node
   linkType: hard
 
@@ -7238,12 +7236,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyv@npm:^5.3.3":
-  version: 5.3.4
-  resolution: "keyv@npm:5.3.4"
+"keyv@npm:^5.4.0":
+  version: 5.5.0
+  resolution: "keyv@npm:5.5.0"
   dependencies:
-    "@keyv/serialize": ^1.0.3
-  checksum: f31ed9a025e9581f07aad3a2e445cebbc09dd301f9580d93117b08521073a0f5ff6f2639a8a51fb36734f27697fcadb697f2b8e16215e500055669aa585d4307
+    "@keyv/serialize": ^1.1.0
+  checksum: 7ab64dbcd6f14995f93baf33a82ca1b35c7c7b810f5c59239772904637546eb7ed9695e535420b50bcd5d2ff365cf7ba3a4f1613920249572c5a2a07e1053820
   languageName: node
   linkType: hard
 
@@ -8525,7 +8523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.5, postcss@npm:^8.5.6":
+"postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -10001,8 +9999,8 @@ __metadata:
   linkType: hard
 
 "stylelint-config-css-modules@npm:^4.4.0":
-  version: 4.5.0
-  resolution: "stylelint-config-css-modules@npm:4.5.0"
+  version: 4.5.1
+  resolution: "stylelint-config-css-modules@npm:4.5.1"
   dependencies:
     stylelint-scss: ^6.12.1
   peerDependencies:
@@ -10010,7 +10008,7 @@ __metadata:
   dependenciesMeta:
     stylelint-scss:
       optional: true
-  checksum: 8d4492b81009f756c882bca532857ba91cf153b7aad79a1bac901c5fe0f2ca2beff1071212434f65068e0e8626d84cd81ab5d19944654a1a4d637697d7457e9b
+  checksum: 5358a7b44aa8c790d5597dae56192219593ef5aad6eed7cd39d86f20a738c82ce139d02b19ccc0fabee9745b89a6ba803c40d38d3e25e2cc727c425aadae1799
   languageName: node
   linkType: hard
 
@@ -10037,6 +10035,15 @@ __metadata:
   peerDependencies:
     stylelint: ^16.16.0
   checksum: 711595ec35f387422154b14bc1d05217c48762b62dcee13ca73a0edbb7353d537e3a9f6646e9631b2988dfadc8a015a893611e6cca65971c9b99ab8bb096704f
+  languageName: node
+  linkType: hard
+
+"stylelint-config-recommended@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "stylelint-config-recommended@npm:17.0.0"
+  peerDependencies:
+    stylelint: ^16.23.0
+  checksum: 8164ed0b2cfc7eed58a0239a9689c37f088cedbc0049eea45f855d471ea2e32bf35d6aa60a6115e39d2b863f599f70f81e5bb7f5d84c60a94de186351790a610
   languageName: node
   linkType: hard
 
@@ -10118,8 +10125,8 @@ __metadata:
   linkType: hard
 
 "stylelint@npm:^16.16.0, stylelint@npm:^16.8.2":
-  version: 16.21.0
-  resolution: "stylelint@npm:16.21.0"
+  version: 16.23.0
+  resolution: "stylelint@npm:16.23.0"
   dependencies:
     "@csstools/css-parser-algorithms": ^3.0.5
     "@csstools/css-tokenizer": ^3.0.4
@@ -10134,7 +10141,7 @@ __metadata:
     debug: ^4.4.1
     fast-glob: ^3.3.3
     fastest-levenshtein: ^1.0.16
-    file-entry-cache: ^10.1.1
+    file-entry-cache: ^10.1.3
     global-modules: ^2.0.0
     globby: ^11.1.0
     globjoin: ^0.1.4
@@ -10148,7 +10155,7 @@ __metadata:
     micromatch: ^4.0.8
     normalize-path: ^3.0.0
     picocolors: ^1.1.1
-    postcss: ^8.5.5
+    postcss: ^8.5.6
     postcss-resolve-nested-selector: ^0.1.6
     postcss-safe-parser: ^7.0.1
     postcss-selector-parser: ^7.1.0
@@ -10161,7 +10168,7 @@ __metadata:
     write-file-atomic: ^5.0.1
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 3401ebf59979710486b4f3ce53e2acc57dc39c8e08b76475bf8ae0958ad1f93a3b9920100ec96c6e44a84cfff05716ef682f1a295baf690c4ed88c03087171bd
+  checksum: ce20fd99d184795a439f9a27223e71c9175749953bde2d2f4566e588d1ad166889ad4648a6871c240ec81991f0d9cb9e123b39262ff3ca20877fb3cb75693e69
   languageName: node
   linkType: hard
 

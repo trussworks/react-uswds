@@ -127,7 +127,7 @@
     "storybook": "^8.6.11",
     "stylelint": "^16.16.0",
     "stylelint-config-css-modules": "^4.4.0",
-    "stylelint-config-recommended": "^16.0.0",
+    "stylelint-config-recommended": "^17.0.0",
     "stylelint-config-sass-guidelines": "^12.1.0",
     "stylelint-config-standard-scss": "^15.0.1",
     "typescript": "^5.8.3",
