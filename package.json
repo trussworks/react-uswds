@@ -54,7 +54,25 @@
     "prepack": "yarn lint && yarn test && yarn build",
     "happo": "happo run --config ./.happo.js",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.js' npx -p happo.io happo-ci-github-actions --config ./.happo.js",
-    "contributors:add": "all-contributors add"
+    "contributors:add": "all-contributors add",
+    "postinstall": "simple-git-hooks",
+    "precommit:checks": "yarn test && yarn test:serverside --silent"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn nano-staged && yarn precommit:checks"
+  },
+  "nano-staged": {
+    "**/*.{ts,tsx,js,jsx}": [
+      "eslint --max-warnings=0",
+      "prettier --check"
+    ],
+    "**/*.{css,scss}": [
+      "stylelint",
+      "prettier --check"
+    ],
+    "**/*.{json,md}": [
+      "prettier --check"
+    ]
   },
   "repository": {
     "type": "git",
@@ -119,11 +137,13 @@
     "happo-plugin-storybook": "^4.4.3",
     "happo.io": "^12.1.0",
     "jsdom": "^24.0.0",
+    "nano-staged": "^0.8.0",
     "pinst": "^3.0.0",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass-embedded": "^1.86.0",
+    "simple-git-hooks": "^2.13.1",
     "storybook": "^8.6.11",
     "stylelint": "^16.16.0",
     "stylelint-config-css-modules": "^4.4.0",

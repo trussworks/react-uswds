@@ -2444,11 +2444,13 @@ __metadata:
     happo-plugin-storybook: ^4.4.3
     happo.io: ^12.1.0
     jsdom: ^24.0.0
+    nano-staged: ^0.8.0
     pinst: ^3.0.0
     prettier: ^3.2.5
     react: ^19.0.0
     react-dom: ^19.0.0
     sass-embedded: ^1.86.0
+    simple-git-hooks: ^2.13.1
     storybook: ^8.6.11
     stylelint: ^16.16.0
     stylelint-config-css-modules: ^4.4.0
@@ -7918,6 +7920,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nano-staged@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "nano-staged@npm:0.8.0"
+  dependencies:
+    picocolors: ^1.0.0
+  bin:
+    nano-staged: lib/bin.js
+  checksum: 01a6eee4053bd163e3084f34421fcb0f3ab90b5c47fa1ff7b4208f2a553b5e0a26e55a7f88c8af7632cfc2bcc3622d6078697bb0042409744bbb65565bb43334
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:^3.3.11":
   version: 3.3.11
   resolution: "nanoid@npm:3.3.11"
@@ -9677,6 +9690,15 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 64c757b498cb8629ffa5f75485340594d2f8189e9b08700e69199069c8e3070fb3e255f7ab873c05dc0b3cec412aea7402e10a5990cb6a050bd33ba062a6c549
+  languageName: node
+  linkType: hard
+
+"simple-git-hooks@npm:^2.13.1":
+  version: 2.13.1
+  resolution: "simple-git-hooks@npm:2.13.1"
+  bin:
+    simple-git-hooks: cli.js
+  checksum: e259c9c314129a48f53cf3c79d1fb7181b1124a02979aeea070f234306576dd72a1936d0adb1b3568f4b382cad33a5913c09f9d0d3620eedc1dacd89c1ff12b9
   languageName: node
   linkType: hard
 
