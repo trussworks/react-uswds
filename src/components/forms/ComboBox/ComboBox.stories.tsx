@@ -219,3 +219,27 @@ export const CustomInputChangeHandler = (): JSX.Element => {
     </Form>
   )
 }
+
+export const WithCustomInputClassNames = (): JSX.Element => {
+  const fruitList = Object.entries(fruits).map(([value, key]) => ({
+    value: value,
+    label: key,
+  }))
+
+  return (
+    <Form onSubmit={noop}>
+      <Label htmlFor="fruit-custom-class" requiredMarker aria-required error>
+        Select a fruit
+      </Label>
+      <ComboBox
+        id="fruit-custom-class"
+        name="fruit-custom-class"
+        options={fruitList}
+        onChange={noop}
+        inputProps={{
+          className: 'usa-input--error',
+        }}
+      />
+    </Form>
+  )
+}

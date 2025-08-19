@@ -378,6 +378,16 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "Ivcota",
+      "name": "Iverson Diles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18635074?v=4",
+      "profile": "https://github.com/Ivcota",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

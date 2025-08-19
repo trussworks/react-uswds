@@ -77,7 +77,7 @@ const Input = ({
     <input
       type="text"
       {...inputProps}
-      className="usa-combo-box__input"
+      className={classnames('usa-combo-box__input', inputProps.className)}
       data-testid="combo-box-input"
       autoCapitalize="off"
       autoComplete="off"
