@@ -202,9 +202,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
             className="usa-file-input__preview-heading">
             {previewHeaderText}{' '}
             <span className="usa-file-input__choose">
-              {changeSelectedFileText
-                ? `${changeSelectedFileText}${filePreviews.length > 1 && 's'}`
-                : `${defaultChangeSelectedFileText}${filePreviews.length > 1 && 's'}`}
+              {(changeSelectedFileText || defaultChangeSelectedFileText) + (filePreviews.length > 1 ? 's' : '')}
             </span>
           </div>
         )}
