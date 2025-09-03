@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import styles from './Table.module.scss'
@@ -14,6 +14,7 @@ type TableProps = {
   striped?: boolean
   compact?: boolean
   stackedStyle?: 'none' | 'default' | 'headers'
+  stickyHeader?: boolean
 }
 
 export const Table = ({
@@ -27,7 +28,8 @@ export const Table = ({
   striped,
   compact,
   stackedStyle = 'none',
-}: TableProps): JSX.Element => {
+  stickyHeader,
+}: TableProps): React.ReactElement => {
   const classes = classnames(
     'usa-table',
     {
@@ -38,6 +40,7 @@ export const Table = ({
       'usa-table--compact': compact,
       'usa-table--stacked': stackedStyle === 'default',
       'usa-table--stacked-header': stackedStyle === 'headers',
+      'usa-table--sticky-header': stickyHeader,
     },
     className
   )
@@ -45,6 +48,12 @@ export const Table = ({
   if (compact && stackedStyle !== 'none') {
     console.warn(
       'USWDS states that compact styling is not suitable for use with stacked variants. See USWDS Table component, Table variants for more information: https://designsystem.digital.gov/components/table'
+    )
+  }
+
+  if (stickyHeader && (scrollable || stackedStyle !== 'none')) {
+    console.warn(
+      'USWDS states that sticky headers are not compatible with scrollable or stacked variants. See USWDS Table component, Table variants for more information: https://designsystem.digital.gov/components/table'
     )
   }
 

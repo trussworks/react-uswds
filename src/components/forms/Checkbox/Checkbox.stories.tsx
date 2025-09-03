@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { Checkbox } from './Checkbox'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
-export default {
+const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
   component: Checkbox,
   parameters: {
@@ -16,46 +17,58 @@ Source: https://designsystem.digital.gov/components/checkbox
     },
   },
 }
+export default meta
+type Story = StoryObj<typeof Checkbox>
 
-export const DefaultCheckbox = (): JSX.Element => (
-  <Checkbox id="checkbox" name="checkbox" label="My Checkbox" />
+const Template: StoryFn<typeof Checkbox> = (args) => (
+  <Checkbox {...args} id="checkbox" name="checkbox" />
 )
 
-export const Checked = (): JSX.Element => (
-  <Checkbox id="checkbox" name="checkbox" label="My Checkbox" defaultChecked />
-)
+export const Default: Story = {
+  render: Template,
+  args: { label: 'My checkbox' },
+}
 
-export const Disabled = (): JSX.Element => (
-  <Checkbox id="checkbox" name="checkbox" label="My Checkbox" disabled />
-)
+export const Checked: Story = {
+  render: Template,
+  args: { defaultChecked: true, label: 'My checkbox' },
+}
 
-export const WithRichLabel = (): JSX.Element => (
-  <Checkbox
-    id="checkbox"
-    name="checkbox"
-    label={<strong>My Checkbox</strong>}
-  />
-)
+export const Indeterminate: Story = {
+  render: Template,
+  args: { indeterminate: true, label: 'My checkbox' },
+}
 
-export const WithLabelDescription = (): JSX.Element => (
-  <Checkbox
-    id="checkbox"
-    name="checkbox"
-    label="My Checkbox"
-    labelDescription="This is optional text that can be used to describe the label in more detail."
-  />
-)
+export const Disabled: Story = {
+  render: Template,
+  args: { disabled: true, label: 'My checkbox' },
+}
 
-export const Tile = (): JSX.Element => (
-  <Checkbox id="checkbox" name="checkbox" label="My Checkbox" tile />
-)
+export const WithRichLabel: Story = {
+  render: Template,
+  args: { label: <strong>My checkbox</strong> },
+}
 
-export const TileWithLabelDescription = (): JSX.Element => (
-  <Checkbox
-    id="checkbox"
-    name="checkbox"
-    label="My Checkbox"
-    labelDescription="This is optional text that can be used to describe the label in more detail."
-    tile
-  />
-)
+export const WithLabelDescription: Story = {
+  render: Template,
+  args: {
+    label: 'My checkbox',
+    labelDescription:
+      'This is optional text that can be used to describe the label in more detail.',
+  },
+}
+
+export const Tile: Story = {
+  render: Template,
+  args: { label: 'My checkbox', tile: true },
+}
+
+export const TileWithLabelDescription: Story = {
+  render: Template,
+  args: {
+    label: 'My checkbox',
+    labelDescription:
+      'This is optional text that can be used to describe the label in more detail.',
+    tile: true,
+  },
+}
