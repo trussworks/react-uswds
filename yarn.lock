@@ -1083,8 +1083,8 @@ __metadata:
   linkType: hard
 
 "@laynezh/vite-plugin-lib-assets@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@laynezh/vite-plugin-lib-assets@npm:2.1.0"
+  version: 2.1.3
+  resolution: "@laynezh/vite-plugin-lib-assets@npm:2.1.3"
   dependencies:
     escape-string-regexp: ^4.0.0
     loader-utils: ^3.2.1
@@ -1092,7 +1092,7 @@ __metadata:
     semver: ^7.6.0
   peerDependencies:
     vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: af8881cc42dfa35d5f105eacfb146b732b7a21508238ad03dbaef0a649389c156902966dc3ce1dd85e14c72cb5c071db461a796977d19fbd07cfaf48af33f1fd
+  checksum: 98c9124db08332f02c529362a068a25c18f22d756f525c307d1cc8904185c1a5a01858d26ac7af05ea8bf30da92450371af656a5092989e0a40b31f0a303c3ab
   languageName: node
   linkType: hard
 
@@ -3075,8 +3075,8 @@ __metadata:
   linkType: hard
 
 "@vitest/eslint-plugin@npm:^1.1.44":
-  version: 1.3.6
-  resolution: "@vitest/eslint-plugin@npm:1.3.6"
+  version: 1.3.9
+  resolution: "@vitest/eslint-plugin@npm:1.3.9"
   dependencies:
     "@typescript-eslint/scope-manager": ^8.41.0
     "@typescript-eslint/utils": ^8.24.1
@@ -3089,7 +3089,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: b9917aeda0bb6dedb7949173fd5f3cf4196eef84cae0c71a47d427b100451d29d473daa5de1000311e10c6867061991b6ad774ababc00327d26394855f18513f
+  checksum: 8d54a2026715c5966f9ff285b11ed3aad4873870ea9d3bc9a3d87b69cbf1725fdade2ddae489c20662f436c0de48019d79b5346391c642ecb3335470e9034448
   languageName: node
   linkType: hard
 
