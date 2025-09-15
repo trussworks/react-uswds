@@ -10556,6 +10556,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tinyglobby@npm:^0.2.15":
+  version: 0.2.15
+  resolution: "tinyglobby@npm:0.2.15"
+  dependencies:
+    fdir: ^6.5.0
+    picomatch: ^4.0.3
+  checksum: 0e33b8babff966c6ab86e9b825a350a6a98a63700fa0bb7ae6cf36a7770a508892383adc272f7f9d17aaf46a9d622b455e775b9949a3f951eaaf5dfb26331d44
+  languageName: node
+  linkType: hard
+
 "tinypool@npm:^1.1.1":
   version: 1.1.1
   resolution: "tinypool@npm:1.1.1"
@@ -11099,8 +11109,8 @@ __metadata:
   linkType: hard
 
 "vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0, vite@npm:^7.0.2":
-  version: 7.1.4
-  resolution: "vite@npm:7.1.4"
+  version: 7.1.5
+  resolution: "vite@npm:7.1.5"
   dependencies:
     esbuild: ^0.25.0
     fdir: ^6.5.0
@@ -11108,7 +11118,7 @@ __metadata:
     picomatch: ^4.0.3
     postcss: ^8.5.6
     rollup: ^4.43.0
-    tinyglobby: ^0.2.14
+    tinyglobby: ^0.2.15
   peerDependencies:
     "@types/node": ^20.19.0 || >=22.12.0
     jiti: ">=1.21.0"
@@ -11149,7 +11159,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: eb927d70eb18f1967f70c44866ea6cfb083e52f49fb95c6d46be132871997f3215d485962f7b7577014c9c23bc51f49cb818f270f2786a6e9aacd1ff6af3bcb1
+  checksum: 14922d98024a1d93ebe8f3ce38af586c83d55f037f8c5fe8664103d7aa0785d0747f3edf8cb6550dcfa071b90bfd40bce56581d9cb14a19a53d29abb9f3415f5
   languageName: node
   linkType: hard
 
