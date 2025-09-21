@@ -99,7 +99,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     ? 'Drag files here or '
     : 'Drag file here or '
   const defaultChooseText = 'choose from folder'
-  const defaultErrorText = 'This is not a valid file type.'
+  const defaultErrorText = 'Error: This is not a valid file type.'
   const defaultSingleSelectedFileText = 'Selected file'
   const defaultMultipleSelectedFileText = ' files selected'
   const defaultChangeSelectedFileText = 'Change file'
@@ -241,6 +241,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           onChange={handleChange}
           multiple={multiple}
           accept={accept}
+          aria-label={showError ? errorText || defaultErrorText : undefined}
         />
       </div>
     </div>
