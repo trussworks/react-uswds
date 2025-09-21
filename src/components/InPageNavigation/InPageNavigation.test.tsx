@@ -72,6 +72,25 @@ describe('InPageNavigation component', () => {
     expect(heading).toBeInTheDocument()
   })
 
+  it('does not render if minimum number of headings is unmet', () => {
+    const screen = render(
+      <InPageNavigation
+        content={props.content}
+        headingLevel={props.headingLevel}
+        title={props.title}
+        headingElements={['h1']}
+      />
+    )
+    expect(screen.queryByTestId('InPageNavigation')).not.toBeInTheDocument()
+  })
+
+  it('finds nested headings', () => {
+    const { nav } = setup()
+    expect(
+      within(nav).getByRole('link', { name: 'Volutpat condimentum' })
+    ).toBeInTheDocument()
+  })
+
   describe('lists the right heading types if', () => {
     it('is undefined', () => {
       const { nav } = setup(true)

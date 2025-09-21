@@ -554,5 +554,16 @@ export const CONTENT = (
       condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla
       libero. Vivamus pharetra posuere sapien.
     </p>
+    <div className="usa-summary-box">
+      <div className="usa-summary-box__body">
+        <h3 id="volutpat-condimentum">Volutpat condimentum</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi
+          commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id
+          pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id
+          velit vitae ligula volutpat condimentum.
+        </p>
+      </div>
+    </div>
   </>
 )
