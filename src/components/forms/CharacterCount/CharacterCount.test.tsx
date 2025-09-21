@@ -323,6 +323,7 @@ describe('CharacterCount component', () => {
       })
       fireEvent.blur(input)
 
+      expect(input).toHaveClass('usa-input--error')
       expect(getByRole('textbox')).toBeInvalid()
 
       fireEvent.change(input, {
@@ -330,6 +331,7 @@ describe('CharacterCount component', () => {
       })
       fireEvent.blur(input)
 
+      expect(input).not.toHaveClass('usa-input--error')
       expect(input).toBeValid()
     })
 

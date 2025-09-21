@@ -383,6 +383,35 @@ describe('DatePicker component', () => {
     })
   })
 
+  describe('with the aria-disabled prop', () => {
+    it('the toggle button and external inputs are aria-disabled, and the internal input is not disabled', () => {
+      const { getByTestId } = renderDatePicker({ 'aria-disabled': true })
+      expect(getByTestId('date-picker-button')).toHaveAttribute(
+        'aria-disabled',
+        'true'
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveAttribute(
+        'aria-disabled',
+        'true'
+      )
+      expect(getByTestId('date-picker-external-input')).toHaveAttribute(
+        'readonly'
+      )
+      expect(getByTestId('date-picker-internal-input')).not.toHaveAttribute(
+        'aria-disabled'
+      )
+    })
+
+    it('does not show the calendar when the toggle button is clicked', async () => {
+      const { getByTestId } = renderDatePicker({ 'aria-disabled': true })
+      await userEvent.click(getByTestId('date-picker-button'))
+      expect(getByTestId('date-picker-calendar')).not.toBeVisible()
+      expect(getByTestId('date-picker')).not.toHaveClass(
+        'usa-date-picker--active'
+      )
+    })
+  })
+
   describe('with a default value prop', () => {
     it('the internal input value is the date string, and the external input value is the formatted date', () => {
       const { getByTestId } = renderDatePicker({ defaultValue: '1988-05-16' })

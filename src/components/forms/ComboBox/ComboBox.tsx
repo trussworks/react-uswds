@@ -361,7 +361,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   })
 
   const listID = `${id}--list`
-  const assistiveHintID = `${id}--assistiveHint`
+  const assistiveHintID = assistiveHint && `${id}--assistiveHint`
 
   const focusedItemIndex = state.focusedOption
     ? state.filteredOptions.findIndex((i) => i === state.focusedOption)
@@ -499,15 +499,14 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
       <div className="usa-combo-box__status usa-sr-only" role="status">
         {state.statusText}
       </div>
-      <span
-        id={assistiveHintID}
-        className="usa-sr-only"
-        data-testid="combo-box-assistive-hint">
-        {assistiveHint ||
-          `When autocomplete results are available use up and down arrows to review
-           and enter to select. Touch device users, explore by touch or with swipe
-           gestures.`}
-      </span>
+      {assistiveHint && (
+        <span
+          id={assistiveHintID}
+          className="usa-sr-only"
+          data-testid="combo-box-assistive-hint">
+          {assistiveHint}
+        </span>
+      )}
     </div>
   )
 }

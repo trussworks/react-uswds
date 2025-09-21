@@ -71,7 +71,11 @@ export const CharacterCount = ({
   const [isValid, setIsValid] = useState(initialCount < maxLength)
   const srMessageRef = useRef<HTMLDivElement>(null)
 
-  const classes = classnames('usa-character-count__field', className)
+  const classes = classnames(
+    'usa-character-count__field',
+    { 'usa-input--error': !isValid },
+    className
+  )
   const messageClasses = classnames('usa-hint', 'usa-character-count__status', {
     'usa-character-count__status--invalid': !isValid,
   })

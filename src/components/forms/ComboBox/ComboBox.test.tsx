@@ -59,10 +59,7 @@ describe('ComboBox component', () => {
       'favorite-fruit--list'
     )
     expect(comboBoxInput).toHaveAttribute('aria-autocomplete', 'list')
-    expect(comboBoxInput).toHaveAttribute(
-      'aria-describedby',
-      'favorite-fruit--assistiveHint'
-    )
+    expect(comboBoxInput).not.toHaveAttribute('aria-describedby')
     expect(comboBoxInput).toHaveAttribute('aria-expanded', 'false')
     expect(comboBoxInput).toHaveAttribute('autocapitalize', 'off')
     expect(comboBoxInput).toHaveAttribute('autocomplete', 'off')
@@ -1733,6 +1730,10 @@ describe('ComboBox component', () => {
         />
       )
 
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-describedby',
+        'favorite-fruit--assistiveHint'
+      )
       const node = getByTestId('combo-box-assistive-hint')
       expect(node).toHaveTextContent('Customized assistive hint')
     })

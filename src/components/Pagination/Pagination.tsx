@@ -36,7 +36,8 @@ const PaginationPage = ({
   const buttonClasses = classnames(
     linkClasses,
     'bg-transparent',
-    'cursor-pointer'
+    'cursor-pointer',
+    'text-underline'
   )
 
   return (
@@ -173,7 +174,8 @@ export const Pagination = ({
     'border-0',
     'padding-0',
     'bg-transparent',
-    'cursor-pointer'
+    'cursor-pointer',
+    'text-underline'
   )
   const nextLinkClasses = classnames(
     'usa-pagination__link',
@@ -184,7 +186,8 @@ export const Pagination = ({
     'border-0',
     'padding-0',
     'bg-transparent',
-    'cursor-pointer'
+    'cursor-pointer',
+    'text-underline'
   )
 
   return (

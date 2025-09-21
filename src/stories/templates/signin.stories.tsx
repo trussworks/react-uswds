@@ -152,6 +152,7 @@ export const SignIn = (): JSX.Element => {
                         type="email"
                         autoCorrect="off"
                         autoCapitalize="off"
+                        autoComplete="email"
                         required={true}
                       />
 

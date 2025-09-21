@@ -186,6 +186,7 @@ export const CreateAccount = (): JSX.Element => {
                         type="email"
                         autoCapitalize="off"
                         autoCorrect="off"
+                        autoComplete="email"
                         required={true}
                       />
 

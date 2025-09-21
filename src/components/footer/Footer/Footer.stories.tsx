@@ -56,7 +56,7 @@ const SignUpForm = (): JSX.Element => {
       <h3 className="usa-sign-up__heading">Sign up</h3>
       <Form onSubmit={mockSubmit}>
         <Label htmlFor="email">Your email address</Label>
-        <TextInput id="email" name="email" type="email" />
+        <TextInput id="email" name="email" type="email" autoComplete="email" />
         <Button type="submit">Sign up</Button>
       </Form>
     </div>
