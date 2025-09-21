@@ -161,7 +161,10 @@ export const AlertWithStringContent = (): JSX.Element => (
 export const AlertWithMultipleChildContent = (): JSX.Element => (
   <SiteAlert variant="info">
     <p className="usa-alert__text">Alert content</p>
-    <em>which includes</em> <strong>formatting tags</strong> and{' '}
-    <Link href="#">links</Link>.
+    <p className="usa-alert__text">
+      More content{' '}
+      <em className="usa-alert__text  display-inline">which includes</em>{' '}
+      <strong>formatting tags</strong> and <Link href="#">links</Link>.
+    </p>
   </SiteAlert>
 )
