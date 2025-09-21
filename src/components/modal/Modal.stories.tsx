@@ -75,7 +75,7 @@ export const DefaultModal = (): JSX.Element => {
                 modalRef={modalRef}
                 closer
                 unstyled
-                className="padding-105 flex-justify-center">
+                className="padding-105 flex-justify-center width-full">
                 Go back
               </ModalToggleButton>
             </ButtonGroup>
@@ -117,7 +117,7 @@ export const LargeModal = (): JSX.Element => {
               modalRef={modalRef}
               closer
               unstyled
-              className="padding-105 flex-justify-center">
+              className="padding-105 flex-justify-center width-full">
               Go back
             </ModalToggleButton>
           </ButtonGroup>
@@ -160,7 +160,7 @@ export const ForceActionModal = (): JSX.Element => {
               modalRef={modalRef}
               closer
               unstyled
-              className="padding-105 flex-justify-center">
+              className="padding-105 flex-justify-center width-full">
               Sign out
             </ModalToggleButton>
           </ButtonGroup>
@@ -204,7 +204,7 @@ export const CustomFocusElementModal = (): JSX.Element => {
               modalRef={modalRef}
               closer
               unstyled
-              className="padding-105 flex-justify-center">
+              className="padding-105 flex-justify-center width-full">
               Go back
             </ModalToggleButton>
           </ButtonGroup>
@@ -246,7 +246,7 @@ export const InitiallyOpenModal = (): JSX.Element => {
                 modalRef={modalRef}
                 closer
                 unstyled
-                className="padding-105 flex-justify-center">
+                className="padding-105 flex-justify-center width-full">
                 Go back
               </ModalToggleButton>
             </ButtonGroup>

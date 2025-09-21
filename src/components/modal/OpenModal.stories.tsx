@@ -65,7 +65,7 @@ export const DefaultModal = {
                 type="button"
                 onClick={argTypes.handleClose}
                 unstyled
-                className="padding-105 flex-justify-center">
+                className="padding-105 flex-justify-center width-full">
                 Go back
               </Button>
             </ButtonGroup>
@@ -109,7 +109,7 @@ export const LargeModal = {
                 type="button"
                 onClick={argTypes.handleClose}
                 unstyled
-                className="padding-105 flex-justify-center">
+                className="padding-105 flex-justify-center width-full">
                 Go back
               </Button>
             </ButtonGroup>
@@ -155,7 +155,7 @@ export const ForceActionModal = {
                 type="button"
                 onClick={argTypes.handleClose}
                 unstyled
-                className="padding-105 flex-justify-center">
+                className="padding-105 flex-justify-center width-full">
                 Sign out
               </Button>
             </ButtonGroup>
