@@ -84,7 +84,7 @@
   "peerDependencies": {
     "@types/react": "^16.x || ^17.x || ^18.x || ^19.x",
     "@types/react-dom": "^16.x || ^17.x || ^18.x || ^19.x",
-    "@uswds/uswds": "^3.9.0",
+    "@uswds/uswds": "^3.10.0",
     "focus-trap-react": "^10.2.3",
     "react": "^16.x || ^17.x || ^18.x || ^19.x",
     "react-dom": "^16.x || ^17.x || ^18.x || ^19.x"
@@ -108,7 +108,7 @@
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
-    "@uswds/uswds": "3.9.0",
+    "@uswds/uswds": "3.10.0",
     "@vitejs/plugin-react": "^5.0.0",
     "@vitest/coverage-istanbul": "^4.0.8",
     "@vitest/eslint-plugin": "^1.1.44",

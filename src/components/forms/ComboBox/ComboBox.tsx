@@ -18,7 +18,7 @@ import { ActionTypes, Action, State, useComboBox } from './useComboBox'
     This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
 */
 
-const DEFAULT_FILTER = '.*{{query}}.*'
+export const DEFAULT_FILTER = '.*{{query}}.*'
 
 export interface ComboBoxOption {
   value: string

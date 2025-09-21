@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import type { ComboBoxOption, CustomizableFilter } from './ComboBox'
-import { FocusMode } from './ComboBox'
+import { DEFAULT_FILTER, FocusMode } from './ComboBox'
 import { generateDynamicRegExp } from './utils'
 
 export enum ActionTypes {
@@ -77,6 +77,18 @@ export const useComboBox = (
     const filteredOptions = optionsList.filter((option) =>
       regex.test(option.label.toLowerCase())
     )
+
+    if (customizableFilter.filter === DEFAULT_FILTER) {
+      filteredOptions.sort((a, b) => {
+        const aStartsWithNeedle = a.label.toLowerCase().startsWith(needle)
+        const bStartsWithNeedle = b.label.toLowerCase().startsWith(needle)
+        return aStartsWithNeedle && !bStartsWithNeedle
+          ? -1
+          : bStartsWithNeedle && !aStartsWithNeedle
+            ? 1
+            : 0
+      })
+    }
 
     if (disableFiltering) {
       return {

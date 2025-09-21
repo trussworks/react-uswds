@@ -475,6 +475,31 @@ describe('ComboBox component', () => {
       expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
     })
 
+    it('sorts starts-with matches to the top', async () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={vi.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      await userEvent.type(input, 'ra')
+
+      const options = Array.from(getByTestId('combo-box-option-list').children)
+      const raspberryIdx = options.findIndex(
+        (option) => option.textContent === 'Raspberry'
+      )
+      expect(raspberryIdx).greaterThanOrEqual(0)
+      const currantIdx = options.findIndex(
+        (option) => option.textContent === 'Currant'
+      )
+      expect(currantIdx).greaterThanOrEqual(0)
+      expect(currantIdx).greaterThan(raspberryIdx)
+    })
+
     it('persists filter options if dropdown is closed and open without selection', async () => {
       const { getByTestId } = render(
         <ComboBox
