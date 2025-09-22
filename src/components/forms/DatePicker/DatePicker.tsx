@@ -72,6 +72,10 @@ export const DatePicker = ({
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
+  const isAriaDisabled =
+    inputProps['aria-disabled'] === true ||
+    inputProps['aria-disabled'] === 'true'
+
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
 
@@ -175,7 +179,9 @@ export const DatePicker = ({
   }, [externalValue, minDate, maxDate])
 
   const handleToggleClick = (): void => {
-    if (inputProps['aria-disabled']) return
+    if (isAriaDisabled) {
+      return
+    }
 
     if (showCalendar) {
       // calendar is open, hide it
@@ -294,11 +300,7 @@ export const DatePicker = ({
           type="text"
           disabled={disabled}
           required={required}
-          readOnly={
-            inputProps['readOnly'] ??
-            (inputProps['aria-disabled'] === true ||
-              inputProps['aria-disabled'] === 'true')
-          }
+          readOnly={inputProps['readOnly'] ?? isAriaDisabled}
           value={externalValue}
           ref={externalInputEl}
           onInput={handleExternalInput}
