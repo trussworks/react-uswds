@@ -500,6 +500,34 @@ describe('ComboBox component', () => {
       expect(currantIdx).greaterThan(raspberryIdx)
     })
 
+    it('sorts starts-with matches case-insensitive', async () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions.map((opt) => ({
+            ...opt,
+            label: opt.label.toLowerCase(),
+          }))}
+          onChange={vi.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      await userEvent.type(input, 'RA')
+
+      const options = Array.from(getByTestId('combo-box-option-list').children)
+      const raspberryIdx = options.findIndex(
+        (option) => option.textContent === 'raspberry'
+      )
+      expect(raspberryIdx).greaterThanOrEqual(0)
+      const currantIdx = options.findIndex(
+        (option) => option.textContent === 'currant'
+      )
+      expect(currantIdx).greaterThanOrEqual(0)
+      expect(currantIdx).greaterThan(raspberryIdx)
+    })
+
     it('persists filter options if dropdown is closed and open without selection', async () => {
       const { getByTestId } = render(
         <ComboBox

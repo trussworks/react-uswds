@@ -79,9 +79,10 @@ export const useComboBox = (
     )
 
     if (customizableFilter.filter === DEFAULT_FILTER) {
+      const lowerNeedle = needle.toLowerCase()
       filteredOptions.sort((a, b) => {
-        const aStartsWithNeedle = a.label.toLowerCase().startsWith(needle)
-        const bStartsWithNeedle = b.label.toLowerCase().startsWith(needle)
+        const aStartsWithNeedle = a.label.toLowerCase().startsWith(lowerNeedle)
+        const bStartsWithNeedle = b.label.toLowerCase().startsWith(lowerNeedle)
         return aStartsWithNeedle && !bStartsWithNeedle
           ? -1
           : bStartsWithNeedle && !aStartsWithNeedle
