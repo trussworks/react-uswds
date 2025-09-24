@@ -982,6 +982,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lit-labs/ssr-dom-shim@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.4.0"
+  checksum: e267c255763835893ae9bb58ea71533ac3d3eb6dd2b7218ef2ff8c5d99a91ad091ef255cc19992d0a9443021c2199e05a36f46135bc9c07f4982123a12e7e3dc
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "@lit/reactive-element@npm:2.1.1"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.4.0
+  checksum: b9bbc9c089ee7db69c610ace1e5162c949535aedcca2d78ab11fe95dc555a9264380c10ffc8d3f68e56aec93d9e455937c1e065aa619fd38d80da1cb660b0cd4
+  languageName: node
+  linkType: hard
+
 "@mdx-js/react@npm:^3.0.0":
   version: 3.1.1
   resolution: "@mdx-js/react@npm:3.1.1"
@@ -2141,7 +2157,7 @@ __metadata:
     "@types/react-dom": ^19.0.4
     "@typescript-eslint/eslint-plugin": ^8.29.0
     "@typescript-eslint/parser": ^8.29.0
-    "@uswds/uswds": 3.12.0
+    "@uswds/uswds": 3.13.0
     "@vitejs/plugin-react": ^5.0.0
     "@vitest/coverage-istanbul": ^4.0.8
     "@vitest/eslint-plugin": ^1.1.44
@@ -2185,7 +2201,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^16.x || ^17.x || ^18.x || ^19.x
     "@types/react-dom": ^16.x || ^17.x || ^18.x || ^19.x
-    "@uswds/uswds": ^3.12.0
+    "@uswds/uswds": ^3.13.0
     focus-trap-react: ^10.2.3
     react: ^16.x || ^17.x || ^18.x || ^19.x
     react-dom: ^16.x || ^17.x || ^18.x || ^19.x
@@ -2353,6 +2369,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/trusted-types@npm:^2.0.2":
+  version: 2.0.7
+  resolution: "@types/trusted-types@npm:2.0.7"
+  checksum: 8e4202766a65877efcf5d5a41b7dd458480b36195e580a3b1085ad21e948bc417d55d6f8af1fd2a7ad008015d4117d5fdfe432731157da3c68678487174e4ba3
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:^8.29.0":
   version: 8.46.3
   resolution: "@typescript-eslint/eslint-plugin@npm:8.46.3"
@@ -2490,12 +2513,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uswds/uswds@npm:3.12.0":
-  version: 3.12.0
-  resolution: "@uswds/uswds@npm:3.12.0"
+"@uswds/uswds@npm:3.13.0":
+  version: 3.13.0
+  resolution: "@uswds/uswds@npm:3.13.0"
   dependencies:
+    lit: ^3.2.1
     receptor: 1.0.0
-  checksum: 5801dc74fbbd3bbe07a72be5331a8907e521da651003897ec5bb0724111ba27d9f1bb761dc0a015a85a0933e435ff762d2fdcf539a5e1f45d9e1ef1eec48da4e
+    sass-embedded-linux-x64: ^1.89.0
+  dependenciesMeta:
+    sass-embedded-linux-x64:
+      optional: true
+  checksum: e6ec1055514878c45779e7f750fb036349ca3e8e9e3d2ec7cdd4079ceb7d22254e0e6ee1d5b82f7f80add81a6adbade27be1c80dedf53170815f0453902a5b2d
   languageName: node
   linkType: hard
 
@@ -6729,6 +6757,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lit-element@npm:^4.2.0":
+  version: 4.2.1
+  resolution: "lit-element@npm:4.2.1"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.4.0
+    "@lit/reactive-element": ^2.1.0
+    lit-html: ^3.3.0
+  checksum: 59253261761efabd4eab8fd9d3753b10ce1942ff498b4a9856a52d9a402eddbb6a96cc9869d7a8becce7cf4a0bc6e1154d5772dd2a8a87656c476416d5d411ba
+  languageName: node
+  linkType: hard
+
+"lit-html@npm:^3.3.0":
+  version: 3.3.1
+  resolution: "lit-html@npm:3.3.1"
+  dependencies:
+    "@types/trusted-types": ^2.0.2
+  checksum: de07c669453381edc69a03cccd8019ef4ddc5e94a8c5ac215f933812cbcf77a17ee909b8db22df1ef56a7eb171883ca5c4ab8cfc06d9921ea6620dbfe4fd1896
+  languageName: node
+  linkType: hard
+
+"lit@npm:^3.2.1":
+  version: 3.3.1
+  resolution: "lit@npm:3.3.1"
+  dependencies:
+    "@lit/reactive-element": ^2.1.0
+    lit-element: ^4.2.0
+    lit-html: ^3.3.0
+  checksum: fb88f1ff8016cc7d722f3f350c626eb40b9a43f6ac6a9cc5e5a28cb9f9a2d79ed6ed5c0e92d41bd3a5bfc00442196f2f76030f59542d8b1a6a26d35bad63ccf9
+  languageName: node
+  linkType: hard
+
 "loader-runner@npm:^4.2.0":
   version: 4.3.1
   resolution: "loader-runner@npm:4.3.1"
@@ -8616,7 +8675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-x64@npm:1.93.3":
+"sass-embedded-linux-x64@npm:1.93.3, sass-embedded-linux-x64@npm:^1.89.0":
   version: 1.93.3
   resolution: "sass-embedded-linux-x64@npm:1.93.3"
   conditions: os=linux & cpu=x64
