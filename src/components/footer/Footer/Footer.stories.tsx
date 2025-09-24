@@ -185,22 +185,8 @@ export const BigFooter = (): JSX.Element => (
                   </a>,
                   ...Array(3).fill(<a href="#">Secondary link</a>),
                 ],
-                [
-                  'Topic',
-                  ...Array(4).fill(
-                    <a className="usa-footer__secondary-link" href="#">
-                      Secondary link
-                    </a>
-                  ),
-                ],
-                [
-                  'Topic',
-                  ...Array(4).fill(
-                    <a className="usa-footer__secondary-link" href="#">
-                      Secondary link
-                    </a>
-                  ),
-                ],
+                ['Topic', ...Array(4).fill(<a href="#">Secondary link</a>)],
+                ['Topic', ...Array(4).fill(<a href="#">Secondary link</a>)],
               ]}
             />
           </div>
