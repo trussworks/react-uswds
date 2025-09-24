@@ -24,6 +24,9 @@ export default {
       control: 'check',
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
     },
+    minimumHeadingCount: {
+      control: { type: 'number', min: 0, max: 12 },
+    },
   },
   args: {
     headingLevel: 'h4',
@@ -31,6 +34,7 @@ export default {
     threshold: 1,
     title: 'On this page',
     headingElements: ['h2', 'h3'],
+    minimumHeadingCount: 2,
   },
   parameters: {
     docs: {
@@ -52,6 +56,7 @@ type StorybookArguments = {
   threshold: number
   title: string
   headingElements: HeadingLevel[]
+  minimumHeadingCount: number
 }
 
 export const Default = (argTypes: StorybookArguments): JSX.Element => (
@@ -63,6 +68,7 @@ export const Default = (argTypes: StorybookArguments): JSX.Element => (
     threshold={argTypes.threshold}
     title={argTypes.title}
     headingElements={argTypes.headingElements}
+    minimumHeadingCount={argTypes.minimumHeadingCount}
   />
 )
 
@@ -78,5 +84,6 @@ export const ScrollOffset = (argTypes: StorybookArguments): JSX.Element => (
     threshold={argTypes.threshold}
     title={argTypes.title}
     headingElements={argTypes.headingElements}
+    minimumHeadingCount={argTypes.minimumHeadingCount}
   />
 )
