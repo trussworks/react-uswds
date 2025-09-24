@@ -1,7 +1,6 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React, { type JSX } from 'react'
 
-import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'
 
 export default {
@@ -26,7 +25,7 @@ export const SlimFooterNav = (): JSX.Element => (
     size="slim"
     links={Array(4).fill(
       <a className="usa-footer__primary-link" href="#">
-        PrimaryLink
+        Primary link
       </a>
     )}
   />
@@ -38,7 +37,7 @@ export const MediumFooterNav = (): JSX.Element => (
     size="medium"
     links={Array(4).fill(
       <a className="usa-footer__primary-link" href="#">
-        PrimaryLink
+        Primary link
       </a>
     )}
   />
@@ -46,26 +45,21 @@ export const MediumFooterNav = (): JSX.Element => (
 
 export const BigFooterNav = {
   render: (): JSX.Element => (
-    <Footer
+    <FooterNav
+      className="padding-bottom-2"
+      aria-label="Footer navigation"
       size="big"
-      primary={
-        <FooterNav
-          aria-label="Footer navigation"
-          size="big"
-          links={[
-            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-            [
-              'Topic',
-              <a key="2" href="#">
-                Secondary link that is pretty long
-              </a>,
-              ...Array(2).fill(<a href="#">Secondary link</a>),
-            ],
-            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-          ]}
-        />
-      }
-      secondary={<></>}
+      links={[
+        ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+        [
+          'Topic',
+          <a key="2" href="#">
+            Secondary link that is pretty long
+          </a>,
+          ...Array(2).fill(<a href="#">Secondary link</a>),
+        ],
+        ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+      ]}
     />
   ),
 
