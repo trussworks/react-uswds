@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 
 import { RangeInput } from './RangeInput'
 
@@ -18,7 +18,10 @@ describe('RangeInput component', () => {
     expect(rangeElement).toHaveAttribute('id', 'range-slider-id')
     expect(rangeElement).toHaveAttribute('name', 'rangeName')
     expect(rangeElement).toHaveClass('usa-range')
-    expect(rangeElement).toHaveClass('additional-class')
+
+    const wrapper = queryByTestId('range-wrapper')
+    expect(wrapper).toBeInTheDocument()
+    expect(wrapper).toHaveClass('additional-class')
   })
 
   it('renders with custom range values', () => {
@@ -95,5 +98,22 @@ describe('RangeInput component', () => {
       'aria-valuetext',
       '50 por ciento de 100'
     )
+  })
+
+  it('updates visual callout', () => {
+    const { queryByTestId } = render(
+      <RangeInput id="range-slider-id" name="rangeName" defaultValue={75} />
+    )
+    expect(queryByTestId('range')).toHaveValue('75')
+    expect(queryByTestId('range-visual')).toHaveTextContent('75')
+
+    const input = queryByTestId('range')
+    expect(input).toBeInTheDocument()
+
+    fireEvent.change(input as HTMLInputElement, {
+      target: { value: '80' },
+    })
+    expect(queryByTestId('range')).toHaveValue('80')
+    expect(queryByTestId('range-visual')).toHaveTextContent('80')
   })
 })
