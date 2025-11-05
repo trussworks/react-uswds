@@ -64,14 +64,14 @@
   "nano-staged": {
     "**/*.{ts,tsx,js,jsx}": [
       "eslint --max-warnings=0",
-      "prettier --check"
+      "prettier --write"
     ],
     "**/*.{css,scss}": [
       "stylelint",
-      "prettier --check"
+      "prettier --write"
     ],
     "**/*.{json,md}": [
-      "prettier --check"
+      "prettier --write"
     ]
   },
   "repository": {
