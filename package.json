@@ -63,11 +63,11 @@
   },
   "nano-staged": {
     "**/*.{ts,tsx,js,jsx}": [
-      "eslint --max-warnings=0",
+      "eslint --max-warnings=0 --fix",
       "prettier --write"
     ],
     "**/*.{css,scss}": [
-      "stylelint",
+      "stylelint --fix",
       "prettier --write"
     ],
     "**/*.{json,md}": [
