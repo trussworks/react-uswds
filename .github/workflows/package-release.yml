@@ -13,29 +13,33 @@ jobs:
     if: |
       startsWith(github.head_ref, 'release-')
       && github.event.pull_request.merged
-      
+
+    strategy:
+      fail-fast: false
+
     steps: 
       - name: Checkout out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
           cache: 'yarn'
       
       # The yarn cache is not node_modules
       - name: Install Dependencies
-        run: yarn --prefer-offline
+        run: yarn add --cached
       
       - name: Run tests
         run: yarn test
 
       - name: Package library
-        run: yarn pack
+        # https://v3.yarnpkg.com/cli/pack
+        run: yarn pack --out trussworks-react-uswds-v%v.tgz
 
       - name: Upload package
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           path: trussworks-react-uswds-v*.*.*.tgz
           if-no-files-found: error

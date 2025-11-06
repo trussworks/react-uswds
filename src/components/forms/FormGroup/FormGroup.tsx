@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type FormGroupProps = {
+export type FormGroupProps = {
   children: React.ReactNode
   className?: string
   error?: boolean
@@ -11,7 +11,7 @@ export const FormGroup = ({
   children,
   className,
   error,
-}: FormGroupProps): React.ReactElement => {
+}: FormGroupProps): JSX.Element => {
   const classes = classnames(
     'usa-form-group',
     { 'usa-form-group--error': error },

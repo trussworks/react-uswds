@@ -5,6 +5,7 @@ import React, {
   useRef,
   forwardRef,
   useImperativeHandle,
+  JSX,
 } from 'react'
 import classnames from 'classnames'
 
@@ -40,7 +41,7 @@ export interface CustomizableFilter {
   extras?: Record<string, string>
 }
 
-type ComboBoxProps = {
+export type ComboBoxProps = {
   id: string
   name: string
   className?: string
@@ -64,7 +65,7 @@ interface InputProps {
 const Input = ({
   focused,
   ...inputProps
-}: InputProps & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: InputProps & JSX.IntrinsicElements['input']): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (focused && inputRef.current) {
@@ -76,7 +77,7 @@ const Input = ({
     <input
       type="text"
       {...inputProps}
-      className="usa-combo-box__input"
+      className={classnames('usa-combo-box__input', inputProps.className)}
       data-testid="combo-box-input"
       autoCapitalize="off"
       autoComplete="off"
@@ -111,7 +112,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
     disableFiltering = false,
   },
   ref
-): React.ReactElement => {
+): JSX.Element => {
   const isDisabled = !!disabled
 
   let defaultOption

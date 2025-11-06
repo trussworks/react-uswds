@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { StepIndicatorStepProps } from '../StepIndicatorStep/StepIndicatorStep'
 import { HeadingLevel } from '../../../types/headingLevel'
 
-type StepIndicatorProps = {
+export type StepStatusText = {
+  complete: string
+  incomplete: string
+}
+
+export type StepIndicatorProps = {
   showLabels?: boolean
   counters?: 'none' | 'default' | 'small'
   centered?: boolean
@@ -18,10 +23,10 @@ type StepIndicatorProps = {
   headingLevel: HeadingLevel
   stepText?: string
   ofText?: string
+  statusText?: StepStatusText
 }
-export const StepIndicator = (
-  props: StepIndicatorProps
-): React.ReactElement => {
+
+export const StepIndicator = (props: StepIndicatorProps): JSX.Element => {
   const {
     showLabels = true,
     counters = 'none',
@@ -34,6 +39,7 @@ export const StepIndicator = (
     headingLevel,
     stepText = 'Step',
     ofText = 'of',
+    statusText = { complete: 'completed', incomplete: 'not completed' },
   } = props
 
   const Heading = headingLevel
@@ -76,6 +82,10 @@ export const StepIndicator = (
   const currentStepLabel = children[parseInt(`${currentStepIndex}`)].props.label
   const totalNumberOfSteps = children.length
 
+  const stepChildren = React.Children.map(children, (child) =>
+    React.cloneElement(child, { statusText: statusText })
+  )
+
   return (
     <div
       className={divClasses}
@@ -83,7 +93,7 @@ export const StepIndicator = (
       aria-label="progress"
       {...remainingDivProps}>
       <ol className={listClasses} {...remainingListProps}>
-        {children}
+        {stepChildren}
       </ol>
       <div className="usa-step-indicator__header">
         <Heading className={headingClasses} {...remainingHeadingProps}>

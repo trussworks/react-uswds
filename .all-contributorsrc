@@ -147,7 +147,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/13249580?v=4",
       "profile": "https://github.com/kimallen",
       "contributions": [
-        "code"
+        "code",
+        "a11y"
       ]
     },
     {
@@ -232,7 +233,10 @@
       "profile": "https://andyhub.com/",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "maintenance",
+        "bug",
+        "a11y"
       ]
     },
     {
@@ -241,7 +245,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/371943?v=4",
       "profile": "https://sawyer.soy",
       "contributions": [
-        "code"
+        "code",
+        "bug"
       ]
     },
     {
@@ -318,7 +323,70 @@
       "profile": "https://github.com/jpandersen87",
       "contributions": [
         "code",
+        "maintenance",
+        "infra"
+      ]
+    },
+    {
+      "login": "crwallace",
+      "name": "Courtney Eimerman-Wallace",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3453669?v=4",
+      "profile": "https://github.com/crwallace",
+      "contributions": [
         "maintenance"
+      ]
+    },
+    {
+      "login": "ocoutts-usds",
+      "name": "Owen Coutts",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174364898?v=4",
+      "profile": "https://github.com/ocoutts-usds",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "ajfarkas",
+      "name": "AJ Farkas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7841661?v=4",
+      "profile": "http://github.com/ajfarkas",
+      "contributions": [
+        "code",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "lea-m-truss",
+      "name": "Lea Melendez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/202806705?v=4",
+      "profile": "https://github.com/lea-m-truss",
+      "contributions": [
+        "bug",
+        "code",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "aligg",
+      "name": "Ali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7331495?v=4",
+      "profile": "http://aliglenesk.dev",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Ivcota",
+      "name": "Iverson Diles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18635074?v=4",
+      "profile": "https://github.com/Ivcota",
+      "contributions": [
+        "bug",
+        "code"
       ]
     }
   ],

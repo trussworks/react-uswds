@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-interface CollectionItemProps {
+export type CollectionItemProps = {
   variantComponent?: React.ReactNode
-}
+} & JSX.IntrinsicElements['li']
 
 export const CollectionItem = ({
   className,
   children,
   variantComponent,
   ...props
-}: CollectionItemProps & JSX.IntrinsicElements['li']): React.ReactElement => {
+}: CollectionItemProps): JSX.Element => {
   const classes = classnames('usa-collection__item', className)
 
   return (

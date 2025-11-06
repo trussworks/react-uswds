@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
-import { StepIndicator } from '../StepIndicator/StepIndicator'
+import { StepIndicator, StepStatusText } from './StepIndicator'
 
 export default {
   title: 'Components/Step Indicator',
@@ -35,15 +35,15 @@ Updates users on their progress through a multi-step process.
 type StorybookArguments = {
   stepText: string
   ofText: string
+  statusText: StepStatusText
 }
 
-export const DefaultStepIndicator = (
-  args: StorybookArguments
-): React.ReactElement => (
+export const DefaultStepIndicator = (args: StorybookArguments): JSX.Element => (
   <StepIndicator
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -52,12 +52,13 @@ export const DefaultStepIndicator = (
   </StepIndicator>
 )
 
-export const NoLabels = (args: StorybookArguments): React.ReactElement => (
+export const NoLabels = (args: StorybookArguments): JSX.Element => (
   <StepIndicator
     showLabels={false}
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -66,12 +67,13 @@ export const NoLabels = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const Centered = (args: StorybookArguments): React.ReactElement => (
+export const Centered = (args: StorybookArguments): JSX.Element => (
   <StepIndicator
     centered
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -80,12 +82,13 @@ export const Centered = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const Counters = (args: StorybookArguments): React.ReactElement => (
+export const Counters = (args: StorybookArguments): JSX.Element => (
   <StepIndicator
     counters="default"
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -94,12 +97,13 @@ export const Counters = (args: StorybookArguments): React.ReactElement => (
   </StepIndicator>
 )
 
-export const SmallCounters = (args: StorybookArguments): React.ReactElement => (
+export const SmallCounters = (args: StorybookArguments): JSX.Element => (
   <StepIndicator
     counters="small"
     headingLevel="h4"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />
@@ -110,11 +114,12 @@ export const SmallCounters = (args: StorybookArguments): React.ReactElement => (
 
 export const DifferentHeadingLevel = (
   args: StorybookArguments
-): React.ReactElement => (
+): JSX.Element => (
   <StepIndicator
     headingLevel="h2"
     ofText={args.ofText}
-    stepText={args.stepText}>
+    stepText={args.stepText}
+    statusText={args.statusText}>
     <StepIndicatorStep label="Personal information" status="complete" />
     <StepIndicatorStep label="Household status" status="complete" />
     <StepIndicatorStep label="Supporting documents" status="current" />

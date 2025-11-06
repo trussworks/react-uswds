@@ -20,7 +20,7 @@ This will be Truss billable work for Truss staff, assuming your project teams us
 
 ### Support users of the library
 
-- Watch and moderate discussions on Github in alignment with [Truss values](https://truss.works/values)
+- Watch and moderate [discussions](https://github.com/trussworks/react-uswds/discussions) on Github in alignment with [Truss values](https://truss.works/values)
 - Respond to initial issues and questions on the repo, ideally within ~ one week
 - Encourage outside contributors to put up PRs
 - Ensure storybook is deployed and up to date
@@ -32,6 +32,7 @@ This will be Truss billable work for Truss staff, assuming your project teams us
 - Advocate for closing long standing pull requests.
 - Triage incoming issues, ensure they have the right labels, and announce issues that are time sensitive to #react-uswds Truss slack channel
 - Watch [@uswds/uswds](https://github.com/uswds/uswds) for updates, create new issues in @trussworks/react-uswds as needed
+- Mitigate the impact of breaking changes by seeking community and Trussel input, combining multiple breaking changes into the same release, and preceding its release with a non-breaking change using [withDeprecationWarning](../src/components/hoc/withDeprecationWarning.tsx). In the latter case, ensure a new issue is created with a due date to finally remove the deprecated component.
 
 ### Manage our Github tools
 

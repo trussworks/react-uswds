@@ -28,4 +28,35 @@ updates:
       - dependency-name: '@types/react-dom'
         versions:
           - '>=18.0.0'
+      - dependency-name: '@types/react-test-renderer'
+        versions:
+          - '>=18.0.0'
       - dependency-name: 'uswds'
+    groups:
+      storybook:
+        patterns:
+          - 'storybook'
+          - '@storybook/*'
+          - 'happo-plugin-storybook'
+      testing-library:
+        patterns:
+          - 'testing-library/*'
+      eslint:
+        patterns:
+          - 'eslint'
+          - 'eslint-*'
+      typescript:
+        patterns:
+          - 'typescript'
+          - '@typescript-eslint*'
+      vite:
+        patterns:
+          - 'vite*'
+          - '@vitejs*'
+          - 'vitest'
+          - '@vitest*'
+          - '@laynezh/vite-plugin-lib-assets'
+      stylelint:
+        patterns:
+          - 'stylelint'
+          - 'stylelint-*'

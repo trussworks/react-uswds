@@ -4,7 +4,7 @@ import '@uswds/uswds/css/uswds.css'
 import '../src/styles/index.scss'
 import './custom-styles.scss'
 
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { INITIAL_VIEWPORTS } from 'storybook/viewport'
 import { Preview } from '@storybook/react';
 import USWDS from './USWDS';
 
@@ -24,5 +24,6 @@ const preview: Preview = {
       },
     },
   },
+  tags: ["autodocs"]
 }
 export default preview;

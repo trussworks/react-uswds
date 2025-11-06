@@ -8,21 +8,23 @@ on:
 jobs:
   publish-next:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     name: Publish next to Github Packages
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir='.yarn/cache'" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -32,16 +34,16 @@ jobs:
 
       # The yarn cache is not node_modules
       - name: Install dependencies
-        run: yarn --prefer-offline
+        run: yarn add --cached
 
       # Setup .npmrc file to publish to GitHub Packages
       - name: Set up node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           registry-url: 'https://npm.pkg.github.com'
           node-version-file: '.node-version'
 
       # Publish to GitHub Packages
-      - run: yarn publish --no-git-tag-version --prerelease --preid alpha-$(date +%Y%m%d%H%M%S) --tag next
+      - run: yarn npm publish --tag next --tolerate-republish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

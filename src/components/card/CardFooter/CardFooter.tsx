@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
+
+export type CardFooterProps = JSX.IntrinsicElements['div'] & {
+  exdent?: boolean
+}
 
 export const CardFooter = ({
   exdent,
   children,
   className,
   ...footerProps
-}: { exdent?: boolean } & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: CardFooterProps): JSX.Element => {
   const classes = classnames(
     'usa-card__footer',
     {

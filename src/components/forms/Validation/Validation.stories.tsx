@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { ChangeEvent, type JSX, useState } from 'react'
 import { Alert } from '../../Alert/Alert'
 import { Button } from '../../Button/Button'
 import { Fieldset } from '../Fieldset/Fieldset'
@@ -38,7 +38,7 @@ const validate = (type: string, value: string): boolean => {
   }
 }
 
-export const Default = (): React.ReactElement => {
+export const Default = (): JSX.Element => {
   const [validations, setValidations] = useState({
     uppercase: false,
     numerical: false,

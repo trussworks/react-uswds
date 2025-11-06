@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { useState, type JSX } from 'react'
 import { Banner } from '../Banner/Banner'
 import { BannerHeader } from '../BannerHeader/BannerHeader'
 import { BannerFlag } from '../BannerFlag/BannerFlag'
@@ -107,17 +107,17 @@ const getCopy = (language: Language, tld: TLD): GovBannerCopy => {
   }
 }
 
-type GovBannerProps = {
+export type GovBannerProps = {
   tld?: TLD
   language?: Language
-}
+} & JSX.IntrinsicElements['section']
 
 export const GovBanner = ({
   tld = '.gov',
   language = 'english',
   className,
   ...sectionProps
-}: GovBannerProps & JSX.IntrinsicElements['section']): ReactElement => {
+}: GovBannerProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   const {

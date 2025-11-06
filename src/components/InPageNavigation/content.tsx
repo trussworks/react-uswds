@@ -1,4 +1,5 @@
 import React from 'react'
+
 export const CONTENT = (
   <>
     <h1>Sample in-page navigation page</h1>

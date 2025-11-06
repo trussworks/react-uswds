@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { GovBanner } from './GovBanner'
 
 export default {
@@ -17,11 +17,11 @@ Source: https://designsystem.digital.gov/components/banner/
   },
 }
 
-export const GovBannerDefault = (): React.ReactElement => (
+export const GovBannerDefault = (): JSX.Element => (
   <GovBanner aria-label="Official government website" />
 )
 
-export const GovBannerEnglishDotGov = (): React.ReactElement => (
+export const GovBannerEnglishDotGov = (): JSX.Element => (
   <GovBanner
     language="english"
     tld=".gov"
@@ -29,7 +29,7 @@ export const GovBannerEnglishDotGov = (): React.ReactElement => (
   />
 )
 
-export const GovBannerEnglishDotMil = (): React.ReactElement => (
+export const GovBannerEnglishDotMil = (): JSX.Element => (
   <GovBanner
     language="english"
     tld=".mil"
@@ -37,7 +37,7 @@ export const GovBannerEnglishDotMil = (): React.ReactElement => (
   />
 )
 
-export const GovBannerSpanishDotGov = (): React.ReactElement => (
+export const GovBannerSpanishDotGov = (): JSX.Element => (
   <GovBanner
     language="spanish"
     tld=".gov"
@@ -45,7 +45,7 @@ export const GovBannerSpanishDotGov = (): React.ReactElement => (
   />
 )
 
-export const GovBannerSpanishDotMil = (): React.ReactElement => (
+export const GovBannerSpanishDotMil = (): JSX.Element => (
   <GovBanner
     language="spanish"
     tld=".mil"

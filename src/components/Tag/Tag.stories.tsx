@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Tag } from './Tag'
 
 export default {
@@ -17,12 +17,12 @@ Source: https://designsystem.digital.gov/components/tag/
   },
 }
 
-export const DefaultTag = (): React.ReactElement => <Tag>My Tag</Tag>
+export const DefaultTag = (): JSX.Element => <Tag>My Tag</Tag>
 
-export const CustomBg = (): React.ReactElement => (
-  <Tag background="#e44608">My Tag</Tag>
+export const CustomBg = (): JSX.Element => (
+  <Tag background="#d83933">My Tag</Tag>
 )
 
-export const CustomClass = (): React.ReactElement => (
-  <Tag className="custom-class">My Tag</Tag>
+export const CustomClass = (): JSX.Element => (
+  <Tag className="bg-secondary">My Tag</Tag>
 )

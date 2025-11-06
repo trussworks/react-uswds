@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 
-type SideNavProps = {
+export type SideNavProps = {
   items: React.ReactNode[]
   isSubnav?: boolean
 }
@@ -9,14 +9,15 @@ type SideNavProps = {
 export const SideNav = ({
   items,
   isSubnav = false,
-}: SideNavProps): React.ReactElement => {
+  ...ulProps
+}: SideNavProps): JSX.Element => {
   const classes = classnames({
     'usa-sidenav': !isSubnav,
     'usa-sidenav__sublist': isSubnav,
   })
 
   return (
-    <ul className={classes} data-testid="sidenav">
+    <ul className={classes} data-testid="sidenav" {...ulProps}>
       {items.map((item, i) => (
         <li key={`sidenav_item_${i}`} className="usa-sidenav__item">
           {item}

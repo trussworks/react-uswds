@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Fieldset } from './Fieldset'
 
 import { Label } from '../Label/Label'
@@ -23,7 +23,7 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const NameFieldset = (): React.ReactElement => (
+export const NameFieldset = (): JSX.Element => (
   <Fieldset legend="Name" legendStyle="large">
     <Label htmlFor="title" hint=" (optional)">
       Title
@@ -40,7 +40,7 @@ export const NameFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const CheckboxFieldset = (): React.ReactElement => (
+export const CheckboxFieldset = (): JSX.Element => (
   <Fieldset legend="Historical figures 1" legendStyle="srOnly">
     <Checkbox
       id="truth"
@@ -70,7 +70,7 @@ export const CheckboxFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const CheckboxFieldsetWithDefaultLegend = (): React.ReactElement => (
+export const CheckboxFieldsetWithDefaultLegend = (): JSX.Element => (
   <>
     <p>
       Required fields are marked with an asterisk (<RequiredMarker />
@@ -107,7 +107,7 @@ export const CheckboxFieldsetWithDefaultLegend = (): React.ReactElement => (
   </>
 )
 
-export const RadioFieldset = (): React.ReactElement => (
+export const RadioFieldset = (): JSX.Element => (
   <Fieldset legend="Historical figures 2" legendStyle="srOnly">
     <Radio
       id="stanton"
@@ -138,7 +138,7 @@ export const RadioFieldset = (): React.ReactElement => (
   </Fieldset>
 )
 
-export const RadioFieldsetWithDefaultLegend = (): React.ReactElement => (
+export const RadioFieldsetWithDefaultLegend = (): JSX.Element => (
   <Fieldset legend="Historical figures 2">
     <Radio
       id="stanton"

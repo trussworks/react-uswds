@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React, { type JSX, useState } from 'react'
 import logoImg from '@uswds/uswds/img/logo-img.png'
 import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
 
@@ -50,7 +50,7 @@ Page templates
   },
 }
 
-export const NotFoundPage = (): React.ReactElement => {
+export const NotFoundPage = (): JSX.Element => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 
@@ -162,9 +162,9 @@ export const NotFoundPage = (): React.ReactElement => {
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
           <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">
+          <p className="usa-footer__contact-heading">
             {'<Agency Contact Center>'}
-          </h3>
+          </p>
           <Address
             size="medium"
             items={[

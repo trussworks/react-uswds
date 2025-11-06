@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, type JSX } from 'react'
 import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
 
-export interface AccordionItemProps {
+export type AccordionItemProps = {
   title: React.ReactNode | string
   content: React.ReactNode
   expanded: boolean
@@ -13,12 +13,12 @@ export interface AccordionItemProps {
   handleToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-type AccordionProps = {
+export type AccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
   items: AccordionItemProps[]
   className?: string
-}
+} & JSX.IntrinsicElements['div']
 
 export const AccordionItem = ({
   title,
@@ -28,7 +28,7 @@ export const AccordionItem = ({
   className,
   headingLevel,
   handleToggle,
-}: AccordionItemProps): React.ReactElement => {
+}: AccordionItemProps): JSX.Element => {
   const headingClasses = classnames('usa-accordion__heading', className)
   const contentClasses = classnames(
     'usa-accordion__content',
@@ -67,7 +67,7 @@ export const Accordion = ({
   items,
   className,
   multiselectable = false,
-}: AccordionProps & JSX.IntrinsicElements['div']): React.ReactElement => {
+}: AccordionProps): JSX.Element => {
   const [openItems, setOpenState] = useState(
     items.filter((i) => !!i.expanded).map((i) => i.id)
   )
@@ -108,7 +108,8 @@ export const Accordion = ({
           key={`accordionItem_${i}`}
           {...item}
           expanded={openItems.indexOf(item.id) > -1}
-          handleToggle={(): void => {
+          handleToggle={(e): void => {
+            if (item.handleToggle) item.handleToggle(e)
             toggleItem(item.id)
           }}
         />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { Label } from './Label'
 
 export default {
@@ -17,23 +17,23 @@ Source: https://designsystem.digital.gov/components/form-controls/
   },
 }
 
-export const DefaultLabel = (): React.ReactElement => (
+export const DefaultLabel = (): JSX.Element => (
   <Label htmlFor="testInput">Text input label</Label>
 )
 
-export const Error = (): React.ReactElement => (
+export const Error = (): JSX.Element => (
   <Label htmlFor="testInputError" error>
     Text input error
   </Label>
 )
 
-export const WithHint = (): React.ReactElement => (
+export const WithHint = (): JSX.Element => (
   <Label htmlFor="testInputHint" hint={<> (optional)</>}>
     Text input
   </Label>
 )
 
-export const WithRequiredMarker = (): React.ReactElement => (
+export const WithRequiredMarker = (): JSX.Element => (
   <Label htmlFor="testInputRequired" requiredMarker>
     Text input
   </Label>

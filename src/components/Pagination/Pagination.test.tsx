@@ -61,7 +61,7 @@ describe('Pagination component', () => {
         pathname={testPathname}
       />
     )
-    expect(screen.getAllByRole('listitem')).toHaveLength(7) // overflow slots don't count
+    expect(screen.getAllByRole('listitem')).toHaveLength(9) // overflow slots don't count
   })
 
   it('renders pagination when the first page is current', () => {
@@ -307,7 +307,7 @@ describe('Pagination component', () => {
           maxSlots={10}
         />
       )
-      expect(screen.getAllByRole('listitem')).toHaveLength(10)
+      expect(screen.getAllByRole('listitem')).toHaveLength(12)
     })
   })
 })

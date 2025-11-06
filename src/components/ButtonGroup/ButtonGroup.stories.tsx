@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { ButtonGroup } from './ButtonGroup'
 import { Button } from '../Button/Button'
 import { Link } from '../Link/Link'
@@ -19,7 +19,7 @@ Source: https://designsystem.digital.gov/components/button-groups/
   },
 }
 
-export const Default = (): React.ReactElement => (
+export const Default = (): JSX.Element => (
   <ButtonGroup type="default">
     <Link href="#" className="usa-button usa-button--outline">
       Back
@@ -28,7 +28,7 @@ export const Default = (): React.ReactElement => (
   </ButtonGroup>
 )
 
-export const Segmented = (): React.ReactElement => (
+export const Segmented = (): JSX.Element => (
   <ButtonGroup type="segmented">
     <Button type="button">Map</Button>
     <Button type="button" outline>

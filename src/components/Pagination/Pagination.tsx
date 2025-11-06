@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { Icon } from '../Icon/Icons'
 import { Link } from '../Link/Link'
 import { Button } from '../Button/Button'
 
-type PaginationProps = {
+export type PaginationProps = {
   pathname: string // pathname of results page
   totalPages?: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
@@ -15,7 +15,7 @@ type PaginationProps = {
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-}
+} & JSX.IntrinsicElements['nav']
 
 const PaginationPage = ({
   page,
@@ -68,7 +68,7 @@ const PaginationPage = ({
 const PaginationOverflow = () => (
   <li
     className="usa-pagination__item usa-pagination__overflow"
-    role="presentation">
+    aria-label="ellipsis indicating non-visible pages">
     <span>…</span>
   </li>
 )
@@ -83,7 +83,7 @@ export const Pagination = ({
   onClickNext,
   onClickPageNumber,
   ...props
-}: PaginationProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
+}: PaginationProps): JSX.Element => {
   const navClasses = classnames('usa-pagination', className)
 
   const isOnFirstPage = currentPage === 1
@@ -174,7 +174,7 @@ export const Pagination = ({
                 aria-label="Previous page"
                 data-testid="pagination-previous"
                 onClick={onClickPrevious}>
-                <Icon.NavigateBefore />
+                <Icon.NavigateBefore aria-hidden={true} />
                 <span className="usa-pagination__link-text">Previous</span>
               </Button>
             ) : (
@@ -182,7 +182,7 @@ export const Pagination = ({
                 href={`${pathname}?page=${prevPage}`}
                 className="usa-pagination__link usa-pagination__previous-page"
                 aria-label="Previous page">
-                <Icon.NavigateBefore />
+                <Icon.NavigateBefore aria-hidden={true} />
                 <span className="usa-pagination__link-text">Previous</span>
               </Link>
             )}
@@ -214,7 +214,7 @@ export const Pagination = ({
                 data-testid="pagination-next"
                 onClick={onClickNext}>
                 <span className="usa-pagination__link-text">Next</span>
-                <Icon.NavigateNext />
+                <Icon.NavigateNext aria-hidden={true} />
               </Button>
             ) : (
               <Link
@@ -222,7 +222,7 @@ export const Pagination = ({
                 className="usa-pagination__link usa-pagination__next-page"
                 aria-label="Next page">
                 <span className="usa-pagination__link-text">Next</span>
-                <Icon.NavigateNext />
+                <Icon.NavigateNext aria-hidden={true} />
               </Link>
             )}
           </li>

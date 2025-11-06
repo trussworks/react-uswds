@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import { render } from '@testing-library/react'
 
 import { Grid, getGridClasses, applyGridClasses } from './Grid'
@@ -132,7 +132,7 @@ describe('Grid component', () => {
       children,
       className,
       ...sectionProps
-    }: CustomGridProps): React.ReactElement => (
+    }: CustomGridProps): JSX.Element => (
       <section role="grid" className={className} {...sectionProps}>
         {children}
       </section>

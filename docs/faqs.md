@@ -17,3 +17,7 @@
 - What's next? What is the roadmap for this project?
 
   - This library is active development. We use this library on our own projects at [Truss](https://truss.works/) and with clients. Follow library development and maintenance work in the [react-uswds Github project](https://github.com/trussworks/react-uswds/projects). In addition, reference the [milestones](https://github.com/trussworks/react-uswds/milestones) to track parity with various USWDS versions. There is no singular roadmap; our progress is shaped by those who contribute to the library, and by changes in the uswds specification. If you have work you'd like to see done earlier/sooner, please submit a PR. We welcome your contribution!
+
+- Why are my unit tests failing with a "Error: Your focus-trap must have at least one container with at least one tabbable node in it at all times" error?
+
+  - Due to issues between `focus-trap-react` and `jsdom`, accomodations must be made in order for unit tests rendering the `Modal` component to not fail. Please read more [here](./docs/modal_tests.md)

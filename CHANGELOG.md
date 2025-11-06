@@ -2,6 +2,83 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.0.2](https://github.com/trussworks/react-uswds/compare/10.0.1...10.0.2) (2025-06-09)
+
+
+### Bug Fixes
+
+* Correctly pass down classname props to Combobox component ([#3143](https://github.com/trussworks/react-uswds/issues/3143)) ([2086ab8](https://github.com/trussworks/react-uswds/commit/2086ab838af4da6eee0a2a9ad10222aad8c3eec9))
+
+## [10.0.1](https://github.com/trussworks/react-uswds/compare/10.0.0...10.0.1) (2025-05-16)
+
+### Bug Fixes
+
+* Fix an issue where the built package was not included in the published release artifact [#3161](https://github.com/trussworks/react-uswds/issues/3161) ([cfe7a6d](https://github.com/trussworks/react-uswds/commit/cfe7a6dbea4b6063a96abdf31a663e23791dc0da))
+
+## [10.0.0](https://github.com/trussworks/react-uswds/compare/9.1.0...10.0.0) (2025-05-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to React 19 ([#3088](https://github.com/trussworks/react-uswds/issues/3088)) ([2ad0462](https://github.com/trussworks/react-uswds/commit/2ad046278848d3499580a61c954496556f45ec30))
+
+### Features
+
+* Export component props ([#3118](https://github.com/trussworks/react-uswds/issues/3118)) ([2941f8c](https://github.com/trussworks/react-uswds/commit/2941f8ca88fcb96b919feae0c185a28c132e16a9))
+
+### Bug Fixes
+
+* [#2620](https://github.com/trussworks/react-uswds/issues/2620) Move form templates in Storybook ([#3097](https://github.com/trussworks/react-uswds/issues/3097)) ([0262854](https://github.com/trussworks/react-uswds/commit/026285419bcf99a85099436202e65cf535adbcba))
+* Husky postinstall in dev only ([#3152](https://github.com/trussworks/react-uswds/issues/3152)) ([a9ce78b](https://github.com/trussworks/react-uswds/commit/a9ce78b190608e601d902c008b51e7287e528515))
+* **release:** Fix react-uswds release pipeline ([#3148](https://github.com/trussworks/react-uswds/issues/3148)) ([70456f2](https://github.com/trussworks/react-uswds/commit/70456f2854f4c8fb2f9c82eecb77387fc1c70e58))
+* tooltip ID cleanup ([#3096](https://github.com/trussworks/react-uswds/issues/3096)) ([c161e1e](https://github.com/trussworks/react-uswds/commit/c161e1ee5855792feb77557303bf4f61de3bea86))
+* useId instead of random number for tooltip ID ([#3094](https://github.com/trussworks/react-uswds/issues/3094)) ([d769610](https://github.com/trussworks/react-uswds/commit/d7696108154fd644371f0b06b5b2348f9603a619))
+
+
+### Documentation & Examples
+
+* add [@lea-m-truss](https://github.com/lea-m-truss) as a contributor ([#3108](https://github.com/trussworks/react-uswds/issues/3108)) ([0285f25](https://github.com/trussworks/react-uswds/commit/0285f2583c9d3c963a9e7518e6a901841ba2df80))
+
+## [9.1.0](https://github.com/trussworks/react-uswds/compare/9.0.0...9.1.0) (2024-08-26)
+
+
+### Features
+
+* Enable custom on click handler passed via accordion item ([#2998](https://github.com/trussworks/react-uswds/issues/2998)) ([420483a](https://github.com/trussworks/react-uswds/commit/420483a0ca185844d39e193534ac07004e854920))
+
+
+### Bug Fixes
+
+* ‘use client’ directive syntax ([#2891](https://github.com/trussworks/react-uswds/issues/2891)) ([4e78d7e](https://github.com/trussworks/react-uswds/commit/4e78d7e45b40c3882c4faf345c9db6e240683453))
+* a11y omnibus package ([#2819](https://github.com/trussworks/react-uswds/issues/2819)) ([758cd74](https://github.com/trussworks/react-uswds/commit/758cd7456ee99cf49cea68bc9feb4a0d87feffab))
+* add a statusText prop to StepIndicator to allow for i18n for the sr-only element Closes [#2857](https://github.com/trussworks/react-uswds/issues/2857) ([#2888](https://github.com/trussworks/react-uswds/issues/2888)) ([855205e](https://github.com/trussworks/react-uswds/commit/855205e6927c7fce26b087520f564f4915e29aea))
+* moved smooth-scroll application to useEffect ([#2868](https://github.com/trussworks/react-uswds/issues/2868)) ([bc87158](https://github.com/trussworks/react-uswds/commit/bc8715860f47bd1f30415e40f748ca85ec288361))
+* remove defaultProps from DatePicker and Tooltip ([#2949](https://github.com/trussworks/react-uswds/issues/2949)) ([88947ca](https://github.com/trussworks/react-uswds/commit/88947ca84f0dbf3004de21c978e8b7ff7b1e5699))
+* Update TextInput ref forwarding ([#3011](https://github.com/trussworks/react-uswds/issues/3011)) ([f8ac06d](https://github.com/trussworks/react-uswds/commit/f8ac06dbb15625acbbdd8afaf58868a660653c92))
+
+
+### Documentation & Examples
+
+* Implementation examples ([#2890](https://github.com/trussworks/react-uswds/issues/2890)) ([4a68110](https://github.com/trussworks/react-uswds/commit/4a68110280e297bbb182a61136da65d2aaeaeca0))
+
+## [9.0.0](https://github.com/trussworks/react-uswds/compare/8.0.0...9.0.0) (2024-03-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820))
+
+### Bug Fixes
+
+* Added hook to combobox for when options change ([#2715](https://github.com/trussworks/react-uswds/issues/2715)) ([031b9fb](https://github.com/trussworks/react-uswds/commit/031b9fba59708236d6e1e4ec0caf3f53aeadfe9f))
+* Allow importing css from npm package ([#2807](https://github.com/trussworks/react-uswds/issues/2807)) ([8551f35](https://github.com/trussworks/react-uswds/commit/8551f35cef631185bb9a4672b742651e1cb4e023))
+* fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820)) ([e05061e](https://github.com/trussworks/react-uswds/commit/e05061e5a302137fd699fe4f716c9036b327fbcb))
+
+
+### Documentation & Examples
+
+* added docs for breaking changes and using withDeprecationWarning ([#2763](https://github.com/trussworks/react-uswds/issues/2763)) ([305e116](https://github.com/trussworks/react-uswds/commit/305e11629288307cafcc2bfb289ce109c777a092))
+
 ## [8.0.0](https://github.com/trussworks/react-uswds/compare/7.0.0...8.0.0) (2024-03-06)
 
 

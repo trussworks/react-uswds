@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, type JSX } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'
 import styles from './InPageNavigation.module.scss'
 
-type InPageNavigationProps = {
+export type InPageNavigationProps = {
   className?: string
   content: JSX.Element
   headingLevel?: HeadingLevel
@@ -14,7 +14,7 @@ type InPageNavigationProps = {
   scrollOffset?: string
   threshold?: number
   title?: string
-}
+} & Omit<JSX.IntrinsicElements['div'], 'content'>
 
 export const InPageNavigation = ({
   className,
@@ -27,9 +27,8 @@ export const InPageNavigation = ({
   threshold = 1,
   title = 'On this page',
   ...divProps
-}: InPageNavigationProps &
-  Omit<JSX.IntrinsicElements['div'], 'content'>): React.ReactElement => {
-  const classes = classnames('usa-in-page-nav', styles.target, className)
+}: InPageNavigationProps): JSX.Element => {
+  const asideClasses = classnames('usa-in-page-nav', styles.target, className)
   const { className: navClassName, ...remainingNavProps } = navProps || {}
   const navClasses = classnames('usa-in-page-nav__nav', navClassName)
   const { className: mainClassName, ...remainingMainProps } = mainProps || {}
@@ -57,12 +56,16 @@ export const InPageNavigation = ({
   const observer = new IntersectionObserver(handleIntersection, observerOptions)
   useEffect(() => {
     document.querySelectorAll('h2,h3').forEach((h) => observer.observe(h))
+    document.querySelector('html')?.classList.add(styles['smooth-scroll'])
+    return () => {
+      document.querySelector('html')?.classList.remove(styles['smooth-scroll'])
+    }
   })
 
   return (
     <div className="usa-in-page-nav-container" {...divProps}>
       <aside
-        className={classes}
+        className={asideClasses}
         aria-label={title}
         data-testid="InPageNavigation">
         <nav className={navClasses} {...remainingNavProps}>

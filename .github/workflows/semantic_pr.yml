@@ -2,15 +2,23 @@ name: Lint PR
 
 on:
   pull_request_target:
-    types: [opened, edited, synchronize]
+    types:
+      - opened
+      - edited
+      - synchronize
     branches:
       - main
       - sr-update-semantic-pr-config
 
 jobs:
   lint:
+    name: action-semantic-pull-request
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     steps:
-      - uses: amannn/action-semantic-pull-request@v1.2.0
+      - uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          wip: false

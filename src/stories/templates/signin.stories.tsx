@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { type JSX } from 'react'
 import {
   GridContainer,
   Grid,
@@ -116,7 +116,7 @@ const mockSubmit = (): void => {
   /* Blank function for mocking form submission */
 }
 
-export const SignIn = (): React.ReactElement => {
+export const SignIn = (): JSX.Element => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (
