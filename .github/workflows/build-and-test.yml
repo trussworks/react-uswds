@@ -63,6 +63,10 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
 
+      - name: Fetch main branch for Happo
+        if: github.ref != 'refs/heads/main'
+        run: git fetch origin main:main
+
       - name: Happo
         run: yarn happo-ci
         env:
