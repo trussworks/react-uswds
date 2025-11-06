@@ -7,15 +7,10 @@ const config: StorybookConfig = {
     // addon-docs is not in package.json, but required for storybook.
     '@storybook/addon-docs',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/react-vite',
     options: {},
-  },
-  docs: {
-    autodocs: true,
   },
   staticDirs: ['public'],
 }
