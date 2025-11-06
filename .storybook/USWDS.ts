@@ -1,4 +1,4 @@
-import { create } from 'storybook/theming';
+import { create } from 'storybook/theming'
 
 export default create({
   brandTitle: 'U.S. Web Design System (USWDS)',
@@ -8,7 +8,8 @@ export default create({
   base: 'light',
 
   // Text
-  fontBase: "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+  fontBase:
+    "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
   textColor: '#1b1b1b',
   inputTextColor: '#1b1b1b',
   textInverseColor: '#ffffff',
@@ -22,4 +23,4 @@ export default create({
   appBorderRadius: 4,
   inputBorder: '#5c5c5c',
   inputBorderRadius: 4,
-});
+})

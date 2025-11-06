@@ -5,8 +5,8 @@ import '../src/styles/index.scss'
 import './custom-styles.scss'
 
 import { INITIAL_VIEWPORTS } from 'storybook/viewport'
-import { Preview } from '@storybook/react';
-import USWDS from './USWDS';
+import { Preview } from '@storybook/react'
+import USWDS from './USWDS'
 
 const preview: Preview = {
   parameters: {
@@ -20,10 +20,16 @@ const preview: Preview = {
       showPanel: true,
       storySort: {
         method: 'alphabetical',
-        order: ['Welcome', 'Design tokens', 'Page Templates', 'Components', 'Other'],
+        order: [
+          'Welcome',
+          'Design tokens',
+          'Page Templates',
+          'Components',
+          'Other',
+        ],
       },
     },
   },
-  tags: ["autodocs"]
+  tags: ['autodocs'],
 }
-export default preview;
+export default preview

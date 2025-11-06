@@ -6,9 +6,9 @@ __metadata:
   cacheKey: 8
 
 "@acemir/cssom@npm:^0.9.19":
-  version: 0.9.19
-  resolution: "@acemir/cssom@npm:0.9.19"
-  checksum: 9b10affc99e8231bb1a3b739b9c6c3301a44ada5a7cd43224477d0533e7609eab0493861fd530655b5b74919ef5aa9a86454b8542913c4fea0a1090517bc7301
+  version: 0.9.20
+  resolution: "@acemir/cssom@npm:0.9.20"
+  checksum: 49ae13d20d348c5e64b338fb1cdf453553405dcd71cad47fce3ba5bc6e5dbd4906d525587fee0773bc0c4a82f0b519131891ae0e39e7e2038058c50be1ab20a1
   languageName: node
   linkType: hard
 
@@ -209,7 +209,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.20.7, @babel/parser@npm:^7.23.9, @babel/parser@npm:^7.25.4, @babel/parser@npm:^7.27.2, @babel/parser@npm:^7.28.4, @babel/parser@npm:^7.28.5":
+"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.20.7, @babel/parser@npm:^7.23.9, @babel/parser@npm:^7.25.4, @babel/parser@npm:^7.27.2, @babel/parser@npm:^7.28.5":
   version: 7.28.5
   resolution: "@babel/parser@npm:7.28.5"
   dependencies:
@@ -2165,10 +2165,12 @@ __metadata:
     happo-plugin-storybook: ^5.0.4
     happo.io: ^13.0.1
     jsdom: ^27.0.1
+    nano-staged: ^0.8.0
     prettier: ^3.2.5
     react: ^19.0.0
     react-dom: ^19.0.0
     sass-embedded: ^1.86.0
+    simple-git-hooks: ^2.13.1
     storybook: ^10.0.5
     stylelint: ^16.16.0
     stylelint-config-css-modules: ^4.4.0
@@ -2667,26 +2669,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-core@npm:3.5.22":
-  version: 3.5.22
-  resolution: "@vue/compiler-core@npm:3.5.22"
+"@vue/compiler-core@npm:3.5.23":
+  version: 3.5.23
+  resolution: "@vue/compiler-core@npm:3.5.23"
   dependencies:
-    "@babel/parser": ^7.28.4
-    "@vue/shared": 3.5.22
+    "@babel/parser": ^7.28.5
+    "@vue/shared": 3.5.23
     entities: ^4.5.0
     estree-walker: ^2.0.2
     source-map-js: ^1.2.1
-  checksum: 0868c69d787fd8f3011d3e026ff3abc55509a187391a407b88e454822e58152cf9187acbd6bca7f14beb94601d978fd70e5c6a47334ff17a5fed58dc6e163628
+  checksum: bf687aabf5042fe265d3f7edd314dbbcdf43bdd5690239e2b461f5fbec98b3c3b002228eecce315f802bf64d844fd73c60a2567a86f3bc9d0c4fa3ed70af2401
   languageName: node
   linkType: hard
 
 "@vue/compiler-dom@npm:^3.5.0":
-  version: 3.5.22
-  resolution: "@vue/compiler-dom@npm:3.5.22"
+  version: 3.5.23
+  resolution: "@vue/compiler-dom@npm:3.5.23"
   dependencies:
-    "@vue/compiler-core": 3.5.22
-    "@vue/shared": 3.5.22
-  checksum: e90f6b52475f9529e0f86ea3e1257fb3d3d5a0fb69d1a989fc831b2f6e7726dfc9532b40b3c10820ee4efad99eb0f3f583fc65aa8bec1242ef5c62a6d9713d4a
+    "@vue/compiler-core": 3.5.23
+    "@vue/shared": 3.5.23
+  checksum: f37a99ba5eb0070e5b1ea699d7540ec5c67e02da13e385feed2f2430685b598c8b7330cd688a3ac5f9e935ff701eb7676a5c4349fba26da928282c824e5b9d00
   languageName: node
   linkType: hard
 
@@ -2721,10 +2723,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/shared@npm:3.5.22, @vue/shared@npm:^3.5.0":
-  version: 3.5.22
-  resolution: "@vue/shared@npm:3.5.22"
-  checksum: b8a5219775207db0caa6af926dfb8af9f2ef20197a201ed2be35bc7965b0d10221f247df775c73a4f901127d5894c73f4bec18f70ec50c7276f15f67b0ade48e
+"@vue/shared@npm:3.5.23, @vue/shared@npm:^3.5.0":
+  version: 3.5.23
+  resolution: "@vue/shared@npm:3.5.23"
+  checksum: e668356c77555ad8db6773c656d8417d2074a21f5b94f29ea5936bc254bab1775a13dd707b6e3f94bc50cdaec663ec61fdad6d0b2a034000a2309e0daf4a2edf
   languageName: node
   linkType: hard
 
@@ -3460,14 +3462,14 @@ __metadata:
   linkType: hard
 
 "bare-events@npm:^2.7.0":
-  version: 2.8.1
-  resolution: "bare-events@npm:2.8.1"
+  version: 2.8.2
+  resolution: "bare-events@npm:2.8.2"
   peerDependencies:
     bare-abort-controller: "*"
   peerDependenciesMeta:
     bare-abort-controller:
       optional: true
-  checksum: 18511c49cd23d72ddc660530a7d802bcd767d343110ebcf47829ae312bddbc8eff81d08190d62364f1be14041242f30d24d9c755043a648f44d0fda47b92fdff
+  checksum: 97e6fc825bc984363a1f695c9a962b1b9f0ea467baa95d7059565a0aa31f4b5fc0f5eb71c087456ae3a436f39fce14a6147a12dd63aac0ff1d20cc5ad64cd780
   languageName: node
   linkType: hard
 
@@ -3686,9 +3688,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001751":
-  version: 1.0.30001753
-  resolution: "caniuse-lite@npm:1.0.30001753"
-  checksum: d38b17895a99bf1ba9f1a8076233e3d4a606cd0121ccdb381ea94c651aaea0e1587ba3922b11dde4eb153b6741ac3e129fc670df0a7251987ed8619f09059b8a
+  version: 1.0.30001754
+  resolution: "caniuse-lite@npm:1.0.30001754"
+  checksum: f5a956d820c6a4de16d0c22eb6bbbbaec346f502f324523311bbbfe4dd8ed0d69ae6034dd96a2f901156f3e4571606670be01f74c8234ac56ea7820383b6aca0
   languageName: node
   linkType: hard
 
@@ -7182,6 +7184,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nano-staged@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "nano-staged@npm:0.8.0"
+  dependencies:
+    picocolors: ^1.0.0
+  bin:
+    nano-staged: lib/bin.js
+  checksum: 01a6eee4053bd163e3084f34421fcb0f3ab90b5c47fa1ff7b4208f2a553b5e0a26e55a7f88c8af7632cfc2bcc3622d6078697bb0042409744bbb65565bb43334
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:^3.3.11":
   version: 3.3.11
   resolution: "nanoid@npm:3.3.11"
@@ -7656,7 +7669,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picocolors@npm:1.1.1, picocolors@npm:^1.1.1":
+"picocolors@npm:1.1.1, picocolors@npm:^1.0.0, picocolors@npm:^1.1.1":
   version: 1.1.1
   resolution: "picocolors@npm:1.1.1"
   checksum: e1cf46bf84886c79055fdfa9dcb3e4711ad259949e3565154b004b260cd356c5d54b31a1437ce9782624bf766272fe6b0154f5f0c744fb7af5d454d2b60db045
@@ -8863,6 +8876,15 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 64c757b498cb8629ffa5f75485340594d2f8189e9b08700e69199069c8e3070fb3e255f7ab873c05dc0b3cec412aea7402e10a5990cb6a050bd33ba062a6c549
+  languageName: node
+  linkType: hard
+
+"simple-git-hooks@npm:^2.13.1":
+  version: 2.13.1
+  resolution: "simple-git-hooks@npm:2.13.1"
+  bin:
+    simple-git-hooks: cli.js
+  checksum: e259c9c314129a48f53cf3c79d1fb7181b1124a02979aeea070f234306576dd72a1936d0adb1b3568f4b382cad33a5913c09f9d0d3620eedc1dacd89c1ff12b9
   languageName: node
   linkType: hard
 
@@ -10106,8 +10128,8 @@ __metadata:
   linkType: hard
 
 "vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0, vite@npm:^7.0.2":
-  version: 7.2.0
-  resolution: "vite@npm:7.2.0"
+  version: 7.2.1
+  resolution: "vite@npm:7.2.1"
   dependencies:
     esbuild: ^0.25.0
     fdir: ^6.5.0
@@ -10156,7 +10178,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: af5257e9724dee165384f08bed49c034dbfe78ac0932c6a2a2fa28c31a5ac75ac9a17123674399b06ca5f32ac2558661f9e0a0277dbb6ee4d1a43cabe109adfd
+  checksum: 6ccdeb4446d8d1690db516232a7d5dfe4435d069b32ee25cfef3896b4d0bb4326d80af3216a56b0a1e757d85393a21a87b1d5a3b06ca6ad21f885e17e661de7c
   languageName: node
   linkType: hard
 
