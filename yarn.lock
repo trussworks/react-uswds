@@ -2163,7 +2163,7 @@ __metadata:
     focus-trap-react: ^11.0.3
     globals: ^16.0.0
     happo-plugin-storybook: ^5.0.4
-    happo.io: ^12.1.0
+    happo.io: ^13.0.1
     jsdom: ^27.0.1
     prettier: ^3.2.5
     react: ^19.0.0
@@ -5583,9 +5583,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happo.io@npm:^12.1.0":
-  version: 12.4.3
-  resolution: "happo.io@npm:12.4.3"
+"happo.io@npm:^13.0.1":
+  version: 13.0.1
+  resolution: "happo.io@npm:13.0.1"
   dependencies:
     "@babel/preset-react": ^7.12.1
     archiver: ^7.0.1
@@ -5603,9 +5603,9 @@ __metadata:
     pngjs: ^7.0.0
     require-relative: ^0.8.7
     source-map-support: ^0.5.9
-    supports-color: ^7.1.0
+    supports-color: ^8.1.1
   peerDependencies:
-    babel-loader: ^7.0.0 || ^8.0.0 || ^9.0.0
+    babel-loader: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
     webpack: ^3.5.5 || ^4.0.0 || ^5.0.0
   bin:
     happo: build/cli.js
@@ -5614,7 +5614,7 @@ __metadata:
     happo-ci-circleci: bin/happo-ci-circleci
     happo-ci-github-actions: bin/happo-ci-github-actions
     happo-ci-travis: bin/happo-ci-travis
-  checksum: 685e4868839bc0dfbede5205a2650fa78bb23a285cab10fba254e13a49b361e3605bb994b592e9ed41613f98e0c37a5cbd42f5dde4e59f978666cee554520f21
+  checksum: f7f765409a8469b65d3723cb37e5fb16a27a66b211e1688c907c90689349b6428fb555ff4ec5ebf548d216caba8052256c0cb6313a66fe77b9aef09821ff7840
   languageName: node
   linkType: hard
 

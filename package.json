@@ -112,7 +112,7 @@
     "focus-trap-react": "^11.0.3",
     "globals": "^16.0.0",
     "happo-plugin-storybook": "^5.0.4",
-    "happo.io": "^12.1.0",
+    "happo.io": "^13.0.1",
     "jsdom": "^27.0.1",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
