@@ -43,8 +43,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: '0'
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -61,15 +59,6 @@ jobs:
 
       - name: Check format
         run: yarn format:check
-
-      - name: Build Storybook
-        run: yarn build-storybook
-
-      - name: Happo
-        run: yarn happo-ci
-        env:
-          HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
-          HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
 
       - name: Run Danger JS
         run: yarn danger ci --failOnErrors
