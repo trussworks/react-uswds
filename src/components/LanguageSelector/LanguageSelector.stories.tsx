@@ -1,6 +1,6 @@
 import React, { type JSX, useState } from 'react'
 import { LanguageSelector, LanguageDefinition } from './LanguageSelector'
-import { StoryFn } from '@storybook/react'
+import { StoryFn } from '@storybook/react-vite'
 
 export default {
   title: 'Components/LanguageSelector',
