@@ -40,7 +40,7 @@ const Template = ({ ...args }) => {
   }
 
   const handlePageNumber = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    _event: React.MouseEvent<HTMLButtonElement>,
     pageNum: number
   ) => {
     setCurrentPage(pageNum)
