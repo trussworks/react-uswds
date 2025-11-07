@@ -34,13 +34,21 @@ describe('InPageNavigation component', () => {
 
   beforeEach(() => {
     // IntersectionObserver isn't available in test environment
-    const mockIntersectionObserver = vi.fn()
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    })
-    window.IntersectionObserver = mockIntersectionObserver
+    const IntersectionObserverMock = vi.fn(
+      class {
+        constructor(
+          _callback: IntersectionObserverCallback,
+          _options?: IntersectionObserverInit
+        ) {}
+
+        disconnect = vi.fn()
+        observe = vi.fn()
+        takeRecords = vi.fn()
+        unobserve = vi.fn()
+      }
+    )
+
+    vi.stubGlobal('IntersectionObserver', IntersectionObserverMock)
   })
 
   it('renders without errors', () => {
