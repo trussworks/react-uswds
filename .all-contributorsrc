@@ -398,6 +398,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "TomNUSDS",
+      "name": "TomNUSDS",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74203452?v=4",
+      "profile": "https://github.com/TomNUSDS",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
