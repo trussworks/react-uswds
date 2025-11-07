@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Pagination } from './Pagination'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const pathname = '/test-pathname'
 

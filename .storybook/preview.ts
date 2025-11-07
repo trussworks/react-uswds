@@ -5,7 +5,7 @@ import '../src/styles/index.scss'
 import './custom-styles.scss'
 
 import { INITIAL_VIEWPORTS } from 'storybook/viewport'
-import { Preview } from '@storybook/react'
+import { Preview } from '@storybook/react-vite'
 import USWDS from './USWDS'
 
 const preview: Preview = {
