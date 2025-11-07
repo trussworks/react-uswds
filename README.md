@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-40-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -226,6 +226,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://aliglenesk.dev"><img src="https://avatars.githubusercontent.com/u/7331495?v=4?s=100" width="100px;" alt="Ali"/><br /><sub><b>Ali</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=aligg" title="Code">💻</a> <a href="#maintenance-aligg" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ivcota"><img src="https://avatars.githubusercontent.com/u/18635074?v=4?s=100" width="100px;" alt="Iverson Diles"/><br /><sub><b>Iverson Diles</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3AIvcota" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Ivcota" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/doug-s-nava"><img src="https://avatars.githubusercontent.com/u/92806979?v=4?s=100" width="100px;" alt="doug-s-nava"/><br /><sub><b>doug-s-nava</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Adoug-s-nava" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=doug-s-nava" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TomNUSDS"><img src="https://avatars.githubusercontent.com/u/74203452?v=4?s=100" width="100px;" alt="TomNUSDS"/><br /><sub><b>TomNUSDS</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3ATomNUSDS" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=TomNUSDS" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
