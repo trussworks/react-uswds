@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.0.2](https://github.com/trussworks/react-uswds/compare/10.0.1...10.0.2) (2025-06-09)
+
+
+### Bug Fixes
+
+* Correctly pass down classname props to Combobox component ([#3143](https://github.com/trussworks/react-uswds/issues/3143)) ([2086ab8](https://github.com/trussworks/react-uswds/commit/2086ab838af4da6eee0a2a9ad10222aad8c3eec9))
+
 ## [10.0.1](https://github.com/trussworks/react-uswds/compare/10.0.0...10.0.1) (2025-05-16)
 
 ### Bug Fixes

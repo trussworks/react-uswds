@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 
 import { FilePreview } from './FilePreview'
@@ -25,6 +25,16 @@ describe('FilePreview component', () => {
     expect(getByTestId('file-input-preview')).toHaveTextContent(
       testProps.file.name
     )
+  })
+
+  it('renders without errors when loaded multiple times (simulating react dev mode)', () => {
+    const { getByTestId } = render(
+      <StrictMode>
+        <FilePreview imageId="" file={TEST_TEXT_FILE} />
+      </StrictMode>
+    )
+
+    expect(getByTestId('file-input-preview')).toBeInTheDocument()
   })
 
   it('renders a preview image', async () => {

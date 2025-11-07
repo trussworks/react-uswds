@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './Modal.module.scss'
 
 export type ModalHook = {
   isOpen: boolean
@@ -48,11 +49,7 @@ export const getScrollbarWidth = (): string => {
   // Only run in browser
   if (typeof document !== 'undefined') {
     const outer = document.createElement('div')
-
-    outer.setAttribute(
-      'style',
-      'visibility: hidden; overflow: scroll; ms-overflow-style: scrollbar'
-    )
+    outer.className = styles.outer
 
     document.body.appendChild(outer)
 

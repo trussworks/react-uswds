@@ -378,6 +378,36 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "Ivcota",
+      "name": "Iverson Diles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18635074?v=4",
+      "profile": "https://github.com/Ivcota",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "doug-s-nava",
+      "name": "doug-s-nava",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92806979?v=4",
+      "profile": "https://github.com/doug-s-nava",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "TomNUSDS",
+      "name": "TomNUSDS",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74203452?v=4",
+      "profile": "https://github.com/TomNUSDS",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
