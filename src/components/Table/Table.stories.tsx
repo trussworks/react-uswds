@@ -350,7 +350,7 @@ export const Scrollable = (): JSX.Element => (
 
 export const StickyHeader = {
   render: (argTypes: StorybookArguments): React.ReactElement => (
-    <Table stickyHeader={argTypes.stickyHeader} bordered={argTypes.bordered}>
+    <Table stickyHeader bordered={argTypes.bordered}>
       {testContent}
     </Table>
   ),

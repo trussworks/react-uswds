@@ -6,6 +6,7 @@ import React, {
   useRef,
   useState,
   JSX,
+  useCallback,
 } from 'react'
 import classnames from 'classnames'
 
@@ -193,15 +194,23 @@ export function Tooltip<
     }
   }, [isVisible])
 
-  const showTooltip = (): void => {
+  const showTooltip = useCallback((): void => {
     setVisible(true)
-  }
-  const hideTooltip = (): void => {
+  }, [])
+  const hideTooltip = useCallback((): void => {
     setVisible(false)
-  }
-  const escapeTooltip = (e: React.KeyboardEvent<HTMLButtonElement>): void => {
-    if (e.key === 'Escape') hideTooltip()
-  }
+  }, [])
+
+  useEffect(() => {
+    const escapeTooltip = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') hideTooltip()
+    }
+
+    window.addEventListener('keydown', escapeTooltip)
+    return () => {
+      window.removeEventListener('keydown', escapeTooltip)
+    }
+  }, [hideTooltip])
 
   const wrapperClasses = classnames('usa-tooltip', wrapperclasses)
 
@@ -233,7 +242,6 @@ export function Tooltip<
         onMouseOver: showTooltip,
         onFocus: showTooltip,
         onBlur: hideTooltip,
-        onKeyDown: escapeTooltip,
         className: triggerClasses,
       },
       children
@@ -284,8 +292,7 @@ export function Tooltip<
           onMouseEnter={showTooltip}
           onMouseOver={showTooltip}
           onFocus={showTooltip}
-          onBlur={hideTooltip}
-          onKeyDown={escapeTooltip}>
+          onBlur={hideTooltip}>
           {children}
         </button>
         <span
