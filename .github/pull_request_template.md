@@ -17,5 +17,7 @@
 
 ## Author & Maintainer checklist
 
-- [ ] Is this is a [breaking change](../docs/breaking-changes.md)? Follow the linked documentation to ensure breaking changes are properly handled
-- [ ] Once merged, add the PR and Issue author(s) as a contributor(s) via the [all-contributors bot](https://allcontributors.org/docs/en/bot/usage#all-contributors-add)
+- Is this is a [breaking change](../docs/breaking-changes.md)?
+  - [ ] Yes, and I accounted for the breaking changes according to the linked documentation
+  - [ ] No
+- Once merged, add the PR and Issue author(s) as a contributor(s) via the [all-contributors bot](https://allcontributors.org/docs/en/bot/usage#all-contributors-add)
