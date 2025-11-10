@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type JSX } from 'react'
+import React, { useState, type JSX } from 'react'
 import classnames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
@@ -64,15 +64,18 @@ export const AccordionItem = ({
 
 function buildExpansions(
   items: AccordionItemProps[],
-  multiselectable: boolean
+  multiselectable: boolean,
+  savedExpansions = new Map<string, boolean | undefined>()
 ) {
-  const lastExpandedItem = items.findLast(({ expanded }) => expanded)
+  const lastExpandedItem = items.findLast(
+    (item) => item.expanded || savedExpansions.get(item.id)
+  )
   return items.reduce((map, item) => {
     map.set(
       item.id,
       !multiselectable
         ? !!lastExpandedItem && item.id === lastExpandedItem.id
-        : !!item.expanded
+        : (savedExpansions.get(item.id) ?? !!item.expanded)
     )
     return map
   }, new Map<string, boolean | undefined>())
@@ -84,28 +87,20 @@ export const Accordion = ({
   className,
   multiselectable = false,
 }: AccordionProps): JSX.Element => {
-  const [expansions, setExpansions] = useState(
+  const [savedExpansions, setSavedExpansions] = useState(
     buildExpansions(items, multiselectable)
   )
 
-  useEffect(() => {
-    const knownIds = Array.from(expansions.keys())
-    const newItems = items.filter(({ id }) => !knownIds.includes(id))
-    if (!newItems.length) return
-
-    setExpansions((prevExpansions) => {
-      const updatedExpansions = new Map(prevExpansions)
-      const newExpansions = buildExpansions(newItems, multiselectable)
-      const newEntries = Array.from(newExpansions.entries())
-      if (!multiselectable && newEntries.some(([, value]) => value)) {
-        updatedExpansions.forEach((val, key, map) => map.set(key, false))
-      }
-      for (const [key, value] of newEntries) {
-        updatedExpansions.set(key, value)
-      }
-      return updatedExpansions
-    })
-  }, [items, expansions])
+  // Update saved expansions with new items as the appear
+  const ids = items.map(({ id }) => id)
+  const [prevIds, setPrevIds] = useState(ids)
+  if (
+    ids.length != prevIds.length ||
+    !ids.every((id) => prevIds.includes(id))
+  ) {
+    setPrevIds(ids)
+    setSavedExpansions(buildExpansions(items, multiselectable, savedExpansions))
+  }
 
   const classes = classnames(
     'usa-accordion',
@@ -116,13 +111,13 @@ export const Accordion = ({
   )
 
   const toggleItem = (itemId: AccordionItemProps['id']): void => {
-    setExpansions((prevExpansions) => {
+    setSavedExpansions((prevExpansions) => {
       const updatedExpansions = new Map(prevExpansions)
       if (updatedExpansions.get(itemId)) {
         updatedExpansions.set(itemId, false)
       } else {
         if (!multiselectable) {
-          updatedExpansions.forEach((val, key, map) => map.set(key, false))
+          updatedExpansions.forEach((_val, key, map) => map.set(key, false))
         }
         updatedExpansions.set(itemId, true)
       }
@@ -139,7 +134,7 @@ export const Accordion = ({
         <AccordionItem
           key={`accordionItem_${i}`}
           {...item}
-          expanded={expansions.get(item.id) ?? false}
+          expanded={savedExpansions.get(item.id) ?? false}
           handleToggle={(e): void => {
             if (item.handleToggle) item.handleToggle(e)
             toggleItem(item.id)
