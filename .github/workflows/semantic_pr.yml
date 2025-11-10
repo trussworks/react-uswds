@@ -16,8 +16,39 @@ jobs:
     permissions:
       pull-requests: read
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: lint_pr_title
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           wip: false
+
+      - uses: marocchino/sticky-pull-request-comment@v2
+        # Continue execution if action-semantic-pull-request fails with an error
+        if: always() && (steps.lint_pr_title.outputs.error_message != null)
+        with:
+          header: Invalid Pull Request Title
+          message: |
+            Thank you for your Pull Request!
+
+            We require pull request titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
+
+            Details:
+
+            ```
+            ${{ steps.lint_pr_title.outputs.error_message }}
+            ```
+            
+            Your Pull Request currently features:
+            
+            * `type`: ${{ steps.lint_pr_title.outputs.type }}
+            * `scope`: ${{ steps.lint_pr_title.outputs.scope }}
+            
+            Please update your Pull Request title accordingly to re-run this check. Preffered conventional commit `type` values can be found in our [release-please configuration](https://github.com/trussworks/react-uswds/blob/main/release-please-config.json).
+
+      # If the PR linting issue has been resolved, delete the corresponding comment if one exists
+      - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Invalid Pull Request Title
+          delete: true
