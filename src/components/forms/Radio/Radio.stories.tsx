@@ -1,6 +1,6 @@
 import React from 'react'
 import { Radio } from './Radio'
-import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Radio> = {
   title: 'Components/Radio buttons',
