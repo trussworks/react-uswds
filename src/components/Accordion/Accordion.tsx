@@ -99,7 +99,9 @@ export const Accordion = ({
     !ids.every((id) => prevIds.includes(id))
   ) {
     setPrevIds(ids)
-    setSavedExpansions(buildExpansions(items, multiselectable, savedExpansions))
+    setSavedExpansions((prevExpansions) =>
+      buildExpansions(items, multiselectable, prevExpansions)
+    )
   }
 
   const classes = classnames(
