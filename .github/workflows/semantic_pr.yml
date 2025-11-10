@@ -38,13 +38,6 @@ jobs:
             ```
             ${{ steps.lint_pr_title.outputs.error_message }}
             ```
-            
-            Your Pull Request currently features:
-            
-            * `type`: ${{ steps.lint_pr_title.outputs.type }}
-            * `scope`: ${{ steps.lint_pr_title.outputs.scope }}
-            
-            Please update your Pull Request title accordingly to re-run this check. Preffered conventional commit `type` values can be found in our [release-please configuration](https://github.com/trussworks/react-uswds/blob/main/release-please-config.json).
 
       # If the PR linting issue has been resolved, delete the corresponding comment if one exists
       - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
