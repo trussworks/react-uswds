@@ -19,18 +19,23 @@ export const FilePreview = ({
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)
   const [showGenericPreview, setShowGenericPreview] = useState(false)
+  const firstRenderRef = useRef(false)
 
   useEffect(() => {
+    if (firstRenderRef.current) {
+      // already run, do nothing
+      return
+    }
+    // only run once
+    firstRenderRef.current = true
+
     fileReaderRef.current.onloadend = (): void => {
       setIsLoading(false)
       setPreviewSrc(fileReaderRef.current.result as string)
+      fileReaderRef.current.onloadend = null // is only run once
     }
 
     fileReaderRef.current.readAsDataURL(file)
-
-    return (): void => {
-      fileReaderRef.current.onloadend = null
-    }
   }, [])
 
   const { name } = file

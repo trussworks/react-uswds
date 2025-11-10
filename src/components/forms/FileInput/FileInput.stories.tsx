@@ -65,6 +65,9 @@ export const AcceptImages = (): JSX.Element => (
       name="file-input-wildcard"
       accept="image/*"
       aria-describedby="file-input-wildcard-hint"
+      previewSingleSelectedFileText="Selected photo"
+      previewMultipleSelectedFileText="Photos selected"
+      changeSelectedFileText="Change photo"
       multiple
     />
   </FormGroup>

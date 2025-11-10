@@ -17,6 +17,9 @@ export type FileInputProps = {
   dragText?: string
   chooseText?: string
   errorText?: string
+  previewSingleSelectedFileText?: string
+  previewMultipleSelectedFileText?: string
+  changeSelectedFileText?: string
   disabled?: boolean
   multiple?: boolean
   accept?: string
@@ -40,6 +43,9 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     dragText,
     chooseText,
     errorText,
+    previewSingleSelectedFileText,
+    previewMultipleSelectedFileText,
+    changeSelectedFileText,
     disabled,
     multiple,
     className,
@@ -94,6 +100,9 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     : 'Drag file here or '
   const defaultChooseText = 'choose from folder'
   const defaultErrorText = 'This is not a valid file type.'
+  const defaultSingleSelectedFileText = 'Selected file'
+  const defaultMultipleSelectedFileText = ' files selected'
+  const defaultChangeSelectedFileText = 'Change file'
 
   const filePreviews = []
   if (files) {
@@ -116,8 +125,10 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
 
   const previewHeaderText =
     filePreviews.length > 1
-      ? `${filePreviews.length} files selected`
-      : 'Selected file'
+      ? previewMultipleSelectedFileText
+        ? `${filePreviews.length} ${previewMultipleSelectedFileText}`
+        : `${filePreviews.length} ${defaultMultipleSelectedFileText}`
+      : previewSingleSelectedFileText || defaultSingleSelectedFileText
 
   const preventInvalidFiles = (e: React.DragEvent): void => {
     setShowError(false)
@@ -191,7 +202,8 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
             className="usa-file-input__preview-heading">
             {previewHeaderText}{' '}
             <span className="usa-file-input__choose">
-              Change file{filePreviews.length > 1 && 's'}
+              {(changeSelectedFileText || defaultChangeSelectedFileText) +
+                (filePreviews.length > 1 ? 's' : '')}
             </span>
           </div>
         )}
