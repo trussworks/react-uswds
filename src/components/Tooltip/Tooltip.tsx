@@ -226,7 +226,6 @@ export function Tooltip<
         'data-testid': 'triggerElement',
         'aria-describedby': tooltipID,
         tabIndex: 0,
-        title: '',
         onMouseEnter: showTooltip,
         onMouseOver: showTooltip,
         onFocus: showTooltip,
@@ -274,7 +273,6 @@ export function Tooltip<
           tabIndex={0}
           type="button"
           className={triggerClasses}
-          title=""
           onMouseEnter={showTooltip}
           onMouseOver={showTooltip}
           onFocus={showTooltip}
