@@ -1,7 +1,7 @@
 import React from 'react'
 import { Select } from './Select'
 import { Label } from '../Label/Label'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',

@@ -54,7 +54,24 @@
     "prepack": "yarn lint && yarn test && yarn build",
     "happo": "happo run --config ./.happo.js",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.js' npx -p happo.io happo-ci-github-actions --config ./.happo.js",
-    "contributors:add": "all-contributors add"
+    "contributors:add": "all-contributors add",
+    "postinstall": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn nano-staged"
+  },
+  "nano-staged": {
+    "**/*.{ts,tsx,js,jsx}": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
+    ],
+    "**/*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -79,16 +96,11 @@
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.22.0",
     "@laynezh/vite-plugin-lib-assets": "^2.1.0",
-    "@storybook/addon-a11y": "^8.6.11",
-    "@storybook/addon-essentials": "^8.6.11",
-    "@storybook/addon-interactions": "^8.6.11",
-    "@storybook/addon-links": "^8.6.11",
-    "@storybook/blocks": "^8.6.11",
-    "@storybook/manager-api": "^8.6.11",
-    "@storybook/react": "^8.6.11",
-    "@storybook/react-vite": "^8.6.11",
-    "@storybook/test": "^8.6.11",
-    "@storybook/theming": "^8.6.11",
+    "@storybook/addon-a11y": "^10.0.5",
+    "@storybook/addon-docs": "^10.0.5",
+    "@storybook/addon-links": "^10.0.5",
+    "@storybook/react": "^10.0.5",
+    "@storybook/react-vite": "^10.0.5",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -99,7 +111,7 @@
     "@typescript-eslint/parser": "^8.29.0",
     "@uswds/uswds": "3.8.2",
     "@vitejs/plugin-react": "^5.0.0",
-    "@vitest/coverage-istanbul": "^3.1.3",
+    "@vitest/coverage-istanbul": "^4.0.8",
     "@vitest/eslint-plugin": "^1.1.44",
     "all-contributors-cli": "^6.24.0",
     "babel-loader": "^10.0.0",
@@ -111,19 +123,21 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-security": "^3.0.1",
-    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-storybook": "^10.0.5",
     "focus-trap-react": "^11.0.3",
     "globals": "^16.0.0",
-    "happo-plugin-storybook": "^4.4.3",
-    "happo.io": "^12.1.0",
-    "jsdom": "^26.1.0",
+    "happo-plugin-storybook": "^5.0.4",
+    "happo.io": "^13.0.1",
+    "jsdom": "^27.0.1",
+    "nano-staged": "^0.8.0",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass-embedded": "^1.86.0",
-    "storybook": "^8.6.11",
+    "simple-git-hooks": "^2.13.1",
+    "storybook": "^10.0.5",
     "stylelint": "^16.16.0",
     "stylelint-config-css-modules": "^4.4.0",
     "stylelint-config-recommended": "^17.0.0",
@@ -131,10 +145,10 @@
     "stylelint-config-standard-scss": "^16.0.0",
     "typescript": "^5.8.3",
     "vite": "^7.0.2",
-    "vite-plugin-checker": "^0.10.0",
+    "vite-plugin-checker": "^0.11.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-svgr": "^4.3.0",
-    "vitest": "^3.1.3",
+    "vitest": "^4.0.8",
     "webpack": "^5.90.1"
   },
   "packageManager": "yarn@3.8.7"
