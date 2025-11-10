@@ -92,13 +92,9 @@ export const Accordion = ({
   )
 
   // Update saved expansions with new items as the appear
-  const ids = items.map(({ id }) => id)
-  const [prevIds, setPrevIds] = useState(ids)
-  if (
-    ids.length != prevIds.length ||
-    !ids.every((id) => prevIds.includes(id))
-  ) {
-    setPrevIds(ids)
+  const [prevItems, setPrevItems] = useState(items)
+  if (items !== prevItems) {
+    setPrevItems(items)
     setSavedExpansions((prevExpansions) =>
       buildExpansions(items, multiselectable, prevExpansions)
     )
