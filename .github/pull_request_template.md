@@ -14,3 +14,8 @@
 <!-- Make sure you've tested this branch in your application to verify it works before merging & releasing. -->
 
 ## Screenshots (optional)
+
+## Author & Maintainer checklist
+
+- [ ] Is this is a [breaking change](../docs/breaking-changes.md)? Follow the linked documentation to ensure breaking changes are properly handled
+- [ ] Once merged, add the PR and Issue author(s) as a contributor(s) via the [all-contributors bot](https://allcontributors.org/docs/en/bot/usage#all-contributors-add)
