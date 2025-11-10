@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.1.0](https://github.com/trussworks/react-uswds/compare/10.0.2...10.1.0) (2025-11-10)
+
+
+### Features
+
+* add optional change/selected text to FileInput ([#3116](https://github.com/trussworks/react-uswds/issues/3116)) ([41e40c4](https://github.com/trussworks/react-uswds/commit/41e40c40c986efaac73d8f475bcab314acbc085d))
+* Add support for Node 24, the active LTS version ([#3306](https://github.com/trussworks/react-uswds/issues/3306)) ([bc6ca69](https://github.com/trussworks/react-uswds/commit/bc6ca696b9b288b83b4f63904ed0439868bd6f74))
+
+
+### Bug Fixes
+
+* Add style as class to scrollbar width utility to fix CSP issue ([#2761](https://github.com/trussworks/react-uswds/issues/2761)) ([2380608](https://github.com/trussworks/react-uswds/commit/238060877fb7cf4716f04685b71ec3e1b726ecf4))
+* Do not set title on Tooltip trigger element ([#3313](https://github.com/trussworks/react-uswds/issues/3313)) ([f6e5d3f](https://github.com/trussworks/react-uswds/commit/f6e5d3f6187163aca99f1610ea8f04f0ac719ca5))
+* resolve type error reported during build ([#3315](https://github.com/trussworks/react-uswds/issues/3315)) ([fd2281c](https://github.com/trussworks/react-uswds/commit/fd2281c07e85d243379bc59417fbec9e37572a38))
+* **storybook:** Add aria-describedby to DateInput examples to date match USWDS example implementation ([#3312](https://github.com/trussworks/react-uswds/issues/3312)) ([cc43808](https://github.com/trussworks/react-uswds/commit/cc4380824bd75bffbff6f22f7fda85e50690faf8))
+* update FilePreview to handle multiple renders in strict mode ([#3236](https://github.com/trussworks/react-uswds/issues/3236)) ([9ee684f](https://github.com/trussworks/react-uswds/commit/9ee684f4156d25688fed20f84df947a419090b65))
+
 ## [10.0.2](https://github.com/trussworks/react-uswds/compare/10.0.1...10.0.2) (2025-06-09)
 
 
