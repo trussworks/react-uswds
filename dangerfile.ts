@@ -109,11 +109,16 @@ const checkPrDescription: () => void = () => {
 
 const checkCodeChanges: () => void = () => {
   // Request changes to package source code to also include changes to tests.
-  const hasCodeChanges = allFiles.some((p) => !!p.match(/^src\/.*\.[jt]sx?/))
+  const hasSourceCodeChanges = allFiles.some(
+    (p) => !!p.match(/^src\/.((?!\.(stories|test)\.).)*\.[jt]sx?/)
+  )
   const hasTestChanges = allFiles.some(
     (p) => !!p.match(/^src\/.*\.test\.[jt]sx?/)
   )
-  if (hasCodeChanges && !hasTestChanges) {
+  const hasStorybookChanges = allFiles.some(
+    (p) => !!p.match(/^src\/.*\.stories\.[jt]sx?/)
+  )
+  if (hasSourceCodeChanges && !hasTestChanges) {
     warn(
       'This PR does not include changes to tests, even though it affects source code.'
     )
@@ -131,11 +136,7 @@ const checkCodeChanges: () => void = () => {
   }
 
   // Require new src/components files to include changes to storybook
-  const hasStorybookChanges = allFiles.some(
-    (p) => !!p.match(/^src\/.*\.stories\.[jt]sx?/)
-  )
-
-  if (hasCodeChanges && !hasStorybookChanges) {
+  if (hasSourceCodeChanges && !hasStorybookChanges) {
     warn(
       'This PR does not include changes to storybook, even though it affects component code.'
     )
