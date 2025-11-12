@@ -14,6 +14,7 @@ export type InPageNavigationProps = {
   scrollOffset?: string
   threshold?: number
   title?: string
+  headingElements?: HeadingLevel[]
 } & Omit<JSX.IntrinsicElements['div'], 'content'>
 
 export const InPageNavigation = ({
@@ -26,6 +27,7 @@ export const InPageNavigation = ({
   scrollOffset,
   threshold = 1,
   title = 'On this page',
+  headingElements = ['h2', 'h3'],
   ...divProps
 }: InPageNavigationProps): JSX.Element => {
   const asideClasses = classnames('usa-in-page-nav', styles.target, className)
@@ -38,8 +40,11 @@ export const InPageNavigation = ({
     '--margin-offset': scrollOffset,
   } as React.CSSProperties
   const [currentSection, setCurrentSection] = useState('')
+  headingElements = !headingElements.length
+    ? ['h2', 'h3']
+    : headingElements.sort()
   const sectionHeadings: JSX.Element[] = content.props.children.filter(
-    (el: JSX.Element) => el.type === 'h2' || el.type === 'h3'
+    (el: JSX.Element) => headingElements.includes(el.type)
   )
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
@@ -55,7 +60,9 @@ export const InPageNavigation = ({
   }
   const observer = new IntersectionObserver(handleIntersection, observerOptions)
   useEffect(() => {
-    document.querySelectorAll('h2,h3').forEach((h) => observer.observe(h))
+    document
+      .querySelectorAll(headingElements.join(','))
+      .forEach((h) => observer.observe(h))
     document.querySelector('html')?.classList.add(styles['smooth-scroll'])
     return () => {
       document.querySelector('html')?.classList.remove(styles['smooth-scroll'])
@@ -75,16 +82,17 @@ export const InPageNavigation = ({
           <ul className="usa-in-page-nav__list">
             {sectionHeadings.map((el: JSX.Element) => {
               const heading: JSX.Element = el.props.children
-              const href: string = el.props.id
+              const href: string = el.props.id ?? ''
               const hClass = classnames('usa-in-page-nav__item', {
-                'usa-in-page-nav__item--sub-item': el.type === 'h3',
+                'usa-in-page-nav__item--primary':
+                  el.type === headingElements[0],
               })
               const lClass = classnames('usa-in-page-nav__link', {
-                'usa-current': href === currentSection,
+                'usa-current': !!href && href === currentSection,
               })
               return (
                 <li key={`usa-in-page-nav__item_${heading}`} className={hClass}>
-                  <Link href={`#${href}`} className={lClass}>
+                  <Link href={`#${CSS.escape(href)}`} className={lClass}>
                     {heading}
                   </Link>
                 </li>
