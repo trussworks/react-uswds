@@ -63,7 +63,10 @@ export const DateOfBirthExample = (): JSX.Element => (
     <DateInputGroup>
       <FormGroup className="usa-form-group--month usa-form-group--select">
         <Label htmlFor="input-select">Month</Label>
-        <Select id="testDateInput" name="testDateInput">
+        <Select
+          id="testDateInput"
+          name="testDateInput"
+          aria-describedby="dateOfBirthHint">
           <option>- Select -</option>
           <option value="1">01 - January</option>
           <option value="2">02 - February</option>
@@ -86,6 +89,7 @@ export const DateOfBirthExample = (): JSX.Element => (
         unit="day"
         maxLength={2}
         minLength={2}
+        aria-describedby="dateOfBirthHint"
       />
       <DateInput
         id="testDateInput"
@@ -94,6 +98,7 @@ export const DateOfBirthExample = (): JSX.Element => (
         unit="year"
         maxLength={4}
         minLength={4}
+        aria-describedby="dateOfBirthHint"
       />
     </DateInputGroup>
   </Fieldset>

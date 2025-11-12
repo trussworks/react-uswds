@@ -10,6 +10,7 @@ export type RadioProps = {
   inputRef?: LegacyInputRef
   tile?: boolean
   labelDescription?: React.ReactNode
+  indeterminate?: boolean
 } & JSX.IntrinsicElements['input']
 
 export const Radio = ({
@@ -20,6 +21,7 @@ export const Radio = ({
   inputRef,
   tile,
   labelDescription,
+  indeterminate,
   ...inputProps
 }: RadioProps): JSX.Element => {
   const classes = classnames('usa-radio', className)
@@ -35,6 +37,7 @@ export const Radio = ({
         type="radio"
         name={name}
         ref={inputRef}
+        data-indeterminate={indeterminate}
         {...inputProps}
       />
       <label className="usa-radio__label" htmlFor={id}>
