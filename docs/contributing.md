@@ -32,7 +32,7 @@ We welcome contributions in the form of comments, issues, or pull requests with 
      If you already have a preferred node version manager installed, use it.
 
 > [!NOTE]
-> If using asdf, you must [enable `legacy_version_file`](https://asdf-vm.com/manage/configuration.html#legacy-version-file) to have the tool version picked up from `.node-version`
+> If using asdf, you must [enable `legacy_version_file`](https://asdf-vm.com/manage/configuration.html#legacy-version-file) to have the tool version picked up from `.node-version`.
 >
 > Mise supports `.node-version` [as a default](https://mise.jdx.dev/configuration.html#idiomatic-version-files).
 
