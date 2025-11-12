@@ -65,9 +65,13 @@ export const CharacterCount = ({
   getMessage = defaultMessage,
   ...remainingProps
 }: TextInputCharacterCountProps | TextareaCharacterCountProps): JSX.Element => {
-  const [initialCount] = useState(getCharacterCount(value || defaultValue))
+  const [initialCount] = useState(() =>
+    getCharacterCount(value || defaultValue)
+  )
   const [length, setLength] = useState(initialCount)
-  const [message, setMessage] = useState(getMessage(initialCount, maxLength))
+  const [message, setMessage] = useState(() =>
+    getMessage(initialCount, maxLength)
+  )
   const [isValid, setIsValid] = useState(initialCount < maxLength)
   const srMessageRef = useRef<HTMLDivElement>(null)
 
