@@ -79,7 +79,7 @@ export const CompleteDatePicker = {
           Appointment date
         </Label>
         <div className="usa-hint" id="appointment-date-hint">
-          {argTypes.dateFormat ?? DEFAULT_EXTERNAL_DATE_FORMAT}
+          {(argTypes.dateFormat ?? DEFAULT_EXTERNAL_DATE_FORMAT).toLowerCase()}
         </div>
         <DatePicker
           id="appointment-date"
