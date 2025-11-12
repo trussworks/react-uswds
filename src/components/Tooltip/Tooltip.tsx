@@ -6,6 +6,7 @@ import React, {
   useRef,
   useState,
   JSX,
+  useCallback,
 } from 'react'
 import classnames from 'classnames'
 
@@ -193,12 +194,23 @@ export function Tooltip<
     }
   }, [isVisible])
 
-  const showTooltip = (): void => {
+  const showTooltip = useCallback((): void => {
     setVisible(true)
-  }
-  const hideTooltip = (): void => {
+  }, [])
+  const hideTooltip = useCallback((): void => {
     setVisible(false)
-  }
+  }, [])
+
+  useEffect(() => {
+    const escapeTooltip = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') hideTooltip()
+    }
+
+    window.addEventListener('keydown', escapeTooltip)
+    return () => {
+      window.removeEventListener('keydown', escapeTooltip)
+    }
+  }, [hideTooltip])
 
   const wrapperClasses = classnames('usa-tooltip', wrapperclasses)
 
@@ -229,16 +241,17 @@ export function Tooltip<
         onMouseEnter: showTooltip,
         onMouseOver: showTooltip,
         onFocus: showTooltip,
-        onMouseLeave: hideTooltip,
         onBlur: hideTooltip,
-        onKeyDown: hideTooltip,
         className: triggerClasses,
       },
       children
     )
 
     return (
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        onMouseLeave={hideTooltip}>
         {triggerElement}
         <span
           data-testid="tooltipBody"
@@ -264,7 +277,10 @@ export function Tooltip<
 
     return (
       // the span that wraps the element will have the tooltip class
-      <span data-testid="tooltipWrapper" className={wrapperClasses}>
+      <span
+        data-testid="tooltipWrapper"
+        className={wrapperClasses}
+        onMouseLeave={hideTooltip}>
         <button
           {...remainingProps}
           data-testid="triggerElement"
@@ -276,9 +292,7 @@ export function Tooltip<
           onMouseEnter={showTooltip}
           onMouseOver={showTooltip}
           onFocus={showTooltip}
-          onMouseLeave={hideTooltip}
-          onBlur={hideTooltip}
-          onKeyDown={hideTooltip}>
+          onBlur={hideTooltip}>
           {children}
         </button>
         <span

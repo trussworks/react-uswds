@@ -408,6 +408,17 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "mdmower-csnw",
+      "name": "Matt Mower",
+      "avatar_url": "https://avatars.githubusercontent.com/u/135273348?v=4",
+      "profile": "https://github.com/mdmower-csnw",
+      "contributions": [
+        "bug",
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,

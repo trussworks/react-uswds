@@ -2141,7 +2141,7 @@ __metadata:
     "@types/react-dom": ^19.0.4
     "@typescript-eslint/eslint-plugin": ^8.29.0
     "@typescript-eslint/parser": ^8.29.0
-    "@uswds/uswds": 3.7.1
+    "@uswds/uswds": 3.8.2
     "@vitejs/plugin-react": ^5.0.0
     "@vitest/coverage-istanbul": ^4.0.8
     "@vitest/eslint-plugin": ^1.1.44
@@ -2185,7 +2185,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^16.x || ^17.x || ^18.x || ^19.x
     "@types/react-dom": ^16.x || ^17.x || ^18.x || ^19.x
-    "@uswds/uswds": ^3.7.1
+    "@uswds/uswds": ^3.8.2
     focus-trap-react: ^10.2.3
     react: ^16.x || ^17.x || ^18.x || ^19.x
     react-dom: ^16.x || ^17.x || ^18.x || ^19.x
@@ -2490,15 +2490,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uswds/uswds@npm:3.7.1":
-  version: 3.7.1
-  resolution: "@uswds/uswds@npm:3.7.1"
+"@uswds/uswds@npm:3.8.2":
+  version: 3.8.2
+  resolution: "@uswds/uswds@npm:3.8.2"
   dependencies:
-    classlist-polyfill: 1.2.0
     object-assign: 4.1.1
     receptor: 1.0.0
     resolve-id-refs: 0.1.0
-  checksum: 32fd6b507f87cfa5d652a9a9647077ed6b30e07d66100d6b7b94ebb737ffa4df549527ae3c96f83e34a6e03ae0f06649deae957592776c758dbe6ba6bb72d9a3
+  checksum: 146a264492a69aad917754b9bd99c51810055c740197ba0be6301fb01c84068d257ba0f47752e60996500b150903f593080c5b065327837ef560056a72bdfb26
   languageName: node
   linkType: hard
 
@@ -3817,13 +3816,6 @@ __metadata:
   version: 1.0.4
   resolution: "chrome-trace-event@npm:1.0.4"
   checksum: fcbbd9dd0cd5b48444319007cc0c15870fd8612cc0df320908aa9d5e8a244084d48571eb28bf3c58c19327d2c5838f354c2d89fac3956d8e992273437401ac19
-  languageName: node
-  linkType: hard
-
-"classlist-polyfill@npm:1.2.0":
-  version: 1.2.0
-  resolution: "classlist-polyfill@npm:1.2.0"
-  checksum: 43ff10af5e75d0347f820d77536a12f981adbf5be9c0ff5c3c4823693c8daacf8aa487eac1a9704b73f4dd74d811e5145b4465fe606926351cdfca5bb9b0914e
   languageName: node
   linkType: hard
 

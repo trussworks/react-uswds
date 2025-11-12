@@ -2,7 +2,6 @@ import React, { type JSX } from 'react'
 import classnames from 'classnames'
 import { Icon } from '../Icon/Icons'
 import { Link } from '../Link/Link'
-import { Button } from '../Button/Button'
 
 export type PaginationProps = {
   pathname: string // pathname of results page
@@ -34,24 +33,28 @@ const PaginationPage = ({
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent,
   })
+  const buttonClasses = classnames(
+    linkClasses,
+    'bg-transparent',
+    'cursor-pointer'
+  )
 
   return (
     <li
       key={`pagination_page_${page}`}
       className="usa-pagination__item usa-pagination__page-no">
       {onClickPageNumber ? (
-        <Button
+        <button
           type="button"
-          unstyled
           data-testid="pagination-page-number"
-          className={linkClasses}
+          className={buttonClasses}
           aria-label={`Page ${page}`}
           aria-current={isCurrent ? 'page' : undefined}
           onClick={(event) => {
             onClickPageNumber(event, page)
           }}>
           {page}
-        </Button>
+        </button>
       ) : (
         <Link
           href={`${pathname}?page=${page}`}
@@ -161,26 +164,48 @@ export const Pagination = ({
   const prevPage = !isOnFirstPage && currentPage - 1
   const nextPage = !isOnLastPage && currentPage + 1
 
+  const prevLinkClasses = classnames(
+    'usa-pagination__link',
+    'usa-pagination__previous-page'
+  )
+  const prevButtonClasses = classnames(
+    prevLinkClasses,
+    'border-0',
+    'padding-0',
+    'bg-transparent',
+    'cursor-pointer'
+  )
+  const nextLinkClasses = classnames(
+    'usa-pagination__link',
+    'usa-pagination__next-page'
+  )
+  const nextButtonClasses = classnames(
+    nextLinkClasses,
+    'border-0',
+    'padding-0',
+    'bg-transparent',
+    'cursor-pointer'
+  )
+
   return (
     <nav aria-label="Pagination" className={navClasses} {...props}>
       <ul className="usa-pagination__list">
         {prevPage && (
           <li className="usa-pagination__item usa-pagination__arrow">
             {onClickPrevious ? (
-              <Button
+              <button
                 type="button"
-                unstyled
-                className="usa-pagination__link usa-pagination__previous-page"
+                className={prevButtonClasses}
                 aria-label="Previous page"
                 data-testid="pagination-previous"
                 onClick={onClickPrevious}>
                 <Icon.NavigateBefore aria-hidden={true} />
                 <span className="usa-pagination__link-text">Previous</span>
-              </Button>
+              </button>
             ) : (
               <Link
                 href={`${pathname}?page=${prevPage}`}
-                className="usa-pagination__link usa-pagination__previous-page"
+                className={prevLinkClasses}
                 aria-label="Previous page">
                 <Icon.NavigateBefore aria-hidden={true} />
                 <span className="usa-pagination__link-text">Previous</span>
@@ -206,20 +231,19 @@ export const Pagination = ({
         {nextPage && (
           <li className="usa-pagination__item usa-pagination__arrow">
             {onClickNext ? (
-              <Button
+              <button
                 type="button"
-                unstyled
-                className="usa-pagination__link usa-pagination__next-page"
+                className={nextButtonClasses}
                 aria-label="Next page"
                 data-testid="pagination-next"
                 onClick={onClickNext}>
                 <span className="usa-pagination__link-text">Next</span>
                 <Icon.NavigateNext aria-hidden={true} />
-              </Button>
+              </button>
             ) : (
               <Link
                 href={`${pathname}?page=${nextPage}`}
-                className="usa-pagination__link usa-pagination__next-page"
+                className={nextLinkClasses}
                 aria-label="Next page">
                 <span className="usa-pagination__link-text">Next</span>
                 <Icon.NavigateNext aria-hidden={true} />
