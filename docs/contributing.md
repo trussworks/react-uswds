@@ -41,9 +41,9 @@ We welcome contributions in the form of comments, issues, or pull requests with 
    - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
 3. Set up git hooks (this project uses [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks) and [nano-staged](https://github.com/usmanyunusov/nano-staged))
 
-```shell
-yarn simple-git-hooks
-```
+   ```shell
+   yarn simple-git-hooks
+   ```
 
 4. Make sure you can run all the available commands listed below with no errors.
 
