@@ -72,8 +72,6 @@ export const DatePicker = ({
   i18n = EN_US,
   ...inputProps
 }: DatePickerProps): JSX.Element => {
-  dateFormat ??= DEFAULT_EXTERNAL_DATE_FORMAT
-
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
