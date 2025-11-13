@@ -67,15 +67,15 @@ function buildExpansions(
   multiselectable: boolean,
   savedExpansions = new Map<string, boolean | undefined>()
 ) {
-  const lastExpandedItem = items.findLast(
-    (item) => item.expanded || savedExpansions.get(item.id)
-  )
+  const lastExpandedItem = multiselectable
+    ? undefined
+    : items.findLast((item) => item.expanded || savedExpansions.get(item.id))
   return items.reduce((map, item) => {
     map.set(
       item.id,
-      !multiselectable
-        ? !!lastExpandedItem && item.id === lastExpandedItem.id
-        : (savedExpansions.get(item.id) ?? !!item.expanded)
+      multiselectable
+        ? (savedExpansions.get(item.id) ?? item.expanded)
+        : !!lastExpandedItem && item.id === lastExpandedItem.id
     )
     return map
   }, new Map<string, boolean | undefined>())
