@@ -34,3 +34,6 @@ export const YEAR_CHUNK = 12
 export const DEFAULT_MIN_DATE = '0000-01-01'
 export const DEFAULT_EXTERNAL_DATE_FORMAT = 'MM/DD/YYYY'
 export const INTERNAL_DATE_FORMAT = 'YYYY-MM-DD'
+export type DateFormat =
+  | typeof INTERNAL_DATE_FORMAT
+  | typeof DEFAULT_EXTERNAL_DATE_FORMAT
