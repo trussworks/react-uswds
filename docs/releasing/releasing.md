@@ -45,7 +45,7 @@ Publish and host versioned build artifacts for the community to download as a pr
 
 ### Prerequisites
 
-To performa a release, a maintainer must first
+To perform a release, a maintainer must first
 
 - Be part of the [React USWDS Admins team](https://github.com/orgs/trussworks/teams/react-uswds-admins).
 - Be an Admin or Owner of the [trussworks npm organization](https://www.npmjs.com/settings/trussworks/members).
@@ -72,7 +72,7 @@ Follow these steps to create and publish a release for a given version, `<major.
    unzip artifact.zip
    ```
 
-   - If, instead of the terminal, you wish to instead use Archive Utility to unzip `arifact.zip` be aware that Archive Utility defaults to recursively unzipping files, including the `.tgz` itself `.tgz` file when unzipping the `artifact.zip`. You will first need to disable the "Keep expanding if possible" setting in your Archive Utility preferences.
+   - If, instead of the terminal, you wish to use Archive Utility to unzip `arifact.zip` be aware that Archive Utility defaults to recursively unzipping files, including the `.tgz` itself `.tgz` file when unzipping the `artifact.zip`. You will first need to disable the "Keep expanding if possible" setting in your Archive Utility preferences.
 
 6. [Publish](https://docs.npmjs.com/cli/v11/commands/npm-publish) the tarball (`trussworks-react-uswds-v<major.minor.incremental>.tgz`) to npm by running the following command and following the prompts in your terminal.
 
