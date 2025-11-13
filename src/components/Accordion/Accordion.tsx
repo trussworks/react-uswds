@@ -87,7 +87,7 @@ export const Accordion = ({
   className,
   multiselectable = false,
 }: AccordionProps): JSX.Element => {
-  const [savedExpansions, setSavedExpansions] = useState(
+  const [savedExpansions, setSavedExpansions] = useState(() =>
     buildExpansions(items, multiselectable)
   )
 
