@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.2.0](https://github.com/trussworks/react-uswds/compare/10.1.0...10.2.0) (2025-11-13)
+
+
+### Features
+
+* add DateSelector dateFormat prop ([#2726](https://github.com/trussworks/react-uswds/issues/2726)) ([34c19c1](https://github.com/trussworks/react-uswds/commit/34c19c1fc5816609491434a31984ff6fc35667da))
+* Update Accordion expansion behavior ([#3262](https://github.com/trussworks/react-uswds/issues/3262)) ([dc8bf86](https://github.com/trussworks/react-uswds/commit/dc8bf868442a90f525293bd2865b753a2c072037))
+* upgrade to USWDS 3.8.2 ([#3263](https://github.com/trussworks/react-uswds/issues/3263)) ([443a077](https://github.com/trussworks/react-uswds/commit/443a07723326c502e2d3bca2dddfb57937871a4a))
+
+
+### Bug Fixes
+
+* Address eslint react-hook violations in CharacterCount ([#3321](https://github.com/trussworks/react-uswds/issues/3321)) ([d1d8f55](https://github.com/trussworks/react-uswds/commit/d1d8f55fb29b2e364cc9d83eef4f7cc2ac468325))
+* do not automatically postinstall simple-git-hooks ([#3323](https://github.com/trussworks/react-uswds/issues/3323)) ([4b9b298](https://github.com/trussworks/react-uswds/commit/4b9b298b914a742b767d42dfd175ca263dc41620))
+* Minor cleanup in Pagination stories ([#3320](https://github.com/trussworks/react-uswds/issues/3320)) ([acb8c41](https://github.com/trussworks/react-uswds/commit/acb8c4178cf00555b6cced255ee36bd998e95f6a))
+* Use item IDs for accordion item keys ([#3317](https://github.com/trussworks/react-uswds/issues/3317)) ([2ba2b89](https://github.com/trussworks/react-uswds/commit/2ba2b89c2ba4ba1a29c2ca54cf7d1996bc533336))
+
+
+### Documentation & Examples
+
+* Improve Conventional Commit PR linting experience and document how to handle breaking changes ([#3314](https://github.com/trussworks/react-uswds/issues/3314)) ([1321aac](https://github.com/trussworks/react-uswds/commit/1321aac24c46fb857a36963bbe14c49af9c011b4))
+
 ## [10.1.0](https://github.com/trussworks/react-uswds/compare/10.0.2...10.1.0) (2025-11-10)
 
 

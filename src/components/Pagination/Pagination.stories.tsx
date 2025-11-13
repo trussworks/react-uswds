@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Pagination } from './Pagination'
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 const pathname = '/test-pathname'
 
@@ -9,25 +9,36 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   args: {
     pathname,
+    currentPage: 1,
   },
   argTypes: {
-    currentPage: { control: 'number' },
-    maxSlots: { control: 'number' },
-    totalPages: { control: 'number' },
+    currentPage: {
+      control: { type: 'number', min: 1 },
+    },
+    maxSlots: {
+      control: { type: 'number', min: 1 },
+    },
+    totalPages: {
+      control: { type: 'number', min: 1 },
+    },
   },
 }
 export default meta
 type Story = StoryObj<typeof Pagination>
 
-const Template = ({ ...args }) => {
-  const [current, setCurrentPage] = useState<number>(args.currentPage)
+const Template: StoryFn<typeof Pagination> = (args) => {
+  const argPage =
+    args.totalPages !== undefined
+      ? Math.min(args.currentPage, args.totalPages)
+      : args.currentPage
 
-  useEffect(() => {
-    if (args.totalPages && args.currentPage >= args.totalPages) {
-      return
-    }
-    setCurrentPage(args.currentPage)
-  }, [args.currentPage])
+  const [current, setCurrentPage] = useState<number>(argPage)
+
+  const [prevArgPage, setPrevArgPage] = useState(argPage)
+  if (argPage !== prevArgPage) {
+    setPrevArgPage(argPage)
+    setCurrentPage(argPage)
+  }
 
   const handleNext = () => {
     const nextPage = current + 1
@@ -51,7 +62,7 @@ const Template = ({ ...args }) => {
       totalPages={args.totalPages}
       currentPage={current}
       maxSlots={args.maxSlots}
-      pathname={pathname}
+      pathname={args.pathname}
       onClickNext={handleNext}
       onClickPrevious={handlePrevious}
       onClickPageNumber={handlePageNumber}
