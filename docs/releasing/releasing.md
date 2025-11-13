@@ -61,7 +61,7 @@ Follow these steps to create and publish a release for a given version, `<major.
 
 1. Review and merge the current [release PR](https://github.com/trussworks/react-uswds/issues?q=is%3Apr%20author%3Aapp%2Fgithub-actions%20label%3A%22type%3A%20release%22).
    - Ensure the branch is up to date with `main`.
-   - GitHub actions cannot initiate other GitHub action workflow runs, so CI checks on this PR will not start if `release-please` updated the branch last. In this case, bypass merge restrictions as an administrator to merge.
+   - PR CI checks will likely be stuck in a pending state on the release PR requiring administrator override to merge. This is because GitHub actions in a workflow run cannot trigger new workflow runs. Since `release-please` creates and updates the release PR via a workflow action, PR checks will not run under normal circumstances. We consider this acceptable since release PRs do not change code.
 2. Wait for `release-please` to create the corresponding [tag](https://github.com/trussworks/react-uswds/tags) in GitHub including the updates from the changelog.
 3. Find and wait for the corresponding [package-release.yml](https://github.com/trussworks/react-uswds/actions/workflows/package-release.yml) action to complete.
 4. From the successful package-release workflow run, download the build artifact from the `Artifacts` section of the build summary:
