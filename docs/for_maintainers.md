@@ -10,7 +10,7 @@ This role is intended to support sustainable project maintainorship of `@trusswo
 
 ### Commitment
 
-The rotation lasts for a period of three months (one quarter).  The maintainer is expected to spend 15 hours/monthly on these duties. It is up to the individual to decide when to place this time on their calendars, but it needs to be spread throughout the weeks so that the project receives continuous attention. The recommendation is to spend 3-4 hours per week.
+The rotation lasts for a period of three months (one quarter). The maintainer is expected to spend 15 hours/monthly on these duties. It is up to the individual to decide when to place this time on their calendars, but it needs to be spread throughout the weeks so that the project receives continuous attention. The recommendation is to spend 3-4 hours per week.
 
 ### Billing
 
@@ -44,7 +44,7 @@ This will be Truss billable work for Truss staff, assuming your project teams us
 
 - Familiarize yourself with [conventional commits](https://www.conventionalcommits.org). We use this paradigm to automatically generate our release versioning and changelog.
 - Advocate for timely releases, soon after changes merged.
-- Make releases following the steps in our [releasing documentation](./releasing.md).
+- Make releases following the steps in our [releasing documentation](./releasing/releasing.md).
 - Announce when releases start and finish in #react-uswds Truss slack channel
 
 ### If things are slow...
@@ -56,7 +56,7 @@ Feel free to contribute to library with your time!
 ### Onboarding and offboarding
 
 - See [for_trussels.md](for_trussels.md) for detailed onboarding instructions
-- TL;DR Add and remove yourself from "Active Maintainers" list in the [readme](../README.md) at the beginning and end of your term  and announce in #react-uswds
+- TL;DR Add and remove yourself from "Active Maintainers" list in the [readme](../README.md) at the beginning and end of your term and announce in #react-uswds
 
 ### Addressing Security Alerts
 

@@ -19,7 +19,7 @@ See ["For Maintainers" README](for_maintainers.md). There are also some "For Mai
 First of all, we’re so excited you want to be an active maintainer on this project! Here are the things you should make sure to do:
 
 - [ ] Join the #react-uswds Slack channel.
-- [ ] If you haven't already, be sure to familiarize yourself with this repo, especially the docs on [contributing](./contributing.md) and [releasing](./releasing.md). Also, review [recent releases](https://github.com/trussworks/react-uswds/releases).
+- [ ] If you haven't already, be sure to familiarize yourself with this repo, especially the docs on [contributing](./contributing.md) and [releasing](./releasing/releasing.md). Also, review [recent releases](https://github.com/trussworks/react-uswds/releases).
 - [ ] _For Maintainers:_ Add yourself to main project README "Active Maintainers" list.
 - [ ] _For Maintainers:_ Ping in #react-uswds to request access to the npm org so you can publish new releases
 - [ ] _For Maintainers:_ Ping in #react-uswds to request admin privileges to the [Happo Account](https://happo.io/)

@@ -1,7 +1,9 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -148,7 +150,7 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 - [PR commit guidelines](./docs/contributing.md#opening--merging-pull-requests)
 - [Adding new components](./docs/adding_new_components.md)
 - [Testing in an application](./docs/contributing.md#testing-in-an-application)
-- [Releasing](./docs/releasing.md)
+- [Releasing](./docs/releasing/releasing.md)
 
 ## License
 
