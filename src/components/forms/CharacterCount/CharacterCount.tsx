@@ -65,9 +65,13 @@ export const CharacterCount = ({
   getMessage = defaultMessage,
   ...remainingProps
 }: TextInputCharacterCountProps | TextareaCharacterCountProps): JSX.Element => {
-  const initialCount = getCharacterCount(value || defaultValue)
+  const [initialCount] = useState(() =>
+    getCharacterCount(value || defaultValue)
+  )
   const [length, setLength] = useState(initialCount)
-  const [message, setMessage] = useState(getMessage(initialCount, maxLength))
+  const [message, setMessage] = useState(() =>
+    getMessage(initialCount, maxLength)
+  )
   const [isValid, setIsValid] = useState(initialCount < maxLength)
   const srMessageRef = useRef<HTMLDivElement>(null)
 
@@ -76,17 +80,21 @@ export const CharacterCount = ({
     'usa-character-count__status--invalid': !isValid,
   })
 
-  useEffect(() => {
-    const message = getMessage(length, maxLength)
-    setMessage(message)
+  const [prevLength, setPrevLength] = useState(length)
+  if (length !== prevLength) {
+    setPrevLength(length)
+    setMessage(getMessage(length, maxLength))
     setIsValid(length <= maxLength)
+  }
+
+  useEffect(() => {
     // Updates the character count status for screen readers after a 1000ms delay
     const timer = setTimeout(() => {
       // Setting the text directly for VoiceOver compatibility.
       if (srMessageRef.current) srMessageRef.current.textContent = message
     }, 1000)
     return () => clearTimeout(timer)
-  }, [length])
+  }, [message])
 
   const handleBlur = (
     e:
@@ -97,7 +105,7 @@ export const CharacterCount = ({
   ): void => {
     const validationMessage = !isValid ? 'The content is too long.' : ''
     e.target.setCustomValidity(validationMessage)
-    if (callback) callback(e)
+    callback?.(e)
   }
 
   const handleChange = (
@@ -107,12 +115,10 @@ export const CharacterCount = ({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     callback?: (e: any) => void
   ): void => {
-    const {
-      target: { value = '' },
-    } = e
+    const { value } = e.target
     setLength(getCharacterCount(value))
 
-    if (callback) callback(e)
+    callback?.(e)
   }
 
   let InputComponent: JSX.Element
