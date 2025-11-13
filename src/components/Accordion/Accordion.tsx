@@ -103,9 +103,9 @@ export const Accordion = ({
       className={classes}
       data-testid="accordion"
       data-allow-multiple={multiselectable || undefined}>
-      {items.map((item, i) => (
+      {items.map((item) => (
         <AccordionItem
-          key={`accordionItem_${i}`}
+          key={item.id}
           {...item}
           expanded={openItems.indexOf(item.id) > -1}
           handleToggle={(e): void => {
