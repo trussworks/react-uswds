@@ -13,19 +13,19 @@ const links = Array(4).fill(
 const extendedLinks = [
   [
     'Types of Cats',
-    ...Array(2).fill(
-      <a className="usa-footer__secondary-link" href="#">
+    ...Array.from({ length: 2 }, (_x, i) => (
+      <a key={`cat_${i}`} className="usa-footer__secondary-link" href="#">
         Cheetah
       </a>
-    ),
+    )),
   ],
   [
     'Musical Gifts',
-    ...Array(3).fill(
-      <a className="usa-footer__secondary-link" href="#">
+    ...Array.from({ length: 3 }, (_x, i) => (
+      <a key={`mgift_${i}`} className="usa-footer__secondary-link" href="#">
         Purple Rain
       </a>
-    ),
+    )),
   ],
 ]
 

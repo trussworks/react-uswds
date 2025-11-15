@@ -93,7 +93,7 @@ module.exports = defineConfig([
               }
             ]
         },
-    }, ...compat.extends('plugin:@typescript-eslint/recommended', 'prettier').map(config => ({
+    }, ...compat.extends('plugin:@typescript-eslint/recommended-type-checked', 'prettier').map(config => ({
         ...config,
         files: ['**/*.ts?(x)'],
     })), {
@@ -112,7 +112,7 @@ module.exports = defineConfig([
                 ecmaFeatures: {
                     jsx: true,
                 },
-
+                projectService: true,
                 warnOnUnsupportedTypeScriptVersion: true,
             },
         },

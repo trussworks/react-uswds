@@ -1,7 +1,7 @@
 import React from 'react'
 import { Select } from './Select'
 import { Label } from '../Label/Label'
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
@@ -31,10 +31,10 @@ const meta: Meta<typeof Select> = {
 export default meta
 type Story = StoryObj<typeof Select>
 
-const Template = ({ ...args }) => (
+const Template: StoryFn<typeof Select> = ({ ...args }) => (
   <>
     <Label htmlFor={args.id}>Select label</Label>
-    <Select id={args.id} name={args.name} {...args}>
+    <Select {...args}>
       <option>- Select - </option>
       <option value="value1">Option A</option>
       <option value="value2">Option B</option>

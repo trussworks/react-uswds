@@ -49,7 +49,7 @@ export const FooterExtendedNavList = ({
 
   const onToggle = (index: number): void => {
     setSectionsOpenState((prevIsOpen) => {
-      const newIsOpen = Array(nestedLinks.length).fill(false)
+      const newIsOpen = Array.from({ length: nestedLinks.length }, () => false)
       // eslint-disable-next-line security/detect-object-injection
       newIsOpen[index] = !prevIsOpen[index]
       return newIsOpen

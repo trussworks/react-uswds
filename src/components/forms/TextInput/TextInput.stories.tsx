@@ -1,6 +1,7 @@
 import React from 'react'
 import { TextInput } from './TextInput'
 import { Label } from '../Label/Label'
+import { Meta, StoryFn } from '@storybook/react-vite'
 
 export default {
   title: 'Components/Text input',
@@ -16,17 +17,17 @@ Source: https://designsystem.digital.gov/components/text-input
       },
     },
   },
-}
+  args: {
+    id: 'input-type-text',
+    name: 'input-type-text',
+    type: 'text',
+  },
+} satisfies Meta<typeof TextInput>
 
-const Template = ({ ...args }) => (
+const Template: StoryFn<typeof TextInput> = ({ ...args }) => (
   <>
     <Label htmlFor="input-type-text">Input label</Label>
-    <TextInput
-      id="input-type-text"
-      name="input-type-text"
-      type={args.type || 'text'}
-      {...args}
-    />
+    <TextInput {...args} />
   </>
 )
 

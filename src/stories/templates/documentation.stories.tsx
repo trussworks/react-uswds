@@ -44,7 +44,10 @@ export const DocumentationPage = (): JSX.Element => {
 
   const handleToggleNavDropdown = (index: number): void => {
     setNavDropdownOpen((prevNavDropdownOpen) => {
-      const newOpenState = Array(prevNavDropdownOpen.length).fill(false)
+      const newOpenState = Array.from(
+        { length: prevNavDropdownOpen.length },
+        () => false
+      )
       // eslint-disable-next-line security/detect-object-injection
       newOpenState[index] = !prevNavDropdownOpen[index]
       return newOpenState
@@ -107,15 +110,21 @@ export const DocumentationPage = (): JSX.Element => {
       <SideNav
         isSubnav
         items={[
-          ...Array(1).fill(<a href="">Child link</a>),
-          <React.Fragment key="sidenav_1_1">
+          <a key="sidenav_0" href="">
+            Child link
+          </a>,
+          <React.Fragment key="sidenav_1">
             <a href="" className="usa-current">
               Child link
             </a>
             <SideNav
               isSubnav
               items={[
-                ...Array(2).fill(<a href="">Grandchild link</a>),
+                ...Array.from({ length: 2 }, (_x, i) => (
+                  <a key={`sidenav_1_${i}`} href="">
+                    Grandchild link
+                  </a>
+                )),
                 <a href="" key="sidenav_1_2" className="usa-current">
                   Grandchild link
                 </a>,
@@ -125,7 +134,11 @@ export const DocumentationPage = (): JSX.Element => {
               ]}
             />
           </React.Fragment>,
-          ...Array(3).fill(<a href="">Child link</a>),
+          ...Array.from({ length: 3 }, (_x, i) => (
+            <a key={`sidenav_${i + 2}`} href="">
+              Child link
+            </a>
+          )),
         ]}
       />
     </React.Fragment>,

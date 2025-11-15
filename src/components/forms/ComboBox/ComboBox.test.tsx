@@ -93,7 +93,7 @@ describe('ComboBox component', () => {
     expect(comboBoxInput).toHaveValue('Avocado')
   })
 
-  it('updates options when prop changes', async () => {
+  it('updates options when prop changes', () => {
     const Wrapper = (props: { options: ComboBoxOption[] }) => {
       return (
         <ComboBox

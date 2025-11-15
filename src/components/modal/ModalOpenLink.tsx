@@ -46,7 +46,7 @@ export function ModalOpenLink<FCProps = DefaultLinkProps & ModalOpenLinkProps>({
     return <Link<FCProps> {...linkProps} />
   }
 
-  const definitelyLinkProps = linkProps as DefaultLinkProps
+  const definitelyLinkProps = linkProps
 
   return <Link {...definitelyLinkProps} />
 }

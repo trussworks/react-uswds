@@ -53,15 +53,33 @@ export const BigFooterNav = {
           aria-label="Footer navigation"
           size="big"
           links={[
-            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
             [
               'Topic',
-              <a key="2" href="#">
+              ...Array.from({ length: 3 }, (_x, i) => (
+                <a key={`topic_0_${i}`} href="#">
+                  Secondary link
+                </a>
+              )),
+            ],
+            [
+              'Topic',
+              <a key="topic_1_0" href="#">
                 Secondary link that is pretty long
               </a>,
-              ...Array(2).fill(<a href="#">Secondary link</a>),
+              ...Array.from({ length: 2 }, (_x, i) => (
+                <a key={`topic_1_${i + 1}`} href="#">
+                  Secondary link
+                </a>
+              )),
             ],
-            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
+            [
+              'Topic',
+              ...Array.from({ length: 3 }, (_x, i) => (
+                <a key={`topic_2_${i}`} href="#">
+                  Secondary link
+                </a>
+              )),
+            ],
           ]}
         />
       }

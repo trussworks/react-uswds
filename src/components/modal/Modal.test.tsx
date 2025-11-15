@@ -204,7 +204,7 @@ describe('Modal component', () => {
     expect(modalWindow).not.toHaveAttribute('aria-describedby')
   })
 
-  it('throws an error if labelledby or describedby is undefined', async () => {
+  it('throws an error if labelledby or describedby is undefined', () => {
     const consoleSpy = vi.spyOn(console, 'error')
     const testModalId = 'testModal'
 
@@ -493,7 +493,7 @@ describe('Modal component', () => {
       expect(modalRef.current?.modalIsOpen).toBe(false)
       await waitFor(() => handleOpen())
       expect(modalRef.current?.modalIsOpen).toBe(true)
-      userEvent.click(screen.getByText('Test modal'))
+      await userEvent.click(screen.getByText('Test modal'))
       expect(modalRef.current?.modalIsOpen).toBe(true)
     })
 
@@ -570,7 +570,7 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
@@ -597,7 +597,7 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
@@ -659,7 +659,7 @@ describe('Modal component', () => {
         await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
 
         const overlay = screen.getByTestId('modalOverlay')
-        userEvent.click(overlay)
+        await userEvent.click(overlay)
         expect(modalRef.current?.modalIsOpen).toBe(true)
       })
 
@@ -670,7 +670,7 @@ describe('Modal component', () => {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await userEvent.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')

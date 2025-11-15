@@ -44,7 +44,7 @@ export const RangeInput = ({
         ? defaultValue
         : defaultVal
   const [value, setValue] = useState(rangeValue)
-  const callout = `${value} ${rangeUnit} ${rangePreposition} ${rangeMax}`
+  const callout = `${value.toString()} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
   return (
     <input
