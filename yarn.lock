@@ -2141,7 +2141,7 @@ __metadata:
     "@types/react-dom": ^19.0.4
     "@typescript-eslint/eslint-plugin": ^8.29.0
     "@typescript-eslint/parser": ^8.29.0
-    "@uswds/uswds": 3.9.0
+    "@uswds/uswds": 3.10.0
     "@vitejs/plugin-react": ^5.0.0
     "@vitest/coverage-istanbul": ^4.0.8
     "@vitest/eslint-plugin": ^1.1.44
@@ -2185,7 +2185,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^16.x || ^17.x || ^18.x || ^19.x
     "@types/react-dom": ^16.x || ^17.x || ^18.x || ^19.x
-    "@uswds/uswds": ^3.9.0
+    "@uswds/uswds": ^3.10.0
     focus-trap-react: ^10.2.3
     react: ^16.x || ^17.x || ^18.x || ^19.x
     react-dom: ^16.x || ^17.x || ^18.x || ^19.x
@@ -2490,14 +2490,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uswds/uswds@npm:3.9.0":
-  version: 3.9.0
-  resolution: "@uswds/uswds@npm:3.9.0"
+"@uswds/uswds@npm:3.10.0":
+  version: 3.10.0
+  resolution: "@uswds/uswds@npm:3.10.0"
   dependencies:
-    object-assign: 4.1.1
     receptor: 1.0.0
     resolve-id-refs: 0.1.0
-  checksum: 52795a1dd61762a5449406b12d8c44eba66e07f880e87c336f8e451be3d8629c54ee29f093a8141752d08fb03e4a607b00ffaaa760f017d9d5d0920ee39fc078
+  checksum: e1a275a26c39c9d2b8ae38bf0ee8fff6dec4e0cf65292d9c4ec038cac12dc3745d5d7eb847907c5c6827b980bd1b6154fad8834bfcfba5b9dcf598a3ad354e90
   languageName: node
   linkType: hard
 
@@ -7388,7 +7387,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object-assign@npm:4.1.1, object-assign@npm:^4.1.0, object-assign@npm:^4.1.1":
+"object-assign@npm:^4.1.0, object-assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
   checksum: fcc6e4ea8c7fe48abfbb552578b1c53e0d194086e2e6bbbf59e0a536381a292f39943c6e9628af05b5528aa5e3318bb30d6b2e53cadaf5b8fe9e12c4b69af23f
