@@ -85,7 +85,7 @@
     "@types/react": "^16.x || ^17.x || ^18.x || ^19.x",
     "@types/react-dom": "^16.x || ^17.x || ^18.x || ^19.x",
     "@uswds/uswds": "^3.10.0",
-    "focus-trap-react": "^10.2.3",
+    "focus-trap-react": "^11.0.4",
     "react": "^16.x || ^17.x || ^18.x || ^19.x",
     "react-dom": "^16.x || ^17.x || ^18.x || ^19.x"
   },
