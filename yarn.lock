@@ -5,10 +5,10 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@acemir/cssom@npm:^0.9.19":
-  version: 0.9.20
-  resolution: "@acemir/cssom@npm:0.9.20"
-  checksum: 49ae13d20d348c5e64b338fb1cdf453553405dcd71cad47fce3ba5bc6e5dbd4906d525587fee0773bc0c4a82f0b519131891ae0e39e7e2038058c50be1ab20a1
+"@acemir/cssom@npm:^0.9.23":
+  version: 0.9.23
+  resolution: "@acemir/cssom@npm:0.9.23"
+  checksum: 0ddae10c35ec63adba87b2564c8120341458584909fa05d8f5126fe69a2a74d3771730e051258fe186d36dc30ab2be658095f983fa575fb21e7c554438ff6cd4
   languageName: node
   linkType: hard
 
@@ -45,7 +45,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@asamuzakjp/dom-selector@npm:^6.7.3":
+"@asamuzakjp/dom-selector@npm:^6.7.4":
   version: 6.7.4
   resolution: "@asamuzakjp/dom-selector@npm:6.7.4"
   dependencies:
@@ -4174,14 +4174,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssstyle@npm:^5.3.2":
-  version: 5.3.2
-  resolution: "cssstyle@npm:5.3.2"
+"cssstyle@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "cssstyle@npm:5.3.3"
   dependencies:
     "@asamuzakjp/css-color": ^4.0.3
     "@csstools/css-syntax-patches-for-csstree": ^1.0.14
     css-tree: ^3.1.0
-  checksum: 0187b0696d91a4c3791b3cfef42f1dace68916d1f72447936979e25cc4f44d8e5c17f6b3a3cbae2cb6161383bdb505df00b68125b972c000aff68604f82b2ed5
+  checksum: 0a9a25a9f1c1f6bc73fd61abbc1f23806720ee616de9aa864ad74e87c5dd2f2e02b990b9b6f6273cbab190dc5da59dddc6749941cdd81e9d23e7279bba3a7599
   languageName: node
   linkType: hard
 
@@ -6532,12 +6532,12 @@ __metadata:
   linkType: hard
 
 "jsdom@npm:^27.0.1":
-  version: 27.1.0
-  resolution: "jsdom@npm:27.1.0"
+  version: 27.2.0
+  resolution: "jsdom@npm:27.2.0"
   dependencies:
-    "@acemir/cssom": ^0.9.19
-    "@asamuzakjp/dom-selector": ^6.7.3
-    cssstyle: ^5.3.2
+    "@acemir/cssom": ^0.9.23
+    "@asamuzakjp/dom-selector": ^6.7.4
+    cssstyle: ^5.3.3
     data-urls: ^6.0.0
     decimal.js: ^10.6.0
     html-encoding-sniffer: ^4.0.0
@@ -6560,7 +6560,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 436a0be337c630b7b34d0b0258b46a4682c3852ef9f7a4163bb446e9cf5a00470cc8881cd4faf6f2185c57ff9e62439f4b027bdbb447e8a09ee9b1f3aec9bb00
+  checksum: af2a3fee367c11c8eff15a2dad489f302a91ed48c9f439193f7a17d7847984466b4b7a7a69fb5cbb8451cbb7f347396b6b514e81c55927fd57437a18eba77c44
   languageName: node
   linkType: hard
 
