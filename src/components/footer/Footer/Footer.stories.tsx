@@ -79,7 +79,7 @@ export const SlimFooter = (): JSX.Element => (
             )}
           />
         </div>
-        <div className="tablet:grid-col-4">
+        <div className="mobile-lg:grid-col-4">
           <Address
             size="slim"
             items={[
