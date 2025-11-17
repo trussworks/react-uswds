@@ -204,7 +204,7 @@ describe('Modal component', () => {
     expect(modalWindow).not.toHaveAttribute('aria-describedby')
   })
 
-  it('throws an error if labelledby or describedby is undefined', async () => {
+  it('throws an error if labelledby or describedby is undefined', () => {
     const consoleSpy = vi.spyOn(console, 'error')
     const testModalId = 'testModal'
 
@@ -242,6 +242,8 @@ describe('Modal component', () => {
   })
 
   it('can click on the close button to close', async () => {
+    const user = userEvent.setup()
+
     const testModalId = 'testModal'
     const modalRef = createRef<ModalRef>()
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
@@ -259,11 +261,13 @@ describe('Modal component', () => {
       name: 'Close this window',
     })
     expect(closeButton).toBeInTheDocument()
-    await userEvent.click(closeButton)
+    await user.click(closeButton)
     expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
   it('can click on the overlay to close', async () => {
+    const user = userEvent.setup()
+
     const testModalId = 'testModal'
     const modalRef = createRef<ModalRef>()
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
@@ -278,7 +282,7 @@ describe('Modal component', () => {
 
     expect(modalRef.current?.modalIsOpen).toBe(true)
     const overlay = screen.getByTestId('modalOverlay')
-    await userEvent.click(overlay)
+    await user.click(overlay)
     expect(modalRef.current?.modalIsOpen).toBe(false)
   })
 
@@ -481,6 +485,8 @@ describe('Modal component', () => {
     })
 
     it('stops event propagation if toggle modal is called from within a modal', async () => {
+      const user = userEvent.setup()
+
       const modalRef = createRef<ModalRef>()
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
@@ -493,66 +499,70 @@ describe('Modal component', () => {
       expect(modalRef.current?.modalIsOpen).toBe(false)
       await waitFor(() => handleOpen())
       expect(modalRef.current?.modalIsOpen).toBe(true)
-      userEvent.click(screen.getByText('Test modal'))
+      await user.click(screen.getByText('Test modal'))
       expect(modalRef.current?.modalIsOpen).toBe(true)
     })
 
     describe('focusing', () => {
       it('activates a focus trap', async () => {
+        const user = userEvent.setup()
+
         renderWithModalRoot(<ExampleModal />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
         })
 
-        await userEvent.click(openButton)
+        await user.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
 
-        await userEvent.tab()
+        await user.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
 
-        await userEvent.tab()
+        await user.tab()
         expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
 
-        await userEvent.tab()
+        await user.tab()
         expect(
           screen.getByRole('button', { name: 'Close this window' })
         ).toHaveFocus()
 
-        await userEvent.tab()
+        await user.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
       })
 
       it('returns focus to the opener element on close', async () => {
+        const user = userEvent.setup()
+
         renderWithModalRoot(<ExampleModal />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
         })
 
-        await userEvent.click(openButton)
+        await user.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
           expect(screen.getByTestId('modalWindow')).toHaveFocus()
         })
 
-        await userEvent.tab()
+        await user.tab()
         expect(
           screen.getByRole('button', {
             name: 'Continue without saving',
           })
         ).toHaveFocus()
 
-        await userEvent.click(
+        await user.click(
           screen.getByRole('button', { name: 'Close this window' })
         )
 
@@ -564,13 +574,15 @@ describe('Modal component', () => {
       })
 
       it('the escape key closes the modal', async () => {
+        const user = userEvent.setup()
+
         renderWithModalRoot(<ExampleModal />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await user.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
@@ -591,13 +603,15 @@ describe('Modal component', () => {
       })
 
       it('can pass in a custom onFocus element', async () => {
+        const user = userEvent.setup()
+
         renderWithModalRoot(<ExampleModalWithFocusElement />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        await user.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
@@ -644,6 +658,8 @@ describe('Modal component', () => {
       })
 
       it('cannot click on the overlay to close', async () => {
+        const user = userEvent.setup()
+
         const modalRef = createRef<ModalRef>()
         const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
@@ -659,18 +675,20 @@ describe('Modal component', () => {
         await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
 
         const overlay = screen.getByTestId('modalOverlay')
-        userEvent.click(overlay)
+        user.click(overlay)
         expect(modalRef.current?.modalIsOpen).toBe(true)
       })
 
       it('the escape key does not close the modal', async () => {
+        const user = userEvent.setup()
+
         renderWithModalRoot(<ExampleModal forceAction />)
 
         const openButton = screen.getByRole('button', {
           name: 'Open default modal',
         })
 
-        userEvent.click(openButton)
+        user.click(openButton)
 
         await waitFor(() => {
           expect(screen.getByRole('dialog')).toHaveClass('is-visible')
