@@ -687,17 +687,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/compat@npm:^1.2.9":
-  version: 1.4.1
-  resolution: "@eslint/compat@npm:1.4.1"
+"@eslint/compat@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@eslint/compat@npm:2.0.0"
   dependencies:
-    "@eslint/core": ^0.17.0
+    "@eslint/core": ^1.0.0
   peerDependencies:
     eslint: ^8.40 || 9
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: 2389344cf1fe6b34f14977cb449ab24214e3342cdf99fc045896bb1063343e6009765ee3ca0bf7b893e94b476bb569ddf4d5e79a957054a246d610355acbbb75
+  checksum: b13e61d2f376744cfa4d2698f50ab12c13f92dbadc853211a8f293b282ab31940c0e7090db33b9be95887b7ebafc8c4f8c497ab39bb830ed5559cf21d079b39e
   languageName: node
   linkType: hard
 
@@ -727,6 +727,15 @@ __metadata:
   dependencies:
     "@types/json-schema": ^7.0.15
   checksum: ff9b5b4987f0bae4f2a4cfcdc7ae584ad3b0cb58526ca562fb281d6837700a04c7f3c86862e95126462318f33f60bf38e1cb07ed0e2449532d4b91cd5f4ab1f2
+  languageName: node
+  linkType: hard
+
+"@eslint/core@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@eslint/core@npm:1.0.0"
+  dependencies:
+    "@types/json-schema": ^7.0.15
+  checksum: 9f32f5c813d4336f94de3ed2f95140d89a842d0b3978254b6f5ddacaa1db5a05cf59d65055040242f91fb5a340638cd3b2bcca875c1b82279a6e63700c80c3cc
   languageName: node
   linkType: hard
 
@@ -2124,7 +2133,7 @@ __metadata:
   resolution: "@trussworks/react-uswds@workspace:."
   dependencies:
     "@babel/core": ^7.23.9
-    "@eslint/compat": ^1.2.9
+    "@eslint/compat": ^2.0.0
     "@eslint/eslintrc": ^3.3.0
     "@eslint/js": ^9.22.0
     "@laynezh/vite-plugin-lib-assets": ^2.1.0
