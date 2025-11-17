@@ -4917,14 +4917,14 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-storybook@npm:^10.0.5":
-  version: 10.0.6
-  resolution: "eslint-plugin-storybook@npm:10.0.6"
+  version: 10.0.7
+  resolution: "eslint-plugin-storybook@npm:10.0.7"
   dependencies:
     "@typescript-eslint/utils": ^8.8.1
   peerDependencies:
     eslint: ">=8"
-    storybook: ^10.0.6
-  checksum: 4c425cebb8bd07d23ba095ca1a5976d12770780e4b4d9a9274cbd52265004d821e2e934c9a0736a171f6b74c33c8c6e5eaf60b4624ff428c36499547f254081c
+    storybook: ^10.0.7
+  checksum: 4abc898c898de9e074801ae68453a376b121175e840bf9275a34bf54f3e53a1b2ba9e4826514ee2757a056ff27fce8338bb7e02bda71579c68db1d4239a96063
   languageName: node
   linkType: hard
 
