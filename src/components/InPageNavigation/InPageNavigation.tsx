@@ -85,8 +85,8 @@ export const InPageNavigation = ({
             {title}
           </Heading>
           <ul className="usa-in-page-nav__list">
-            {sectionHeadings.map((el: JSX.Element) => {
-              const heading: string = el.props.children
+            {sectionHeadings.map((el: JSX.Element, i) => {
+              const heading: JSX.Element = el.props.children
               const href: string = el.props.id ?? ''
               const hClass = classnames('usa-in-page-nav__item', {
                 'usa-in-page-nav__item--primary':
@@ -96,7 +96,9 @@ export const InPageNavigation = ({
                 'usa-current': !!href && href === currentSection,
               })
               return (
-                <li key={`usa-in-page-nav__item_${heading}`} className={hClass}>
+                <li
+                  key={`usa-in-page-nav__item_${el.props.id ?? i}`}
+                  className={hClass}>
                   <Link href={`#${CSS.escape(href)}`} className={lClass}>
                     {heading}
                   </Link>
