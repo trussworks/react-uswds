@@ -58,7 +58,7 @@ describe('FooterExtendedNavList component', () => {
     expect(getAllByText('Cheetah')).toHaveLength(2)
   })
 
-  it('does not toggle section visiblity onClick in desktop view', async () => {
+  it('does not toggle section visibility onClick in desktop view', async () => {
     const { getAllByText, getByText } = setup()
 
     await userEvent.click(getByText('Types of Cats'))
