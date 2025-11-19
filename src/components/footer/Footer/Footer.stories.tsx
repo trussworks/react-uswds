@@ -72,11 +72,14 @@ export const SlimFooter = (): JSX.Element => (
         <div className="mobile-lg:grid-col-8">
           <FooterNav
             size="slim"
-            links={Array(4).fill(
-              <a className="usa-footer__primary-link" href="#">
+            links={Array.from({ length: 4 }, (_x, i) => (
+              <a
+                key={`primary_${i}`}
+                className="usa-footer__primary-link"
+                href="#">
                 Primary Link
               </a>
-            )}
+            ))}
           />
         </div>
         <div className="mobile-lg:grid-col-4">
@@ -117,11 +120,11 @@ export const MediumFooter = (): JSX.Element => (
     primary={
       <FooterNav
         size="medium"
-        links={Array(4).fill(
-          <a className="usa-footer__primary-link" href="#">
+        links={Array.from({ length: 4 }, (_x, i) => (
+          <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
             Primary Link
           </a>
-        )}
+        ))}
       />
     }
     secondary={

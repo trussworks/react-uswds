@@ -24,11 +24,11 @@ export const SlimFooterNav = (): JSX.Element => (
   <FooterNav
     aria-label="Footer navigation"
     size="slim"
-    links={Array(4).fill(
-      <a className="usa-footer__primary-link" href="#">
+    links={Array.from({ length: 4 }, (_x, i) => (
+      <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
         PrimaryLink
       </a>
-    )}
+    ))}
   />
 )
 
@@ -36,11 +36,11 @@ export const MediumFooterNav = (): JSX.Element => (
   <FooterNav
     aria-label="Footer navigation"
     size="medium"
-    links={Array(4).fill(
-      <a className="usa-footer__primary-link" href="#">
+    links={Array.from({ length: 4 }, (_x, i) => (
+      <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
         PrimaryLink
       </a>
-    )}
+    ))}
   />
 )
 

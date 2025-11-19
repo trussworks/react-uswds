@@ -4,11 +4,11 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { FooterNav } from './FooterNav'
 
-const links = Array(4).fill(
-  <a className="usa-footer__primary-link" href="#">
+const links = Array.from({ length: 4 }, (_x, i) => (
+  <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
     Primary Link
   </a>
-)
+))
 
 const extendedLinks = [
   [
