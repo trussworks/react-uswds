@@ -56,10 +56,9 @@ export const NotFoundPage = (): JSX.Element => {
 
   const handleToggleNavDropdown = (index: number): void => {
     setNavDropdownOpen((prevNavDropdownOpen) => {
-      const newOpenState = Array(prevNavDropdownOpen.length).fill(false)
-      // eslint-disable-next-line security/detect-object-injection
-      newOpenState[index] = !prevNavDropdownOpen[index]
-      return newOpenState
+      return prevNavDropdownOpen.map(
+        (prevOpenState, i) => i === index && !prevOpenState
+      )
     })
   }
 
@@ -94,9 +93,11 @@ export const NotFoundPage = (): JSX.Element => {
       />
       <Menu
         id="extended-nav-section-one"
-        items={new Array(8).fill(
-          <a href="javascript:void(0);">{'<Navigation link>'}</a>
-        )}
+        items={Array.from({ length: 8 }, (_x, i) => (
+          <a key={`p0_nav_${i}`} href="javascript:void(0);">
+            {'<Navigation link>'}
+          </a>
+        ))}
         isOpen={navDropdownOpen[0]}
       />
     </React.Fragment>,
@@ -111,11 +112,11 @@ export const NotFoundPage = (): JSX.Element => {
       />
       <Menu
         id="extended-nav-section-two"
-        items={new Array(3).fill(
-          <a href="javascript:void(0);">
+        items={Array.from({ length: 3 }, (_x, i) => (
+          <a key={`p1_nav_${i}`} href="javascript:void(0);">
             {'< A very long navigation link that goes on two lines>'}
           </a>
-        )}
+        ))}
         isOpen={navDropdownOpen[1]}
       />
     </React.Fragment>,
@@ -142,11 +143,14 @@ export const NotFoundPage = (): JSX.Element => {
     <FooterNav
       aria-label="Footer navigation"
       size="medium"
-      links={Array(5).fill(
-        <a href="javascript:void(0)" className="usa-footer__primary-link">
+      links={Array.from({ length: 5 }, (_x, i) => (
+        <a
+          key={`foot_nav_${i}`}
+          href="javascript:void(0)"
+          className="usa-footer__primary-link">
           {'<Primary link>'}
         </a>
-      )}
+      ))}
     />
   )
 

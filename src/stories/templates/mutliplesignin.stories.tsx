@@ -64,11 +64,14 @@ const footerPrimary = (
   <FooterNav
     aria-label="Footer navigation"
     size="medium"
-    links={Array(5).fill(
-      <a href="javascript:void(0);" className="usa-footer__primary-link">
+    links={Array.from({ length: 5 }, (_x, i) => (
+      <a
+        key={`foot_nav_${i}`}
+        href="javascript:void(0);"
+        className="usa-footer__primary-link">
         Primary link
       </a>
-    )}
+    ))}
   />
 )
 

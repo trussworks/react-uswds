@@ -9,19 +9,19 @@ import { FooterExtendedNavList } from './FooterExtendedNavList'
 const links = [
   [
     'Types of Cats',
-    ...Array(2).fill(
-      <a className="usa-footer__secondary-link" href="#">
+    ...Array.from({ length: 2 }, (_x, i) => (
+      <a key={`cat_${i}`} className="usa-footer__secondary-link" href="#">
         Cheetah
       </a>
-    ),
+    )),
   ],
   [
     'Musical Gifts',
-    ...Array(3).fill(
-      <a className="usa-footer__secondary-link" href="#">
+    ...Array.from({ length: 3 }, (_x, i) => (
+      <a key={`mgift_${i}`} className="usa-footer__secondary-link" href="#">
         Purple Rain
       </a>
-    ),
+    )),
   ],
 ]
 
@@ -58,7 +58,7 @@ describe('FooterExtendedNavList component', () => {
     expect(getAllByText('Cheetah')).toHaveLength(2)
   })
 
-  it('does not toggle section visiblity onClick in desktop view', async () => {
+  it('does not toggle section visibility onClick in desktop view', async () => {
     const { getAllByText, getByText } = setup()
 
     await userEvent.click(getByText('Types of Cats'))

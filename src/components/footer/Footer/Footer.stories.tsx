@@ -72,11 +72,14 @@ export const SlimFooter = (): JSX.Element => (
         <div className="mobile-lg:grid-col-8">
           <FooterNav
             size="slim"
-            links={Array(4).fill(
-              <a className="usa-footer__primary-link" href="#">
+            links={Array.from({ length: 4 }, (_x, i) => (
+              <a
+                key={`primary_${i}`}
+                className="usa-footer__primary-link"
+                href="#">
                 Primary Link
               </a>
-            )}
+            ))}
           />
         </div>
         <div className="mobile-lg:grid-col-4">
@@ -117,11 +120,11 @@ export const MediumFooter = (): JSX.Element => (
     primary={
       <FooterNav
         size="medium"
-        links={Array(4).fill(
-          <a className="usa-footer__primary-link" href="#">
+        links={Array.from({ length: 4 }, (_x, i) => (
+          <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
             Primary Link
           </a>
-        )}
+        ))}
       />
     }
     secondary={
@@ -170,36 +173,50 @@ export const BigFooter = (): JSX.Element => (
               links={[
                 [
                   'Topic',
-                  ...Array(2).fill(<a href="#">Secondary link</a>),
-                  <a key="4" href="#">
+                  ...Array.from({ length: 2 }, (_x, i) => (
+                    <a key={`topic_0_${i}`} href="#">
+                      Secondary link
+                    </a>
+                  )),
+                  <a key="topic_0_2" href="#">
                     Secondary link that is a bit longer than most of the others
                   </a>,
-                  <a key="5" href="#">
+                  <a key="topic_0_3" href="#">
                     Secondary link
                   </a>,
                 ],
                 [
                   'Topic',
-                  <a key="2" href="#">
+                  <a key="topic_1_0" href="#">
                     Secondary link that is pretty long
                   </a>,
-                  ...Array(3).fill(<a href="#">Secondary link</a>),
+                  ...Array.from({ length: 3 }, (_x, i) => (
+                    <a key={`topic_1_${i + 1}`} href="#">
+                      Secondary link
+                    </a>
+                  )),
                 ],
                 [
                   'Topic',
-                  ...Array(4).fill(
-                    <a className="usa-footer__secondary-link" href="#">
+                  ...Array.from({ length: 4 }, (_x, i) => (
+                    <a
+                      key={`topic_2_${i}`}
+                      className="usa-footer__secondary-link"
+                      href="#">
                       Secondary link
                     </a>
-                  ),
+                  )),
                 ],
                 [
                   'Topic',
-                  ...Array(4).fill(
-                    <a className="usa-footer__secondary-link" href="#">
+                  ...Array.from({ length: 4 }, (_x, i) => (
+                    <a
+                      key={`topic_3_${i}`}
+                      className="usa-footer__secondary-link"
+                      href="#">
                       Secondary link
                     </a>
-                  ),
+                  )),
                 ],
               ]}
             />

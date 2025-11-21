@@ -44,10 +44,9 @@ export const DocumentationPage = (): JSX.Element => {
 
   const handleToggleNavDropdown = (index: number): void => {
     setNavDropdownOpen((prevNavDropdownOpen) => {
-      const newOpenState = Array(prevNavDropdownOpen.length).fill(false)
-      // eslint-disable-next-line security/detect-object-injection
-      newOpenState[index] = !prevNavDropdownOpen[index]
-      return newOpenState
+      return prevNavDropdownOpen.map(
+        (prevOpenState, i) => i === index && !prevOpenState
+      )
     })
   }
 
@@ -72,7 +71,11 @@ export const DocumentationPage = (): JSX.Element => {
       />
       <Menu
         id="extended-nav-section-one"
-        items={new Array(3).fill(<a href="#">Navigation link</a>)}
+        items={Array.from({ length: 3 }, (_x, i) => (
+          <a key={`p0_nav_${i}`} href="#">
+            Navigation link
+          </a>
+        ))}
         isOpen={navDropdownOpen[0]}
       />
     </React.Fragment>,
@@ -87,7 +90,11 @@ export const DocumentationPage = (): JSX.Element => {
       />
       <Menu
         id="extended-nav-section-two"
-        items={new Array(3).fill(<a href="#">Navigation link</a>)}
+        items={Array.from({ length: 3 }, (_x, i) => (
+          <a key={`p1_nav_${i}`} href="#">
+            Navigation link
+          </a>
+        ))}
         isOpen={navDropdownOpen[1]}
       />
     </React.Fragment>,
@@ -107,15 +114,21 @@ export const DocumentationPage = (): JSX.Element => {
       <SideNav
         isSubnav
         items={[
-          ...Array(1).fill(<a href="">Child link</a>),
-          <React.Fragment key="sidenav_1_1">
+          <a key="sidenav_0" href="">
+            Child link
+          </a>,
+          <React.Fragment key="sidenav_1">
             <a href="" className="usa-current">
               Child link
             </a>
             <SideNav
               isSubnav
               items={[
-                ...Array(2).fill(<a href="">Grandchild link</a>),
+                ...Array.from({ length: 2 }, (_x, i) => (
+                  <a key={`sidenav_1_${i}`} href="">
+                    Grandchild link
+                  </a>
+                )),
                 <a href="" key="sidenav_1_2" className="usa-current">
                   Grandchild link
                 </a>,
@@ -125,7 +138,11 @@ export const DocumentationPage = (): JSX.Element => {
               ]}
             />
           </React.Fragment>,
-          ...Array(3).fill(<a href="">Child link</a>),
+          ...Array.from({ length: 3 }, (_x, i) => (
+            <a key={`sidenav_${i + 2}`} href="">
+              Child link
+            </a>
+          )),
         ]}
       />
     </React.Fragment>,
@@ -152,11 +169,14 @@ export const DocumentationPage = (): JSX.Element => {
     <FooterNav
       aria-label="Footer navigation"
       size="medium"
-      links={Array(5).fill(
-        <a href="javascript:void(0)" className="usa-footer__primary-link">
+      links={Array.from({ length: 5 }, (_x, i) => (
+        <a
+          key={`foot_nav_${i}`}
+          href="javascript:void(0)"
+          className="usa-footer__primary-link">
           Primary link
         </a>
-      )}
+      ))}
     />
   )
 
