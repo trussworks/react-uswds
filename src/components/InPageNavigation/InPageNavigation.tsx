@@ -10,26 +10,56 @@ import styles from './InPageNavigation.module.scss'
 
 function findHeadingElements(
   el: JSX.Element,
-  headingElements: HeadingLevel[]
+  headingElements: HeadingLevel[],
+  contentSelector?: string
 ): JSX.Element[] {
   const headings: JSX.Element[] = []
   if (typeof el !== 'object' || !el.type) {
     return headings
   }
 
-  if (headingElements.includes(el.type)) {
+  // If contentSelector is defined, wait to include headings until we've located
+  // the content element.
+  if (contentSelector) {
+    if (contentSelector.startsWith('.')) {
+      const className = contentSelector.slice(1)
+      const elHasClass = (el.props?.className as string | undefined)
+        ?.split(' ')
+        .some((s) => !!s && s === className)
+      if (elHasClass) {
+        contentSelector = undefined
+      }
+    } else if (contentSelector.startsWith('#')) {
+      const id = contentSelector.slice(1)
+      const elHasId = (el.props?.id as string | undefined) === id
+      if (elHasId) {
+        contentSelector = undefined
+      }
+    } else {
+      console.warn(
+        'Only class and id selectors are supported by InPageNavigation contentSelector'
+      )
+      contentSelector = undefined
+    }
+  } else if (headingElements.includes(el.type)) {
     headings.push(el)
   }
+
   const children = el.props?.children
   if (children) {
     if (Array.isArray(children)) {
       for (const child of children) {
-        headings.push(...findHeadingElements(child, headingElements))
+        headings.push(
+          ...findHeadingElements(child, headingElements, contentSelector)
+        )
       }
     } else {
-      headings.push(...findHeadingElements(children, headingElements))
+      headings.push(
+        ...findHeadingElements(children, headingElements, contentSelector)
+      )
     }
   }
+
   return headings
 }
 
@@ -44,6 +74,7 @@ export type InPageNavigationProps = {
   threshold?: number
   minimumHeadingCount?: number
   title?: string
+  contentSelector?: string
   headingElements?: HeadingLevel[]
 } & Omit<JSX.IntrinsicElements['div'], 'content'>
 
@@ -58,6 +89,7 @@ export const InPageNavigation = ({
   threshold = 1,
   minimumHeadingCount = 2,
   title = 'On this page',
+  contentSelector,
   headingElements = ['h2', 'h3'],
   ...divProps
 }: InPageNavigationProps): JSX.Element => {
@@ -75,8 +107,8 @@ export const InPageNavigation = ({
     ? ['h2', 'h3']
     : headingElements.sort()
   const sectionHeadings = useMemo(
-    () => findHeadingElements(content, headingElements),
-    [content, headingElements]
+    () => findHeadingElements(content, headingElements, contentSelector),
+    [content, headingElements, contentSelector]
   )
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {

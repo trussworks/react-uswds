@@ -1,7 +1,12 @@
-import React, { type JSX } from 'react'
 import { InPageNavigation } from './InPageNavigation'
-import { CONTENT } from './content'
-import { HeadingLevel } from '../../types/headingLevel'
+import {
+  CONTENT,
+  MINIMUM_CONTENT,
+  NESTED_CONTENT,
+  SELECT_CONTENT,
+  SELECT_HEADERS,
+} from './content'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 export default {
   title: 'Components/In-Page Navigation',
@@ -27,8 +32,15 @@ export default {
     minimumHeadingCount: {
       control: { type: 'number', min: 0, max: 12 },
     },
+    contentSelector: {
+      control: 'text',
+    },
+    content: {
+      control: { disable: true },
+    },
   },
   args: {
+    mainProps: { className: 'usa-prose' },
     headingLevel: 'h4',
     rootMargin: '0px 0px 0px 0px',
     threshold: 1,
@@ -47,43 +59,48 @@ Source: https://designsystem.digital.gov/components/in-page-navigation/
       },
     },
   },
-}
+} satisfies Meta<typeof InPageNavigation>
 
-type StorybookArguments = {
-  headingLevel: HeadingLevel
-  rootMargin: string
-  scrollOffset: string
-  threshold: number
-  title: string
-  headingElements: HeadingLevel[]
-  minimumHeadingCount: number
-}
+type Story = StoryObj<typeof InPageNavigation>
 
-export const Default = (argTypes: StorybookArguments): JSX.Element => (
-  <InPageNavigation
-    content={CONTENT}
-    headingLevel={argTypes.headingLevel}
-    mainProps={{ className: 'usa-prose' }}
-    rootMargin={argTypes.rootMargin}
-    threshold={argTypes.threshold}
-    title={argTypes.title}
-    headingElements={argTypes.headingElements}
-    minimumHeadingCount={argTypes.minimumHeadingCount}
-  />
-)
+export const Default: Story = {
+  args: {
+    content: CONTENT,
+  },
+}
 
 // Storybook seems to force anchor links to open in a new window,
 // so this story is just to demonstrate how the scroll offset works
-export const ScrollOffset = (argTypes: StorybookArguments): JSX.Element => (
-  <InPageNavigation
-    content={CONTENT}
-    headingLevel={argTypes.headingLevel}
-    mainProps={{ className: 'usa-prose' }}
-    rootMargin={argTypes.rootMargin}
-    scrollOffset="2rem"
-    threshold={argTypes.threshold}
-    title={argTypes.title}
-    headingElements={argTypes.headingElements}
-    minimumHeadingCount={argTypes.minimumHeadingCount}
-  />
-)
+export const ScrollOffset: Story = {
+  args: {
+    content: CONTENT,
+    scrollOffset: '2rem',
+  },
+}
+
+export const ContentSelector: Story = {
+  args: {
+    content: SELECT_CONTENT,
+    contentSelector: '.main-content',
+    minimumHeadingCount: 1,
+  },
+}
+
+export const HeaderSelector: Story = {
+  args: {
+    content: SELECT_HEADERS,
+  },
+}
+
+export const MinimumHeaders: Story = {
+  args: {
+    content: MINIMUM_CONTENT,
+    minimumHeadingCount: 4,
+  },
+}
+
+export const NestedContent: Story = {
+  args: {
+    content: NESTED_CONTENT,
+  },
+}
