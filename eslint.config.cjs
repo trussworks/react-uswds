@@ -112,7 +112,10 @@ module.exports = defineConfig([
                 ecmaFeatures: {
                     jsx: true,
                 },
-                projectService: true,
+                projectService: {
+                    allowDefaultProject: ["__mocks__/focus-trap-react.tsx"],
+                    defaultProject: "tsconfig.json",
+                },
                 warnOnUnsupportedTypeScriptVersion: true,
             },
         },
