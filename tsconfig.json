@@ -28,6 +28,7 @@
   },
   "include": [
     "src/**/*",
+    "__mocks__/**/*",
     "custom.d.ts",
   ],
 }
