@@ -4,7 +4,6 @@ import {
   render,
   screen,
   waitFor,
-  fireEvent,
   RenderOptions,
 } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -41,11 +40,33 @@ const renderWithModalRoot = (ui: JSX.Element, options: RenderOptions = {}) => {
   document.body.appendChild(appContainer)
   document.body.appendChild(modalContainer)
 
-  return render(ui, {
+  const renderResult = render(ui, {
     ...options,
     container: appContainer,
     baseElement: document.body,
   })
+
+  const modalWrapper = screen.getByRole('dialog')
+  const modalWindow = screen.getByTestId('modalWindow')
+
+  const queryForOpenButton = () =>
+    screen.queryByRole('button', {
+      name: 'Open default modal',
+    })
+  const queryForCloseButton = () =>
+    screen.queryByRole('button', {
+      name: 'Close this window',
+    })
+  const queryForOverlay = () => screen.queryByTestId('modalOverlay')
+
+  return {
+    ...renderResult,
+    modalWrapper,
+    modalWindow,
+    queryForOpenButton,
+    queryForCloseButton,
+    queryForOverlay,
+  }
 }
 
 const ExampleModal = ({
@@ -156,10 +177,10 @@ describe('Modal component', () => {
   it('renders its children inside a modal wrapper', () => {
     const testModalId = 'testModal'
 
-    renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)
+    const { modalWrapper, modalWindow, queryForCloseButton } =
+      renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)
 
     // Modal wrapper
-    const modalWrapper = screen.getByRole('dialog')
     expect(modalWrapper).toHaveAttribute('id', testModalId)
     expect(modalWrapper).toHaveClass('usa-modal-wrapper')
     expect(modalWrapper).toHaveClass('is-hidden')
@@ -167,23 +188,19 @@ describe('Modal component', () => {
 
     expect(screen.queryByTestId('modalOverlay')).toBeInTheDocument()
 
-    const modalWindow = screen.getByTestId('modalWindow')
     expect(modalWindow).toHaveClass('usa-modal')
     expect(modalWindow).not.toHaveAttribute('id')
     expect(modalWindow).toHaveAttribute('tabindex', '-1')
     expect(modalWindow).toHaveTextContent('Test modal')
 
-    expect(
-      screen.getByRole('button', {
-        name: 'Close this window',
-      })
-    ).toBeInTheDocument()
+    const closeButton = queryForCloseButton()
+    expect(closeButton).toBeInTheDocument()
   })
 
   it('passes aria props to the modal wrapper', () => {
     const testModalId = 'testModal'
 
-    renderWithModalRoot(
+    const { modalWrapper, modalWindow } = renderWithModalRoot(
       <Modal
         id={testModalId}
         aria-labelledby="modal-label"
@@ -192,14 +209,12 @@ describe('Modal component', () => {
       </Modal>
     )
 
-    const modalWrapper = screen.getByRole('dialog')
     expect(modalWrapper).toHaveAttribute('aria-labelledby', 'modal-label')
     expect(modalWrapper).toHaveAttribute(
       'aria-describedby',
       'modal-description'
     )
 
-    const modalWindow = screen.getByTestId('modalWindow')
     expect(modalWindow).not.toHaveAttribute('aria-labelledby')
     expect(modalWindow).not.toHaveAttribute('aria-describedby')
   })
@@ -208,9 +223,10 @@ describe('Modal component', () => {
     const consoleSpy = vi.spyOn(console, 'error')
     const testModalId = 'testModal'
 
-    renderWithModalRoot(<Modal id={testModalId}>Test modal</Modal>)
+    const { modalWrapper } = renderWithModalRoot(
+      <Modal id={testModalId}>Test modal</Modal>
+    )
 
-    const modalWrapper = screen.getByRole('dialog')
     expect(modalWrapper).not.toHaveAttribute('aria-labelledby')
     expect(modalWrapper).not.toHaveAttribute('aria-describedby')
     expect(consoleSpy).toHaveBeenCalledWith(
@@ -227,71 +243,80 @@ describe('Modal component', () => {
 
     const testModalId = 'testModal'
 
-    renderWithModalRoot(
+    const { modalWrapper } = renderWithModalRoot(
       <Modal id={testModalId} ref={modalRef} modalRoot="#modal-root">
         Test modal
       </Modal>
     )
 
-    await waitFor(() => handleOpen())
+    handleOpen()
 
-    expect(modalRef.current?.modalIsOpen).toBe(true)
-    const modalWrapper = screen.getByRole('dialog')
+    await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
+
     expect(modalWrapper).not.toHaveClass('is-hidden')
     expect(modalWrapper).toHaveClass('is-visible')
   })
 
   it('can click on the close button to close', async () => {
+    const user = userEvent.setup()
+
     const testModalId = 'testModal'
     const modalRef = createRef<ModalRef>()
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
-    renderWithModalRoot(
+    const { queryForCloseButton } = renderWithModalRoot(
       <Modal id={testModalId} ref={modalRef} modalRoot="#modal-root">
         Test modal
       </Modal>
     )
 
-    await waitFor(() => handleOpen())
+    handleOpen()
 
-    expect(modalRef.current?.modalIsOpen).toBe(true)
-    const closeButton = screen.getByRole('button', {
-      name: 'Close this window',
-    })
+    await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
+
+    const closeButton = queryForCloseButton()
     expect(closeButton).toBeInTheDocument()
-    await userEvent.click(closeButton)
-    expect(modalRef.current?.modalIsOpen).toBe(false)
+
+    await user.click(closeButton!)
+
+    await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(false))
   })
 
   it('can click on the overlay to close', async () => {
+    const user = userEvent.setup()
+
     const testModalId = 'testModal'
     const modalRef = createRef<ModalRef>()
     const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
-    renderWithModalRoot(
+    const { queryForOverlay } = renderWithModalRoot(
       <Modal id={testModalId} ref={modalRef}>
         Test modal
       </Modal>
     )
 
-    await waitFor(() => handleOpen())
+    handleOpen()
 
-    expect(modalRef.current?.modalIsOpen).toBe(true)
-    const overlay = screen.getByTestId('modalOverlay')
-    await userEvent.click(overlay)
-    expect(modalRef.current?.modalIsOpen).toBe(false)
+    await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
+
+    const overlay = queryForOverlay()
+    expect(overlay).toBeInTheDocument()
+
+    await user.click(overlay!)
+
+    await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(false))
   })
 
   it('renders a large modal window when isLarge is true', () => {
     const testModalId = 'testModal'
 
-    renderWithModalRoot(
+    const { modalWindow } = renderWithModalRoot(
       <Modal id={testModalId} isLarge>
         Test modal
       </Modal>
     )
 
-    expect(screen.getByTestId('modalWindow')).toHaveClass('usa-modal--lg')
+    expect(modalWindow).toHaveClass('usa-modal--lg')
   })
 
   it('renders modal initially open when isInitiallyOpen is true', () => {
@@ -311,22 +336,16 @@ describe('Modal component', () => {
   it('does not render a close button when forceAction is true', () => {
     const testModalId = 'testModal'
 
-    renderWithModalRoot(
+    const { modalWrapper, queryForCloseButton } = renderWithModalRoot(
       <Modal id={testModalId} forceAction>
         Test modal
       </Modal>
     )
 
-    expect(screen.getByRole('dialog')).toHaveAttribute(
-      'data-force-action',
-      'true'
-    )
+    expect(modalWrapper).toHaveAttribute('data-force-action', 'true')
 
-    expect(
-      screen.queryByRole('button', {
-        name: 'Close this window',
-      })
-    ).not.toBeInTheDocument()
+    const closeButton = queryForCloseButton()
+    expect(closeButton).not.toBeInTheDocument()
   })
 
   describe('toggling', () => {
@@ -344,14 +363,14 @@ describe('Modal component', () => {
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 0px')
 
-      await waitFor(() => handleOpen())
+      handleOpen()
 
       await waitFor(() =>
         expect(baseElement).toHaveClass('usa-js-modal--active')
       )
       expect(baseElement).toHaveStyle('padding-right: 15px')
 
-      await waitFor(() => handleClose())
+      handleClose()
 
       await waitFor(() =>
         expect(baseElement).not.toHaveClass('usa-js-modal--active')
@@ -374,14 +393,14 @@ describe('Modal component', () => {
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 20px')
 
-      await waitFor(() => handleOpen())
+      handleOpen()
 
       await waitFor(() =>
         expect(baseElement).toHaveClass('usa-js-modal--active')
       )
       expect(baseElement).toHaveStyle('padding-right: 35px')
 
-      await waitFor(() => handleClose())
+      handleClose()
 
       await waitFor(() =>
         expect(baseElement).not.toHaveClass('usa-js-modal--active')
@@ -415,7 +434,7 @@ describe('Modal component', () => {
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      await waitFor(() => handleOpen())
+      handleOpen()
 
       await waitFor(() => expect(container).toHaveAttribute('aria-hidden'))
       expect(container).toHaveAttribute('data-modal-hidden')
@@ -423,7 +442,7 @@ describe('Modal component', () => {
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      await waitFor(() => handleClose())
+      handleClose()
 
       await waitFor(() => expect(container).not.toHaveAttribute('aria-hidden'))
       expect(container).not.toHaveAttribute('data-modal-hidden')
@@ -461,7 +480,7 @@ describe('Modal component', () => {
 
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      await waitFor(() => handleOpen())
+      handleOpen()
 
       await waitFor(() => expect(container).toHaveAttribute('aria-hidden'))
       expect(container).toHaveAttribute('data-modal-hidden')
@@ -470,7 +489,7 @@ describe('Modal component', () => {
 
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
 
-      await waitFor(() => handleClose())
+      handleClose()
 
       await waitFor(() => expect(container).not.toHaveAttribute('aria-hidden'))
       expect(container).not.toHaveAttribute('data-modal-hidden')
@@ -481,6 +500,8 @@ describe('Modal component', () => {
     })
 
     it('stops event propagation if toggle modal is called from within a modal', async () => {
+      const user = userEvent.setup()
+
       const modalRef = createRef<ModalRef>()
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
@@ -491,116 +512,130 @@ describe('Modal component', () => {
       )
 
       expect(modalRef.current?.modalIsOpen).toBe(false)
-      await waitFor(() => handleOpen())
-      expect(modalRef.current?.modalIsOpen).toBe(true)
-      await userEvent.click(screen.getByText('Test modal'))
-      expect(modalRef.current?.modalIsOpen).toBe(true)
+
+      handleOpen()
+      await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
+
+      await user.click(screen.getByText('Test modal'))
+
+      await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
     })
 
     describe('focusing', () => {
       it('activates a focus trap', async () => {
-        renderWithModalRoot(<ExampleModal />)
+        const user = userEvent.setup()
 
-        const openButton = screen.getByRole('button', {
-          name: 'Open default modal',
-        })
+        const {
+          modalWrapper,
+          modalWindow,
+          queryForOpenButton,
+          queryForCloseButton,
+        } = renderWithModalRoot(<ExampleModal />)
 
-        await userEvent.click(openButton)
+        const openButton = queryForOpenButton()
+        expect(openButton).toBeInTheDocument()
+
+        await user.click(openButton!)
+
+        const closeButton = queryForCloseButton()
 
         await waitFor(() => {
-          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
-          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(modalWindow).toHaveFocus()
+          expect(closeButton).toBeInTheDocument()
         })
 
-        await userEvent.tab()
+        await user.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
 
-        await userEvent.tab()
+        await user.tab()
         expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
 
-        await userEvent.tab()
-        expect(
-          screen.getByRole('button', { name: 'Close this window' })
-        ).toHaveFocus()
+        await user.tab()
 
-        await userEvent.tab()
+        expect(closeButton).toHaveFocus()
+
+        await user.tab()
         expect(
           screen.getByRole('button', { name: 'Continue without saving' })
         ).toHaveFocus()
       })
 
       it('returns focus to the opener element on close', async () => {
-        renderWithModalRoot(<ExampleModal />)
+        const user = userEvent.setup()
 
-        const openButton = screen.getByRole('button', {
-          name: 'Open default modal',
-        })
+        const {
+          modalWrapper,
+          modalWindow,
+          queryForOpenButton,
+          queryForCloseButton,
+        } = renderWithModalRoot(<ExampleModal />)
 
-        await userEvent.click(openButton)
+        const openButton = queryForOpenButton()
+        expect(openButton).toBeInTheDocument()
+
+        await user.click(openButton!)
 
         await waitFor(() => {
-          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
-          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(modalWindow).toHaveFocus()
         })
 
-        await userEvent.tab()
+        const closeButton = queryForCloseButton()
+        expect(closeButton).toBeInTheDocument()
+
+        await user.tab()
         expect(
           screen.getByRole('button', {
             name: 'Continue without saving',
           })
         ).toHaveFocus()
 
-        await userEvent.click(
-          screen.getByRole('button', { name: 'Close this window' })
-        )
+        await user.click(closeButton!)
 
-        expect(
-          screen.getByRole('button', {
-            name: 'Open default modal',
-          })
-        ).toHaveFocus()
+        expect(openButton).toHaveFocus()
       })
 
       it('the escape key closes the modal', async () => {
-        renderWithModalRoot(<ExampleModal />)
+        const user = userEvent.setup()
 
-        const openButton = screen.getByRole('button', {
-          name: 'Open default modal',
-        })
+        const { modalWrapper, modalWindow, queryForOpenButton } =
+          renderWithModalRoot(<ExampleModal />)
 
-        await userEvent.click(openButton)
+        const openButton = queryForOpenButton()
+        expect(openButton).toBeInTheDocument()
 
-        await waitFor(() => {
-          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
-          expect(screen.getByTestId('modalWindow')).toHaveFocus()
-        })
-
-        fireEvent.keyDown(screen.getByTestId('modalWindow'), { key: 'Escape' })
+        await user.click(openButton!)
 
         await waitFor(() => {
-          expect(screen.getByRole('dialog')).not.toHaveClass('is-visible')
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(modalWindow).toHaveFocus()
+        })
 
-          expect(
-            screen.getByRole('button', {
-              name: 'Open default modal',
-            })
-          ).toHaveFocus()
+        await user.keyboard('{escape}')
+
+        await waitFor(() => {
+          expect(modalWrapper).not.toHaveClass('is-visible')
+          expect(openButton).toHaveFocus()
         })
       })
 
       it('can pass in a custom onFocus element', async () => {
-        renderWithModalRoot(<ExampleModalWithFocusElement />)
+        const user = userEvent.setup()
 
-        const openButton = screen.getByRole('button', {
-          name: 'Open default modal',
-        })
+        const { modalWrapper, queryForOpenButton } = renderWithModalRoot(
+          <ExampleModalWithFocusElement />
+        )
 
-        await userEvent.click(openButton)
+        const openButton = queryForOpenButton()
+        expect(openButton).toBeInTheDocument()
+
+        await user.click(openButton!)
 
         await waitFor(() => {
-          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
+          expect(modalWrapper).toHaveClass('is-visible')
           expect(
             screen.getByRole('button', { name: 'Focus me first' })
           ).toHaveFocus()
@@ -630,13 +665,11 @@ describe('Modal component', () => {
 
         expect(baseElement).not.toHaveClass('usa-js-no-click')
 
-        await waitFor(() => handleOpen())
+        handleOpen()
 
-        await waitFor(() => {
-          expect(baseElement).toHaveClass('usa-js-no-click')
-        })
+        await waitFor(() => expect(baseElement).toHaveClass('usa-js-no-click'))
 
-        await waitFor(() => handleClose())
+        handleClose()
 
         await waitFor(() =>
           expect(baseElement).not.toHaveClass('usa-js-no-click')
@@ -644,44 +677,49 @@ describe('Modal component', () => {
       })
 
       it('cannot click on the overlay to close', async () => {
+        const user = userEvent.setup()
+
         const modalRef = createRef<ModalRef>()
         const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
 
         const testModalId = 'testModal'
 
-        renderWithModalRoot(
+        const { queryForOverlay } = renderWithModalRoot(
           <Modal id={testModalId} ref={modalRef} forceAction>
             {testModalChildren}
           </Modal>
         )
 
-        await waitFor(() => handleOpen())
+        handleOpen()
         await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
 
-        const overlay = screen.getByTestId('modalOverlay')
-        await userEvent.click(overlay)
+        const overlay = queryForOverlay()
+        expect(overlay).toBeInTheDocument()
+        await user.click(overlay!)
         expect(modalRef.current?.modalIsOpen).toBe(true)
       })
 
       it('the escape key does not close the modal', async () => {
-        renderWithModalRoot(<ExampleModal forceAction />)
+        const user = userEvent.setup()
 
-        const openButton = screen.getByRole('button', {
-          name: 'Open default modal',
-        })
+        const { modalWrapper, modalWindow, queryForOpenButton } =
+          renderWithModalRoot(<ExampleModal forceAction />)
 
-        await userEvent.click(openButton)
+        const openButton = queryForOpenButton()
+        expect(openButton).toBeInTheDocument()
 
-        await waitFor(() => {
-          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
-          expect(screen.getByTestId('modalWindow')).toHaveFocus()
-        })
-
-        fireEvent.keyDown(screen.getByTestId('modalWindow'), { key: 'Escape' })
+        await user.click(openButton!)
 
         await waitFor(() => {
-          expect(screen.getByRole('dialog')).toHaveClass('is-visible')
-          expect(screen.getByTestId('modalWindow')).toHaveFocus()
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(modalWindow).toHaveFocus()
+        })
+
+        await user.keyboard('{escape}')
+
+        await waitFor(() => {
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(modalWindow).toHaveFocus()
         })
       })
     })
@@ -701,7 +739,7 @@ describe('Modal component', () => {
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 0px')
 
-      await waitFor(() => handleOpen())
+      handleOpen()
 
       await waitFor(() =>
         expect(baseElement).toHaveClass('usa-js-modal--active')
@@ -730,14 +768,14 @@ describe('Modal component', () => {
       expect(baseElement).not.toHaveClass('usa-js-modal--active')
       expect(baseElement).toHaveStyle('padding-right: 0px')
 
-      await waitFor(() => handleOpen())
+      handleOpen()
 
-      await waitFor(() => {
+      await waitFor(() =>
         expect(baseElement).toHaveClass('usa-js-modal--active')
-      })
+      )
       expect(baseElement).toHaveStyle('padding-right: 15px')
 
-      await waitFor(() => handleClose())
+      handleClose()
 
       await waitFor(() =>
         expect(baseElement).not.toHaveClass('usa-js-modal--active')

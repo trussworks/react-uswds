@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
   JSX,
 } from 'react'
-import FocusTrap from 'focus-trap-react'
+import { FocusTrap } from 'focus-trap-react'
 
 import { useModal, getScrollbarWidth } from './utils'
 import { ModalWindow } from './ModalWindow/ModalWindow'
@@ -205,5 +205,3 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
 }
 
 export const Modal = forwardRef(ModalForwardRef)
-
-export default Modal
