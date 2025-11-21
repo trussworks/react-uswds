@@ -42,11 +42,9 @@ export function ModalOpenLink<FCProps = DefaultLinkProps & ModalOpenLinkProps>({
     onClick: handleClick,
   } as DefaultLinkProps | CustomLinkProps<FCProps>
 
-  if (isCustomProps(linkProps)) {
-    return <Link<FCProps> {...linkProps} />
-  }
-
-  const definitelyLinkProps = linkProps as DefaultLinkProps
-
-  return <Link {...definitelyLinkProps} />
+  return isCustomProps(linkProps) ? (
+    <Link<FCProps> {...linkProps} />
+  ) : (
+    <Link {...linkProps} />
+  )
 }

@@ -27,7 +27,7 @@ export const FooterExtendedNavList = ({
     isClient && window.innerWidth < 480
   )
   const [sectionsOpenState, setSectionsOpenState] = useState<boolean[]>(
-    Array(nestedLinks.length).fill(false)
+    nestedLinks.map(() => false)
   )
 
   // Use isMobile prop, fallback to calculated state if undefined
@@ -49,10 +49,7 @@ export const FooterExtendedNavList = ({
 
   const onToggle = (index: number): void => {
     setSectionsOpenState((prevIsOpen) => {
-      const newIsOpen = Array(nestedLinks.length).fill(false)
-      // eslint-disable-next-line security/detect-object-injection
-      newIsOpen[index] = !prevIsOpen[index]
-      return newIsOpen
+      return nestedLinks.map((_x, i) => i === index && !prevIsOpen.at(i))
     })
   }
 
@@ -64,8 +61,7 @@ export const FooterExtendedNavList = ({
           className="mobile-lg:grid-col-6 desktop:grid-col-3">
           <Section
             onToggle={useMobile ? (): void => onToggle(i) : undefined}
-            // eslint-disable-next-line security/detect-object-injection
-            isOpen={useMobile ? sectionsOpenState[i] : true}
+            isOpen={!useMobile || !!sectionsOpenState.at(i)}
             links={links}
           />
         </div>

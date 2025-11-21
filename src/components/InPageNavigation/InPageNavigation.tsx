@@ -1,3 +1,7 @@
+// TODO: Improve type and handling of `content` prop
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect, useMemo, useState, type JSX } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
@@ -109,7 +113,7 @@ export const InPageNavigation = ({
               {title}
             </Heading>
             <ul className="usa-in-page-nav__list">
-              {sectionHeadings.map((el: JSX.Element) => {
+              {sectionHeadings.map((el: JSX.Element, i) => {
                 const heading: JSX.Element = el.props.children
                 const href: string = el.props.id ?? ''
                 const hClass = classnames('usa-in-page-nav__item', {
@@ -121,7 +125,7 @@ export const InPageNavigation = ({
                 })
                 return (
                   <li
-                    key={`usa-in-page-nav__item_${heading}`}
+                    key={`usa-in-page-nav__item_${el.props.id ?? i}`}
                     className={hClass}>
                     <Link href={`#${CSS.escape(href)}`} className={lClass}>
                       {heading}
