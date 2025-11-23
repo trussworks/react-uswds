@@ -39,7 +39,7 @@ function findHeadingElements(
       console.warn(
         'Only class and id selectors are supported by InPageNavigation contentSelector'
       )
-      contentSelector = undefined
+      return headings
     }
   } else if (headingElements.includes(el.type)) {
     headings.push(el)
@@ -110,28 +110,34 @@ export const InPageNavigation = ({
     () => findHeadingElements(content, headingElements, contentSelector),
     [content, headingElements, contentSelector]
   )
-  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setCurrentSection(entry.target.id)
-      }
-    })
-  }
-  const observerOptions = {
-    root: null,
-    rootMargin: rootMargin,
-    threshold: [threshold],
-  }
-  const observer = new IntersectionObserver(handleIntersection, observerOptions)
+
   useEffect(() => {
-    document
+    const container = contentSelector
+      ? document.querySelector(contentSelector)
+      : document.getElementById('main-content')
+    if (!container) return
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      const entry = entries.findLast((entry) => entry.isIntersecting)
+      if (entry) setCurrentSection(entry.target.id)
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin,
+      threshold,
+    })
+
+    container
       .querySelectorAll(headingElements.join(','))
       .forEach((h) => observer.observe(h))
-    document.querySelector('html')?.classList.add(styles['smooth-scroll'])
+    document.documentElement.classList.add(styles['smooth-scroll'])
+
     return () => {
-      document.querySelector('html')?.classList.remove(styles['smooth-scroll'])
+      document.documentElement.classList.remove(styles['smooth-scroll'])
+      observer.disconnect()
     }
-  })
+  }, [contentSelector, headingElements, rootMargin, threshold])
 
   return (
     <div className="usa-in-page-nav-container" {...divProps}>
