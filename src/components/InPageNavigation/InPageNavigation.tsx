@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useEffect, useMemo, useState, type JSX } from 'react'
+import React, { useEffect, useMemo, useRef, useState, type JSX } from 'react'
 import classnames from 'classnames'
 import { HeadingLevel } from '../../types/headingLevel'
 import { Link } from '../Link/Link'
@@ -110,11 +110,12 @@ export const InPageNavigation = ({
     () => findHeadingElements(content, headingElements, contentSelector),
     [content, headingElements, contentSelector]
   )
+  const mainRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const container = contentSelector
-      ? document.querySelector(contentSelector)
-      : document.getElementById('main-content')
+      ? mainRef.current?.querySelector(contentSelector)
+      : mainRef.current
     if (!container) return
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -176,6 +177,7 @@ export const InPageNavigation = ({
         </aside>
       )}
       <main
+        ref={mainRef}
         id="main-content"
         className={mainClasses}
         {...remainingMainProps}
