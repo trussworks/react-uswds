@@ -2172,7 +2172,7 @@ __metadata:
     happo-plugin-storybook: ^5.0.4
     happo.io: ^13.0.1
     jsdom: ^27.0.1
-    nano-staged: ^0.8.0
+    nano-staged: ^0.9.0
     prettier: ^3.2.5
     react: ^19.0.0
     react-dom: ^19.0.0
@@ -7337,14 +7337,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nano-staged@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "nano-staged@npm:0.8.0"
+"nano-staged@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "nano-staged@npm:0.9.0"
   dependencies:
     picocolors: ^1.0.0
   bin:
     nano-staged: lib/bin.js
-  checksum: 01a6eee4053bd163e3084f34421fcb0f3ab90b5c47fa1ff7b4208f2a553b5e0a26e55a7f88c8af7632cfc2bcc3622d6078697bb0042409744bbb65565bb43334
+  checksum: 9690e3d9dfa09a07c9ee8663f50801a7495a230385a205e170f9fa439c390f866ad51148835f38d5d37e689adec299392dad76b322ebeabf15b141cfd8f63e75
   languageName: node
   linkType: hard
 
