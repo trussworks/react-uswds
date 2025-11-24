@@ -130,7 +130,7 @@
     "happo-plugin-storybook": "^5.0.4",
     "happo.io": "^13.0.1",
     "jsdom": "^27.0.1",
-    "nano-staged": "^0.8.0",
+    "nano-staged": "^0.9.0",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
