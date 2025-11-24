@@ -368,33 +368,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cacheable/memoize@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@cacheable/memoize@npm:2.0.3"
+"@cacheable/memory@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@cacheable/memory@npm:2.0.5"
   dependencies:
-    "@cacheable/utils": ^2.0.3
-  checksum: 9a7b504657f8ebb8e0539d712db06fa8cfe6537a303ec7c0026f4eb2fc10914d09c9c687ad8fa37d85c5a636ab0d1f06617b281812da25c6ea63dfc5aeb964d2
-  languageName: node
-  linkType: hard
-
-"@cacheable/memory@npm:^2.0.3":
-  version: 2.0.4
-  resolution: "@cacheable/memory@npm:2.0.4"
-  dependencies:
-    "@cacheable/utils": ^2.2.0
+    "@cacheable/utils": ^2.3.0
     "@keyv/bigmap": ^1.1.0
     hookified: ^1.12.2
-    keyv: ^5.5.3
-  checksum: 7631e324506b9e7a5c717a2f0e115526dfbb3a4a6b41d7a474d7986616ca0900fccf6fa901a350fd9645fced146380fc7b9aac7cc11956633e55428de0d42cb4
+    keyv: ^5.5.4
+  checksum: 1c0a5898f84f95e2d07f6454a84d94a089e567004d2f44bdc083514a72241795c62efe9f782d6b84223eac6593c50a6c398adf8fdd295aac4330a6f346cedd83
   languageName: node
   linkType: hard
 
-"@cacheable/utils@npm:^2.0.3, @cacheable/utils@npm:^2.1.0, @cacheable/utils@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@cacheable/utils@npm:2.2.0"
+"@cacheable/utils@npm:^2.3.0":
+  version: 2.3.1
+  resolution: "@cacheable/utils@npm:2.3.1"
   dependencies:
-    keyv: ^5.5.3
-  checksum: 58611ab2d3caa8062633b5feb913767d210ca7d4fd2b620c29420e9301d1de208e1afe47b71a1738823ec430a9ebd6193366d0120096ad6153ec7a5da8f1bf7a
+    hashery: ^1.2.0
+    keyv: ^5.5.4
+  checksum: 189d47f021f77a918fedb1e0f39cab0575c928143eb0cdb0053f41f1a7bdf2813147cbd96acb009b7a48a0432f51a919077dc893681ce97d397ff1526e04b671
   languageName: node
   linkType: hard
 
@@ -3759,17 +3751,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacheable@npm:^2.1.0":
-  version: 2.1.1
-  resolution: "cacheable@npm:2.1.1"
+"cacheable@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "cacheable@npm:2.2.0"
   dependencies:
-    "@cacheable/memoize": ^2.0.3
-    "@cacheable/memory": ^2.0.3
-    "@cacheable/utils": ^2.1.0
-    hookified: ^1.12.2
-    keyv: ^5.5.3
-    qified: ^0.5.0
-  checksum: c0249cbbf2a2b12e0e741704e91b3082515cf52d44ca58cda76da77e41884053995042385f01a71b9fb36cd45871937db20cbbce48d2542a40141cf4a9162a50
+    "@cacheable/memory": ^2.0.5
+    "@cacheable/utils": ^2.3.0
+    hookified: ^1.13.0
+    keyv: ^5.5.4
+    qified: ^0.5.2
+  checksum: 07044f907ffd31fcf284da5dbc0f1389f5f0bc06905d9cfa195c0730553aa711a13e22708188007bba6ecbd9061edc2ce1f180b237e6360e261e27b1bbc27337
   languageName: node
   linkType: hard
 
@@ -5334,12 +5325,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-entry-cache@npm:^10.1.4":
-  version: 10.1.4
-  resolution: "file-entry-cache@npm:10.1.4"
+"file-entry-cache@npm:^11.1.0":
+  version: 11.1.1
+  resolution: "file-entry-cache@npm:11.1.1"
   dependencies:
-    flat-cache: ^6.1.13
-  checksum: b0fbc1522c62d060a0e17604074f32b68bc964d4dc1a40e1f75d5c731d0e104ffbb39bf61c37a836e0ce1cabb92c121f03ae2da0ee29a3885546937e1962b862
+    flat-cache: ^6.1.19
+  checksum: 9be8c48c8844d6a20ae59c32171af8b4d2dae8486b7d01e3447dbc9dc3476f33fbbacd734b5c2207f07a76446538b3ab18c2a0241dbbebc55b56727c1c88b833
   languageName: node
   linkType: hard
 
@@ -5391,14 +5382,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flat-cache@npm:^6.1.13":
-  version: 6.1.18
-  resolution: "flat-cache@npm:6.1.18"
+"flat-cache@npm:^6.1.19":
+  version: 6.1.19
+  resolution: "flat-cache@npm:6.1.19"
   dependencies:
-    cacheable: ^2.1.0
+    cacheable: ^2.2.0
     flatted: ^3.3.3
-    hookified: ^1.12.0
-  checksum: a05a4d80fc852bd5df147d88056ee5cbb6acd369159a665542c2753596ac142e120476936569081590e92fffc7dbf32a2dbf6de3418ec551983f6fa3c2f43495
+    hookified: ^1.13.0
+  checksum: 32d65dd98d091cfcaa879fc5afa8aa3c0439780a54d4d70035257ce6ffef5bf7f6ddf1be26b1e06446fd52a298700f8b90d626ae05624e40b68d358c40c81d1d
   languageName: node
   linkType: hard
 
@@ -5826,6 +5817,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hashery@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "hashery@npm:1.2.0"
+  dependencies:
+    hookified: ^1.13.0
+  checksum: b2954f12bd42fe44213554aa7cdcd1f99eadcee4be3a6d31a4038479ab67fa8e0b98e11457357d4225e2795f90d657f5ce49f91df953cb04ae9b6700954ff853
+  languageName: node
+  linkType: hard
+
 "hasown@npm:^2.0.2":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
@@ -5860,10 +5860,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hookified@npm:^1.12.0, hookified@npm:^1.12.2":
+"hookified@npm:^1.12.2":
   version: 1.12.2
   resolution: "hookified@npm:1.12.2"
   checksum: cfb60559391b818bde171b552e095feb42c9b3107849f7d7b241005f6bbeb03dfd73a8f77401caf25503454619f4c6fa3d6a4887e19c62c77db7acddc6705614
+  languageName: node
+  linkType: hard
+
+"hookified@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "hookified@npm:1.13.0"
+  checksum: 2087d5146dfbf8789a16609341d0d524d6acad831b72e1c8ed69dfab226fb2c987fecc06c6808b8a273461aad13e9c6ea37fa254679b86a855a06d65be1c397b
   languageName: node
   linkType: hard
 
@@ -6735,12 +6742,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyv@npm:^5.5.3":
-  version: 5.5.3
-  resolution: "keyv@npm:5.5.3"
+"keyv@npm:^5.5.4":
+  version: 5.5.4
+  resolution: "keyv@npm:5.5.4"
   dependencies:
     "@keyv/serialize": ^1.1.1
-  checksum: b4b673c50a42208a1837b2ccaa109c8dd55e012685a0fadcef8d2b9be8ccdc644e2415b8c793bfe801aaa56b59e1f1d836539c88cf1c505c806a9e2d4e8df540
+  checksum: 046f0442721f437d7438584d15ff39aedd4f4979d0e867f83d53372f4b55749b813d6fcd949a2266b644f0d084c3340c2f9dd4e4a1e8a5cb0bfc040674ff16c5
   languageName: node
   linkType: hard
 
@@ -8060,12 +8067,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qified@npm:^0.5.0":
-  version: 0.5.1
-  resolution: "qified@npm:0.5.1"
+"qified@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "qified@npm:0.5.2"
   dependencies:
-    hookified: ^1.12.2
-  checksum: e7e776c6376b1b4f4fe212b27e2fd7dde532adcd91e710b64df488d5cc8cf83a7713a14667a9653fd2d61f3826ae1e432a3f1f617c13eb3d10f60e3b629c4948
+    hookified: ^1.13.0
+  checksum: 66a2cf7bf79fc1d5b3705e694407f913e378c208f94cbfba7757671e6d2978a09dfef9b860a333c07bcb873e17e75ca895d54a652abd2c2df6ed6eda549d1234
   languageName: node
   linkType: hard
 
@@ -9480,8 +9487,8 @@ __metadata:
   linkType: hard
 
 "stylelint@npm:^16.16.0":
-  version: 16.25.0
-  resolution: "stylelint@npm:16.25.0"
+  version: 16.26.0
+  resolution: "stylelint@npm:16.26.0"
   dependencies:
     "@csstools/css-parser-algorithms": ^3.0.5
     "@csstools/css-tokenizer": ^3.0.4
@@ -9496,7 +9503,7 @@ __metadata:
     debug: ^4.4.3
     fast-glob: ^3.3.3
     fastest-levenshtein: ^1.0.16
-    file-entry-cache: ^10.1.4
+    file-entry-cache: ^11.1.0
     global-modules: ^2.0.0
     globby: ^11.1.0
     globjoin: ^0.1.4
@@ -9523,7 +9530,7 @@ __metadata:
     write-file-atomic: ^5.0.1
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 0b36fead063f8903522afd04a350b021670348a0218f580aa895100cc59634179742ff844037d482bbeaff234f3411fc331f2ce59419c807c341ea3e0355d1cc
+  checksum: bb67861306049fa7c4e68255d500fe2c2e4017b3a4b4f9f561e156ef225303f2471211ccc2ecd214dda57f4440b1a4df33b6959562e44ba482b90580a06853fa
   languageName: node
   linkType: hard
 
