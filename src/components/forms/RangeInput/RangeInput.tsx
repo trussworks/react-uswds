@@ -10,16 +10,19 @@ export type RangeInputProps = {
   textPreposition?: string
   textUnit?: string
   inputRef?: LegacyInputRef
+  wrapperClassName?: string
 } & JSX.IntrinsicElements['input']
 
 export const RangeInput = ({
   className,
+  wrapperClassName,
   inputRef,
   textPreposition,
   textUnit,
   ...inputProps
 }: RangeInputProps): JSX.Element => {
-  const classes = classnames('usa-range__wrapper', className)
+  const inputClasses = classnames('usa-range', className)
+  const wrapperClasses = classnames('usa-range__wrapper', wrapperClassName)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
   const defaultMin = 0
   const defaultMax = 100
@@ -47,11 +50,11 @@ export const RangeInput = ({
   const callout = `${value.toString()} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
   return (
-    <div data-testid="range-wrapper" className={classes}>
+    <div data-testid="range-wrapper" className={wrapperClasses}>
       <input
         data-testid="range"
         aria-valuetext={callout}
-        className="usa-range"
+        className={inputClasses}
         ref={inputRef}
         type="range"
         {...remainingInputProps}

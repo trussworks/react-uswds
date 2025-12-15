@@ -10,18 +10,21 @@ describe('RangeInput component', () => {
         id="range-slider-id"
         name="rangeName"
         className="additional-class"
+        wrapperClassName="additional-wrapper-class"
       />
     )
     const rangeElement = queryByTestId('range')
-
     expect(rangeElement).toBeInTheDocument()
     expect(rangeElement).toHaveAttribute('id', 'range-slider-id')
     expect(rangeElement).toHaveAttribute('name', 'rangeName')
-    expect(rangeElement).toHaveClass('usa-range')
+    expect(rangeElement).toHaveClass('usa-range', 'additional-class')
 
     const wrapper = queryByTestId('range-wrapper')
     expect(wrapper).toBeInTheDocument()
-    expect(wrapper).toHaveClass('additional-class')
+    expect(wrapper).toHaveClass(
+      'usa-range__wrapper',
+      'additional-wrapper-class'
+    )
   })
 
   it('renders with custom range values', () => {
