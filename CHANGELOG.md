@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.0](https://github.com/trussworks/react-uswds/compare/10.2.0...11.0.0) (2025-12-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to USWDS 3.13.0 ([#3266](https://github.com/trussworks/react-uswds/issues/3266))
+* There are several breaking (visual) changes in the release notes for USWDS 3.9.0: https://github.com/uswds/uswds/releases/tag/v3.9.0
+
+### Features
+
+* upgrade to USWDS 3.10.0 ([#3265](https://github.com/trussworks/react-uswds/issues/3265)) ([b30504c](https://github.com/trussworks/react-uswds/commit/b30504c64acefe770855bbb5dc07888536951f18))
+* upgrade to USWDS 3.13.0 ([#3266](https://github.com/trussworks/react-uswds/issues/3266)) ([0d96892](https://github.com/trussworks/react-uswds/commit/0d9689202b84fcd8c59cc168a4a5ab2a8f480de4))
+* upgrade to USWDS 3.9.0 ([#3264](https://github.com/trussworks/react-uswds/issues/3264)) ([bf452b4](https://github.com/trussworks/react-uswds/commit/bf452b4fa7988f379fe61de0215cf1024b473c33))
+
+
+### Bug Fixes
+
+* Apply consistent USWDS class in slim Footer storybook example ([#3334](https://github.com/trussworks/react-uswds/issues/3334)) ([f3d48aa](https://github.com/trussworks/react-uswds/commit/f3d48aa0aedd887ce49c6dc4461b65440651d8d4))
+* Enable recommended type linting and address errors ([#3327](https://github.com/trussworks/react-uswds/issues/3327)) ([aa926dc](https://github.com/trussworks/react-uswds/commit/aa926dc1c2553b3485ddb380b471d18baf5c500e))
+* **refactor:** Refactor Modal tests to prevent test flakes ([#3335](https://github.com/trussworks/react-uswds/issues/3335)) ([67dc45a](https://github.com/trussworks/react-uswds/commit/67dc45a7cf6d33ad8e0ebf8998da49f5808c87e2))
+* Use default tsconfig.json for lint support of focus-trap-react.tsx ([#3337](https://github.com/trussworks/react-uswds/issues/3337)) ([55f11c5](https://github.com/trussworks/react-uswds/commit/55f11c5c605e749333265fd245023e28f5326e0f))
+
+
+### Documentation & Examples
+
+* Update releasing documentation to mirror our more automated release system ([#3325](https://github.com/trussworks/react-uswds/issues/3325)) ([dc9a185](https://github.com/trussworks/react-uswds/commit/dc9a18569d46ae4f71128284784f679b4a0699f5))
+
 ## [10.2.0](https://github.com/trussworks/react-uswds/compare/10.1.0...10.2.0) (2025-11-13)
 
 
