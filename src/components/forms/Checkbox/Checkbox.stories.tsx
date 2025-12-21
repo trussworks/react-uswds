@@ -1,10 +1,22 @@
 import React from 'react'
 import { Checkbox } from './Checkbox'
-import { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
   component: Checkbox,
+  argTypes: {
+    id: { table: { disable: true } },
+    name: { table: { disable: true } },
+    className: { table: { disable: true } },
+    inputRef: { table: { disable: true } },
+
+    label: { control: 'text' },
+    labelDescription: { control: 'text' },
+  },
+  args: {
+    label: 'My Checkbox',
+  },
   parameters: {
     docs: {
       description: {
@@ -16,58 +28,71 @@ Source: https://designsystem.digital.gov/components/checkbox
       },
     },
   },
-}
+} satisfies Meta<typeof Checkbox>
 
 export default meta
 type Story = StoryObj<typeof Checkbox>
 
-const Template: StoryFn<typeof Checkbox> = (args) => (
-  <Checkbox {...args} id="checkbox" name="checkbox" />
-)
-
 export const DefaultCheckbox: Story = {
-  render: Template,
-  args: { label: 'My Checkbox' },
+  args: {
+    id: 'default-checkbox',
+    name: 'default-checkbox',
+  },
 }
 
 export const Checked: Story = {
-  render: Template,
-  args: { defaultChecked: true, label: 'My Checkbox' },
+  args: {
+    id: 'checked-checkbox',
+    name: 'checked-checkbox',
+    defaultChecked: true,
+  },
 }
 
 export const Indeterminate: Story = {
-  render: Template,
-  args: { indeterminate: true, label: 'My Checkbox' },
+  args: {
+    id: 'indeterminate-checkbox',
+    name: 'indeterminate-checkbox',
+    indeterminate: true,
+  },
 }
 
 export const Disabled: Story = {
-  render: Template,
-  args: { disabled: true, label: 'My Checkbox' },
+  args: {
+    id: 'disabled-checkbox',
+    name: 'disabled-checkbox',
+    disabled: true,
+  },
 }
 
 export const WithRichLabel: Story = {
-  render: Template,
-  args: { label: <strong>My Checkbox</strong> },
+  args: {
+    id: 'richlabel-checkbox',
+    name: 'richlabel-checkbox',
+    label: <strong>My Checkbox</strong>,
+  },
 }
 
 export const WithLabelDescription: Story = {
-  render: Template,
   args: {
-    label: 'My Checkbox',
+    id: 'labeldesc-checkbox',
+    name: 'labeldesc-checkbox',
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
   },
 }
 
 export const Tile: Story = {
-  render: Template,
-  args: { label: 'My Checkbox', tile: true },
+  args: {
+    id: 'tile-checkbox',
+    name: 'tile-checkbox',
+    tile: true,
+  },
 }
 
 export const TileWithLabelDescription: Story = {
-  render: Template,
   args: {
-    label: 'My Checkbox',
+    id: 'tiledesc-checkbox',
+    name: 'tiledesc-checkbox',
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
     tile: true,

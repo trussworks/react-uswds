@@ -1,10 +1,22 @@
 import React from 'react'
 import { Radio } from './Radio'
-import { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Radio> = {
+const meta = {
   title: 'Components/Radio buttons',
   component: Radio,
+  argTypes: {
+    id: { table: { disable: true } },
+    name: { table: { disable: true } },
+    className: { table: { disable: true } },
+    inputRef: { table: { disable: true } },
+
+    label: { control: 'text' },
+    labelDescription: { control: 'text' },
+  },
+  args: {
+    label: 'My Radio Button',
+  },
   parameters: {
     docs: {
       description: {
@@ -16,55 +28,71 @@ Source: https://designsystem.digital.gov/components/radio-buttons
       },
     },
   },
-}
+} satisfies Meta<typeof Radio>
 
 export default meta
 type Story = StoryObj<typeof Radio>
 
-const Template: StoryFn<typeof Radio> = (args) => (
-  <Radio
-    {...args}
-    id="input-radio"
-    name="input-radio"
-    label="My Radio Button"
-  />
-)
-
 export const DefaultRadio: Story = {
-  render: Template,
+  args: {
+    id: 'default-radio',
+    name: 'default-radio',
+  },
 }
 
 export const Selected: Story = {
-  render: Template,
-  args: { defaultChecked: true },
+  args: {
+    id: 'selected-radio',
+    name: 'selected-radio',
+    defaultChecked: true,
+  },
 }
 
 export const Indeterminate: Story = {
-  render: Template,
-  args: { indeterminate: true },
+  args: {
+    id: 'indeterminate-radio',
+    name: 'indeterminate-radio',
+    indeterminate: true,
+  },
 }
 
 export const Disabled: Story = {
-  render: Template,
-  args: { disabled: true },
+  args: {
+    id: 'disabled-radio',
+    name: 'disabled-radio',
+    disabled: true,
+  },
+}
+
+export const WithRichLabel: Story = {
+  args: {
+    id: 'richlabel-radio',
+    name: 'richlabel-radio',
+    label: <strong>My Radio Button</strong>,
+  },
 }
 
 export const WithLabelDescription: Story = {
-  render: Template,
   args: {
+    id: 'labeldesc-radio',
+    name: 'labeldesc-radio',
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
   },
 }
 
 export const Tile: Story = {
-  render: Template,
-  args: { tile: true },
+  args: {
+    id: 'tile-radio',
+    name: 'tile-radio',
+    tile: true,
+  },
 }
 
 export const TileWithLabelDescription: Story = {
-  render: Template,
   args: {
+    id: 'tiledesc-radio',
+    name: 'tiledesc-radio',
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
     tile: true,
