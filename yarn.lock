@@ -963,6 +963,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@exodus/bytes@npm:^1.6.0":
+  version: 1.7.0
+  resolution: "@exodus/bytes@npm:1.7.0"
+  peerDependencies:
+    "@exodus/crypto": ^1.0.0-rc.4
+  peerDependenciesMeta:
+    "@exodus/crypto":
+      optional: true
+  checksum: 6a4f3ba42addbbe5424037d2f3b3154e392e9b3945f1e85370a1385ed6a23415a4675a8142b31befb6563d2a8d4327a842ca6bedb288816cdf648f145ab16d0e
+  languageName: node
+  linkType: hard
+
 "@gitbeaker/core@npm:^38.12.1":
   version: 38.12.1
   resolution: "@gitbeaker/core@npm:38.12.1"
@@ -6278,6 +6290,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-encoding-sniffer@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "html-encoding-sniffer@npm:6.0.0"
+  dependencies:
+    "@exodus/bytes": ^1.6.0
+  checksum: a8d30cbc6f7044c6d671bec9fbdddb90f429a326da176307c2253bed8a68b541d18b5577bc1317c0bf36af45438a43e22da19f0c2cc58d298506d97a3a7dfa90
+  languageName: node
+  linkType: hard
+
 "html-escaper@npm:^2.0.0":
   version: 2.0.2
   resolution: "html-escaper@npm:2.0.2"
@@ -6992,15 +7013,16 @@ __metadata:
   linkType: hard
 
 "jsdom@npm:^27.0.1":
-  version: 27.3.0
-  resolution: "jsdom@npm:27.3.0"
+  version: 27.4.0
+  resolution: "jsdom@npm:27.4.0"
   dependencies:
     "@acemir/cssom": ^0.9.28
     "@asamuzakjp/dom-selector": ^6.7.6
+    "@exodus/bytes": ^1.6.0
     cssstyle: ^5.3.4
     data-urls: ^6.0.0
     decimal.js: ^10.6.0
-    html-encoding-sniffer: ^4.0.0
+    html-encoding-sniffer: ^6.0.0
     http-proxy-agent: ^7.0.2
     https-proxy-agent: ^7.0.6
     is-potential-custom-element-name: ^1.0.1
@@ -7010,7 +7032,6 @@ __metadata:
     tough-cookie: ^6.0.0
     w3c-xmlserializer: ^5.0.0
     webidl-conversions: ^8.0.0
-    whatwg-encoding: ^3.1.1
     whatwg-mimetype: ^4.0.0
     whatwg-url: ^15.1.0
     ws: ^8.18.3
@@ -7020,7 +7041,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: b0b8a542ca0c35678f7270e5ca24be2e94da949d9d7cb4e29ceed719fc7a43b9211fbb51d6a1e6c0de3eae621381c022cd1db5d2ad18a596bd48ee2efc8e4d30
+  checksum: ec3f4a98174f2cf739ea33a2f59dcb66a2555e475b57d9e016fa55cdcc5b61f002e3d3c161142869d161d7535a6cc11d9fb1328860b27848b3ea94e1d99279bd
   languageName: node
   linkType: hard
 
