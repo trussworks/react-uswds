@@ -2380,7 +2380,7 @@ __metadata:
     eslint-plugin-security: ^3.0.1
     eslint-plugin-storybook: ^10.0.5
     focus-trap-react: ^11.0.3
-    globals: ^16.0.0
+    globals: ^17.0.0
     happo-plugin-storybook: ^5.0.4
     happo.io: ^13.0.1
     jsdom: ^27.0.1
@@ -6068,10 +6068,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^16.0.0":
-  version: 16.5.0
-  resolution: "globals@npm:16.5.0"
-  checksum: e0363245cfc6e36ac6bf940415160a05d66e7985fa3856d5383ad49292b6d249d80fd03759e09d6491109648a121849b23b77c7391a11862923e6995268a7cd6
+"globals@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "globals@npm:17.0.0"
+  checksum: f48dd97671b7386953df4d6013d71c9bfab667dd8135949828e925a069fd10c518b4b5b651e93bd94d3cf62eceb794f95dcefc9254d3cb4904beb0d4fbac4caf
   languageName: node
   linkType: hard
 

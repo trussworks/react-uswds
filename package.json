@@ -126,7 +126,7 @@
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-storybook": "^10.0.5",
     "focus-trap-react": "^11.0.3",
-    "globals": "^16.0.0",
+    "globals": "^17.0.0",
     "happo-plugin-storybook": "^5.0.4",
     "happo.io": "^13.0.1",
     "jsdom": "^27.0.1",
