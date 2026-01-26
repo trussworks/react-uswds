@@ -10156,16 +10156,16 @@ __metadata:
   linkType: hard
 
 "stylelint-config-css-modules@npm:^4.4.0":
-  version: 4.5.1
-  resolution: "stylelint-config-css-modules@npm:4.5.1"
+  version: 4.6.0
+  resolution: "stylelint-config-css-modules@npm:4.6.0"
   dependencies:
-    stylelint-scss: ^6.12.1
+    stylelint-scss: ^7.0.0
   peerDependencies:
-    stylelint: ^14.5.1 || ^15.0.0 || ^16.0.0
+    stylelint: ^14.5.1 || ^15.0.0 || ^16.0.0 || ^17.0.0
   dependenciesMeta:
     stylelint-scss:
       optional: true
-  checksum: 5358a7b44aa8c790d5597dae56192219593ef5aad6eed7cd39d86f20a738c82ce139d02b19ccc0fabee9745b89a6ba803c40d38d3e25e2cc727c425aadae1799
+  checksum: dce2b7682a8133dfa1e9fa46bed68cee75c483874b92b39a851e52f6f128d5196dc05fdbc2cc8af3290867c5d50d9e7cb0e723d284704e142d5ef9a1e18c77e8
   languageName: node
   linkType: hard
 
@@ -10236,7 +10236,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-scss@npm:^6.12.1, stylelint-scss@npm:^6.2.1":
+"stylelint-scss@npm:^6.2.1":
   version: 6.12.1
   resolution: "stylelint-scss@npm:6.12.1"
   dependencies:
