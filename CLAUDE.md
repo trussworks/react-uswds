@@ -103,6 +103,10 @@ PRs are squash-merged; the title becomes the commit message.
 
 Use `withDeprecationWarning` HOC from `src/components/hoc/withDeprecationWarning.tsx` to deprecate components gracefully before making breaking changes.
 
+## Pull Requests
+
+Pull Requests should use the [pull request template](.github/pull_request_template.md) provided in the repository.
+
 ## Key Dependencies
 
 - React 16.x-19.x supported
