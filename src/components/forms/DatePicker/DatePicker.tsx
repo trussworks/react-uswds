@@ -5,6 +5,7 @@ import React, {
   FocusEvent,
   KeyboardEvent,
   JSX,
+  InputEventHandler,
 } from 'react'
 import classnames from 'classnames'
 
@@ -133,7 +134,7 @@ export const DatePicker = ({
     }
   }
 
-  const handleExternalInput: React.ComponentProps<'input'>['onInput'] = (
+  const handleExternalInput: InputEventHandler<HTMLInputElement> = (
     event
   ): void => {
     // Keep external & internal input values in sync
