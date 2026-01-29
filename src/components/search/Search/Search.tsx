@@ -11,7 +11,7 @@ type SearchLocalization = {
 }
 
 export type SearchProps = {
-  onSubmit: NonNullable<JSX.IntrinsicElements['form']['onSubmit']>
+  onSubmit: NonNullable<React.ComponentProps<'form'>['onSubmit']>
   size?: 'big' | 'small'
   className?: string
   inputName?: string

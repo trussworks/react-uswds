@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 type RequiredFormProps = {
   children: React.ReactNode
-  onSubmit: NonNullable<JSX.IntrinsicElements['form']['onSubmit']>
+  onSubmit: NonNullable<React.ComponentProps<'form'>['onSubmit']>
 }
 
 type CustomFormProps = {
