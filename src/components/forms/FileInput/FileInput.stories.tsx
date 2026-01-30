@@ -120,7 +120,7 @@ export const WithRefAndCustomHandlers = {
 
     const handleClearFiles = (): void => {
       fileInputRef.current?.clearFiles()
-      setFiles(null)
+      setFiles(INITIAL_FILES)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
