@@ -115,7 +115,8 @@ export const Disabled = (): JSX.Element => (
 
 export const WithRefAndCustomHandlers = {
   render: (argTypes: StorybookArguments): JSX.Element => {
-    const [files, setFiles] = useState<FileList | null>(null)
+    const INITIAL_FILES = null
+    const [files, setFiles] = useState<FileList | null>(INITIAL_FILES)
     const fileInputRef = useRef<FileInputRef>(null)
 
     const handleClearFiles = (): void => {
