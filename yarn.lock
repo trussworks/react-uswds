@@ -981,16 +981,16 @@ __metadata:
   linkType: hard
 
 "@eslint/compat@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "@eslint/compat@npm:2.0.1"
+  version: 2.0.2
+  resolution: "@eslint/compat@npm:2.0.2"
   dependencies:
-    "@eslint/core": ^1.0.1
+    "@eslint/core": ^1.1.0
   peerDependencies:
-    eslint: ^8.40 || 9
+    eslint: ^8.40 || 9 || 10
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: bcaa4c67ca48a775b9131e46d29754ec6d1c7af911884a8a3b9d092e1ac8b07f3011749d93ffc9000751aac5f9f1eec3d51c6989799885bf4778a5141679a9fc
+  checksum: c2445b59eaa83e9f943a4fbf0b769f1971832263dad693c0417ec6191694731f9cbbcd6aee2c774b15382ea119776399d32a7ff1a9510b81e95408ea7f3633be
   languageName: node
   linkType: hard
 
@@ -1023,12 +1023,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/core@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@eslint/core@npm:1.0.1"
+"@eslint/core@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@eslint/core@npm:1.1.0"
   dependencies:
     "@types/json-schema": ^7.0.15
-  checksum: e79fe0984a0da922302e5b15ddc2f51ffab0126b5066e79ad475fc044b6c579877bb9055aae1ce2e16837deae86cf3978e2745424c446da062d3897945d51e9e
+  checksum: 8f0f11540c1b42a91e694bc10861acbc1e29994ba6e2c8782186c0b9ec1a95ca0272ea9eb02408cdcc5f55843b584e0572a9e3cf7d924d912214a0c86fe3cde0
   languageName: node
   linkType: hard
 
