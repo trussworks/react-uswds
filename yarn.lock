@@ -2545,7 +2545,7 @@ __metadata:
     eslint-plugin-react-hooks: ^7.0.1
     eslint-plugin-security: ^3.0.1
     eslint-plugin-storybook: ^10.0.5
-    focus-trap-react: ^11.0.3
+    focus-trap-react: ^12.0.0
     globals: ^17.0.0
     happo-plugin-storybook: ^5.0.4
     happo.io: ^13.0.1
@@ -6003,27 +6003,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"focus-trap-react@npm:^11.0.3":
-  version: 11.0.6
-  resolution: "focus-trap-react@npm:11.0.6"
+"focus-trap-react@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "focus-trap-react@npm:12.0.0"
   dependencies:
-    focus-trap: ^7.8.0
+    focus-trap: ^8.0.0
     tabbable: ^6.4.0
   peerDependencies:
     "@types/react": ^18.0.0 || ^19.0.0
     "@types/react-dom": ^18.0.0 || ^19.0.0
     react: ^18.0.0 || ^19.0.0
     react-dom: ^18.0.0 || ^19.0.0
-  checksum: 9ac0a09e492669d12c62aa66104d62d9a2700f9e771d82253dbfb59bb9315d7217bb99defad98fcf39c1a35ea67871cfe377a68f4d163f78a8629f605ef61ff3
+  checksum: 763049fa4d39852728cb076af9781d133e34ed5ff490d2b79b6c2b5643ee19e24ca69b9fde46b012250ede6942a7a070b52a4620230c0434c182b9e8bb693036
   languageName: node
   linkType: hard
 
-"focus-trap@npm:^7.8.0":
-  version: 7.8.0
-  resolution: "focus-trap@npm:7.8.0"
+"focus-trap@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "focus-trap@npm:8.0.0"
   dependencies:
     tabbable: ^6.4.0
-  checksum: 1eccd8332b694ba8c4d0a97101471004a23634a9b3650311460064856b8795136a6aec276c02f1ec01dd23e27848a0db69bec087e347403e23ee55b52d6bbc7e
+  checksum: be96fb5de58b56cae8192d16251eb24d6502f3b09d933d7858afb9f0dc57a185ac69d887bf3872c6186e6c6bf718d08b8967ad356a010d838826dbc5c17d6fa1
   languageName: node
   linkType: hard
 
