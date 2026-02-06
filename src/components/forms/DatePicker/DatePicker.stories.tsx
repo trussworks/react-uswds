@@ -63,7 +63,7 @@ We may find that we want to expose props for custom event handlers or even a ref
 
 type StorybookArguments = {
   dateFormat: DateFormat
-  onSubmit: React.FormEventHandler<HTMLFormElement>
+  onSubmit: React.SubmitEventHandler<HTMLFormElement>
   disabled?: boolean
   validationStatus?: ValidationStatus
 }

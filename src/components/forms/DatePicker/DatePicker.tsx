@@ -3,9 +3,9 @@ import React, {
   useEffect,
   useRef,
   FocusEvent,
-  FormEvent,
   KeyboardEvent,
   JSX,
+  InputEventHandler,
 } from 'react'
 import classnames from 'classnames'
 
@@ -134,7 +134,9 @@ export const DatePicker = ({
     }
   }
 
-  const handleExternalInput = (event: FormEvent<HTMLInputElement>): void => {
+  const handleExternalInput: InputEventHandler<HTMLInputElement> = (
+    event
+  ): void => {
     // Keep external & internal input values in sync
     const value = (event.target as HTMLInputElement).value
     setExternalValue(value)

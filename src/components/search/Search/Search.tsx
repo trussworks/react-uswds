@@ -11,7 +11,7 @@ type SearchLocalization = {
 }
 
 export type SearchProps = {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  onSubmit: NonNullable<React.ComponentProps<'form'>['onSubmit']>
   size?: 'big' | 'small'
   className?: string
   inputName?: string

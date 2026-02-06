@@ -34,7 +34,7 @@ export default {
 }
 
 type StorybookArguments = {
-  onSubmit: React.FormEventHandler<HTMLFormElement>
+  onSubmit: React.SubmitEventHandler<HTMLFormElement>
   startDatePickerDisabled: boolean
   endDatePickerDisabled: boolean
 }
