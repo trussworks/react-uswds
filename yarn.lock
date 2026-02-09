@@ -10236,8 +10236,8 @@ __metadata:
   linkType: hard
 
 "stylelint@npm:^17.0.0":
-  version: 17.1.0
-  resolution: "stylelint@npm:17.1.0"
+  version: 17.1.1
+  resolution: "stylelint@npm:17.1.1"
   dependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-syntax-patches-for-csstree": ^1.0.25
@@ -10279,7 +10279,7 @@ __metadata:
     write-file-atomic: ^7.0.0
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: af671273313188c20d1e1ab6644407aff33322c9e190d7f49e8f9c5b3e615423a13828619b5b5b91a9508e60a469083ec03d3bfa8e7e7ba48eea99f0128ee3a2
+  checksum: b4aa80a95591b715379d2a7a9edb5cfc7be9dc06cc8a7369257bc9bb8d57fbd66bdd1cdde01e7e403e4882755e6313b8def4e289c6e93f5037f0b25de09895d6
   languageName: node
   linkType: hard
 
