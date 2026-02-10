@@ -20,7 +20,10 @@ export const FilePreview = ({
   const [showGenericPreview, setShowGenericPreview] = useState(false)
 
   useEffect(() => {
-    if (typeof FileReader === 'undefined') return
+    if (typeof FileReader === 'undefined') {
+      setIsLoading(false)
+      return
+    }
 
     let isActive = true
     setIsLoading(true)
@@ -35,7 +38,7 @@ export const FilePreview = ({
       const result =
         typeof reader.result === 'string' ? reader.result : SPACER_GIF
       setPreviewSrc(result)
-      reader.onloadend = null // is only run once
+      reader.onloadend = null
     }
 
     reader.readAsDataURL(file)

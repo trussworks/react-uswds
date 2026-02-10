@@ -47,12 +47,25 @@ describe('FilePreview component', () => {
       DONE = 2
       readyState = this.EMPTY
       result: string | ArrayBuffer | null = null
-      onloadend: (() => void) | null = null
+      error: DOMException | null = null
+      onloadstart: ((ev: ProgressEvent) => void) | null = null
+      onprogress: ((ev: ProgressEvent) => void) | null = null
+      onload: ((ev: ProgressEvent) => void) | null = null
+      onabort: ((ev: ProgressEvent) => void) | null = null
+      onerror: ((ev: ProgressEvent) => void) | null = null
+      onloadend: ((ev: ProgressEvent) => void) | null = null
+      addEventListener = vi.fn()
+      removeEventListener = vi.fn()
+      dispatchEvent = vi.fn(() => true)
 
       readAsDataURL(_blob: Blob): void {
         this.readyState = this.LOADING
         readSpy()
       }
+
+      readAsText = vi.fn()
+      readAsArrayBuffer = vi.fn()
+      readAsBinaryString = vi.fn()
 
       abort(): void {
         abortSpy()
@@ -69,6 +82,47 @@ describe('FilePreview component', () => {
       expect(abortSpy).toHaveBeenCalled()
     } finally {
       vi.unstubAllGlobals()
+    }
+  })
+
+  it('re-reads when the file prop changes', async () => {
+    const file1 = new File(['content-a'], 'report.pdf', {
+      type: 'application/pdf',
+    })
+    const file2 = new File(['content-b'], 'report.pdf', {
+      type: 'application/pdf',
+    })
+
+    const { getByTestId, rerender } = render(
+      <FilePreview imageId="img" file={file1} />
+    )
+
+    const imageEl = getByTestId('file-input-preview-image')
+    await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
+    const firstSrc = imageEl.getAttribute('src')
+
+    // Re-render with a different File object (same name, different content)
+    rerender(<FilePreview imageId="img" file={file2} />)
+
+    await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
+    const secondSrc = imageEl.getAttribute('src')
+
+    expect(secondSrc).not.toBe(firstSrc)
+  })
+
+  it('renders gracefully when FileReader is unavailable (SSR)', () => {
+    const original = globalThis.FileReader
+    // @ts-expect-error -- simulating SSR where FileReader is not defined
+    delete globalThis.FileReader
+
+    try {
+      const { getByTestId } = render(<FilePreview {...testProps} />)
+      expect(getByTestId('file-input-preview')).toBeInTheDocument()
+      const imageEl = getByTestId('file-input-preview-image')
+      expect(imageEl).toHaveAttribute('src', SPACER_GIF)
+      expect(imageEl).not.toHaveClass('is-loading')
+    } finally {
+      globalThis.FileReader = original
     }
   })
 
