@@ -37,6 +37,41 @@ describe('FilePreview component', () => {
     expect(getByTestId('file-input-preview')).toBeInTheDocument()
   })
 
+  it('aborts in-flight reads on unmount', async () => {
+    const abortSpy = vi.fn()
+    const readSpy = vi.fn()
+
+    class MockFileReader {
+      EMPTY = 0
+      LOADING = 1
+      DONE = 2
+      readyState = this.EMPTY
+      result: string | ArrayBuffer | null = null
+      onloadend: (() => void) | null = null
+
+      readAsDataURL(_blob: Blob): void {
+        this.readyState = this.LOADING
+        readSpy()
+      }
+
+      abort(): void {
+        abortSpy()
+        this.readyState = this.DONE
+      }
+    }
+
+    vi.stubGlobal('FileReader', MockFileReader as unknown as typeof FileReader)
+
+    try {
+      const { unmount } = render(<FilePreview {...testProps} />)
+      await waitFor(() => expect(readSpy).toHaveBeenCalled())
+      unmount()
+      expect(abortSpy).toHaveBeenCalled()
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
   it('renders a preview image', async () => {
     const { getByTestId } = await waitFor(() =>
       render(<FilePreview {...testProps} />)

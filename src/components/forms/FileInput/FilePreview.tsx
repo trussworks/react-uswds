@@ -1,4 +1,4 @@
-import React, { type JSX, useEffect, useRef, useState } from 'react'
+import React, { type JSX, useEffect, useState } from 'react'
 import classnames from 'classnames'
 
 /** Moving the SPACER_GIF definition here instead of the constants.ts file,
@@ -15,28 +15,39 @@ export const FilePreview = ({
   imageId: string
   file: File
 }): JSX.Element => {
-  const fileReaderRef = useRef<FileReader>(new FileReader())
   const [isLoading, setIsLoading] = useState(true)
   const [previewSrc, setPreviewSrc] = useState(SPACER_GIF)
   const [showGenericPreview, setShowGenericPreview] = useState(false)
-  const firstRenderRef = useRef(false)
 
   useEffect(() => {
-    if (firstRenderRef.current) {
-      // already run, do nothing
-      return
-    }
-    // only run once
-    firstRenderRef.current = true
+    if (typeof FileReader === 'undefined') return
 
-    fileReaderRef.current.onloadend = (): void => {
+    let isActive = true
+    setIsLoading(true)
+    setPreviewSrc(SPACER_GIF)
+    setShowGenericPreview(false)
+
+    const reader = new FileReader()
+
+    reader.onloadend = (): void => {
+      if (!isActive) return
       setIsLoading(false)
-      setPreviewSrc(fileReaderRef.current.result as string)
-      fileReaderRef.current.onloadend = null // is only run once
+      const result =
+        typeof reader.result === 'string' ? reader.result : SPACER_GIF
+      setPreviewSrc(result)
+      reader.onloadend = null // is only run once
     }
 
-    fileReaderRef.current.readAsDataURL(file)
-  }, [])
+    reader.readAsDataURL(file)
+
+    return () => {
+      isActive = false
+      reader.onloadend = null
+      if (reader.readyState === reader.LOADING) {
+        reader.abort()
+      }
+    }
+  }, [file])
 
   const { name } = file
 
