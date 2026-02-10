@@ -1,4 +1,5 @@
 import React, { StrictMode } from 'react'
+import { renderToString } from 'react-dom/server'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 
 import { FilePreview } from './FilePreview'
@@ -110,9 +111,9 @@ describe('FilePreview component', () => {
     expect(secondSrc).not.toBe(firstSrc)
   })
 
-  it('renders gracefully when FileReader is unavailable (SSR)', () => {
+  it('renders gracefully when FileReader is unavailable (client)', () => {
     const original = globalThis.FileReader
-    // @ts-expect-error -- simulating SSR where FileReader is not defined
+    // @ts-expect-error -- simulating a client environment without FileReader
     delete globalThis.FileReader
 
     try {
@@ -122,7 +123,36 @@ describe('FilePreview component', () => {
       expect(imageEl).toHaveAttribute('src', SPACER_GIF)
       expect(imageEl).not.toHaveClass('is-loading')
     } finally {
-      globalThis.FileReader = original
+      if (typeof original === 'undefined') {
+        // @ts-expect-error -- restoring to undefined
+        delete globalThis.FileReader
+      } else {
+        globalThis.FileReader = original
+      }
+    }
+  })
+
+  it('renders on the server without errors', () => {
+    const original = globalThis.FileReader
+    // @ts-expect-error -- simulating SSR where FileReader is not defined
+    delete globalThis.FileReader
+
+    try {
+      const html = renderToString(<FilePreview {...testProps} />)
+      expect(html).toContain('usa-file-input__preview')
+      expect(html).toContain(testProps.file.name)
+      expect(html).toContain(SPACER_GIF)
+      // is-loading is present in SSR HTML because useEffect doesn't run on
+      // the server. This is acceptable — the component is aria-hidden and
+      // purely decorative. After hydration the effect clears the class.
+      expect(html).toContain('is-loading')
+    } finally {
+      if (typeof original === 'undefined') {
+        // @ts-expect-error -- restoring to undefined
+        delete globalThis.FileReader
+      } else {
+        globalThis.FileReader = original
+      }
     }
   })
 
