@@ -504,4 +504,235 @@ describe('Accordion component', () => {
       })
     })
   })
+
+  describe('bordered prop', () => {
+    it('applies usa-accordion--bordered class when bordered is true', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} bordered={true} />
+      )
+      expect(getByTestId('accordion')).toHaveClass('usa-accordion--bordered')
+    })
+
+    it('does not apply usa-accordion--bordered class when bordered is false', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} bordered={false} />
+      )
+      expect(getByTestId('accordion')).not.toHaveClass(
+        'usa-accordion--bordered'
+      )
+    })
+
+    it('does not apply usa-accordion--bordered class by default', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      expect(getByTestId('accordion')).not.toHaveClass(
+        'usa-accordion--bordered'
+      )
+      expect(getByTestId('accordion')).toHaveClass('usa-accordion')
+    })
+  })
+
+  describe('data-allow-multiple attribute', () => {
+    it('sets data-allow-multiple when multiselectable is true', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} multiselectable={true} />
+      )
+      expect(getByTestId('accordion')).toHaveAttribute(
+        'data-allow-multiple',
+        'true'
+      )
+    })
+
+    it('does not set data-allow-multiple when multiselectable is false', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} multiselectable={false} />
+      )
+      expect(getByTestId('accordion')).not.toHaveAttribute(
+        'data-allow-multiple'
+      )
+    })
+
+    it('does not set data-allow-multiple by default', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      expect(getByTestId('accordion')).not.toHaveAttribute(
+        'data-allow-multiple'
+      )
+    })
+  })
+
+  describe('ARIA attributes on accordion buttons', () => {
+    it('sets aria-expanded to false on collapsed items', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      const button = getByTestId(`accordionButton_${testItems[0].id}`)
+      expect(button).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('sets aria-expanded to true when an item is expanded', () => {
+      const { getByTestId, getByText } = render(
+        <Accordion items={testItems} />
+      )
+      fireEvent.click(getByText(testItems[0].title as string))
+      const button = getByTestId(`accordionButton_${testItems[0].id}`)
+      expect(button).toHaveAttribute('aria-expanded', 'true')
+    })
+
+    it('updates aria-expanded when toggling items', () => {
+      const { getByTestId, getByText } = render(
+        <Accordion items={testItems} />
+      )
+      const button = getByTestId(`accordionButton_${testItems[0].id}`)
+
+      fireEvent.click(getByText(testItems[0].title as string))
+      expect(button).toHaveAttribute('aria-expanded', 'true')
+
+      fireEvent.click(getByText(testItems[0].title as string))
+      expect(button).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('sets aria-controls to the matching content id', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      testItems.forEach((item) => {
+        const button = getByTestId(`accordionButton_${item.id}`)
+        expect(button).toHaveAttribute('aria-controls', item.id)
+      })
+    })
+  })
+
+  describe('accordion button data-testid', () => {
+    it('renders buttons with correct data-testid pattern', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      testItems.forEach((item) => {
+        expect(getByTestId(`accordionButton_${item.id}`)).toBeInTheDocument()
+      })
+    })
+  })
+
+  describe('with ReactNode title', () => {
+    it('renders a React element as the title', () => {
+      const customItems: AccordionItemProps[] = [
+        {
+          title: <span data-testid="custom-title">Custom Title Content</span>,
+          content: <p>Some content</p>,
+          expanded: false,
+          id: 'reactnode-title',
+          headingLevel: 'h4',
+        },
+      ]
+      const { getByTestId } = render(<Accordion items={customItems} />)
+      expect(getByTestId('custom-title')).toBeInTheDocument()
+      expect(getByTestId('custom-title')).toHaveTextContent(
+        'Custom Title Content'
+      )
+    })
+  })
+
+  describe('className applied to AccordionItem heading and content', () => {
+    const classNameItems: AccordionItemProps[] = [
+      {
+        title: 'Test Item',
+        content: <p>Content</p>,
+        expanded: false,
+        id: 'cls-test',
+        className: 'myItemClass',
+        headingLevel: 'h4',
+      },
+    ]
+
+    it('applies className to the heading element', () => {
+      const { getByRole } = render(<Accordion items={classNameItems} />)
+      const heading = getByRole('heading', { level: 4 })
+      expect(heading).toHaveClass('usa-accordion__heading')
+      expect(heading).toHaveClass('myItemClass')
+    })
+
+    it('applies className to the content element', () => {
+      const { getByTestId } = render(<Accordion items={classNameItems} />)
+      const content = getByTestId('accordionItem_cls-test')
+      expect(content).toHaveClass('usa-accordion__content')
+      expect(content).toHaveClass('usa-prose')
+      expect(content).toHaveClass('myItemClass')
+    })
+  })
+
+  describe('single item accordion', () => {
+    const singleItem: AccordionItemProps[] = [
+      {
+        title: 'Only Item',
+        content: <p>Only content</p>,
+        expanded: false,
+        id: 'single',
+        headingLevel: 'h4',
+      },
+    ]
+
+    it('renders a single item', () => {
+      const { getByTestId, getByText } = render(
+        <Accordion items={singleItem} />
+      )
+      expect(getByTestId('accordion')).toBeInTheDocument()
+      expect(getByText('Only Item')).toBeInTheDocument()
+      expect(getByTestId('accordionItem_single')).not.toBeVisible()
+    })
+
+    it('toggles the single item open and closed', () => {
+      const { getByTestId, getByText } = render(
+        <Accordion items={singleItem} />
+      )
+      fireEvent.click(getByText('Only Item'))
+      expect(getByTestId('accordionItem_single')).toBeVisible()
+
+      fireEvent.click(getByText('Only Item'))
+      expect(getByTestId('accordionItem_single')).not.toBeVisible()
+    })
+  })
+
+  describe('handleToggle receives click event', () => {
+    it('passes the mouse event to the custom handler', () => {
+      const handleToggle = vi.fn()
+      const customItems: AccordionItemProps[] = [
+        {
+          title: 'Click Me',
+          content: <p>Content</p>,
+          expanded: false,
+          id: 'event-test',
+          headingLevel: 'h4',
+          handleToggle,
+        },
+      ]
+      const { getByText } = render(<Accordion items={customItems} />)
+      fireEvent.click(getByText('Click Me'))
+      expect(handleToggle).toHaveBeenCalledTimes(1)
+      expect(handleToggle).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' })
+      )
+    })
+
+    it('still toggles the item when a custom handler is provided', () => {
+      const handleToggle = vi.fn()
+      const customItems: AccordionItemProps[] = [
+        {
+          title: 'Click Me',
+          content: <p>Content</p>,
+          expanded: false,
+          id: 'event-test',
+          headingLevel: 'h4',
+          handleToggle,
+        },
+      ]
+      const { getByText, getByTestId } = render(
+        <Accordion items={customItems} />
+      )
+      fireEvent.click(getByText('Click Me'))
+      expect(getByTestId('accordionItem_event-test')).toBeVisible()
+    })
+  })
+
+  describe('accordion button type attribute', () => {
+    it('renders buttons with type="button"', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      testItems.forEach((item) => {
+        const button = getByTestId(`accordionButton_${item.id}`)
+        expect(button).toHaveAttribute('type', 'button')
+      })
+    })
+  })
 })
