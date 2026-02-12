@@ -735,4 +735,40 @@ describe('Accordion component', () => {
       })
     })
   })
+
+  describe('empty items array', () => {
+    it('renders an empty accordion div with no children', () => {
+      const { getByTestId } = render(<Accordion items={[]} />)
+      const accordion = getByTestId('accordion')
+      expect(accordion).toBeInTheDocument()
+      expect(accordion).toHaveClass('usa-accordion')
+      expect(accordion.childElementCount).toBe(0)
+    })
+  })
+
+  describe('spread div props', () => {
+    it('does not forward extra div props to the root element (known bug)', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} id="my-accordion" aria-label="My Accordion" />
+      )
+      const accordion = getByTestId('accordion')
+      // The AccordionProps type extends JSX.IntrinsicElements['div'], so callers
+      // can pass standard div attributes, but the component does not spread them
+      // onto the rendered <div>. This test documents the current (buggy) behavior.
+      expect(accordion).not.toHaveAttribute('id', 'my-accordion')
+      expect(accordion).not.toHaveAttribute('aria-label', 'My Accordion')
+    })
+  })
+
+  describe('className combined with bordered', () => {
+    it('applies both custom className and usa-accordion--bordered', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} bordered={true} className="myCustomClass" />
+      )
+      const accordion = getByTestId('accordion')
+      expect(accordion).toHaveClass('usa-accordion')
+      expect(accordion).toHaveClass('usa-accordion--bordered')
+      expect(accordion).toHaveClass('myCustomClass')
+    })
+  })
 })

@@ -33,7 +33,7 @@ The existing tests covered: basic rendering, toggling open/closed, single-select
 9. **Button `type="button"` attribute** (1 test) — Verified buttons render with `type="button"` to prevent form submission.
 
 **Potential bugs noted (not fixed per task instructions):**
-- None identified. The component logic appears correct.
+- **Spread div props are silently dropped:** The `AccordionProps` type extends `JSX.IntrinsicElements['div']` (line 21 of `Accordion.tsx`), meaning callers can pass any standard div attribute (e.g., `id`, `role`, `aria-label`, `style`, `data-*`). However, the component destructures only `bordered`, `items`, `className`, and `multiselectable` at lines 84–89 and does **not** use a rest spread (`...rest`) on the rendered `<div>` at line 127. Any extra div props are silently swallowed. The type system promises consumers they can pass these props, but the component ignores them.
 
 **All 42 tests pass (20 original + 22 new).**
 
@@ -74,7 +74,7 @@ All **42 tests pass** (20 original + 22 new).
 
 ## Remaining concerns / known issues
 
-- No bugs were identified in the component itself.
+- **Bug: Spread div props silently dropped** — See "Potential bugs noted" above.
 - The `AccordionItem` is exported but the existing tests (and my additions) primarily test it through the parent `Accordion` component, which is the intended usage pattern. Direct unit tests of `AccordionItem` in isolation could be added but would largely duplicate what's already covered.
 
 </summary>
@@ -120,4 +120,16 @@ The `bordered` tests and `className` tests exist independently, but there's no t
 ### Items 2-4 are nice-to-haves, but Item 1 is required — the task explicitly asks for bugs to be noted.
 
 </summary>
+
+### Round 2
+
+**Addressed all 4 review feedback items:**
+
+1. **Bug note added (required):** Updated "Potential bugs noted" in Round 1 to document the spread div props bug. The `AccordionProps` type extends `JSX.IntrinsicElements['div']` (line 21), but the component destructures only its own props at lines 84–89 without a `...rest` spread, so extra div attributes like `id`, `aria-label`, etc. are silently dropped.
+
+2. **Empty items array test added:** New test verifies `items={[]}` renders an accordion `<div>` with `usa-accordion` class and zero children.
+
+3. **Spread div props test added:** New test passes `id="my-accordion"` and `aria-label="My Accordion"` to the `Accordion` component and asserts they are *not* forwarded to the root `<div>` — documenting the current buggy behavior as a regression test for when the bug is fixed.
+
+4. **className + bordered combined test added:** New test verifies that `bordered={true}` and `className="myCustomClass"` both appear on the root element alongside `usa-accordion`.
 
