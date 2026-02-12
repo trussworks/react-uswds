@@ -101,3 +101,11 @@ This is a minor organizational fix — no logic or assertion changes needed.
 
 </summary>
 
+### Round 2
+
+**Review feedback addressed:**
+
+Merged the duplicate `describe('with a CTA')` blocks. The 3 new CTA tests (`adds the CTA-specific CSS module class`, `does not add the CTA-specific CSS module class when no cta is provided`, `renders the CTA outside the alert body`) were moved into the original `describe('with a CTA')` block (now lines 71-112), and the duplicate describe wrapper was deleted.
+
+**Result:** All 31 tests pass. Single `describe('with a CTA')` block now contains all 4 CTA-related tests.
+

@@ -76,6 +76,39 @@ describe('Alert component', () => {
       )
       expect(queryByText('Click Here')).toBeInTheDocument()
     })
+
+    it('adds the CTA-specific CSS module class', () => {
+      const testCTA = <button type="button">Click Here</button>
+      const { queryByTestId } = render(
+        <Alert type="success" headingLevel="h4" cta={testCTA} />
+      )
+      const alert = queryByTestId('alert')
+      // The alertWithCTA class is a CSS module class, so check for a class that
+      // contains 'alertWithCTA' (CSS modules may mangle the name)
+      const classNames = alert?.getAttribute('class') || ''
+      expect(classNames).toMatch(/alertWithCTA/)
+    })
+
+    it('does not add the CTA-specific CSS module class when no cta is provided', () => {
+      const { queryByTestId } = render(
+        <Alert type="success" headingLevel="h4" />
+      )
+      const alert = queryByTestId('alert')
+      const classNames = alert?.getAttribute('class') || ''
+      expect(classNames).not.toMatch(/alertWithCTA/)
+    })
+
+    it('renders the CTA outside the alert body', () => {
+      const testCTA = <button type="button">CTA Button</button>
+      const { container } = render(
+        <Alert type="success" headingLevel="h4" cta={testCTA}>
+          Body text
+        </Alert>
+      )
+      const alertBody = container.querySelector('.usa-alert__body')
+      expect(alertBody).not.toContainHTML('CTA Button')
+      expect(container.querySelector('button')).toHaveTextContent('CTA Button')
+    })
   })
 
   describe('alert type classes', () => {
@@ -206,41 +239,6 @@ describe('Alert component', () => {
       expect(container.querySelector('p.usa-alert__text')).not.toBeInTheDocument()
       expect(container.querySelector('ul')).toBeInTheDocument()
       expect(container.querySelectorAll('li')).toHaveLength(2)
-    })
-  })
-
-  describe('with a CTA', () => {
-    it('adds the CTA-specific CSS module class', () => {
-      const testCTA = <button type="button">Click Here</button>
-      const { queryByTestId } = render(
-        <Alert type="success" headingLevel="h4" cta={testCTA} />
-      )
-      const alert = queryByTestId('alert')
-      // The alertWithCTA class is a CSS module class, so check for a class that
-      // contains 'alertWithCTA' (CSS modules may mangle the name)
-      const classNames = alert?.getAttribute('class') || ''
-      expect(classNames).toMatch(/alertWithCTA/)
-    })
-
-    it('does not add the CTA-specific CSS module class when no cta is provided', () => {
-      const { queryByTestId } = render(
-        <Alert type="success" headingLevel="h4" />
-      )
-      const alert = queryByTestId('alert')
-      const classNames = alert?.getAttribute('class') || ''
-      expect(classNames).not.toMatch(/alertWithCTA/)
-    })
-
-    it('renders the CTA outside the alert body', () => {
-      const testCTA = <button type="button">CTA Button</button>
-      const { container } = render(
-        <Alert type="success" headingLevel="h4" cta={testCTA}>
-          Body text
-        </Alert>
-      )
-      const alertBody = container.querySelector('.usa-alert__body')
-      expect(alertBody).not.toContainHTML('CTA Button')
-      expect(container.querySelector('button')).toHaveTextContent('CTA Button')
     })
   })
 
