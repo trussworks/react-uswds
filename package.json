@@ -93,7 +93,7 @@
     "@babel/core": "^7.23.9",
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^9.22.0",
+    "@eslint/js": "^10.0.1",
     "@laynezh/vite-plugin-lib-assets": "^2.1.0",
     "@storybook/addon-a11y": "^10.0.5",
     "@storybook/addon-docs": "^10.0.5",

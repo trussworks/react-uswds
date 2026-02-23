@@ -1137,10 +1137,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.39.2, @eslint/js@npm:^9.22.0":
+"@eslint/js@npm:9.39.2":
   version: 9.39.2
   resolution: "@eslint/js@npm:9.39.2"
   checksum: 362aa447266fa5717e762b2b252f177345cb0d7b2954113db9773b3a28898f7cbbc807e07f8078995e6da3f62791f7c5fa2c03517b7170a8e76613cf7fd83c92
+  languageName: node
+  linkType: hard
+
+"@eslint/js@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "@eslint/js@npm:10.0.1"
+  peerDependencies:
+    eslint: ^10.0.0
+  peerDependenciesMeta:
+    eslint:
+      optional: true
+  checksum: 5e60b80ec48d303c9273d5c2803ae3fe12fd5335d57d889d4f9df9249910a97e2921118403765bff26a00b734182437f91a0f6f552654cf12ad73bb49995e22e
   languageName: node
   linkType: hard
 
@@ -2563,7 +2575,7 @@ __metadata:
     "@babel/core": ^7.23.9
     "@eslint/compat": ^2.0.0
     "@eslint/eslintrc": ^3.3.0
-    "@eslint/js": ^9.22.0
+    "@eslint/js": ^10.0.1
     "@laynezh/vite-plugin-lib-assets": ^2.1.0
     "@storybook/addon-a11y": ^10.0.5
     "@storybook/addon-docs": ^10.0.5
