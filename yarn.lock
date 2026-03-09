@@ -4100,14 +4100,20 @@ __metadata:
   linkType: hard
 
 "babel-loader@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "babel-loader@npm:10.0.0"
+  version: 10.1.0
+  resolution: "babel-loader@npm:10.1.0"
   dependencies:
     find-up: ^5.0.0
   peerDependencies:
-    "@babel/core": ^7.12.0
+    "@babel/core": ^7.12.0 || ^8.0.0-beta.1
+    "@rspack/core": ^1.0.0 || ^2.0.0-0
     webpack: ">=5.61.0"
-  checksum: 8a9dbb8a93cd342832cc99f024f07a6fda67b29aa907fbc3087de17e7f7ff705cf17fa9aed9103b1de9dfff24427afe200ec99213d24f801a0b1f4fd94783f51
+  peerDependenciesMeta:
+    "@rspack/core":
+      optional: true
+    webpack:
+      optional: true
+  checksum: d1bbd80ece64ecbdbc25fe85cd68bfd8bef52517e76b2c098b4f38e5edb4cdfcc95ce7ba28f34fd9422baf645c0aa598df2bef01cd801bef4733e7817c14bd19
   languageName: node
   linkType: hard
 
