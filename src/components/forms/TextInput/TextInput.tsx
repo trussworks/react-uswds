@@ -1,4 +1,4 @@
-import React, { forwardRef, type JSX } from 'react'
+import React, { forwardRef, useEffect, type JSX } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 import { LegacyInputRef } from '../../../types/legacyInputRef'
@@ -13,6 +13,7 @@ type CustomTextInputProps = {
   className?: string
   validationStatus?: ValidationStatus
   inputSize?: 'small' | 'medium'
+  /** @deprecated Use the `ref` prop instead. `inputRef` will be removed in a future major version. */
   inputRef?: LegacyInputRef
   inputProps?: JSX.IntrinsicElements['input']
 }
@@ -37,6 +38,14 @@ export const TextInput = forwardRef(
       inputRef,
       ...inputProps
     } = props
+
+    useEffect(() => {
+      if (inputRef) {
+        console.warn(
+          'TextInput: The `inputRef` prop is deprecated. Use the `ref` prop instead. `inputRef` will be removed in a future major version.'
+        )
+      }
+    }, [])
 
     const isError = validationStatus === 'error'
     const isSuccess = validationStatus === 'success'
