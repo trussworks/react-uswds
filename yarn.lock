@@ -38,16 +38,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@asamuzakjp/dom-selector@npm:^7.0.2":
-  version: 7.0.3
-  resolution: "@asamuzakjp/dom-selector@npm:7.0.3"
+"@asamuzakjp/dom-selector@npm:^7.0.3":
+  version: 7.0.4
+  resolution: "@asamuzakjp/dom-selector@npm:7.0.4"
   dependencies:
     "@asamuzakjp/nwsapi": ^2.3.9
     bidi-js: ^1.0.3
     css-tree: ^3.2.1
     is-potential-custom-element-name: ^1.0.1
     lru-cache: ^11.2.7
-  checksum: 24abb0f1951973ad68b46d7ba3aa15c35204ee6bba38e197a1f57546cd7feb97d4747d6b69d2a5301fae1cfc7cb50f236387f04d446a0c644f8cfbe2f6853479
+  checksum: 309393bc534aa92569b177149d0e020a3cdd57bf51c1d95e0376e2af9bbad59c07bc2812e54aeb0515653e96d020bedcb4b4e77f4f0d38de946412ba738fba68
   languageName: node
   linkType: hard
 
@@ -7242,11 +7242,11 @@ __metadata:
   linkType: hard
 
 "jsdom@npm:^29.0.0":
-  version: 29.0.0
-  resolution: "jsdom@npm:29.0.0"
+  version: 29.0.1
+  resolution: "jsdom@npm:29.0.1"
   dependencies:
     "@asamuzakjp/css-color": ^5.0.1
-    "@asamuzakjp/dom-selector": ^7.0.2
+    "@asamuzakjp/dom-selector": ^7.0.3
     "@bramus/specificity": ^2.4.2
     "@csstools/css-syntax-patches-for-csstree": ^1.1.1
     "@exodus/bytes": ^1.15.0
@@ -7260,7 +7260,7 @@ __metadata:
     saxes: ^6.0.0
     symbol-tree: ^3.2.4
     tough-cookie: ^6.0.1
-    undici: ^7.24.3
+    undici: ^7.24.5
     w3c-xmlserializer: ^5.0.0
     webidl-conversions: ^8.0.1
     whatwg-mimetype: ^5.0.0
@@ -7271,7 +7271,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: e54b1871def2b16de7a9ffb06a0da048164218ac4dee4f9aff9371aa67aecf13762a52a257bc8827fc0a9324a77d95461497441f49946a9cbdeb70ff532db231
+  checksum: 9197d3b50191b0cd624dc6ae2cd4390645c4b6195876dd55a15ba914f02d839d1e5f23c305fffc1fa2a4ab783385afa18e43c542f05cd3f5157fcb4e11eec398
   languageName: node
   linkType: hard
 
@@ -10820,10 +10820,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.24.3":
-  version: 7.24.3
-  resolution: "undici@npm:7.24.3"
-  checksum: 3c646f31e5987a3ae4b66173bc981d8eeb640301469adc3914b70af9a43a21b9d65e2420dcc3574691a755819688f70085ea6c3a99e286bfb1d69d690a141696
+"undici@npm:^7.24.5":
+  version: 7.24.5
+  resolution: "undici@npm:7.24.5"
+  checksum: dbe484459ea33032e73c38262594f58104d59224270259df3fdf61e8e97fa12f00356fdfa3c431c2936dc7869a48d44c12c4075f91041eb7306b22d2cf65eed8
   languageName: node
   linkType: hard
 
