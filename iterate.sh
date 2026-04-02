@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./iterate.sh <task-file.md> [max-rounds]
-# Example: ./iterate.sh fix-auth-bug.md 5
+# Usage: ./iterate.sh [--claude|--codex] <task-file.md> [max-rounds]
+# Example: ./iterate.sh --codex fix-auth-bug.md 5
 #
 # State is persisted to .iterate/ in the current directory:
 #   .iterate/progress.md       — cumulative log of work and feedback
@@ -13,7 +13,7 @@ set -euo pipefail
 # The script creates a branch and commits after each work phase,
 # so you can inspect or roll back at any point.
 #
-# Press Ctrl-C to stop. The script will kill the running Claude
+# Press Ctrl-C to stop. The script will kill the running model process
 # process and exit cleanly. All completed work is already committed.
 
 # --- Ctrl-C handling ---
@@ -31,8 +31,46 @@ cleanup() {
 }
 trap cleanup INT TERM
 
+usage() {
+  echo "Usage: $0 [--claude|--codex] <task-file.md> [max-rounds]"
+}
+
+MODEL_PROVIDER="claude"
+POSITIONAL_ARGS=()
+
+for arg in "$@"; do
+  case "$arg" in
+    --claude)
+      MODEL_PROVIDER="claude"
+      ;;
+    --codex)
+      MODEL_PROVIDER="codex"
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    -*)
+      echo "Error: Unknown option '$arg'"
+      usage
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$arg")
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}"
+
 if [ $# -lt 1 ]; then
-  echo "Usage: $0 <task-file.md> [max-rounds]"
+  usage
+  exit 1
+fi
+
+if [ $# -gt 2 ]; then
+  echo "Error: Too many arguments"
+  usage
   exit 1
 fi
 
@@ -41,6 +79,11 @@ MAX_ROUNDS="${2:-5}"
 
 if [ ! -f "$TASK_FILE" ]; then
   echo "Error: File '$TASK_FILE' not found"
+  exit 1
+fi
+
+if ! command -v "$MODEL_PROVIDER" >/dev/null 2>&1; then
+  echo "Error: '$MODEL_PROVIDER' CLI not found in PATH"
   exit 1
 fi
 
@@ -74,8 +117,33 @@ EOF
 git add -A
 git commit --no-verify -m "iterate: initialize progress tracking" --quiet --allow-empty
 
+run_model() {
+  local phase="$1"
+  local prompt="$2"
+  local output_file="$3"
+
+  if [ "$MODEL_PROVIDER" = "claude" ]; then
+    local allowed_tools="Bash,Read"
+    if [ "$phase" = "work" ]; then
+      allowed_tools="Bash,Read,Write,Edit"
+    fi
+    claude -p "$prompt" --allowedTools "$allowed_tools" 2>/dev/null > "$output_file" &
+  else
+    if [ "$phase" = "work" ]; then
+      codex exec --full-auto "$prompt" 2>/dev/null > "$output_file" &
+    else
+      codex exec --sandbox read-only "$prompt" 2>/dev/null > "$output_file" &
+    fi
+  fi
+
+  CHILD_PID=$!
+  wait "$CHILD_PID" || true
+  CHILD_PID=""
+}
+
 echo "╔══════════════════════════════════════════╗"
 echo "║  Adversarial Coding Loop                 ║"
+echo "║  Model: $MODEL_PROVIDER"
 echo "║  Task: $TASK_FILE"
 echo "║  Branch: $BRANCH_NAME"
 echo "║  Max rounds: $MAX_ROUNDS"
@@ -90,29 +158,35 @@ for round in $(seq 1 "$MAX_ROUNDS"); do
   echo "═══════════════════════════════════════════"
 
   # Work prompt points to files on disk — not bash variables
-  WORK_PROMPT="You are working on a coding task. Start by reading these files:
+  WORK_PROMPT="You are a skeptical senior engineer working on a coding task. Start by reading these files:
 
 1. The task definition: $TASK_FILE
 2. The progress log: $PROGRESS_FILE
 
 These files are your source of truth. Read them now with the Read tool.
 
-If there is prior review feedback in the progress log, address ALL of it.
+For every round, first evaluate the current codebase against the task and progress log with a skeptical expert eye.
+Treat prior review feedback as fallible input, not unquestioned instructions.
+
+If there is prior review feedback:
+- Validate each item against the task requirements and actual code
+- Fix what is correct and relevant
+- If any feedback is incorrect or outdated, do not apply it blindly; explain why in your summary
+
 If this is the first round, implement the task from scratch.
+If this is a later round, continue from current code while preserving already-correct behavior.
 
 When finished:
 1. Make sure all changes are saved to disk.
 2. Output a section at the very end delimited by <summary> tags containing:
    - What you changed and why
+   - What you validated and how (task/progress/code checks)
    - What files were modified
    - Any remaining concerns or known issues
    - Be specific — file names, function names, line numbers."
 
-  # Run claude in background so we can kill it on ctrl-c
-  claude -p "$WORK_PROMPT" --allowedTools "Bash,Read,Write,Edit" 2>/dev/null > "$STATE_DIR/round-${round}-work.md" &
-  CHILD_PID=$!
-  wait "$CHILD_PID" || true
-  CHILD_PID=""
+  # Run selected model in background so we can kill it on ctrl-c
+  run_model "work" "$WORK_PROMPT" "$STATE_DIR/round-${round}-work.md"
 
   WORK_OUTPUT=$(cat "$STATE_DIR/round-${round}-work.md")
 
@@ -151,13 +225,15 @@ EOF
   echo "  Round $round/$MAX_ROUNDS — REVIEW PHASE"
   echo "═══════════════════════════════════════════"
 
-  REVIEW_PROMPT="You are a senior engineer reviewing work done by another engineer.
+  REVIEW_PROMPT="You are a skeptical senior engineer reviewing work done by another engineer.
 
 Read these files:
 1. The original task: $TASK_FILE
 2. The progress log: $PROGRESS_FILE
 
 Then inspect the actual code changes by running: git diff HEAD~1
+
+Treat task + progress as source of truth, and verify everything against the real code with a skeptical expert eye.
 
 Review for:
 - Correctness and edge cases
@@ -171,11 +247,8 @@ Be skeptical. Do not take the implementer's word for it — verify against the a
 If everything looks good and the task is fully and correctly complete, respond with exactly APPROVED on a line by itself.
 Otherwise, respond with specific, actionable feedback inside <summary> tags. Be precise: file names, line numbers, what's wrong, and what the fix should be."
 
-  # Run claude in background so we can kill it on ctrl-c
-  claude -p "$REVIEW_PROMPT" --allowedTools "Bash,Read" 2>/dev/null > "$STATE_DIR/round-${round}-review.md" &
-  CHILD_PID=$!
-  wait "$CHILD_PID" || true
-  CHILD_PID=""
+  # Run selected model in background so we can kill it on ctrl-c
+  run_model "review" "$REVIEW_PROMPT" "$STATE_DIR/round-${round}-review.md"
 
   REVIEW_OUTPUT=$(cat "$STATE_DIR/round-${round}-review.md")
 
