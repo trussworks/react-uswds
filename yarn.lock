@@ -625,6 +625,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/css-syntax-patches-for-csstree@npm:^1.1.2":
+  version: 1.1.3
+  resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.3"
+  peerDependencies:
+    css-tree: ^3.2.1
+  peerDependenciesMeta:
+    css-tree:
+      optional: true
+  checksum: c5a41b450de3dd8a8baf4c33d6a124db702773d23122cd940fc9b925ce0559d6a7b08b783940765bf47cfab80eaa238f8876e9dc3512575075b02d5674c59f0c
+  languageName: node
+  linkType: hard
+
 "@csstools/css-tokenizer@npm:^3.0.3":
   version: 3.0.4
   resolution: "@csstools/css-tokenizer@npm:3.0.4"
@@ -6355,9 +6367,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^16.1.1":
-  version: 16.1.1
-  resolution: "globby@npm:16.1.1"
+"globby@npm:^16.2.0":
+  version: 16.2.0
+  resolution: "globby@npm:16.2.0"
   dependencies:
     "@sindresorhus/merge-streams": ^4.0.0
     fast-glob: ^3.3.3
@@ -6365,7 +6377,7 @@ __metadata:
     is-path-inside: ^4.0.0
     slash: ^5.1.0
     unicorn-magic: ^0.4.0
-  checksum: dcaf49a67a5ccbc92193b2dc55efbb949b8e95e704a759e0b2632fe88c9083c3b98c974e2c66cd12050c2532854cd6c9e2c5d75850d326f01ebec8441d611fed
+  checksum: e8af88db3e53a8ac03073fb2f093d7d51bcf0ab073958cb04706ce11a886ef2691650eede823bde53c3117a4055bada7aa64e5dfeb4263de4c3639dab4cbbfc8
   languageName: node
   linkType: hard
 
@@ -10275,12 +10287,12 @@ __metadata:
   linkType: hard
 
 "stylelint@npm:^17.0.0":
-  version: 17.6.0
-  resolution: "stylelint@npm:17.6.0"
+  version: 17.7.0
+  resolution: "stylelint@npm:17.7.0"
   dependencies:
     "@csstools/css-calc": ^3.1.1
     "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-syntax-patches-for-csstree": ^1.1.1
+    "@csstools/css-syntax-patches-for-csstree": ^1.1.2
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/media-query-list-parser": ^5.0.0
     "@csstools/selector-resolve-nested": ^4.0.0
@@ -10294,7 +10306,7 @@ __metadata:
     fastest-levenshtein: ^1.0.16
     file-entry-cache: ^11.1.2
     global-modules: ^2.0.0
-    globby: ^16.1.1
+    globby: ^16.2.0
     globjoin: ^0.1.4
     html-tags: ^5.1.0
     ignore: ^7.0.5
@@ -10316,7 +10328,7 @@ __metadata:
     write-file-atomic: ^7.0.1
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 06281743ff5b5e6f7ec2ae8447a86c059de74e4fded33d85141cc2b68579ebbd6a8334956df85abe7780b4d7eda34ad1a98a8301428406c69f49e9a7c1489e65
+  checksum: a15b0c742a20f66b538ed61ee90424be7a7e541edacd8d2f5f476658c35f1eff9df126864565e38e0e42ced225dfba9ba01b7328c8fbafe5afca2d798d467f9d
   languageName: node
   linkType: hard
 
