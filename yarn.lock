@@ -2610,7 +2610,7 @@ __metadata:
     happo-plugin-storybook: ^5.0.4
     happo.io: ^13.0.1
     jsdom: ^29.0.0
-    nano-staged: ^0.9.0
+    nano-staged: ^1.0.2
     prettier: ^3.2.5
     react: ^19.0.0
     react-dom: ^19.0.0
@@ -8102,14 +8102,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nano-staged@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "nano-staged@npm:0.9.0"
-  dependencies:
-    picocolors: ^1.0.0
+"nano-staged@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "nano-staged@npm:1.0.2"
   bin:
     nano-staged: lib/bin.js
-  checksum: 9690e3d9dfa09a07c9ee8663f50801a7495a230385a205e170f9fa439c390f866ad51148835f38d5d37e689adec299392dad76b322ebeabf15b141cfd8f63e75
+  checksum: b8a7f8750f850296a471a37dc29f5a82f50b87cc9ea2a6a38e874f6c0c0d64cf9db54f12da1abbf6f4d3789e30716ca16b693a25d63f78ae6394c67cb326605a
   languageName: node
   linkType: hard
 
@@ -8616,7 +8614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picocolors@npm:1.1.1, picocolors@npm:^1.0.0, picocolors@npm:^1.1.1":
+"picocolors@npm:1.1.1, picocolors@npm:^1.1.1":
   version: 1.1.1
   resolution: "picocolors@npm:1.1.1"
   checksum: e1cf46bf84886c79055fdfa9dcb3e4711ad259949e3565154b004b260cd356c5d54b31a1437ce9782624bf766272fe6b0154f5f0c744fb7af5d454d2b60db045
