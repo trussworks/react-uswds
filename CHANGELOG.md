@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.1](https://github.com/trussworks/react-uswds/compare/11.0.0...11.0.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* Replace deprecated React.FormEvent and React.FormEventHandler with derived types ([#3398](https://github.com/trussworks/react-uswds/issues/3398)) ([55f27c9](https://github.com/trussworks/react-uswds/commit/55f27c951d83ad5f7d309b403dbcbb413676e19f))
+
 ## [11.0.0](https://github.com/trussworks/react-uswds/compare/10.2.0...11.0.0) (2025-12-15)
 
 
