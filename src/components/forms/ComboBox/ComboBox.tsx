@@ -23,6 +23,7 @@ export const DEFAULT_FILTER = '.*{{query}}.*'
 export interface ComboBoxOption {
   value: string
   label: string
+  render?: () => JSX.Element
 }
 
 enum Direction {
@@ -485,7 +486,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
               onClick={(): void => {
                 dispatch({ type: ActionTypes.SELECT_OPTION, option: option })
               }}>
-              {option.label}
+              {option.render ? option.render(): option.label}
             </li>
           )
         })}

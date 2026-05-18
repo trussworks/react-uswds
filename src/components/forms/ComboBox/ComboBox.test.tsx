@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, render, waitFor } from '@testing-library/react'
+import { screen, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxOption, ComboBoxRef } from './ComboBox'
@@ -23,6 +23,25 @@ const veggieOptions: ComboBoxOption[] = Object.entries(veggies).map(
   ([value, key]) => ({
     value: value,
     label: key,
+  })
+)
+
+const veggieCustomOptions: ComboBoxOption[] = Object.entries(veggies).map(
+  ([value, key]) => ({
+    value: value,
+    label: key,
+    render: () => {
+      return (
+        <div className="padding-2 border border-base-lighter radius-md bg-white">
+          <div className="font-sans-md text-bold">
+            {value}
+          </div>
+          <div className="font-sans-sm text-base">
+            Category: Veggies
+          </div>
+        </div>
+      )
+    }
   })
 )
 
@@ -277,6 +296,28 @@ describe('ComboBox component', () => {
     )
     expect(getByTestId('combo-box-input')).toHaveValue('Apple')
     expect(getByTestId('combo-box-option-list')).not.toBeVisible()
+  })
+
+  it('renders custom JSX options', async () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-veggie"
+          name="favorite-veggie"
+          options={veggieCustomOptions}
+          onChange={vi.fn()}
+        />
+      )
+
+      await userEvent.click(getByTestId('combo-box-toggle'))
+      expect(screen.getAllByRole('option')).toHaveLength(veggieCustomOptions.length)
+
+      veggieCustomOptions.forEach(item => {
+        const listEl = screen.getByTestId('combo-box-option-' + item.value)
+        expect(listEl).toBeInTheDocument()
+        expect(listEl).toHaveAttribute('value', item.value)
+        const categoryEl = within(listEl).getByText('Category: Veggies')
+        expect(categoryEl).toBeInTheDocument()
+      }) 
   })
 
   describe('with custom props', () => {
