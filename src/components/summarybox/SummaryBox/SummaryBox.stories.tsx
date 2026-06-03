@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid, react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { SummaryBox } from './SummaryBox'
 import { SummaryBoxHeading } from '../SummaryBoxHeading/SummaryBoxHeading'
@@ -36,7 +36,7 @@ const summaryBoxContent = (
     <li>
       Sign up for&nbsp;
       <a className="usa-summary-box__link" href="#usa-anchor-warning-system">
-        your community's warning system
+        your community’s warning system
       </a>
       .
     </li>
