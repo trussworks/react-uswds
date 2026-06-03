@@ -24,7 +24,7 @@ Combined with our "squash and merge" preference on Pull Requests, each merged Pu
 
 ### [release-please](https://github.com/googleapis/release-please)
 
-Create and manage [release PRs](https://github.com/trussworks/react-uswds/issues?q=is%3Apr%20author%3Aapp%2Fgithub-actions%20label%3A%22type%3A%20release%22) when releasable changes have been merged to `main`, based on our [release-please configuration](https://github.com/trussworks/react-uswds/blob/main/release-please-config.json).
+Create and manage [release PRs](https://github.com/trussworks/react-uswds/issues?q=is%3Apr%20is%3Aopen%20author%3Aapp%2Fgithub-actions%20label%3A%22autorelease%3A%20pending%22) when releasable changes have been merged to `main`, based on our [release-please configuration](https://github.com/trussworks/react-uswds/blob/main/release-please-config.json).
 
 The primary purpose of release PRs is to update the [changelog](https://github.com/trussworks/react-uswds/blob/main/CHANGELOG.md) and increment the version number in [package.json](https://github.com/trussworks/react-uswds/blob/main/package.json).
 
@@ -59,7 +59,7 @@ Additionally, at least one releasable change must have been merged to main since
 
 Follow these steps to create and publish a release for a given version, `<major.minor.incremental>`.
 
-1. Review and merge the current [release PR](https://github.com/trussworks/react-uswds/issues?q=is%3Apr%20author%3Aapp%2Fgithub-actions%20label%3A%22type%3A%20release%22).
+1. Review and merge the current [release PR](https://github.com/trussworks/react-uswds/issues?q=is%3Apr%20is%3Aopen%20author%3Aapp%2Fgithub-actions%20label%3A%22autorelease%3A%20pending%22).
    - Ensure the branch is up to date with `main`.
    - PR CI checks will likely be stuck in a pending state on the release PR requiring administrator override to merge. This is because GitHub actions in a workflow run cannot trigger new workflow runs. Since `release-please` creates and updates the release PR via a workflow action, PR checks will not run under normal circumstances. We consider this acceptable since release PRs do not change code.
 2. Wait for `release-please` to create the corresponding [tag](https://github.com/trussworks/react-uswds/tags) in GitHub including the updates from the changelog.
