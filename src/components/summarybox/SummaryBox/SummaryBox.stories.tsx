@@ -1,10 +1,11 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX } from 'react'
+/* eslint-disable jsx-a11y/anchor-is-valid, react/no-unescaped-entities */
+import React from 'react'
 import { SummaryBox } from './SummaryBox'
 import { SummaryBoxHeading } from '../SummaryBoxHeading/SummaryBoxHeading'
 import { SummaryBoxContent } from '../SummaryBoxContent/SummaryBoxContent'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Summary box',
   component: SummaryBox,
   parameters: {
@@ -18,7 +19,10 @@ Source: https://designsystem.digital.gov/components/summary-box
       },
     },
   },
-}
+} satisfies Meta<typeof SummaryBox>
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const summaryBoxContent = (
   <ul className="usa-list">
@@ -32,7 +36,7 @@ const summaryBoxContent = (
     <li>
       Sign up for&nbsp;
       <a className="usa-summary-box__link" href="#usa-anchor-warning-system">
-        your community’s warning system
+        your community's warning system
       </a>
       .
     </li>
@@ -61,9 +65,11 @@ const summaryBoxContent = (
   </ul>
 )
 
-export const SummaryBoxDefault = (): JSX.Element => (
-  <SummaryBox>
-    <SummaryBoxHeading headingLevel="h3">Key Information</SummaryBoxHeading>
-    <SummaryBoxContent>{summaryBoxContent}</SummaryBoxContent>
-  </SummaryBox>
-)
+export const SummaryBoxDefault: Story = {
+  render: () => (
+    <SummaryBox>
+      <SummaryBoxHeading headingLevel="h3">Key Information</SummaryBoxHeading>
+      <SummaryBoxContent>{summaryBoxContent}</SummaryBoxContent>
+    </SummaryBox>
+  ),
+}

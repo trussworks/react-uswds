@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX, useState } from 'react'
+import React, { useState } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import logoImg from '@uswds/uswds/img/logo-img.png'
 
 import { GovBanner, GridContainer, Grid } from '../../index'
@@ -25,7 +26,7 @@ import {
 
 import { SideNav } from '../../components/SideNav/SideNav'
 
-export default {
+const meta = {
   title: 'Page Templates/Documentation',
   parameters: {
     docs: {
@@ -36,278 +37,287 @@ Page templates
       },
     },
   },
-}
+} satisfies Meta
 
-export const DocumentationPage = (): JSX.Element => {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
+export default meta
+type Story = StoryObj<typeof meta>
 
-  const handleToggleNavDropdown = (index: number): void => {
-    setNavDropdownOpen((prevNavDropdownOpen) => {
-      return prevNavDropdownOpen.map(
-        (prevOpenState, i) => i === index && !prevOpenState
-      )
-    })
-  }
+export const DocumentationPage: Story = {
+  render: () => {
+    const [mobileNavOpen, setMobileNavOpen] = useState(false)
+    const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 
-  const toggleMobileNav = (): void => {
-    setMobileNavOpen((prevOpen) => !prevOpen)
-  }
+    const handleToggleNavDropdown = (index: number): void => {
+      setNavDropdownOpen((prevNavDropdownOpen) => {
+        return prevNavDropdownOpen.map(
+          (prevOpenState, i) => i === index && !prevOpenState
+        )
+      })
+    }
 
-  const handleSearch = (): void => {
-    /* */
-  }
+    const toggleMobileNav = (): void => {
+      setMobileNavOpen((prevOpen) => !prevOpen)
+    }
 
-  const primaryNavItems = [
-    <React.Fragment key="primaryNav_0">
-      <NavDropDownButton
-        menuId="extended-nav-section-one"
-        isOpen={navDropdownOpen[0]}
-        label="Current section"
-        onToggle={(): void => {
-          handleToggleNavDropdown(0)
-        }}
-        isCurrent
-      />
-      <Menu
-        id="extended-nav-section-one"
-        items={Array.from({ length: 3 }, (_x, i) => (
-          <a key={`p0_nav_${i}`} href="#">
-            Navigation link
-          </a>
-        ))}
-        isOpen={navDropdownOpen[0]}
-      />
-    </React.Fragment>,
-    <React.Fragment key="primaryNav_1">
-      <NavDropDownButton
-        menuId="extended-nav-section-two"
-        isOpen={navDropdownOpen[1]}
-        label="Section"
-        onToggle={(): void => {
-          handleToggleNavDropdown(1)
-        }}
-      />
-      <Menu
-        id="extended-nav-section-two"
-        items={Array.from({ length: 3 }, (_x, i) => (
-          <a key={`p1_nav_${i}`} href="#">
-            Navigation link
-          </a>
-        ))}
-        isOpen={navDropdownOpen[1]}
-      />
-    </React.Fragment>,
-    <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
-      <span>Simple link</span>
-    </a>,
-  ]
+    const handleSearch = (): void => {
+      /* */
+    }
 
-  const sideNavItems = [
-    <a key="sidenav_0" href="">
-      Parent link
-    </a>,
-    <React.Fragment key="sidenav_1">
-      <a href="" className="usa-current">
-        Current page
-      </a>
-      <SideNav
-        isSubnav
-        items={[
-          <a key="sidenav_0" href="">
-            Child link
-          </a>,
-          <React.Fragment key="sidenav_1">
-            <a href="" className="usa-current">
-              Child link
+    const primaryNavItems = [
+      <React.Fragment key="primaryNav_0">
+        <NavDropDownButton
+          menuId="extended-nav-section-one"
+          isOpen={navDropdownOpen[0]}
+          label="Current section"
+          onToggle={(): void => {
+            handleToggleNavDropdown(0)
+          }}
+          isCurrent
+        />
+        <Menu
+          id="extended-nav-section-one"
+          items={Array.from({ length: 3 }, (_x, i) => (
+            <a key={`p0_nav_${i}`} href="#">
+              Navigation link
             </a>
-            <SideNav
-              isSubnav
-              items={[
-                ...Array.from({ length: 2 }, (_x, i) => (
-                  <a key={`sidenav_1_${i}`} href="">
+          ))}
+          isOpen={navDropdownOpen[0]}
+        />
+      </React.Fragment>,
+      <React.Fragment key="primaryNav_1">
+        <NavDropDownButton
+          menuId="extended-nav-section-two"
+          isOpen={navDropdownOpen[1]}
+          label="Section"
+          onToggle={(): void => {
+            handleToggleNavDropdown(1)
+          }}
+        />
+        <Menu
+          id="extended-nav-section-two"
+          items={Array.from({ length: 3 }, (_x, i) => (
+            <a key={`p1_nav_${i}`} href="#">
+              Navigation link
+            </a>
+          ))}
+          isOpen={navDropdownOpen[1]}
+        />
+      </React.Fragment>,
+      <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
+        <span>Simple link</span>
+      </a>,
+    ]
+
+    const sideNavItems = [
+      <a key="sidenav_0" href="">
+        Parent link
+      </a>,
+      <React.Fragment key="sidenav_1">
+        <a href="" className="usa-current">
+          Current page
+        </a>
+        <SideNav
+          isSubnav
+          items={[
+            <a key="sidenav_0" href="">
+              Child link
+            </a>,
+            <React.Fragment key="sidenav_1">
+              <a href="" className="usa-current">
+                Child link
+              </a>
+              <SideNav
+                isSubnav
+                items={[
+                  ...Array.from({ length: 2 }, (_x, i) => (
+                    <a key={`sidenav_1_${i}`} href="">
+                      Grandchild link
+                    </a>
+                  )),
+                  <a href="" key="sidenav_1_2" className="usa-current">
                     Grandchild link
-                  </a>
-                )),
-                <a href="" key="sidenav_1_2" className="usa-current">
-                  Grandchild link
+                  </a>,
+                  <a href="" key="sidenav_1_3">
+                    Grandchild link
+                  </a>,
+                ]}
+              />
+            </React.Fragment>,
+            ...Array.from({ length: 3 }, (_x, i) => (
+              <a key={`sidenav_${i + 2}`} href="">
+                Child link
+              </a>
+            )),
+          ]}
+        />
+      </React.Fragment>,
+      <a key="sidenav_2" href="">
+        Parent link
+      </a>,
+    ]
+
+    const returnToTop = (
+      <GridContainer className="usa-footer__return-to-top">
+        <a href="#">Return to top</a>
+      </GridContainer>
+    )
+
+    const socialLinkItems = [
+      <SocialLink key="facebook" name="Facebook" href="#" />,
+      <SocialLink key="twitter" name="Twitter" href="#" />,
+      <SocialLink key="youtube" name="YouTube" href="#" />,
+      <SocialLink key="instagram" name="Instagram" href="#" />,
+      <SocialLink key="rss" name="RSS" href="#" />,
+    ]
+
+    const footerPrimary = (
+      <FooterNav
+        aria-label="Footer navigation"
+        size="medium"
+        links={Array.from({ length: 5 }, (_x, i) => (
+          <a
+            key={`foot_nav_${i}`}
+            href="javascript:void(0)"
+            className="usa-footer__primary-link">
+            Primary link
+          </a>
+        ))}
+      />
+    )
+
+    const footerSecondary = (
+      <>
+        <Grid row gap>
+          <Logo
+            size="medium"
+            image={
+              <img className="usa-footer__logo-img" src={logoImg} alt="" />
+            }
+            heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
+          />
+          <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
+            <SocialLinks links={socialLinkItems} />
+            <h3 className="usa-footer__contact-heading">
+              Agency Contact Center
+            </h3>
+            <Address
+              size="medium"
+              items={[
+                <a key="telephone" href="tel:1-800-555-5555">
+                  (800) CALL-GOVT
                 </a>,
-                <a href="" key="sidenav_1_3">
-                  Grandchild link
+                <a key="email" href="mailto:info@agency.gov">
+                  info@agency.gov
                 </a>,
               ]}
             />
-          </React.Fragment>,
-          ...Array.from({ length: 3 }, (_x, i) => (
-            <a key={`sidenav_${i + 2}`} href="">
-              Child link
-            </a>
-          )),
-        ]}
-      />
-    </React.Fragment>,
-    <a key="sidenav_2" href="">
-      Parent link
-    </a>,
-  ]
-
-  const returnToTop = (
-    <GridContainer className="usa-footer__return-to-top">
-      <a href="#">Return to top</a>
-    </GridContainer>
-  )
-
-  const socialLinkItems = [
-    <SocialLink key="facebook" name="Facebook" href="#" />,
-    <SocialLink key="twitter" name="Twitter" href="#" />,
-    <SocialLink key="youtube" name="YouTube" href="#" />,
-    <SocialLink key="instagram" name="Instagram" href="#" />,
-    <SocialLink key="rss" name="RSS" href="#" />,
-  ]
-
-  const footerPrimary = (
-    <FooterNav
-      aria-label="Footer navigation"
-      size="medium"
-      links={Array.from({ length: 5 }, (_x, i) => (
-        <a
-          key={`foot_nav_${i}`}
-          href="javascript:void(0)"
-          className="usa-footer__primary-link">
-          Primary link
-        </a>
-      ))}
-    />
-  )
-
-  const footerSecondary = (
-    <>
-      <Grid row gap>
-        <Logo
-          size="medium"
-          image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
-          heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
-        />
-        <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-          <SocialLinks links={socialLinkItems} />
-          <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
-          <Address
-            size="medium"
-            items={[
-              <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
-              </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
-              </a>,
-            ]}
-          />
+          </Grid>
         </Grid>
-      </Grid>
-    </>
-  )
+      </>
+    )
 
-  return (
-    <>
-      <a className="usa-skipnav" href="#main-content">
-        Skip to main content
-      </a>
-      <GovBanner />
-      <Header basic showMobileOverlay={mobileNavOpen}>
-        <div className="usa-nav-container">
-          <div className="usa-navbar">
-            <Title id="basic-logo">
-              <a href="/" title="Home" aria-label="Home">
-                Project title
-              </a>
-            </Title>
-            <NavMenuButton
-              label="Menu"
-              onClick={toggleMobileNav}
-              className="usa-menu-btn"
-            />
+    return (
+      <>
+        <a className="usa-skipnav" href="#main-content">
+          Skip to main content
+        </a>
+        <GovBanner />
+        <Header basic showMobileOverlay={mobileNavOpen}>
+          <div className="usa-nav-container">
+            <div className="usa-navbar">
+              <Title id="basic-logo">
+                <a href="/" title="Home" aria-label="Home">
+                  Project title
+                </a>
+              </Title>
+              <NavMenuButton
+                label="Menu"
+                onClick={toggleMobileNav}
+                className="usa-menu-btn"
+              />
+            </div>
+            <PrimaryNav
+              aria-label="Primary navigation"
+              items={primaryNavItems}
+              onToggleMobileNav={toggleMobileNav}
+              mobileExpanded={mobileNavOpen}>
+              <Search size="small" onSubmit={handleSearch} />
+            </PrimaryNav>
           </div>
-          <PrimaryNav
-            aria-label="Primary navigation"
-            items={primaryNavItems}
-            onToggleMobileNav={toggleMobileNav}
-            mobileExpanded={mobileNavOpen}>
-            <Search size="small" onSubmit={handleSearch} />
-          </PrimaryNav>
-        </div>
-      </Header>
+        </Header>
 
-      <div className="usa-section">
-        <GridContainer>
-          <Grid row gap>
-            <Grid
-              className="usa-layout-docs__sidenav display-none desktop:display-block"
-              desktop={{ col: 3 }}>
+        <div className="usa-section">
+          <GridContainer>
+            <Grid row gap>
+              <Grid
+                className="usa-layout-docs__sidenav display-none desktop:display-block"
+                desktop={{ col: 3 }}>
+                <nav aria-label="Secondary navigation">
+                  <SideNav items={sideNavItems} />
+                </nav>
+              </Grid>
+              <main
+                className="usa-layout-docs desktop:grid-col-9 usa-prose usa-layout-docs"
+                id="main-content">
+                <h1>Page heading (h1)</h1>
+
+                <p className="usa-intro">
+                  The page heading communicates the main focus of the page. Make
+                  your page heading descriptive and keep it succinct.
+                </p>
+                <h2 id="section-heading-h2">Section heading (h2)</h2>
+
+                <p>
+                  These headings introduce, respectively, sections and
+                  subsections within your body copy. As you create these
+                  headings, follow the same guidelines that you use when writing
+                  section headings: Be succinct, descriptive, and precise.
+                </p>
+
+                <h3 id="section-heading-h3">Subsection heading (h3)</h3>
+
+                <p>
+                  The particulars of your body copy will be determined by the
+                  topic of your page. Regardless of topic, it’s a good practice
+                  to follow the inverted pyramid structure when writing copy:
+                  Begin with the information that’s most important to your users
+                  and then present information of less importance.
+                </p>
+
+                <p>
+                  Keep each section and subsection focused - a good approach is
+                  to include one theme (topic) per section.
+                </p>
+
+                <h4 id="section-heading-h4">Subsection heading (h4)</h4>
+
+                <p>
+                  Use the side navigation menu to help your users quickly skip
+                  to different sections of your page. The menu is best suited to
+                  displaying a hierarchy with one to three levels and, as we
+                  mentioned, to display the sub-navigation of a given page.
+                </p>
+
+                <p>
+                  Read the full documentation on our side navigation on the
+                  component page.
+                </p>
+              </main>
+            </Grid>
+            <Grid className="usa-layout-docs__sidenav desktop:display-none">
               <nav aria-label="Secondary navigation">
                 <SideNav items={sideNavItems} />
               </nav>
             </Grid>
-            <main
-              className="usa-layout-docs desktop:grid-col-9 usa-prose usa-layout-docs"
-              id="main-content">
-              <h1>Page heading (h1)</h1>
+          </GridContainer>
+        </div>
 
-              <p className="usa-intro">
-                The page heading communicates the main focus of the page. Make
-                your page heading descriptive and keep it succinct.
-              </p>
-              <h2 id="section-heading-h2">Section heading (h2)</h2>
-
-              <p>
-                These headings introduce, respectively, sections and subsections
-                within your body copy. As you create these headings, follow the
-                same guidelines that you use when writing section headings: Be
-                succinct, descriptive, and precise.
-              </p>
-
-              <h3 id="section-heading-h3">Subsection heading (h3)</h3>
-
-              <p>
-                The particulars of your body copy will be determined by the
-                topic of your page. Regardless of topic, it’s a good practice to
-                follow the inverted pyramid structure when writing copy: Begin
-                with the information that’s most important to your users and
-                then present information of less importance.
-              </p>
-
-              <p>
-                Keep each section and subsection focused - a good approach is to
-                include one theme (topic) per section.
-              </p>
-
-              <h4 id="section-heading-h4">Subsection heading (h4)</h4>
-
-              <p>
-                Use the side navigation menu to help your users quickly skip to
-                different sections of your page. The menu is best suited to
-                displaying a hierarchy with one to three levels and, as we
-                mentioned, to display the sub-navigation of a given page.
-              </p>
-
-              <p>
-                Read the full documentation on our side navigation on the
-                component page.
-              </p>
-            </main>
-          </Grid>
-          <Grid className="usa-layout-docs__sidenav desktop:display-none">
-            <nav aria-label="Secondary navigation">
-              <SideNav items={sideNavItems} />
-            </nav>
-          </Grid>
-        </GridContainer>
-      </div>
-
-      <Footer
-        returnToTop={returnToTop}
-        primary={footerPrimary}
-        secondary={footerSecondary}
-      />
-    </>
-  )
+        <Footer
+          returnToTop={returnToTop}
+          primary={footerPrimary}
+          secondary={footerSecondary}
+        />
+      </>
+    )
+  },
 }

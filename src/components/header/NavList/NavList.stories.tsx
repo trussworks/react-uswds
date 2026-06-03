@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { NavList } from './NavList'
 
-export default {
+const meta: Meta<typeof NavList> = {
   title: 'Components/Header/NavList',
   component: NavList,
   parameters: {
@@ -17,6 +18,9 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 const testItems = [
   <a href="#linkOne" key="one">
     <span>Test link</span>
@@ -26,6 +30,6 @@ const testItems = [
   </a>,
 ]
 
-export const BasicNavList = (): JSX.Element => (
-  <NavList items={testItems} type="primary" />
-)
+export const BasicNavList: Story = {
+  render: () => <NavList items={testItems} type="primary" />,
+}

@@ -1,12 +1,23 @@
 import React from 'react'
-import { InputSuffix } from './InputSuffix'
+import { InputSuffix, InputSuffixProps } from './InputSuffix'
 import { InputGroup } from '../InputGroup/InputGroup'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { TextInput } from '../TextInput/TextInput'
 import { Icon } from '../../Icon/Icons'
 import { Label } from '../Label/Label'
+import { Meta, type StoryObj } from '@storybook/react-vite'
 
-export default {
+const InputSuffixStoryTemplate = (args: InputSuffixProps) => (
+  <FormGroup>
+    <Label htmlFor="search">Input label</Label>
+    <InputGroup>
+      <TextInput id="search" name="search" type="search" />
+      <InputSuffix className={args.className}>{args.children}</InputSuffix>
+    </InputGroup>
+  </FormGroup>
+)
+
+const meta = {
   title: 'Components/Input prefix or suffix/InputSuffix',
   component: InputSuffix,
   parameters: {
@@ -20,24 +31,16 @@ Source: https://designsystem.digital.gov/components/input-prefix-suffix/
       },
     },
   },
+  render: InputSuffixStoryTemplate,
+} satisfies Meta<typeof InputSuffixStoryTemplate>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const AsText: Story = {
+  args: { children: 'lbs.' },
 }
 
-const Template = ({ ...args }) => (
-  <FormGroup>
-    <Label htmlFor="search">Input label</Label>
-    <InputGroup>
-      <TextInput id="search" name="search" type="search" />
-      <InputSuffix>{args.suffix}</InputSuffix>
-    </InputGroup>
-  </FormGroup>
-)
-
-export const AsText = {
-  render: Template,
-  args: { suffix: 'lbs.' },
-}
-
-export const AsIcon = {
-  render: Template,
-  args: { suffix: <Icon.Search /> },
+export const AsIcon: Story = {
+  args: { children: <Icon.Search /> },
 }

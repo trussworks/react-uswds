@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { MegaMenu } from './MegaMenu'
 
-export default {
+const meta: Meta<typeof MegaMenu> = {
   title: 'Components/Header/MegaMenu',
   component: MegaMenu,
   parameters: {
@@ -16,6 +17,9 @@ Source: https://designsystem.digital.gov/components/header/
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const testItems = [
   [
@@ -36,6 +40,6 @@ const testItems = [
   ],
 ]
 
-export const DefaultMegaMenu = (): JSX.Element => (
-  <MegaMenu items={testItems} key="testItemOne" isOpen={true} />
-)
+export const DefaultMegaMenu: Story = {
+  render: () => <MegaMenu items={testItems} key="testItemOne" isOpen={true} />,
+}

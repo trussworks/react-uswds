@@ -1,5 +1,6 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Address } from '../Address/Address'
 import { Button } from '../../Button/Button'
@@ -14,7 +15,7 @@ import { TextInput } from '../../forms/TextInput/TextInput'
 // assets
 import logoImg from '@uswds/uswds/img/logo-img.png'
 
-export default {
+const meta: Meta<typeof Footer> = {
   title: 'Components/Footer',
   component: Footer,
   parameters: {
@@ -29,6 +30,9 @@ Source: https://designsystem.digital.gov/components/footer
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const mockSubmit = (): void => {
   /* mock submit fn */
@@ -50,7 +54,7 @@ const socialLinkItems = [
   <SocialLink key="rss" name="RSS" href="#" />,
 ]
 
-const SignUpForm = (): JSX.Element => {
+const SignUpForm = () => {
   return (
     <div className="usa-sign-up">
       <h3 className="usa-sign-up__heading">Sign up</h3>
@@ -63,168 +67,44 @@ const SignUpForm = (): JSX.Element => {
   )
 }
 
-export const SlimFooter = (): JSX.Element => (
-  <Footer
-    size="slim"
-    returnToTop={returnToTop}
-    primary={
-      <div className="usa-footer__primary-container grid-row">
-        <div className="mobile-lg:grid-col-8">
-          <FooterNav
-            size="slim"
-            links={Array.from({ length: 4 }, (_x, i) => (
-              <a
-                key={`primary_${i}`}
-                className="usa-footer__primary-link"
-                href="#">
-                Primary Link
-              </a>
-            ))}
-          />
-        </div>
-        <div className="mobile-lg:grid-col-4">
-          <Address
-            size="slim"
-            items={[
-              <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
-              </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
-              </a>,
-            ]}
-          />
-        </div>
-      </div>
-    }
-    secondary={
-      <Logo
-        size="slim"
-        image={
-          <img
-            className="usa-footer__logo-img"
-            alt="img alt text"
-            src={logoImg}
-          />
-        }
-        heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
-      />
-    }
-  />
-)
-
-export const MediumFooter = (): JSX.Element => (
-  <Footer
-    size="medium"
-    returnToTop={returnToTop}
-    primary={
-      <FooterNav
-        size="medium"
-        links={Array.from({ length: 4 }, (_x, i) => (
-          <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
-            Primary Link
-          </a>
-        ))}
-      />
-    }
-    secondary={
-      <div className="grid-row grid-gap">
-        <Logo
-          size="medium"
-          image={
-            <img
-              className="usa-footer__logo-img"
-              alt="img alt text"
-              src={logoImg}
-            />
-          }
-          heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
-        />
-        <div className="usa-footer__contact-links mobile-lg:grid-col-6">
-          <SocialLinks links={socialLinkItems} />
-          <p className="usa-footer__contact-heading">Agency Contact Center</p>
-          <Address
-            size="medium"
-            items={[
-              <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
-              </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
-              </a>,
-            ]}
-          />
-        </div>
-      </div>
-    }
-  />
-)
-
-export const BigFooter = (): JSX.Element => (
-  <Footer
-    size="big"
-    returnToTop={returnToTop}
-    primary={
-      <div className="grid-container">
-        <div className="grid-row grid-gap">
-          <div className="tablet:grid-col-8">
+export const SlimFooter: Story = {
+  render: () => (
+    <Footer
+      size="slim"
+      returnToTop={returnToTop}
+      primary={
+        <div className="usa-footer__primary-container grid-row">
+          <div className="mobile-lg:grid-col-8">
             <FooterNav
-              size="big"
-              links={[
-                [
-                  'Topic',
-                  ...Array.from({ length: 2 }, (_x, i) => (
-                    <a key={`topic_0_${i}`} href="#">
-                      Secondary link
-                    </a>
-                  )),
-                  <a key="topic_0_2" href="#">
-                    Secondary link that is a bit longer than most of the others
-                  </a>,
-                  <a key="topic_0_3" href="#">
-                    Secondary link
-                  </a>,
-                ],
-                [
-                  'Topic',
-                  <a key="topic_1_0" href="#">
-                    Secondary link that is pretty long
-                  </a>,
-                  ...Array.from({ length: 3 }, (_x, i) => (
-                    <a key={`topic_1_${i + 1}`} href="#">
-                      Secondary link
-                    </a>
-                  )),
-                ],
-                [
-                  'Topic',
-                  ...Array.from({ length: 4 }, (_x, i) => (
-                    <a key={`topic_2_${i}`} href="#">
-                      Secondary link
-                    </a>
-                  )),
-                ],
-                [
-                  'Topic',
-                  ...Array.from({ length: 4 }, (_x, i) => (
-                    <a key={`topic_3_${i}`} href="#">
-                      Secondary link
-                    </a>
-                  )),
-                ],
+              size="slim"
+              links={Array.from({ length: 4 }, (_x, i) => (
+                <a
+                  key={`primary_${i}`}
+                  className="usa-footer__primary-link"
+                  href="#">
+                  Primary Link
+                </a>
+              ))}
+            />
+          </div>
+          <div className="mobile-lg:grid-col-4">
+            <Address
+              size="slim"
+              items={[
+                <a key="telephone" href="tel:1-800-555-5555">
+                  (800) CALL-GOVT
+                </a>,
+                <a key="email" href="mailto:info@agency.gov">
+                  info@agency.gov
+                </a>,
               ]}
             />
           </div>
-          <div className="tablet:grid-col-4">
-            <SignUpForm />
-          </div>
         </div>
-      </div>
-    }
-    secondary={
-      <div className="grid-row grid-gap">
+      }
+      secondary={
         <Logo
-          size="big"
+          size="slim"
           image={
             <img
               className="usa-footer__logo-img"
@@ -234,22 +114,156 @@ export const BigFooter = (): JSX.Element => (
           }
           heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
         />
-        <div className="usa-footer__contact-links mobile-lg:grid-col-6">
-          <SocialLinks links={socialLinkItems} />
-          <p className="usa-footer__contact-heading">Agency Contact Center</p>
-          <Address
-            size="big"
-            items={[
-              <a key="telephone" href="tel:1-800-555-5555">
-                (800) CALL-GOVT
-              </a>,
-              <a key="email" href="mailto:info@agency.gov">
-                info@agency.gov
-              </a>,
-            ]}
+      }
+    />
+  ),
+}
+
+export const MediumFooter: Story = {
+  render: () => (
+    <Footer
+      size="medium"
+      returnToTop={returnToTop}
+      primary={
+        <FooterNav
+          size="medium"
+          links={Array.from({ length: 4 }, (_x, i) => (
+            <a
+              key={`primary_${i}`}
+              className="usa-footer__primary-link"
+              href="#">
+              Primary Link
+            </a>
+          ))}
+        />
+      }
+      secondary={
+        <div className="grid-row grid-gap">
+          <Logo
+            size="medium"
+            image={
+              <img
+                className="usa-footer__logo-img"
+                alt="img alt text"
+                src={logoImg}
+              />
+            }
+            heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
           />
+          <div className="usa-footer__contact-links mobile-lg:grid-col-6">
+            <SocialLinks links={socialLinkItems} />
+            <p className="usa-footer__contact-heading">Agency Contact Center</p>
+            <Address
+              size="medium"
+              items={[
+                <a key="telephone" href="tel:1-800-555-5555">
+                  (800) CALL-GOVT
+                </a>,
+                <a key="email" href="mailto:info@agency.gov">
+                  info@agency.gov
+                </a>,
+              ]}
+            />
+          </div>
         </div>
-      </div>
-    }
-  />
-)
+      }
+    />
+  ),
+}
+
+export const BigFooter: Story = {
+  render: () => (
+    <Footer
+      size="big"
+      returnToTop={returnToTop}
+      primary={
+        <div className="grid-container">
+          <div className="grid-row grid-gap">
+            <div className="tablet:grid-col-8">
+              <FooterNav
+                size="big"
+                links={[
+                  [
+                    'Topic',
+                    ...Array.from({ length: 2 }, (_x, i) => (
+                      <a key={`topic_0_${i}`} href="#">
+                        Secondary link
+                      </a>
+                    )),
+                    <a key="topic_0_2" href="#">
+                      Secondary link that is a bit longer than most of the
+                      others
+                    </a>,
+                    <a key="topic_0_3" href="#">
+                      Secondary link
+                    </a>,
+                  ],
+                  [
+                    'Topic',
+                    <a key="topic_1_0" href="#">
+                      Secondary link that is pretty long
+                    </a>,
+                    ...Array.from({ length: 3 }, (_x, i) => (
+                      <a key={`topic_1_${i + 1}`} href="#">
+                        Secondary link
+                      </a>
+                    )),
+                  ],
+                  [
+                    'Topic',
+                    ...Array.from({ length: 4 }, (_x, i) => (
+                      <a key={`topic_2_${i}`} href="#">
+                        Secondary link
+                      </a>
+                    )),
+                  ],
+                  [
+                    'Topic',
+                    ...Array.from({ length: 4 }, (_x, i) => (
+                      <a key={`topic_3_${i}`} href="#">
+                        Secondary link
+                      </a>
+                    )),
+                  ],
+                ]}
+              />
+            </div>
+            <div className="tablet:grid-col-4">
+              <SignUpForm />
+            </div>
+          </div>
+        </div>
+      }
+      secondary={
+        <div className="grid-row grid-gap">
+          <Logo
+            size="big"
+            image={
+              <img
+                className="usa-footer__logo-img"
+                alt="img alt text"
+                src={logoImg}
+              />
+            }
+            heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
+          />
+          <div className="usa-footer__contact-links mobile-lg:grid-col-6">
+            <SocialLinks links={socialLinkItems} />
+            <p className="usa-footer__contact-heading">Agency Contact Center</p>
+            <Address
+              size="big"
+              items={[
+                <a key="telephone" href="tel:1-800-555-5555">
+                  (800) CALL-GOVT
+                </a>,
+                <a key="email" href="mailto:info@agency.gov">
+                  info@agency.gov
+                </a>,
+              ]}
+            />
+          </div>
+        </div>
+      }
+    />
+  ),
+}

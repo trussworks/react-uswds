@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import {
   GridContainer,
   Grid,
@@ -32,7 +33,7 @@ import {
 import logoImg from '@uswds/uswds/img/logo-img.png'
 import circleSvg from '@uswds/uswds/img/circle-gray-20.svg'
 
-export default {
+const meta = {
   title: 'Page Templates/Sign In',
   parameters: {
     options: {
@@ -47,7 +48,10 @@ export default {
       },
     },
   },
-}
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const returnToTop = (
   <GridContainer className="usa-footer__return-to-top">
@@ -119,141 +123,149 @@ const mockSubmit = (): void => {
   /* Blank function for mocking form submission */
 }
 
-export const SignIn = (): JSX.Element => {
-  const [showPassword, setShowPassword] = React.useState(false)
+export const SignIn: Story = {
+  render: () => {
+    const [showPassword, setShowPassword] = React.useState(false)
 
-  return (
-    <>
-      <a className="usa-skipnav" href="#main-content">
-        Skip to main content
-      </a>
+    return (
+      <>
+        <a className="usa-skipnav" href="#main-content">
+          Skip to main content
+        </a>
 
-      <GovBanner />
-      <Header extended>
-        <div className="usa-navbar">
-          <Title id="extended-logo">
-            <a href="/" title="Home" aria-label="Home">
-              Project title
-            </a>
-          </Title>
-        </div>
-      </Header>
-
-      <main id="main-content">
-        <div className="bg-base-lightest">
-          <GridContainer className="usa-section">
-            <Grid row={true} className="flex-justify-center">
-              <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 6 }}>
-                <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
-                  <h1 className="margin-bottom-0">Sign in</h1>
-                  <Form onSubmit={mockSubmit}>
-                    <Fieldset legend="Access your account" legendStyle="large">
-                      <Label htmlFor="email">Email address</Label>
-                      <TextInput
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoCorrect="off"
-                        autoCapitalize="off"
-                        autoComplete="email"
-                        required={true}
-                      />
-
-                      <Label htmlFor="password-sign-in">Password</Label>
-                      <TextInput
-                        id="password-sign-in"
-                        name="password"
-                        type={showPassword ? 'text' : 'password'}
-                        autoCorrect="off"
-                        autoCapitalize="off"
-                        required={true}
-                      />
-
-                      <button
-                        title="Show password"
-                        type="button"
-                        className="usa-show-password"
-                        aria-controls="password-sign-in"
-                        onClick={(): void =>
-                          setShowPassword((showPassword) => !showPassword)
-                        }>
-                        {showPassword ? 'Hide password' : 'Show password'}
-                      </button>
-
-                      <Button type="submit">Sign in</Button>
-
-                      <p>
-                        <Link href="javascript:void();">Forgot password?</Link>
-                      </p>
-                    </Fieldset>
-                  </Form>
-                </div>
-
-                <p className="text-center">
-                  {"Don't have an account? "}
-                  <Link href="javascript:void();">Create your account now</Link>
-                  .
-                </p>
-
-                <div className="border-top border-base-lighter margin-top-3 padding-top-1">
-                  <h2>Are you a federal employee?</h2>
-                  <div className="usa-prose">
-                    <p>
-                      If you are a federal employee or [other secondary user],
-                      please use [secondary Single Sign On (SSO)].
-                    </p>
-                    <p>
-                      <Button type="button" outline={true}>
-                        Launch secondary SSO
-                      </Button>
-                    </p>
-                  </div>
-                </div>
-              </Grid>
-            </Grid>
-          </GridContainer>
-        </div>
-      </main>
-
-      <Footer
-        returnToTop={returnToTop}
-        primary={footerPrimary}
-        secondary={footerSecondary}
-      />
-
-      <Identifier>
-        <IdentifierMasthead aria-label="Agency identifier">
-          <IdentifierLogos>
-            <IdentifierLogo href="#">
-              <img
-                className="usa-identifier__logo-img"
-                src={circleSvg}
-                alt="<Parent agency> logo"
-              />
-            </IdentifierLogo>
-          </IdentifierLogos>
-          <IdentifierIdentity domain="domain.gov">
-            <span aria-hidden="true">An</span> official website of the{' '}
-            <Link href="#">{`<Parent agency>`}</Link>
-          </IdentifierIdentity>
-        </IdentifierMasthead>
-        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-          {identifierLinksText.map((text, idx) => (
-            <IdentifierLinkItem key={idx}>
-              <IdentifierLink href="#">{text}</IdentifierLink>
-            </IdentifierLinkItem>
-          ))}
-        </IdentifierLinks>
-        <IdentifierGov aria-label="U.S. government information and services">
-          <div className="usa-identifier__usagov-description">
-            Looking for U.S. government information and services?
+        <GovBanner />
+        <Header extended>
+          <div className="usa-navbar">
+            <Title id="extended-logo">
+              <a href="/" title="Home" aria-label="Home">
+                Project title
+              </a>
+            </Title>
           </div>
-          &nbsp;
-          <Link href="https://www.usa.gov/" className="usa-link">
-            Visit USA.gov
-          </Link>
-        </IdentifierGov>
-      </Identifier>
-    </>
-  )
+        </Header>
+
+        <main id="main-content">
+          <div className="bg-base-lightest">
+            <GridContainer className="usa-section">
+              <Grid row={true} className="flex-justify-center">
+                <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 6 }}>
+                  <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
+                    <h1 className="margin-bottom-0">Sign in</h1>
+                    <Form onSubmit={mockSubmit}>
+                      <Fieldset
+                        legend="Access your account"
+                        legendStyle="large">
+                        <Label htmlFor="email">Email address</Label>
+                        <TextInput
+                          id="email"
+                          name="email"
+                          type="email"
+                          autoCorrect="off"
+                          autoCapitalize="off"
+                          autoComplete="email"
+                          required={true}
+                        />
+
+                        <Label htmlFor="password-sign-in">Password</Label>
+                        <TextInput
+                          id="password-sign-in"
+                          name="password"
+                          type={showPassword ? 'text' : 'password'}
+                          autoCorrect="off"
+                          autoCapitalize="off"
+                          required={true}
+                        />
+
+                        <button
+                          title="Show password"
+                          type="button"
+                          className="usa-show-password"
+                          aria-controls="password-sign-in"
+                          onClick={(): void =>
+                            setShowPassword((showPassword) => !showPassword)
+                          }>
+                          {showPassword ? 'Hide password' : 'Show password'}
+                        </button>
+
+                        <Button type="submit">Sign in</Button>
+
+                        <p>
+                          <Link href="javascript:void();">
+                            Forgot password?
+                          </Link>
+                        </p>
+                      </Fieldset>
+                    </Form>
+                  </div>
+
+                  <p className="text-center">
+                    {"Don't have an account? "}
+                    <Link href="javascript:void();">
+                      Create your account now
+                    </Link>
+                    .
+                  </p>
+
+                  <div className="border-top border-base-lighter margin-top-3 padding-top-1">
+                    <h2>Are you a federal employee?</h2>
+                    <div className="usa-prose">
+                      <p>
+                        If you are a federal employee or [other secondary user],
+                        please use [secondary Single Sign On (SSO)].
+                      </p>
+                      <p>
+                        <Button type="button" outline={true}>
+                          Launch secondary SSO
+                        </Button>
+                      </p>
+                    </div>
+                  </div>
+                </Grid>
+              </Grid>
+            </GridContainer>
+          </div>
+        </main>
+
+        <Footer
+          returnToTop={returnToTop}
+          primary={footerPrimary}
+          secondary={footerSecondary}
+        />
+
+        <Identifier>
+          <IdentifierMasthead aria-label="Agency identifier">
+            <IdentifierLogos>
+              <IdentifierLogo href="#">
+                <img
+                  className="usa-identifier__logo-img"
+                  src={circleSvg}
+                  alt="<Parent agency> logo"
+                />
+              </IdentifierLogo>
+            </IdentifierLogos>
+            <IdentifierIdentity domain="domain.gov">
+              <span aria-hidden="true">An</span> official website of the{' '}
+              <Link href="#">{`<Parent agency>`}</Link>
+            </IdentifierIdentity>
+          </IdentifierMasthead>
+          <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+            {identifierLinksText.map((text, idx) => (
+              <IdentifierLinkItem key={idx}>
+                <IdentifierLink href="#">{text}</IdentifierLink>
+              </IdentifierLinkItem>
+            ))}
+          </IdentifierLinks>
+          <IdentifierGov aria-label="U.S. government information and services">
+            <div className="usa-identifier__usagov-description">
+              Looking for U.S. government information and services?
+            </div>
+            &nbsp;
+            <Link href="https://www.usa.gov/" className="usa-link">
+              Visit USA.gov
+            </Link>
+          </IdentifierGov>
+        </Identifier>
+      </>
+    )
+  },
 }

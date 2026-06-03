@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { PrimaryNav } from './PrimaryNav'
 
-export default {
+const meta: Meta<typeof PrimaryNav> = {
   title: 'Components/Header/PrimaryNav',
   component: PrimaryNav,
   parameters: {
@@ -16,6 +17,10 @@ Source: https://designsystem.digital.gov/components/header/
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
+
 const mockToggle = (): void => {
   /* mock submit fn */
 }
@@ -29,6 +34,8 @@ const testBasicHeaderItems = [
   </a>,
 ]
 
-export const DefaultPrimaryNav = (): JSX.Element => (
-  <PrimaryNav items={testBasicHeaderItems} onToggleMobileNav={mockToggle} />
-)
+export const DefaultPrimaryNav: Story = {
+  render: () => (
+    <PrimaryNav items={testBasicHeaderItems} onToggleMobileNav={mockToggle} />
+  ),
+}

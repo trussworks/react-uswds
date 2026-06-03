@@ -4,7 +4,7 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 const pathname = '/test-pathname'
 
-const meta: Meta<typeof Pagination> = {
+const meta = {
   title: 'Components/Pagination',
   component: Pagination,
   args: {
@@ -22,9 +22,10 @@ const meta: Meta<typeof Pagination> = {
       control: { type: 'number', min: 1 },
     },
   },
-}
+} satisfies Meta<typeof Pagination>
+
 export default meta
-type Story = StoryObj<typeof Pagination>
+type Story = StoryObj<typeof meta>
 
 const Template: StoryFn<typeof Pagination> = (args) => {
   const argPage =

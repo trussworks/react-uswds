@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Address } from './Address'
 
-export default {
+const meta: Meta<typeof Address> = {
   title: 'Components/Footer/Address',
   component: Address,
   parameters: {
@@ -17,15 +18,20 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const WithLinks = (): JSX.Element => (
-  <Address
-    items={[
-      <a key="phone" href="tel:123-456-7890">
-        (123) 456 - 7890
-      </a>,
-      <a key="email" href="mailto:thisnotfake@emailaddress.com">
-        thisnotfake@emailaddress.com
-      </a>,
-    ]}
-  />
-)
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const WithLinks: Story = {
+  render: () => (
+    <Address
+      items={[
+        <a key="phone" href="tel:123-456-7890">
+          (123) 456 - 7890
+        </a>,
+        <a key="email" href="mailto:thisnotfake@emailaddress.com">
+          thisnotfake@emailaddress.com
+        </a>,
+      ]}
+    />
+  ),
+}

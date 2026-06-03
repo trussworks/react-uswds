@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { Accordion, AccordionItemProps } from './Accordion'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Accordion',
   component: Accordion,
   parameters: {
@@ -15,7 +16,10 @@ Source: https://designsystem.digital.gov/components/accordion/
       },
     },
   },
-}
+} satisfies Meta<typeof Accordion>
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const testItems: AccordionItemProps[] = [
   {
@@ -100,17 +104,17 @@ const testItems: AccordionItemProps[] = [
   },
 ]
 
-export const Borderless = (): JSX.Element => (
-  <Accordion bordered={false} items={testItems} />
-)
+export const Borderless: Story = {
+  args: { bordered: false, items: testItems },
+}
 
-export const Bordered = (): JSX.Element => (
-  <Accordion bordered={true} items={testItems} />
-)
+export const Bordered: Story = {
+  args: { bordered: true, items: testItems },
+}
 
-export const Multiselectable = (): JSX.Element => (
-  <Accordion items={testItems} multiselectable={true} />
-)
+export const Multiselectable: Story = {
+  args: { items: testItems, multiselectable: true },
+}
 
 const customTestItems: AccordionItemProps[] = [
   {
@@ -166,6 +170,6 @@ const customTestItems: AccordionItemProps[] = [
   },
 ]
 
-export const CustomTitles = (): JSX.Element => (
-  <Accordion bordered={true} items={customTestItems} />
-)
+export const CustomTitles: Story = {
+  args: { bordered: true, items: customTestItems },
+}

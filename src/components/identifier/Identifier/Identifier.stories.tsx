@@ -1,4 +1,5 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Identifier } from './Identifier'
 import { IdentifierMasthead } from '../IdentifierMasthead/IdentifierMasthead'
@@ -14,7 +15,7 @@ import { Link } from '../../Link/Link'
 
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 
-export default {
+const meta: Meta<typeof Identifier> = {
   title: 'Components/Identifier',
   component: Identifier,
   parameters: {
@@ -22,13 +23,16 @@ export default {
       description: {
         component: `
 ### USWDS 3.0 Identifier component
-        
+
 Source: https://designsystem.digital.gov/components/identifier/
 `,
       },
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const testIdentifierLogo = (
   <img
@@ -124,218 +128,238 @@ const testIdentifierGovContentSpanish = (
   </>
 )
 
-export const IdentifierDefault = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>
-        {` official website of the `}
-        <Link href="#">Test Agency Name</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const IdentifierDefault: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
+          <Link href="#">Test Agency Name</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const IdentifierSpanish = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Identificador de la agencia">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`Un sitio web oficial de `}
-        <Link href="#">Test Agency Name Spanish</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
-      {testLinksSpanish}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
-      {testIdentifierGovContentSpanish}
-    </IdentifierGov>
-  </Identifier>
-)
+export const IdentifierSpanish: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Identificador de la agencia">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`Un sitio web oficial de `}
+          <Link href="#">Test Agency Name Spanish</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
+        {testLinksSpanish}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+        {testIdentifierGovContentSpanish}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const MultipleParentsAndLogos = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>
-        {` official website of the `}
-        <Link href="#">Test Agency Name</Link>
-        {` and the `}
-        <Link href="#">Other Test Agency Name</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const MultipleParentsAndLogos: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
+          <Link href="#">Test Agency Name</Link>
+          {` and the `}
+          <Link href="#">Other Test Agency Name</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const MultipleParentsAndLogosSpanish = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Identificador de la agencia">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
-        <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`Un sitio web oficial de `}
-        <Link href="#">Test Agency Name</Link>
-        {` y `}
-        <Link href="#">Other Test Agency Name</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks>{testLinksSpanish}</IdentifierLinks>
-    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
-      {testIdentifierGovContentSpanish}
-    </IdentifierGov>
-  </Identifier>
-)
+export const MultipleParentsAndLogosSpanish: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Identificador de la agencia">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
+          <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`Un sitio web oficial de `}
+          <Link href="#">Test Agency Name</Link>
+          {` y `}
+          <Link href="#">Other Test Agency Name</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks>{testLinksSpanish}</IdentifierLinks>
+      <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+        {testIdentifierGovContentSpanish}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const MoreThanTwoParentsAndLogos = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>
-        {` official website of the `}
-        <Link href="#">Test Agency Name</Link>
-        {`, `}
-        <Link href="#">Second Test Agency Name</Link>
-        {`, and the `}
-        <Link href="#">Third Test Agency Name</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const MoreThanTwoParentsAndLogos: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
+          <Link href="#">Test Agency Name</Link>
+          {`, `}
+          <Link href="#">Second Test Agency Name</Link>
+          {`, and the `}
+          <Link href="#">Third Test Agency Name</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const NoLogosEnglish = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>
-        {` official website of the `}
-        <Link href="#">Test Agency Name</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const NoLogosEnglish: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
+          <Link href="#">Test Agency Name</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const NoLogosSpanish = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Identificador de la agencia">
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`Un sitio web oficial de `}
-        <Link href="#">Test Agency Name Spanish</Link>
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
-      {testLinksSpanish}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
-      {testIdentifierGovContentSpanish}
-    </IdentifierGov>
-  </Identifier>
-)
+export const NoLogosSpanish: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Identificador de la agencia">
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`Un sitio web oficial de `}
+          <Link href="#">Test Agency Name Spanish</Link>
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
+        {testLinksSpanish}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+        {testIdentifierGovContentSpanish}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const TaxDisclaimerEnglish = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>
-        {` official website of the `}
-        <Link href="#">Test Agency Name</Link>
-        {`. Produced and published at taxpayer expense.`}
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const TaxDisclaimerEnglish: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
+          <Link href="#">Test Agency Name</Link>
+          {`. Produced and published at taxpayer expense.`}
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const TaxDisclaimerSpanish = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Identificador de la agencia">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        {`Un sitio web oficial de `}
-        <Link href="#">Test Agency Name Spanish</Link>
-        {`. Producido y publicado con dinero de los contribuyentes de impuestos.`}
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
-      {testLinksSpanish}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
-      {testIdentifierGovContentSpanish}
-    </IdentifierGov>
-  </Identifier>
-)
+export const TaxDisclaimerSpanish: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Identificador de la agencia">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogoSpanish}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          {`Un sitio web oficial de `}
+          <Link href="#">Test Agency Name Spanish</Link>
+          {`. Producido y publicado con dinero de los contribuyentes de impuestos.`}
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Enlaces importantes' }}>
+        {testLinksSpanish}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="Información y servicios del Gobierno de EE. UU.">
+        {testIdentifierGovContentSpanish}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
 
-export const TaxDisclaimerAndMultipleParentsAndLogos = (): JSX.Element => (
-  <Identifier>
-    <IdentifierMasthead aria-label="Agency identifier">
-      <IdentifierLogos>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-        <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
-      </IdentifierLogos>
-      <IdentifierIdentity domain="domain.edu.mil.gov">
-        <span aria-hidden="true">An</span>
-        {` official website of the `}
-        <Link href="#">Test Agency Name</Link>
-        {` and the `}
-        <Link href="#">Other Test Agency Name</Link>
-        {`. Produced and published at taxpayer expense.`}
-      </IdentifierIdentity>
-    </IdentifierMasthead>
-    <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-      {testLinks}
-    </IdentifierLinks>
-    <IdentifierGov aria-label="U.S. government information and services">
-      {testIdentifierGovContent}
-    </IdentifierGov>
-  </Identifier>
-)
+export const TaxDisclaimerAndMultipleParentsAndLogos: Story = {
+  render: () => (
+    <Identifier>
+      <IdentifierMasthead aria-label="Agency identifier">
+        <IdentifierLogos>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+          <IdentifierLogo href="#">{testIdentifierLogo}</IdentifierLogo>
+        </IdentifierLogos>
+        <IdentifierIdentity domain="domain.edu.mil.gov">
+          <span aria-hidden="true">An</span>
+          {` official website of the `}
+          <Link href="#">Test Agency Name</Link>
+          {` and the `}
+          <Link href="#">Other Test Agency Name</Link>
+          {`. Produced and published at taxpayer expense.`}
+        </IdentifierIdentity>
+      </IdentifierMasthead>
+      <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        {testLinks}
+      </IdentifierLinks>
+      <IdentifierGov aria-label="U.S. government information and services">
+        {testIdentifierGovContent}
+      </IdentifierGov>
+    </Identifier>
+  ),
+}
