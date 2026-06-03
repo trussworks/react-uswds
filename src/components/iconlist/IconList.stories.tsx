@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Icon } from '../Icon/Icons'
@@ -118,8 +117,8 @@ export const RichContent: Story = {
             Confirm what donations are needed.
           </IconListTitle>
           <p>
-            Unneeded and unsolicited goods burden local organizations' ability
-            to meet survivors' confirmed needs, drawing away valuable volunteer
+            Unneeded and unsolicited goods burden local organizations’ ability
+            to meet survivors’ confirmed needs, drawing away valuable volunteer
             labor, transportation and warehouse space.
           </p>
         </IconListContent>
@@ -189,8 +188,8 @@ export const CustomSizeWithRichContent: Story = {
           <IconListContent>
             <IconListTitle type="h3">Fill it up.</IconListTitle>
             <p>
-              Wash full loads, whether it's clothes or dishes. Washing multiple
-              small loads means you're using and heating more water, which can
+              Wash full loads, whether it’s clothes or dishes. Washing multiple
+              small loads means you’re using and heating more water, which can
               increase your expenses. Using cold water for clothes washing can
               also help lower your costs.
             </p>
