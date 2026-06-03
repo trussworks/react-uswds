@@ -53,7 +53,7 @@ export const Textarea: Story = {
   render: (args) => (
     <Form onSubmit={mockSubmit}>
       <FormGroup>
-        <Label htmlFor="with-hint-textarea">Text Area</Label>
+        <Label htmlFor="with-hint-textarea">Textarea</Label>
         <span id="with-hint-textarea-hint" className="usa-hint">
           This is a textarea with a character counter.
         </span>
