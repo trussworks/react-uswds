@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
 import { ModalWindow } from './ModalWindow/ModalWindow'
@@ -149,8 +148,8 @@ export const ForceActionModal: Story = {
           </ModalHeading>
           <div className="usa-prose">
             <p id="modal-3-description">
-              You've been inactive for too long. Please choose to stay signed in
-              or sign out. Otherwise, you'll be signed out automatically in 5
+              You’ve been inactive for too long. Please choose to stay signed in
+              or sign out. Otherwise, you’ll be signed out automatically in 5
               minutes.
             </p>
           </div>
