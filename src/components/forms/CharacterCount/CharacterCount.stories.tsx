@@ -48,7 +48,7 @@ export const TextInput: Story = {
   ),
 }
 
-export const TextArea: Story = {
+export const Textarea: Story = {
   args: { maxLength: 25, rows: 2 },
   render: (args) => (
     <Form onSubmit={mockSubmit}>
