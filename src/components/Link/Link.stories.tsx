@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <p>
-      <Link href={'#'}> This</Link> is a text link.
+      <Link href={'#'}>This</Link> is a text link.
     </p>
   ),
 }
