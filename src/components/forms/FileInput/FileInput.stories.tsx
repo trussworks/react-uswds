@@ -137,10 +137,14 @@ export const Disabled: Story = {
 export const WithRefAndCustomHandlers: Story = {
   render: (args) => {
     const argTypes = args as unknown as StorybookArguments
-    const [files, setFiles] = useState<FileList | null>(null)
+    const INITIAL_FILES = null
+    const [files, setFiles] = useState<FileList | null>(INITIAL_FILES)
     const fileInputRef = useRef<FileInputRef>(null)
 
-    const handleClearFiles = (): void => fileInputRef.current?.clearFiles()
+    const handleClearFiles = (): void => {
+      fileInputRef.current?.clearFiles()
+      setFiles(INITIAL_FILES)
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       argTypes.onChange(e)
