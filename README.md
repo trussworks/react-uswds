@@ -1,9 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-43-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -230,6 +228,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/doug-s-nava"><img src="https://avatars.githubusercontent.com/u/92806979?v=4?s=100" width="100px;" alt="doug-s-nava"/><br /><sub><b>doug-s-nava</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Adoug-s-nava" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=doug-s-nava" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/TomNUSDS"><img src="https://avatars.githubusercontent.com/u/74203452?v=4?s=100" width="100px;" alt="TomNUSDS"/><br /><sub><b>TomNUSDS</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3ATomNUSDS" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=TomNUSDS" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mdmower-csnw"><img src="https://avatars.githubusercontent.com/u/135273348?v=4?s=100" width="100px;" alt="Matt Mower"/><br /><sub><b>Matt Mower</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Amdmower-csnw" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=mdmower-csnw" title="Code">💻</a> <a href="#maintenance-mdmower-csnw" title="Maintenance">🚧</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mvanhorn"><img src="https://avatars.githubusercontent.com/u/455140?v=4?s=100" width="100px;" alt="Matt Van Horn"/><br /><sub><b>Matt Van Horn</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=mvanhorn" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
