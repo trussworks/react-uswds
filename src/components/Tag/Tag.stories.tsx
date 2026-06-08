@@ -1,7 +1,7 @@
-import React, { type JSX } from 'react'
 import { Tag } from './Tag'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Tag',
   component: Tag,
   parameters: {
@@ -15,14 +15,19 @@ Source: https://designsystem.digital.gov/components/tag/
       },
     },
   },
+} satisfies Meta<typeof Tag>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultTag: Story = {
+  args: { children: 'My Tag' },
 }
 
-export const DefaultTag = (): JSX.Element => <Tag>My Tag</Tag>
+export const CustomBg: Story = {
+  args: { background: '#d83933', children: 'My Tag' },
+}
 
-export const CustomBg = (): JSX.Element => (
-  <Tag background="#d83933">My Tag</Tag>
-)
-
-export const CustomClass = (): JSX.Element => (
-  <Tag className="bg-secondary">My Tag</Tag>
-)
+export const CustomClass: Story = {
+  args: { className: 'bg-secondary', children: 'My Tag' },
+}

@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Menu } from './Menu'
 
-export default {
+const meta: Meta<typeof Menu> = {
   title: 'Components/Header/Menu',
   component: Menu,
   parameters: {
@@ -17,6 +18,9 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 const testItems = [
   <a href="#linkOne" key="one">
     Simple link
@@ -26,6 +30,6 @@ const testItems = [
   </a>,
 ]
 
-export const DefaultDropDownMenu = (): JSX.Element => (
-  <Menu items={testItems} isOpen={true} />
-)
+export const DefaultDropDownMenu: Story = {
+  render: () => <Menu items={testItems} isOpen={true} />,
+}

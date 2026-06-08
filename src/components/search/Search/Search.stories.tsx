@@ -1,7 +1,15 @@
-import React, { type JSX } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Search } from './Search'
 
-export default {
+const mockSubmit = (): void => {
+  /* mock submit fn */
+}
+
+const sampleLocalization = {
+  buttonText: 'Buscar',
+}
+
+const meta = {
   title: 'Components/Search/Search',
   component: Search,
   parameters: {
@@ -15,43 +23,34 @@ Source: https://designsystem.digital.gov/components/search/
       },
     },
   },
+  args: { onSubmit: mockSubmit },
+} satisfies Meta<typeof Search>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultSearch: Story = {}
+
+export const BigSearch: Story = {
+  args: { size: 'big' },
 }
 
-const mockSubmit = (): void => {
-  /* mock submit fn */
+export const SmallSearch: Story = {
+  args: { size: 'small', placeholder: '(Optional) Placeholder Text' },
 }
 
-const sampleLocalization = {
-  buttonText: 'Buscar',
+export const DefaultSpanishSearch: Story = {
+  args: { i18n: sampleLocalization },
 }
 
-export const DefaultSearch = (): JSX.Element => <Search onSubmit={mockSubmit} />
+export const BigSpanishSearch: Story = {
+  args: { size: 'big', i18n: sampleLocalization },
+}
 
-export const BigSearch = (): JSX.Element => (
-  <Search size="big" onSubmit={mockSubmit} />
-)
-
-export const SmallSearch = (): JSX.Element => (
-  <Search
-    placeholder="(Optional) Placeholder Text"
-    size="small"
-    onSubmit={mockSubmit}
-  />
-)
-
-export const DefaultSpanishSearch = (): JSX.Element => (
-  <Search onSubmit={mockSubmit} i18n={sampleLocalization} />
-)
-
-export const BigSpanishSearch = (): JSX.Element => (
-  <Search size="big" onSubmit={mockSubmit} i18n={sampleLocalization} />
-)
-
-export const SmallSpanishSearch = (): JSX.Element => (
-  <Search
-    placeholder="(Optional) Spanish Placeholder Text"
-    size="small"
-    onSubmit={mockSubmit}
-    i18n={sampleLocalization}
-  />
-)
+export const SmallSpanishSearch: Story = {
+  args: {
+    size: 'small',
+    placeholder: '(Optional) Spanish Placeholder Text',
+    i18n: sampleLocalization,
+  },
+}

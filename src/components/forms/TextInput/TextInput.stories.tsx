@@ -1,9 +1,9 @@
 import React from 'react'
 import { TextInput } from './TextInput'
 import { Label } from '../Label/Label'
-import { Meta, StoryFn } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Text input',
   component: TextInput,
   parameters: {
@@ -22,45 +22,39 @@ Source: https://designsystem.digital.gov/components/text-input
     name: 'input-type-text',
     type: 'text',
   },
+  render: (args) => (
+    <>
+      <Label htmlFor="input-type-text">Input label</Label>
+      <TextInput {...args} />
+    </>
+  ),
 } satisfies Meta<typeof TextInput>
 
-const Template: StoryFn<typeof TextInput> = ({ ...args }) => (
-  <>
-    <Label htmlFor="input-type-text">Input label</Label>
-    <TextInput {...args} />
-  </>
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Basic = {
-  render: Template,
-}
+export const Basic: Story = {}
 
-export const WithDefaultValue = {
-  render: Template,
+export const WithDefaultValue: Story = {
   args: { defaultValue: 'Change me' },
 }
 
-export const WithPlaceholder = {
-  render: Template,
+export const WithPlaceholder: Story = {
   args: { placeholder: 'Enter value' },
 }
 
-export const Error = {
-  render: Template,
+export const Error: Story = {
   args: { validationStatus: 'error' },
 }
 
-export const Success = {
-  render: Template,
+export const Success: Story = {
   args: { validationStatus: 'success' },
 }
 
-export const Readonly = {
-  render: Template,
+export const Readonly: Story = {
   args: { readOnly: true },
 }
 
-export const Password = {
-  render: Template,
+export const Password: Story = {
   args: { type: 'password' },
 }

@@ -46,7 +46,9 @@ type BaseCharacterCountProps = {
 }
 
 export type TextInputCharacterCountProps = BaseCharacterCountProps &
-  TextInputProps
+  // Since CharacterCount provides a default 'type', make it optional instead of required
+  Omit<TextInputProps, 'type'> &
+  Partial<Pick<TextInputProps, 'type'>>
 
 export type TextareaCharacterCountProps = BaseCharacterCountProps &
   TextareaProps &

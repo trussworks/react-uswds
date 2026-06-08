@@ -1,7 +1,7 @@
-import React, { type JSX } from 'react'
 import { NavMenuButton } from './NavMenuButton'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Header/NavMenuButton',
   component: NavMenuButton,
   parameters: {
@@ -15,8 +15,13 @@ Source: https://designsystem.digital.gov/components/header/
       },
     },
   },
-}
+} satisfies Meta<typeof NavMenuButton>
 
-export const DefaultMenuNavMenuButton = (): JSX.Element => (
-  <NavMenuButton label="Menu" />
-)
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultMenuNavMenuButton: Story = {
+  args: {
+    label: 'Menu',
+  },
+}

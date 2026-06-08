@@ -1,13 +1,13 @@
-import React, { type JSX, useState } from 'react'
+import React, { useState } from 'react'
 import { LanguageSelector, LanguageDefinition } from './LanguageSelector'
-import { StoryFn } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta: Meta<typeof LanguageSelector> = {
   title: 'Components/LanguageSelector',
   component: LanguageSelector,
   argTypes: {
-    displayLang: { control: 'string' },
-    small: { control: 'boolean' },
+    displayLang: { control: { type: 'text' } },
+    small: { control: { type: 'boolean' } },
   },
   parameters: {
     docs: {
@@ -22,78 +22,75 @@ Source: https://designsystem.digital.gov/components/language-selector/
   },
 }
 
-const TwoLanguagesTemplate: StoryFn<typeof LanguageSelector> = (args) => {
-  const [lang, setLang] = useState<string | undefined>(args.displayLang)
+export default meta
+type Story = StoryObj<typeof meta>
 
-  const languagesDisplayProp: LanguageDefinition[] = [
-    {
-      label: '简体字',
-      label_local: 'Chinese - Simplified',
-      attr: 'zh',
-      on_click: () => {
-        setLang(`en`)
-      },
-    },
-    {
-      label: 'English',
-      attr: 'en',
-      on_click: () => {
-        setLang(`zh`)
-      },
-    },
-  ]
+export const LanguagesDisplayPropSandbox: Story = {
+  args: {
+    displayLang: `en`,
+  },
+  render: (args) => {
+    const [lang, setLang] = useState<string | undefined>(args.displayLang)
 
-  return <LanguageSelector langs={languagesDisplayProp} displayLang={lang} />
+    const languagesDisplayProp: LanguageDefinition[] = [
+      {
+        label: '简体字',
+        label_local: 'Chinese - Simplified',
+        attr: 'zh',
+        on_click: () => {
+          setLang(`en`)
+        },
+      },
+      {
+        label: 'English',
+        attr: 'en',
+        on_click: () => {
+          setLang(`zh`)
+        },
+      },
+    ]
+
+    return <LanguageSelector langs={languagesDisplayProp} displayLang={lang} />
+  },
 }
 
-export const LanguagesDisplayPropSandbox = TwoLanguagesTemplate.bind({})
-LanguagesDisplayPropSandbox.args = {
-  displayLang: `en`,
-}
+export const LanguagesDisplayMoreThanTwoLanguagesPropSandbox: Story = {
+  args: {
+    displayLang: `en`,
+  },
+  render: (args) => {
+    const [lang, setLang] = useState<string | undefined>(args.displayLang)
 
-const MoreThanTwoLanguagesTemplate: StoryFn<typeof LanguageSelector> = (
-  args
-) => {
-  const [lang, setLang] = useState<string | undefined>(args.displayLang)
-
-  const languagesDisplayProp: LanguageDefinition[] = [
-    {
-      label: 'العربية',
-      label_local: 'Arabic',
-      attr: 'ar',
-      on_click: () => {
-        setLang(`ar`)
+    const languagesDisplayProp: LanguageDefinition[] = [
+      {
+        label: 'العربية',
+        label_local: 'Arabic',
+        attr: 'ar',
+        on_click: () => {
+          setLang(`ar`)
+        },
       },
-    },
-    {
-      label: '简体字',
-      label_local: 'Chinese - Simplified',
-      attr: 'zh',
-      on_click: () => {
-        setLang(`zh`)
+      {
+        label: '简体字',
+        label_local: 'Chinese - Simplified',
+        attr: 'zh',
+        on_click: () => {
+          setLang(`zh`)
+        },
       },
-    },
-    {
-      label: 'English',
-      attr: 'en',
-      on_click: () => {
-        setLang(`en`)
+      {
+        label: 'English',
+        attr: 'en',
+        on_click: () => {
+          setLang(`en`)
+        },
       },
-    },
-  ]
+    ]
 
-  return <LanguageSelector langs={languagesDisplayProp} displayLang={lang} />
+    return <LanguageSelector langs={languagesDisplayProp} displayLang={lang} />
+  },
 }
 
-export const LanguagesDisplayMoreThanTwoLanguagesPropSandbox =
-  MoreThanTwoLanguagesTemplate.bind({})
-LanguagesDisplayPropSandbox.args = {
-  displayLang: `en`,
-}
-
-type StorybookArguments = {
-  small?: boolean
-}
 const voidLink = '#test'
 const languagesLink: LanguageDefinition[] = [
   {
@@ -184,49 +181,51 @@ const languagesButton: LanguageDefinition[] = [
   },
 ]
 
-export const TwoLanguagesAsALink = (
-  argTypes: StorybookArguments
-): JSX.Element => (
-  <LanguageSelector
-    langs={[languagesLink[2], languagesLink[3]]}
-    small={argTypes.small}
-  />
-)
+export const TwoLanguagesAsALink: Story = {
+  render: (args) => (
+    <LanguageSelector
+      langs={[languagesLink[2], languagesLink[3]]}
+      small={args.small}
+    />
+  ),
+}
 
-export const TwoLanguagesAsAButton = (
-  argTypes: StorybookArguments
-): JSX.Element => (
-  <LanguageSelector
-    langs={[languagesButton[2], languagesButton[3]]}
-    small={argTypes.small}
-  />
-)
+export const TwoLanguagesAsAButton: Story = {
+  render: (args) => (
+    <LanguageSelector
+      langs={[languagesButton[2], languagesButton[3]]}
+      small={args.small}
+    />
+  ),
+}
 
-export const MoreThanTwoLanguagesAsALink = (
-  argTypes: StorybookArguments
-): JSX.Element => (
-  <LanguageSelector
-    langs={languagesLink}
-    label="Languages"
-    small={argTypes.small}
-  />
-)
+export const MoreThanTwoLanguagesAsALink: Story = {
+  render: (args) => (
+    <LanguageSelector
+      langs={languagesLink}
+      label="Languages"
+      small={args.small}
+    />
+  ),
+}
 
-export const MoreThanTwoLanguagesAsAButton = (
-  argTypes: StorybookArguments
-): JSX.Element => (
-  <LanguageSelector
-    langs={languagesButton}
-    label="Languages"
-    small={argTypes.small}
-  />
-)
+export const MoreThanTwoLanguagesAsAButton: Story = {
+  render: (args) => (
+    <LanguageSelector
+      langs={languagesButton}
+      label="Languages"
+      small={args.small}
+    />
+  ),
+}
 
-export const CustomClass = (argTypes: StorybookArguments): JSX.Element => (
-  <LanguageSelector
-    langs={languagesLink}
-    label="Languages"
-    small={argTypes.small}
-    className="usa-button--unstyled"
-  />
-)
+export const CustomClass: Story = {
+  render: (args) => (
+    <LanguageSelector
+      langs={languagesLink}
+      label="Languages"
+      small={args.small}
+      className="usa-button--unstyled"
+    />
+  ),
+}

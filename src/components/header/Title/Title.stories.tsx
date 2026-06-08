@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Title } from './Title'
 
-export default {
+const meta: Meta<typeof Title> = {
   title: 'Components/Header/Title',
   component: Title,
   parameters: {
@@ -17,6 +18,11 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 const testTitle = <a href="#testlink">Project Title</a>
 
-export const DefaultTitle = (): JSX.Element => <Title>{testTitle}</Title>
+export const DefaultTitle: Story = {
+  render: () => <Title>{testTitle}</Title>,
+}

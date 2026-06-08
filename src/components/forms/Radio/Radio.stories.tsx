@@ -1,8 +1,7 @@
-import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Radio } from './Radio'
-import { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Radio> = {
+const meta = {
   title: 'Components/Radio buttons',
   component: Radio,
   parameters: {
@@ -16,41 +15,27 @@ Source: https://designsystem.digital.gov/components/radio-buttons
       },
     },
   },
-}
+  args: { id: 'input-radio', name: 'input-radio', label: 'My Radio Button' },
+} satisfies Meta<typeof Radio>
 
 export default meta
-type Story = StoryObj<typeof Radio>
+type Story = StoryObj<typeof meta>
 
-const Template: StoryFn<typeof Radio> = (args) => (
-  <Radio
-    {...args}
-    id="input-radio"
-    name="input-radio"
-    label="My Radio Button"
-  />
-)
-
-export const DefaultRadio: Story = {
-  render: Template,
-}
+export const DefaultRadio: Story = {}
 
 export const Selected: Story = {
-  render: Template,
   args: { defaultChecked: true },
 }
 
 export const Indeterminate: Story = {
-  render: Template,
   args: { indeterminate: true },
 }
 
 export const Disabled: Story = {
-  render: Template,
   args: { disabled: true },
 }
 
 export const WithLabelDescription: Story = {
-  render: Template,
   args: {
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
@@ -58,12 +43,10 @@ export const WithLabelDescription: Story = {
 }
 
 export const Tile: Story = {
-  render: Template,
   args: { tile: true },
 }
 
 export const TileWithLabelDescription: Story = {
-  render: Template,
   args: {
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',

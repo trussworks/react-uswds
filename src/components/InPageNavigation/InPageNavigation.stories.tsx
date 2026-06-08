@@ -8,7 +8,7 @@ import {
 } from './content'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/In-Page Navigation',
   component: InPageNavigation,
   argTypes: {
@@ -61,7 +61,8 @@ Source: https://designsystem.digital.gov/components/in-page-navigation/
   },
 } satisfies Meta<typeof InPageNavigation>
 
-type Story = StoryObj<typeof InPageNavigation>
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Textarea } from './Textarea'
 import { Label } from '../Label/Label'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Textarea',
   component: Textarea,
   parameters: {
@@ -16,45 +17,40 @@ Source: https://designsystem.digital.gov/components/text-input
       },
     },
   },
-}
+  args: { id: 'input-textarea', name: 'input-textarea' },
+  render: (args) => (
+    <>
+      <Label htmlFor="input-textarea">Textarea label</Label>
+      <Textarea {...args} />
+    </>
+  ),
+} satisfies Meta<typeof Textarea>
 
-const Template = ({ ...args }) => (
-  <>
-    <Label htmlFor="input-textarea">Textarea label</Label>
-    <Textarea id="input-textarea" name="input-textarea" {...args} />
-  </>
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Basic = {
-  render: Template,
-}
+export const Basic: Story = {}
 
-export const WithDefaultValue = {
-  render: Template,
+export const WithDefaultValue: Story = {
   args: { defaultValue: 'Change me' },
 }
 
-export const WithPlaceholder = {
-  render: Template,
+export const WithPlaceholder: Story = {
   args: { placeholder: 'Enter value' },
 }
 
-export const Error = {
-  render: Template,
+export const Error: Story = {
   args: { error: true },
 }
 
-export const Success = {
-  render: Template,
+export const Success: Story = {
   args: { success: true },
 }
 
-export const Disabled = {
-  render: Template,
+export const Disabled: Story = {
   args: { disabled: true },
 }
 
-export const Readonly = {
-  render: Template,
+export const Readonly: Story = {
   args: { defaultValue: 'Readonly value', readOnly: true },
 }

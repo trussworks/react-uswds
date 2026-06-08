@@ -3,8 +3,9 @@ import { CharacterCount } from './CharacterCount'
 import { Form } from '../Form/Form'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
+import { Meta, type StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta: Meta<typeof CharacterCount> = {
   title: 'Components/CharacterCount',
   component: CharacterCount,
   parameters: {
@@ -19,47 +20,57 @@ Source: https://designsystem.digital.gov/components/character-count
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
+
 const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const TextInput = (): JSX.Element => (
-  <Form onSubmit={mockSubmit}>
-    <FormGroup>
-      <Label htmlFor="with-hint-input">Text input</Label>
-      <span id="with-hint-input-hint" className="usa-hint">
-        This is an input with a character counter.
-      </span>
-      <CharacterCount
-        id="with-hint-input"
-        name="with-hint-input"
-        aria-describedby="with-hint-input-info with-hint-input-hint"
-        maxLength={25}
-      />
-    </FormGroup>
-  </Form>
-)
+export const TextInput: Story = {
+  args: { maxLength: 25 },
+  render: (args) => (
+    <Form onSubmit={mockSubmit}>
+      <FormGroup>
+        <Label htmlFor="with-hint-input">Text input</Label>
+        <span id="with-hint-input-hint" className="usa-hint">
+          This is an input with a character counter.
+        </span>
+        <CharacterCount
+          id="with-hint-input"
+          name="with-hint-input"
+          aria-describedby="with-hint-input-info with-hint-input-hint"
+          maxLength={args.maxLength}
+        />
+      </FormGroup>
+    </Form>
+  ),
+}
 
-export const Textarea = (): JSX.Element => (
-  <Form onSubmit={mockSubmit}>
-    <FormGroup>
-      <Label htmlFor="with-hint-textarea">Textarea</Label>
-      <span id="with-hint-textarea-hint" className="usa-hint">
-        This is a textarea with a character counter.
-      </span>
-      <CharacterCount
-        id="with-hint-textarea"
-        name="with-hint-textarea"
-        maxLength={50}
-        isTextArea
-        rows={2}
-        aria-describedby="with-hint-textarea-info with-hint-textarea-hint"
-      />
-    </FormGroup>
-  </Form>
-)
+export const Textarea: Story = {
+  args: { maxLength: 50, rows: 2 },
+  render: (args) => (
+    <Form onSubmit={mockSubmit}>
+      <FormGroup>
+        <Label htmlFor="with-hint-textarea">Textarea</Label>
+        <span id="with-hint-textarea-hint" className="usa-hint">
+          This is a textarea with a character counter.
+        </span>
+        <CharacterCount
+          id="with-hint-textarea"
+          name="with-hint-textarea"
+          maxLength={args.maxLength}
+          isTextArea
+          rows={args.rows}
+          aria-describedby="with-hint-textarea-info with-hint-textarea-hint"
+        />
+      </FormGroup>
+    </Form>
+  ),
+}
 
-const withCustomCharacterCount = (): JSX.Element => {
+const withCustomCharacterCountRenderer = (): JSX.Element => {
   const customEmojiCharacterCount = (text: string): number => {
     const starCount = (text.match(/⭐️/g) || []).length
     return Array.from(text).length - starCount * 2
@@ -102,5 +113,7 @@ const withCustomCharacterCount = (): JSX.Element => {
   )
 }
 
-withCustomCharacterCount.parameters = { happo: { delay: 100 } }
-export { withCustomCharacterCount }
+withCustomCharacterCountRenderer.parameters = { happo: { delay: 100 } }
+export const WithCustomCharacterCount: Story = {
+  render: withCustomCharacterCountRenderer,
+}

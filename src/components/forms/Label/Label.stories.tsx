@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { Label } from './Label'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Form elements/Label',
   component: Label,
   parameters: {
@@ -15,26 +16,32 @@ Source: https://designsystem.digital.gov/components/form-controls/
       },
     },
   },
+  args: { htmlFor: 'testInput', children: 'Text input' },
+} satisfies Meta<typeof Label>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultLabel: Story = {
+  args: { children: 'Text input label' },
 }
 
-export const DefaultLabel = (): JSX.Element => (
-  <Label htmlFor="testInput">Text input label</Label>
-)
+export const Error: Story = {
+  args: {
+    htmlFor: 'testInputError',
+    error: true,
+    children: 'Text input error',
+  },
+}
 
-export const Error = (): JSX.Element => (
-  <Label htmlFor="testInputError" error>
-    Text input error
-  </Label>
-)
+export const WithHint: Story = {
+  render: (args) => (
+    <Label {...args} htmlFor="testInputHint" hint={<> (optional)</>}>
+      Text input
+    </Label>
+  ),
+}
 
-export const WithHint = (): JSX.Element => (
-  <Label htmlFor="testInputHint" hint={<> (optional)</>}>
-    Text input
-  </Label>
-)
-
-export const WithRequiredMarker = (): JSX.Element => (
-  <Label htmlFor="testInputRequired" requiredMarker>
-    Text input
-  </Label>
-)
+export const WithRequiredMarker: Story = {
+  args: { htmlFor: 'testInputRequired', requiredMarker: true },
+}

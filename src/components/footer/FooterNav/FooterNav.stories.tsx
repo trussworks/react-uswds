@@ -1,9 +1,10 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { FooterNav } from './FooterNav'
 
-export default {
+const meta: Meta<typeof FooterNav> = {
   title: 'Components/Footer/FooterNav',
   component: FooterNav,
   parameters: {
@@ -19,32 +20,39 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const SlimFooterNav = (): JSX.Element => (
-  <FooterNav
-    aria-label="Footer navigation"
-    size="slim"
-    links={Array.from({ length: 4 }, (_x, i) => (
-      <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
-        Primary link
-      </a>
-    ))}
-  />
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const MediumFooterNav = (): JSX.Element => (
-  <FooterNav
-    aria-label="Footer navigation"
-    size="medium"
-    links={Array.from({ length: 4 }, (_x, i) => (
-      <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
-        Primary link
-      </a>
-    ))}
-  />
-)
+export const SlimFooterNav: Story = {
+  render: () => (
+    <FooterNav
+      aria-label="Footer navigation"
+      size="slim"
+      links={Array.from({ length: 4 }, (_x, i) => (
+        <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
+          Primary link
+        </a>
+      ))}
+    />
+  ),
+}
 
-export const BigFooterNav = {
-  render: (): JSX.Element => (
+export const MediumFooterNav: Story = {
+  render: () => (
+    <FooterNav
+      aria-label="Footer navigation"
+      size="medium"
+      links={Array.from({ length: 4 }, (_x, i) => (
+        <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
+          Primary link
+        </a>
+      ))}
+    />
+  ),
+}
+
+export const BigFooterNav: Story = {
+  render: () => (
     <FooterNav
       className="padding-bottom-2"
       aria-label="Footer navigation"
@@ -80,7 +88,6 @@ export const BigFooterNav = {
       ]}
     />
   ),
-
   parameters: {
     happo: { waitForContent: 'Secondary link that is pretty long' },
   },

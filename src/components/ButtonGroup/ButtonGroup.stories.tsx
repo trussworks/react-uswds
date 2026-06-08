@@ -1,9 +1,10 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ButtonGroup } from './ButtonGroup'
 import { Button } from '../Button/Button'
 import { Link } from '../Link/Link'
 
-export default {
+const meta: Meta<typeof ButtonGroup> = {
   title: 'Components/Button groups',
   component: ButtonGroup,
   parameters: {
@@ -19,23 +20,30 @@ Source: https://designsystem.digital.gov/components/button-groups/
   },
 }
 
-export const Default = (): JSX.Element => (
-  <ButtonGroup type="default">
-    <Link href="#" className="usa-button usa-button--outline">
-      Back
-    </Link>
-    <Button type="button">Continue</Button>
-  </ButtonGroup>
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Segmented = (): JSX.Element => (
-  <ButtonGroup type="segmented">
-    <Button type="button">Map</Button>
-    <Button type="button" outline>
-      Satellite
-    </Button>
-    <Button type="button" outline>
-      Hybrid
-    </Button>
-  </ButtonGroup>
-)
+export const Default: Story = {
+  render: () => (
+    <ButtonGroup type="default">
+      <Link href="#" className="usa-button usa-button--outline">
+        Back
+      </Link>
+      <Button type="button">Continue</Button>
+    </ButtonGroup>
+  ),
+}
+
+export const Segmented: Story = {
+  render: () => (
+    <ButtonGroup type="segmented">
+      <Button type="button">Map</Button>
+      <Button type="button" outline>
+        Satellite
+      </Button>
+      <Button type="button" outline>
+        Hybrid
+      </Button>
+    </ButtonGroup>
+  ),
+}
