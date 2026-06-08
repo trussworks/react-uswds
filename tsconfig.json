@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,13 +17,7 @@
     "declaration": true,
     "outDir": "./lib",
     "isolatedModules": true,
-    "types": [
-      "vitest/globals",
-      "@testing-library/jest-dom"
-    ]
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": [
-    "src/**/*",
-    "custom.d.ts",
-  ],
+  "include": ["src/**/*", "custom.d.ts"]
 }
