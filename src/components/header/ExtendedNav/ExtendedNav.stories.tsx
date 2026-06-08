@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ExtendedNav } from './ExtendedNav'
 
-export default {
+const meta: Meta<typeof ExtendedNav> = {
   title: 'Components/Header/ExtendedNav',
   component: ExtendedNav,
   parameters: {
@@ -21,6 +22,9 @@ Source: https://designsystem.digital.gov/components/header/
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const mockToggle = (): void => {
   /* mock submit fn */
@@ -44,11 +48,13 @@ const testSecondaryItems = [
   </a>,
 ]
 
-export const DefaultExtendedNav = (): JSX.Element => (
-  <ExtendedNav
-    id="extended-nav"
-    onToggleMobileNav={mockToggle}
-    primaryItems={testPrimaryItems}
-    secondaryItems={testSecondaryItems}
-  />
-)
+export const DefaultExtendedNav: Story = {
+  render: () => (
+    <ExtendedNav
+      id="extended-nav"
+      onToggleMobileNav={mockToggle}
+      primaryItems={testPrimaryItems}
+      secondaryItems={testSecondaryItems}
+    />
+  ),
+}

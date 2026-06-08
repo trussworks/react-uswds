@@ -1,7 +1,7 @@
-import React, { type JSX } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ErrorMessage } from './ErrorMessage'
 
-export default {
+const meta = {
   title: 'Components/Form elements/ErrorMessage',
   component: ErrorMessage,
   parameters: {
@@ -15,8 +15,11 @@ Source: https://designsystem.digital.gov/components/form-controls/
       },
     },
   },
-}
+} satisfies Meta<typeof ErrorMessage>
 
-export const DefaultErrorMessage = (): JSX.Element => (
-  <ErrorMessage>Helpful error message</ErrorMessage>
-)
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultErrorMessage: Story = {
+  args: { children: 'Helpful error message' },
+}

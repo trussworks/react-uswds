@@ -1,7 +1,11 @@
-import React, { type JSX } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SearchButton } from './SearchButton'
 
-export default {
+const sampleLocalization = {
+  buttonText: 'Buscar',
+}
+
+const meta = {
   title: 'Components/Search/SearchButton',
   component: SearchButton,
   parameters: {
@@ -15,26 +19,29 @@ Source: https://designsystem.digital.gov/components/search/
       },
     },
   },
+} satisfies Meta<typeof SearchButton>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultSearchButton: Story = {}
+
+export const BigSearchButton: Story = {
+  args: { size: 'big' },
 }
 
-const sampleLocalization = {
-  buttonText: 'Buscar',
+export const SmallSearch: Story = {
+  args: { size: 'small' },
 }
 
-export const DefaultSearchButton = (): JSX.Element => <SearchButton />
+export const DefaultSpanishSearchButton: Story = {
+  args: { i18n: sampleLocalization },
+}
 
-export const BigSearchButton = (): JSX.Element => <SearchButton size="big" />
+export const BigSpanishSearchButton: Story = {
+  args: { size: 'big', i18n: sampleLocalization },
+}
 
-export const SmallSearch = (): JSX.Element => <SearchButton size="small" />
-
-export const DefaultSpanishSearchButton = (): JSX.Element => (
-  <SearchButton i18n={sampleLocalization} />
-)
-
-export const BigSpanishSearchButton = (): JSX.Element => (
-  <SearchButton size="big" i18n={sampleLocalization} />
-)
-
-export const SmallSpanishSearch = (): JSX.Element => (
-  <SearchButton size="small" i18n={sampleLocalization} />
-)
+export const SmallSpanishSearch: Story = {
+  args: { size: 'small', i18n: sampleLocalization },
+}

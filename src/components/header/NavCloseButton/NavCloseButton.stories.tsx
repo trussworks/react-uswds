@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { NavCloseButton } from './NavCloseButton'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Header/NavCloseButton',
   component: NavCloseButton,
   parameters: {
@@ -15,10 +16,15 @@ Source: https://designsystem.digital.gov/components/header/
       },
     },
   },
-}
+} satisfies Meta<typeof NavCloseButton>
 
-export const DefaultMenuNavCloseButton = (): JSX.Element => (
-  <nav className="usa-nav is-visible">
-    <NavCloseButton />
-  </nav>
-)
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultMenuNavCloseButton: Story = {
+  render: () => (
+    <nav className="usa-nav is-visible">
+      <NavCloseButton />
+    </nav>
+  ),
+}

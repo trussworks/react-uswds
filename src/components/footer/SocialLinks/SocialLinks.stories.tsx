@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SocialLinks, SocialLink } from './SocialLinks'
 
-export default {
+const meta: Meta<typeof SocialLinks> = {
   title: 'Components/Footer/SocialLinks',
   component: SocialLinks,
   parameters: {
@@ -17,6 +18,9 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 const links = [
   <SocialLink key="facebook" name="Facebook" href="#" />,
   <SocialLink key="twitter" name="Twitter" href="#" />,
@@ -25,4 +29,6 @@ const links = [
   <SocialLink key="rss" name="RSS" href="#" />,
 ]
 
-export const Example = (): JSX.Element => <SocialLinks links={links} />
+export const Example: Story = {
+  render: () => <SocialLinks links={links} />,
+}

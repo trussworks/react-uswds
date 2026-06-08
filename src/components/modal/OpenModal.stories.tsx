@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 
 import { ModalWindow } from './ModalWindow/ModalWindow'
 import { ModalHeading } from './ModalHeading/ModalHeading'
@@ -6,6 +6,7 @@ import { ModalFooter } from './ModalFooter/ModalFooter'
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
 import { Button } from '../Button/Button'
 import { ModalWrapper } from './ModalWrapper/ModalWrapper'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 type StorybookArguments = {
   handleClose: () => void
@@ -15,7 +16,7 @@ const noop = (): void => {
   return
 }
 
-export default {
+const meta: Meta = {
   title: 'Components/Modal/Open states',
   argTypes: {
     handleClose: noop,
@@ -33,8 +34,12 @@ Source: http://designsystem.digital.gov/components/modal
   },
 }
 
-export const DefaultModal = {
-  render: (argTypes: StorybookArguments): JSX.Element => {
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultModal: Story = {
+  render: (args) => {
+    const argTypes = args as unknown as StorybookArguments
     return (
       <ModalWrapper
         role="dialog"
@@ -76,8 +81,9 @@ export const DefaultModal = {
   },
 }
 
-export const LargeModal = {
-  render: (argTypes: StorybookArguments): JSX.Element => {
+export const LargeModal: Story = {
+  render: (args) => {
+    const argTypes = args as unknown as StorybookArguments
     return (
       <ModalWrapper
         role="dialog"
@@ -120,8 +126,9 @@ export const LargeModal = {
   },
 }
 
-export const ForceActionModal = {
-  render: (argTypes: StorybookArguments): JSX.Element => {
+export const ForceActionModal: Story = {
+  render: (args) => {
+    const argTypes = args as unknown as StorybookArguments
     return (
       <ModalWrapper
         role="dialog"

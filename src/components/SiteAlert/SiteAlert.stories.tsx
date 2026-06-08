@@ -1,9 +1,10 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 
 import { SiteAlert } from './SiteAlert'
 import { Link } from '../Link/Link'
+import type { Meta } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/SiteAlert',
   component: SiteAlert,
   parameters: {
@@ -36,7 +37,9 @@ Source: http://designsystem.digital.gov/components/site-alert
   args: {
     variant: 'info',
   },
-}
+} satisfies Meta<typeof SiteAlert>
+
+export default meta
 
 type StorybookArguments = {
   slim: boolean
@@ -96,75 +99,86 @@ const shortAlertContent = (
   </p>
 )
 
-export const StandardInformationalSiteAlert = (): JSX.Element => (
-  <SiteAlert variant="info" heading={infoHeading}>
-    {additionalContext}
-  </SiteAlert>
-)
+export const StandardInformationalSiteAlert = {
+  render: () => (
+    <SiteAlert variant="info" heading={infoHeading}>
+      {additionalContext}
+    </SiteAlert>
+  ),
+}
 
-export const StandardEmergencySiteAlert = (): JSX.Element => (
-  <SiteAlert variant="emergency" heading={emergencyHeading}>
-    {additionalContext}
-  </SiteAlert>
-)
+export const StandardEmergencySiteAlert = {
+  render: () => (
+    <SiteAlert variant="emergency" heading={emergencyHeading}>
+      {additionalContext}
+    </SiteAlert>
+  ),
+}
 
-export const InformationalAlertWithNoHeader = (): JSX.Element => (
-  <SiteAlert variant="info">{shortAlertContent}</SiteAlert>
-)
+export const InformationalAlertWithNoHeader = {
+  render: () => <SiteAlert variant="info">{shortAlertContent}</SiteAlert>,
+}
 
-export const EmergencyAlertWithNoHeader = (): JSX.Element => (
-  <SiteAlert variant="emergency">{shortAlertContent}</SiteAlert>
-)
+export const EmergencyAlertWithNoHeader = {
+  render: () => <SiteAlert variant="emergency">{shortAlertContent}</SiteAlert>,
+}
 
-export const InformationalAlertWithList = (): JSX.Element => (
-  <SiteAlert variant="info" heading={infoHeading}>
-    {infoWithList}
-  </SiteAlert>
-)
+export const InformationalAlertWithList = {
+  render: () => (
+    <SiteAlert variant="info" heading={infoHeading}>
+      {infoWithList}
+    </SiteAlert>
+  ),
+}
 
-export const EmergencyAlertWithList = (): JSX.Element => (
-  <SiteAlert
-    variant="emergency"
-    heading={emergencyHeading}
-    aria-label="Site alert">
-    {emergencyWithList}
-  </SiteAlert>
-)
-
-export const SlimEmergencyAlert = (): JSX.Element => (
-  <SiteAlert slim variant="emergency">
-    {shortAlertContent}
-  </SiteAlert>
-)
-
-export const EmergencyAlertNoIcon = (): JSX.Element => (
-  <SiteAlert showIcon={false} variant="emergency">
-    {shortAlertContent}
-  </SiteAlert>
-)
-
-export const AlertWithCustomControls = {
-  render: (argTypes: StorybookArguments): JSX.Element => (
+export const EmergencyAlertWithList = {
+  render: () => (
     <SiteAlert
-      slim={argTypes.slim}
-      showIcon={argTypes.showIcon}
-      variant={argTypes.variant}>
+      variant="emergency"
+      heading={emergencyHeading}
+      aria-label="Site alert">
+      {emergencyWithList}
+    </SiteAlert>
+  ),
+}
+
+export const SlimEmergencyAlert = {
+  render: () => (
+    <SiteAlert slim variant="emergency">
       {shortAlertContent}
     </SiteAlert>
   ),
 }
 
-export const AlertWithStringContent = (): JSX.Element => (
-  <SiteAlert variant="info">Short alert content</SiteAlert>
-)
+export const EmergencyAlertNoIcon = {
+  render: () => (
+    <SiteAlert showIcon={false} variant="emergency">
+      {shortAlertContent}
+    </SiteAlert>
+  ),
+}
 
-export const AlertWithMultipleChildContent = (): JSX.Element => (
-  <SiteAlert variant="info">
-    <p className="usa-alert__text">Alert content</p>
-    <p className="usa-alert__text">
-      More content{' '}
-      <em className="usa-alert__text  display-inline">which includes</em>{' '}
-      <strong>formatting tags</strong> and <Link href="#">links</Link>.
-    </p>
-  </SiteAlert>
-)
+export const AlertWithCustomControls = {
+  render: (args: StorybookArguments) => (
+    <SiteAlert slim={args.slim} showIcon={args.showIcon} variant={args.variant}>
+      {shortAlertContent}
+    </SiteAlert>
+  ),
+}
+
+export const AlertWithStringContent = {
+  render: () => <SiteAlert variant="info">Short alert content</SiteAlert>,
+}
+
+export const AlertWithMultipleChildContent = {
+  render: () => (
+    <SiteAlert variant="info">
+      <p className="usa-alert__text">Alert content</p>
+      <p className="usa-alert__text">
+        More content{' '}
+        <em className="usa-alert__text  display-inline">which includes</em>{' '}
+        <strong>formatting tags</strong> and <Link href="#">links</Link>.
+      </p>
+    </SiteAlert>
+  ),
+}

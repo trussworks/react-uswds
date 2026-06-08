@@ -1,8 +1,8 @@
 import React from 'react'
 import { Checkbox } from './Checkbox'
-import { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Checkbox> = {
+const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
   parameters: {
@@ -16,58 +16,43 @@ Source: https://designsystem.digital.gov/components/checkbox
       },
     },
   },
-}
+  args: { id: 'checkbox', name: 'checkbox', label: 'My Checkbox' },
+} satisfies Meta<typeof Checkbox>
 
 export default meta
-type Story = StoryObj<typeof Checkbox>
+type Story = StoryObj<typeof meta>
 
-const Template: StoryFn<typeof Checkbox> = (args) => (
-  <Checkbox {...args} id="checkbox" name="checkbox" />
-)
-
-export const DefaultCheckbox: Story = {
-  render: Template,
-  args: { label: 'My Checkbox' },
-}
+export const DefaultCheckbox: Story = {}
 
 export const Checked: Story = {
-  render: Template,
-  args: { defaultChecked: true, label: 'My Checkbox' },
+  args: { defaultChecked: true },
 }
 
 export const Indeterminate: Story = {
-  render: Template,
-  args: { indeterminate: true, label: 'My Checkbox' },
+  args: { indeterminate: true },
 }
 
 export const Disabled: Story = {
-  render: Template,
-  args: { disabled: true, label: 'My Checkbox' },
+  args: { disabled: true },
 }
 
 export const WithRichLabel: Story = {
-  render: Template,
   args: { label: <strong>My Checkbox</strong> },
 }
 
 export const WithLabelDescription: Story = {
-  render: Template,
   args: {
-    label: 'My Checkbox',
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
   },
 }
 
 export const Tile: Story = {
-  render: Template,
-  args: { label: 'My Checkbox', tile: true },
+  args: { tile: true },
 }
 
 export const TileWithLabelDescription: Story = {
-  render: Template,
   args: {
-    label: 'My Checkbox',
     labelDescription:
       'This is optional text that can be used to describe the label in more detail.',
     tile: true,

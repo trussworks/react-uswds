@@ -1,4 +1,5 @@
-import React, { type JSX, useState } from 'react'
+import React, { useState } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Icon } from '../Icon/Icons'
 import {
   Banner,
@@ -15,7 +16,7 @@ import flagImg from '@uswds/uswds/img/us_flag_small.png'
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg'
 import httpsIcon from '@uswds/uswds/img/icon-https.svg'
 
-export const CustomBanner = (): JSX.Element => {
+const CustomBannerComponent = (): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -67,9 +68,9 @@ export const CustomBanner = (): JSX.Element => {
   )
 }
 
-export default {
+const meta = {
   title: 'Components/Banner',
-  component: CustomBanner,
+  component: CustomBannerComponent,
   parameters: {
     docs: {
       description: {
@@ -81,4 +82,11 @@ Source: https://designsystem.digital.gov/components/banner/
       },
     },
   },
+} satisfies Meta<typeof CustomBannerComponent>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const CustomBanner: Story = {
+  render: () => <CustomBannerComponent />,
 }

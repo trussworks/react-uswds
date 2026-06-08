@@ -1,10 +1,14 @@
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SideNav } from './SideNav'
 
-export default {
+const meta: Meta<typeof SideNav> = {
   title: 'Components/Side navigation',
   component: SideNav,
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const testItems = [
   <a href="#one" className="usa-current" key="one">
@@ -60,12 +64,14 @@ const testItemsThreeLevels = [
   </a>,
 ]
 
-export const SingleLevel = (): JSX.Element => <SideNav items={testItems} />
+export const SingleLevel: Story = {
+  render: () => <SideNav items={testItems} />,
+}
 
-export const TwoLevels = (): JSX.Element => (
-  <SideNav items={testItemsWithSubnav} />
-)
+export const TwoLevels: Story = {
+  render: () => <SideNav items={testItemsWithSubnav} />,
+}
 
-export const ThreeLevels = (): JSX.Element => (
-  <SideNav items={testItemsThreeLevels} />
-)
+export const ThreeLevels: Story = {
+  render: () => <SideNav items={testItemsThreeLevels} />,
+}

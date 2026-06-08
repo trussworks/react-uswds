@@ -1,8 +1,9 @@
 import React from 'react'
 import { RangeInput } from './RangeInput'
 import { Label } from '../Label/Label'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Range slider',
   component: RangeInput,
   parameters: {
@@ -16,32 +17,32 @@ Source: https://designsystem.digital.gov/components/range-slider
       },
     },
   },
-}
+  args: { id: 'range-slider', name: 'range' },
+  render: (args) => (
+    <>
+      <Label htmlFor="range-slider" hint=" (drag to adjust or use arrow keys)">
+        Slider input
+      </Label>
+      <RangeInput {...args} />
+      {args.list && (
+        <datalist id="range-list">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </datalist>
+      )}
+    </>
+  ),
+} satisfies Meta<typeof RangeInput>
 
-const Template = ({ ...args }) => (
-  <>
-    <Label htmlFor="range-slider" hint=" (drag to adjust or use arrow keys)">
-      Slider input
-    </Label>
-    <RangeInput id="range-slider" name="range" {...args} />
-    {args.list && (
-      <datalist id="range-list">
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </datalist>
-    )}
-  </>
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Basic = {
-  render: Template,
-}
+export const Basic: Story = {}
 
-export const CustomRange = {
-  render: Template,
+export const CustomRange: Story = {
   args: {
     min: 1,
     max: 11,
@@ -50,8 +51,7 @@ export const CustomRange = {
   },
 }
 
-export const DataListRange = {
-  render: Template,
+export const DataListRange: Story = {
   args: {
     list: 'range-list',
     defaultValue: 2,
@@ -66,8 +66,7 @@ export const DataListRange = {
   },
 }
 
-export const WithUnitAndPreposition = {
-  render: Template,
+export const WithUnitAndPreposition: Story = {
   args: {
     textPreposition: 'de',
     textUnit: 'por ciento',

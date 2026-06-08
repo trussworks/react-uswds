@@ -1,8 +1,15 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { StepIndicatorStep } from '../StepIndicatorStep/StepIndicatorStep'
 import { StepIndicator, StepStatusText } from './StepIndicator'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+type StorybookArguments = {
+  stepText: string
+  ofText: string
+  statusText: StepStatusText
+}
+
+const meta: Meta<typeof StepIndicator> = {
   title: 'Components/Step Indicator',
   component: StepIndicator,
   parameters: {
@@ -32,98 +39,105 @@ Updates users on their progress through a multi-step process.
   },
 }
 
-type StorybookArguments = {
-  stepText: string
-  ofText: string
-  statusText: StepStatusText
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultStepIndicator: Story = {
+  render: (args) => (
+    <StepIndicator
+      headingLevel="h4"
+      ofText={args.ofText}
+      stepText={args.stepText}
+      statusText={(args as StorybookArguments).statusText}>
+      <StepIndicatorStep label="Personal information" status="complete" />
+      <StepIndicatorStep label="Household status" status="complete" />
+      <StepIndicatorStep label="Supporting documents" status="current" />
+      <StepIndicatorStep label="Signature" />
+      <StepIndicatorStep label="Review and submit" />
+    </StepIndicator>
+  ),
 }
 
-export const DefaultStepIndicator = (args: StorybookArguments): JSX.Element => (
-  <StepIndicator
-    headingLevel="h4"
-    ofText={args.ofText}
-    stepText={args.stepText}
-    statusText={args.statusText}>
-    <StepIndicatorStep label="Personal information" status="complete" />
-    <StepIndicatorStep label="Household status" status="complete" />
-    <StepIndicatorStep label="Supporting documents" status="current" />
-    <StepIndicatorStep label="Signature" />
-    <StepIndicatorStep label="Review and submit" />
-  </StepIndicator>
-)
+export const NoLabels: Story = {
+  render: (args) => (
+    <StepIndicator
+      showLabels={false}
+      headingLevel="h4"
+      ofText={args.ofText}
+      stepText={args.stepText}
+      statusText={(args as StorybookArguments).statusText}>
+      <StepIndicatorStep label="Personal information" status="complete" />
+      <StepIndicatorStep label="Household status" status="complete" />
+      <StepIndicatorStep label="Supporting documents" status="current" />
+      <StepIndicatorStep label="Signature" />
+      <StepIndicatorStep label="Review and submit" />
+    </StepIndicator>
+  ),
+}
 
-export const NoLabels = (args: StorybookArguments): JSX.Element => (
-  <StepIndicator
-    showLabels={false}
-    headingLevel="h4"
-    ofText={args.ofText}
-    stepText={args.stepText}
-    statusText={args.statusText}>
-    <StepIndicatorStep label="Personal information" status="complete" />
-    <StepIndicatorStep label="Household status" status="complete" />
-    <StepIndicatorStep label="Supporting documents" status="current" />
-    <StepIndicatorStep label="Signature" />
-    <StepIndicatorStep label="Review and submit" />
-  </StepIndicator>
-)
+export const Centered: Story = {
+  render: (args) => (
+    <StepIndicator
+      centered
+      headingLevel="h4"
+      ofText={args.ofText}
+      stepText={args.stepText}
+      statusText={(args as StorybookArguments).statusText}>
+      <StepIndicatorStep label="Personal information" status="complete" />
+      <StepIndicatorStep label="Household status" status="complete" />
+      <StepIndicatorStep label="Supporting documents" status="current" />
+      <StepIndicatorStep label="Signature" />
+      <StepIndicatorStep label="Review and submit" />
+    </StepIndicator>
+  ),
+}
 
-export const Centered = (args: StorybookArguments): JSX.Element => (
-  <StepIndicator
-    centered
-    headingLevel="h4"
-    ofText={args.ofText}
-    stepText={args.stepText}
-    statusText={args.statusText}>
-    <StepIndicatorStep label="Personal information" status="complete" />
-    <StepIndicatorStep label="Household status" status="complete" />
-    <StepIndicatorStep label="Supporting documents" status="current" />
-    <StepIndicatorStep label="Signature" />
-    <StepIndicatorStep label="Review and submit" />
-  </StepIndicator>
-)
+export const Counters: Story = {
+  render: (args) => (
+    <StepIndicator
+      counters="default"
+      headingLevel="h4"
+      ofText={args.ofText}
+      stepText={args.stepText}
+      statusText={(args as StorybookArguments).statusText}>
+      <StepIndicatorStep label="Personal information" status="complete" />
+      <StepIndicatorStep label="Household status" status="complete" />
+      <StepIndicatorStep label="Supporting documents" status="current" />
+      <StepIndicatorStep label="Signature" />
+      <StepIndicatorStep label="Review and submit" />
+    </StepIndicator>
+  ),
+}
 
-export const Counters = (args: StorybookArguments): JSX.Element => (
-  <StepIndicator
-    counters="default"
-    headingLevel="h4"
-    ofText={args.ofText}
-    stepText={args.stepText}
-    statusText={args.statusText}>
-    <StepIndicatorStep label="Personal information" status="complete" />
-    <StepIndicatorStep label="Household status" status="complete" />
-    <StepIndicatorStep label="Supporting documents" status="current" />
-    <StepIndicatorStep label="Signature" />
-    <StepIndicatorStep label="Review and submit" />
-  </StepIndicator>
-)
+export const SmallCounters: Story = {
+  render: (args) => (
+    <StepIndicator
+      counters="small"
+      headingLevel="h4"
+      ofText={args.ofText}
+      stepText={args.stepText}
+      statusText={(args as StorybookArguments).statusText}>
+      <StepIndicatorStep label="Personal information" status="complete" />
+      <StepIndicatorStep label="Household status" status="complete" />
+      <StepIndicatorStep label="Supporting documents" status="current" />
+      <StepIndicatorStep label="Signature" />
+      <StepIndicatorStep label="Review and submit" />
+    </StepIndicator>
+  ),
+}
 
-export const SmallCounters = (args: StorybookArguments): JSX.Element => (
-  <StepIndicator
-    counters="small"
-    headingLevel="h4"
-    ofText={args.ofText}
-    stepText={args.stepText}
-    statusText={args.statusText}>
-    <StepIndicatorStep label="Personal information" status="complete" />
-    <StepIndicatorStep label="Household status" status="complete" />
-    <StepIndicatorStep label="Supporting documents" status="current" />
-    <StepIndicatorStep label="Signature" />
-    <StepIndicatorStep label="Review and submit" />
-  </StepIndicator>
-)
-
-export const DifferentHeadingLevel = (
-  args: StorybookArguments
-): JSX.Element => (
-  <StepIndicator
-    headingLevel="h2"
-    ofText={args.ofText}
-    stepText={args.stepText}
-    statusText={args.statusText}>
-    <StepIndicatorStep label="Personal information" status="complete" />
-    <StepIndicatorStep label="Household status" status="complete" />
-    <StepIndicatorStep label="Supporting documents" status="current" />
-    <StepIndicatorStep label="Signature" />
-    <StepIndicatorStep label="Review and submit" />
-  </StepIndicator>
-)
+export const DifferentHeadingLevel: Story = {
+  render: (args) => (
+    <StepIndicator
+      headingLevel="h2"
+      ofText={args.ofText}
+      stepText={args.stepText}
+      statusText={(args as StorybookArguments).statusText}>
+      <StepIndicatorStep label="Personal information" status="complete" />
+      <StepIndicatorStep label="Household status" status="complete" />
+      <StepIndicatorStep label="Supporting documents" status="current" />
+      <StepIndicatorStep label="Signature" />
+      <StepIndicatorStep label="Review and submit" />
+    </StepIndicator>
+  ),
+}
