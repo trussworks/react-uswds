@@ -149,7 +149,6 @@ export const CharacterCount = ({
     const {
       onBlur,
       onChange,
-      inputRef,
       type = 'text',
       ...inputProps
     } = remainingProps as Partial<TextInputCharacterCountProps>
@@ -163,7 +162,6 @@ export const CharacterCount = ({
         handleBlur(e, onBlur),
       onChange: (e: React.ChangeEvent<HTMLInputElement>): void =>
         handleChange(e, onChange),
-      inputRef: inputRef,
       ...inputProps,
     }
     InputComponent = <TextInput {...attributes} />
