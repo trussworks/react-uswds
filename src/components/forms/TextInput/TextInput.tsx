@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, type JSX } from 'react'
 import classnames from 'classnames'
 import { ValidationStatus } from '../../../types/validationStatus'
 import { LegacyInputRef } from '../../../types/legacyInputRef'
+import { deprecationWarning } from '../../../deprecation'
 
 type RequiredTextInputProps = {
   id: string
@@ -41,7 +42,7 @@ export const TextInput = forwardRef(
 
     useEffect(() => {
       if (inputRef) {
-        console.warn(
+        deprecationWarning(
           'TextInput: The `inputRef` prop is deprecated. Use the `ref` prop instead. `inputRef` will be removed in a future major version.'
         )
       }
