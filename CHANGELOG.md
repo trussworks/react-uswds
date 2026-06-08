@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.2](https://github.com/trussworks/react-uswds/compare/11.0.1...11.0.2) (2026-06-08)
+
+
+### Bug Fixes
+
+* clear input value on clearFiles from imperative handle ([#3090](https://github.com/trussworks/react-uswds/issues/3090)) ([ba607de](https://github.com/trussworks/react-uswds/commit/ba607de683768e37ad691455db5f77330a35f3c0))
+
+
+### Documentation & Examples
+
+* **storybook:** Update Storybook Stories to CSF3 ([#3489](https://github.com/trussworks/react-uswds/issues/3489)) ([b2fa438](https://github.com/trussworks/react-uswds/commit/b2fa438b88b3bdfbb8f043e38da878a1f45db62d))
+
 ## [11.0.1](https://github.com/trussworks/react-uswds/compare/11.0.0...11.0.1) (2026-04-06)
 
 
