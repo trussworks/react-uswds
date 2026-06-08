@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 
 import { DatePicker } from './DatePicker'
 import { sampleLocalization } from './i18n'
@@ -7,11 +7,31 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
+import {
+  DEFAULT_EXTERNAL_DATE_FORMAT,
+  DateFormat,
+  INTERNAL_DATE_FORMAT,
+} from './constants'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+type StorybookArguments = {
+  dateFormat: DateFormat
+  onSubmit: React.SubmitEventHandler<HTMLFormElement>
+  disabled?: boolean
+  validationStatus?: ValidationStatus
+}
+
+const meta: Meta<typeof DatePicker> = {
   title: 'Components/Date picker',
   component: DatePicker,
   argTypes: {
+    dateFormat: {
+      control: 'radio',
+      options: [
+        DEFAULT_EXTERNAL_DATE_FORMAT as DateFormat,
+        INTERNAL_DATE_FORMAT as DateFormat,
+      ],
+    },
     onSubmit: { action: 'submitted' },
     disabled: { control: { type: 'boolean' } },
     validationStatus: {
@@ -49,38 +69,41 @@ We may find that we want to expose props for custom event handlers or even a ref
   },
 }
 
-type StorybookArguments = {
-  onSubmit: React.FormEventHandler<HTMLFormElement>
-  disabled?: boolean
-  validationStatus?: ValidationStatus
-}
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const CompleteDatePicker = {
-  render: (argTypes: StorybookArguments): JSX.Element => (
-    <Form onSubmit={argTypes.onSubmit}>
-      <FormGroup error={argTypes.validationStatus === 'error'}>
-        <Label
-          id="appointment-date-label"
-          htmlFor="appointment-date"
-          error={argTypes.validationStatus === 'error'}>
-          Appointment date
-        </Label>
-        <div className="usa-hint" id="appointment-date-hint">
-          mm/dd/yyyy
-        </div>
-        <DatePicker
-          id="appointment-date"
-          name="appointment-date"
-          aria-describedby="appointment-date-hint"
-          aria-labelledby="appointment-date-label"
-          disabled={argTypes.disabled}
-          validationStatus={argTypes.validationStatus}
-        />
-      </FormGroup>
-      <Label htmlFor="otherInput">Another unrelated input</Label>
-      <TextInput id="otherInput" name="otherInput" type="tel" />
-    </Form>
-  ),
+export const CompleteDatePicker: Story = {
+  render: (args) => {
+    const argTypes = args as unknown as StorybookArguments
+    return (
+      <Form onSubmit={argTypes.onSubmit}>
+        <FormGroup error={argTypes.validationStatus === 'error'}>
+          <Label
+            id="appointment-date-label"
+            htmlFor="appointment-date"
+            error={argTypes.validationStatus === 'error'}>
+            Appointment date
+          </Label>
+          <div className="usa-hint" id="appointment-date-hint">
+            {(
+              argTypes.dateFormat ?? DEFAULT_EXTERNAL_DATE_FORMAT
+            ).toLowerCase()}
+          </div>
+          <DatePicker
+            id="appointment-date"
+            name="appointment-date"
+            aria-describedby="appointment-date-hint"
+            aria-labelledby="appointment-date-label"
+            disabled={argTypes.disabled}
+            validationStatus={argTypes.validationStatus}
+            dateFormat={argTypes.dateFormat}
+          />
+        </FormGroup>
+        <Label htmlFor="otherInput">Another unrelated input</Label>
+        <TextInput id="otherInput" name="otherInput" type="tel" />
+      </Form>
+    )
+  },
 }
 
 const Template = ({ ...args }) => (
@@ -92,16 +115,16 @@ const Template = ({ ...args }) => (
   </>
 )
 
-export const Basic = {
+export const Basic: Story = {
   render: Template,
 }
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
   args: { disabled: true },
 }
 
-export const WithDefaultValue = {
+export const WithDefaultValue: Story = {
   render: Template,
   args: { defaultValue: '1988-05-16' },
   parameters: {
@@ -111,22 +134,22 @@ export const WithDefaultValue = {
   },
 }
 
-export const WithDefaultInvalidValue = {
+export const WithDefaultInvalidValue: Story = {
   render: Template,
   args: { defaultValue: '1988-05-16', minDate: '2020-01-01' },
 }
 
-export const WithMinMaxInSameMonth = {
+export const WithMinMaxInSameMonth: Story = {
   render: Template,
   args: { minDate: '2021-01-01', maxDate: '2021-01-20' },
 }
 
-export const WithMinMax = {
+export const WithMinMax: Story = {
   render: Template,
   args: { minDate: '2020-01-01', maxDate: '2021-5-31' },
 }
 
-export const WithRangeDate = {
+export const WithRangeDate: Story = {
   render: Template,
   args: { defaultValue: '2021-01-20', rangeDate: '2021-01-08' },
   parameters: {
@@ -136,7 +159,7 @@ export const WithRangeDate = {
   },
 }
 
-export const WithLocalizations = {
+export const WithLocalizations: Story = {
   render: Template,
   args: { i18n: sampleLocalization },
 }

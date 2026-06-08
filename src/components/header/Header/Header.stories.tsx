@@ -1,4 +1,4 @@
-import React, { type JSX, useState } from 'react'
+import React, { useState } from 'react'
 import { Header } from './Header'
 
 import { Title } from '../Title/Title'
@@ -9,8 +9,9 @@ import { MegaMenu } from '../MegaMenu/MegaMenu'
 import { NavMenuButton } from '../NavMenuButton/NavMenuButton'
 import { NavDropDownButton } from '../NavDropDownButton/NavDropDownButton'
 import { ExtendedNav } from '../ExtendedNav/ExtendedNav'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta: Meta<typeof Header> = {
   title: 'Components/Header',
   component: Header,
   parameters: {
@@ -25,6 +26,9 @@ Source: https://designsystem.digital.gov/components/header/
     },
   },
 }
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const mockSubmit = (): void => {
   /* mock submit fn */
@@ -42,308 +46,316 @@ const onToggle = (
   })
 }
 
-export const BasicHeader = (): JSX.Element => {
-  const [expanded, setExpanded] = useState(false)
-  const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
+export const BasicHeader: Story = {
+  render: () => {
+    const [expanded, setExpanded] = useState(false)
+    const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
-  const testMenuItems = [
-    <a href="#linkOne" key="one">
-      Current link
-    </a>,
-    <a href="#linkTwo" key="two">
-      Simple link Two
-    </a>,
-  ]
+    const testMenuItems = [
+      <a href="#linkOne" key="one">
+        Current link
+      </a>,
+      <a href="#linkTwo" key="two">
+        Simple link Two
+      </a>,
+    ]
 
-  const [isOpen, setIsOpen] = useState([false, false])
+    const [isOpen, setIsOpen] = useState([false, false])
 
-  const testItemsMenu = [
-    <>
-      <NavDropDownButton
-        menuId="testDropDownOne"
-        onToggle={(): void => {
-          onToggle(0, setIsOpen)
-        }}
-        isOpen={isOpen[0]}
-        label="Nav Label"
-        isCurrent={true}
-      />
-      <Menu
-        key="one"
-        items={testMenuItems}
-        isOpen={isOpen[0]}
-        id="testDropDownOne"
-      />
-    </>,
-    <a href="#two" key="two" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-    <a href="#three" key="three" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-  ]
+    const testItemsMenu = [
+      <>
+        <NavDropDownButton
+          menuId="testDropDownOne"
+          onToggle={(): void => {
+            onToggle(0, setIsOpen)
+          }}
+          isOpen={isOpen[0]}
+          label="Nav Label"
+          isCurrent={true}
+        />
+        <Menu
+          key="one"
+          items={testMenuItems}
+          isOpen={isOpen[0]}
+          id="testDropDownOne"
+        />
+      </>,
+      <a href="#two" key="two" className="usa-nav__link">
+        <span>Parent link</span>
+      </a>,
+      <a href="#three" key="three" className="usa-nav__link">
+        <span>Parent link</span>
+      </a>,
+    ]
 
-  return (
-    <>
-      <Header basic={true} showMobileOverlay={expanded}>
-        <div className="usa-nav-container">
-          <div className="usa-navbar">
-            <Title>Project Title</Title>
-            <NavMenuButton onClick={onClick} label="Menu" />
+    return (
+      <>
+        <Header basic={true} showMobileOverlay={expanded}>
+          <div className="usa-nav-container">
+            <div className="usa-navbar">
+              <Title>Project Title</Title>
+              <NavMenuButton onClick={onClick} label="Menu" />
+            </div>
+            <PrimaryNav
+              items={testItemsMenu}
+              mobileExpanded={expanded}
+              onToggleMobileNav={onClick}>
+              <Search size="small" onSubmit={mockSubmit} />
+            </PrimaryNav>
           </div>
-          <PrimaryNav
-            items={testItemsMenu}
-            mobileExpanded={expanded}
-            onToggleMobileNav={onClick}>
-            <Search size="small" onSubmit={mockSubmit} />
-          </PrimaryNav>
-        </div>
-      </Header>
-    </>
-  )
+        </Header>
+      </>
+    )
+  },
 }
 
-export const BasicHeaderWithMegaMenu = (): JSX.Element => {
-  const [expanded, setExpanded] = useState(false)
-  const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
+export const BasicHeaderWithMegaMenu: Story = {
+  render: () => {
+    const [expanded, setExpanded] = useState(false)
+    const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
-  const testItemsMegaOne = [
-    [
+    const testItemsMegaOne = [
+      [
+        <a href="#linkOne" key="one">
+          Simple link one
+        </a>,
+        <a href="#linkTwo" key="two">
+          Simple link two
+        </a>,
+      ],
+      [
+        <a href="#linkThree" key="three">
+          Simple link three
+        </a>,
+        <a href="#linkFour" key="four">
+          Simple link four
+        </a>,
+      ],
+    ]
+
+    const testItemsMegaTwo = [
+      [
+        <a href="#linkFive" key="one">
+          Simple link five
+        </a>,
+        <a href="#linkSix" key="two">
+          Simple link six
+        </a>,
+      ],
+      [
+        <a href="#linkSeven" key="three">
+          Simple link seven
+        </a>,
+        <a href="#linkEight" key="four">
+          Simple link eight
+        </a>,
+      ],
+    ]
+
+    const [isOpen, setIsOpen] = useState([false, false])
+
+    const testItemsMegaMenu = [
+      <>
+        <NavDropDownButton
+          onToggle={(): void => {
+            onToggle(0, setIsOpen)
+          }}
+          menuId="testDropDownOne"
+          isOpen={isOpen[0]}
+          label="Nav Label"
+          isCurrent={true}
+        />
+        <MegaMenu
+          key="one"
+          items={testItemsMegaOne}
+          isOpen={isOpen[0]}
+          id="testDropDownOne"
+        />
+      </>,
+      <>
+        <NavDropDownButton
+          onToggle={(): void => {
+            onToggle(1, setIsOpen)
+          }}
+          menuId="testDropDownTwo"
+          isOpen={isOpen[1]}
+          label="Nav Label"
+        />
+        <MegaMenu
+          key="one"
+          items={testItemsMegaTwo}
+          isOpen={isOpen[1]}
+          id="testDropDownTwo"
+        />
+      </>,
+      <a href="#two" key="two" className="usa-nav__link">
+        <span>Parent link</span>
+      </a>,
+      <a href="#three" key="three" className="usa-nav__link">
+        <span>Parent link</span>
+      </a>,
+    ]
+
+    return (
+      <>
+        <Header
+          basic={true}
+          basicWithMegaMenu={true}
+          showMobileOverlay={expanded}>
+          <div className="usa-nav-container">
+            <div className="usa-navbar">
+              <Title>Project Title</Title>
+              <NavMenuButton onClick={onClick} label="Menu" />
+            </div>
+            <PrimaryNav
+              items={testItemsMegaMenu}
+              mobileExpanded={expanded}
+              onToggleMobileNav={onClick}>
+              <Search size="small" onSubmit={mockSubmit} />
+            </PrimaryNav>
+          </div>
+        </Header>
+      </>
+    )
+  },
+}
+
+export const ExtendedHeader: Story = {
+  render: () => {
+    const [expanded, setExpanded] = useState(false)
+    const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
+    const [isOpen, setIsOpen] = useState([false])
+
+    const testMenuItems = [
       <a href="#linkOne" key="one">
         Simple link one
       </a>,
       <a href="#linkTwo" key="two">
         Simple link two
       </a>,
-    ],
-    [
-      <a href="#linkThree" key="three">
-        Simple link three
-      </a>,
-      <a href="#linkFour" key="four">
-        Simple link four
-      </a>,
-    ],
-  ]
+    ]
 
-  const testItemsMegaTwo = [
-    [
-      <a href="#linkFive" key="one">
-        Simple link five
+    const testItemsMenu = [
+      <>
+        <NavDropDownButton
+          onToggle={(): void => {
+            onToggle(0, setIsOpen)
+          }}
+          menuId="testDropDownOne"
+          isOpen={isOpen[0]}
+          label="Nav Label"
+          isCurrent={true}
+        />
+        <Menu
+          key="one"
+          items={testMenuItems}
+          isOpen={isOpen[0]}
+          id="testDropDownOne"
+        />
+      </>,
+      <a href="#two" key="two" className="usa-nav__link">
+        <span>Parent link</span>
       </a>,
-      <a href="#linkSix" key="two">
-        Simple link six
+      <a href="#three" key="three" className="usa-nav__link">
+        <span>Parent link</span>
       </a>,
-    ],
-    [
-      <a href="#linkSeven" key="three">
-        Simple link seven
-      </a>,
-      <a href="#linkEight" key="four">
-        Simple link eight
-      </a>,
-    ],
-  ]
-
-  const [isOpen, setIsOpen] = useState([false, false])
-
-  const testItemsMegaMenu = [
-    <>
-      <NavDropDownButton
-        onToggle={(): void => {
-          onToggle(0, setIsOpen)
-        }}
-        menuId="testDropDownOne"
-        isOpen={isOpen[0]}
-        label="Nav Label"
-        isCurrent={true}
-      />
-      <MegaMenu
-        key="one"
-        items={testItemsMegaOne}
-        isOpen={isOpen[0]}
-        id="testDropDownOne"
-      />
-    </>,
-    <>
-      <NavDropDownButton
-        onToggle={(): void => {
-          onToggle(1, setIsOpen)
-        }}
-        menuId="testDropDownTwo"
-        isOpen={isOpen[1]}
-        label="Nav Label"
-      />
-      <MegaMenu
-        key="one"
-        items={testItemsMegaTwo}
-        isOpen={isOpen[1]}
-        id="testDropDownTwo"
-      />
-    </>,
-    <a href="#two" key="two" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-    <a href="#three" key="three" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-  ]
-
-  return (
-    <>
-      <Header
-        basic={true}
-        basicWithMegaMenu={true}
-        showMobileOverlay={expanded}>
-        <div className="usa-nav-container">
+    ]
+    return (
+      <>
+        <Header extended={true} showMobileOverlay={expanded}>
           <div className="usa-navbar">
             <Title>Project Title</Title>
             <NavMenuButton onClick={onClick} label="Menu" />
           </div>
-          <PrimaryNav
-            items={testItemsMegaMenu}
+          <ExtendedNav
+            primaryItems={testItemsMenu}
+            secondaryItems={testMenuItems}
             mobileExpanded={expanded}
             onToggleMobileNav={onClick}>
             <Search size="small" onSubmit={mockSubmit} />
-          </PrimaryNav>
-        </div>
-      </Header>
-    </>
-  )
+          </ExtendedNav>
+        </Header>
+      </>
+    )
+  },
 }
 
-export const ExtendedHeader = (): JSX.Element => {
-  const [expanded, setExpanded] = useState(false)
-  const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
-  const [isOpen, setIsOpen] = useState([false])
+export const ExtendedHeaderWithMegaMenu: Story = {
+  render: () => {
+    const [expanded, setExpanded] = useState(false)
+    const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
 
-  const testMenuItems = [
-    <a href="#linkOne" key="one">
-      Simple link one
-    </a>,
-    <a href="#linkTwo" key="two">
-      Simple link two
-    </a>,
-  ]
-
-  const testItemsMenu = [
-    <>
-      <NavDropDownButton
-        onToggle={(): void => {
-          onToggle(0, setIsOpen)
-        }}
-        menuId="testDropDownOne"
-        isOpen={isOpen[0]}
-        label="Nav Label"
-        isCurrent={true}
-      />
-      <Menu
-        key="one"
-        items={testMenuItems}
-        isOpen={isOpen[0]}
-        id="testDropDownOne"
-      />
-    </>,
-    <a href="#two" key="two" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-    <a href="#three" key="three" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-  ]
-  return (
-    <>
-      <Header extended={true} showMobileOverlay={expanded}>
-        <div className="usa-navbar">
-          <Title>Project Title</Title>
-          <NavMenuButton onClick={onClick} label="Menu" />
-        </div>
-        <ExtendedNav
-          primaryItems={testItemsMenu}
-          secondaryItems={testMenuItems}
-          mobileExpanded={expanded}
-          onToggleMobileNav={onClick}>
-          <Search size="small" onSubmit={mockSubmit} />
-        </ExtendedNav>
-      </Header>
-    </>
-  )
-}
-
-export const ExtendedHeaderWithMegaMenu = (): JSX.Element => {
-  const [expanded, setExpanded] = useState(false)
-  const onClick = (): void => setExpanded((prvExpanded) => !prvExpanded)
-
-  const testMenuItems = [
-    <a href="#linkOne" key="one">
-      Simple link one
-    </a>,
-    <a href="#linkTwo" key="two">
-      Simple link two
-    </a>,
-  ]
-
-  const testItemsMegaOne = [
-    [
+    const testMenuItems = [
       <a href="#linkOne" key="one">
         Simple link one
       </a>,
       <a href="#linkTwo" key="two">
         Simple link two
       </a>,
-    ],
-    [
-      <a href="#linkThree" key="three">
-        Simple link three
-      </a>,
-      <a href="#linkFour" key="four">
-        Simple link four
-      </a>,
-    ],
-  ]
+    ]
 
-  const [isOpen, setIsOpen] = useState([false, false])
+    const testItemsMegaOne = [
+      [
+        <a href="#linkOne" key="one">
+          Simple link one
+        </a>,
+        <a href="#linkTwo" key="two">
+          Simple link two
+        </a>,
+      ],
+      [
+        <a href="#linkThree" key="three">
+          Simple link three
+        </a>,
+        <a href="#linkFour" key="four">
+          Simple link four
+        </a>,
+      ],
+    ]
 
-  const testItemsMenu = [
-    <>
-      <NavDropDownButton
-        onToggle={(): void => {
-          onToggle(0, setIsOpen)
-        }}
-        menuId="testDropDownOne"
-        isOpen={isOpen[0]}
-        label="Nav Label"
-        isCurrent={true}
-      />
-      <MegaMenu
-        key="one"
-        items={testItemsMegaOne}
-        isOpen={isOpen[0]}
-        id="testDropDownOne"
-      />
-    </>,
-    <a href="#two" key="two" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-    <a href="#three" key="three" className="usa-nav__link">
-      <span>Parent link</span>
-    </a>,
-  ]
-  return (
-    <>
-      <Header extended={true} showMobileOverlay={expanded}>
-        <div className="usa-navbar">
-          <Title>Project Title</Title>
-          <NavMenuButton onClick={onClick} label="Menu" />
-        </div>
-        <ExtendedNav
-          primaryItems={testItemsMenu}
-          secondaryItems={testMenuItems}
-          mobileExpanded={expanded}
-          onToggleMobileNav={onClick}>
-          <Search size="small" onSubmit={mockSubmit} />
-        </ExtendedNav>
-      </Header>
-    </>
-  )
+    const [isOpen, setIsOpen] = useState([false, false])
+
+    const testItemsMenu = [
+      <>
+        <NavDropDownButton
+          onToggle={(): void => {
+            onToggle(0, setIsOpen)
+          }}
+          menuId="testDropDownOne"
+          isOpen={isOpen[0]}
+          label="Nav Label"
+          isCurrent={true}
+        />
+        <MegaMenu
+          key="one"
+          items={testItemsMegaOne}
+          isOpen={isOpen[0]}
+          id="testDropDownOne"
+        />
+      </>,
+      <a href="#two" key="two" className="usa-nav__link">
+        <span>Parent link</span>
+      </a>,
+      <a href="#three" key="three" className="usa-nav__link">
+        <span>Parent link</span>
+      </a>,
+    ]
+    return (
+      <>
+        <Header extended={true} showMobileOverlay={expanded}>
+          <div className="usa-navbar">
+            <Title>Project Title</Title>
+            <NavMenuButton onClick={onClick} label="Menu" />
+          </div>
+          <ExtendedNav
+            primaryItems={testItemsMenu}
+            secondaryItems={testMenuItems}
+            mobileExpanded={expanded}
+            onToggleMobileNav={onClick}>
+            <Search size="small" onSubmit={mockSubmit} />
+          </ExtendedNav>
+        </Header>
+      </>
+    )
+  },
 }

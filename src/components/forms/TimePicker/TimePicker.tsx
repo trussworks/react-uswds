@@ -24,6 +24,7 @@ type BaseTimePickerProps = {
   minTime?: string
   maxTime?: string
   step?: number
+  /** Recommended text: "Select a time from the dropdown. Type into the input to filter options." */
   hint?: string
   className?: string
 }

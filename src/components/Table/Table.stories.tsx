@@ -1,7 +1,8 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { Table } from './Table'
+import type { Meta } from '@storybook/react-vite'
 
-export default {
+const meta = {
   title: 'Components/Table',
   component: Table,
   parameters: {
@@ -29,19 +30,28 @@ Source: https://designsystem.digital.gov/components/table/
     stackedStyle: {
       control: {
         type: 'select',
-        options: ['default', 'headers'],
+        options: ['default', 'headers', 'none'],
       },
+    },
+    stickyHeader: {
+      control: {
+        type: 'boolean',
+      },
+      description: 'This is not compatible with stacked and scrollable',
     },
   },
   args: {
     stackedStyle: 'default',
   },
-}
+} satisfies Meta<typeof Table>
+
+export default meta
 
 type StorybookArguments = {
   bordered: boolean
   striped: boolean
-  stackedStyle: 'default' | 'headers'
+  stackedStyle: 'default' | 'headers' | 'none'
+  stickyHeader: boolean
 }
 
 const testContent = (
@@ -220,144 +230,165 @@ const scrollableTestContent = (
   </>
 )
 
-export const Bordered = (): JSX.Element => <Table bordered>{testContent}</Table>
+export const Bordered = {
+  render: () => <Table bordered>{testContent}</Table>,
+}
 
-export const Borderless = (): JSX.Element => (
-  <Table bordered={false}>{testContent}</Table>
-)
+export const Borderless = {
+  render: () => <Table bordered={false}>{testContent}</Table>,
+}
 
-export const BorderedWithCaption = (): JSX.Element => (
-  <Table bordered caption="This is a bordered table with a caption">
-    {testContent}
-  </Table>
-)
-
-export const BorderlessWithCaption = (): JSX.Element => (
-  <Table bordered={false} caption="This is a borderless table with a caption">
-    {testContent}
-  </Table>
-)
-
-export const ContentWidth = (): JSX.Element => (
-  <Table bordered caption="This table demonstrates the default layout (width)">
-    <thead>
-      <tr>
-        <th scope="col">Document title</th>
-        <th scope="col">Year</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Declaration of Independence</th>
-        <td>1776</td>
-      </tr>
-      <tr>
-        <th scope="row">Bill of Rights</th>
-        <td>1791</td>
-      </tr>
-      <tr>
-        <th scope="row">Declaration of Sentiments</th>
-        <td>1848</td>
-      </tr>
-      <tr>
-        <th scope="row">Emancipation Proclamation</th>
-        <td>1863</td>
-      </tr>
-    </tbody>
-  </Table>
-)
-
-export const FullWidth = (): JSX.Element => (
-  <Table
-    bordered
-    caption="This table uses the fullWidth prop to increase to 100% width"
-    fullWidth>
-    <thead>
-      <tr>
-        <th scope="col">Document title</th>
-        <th scope="col">Year</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Declaration of Independence</th>
-        <td>1776</td>
-      </tr>
-      <tr>
-        <th scope="row">Bill of Rights</th>
-        <td>1791</td>
-      </tr>
-      <tr>
-        <th scope="row">Declaration of Sentiments</th>
-        <td>1848</td>
-      </tr>
-      <tr>
-        <th scope="row">Emancipation Proclamation</th>
-        <td>1863</td>
-      </tr>
-    </tbody>
-  </Table>
-)
-
-export const Fixed = (): JSX.Element => (
-  <Table
-    bordered
-    caption="This table uses the fixed prop to force equal width columns"
-    fullWidth
-    fixed>
-    <thead>
-      <tr>
-        <th scope="col">Document title</th>
-        <th scope="col">Year</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Declaration of Independence</th>
-        <td>1776</td>
-      </tr>
-      <tr>
-        <th scope="row">Bill of Rights</th>
-        <td>1791</td>
-      </tr>
-      <tr>
-        <th scope="row">Declaration of Sentiments</th>
-        <td>1848</td>
-      </tr>
-      <tr>
-        <th scope="row">Emancipation Proclamation</th>
-        <td>1863</td>
-      </tr>
-    </tbody>
-  </Table>
-)
-
-export const Scrollable = (): JSX.Element => (
-  <>
-    <Table scrollable bordered striped caption="This is a scrollable table">
-      {scrollableTestContent}
+export const BorderedWithCaption = {
+  render: () => (
+    <Table bordered caption="This is a bordered table with a caption">
+      {testContent}
     </Table>
-    <p>* in billions of dollars. Data for illustration purposes only.</p>
-  </>
-)
+  ),
+}
+
+export const BorderlessWithCaption = {
+  render: () => (
+    <Table bordered={false} caption="This is a borderless table with a caption">
+      {testContent}
+    </Table>
+  ),
+}
+
+export const ContentWidth = {
+  render: () => (
+    <Table
+      bordered
+      caption="This table demonstrates the default layout (width)">
+      <thead>
+        <tr>
+          <th scope="col">Document title</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Declaration of Independence</th>
+          <td>1776</td>
+        </tr>
+        <tr>
+          <th scope="row">Bill of Rights</th>
+          <td>1791</td>
+        </tr>
+        <tr>
+          <th scope="row">Declaration of Sentiments</th>
+          <td>1848</td>
+        </tr>
+        <tr>
+          <th scope="row">Emancipation Proclamation</th>
+          <td>1863</td>
+        </tr>
+      </tbody>
+    </Table>
+  ),
+}
+
+export const FullWidth = {
+  render: () => (
+    <Table
+      bordered
+      caption="This table uses the fullWidth prop to increase to 100% width"
+      fullWidth>
+      <thead>
+        <tr>
+          <th scope="col">Document title</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Declaration of Independence</th>
+          <td>1776</td>
+        </tr>
+        <tr>
+          <th scope="row">Bill of Rights</th>
+          <td>1791</td>
+        </tr>
+        <tr>
+          <th scope="row">Declaration of Sentiments</th>
+          <td>1848</td>
+        </tr>
+        <tr>
+          <th scope="row">Emancipation Proclamation</th>
+          <td>1863</td>
+        </tr>
+      </tbody>
+    </Table>
+  ),
+}
+
+export const Fixed = {
+  render: () => (
+    <Table
+      bordered
+      caption="This table uses the fixed prop to force equal width columns"
+      fullWidth
+      fixed>
+      <thead>
+        <tr>
+          <th scope="col">Document title</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Declaration of Independence</th>
+          <td>1776</td>
+        </tr>
+        <tr>
+          <th scope="row">Bill of Rights</th>
+          <td>1791</td>
+        </tr>
+        <tr>
+          <th scope="row">Declaration of Sentiments</th>
+          <td>1848</td>
+        </tr>
+        <tr>
+          <th scope="row">Emancipation Proclamation</th>
+          <td>1863</td>
+        </tr>
+      </tbody>
+    </Table>
+  ),
+}
+
+export const Scrollable = {
+  render: () => (
+    <>
+      <Table scrollable bordered striped caption="This is a scrollable table">
+        {scrollableTestContent}
+      </Table>
+      <p>* in billions of dollars. Data for illustration purposes only.</p>
+    </>
+  ),
+}
+
+export const StickyHeader = {
+  render: (args: StorybookArguments) => (
+    <Table stickyHeader bordered={args.bordered}>
+      {testContent}
+    </Table>
+  ),
+}
 
 export const Striped = {
-  render: (argTypes: StorybookArguments): JSX.Element => (
-    <Table
-      striped
-      bordered={argTypes.bordered}
-      caption="This is a striped table">
+  render: (args: StorybookArguments) => (
+    <Table striped bordered={args.bordered} caption="This is a striped table">
       {testContent}
     </Table>
   ),
 }
 
 export const Compact = {
-  render: (argTypes: StorybookArguments): JSX.Element => (
+  render: (args: StorybookArguments) => (
     <Table
       compact
-      bordered={argTypes.bordered}
-      striped={argTypes.striped}
+      bordered={args.bordered}
+      striped={args.striped}
       caption="This is a compact table">
       {testContent}
     </Table>
@@ -365,10 +396,10 @@ export const Compact = {
 }
 
 export const StackedStylesDemo = {
-  render: (argTypes: StorybookArguments): JSX.Element => (
+  render: (args: StorybookArguments) => (
     <Table
-      bordered={argTypes.bordered}
-      stackedStyle={argTypes.stackedStyle}
+      bordered={args.bordered}
+      stackedStyle={args.stackedStyle}
       caption="This is a stacked table (when on a mobile-width screen)">
       <thead>
         <tr>
@@ -401,7 +432,6 @@ export const StackedStylesDemo = {
       </tbody>
     </Table>
   ),
-
   parameters: {
     viewport: {
       defaultViewport: 'iphone6',

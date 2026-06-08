@@ -1,29 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// https://vite.dev/guide/features#client-types
 /// <reference types="vite/client" />
 
-declare module '*.png' {
-  const content: any
-  export default content
-}
-
 declare module '*.svg?svgr' {
-  const content: any
+  const content: React.FC<React.SVGProps<SVGElement>>
   export default content
 }
 
 declare module '*.svg' {
-  const content: any
+  const content: React.FC<React.SVGProps<SVGElement>>
   export default content
-}
-
-declare module '*.module.css' {
-  const classes: { [key: string]: string }
-  export default classes
-}
-
-declare module '*.module.scss' {
-  const classes: { [key: string]: string }
-  export default classes
 }
 
 declare namespace globalThis {

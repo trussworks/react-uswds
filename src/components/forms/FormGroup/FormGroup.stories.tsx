@@ -1,11 +1,12 @@
-import React, { type JSX } from 'react'
+import React from 'react'
 import { FormGroup } from './FormGroup'
 
 import { Label } from '../Label/Label'
 import { TextInput } from '../TextInput/TextInput'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta: Meta<typeof FormGroup> = {
   title: 'Components/Form elements/FormGroup',
   component: FormGroup,
   parameters: {
@@ -21,24 +22,31 @@ Source: https://designsystem.digital.gov/components/form-templates/
   },
 }
 
-export const TextInputFormGroup = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="input-type-text">Text input label</Label>
-    <TextInput id="input-type-text" name="input-type-text" type="text" />
-  </FormGroup>
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const TextInputErrorFormGroup = (): JSX.Element => (
-  <FormGroup error>
-    <Label htmlFor="input-type-text" error>
-      Text input label
-    </Label>
-    <ErrorMessage>Helpful error message</ErrorMessage>
-    <TextInput
-      id="input-type-text"
-      name="input-type-text"
-      type="text"
-      validationStatus="error"
-    />
-  </FormGroup>
-)
+export const TextInputFormGroup: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="input-type-text">Text input label</Label>
+      <TextInput id="input-type-text" name="input-type-text" type="text" />
+    </FormGroup>
+  ),
+}
+
+export const TextInputErrorFormGroup: Story = {
+  render: () => (
+    <FormGroup error>
+      <Label htmlFor="input-type-text" error>
+        Text input label
+      </Label>
+      <ErrorMessage>Helpful error message</ErrorMessage>
+      <TextInput
+        id="input-type-text"
+        name="input-type-text"
+        type="text"
+        validationStatus="error"
+      />
+    </FormGroup>
+  ),
+}

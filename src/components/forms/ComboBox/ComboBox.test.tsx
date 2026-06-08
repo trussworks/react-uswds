@@ -59,10 +59,7 @@ describe('ComboBox component', () => {
       'favorite-fruit--list'
     )
     expect(comboBoxInput).toHaveAttribute('aria-autocomplete', 'list')
-    expect(comboBoxInput).toHaveAttribute(
-      'aria-describedby',
-      'favorite-fruit--assistiveHint'
-    )
+    expect(comboBoxInput).not.toHaveAttribute('aria-describedby')
     expect(comboBoxInput).toHaveAttribute('aria-expanded', 'false')
     expect(comboBoxInput).toHaveAttribute('autocapitalize', 'off')
     expect(comboBoxInput).toHaveAttribute('autocomplete', 'off')
@@ -96,7 +93,7 @@ describe('ComboBox component', () => {
     expect(comboBoxInput).toHaveValue('Avocado')
   })
 
-  it('updates options when prop changes', async () => {
+  it('updates options when prop changes', () => {
     const Wrapper = (props: { options: ComboBoxOption[] }) => {
       return (
         <ComboBox
@@ -476,6 +473,59 @@ describe('ComboBox component', () => {
       await userEvent.type(input, 'a')
 
       expect(getByTestId('combo-box-option-list').children.length).toEqual(43)
+    })
+
+    it('sorts starts-with matches to the top', async () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={vi.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      await userEvent.type(input, 'ra')
+
+      const options = Array.from(getByTestId('combo-box-option-list').children)
+      const raspberryIdx = options.findIndex(
+        (option) => option.textContent === 'Raspberry'
+      )
+      expect(raspberryIdx).greaterThanOrEqual(0)
+      const currantIdx = options.findIndex(
+        (option) => option.textContent === 'Currant'
+      )
+      expect(currantIdx).greaterThanOrEqual(0)
+      expect(currantIdx).greaterThan(raspberryIdx)
+    })
+
+    it('sorts starts-with matches case-insensitive', async () => {
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions.map((opt) => ({
+            ...opt,
+            label: opt.label.toLowerCase(),
+          }))}
+          onChange={vi.fn()}
+        />
+      )
+
+      const input = getByTestId('combo-box-input')
+      await userEvent.type(input, 'RA')
+
+      const options = Array.from(getByTestId('combo-box-option-list').children)
+      const raspberryIdx = options.findIndex(
+        (option) => option.textContent === 'raspberry'
+      )
+      expect(raspberryIdx).greaterThanOrEqual(0)
+      const currantIdx = options.findIndex(
+        (option) => option.textContent === 'currant'
+      )
+      expect(currantIdx).greaterThanOrEqual(0)
+      expect(currantIdx).greaterThan(raspberryIdx)
     })
 
     it('persists filter options if dropdown is closed and open without selection', async () => {
@@ -1733,6 +1783,10 @@ describe('ComboBox component', () => {
         />
       )
 
+      expect(getByTestId('combo-box-input')).toHaveAttribute(
+        'aria-describedby',
+        'favorite-fruit--assistiveHint'
+      )
       const node = getByTestId('combo-box-assistive-hint')
       expect(node).toHaveTextContent('Customized assistive hint')
     })

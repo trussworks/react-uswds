@@ -3,9 +3,9 @@ import React, {
   useEffect,
   useRef,
   FocusEvent,
-  FormEvent,
   KeyboardEvent,
   JSX,
+  InputEventHandler,
 } from 'react'
 import classnames from 'classnames'
 
@@ -13,6 +13,7 @@ import {
   DEFAULT_EXTERNAL_DATE_FORMAT,
   VALIDATION_MESSAGE,
   DEFAULT_MIN_DATE,
+  type DateFormat,
 } from './constants'
 import { DatePickerLocalization, EN_US } from './i18n'
 import {
@@ -34,6 +35,7 @@ type BaseDatePickerProps = {
   validationStatus?: ValidationStatus
   disabled?: boolean
   required?: boolean
+  dateFormat?: DateFormat
   defaultValue?: string
   minDate?: string
   maxDate?: string
@@ -58,6 +60,7 @@ export const DatePicker = ({
   name,
   className,
   validationStatus,
+  dateFormat = DEFAULT_EXTERNAL_DATE_FORMAT,
   defaultValue,
   disabled,
   required,
@@ -71,6 +74,10 @@ export const DatePicker = ({
 }: DatePickerProps): JSX.Element => {
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
+
+  const isAriaDisabled =
+    inputProps['aria-disabled'] === true ||
+    inputProps['aria-disabled'] === 'true'
 
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
@@ -93,7 +100,12 @@ export const DatePicker = ({
   const parsedRangeDate = rangeDate ? parseDateString(rangeDate) : undefined
 
   const validateInput = (): void => {
-    const isInvalid = isDateInvalid(externalValue, parsedMinDate, parsedMaxDate)
+    const isInvalid = isDateInvalid(
+      externalValue,
+      dateFormat,
+      parsedMinDate,
+      parsedMaxDate
+    )
 
     if (isInvalid && !externalInputEl?.current?.validationMessage) {
       externalInputEl?.current?.setCustomValidity(VALIDATION_MESSAGE)
@@ -109,8 +121,7 @@ export const DatePicker = ({
 
   const handleSelectDate = (dateString: string, closeCalendar = true): void => {
     const parsedValue = parseDateString(dateString)
-    const formattedValue =
-      parsedValue && formatDate(parsedValue, DEFAULT_EXTERNAL_DATE_FORMAT)
+    const formattedValue = parsedValue && formatDate(parsedValue, dateFormat)
 
     if (parsedValue) setInternalValue(dateString)
     if (formattedValue) setExternalValue(formattedValue)
@@ -123,15 +134,20 @@ export const DatePicker = ({
     }
   }
 
-  const handleExternalInput = (event: FormEvent<HTMLInputElement>): void => {
+  const handleExternalInput: InputEventHandler<HTMLInputElement> = (
+    event
+  ): void => {
     // Keep external & internal input values in sync
     const value = (event.target as HTMLInputElement).value
     setExternalValue(value)
     if (onChange) onChange(value)
 
-    const inputDate = parseDateString(value, DEFAULT_EXTERNAL_DATE_FORMAT, true)
+    const inputDate = parseDateString(value, dateFormat, true)
     let newValue = ''
-    if (inputDate && !isDateInvalid(value, parsedMinDate, parsedMaxDate)) {
+    if (
+      inputDate &&
+      !isDateInvalid(value, dateFormat, parsedMinDate, parsedMaxDate)
+    ) {
       newValue = formatDate(inputDate)
     }
 
@@ -175,16 +191,16 @@ export const DatePicker = ({
   }, [externalValue, minDate, maxDate])
 
   const handleToggleClick = (): void => {
+    if (isAriaDisabled) {
+      return
+    }
+
     if (showCalendar) {
       // calendar is open, hide it
       setStatuses([])
     } else {
       // calendar is closed, show it
-      const inputDate = parseDateString(
-        externalValue,
-        DEFAULT_EXTERNAL_DATE_FORMAT,
-        true
-      )
+      const inputDate = parseDateString(externalValue, dateFormat, true)
 
       const displayDate = keepDateBetweenMinAndMax(
         inputDate || (defaultValue && parseDateString(defaultValue)) || today(),
@@ -279,6 +295,7 @@ export const DatePicker = ({
         tabIndex={-1}
         required={false}
         disabled={false}
+        aria-disabled={undefined}
         value={internalValue}
         readOnly
       />
@@ -291,6 +308,7 @@ export const DatePicker = ({
           type="text"
           disabled={disabled}
           required={required}
+          readOnly={inputProps['readOnly'] ?? isAriaDisabled}
           value={externalValue}
           ref={externalInputEl}
           onInput={handleExternalInput}
@@ -309,6 +327,7 @@ export const DatePicker = ({
           aria-haspopup={true}
           aria-label={toggleCalendar}
           disabled={disabled}
+          aria-disabled={inputProps['aria-disabled']}
           onClick={handleToggleClick}></button>
         {/* Ignoring error: "Non-interactive elements should not be assigned mouse or keyboard event listeners." */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}

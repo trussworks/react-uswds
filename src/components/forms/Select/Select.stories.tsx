@@ -26,52 +26,42 @@ const meta: Meta<typeof Select> = {
     defaultValue: { control: 'text' },
     multiple: { control: 'boolean' },
   },
+  args: { id: 'input-select', name: 'input-select' },
+  render: (args) => (
+    <>
+      <Label htmlFor={args.id}>Select label</Label>
+      <Select {...args}>
+        <option>- Select - </option>
+        <option value="value1">Option A</option>
+        <option value="value2">Option B</option>
+        <option value="value3">Option C</option>
+        <option value="valueBIG">
+          Option of extra length to demonstrate how content like this will look
+          different
+        </option>
+      </Select>
+    </>
+  ),
 }
 
 export default meta
-type Story = StoryObj<typeof Select>
+type Story = StoryObj<typeof meta>
 
-const Template = ({ ...args }) => (
-  <>
-    <Label htmlFor={args.id}>Select label</Label>
-    <Select id={args.id} name={args.name} {...args}>
-      <option>- Select - </option>
-      <option value="value1">Option A</option>
-      <option value="value2">Option B</option>
-      <option value="value3">Option C</option>
-      <option value="valueBIG">
-        Option of extra length to demonstrate how content like this will look
-        different
-      </option>
-    </Select>
-  </>
-)
-
-export const Basic: Story = {
-  render: Template,
-  args: { id: 'input-select', name: 'input-select' },
-}
+export const Basic: Story = {}
 
 export const WithDefaultValue: Story = {
-  render: Template,
   args: {
-    id: 'input-select',
-    name: 'input-select',
     defaultValue: 'value2',
   },
 }
 
 export const Disabled: Story = {
-  render: Template,
   args: {
-    id: 'input-select',
-    name: 'input-select',
     disabled: true,
   },
 }
 
 export const Multiselect: Story = {
-  render: Template,
   args: {
     id: 'input-multiselect',
     name: 'input-multiselect',

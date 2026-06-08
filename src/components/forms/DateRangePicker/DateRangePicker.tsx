@@ -82,7 +82,7 @@ export const DateRangePicker = (props: DateRangePickerProps): JSX.Element => {
       React.SetStateAction<string | undefined>
     >
   ): ((val?: string) => void) => {
-    return (externallyFormattedValue?: string | undefined): void => {
+    return (externallyFormattedValue?: string): void => {
       const parsedValue =
         externallyFormattedValue &&
         parseDateString(externallyFormattedValue, DEFAULT_EXTERNAL_DATE_FORMAT)

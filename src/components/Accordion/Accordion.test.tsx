@@ -279,8 +279,21 @@ describe('Accordion component', () => {
       },
     ]
 
-    it('shows the expanded items by default', () => {
+    it('shows one expanded item when multiselectable is false', () => {
       const { getByTestId } = render(<Accordion items={testExpandedItems} />)
+
+      // The last expanded item "wins" if multiple new items have expanded:true
+      expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[1].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[2].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[3].id}`)).not.toBeVisible()
+      expect(getByTestId(`accordionItem_${testItems[4].id}`)).toBeVisible()
+    })
+
+    it('shows all expanded items when multiselectable is true', () => {
+      const { getByTestId } = render(
+        <Accordion multiselectable items={testExpandedItems} />
+      )
 
       expect(getByTestId(`accordionItem_${testItems[0].id}`)).not.toBeVisible()
       expect(getByTestId(`accordionItem_${testItems[1].id}`)).toBeVisible()
@@ -397,6 +410,98 @@ describe('Accordion component', () => {
       const { getByText } = render(<Accordion items={customTestItems} />)
       fireEvent.click(getByText(testItems[0].title as string))
       expect(customToggleFunction).toHaveBeenCalledOnce()
+    })
+  })
+
+  describe('when new items are added', () => {
+    let oldItems: AccordionItemProps[]
+    let newItems: AccordionItemProps[]
+
+    beforeEach(() => {
+      oldItems = testItems.slice(0, 2).map((item) => ({ ...item }))
+      newItems = testItems.slice(2).map((item) => ({ ...item }))
+    })
+
+    it('renders new items', () => {
+      const { getByTestId, rerender } = render(<Accordion items={oldItems} />)
+      rerender(<Accordion items={[...oldItems, ...newItems]} />)
+      expect(getByTestId(`accordionItem_${oldItems[0].id}`)).toBeInTheDocument()
+      expect(getByTestId(`accordionItem_${oldItems[1].id}`)).toBeInTheDocument()
+      expect(getByTestId(`accordionItem_${newItems[0].id}`)).toBeInTheDocument()
+      expect(getByTestId(`accordionItem_${newItems[1].id}`)).toBeInTheDocument()
+      expect(getByTestId(`accordionItem_${newItems[2].id}`)).toBeInTheDocument()
+    })
+
+    describe('when multiselectable is false', () => {
+      it('maintains existing expansion if new unexpanded items are added', () => {
+        const { getByText, getByTestId, rerender } = render(
+          <Accordion items={oldItems} />
+        )
+        fireEvent.click(getByText(oldItems[1].title as string))
+
+        rerender(<Accordion items={[...oldItems, ...newItems]} />)
+        expect(getByTestId(`accordionItem_${oldItems[0].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${oldItems[1].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[0].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[1].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[2].id}`)).not.toBeVisible()
+      })
+
+      it('collapses existing expansion if new expanded items are added', () => {
+        const { getByText, getByTestId, rerender } = render(
+          <Accordion items={oldItems} />
+        )
+        fireEvent.click(getByText(oldItems[1].title as string))
+
+        // The last expanded item "wins" if multiple new items have expanded:true
+        newItems[0].expanded = true
+        newItems[1].expanded = true
+        rerender(<Accordion items={[...oldItems, ...newItems]} />)
+        expect(getByTestId(`accordionItem_${oldItems[0].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${oldItems[1].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[0].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[1].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[2].id}`)).not.toBeVisible()
+      })
+    })
+
+    describe('when multiselectable is true', () => {
+      it('maintains existing expansions if new unexpanded items are added', () => {
+        const { getByText, getByTestId, rerender } = render(
+          <Accordion multiselectable items={oldItems} />
+        )
+        fireEvent.click(getByText(oldItems[0].title as string))
+        fireEvent.click(getByText(oldItems[1].title as string))
+
+        rerender(
+          <Accordion multiselectable items={[...oldItems, ...newItems]} />
+        )
+        expect(getByTestId(`accordionItem_${oldItems[0].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${oldItems[1].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[0].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[1].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[2].id}`)).not.toBeVisible()
+      })
+
+      it('maintains existing expansions if new expanded items are added', () => {
+        const { getByText, getByTestId, rerender } = render(
+          <Accordion multiselectable items={oldItems} />
+        )
+        fireEvent.click(getByText(oldItems[0].title as string))
+        fireEvent.click(getByText(oldItems[1].title as string))
+
+        // The last expanded item "wins" if multiple new items have expanded:true
+        newItems[1].expanded = true
+        newItems[2].expanded = true
+        rerender(
+          <Accordion multiselectable items={[...oldItems, ...newItems]} />
+        )
+        expect(getByTestId(`accordionItem_${oldItems[0].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${oldItems[1].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[0].id}`)).not.toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[1].id}`)).toBeVisible()
+        expect(getByTestId(`accordionItem_${newItems[2].id}`)).toBeVisible()
+      })
     })
   })
 })

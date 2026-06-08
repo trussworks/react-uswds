@@ -27,20 +27,25 @@ We welcome contributions in the form of comments, issues, or pull requests with 
 ## Environment setup
 
 1. Use the node environment manager of your choice, but make sure you have the required version specified by the project.
-   - The version required by the project can be found in [`.node-version`](../.node-version). 
+   - The version required by the project can be found in [`.node-version`](../.node-version).
    - We recommend using a single tool version manager such as [mise-en-place](https://mise.jdx.dev/), [asdf](https://asdf-vm.com/), or (specific to just Node) [nodenv](https://github.com/nodenv/nodenv) to manage your node version on this project.
      If you already have a preferred node version manager installed, use it.
-   
-  > [!NOTE]
-  > If using asdf, you must [enable `legacy_version_file`](https://asdf-vm.com/manage/configuration.html#legacy-version-file) to have the tool version picked up from `.node-version`
-  > Mise supports `.node-version` [as a default](https://mise.jdx.dev/configuration.html#idiomatic-version-files). If you're having trouble, make sure that setting is not set to false. 
+
+> [!NOTE]
+> If using asdf, you must [enable `legacy_version_file`](https://asdf-vm.com/manage/configuration.html#legacy-version-file) to have the tool version picked up from `.node-version`.
+>
+> Mise supports `.node-version` [as a default](https://mise.jdx.dev/configuration.html#idiomatic-version-files).
 
 2. Use [yarn](https://yarnpkg.com) to manage JS packages.
-
    - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
    - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
+3. Set up git hooks (this project uses [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks) and [nano-staged](https://github.com/usmanyunusov/nano-staged))
 
-3. Clone this repo and make sure you can run all of the available commands listed below with no errors.
+   ```shell
+   yarn simple-git-hooks
+   ```
+
+4. Make sure you can run all the available commands listed below with no errors.
 
 ### Available commands
 
@@ -56,6 +61,7 @@ These should all be run from within the project directory.
 - `yarn build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
   - `yarn build:watch` is also available
+
 ## Development
 
 ### Working on an issue
@@ -87,7 +93,7 @@ More guidance for preferred React practices can be found in the [adding new comp
 Because this project exports a library that will be used by other projects, it is important that updates follow a set of standard practices. When you PR your changes, several hooks will run to check and format changed files. In order to be eligible for merging, all branches must pass the following automation.
 
 - Code format and linting are enforced with automations.
-  - We use the following tools: 
+  - We use the following tools:
     - [Prettier](https://prettier.io/)
     - [TypeScript compilation](https://www.typescriptlang.org/)
     - [eslint](https://eslint.org/)

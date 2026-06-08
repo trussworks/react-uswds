@@ -1,9 +1,10 @@
-import React, { type JSX, useState } from 'react'
+import React, { useState } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { NavDropDownButton } from './NavDropDownButton'
 import { Header } from '../Header/Header'
 import { PrimaryNav } from '../PrimaryNav/PrimaryNav'
 
-export default {
+const meta: Meta<typeof NavDropDownButton> = {
   title: 'Components/Header/NavDropDownButton',
   component: NavDropDownButton,
   parameters: {
@@ -19,53 +20,58 @@ Source: https://designsystem.digital.gov/components/header/
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 const testLabel = 'Nav Label'
 
 const mockToggle = (): void => {
   /* mock submit fn */
 }
 
-export const DefaultDropDownMenu = (): JSX.Element => {
-  const [isOpen, setIsOpen] = useState([false, false])
+export const DefaultDropDownMenu: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState([false, false])
 
-  const onToggle = (index: number): void => {
-    setIsOpen((prevIsOpen) => {
-      const newIsOpen = [false, false]
-      // eslint-disable-next-line security/detect-object-injection
-      newIsOpen[index] = !prevIsOpen[index]
-      return newIsOpen
-    })
-  }
+    const onToggle = (index: number): void => {
+      setIsOpen((prevIsOpen) => {
+        const newIsOpen = [false, false]
+        // eslint-disable-next-line security/detect-object-injection
+        newIsOpen[index] = !prevIsOpen[index]
+        return newIsOpen
+      })
+    }
 
-  return (
-    <Header>
-      <div className="usa-nav-container">
-        <div className="usa-navbar"></div>
-        <PrimaryNav
-          items={[
-            <NavDropDownButton
-              key="testItemOne"
-              label={testLabel}
-              menuId="test"
-              isOpen={isOpen[0]}
-              onToggle={(): void => {
-                onToggle(0)
-              }}
-            />,
-            <NavDropDownButton
-              key="testItemTwo"
-              label={testLabel}
-              menuId="testTwo"
-              isOpen={isOpen[1]}
-              onToggle={(): void => {
-                onToggle(1)
-              }}
-              isCurrent={true}
-            />,
-          ]}
-          onToggleMobileNav={mockToggle}
-        />
-      </div>
-    </Header>
-  )
+    return (
+      <Header>
+        <div className="usa-nav-container">
+          <div className="usa-navbar"></div>
+          <PrimaryNav
+            items={[
+              <NavDropDownButton
+                key="testItemOne"
+                label={testLabel}
+                menuId="test"
+                isOpen={isOpen[0]}
+                onToggle={(): void => {
+                  onToggle(0)
+                }}
+              />,
+              <NavDropDownButton
+                key="testItemTwo"
+                label={testLabel}
+                menuId="testTwo"
+                isOpen={isOpen[1]}
+                onToggle={(): void => {
+                  onToggle(1)
+                }}
+                isCurrent={true}
+              />,
+            ]}
+            onToggleMobileNav={mockToggle}
+          />
+        </div>
+      </Header>
+    )
+  },
 }

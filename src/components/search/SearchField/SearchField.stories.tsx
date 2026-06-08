@@ -1,7 +1,7 @@
-import React, { type JSX } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SearchField } from './SearchField'
 
-export default {
+const meta = {
   title: 'Components/Search/SearchField',
   component: SearchField,
   parameters: {
@@ -15,12 +15,14 @@ Source: https://designsystem.digital.gov/components/search/
       },
     },
   },
+  args: { placeholder: 'Search...' },
+} satisfies Meta<typeof SearchField>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const DefaultSearchField: Story = {}
+
+export const BigSearchField: Story = {
+  args: { placeholder: 'Type something here...', isBig: true },
 }
-
-export const DefaultSearchField = (): JSX.Element => (
-  <SearchField placeholder="Search..." />
-)
-
-export const BigSearchField = (): JSX.Element => (
-  <SearchField placeholder="Type something here..." isBig />
-)

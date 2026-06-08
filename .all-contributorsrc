@@ -170,10 +170,10 @@
       ]
     },
     {
-      "login": "Igarfinkle",
-      "name": "Isaac Garfinkle",
+      "login": "hgarfinkle",
+      "name": "Helen Garfinkle",
       "avatar_url": "https://avatars.githubusercontent.com/u/7664177?v=4",
-      "profile": "https://github.com/Igarfinkle",
+      "profile": "https://github.com/hgarfinkle",
       "contributions": [
         "code"
       ]
@@ -406,6 +406,26 @@
       "profile": "https://github.com/TomNUSDS",
       "contributions": [
         "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "mdmower-csnw",
+      "name": "Matt Mower",
+      "avatar_url": "https://avatars.githubusercontent.com/u/135273348?v=4",
+      "profile": "https://github.com/mdmower-csnw",
+      "contributions": [
+        "bug",
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "mvanhorn",
+      "name": "Matt Van Horn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/455140?v=4",
+      "profile": "https://github.com/mvanhorn",
+      "contributions": [
         "code"
       ]
     }

@@ -9,8 +9,9 @@ import { Label } from '../Label/Label'
 import { RequiredMarker } from '../Label/RequiredMarker'
 import { TextInput } from '../TextInput/TextInput'
 import { Select } from '../Select/Select'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta: Meta<typeof Form> = {
   title: 'Page Templates/Forms',
   component: Form,
   parameters: {
@@ -26,40 +27,45 @@ Source: https://designsystem.digital.gov/components/form-templates/
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 const mockSubmit = (): void => {
   /* mock submit fn */
 }
 
-export const NameForm = (): JSX.Element => (
-  <Form onSubmit={mockSubmit}>
-    <Fieldset legend="Name" legendStyle="large">
-      <Label htmlFor="first-name">First or given name</Label>
-      <span className="usa-hint">For example, Jose, Darren, or Mai</span>
-      <TextInput id="first-name" name="first-name" type="text" />
-      <Label htmlFor="middle-name">Middle name</Label>
-      <TextInput id="middle-name" name="middle-name" type="text" />
-      <Label htmlFor="last-name">Last or family name</Label>
-      <span className="usa-hint">
-        For example, Martinez Gonzalez, Gu, or Smith
-      </span>
-      <TextInput id="last-name" name="last-name" type="text" />
-    </Fieldset>
-    <Fieldset legend="Full name" legendStyle="large">
-      <Label htmlFor="full-name">Full name</Label>
-      <span className="usa-hint">
-        For example, Prof. Madeline Martinez Hernandez
-      </span>
-      <TextInput id="full-name" name="full-name" type="text" />
-    </Fieldset>
-    <Fieldset legend="Preferred name" legendStyle="large">
-      <Label htmlFor="preferred-name">I prefer to be addressed as</Label>
-      <span className="usa-hint">
-        For example, Dr. Gu, Mrs. Schmidt, Alix Martinez
-      </span>
-      <TextInput id="preferred-name" name="preferred-name" type="text" />
-    </Fieldset>
-  </Form>
-)
+export const NameForm: Story = {
+  render: () => (
+    <Form onSubmit={mockSubmit}>
+      <Fieldset legend="Name" legendStyle="large">
+        <Label htmlFor="first-name">First or given name</Label>
+        <span className="usa-hint">For example, Jose, Darren, or Mai</span>
+        <TextInput id="first-name" name="first-name" type="text" />
+        <Label htmlFor="middle-name">Middle name</Label>
+        <TextInput id="middle-name" name="middle-name" type="text" />
+        <Label htmlFor="last-name">Last or family name</Label>
+        <span className="usa-hint">
+          For example, Martinez Gonzalez, Gu, or Smith
+        </span>
+        <TextInput id="last-name" name="last-name" type="text" />
+      </Fieldset>
+      <Fieldset legend="Full name" legendStyle="large">
+        <Label htmlFor="full-name">Full name</Label>
+        <span className="usa-hint">
+          For example, Prof. Madeline Martinez Hernandez
+        </span>
+        <TextInput id="full-name" name="full-name" type="text" />
+      </Fieldset>
+      <Fieldset legend="Preferred name" legendStyle="large">
+        <Label htmlFor="preferred-name">I prefer to be addressed as</Label>
+        <span className="usa-hint">
+          For example, Dr. Gu, Mrs. Schmidt, Alix Martinez
+        </span>
+        <TextInput id="preferred-name" name="preferred-name" type="text" />
+      </Fieldset>
+    </Form>
+  ),
+}
 
 export const AddressForm = (): JSX.Element => (
   <Form onSubmit={mockSubmit} large>

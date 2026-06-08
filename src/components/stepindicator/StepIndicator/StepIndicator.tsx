@@ -90,7 +90,6 @@ export const StepIndicator = (props: StepIndicatorProps): JSX.Element => {
     <div
       className={divClasses}
       data-testid="step-indicator"
-      aria-label="progress"
       {...remainingDivProps}>
       <ol className={listClasses} {...remainingListProps}>
         {stepChildren}

@@ -1,11 +1,12 @@
-import React, { type JSX, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { FileInput, FileInputRef } from './FileInput'
 import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-export default {
+const meta: Meta<typeof FileInput> = {
   title: 'Components/File input',
   component: FileInput,
   argTypes: {
@@ -24,97 +25,118 @@ Source: https://designsystem.digital.gov/components/file-input
   },
 }
 
+export default meta
+type Story = StoryObj<typeof meta>
+
 type StorybookArguments = {
   onChange: (event: React.ChangeEvent<Element>) => void
   onDrop: React.DragEventHandler<Element>
 }
 
-export const SingleFileInput = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="file-input-single">Input accepts a single file</Label>
-    <FileInput id="file-input-single" name="file-input-single" />
-  </FormGroup>
-)
+export const SingleFileInput: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="file-input-single">Input accepts a single file</Label>
+      <FileInput id="file-input-single" name="file-input-single" />
+    </FormGroup>
+  ),
+}
 
-export const AcceptTextAndPDF = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="file-input-specific">
-      Input accepts only specific file types
-    </Label>
-    <span className="usa-hint" id="file-input-specific-hint">
-      Select PDF or TXT files
-    </span>
-    <FileInput
-      id="file-input-specific"
-      name="file-input-specific"
-      accept=".pdf,.txt"
-      aria-describedby="file-input-specific-hint"
-      multiple
-    />
-  </FormGroup>
-)
-
-export const AcceptImages = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="file-input-wildcard">Input accepts any kind of image</Label>
-    <span className="usa-hint" id="file-input-wildcard-hint">
-      Select any type of image format
-    </span>
-    <FileInput
-      id="file-input-wildcard"
-      name="file-input-wildcard"
-      accept="image/*"
-      aria-describedby="file-input-wildcard-hint"
-      multiple
-    />
-  </FormGroup>
-)
-
-export const MultipleFilesInput = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="file-input-multiple">Input accepts multiple files</Label>
-    <span className="usa-hint" id="file-input-multiple-hint">
-      Select one or more files
-    </span>
-    <FileInput
-      id="file-input-multiple"
-      name="file-input-multiple"
-      aria-describedby="file-input-multiple-hint"
-      multiple
-    />
-  </FormGroup>
-)
-
-export const WithError = (): JSX.Element => (
-  <div style={{ marginLeft: '1.25em' }}>
-    <FormGroup error>
-      <Label htmlFor="file-input-error" error>
-        Input has an error
+export const AcceptTextAndPDF: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="file-input-specific">
+        Input accepts only specific file types
       </Label>
-      <span className="usa-hint" id="file-input-error-hint">
-        Select any valid file
+      <span className="usa-hint" id="file-input-specific-hint">
+        Select PDF or TXT files
       </span>
-      <ErrorMessage id="file-input-error-alert">
-        Display a helpful error message
-      </ErrorMessage>
       <FileInput
-        id="file-input-error"
-        name="file-input-error"
-        aria-describedby="file-input-error-hint file-input-error-alert"
+        id="file-input-specific"
+        name="file-input-specific"
+        accept=".pdf,.txt"
+        aria-describedby="file-input-specific-hint"
+        multiple
       />
     </FormGroup>
-  </div>
-)
+  ),
+}
 
-export const Disabled = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="file-input-disabled">Input in a disabled state</Label>
-    <FileInput id="file-input-disabled" name="file-input-disabled" disabled />
-  </FormGroup>
-)
+export const AcceptImages: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="file-input-wildcard">
+        Input accepts any kind of image
+      </Label>
+      <span className="usa-hint" id="file-input-wildcard-hint">
+        Select any type of image format
+      </span>
+      <FileInput
+        id="file-input-wildcard"
+        name="file-input-wildcard"
+        accept="image/*"
+        aria-describedby="file-input-wildcard-hint"
+        previewSingleSelectedFileText="Selected photo"
+        previewMultipleSelectedFileText="Photos selected"
+        changeSelectedFileText="Change photo"
+        multiple
+      />
+    </FormGroup>
+  ),
+}
 
-export const WithRefAndCustomHandlers = {
-  render: (argTypes: StorybookArguments): JSX.Element => {
+export const MultipleFilesInput: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="file-input-multiple">Input accepts multiple files</Label>
+      <span className="usa-hint" id="file-input-multiple-hint">
+        Select one or more files
+      </span>
+      <FileInput
+        id="file-input-multiple"
+        name="file-input-multiple"
+        aria-describedby="file-input-multiple-hint"
+        multiple
+      />
+    </FormGroup>
+  ),
+}
+
+export const WithError: Story = {
+  render: () => (
+    <div style={{ marginLeft: '1.25em' }}>
+      <FormGroup error>
+        <Label htmlFor="file-input-error" error>
+          Input has an error
+        </Label>
+        <span className="usa-hint" id="file-input-error-hint">
+          Select any valid file
+        </span>
+        <ErrorMessage id="file-input-error-alert">
+          Display a helpful error message
+        </ErrorMessage>
+        <FileInput
+          id="file-input-error"
+          name="file-input-error"
+          aria-describedby="file-input-error-hint file-input-error-alert"
+        />
+      </FormGroup>
+    </div>
+  ),
+}
+
+export const Disabled: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="file-input-disabled">Input in a disabled state</Label>
+      <FileInput id="file-input-disabled" name="file-input-disabled" disabled />
+    </FormGroup>
+  ),
+}
+
+export const WithRefAndCustomHandlers: Story = {
+  render: (args) => {
+    const argTypes = args as unknown as StorybookArguments
     const INITIAL_FILES = null
     const [files, setFiles] = useState<FileList | null>(INITIAL_FILES)
     const fileInputRef = useRef<FileInputRef>(null)
@@ -163,16 +185,20 @@ export const WithRefAndCustomHandlers = {
   },
 }
 
-export const CustomText = (): JSX.Element => (
-  <FormGroup>
-    <Label htmlFor="file-input-single">La entrada acepta un solo archivo</Label>
-    <FileInput
-      id="file-input-single"
-      name="file-input-single"
-      dragText="Arrastre el archivo aquí o "
-      chooseText="elija de una carpeta"
-      errorText="Este no es un tipo de archivo válido."
-      accept=".no"
-    />
-  </FormGroup>
-)
+export const CustomText: Story = {
+  render: () => (
+    <FormGroup>
+      <Label htmlFor="file-input-single">
+        La entrada acepta un solo archivo
+      </Label>
+      <FileInput
+        id="file-input-single"
+        name="file-input-single"
+        dragText="Arrastre el archivo aquí o "
+        chooseText="elija de una carpeta"
+        errorText="Este no es un tipo de archivo válido."
+        accept=".no"
+      />
+    </FormGroup>
+  ),
+}

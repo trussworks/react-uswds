@@ -1,10 +1,10 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
-import React, { type JSX } from 'react'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'
 
-export default {
+const meta: Meta<typeof FooterNav> = {
   title: 'Components/Footer/FooterNav',
   component: FooterNav,
   parameters: {
@@ -20,55 +20,74 @@ Source: https://designsystem.digital.gov/components/footer
   },
 }
 
-export const SlimFooterNav = (): JSX.Element => (
-  <FooterNav
-    aria-label="Footer navigation"
-    size="slim"
-    links={Array(4).fill(
-      <a className="usa-footer__primary-link" href="#">
-        PrimaryLink
-      </a>
-    )}
-  />
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const MediumFooterNav = (): JSX.Element => (
-  <FooterNav
-    aria-label="Footer navigation"
-    size="medium"
-    links={Array(4).fill(
-      <a className="usa-footer__primary-link" href="#">
-        PrimaryLink
-      </a>
-    )}
-  />
-)
-
-export const BigFooterNav = {
-  render: (): JSX.Element => (
-    <Footer
-      size="big"
-      primary={
-        <FooterNav
-          aria-label="Footer navigation"
-          size="big"
-          links={[
-            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-            [
-              'Topic',
-              <a key="2" href="#">
-                Secondary link that is pretty long
-              </a>,
-              ...Array(2).fill(<a href="#">Secondary link</a>),
-            ],
-            ['Topic', ...Array(3).fill(<a href="#">Secondary link</a>)],
-          ]}
-        />
-      }
-      secondary={<></>}
+export const SlimFooterNav: Story = {
+  render: () => (
+    <FooterNav
+      aria-label="Footer navigation"
+      size="slim"
+      links={Array.from({ length: 4 }, (_x, i) => (
+        <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
+          Primary link
+        </a>
+      ))}
     />
   ),
+}
 
+export const MediumFooterNav: Story = {
+  render: () => (
+    <FooterNav
+      aria-label="Footer navigation"
+      size="medium"
+      links={Array.from({ length: 4 }, (_x, i) => (
+        <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
+          Primary link
+        </a>
+      ))}
+    />
+  ),
+}
+
+export const BigFooterNav: Story = {
+  render: () => (
+    <FooterNav
+      className="padding-bottom-2"
+      aria-label="Footer navigation"
+      size="big"
+      links={[
+        [
+          'Topic',
+          ...Array.from({ length: 3 }, (_x, i) => (
+            <a key={`topic_0_${i}`} href="#">
+              Secondary link
+            </a>
+          )),
+        ],
+        [
+          'Topic',
+          <a key="topic_1_0" href="#">
+            Secondary link that is pretty long
+          </a>,
+          ...Array.from({ length: 2 }, (_x, i) => (
+            <a key={`topic_1_${i + 1}`} href="#">
+              Secondary link
+            </a>
+          )),
+        ],
+        [
+          'Topic',
+          ...Array.from({ length: 3 }, (_x, i) => (
+            <a key={`topic_2_${i}`} href="#">
+              Secondary link
+            </a>
+          )),
+        ],
+      ]}
+    />
+  ),
   parameters: {
     happo: { waitForContent: 'Secondary link that is pretty long' },
   },

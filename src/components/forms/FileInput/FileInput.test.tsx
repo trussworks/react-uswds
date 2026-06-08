@@ -115,6 +115,10 @@ describe('FileInput component', () => {
         files: [TEST_PNG_FILE],
       },
     })
+    expect(getByTestId('file-input-input')).toHaveAttribute(
+      'aria-label',
+      customProps.errorText
+    )
     const errorText = within(getByTestId('file-input-error')).getByText(
       customProps.errorText
     )
@@ -169,6 +173,23 @@ describe('FileInput component', () => {
       expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
       const previewHeading = getByTestId('file-input-preview-heading')
       expect(previewHeading).toHaveTextContent('Selected file Change file')
+    })
+
+    it('renders a custom header text when a single file is chosen', async () => {
+      const { getByTestId } = render(
+        <FileInput
+          {...testProps}
+          previewSingleSelectedFileText="Selected photo"
+          previewMultipleSelectedFileText="Photos selected"
+          changeSelectedFileText="Change photo"
+        />
+      )
+      const inputEl = getByTestId('file-input-input')
+      await userEvent.upload(inputEl, TEST_PNG_FILE)
+      expect(getByTestId('file-input-preview')).toBeInTheDocument()
+      expect(getByTestId('file-input-instructions')).toHaveClass('display-none')
+      const previewHeading = getByTestId('file-input-preview-heading')
+      expect(previewHeading).toHaveTextContent('Selected photo Change photo')
     })
 
     it('renders a preview for each file and header text when multiple files are chosen', async () => {
@@ -265,9 +286,9 @@ describe('FileInput component', () => {
         },
       })
 
-      expect(getByTestId('file-input-error')).toHaveTextContent(
-        'This is not a valid file type'
-      )
+      const errorMessage = 'Error: This is not a valid file type.'
+      expect(inputEl).toHaveAttribute('aria-label', errorMessage)
+      expect(getByTestId('file-input-error')).toHaveTextContent(errorMessage)
       expect(getByTestId('file-input-error')).toHaveClass(
         'usa-file-input__accepted-files-message'
       )
@@ -320,9 +341,9 @@ describe('FileInput component', () => {
         },
       })
 
-      expect(getByTestId('file-input-error')).toHaveTextContent(
-        'This is not a valid file type'
-      )
+      const errorMessage = 'Error: This is not a valid file type.'
+      expect(inputEl).toHaveAttribute('aria-label', errorMessage)
+      expect(getByTestId('file-input-error')).toHaveTextContent(errorMessage)
       expect(getByTestId('file-input-error')).toHaveClass(
         'usa-file-input__accepted-files-message'
       )

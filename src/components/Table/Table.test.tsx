@@ -104,6 +104,12 @@ describe('Table component', () => {
     )
   })
 
+  it('renders sticky header table', () => {
+    const { getByRole } = render(<Table stickyHeader>{testContent}</Table>)
+
+    expect(getByRole('table')).toHaveClass('usa-table--sticky-header')
+  })
+
   it('passes the class onto the root table element', () => {
     const { getByRole } = render(
       <Table className="custom-class">{testContent}</Table>

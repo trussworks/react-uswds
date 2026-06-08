@@ -1,7 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-43-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -92,31 +92,31 @@ See [prelease.md](docs/prerelease.md)
 
 [We decided](https://github.com/trussworks/react-uswds/issues/2001) to focus on our [storybook](https://trussworks.github.io/react-uswds/) over hosting an example/boilerplate implementation, but you can find a few such things from our friends:
 
-* [NASA's Americana Remix stack](https://github.com/nasa-gcn/americana-stack?tab=readme-ov-file)
-* [USDS's Gatsby starter template](https://github.com/usds/gatsby-uswds-ts-starter)
-* [Nava's Next.js starter template](https://github.com/navapbc/template-application-nextjs)
+- [NASA's Americana Remix stack](https://github.com/nasa-gcn/americana-stack?tab=readme-ov-file)
+- [USDS's Gatsby starter template](https://github.com/usds/gatsby-uswds-ts-starter)
+- [Nava's Next.js starter template](https://github.com/navapbc/template-application-nextjs)
 
 You can also check out some open source projects using React-USWDS across federal and state governments:
 
-* DOL
-  * [Unemployment Insurance Claimant Experience Pilot](https://github.com/USDepartmentofLabor/ui-claimant-experience-pilot)
-  * [New Jersey's Unemployment Insurance Claimant Intake Pilot](https://github.com/USDepartmentofLabor/UI-Claimant-Experience-NJ-Pilot)
-* USA.gov
-  * [Vote.gov](https://vote.gov/)
-  * [Search.gov](https://search.gov/)
-* CDC
-  * [ReportStream](https://github.com/CDCgov/prime-reportstream)
-  * [EpiSync](https://github.com/CDCgov/EpiSync)
-  * [National Electronic Disease Surveillance System Base System](https://github.com/CDCgov/NEDSS-Modernization)
-* Centers for Medicare & Medicaid Services (CMS):
-  * [EASi Application](https://github.com/CMSgov/easi-app)
-  * [Model Innovation Tool (MINT)](https://github.com/CMSgov/mint-app)
-* Others
-  * [DoD and TRANSCOM's MilMove](https://github.com/transcom/mymove)
-  * [OMB's Environment Justice Scorecard](https://github.com/usds/ej-scorecard)
-  * [U.S. Office of Head Start's Training & Technical Assistance Smart Hub](https://github.com/HHS/Head-Start-TTADP)
-  * [CISA's XFD application](https://github.com/cisagov/XFD)
-  * ...and more on our [dependents page](https://github.com/trussworks/react-uswds/network/dependents)
+- DOL
+  - [Unemployment Insurance Claimant Experience Pilot](https://github.com/USDepartmentofLabor/ui-claimant-experience-pilot)
+  - [New Jersey's Unemployment Insurance Claimant Intake Pilot](https://github.com/USDepartmentofLabor/UI-Claimant-Experience-NJ-Pilot)
+- USA.gov
+  - [Vote.gov](https://vote.gov/)
+  - [Search.gov](https://search.gov/)
+- CDC
+  - [ReportStream](https://github.com/CDCgov/prime-reportstream)
+  - [EpiSync](https://github.com/CDCgov/EpiSync)
+  - [National Electronic Disease Surveillance System Base System](https://github.com/CDCgov/NEDSS-Modernization)
+- Centers for Medicare & Medicaid Services (CMS):
+  - [EASi Application](https://github.com/CMSgov/easi-app)
+  - [Model Innovation Tool (MINT)](https://github.com/CMSgov/mint-app)
+- Others
+  - [DoD and TRANSCOM's MilMove](https://github.com/transcom/mymove)
+  - [OMB's Environment Justice Scorecard](https://github.com/usds/ej-scorecard)
+  - [U.S. Office of Head Start's Training & Technical Assistance Smart Hub](https://github.com/HHS/Head-Start-TTADP)
+  - [CISA's XFD application](https://github.com/cisagov/XFD)
+  - ...and more on our [dependents page](https://github.com/trussworks/react-uswds/network/dependents)
 
 ## Background
 
@@ -148,7 +148,7 @@ This repository is governed by the [Contributor Covenant](./CODE_OF_CONDUCT.md)
 - [PR commit guidelines](./docs/contributing.md#opening--merging-pull-requests)
 - [Adding new components](./docs/adding_new_components.md)
 - [Testing in an application](./docs/contributing.md#testing-in-an-application)
-- [Releasing](./docs/releasing.md)
+- [Releasing](./docs/releasing/releasing.md)
 
 ## License
 
@@ -197,7 +197,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kimallen"><img src="https://avatars.githubusercontent.com/u/13249580?v=4?s=100" width="100px;" alt="Kim Allen"/><br /><sub><b>Kim Allen</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kimallen" title="Code">💻</a> <a href="#a11y-kimallen" title="Accessibility">️️️️♿️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylehilltruss"><img src="https://avatars.githubusercontent.com/u/83614364?v=4?s=100" width="100px;" alt="Kyle Hill"/><br /><sub><b>Kyle Hill</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=kylehilltruss" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rswerve"><img src="https://avatars.githubusercontent.com/u/8964335?v=4?s=100" width="100px;" alt="Mazdak Atighi"/><br /><sub><b>Mazdak Atighi</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rswerve" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Igarfinkle"><img src="https://avatars.githubusercontent.com/u/7664177?v=4?s=100" width="100px;" alt="Isaac Garfinkle"/><br /><sub><b>Isaac Garfinkle</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=Igarfinkle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/hgarfinkle"><img src="https://avatars.githubusercontent.com/u/7664177?v=4?s=100" width="100px;" alt="Helen Garfinkle"/><br /><sub><b>Helen Garfinkle</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=hgarfinkle" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rogeruiz"><img src="https://avatars.githubusercontent.com/u/706004?v=4?s=100" width="100px;" alt="Roger Steve Ruiz"/><br /><sub><b>Roger Steve Ruiz</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=rogeruiz" title="Code">💻</a> <a href="https://github.com/trussworks/react-uswds/commits?author=rogeruiz" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lpsinger"><img src="https://avatars.githubusercontent.com/u/728407?v=4?s=100" width="100px;" alt="Leo Singer"/><br /><sub><b>Leo Singer</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Alpsinger" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=lpsinger" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Shkeating"><img src="https://avatars.githubusercontent.com/u/59394696?v=4?s=100" width="100px;" alt="Shauna Keating"/><br /><sub><b>Shauna Keating</b></sub></a><br /><a href="#a11y-Shkeating" title="Accessibility">️️️️♿️</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Shkeating" title="Code">💻</a></td>
@@ -227,6 +227,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ivcota"><img src="https://avatars.githubusercontent.com/u/18635074?v=4?s=100" width="100px;" alt="Iverson Diles"/><br /><sub><b>Iverson Diles</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3AIvcota" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Ivcota" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/doug-s-nava"><img src="https://avatars.githubusercontent.com/u/92806979?v=4?s=100" width="100px;" alt="doug-s-nava"/><br /><sub><b>doug-s-nava</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Adoug-s-nava" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=doug-s-nava" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/TomNUSDS"><img src="https://avatars.githubusercontent.com/u/74203452?v=4?s=100" width="100px;" alt="TomNUSDS"/><br /><sub><b>TomNUSDS</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3ATomNUSDS" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=TomNUSDS" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mdmower-csnw"><img src="https://avatars.githubusercontent.com/u/135273348?v=4?s=100" width="100px;" alt="Matt Mower"/><br /><sub><b>Matt Mower</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3Amdmower-csnw" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=mdmower-csnw" title="Code">💻</a> <a href="#maintenance-mdmower-csnw" title="Maintenance">🚧</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mvanhorn"><img src="https://avatars.githubusercontent.com/u/455140?v=4?s=100" width="100px;" alt="Matt Van Horn"/><br /><sub><b>Matt Van Horn</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=mvanhorn" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
