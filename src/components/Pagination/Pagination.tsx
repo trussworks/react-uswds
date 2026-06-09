@@ -20,6 +20,7 @@ type PaginationPageProps = {
   pathname: string
   page: number
   isCurrent?: boolean
+  isLastPage: boolean
   onClickPageNumber?: (
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
@@ -28,6 +29,7 @@ type PaginationPageProps = {
 const PaginationPage = ({
   page,
   isCurrent,
+  isLastPage,
   pathname,
   onClickPageNumber,
 }: PaginationPageProps) => {
@@ -41,6 +43,9 @@ const PaginationPage = ({
     'text-underline'
   )
 
+  const ariaLabel = isLastPage ? `Last page, page ${page}` : `Page ${page}`
+  const ariaCurrent = isCurrent ? 'page' : undefined
+
   return (
     <li
       key={`pagination_page_${page}`}
@@ -50,8 +55,8 @@ const PaginationPage = ({
           type="button"
           data-testid="pagination-page-number"
           className={buttonClasses}
-          aria-label={`Page ${page}`}
-          aria-current={isCurrent ? 'page' : undefined}
+          aria-label={ariaLabel}
+          aria-current={ariaCurrent}
           onClick={(event) => {
             onClickPageNumber(event, page)
           }}>
@@ -61,8 +66,8 @@ const PaginationPage = ({
         <Link
           href={`${pathname}?page=${page}`}
           className={linkClasses}
-          aria-label={`Page ${page}`}
-          aria-current={isCurrent ? 'page' : undefined}>
+          aria-label={ariaLabel}
+          aria-current={ariaCurrent}>
           {page}
         </Link>
       )}
@@ -227,6 +232,7 @@ export const Pagination = ({
               page={pageNum}
               pathname={pathname}
               isCurrent={pageNum === currentPage}
+              isLastPage={totalPages !== undefined && pageNum === totalPages}
               onClickPageNumber={onClickPageNumber}
             />
           )
