@@ -1,64 +1,83 @@
-import React, { type JSX } from 'react'
-import classnames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 
 import { HeadingLevel } from '../../types/headingLevel'
 
-import styles from './Alert.module.scss'
-
 export type AlertProps = {
-  type: 'success' | 'warning' | 'error' | 'info'
-  heading?: React.ReactNode
-  headingLevel: HeadingLevel
+  type: 'success' | 'warning' | 'error' | 'info' | 'emergency'
   children?: React.ReactNode
-  cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean
   validation?: boolean
+  bodyClassName?: string
 } & React.HTMLAttributes<HTMLDivElement>
 
 export const Alert = ({
   type,
-  heading,
-  headingLevel,
-  cta,
   children,
   slim,
   noIcon,
-  className,
   validation,
-  ...props
-}: AlertProps): JSX.Element => {
-  const classes = classnames(
+  className,
+  bodyClassName,
+  ...divProps
+}: AlertProps) => {
+  const classes = classNames(
     'usa-alert',
     {
       'usa-alert--success': type === 'success',
       'usa-alert--warning': type === 'warning',
       'usa-alert--error': type === 'error',
       'usa-alert--info': type === 'info',
+      'usa-alert--emergency': type === 'emergency',
       'usa-alert--slim': slim,
       'usa-alert--no-icon': noIcon,
       'usa-alert--validation': validation,
-      [styles.alertWithCTA]: !!cta,
     },
     className
   )
 
-  const Heading = headingLevel
+  const bodyClasses = classNames('usa-alert__body', bodyClassName)
 
   return (
-    <div className={classes} data-testid="alert" {...props}>
-      <div className="usa-alert__body">
-        {heading && <Heading className="usa-alert__heading">{heading}</Heading>}
-        {children &&
-          (validation ? (
-            children
-          ) : (
-            <p className="usa-alert__text">{children}</p>
-          ))}
-      </div>
-      {cta && <div>{cta}</div>}
+    <div className={classes} data-testid="alert" {...divProps}>
+      <div className={bodyClasses}>{children}</div>
     </div>
   )
 }
 
-export default Alert
+export type AlertHeadingProps = {
+  level: HeadingLevel
+  children: React.ReactNode
+} & React.HTMLAttributes<HTMLHeadingElement>
+export const AlertHeading = ({
+  level,
+  children,
+  className,
+  ...headingProps
+}: AlertHeadingProps) => {
+  const classes = classNames('usa-alert__heading', className)
+
+  const HeadingTag = level
+  return (
+    <HeadingTag className={classes} {...headingProps}>
+      {children}
+    </HeadingTag>
+  )
+}
+
+export type AlertTextProps = {
+  children: React.ReactNode
+} & React.HTMLAttributes<HTMLParagraphElement>
+export const AlertText = ({
+  children,
+  className,
+  ...textProps
+}: AlertTextProps) => {
+  const classes = classNames('usa-alert__text', className)
+  return (
+    <p className={classes} {...textProps}>
+      {children}
+    </p>
+  )
+}

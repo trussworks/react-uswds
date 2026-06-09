@@ -2,7 +2,7 @@
 import React, { type JSX } from 'react'
 import { Form } from './Form'
 
-import { Alert } from '../../Alert/Alert'
+import { Alert, AlertHeading, AlertText } from '../../Alert/Alert'
 import { Button } from '../../Button/Button'
 import { Fieldset } from '../Fieldset/Fieldset'
 import { Label } from '../Label/Label'
@@ -221,10 +221,13 @@ export const PasswordResetForm = (): JSX.Element => {
     <Form onSubmit={mockSubmit} large>
       <Fieldset legend="Reset password" legendStyle="large">
         <span>Please enter your new password</span>
-        <Alert type="info" heading="Password information" headingLevel="h4">
-          Length requirements
-          <br />
-          Character constraints, if any
+        <Alert type="info">
+          <AlertHeading level="h4">Password information</AlertHeading>
+          <AlertText>
+            Length requirements
+            <br />
+            Character constraints, if any
+          </AlertText>
         </Alert>
 
         <Label htmlFor="newPassword">New password</Label>

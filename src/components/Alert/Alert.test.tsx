@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Alert } from './Alert'
+import { Alert, AlertHeading, AlertText } from './Alert'
 import { HeadingLevel } from '../../types/headingLevel'
 
 describe('Alert component', () => {
@@ -10,14 +10,14 @@ describe('Alert component', () => {
   })
 
   it('renders without errors', () => {
-    const { queryByTestId } = render(<Alert type="success" headingLevel="h4" />)
+    const { queryByTestId } = render(<Alert type="success" />)
     expect(queryByTestId('alert')).toBeInTheDocument()
   })
 
   it('renders children in <p> tag by default', () => {
     const { queryByTestId } = render(
-      <Alert type="success" headingLevel="h4" className="myClass">
-        Test children
+      <Alert type="success" className="myClass">
+        <AlertText>Test children</AlertText>
       </Alert>
     )
     expect(queryByTestId('alert')).toHaveTextContent('Test children')
@@ -26,7 +26,7 @@ describe('Alert component', () => {
 
   it('renders validation style alert', () => {
     const { queryByTestId } = render(
-      <Alert type="success" validation headingLevel="h4" className="myClass">
+      <Alert type="success" validation className="myClass">
         Test children
       </Alert>
     )
@@ -37,9 +37,18 @@ describe('Alert component', () => {
 
   it('accepts className prop', () => {
     const { queryByTestId } = render(
-      <Alert type="success" headingLevel="h4" className="myClass" />
+      <Alert type="success" className="myClass" />
     )
     expect(queryByTestId('alert')).toHaveClass('myClass')
+  })
+
+  it('accepts a bodyClassName prop', () => {
+    const { queryByText } = render(
+      <Alert type="success" bodyClassName="myBodyClass">
+        Test children
+      </Alert>
+    )
+    expect(queryByText('Test children')).toHaveClass('myBodyClass')
   })
 
   describe('with custom heading levels', () => {
@@ -55,11 +64,9 @@ describe('Alert component', () => {
       'can render with headingLevel %s',
       (headingLevel, expectedLevel) => {
         const { getByRole } = render(
-          <Alert
-            type="success"
-            headingLevel={headingLevel}
-            heading="Working Alert"
-          />
+          <Alert type="success">
+            <AlertHeading level={headingLevel}>Working Alert</AlertHeading>
+          </Alert>
         )
         expect(
           getByRole('heading', { level: expectedLevel })
@@ -68,11 +75,12 @@ describe('Alert component', () => {
     )
   })
 
-  describe('with a CTA', () => {
-    it('renders the CTA', () => {
-      const testCTA = <button type="button">Click Here</button>
+  describe('with a custom Call To Action', () => {
+    it('renders the Call To Action', () => {
       const { queryByText } = render(
-        <Alert type="success" headingLevel="h4" cta={testCTA} />
+        <Alert type="success">
+          <button type="button">Click Here</button>
+        </Alert>
       )
       expect(queryByText('Click Here')).toBeInTheDocument()
     })
