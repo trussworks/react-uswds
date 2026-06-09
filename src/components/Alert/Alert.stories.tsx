@@ -65,16 +65,16 @@ export const Info: Story = {
 export const Slim: Story = {
   render: () => (
     <>
-      <Alert type="success" headingLevel="h4" slim>
+      <Alert type="success" slim>
         {testText}
       </Alert>
-      <Alert type="warning" headingLevel="h4" slim>
+      <Alert type="warning" slim>
         {testText}
       </Alert>
-      <Alert type="error" headingLevel="h4" slim>
+      <Alert type="error" slim>
         {testText}
       </Alert>
-      <Alert type="info" headingLevel="h4" slim>
+      <Alert type="info" slim>
         {testText}
       </Alert>
     </>
@@ -84,16 +84,16 @@ export const Slim: Story = {
 export const NoIcon: Story = {
   render: () => (
     <>
-      <Alert type="success" headingLevel="h4" noIcon>
+      <Alert type="success" noIcon>
         {testText}
       </Alert>
-      <Alert type="warning" headingLevel="h4" noIcon>
+      <Alert type="warning" noIcon>
         {testText}
       </Alert>
-      <Alert type="error" headingLevel="h4" noIcon>
+      <Alert type="error" noIcon>
         {testText}
       </Alert>
-      <Alert type="info" headingLevel="h4" noIcon>
+      <Alert type="info" noIcon>
         {testText}
       </Alert>
     </>
@@ -103,16 +103,16 @@ export const NoIcon: Story = {
 export const SlimNoIcon: Story = {
   render: () => (
     <>
-      <Alert type="success" headingLevel="h4" slim noIcon>
+      <Alert type="success" slim noIcon>
         {testText}
       </Alert>
-      <Alert type="warning" headingLevel="h4" slim noIcon>
+      <Alert type="warning" slim noIcon>
         {testText}
       </Alert>
-      <Alert type="error" headingLevel="h4" slim noIcon>
+      <Alert type="error" slim noIcon>
         {testText}
       </Alert>
-      <Alert type="info" headingLevel="h4" slim noIcon>
+      <Alert type="info" slim noIcon>
         {testText}
       </Alert>
     </>

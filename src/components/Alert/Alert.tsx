@@ -5,16 +5,28 @@ import { HeadingLevel } from '../../types/headingLevel'
 
 import styles from './Alert.module.scss'
 
-export type AlertProps = {
+type AlertBaseProps = {
   type: 'success' | 'warning' | 'error' | 'info'
-  heading?: React.ReactNode
-  headingLevel: HeadingLevel
   children?: React.ReactNode
   cta?: React.ReactNode
   slim?: boolean
   noIcon?: boolean
   validation?: boolean
-} & React.HTMLAttributes<HTMLDivElement>
+}
+
+type AlertWithHeadingProps = {
+  heading: React.ReactNode
+  headingLevel: HeadingLevel
+}
+
+type AlertWithoutHeadingProps = {
+  heading?: undefined
+  headingLevel?: HeadingLevel
+}
+
+export type AlertProps = AlertBaseProps &
+  (AlertWithHeadingProps | AlertWithoutHeadingProps) &
+  React.HTMLAttributes<HTMLDivElement>
 
 export const Alert = ({
   type,
@@ -43,7 +55,7 @@ export const Alert = ({
     className
   )
 
-  const Heading = headingLevel
+  const Heading = headingLevel ?? 'h4'
 
   return (
     <div className={classes} data-testid="alert" {...props}>

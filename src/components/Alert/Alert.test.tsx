@@ -10,13 +10,13 @@ describe('Alert component', () => {
   })
 
   it('renders without errors', () => {
-    const { queryByTestId } = render(<Alert type="success" headingLevel="h4" />)
+    const { queryByTestId } = render(<Alert type="success" />)
     expect(queryByTestId('alert')).toBeInTheDocument()
   })
 
   it('renders children in <p> tag by default', () => {
     const { queryByTestId } = render(
-      <Alert type="success" headingLevel="h4" className="myClass">
+      <Alert type="success" className="myClass">
         Test children
       </Alert>
     )
@@ -26,7 +26,7 @@ describe('Alert component', () => {
 
   it('renders validation style alert', () => {
     const { queryByTestId } = render(
-      <Alert type="success" validation headingLevel="h4" className="myClass">
+      <Alert type="success" validation className="myClass">
         Test children
       </Alert>
     )
@@ -37,7 +37,7 @@ describe('Alert component', () => {
 
   it('accepts className prop', () => {
     const { queryByTestId } = render(
-      <Alert type="success" headingLevel="h4" className="myClass" />
+      <Alert type="success" className="myClass" />
     )
     expect(queryByTestId('alert')).toHaveClass('myClass')
   })
@@ -71,9 +71,7 @@ describe('Alert component', () => {
   describe('with a CTA', () => {
     it('renders the CTA', () => {
       const testCTA = <button type="button">Click Here</button>
-      const { queryByText } = render(
-        <Alert type="success" headingLevel="h4" cta={testCTA} />
-      )
+      const { queryByText } = render(<Alert type="success" cta={testCTA} />)
       expect(queryByText('Click Here')).toBeInTheDocument()
     })
   })
