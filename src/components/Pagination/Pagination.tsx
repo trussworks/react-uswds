@@ -16,12 +16,7 @@ export type PaginationProps = {
   ) => void
 } & JSX.IntrinsicElements['nav']
 
-const PaginationPage = ({
-  page,
-  isCurrent,
-  pathname,
-  onClickPageNumber,
-}: {
+type PaginationPageProps = {
   pathname: string
   page: number
   isCurrent?: boolean
@@ -29,7 +24,13 @@ const PaginationPage = ({
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
-}) => {
+}
+const PaginationPage = ({
+  page,
+  isCurrent,
+  pathname,
+  onClickPageNumber,
+}: PaginationPageProps) => {
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent,
   })
