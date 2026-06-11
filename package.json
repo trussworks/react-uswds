@@ -35,29 +35,34 @@
   "engines": {
     "node": ">= 20"
   },
+  "overrides": {
+    "@laynezh/vite-plugin-lib-assets": {
+      "vite": "$vite"
+    }
+  },
   "scripts": {
     "test": "vitest --run",
     "test:debug": "vitest --inspect --pool threads --poolOptions.threads.singleThread",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
     "test:bundles": "vitest --run bundles.test.tsx --mode bundles",
-    "test:serverside": "yarn build && node src/serverSideTest.js",
+    "test:serverside": "npm run build && node src/serverSideTest.js",
     "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build",
-    "build": "vite build && yarn run build:uswds && yarn run test:bundles",
+    "build": "vite build && npm run build:uswds && npm run test:bundles",
     "build:uswds": "vite build --mode uswds",
     "build:watch": "vite dev",
     "lint": "tsc && eslint src && stylelint \"src/**/*.{css,scss}\"",
     "lint:fix": "tsc && eslint src --fix && stylelint \"src/**/*.{css,scss}\" --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json,md}\"",
-    "prepack": "yarn lint && yarn test && yarn build",
+    "prepack": "npm run lint && npm run test && npm run build",
     "happo": "happo run --config ./.happo.js",
     "happo-ci": "HAPPO_CONFIG_FILE='./.happo.js' npx -p happo.io happo-ci-github-actions --config ./.happo.js",
     "contributors:add": "all-contributors add"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn nano-staged"
+    "pre-commit": "npx nano-staged"
   },
   "nano-staged": {
     "**/*.{ts,tsx,js,jsx}": [
@@ -93,7 +98,7 @@
     "@babel/core": "^7.23.9",
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^9.24.0",
     "@laynezh/vite-plugin-lib-assets": "^2.1.0",
     "@storybook/addon-a11y": "^10.0.5",
     "@storybook/addon-docs": "^10.0.5",
@@ -149,6 +154,5 @@
     "vite-plugin-svgr": "^5.2.0",
     "vitest": "^4.0.8",
     "webpack": "^5.90.1"
-  },
-  "packageManager": "yarn@3.8.7"
+  }
 }
