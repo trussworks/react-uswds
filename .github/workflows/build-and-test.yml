@@ -26,16 +26,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: npm ci
 
       - name: Run tests with coverage
-        run: yarn test:coverage
+        run: npm run test:coverage
 
       - name: Run node server side tests
-        run: yarn test:serverside
+        run: npm run test:serverside
 
   run-checks:
     runs-on: ubuntu-latest
@@ -48,19 +48,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
-          cache: 'yarn'
+          cache: 'npm'
 
-      # The yarn cache is not node_modules
+      # The npm cache is not node_modules
       - name: Install dependencies
-        run: yarn --immutable
+        run: npm ci
 
       - name: Lint code
-        run: yarn lint
+        run: npm run lint
 
       - name: Check format
-        run: yarn format:check
+        run: npm run format:check
 
       - name: Run Danger JS
-        run: yarn danger ci --failOnErrors
+        run: npx danger ci --failOnErrors
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
