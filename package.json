@@ -30,7 +30,8 @@
     "./lib/uswds.css": "./lib/uswds.css"
   },
   "files": [
-    "lib"
+    "lib",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">= 20"
