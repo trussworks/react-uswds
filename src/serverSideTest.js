@@ -1,7 +1,7 @@
 /** Bare-bones check to see if server-side use of this code is inadvertantly
  * prevented by any use of Web APIs that aren't available in node.
  *
- * This script should only run as part of the yarn test:serverside command,
+ * This script should only run as part of the npm run test:serverside command,
  * and takes place after a webpack build.
  */
 
