@@ -71,7 +71,7 @@ storybook-static/
 
 # Output of 'npm pack'
 
-\*.tgz
+*.tgz
 
 # dotenv environment variables file
 
