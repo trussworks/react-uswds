@@ -23,7 +23,7 @@ type StorybookArguments = {
 
 const testProps = {
   date: new Date('January 20 2021'),
-  minDate: parseDateString('0000-01-01') as Date,
+  minDate: parseDateString('0000-01-01')!,
 }
 
 export const yearPicker = (argTypes: StorybookArguments): JSX.Element => (
@@ -41,8 +41,8 @@ export const withMinAndMaxInCurrentChunk = (
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}
-    minDate={parseDateString('2021-01-01') as Date}
-    maxDate={parseDateString('2025-01-01') as Date}
+    minDate={parseDateString('2021-01-01')!}
+    maxDate={parseDateString('2025-01-01')}
   />
 )
 
@@ -53,7 +53,7 @@ export const withMinInCurrentChunk = (
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}
-    minDate={parseDateString('2021-01-01') as Date}
+    minDate={parseDateString('2021-01-01')!}
   />
 )
 
@@ -64,7 +64,7 @@ export const withMaxInCurrentChunk = (
     {...testProps}
     handleSelectYear={argTypes.handleSelectYear}
     setStatuses={argTypes.setStatuses}
-    minDate={parseDateString('1950-01-01') as Date}
-    maxDate={parseDateString('2025-01-01') as Date}
+    minDate={parseDateString('1950-01-01')!}
+    maxDate={parseDateString('2025-01-01')}
   />
 )
