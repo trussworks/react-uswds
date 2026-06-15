@@ -2,563 +2,506 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [11.0.1](https://github.com/trussworks/react-uswds/compare/11.0.0...11.0.1) (2026-04-06)
-
+## [11.0.2](https://github.com/trussworks/react-uswds/compare/11.0.1...11.0.2) (2026-06-08)
 
 ### Bug Fixes
 
-* Replace deprecated React.FormEvent and React.FormEventHandler with derived types ([#3398](https://github.com/trussworks/react-uswds/issues/3398)) ([55f27c9](https://github.com/trussworks/react-uswds/commit/55f27c951d83ad5f7d309b403dbcbb413676e19f))
+- clear input value on clearFiles from imperative handle ([#3090](https://github.com/trussworks/react-uswds/issues/3090)) ([ba607de](https://github.com/trussworks/react-uswds/commit/ba607de683768e37ad691455db5f77330a35f3c0))
+
+### Documentation & Examples
+
+- **storybook:** Update Storybook Stories to CSF3 ([#3489](https://github.com/trussworks/react-uswds/issues/3489)) ([b2fa438](https://github.com/trussworks/react-uswds/commit/b2fa438b88b3bdfbb8f043e38da878a1f45db62d))
+
+## [11.0.1](https://github.com/trussworks/react-uswds/compare/11.0.0...11.0.1) (2026-04-06)
+
+### Bug Fixes
+
+- Replace deprecated React.FormEvent and React.FormEventHandler with derived types ([#3398](https://github.com/trussworks/react-uswds/issues/3398)) ([55f27c9](https://github.com/trussworks/react-uswds/commit/55f27c951d83ad5f7d309b403dbcbb413676e19f))
 
 ## [11.0.0](https://github.com/trussworks/react-uswds/compare/10.2.0...11.0.0) (2025-12-15)
 
-
 ### ⚠ BREAKING CHANGES
 
-* upgrade to USWDS 3.13.0 ([#3266](https://github.com/trussworks/react-uswds/issues/3266))
-* There are several breaking (visual) changes in the release notes for USWDS 3.9.0: https://github.com/uswds/uswds/releases/tag/v3.9.0
+- upgrade to USWDS 3.13.0 ([#3266](https://github.com/trussworks/react-uswds/issues/3266))
+- There are several breaking (visual) changes in the release notes for USWDS 3.9.0: https://github.com/uswds/uswds/releases/tag/v3.9.0
 
 ### Features
 
-* upgrade to USWDS 3.10.0 ([#3265](https://github.com/trussworks/react-uswds/issues/3265)) ([b30504c](https://github.com/trussworks/react-uswds/commit/b30504c64acefe770855bbb5dc07888536951f18))
-* upgrade to USWDS 3.13.0 ([#3266](https://github.com/trussworks/react-uswds/issues/3266)) ([0d96892](https://github.com/trussworks/react-uswds/commit/0d9689202b84fcd8c59cc168a4a5ab2a8f480de4))
-* upgrade to USWDS 3.9.0 ([#3264](https://github.com/trussworks/react-uswds/issues/3264)) ([bf452b4](https://github.com/trussworks/react-uswds/commit/bf452b4fa7988f379fe61de0215cf1024b473c33))
-
+- upgrade to USWDS 3.10.0 ([#3265](https://github.com/trussworks/react-uswds/issues/3265)) ([b30504c](https://github.com/trussworks/react-uswds/commit/b30504c64acefe770855bbb5dc07888536951f18))
+- upgrade to USWDS 3.13.0 ([#3266](https://github.com/trussworks/react-uswds/issues/3266)) ([0d96892](https://github.com/trussworks/react-uswds/commit/0d9689202b84fcd8c59cc168a4a5ab2a8f480de4))
+- upgrade to USWDS 3.9.0 ([#3264](https://github.com/trussworks/react-uswds/issues/3264)) ([bf452b4](https://github.com/trussworks/react-uswds/commit/bf452b4fa7988f379fe61de0215cf1024b473c33))
 
 ### Bug Fixes
 
-* Apply consistent USWDS class in slim Footer storybook example ([#3334](https://github.com/trussworks/react-uswds/issues/3334)) ([f3d48aa](https://github.com/trussworks/react-uswds/commit/f3d48aa0aedd887ce49c6dc4461b65440651d8d4))
-* Enable recommended type linting and address errors ([#3327](https://github.com/trussworks/react-uswds/issues/3327)) ([aa926dc](https://github.com/trussworks/react-uswds/commit/aa926dc1c2553b3485ddb380b471d18baf5c500e))
-* **refactor:** Refactor Modal tests to prevent test flakes ([#3335](https://github.com/trussworks/react-uswds/issues/3335)) ([67dc45a](https://github.com/trussworks/react-uswds/commit/67dc45a7cf6d33ad8e0ebf8998da49f5808c87e2))
-* Use default tsconfig.json for lint support of focus-trap-react.tsx ([#3337](https://github.com/trussworks/react-uswds/issues/3337)) ([55f11c5](https://github.com/trussworks/react-uswds/commit/55f11c5c605e749333265fd245023e28f5326e0f))
-
+- Apply consistent USWDS class in slim Footer storybook example ([#3334](https://github.com/trussworks/react-uswds/issues/3334)) ([f3d48aa](https://github.com/trussworks/react-uswds/commit/f3d48aa0aedd887ce49c6dc4461b65440651d8d4))
+- Enable recommended type linting and address errors ([#3327](https://github.com/trussworks/react-uswds/issues/3327)) ([aa926dc](https://github.com/trussworks/react-uswds/commit/aa926dc1c2553b3485ddb380b471d18baf5c500e))
+- **refactor:** Refactor Modal tests to prevent test flakes ([#3335](https://github.com/trussworks/react-uswds/issues/3335)) ([67dc45a](https://github.com/trussworks/react-uswds/commit/67dc45a7cf6d33ad8e0ebf8998da49f5808c87e2))
+- Use default tsconfig.json for lint support of focus-trap-react.tsx ([#3337](https://github.com/trussworks/react-uswds/issues/3337)) ([55f11c5](https://github.com/trussworks/react-uswds/commit/55f11c5c605e749333265fd245023e28f5326e0f))
 
 ### Documentation & Examples
 
-* Update releasing documentation to mirror our more automated release system ([#3325](https://github.com/trussworks/react-uswds/issues/3325)) ([dc9a185](https://github.com/trussworks/react-uswds/commit/dc9a18569d46ae4f71128284784f679b4a0699f5))
+- Update releasing documentation to mirror our more automated release system ([#3325](https://github.com/trussworks/react-uswds/issues/3325)) ([dc9a185](https://github.com/trussworks/react-uswds/commit/dc9a18569d46ae4f71128284784f679b4a0699f5))
 
 ## [10.2.0](https://github.com/trussworks/react-uswds/compare/10.1.0...10.2.0) (2025-11-13)
 
-
 ### Features
 
-* add DateSelector dateFormat prop ([#2726](https://github.com/trussworks/react-uswds/issues/2726)) ([34c19c1](https://github.com/trussworks/react-uswds/commit/34c19c1fc5816609491434a31984ff6fc35667da))
-* Update Accordion expansion behavior ([#3262](https://github.com/trussworks/react-uswds/issues/3262)) ([dc8bf86](https://github.com/trussworks/react-uswds/commit/dc8bf868442a90f525293bd2865b753a2c072037))
-* upgrade to USWDS 3.8.2 ([#3263](https://github.com/trussworks/react-uswds/issues/3263)) ([443a077](https://github.com/trussworks/react-uswds/commit/443a07723326c502e2d3bca2dddfb57937871a4a))
-
+- add DateSelector dateFormat prop ([#2726](https://github.com/trussworks/react-uswds/issues/2726)) ([34c19c1](https://github.com/trussworks/react-uswds/commit/34c19c1fc5816609491434a31984ff6fc35667da))
+- Update Accordion expansion behavior ([#3262](https://github.com/trussworks/react-uswds/issues/3262)) ([dc8bf86](https://github.com/trussworks/react-uswds/commit/dc8bf868442a90f525293bd2865b753a2c072037))
+- upgrade to USWDS 3.8.2 ([#3263](https://github.com/trussworks/react-uswds/issues/3263)) ([443a077](https://github.com/trussworks/react-uswds/commit/443a07723326c502e2d3bca2dddfb57937871a4a))
 
 ### Bug Fixes
 
-* Address eslint react-hook violations in CharacterCount ([#3321](https://github.com/trussworks/react-uswds/issues/3321)) ([d1d8f55](https://github.com/trussworks/react-uswds/commit/d1d8f55fb29b2e364cc9d83eef4f7cc2ac468325))
-* do not automatically postinstall simple-git-hooks ([#3323](https://github.com/trussworks/react-uswds/issues/3323)) ([4b9b298](https://github.com/trussworks/react-uswds/commit/4b9b298b914a742b767d42dfd175ca263dc41620))
-* Minor cleanup in Pagination stories ([#3320](https://github.com/trussworks/react-uswds/issues/3320)) ([acb8c41](https://github.com/trussworks/react-uswds/commit/acb8c4178cf00555b6cced255ee36bd998e95f6a))
-* Use item IDs for accordion item keys ([#3317](https://github.com/trussworks/react-uswds/issues/3317)) ([2ba2b89](https://github.com/trussworks/react-uswds/commit/2ba2b89c2ba4ba1a29c2ca54cf7d1996bc533336))
-
+- Address eslint react-hook violations in CharacterCount ([#3321](https://github.com/trussworks/react-uswds/issues/3321)) ([d1d8f55](https://github.com/trussworks/react-uswds/commit/d1d8f55fb29b2e364cc9d83eef4f7cc2ac468325))
+- do not automatically postinstall simple-git-hooks ([#3323](https://github.com/trussworks/react-uswds/issues/3323)) ([4b9b298](https://github.com/trussworks/react-uswds/commit/4b9b298b914a742b767d42dfd175ca263dc41620))
+- Minor cleanup in Pagination stories ([#3320](https://github.com/trussworks/react-uswds/issues/3320)) ([acb8c41](https://github.com/trussworks/react-uswds/commit/acb8c4178cf00555b6cced255ee36bd998e95f6a))
+- Use item IDs for accordion item keys ([#3317](https://github.com/trussworks/react-uswds/issues/3317)) ([2ba2b89](https://github.com/trussworks/react-uswds/commit/2ba2b89c2ba4ba1a29c2ca54cf7d1996bc533336))
 
 ### Documentation & Examples
 
-* Improve Conventional Commit PR linting experience and document how to handle breaking changes ([#3314](https://github.com/trussworks/react-uswds/issues/3314)) ([1321aac](https://github.com/trussworks/react-uswds/commit/1321aac24c46fb857a36963bbe14c49af9c011b4))
+- Improve Conventional Commit PR linting experience and document how to handle breaking changes ([#3314](https://github.com/trussworks/react-uswds/issues/3314)) ([1321aac](https://github.com/trussworks/react-uswds/commit/1321aac24c46fb857a36963bbe14c49af9c011b4))
 
 ## [10.1.0](https://github.com/trussworks/react-uswds/compare/10.0.2...10.1.0) (2025-11-10)
 
-
 ### Features
 
-* add optional change/selected text to FileInput ([#3116](https://github.com/trussworks/react-uswds/issues/3116)) ([41e40c4](https://github.com/trussworks/react-uswds/commit/41e40c40c986efaac73d8f475bcab314acbc085d))
-* Add support for Node 24, the active LTS version ([#3306](https://github.com/trussworks/react-uswds/issues/3306)) ([bc6ca69](https://github.com/trussworks/react-uswds/commit/bc6ca696b9b288b83b4f63904ed0439868bd6f74))
-
+- add optional change/selected text to FileInput ([#3116](https://github.com/trussworks/react-uswds/issues/3116)) ([41e40c4](https://github.com/trussworks/react-uswds/commit/41e40c40c986efaac73d8f475bcab314acbc085d))
+- Add support for Node 24, the active LTS version ([#3306](https://github.com/trussworks/react-uswds/issues/3306)) ([bc6ca69](https://github.com/trussworks/react-uswds/commit/bc6ca696b9b288b83b4f63904ed0439868bd6f74))
 
 ### Bug Fixes
 
-* Add style as class to scrollbar width utility to fix CSP issue ([#2761](https://github.com/trussworks/react-uswds/issues/2761)) ([2380608](https://github.com/trussworks/react-uswds/commit/238060877fb7cf4716f04685b71ec3e1b726ecf4))
-* Do not set title on Tooltip trigger element ([#3313](https://github.com/trussworks/react-uswds/issues/3313)) ([f6e5d3f](https://github.com/trussworks/react-uswds/commit/f6e5d3f6187163aca99f1610ea8f04f0ac719ca5))
-* resolve type error reported during build ([#3315](https://github.com/trussworks/react-uswds/issues/3315)) ([fd2281c](https://github.com/trussworks/react-uswds/commit/fd2281c07e85d243379bc59417fbec9e37572a38))
-* **storybook:** Add aria-describedby to DateInput examples to date match USWDS example implementation ([#3312](https://github.com/trussworks/react-uswds/issues/3312)) ([cc43808](https://github.com/trussworks/react-uswds/commit/cc4380824bd75bffbff6f22f7fda85e50690faf8))
-* update FilePreview to handle multiple renders in strict mode ([#3236](https://github.com/trussworks/react-uswds/issues/3236)) ([9ee684f](https://github.com/trussworks/react-uswds/commit/9ee684f4156d25688fed20f84df947a419090b65))
+- Add style as class to scrollbar width utility to fix CSP issue ([#2761](https://github.com/trussworks/react-uswds/issues/2761)) ([2380608](https://github.com/trussworks/react-uswds/commit/238060877fb7cf4716f04685b71ec3e1b726ecf4))
+- Do not set title on Tooltip trigger element ([#3313](https://github.com/trussworks/react-uswds/issues/3313)) ([f6e5d3f](https://github.com/trussworks/react-uswds/commit/f6e5d3f6187163aca99f1610ea8f04f0ac719ca5))
+- resolve type error reported during build ([#3315](https://github.com/trussworks/react-uswds/issues/3315)) ([fd2281c](https://github.com/trussworks/react-uswds/commit/fd2281c07e85d243379bc59417fbec9e37572a38))
+- **storybook:** Add aria-describedby to DateInput examples to date match USWDS example implementation ([#3312](https://github.com/trussworks/react-uswds/issues/3312)) ([cc43808](https://github.com/trussworks/react-uswds/commit/cc4380824bd75bffbff6f22f7fda85e50690faf8))
+- update FilePreview to handle multiple renders in strict mode ([#3236](https://github.com/trussworks/react-uswds/issues/3236)) ([9ee684f](https://github.com/trussworks/react-uswds/commit/9ee684f4156d25688fed20f84df947a419090b65))
 
 ## [10.0.2](https://github.com/trussworks/react-uswds/compare/10.0.1...10.0.2) (2025-06-09)
 
-
 ### Bug Fixes
 
-* Correctly pass down classname props to Combobox component ([#3143](https://github.com/trussworks/react-uswds/issues/3143)) ([2086ab8](https://github.com/trussworks/react-uswds/commit/2086ab838af4da6eee0a2a9ad10222aad8c3eec9))
+- Correctly pass down classname props to Combobox component ([#3143](https://github.com/trussworks/react-uswds/issues/3143)) ([2086ab8](https://github.com/trussworks/react-uswds/commit/2086ab838af4da6eee0a2a9ad10222aad8c3eec9))
 
 ## [10.0.1](https://github.com/trussworks/react-uswds/compare/10.0.0...10.0.1) (2025-05-16)
 
 ### Bug Fixes
 
-* Fix an issue where the built package was not included in the published release artifact [#3161](https://github.com/trussworks/react-uswds/issues/3161) ([cfe7a6d](https://github.com/trussworks/react-uswds/commit/cfe7a6dbea4b6063a96abdf31a663e23791dc0da))
+- Fix an issue where the built package was not included in the published release artifact [#3161](https://github.com/trussworks/react-uswds/issues/3161) ([cfe7a6d](https://github.com/trussworks/react-uswds/commit/cfe7a6dbea4b6063a96abdf31a663e23791dc0da))
 
 ## [10.0.0](https://github.com/trussworks/react-uswds/compare/9.1.0...10.0.0) (2025-05-15)
 
-
 ### ⚠ BREAKING CHANGES
 
-* Upgrade to React 19 ([#3088](https://github.com/trussworks/react-uswds/issues/3088)) ([2ad0462](https://github.com/trussworks/react-uswds/commit/2ad046278848d3499580a61c954496556f45ec30))
+- Upgrade to React 19 ([#3088](https://github.com/trussworks/react-uswds/issues/3088)) ([2ad0462](https://github.com/trussworks/react-uswds/commit/2ad046278848d3499580a61c954496556f45ec30))
 
 ### Features
 
-* Export component props ([#3118](https://github.com/trussworks/react-uswds/issues/3118)) ([2941f8c](https://github.com/trussworks/react-uswds/commit/2941f8ca88fcb96b919feae0c185a28c132e16a9))
+- Export component props ([#3118](https://github.com/trussworks/react-uswds/issues/3118)) ([2941f8c](https://github.com/trussworks/react-uswds/commit/2941f8ca88fcb96b919feae0c185a28c132e16a9))
 
 ### Bug Fixes
 
-* [#2620](https://github.com/trussworks/react-uswds/issues/2620) Move form templates in Storybook ([#3097](https://github.com/trussworks/react-uswds/issues/3097)) ([0262854](https://github.com/trussworks/react-uswds/commit/026285419bcf99a85099436202e65cf535adbcba))
-* Husky postinstall in dev only ([#3152](https://github.com/trussworks/react-uswds/issues/3152)) ([a9ce78b](https://github.com/trussworks/react-uswds/commit/a9ce78b190608e601d902c008b51e7287e528515))
-* **release:** Fix react-uswds release pipeline ([#3148](https://github.com/trussworks/react-uswds/issues/3148)) ([70456f2](https://github.com/trussworks/react-uswds/commit/70456f2854f4c8fb2f9c82eecb77387fc1c70e58))
-* tooltip ID cleanup ([#3096](https://github.com/trussworks/react-uswds/issues/3096)) ([c161e1e](https://github.com/trussworks/react-uswds/commit/c161e1ee5855792feb77557303bf4f61de3bea86))
-* useId instead of random number for tooltip ID ([#3094](https://github.com/trussworks/react-uswds/issues/3094)) ([d769610](https://github.com/trussworks/react-uswds/commit/d7696108154fd644371f0b06b5b2348f9603a619))
-
+- [#2620](https://github.com/trussworks/react-uswds/issues/2620) Move form templates in Storybook ([#3097](https://github.com/trussworks/react-uswds/issues/3097)) ([0262854](https://github.com/trussworks/react-uswds/commit/026285419bcf99a85099436202e65cf535adbcba))
+- Husky postinstall in dev only ([#3152](https://github.com/trussworks/react-uswds/issues/3152)) ([a9ce78b](https://github.com/trussworks/react-uswds/commit/a9ce78b190608e601d902c008b51e7287e528515))
+- **release:** Fix react-uswds release pipeline ([#3148](https://github.com/trussworks/react-uswds/issues/3148)) ([70456f2](https://github.com/trussworks/react-uswds/commit/70456f2854f4c8fb2f9c82eecb77387fc1c70e58))
+- tooltip ID cleanup ([#3096](https://github.com/trussworks/react-uswds/issues/3096)) ([c161e1e](https://github.com/trussworks/react-uswds/commit/c161e1ee5855792feb77557303bf4f61de3bea86))
+- useId instead of random number for tooltip ID ([#3094](https://github.com/trussworks/react-uswds/issues/3094)) ([d769610](https://github.com/trussworks/react-uswds/commit/d7696108154fd644371f0b06b5b2348f9603a619))
 
 ### Documentation & Examples
 
-* add [@lea-m-truss](https://github.com/lea-m-truss) as a contributor ([#3108](https://github.com/trussworks/react-uswds/issues/3108)) ([0285f25](https://github.com/trussworks/react-uswds/commit/0285f2583c9d3c963a9e7518e6a901841ba2df80))
+- add [@lea-m-truss](https://github.com/lea-m-truss) as a contributor ([#3108](https://github.com/trussworks/react-uswds/issues/3108)) ([0285f25](https://github.com/trussworks/react-uswds/commit/0285f2583c9d3c963a9e7518e6a901841ba2df80))
 
 ## [9.1.0](https://github.com/trussworks/react-uswds/compare/9.0.0...9.1.0) (2024-08-26)
 
-
 ### Features
 
-* Enable custom on click handler passed via accordion item ([#2998](https://github.com/trussworks/react-uswds/issues/2998)) ([420483a](https://github.com/trussworks/react-uswds/commit/420483a0ca185844d39e193534ac07004e854920))
-
+- Enable custom on click handler passed via accordion item ([#2998](https://github.com/trussworks/react-uswds/issues/2998)) ([420483a](https://github.com/trussworks/react-uswds/commit/420483a0ca185844d39e193534ac07004e854920))
 
 ### Bug Fixes
 
-* ‘use client’ directive syntax ([#2891](https://github.com/trussworks/react-uswds/issues/2891)) ([4e78d7e](https://github.com/trussworks/react-uswds/commit/4e78d7e45b40c3882c4faf345c9db6e240683453))
-* a11y omnibus package ([#2819](https://github.com/trussworks/react-uswds/issues/2819)) ([758cd74](https://github.com/trussworks/react-uswds/commit/758cd7456ee99cf49cea68bc9feb4a0d87feffab))
-* add a statusText prop to StepIndicator to allow for i18n for the sr-only element Closes [#2857](https://github.com/trussworks/react-uswds/issues/2857) ([#2888](https://github.com/trussworks/react-uswds/issues/2888)) ([855205e](https://github.com/trussworks/react-uswds/commit/855205e6927c7fce26b087520f564f4915e29aea))
-* moved smooth-scroll application to useEffect ([#2868](https://github.com/trussworks/react-uswds/issues/2868)) ([bc87158](https://github.com/trussworks/react-uswds/commit/bc8715860f47bd1f30415e40f748ca85ec288361))
-* remove defaultProps from DatePicker and Tooltip ([#2949](https://github.com/trussworks/react-uswds/issues/2949)) ([88947ca](https://github.com/trussworks/react-uswds/commit/88947ca84f0dbf3004de21c978e8b7ff7b1e5699))
-* Update TextInput ref forwarding ([#3011](https://github.com/trussworks/react-uswds/issues/3011)) ([f8ac06d](https://github.com/trussworks/react-uswds/commit/f8ac06dbb15625acbbdd8afaf58868a660653c92))
-
+- ‘use client’ directive syntax ([#2891](https://github.com/trussworks/react-uswds/issues/2891)) ([4e78d7e](https://github.com/trussworks/react-uswds/commit/4e78d7e45b40c3882c4faf345c9db6e240683453))
+- a11y omnibus package ([#2819](https://github.com/trussworks/react-uswds/issues/2819)) ([758cd74](https://github.com/trussworks/react-uswds/commit/758cd7456ee99cf49cea68bc9feb4a0d87feffab))
+- add a statusText prop to StepIndicator to allow for i18n for the sr-only element Closes [#2857](https://github.com/trussworks/react-uswds/issues/2857) ([#2888](https://github.com/trussworks/react-uswds/issues/2888)) ([855205e](https://github.com/trussworks/react-uswds/commit/855205e6927c7fce26b087520f564f4915e29aea))
+- moved smooth-scroll application to useEffect ([#2868](https://github.com/trussworks/react-uswds/issues/2868)) ([bc87158](https://github.com/trussworks/react-uswds/commit/bc8715860f47bd1f30415e40f748ca85ec288361))
+- remove defaultProps from DatePicker and Tooltip ([#2949](https://github.com/trussworks/react-uswds/issues/2949)) ([88947ca](https://github.com/trussworks/react-uswds/commit/88947ca84f0dbf3004de21c978e8b7ff7b1e5699))
+- Update TextInput ref forwarding ([#3011](https://github.com/trussworks/react-uswds/issues/3011)) ([f8ac06d](https://github.com/trussworks/react-uswds/commit/f8ac06dbb15625acbbdd8afaf58868a660653c92))
 
 ### Documentation & Examples
 
-* Implementation examples ([#2890](https://github.com/trussworks/react-uswds/issues/2890)) ([4a68110](https://github.com/trussworks/react-uswds/commit/4a68110280e297bbb182a61136da65d2aaeaeca0))
+- Implementation examples ([#2890](https://github.com/trussworks/react-uswds/issues/2890)) ([4a68110](https://github.com/trussworks/react-uswds/commit/4a68110280e297bbb182a61136da65d2aaeaeca0))
 
 ## [9.0.0](https://github.com/trussworks/react-uswds/compare/8.0.0...9.0.0) (2024-03-21)
 
-
 ### ⚠ BREAKING CHANGES
 
-* fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820))
+- fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820))
 
 ### Bug Fixes
 
-* Added hook to combobox for when options change ([#2715](https://github.com/trussworks/react-uswds/issues/2715)) ([031b9fb](https://github.com/trussworks/react-uswds/commit/031b9fba59708236d6e1e4ec0caf3f53aeadfe9f))
-* Allow importing css from npm package ([#2807](https://github.com/trussworks/react-uswds/issues/2807)) ([8551f35](https://github.com/trussworks/react-uswds/commit/8551f35cef631185bb9a4672b742651e1cb4e023))
-* fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820)) ([e05061e](https://github.com/trussworks/react-uswds/commit/e05061e5a302137fd699fe4f716c9036b327fbcb))
-
+- Added hook to combobox for when options change ([#2715](https://github.com/trussworks/react-uswds/issues/2715)) ([031b9fb](https://github.com/trussworks/react-uswds/commit/031b9fba59708236d6e1e4ec0caf3f53aeadfe9f))
+- Allow importing css from npm package ([#2807](https://github.com/trussworks/react-uswds/issues/2807)) ([8551f35](https://github.com/trussworks/react-uswds/commit/8551f35cef631185bb9a4672b742651e1cb4e023))
+- fix various 8.0.0 issues ([#2820](https://github.com/trussworks/react-uswds/issues/2820)) ([e05061e](https://github.com/trussworks/react-uswds/commit/e05061e5a302137fd699fe4f716c9036b327fbcb))
 
 ### Documentation & Examples
 
-* added docs for breaking changes and using withDeprecationWarning ([#2763](https://github.com/trussworks/react-uswds/issues/2763)) ([305e116](https://github.com/trussworks/react-uswds/commit/305e11629288307cafcc2bfb289ce109c777a092))
+- added docs for breaking changes and using withDeprecationWarning ([#2763](https://github.com/trussworks/react-uswds/issues/2763)) ([305e116](https://github.com/trussworks/react-uswds/commit/305e11629288307cafcc2bfb289ce109c777a092))
 
 ## [8.0.0](https://github.com/trussworks/react-uswds/compare/7.0.0...8.0.0) (2024-03-06)
 
-
 ### ⚠ BREAKING CHANGES
 
-* Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716))
+- Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716))
 
 ### Features
 
-* Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716)) ([17dde0a](https://github.com/trussworks/react-uswds/commit/17dde0a03c6c23b2e145b78ee8ef3faf86867431))
-
+- Webpack/Jest to Vite/Vitest migration ([#2716](https://github.com/trussworks/react-uswds/issues/2716)) ([17dde0a](https://github.com/trussworks/react-uswds/commit/17dde0a03c6c23b2e145b78ee8ef3faf86867431))
 
 ### Bug Fixes
 
-* replace card button with link ([#2750](https://github.com/trussworks/react-uswds/issues/2750)) ([59d5f14](https://github.com/trussworks/react-uswds/commit/59d5f14b85ae96ee4fd5c89c6084bbc1c663d1e7))
-
+- replace card button with link ([#2750](https://github.com/trussworks/react-uswds/issues/2750)) ([59d5f14](https://github.com/trussworks/react-uswds/commit/59d5f14b85ae96ee4fd5c89c6084bbc1c663d1e7))
 
 ### Documentation & Examples
 
-* Made storybook docs available again, small org changes elsewhere ([#2795](https://github.com/trussworks/react-uswds/issues/2795)) ([e77fe30](https://github.com/trussworks/react-uswds/commit/e77fe30f7feaf8a52816ade8fad93923b5a0e7fb))
-* removed circleci references ([#2777](https://github.com/trussworks/react-uswds/issues/2777)) ([b3e79f2](https://github.com/trussworks/react-uswds/commit/b3e79f2fe4c5d043af0053cf41d288dfe8758cd9))
+- Made storybook docs available again, small org changes elsewhere ([#2795](https://github.com/trussworks/react-uswds/issues/2795)) ([e77fe30](https://github.com/trussworks/react-uswds/commit/e77fe30f7feaf8a52816ade8fad93923b5a0e7fb))
+- removed circleci references ([#2777](https://github.com/trussworks/react-uswds/issues/2777)) ([b3e79f2](https://github.com/trussworks/react-uswds/commit/b3e79f2fe4c5d043af0053cf41d288dfe8758cd9))
 
 ## [7.0.0](https://github.com/trussworks/react-uswds/compare/6.2.0...7.0.0) (2024-02-22)
 
-
 ### ⚠ BREAKING CHANGES
 
-* React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714))
-* Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532))
+- React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714))
+- Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532))
 
 ### Features
 
-* moved overlay into header component ([#2701](https://github.com/trussworks/react-uswds/issues/2701)) ([3433eac](https://github.com/trussworks/react-uswds/commit/3433eac9976b20ee6e3a76404079c23e85f84875))
-* parametrized StepIndicator strings ([#2707](https://github.com/trussworks/react-uswds/issues/2707)) ([94912bd](https://github.com/trussworks/react-uswds/commit/94912bd772c69ed1dac7c6d9f59b9a1a4f337e53))
-* React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714)) ([af2d2d6](https://github.com/trussworks/react-uswds/commit/af2d2d6445ef05675066134a6933a607ce2196a2))
-* **storybook:** storybook 7 ([#2533](https://github.com/trussworks/react-uswds/issues/2533)) ([8f65ec4](https://github.com/trussworks/react-uswds/commit/8f65ec461d14db1350fc11d24d2676367d5b0294))
-* Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532)) ([6ce4bbb](https://github.com/trussworks/react-uswds/commit/6ce4bbb1091670988691d10bb1e99725d96f10e7))
-
+- moved overlay into header component ([#2701](https://github.com/trussworks/react-uswds/issues/2701)) ([3433eac](https://github.com/trussworks/react-uswds/commit/3433eac9976b20ee6e3a76404079c23e85f84875))
+- parametrized StepIndicator strings ([#2707](https://github.com/trussworks/react-uswds/issues/2707)) ([94912bd](https://github.com/trussworks/react-uswds/commit/94912bd772c69ed1dac7c6d9f59b9a1a4f337e53))
+- React 18 Upgrade ([#2714](https://github.com/trussworks/react-uswds/issues/2714)) ([af2d2d6](https://github.com/trussworks/react-uswds/commit/af2d2d6445ef05675066134a6933a607ce2196a2))
+- **storybook:** storybook 7 ([#2533](https://github.com/trussworks/react-uswds/issues/2533)) ([8f65ec4](https://github.com/trussworks/react-uswds/commit/8f65ec461d14db1350fc11d24d2676367d5b0294))
+- Uncouple uswds style ([#2532](https://github.com/trussworks/react-uswds/issues/2532)) ([6ce4bbb](https://github.com/trussworks/react-uswds/commit/6ce4bbb1091670988691d10bb1e99725d96f10e7))
 
 ### Bug Fixes
 
-* a11y: search component submit accessible naming ([#2737](https://github.com/trussworks/react-uswds/issues/2737)) ([b5fb85d](https://github.com/trussworks/react-uswds/commit/b5fb85d0ec17c1a02b1d4c2e373d2204342aac38))
-* fixed lint warnings ([#2774](https://github.com/trussworks/react-uswds/issues/2774)) ([d4b30d8](https://github.com/trussworks/react-uswds/commit/d4b30d8e87858dc1b8e5fa424c89aa14eb5309f4))
+- a11y: search component submit accessible naming ([#2737](https://github.com/trussworks/react-uswds/issues/2737)) ([b5fb85d](https://github.com/trussworks/react-uswds/commit/b5fb85d0ec17c1a02b1d4c2e373d2204342aac38))
+- fixed lint warnings ([#2774](https://github.com/trussworks/react-uswds/issues/2774)) ([d4b30d8](https://github.com/trussworks/react-uswds/commit/d4b30d8e87858dc1b8e5fa424c89aa14eb5309f4))
 
 ## [6.2.0](https://github.com/trussworks/react-uswds/compare/6.1.0...6.2.0) (2024-01-08)
 
-
 ### Features
 
-* updates for USWDS v3.7 ([#2680](https://github.com/trussworks/react-uswds/issues/2680)) ([9a06e7d](https://github.com/trussworks/react-uswds/commit/9a06e7d308b46925894f4b5a67f575f68cf73985))
-
+- updates for USWDS v3.7 ([#2680](https://github.com/trussworks/react-uswds/issues/2680)) ([9a06e7d](https://github.com/trussworks/react-uswds/commit/9a06e7d308b46925894f4b5a67f575f68cf73985))
 
 ### Bug Fixes
 
-* Remove image role attribute from Banner Icon component ([#2663](https://github.com/trussworks/react-uswds/issues/2663)) ([8ddf443](https://github.com/trussworks/react-uswds/commit/8ddf443fa65d216cc543f0f5373c9be33da5e0aa))
+- Remove image role attribute from Banner Icon component ([#2663](https://github.com/trussworks/react-uswds/issues/2663)) ([8ddf443](https://github.com/trussworks/react-uswds/commit/8ddf443fa65d216cc543f0f5373c9be33da5e0aa))
 
 ## [6.1.0](https://github.com/trussworks/react-uswds/compare/6.0.0...6.1.0) (2023-11-27)
 
-
 ### Features
 
-* Add “use client” to fix React Server Components ([#2656](https://github.com/trussworks/react-uswds/issues/2656)) ([fad63b1](https://github.com/trussworks/react-uswds/commit/fad63b1d6f5f01ba742cdb093ee05dc117d1753b))
-* Added multiselect story ([#2648](https://github.com/trussworks/react-uswds/issues/2648)) ([03652fe](https://github.com/trussworks/react-uswds/commit/03652fe3663735229a676cda23aa751ec2ed452d))
-
+- Add “use client” to fix React Server Components ([#2656](https://github.com/trussworks/react-uswds/issues/2656)) ([fad63b1](https://github.com/trussworks/react-uswds/commit/fad63b1d6f5f01ba742cdb093ee05dc117d1753b))
+- Added multiselect story ([#2648](https://github.com/trussworks/react-uswds/issues/2648)) ([03652fe](https://github.com/trussworks/react-uswds/commit/03652fe3663735229a676cda23aa751ec2ed452d))
 
 ### Bug Fixes
 
-* **a11y:** move aria-label from svg icon to button ([#2640](https://github.com/trussworks/react-uswds/issues/2640)) ([fa18032](https://github.com/trussworks/react-uswds/commit/fa18032f538655452e501079b306e4a314480da6))
-* adding labels in combo box (default combo box, with default value) ([#2636](https://github.com/trussworks/react-uswds/issues/2636)) ([7714d14](https://github.com/trussworks/react-uswds/commit/7714d1474a3512328e6391b12434293421de408a))
+- **a11y:** move aria-label from svg icon to button ([#2640](https://github.com/trussworks/react-uswds/issues/2640)) ([fa18032](https://github.com/trussworks/react-uswds/commit/fa18032f538655452e501079b306e4a314480da6))
+- adding labels in combo box (default combo box, with default value) ([#2636](https://github.com/trussworks/react-uswds/issues/2636)) ([7714d14](https://github.com/trussworks/react-uswds/commit/7714d1474a3512328e6391b12434293421de408a))
 
 ## [6.0.0](https://github.com/trussworks/react-uswds/compare/5.5.0...6.0.0) (2023-10-31)
 
-
 ### ⚠ BREAKING CHANGES
 
-* `<TimePicker>` implementations must specify a `label` prop
-* Dropdown has been removed use `<Select>` instead
+- `<TimePicker>` implementations must specify a `label` prop
+- Dropdown has been removed use `<Select>` instead
 
 ### Features
 
-* Delete deprecated Dropdown component ([#2644](https://github.com/trussworks/react-uswds/issues/2644)) ([59dffd1](https://github.com/trussworks/react-uswds/commit/59dffd138f745f38a222523360a4666c0c13b030))
-* in-page navigation ([#2551](https://github.com/trussworks/react-uswds/issues/2551)) ([d330a12](https://github.com/trussworks/react-uswds/commit/d330a121b5abcc63f25882d34900fa76f6330a49))
-
+- Delete deprecated Dropdown component ([#2644](https://github.com/trussworks/react-uswds/issues/2644)) ([59dffd1](https://github.com/trussworks/react-uswds/commit/59dffd138f745f38a222523360a4666c0c13b030))
+- in-page navigation ([#2551](https://github.com/trussworks/react-uswds/issues/2551)) ([d330a12](https://github.com/trussworks/react-uswds/commit/d330a121b5abcc63f25882d34900fa76f6330a49))
 
 ### Bug Fixes
 
-* Label is mandatory for TimePicker component ([#2629](https://github.com/trussworks/react-uswds/issues/2629)) ([c7f00d3](https://github.com/trussworks/react-uswds/commit/c7f00d35175d4dd0b59288eb34685edc9525cb0f))
-* readme quick links ([#2646](https://github.com/trussworks/react-uswds/issues/2646)) ([d4c0b4e](https://github.com/trussworks/react-uswds/commit/d4c0b4e2f2b2c0924c35c96bea050ad8c2a2ae19))
-* Updates sign in stories to fix aria-controls issue of show password button ([#2627](https://github.com/trussworks/react-uswds/issues/2627)) ([67c1114](https://github.com/trussworks/react-uswds/commit/67c1114ab1eea857dc76271deb5c85672505e40a))
-
+- Label is mandatory for TimePicker component ([#2629](https://github.com/trussworks/react-uswds/issues/2629)) ([c7f00d3](https://github.com/trussworks/react-uswds/commit/c7f00d35175d4dd0b59288eb34685edc9525cb0f))
+- readme quick links ([#2646](https://github.com/trussworks/react-uswds/issues/2646)) ([d4c0b4e](https://github.com/trussworks/react-uswds/commit/d4c0b4e2f2b2c0924c35c96bea050ad8c2a2ae19))
+- Updates sign in stories to fix aria-controls issue of show password button ([#2627](https://github.com/trussworks/react-uswds/issues/2627)) ([67c1114](https://github.com/trussworks/react-uswds/commit/67c1114ab1eea857dc76271deb5c85672505e40a))
 
 ### Documentation & Examples
 
-* add @AnnaGingle as a contributor ([#2649](https://github.com/trussworks/react-uswds/issues/2649)) ([c307f4b](https://github.com/trussworks/react-uswds/commit/c307f4b2a4989b911dd4339da8fe0181825925b1))
+- add @AnnaGingle as a contributor ([#2649](https://github.com/trussworks/react-uswds/issues/2649)) ([c307f4b](https://github.com/trussworks/react-uswds/commit/c307f4b2a4989b911dd4339da8fe0181825925b1))
 
 ## [5.5.0](https://github.com/trussworks/react-uswds/compare/5.4.0...5.5.0) (2023-10-20)
 
-
 ### Features
 
-* added 4 icons ([#2525](https://github.com/trussworks/react-uswds/issues/2525)) ([c489814](https://github.com/trussworks/react-uswds/commit/c48981442b4bb65b403dc2009ed3cd28a72037a9))
-* Added LanguageDefinition to exports ([#2570](https://github.com/trussworks/react-uswds/issues/2570)) ([0f4688a](https://github.com/trussworks/react-uswds/commit/0f4688ae06afadd595689055750e65624868b1bd))
-* Added required marker ([#2524](https://github.com/trussworks/react-uswds/issues/2524)) ([c5f2b40](https://github.com/trussworks/react-uswds/commit/c5f2b40b4b79784340f66d66fceea365922648f8))
-* Allow Tooltip label to be a string or React component ([#2596](https://github.com/trussworks/react-uswds/issues/2596)) ([bc01008](https://github.com/trussworks/react-uswds/commit/bc0100816a0bcba797562a02ea3b32543f850904))
-* changed template links to buttons ([#2526](https://github.com/trussworks/react-uswds/issues/2526)) ([a4b8423](https://github.com/trussworks/react-uswds/commit/a4b8423f4d3a4b8dcb89b8dab8dea4363c6b567a))
-* replaced memorable date month input with select ([#2527](https://github.com/trussworks/react-uswds/issues/2527)) ([d38b31b](https://github.com/trussworks/react-uswds/commit/d38b31be9454a03a4605f69335daf19d376020a7))
-
+- added 4 icons ([#2525](https://github.com/trussworks/react-uswds/issues/2525)) ([c489814](https://github.com/trussworks/react-uswds/commit/c48981442b4bb65b403dc2009ed3cd28a72037a9))
+- Added LanguageDefinition to exports ([#2570](https://github.com/trussworks/react-uswds/issues/2570)) ([0f4688a](https://github.com/trussworks/react-uswds/commit/0f4688ae06afadd595689055750e65624868b1bd))
+- Added required marker ([#2524](https://github.com/trussworks/react-uswds/issues/2524)) ([c5f2b40](https://github.com/trussworks/react-uswds/commit/c5f2b40b4b79784340f66d66fceea365922648f8))
+- Allow Tooltip label to be a string or React component ([#2596](https://github.com/trussworks/react-uswds/issues/2596)) ([bc01008](https://github.com/trussworks/react-uswds/commit/bc0100816a0bcba797562a02ea3b32543f850904))
+- changed template links to buttons ([#2526](https://github.com/trussworks/react-uswds/issues/2526)) ([a4b8423](https://github.com/trussworks/react-uswds/commit/a4b8423f4d3a4b8dcb89b8dab8dea4363c6b567a))
+- replaced memorable date month input with select ([#2527](https://github.com/trussworks/react-uswds/issues/2527)) ([d38b31b](https://github.com/trussworks/react-uswds/commit/d38b31be9454a03a4605f69335daf19d376020a7))
 
 ### Bug Fixes
 
-* Language selector: add prop for display lang for bug fix ([#2622](https://github.com/trussworks/react-uswds/issues/2622)) ([df68d0d](https://github.com/trussworks/react-uswds/commit/df68d0d8bc273533dcb5a85a5a699aca12404d67))
-* Sass modules bug ([#2555](https://github.com/trussworks/react-uswds/issues/2555)) ([a1ed9f7](https://github.com/trussworks/react-uswds/commit/a1ed9f758c151b639726b16fb74327299f7c09a2))
-* **storybook:** password label set to password input field id on sign in ([#2618](https://github.com/trussworks/react-uswds/issues/2618)) ([eae195e](https://github.com/trussworks/react-uswds/commit/eae195e73b71adb9b7849a25f8836c244e49ad21))
-* **storybook:** sufficient color contrast set in custom class button ([#2619](https://github.com/trussworks/react-uswds/issues/2619)) ([2878822](https://github.com/trussworks/react-uswds/commit/28788220761dc92243302bac72c0bd2b97872192))
-* Updates file input stories to set appropriate html for value of label ([#2628](https://github.com/trussworks/react-uswds/issues/2628)) ([7f51150](https://github.com/trussworks/react-uswds/commit/7f51150f1a12df261b18eb1d6ecf9e8faa3c4c0e))
-
+- Language selector: add prop for display lang for bug fix ([#2622](https://github.com/trussworks/react-uswds/issues/2622)) ([df68d0d](https://github.com/trussworks/react-uswds/commit/df68d0d8bc273533dcb5a85a5a699aca12404d67))
+- Sass modules bug ([#2555](https://github.com/trussworks/react-uswds/issues/2555)) ([a1ed9f7](https://github.com/trussworks/react-uswds/commit/a1ed9f758c151b639726b16fb74327299f7c09a2))
+- **storybook:** password label set to password input field id on sign in ([#2618](https://github.com/trussworks/react-uswds/issues/2618)) ([eae195e](https://github.com/trussworks/react-uswds/commit/eae195e73b71adb9b7849a25f8836c244e49ad21))
+- **storybook:** sufficient color contrast set in custom class button ([#2619](https://github.com/trussworks/react-uswds/issues/2619)) ([2878822](https://github.com/trussworks/react-uswds/commit/28788220761dc92243302bac72c0bd2b97872192))
+- Updates file input stories to set appropriate html for value of label ([#2628](https://github.com/trussworks/react-uswds/issues/2628)) ([7f51150](https://github.com/trussworks/react-uswds/commit/7f51150f1a12df261b18eb1d6ecf9e8faa3c4c0e))
 
 ### Documentation & Examples
 
-* add design PR review documentation ([#2615](https://github.com/trussworks/react-uswds/issues/2615)) ([2892424](https://github.com/trussworks/react-uswds/commit/289242407c718fcfc157488492b0a9a942de00c0))
-* adds in information on how to test PRs in GitHub Codespaces ([#2617](https://github.com/trussworks/react-uswds/issues/2617)) ([ef944f8](https://github.com/trussworks/react-uswds/commit/ef944f8054e15f374b07fa73c26be827a89f5ef1))
+- add design PR review documentation ([#2615](https://github.com/trussworks/react-uswds/issues/2615)) ([2892424](https://github.com/trussworks/react-uswds/commit/289242407c718fcfc157488492b0a9a942de00c0))
+- adds in information on how to test PRs in GitHub Codespaces ([#2617](https://github.com/trussworks/react-uswds/issues/2617)) ([ef944f8](https://github.com/trussworks/react-uswds/commit/ef944f8054e15f374b07fa73c26be827a89f5ef1))
 
 ## [5.4.0](https://github.com/trussworks/react-uswds/compare/5.3.1...5.4.0) (2023-09-29)
 
-
 ### Features
 
-* **deps:** Allow consumers to use newer uswds minor versions ([#2600](https://github.com/trussworks/react-uswds/issues/2600)) ([36c1c8a](https://github.com/trussworks/react-uswds/commit/36c1c8ab304b95a84538d9ce69405547caee4830))
+- **deps:** Allow consumers to use newer uswds minor versions ([#2600](https://github.com/trussworks/react-uswds/issues/2600)) ([36c1c8a](https://github.com/trussworks/react-uswds/commit/36c1c8ab304b95a84538d9ce69405547caee4830))
 
 ## [5.3.1](https://github.com/trussworks/react-uswds/compare/5.3.0...5.3.1) (2023-09-08)
 
-
 ### Bug Fixes
 
-* text input mask fixes ([#2581](https://github.com/trussworks/react-uswds/issues/2581)) ([84cf4d0](https://github.com/trussworks/react-uswds/commit/84cf4d0e03dc65521a463a6c7326740a5509ba8b))
+- text input mask fixes ([#2581](https://github.com/trussworks/react-uswds/issues/2581)) ([84cf4d0](https://github.com/trussworks/react-uswds/commit/84cf4d0e03dc65521a463a6c7326740a5509ba8b))
 
 ## [5.3.0](https://github.com/trussworks/react-uswds/compare/5.2.0...5.3.0) (2023-08-29)
 
-
 ### Features
 
-* input mask ([#2538](https://github.com/trussworks/react-uswds/issues/2538)) ([9d2fe14](https://github.com/trussworks/react-uswds/commit/9d2fe1414d3a99c3851031cdb0cd660cf39f5d8f))
+- input mask ([#2538](https://github.com/trussworks/react-uswds/issues/2538)) ([9d2fe14](https://github.com/trussworks/react-uswds/commit/9d2fe1414d3a99c3851031cdb0cd660cf39f5d8f))
 
 ## [5.2.0](https://github.com/trussworks/react-uswds/compare/5.1.1...5.2.0) (2023-08-14)
 
-
 ### Features
 
-* added language selector ([#2531](https://github.com/trussworks/react-uswds/issues/2531)) ([60bf797](https://github.com/trussworks/react-uswds/commit/60bf797ba2b4bbd4ef6380502a59d1f989b220b1))
-
+- added language selector ([#2531](https://github.com/trussworks/react-uswds/issues/2531)) ([60bf797](https://github.com/trussworks/react-uswds/commit/60bf797ba2b4bbd4ef6380502a59d1f989b220b1))
 
 ### Bug Fixes
 
-* Adds story using validation prop for Alert component ([#2504](https://github.com/trussworks/react-uswds/issues/2504)) ([c5176c9](https://github.com/trussworks/react-uswds/commit/c5176c9b4a7e94460f6cae518b73627f11f3647d))
-* Improve character count component's SR experience ([#2550](https://github.com/trussworks/react-uswds/issues/2550)) ([c612a1b](https://github.com/trussworks/react-uswds/commit/c612a1b7074f671cdf29faae9cd5ca042d3e72b5))
-* moved overrides to let us use utilities ([#2553](https://github.com/trussworks/react-uswds/issues/2553)) ([45e1430](https://github.com/trussworks/react-uswds/commit/45e1430fd96339aecce55aebf109e8ad72000f91))
-
+- Adds story using validation prop for Alert component ([#2504](https://github.com/trussworks/react-uswds/issues/2504)) ([c5176c9](https://github.com/trussworks/react-uswds/commit/c5176c9b4a7e94460f6cae518b73627f11f3647d))
+- Improve character count component's SR experience ([#2550](https://github.com/trussworks/react-uswds/issues/2550)) ([c612a1b](https://github.com/trussworks/react-uswds/commit/c612a1b7074f671cdf29faae9cd5ca042d3e72b5))
+- moved overrides to let us use utilities ([#2553](https://github.com/trussworks/react-uswds/issues/2553)) ([45e1430](https://github.com/trussworks/react-uswds/commit/45e1430fd96339aecce55aebf109e8ad72000f91))
 
 ### Documentation & Examples
 
-* updated path ([#2521](https://github.com/trussworks/react-uswds/issues/2521)) ([7721e58](https://github.com/trussworks/react-uswds/commit/7721e5879cbb3443f8d37c974a9a33ac44454a9c))
-* Updated storybook templates ([#2522](https://github.com/trussworks/react-uswds/issues/2522)) ([e1c60cb](https://github.com/trussworks/react-uswds/commit/e1c60cbff90c484b1942675a459aaab2e581b0e1))
+- updated path ([#2521](https://github.com/trussworks/react-uswds/issues/2521)) ([7721e58](https://github.com/trussworks/react-uswds/commit/7721e5879cbb3443f8d37c974a9a33ac44454a9c))
+- Updated storybook templates ([#2522](https://github.com/trussworks/react-uswds/issues/2522)) ([e1c60cb](https://github.com/trussworks/react-uswds/commit/e1c60cbff90c484b1942675a459aaab2e581b0e1))
 
 ## [5.1.1](https://github.com/trussworks/react-uswds/compare/5.1.0...5.1.1) (2023-07-17)
 
-
 ### Bug Fixes
 
-* Set alternative text on SVG img icon in menu close button ([#2500](https://github.com/trussworks/react-uswds/issues/2500)) ([ebdca5b](https://github.com/trussworks/react-uswds/commit/ebdca5ba2b775e1ceacc4229c1191547bf98ea0d))
+- Set alternative text on SVG img icon in menu close button ([#2500](https://github.com/trussworks/react-uswds/issues/2500)) ([ebdca5b](https://github.com/trussworks/react-uswds/commit/ebdca5ba2b775e1ceacc4229c1191547bf98ea0d))
 
 ## [5.1.0](https://github.com/trussworks/react-uswds/compare/5.0.0...5.1.0) (2023-07-14)
 
-
 ### Features
 
-* added customizable text control to file input ([#2417](https://github.com/trussworks/react-uswds/issues/2417)) ([0a387be](https://github.com/trussworks/react-uswds/commit/0a387beaa50612d9184bc8166283a131697e0c8c))
-* adds unbounded functionality to pagination ([#2418](https://github.com/trussworks/react-uswds/issues/2418)) ([f9e7957](https://github.com/trussworks/react-uswds/commit/f9e79579350f6890de9c111a7cb2467be029cf6e))
-
+- added customizable text control to file input ([#2417](https://github.com/trussworks/react-uswds/issues/2417)) ([0a387be](https://github.com/trussworks/react-uswds/commit/0a387beaa50612d9184bc8166283a131697e0c8c))
+- adds unbounded functionality to pagination ([#2418](https://github.com/trussworks/react-uswds/issues/2418)) ([f9e7957](https://github.com/trussworks/react-uswds/commit/f9e79579350f6890de9c111a7cb2467be029cf6e))
 
 ### Bug Fixes
 
-* a11y: adds css to hide search clear button that causes accessibility issues ([#2467](https://github.com/trussworks/react-uswds/issues/2467)) ([d19527f](https://github.com/trussworks/react-uswds/commit/d19527f5ff043bc3be3cd789b3a8254a7580fe89))
-* added error param, test, story ([#2488](https://github.com/trussworks/react-uswds/issues/2488)) ([42da85d](https://github.com/trussworks/react-uswds/commit/42da85d7c7576c5ec408ca336edd4c2e32aa647b))
+- a11y: adds css to hide search clear button that causes accessibility issues ([#2467](https://github.com/trussworks/react-uswds/issues/2467)) ([d19527f](https://github.com/trussworks/react-uswds/commit/d19527f5ff043bc3be3cd789b3a8254a7580fe89))
+- added error param, test, story ([#2488](https://github.com/trussworks/react-uswds/issues/2488)) ([42da85d](https://github.com/trussworks/react-uswds/commit/42da85d7c7576c5ec408ca336edd4c2e32aa647b))
 
 ## [5.0.0](https://github.com/trussworks/react-uswds/compare/4.2.1...5.0.0) (2023-06-06)
 
-
 ### ⚠ BREAKING CHANGES
 
-* Unify icon usage (#2411)
-  * As a part of this change, the previously exported `BannerLockIcon` component has been removed. Consumers building custom `Banner` components for their applications should use the `Icon.Lock` (with appropriate aria attributes) as shown in our [Storybook example](https://github.com/trussworks/react-uswds/blob/75e936985cc1cd2f2052f902f0806c58446aca30/src/components/banner/CustomBanner.stories.tsx#L54)
+- Unify icon usage (#2411)
+  - As a part of this change, the previously exported `BannerLockIcon` component has been removed. Consumers building custom `Banner` components for their applications should use the `Icon.Lock` (with appropriate aria attributes) as shown in our [Storybook example](https://github.com/trussworks/react-uswds/blob/75e936985cc1cd2f2052f902f0806c58446aca30/src/components/banner/CustomBanner.stories.tsx#L54)
 
 ### Features
 
-* Add `validationStatus` prop to `Dropdown` ([#2365](https://github.com/trussworks/react-uswds/issues/2365)) ([c314234](https://github.com/trussworks/react-uswds/commit/c31423439cf6a30117fd327ee6cc2b1aacdb9124))
-* Add `InputGroup` component ([#2383](https://github.com/trussworks/react-uswds/issues/2383)) ([5761db6](https://github.com/trussworks/react-uswds/commit/5761db6e66db98c8299efb978bbe39fd259f1209))
-* Update banner aria props with changes from USWDS ([#2384](https://github.com/trussworks/react-uswds/issues/2384)) ([f8c359b](https://github.com/trussworks/react-uswds/commit/f8c359b4afcfe998c492d916ad4c4ec44ee7b4f9))
-
+- Add `validationStatus` prop to `Dropdown` ([#2365](https://github.com/trussworks/react-uswds/issues/2365)) ([c314234](https://github.com/trussworks/react-uswds/commit/c31423439cf6a30117fd327ee6cc2b1aacdb9124))
+- Add `InputGroup` component ([#2383](https://github.com/trussworks/react-uswds/issues/2383)) ([5761db6](https://github.com/trussworks/react-uswds/commit/5761db6e66db98c8299efb978bbe39fd259f1209))
+- Update banner aria props with changes from USWDS ([#2384](https://github.com/trussworks/react-uswds/issues/2384)) ([f8c359b](https://github.com/trussworks/react-uswds/commit/f8c359b4afcfe998c492d916ad4c4ec44ee7b4f9))
 
 ### Bug Fixes
 
-* Adds validation styles to `DatePicker` ([#2398](https://github.com/trussworks/react-uswds/issues/2398)) ([161a931](https://github.com/trussworks/react-uswds/commit/161a931f897edc38b1eb6aff22f36e5eb75c4388))
-* Allow `CharacterCount` value ^ defaultValue ([#2397](https://github.com/trussworks/react-uswds/issues/2397)) ([9de5b9d](https://github.com/trussworks/react-uswds/commit/9de5b9dcd1b10e069cf672680f2685ced97d645c))
-* Rename `Dropdown` component to `Select` ([#2415](https://github.com/trussworks/react-uswds/issues/2415)) ([75e9369](https://github.com/trussworks/react-uswds/commit/75e936985cc1cd2f2052f902f0806c58446aca30))
-  * Note: `Dropdown` is now marked as deprecated, and will be removed in a future release 
-* Fix `FileInput` in SSR ([#2367](https://github.com/trussworks/react-uswds/issues/2367)) ([3d4845e](https://github.com/trussworks/react-uswds/commit/3d4845e349bf940f0ba13f2680bc865c5f58d6ef))
-* Fix misapplied aria attribute ([#2396](https://github.com/trussworks/react-uswds/issues/2396)) ([dafbb4e](https://github.com/trussworks/react-uswds/commit/dafbb4e4f75c39e0a76f18a80934fcf2d1a3e770))
-* Unify icon usage ([#2411](https://github.com/trussworks/react-uswds/issues/2411)) ([ef2be8d](https://github.com/trussworks/react-uswds/commit/ef2be8dddbbfec21f3cedf606e2bddcaad57f7e7))
-
+- Adds validation styles to `DatePicker` ([#2398](https://github.com/trussworks/react-uswds/issues/2398)) ([161a931](https://github.com/trussworks/react-uswds/commit/161a931f897edc38b1eb6aff22f36e5eb75c4388))
+- Allow `CharacterCount` value ^ defaultValue ([#2397](https://github.com/trussworks/react-uswds/issues/2397)) ([9de5b9d](https://github.com/trussworks/react-uswds/commit/9de5b9dcd1b10e069cf672680f2685ced97d645c))
+- Rename `Dropdown` component to `Select` ([#2415](https://github.com/trussworks/react-uswds/issues/2415)) ([75e9369](https://github.com/trussworks/react-uswds/commit/75e936985cc1cd2f2052f902f0806c58446aca30))
+  - Note: `Dropdown` is now marked as deprecated, and will be removed in a future release
+- Fix `FileInput` in SSR ([#2367](https://github.com/trussworks/react-uswds/issues/2367)) ([3d4845e](https://github.com/trussworks/react-uswds/commit/3d4845e349bf940f0ba13f2680bc865c5f58d6ef))
+- Fix misapplied aria attribute ([#2396](https://github.com/trussworks/react-uswds/issues/2396)) ([dafbb4e](https://github.com/trussworks/react-uswds/commit/dafbb4e4f75c39e0a76f18a80934fcf2d1a3e770))
+- Unify icon usage ([#2411](https://github.com/trussworks/react-uswds/issues/2411)) ([ef2be8d](https://github.com/trussworks/react-uswds/commit/ef2be8dddbbfec21f3cedf606e2bddcaad57f7e7))
 
 ### Documentation & Examples
 
-* Add documentation for how we use All Contributors ([#2378](https://github.com/trussworks/react-uswds/issues/2378)) ([5aa9bda](https://github.com/trussworks/react-uswds/commit/5aa9bda79237d90dd9538fc9362bb45b04ad8b81))
+- Add documentation for how we use All Contributors ([#2378](https://github.com/trussworks/react-uswds/issues/2378)) ([5aa9bda](https://github.com/trussworks/react-uswds/commit/5aa9bda79237d90dd9538fc9362bb45b04ad8b81))
 
 ### [4.2.1](https://github.com/trussworks/react-uswds/compare/4.2.0...4.2.1) (2023-04-24)
 
 ## [4.2.0](https://github.com/trussworks/react-uswds/compare/4.1.1...4.2.0) (2023-04-03)
 
-
 ### Features
 
-* Add className prop to Table component ([#2269](https://github.com/trussworks/react-uswds/issues/2269)) ([cf082c5](https://github.com/trussworks/react-uswds/commit/cf082c533b60317dfeeb4397a997514a586cf5a3))
-
+- Add className prop to Table component ([#2269](https://github.com/trussworks/react-uswds/issues/2269)) ([cf082c5](https://github.com/trussworks/react-uswds/commit/cf082c533b60317dfeeb4397a997514a586cf5a3))
 
 ### Documentation & Examples
 
-* fix typo and add alt download instructions ([#2281](https://github.com/trussworks/react-uswds/issues/2281)) ([7508dfb](https://github.com/trussworks/react-uswds/commit/7508dfb714d9a26d1a0787eb7032516e10fa082c))
-* Update old references from USWDS 2.0 to USWDS 3.0 ([#2317](https://github.com/trussworks/react-uswds/issues/2317)) ([6232c5c](https://github.com/trussworks/react-uswds/commit/6232c5cbb90972457c6ee8b8c6ff5a441b4cd6bd))
+- fix typo and add alt download instructions ([#2281](https://github.com/trussworks/react-uswds/issues/2281)) ([7508dfb](https://github.com/trussworks/react-uswds/commit/7508dfb714d9a26d1a0787eb7032516e10fa082c))
+- Update old references from USWDS 2.0 to USWDS 3.0 ([#2317](https://github.com/trussworks/react-uswds/issues/2317)) ([6232c5c](https://github.com/trussworks/react-uswds/commit/6232c5cbb90972457c6ee8b8c6ff5a441b4cd6bd))
 
 ### [4.1.1](https://github.com/trussworks/react-uswds/compare/4.1.0...4.1.1) (2023-02-23)
 
 ## [4.1.0](https://github.com/trussworks/react-uswds/compare/4.0.0...4.1.0) (2023-02-17)
 
-
 ### Features
 
-* Make search component extendable ([#2230](https://github.com/trussworks/react-uswds/issues/2230)) ([9bd9137](https://github.com/trussworks/react-uswds/commit/9bd91379722aa010ed5a9ee2c90daa852ce4c922))
+- Make search component extendable ([#2230](https://github.com/trussworks/react-uswds/issues/2230)) ([9bd9137](https://github.com/trussworks/react-uswds/commit/9bd91379722aa010ed5a9ee2c90daa852ce4c922))
 
 ### Bug Fixes
 
-* Export IconListContent and IconListIcon ([#2210](https://github.com/trussworks/react-uswds/issues/2210)) ([#2217](https://github.com/trussworks/react-uswds/issues/2217)) ([5cb4024](https://github.com/trussworks/react-uswds/commit/5cb40245eb86f4b267b9eef4b748f27c1218a065))
+- Export IconListContent and IconListIcon ([#2210](https://github.com/trussworks/react-uswds/issues/2210)) ([#2217](https://github.com/trussworks/react-uswds/issues/2217)) ([5cb4024](https://github.com/trussworks/react-uswds/commit/5cb40245eb86f4b267b9eef4b748f27c1218a065))
 
 ## [4.0.0](https://github.com/trussworks/react-uswds/compare/3.2.0...4.0.0) (2022-11-08)
 
 ### Features
 
-* upgrade to USWDS v3.1.0 ([#2203](https://github.com/trussworks/react-uswds/issues/2203)) ([cd40e03](https://github.com/trussworks/react-uswds/commit/cd40e03912b41b8f69c51278b20785e81a84468f))
-* Add defaultValue prop to Search component ([#2211](https://github.com/trussworks/react-uswds/issues/2211)) ([6ad525b](https://github.com/trussworks/react-uswds/commit/6ad525bc0e38fafb397891e337405cf6c7f6a5eb))
+- upgrade to USWDS v3.1.0 ([#2203](https://github.com/trussworks/react-uswds/issues/2203)) ([cd40e03](https://github.com/trussworks/react-uswds/commit/cd40e03912b41b8f69c51278b20785e81a84468f))
+- Add defaultValue prop to Search component ([#2211](https://github.com/trussworks/react-uswds/issues/2211)) ([6ad525b](https://github.com/trussworks/react-uswds/commit/6ad525bc0e38fafb397891e337405cf6c7f6a5eb))
 
 ### Documentation & Examples
 
-* Update docs for USWDS v3 ([#2205](https://github.com/trussworks/react-uswds/issues/2205)) ([f5bf2e7](https://github.com/trussworks/react-uswds/commit/f5bf2e70369f860e6af67305557ff626009c2585)), closes [#2202](https://github.com/trussworks/react-uswds/issues/2202)
+- Update docs for USWDS v3 ([#2205](https://github.com/trussworks/react-uswds/issues/2205)) ([f5bf2e7](https://github.com/trussworks/react-uswds/commit/f5bf2e70369f860e6af67305557ff626009c2585)), closes [#2202](https://github.com/trussworks/react-uswds/issues/2202)
 
 ## [3.2.0](https://github.com/trussworks/react-uswds/compare/3.1.0...3.2.0) (2022-09-27)
 
-
 ### Features
 
-* Add compositional Banner components ([#2184](https://github.com/trussworks/react-uswds/issues/2184)) ([f75e4ba](https://github.com/trussworks/react-uswds/commit/f75e4ba06b305d4e47651fdfeaf8f564af8398fc))
-* Add Pagination component ([#2188](https://github.com/trussworks/react-uswds/issues/2188)) ([4c021d1](https://github.com/trussworks/react-uswds/commit/4c021d10c4041b21b9f2f5e433aed86e5c257dd6))
+- Add compositional Banner components ([#2184](https://github.com/trussworks/react-uswds/issues/2184)) ([f75e4ba](https://github.com/trussworks/react-uswds/commit/f75e4ba06b305d4e47651fdfeaf8f564af8398fc))
+- Add Pagination component ([#2188](https://github.com/trussworks/react-uswds/issues/2188)) ([4c021d1](https://github.com/trussworks/react-uswds/commit/4c021d10c4041b21b9f2f5e433aed86e5c257dd6))
 
 ## [3.1.0](https://github.com/trussworks/react-uswds/compare/3.0.2...3.1.0) (2022-07-13)
 
-
 ### Features
 
-* Remove example app ([#2162](https://github.com/trussworks/react-uswds/issues/2162)) ([1eb579e](https://github.com/trussworks/react-uswds/commit/1eb579e4d18e3ee04d3f54fc3445e6539fce3ec6))
-* USWDS 2.13.3 ([#2175](https://github.com/trussworks/react-uswds/issues/2175)) ([fdeefc6](https://github.com/trussworks/react-uswds/commit/fdeefc6d4e7e69fea50b6b0017dcc286979fbca5))
-
+- Remove example app ([#2162](https://github.com/trussworks/react-uswds/issues/2162)) ([1eb579e](https://github.com/trussworks/react-uswds/commit/1eb579e4d18e3ee04d3f54fc3445e6539fce3ec6))
+- USWDS 2.13.3 ([#2175](https://github.com/trussworks/react-uswds/issues/2175)) ([fdeefc6](https://github.com/trussworks/react-uswds/commit/fdeefc6d4e7e69fea50b6b0017dcc286979fbca5))
 
 ### Bug Fixes
 
-* Danger contributors check ([#2167](https://github.com/trussworks/react-uswds/issues/2167)) ([c05fe06](https://github.com/trussworks/react-uswds/commit/c05fe0626acbc5f8945700e4d6a51e37693fcee3))
-* Emit headingLevel type and do not emit type declarations for tests ([#2134](https://github.com/trussworks/react-uswds/issues/2134)) ([a4501dd](https://github.com/trussworks/react-uswds/commit/a4501ddc24c12bbe3cf1279edbcf650f9dccd412))
-* export SummaryBoxHeading and SummaryBoxContent ([#2100](https://github.com/trussworks/react-uswds/issues/2100)) ([141ba8e](https://github.com/trussworks/react-uswds/commit/141ba8e23ed4eb41f3d0533bc155550c02d0b3f6))
-
+- Danger contributors check ([#2167](https://github.com/trussworks/react-uswds/issues/2167)) ([c05fe06](https://github.com/trussworks/react-uswds/commit/c05fe0626acbc5f8945700e4d6a51e37693fcee3))
+- Emit headingLevel type and do not emit type declarations for tests ([#2134](https://github.com/trussworks/react-uswds/issues/2134)) ([a4501dd](https://github.com/trussworks/react-uswds/commit/a4501ddc24c12bbe3cf1279edbcf650f9dccd412))
+- export SummaryBoxHeading and SummaryBoxContent ([#2100](https://github.com/trussworks/react-uswds/issues/2100)) ([141ba8e](https://github.com/trussworks/react-uswds/commit/141ba8e23ed4eb41f3d0533bc155550c02d0b3f6))
 
 ### Documentation & Examples
 
-* Callout outside contributors process ([#1969](https://github.com/trussworks/react-uswds/issues/1969)) ([7881191](https://github.com/trussworks/react-uswds/commit/78811918c1a38f773b5acf517181966ac5e58fe7))
-* Update releasing docs ([#2018](https://github.com/trussworks/react-uswds/issues/2018)) ([6849dda](https://github.com/trussworks/react-uswds/commit/6849ddab25c8674446dbd12a60f9ed1f9d1ce09c))
+- Callout outside contributors process ([#1969](https://github.com/trussworks/react-uswds/issues/1969)) ([7881191](https://github.com/trussworks/react-uswds/commit/78811918c1a38f773b5acf517181966ac5e58fe7))
+- Update releasing docs ([#2018](https://github.com/trussworks/react-uswds/issues/2018)) ([6849dda](https://github.com/trussworks/react-uswds/commit/6849ddab25c8674446dbd12a60f9ed1f9d1ce09c))
 
 ### [3.0.2](https://github.com/trussworks/react-uswds/compare/3.0.1...3.0.2) (2022-05-13)
 
-
 ### Bug Fixes
 
-* Fixes an issue where Type definitions were not properly packaged ([#2053](https://github.com/trussworks/react-uswds/issues/2053)) ([febcd65](https://github.com/trussworks/react-uswds/commit/febcd65d1d2bf8ff84f558b4d14013ba8328cc38))
+- Fixes an issue where Type definitions were not properly packaged ([#2053](https://github.com/trussworks/react-uswds/issues/2053)) ([febcd65](https://github.com/trussworks/react-uswds/commit/febcd65d1d2bf8ff84f558b4d14013ba8328cc38))
 
 ### [3.0.1](https://github.com/trussworks/react-uswds/compare/3.0.0...3.0.1) (2022-05-09)
 
-
 ### Bug Fixes
 
-* Attempted to fixes an issue where Type definitions were not properly packaged
+- Attempted to fixes an issue where Type definitions were not properly packaged
 
 ## [3.0.0](https://github.com/trussworks/react-uswds/compare/2.9.0...3.0.0) (2022-04-25)
 
-
 ### ⚠ BREAKING CHANGES
 
-* Previous deprecated features and props have been removed. Please see the following guidance for affected components:
-  * Accordion: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-  * Alert: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-  * Button: 
-    * `accent` has been removed. Use `accentStyle` instead.
-    * `big`, `small`, and `size="small"` have been removed. Use `size="big"` or do not define the `size` prop for default sizing.
-  * CollectionHeading: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-  * Footer/Address: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
-  * Footer/Footer: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
-  * Footer/FooterNav: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
-  * Footer/Logo: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
-  * Search: `big`, and `small` props have been removed. Use the `size` prop instead.
-  * Fieldset: `legendSrOnly` has been removed. Use `legendStyle="srOnly"` instead.
-  * TextInput: `error`, and `success` props have been removed. Use the `validationStatus` prop instead.
-  * header/NavList: `primary`, `secondary`, `subnav`, `megamenu`, and `footerSecondary` props have been removed. Use the `type` prop instead.
-  * StepIndicator: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
-* SummaryBox now exposes sub-components (SummaryBoxHeading and SummaryBoxContent) for a more compositional API. Consumers will need to update their implementation to match.
-* In order to accommodate IconList as a named component, Icons themselves needed to be refactored. All use of ReactUSWDS icons now follows the following syntax: <Icon.{IconName} /> instead of <Icon{IconName />. Furthermore, icons are no longer imported individually. Instead, Icon (the class) is imported to then use any <Icon.{IconName}> consumers require.
+- Previous deprecated features and props have been removed. Please see the following guidance for affected components:
+  - Accordion: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  - Alert: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  - Button:
+    - `accent` has been removed. Use `accentStyle` instead.
+    - `big`, `small`, and `size="small"` have been removed. Use `size="big"` or do not define the `size` prop for default sizing.
+  - CollectionHeading: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+  - Footer/Address: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+  - Footer/Footer: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+  - Footer/FooterNav: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+  - Footer/Logo: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+  - Search: `big`, and `small` props have been removed. Use the `size` prop instead.
+  - Fieldset: `legendSrOnly` has been removed. Use `legendStyle="srOnly"` instead.
+  - TextInput: `error`, and `success` props have been removed. Use the `validationStatus` prop instead.
+  - header/NavList: `primary`, `secondary`, `subnav`, `megamenu`, and `footerSecondary` props have been removed. Use the `type` prop instead.
+  - StepIndicator: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+- SummaryBox now exposes sub-components (SummaryBoxHeading and SummaryBoxContent) for a more compositional API. Consumers will need to update their implementation to match.
+- In order to accommodate IconList as a named component, Icons themselves needed to be refactored. All use of ReactUSWDS icons now follows the following syntax: <Icon.{IconName} /> instead of <Icon{IconName />. Furthermore, icons are no longer imported individually. Instead, Icon (the class) is imported to then use any <Icon.{IconName}> consumers require.
 
 ### Features
 
-* add isInitiallyOpen option to modal ([#1971](https://github.com/trussworks/react-uswds/issues/1971)) ([560564e](https://github.com/trussworks/react-uswds/commit/560564e41572d270940db3f5029b240ef416c5b2))
-* Make Summary Box more flexible ([#1929](https://github.com/trussworks/react-uswds/issues/1929)) ([a46ed35](https://github.com/trussworks/react-uswds/commit/a46ed35d1da5a4d4fed86240487547462bed3ce4))
-* New Component: IconList ([#1691](https://github.com/trussworks/react-uswds/issues/1691)) ([86589ac](https://github.com/trussworks/react-uswds/commit/86589ac5c629df026cc01518d6d69fe9d8ddabe9))
-* **ci:** add automerge priority label for Kodiak ([#1985](https://github.com/trussworks/react-uswds/issues/1985)) ([9dc940e](https://github.com/trussworks/react-uswds/commit/9dc940ec25246eb9c3af49b310a159134ce11203))
+- add isInitiallyOpen option to modal ([#1971](https://github.com/trussworks/react-uswds/issues/1971)) ([560564e](https://github.com/trussworks/react-uswds/commit/560564e41572d270940db3f5029b240ef416c5b2))
+- Make Summary Box more flexible ([#1929](https://github.com/trussworks/react-uswds/issues/1929)) ([a46ed35](https://github.com/trussworks/react-uswds/commit/a46ed35d1da5a4d4fed86240487547462bed3ce4))
+- New Component: IconList ([#1691](https://github.com/trussworks/react-uswds/issues/1691)) ([86589ac](https://github.com/trussworks/react-uswds/commit/86589ac5c629df026cc01518d6d69fe9d8ddabe9))
+- **ci:** add automerge priority label for Kodiak ([#1985](https://github.com/trussworks/react-uswds/issues/1985)) ([9dc940e](https://github.com/trussworks/react-uswds/commit/9dc940ec25246eb9c3af49b310a159134ce11203))
 
-
-* Remove 1.x.x and 2.x.x deprecated properties ([#1988](https://github.com/trussworks/react-uswds/issues/1988)) ([5dfadb1](https://github.com/trussworks/react-uswds/commit/5dfadb14a3559e308c20d3b7852879a3aa0a3848))
-
+- Remove 1.x.x and 2.x.x deprecated properties ([#1988](https://github.com/trussworks/react-uswds/issues/1988)) ([5dfadb1](https://github.com/trussworks/react-uswds/commit/5dfadb14a3559e308c20d3b7852879a3aa0a3848))
 
 ### Documentation & Examples
 
-* 404 page template added ([#2017](https://github.com/trussworks/react-uswds/issues/2017)) ([0c9474d](https://github.com/trussworks/react-uswds/commit/0c9474ddedb2ad2f4cbb50357696814ddd4db99d))
+- 404 page template added ([#2017](https://github.com/trussworks/react-uswds/issues/2017)) ([0c9474d](https://github.com/trussworks/react-uswds/commit/0c9474ddedb2ad2f4cbb50357696814ddd4db99d))
 
 ## [2.9.0](https://github.com/trussworks/react-uswds/compare/2.8.0...2.9.0) (2022-04-14)
 
-
 ### Features
 
-* Add ability to pass through StepIndicator heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
-* Adds headingLevel prop for Alert component ([#1928](https://github.com/trussworks/react-uswds/issues/1928)) ([ce6de61](https://github.com/trussworks/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
-* Deprecate default heading levels ([#1947](https://github.com/trussworks/react-uswds/issues/1947)) ([512a901](https://github.com/trussworks/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
-
+- Add ability to pass through StepIndicator heading props ([#1895](https://github.com/trussworks/react-uswds/issues/1895)) ([3830814](https://github.com/trussworks/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
+- Adds headingLevel prop for Alert component ([#1928](https://github.com/trussworks/react-uswds/issues/1928)) ([ce6de61](https://github.com/trussworks/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
+- Deprecate default heading levels ([#1947](https://github.com/trussworks/react-uswds/issues/1947)) ([512a901](https://github.com/trussworks/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
 
 ### Bug Fixes
 
-* **docs:** Fix typo in Storybook documentation template [#1914](https://github.com/trussworks/react-uswds/issues/1914) ([#1949](https://github.com/trussworks/react-uswds/issues/1949)) ([#1967](https://github.com/trussworks/react-uswds/issues/1967)) ([7438640](https://github.com/trussworks/react-uswds/commit/743864068823f8317a8bca2cab0c62cf8f6f4209))
-* **docs:** Fix typo in storybook file name ([#1934](https://github.com/trussworks/react-uswds/issues/1934)) ([7514689](https://github.com/trussworks/react-uswds/commit/7514689da58cbd9df0ce65cb3306cdd9eba2e30b))
+- **docs:** Fix typo in Storybook documentation template [#1914](https://github.com/trussworks/react-uswds/issues/1914) ([#1949](https://github.com/trussworks/react-uswds/issues/1949)) ([#1967](https://github.com/trussworks/react-uswds/issues/1967)) ([7438640](https://github.com/trussworks/react-uswds/commit/743864068823f8317a8bca2cab0c62cf8f6f4209))
+- **docs:** Fix typo in storybook file name ([#1934](https://github.com/trussworks/react-uswds/issues/1934)) ([7514689](https://github.com/trussworks/react-uswds/commit/7514689da58cbd9df0ce65cb3306cdd9eba2e30b))
 
 ## [2.8.0](https://github.com/trussworks/react-uswds/compare/2.7.2...2.8.0) (2022-02-18)
 
-
 ### Features
 
-* Accept Accordion headingLevel in items prop  ([#1905](https://github.com/trussworks/react-uswds/issues/1905)) ([5090110](https://github.com/trussworks/react-uswds/commit/509011019e05d6db33dc7269bcb56d57553ebdd0))
-
+- Accept Accordion headingLevel in items prop ([#1905](https://github.com/trussworks/react-uswds/issues/1905)) ([5090110](https://github.com/trussworks/react-uswds/commit/509011019e05d6db33dc7269bcb56d57553ebdd0))
 
 ### Documentation & Examples
 
-* Add maintainer docs as per TDR 95 ([#1903](https://github.com/trussworks/react-uswds/issues/1903)) ([ad9bb44](https://github.com/trussworks/react-uswds/commit/ad9bb440b3099760af92420bec0b3ba6a80f8013))
-* Update All Contributors ([#1906](https://github.com/trussworks/react-uswds/issues/1906)) ([b8b5667](https://github.com/trussworks/react-uswds/commit/b8b5667153fa5d163af6ed2530e8378b3b8222ac))
+- Add maintainer docs as per TDR 95 ([#1903](https://github.com/trussworks/react-uswds/issues/1903)) ([ad9bb44](https://github.com/trussworks/react-uswds/commit/ad9bb440b3099760af92420bec0b3ba6a80f8013))
+- Update All Contributors ([#1906](https://github.com/trussworks/react-uswds/issues/1906)) ([b8b5667](https://github.com/trussworks/react-uswds/commit/b8b5667153fa5d163af6ed2530e8378b3b8222ac))
 
 ### [2.7.2](https://github.com/trussworks/react-uswds/compare/2.7.1...2.7.2) (2022-02-14)
 
-
 ### Bug Fixes
 
-* Fix modal causing body padding to increase when unmounted ([#1899](https://github.com/trussworks/react-uswds/issues/1899)) ([fb46e88](https://github.com/trussworks/react-uswds/commit/fb46e8867f61781edf3393a359236bbcc45c626f))
+- Fix modal causing body padding to increase when unmounted ([#1899](https://github.com/trussworks/react-uswds/issues/1899)) ([fb46e88](https://github.com/trussworks/react-uswds/commit/fb46e8867f61781edf3393a359236bbcc45c626f))
 
 ### [2.7.1](https://github.com/trussworks/react-uswds/compare/2.7.0...2.7.1) (2022-01-27)
 
-
 ### Bug Fixes
 
-* Render modal outside app root by default. ([#1890](https://github.com/trussworks/react-uswds/issues/1890)) ([0828351](https://github.com/trussworks/react-uswds/commit/082835186f8ba7d10941f2425e6db1570c57c9dd))
+- Render modal outside app root by default. ([#1890](https://github.com/trussworks/react-uswds/issues/1890)) ([0828351](https://github.com/trussworks/react-uswds/commit/082835186f8ba7d10941f2425e6db1570c57c9dd))
 
 ## [2.7.0](https://github.com/trussworks/react-uswds/compare/2.6.0...2.7.0) (2022-01-12)
 
-
 ### Features
 
-* Add focus method to ComboBox ref ([#1876](https://github.com/trussworks/react-uswds/issues/1876)) ([c380a94](https://github.com/trussworks/react-uswds/commit/c380a94c3c7dd2ae363fd0f58e80d93aa35cc43b))
-
+- Add focus method to ComboBox ref ([#1876](https://github.com/trussworks/react-uswds/issues/1876)) ([c380a94](https://github.com/trussworks/react-uswds/commit/c380a94c3c7dd2ae363fd0f58e80d93aa35cc43b))
 
 ### Bug Fixes
 
-* Fix Tooltip positioning ([#1878](https://github.com/trussworks/react-uswds/issues/1878)) ([f15fea0](https://github.com/trussworks/react-uswds/commit/f15fea0b2ce037b48b8860e69a074de30aabfa91))
-
+- Fix Tooltip positioning ([#1878](https://github.com/trussworks/react-uswds/issues/1878)) ([f15fea0](https://github.com/trussworks/react-uswds/commit/f15fea0b2ce037b48b8860e69a074de30aabfa91))
 
 ### Documentation & Examples
 
-* Add help section to releasing README ([#1867](https://github.com/trussworks/react-uswds/issues/1867)) ([73e9094](https://github.com/trussworks/react-uswds/commit/73e9094a82033bdee643316ff4db91a8460d999b))
+- Add help section to releasing README ([#1867](https://github.com/trussworks/react-uswds/issues/1867)) ([73e9094](https://github.com/trussworks/react-uswds/commit/73e9094a82033bdee643316ff4db91a8460d999b))
 
 ## [2.6.0](https://github.com/trussworks/react-uswds/compare/2.5.0...2.6.0) (2022-01-07)
 
-
 ### Features
 
-* accept prop for heading level ([#1751](https://github.com/trussworks/react-uswds/issues/1751)) ([#1865](https://github.com/trussworks/react-uswds/issues/1865)) ([464756f](https://github.com/trussworks/react-uswds/commit/464756fb1e189509bde02848cc09f992357d7e1c))
+- accept prop for heading level ([#1751](https://github.com/trussworks/react-uswds/issues/1751)) ([#1865](https://github.com/trussworks/react-uswds/issues/1865)) ([464756f](https://github.com/trussworks/react-uswds/commit/464756fb1e189509bde02848cc09f992357d7e1c))
 
 ## [2.5.0](https://github.com/trussworks/react-uswds/compare/2.4.1...2.5.0) (2022-01-03)
 
-
 ### Features
 
-* Allow intrinsic elements to be passed to Fieldset ([#1862](https://github.com/trussworks/react-uswds/issues/1862)) ([85a0092](https://github.com/trussworks/react-uswds/commit/85a0092bad776357ede2cd4e9aee9a5aa11912fd))
+- Allow intrinsic elements to be passed to Fieldset ([#1862](https://github.com/trussworks/react-uswds/issues/1862)) ([85a0092](https://github.com/trussworks/react-uswds/commit/85a0092bad776357ede2cd4e9aee9a5aa11912fd))
 
 ### [2.4.1](https://github.com/trussworks/react-uswds/compare/2.4.0...2.4.1) (2021-10-29)
 

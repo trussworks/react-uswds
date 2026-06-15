@@ -419,6 +419,25 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "mvanhorn",
+      "name": "Matt Van Horn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/455140?v=4",
+      "profile": "https://github.com/mvanhorn",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Steven7926",
+      "name": "Steven Hudson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49802017?v=4",
+      "profile": "https://github.com/Steven7926",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
