@@ -10,9 +10,14 @@ import {
   DEFAULT_MIN_TIME,
   DEFAULT_MIN_TIME_MINUTES,
   DEFAULT_STEP,
+  DEFAULT_TIME_FORMAT,
   MIN_STEP,
   TIME_PICKER_CUSTOM_FILTER,
+  TIME_PICKER_CUSTOM_FILTER_24H,
+  TimePickerFormat,
 } from './constants'
+
+export type { TimePickerFormat }
 
 type BaseTimePickerProps = {
   id: string
@@ -24,6 +29,8 @@ type BaseTimePickerProps = {
   minTime?: string
   maxTime?: string
   step?: number
+  /** Display times in 12-hour (e.g. "1:00pm") or 24-hour military format (e.g. "13:00"). Defaults to "12h". */
+  format?: TimePickerFormat
   /** Recommended text: "Select a time from the dropdown. Type into the input to filter options." */
   hint?: string
   className?: string
@@ -42,6 +49,7 @@ export const TimePicker = ({
   minTime = DEFAULT_MIN_TIME,
   maxTime = DEFAULT_MAX_TIME,
   step = DEFAULT_STEP,
+  format = DEFAULT_TIME_FORMAT,
   hint,
   className,
 }: TimePickerProps): JSX.Element => {
@@ -51,9 +59,12 @@ export const TimePicker = ({
   const parsedMaxTime = parseTimeString(maxTime) || DEFAULT_MAX_TIME_MINUTES
   const validStep = step < MIN_STEP ? MIN_STEP : step
   const timeOptions = useMemo(
-    () => getTimeOptions(parsedMinTime, parsedMaxTime, validStep),
-    [minTime, maxTime, step]
+    () => getTimeOptions(parsedMinTime, parsedMaxTime, validStep, format),
+    [minTime, maxTime, step, format]
   )
+
+  const customFilter =
+    format === '24h' ? TIME_PICKER_CUSTOM_FILTER_24H : TIME_PICKER_CUSTOM_FILTER
 
   const labelId = `${name}-label`
   const hintId = `${name}-hint`
@@ -76,7 +87,7 @@ export const TimePicker = ({
         defaultValue={defaultValue}
         options={timeOptions}
         disabled={disabled}
-        customFilter={TIME_PICKER_CUSTOM_FILTER}
+        customFilter={customFilter}
         disableFiltering
       />
     </FormGroup>

@@ -44,6 +44,67 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList.children.length).toEqual(7)
   })
 
+  it('displays military time labels without am/pm when format is 24h', () => {
+    const { getByTestId } = render(
+      <TimePicker
+        {...testProps}
+        format="24h"
+        minTime="12:00"
+        maxTime="14:00"
+        step={60}
+      />
+    )
+
+    const comboBoxDropdownList = getByTestId('combo-box-option-list')
+    expect(within(comboBoxDropdownList).getByText('12:00')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('13:00')).toBeInTheDocument()
+    expect(within(comboBoxDropdownList).getByText('14:00')).toBeInTheDocument()
+    expect(
+      within(comboBoxDropdownList).queryByText(/am|pm/i)
+    ).not.toBeInTheDocument()
+  })
+
+  it('filters on the minute as soon as a colon and digit are typed in 24h format', async () => {
+    const { getByTestId } = render(<TimePicker {...testProps} format="24h" />)
+
+    const comboBoxTextInput = getByTestId('combo-box-input')
+    const ninePm = getByTestId('combo-box-option-21:00')
+    const ninethirtyPm = getByTestId('combo-box-option-21:30')
+
+    await userEvent.click(comboBoxTextInput)
+
+    // A single minute digit picks the matching half hour
+    await userEvent.type(comboBoxTextInput, '21:0')
+    expect(ninePm).toHaveClass('usa-combo-box__list-option--focused')
+    expect(ninethirtyPm).not.toHaveClass(
+      'usa-combo-box__list-option--focused'
+    )
+
+    await userEvent.clear(comboBoxTextInput)
+    await userEvent.type(comboBoxTextInput, '21:3')
+    expect(ninethirtyPm).toHaveClass('usa-combo-box__list-option--focused')
+    expect(ninePm).not.toHaveClass('usa-combo-box__list-option--focused')
+  })
+
+  it('filters midnight and tolerates a leading zero in 24h format', async () => {
+    const { getByTestId } = render(<TimePicker {...testProps} format="24h" />)
+
+    const comboBoxTextInput = getByTestId('combo-box-input')
+    const midnight = getByTestId('combo-box-option-00:00')
+    const nineAm = getByTestId('combo-box-option-09:00')
+
+    await userEvent.click(comboBoxTextInput)
+
+    // A single "0" focuses midnight
+    await userEvent.type(comboBoxTextInput, '0')
+    expect(midnight).toHaveClass('usa-combo-box__list-option--focused')
+
+    // A single-digit hour still matches its zero-padded option
+    await userEvent.clear(comboBoxTextInput)
+    await userEvent.type(comboBoxTextInput, '9')
+    expect(nineAm).toHaveClass('usa-combo-box__list-option--focused')
+  })
+
   it('renders a label', () => {
     const { queryByText } = render(
       <TimePicker {...testProps} label="test label" />
