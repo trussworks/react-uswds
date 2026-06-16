@@ -44,7 +44,7 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList.children.length).toEqual(7)
   })
 
-  it('displays military time labels without am/pm when format is 24h', () => {
+  it('displays 24 hour time labels without am/pm when format is 24h', () => {
     const { getByTestId } = render(
       <TimePicker
         {...testProps}
@@ -76,9 +76,7 @@ describe('TimePicker Component', () => {
     // A single minute digit picks the matching half hour
     await userEvent.type(comboBoxTextInput, '21:0')
     expect(ninePm).toHaveClass('usa-combo-box__list-option--focused')
-    expect(ninethirtyPm).not.toHaveClass(
-      'usa-combo-box__list-option--focused'
-    )
+    expect(ninethirtyPm).not.toHaveClass('usa-combo-box__list-option--focused')
 
     await userEvent.clear(comboBoxTextInput)
     await userEvent.type(comboBoxTextInput, '21:3')

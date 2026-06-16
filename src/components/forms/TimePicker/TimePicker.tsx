@@ -29,7 +29,7 @@ type BaseTimePickerProps = {
   minTime?: string
   maxTime?: string
   step?: number
-  /** Display times in 12-hour (e.g. "1:00pm") or 24-hour military format (e.g. "13:00"). Defaults to "12h". */
+  /** Display times in 12-hour (e.g. "1:00pm") or 24-hour format (e.g. "13:00"). Defaults to "12h". */
   format?: TimePickerFormat
   /** Recommended text: "Select a time from the dropdown. Type into the input to filter options." */
   hint?: string
