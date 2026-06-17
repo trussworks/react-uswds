@@ -209,6 +209,25 @@ describe('getTimeOptions', () => {
     ])
   })
 
+  it('returns military time labels without am/pm when format is 24h', () => {
+    const nineAM = parseTimeString('09:00') as number
+    const fivePM = parseTimeString('17:00') as number
+    const oneHourInMinutes = 60
+    const timeOptions = getTimeOptions(nineAM, fivePM, oneHourInMinutes, '24h')
+
+    expect(timeOptions).toEqual([
+      { value: '09:00', label: '09:00' },
+      { value: '10:00', label: '10:00' },
+      { value: '11:00', label: '11:00' },
+      { value: '12:00', label: '12:00' },
+      { value: '13:00', label: '13:00' },
+      { value: '14:00', label: '14:00' },
+      { value: '15:00', label: '15:00' },
+      { value: '16:00', label: '16:00' },
+      { value: '17:00', label: '17:00' },
+    ])
+  })
+
   it('returns the expected list of times options with a custom step size', () => {
     const fourHoursInMinutes = 4 * 60
     const timeOptions = getTimeOptions(
@@ -242,6 +261,26 @@ describe('getTimeOptions', () => {
         value: '20:00',
         label: '8:00pm',
       },
+    ])
+  })
+
+  it('returns 24 hour formatted labels when format is 24', () => {
+    const nineAM = parseTimeString('09:00') as number
+    const sixPM = parseTimeString('18:00') as number
+    const oneHourInMinutes = 60
+    const timeOptions = getTimeOptions(nineAM, sixPM, oneHourInMinutes, '24h')
+
+    expect(timeOptions).toEqual([
+      { value: '09:00', label: '09:00' },
+      { value: '10:00', label: '10:00' },
+      { value: '11:00', label: '11:00' },
+      { value: '12:00', label: '12:00' },
+      { value: '13:00', label: '13:00' },
+      { value: '14:00', label: '14:00' },
+      { value: '15:00', label: '15:00' },
+      { value: '16:00', label: '16:00' },
+      { value: '17:00', label: '17:00' },
+      { value: '18:00', label: '18:00' },
     ])
   })
 
