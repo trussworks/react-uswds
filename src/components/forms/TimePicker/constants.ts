@@ -1,6 +1,5 @@
 import { CustomizableFilter } from '../ComboBox/ComboBox'
-
-export type TimePickerFormat = '12h' | '24h'
+import type { TimePickerFormat } from './TimePicker'
 
 export const DEFAULT_TIME_FORMAT: TimePickerFormat = '12h'
 export const DEFAULT_MAX_TIME = '23:59'

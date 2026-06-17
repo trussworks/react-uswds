@@ -14,10 +14,9 @@ import {
   MIN_STEP,
   TIME_PICKER_CUSTOM_FILTER,
   TIME_PICKER_CUSTOM_FILTER_24H,
-  TimePickerFormat,
 } from './constants'
 
-export type { TimePickerFormat }
+export type TimePickerFormat = '12h' | '24h'
 
 type BaseTimePickerProps = {
   id: string
@@ -29,7 +28,6 @@ type BaseTimePickerProps = {
   minTime?: string
   maxTime?: string
   step?: number
-  /** Display times in 12-hour (e.g. "1:00pm") or 24-hour format (e.g. "13:00"). Defaults to "12h". */
   format?: TimePickerFormat
   /** Recommended text: "Select a time from the dropdown. Type into the input to filter options." */
   hint?: string

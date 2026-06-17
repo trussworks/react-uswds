@@ -66,11 +66,12 @@ export const getTimeOptions = (
   ) {
     const { minute, hour24, hour12, ampm } = getTimeContext(minutes)
     const value = `${padZeros(hour24, 2)}:${padZeros(minute, 2)}`
+    const label =
+      format === '24h' ? value : `${hour12}:${padZeros(minute, 2)}${ampm}`
 
     timeOptions.push({
       value,
-      label:
-        format === '24h' ? value : `${hour12}:${padZeros(minute, 2)}${ampm}`,
+      label,
     })
   }
 
