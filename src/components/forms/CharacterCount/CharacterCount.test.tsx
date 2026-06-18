@@ -1,444 +1,217 @@
-import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import React, { useRef, useState } from 'react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { CharacterCount } from './CharacterCount'
+import { TextInput } from '../TextInput/TextInput'
+import { Textarea } from '../Textarea/Textarea'
+import { Label } from '../Label/Label'
 
 describe('CharacterCount component', () => {
   afterEach(() => {
     vi.clearAllMocks()
   })
+  const id = 'character-count'
+  const characterCountId = `${id}-info`
 
-  it('renders without errors', () => {
-    const { getByRole } = render(
-      <CharacterCount
-        id="character-count-1"
-        name="character-count-1"
-        maxLength={10}
-      />
+  const TextInputExample = ({
+    maxLength = 10,
+    getMessage,
+    getCharacterCount,
+  }: {
+    maxLength?: number
+    getMessage?: (remainingCount: number, max: number) => string
+    getCharacterCount?: (text: string) => number
+  }): React.JSX.Element => {
+    const [value, setValue] = useState('')
+    const inputRef = useRef<HTMLInputElement>(null)
+    return (
+      <>
+        <Label htmlFor={id}>Text input</Label>
+        <TextInput
+          id={id}
+          name={id}
+          type="text"
+          ref={inputRef}
+          value={value}
+          onChange={(e): void => setValue(e.target.value)}
+          aria-describedby={characterCountId}
+        />
+        <CharacterCount
+          id={characterCountId}
+          maxLength={maxLength}
+          inputValue={value}
+          inputRef={inputRef}
+          getMessage={getMessage}
+          getCharacterCount={getCharacterCount}
+        />
+      </>
     )
-    expect(getByRole('textbox')).toBeInTheDocument()
-  })
+  }
 
-  describe('renders text input', () => {
-    it('with expected element', () => {
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count"
-          name="character-count"
-          className={'custom-class'}
-          maxLength={10}
+  const TextareaExample = ({
+    maxLength = 10,
+  }: {
+    maxLength?: number
+  }): React.JSX.Element => {
+    const [value, setValue] = useState('')
+    const textareaRef = useRef<HTMLTextAreaElement>(null)
+    return (
+      <>
+        <Label htmlFor={id}>Textarea</Label>
+        <Textarea
+          id={id}
+          name={id}
+          inputRef={textareaRef}
+          value={value}
+          onChange={(e): void => setValue(e.target.value)}
+          aria-describedby={characterCountId}
         />
-      )
-      expect(getByRole('textbox')).toBeInstanceOf(HTMLInputElement)
-    })
-
-    it('with expected styles', () => {
-      const { getByRole } = render(
         <CharacterCount
-          id="character-count"
-          name="character-count"
-          className={'custom-class'}
-          maxLength={10}
+          id={characterCountId}
+          maxLength={maxLength}
+          inputValue={value}
+          inputRef={textareaRef}
         />
-      )
-      const input = getByRole('textbox')
-      expect(input).toHaveClass('usa-character-count__field')
-      expect(input).toHaveClass('custom-class')
-    })
-
-    it('handles own props', () => {
-      const tRef = React.createRef<HTMLTextAreaElement>()
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="character-count"
-          defaultValue="Prefill this value"
-          maxLength={10}
-          inputRef={tRef}
-        />
-      )
-      const input = getByRole('textbox')
-      expect(input).toHaveAttribute('name', 'character-count')
-      expect(input).toHaveAttribute('value', 'Prefill this value')
-      expect(input).toBe(tRef.current)
-    })
-
-    it('calls own onChange and onBlur functions', () => {
-      const onBlur = vi.fn()
-      const onChange = vi.fn()
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="character-count"
-          maxLength={2}
-          onBlur={onBlur}
-          onChange={onChange}
-        />
-      )
-      const input = getByRole('textbox')
-
-      expect(onChange).not.toHaveBeenCalled()
-
-      fireEvent.change(input, {
-        target: { value: 'a' },
-      })
-
-      expect(onChange).toHaveBeenCalled()
-      fireEvent.blur(input)
-
-      expect(onBlur).toHaveBeenCalled()
-    })
-
-    it('includes the message hint', () => {
-      const { getByTestId } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="character-count"
-          maxLength={10}
-        />
-      )
-      const message = getByTestId('characterCountMessage')
-      expect(message).toHaveClass('usa-hint usa-character-count__status')
-      expect(message).toHaveAttribute('aria-hidden', 'true')
-    })
-
-    it('includes the screen reader message', () => {
-      const { getByTestId } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="character-count"
-          maxLength={10}
-        />
-      )
-      const message = getByTestId('characterCountSRMessage')
-      expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
-      expect(message).toHaveAttribute('aria-live', 'polite')
-    })
-  })
-
-  describe('renders textarea', () => {
-    it('with expected element', () => {
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count"
-          name="character-count"
-          className={'custom-class'}
-          isTextArea
-          maxLength={10}
-        />
-      )
-      expect(getByRole('textbox')).toBeInstanceOf(HTMLTextAreaElement)
-    })
-
-    it('with expected styles', () => {
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count"
-          name="character-count"
-          className={'custom-class'}
-          isTextArea
-          maxLength={10}
-        />
-      )
-      const textarea = getByRole('textbox')
-      expect(textarea).toHaveClass('usa-character-count__field')
-      expect(textarea).toHaveClass('custom-class')
-    })
-
-    it('handles own props', () => {
-      const tRef = React.createRef<HTMLTextAreaElement>()
-      const { getByDisplayValue } = render(
-        <>
-          <CharacterCount
-            id="character-count-defaultValue"
-            name="character-count-defaultValue"
-            defaultValue="Prefilled defaultValue"
-            isTextArea
-            rows={5}
-            maxLength={10}
-            inputRef={tRef}
-          />
-          <CharacterCount
-            id="character-count-value"
-            name="character-count-value"
-            value="Prefilled value"
-            isTextArea
-            rows={5}
-            maxLength={10}
-          />
-        </>
-      )
-      const textareaDefaultValue = getByDisplayValue('Prefilled defaultValue')
-      expect(textareaDefaultValue).toHaveAttribute(
-        'name',
-        'character-count-defaultValue'
-      )
-      expect(textareaDefaultValue).toHaveAttribute('rows', '5')
-      expect(textareaDefaultValue).toBe(tRef.current)
-      const textareaValue = getByDisplayValue('Prefilled value')
-      expect(textareaValue).toHaveAttribute('id', 'character-count-value')
-    })
-
-    it('calls own onChange and onBlur functions', () => {
-      const onChange = vi.fn()
-      const onBlur = vi.fn()
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="character-count"
-          isTextArea
-          maxLength={10}
-          onBlur={onBlur}
-          onChange={onChange}
-        />
-      )
-      const input = getByRole('textbox')
-
-      expect(onChange).not.toHaveBeenCalled()
-
-      fireEvent.change(input, {
-        target: { value: 'a' },
-      })
-
-      expect(onChange).toHaveBeenCalled()
-
-      fireEvent.blur(input)
-
-      expect(onBlur).toHaveBeenCalled()
-    })
-
-    it('includes the message hint', () => {
-      const { getByTestId } = render(
-        <CharacterCount
-          id="character-count"
-          name="character-count"
-          maxLength={10}
-          isTextArea
-        />
-      )
-      const message = getByTestId('characterCountMessage')
-      expect(message).toHaveClass('usa-character-count__status')
-      expect(message).toHaveAttribute('aria-hidden', 'true')
-    })
-
-    it('includes the screen reader message hint', () => {
-      const { getByTestId } = render(
-        <CharacterCount
-          id="character-count"
-          name="character-count"
-          maxLength={10}
-          isTextArea
-        />
-      )
-      const message = getByTestId('characterCountSRMessage')
-      expect(message).toHaveClass('usa-character-count__sr-status usa-sr-only')
-      expect(message).toHaveAttribute('aria-live', 'polite')
-    })
-  })
-
-  describe('with default character count and message', () => {
-    it('displays allowed characters when character count is zero', () => {
-      const { getByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          maxLength={20}
-        />
-      )
-      expect(getByText('20 characters allowed')).toBeInTheDocument()
-    })
-
-    it('updates message text with characters left onChange', async () => {
-      const { getByRole, getAllByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          maxLength={5}
-        />
-      )
-      const input = getByRole('textbox')
-      fireEvent.change(input, {
-        target: { value: 'a' },
-      })
-
-      await new Promise((res) => setTimeout(res, 1000))
-
-      expect(getAllByText('4 characters left')).toHaveLength(2)
-      expect(getAllByText('4 characters left')[0]).toBeInTheDocument()
-
-      fireEvent.change(input, {
-        target: { value: 'abcd' },
-      })
-
-      await new Promise((res) => setTimeout(res, 1000))
-
-      expect(getAllByText('1 character left')).toHaveLength(2)
-      expect(getAllByText('1 character left')[0]).toBeInTheDocument()
-    })
-
-    it('updates message text with characters over the limit when expected', async () => {
-      const { getByRole, getAllByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          maxLength={5}
-        />
-      )
-      const input = getByRole('textbox')
-
-      fireEvent.change(input, {
-        target: { value: 'abcdef' },
-      })
-
-      await new Promise((res) => setTimeout(res, 1000))
-
-      expect(getAllByText('1 character over limit')).toHaveLength(2)
-      expect(getAllByText('1 character over limit')[0]).toBeInTheDocument()
-      expect(getAllByText('1 character over limit')[0]).toHaveClass(
-        'usa-character-count__status--invalid'
-      )
-
-      fireEvent.change(input, {
-        target: { value: 'abcdefg' },
-      })
-
-      await new Promise((res) => setTimeout(res, 1000))
-
-      expect(getAllByText('2 characters over limit')).toHaveLength(2)
-      expect(getAllByText('2 characters over limit')[0]).toBeInTheDocument()
-    })
-
-    it('updates input validity', () => {
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          maxLength={5}
-        />
-      )
-      const input = getByRole('textbox')
-
-      fireEvent.change(getByRole('textbox'), {
-        target: { value: 'abcdefdfsfdsfdsfsd' },
-      })
-      fireEvent.blur(input)
-
-      expect(input).toHaveClass('usa-input--error')
-      expect(getByRole('textbox')).toBeInvalid()
-
-      fireEvent.change(input, {
-        target: { value: 'abce' },
-      })
-      fireEvent.blur(input)
-
-      expect(input).not.toHaveClass('usa-input--error')
-      expect(input).toBeValid()
-    })
-
-    it('adjusts message styles onChange', () => {
-      const { getByRole, getByTestId } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          maxLength={5}
-        />
-      )
-      const input = getByRole('textbox')
-
-      fireEvent.change(input, {
-        target: { value: 'abcdef' },
-      })
-      expect(getByTestId('characterCountMessage')).toHaveClass(
-        'usa-character-count__status--invalid'
-      )
-
-      fireEvent.change(input, {
-        target: { value: 'abcde' },
-      })
-
-      expect(getByTestId('characterCountMessage')).not.toHaveClass(
-        'usa-character-count__status--invalid'
-      )
-    })
-  })
-
-  describe('with custom message', () => {
-    const customMessage = vi.fn(
-      (count: number, maxCount: number): string =>
-        `${maxCount - count} characters remain`
+      </>
     )
+  }
 
-    it('renders initially with custom message', () => {
-      const { getByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          getMessage={customMessage}
-          maxLength={6}
-        />
-      )
-      expect(customMessage).toHaveBeenCalled()
-      expect(getByText('6 characters remain')).toBeInTheDocument()
-    })
+  it('renders the visual and screen reader status messages', () => {
+    render(<TextInputExample />)
 
-    it('updates message text onChange', () => {
-      const { getByRole, getByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          getMessage={customMessage}
-          maxLength={6}
-        />
-      )
+    const message = screen.getByTestId('characterCountMessage')
+    expect(message).toHaveClass('usa-hint usa-character-count__status')
+    expect(message).toHaveAttribute('aria-hidden', 'true')
 
-      const input = getByRole('textbox')
-      expect(getByText('6 characters remain')).toBeInTheDocument()
-
-      fireEvent.change(input, {
-        target: { value: 'abcdef' },
-      })
-
-      expect(getByText('0 characters remain')).toBeInTheDocument()
-    })
+    const srMessage = screen.getByTestId('characterCountSRMessage')
+    expect(srMessage).toHaveClass('usa-character-count__sr-status usa-sr-only')
+    expect(srMessage).toHaveAttribute('aria-live', 'polite')
   })
 
-  describe('with custom character count', () => {
-    const customCharacterCount = vi.fn(
-      (text: string): number => text.length + 2
-    )
+  it('exposes an info element that should be linked to the field via aria-describedby', () => {
+    render(<TextInputExample maxLength={10} />)
 
-    it('renders initially with custom character count', () => {
-      const { getByText } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          getCharacterCount={customCharacterCount}
-          maxLength={6}
-        />
-      )
-      expect(customCharacterCount).toHaveBeenCalled()
-      expect(getByText('4 characters left')).toBeInTheDocument()
+    const info = screen.getByText('You can enter up to 10 characters')
+    expect(info).toHaveAttribute('id', characterCountId)
+    expect(screen.getByRole('textbox')).toHaveAttribute(
+      'aria-describedby',
+      characterCountId
+    )
+  })
+
+  describe('with a text input', () => {
+    it('updates the count message as the user types', async () => {
+      const user = userEvent.setup()
+      render(<TextInputExample maxLength={5} />)
+      const input = screen.getByRole('textbox')
+
+      const message = screen.getByTestId('characterCountMessage')
+      expect(message).toHaveTextContent('5 characters allowed')
+
+      await user.type(input, '1')
+      expect(message).toHaveTextContent('4 characters left')
+
+      await user.type(input, '234')
+      expect(message).toHaveTextContent('1 character left')
+
+      await user.type(input, '5')
+      expect(message).toHaveTextContent('0 characters left')
+
+      await user.type(input, '6')
+      expect(message).toHaveTextContent('1 character over limit')
+
+      await user.type(input, '7')
+      expect(message).toHaveTextContent('2 characters over limit')
     })
 
-    it('updates input validity', () => {
-      const { getByRole } = render(
-        <CharacterCount
-          id="character-count-id"
-          name="characterCount"
-          getCharacterCount={customCharacterCount}
-          maxLength={6}
-        />
-      )
+    it('shows over-limit messaging and invalid styling as the user exceeds the limit', async () => {
+      const user = userEvent.setup()
+      render(<TextInputExample maxLength={5} />)
 
-      const input = getByRole('textbox')
+      await user.type(screen.getByRole('textbox'), 'abcdef')
+
+      const message = screen.getByTestId('characterCountMessage')
+      expect(message).toHaveTextContent('1 character over limit')
+      expect(message).toHaveClass('usa-character-count__status--invalid')
+    })
+
+    it('sets the field validity from the limit as the user types', async () => {
+      const user = userEvent.setup()
+      render(<TextInputExample maxLength={5} />)
+      const input = screen.getByRole('textbox')
       expect(input).toBeValid()
 
-      fireEvent.change(input, {
-        target: { value: 'abcad' },
-      })
-      fireEvent.blur(input)
-
+      await user.type(input, 'abcdef')
       expect(input).toBeInvalid()
+
+      await user.type(input, '{backspace}{backspace}')
+      expect(input).toBeValid()
+    })
+
+    it('updates the screen reader status after a delay', async () => {
+      const user = userEvent.setup()
+      render(<TextInputExample maxLength={5} />)
+      const srMessage = screen.getByTestId('characterCountSRMessage')
+
+      await user.type(screen.getByRole('textbox'), 'a')
+      expect(srMessage).toHaveTextContent('')
+
+      await new Promise((res) => setTimeout(res, 1000))
+      expect(srMessage).toHaveTextContent('4 characters left')
+    })
+  })
+
+  describe('with a textarea', () => {
+    it('updates the count and field validity as the user types', async () => {
+      const user = userEvent.setup()
+      render(<TextareaExample maxLength={5} />)
+      const textarea = screen.getByRole('textbox')
+
+      await user.type(textarea, 'abcdef')
+      expect(screen.getByTestId('characterCountMessage')).toHaveTextContent(
+        '1 character over limit'
+      )
+      expect(textarea).toBeInvalid()
+
+      await user.type(textarea, '{backspace}{backspace}')
+      expect(textarea).toBeValid()
+    })
+  })
+
+  describe('with custom message and character count', () => {
+    it('uses a custom message and updates it as the user types', async () => {
+      const user = userEvent.setup()
+      const customMessage = vi.fn(
+        (count: number, maxCount: number): string =>
+          `${maxCount - count} characters remain`
+      )
+      render(<TextInputExample maxLength={6} getMessage={customMessage} />)
+
+      expect(customMessage).toHaveBeenCalled()
+
+      const characterCountMessage = screen.getByTestId('characterCountMessage')
+      expect(characterCountMessage).toHaveTextContent('6 characters remain')
+
+      await user.type(screen.getByRole('textbox'), 'abcdef')
+      expect(characterCountMessage).toHaveTextContent('0 characters remain')
+    })
+
+    it('uses a custom character count for messaging and validity', async () => {
+      const user = userEvent.setup()
+      // custom count adds 2 to the input value
+      const customCount = vi.fn((text: string): number => text.length + 2)
+      render(<TextInputExample maxLength={6} getCharacterCount={customCount} />)
+      const input = screen.getByRole('textbox')
+
+      const message = screen.getByTestId('characterCountMessage')
+      // 6 (max) - 2 (added to blank input value) = 4 (remaining)
+      expect(message).toHaveTextContent('4 characters left')
+
+      // 5 typed characters count as 7 (over maxLength 6)
+      await user.type(input, '12345')
+      expect(input).toBeInvalid()
+      expect(message).toHaveTextContent('1 character over limit')
     })
   })
 })
