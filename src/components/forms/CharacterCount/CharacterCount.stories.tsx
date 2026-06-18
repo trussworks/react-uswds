@@ -133,7 +133,7 @@ const twitterStyleMessage = (count: number, maxCount: number): string => {
 const WithCustomCharacterCountExample = (): JSX.Element => {
   const [customEmojiValue, setCustomEmojiValue] = useState('⭐️⭐️⭐️')
   const [twitterStyleValue, setTwitterStyleValue] = useState(
-    'In most cases, the text content of a Tweet can contain up to 280 characters or Unicode glyphs. The exact definition of which characters have weights greater than one character is found in the configuration file for the twitter-text Tweet parsing library. This is just an example using regex 😇'
+    'In most cases, the text content of a Tweet can contain up to 280 characters or Unicode glyphs. The exact definition of which characters have weights greater than one character is found in the configuration file for the twitter-text Tweet parsing library. This is just an example using regex😇'
   )
 
   const customEmojiInputRef = useRef<HTMLInputElement>(null)
