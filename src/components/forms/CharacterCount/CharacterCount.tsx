@@ -34,7 +34,7 @@ const VALIDATION_MESSAGE = 'The content is too long.'
 
 export type UseCharacterCountOptions = {
   maxLength: number
-  inputValue?: string
+  inputValue: string
   getCharacterCount?: (text: string) => number
   getMessage?: (remainingCount: number, max: number) => string
   // Optionally, pass an input ref to set the field's validity when over the limit
@@ -61,7 +61,7 @@ export type CharacterCountProps = {
   styling) from the same source of truth that drives the CharacterCount messages.
 */
 export const useCharacterCount = ({
-  inputValue = '',
+  inputValue,
   maxLength,
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
