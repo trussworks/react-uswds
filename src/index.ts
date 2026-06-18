@@ -83,10 +83,7 @@ export type {
 
 /** Form components/types */
 export { CharacterCount } from './components/forms/CharacterCount/CharacterCount'
-export type {
-  TextInputCharacterCountProps,
-  TextareaCharacterCountProps,
-} from './components/forms/CharacterCount/CharacterCount'
+export type { CharacterCountProps } from './components/forms/CharacterCount/CharacterCount'
 export { Checkbox } from './components/forms/Checkbox/Checkbox'
 export type { CheckboxProps } from './components/forms/Checkbox/Checkbox'
 export { ComboBox } from './components/forms/ComboBox/ComboBox'
