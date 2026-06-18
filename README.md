@@ -1,10 +1,10 @@
 # @trussworks/react-uswds
 
+<!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-45-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- prettier-ignore-end -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
 [![uswds version](https://img.shields.io/github/package-json/dependency-version/trussworks/react-uswds/dev/@uswds/uswds)](https://www.npmjs.com/package/@uswds/uswds)
