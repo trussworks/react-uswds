@@ -182,7 +182,11 @@ const WithCustomCharacterCountExample = (): JSX.Element => {
   )
 }
 
-WithCustomCharacterCountExample.parameters = { happo: { delay: 100 } }
 export const WithCustomCharacterCount: Story = {
   render: () => <WithCustomCharacterCountExample />,
+  parameters: {
+    happo: {
+      delay: 100,
+    },
+  },
 }
