@@ -67,7 +67,7 @@ const TextInputExample = ({
 }
 
 export const TextInputStory: Story = {
-  name: 'Text input',
+  name: 'Text Input',
   args: { maxLength: 25 },
   render: (args) => <TextInputExample maxLength={args.maxLength} />,
 }
