@@ -62,7 +62,7 @@ describe('CharacterCount component', () => {
         <Textarea
           id={id}
           name={id}
-          inputRef={textareaRef}
+          ref={textareaRef}
           value={value}
           onChange={(e): void => setValue(e.target.value)}
           aria-describedby={characterCountId}

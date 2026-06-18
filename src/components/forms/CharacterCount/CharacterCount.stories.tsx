@@ -93,7 +93,7 @@ const TextareaExample = ({
         <Textarea
           id={id}
           name={id}
-          inputRef={textareaRef}
+          ref={textareaRef}
           rows={rows}
           value={value}
           onChange={(e): void => setValue(e.target.value)}
