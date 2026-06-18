@@ -47,6 +47,10 @@ export const WithMinAndMaxTimes: Story = {
   args: { hint: recommendedHintText, minTime: '9:00', maxTime: '17:00' },
 }
 
+export const With24HourFormat: Story = {
+  args: { hint: recommendedHintText, format: '24h' },
+}
+
 export const WithDefaultValue: Story = {
   args: { hint: recommendedHintText, defaultValue: '12:00' },
 }
