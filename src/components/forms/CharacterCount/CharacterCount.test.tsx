@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { CharacterCount } from './CharacterCount'
+import { CharacterCount, useCharacterCount } from './CharacterCount'
 import { TextInput } from '../TextInput/TextInput'
 import { Textarea } from '../Textarea/Textarea'
 import { Label } from '../Label/Label'
@@ -25,6 +25,13 @@ describe('CharacterCount component', () => {
   }): React.JSX.Element => {
     const [value, setValue] = useState('')
     const inputRef = useRef<HTMLInputElement>(null)
+    const status = useCharacterCount({
+      inputValue: value,
+      maxLength,
+      getCharacterCount,
+      getMessage,
+      inputRef,
+    })
     return (
       <>
         <Label htmlFor={id}>Text input</Label>
@@ -35,16 +42,10 @@ describe('CharacterCount component', () => {
           ref={inputRef}
           value={value}
           onChange={(e): void => setValue(e.target.value)}
+          validationStatus={status.isOverLimit ? 'error' : undefined}
           aria-describedby={characterCountId}
         />
-        <CharacterCount
-          id={characterCountId}
-          maxLength={maxLength}
-          inputValue={value}
-          inputRef={inputRef}
-          getMessage={getMessage}
-          getCharacterCount={getCharacterCount}
-        />
+        <CharacterCount id={characterCountId} status={status} />
       </>
     )
   }
@@ -56,6 +57,11 @@ describe('CharacterCount component', () => {
   }): React.JSX.Element => {
     const [value, setValue] = useState('')
     const textareaRef = useRef<HTMLTextAreaElement>(null)
+    const status = useCharacterCount({
+      inputValue: value,
+      maxLength,
+      inputRef: textareaRef,
+    })
     return (
       <>
         <Label htmlFor={id}>Textarea</Label>
@@ -65,14 +71,10 @@ describe('CharacterCount component', () => {
           ref={textareaRef}
           value={value}
           onChange={(e): void => setValue(e.target.value)}
+          error={status.isOverLimit}
           aria-describedby={characterCountId}
         />
-        <CharacterCount
-          id={characterCountId}
-          maxLength={maxLength}
-          inputValue={value}
-          inputRef={textareaRef}
-        />
+        <CharacterCount id={characterCountId} status={status} />
       </>
     )
   }
@@ -136,6 +138,19 @@ describe('CharacterCount component', () => {
       expect(message).toHaveClass('usa-character-count__status--invalid')
     })
 
+    it('applies the error class to the input when over the limit', async () => {
+      const user = userEvent.setup()
+      render(<TextInputExample maxLength={5} />)
+      const input = screen.getByRole('textbox')
+      expect(input).not.toHaveClass('usa-input--error')
+
+      await user.type(input, 'abcdef')
+      expect(input).toHaveClass('usa-input--error')
+
+      await user.type(input, '{backspace}{backspace}')
+      expect(input).not.toHaveClass('usa-input--error')
+    })
+
     it('sets the field validity from the limit as the user types', async () => {
       const user = userEvent.setup()
       render(<TextInputExample maxLength={5} />)
@@ -173,9 +188,11 @@ describe('CharacterCount component', () => {
         '1 character over limit'
       )
       expect(textarea).toBeInvalid()
+      expect(textarea).toHaveClass('usa-input--error')
 
       await user.type(textarea, '{backspace}{backspace}')
       expect(textarea).toBeValid()
+      expect(textarea).not.toHaveClass('usa-input--error')
     })
   })
 

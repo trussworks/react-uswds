@@ -32,35 +32,78 @@ const defaultMessage = (count: number, max: number): string => {
 // USWDS default custom validity message.
 const VALIDATION_MESSAGE = 'The content is too long.'
 
-/* Types */
-export type CharacterCountProps = {
-  id: string
+export type UseCharacterCountOptions = {
   maxLength: number
   inputValue?: string
   getCharacterCount?: (text: string) => number
   getMessage?: (remainingCount: number, max: number) => string
-  // Optionally, pass an input ref to trigger setCustomValidity on the input
+  // Optionally, pass an input ref to set the field's validity when over the limit
   inputRef?: React.RefObject<HTMLInputElement | HTMLTextAreaElement | null>
   customValidityMessage?: string
 }
 
-/* Main */
-export const CharacterCount = ({
-  id,
-  maxLength,
+export type CharacterCountStatus = {
+  length: number
+  maxLength: number
+  message: string
+  isOverLimit: boolean
+}
+
+export type CharacterCountProps = {
+  id: string
+  // The derived status from useCharacterCount, which drives the messages
+  status: CharacterCountStatus
+}
+
+/*
+  Derives the character count state from a controlled value.
+  Consumers can call it to drive their own field styling (e.g. validation status
+  styling) from the same source of truth that drives the CharacterCount messages.
+*/
+export const useCharacterCount = ({
   inputValue = '',
+  maxLength,
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
   inputRef,
   customValidityMessage = VALIDATION_MESSAGE,
-}: CharacterCountProps): JSX.Element => {
+}: UseCharacterCountOptions): CharacterCountStatus => {
   const length = getCharacterCount(inputValue)
-  const isValid = length <= maxLength
-  const message = getMessage(length, maxLength)
+  const isOverLimit = length > maxLength
+
+  useEffect(() => {
+    // Set the field's custom validity when over the limit. Guarded so we never
+    // clobber another validator's message, matching USWDS's behavior.
+    const input = inputRef?.current
+    if (!input) return
+
+    if (isOverLimit && !input.validationMessage) {
+      input.setCustomValidity(customValidityMessage)
+    } else if (
+      !isOverLimit &&
+      input.validationMessage === customValidityMessage
+    ) {
+      input.setCustomValidity('')
+    }
+  }, [isOverLimit, inputRef, customValidityMessage])
+
+  return {
+    length,
+    maxLength,
+    message: getMessage(length, maxLength),
+    isOverLimit,
+  }
+}
+
+export const CharacterCount = ({
+  id,
+  status,
+}: CharacterCountProps): JSX.Element => {
+  const { maxLength, message, isOverLimit } = status
   const srMessageRef = useRef<HTMLDivElement>(null)
 
   const messageClasses = classnames('usa-hint', 'usa-character-count__status', {
-    'usa-character-count__status--invalid': !isValid,
+    'usa-character-count__status--invalid': isOverLimit,
   })
 
   useEffect(() => {
@@ -71,23 +114,6 @@ export const CharacterCount = ({
     }, 1000)
     return () => clearTimeout(timer)
   }, [message])
-
-  useEffect(() => {
-    // Set the field's custom validity when over the limit. Guarded so we never
-    // clobber another validator's message, matching USWDS's behavior.
-    const input = inputRef?.current
-    if (!input) return
-
-    const isOverLimit = length > maxLength
-    if (isOverLimit && !input.validationMessage) {
-      input.setCustomValidity(customValidityMessage)
-    } else if (
-      !isOverLimit &&
-      input.validationMessage === customValidityMessage
-    ) {
-      input.setCustomValidity('')
-    }
-  }, [length, maxLength, inputRef])
 
   return (
     <>
