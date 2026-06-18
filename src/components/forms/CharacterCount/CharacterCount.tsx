@@ -39,6 +39,7 @@ export type CharacterCountProps = {
   inputValue?: string
   getCharacterCount?: (text: string) => number
   getMessage?: (remainingCount: number, max: number) => string
+  // Optionally, pass an input ref to trigger setCustomValidity on the input
   inputRef?: React.RefObject<HTMLInputElement | HTMLTextAreaElement | null>
   customValidityMessage?: string
 }
@@ -90,7 +91,7 @@ export const CharacterCount = ({
 
   return (
     <>
-      <span className="usa-sr-only" id={`${id}-info`}>
+      <span className="usa-sr-only" id={id}>
         You can enter up to {maxLength} characters
       </span>
       <div
