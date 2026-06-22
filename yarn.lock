@@ -5842,26 +5842,26 @@ __metadata:
   linkType: hard
 
 "focus-trap-react@npm:^12.0.0":
-  version: 12.0.2
-  resolution: "focus-trap-react@npm:12.0.2"
+  version: 12.0.3
+  resolution: "focus-trap-react@npm:12.0.3"
   dependencies:
-    focus-trap: ^8.2.1
-    tabbable: ^6.4.0
+    focus-trap: ^8.2.2
+    tabbable: ^6.5.0
   peerDependencies:
     "@types/react": ^18.0.0 || ^19.0.0
     "@types/react-dom": ^18.0.0 || ^19.0.0
     react: ^18.0.0 || ^19.0.0
     react-dom: ^18.0.0 || ^19.0.0
-  checksum: d2f9e76a1699b7edf43b747f6b74011ee7c3dadc55689954aa8be859af26ee8b5bdcddee8326679e87537b43080ec058478b076a726aa98ecc842d87ea89b9b0
+  checksum: efa9b78f11b7805a0f7acee24afde9906dde975537995325475b984f8c3400a70921394b92c0c98623599fc19a301dfad960f0b037697f27c01d5ef2e74cd482
   languageName: node
   linkType: hard
 
-"focus-trap@npm:^8.2.1":
-  version: 8.2.1
-  resolution: "focus-trap@npm:8.2.1"
+"focus-trap@npm:^8.2.2":
+  version: 8.2.2
+  resolution: "focus-trap@npm:8.2.2"
   dependencies:
-    tabbable: ^6.4.0
-  checksum: e39176ecfc6c20bc80a12dccc42896e886c4a0a37b525d6f04f809ba581c84de6299a603d5ba7de7fa2477ed79a867e7b04053117d4d998beebfbbff714d773d
+    tabbable: ^6.5.0
+  checksum: 6744fdbee87e19d6fb909ab429b29c724581d8d8b4bd467a029f7710bc5a8a1d2ea63748215b4e76b6594a34b02017d31f73d43868e1e3242cc4d24617891aec
   languageName: node
   linkType: hard
 
@@ -10350,10 +10350,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabbable@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "tabbable@npm:6.4.0"
-  checksum: 7084cba269ebbc7dcdeed5aca7f90c0a0fb59a295dd1e83703ab89cca5e6c53b78d02020e3d1065481984cd64bba7dd1ea3c0a48e92fdba83d586e6e86d62a74
+"tabbable@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "tabbable@npm:6.5.0"
+  checksum: 382512e12fa70a7e0db6d660fcf07092569b1a4b24c92e75b9667caa5d28f28eb4d84ebdf1c3fdb4b35609d168c4d5a078c39a19c16038379e13b22990ab053f
   languageName: node
   linkType: hard
 
