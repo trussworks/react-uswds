@@ -4773,8 +4773,8 @@ __metadata:
   linkType: hard
 
 "danger@npm:^13.0.4":
-  version: 13.0.7
-  resolution: "danger@npm:13.0.7"
+  version: 13.0.8
+  resolution: "danger@npm:13.0.8"
   dependencies:
     "@gitbeaker/rest": ^38.0.0
     "@octokit/rest": ^20.1.2
@@ -4819,7 +4819,7 @@ __metadata:
     danger-process: distribution/commands/danger-process.js
     danger-reset-status: distribution/commands/danger-reset-status.js
     danger-runner: distribution/commands/danger-runner.js
-  checksum: b27b55d1cdfda8058aef9bbf1a82e405388a6d6885c0470181afe847fd7a36b86ac229635cc399d83c92c4d8a78884027f47437763999e1f64979548c6dcbd43
+  checksum: 722605571917bdc99470d78b2c626db4cc371f90c4dc82dc172e814276d993d766e3c944fd5832759792c77481673055b07d19b943696b6c025bac310ea496cd
   languageName: node
   linkType: hard
 
