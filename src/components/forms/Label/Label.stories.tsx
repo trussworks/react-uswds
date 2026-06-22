@@ -1,6 +1,7 @@
 import React from 'react'
 import { Label } from './Label'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Form } from '../Form/Form'
 
 const meta = {
   title: 'Components/Form elements/Label',
@@ -17,6 +18,11 @@ Source: https://designsystem.digital.gov/components/form-controls/
     },
   },
   args: { htmlFor: 'testInput', children: 'Text input' },
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <Label {...args} />
+    </Form>
+  ),
 } satisfies Meta<typeof Label>
 
 export default meta
@@ -35,11 +41,10 @@ export const Error: Story = {
 }
 
 export const WithHint: Story = {
-  render: (args) => (
-    <Label {...args} htmlFor="testInputHint" hint={<> (optional)</>}>
-      Text input
-    </Label>
-  ),
+  args: {
+    htmlFor: 'testInputHint',
+    hint: <> (optional)</>,
+  },
 }
 
 export const WithRequiredMarker: Story = {
