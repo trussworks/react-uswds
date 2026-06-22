@@ -90,7 +90,7 @@
     "react-dom": "^16.x || ^17.x || ^18.x || ^19.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^8.0.1",
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^10.0.1",
