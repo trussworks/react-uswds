@@ -19,7 +19,7 @@ export type PaginationProps = {
 type PaginationPageProps = {
   pathname: string
   page: number
-  isCurrent?: boolean
+  isCurrent: boolean
   isLastPage: boolean
   onClickPageNumber?: (
     event: React.MouseEvent<HTMLButtonElement>,
