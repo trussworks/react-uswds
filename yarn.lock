@@ -4803,8 +4803,8 @@ __metadata:
   linkType: hard
 
 "danger@npm:^13.0.4":
-  version: 13.0.8
-  resolution: "danger@npm:13.0.8"
+  version: 13.0.10
+  resolution: "danger@npm:13.0.10"
   dependencies:
     "@gitbeaker/rest": ^38.0.0
     "@octokit/rest": ^20.1.2
@@ -4814,8 +4814,6 @@ __metadata:
     core-js: ^3.8.2
     debug: ^4.1.1
     fast-json-patch: ^3.0.0-1
-    http-proxy-agent: ^7.0.2
-    https-proxy-agent: ^7.0.2
     hyperlinker: ^1.0.0
     ini: ^5.0.0
     json5: ^2.2.3
@@ -4828,7 +4826,6 @@ __metadata:
     memfs-or-file-map-to-github-branch: ^1.3.0
     micromatch: ^4.0.4
     node-cleanup: ^2.1.2
-    node-fetch: ^2.6.7
     override-require: ^1.1.1
     parse-diff: ^0.7.0
     parse-github-url: ^1.0.2
@@ -4839,6 +4836,7 @@ __metadata:
     regenerator-runtime: ^0.13.9
     require-from-string: ^2.0.2
     supports-hyperlinks: ^4.3.0
+    undici: 6.21.1
   bin:
     danger: distribution/commands/danger.js
     danger-ci: distribution/commands/danger-ci.js
@@ -4849,7 +4847,7 @@ __metadata:
     danger-process: distribution/commands/danger-process.js
     danger-reset-status: distribution/commands/danger-reset-status.js
     danger-runner: distribution/commands/danger-runner.js
-  checksum: 722605571917bdc99470d78b2c626db4cc371f90c4dc82dc172e814276d993d766e3c944fd5832759792c77481673055b07d19b943696b6c025bac310ea496cd
+  checksum: f00f8b5f19c4d6f12f61156dc31c9d022c9ee57939d6696c213832cbb5a3dd4fda500e67bfd9f8a5d33cc22efb8425a6bf3f3dae5f748a646a5b55232a681aa6
   languageName: node
   linkType: hard
 
@@ -6561,7 +6559,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:^7.0.1, https-proxy-agent@npm:^7.0.2, https-proxy-agent@npm:^7.0.6":
+"https-proxy-agent@npm:^7.0.1, https-proxy-agent@npm:^7.0.6":
   version: 7.0.6
   resolution: "https-proxy-agent@npm:7.0.6"
   dependencies:
@@ -8220,7 +8218,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.6, node-fetch@npm:^2.6.7":
+"node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.6":
   version: 2.7.0
   resolution: "node-fetch@npm:2.7.0"
   dependencies:
@@ -11031,6 +11029,13 @@ __metadata:
   version: 7.16.0
   resolution: "undici-types@npm:7.16.0"
   checksum: 1ef68fc6c5bad200c8b6f17de8e5bc5cfdcadc164ba8d7208cd087cfa8583d922d8316a7fd76c9a658c22b4123d3ff847429185094484fbc65377d695c905857
+  languageName: node
+  linkType: hard
+
+"undici@npm:6.21.1":
+  version: 6.21.1
+  resolution: "undici@npm:6.21.1"
+  checksum: 2efc52f77224754a2efa7cb6459829f3c93c8321d17e76f574a904b353783d95073b6116f5b15637c4845d98c9dc5a019b809cb9d63b3529267e7727c49f6996
   languageName: node
   linkType: hard
 
