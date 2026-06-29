@@ -741,15 +741,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-syntax-patches-for-csstree@npm:^1.1.4":
-  version: 1.1.5
-  resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.5"
+"@csstools/css-syntax-patches-for-csstree@npm:^1.1.5":
+  version: 1.1.6
+  resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.6"
   peerDependencies:
     css-tree: ^3.2.1
   peerDependenciesMeta:
     css-tree:
       optional: true
-  checksum: 2fa0ec963d41f8423806fc608042d2e6638f8e3315f4f0ccc80c8308980eb2b06e7777e4b6b81503efe6d1853c54940833285ff4afee27989ffa847dcababd43
+  checksum: 9bbc45ed6e13d5090954e733dd7b1b0de51d5a894a5f29c6db2960c25dfbb3abbe4fc65cb9ca50536f011faf151d3161dff00582268254af2fe3a29dd6257e93
   languageName: node
   linkType: hard
 
@@ -4688,9 +4688,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "cosmiconfig@npm:9.0.1"
+"cosmiconfig@npm:^9.0.2":
+  version: 9.0.2
+  resolution: "cosmiconfig@npm:9.0.2"
   dependencies:
     env-paths: ^2.2.1
     import-fresh: ^3.3.0
@@ -4701,7 +4701,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 7cc04fcbb04f72db1074ee754952a6a0a228d07932d076b0e4fc82c75bc14aa0b0cb7989c161710e038ea42539d919d643a2b268c580ac7da7b3dedd52d8bb7b
+  checksum: 52238a94de80e870610532402f46aa2e690f86b103255557257afa9651f11182e78b1dac6e38f7eff31f1b323ab029c3af4694fdf7e6d8e51698f5533f19ac94
   languageName: node
   linkType: hard
 
@@ -8926,6 +8926,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-selector-parser@npm:^7.1.4":
+  version: 7.1.4
+  resolution: "postcss-selector-parser@npm:7.1.4"
+  dependencies:
+    cssesc: ^3.0.0
+    util-deprecate: ^1.0.2
+  checksum: 66fa9908f4239e8042e47a67272556404f71d5ef9ef4a271ae519b1a3775f999c7ae6cc9e504f7d6c2715c12ed89ca73f77b8ee23f93ea127d06a2a720854b50
+  languageName: node
+  linkType: hard
+
 "postcss-value-parser@npm:^4.2.0":
   version: 4.2.0
   resolution: "postcss-value-parser@npm:4.2.0"
@@ -10438,18 +10448,18 @@ __metadata:
   linkType: hard
 
 "stylelint@npm:^17.0.0":
-  version: 17.13.0
-  resolution: "stylelint@npm:17.13.0"
+  version: 17.14.0
+  resolution: "stylelint@npm:17.14.0"
   dependencies:
     "@csstools/css-calc": ^3.2.1
     "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-syntax-patches-for-csstree": ^1.1.4
+    "@csstools/css-syntax-patches-for-csstree": ^1.1.5
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/media-query-list-parser": ^5.0.0
     "@csstools/selector-resolve-nested": ^4.0.0
     "@csstools/selector-specificity": ^6.0.0
     colord: ^2.9.3
-    cosmiconfig: ^9.0.1
+    cosmiconfig: ^9.0.2
     css-functions-list: ^3.3.3
     css-tree: ^3.2.1
     debug: ^4.4.3
@@ -10469,7 +10479,7 @@ __metadata:
     picocolors: ^1.1.1
     postcss: ^8.5.15
     postcss-safe-parser: ^7.0.1
-    postcss-selector-parser: ^7.1.1
+    postcss-selector-parser: ^7.1.4
     postcss-value-parser: ^4.2.0
     string-width: ^8.2.1
     supports-hyperlinks: ^4.4.0
@@ -10478,7 +10488,7 @@ __metadata:
     write-file-atomic: ^7.0.1
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 8ec030e4ca84bda6693aff707a5a0dea447b4a1b2b80b8043e82e746b79f67fcd2f31c1005624b00b1aba17efd05c77879e26fb224c80e2bb0bb2479c96284f3
+  checksum: 83d138fcdd2c83516ac67fc96228a6d9edef312051237657a9453962102e3206f6661d8305756a18650203294a4f513ba48e80e8b5f315782fe27a38f75bf48a
   languageName: node
   linkType: hard
 
