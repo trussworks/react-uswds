@@ -8980,11 +8980,11 @@ __metadata:
   linkType: hard
 
 "prettier@npm:^3.2.5":
-  version: 3.8.4
-  resolution: "prettier@npm:3.8.4"
+  version: 3.9.1
+  resolution: "prettier@npm:3.9.1"
   bin:
     prettier: bin/prettier.cjs
-  checksum: ef9e00109d9eac7b4a34b2772fffd6a98d9bfeadb8496014a8bd228530052829690d2d74e9d73e135397fecdca5858a65f6acbdced3dcba2990322b44385aabf
+  checksum: 71f98ea6fe7bbe1abd40ba1f1eea6dbbd3ef5f7288f9a11ee7a69d65e002ebee1dc1def2d390a7090694657ef044d4ac72519e1f198698aef031791081b38f57
   languageName: node
   linkType: hard
 
