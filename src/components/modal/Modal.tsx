@@ -154,8 +154,7 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
 
   const initialFocus = () => {
     const focusEl = modalEl.current?.querySelector('[data-focus]') as
-      | HTMLElement
-      | SVGElement
+      HTMLElement | SVGElement
 
     return focusEl ? focusEl : modalEl.current || false
   }

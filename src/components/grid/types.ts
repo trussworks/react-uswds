@@ -22,35 +22,10 @@ export type ContainerSizes =
   | 'widescreen'
 
 export type GapSizes =
-  | true
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | '2px'
-  | '05'
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
+  true | 'sm' | 'md' | 'lg' | '2px' | '05' | 1 | 2 | 3 | 4 | 5 | 6
 
 export type ColumnSizes =
-  | true
-  | 'auto'
-  | 'fill'
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
+  true | 'auto' | 'fill' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 
 export type ColumnOffsets = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
 
