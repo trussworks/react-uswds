@@ -115,6 +115,20 @@ describe('LanguageSelector component', () => {
       )
     })
 
+    it('displays the selected displayLang label', () => {
+      const { getByTestId } = render(
+        <LanguageSelector
+          langs={languages}
+          label="Languages"
+          displayLang={languages[1].attr}
+        />
+      )
+
+      expect(getByTestId('languageSelectorButton')).toHaveTextContent(
+        languages[1].label
+      )
+    })
+
     it('renders list when opened', () => {
       const { getByText, getByTestId } = render(
         <LanguageSelector langs={languages} label="Languages" />
@@ -158,6 +172,71 @@ describe('LanguageSelector component', () => {
         fireEvent.click(getByTestId(languagesButton[2].attr))
         expect(voidButton).toHaveBeenCalledTimes(5) //3 here and 2 above
       })
+    })
+
+    it('closes the list after selecting a language', () => {
+      const onClick = vi.fn()
+      const localLanguagesButton = languagesButton.map((language) => ({
+        ...language,
+        on_click: onClick,
+      }))
+      const { getByTestId } = render(
+        <LanguageSelector langs={localLanguagesButton} label="Languages" />
+      )
+
+      fireEvent.click(getByTestId('languageSelectorButton'))
+      expect(getByTestId(languagesButton[0].attr)).toBeVisible()
+
+      fireEvent.click(getByTestId(languagesButton[0].attr))
+
+      expect(onClick).toHaveBeenCalledTimes(1)
+      expect(getByTestId('languageSelectorButton')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+      expect(getByTestId(languagesButton[0].attr)).not.toBeVisible()
+    })
+
+    it('closes the list after selecting a language link', () => {
+      const { getByTestId } = render(
+        <LanguageSelector langs={languages} label="Languages" />
+      )
+
+      fireEvent.click(getByTestId('languageSelectorButton'))
+      expect(getByTestId(languages[0].attr)).toBeVisible()
+
+      fireEvent.click(getByTestId(languages[0].attr))
+
+      expect(getByTestId('languageSelectorButton')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+      expect(getByTestId('languageSelectorButton')).toHaveTextContent(
+        'Languages'
+      )
+      expect(getByTestId(languages[0].attr)).not.toBeVisible()
+    })
+
+    it('closes the list after clicking outside the language selector', () => {
+      const { getByTestId } = render(
+        <>
+          <LanguageSelector langs={languages} label="Languages" />
+          <button type="button" data-testid="outside">
+            Outside
+          </button>
+        </>
+      )
+
+      fireEvent.click(getByTestId('languageSelectorButton'))
+      expect(getByTestId(languages[0].attr)).toBeVisible()
+
+      fireEvent.click(getByTestId('outside'))
+
+      expect(getByTestId('languageSelectorButton')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+      expect(getByTestId(languages[0].attr)).not.toBeVisible()
     })
   })
 })

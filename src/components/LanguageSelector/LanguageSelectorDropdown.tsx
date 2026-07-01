@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Menu } from '../header/Menu/Menu'
 import { LanguageSelectorButton } from './LanguageSelectorButton'
 import classnames from 'classnames'
 import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
 import { Button } from '../Button/Button'
 
-const generateMenuItems = (langs: LanguageDefinition[]) => {
+const generateMenuItems = (
+  langs: LanguageDefinition[],
+  onSelect: () => void
+) => {
   return langs.map((lang, index) => {
     const label = (
       <>
@@ -17,15 +20,23 @@ const generateMenuItems = (langs: LanguageDefinition[]) => {
     )
     if (typeof lang.on_click === 'string') {
       return (
-        <a key={index} href={lang.on_click} data-testid={lang.attr}>
+        <a
+          key={index}
+          href={lang.on_click}
+          data-testid={lang.attr}
+          onClick={onSelect}>
           {label}
         </a>
       )
     } else {
+      const onClick = lang.on_click
       return (
         <Button
           key={index}
-          onClick={lang.on_click}
+          onClick={() => {
+            onClick()
+            onSelect()
+          }}
           data-testid={lang.attr}
           type="button"
           unstyled>
@@ -45,6 +56,23 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
   ...divProps
 }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    const closeOnOutsideClick = (event: MouseEvent): void => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('click', closeOnOutsideClick)
+
+    return () => {
+      document.removeEventListener('click', closeOnOutsideClick)
+    }
+  }, [isOpen])
 
   const classes = classnames(
     'usa-language-container',
@@ -55,9 +83,16 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
   )
   const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
   const menuID = 'language-options'
+  const selectLanguage = (): void => {
+    setIsOpen(false)
+  }
 
   return (
-    <div className={classes} data-testid="languageSelector" {...divProps}>
+    <div
+      className={classes}
+      data-testid="languageSelector"
+      ref={containerRef}
+      {...divProps}>
       <ul className="usa-language__primary usa-accordion">
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
@@ -68,7 +103,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
             onToggle={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
           />
           <Menu
-            items={generateMenuItems(langs)}
+            items={generateMenuItems(langs, selectLanguage)}
             isOpen={isOpen}
             id={menuID}
             type="language"
