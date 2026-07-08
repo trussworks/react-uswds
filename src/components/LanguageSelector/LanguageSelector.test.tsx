@@ -1,10 +1,7 @@
 import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import {
-  LanguageSelector,
-  LanguageDefinition,
-} from '../LanguageSelector/LanguageSelector'
+import { LanguageSelector, LanguageDefinition } from './LanguageSelector'
 
 const voidLink = '#test'
 const languages: LanguageDefinition[] = [
@@ -373,6 +370,37 @@ describe('LanguageSelector component', () => {
         'false'
       )
       expect(getByTestId(languages[0].attr)).not.toBeVisible()
+    })
+
+    it('links the button to the menu with the default id', () => {
+      const { getByTestId } = render(
+        <LanguageSelector langs={languages} label="Languages" />
+      )
+
+      expect(getByTestId('languageSelectorButton')).toHaveAttribute(
+        'aria-controls',
+        'language-options'
+      )
+      expect(document.getElementById('language-options')).toBeInTheDocument()
+    })
+
+    it('derives a unique menu id from a given id', () => {
+      const { getByTestId } = render(
+        <LanguageSelector
+          langs={languages}
+          label="Languages"
+          id="my-custom-id"
+        />
+      )
+
+      expect(getByTestId('languageSelector')).toHaveAttribute(
+        'id',
+        'my-custom-id'
+      )
+      expect(getByTestId('languageSelectorButton')).toHaveAttribute(
+        'aria-controls',
+        'my-custom-id-language-options'
+      )
     })
 
     it('closes an open selector when another selector is opened', async () => {

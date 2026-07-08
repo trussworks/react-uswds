@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Menu } from '../header/Menu/Menu'
 import { LanguageSelectorButton } from './LanguageSelectorButton'
-import classnames from 'classnames'
 import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
 import { Button } from '../Button/Button'
 
@@ -47,14 +46,15 @@ const generateMenuItems = (
   })
 }
 
-const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
+const LanguageSelectorDropdown = ({
+  id,
   label,
   langs,
   small,
   className,
   displayLang,
   ...divProps
-}) => {
+}: LanguageSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -91,15 +91,8 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
     }
   }
 
-  const classes = classnames(
-    'usa-language-container',
-    {
-      [`usa-language--small`]: small !== undefined,
-    },
-    className
-  )
   const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
-  const menuID = 'language-options'
+  const menuID = id ? `${id}-language-options` : 'language-options'
   const selectLanguage = (): void => {
     setIsOpen(false)
   }
@@ -107,7 +100,8 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
-      className={classes}
+      id={id}
+      className={className}
       data-testid="languageSelector"
       ref={containerRef}
       onBlur={closeOnFocusOut}
@@ -117,7 +111,7 @@ const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
             ref={buttonRef}
-            className={classes}
+            className={className}
             label={displayLabel?.label || label || langs[0].label}
             isOpen={isOpen}
             controls={menuID}
