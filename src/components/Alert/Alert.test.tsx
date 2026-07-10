@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Alert, AlertHeading, AlertText } from './Alert'
+import { Alert, AlertHeading, AlertProps, AlertText } from './Alert'
 import { HeadingLevel } from '../../types/headingLevel'
 
 describe('Alert component', () => {
@@ -12,9 +12,24 @@ describe('Alert component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(<Alert type="success" />)
     expect(queryByTestId('alert')).toBeInTheDocument()
+    expect(queryByTestId('alert')).not.toContainHTML('p')
   })
 
-  it('renders children in <p> tag by default', () => {
+  it.each<[AlertProps['type'], string]>([
+    ['success', 'usa-alert--success'],
+    ['warning', 'usa-alert--warning'],
+    ['error', 'usa-alert--error'],
+    ['info', 'usa-alert--info'],
+    ['emergency', 'usa-alert--emergency'],
+  ])(
+    'renders %s alerts with the %s class',
+    (alertType: AlertProps['type'], className: string) => {
+      const { queryByTestId } = render(<Alert type={alertType} />)
+      expect(queryByTestId('alert')).toHaveClass(className)
+    }
+  )
+
+  it('renders children in <p> tag via AlertText component', () => {
     const { queryByTestId } = render(
       <Alert type="success" className="myClass">
         <AlertText>Test children</AlertText>
