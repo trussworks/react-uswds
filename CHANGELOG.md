@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.1.0](https://github.com/trussworks/react-uswds/compare/11.0.2...11.1.0) (2026-06-22)
+
+
+### Features
+
+* Add 24h view for time picker ([#3506](https://github.com/trussworks/react-uswds/issues/3506)) ([351f789](https://github.com/trussworks/react-uswds/commit/351f78969c82ee64974103ec74d594c21345a7dc))
+
+
+### Bug Fixes
+
+* **a11y:** Set Pagination's last page aria-label to indicate that it is the last page ([#3499](https://github.com/trussworks/react-uswds/issues/3499)) ([3b42cd9](https://github.com/trussworks/react-uswds/commit/3b42cd950d9ac6fe0b783231efb0ca209352c1b9))
+
 ## [11.0.2](https://github.com/trussworks/react-uswds/compare/11.0.1...11.0.2) (2026-06-08)
 
 

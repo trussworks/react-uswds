@@ -13,6 +13,4 @@ import type { Ref, LegacyRef } from 'react'
  * @deprecated React 19 includes the `ref` prop by default on all components.
  */
 export type LegacyInputRef<T = HTMLInputElement> =
-  | Ref<T>
-  | LegacyRef<T>
-  | undefined
+  Ref<T> | LegacyRef<T> | undefined
