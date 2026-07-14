@@ -1,4 +1,5 @@
 import { ComboBoxOption } from '../ComboBox/ComboBox'
+import type { TimePickerFormat } from './TimePicker'
 
 /**
  * Parse a string of hh:mm into minutes
@@ -53,7 +54,8 @@ const padZeros = (value: number, length: number): string => {
 export const getTimeOptions = (
   minTimeMinutes: number,
   maxTimeMinutes: number,
-  step: number
+  step: number,
+  format: TimePickerFormat = '12h'
 ): ComboBoxOption[] => {
   const timeOptions: ComboBoxOption[] = []
 
@@ -63,10 +65,13 @@ export const getTimeOptions = (
     minutes += step
   ) {
     const { minute, hour24, hour12, ampm } = getTimeContext(minutes)
+    const value = `${padZeros(hour24, 2)}:${padZeros(minute, 2)}`
+    const label =
+      format === '24h' ? value : `${hour12}:${padZeros(minute, 2)}${ampm}`
 
     timeOptions.push({
-      value: `${padZeros(hour24, 2)}:${padZeros(minute, 2)}`,
-      label: `${hour12}:${padZeros(minute, 2)}${ampm}`,
+      value,
+      label,
     })
   }
 

@@ -4,16 +4,15 @@ import React from 'react'
 import { Pagination } from './Pagination'
 
 describe('Pagination component', () => {
-  const testPages = 24
-  const testThreePages = 3
-  const testSevenPages = 7
+  const totalPages = 24
   const testPathname = '/test-pathname'
 
   it('renders pagination for a list of pages', () => {
+    const currentPageNumber = 10
     render(
       <Pagination
-        totalPages={testPages}
-        currentPage={10}
+        totalPages={totalPages}
+        currentPage={currentPageNumber}
         pathname={testPathname}
       />
     )
@@ -31,21 +30,22 @@ describe('Pagination component', () => {
       'href',
       `${testPathname}?page=9`
     )
-    expect(screen.getByLabelText('Page 10')).toHaveAttribute(
+    const currentPage = screen.getByLabelText(`Page ${currentPageNumber}`)
+    expect(currentPage).toHaveAttribute(
       'href',
-      `${testPathname}?page=10`
+      `${testPathname}?page=${currentPageNumber}`
     )
-    expect(screen.getByLabelText('Page 10')).toHaveAttribute(
-      'aria-current',
-      'page'
-    )
+    expect(currentPage).toHaveAttribute('aria-current', 'page')
+
     expect(screen.getByLabelText('Page 11')).toHaveAttribute(
       'href',
       `${testPathname}?page=11`
     )
-    expect(screen.getByLabelText('Page 24')).toHaveAttribute(
+
+    const lastPage = screen.getByLabelText(`Last page, page ${totalPages}`)
+    expect(lastPage).toHaveAttribute(
       'href',
-      `${testPathname}?page=24`
+      `${testPathname}?page=${totalPages}`
     )
     expect(screen.getByLabelText('Next page')).toHaveAttribute(
       'href',
@@ -56,7 +56,7 @@ describe('Pagination component', () => {
   it('only renders the maximum number of slots', () => {
     render(
       <Pagination
-        totalPages={testPages}
+        totalPages={totalPages}
         currentPage={10}
         pathname={testPathname}
       />
@@ -67,7 +67,7 @@ describe('Pagination component', () => {
   it('renders pagination when the first page is current', () => {
     render(
       <Pagination
-        totalPages={testPages}
+        totalPages={totalPages}
         currentPage={1}
         pathname={testPathname}
       />
@@ -83,24 +83,25 @@ describe('Pagination component', () => {
   it('renders pagination when the last page is current', () => {
     render(
       <Pagination
-        totalPages={testPages}
+        totalPages={totalPages}
         currentPage={24}
         pathname={testPathname}
       />
     )
     expect(screen.queryByLabelText('Previous page')).toBeInTheDocument()
     expect(screen.queryByLabelText('Next page')).not.toBeInTheDocument()
-    expect(screen.getByLabelText('Page 24')).toHaveAttribute(
+    expect(screen.getByLabelText('Last page, page 24')).toHaveAttribute(
       'aria-current',
       'page'
     )
   })
 
   it('renders overflow at the beginning and end when current page is in the middle', () => {
+    const currentPageNumber = 10
     render(
       <Pagination
-        totalPages={testPages}
-        currentPage={10}
+        totalPages={totalPages}
+        currentPage={currentPageNumber}
         pathname={testPathname}
       />
     )
@@ -116,21 +117,20 @@ describe('Pagination component', () => {
       'href',
       `${testPathname}?page=9`
     )
-    expect(screen.getByLabelText('Page 10')).toHaveAttribute(
+    const currentPage = screen.getByLabelText(`Page ${currentPageNumber}`)
+    expect(currentPage).toHaveAttribute(
       'href',
-      `${testPathname}?page=10`
+      `${testPathname}?page=${currentPageNumber}`
     )
-    expect(screen.getByLabelText('Page 10')).toHaveAttribute(
-      'aria-current',
-      'page'
-    )
+    expect(currentPage).toHaveAttribute('aria-current', 'page')
     expect(screen.getByLabelText('Page 11')).toHaveAttribute(
       'href',
       `${testPathname}?page=11`
     )
-    expect(screen.getByLabelText('Page 24')).toHaveAttribute(
+    const lastPage = screen.getByLabelText(`Last page, page ${totalPages}`)
+    expect(lastPage).toHaveAttribute(
       'href',
-      `${testPathname}?page=24`
+      `${testPathname}?page=${totalPages}`
     )
     expect(screen.getByLabelText('Next page')).toHaveAttribute(
       'href',
@@ -142,7 +142,7 @@ describe('Pagination component', () => {
   it('renders overflow at the end when at the beginning of the pages', () => {
     render(
       <Pagination
-        totalPages={testPages}
+        totalPages={totalPages}
         currentPage={3}
         pathname={testPathname}
       />
@@ -176,9 +176,10 @@ describe('Pagination component', () => {
       'href',
       `${testPathname}?page=5`
     )
-    expect(screen.getByLabelText('Page 24')).toHaveAttribute(
+    const lastPage = screen.getByLabelText(`Last page, page ${totalPages}`)
+    expect(lastPage).toHaveAttribute(
       'href',
-      `${testPathname}?page=24`
+      `${testPathname}?page=${totalPages}`
     )
     expect(screen.getByLabelText('Next page')).toHaveAttribute(
       'href',
@@ -190,7 +191,7 @@ describe('Pagination component', () => {
   it('renders overflow at the beginning when at the end of the pages', () => {
     render(
       <Pagination
-        totalPages={testPages}
+        totalPages={totalPages}
         currentPage={21}
         pathname={testPathname}
       />
@@ -224,9 +225,10 @@ describe('Pagination component', () => {
       'href',
       `${testPathname}?page=23`
     )
-    expect(screen.getByLabelText('Page 24')).toHaveAttribute(
+    const lastPage = screen.getByLabelText(`Last page, page ${totalPages}`)
+    expect(lastPage).toHaveAttribute(
       'href',
-      `${testPathname}?page=24`
+      `${testPathname}?page=${totalPages}`
     )
     expect(screen.getByLabelText('Next page')).toHaveAttribute(
       'href',
@@ -242,6 +244,7 @@ describe('Pagination component', () => {
       'href',
       `${testPathname}?page=${randomPage + 1}`
     )
+    expect(screen.queryByLabelText(/^Last page, page/)).not.toBeInTheDocument()
   })
 
   it('can click onClickNext, onClickPrevious and onClickPagenumber', () => {
@@ -251,7 +254,7 @@ describe('Pagination component', () => {
 
     const { getByTestId, getAllByTestId } = render(
       <Pagination
-        totalPages={testPages}
+        totalPages={totalPages}
         currentPage={21}
         pathname={testPathname}
         onClickPrevious={mockOnClickPrevious}
@@ -274,11 +277,7 @@ describe('Pagination component', () => {
   describe('for fewer pages than the max slots', () => {
     it('renders pagination with no overflow 1', () => {
       render(
-        <Pagination
-          totalPages={testThreePages}
-          currentPage={2}
-          pathname={testPathname}
-        />
+        <Pagination totalPages={3} currentPage={2} pathname={testPathname} />
       )
       expect(screen.getAllByRole('listitem')).toHaveLength(5)
       expect(screen.queryAllByText('…')).toHaveLength(0)
@@ -286,11 +285,7 @@ describe('Pagination component', () => {
 
     it('renders pagination with no overflow 2', () => {
       render(
-        <Pagination
-          totalPages={testSevenPages}
-          currentPage={4}
-          pathname={testPathname}
-        />
+        <Pagination totalPages={7} currentPage={4} pathname={testPathname} />
       )
       expect(screen.getAllByRole('listitem')).toHaveLength(9)
       expect(screen.queryAllByText('…')).toHaveLength(0)
@@ -301,7 +296,7 @@ describe('Pagination component', () => {
     it('only renders the maximum number of slots', () => {
       render(
         <Pagination
-          totalPages={testPages}
+          totalPages={totalPages}
           currentPage={10}
           pathname={testPathname}
           maxSlots={10}
