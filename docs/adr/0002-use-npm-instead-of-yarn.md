@@ -11,6 +11,7 @@ At that time, yarn held real advantages over npm v6: faster installs, a determin
 npm has since closed those gaps, and install performance is now comparable for a project of this size.
 
 Meanwhile, using a non-default package manager carries recurring costs for a library that is published to and overwhelmingly consumed from the npm registry.
+
 Which package manager should this project use going forward?
 
 ## Decision Drivers
