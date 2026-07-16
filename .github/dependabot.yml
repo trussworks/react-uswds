@@ -60,17 +60,3 @@ updates:
         patterns:
           - 'stylelint'
           - 'stylelint-*'
-  # Keep the GitHub Actions up to date
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    pull-request-branch-name:
-      separator: '-'
-    schedule:
-      interval: "weekly"
-    labels:
-      - 'type: dependencies'
-      - 'type: automerge'
-    groups:
-      github-actions:
-        patterns:
-          - '*'
