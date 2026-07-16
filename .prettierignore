@@ -1,0 +1,2 @@
+# Ignore root CHANGELOG.md, due to auto-generation by release-please
+CHANGELOG.md

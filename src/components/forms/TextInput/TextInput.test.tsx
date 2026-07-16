@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useRef } from 'react'
+import React, { RefObject, useRef } from 'react'
 import { render } from '@testing-library/react'
 import { TextInput } from './TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
@@ -65,7 +65,7 @@ describe('TextInput component', () => {
       vi.clearAllMocks()
     })
 
-    it('appropriateley renders a ref', () => {
+    it('appropriately renders a ref', () => {
       let ref
       const Parent = () => {
         ref = useRef(null)
@@ -81,7 +81,7 @@ describe('TextInput component', () => {
 
       render(<Parent />)
 
-      const parentRef = ref as unknown as MutableRefObject<HTMLElement>
+      const parentRef = ref as unknown as RefObject<HTMLElement>
 
       expect(parentRef.current).toBeInTheDocument()
       expect(parentRef.current.tagName).toBe('INPUT')

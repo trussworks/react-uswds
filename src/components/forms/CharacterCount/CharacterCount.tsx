@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef, type JSX } from 'react'
+import React, { useEffect, useRef, type JSX } from 'react'
 import classnames from 'classnames'
-
-import { TextInput, TextInputProps } from '../TextInput/TextInput'
-import { Textarea, TextareaProps } from '../Textarea/Textarea'
 
 /* Defaults
   This is a fallback for character count and validation message.
-  In many cases, though, props will be passed in by consumer 
+  In many cases, though, props will be passed in by the consumer
   for example, to account for i18n-aware strings
 */
 const defaultCharacterCount = (text: string): number => Array.from(text).length
@@ -32,66 +29,82 @@ const defaultMessage = (count: number, max: number): string => {
   }
 }
 
-/* Types */
-type BaseCharacterCountProps = {
-  id: string
-  name: string
+// USWDS default custom validity message.
+const VALIDATION_MESSAGE = 'The content is too long.'
+
+export type UseCharacterCountOptions = {
   maxLength: number
-  value?: string
-  defaultValue?: string
-  className?: string
-  isTextArea?: boolean
+  inputValue: string
   getCharacterCount?: (text: string) => number
   getMessage?: (remainingCount: number, max: number) => string
+  // Optionally, pass an input ref to set the field's validity when over the limit
+  inputRef?: React.RefObject<HTMLInputElement | HTMLTextAreaElement | null>
+  customValidityMessage?: string
 }
 
-export type TextInputCharacterCountProps = BaseCharacterCountProps &
-  // Since CharacterCount provides a default 'type', make it optional instead of required
-  Omit<TextInputProps, 'type'> &
-  Partial<Pick<TextInputProps, 'type'>>
+export type CharacterCountStatus = {
+  length: number
+  maxLength: number
+  message: string
+  isOverLimit: boolean
+}
 
-export type TextareaCharacterCountProps = BaseCharacterCountProps &
-  TextareaProps &
-  JSX.IntrinsicElements['textarea']
+export type CharacterCountProps = {
+  id: string
+  // The derived status from useCharacterCount, which drives the messages
+  status: CharacterCountStatus
+}
 
-/* Main */
-export const CharacterCount = ({
-  id,
-  name,
-  className,
+/*
+  Derives the character count state from a controlled value.
+  Consumers can call it to drive their own field styling (e.g. validation status
+  styling) from the same source of truth that drives the CharacterCount messages.
+*/
+export const useCharacterCount = ({
+  inputValue,
   maxLength,
-  value = '',
-  defaultValue = '',
-  isTextArea = false,
   getCharacterCount = defaultCharacterCount,
   getMessage = defaultMessage,
-  ...remainingProps
-}: TextInputCharacterCountProps | TextareaCharacterCountProps): JSX.Element => {
-  const [initialCount] = useState(() =>
-    getCharacterCount(value || defaultValue)
-  )
-  const [length, setLength] = useState(initialCount)
-  const [message, setMessage] = useState(() =>
-    getMessage(initialCount, maxLength)
-  )
-  const [isValid, setIsValid] = useState(initialCount < maxLength)
+  inputRef,
+  customValidityMessage = VALIDATION_MESSAGE,
+}: UseCharacterCountOptions): CharacterCountStatus => {
+  const length = getCharacterCount(inputValue)
+  const isOverLimit = length > maxLength
+
+  useEffect(() => {
+    // Set the field's custom validity when over the limit. Guarded so we never
+    // clobber another validator's message, matching USWDS's behavior.
+    const input = inputRef?.current
+    if (!input) return
+
+    if (isOverLimit && !input.validationMessage) {
+      input.setCustomValidity(customValidityMessage)
+    } else if (
+      !isOverLimit &&
+      input.validationMessage === customValidityMessage
+    ) {
+      input.setCustomValidity('')
+    }
+  }, [isOverLimit, inputRef, customValidityMessage])
+
+  return {
+    length,
+    maxLength,
+    message: getMessage(length, maxLength),
+    isOverLimit,
+  }
+}
+
+export const CharacterCount = ({
+  id,
+  status,
+}: CharacterCountProps): JSX.Element => {
+  const { maxLength, message, isOverLimit } = status
   const srMessageRef = useRef<HTMLDivElement>(null)
 
-  const classes = classnames(
-    'usa-character-count__field',
-    { 'usa-input--error': !isValid },
-    className
-  )
   const messageClasses = classnames('usa-hint', 'usa-character-count__status', {
-    'usa-character-count__status--invalid': !isValid,
+    'usa-character-count__status--invalid': isOverLimit,
   })
-
-  const [prevLength, setPrevLength] = useState(length)
-  if (length !== prevLength) {
-    setPrevLength(length)
-    setMessage(getMessage(length, maxLength))
-    setIsValid(length <= maxLength)
-  }
 
   useEffect(() => {
     // Updates the character count status for screen readers after a 1000ms delay
@@ -102,77 +115,9 @@ export const CharacterCount = ({
     return () => clearTimeout(timer)
   }, [message])
 
-  const handleBlur = (
-    e:
-      | React.FocusEvent<HTMLInputElement>
-      | React.FocusEvent<HTMLTextAreaElement>,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    callback?: (e: any) => void
-  ): void => {
-    const validationMessage = !isValid ? 'The content is too long.' : ''
-    e.target.setCustomValidity(validationMessage)
-    callback?.(e)
-  }
-
-  const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    callback?: (e: any) => void
-  ): void => {
-    const { value } = e.target
-    setLength(getCharacterCount(value))
-
-    callback?.(e)
-  }
-
-  let InputComponent: JSX.Element
-  if (isTextArea) {
-    const { onBlur, onChange, inputRef, ...textAreaProps } =
-      remainingProps as Partial<TextareaCharacterCountProps>
-
-    const attributes = {
-      id: id,
-      name: name,
-      className: classes,
-      ...(value ? { value: value } : { defaultValue: defaultValue }),
-      onBlur: (e: React.FocusEvent<HTMLTextAreaElement, Element>): void =>
-        handleBlur(e, onBlur),
-      onChange: (e: React.ChangeEvent<HTMLTextAreaElement>): void =>
-        handleChange(e, onChange),
-      inputRef: inputRef,
-      ...textAreaProps,
-    }
-    InputComponent = <Textarea {...attributes} />
-  } else {
-    const {
-      onBlur,
-      onChange,
-      inputRef,
-      type = 'text',
-      ...inputProps
-    } = remainingProps as Partial<TextInputCharacterCountProps>
-    const attributes = {
-      id: id,
-      type: type,
-      name: name,
-      className: classes,
-      ...(value ? { value: value } : { defaultValue: defaultValue }),
-      onBlur: (e: React.FocusEvent<HTMLInputElement, Element>): void =>
-        handleBlur(e, onBlur),
-      onChange: (e: React.ChangeEvent<HTMLInputElement>): void =>
-        handleChange(e, onChange),
-      inputRef: inputRef,
-      ...inputProps,
-    }
-    InputComponent = <TextInput {...attributes} />
-  }
-
   return (
     <>
-      {InputComponent}
-      <span className="usa-sr-only" id={`${id}-info`}>
+      <span className="usa-sr-only" id={id}>
         You can enter up to {maxLength} characters
       </span>
       <div
