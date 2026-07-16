@@ -145,7 +145,10 @@ export type { TextInputProps } from './components/forms/TextInput/TextInput'
 export { TextInputMask } from './components/forms/TextInputMask/TextInputMask'
 export type { TextInputMaskProps } from './components/forms/TextInputMask/TextInputMask'
 export { TimePicker } from './components/forms/TimePicker/TimePicker'
-export type { TimePickerProps } from './components/forms/TimePicker/TimePicker'
+export type {
+  TimePickerProps,
+  TimePickerFormat,
+} from './components/forms/TimePicker/TimePicker'
 export { ValidationChecklist } from './components/forms/Validation/ValidationChecklist'
 export type { ValidationChecklistProps } from './components/forms/Validation/ValidationChecklist'
 export { ValidationItem } from './components/forms/Validation/ValidationItem'

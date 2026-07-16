@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.2.0](https://github.com/trussworks/react-uswds/compare/11.1.0...11.2.0) (2026-07-16)
+
+
+### Features
+
+* Close Language Selector on pressing escape and on blur ([#3534](https://github.com/trussworks/react-uswds/issues/3534)) ([f4c7f6a](https://github.com/trussworks/react-uswds/commit/f4c7f6aa5019c38939cb152eb2151f1dfb9cc36b))
+
+
+### Bug Fixes
+
+* Close language selector dropdown on selection or outside click ([#3528](https://github.com/trussworks/react-uswds/issues/3528)) ([6415f8f](https://github.com/trussworks/react-uswds/commit/6415f8f8b314814b5e3641b8ccea1f9bbfacb703))
+
+
+### Documentation & Examples
+
+* **storybook:** Render Label examples within a `usa-form` for USWDS intended styling ([#3518](https://github.com/trussworks/react-uswds/issues/3518)) ([506903e](https://github.com/trussworks/react-uswds/commit/506903ec21505be68c678cee8f37023be608a04f))
+
+## [11.1.0](https://github.com/trussworks/react-uswds/compare/11.0.2...11.1.0) (2026-06-22)
+
+
+### Features
+
+* Add 24h view for time picker ([#3506](https://github.com/trussworks/react-uswds/issues/3506)) ([351f789](https://github.com/trussworks/react-uswds/commit/351f78969c82ee64974103ec74d594c21345a7dc))
+
+
+### Bug Fixes
+
+* **a11y:** Set Pagination's last page aria-label to indicate that it is the last page ([#3499](https://github.com/trussworks/react-uswds/issues/3499)) ([3b42cd9](https://github.com/trussworks/react-uswds/commit/3b42cd950d9ac6fe0b783231efb0ca209352c1b9))
+
 ## [11.0.2](https://github.com/trussworks/react-uswds/compare/11.0.1...11.0.2) (2026-06-08)
 
 
