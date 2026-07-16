@@ -69,12 +69,27 @@ const checkYarnAudit: () => void = () => {
     '--json',
   ])
   const output = result.stdout.toString()
-  const summary = JSON.parse(output) as YawnAuditOutput
+
+  let summary: YawnAuditOutput
+  try {
+    summary = JSON.parse(output) as YawnAuditOutput
+  } catch {
+    // npm retired the audit endpoint Yarn 3 relies on (410 Gone), so the
+    // command emits an error message instead of JSON. Skip the audit check
+    // rather than failing every PR. Will be resolved in https://github.com/trussworks/react-uswds/pull/3500
+    // by migrating to NPM.
+    warn(
+      'Unable to run `yarn npm audit` — the command did not return JSON ' +
+        '(npm has retired the audit endpoint used by Yarn 3). ' +
+        'Skipping the dependency audit check.'
+    )
+    return
+  }
 
   if (!summary.metadata?.vulnerabilities || !summary.advisories) {
     warn(
-      `Unable to parse the yarn npm audit response.\n" + 
-      "dangerfile.ts likely needs updating`
+      'Unable to parse the yarn npm audit response.\n' +
+        'dangerfile.ts likely needs updating'
     )
     return
   }
