@@ -18,14 +18,8 @@ export type LanguageSelectorProps = {
   displayLang?: string
 } & JSX.IntrinsicElements['div']
 
-export const LanguageSelector = ({
-  label,
-  langs,
-  small,
-  className,
-  displayLang,
-  ...divProps
-}: LanguageSelectorProps): JSX.Element => {
+export const LanguageSelector = (props: LanguageSelectorProps): JSX.Element => {
+  const { label, langs, small, className, displayLang, ...divProps } = props
   const classes = classnames(
     'usa-language-container',
     {
@@ -36,8 +30,11 @@ export const LanguageSelector = ({
 
   const [langIndex, setLangIndex] = useState(false)
   if (langs.length > 2) {
-    const dropdownProps = { label, langs, small, displayLang }
-    return <LanguageSelectorDropdown {...dropdownProps} className={className} />
+    const dropdownProps = {
+      ...props,
+      className: classes,
+    }
+    return <LanguageSelectorDropdown {...dropdownProps} />
   } else {
     if (label) {
       console.warn(

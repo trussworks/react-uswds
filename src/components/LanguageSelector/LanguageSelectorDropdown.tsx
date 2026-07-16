@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Menu } from '../header/Menu/Menu'
 import { LanguageSelectorButton } from './LanguageSelectorButton'
-import classnames from 'classnames'
 import { LanguageDefinition, LanguageSelectorProps } from './LanguageSelector'
 import { Button } from '../Button/Button'
 
@@ -47,56 +46,72 @@ const generateMenuItems = (
   })
 }
 
-const LanguageSelectorDropdown: React.FC<LanguageSelectorProps> = ({
+const LanguageSelectorDropdown = ({
+  id,
   label,
   langs,
   small,
   className,
   displayLang,
   ...divProps
-}) => {
+}: LanguageSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     if (!isOpen) return
 
-    const closeOnOutsideClick = (event: MouseEvent): void => {
-      if (!containerRef.current?.contains(event.target as Node)) {
+    // Mirrors USWDS: any click closes the open menu except a click on the
+    // toggle button itself (menu item clicks close via onSelect).
+    const closeOnClick = (event: MouseEvent): void => {
+      if (!buttonRef.current?.contains(event.target as Node)) {
         setIsOpen(false)
       }
     }
 
-    document.addEventListener('click', closeOnOutsideClick)
+    const eventListenerOptions = { capture: true }
+    document.addEventListener('click', closeOnClick, eventListenerOptions)
 
     return () => {
-      document.removeEventListener('click', closeOnOutsideClick)
+      document.removeEventListener('click', closeOnClick, eventListenerOptions)
     }
   }, [isOpen])
 
-  const classes = classnames(
-    'usa-language-container',
-    {
-      [`usa-language--small`]: small !== undefined,
-    },
-    className
-  )
+  const closeOnFocusOut = (event: React.FocusEvent<HTMLDivElement>): void => {
+    if (!containerRef.current?.contains(event.relatedTarget as Node)) {
+      setIsOpen(false)
+    }
+  }
+
+  const closeOnEscape = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (isOpen && event.key === 'Escape') {
+      buttonRef.current?.focus()
+      setIsOpen(false)
+    }
+  }
+
   const displayLabel = langs.find((langDef) => langDef.attr === displayLang)
-  const menuID = 'language-options'
+  const menuID = id ? `${id}-language-options` : 'language-options'
   const selectLanguage = (): void => {
     setIsOpen(false)
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
-      className={classes}
+      id={id}
+      className={className}
       data-testid="languageSelector"
       ref={containerRef}
+      onBlur={closeOnFocusOut}
+      onKeyDown={closeOnEscape}
       {...divProps}>
       <ul className="usa-language__primary usa-accordion">
         <li className="usa-language__primary-item">
           <LanguageSelectorButton
-            className={classes}
+            ref={buttonRef}
+            className={className}
             label={displayLabel?.label || label || langs[0].label}
             isOpen={isOpen}
             controls={menuID}
