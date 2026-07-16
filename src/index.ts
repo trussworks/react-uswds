@@ -2,8 +2,12 @@
 import './styles/index.scss'
 
 /** USWDS basic components/types */
-export { Alert } from './components/Alert/Alert'
-export type { AlertProps } from './components/Alert/Alert'
+export { Alert, AlertHeading, AlertText } from './components/Alert/Alert'
+export type {
+  AlertProps,
+  AlertHeadingProps,
+  AlertTextProps,
+} from './components/Alert/Alert'
 export { Accordion } from './components/Accordion/Accordion'
 export type { AccordionProps } from './components/Accordion/Accordion'
 export { Button } from './components/Button/Button'
