@@ -1,6 +1,6 @@
 {
   "name": "@trussworks/react-uswds",
-  "version": "11.1.0",
+  "version": "11.2.0",
   "description": "React USWDS 3 component library",
   "keywords": [
     "react",
@@ -34,7 +34,7 @@
     "CHANGELOG.md"
   ],
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   },
   "overrides": {
     "@laynezh/vite-plugin-lib-assets": {

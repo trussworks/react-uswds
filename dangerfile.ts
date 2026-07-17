@@ -64,8 +64,8 @@ const checkNpmAudit: () => void = () => {
 
   if (!summary.metadata?.vulnerabilities || !summary.vulnerabilities) {
     warn(
-      `Unable to parse the npm audit response.\n" +
-      "dangerfile.ts likely needs updating`
+      'Unable to parse the npm audit response.\n' +
+        'dangerfile.ts likely needs updating'
     )
     return
   }

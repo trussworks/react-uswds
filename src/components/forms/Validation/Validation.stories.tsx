@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Alert } from '../../Alert/Alert'
+import { Alert, AlertHeading } from '../../Alert/Alert'
 import { Button } from '../../Button/Button'
 import { Fieldset } from '../Fieldset/Fieldset'
 import { Form } from '../Form/Form'
@@ -69,11 +69,8 @@ export const Default: Story = {
           console.log('submit')
         }}>
         <Fieldset legend="Enter a code" legendStyle="large">
-          <Alert
-            type="info"
-            validation
-            heading="Code Requirements"
-            headingLevel="h4">
+          <Alert type="info" validation>
+            <AlertHeading level="h4">Code Requirements</AlertHeading>
             <ValidationChecklist id="validate-code">
               <ValidationItem id="uppercase" isValid={validations.uppercase}>
                 Use at least one uppercase character
@@ -137,11 +134,8 @@ export const Textarea: Story = {
           console.log('submit')
         }}>
         <Fieldset legend="Enter a story" legendStyle="large">
-          <Alert
-            type="info"
-            validation
-            heading="Story Requirements"
-            headingLevel="h4">
+          <Alert type="info" validation>
+            <AlertHeading level="h4">Story Requirements</AlertHeading>
             <ValidationChecklist id="validate-story">
               <ValidationItem id="paragraphs" isValid={validations.paragraphs}>
                 Write at least two paragraphs
