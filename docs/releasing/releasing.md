@@ -66,7 +66,7 @@ Follow these steps to create and publish a release for a given version, `<major.
 3. Find and wait for the corresponding [package-release.yml](https://github.com/trussworks/react-uswds/actions/workflows/package-release.yml) action to complete.
 4. From the successful package-release workflow run, download the build artifact from the `Artifacts` section of the build summary:
    ![Where to find the build artifact for download](package-release-summary-artifact-download.png)
-5. Get the tarball (`trussworks-react-uswds-v<major.minor.incremental>.tgz`) by unzipping the downloaded `artifact.zip`
+5. Get the tarball (`trussworks-react-uswds-<major.minor.incremental>.tgz`) by unzipping the downloaded `artifact.zip`
 
    ```shell
    unzip artifact.zip
@@ -74,10 +74,10 @@ Follow these steps to create and publish a release for a given version, `<major.
 
    - If, instead of the terminal, you wish to use Archive Utility to unzip `arifact.zip` be aware that Archive Utility defaults to recursively unzipping files, including the `.tgz` itself when unzipping the `artifact.zip`. You will first need to disable the "Keep expanding if possible" setting in your Archive Utility preferences.
 
-6. [Publish](https://docs.npmjs.com/cli/v11/commands/npm-publish) the tarball (`trussworks-react-uswds-v<major.minor.incremental>.tgz`) to npm by running the following command and following the prompts in your terminal.
+6. [Publish](https://docs.npmjs.com/cli/v11/commands/npm-publish) the tarball (`trussworks-react-uswds-<major.minor.incremental>.tgz`) to npm by running the following command and following the prompts in your terminal.
 
    ```shell
-   npm publish trussworks-react-uswds-v<major.minor.incremental>.tgz
+   npm publish trussworks-react-uswds-<major.minor.incremental>.tgz
    ```
 
 7. Notify our `#g-uswds` and `#g-uswds-public` Slack channels about the release.

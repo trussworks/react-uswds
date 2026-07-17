@@ -45,6 +45,7 @@ updates:
         patterns:
           - 'eslint'
           - 'eslint-*'
+          - '@eslint/*'
       typescript:
         patterns:
           - 'typescript'

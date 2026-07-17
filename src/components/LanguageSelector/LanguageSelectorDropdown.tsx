@@ -79,7 +79,7 @@ const LanguageSelectorDropdown = ({
   }, [isOpen])
 
   const closeOnFocusOut = (event: React.FocusEvent<HTMLDivElement>): void => {
-    if (!containerRef.current?.contains(event.relatedTarget as Node)) {
+    if (!containerRef.current?.contains(event.relatedTarget)) {
       setIsOpen(false)
     }
   }

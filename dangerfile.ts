@@ -3,7 +3,8 @@ import * as child from 'child_process'
 import { danger, fail, schedule, warn } from 'danger'
 
 // README:
-// This parses the structure of the `yarn npm audit` response, but that response has no schema and is subject to change, so this might break with yarn version upgrades
+// This parses the structure of the `npm audit --json` response (auditReportVersion 2),
+// but that response has no schema and is subject to change, so this might break with npm version upgrades
 // The TS types below correspond to what the shape of the json-ified audit report looks like at the time of this commit.
 
 // Only run on PRs from non-bots
@@ -14,81 +15,56 @@ const allFiles = (danger.git.modified_files ?? []).concat(
   danger.git.created_files
 )
 
-type YarnAuditMetaData = Partial<{
+type NpmAuditMetaData = Partial<{
   vulnerabilities: {
     info: number
     low: number
     moderate: number
     high: number
     critical: number
+    total: number
   }
-  dependencies: number
-  devDependencies: number
-  optionalDependencies: number
-  totalDependencies: number
 }>
 
-type YarnAuditAdvisoryDetail = Partial<{
-  id: number | null
+// Advisory details appear in a vulnerability's `via` array; entries that are
+// plain strings instead point at the transitive dependency causing the issue
+type NpmAuditAdvisory = Partial<{
+  source: number | null
+  name: string | null
+  dependency: string | null
   title: string | null
-  findings: [] | null
-  references: string | null
-  created: string | null
-  overview: string | null
-  cves: string[] | null
-  access: string | null
-  severity: string | null
-  module_name: string | null
-  vulnerable_versions: string | null
-  github_advisory_id: string | null
-  recommendation: string | null
-  patched_versions: string | null
-  updated: string | null
-  cvss: object | null
-  cwe: string[] | null
   url: string | null
+  severity: string | null
+  cwe: string[] | null
+  cvss: object | null
+  range: string | null
 }>
 
-type YawnAuditOutput = Partial<{
-  actions: []
-  advisories: Record<string, YarnAuditAdvisoryDetail>
-  muted: []
-  metadata: YarnAuditMetaData
-  dependencies: number
-  devDependencies: number
-  optionalDependencies: number
-  totalDependencies: number
+type NpmAuditVulnerability = Partial<{
+  name: string | null
+  severity: string | null
+  isDirect: boolean | null
+  via: (NpmAuditAdvisory | string)[] | null
+  effects: string[] | null
+  range: string | null
+  nodes: string[] | null
+  fixAvailable: boolean | object | null
 }>
 
-const checkYarnAudit: () => void = () => {
-  const result = child.spawnSync('yarn', [
-    'npm',
-    'audit',
-    '--environment=production',
-    '--severity=high',
-    '--json',
-  ])
+type NpmAuditOutput = Partial<{
+  auditReportVersion: number
+  vulnerabilities: Record<string, NpmAuditVulnerability>
+  metadata: NpmAuditMetaData
+}>
+
+const checkNpmAudit: () => void = () => {
+  const result = child.spawnSync('npm', ['audit', '--omit=dev', '--json'])
   const output = result.stdout.toString()
+  const summary = JSON.parse(output) as NpmAuditOutput
 
-  let summary: YawnAuditOutput
-  try {
-    summary = JSON.parse(output) as YawnAuditOutput
-  } catch {
-    // npm retired the audit endpoint Yarn 3 relies on (410 Gone), so the
-    // command emits an error message instead of JSON. Skip the audit check
-    // rather than failing every PR. Will be resolved in https://github.com/trussworks/react-uswds/pull/3500
-    // by migrating to NPM.
+  if (!summary.metadata?.vulnerabilities || !summary.vulnerabilities) {
     warn(
-      'Unable to run `yarn npm audit` — the command did not return JSON ' +
-        '(npm has retired the audit endpoint used by Yarn 3). ' +
-        'Skipping the dependency audit check.'
-    )
-    return
-  }
-
-  if (!summary.metadata?.vulnerabilities || !summary.advisories) {
-    warn(
-      'Unable to parse the yarn npm audit response.\n' +
+      'Unable to parse the npm audit response.\n' +
         'dangerfile.ts likely needs updating'
     )
     return
@@ -97,17 +73,28 @@ const checkYarnAudit: () => void = () => {
   const highVulnerabilities = summary.metadata.vulnerabilities.high || 0
   const criticalVulnerabilities = summary.metadata.vulnerabilities.critical || 0
   if (highVulnerabilities > 0 || criticalVulnerabilities > 0) {
-    let issuesFound = 'Yarn Audit Issues Found:\n'
-    if (summary.advisories) {
-      Object.values(summary.advisories).forEach((advisory) => {
-        issuesFound +=
-          `${advisory.severity} - ${advisory.title}\n` +
-          `Package ${advisory.module_name}\n` +
-          `Patched in ${advisory.patched_versions}\n` +
-          `More info ${advisory.url}\n\n` +
-          `(🤖If this output looks weird, see dangerfile.ts to fix)\n\n`
+    let issuesFound = 'npm Audit Issues Found:\n'
+    Object.values(summary.vulnerabilities)
+      .filter(
+        (vulnerability) =>
+          vulnerability.severity === 'high' ||
+          vulnerability.severity === 'critical'
+      )
+      .forEach((vulnerability) => {
+        const advisories = (vulnerability.via ?? []).filter(
+          (via): via is NpmAuditAdvisory =>
+            typeof via !== 'string' &&
+            (via.severity === 'high' || via.severity === 'critical')
+        )
+        advisories.forEach((advisory) => {
+          issuesFound +=
+            `${advisory.severity} - ${advisory.title}\n` +
+            `Package ${advisory.dependency}\n` +
+            `Vulnerable versions ${advisory.range}\n` +
+            `More info ${advisory.url}\n\n` +
+            `(🤖If this output looks weird, see dangerfile.ts to fix)\n\n`
+        })
       })
-    }
     fail(
       `${issuesFound}${highVulnerabilities} high vulnerabilities and ` +
         `${criticalVulnerabilities} critical vulnerabilities found`
@@ -159,40 +146,42 @@ const checkCodeChanges: () => void = () => {
 }
 
 const checkDependencyChanges: () => void = () => {
-  // Request update of yarn.lock if package.json changed but yarn.lock isn't
+  // Request update of package-lock.json if package.json changed but package-lock.json isn't
   const packageChanged = allFiles.includes('package.json')
-  const lockfileChanged = allFiles.includes('yarn.lock')
+  const lockfileChanged = allFiles.includes('package-lock.json')
   if (packageChanged && !lockfileChanged) {
-    danger.git
-      .structuredDiffForFile('package.json')
-      .then((sdiff) => {
-        return sdiff?.chunks.every((chunk) => {
-          return chunk.changes
-            .filter((change) => {
-              // filter out changes that are context lines in the diff
-              return change.type !== 'normal'
-            })
-            .every((change) => {
-              // for every add/del, is the only change to the version?
-              return change.content.match(/"version":/)
-            })
+    schedule(
+      danger.git
+        .structuredDiffForFile('package.json')
+        .then((sdiff) => {
+          return sdiff?.chunks.every((chunk) => {
+            return chunk.changes
+              .filter((change) => {
+                // filter out changes that are context lines in the diff
+                return change.type !== 'normal'
+              })
+              .every((change) => {
+                // for every add/del, is the only change to the version?
+                return change.content.match(/"version":/)
+              })
+          })
         })
-      })
-      .then((onlyVersionChanges) => {
-        // If the only thing that changed is the version, it is ok if
-        // yarn.lock didn't change
-        if (!onlyVersionChanges) {
-          const message =
-            'Changes were made to package.json, but not to yarn.lock'
-          const idea = 'Perhaps you need to run `yarn install`?'
-          warn(`${message} - <i>${idea}</i>`)
-        }
-      })
+        .then((onlyVersionChanges) => {
+          // If the only thing that changed is the version, it is ok if
+          // package-lock.json didn't change
+          if (!onlyVersionChanges) {
+            const message =
+              'Changes were made to package.json, but not to package-lock.json'
+            const idea = 'Perhaps you need to run `npm install`?'
+            warn(`${message} - <i>${idea}</i>`)
+          }
+        })
+    )
   }
 }
 
 // Check for any changes to the contributors section of package.json
-schedule(async () => {
+const checkContributorsChanges: () => Promise<void> = async () => {
   if (!shouldRun) {
     return
   }
@@ -204,12 +193,13 @@ schedule(async () => {
       'This project only uses .all-contributorsrc for tracking contributors.'
     fail(`${message} - <i>${idea}</i>`)
   }
-})
+}
+schedule(checkContributorsChanges())
 
 // skip these checks if PR is by any bot (e.g. dependabot), if we
 // don't have a github object let it run also since we are local
 if (shouldRun) {
-  checkYarnAudit()
+  checkNpmAudit()
   checkPrDescription()
 
   checkCodeChanges()

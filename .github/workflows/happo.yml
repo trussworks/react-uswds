@@ -27,16 +27,16 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: '.node-version'
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: npm ci
 
       - name: Build Storybook
-        run: yarn build-storybook
+        run: npm run build-storybook
 
       - name: Happo
-        run: yarn happo-ci
+        run: npm run happo-ci
         env:
           HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
           HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}

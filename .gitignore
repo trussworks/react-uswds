@@ -3,8 +3,6 @@
 logs
 _.log
 npm-debug.log_
-yarn-debug.log*
-yarn-error.log*
 doctor-storybook.log
 
 # Runtime data
@@ -73,18 +71,7 @@ storybook-static/
 
 # Output of 'npm pack'
 
-\*.tgz
-
-# Yarn
-
-.yarn-integrity
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+*.tgz
 
 # dotenv environment variables file
 

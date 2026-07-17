@@ -8,7 +8,7 @@ src/stories/ @trussworks/react-uswds-design-owners
 *.stories.tsx @trussworks/react-uswds-design-owners
 .storybook/ @trussworks/react-uswds-design-owners
 
-# Owners for PRs that change ONLY package.json and/or yarn.lock
+# Owners for PRs that change ONLY package.json and/or package-lock.json
 
 package.json
-yarn.lock
+package-lock.json

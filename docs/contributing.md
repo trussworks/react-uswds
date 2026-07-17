@@ -14,7 +14,7 @@ We welcome contributions in the form of comments, issues, or pull requests with 
     - [General guidelines](#general-guidelines)
     - [Linting, formatting, \& automated tests](#linting-formatting--automated-tests)
     - [Testing in an application](#testing-in-an-application)
-      - [`yarn link`](#yarn-link)
+      - [`npm link`](#npm-link)
       - [Install from a ReactUSWDS branch](#install-from-a-reactuswds-branch)
     - [Opening \& merging pull requests](#opening--merging-pull-requests)
       - [Formatting your commits](#formatting-your-commits)
@@ -36,13 +36,12 @@ We welcome contributions in the form of comments, issues, or pull requests with 
 >
 > Mise supports `.node-version` [as a default](https://mise.jdx.dev/configuration.html#idiomatic-version-files).
 
-2. Use [yarn](https://yarnpkg.com) to manage JS packages.
-   - [Install yarn](https://yarnpkg.com/en/docs/install) if you do not already have it.
-   - Type `yarn` or `yarn install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
+2. Use [npm](https://docs.npmjs.com/) (which is bundled with Node) to manage JS packages.
+   - Type `npm install` inside the project directory to install dependencies. You will need to do this once after cloning the project, and continuously if the dependencies in `package.json` change.
 3. Set up git hooks (this project uses [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks) and [nano-staged](https://github.com/usmanyunusov/nano-staged))
 
    ```shell
-   yarn simple-git-hooks
+   npx simple-git-hooks
    ```
 
 4. Make sure you can run all the available commands listed below with no errors.
@@ -51,16 +50,16 @@ We welcome contributions in the form of comments, issues, or pull requests with 
 
 These should all be run from within the project directory.
 
-- `yarn storybook`
+- `npm run storybook`
   - Starts Storybook server and watches for changed files
   - This will most likely be what you use for active development of components
-- `yarn test`
+- `npm test`
   - Starts test runner
-  - `yarn test:watch` is also available
-  - Use `yarn test:coverage` to generate a coverage report
-- `yarn build`
+  - `npm run test:watch` is also available
+  - Use `npm run test:coverage` to generate a coverage report
+- `npm run build`
   - Builds files from `/src` and outputs to `/lib` using webpack and UMD library target
-  - `yarn build:watch` is also available
+  - `npm run build:watch` is also available
 
 ## Development
 
@@ -101,15 +100,15 @@ Because this project exports a library that will be used by other projects, it i
   - GitHub Actions are used to check each PR for format and linting compliance
   - For an optimal developer experience, it's recommended that you configure your editor to run linting & formatting inline.
   - It is also possible to invoke the tools manually
-    - To check code format compliance, run `yarn format:check`
-    - To auto-fix code format, run `yarn format:fix`
-    - To check typescript complication, eslint, and stylelint, run `yarn lint`
+    - To check code format compliance, run `npm run format:check`
+    - To auto-fix code format, run `npm run format:fix`
+    - To check typescript complication, eslint, and stylelint, run `npm run lint`
 - [dangerjs](https://github.com/danger/danger-js) is used to enforce several pull request standards, including:
   - Changes to package source code should include changes to tests.
   - New `src/components` files should include changes to storybook.
   - New `src/components` files should be exported from the package entrypoint.
-  - Package dependency changes should include `yarn.lock` updates and
-    `yarn audit` will be run by danger to ensure no high or critical
+  - Package dependency changes should include `package-lock.json` updates and
+    `npm audit` will be run by danger to ensure no high or critical
     vulnerabilities are found
 - [Vite tests](https://vitest.dev/) are run in CI and must pass before the branch can be merged
 - [Happo.io visual regression tests](https://docs.happo.io/docs/reviewing-diffs) are run CI against Storybook stories. All diffs must be approved before the branch can be merged. Developers with access (maintainers and many codeowners) log in to Happo.io account to approve/reject diffs.
@@ -129,30 +128,25 @@ Having issues? See [FAQs](./faqs.md).
 
 It's important to test your changes in a real-life application instance, especially if you're working on a bugfix or issue that is specific to the needs of an application. There are a few ways to do this.
 
-#### `yarn link`
+#### `npm link`
 
-Yarn provides the [`yarn link` command](https://classic.yarnpkg.com/en/docs/cli/link/) to symlink a specific package to a local version of that package. This can be very helpful if you're trying to do development in ReactUSWDS & test changes in an application simultaneously.
+npm provides the [`npm link` command](https://docs.npmjs.com/cli/commands/npm-link) to symlink a specific package to a local version of that package. This can be very helpful if you're trying to do development in ReactUSWDS & test changes in an application simultaneously.
 
-To use this, first run `yarn link` in your local ReactUSWDS directory:
+To use this, first run `npm link` in your local ReactUSWDS directory to register it as a global symlink:
 
 ```
-cd /path/to/react-uswds
-➜ yarn link
-yarn link v1.22.4
-success Registered "@trussworks/react-uswds".
-info You can now run `yarn link "@trussworks/react-uswds"` in the projects where you want to use this package and it will be used instead.
+➜ cd /path/to/react-uswds
+➜ npm link
 ```
 
 Then, link the package in your application directory:
 
 ```
-cd /path/to/your/application
-➜ yarn link @trussworks/react-uswds
-yarn link v1.22.4
-success Using linked package for "@trussworks/react-uswds".
+➜ cd /path/to/your/application
+➜ npm link @trussworks/react-uswds
 ```
 
-You can then run `yarn build:watch` in ReactUSWDS and your application's compiler at the same time, and when you save code changes in ReactUSWDS it will trigger a build of the package, which will then trigger a build of your application's code.
+You can then run `npm run build:watch` in ReactUSWDS and your application's compiler at the same time, and when you save code changes in ReactUSWDS it will trigger a build of the package, which will then trigger a build of your application's code.
 
 > **Warning:** Make sure to **unlink** the package once you're done making changes! It can be easy to forget you're using a linked package in your application, and commit changes without switching back to a released version of ReactUSWDS.
 
@@ -160,19 +154,17 @@ You can then run `yarn build:watch` in ReactUSWDS and your application's compile
 >
 > ```
 > ➜ cd /path/to/react-uswds
-> ➜ yarn link
-> ➜ yarn install
+> ➜ npm link
+> ➜ npm install
 >
 > ➜ cd node_modules/react
-> ➜ yarn link
+> ➜ npm link
 >
 > ➜ cd ../../node_modules/react-dom
-> ➜ yarn link
+> ➜ npm link
 >
 > ➜ cd /path/to/your/application
-> ➜ yarn link @trussworks/react-uswds
-> ➜ yarn link react
-> ➜ yarn link react-dom
+> ➜ npm link @trussworks/react-uswds react react-dom
 > ```
 
 > If you still get errors about invalid hook calls, and your application is built on NextJS, you may need to add this to your Webpack config (in next.config.js):
@@ -189,19 +181,12 @@ You can then run `yarn build:watch` in ReactUSWDS and your application's compile
 > },
 > ```
 
-To unlink the package from your application code (you don't need to unlink your local ReactUSWDS code)
-:
+To unlink the package from your application code (you don't need to unlink your local ReactUSWDS code), reinstall the released version of the package:
 
 ```
-
-cd /path/to/your/application
-➜ yarn unlink @trussworks/react-uswds
-yarn unlink v1.22.4
-success Removed linked package "@trussworks/react-uswds".
-info You will need to run `yarn install --force` to re-install the package that was linked.
-
-➜ yarn install --force
-
+➜ cd /path/to/your/application
+➜ npm uninstall @trussworks/react-uswds
+➜ npm install @trussworks/react-uswds
 ```
 
 #### Install from a ReactUSWDS branch
@@ -214,19 +199,19 @@ Another option is to install a specific branch of ReactUSWDS to your application
 
 ```
 
-After making that change, run `yarn install` to install that version of the package. This will also build the ReactUSWDS code so it can be used in your application as if it were being installed from NPM. You can verify the source of the package by looking in your application's `yarn.lock` file:
+After making that change, run `npm install` to install that version of the package. This will also build the ReactUSWDS code so it can be used in your application as if it were being installed from NPM. You can verify the source of the package by looking in your application's `package-lock.json` file:
 
 ```
-
-"@trussworks/react-uswds@https://github.com/trussworks/react-uswds":
-version "1.13.2"
-resolved "https://github.com/trussworks/react-uswds#92ea5f07f7212370165423ec09ed35eec3aa7e58"
-
+"node_modules/@trussworks/react-uswds": {
+  "version": "1.13.2",
+  "resolved": "git+ssh://git@github.com/trussworks/react-uswds.git#92ea5f07f7212370165423ec09ed35eec3aa7e58",
+  ...
+}
 ```
 
 The important thing to note here is that `resolved` is pointing to the Github repo instead of the package registry, and the SHA should match the last commit of the branch you're using.
 
-The downside of this method is that if you need to make changes to ReactUSWDS, you will have to commit and push up the branch, and then run `yarn upgrade @trussworks/react-uswds` to install the newest changes in your application. If you're ever not sure if your application code is referencing the right version, you can always verify against the SHA shown in the `yarn.lock` file.
+The downside of this method is that if you need to make changes to ReactUSWDS, you will have to commit and push up the branch, and then run `npm update @trussworks/react-uswds` to install the newest changes in your application. If you're ever not sure if your application code is referencing the right version, you can always verify against the SHA shown in the `package-lock.json` file.
 
 You can commit this change to your application code if you want to use a branch of ReactUSWDS for some time, but make sure to switch back to a released version once the branch is merged and released!
 
@@ -299,7 +284,7 @@ All Contributors sections of the readme and [.all-contributorsrc](../.all-contri
 There are a couple of automations to easily add yourself or others as contributors:
 
 - Use the [All Contributors bot](https://allcontributors.org/docs/en/bot/overview) and simply comment on a contributor's PR following [the official usage instructions](https://allcontributors.org/docs/en/bot/usage) to have a PR automatically opened adding the requested contributor and their contribution type(s).
-- Use the CLI via the `yarn contributors:add` script, e.g. `yarn contributors:add github-person code,doc`
+- Use the CLI via the `contributors:add` script, e.g. `npm run contributors:add -- github-person code,doc`
 
 Using All Contributors is not a requirement, so if you would prefer not to be highlighted, that is okay.
 If you would like to be highlighted and need some help with either step above, please reach out to a [CODEOWNER](../CODEOWNERS), and reference this portion of the documentation.

@@ -54,7 +54,7 @@ Our storybook: [https://trussworks.github.io/react-uswds/](https://trussworks.gi
 
 Storybook is our primary resource for everyone on the project outside of the design team for the USSF Design System’s reusable UI components.
 
-To run storybook locally, run the command  yarn storybook  from your command line. This will host the project storybook at localhost:9009. It can be helpful to save this to your bookmarks bar.
+To run storybook locally, run the command `npm run storybook` from your command line. This will host the project storybook at `localhost:9009`. It can be helpful to save this to your bookmarks bar.
 
 **Running a PR branch for review in the browser without having the repo on your machine**
 

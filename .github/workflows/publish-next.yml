@@ -15,35 +15,35 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
 
-      - name: Set up node
-        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
-        with:
-          node-version-file: '.node-version'
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir='.yarn/cache'" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # The yarn cache is not node_modules
-      - name: Install dependencies
-        run: yarn add --cached
-
       # Setup .npmrc file to publish to GitHub Packages
       - name: Set up node
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          registry-url: 'https://npm.pkg.github.com'
           node-version-file: '.node-version'
+          cache: 'npm'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # npm has no equivalent of yarn's --tolerate-republish, so skip
+      # publishing when this version already exists in the registry
+      - name: Check if version is already published
+        id: version-check
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "@trussworks/react-uswds@${VERSION}" version --registry=https://npm.pkg.github.com > /dev/null 2>&1; then
+            echo "Version ${VERSION} is already published, skipping"
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Publish to GitHub Packages
-      - run: yarn npm publish --tag next --tolerate-republish
+      - name: Publish to GitHub Packages
+        if: steps.version-check.outputs.exists == 'false'
+        run: npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

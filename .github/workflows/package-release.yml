@@ -25,22 +25,22 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: '.node-version'
-          cache: 'yarn'
-      
-      # The yarn cache is not node_modules
+          cache: 'npm'
+
+      # The npm cache is not node_modules
       - name: Install Dependencies
-        run: yarn add --cached
-      
+        run: npm ci
+
       - name: Run tests
-        run: yarn test
+        run: npm test
 
       - name: Package library
-        # https://v3.yarnpkg.com/cli/pack
-        run: yarn pack --out trussworks-react-uswds-v%v.tgz
+        # https://docs.npmjs.com/cli/commands/npm-pack
+        run: npm pack
 
       - name: Upload package
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
-          path: trussworks-react-uswds-v*.*.*.tgz
+          path: trussworks-react-uswds-*.tgz
           if-no-files-found: error
           retention-days: 5

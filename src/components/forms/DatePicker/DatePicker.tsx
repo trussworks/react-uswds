@@ -227,7 +227,7 @@ export const DatePicker = ({
 
   // This is why the DatePicker requires React 17
   const handleFocusOut = (event: FocusEvent<HTMLDivElement>): void => {
-    if (!datePickerEl.current?.contains(event?.relatedTarget as Element)) {
+    if (!datePickerEl.current?.contains(event?.relatedTarget)) {
       if (showCalendar) {
         setShowCalendar(false)
         setStatuses([])

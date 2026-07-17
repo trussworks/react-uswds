@@ -28,12 +28,12 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: '.node-version'
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Deploy 🚀
         uses: bitovi/github-actions-storybook-to-github-pages@b75ece8f984a32b2adb322065d7a8a2cc8db2d52 # v1.0.3
         with:
-          install_command: yarn install
-          build_command: yarn build-storybook
+          install_command: npm ci
+          build_command: npm run build-storybook
           path: storybook-static
           checkout: false
