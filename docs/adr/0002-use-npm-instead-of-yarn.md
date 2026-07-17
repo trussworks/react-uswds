@@ -1,6 +1,6 @@
 # Use npm instead of yarn for package management
 
-- Status: Proposed (TODO: Change to Accepted if/when PR approved)
+- Status: Accepted
 - Deciders: Maintainers
 - Date: 2026-06-12
 
