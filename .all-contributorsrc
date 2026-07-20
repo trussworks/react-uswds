@@ -447,6 +447,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "abbyoung",
+      "name": "Abigail Young",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6007259?v=4",
+      "profile": "https://github.com/abbyoung",
+      "contributions": [
+        "code",
+        "bug",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
