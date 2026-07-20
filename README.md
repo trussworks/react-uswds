@@ -1,9 +1,7 @@
 # @trussworks/react-uswds
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-45-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/@trussworks/react-uswds)](https://www.npmjs.com/package/@trussworks/react-uswds)
@@ -234,7 +232,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mvanhorn"><img src="https://avatars.githubusercontent.com/u/455140?v=4?s=100" width="100px;" alt="Matt Van Horn"/><br /><sub><b>Matt Van Horn</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=mvanhorn" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Steven7926"><img src="https://avatars.githubusercontent.com/u/49802017?v=4?s=100" width="100px;" alt="Steven Hudson"/><br /><sub><b>Steven Hudson</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/issues?q=author%3ASteven7926" title="Bug reports">🐛</a> <a href="https://github.com/trussworks/react-uswds/commits?author=Steven7926" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ronaktruss"><img src="https://avatars.githubusercontent.com/u/84742904?v=4?s=100" width="100px;" alt="Ronak"/><br /><sub><b>Ronak</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ronaktruss" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ronaktruss"><img src="https://avatars.githubusercontent.com/u/84742904?v=4?s=100" width="100px;" alt="Ronak"/><br /><sub><b>Ronak</b></sub></a><br /><a href="https://github.com/trussworks/react-uswds/commits?author=ronaktruss" title="Code">💻</a> <a href="#maintenance-ronaktruss" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
