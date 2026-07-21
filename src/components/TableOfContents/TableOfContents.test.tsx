@@ -131,7 +131,6 @@ export function TableOfContents({
                   if (typeof document === 'undefined') return
 
                   const target = document.getElementById(item.id)
-                  // Safe optional chaining
                   target?.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start',
