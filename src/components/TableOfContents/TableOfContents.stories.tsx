@@ -9,8 +9,6 @@ const meta: Meta<typeof TableOfContents> = {
     docs: {
       description: {
         component: `
-### USWDS 3.0 Table of Contents component
-
 Generates navigation anchor links automatically by scanning rendered HTML DOM nodes or by parsing raw Markdown text strings.
 `,
       },
