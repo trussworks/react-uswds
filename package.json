@@ -135,7 +135,7 @@
     "globals": "^17.0.0",
     "happo-plugin-storybook": "^5.0.4",
     "happo.io": "^13.0.1",
-    "jsdom": "^29.0.0",
+    "jsdom": "^30.0.1",
     "nano-staged": "^1.0.2",
     "prettier": "^3.2.5",
     "react": "^19.0.0",
