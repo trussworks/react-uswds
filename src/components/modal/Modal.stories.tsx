@@ -229,6 +229,14 @@ export const CustomFocusElementModal: Story = {
 }
 
 export const InitiallyOpenModal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The modal applies its body scroll lock and accessibility effects as soon as it mounts.',
+      },
+    },
+  },
   render: () => {
     const modalRef = useRef<ModalRef>(null)
 

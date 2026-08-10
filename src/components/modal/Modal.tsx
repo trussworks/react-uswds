@@ -59,6 +59,7 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   const initialPaddingRef = useRef<string | undefined>(undefined)
   const tempPaddingRef = useRef<string | undefined>(undefined)
   const modalEl = useRef<HTMLDivElement>(null)
+  const wasOpenRef = useRef(false)
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'
 
@@ -132,14 +133,13 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   }, [])
 
   useEffect(() => {
-    if (mounted) {
-      if (isOpen === true) {
-        handleOpenEffect()
-      } else if (isOpen === false) {
-        handleCloseEffect()
-      }
-    }
-  }, [isOpen])
+    if (!mounted) return
+
+    if (isOpen) handleOpenEffect()
+    else if (wasOpenRef.current) handleCloseEffect()
+
+    wasOpenRef.current = isOpen
+  }, [isOpen, mounted])
 
   const ariaLabelledBy = divProps['aria-labelledby']
   const ariaDescribedBy = divProps['aria-describedby']

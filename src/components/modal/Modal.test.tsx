@@ -334,6 +334,39 @@ describe('Modal component', () => {
     expect(modalRef.current?.modalIsOpen).toBe(true)
   })
 
+  it('applies document effects when initially open', async () => {
+    const modalRef = createRef<ModalRef>()
+    const { baseElement, container } = renderWithModalRoot(
+      <Modal
+        ref={modalRef}
+        id="testModal"
+        aria-labelledby="modal-heading"
+        aria-describedby="modal-description"
+        isInitiallyOpen>
+        Test modal
+      </Modal>
+    )
+
+    await waitFor(() => expect(baseElement).toHaveClass('usa-js-modal--active'))
+    expect(baseElement).toHaveStyle('padding-right: 15px')
+    expect(container).toHaveAttribute('aria-hidden')
+    expect(container).toHaveAttribute('data-modal-hidden')
+    expect(document.getElementById('modal-root')).not.toHaveAttribute(
+      'aria-hidden'
+    )
+
+    act(() => {
+      modalRef.current?.toggleModal(undefined, false)
+    })
+
+    await waitFor(() =>
+      expect(baseElement).not.toHaveClass('usa-js-modal--active')
+    )
+    expect(baseElement).toHaveStyle('padding-right: 0px')
+    expect(container).not.toHaveAttribute('aria-hidden')
+    expect(container).not.toHaveAttribute('data-modal-hidden')
+  })
+
   it('does not render a close button when forceAction is true', () => {
     const testModalId = 'testModal'
 
@@ -350,6 +383,47 @@ describe('Modal component', () => {
   })
 
   describe('toggling', () => {
+    it('preserves document effects when another closed modal mounts', async () => {
+      const firstModalRef = createRef<ModalRef>()
+      const Modals = ({ showSecond }: { showSecond: boolean }) => (
+        <>
+          <Modal
+            id="firstModal"
+            ref={firstModalRef}
+            aria-labelledby="first-heading"
+            aria-describedby="first-description">
+            First modal
+          </Modal>
+          {showSecond && (
+            <Modal
+              id="secondModal"
+              aria-labelledby="second-heading"
+              aria-describedby="second-description">
+              Second modal
+            </Modal>
+          )}
+        </>
+      )
+
+      const { baseElement, container, rerender } = render(
+        <Modals showSecond={false} />
+      )
+
+      act(() => {
+        firstModalRef.current?.toggleModal(undefined, true)
+      })
+
+      await waitFor(() =>
+        expect(baseElement).toHaveClass('usa-js-modal--active')
+      )
+      expect(container).toHaveAttribute('aria-hidden')
+
+      rerender(<Modals showSecond />)
+
+      expect(baseElement).toHaveClass('usa-js-modal--active')
+      expect(container).toHaveAttribute('aria-hidden')
+    })
+
     it('styles the body element', async () => {
       const modalRef = createRef<ModalRef>()
       const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
