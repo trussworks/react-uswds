@@ -16,9 +16,11 @@ export default {
     }),
     safari: new RemoteBrowserTarget('safari', {
       viewport: '1024x768',
+      preRenderDelay: 500,
     }),
     'ios-safari': new RemoteBrowserTarget('ios-safari', {
       viewport: '375x667',
+      preRenderDelay: 500,
     }),
   },
   plugins: [
