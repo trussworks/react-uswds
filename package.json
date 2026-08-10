@@ -39,6 +39,12 @@
   "overrides": {
     "@laynezh/vite-plugin-lib-assets": {
       "vite": "$vite"
+    },
+    "all-contributors-cli": {
+      "tmp": "^0.2.6"
+    },
+    "danger": {
+      "undici": "^6.28.0"
     }
   },
   "scripts": {
