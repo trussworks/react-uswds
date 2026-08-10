@@ -76,6 +76,7 @@ module.exports = defineConfig([
     rules: {
       'no-only-tests/no-only-tests': 'error',
       'react/prop-types': 'off',
+      'react-hooks/rules-of-hooks': 'error',
       '@typescript-eslint/no-unused-expressions': [
         'error',
         { allowShortCircuit: true },
@@ -129,6 +130,15 @@ module.exports = defineConfig([
 
     rules: {
       'import/no-unresolved': 'off',
+    },
+  },
+  {
+    // Storybook treats CSF render functions as component boundaries, but the
+    // hooks rule cannot infer that from their lowercase property name.
+    files: ['**/*.stories.tsx'],
+
+    rules: {
+      'react-hooks/rules-of-hooks': 'off',
     },
   },
   {
