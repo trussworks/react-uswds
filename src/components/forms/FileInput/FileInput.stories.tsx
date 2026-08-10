@@ -19,6 +19,8 @@ const meta: Meta<typeof FileInput> = {
         component: `
 ### USWDS 3.0 FileInput component
 Source: https://designsystem.digital.gov/components/file-input
+
+Selected filenames are announced through a polite live region.
 `,
       },
     },
