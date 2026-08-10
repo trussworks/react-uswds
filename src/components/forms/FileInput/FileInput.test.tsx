@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { FileInput, FileInputRef } from './FileInput'
@@ -137,6 +137,130 @@ describe('FileInput component', () => {
       const { getByTestId } = render(<FileInput {...disabledProps} />)
       expect(getByTestId('file-input')).toHaveClass('usa-file-input--disabled')
       expect(getByTestId('file-input')).toHaveAttribute('aria-disabled', 'true')
+    })
+  })
+
+  describe('screen reader status', () => {
+    beforeEach(() => vi.useFakeTimers())
+    afterEach(() => vi.useRealTimers())
+
+    it.each([
+      [false, 'No file selected.'],
+      [true, 'No files selected.'],
+    ])(
+      'reports the initial selection state for multiple=%s',
+      (multiple, message) => {
+        const { getByTestId } = render(
+          <FileInput {...testProps} multiple={multiple} />
+        )
+
+        expect(getByTestId('file-input-sr-status')).toHaveClass('usa-sr-only')
+        expect(getByTestId('file-input-sr-status')).toHaveAttribute(
+          'aria-live',
+          'polite'
+        )
+        expect(getByTestId('file-input-sr-status')).toHaveTextContent(message)
+      }
+    )
+
+    it('announces a selected file', () => {
+      const { getByTestId } = render(<FileInput {...testProps} />)
+
+      fireEvent.change(getByTestId('file-input-input'), {
+        target: { files: [TEST_PNG_FILE] },
+      })
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+
+      expect(getByTestId('file-input-sr-status')).toHaveTextContent(
+        `You have selected the file: ${TEST_PNG_FILE.name}`
+      )
+    })
+
+    it('announces the count and names of selected files', () => {
+      const { getByTestId } = render(
+        <FileInput {...testProps} multiple={true} />
+      )
+
+      fireEvent.change(getByTestId('file-input-input'), {
+        target: { files: [TEST_PNG_FILE, TEST_TEXT_FILE] },
+      })
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+
+      expect(getByTestId('file-input-sr-status')).toHaveTextContent(
+        `You have selected 2 files: ${TEST_PNG_FILE.name}, ${TEST_TEXT_FILE.name}`
+      )
+    })
+
+    it('reports the empty state after files are cleared', () => {
+      const fileInputRef = React.createRef<FileInputRef>()
+      const { getByTestId } = render(
+        <FileInput {...testProps} ref={fileInputRef} />
+      )
+
+      fireEvent.change(getByTestId('file-input-input'), {
+        target: { files: [TEST_PNG_FILE] },
+      })
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+      act(() => {
+        fileInputRef.current?.clearFiles()
+      })
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+
+      expect(getByTestId('file-input-sr-status')).toHaveTextContent(
+        'No file selected.'
+      )
+    })
+
+    it('preserves the selected file status when multiple changes', () => {
+      const { getByTestId, rerender } = render(<FileInput {...testProps} />)
+
+      fireEvent.change(getByTestId('file-input-input'), {
+        target: { files: [TEST_PNG_FILE] },
+      })
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+      rerender(<FileInput {...testProps} multiple={true} />)
+
+      expect(getByTestId('file-input-sr-status')).toHaveTextContent(
+        `You have selected the file: ${TEST_PNG_FILE.name}`
+      )
+    })
+
+    it('restores the selected file status when re-enabled', () => {
+      const { getByTestId, queryByTestId, rerender } = render(
+        <FileInput {...testProps} />
+      )
+
+      fireEvent.change(getByTestId('file-input-input'), {
+        target: { files: [TEST_PNG_FILE] },
+      })
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+      rerender(<FileInput {...testProps} disabled={true} />)
+      expect(queryByTestId('file-input-sr-status')).not.toBeInTheDocument()
+
+      rerender(<FileInput {...testProps} />)
+      expect(getByTestId('file-input-sr-status')).toHaveTextContent(
+        `You have selected the file: ${TEST_PNG_FILE.name}`
+      )
+    })
+
+    it('does not render a status for a disabled input', () => {
+      const { queryByTestId } = render(
+        <FileInput {...testProps} disabled={true} />
+      )
+
+      expect(queryByTestId('file-input-sr-status')).not.toBeInTheDocument()
     })
   })
 

@@ -69,6 +69,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   ref
 ): JSX.Element => {
   const internalRef = useRef<HTMLInputElement>(null)
+  const statusRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
   const [files, setFiles] = useState<File[]>([])
@@ -120,6 +121,32 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   const defaultSingleSelectedFileText = 'Selected file'
   const defaultMultipleSelectedFileText = ' files selected'
   const defaultChangeSelectedFileText = 'Change file'
+  const emptyStatusMessage = multiple
+    ? 'No files selected.'
+    : 'No file selected.'
+  const statusMessage =
+    files.length === 0
+      ? emptyStatusMessage
+      : files.length === 1
+        ? `You have selected the file: ${files[0].name}`
+        : `You have selected ${files.length} files: ${files
+            .map((file) => file.name)
+            .join(', ')}`
+
+  useEffect(() => {
+    const statusEl = statusRef.current
+    if (disabled || !statusEl || statusEl.textContent === statusMessage) return
+
+    if (statusEl.textContent === '') {
+      statusEl.textContent = statusMessage
+      return
+    }
+
+    const timer = setTimeout(() => {
+      statusEl.textContent = statusMessage
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [disabled, statusMessage])
 
   const filePreviews = []
   if (files) {
@@ -191,6 +218,14 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
       data-testid="file-input"
       className={fileInputClasses}
       aria-disabled={disabled}>
+      {!disabled && (
+        <div
+          ref={statusRef}
+          className="usa-sr-only"
+          aria-live="polite"
+          data-testid="file-input-sr-status"
+        />
+      )}
       <div
         data-testid="file-input-droptarget"
         className={targetClasses}
