@@ -143,10 +143,12 @@ describe('FileInput component', () => {
   describe('drag and drop', () => {
     it('handles a drop event without transferred files', () => {
       const { getByTestId } = render(<FileInput {...testProps} />)
+      const targetEl = getByTestId('file-input-droptarget')
 
-      expect(() =>
-        fireEvent.drop(getByTestId('file-input-droptarget'))
-      ).not.toThrow()
+      fireEvent.dragOver(targetEl)
+      fireEvent.drop(targetEl)
+
+      expect(targetEl).not.toHaveClass('usa-file-input--drag')
     })
 
     it('toggles the drag class when dragging over and leaving the target element', () => {
