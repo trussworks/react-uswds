@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **package-manager:** Use npm instead of yarn ([#3500](https://github.com/trussworks/react-uswds/issues/3500))
 * Refactor Alert component for composability ([#3497](https://github.com/trussworks/react-uswds/issues/3497))
+  * See the Migration Guide included in the linked pull request for more details.
 * Upgrade Node.js dependencies (Actions and Supported versions) ([#3498](https://github.com/trussworks/react-uswds/issues/3498))
 
 ### Features
