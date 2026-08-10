@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.0.0](https://github.com/trussworks/react-uswds/compare/11.2.0...12.0.0) (2026-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **package-manager:** Use npm instead of yarn ([#3500](https://github.com/trussworks/react-uswds/issues/3500))
+* Refactor Alert component for composability ([#3497](https://github.com/trussworks/react-uswds/issues/3497))
+  * See the Migration Guide included in the linked pull request for more details.
+* Upgrade Node.js dependencies (Actions and Supported versions) ([#3498](https://github.com/trussworks/react-uswds/issues/3498))
+
+### Features
+
+* **package-manager:** Use npm instead of yarn ([#3500](https://github.com/trussworks/react-uswds/issues/3500)) ([061db30](https://github.com/trussworks/react-uswds/commit/061db3072ae9e01c09f7b0872ab21db063688e54))
+* Refactor Alert component for composability ([#3497](https://github.com/trussworks/react-uswds/issues/3497)) ([7bf790e](https://github.com/trussworks/react-uswds/commit/7bf790eb71b3342b29e40e0c539187730536d4d3))
+* Upgrade Node.js dependencies (Actions and Supported versions) ([#3498](https://github.com/trussworks/react-uswds/issues/3498)) ([1c8b5b4](https://github.com/trussworks/react-uswds/commit/1c8b5b4f7b0e1e6a1dd98107cc06c03fe4bd3a0b))
+
 ## [11.2.0](https://github.com/trussworks/react-uswds/compare/11.1.0...11.2.0) (2026-07-16)
 
 
