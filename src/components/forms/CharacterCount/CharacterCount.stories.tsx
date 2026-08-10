@@ -42,10 +42,16 @@ export const TextInput: Story = {
           name="with-hint-input"
           aria-describedby="with-hint-input-info with-hint-input-hint"
           maxLength={args.maxLength}
+          defaultValue={args.defaultValue}
         />
       </FormGroup>
     </Form>
   ),
+}
+
+export const AtCharacterLimit: Story = {
+  ...TextInput,
+  args: { maxLength: 5, defaultValue: 'abcde' },
 }
 
 export const Textarea: Story = {
