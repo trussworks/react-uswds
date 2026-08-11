@@ -63,19 +63,13 @@ export const TextInputMask = ({
   )
   useEffect(() => {
     // Make sure this component behaves correctly when used as a controlled component
-    setValue(
-      maskString(
-        ((externalValue ?? defaultValue) as string) ?? ``,
-        mask,
-        charset
-      )
-    )
-  }, [externalValue])
-  const [maskValue, setMaskValue] = useState(mask.substring(value.length))
+    if (externalValue === undefined) return
+    setValue(maskString(externalValue as string, mask, charset))
+  }, [externalValue, mask, charset])
+  const maskValue = mask.substring(value.length)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue = maskString(e.target.value, mask, charset)
 
-    setMaskValue(mask.substring(newValue.length))
     setValue(newValue)
 
     // Ensure the new value is available to upstream onChange listeners

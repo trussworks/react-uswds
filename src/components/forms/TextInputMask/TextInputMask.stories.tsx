@@ -14,6 +14,8 @@ const meta: Meta<typeof TextInputMask> = {
 ### USWDS 3.0 TextInputMask component
 
 Source: https://designsystem.digital.gov/components/input-mask/
+
+Controlled values are re-masked when the value, mask, or charset changes.
 `,
       },
     },
