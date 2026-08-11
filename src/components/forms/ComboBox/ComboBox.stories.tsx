@@ -119,6 +119,13 @@ export const Disabled: Story = {
 }
 
 export const WithOtherFields: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Changing the first field replaces the combo box options.',
+      },
+    },
+  },
   render: () => {
     const fruitList = Object.entries(fruits).map(([value, key]) => ({
       value: value,

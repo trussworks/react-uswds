@@ -10,6 +10,7 @@ export enum ActionTypes {
   CLOSE_LIST,
   FOCUS_OPTION,
   UPDATE_FILTER,
+  UPDATE_OPTIONS,
   BLUR,
   CLEAR_SELECTION,
   FOCUS_INPUT,
@@ -38,6 +39,10 @@ export type Action =
       value: string
     }
   | {
+      type: ActionTypes.UPDATE_OPTIONS
+      options: ComboBoxOption[]
+    }
+  | {
       type: ActionTypes.BLUR
     }
   | {
@@ -61,6 +66,11 @@ interface FilterResults {
   closestMatch: ComboBoxOption
   optionsToDisplay: ComboBoxOption[]
 }
+
+const getStatusText = (resultCount: number): string =>
+  resultCount
+    ? `${resultCount} result${resultCount === 1 ? '' : 's'} available.`
+    : 'No results.'
 
 export const useComboBox = (
   initialState: State,
@@ -128,13 +138,7 @@ export const useComboBox = (
           isOpen: true,
           filteredOptions: optionsToDisplay,
           inputValue: action.value,
-          statusText: `${optionsToDisplay.length} result${
-            optionsToDisplay.length > 1 ? 's' : ''
-          } available.`,
-        }
-
-        if (optionsToDisplay.length < 1) {
-          newState.statusText = 'No results.'
+          statusText: getStatusText(optionsToDisplay.length),
         }
 
         if (disableFiltering || !state.selectedOption) {
@@ -149,20 +153,29 @@ export const useComboBox = (
 
         return newState
       }
+      case ActionTypes.UPDATE_OPTIONS: {
+        const selectedOption = state.selectedOption
+          ? action.options.find(
+              (option) => option.value === state.selectedOption?.value
+            )
+          : undefined
+        return {
+          ...state,
+          selectedOption,
+          focusedOption: selectedOption || action.options[0],
+          filteredOptions: action.options,
+          inputValue: selectedOption?.label || '',
+          statusText: state.isOpen ? getStatusText(action.options.length) : '',
+        }
+      }
       case ActionTypes.OPEN_LIST: {
-        const statusText = state.filteredOptions.length
-          ? `${state.filteredOptions.length} result${
-              state.filteredOptions.length > 1 ? 's' : ''
-            } available.`
-          : 'No results.'
-
         return {
           ...state,
           isOpen: true,
           focusMode: FocusMode.Input,
           focusedOption:
             state.selectedOption || state.focusedOption || optionsList[0],
-          statusText,
+          statusText: getStatusText(state.filteredOptions.length),
         }
       }
       case ActionTypes.CLOSE_LIST: {
@@ -187,18 +200,12 @@ export const useComboBox = (
       }
 
       case ActionTypes.FOCUS_OPTION: {
-        const statusText = state.filteredOptions.length
-          ? `${state.filteredOptions.length} result${
-              state.filteredOptions.length > 1 ? 's' : ''
-            } available.`
-          : 'No results.'
-
         return {
           ...state,
           isOpen: true,
           focusedOption: action.option,
           focusMode: FocusMode.Item,
-          statusText,
+          statusText: getStatusText(state.filteredOptions.length),
         }
       }
       case ActionTypes.CLEAR:

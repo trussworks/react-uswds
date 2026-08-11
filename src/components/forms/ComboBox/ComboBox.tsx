@@ -146,14 +146,17 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   const containerRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
   const focusedItemRef = useRef<HTMLLIElement>(null)
+  const onChangeRef = useRef(onChange)
+  onChangeRef.current = onChange
 
   useEffect(() => {
-    state.filteredOptions = options
-  }, [options])
+    dispatch({ type: ActionTypes.UPDATE_OPTIONS, options })
+  }, [dispatch, options])
 
+  const selectedValue = state.selectedOption?.value
   useEffect(() => {
-    onChange && onChange(state.selectedOption?.value || undefined)
-  }, [state.selectedOption])
+    onChangeRef.current?.(selectedValue)
+  }, [selectedValue])
 
   useEffect(() => {
     if (
@@ -187,7 +190,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         listRef.current.scrollTop = focusedItemRef.current.offsetTop
       }
     }
-  }, [state.isOpen, state.focusedOption])
+  }, [state.focusMode, state.focusedOption, state.isOpen])
 
   // If the focused element (activeElement) is outside of the combo box,
   // make sure the focusMode is BLUR
@@ -199,7 +202,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         })
       }
     }
-  }, [state.focusMode])
+  }, [dispatch, state.focusMode])
 
   useImperativeHandle(
     ref,
@@ -208,7 +211,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
       clearSelection: (): void =>
         dispatch({ type: ActionTypes.CLEAR_SELECTION }),
     }),
-    []
+    [dispatch]
   )
 
   const handleInputKeyDown = (event: KeyboardEvent): void => {

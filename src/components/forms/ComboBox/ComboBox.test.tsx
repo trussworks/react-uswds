@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, render, waitFor } from '@testing-library/react'
+import { act, screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxOption, ComboBoxRef } from './ComboBox'
@@ -93,7 +93,7 @@ describe('ComboBox component', () => {
     expect(comboBoxInput).toHaveValue('Avocado')
   })
 
-  it('updates options when prop changes', () => {
+  it('resets the input and list when options change', async () => {
     const Wrapper = (props: { options: ComboBoxOption[] }) => {
       return (
         <ComboBox
@@ -105,10 +105,75 @@ describe('ComboBox component', () => {
       )
     }
     const { rerender } = render(<Wrapper options={fruitOptions} />)
-    const comboBoxSelect = screen.getByTestId('combo-box-select')
-    expect(comboBoxSelect).toHaveValue(fruitOptions[0].value)
+    const input = screen.getByRole('combobox')
+    await userEvent.type(input, 'yu')
+    expect(screen.getAllByRole('option')).toHaveLength(1)
+
     rerender(<Wrapper options={veggieOptions} />)
-    expect(comboBoxSelect).toHaveValue(veggieOptions[0].value)
+
+    expect(input).toHaveValue('')
+    expect(screen.getAllByRole('option')).toHaveLength(veggieOptions.length)
+    expect(input).toHaveAttribute(
+      'aria-activedescendant',
+      'favorite-fruit--list--option-0'
+    )
+    expect(screen.getByRole('status')).toHaveTextContent(
+      `${veggieOptions.length} results available.`
+    )
+  })
+
+  it('clears a selection that is missing from updated options', () => {
+    const onChange = vi.fn()
+    const { rerender } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        defaultValue="apple"
+        onChange={onChange}
+      />
+    )
+
+    rerender(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={veggieOptions}
+        defaultValue="apple"
+        onChange={onChange}
+      />
+    )
+
+    expect(screen.getByRole('combobox')).toHaveValue('')
+    expect(onChange).toHaveBeenLastCalledWith(undefined)
+  })
+
+  it('preserves a selection without notifying when updated options contain its value', () => {
+    const onChange = vi.fn()
+    const { rerender } = render(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions}
+        defaultValue="apple"
+        onChange={onChange}
+      />
+    )
+
+    expect(onChange).toHaveBeenCalledTimes(1)
+
+    rerender(
+      <ComboBox
+        id="favorite-fruit"
+        name="favorite-fruit"
+        options={fruitOptions.map((option) => ({ ...option }))}
+        defaultValue="apple"
+        onChange={onChange}
+      />
+    )
+
+    expect(screen.getByRole('combobox')).toHaveValue('Apple')
+    expect(onChange).toHaveBeenCalledTimes(1)
   })
 
   describe('toggling the list', () => {
@@ -349,6 +414,31 @@ describe('ComboBox component', () => {
   })
 
   describe('scrolling to a focused option', () => {
+    it('scrolls to the focused option when a consumer refocuses the input', async () => {
+      const comboRef = React.createRef<ComboBoxRef>()
+      const { getByTestId } = render(
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={vi.fn()}
+          ref={comboRef}
+        />
+      )
+      const input = getByTestId('combo-box-input')
+      const listEl = getByTestId('combo-box-option-list')
+      const apple = getByTestId('combo-box-option-apple')
+
+      vi.spyOn(apple, 'offsetTop', 'get').mockReturnValue(600)
+      await userEvent.click(input)
+      await userEvent.type(input, '{ArrowDown}')
+      listEl.scrollTop = 2000
+
+      act(() => comboRef.current?.focus())
+
+      expect(listEl.scrollTop).toBe(600)
+    })
+
     it('scrolls options list to the very top when the menu opens if nothing is selected', async () => {
       const { getByTestId } = render(
         <ComboBox
