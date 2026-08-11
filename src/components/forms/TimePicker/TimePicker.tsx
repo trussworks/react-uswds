@@ -53,12 +53,12 @@ export const TimePicker = ({
 }: TimePickerProps): JSX.Element => {
   const classes = classnames('usa-time-picker', className)
 
-  const parsedMinTime = parseTimeString(minTime) || DEFAULT_MIN_TIME_MINUTES
-  const parsedMaxTime = parseTimeString(maxTime) || DEFAULT_MAX_TIME_MINUTES
+  const parsedMinTime = parseTimeString(minTime) ?? DEFAULT_MIN_TIME_MINUTES
+  const parsedMaxTime = parseTimeString(maxTime) ?? DEFAULT_MAX_TIME_MINUTES
   const validStep = step < MIN_STEP ? MIN_STEP : step
   const timeOptions = useMemo(
     () => getTimeOptions(parsedMinTime, parsedMaxTime, validStep, format),
-    [minTime, maxTime, step, format]
+    [parsedMinTime, parsedMaxTime, validStep, format]
   )
 
   const customFilter =

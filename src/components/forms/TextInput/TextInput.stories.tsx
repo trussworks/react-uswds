@@ -13,6 +13,8 @@ const meta = {
 ### USWDS 3.0 TextInput component
 
 Source: https://designsystem.digital.gov/components/text-input
+
+The legacy \`inputRef\` prop is deprecated and will be removed in a future major version. Use the React \`ref\` prop instead.
 `,
       },
     },

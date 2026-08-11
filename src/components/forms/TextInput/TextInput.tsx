@@ -39,14 +39,15 @@ export const TextInput = forwardRef(
       inputRef,
       ...inputProps
     } = props
+    const hasInputRef = !!inputRef
 
     useEffect(() => {
-      if (inputRef) {
+      if (hasInputRef) {
         deprecationWarning(
           'TextInput: The `inputRef` prop is deprecated. Use the `ref` prop instead. `inputRef` will be removed in a future major version.'
         )
       }
-    }, [])
+    }, [hasInputRef])
 
     const isError = validationStatus === 'error'
     const isSuccess = validationStatus === 'success'

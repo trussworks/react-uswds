@@ -44,6 +44,18 @@ describe('TimePicker Component', () => {
     expect(comboBoxDropdownList.children.length).toEqual(7)
   })
 
+  it('limits options to midnight when maxTime is 00:00', () => {
+    const { getByTestId } = render(
+      <TimePicker {...testProps} maxTime="00:00" />
+    )
+
+    const comboBoxDropdownList = getByTestId('combo-box-option-list')
+    expect(comboBoxDropdownList.children).toHaveLength(1)
+    expect(
+      within(comboBoxDropdownList).getByText('12:00am')
+    ).toBeInTheDocument()
+  })
+
   it('displays 24 hour time labels without am/pm when format is 24h', () => {
     const { getByTestId } = render(
       <TimePicker
