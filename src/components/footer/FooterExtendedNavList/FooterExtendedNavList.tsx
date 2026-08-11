@@ -21,11 +21,8 @@ export const FooterExtendedNavList = ({
   nestedLinks,
 }: FooterExtendedNavListProps): JSX.Element => {
   const classes = classnames('grid-row grid-gap-4', className)
-  const isClient = window && typeof window === 'object'
 
-  const [isMobileFallback, setIsMobileFallback] = React.useState<boolean>(
-    isClient && window.innerWidth < 480
-  )
+  const [isMobileFallback, setIsMobileFallback] = React.useState(false)
   const [sectionsOpenState, setSectionsOpenState] = useState<boolean[]>(
     nestedLinks.map(() => false)
   )
@@ -34,18 +31,16 @@ export const FooterExtendedNavList = ({
   const useMobile = isMobile || (isMobile === undefined && isMobileFallback)
 
   useEffect(() => {
-    if (isMobile) return
+    if (isMobile !== undefined) return
 
     function handleResize(): void {
-      const updatedIsMobileFallback = isClient && window.innerWidth < 480
-      if (updatedIsMobileFallback !== isMobileFallback) {
-        setIsMobileFallback(updatedIsMobileFallback)
-      }
+      setIsMobileFallback(window.innerWidth < 480)
     }
 
+    handleResize()
     window.addEventListener('resize', handleResize)
     return (): void => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [isMobile])
 
   const onToggle = (index: number): void => {
     setSectionsOpenState((prevIsOpen) => {

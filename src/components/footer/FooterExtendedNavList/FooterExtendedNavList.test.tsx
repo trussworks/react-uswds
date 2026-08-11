@@ -1,7 +1,7 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react'
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { FooterExtendedNavList } from './FooterExtendedNavList'
@@ -141,6 +141,36 @@ describe('FooterExtendedNavList component', () => {
 
         const elementsWithHiddenClass = container.querySelectorAll('.hidden')
         expect(elementsWithHiddenClass.length).toEqual(0)
+      })
+
+      it('tracks repeated window width changes', () => {
+        vi.stubGlobal('innerWidth', 1024)
+        const { container } = setup()
+
+        vi.stubGlobal('innerWidth', 479)
+        fireEvent.resize(window)
+        expect(container.querySelectorAll('.hidden')).toHaveLength(2)
+
+        vi.stubGlobal('innerWidth', 1024)
+        fireEvent.resize(window)
+        expect(container.querySelectorAll('.hidden')).toHaveLength(0)
+      })
+
+      it('uses the current width when automatic layout is enabled', () => {
+        vi.stubGlobal('innerWidth', 1024)
+        const { container, rerender } = setup({ isMobile: false })
+
+        expect(container.querySelectorAll('.hidden')).toHaveLength(0)
+
+        vi.stubGlobal('innerWidth', 479)
+        rerender(
+          <>
+            <style>{'.hidden { display: none; }'}</style>
+            <FooterExtendedNavList nestedLinks={links} isMobile={undefined} />
+          </>
+        )
+
+        expect(container.querySelectorAll('.hidden')).toHaveLength(2)
       })
     })
   })
