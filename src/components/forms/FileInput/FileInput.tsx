@@ -70,7 +70,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
       /Edge\/\d./i.test(navigator?.userAgent)
 
     setHideDragText(hideDragText)
-  }, [typeof navigator])
+  }, [])
 
   useImperativeHandle(
     ref,

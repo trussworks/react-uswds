@@ -1,7 +1,10 @@
 import React, { MutableRefObject, useRef } from 'react'
 import { render } from '@testing-library/react'
+import { deprecationWarning } from '../../../deprecation'
 import { TextInput } from './TextInput'
 import { ValidationStatus } from '../../../types/validationStatus'
+
+vi.mock('../../../deprecation')
 
 describe('TextInput component', () => {
   it('renders without errors', () => {
@@ -86,5 +89,55 @@ describe('TextInput component', () => {
       expect(parentRef.current).toBeInTheDocument()
       expect(parentRef.current.tagName).toBe('INPUT')
     })
+  })
+
+  it('warns when the deprecated inputRef prop is added after mount', () => {
+    vi.clearAllMocks()
+    const inputRef = { current: null }
+    const { rerender } = render(
+      <TextInput id="input-type-text" name="input-type-text" type="text" />
+    )
+
+    rerender(
+      <TextInput
+        id="input-type-text"
+        name="input-type-text"
+        type="text"
+        inputRef={inputRef}
+      />
+    )
+
+    expect(deprecationWarning).toHaveBeenCalledOnce()
+  })
+
+  it('warns only once when an inline inputRef changes identity', () => {
+    vi.clearAllMocks()
+    const { rerender } = render(
+      <TextInput
+        id="input-type-text"
+        name="input-type-text"
+        type="text"
+        inputRef={() => undefined}
+      />
+    )
+
+    rerender(
+      <TextInput
+        id="input-type-text"
+        name="input-type-text"
+        type="text"
+        inputRef={() => undefined}
+      />
+    )
+    rerender(
+      <TextInput
+        id="input-type-text"
+        name="input-type-text"
+        type="text"
+        inputRef={() => undefined}
+      />
+    )
+
+    expect(deprecationWarning).toHaveBeenCalledOnce()
   })
 })

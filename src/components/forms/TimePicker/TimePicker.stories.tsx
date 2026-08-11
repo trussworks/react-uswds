@@ -22,6 +22,8 @@ const meta = {
 ### USWDS 3.0 TimePicker component
 
 https://designsystem.digital.gov/components/time-picker/
+
+With the default \`minTime\` and \`step\`, \`maxTime="00:00"\` limits the options to midnight.
 `,
       },
     },
