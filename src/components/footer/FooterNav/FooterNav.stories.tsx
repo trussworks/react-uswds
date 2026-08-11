@@ -89,6 +89,12 @@ export const BigFooterNav: Story = {
     />
   ),
   parameters: {
+    docs: {
+      description: {
+        story:
+          'Without an explicit `isMobile` prop, the extended navigation follows changes to the browser width.',
+      },
+    },
     happo: { waitForContent: 'Secondary link that is pretty long' },
   },
 }
