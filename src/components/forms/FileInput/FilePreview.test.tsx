@@ -5,6 +5,8 @@ import { FilePreview } from './FilePreview'
 import { SPACER_GIF, TEST_TEXT_FILE } from './constants'
 
 describe('FilePreview component', () => {
+  afterEach(() => vi.restoreAllMocks())
+
   const testProps = {
     imageId: 'testImageId_12345',
     file: TEST_TEXT_FILE,
@@ -27,7 +29,7 @@ describe('FilePreview component', () => {
     )
   })
 
-  it('renders without errors when loaded multiple times (simulating react dev mode)', () => {
+  it('loads the preview when rendered in StrictMode', async () => {
     const { getByTestId } = render(
       <StrictMode>
         <FilePreview imageId="" file={TEST_TEXT_FILE} />
@@ -35,6 +37,21 @@ describe('FilePreview component', () => {
     )
 
     expect(getByTestId('file-input-preview')).toBeInTheDocument()
+    await waitFor(() =>
+      expect(getByTestId('file-input-preview-image')).toHaveAttribute(
+        'src',
+        'data:text/plain;base64,VGVzdCBGaWxlIENvbnRlbnRz'
+      )
+    )
+  })
+
+  it('aborts the file read when unmounted', () => {
+    const abortSpy = vi.spyOn(window.FileReader.prototype, 'abort')
+    const { unmount } = render(<FilePreview {...testProps} />)
+
+    unmount()
+
+    expect(abortSpy).toHaveBeenCalledOnce()
   })
 
   it('renders a preview image', async () => {
@@ -87,6 +104,58 @@ describe('FilePreview component', () => {
       const imageEl = getByTestId('file-input-preview-image')
       await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
       expect(imageEl).toHaveAttribute('src', expectedSrc)
+    })
+
+    it('updates the preview when the file changes', async () => {
+      const firstFile = new File(['first'], 'same-name.txt', {
+        type: 'text/plain',
+      })
+      const secondFile = new File(['second'], 'same-name.txt', {
+        type: 'text/plain',
+      })
+      const { getByTestId, rerender } = render(
+        <FilePreview imageId="same-name" file={firstFile} />
+      )
+      const imageEl = getByTestId('file-input-preview-image')
+
+      await waitFor(() =>
+        expect(imageEl).toHaveAttribute(
+          'src',
+          'data:text/plain;base64,Zmlyc3Q='
+        )
+      )
+      fireEvent.error(imageEl)
+      expect(imageEl).toHaveClass('usa-file-input__preview-image--generic')
+
+      rerender(<FilePreview imageId="same-name" file={secondFile} />)
+
+      await waitFor(() =>
+        expect(imageEl).toHaveAttribute(
+          'src',
+          'data:text/plain;base64,c2Vjb25k'
+        )
+      )
+      expect(imageEl).not.toHaveClass('usa-file-input__preview-image--generic')
+    })
+
+    it('shows the loading state while a replacement file loads', async () => {
+      const firstFile = new File(['first'], 'same-name.txt', {
+        type: 'text/plain',
+      })
+      const secondFile = new File(['second'], 'same-name.txt', {
+        type: 'text/plain',
+      })
+      const { getByTestId, rerender } = render(
+        <FilePreview imageId="same-name" file={firstFile} />
+      )
+      const imageEl = getByTestId('file-input-preview-image')
+
+      await waitFor(() => expect(imageEl).not.toHaveClass('is-loading'))
+
+      rerender(<FilePreview imageId="same-name" file={secondFile} />)
+
+      expect(imageEl).toHaveClass('is-loading')
+      expect(imageEl).toHaveAttribute('src', SPACER_GIF)
     })
 
     describe.each([
