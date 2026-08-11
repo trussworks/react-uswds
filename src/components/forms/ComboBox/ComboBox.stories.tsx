@@ -18,6 +18,9 @@ const meta: Meta<typeof ComboBox> = {
 ### USWDS 3.0 ComboBox component
 
 Source: https://designsystem.digital.gov/components/combo-box
+
+To match USWDS, \`selectProps.required\` is applied to the visible text input
+instead of the hidden native select.
 `,
       },
     },
@@ -174,6 +177,14 @@ export const WithOtherFields: Story = {
 }
 
 export const ExposedRefMethods: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The hidden native select follows the selected value and returns to an empty value when cleared.',
+      },
+    },
+  },
   render: () => {
     const ref = useRef<ComboBoxRef>(null)
 
