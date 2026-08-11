@@ -1,7 +1,10 @@
-import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import React, { useState } from 'react'
+import { render, fireEvent, screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 
 import { ExtendedNav } from './ExtendedNav'
+import { Header } from '../Header/Header'
+import { NavMenuButton } from '../NavMenuButton/NavMenuButton'
 
 const testPrimaryItems = [
   <a className="usa-current" href="#linkOne" key="one">
@@ -23,6 +26,28 @@ const testSecondaryItems = [
 
 const onToggleMobileNav = (): void => {
   /* mock submit fn */
+}
+
+const ExtendedNavHarness = () => {
+  const [expanded, setExpanded] = useState(false)
+  const toggleNav = (): void => setExpanded((current) => !current)
+
+  return (
+    <>
+      <Header extended>
+        <div className="usa-nav-container">
+          <NavMenuButton label="Menu" onClick={toggleNav} />
+          <ExtendedNav
+            onToggleMobileNav={toggleNav}
+            primaryItems={testPrimaryItems}
+            secondaryItems={testSecondaryItems}
+            mobileExpanded={expanded}
+          />
+        </div>
+      </Header>
+      <main data-testid="pageContent">Page content</main>
+    </>
+  )
 }
 
 describe('ExtendedNav component', () => {
@@ -97,6 +122,23 @@ describe('ExtendedNav component', () => {
     )
     expect(container.querySelector('.is-visible')).toBeInTheDocument()
     expect(document.body).toHaveClass('usa-js-mobile-nav--active')
+  })
+
+  it('contains focus and hides page content while expanded', async () => {
+    const user = userEvent.setup()
+    render(<ExtendedNavHarness />)
+
+    await user.click(screen.getByRole('button', { name: 'Menu' }))
+
+    await waitFor(() =>
+      expect(
+        screen.getByRole('button', { name: 'Close Navigation Menu' })
+      ).toHaveFocus()
+    )
+    expect(screen.getByTestId('pageContent')).toHaveAttribute(
+      'aria-hidden',
+      'true'
+    )
   })
 
   it('does not render the is-visible class when mobileExpanded is false', () => {

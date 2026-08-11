@@ -22,7 +22,7 @@ const meta: Meta<typeof Header> = {
 
 Source: https://designsystem.digital.gov/components/header/
 
-Expanding the mobile navigation locks body scrolling until the navigation closes or unmounts.
+Expanding the mobile navigation locks body scrolling, contains focus, and hides page content from assistive technology until the navigation closes or unmounts. Focus returns to the control that opened the navigation.
 `,
       },
     },

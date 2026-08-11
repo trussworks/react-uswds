@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { NavCloseButton } from '../NavCloseButton/NavCloseButton'
 import { NavList } from '../NavList/NavList'
-import { useMobileNavScrollLock } from '../useMobileNavScrollLock'
+import { MobileNav } from '../MobileNav'
 
 export type ExtendedNavProps = {
   primaryItems: React.ReactNode[]
@@ -23,8 +23,6 @@ export const ExtendedNav = ({
   onToggleMobileNav,
   ...navProps
 }: ExtendedNavProps): JSX.Element => {
-  useMobileNavScrollLock(mobileExpanded)
-
   const classes = classnames(
     'usa-nav',
     {
@@ -34,16 +32,18 @@ export const ExtendedNav = ({
   )
 
   return (
-    <nav className={classes} {...navProps}>
-      <div className="usa-nav__inner">
-        <NavCloseButton onClick={onToggleMobileNav} />
-        <NavList items={primaryItems} type="primary" />
-        <div className="usa-nav__secondary">
-          <NavList items={secondaryItems} type="secondary" />
-          {children}
+    <MobileNav expanded={mobileExpanded} onToggleMobileNav={onToggleMobileNav}>
+      <nav className={classes} {...navProps}>
+        <div className="usa-nav__inner">
+          <NavCloseButton onClick={onToggleMobileNav} />
+          <NavList items={primaryItems} type="primary" />
+          <div className="usa-nav__secondary">
+            <NavList items={secondaryItems} type="secondary" />
+            {children}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </MobileNav>
   )
 }
 
