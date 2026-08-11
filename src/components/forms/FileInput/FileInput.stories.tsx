@@ -19,6 +19,8 @@ const meta: Meta<typeof FileInput> = {
         component: `
 ### USWDS 3.0 FileInput component
 Source: https://designsystem.digital.gov/components/file-input
+
+File previews stay synchronized when a selected file is replaced by another file with the same name.
 `,
       },
     },
