@@ -14,8 +14,9 @@ import { ActionTypes, Action, State, useComboBox } from './useComboBox'
 /*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
     The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
 
-    There is the ability to pass in custom props directly to the select and input.
-    This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue. 
+    There is the ability to pass in custom props directly to the select and input. To match USWDS,
+    selectProps.required is applied to the visible input instead of the hidden select.
+    This should be used sparingly and not with existing Combobox props such as disabled, onChange, defaultValue.
 */
 
 export const DEFAULT_FILTER = '.*{{query}}.*'
@@ -114,6 +115,12 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
   ref
 ): JSX.Element => {
   const isDisabled = !!disabled
+  // USWDS validates the visible input rather than its hidden native select.
+  const {
+    required: selectRequired,
+    onChange: selectOnChange,
+    ...nativeSelectProps
+  } = selectProps ?? {}
 
   let defaultOption
   if (defaultValue) {
@@ -379,13 +386,16 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
       className={containerClasses}
       ref={containerRef}>
       <select
-        {...selectProps}
+        {...nativeSelectProps}
         className="usa-select usa-sr-only usa-combo-box__select"
         name={name}
         aria-hidden
         tabIndex={-1}
-        defaultValue={state.selectedOption?.value}
+        value={state.selectedOption?.value ?? ''}
+        onChange={(event): void => selectOnChange?.(event)}
         data-testid="combo-box-select">
+        {/* Keep first so an empty selection stays empty in the native select. */}
+        <option value="" />
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
@@ -416,6 +426,7 @@ const ComboBoxForwardRef: React.ForwardRefRenderFunction<
         aria-activedescendant={(state.isOpen && focusedItemId) || ''}
         id={id}
         disabled={isDisabled}
+        required={inputProps?.required ?? selectRequired}
       />
       <span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
         <button

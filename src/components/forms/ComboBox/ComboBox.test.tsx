@@ -1,5 +1,5 @@
 import React from 'react'
-import { act, screen, render, waitFor } from '@testing-library/react'
+import { act, fireEvent, screen, render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { ComboBox, ComboBoxOption, ComboBoxRef } from './ComboBox'
@@ -28,6 +28,10 @@ const veggieOptions: ComboBoxOption[] = Object.entries(veggies).map(
 
 describe('ComboBox component', () => {
   it('renders the expected markup without errors', () => {
+    const consoleError = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined)
+
     render(
       <ComboBox
         id="favorite-fruit"
@@ -49,6 +53,7 @@ describe('ComboBox component', () => {
     expect(comboBoxSelect).toHaveClass(
       'usa-select usa-sr-only usa-combo-box__select'
     )
+    expect(comboBoxSelect).toHaveValue('')
 
     const comboBoxInput = screen.getByRole('combobox')
     expect(comboBoxInput).toBeInTheDocument()
@@ -64,6 +69,9 @@ describe('ComboBox component', () => {
     expect(comboBoxInput).toHaveAttribute('autocapitalize', 'off')
     expect(comboBoxInput).toHaveAttribute('autocomplete', 'off')
     expect(comboBoxInput).toHaveAttribute('type', 'text')
+
+    expect(consoleError).not.toHaveBeenCalled()
+    consoleError.mockRestore()
 
     const comboBoxList = screen.getByTestId('combo-box-option-list')
     expect(comboBoxList).toBeInstanceOf(HTMLUListElement)
@@ -174,6 +182,53 @@ describe('ComboBox component', () => {
 
     expect(screen.getByRole('combobox')).toHaveValue('Apple')
     expect(onChange).toHaveBeenCalledTimes(1)
+  })
+
+  it('clears the native select when updated options omit the selection', () => {
+    const Wrapper = (props: { options: ComboBoxOption[] }) => {
+      return (
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={props.options}
+          defaultValue="apple"
+          onChange={vi.fn()}
+        />
+      )
+    }
+    const { rerender } = render(<Wrapper options={fruitOptions} />)
+    const comboBoxSelect = screen.getByTestId('combo-box-select')
+    expect(comboBoxSelect).toHaveValue('apple')
+    rerender(<Wrapper options={veggieOptions} />)
+    expect(comboBoxSelect).toHaveValue('')
+  })
+
+  it('submits the current selection through the native select', async () => {
+    const comboRef = React.createRef<ComboBoxRef>()
+    render(
+      <form data-testid="fruit-form">
+        <ComboBox
+          id="favorite-fruit"
+          name="favorite-fruit"
+          options={fruitOptions}
+          onChange={vi.fn()}
+          ref={comboRef}
+        />
+      </form>
+    )
+
+    const form = screen.getByTestId<HTMLFormElement>('fruit-form')
+    const comboBoxSelect = screen.getByTestId('combo-box-select')
+    expect(new FormData(form).get('favorite-fruit')).toBe('')
+
+    await userEvent.click(screen.getByTestId('combo-box-toggle'))
+    await userEvent.click(screen.getByTestId('combo-box-option-yuzu'))
+    expect(comboBoxSelect).toHaveValue('yuzu')
+    expect(new FormData(form).get('favorite-fruit')).toBe('yuzu')
+
+    act(() => comboRef.current?.clearSelection())
+    expect(comboBoxSelect).toHaveValue('')
+    expect(new FormData(form).get('favorite-fruit')).toBe('')
   })
 
   describe('toggling the list', () => {
@@ -346,18 +401,25 @@ describe('ComboBox component', () => {
 
   describe('with custom props', () => {
     it('renders select with custom props if passed in', () => {
+      const onChange = vi.fn()
       const { getByTestId } = render(
         <ComboBox
           id="favorite-fruit"
           name="favorite-fruit"
           options={fruitOptions}
           onChange={vi.fn()}
-          selectProps={{ required: true, role: 'testing' }}
+          selectProps={{ required: true, role: 'testing', onChange }}
         />
       )
       const comboBoxSelect = getByTestId('combo-box-select')
-      expect(comboBoxSelect).toHaveAttribute('required')
+      const comboBoxInput = getByTestId('combo-box-input')
+      expect(comboBoxSelect).not.toHaveAttribute('required')
+      expect(comboBoxInput).toHaveAttribute('required')
+      expect(comboBoxInput).toBeInvalid()
       expect(comboBoxSelect).toHaveAttribute('role', 'testing')
+
+      fireEvent.change(comboBoxSelect, { target: { value: 'apple' } })
+      expect(onChange).toHaveBeenCalledTimes(1)
     })
 
     it('renders input with custom props if passed in', () => {
