@@ -114,7 +114,7 @@
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
-    "@uswds/uswds": "3.13.0",
+    "@uswds/uswds": "3.14.0",
     "@vitejs/plugin-react": "^6.0.2",
     "@vitest/coverage-istanbul": "^4.0.8",
     "@vitest/eslint-plugin": "^1.1.44",
