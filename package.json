@@ -121,7 +121,7 @@
     "all-contributors-cli": "^6.24.0",
     "babel-loader": "^10.0.0",
     "classnames": "^2.3.2",
-    "danger": "^13.0.4",
+    "danger": "^14.0.5",
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-import": "^2.31.0",
