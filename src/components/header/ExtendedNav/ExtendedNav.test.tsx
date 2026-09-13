@@ -96,6 +96,7 @@ describe('ExtendedNav component', () => {
       />
     )
     expect(container.querySelector('.is-visible')).toBeInTheDocument()
+    expect(document.body).toHaveClass('usa-js-mobile-nav--active')
   })
 
   it('does not render the is-visible class when mobileExpanded is false', () => {
