@@ -54,7 +54,7 @@ export const AcceptTextAndPDF: Story = {
       <FileInput
         id="file-input-specific"
         name="file-input-specific"
-        accept=".pdf,.txt"
+        accept=".pdf, .txt"
         aria-describedby="file-input-specific-hint"
         multiple
       />
