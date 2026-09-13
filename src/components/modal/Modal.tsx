@@ -53,7 +53,7 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     ...divProps
   },
   ref
-): JSX.Element => {
+): JSX.Element | null => {
   const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
   const initialPaddingRef = useRef<string | undefined>(undefined)
@@ -85,6 +85,8 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     body.classList.add('usa-js-modal--active')
 
     document.querySelectorAll(NON_MODALS).forEach((el) => {
+      if (renderToPortal && el.contains(modalEl.current)) return
+
       el.setAttribute('aria-hidden', 'true')
       el.setAttribute('data-modal-hidden', '')
     })
@@ -195,6 +197,8 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   )
 
   if (renderToPortal) {
+    if (!mounted) return null
+
     const modalRoot = document.getElementById('modal-root')
     const target = modalRoot || document.body
     return ReactDOM.createPortal(modal, target)

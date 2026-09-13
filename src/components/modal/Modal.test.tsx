@@ -1,5 +1,6 @@
 import React, { type JSX, createRef, useRef } from 'react'
 import {
+  act,
   cleanup,
   render,
   screen,
@@ -448,6 +449,29 @@ describe('Modal component', () => {
       expect(container).not.toHaveAttribute('data-modal-hidden')
       expect(screen.getByTestId('nonhidden')).not.toHaveAttribute('aria-hidden')
       expect(screen.getByTestId('hidden')).toHaveAttribute('aria-hidden')
+    })
+
+    it('does not hide the body child containing the modal', async () => {
+      const modalRef = createRef<ModalRef>()
+      const { container } = renderWithModalRoot(
+        <Modal
+          id="testModal"
+          ref={modalRef}
+          aria-labelledby="modal-heading"
+          aria-describedby="modal-description">
+          Test modal
+        </Modal>
+      )
+      const modalRoot = document.getElementById('modal-root')
+
+      act(() => {
+        modalRef.current?.toggleModal(undefined, true)
+      })
+
+      await waitFor(() => expect(container).toHaveAttribute('aria-hidden'))
+      expect(modalRoot).not.toHaveAttribute('aria-hidden')
+      expect(modalRoot).not.toHaveAttribute('data-modal-hidden')
+      expect(modalRoot).toContainElement(screen.getByRole('dialog'))
     })
 
     it('hides other elements from screen readers with a custom modal root', async () => {
