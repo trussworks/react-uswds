@@ -9,6 +9,8 @@ export type RangeInputProps = {
   max?: number
   textPreposition?: string
   textUnit?: string
+  /** Set to `null` to remove default hint */
+  hint?: React.ReactNode
   inputRef?: LegacyInputRef
   wrapperClassName?: string
 } & JSX.IntrinsicElements['input']
@@ -19,6 +21,7 @@ export const RangeInput = ({
   inputRef,
   textPreposition,
   textUnit,
+  hint = 'Move the slider to change the value',
   ...inputProps
 }: RangeInputProps): JSX.Element => {
   const inputClasses = classnames('usa-range', className)
@@ -47,29 +50,38 @@ export const RangeInput = ({
         ? defaultValue
         : defaultVal
   const [value, setValue] = useState(rangeValue)
+  const hintId = `${inputProps.id}-hint`
   const callout = `${value.toString()} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
   return (
-    <div data-testid="range-wrapper" className={wrapperClasses}>
-      <input
-        data-testid="range"
-        aria-valuetext={callout}
-        className={inputClasses}
-        ref={inputRef}
-        type="range"
-        {...remainingInputProps}
-        min={rangeMin}
-        max={rangeMax}
-        value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
-      />
-      <span
-        data-testid="range-visual"
-        aria-hidden="true"
-        className="usa-range__value">
-        {value}
-      </span>
-    </div>
+    <>
+      {hint && (
+        <span className="usa-hint" id={hintId}>
+          {hint}
+        </span>
+      )}
+      <div data-testid="range-wrapper" className={wrapperClasses}>
+        <input
+          data-testid="range"
+          aria-describedby={hint ? hintId : undefined}
+          aria-valuetext={callout}
+          className={inputClasses}
+          ref={inputRef}
+          type="range"
+          {...remainingInputProps}
+          min={rangeMin}
+          max={rangeMax}
+          value={value}
+          onChange={(e) => setValue(Number(e.target.value))}
+        />
+        <span
+          data-testid="range-visual"
+          aria-hidden="true"
+          className="usa-range__value">
+          {value}
+        </span>
+      </div>
+    </>
   )
 }
 
