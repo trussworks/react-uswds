@@ -46,7 +46,7 @@ const renderWithModalRoot = (ui: JSX.Element, options: RenderOptions = {}) => {
     baseElement: document.body,
   })
 
-  const modalWrapper = screen.getByRole('dialog')
+  const modalWrapper = screen.getByRole('dialog', { hidden: true })
   const modalWindow = screen.getByTestId('modalWindow')
 
   const queryForOpenButton = () =>
@@ -56,6 +56,7 @@ const renderWithModalRoot = (ui: JSX.Element, options: RenderOptions = {}) => {
   const queryForCloseButton = () =>
     screen.queryByRole('button', {
       name: 'Close this window',
+      hidden: true,
     })
   const queryForOverlay = () => screen.queryByTestId('modalOverlay')
 
@@ -249,12 +250,17 @@ describe('Modal component', () => {
       </Modal>
     )
 
+    expect(modalWrapper).toHaveAttribute('aria-hidden', 'true')
+    expect(modalWrapper).not.toHaveAttribute('aria-modal')
+
     handleOpen()
 
     await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
 
     expect(modalWrapper).not.toHaveClass('is-hidden')
     expect(modalWrapper).toHaveClass('is-visible')
+    expect(modalWrapper).not.toHaveAttribute('aria-hidden')
+    expect(modalWrapper).toHaveAttribute('aria-modal', 'true')
   })
 
   it('can click on the close button to close', async () => {
