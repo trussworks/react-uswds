@@ -68,16 +68,20 @@ export const YearDateInput: Story = {
 export const DateOfBirthExample: Story = {
   render: () => (
     <Fieldset legend="Date of birth">
-      <span className="usa-hint" id="dateOfBirthHint">
-        For example: April 28 1986
+      <span className="usa-hint" aria-hidden="true" id="date-of-birth-hint">
+        Select a month. Enter 1 or 2 digits for the day and 4 digits for the
+        year.
       </span>
       <DateInputGroup>
         <FormGroup className="usa-form-group--month usa-form-group--select">
-          <Label htmlFor="input-select">Month</Label>
+          <Label htmlFor="date-of-birth-month">Month</Label>
+          <span className="usa-hint usa-sr-only" id="date-of-birth-month-hint">
+            Select a month from the dropdown.
+          </span>
           <Select
-            id="testDateInput"
-            name="testDateInput"
-            aria-describedby="dateOfBirthHint">
+            id="date-of-birth-month"
+            name="date-of-birth-month"
+            aria-describedby="date-of-birth-month-hint">
             <option>- Select -</option>
             <option value="1">January</option>
             <option value="2">February</option>
@@ -94,22 +98,22 @@ export const DateOfBirthExample: Story = {
           </Select>
         </FormGroup>
         <DateInput
-          id="testDateInput"
-          name="testName"
+          id="date-of-birth-day"
+          name="date-of-birth-day"
           label="Day"
           unit="day"
           maxLength={2}
           minLength={2}
-          aria-describedby="dateOfBirthHint"
+          srHint="Enter 1 or 2 digits for the day."
         />
         <DateInput
-          id="testDateInput"
-          name="testName"
+          id="date-of-birth-year"
+          name="date-of-birth-year"
           label="Year"
           unit="year"
           maxLength={4}
           minLength={4}
-          aria-describedby="dateOfBirthHint"
+          srHint="Enter 4 digits for the year."
         />
       </DateInputGroup>
     </Fieldset>
