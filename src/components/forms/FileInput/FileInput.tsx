@@ -64,24 +64,16 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
   const [files, setFiles] = useState<File[]>([])
-  const [showDragText, setShowDragText] = useState(
-    () =>
-      typeof window === 'undefined' ||
-      typeof window.matchMedia !== 'function' ||
-      window.matchMedia(FINE_POINTER_MEDIA_QUERY).matches
-  )
+  const [showDragText, setShowDragText] = useState(true)
 
   useEffect(() => {
-    if (
-      typeof window === 'undefined' ||
-      typeof window.matchMedia !== 'function'
-    )
-      return
+    if (typeof window.matchMedia !== 'function') return
 
     const mediaQueryList = window.matchMedia(FINE_POINTER_MEDIA_QUERY)
     const handleChange = (e: MediaQueryListEvent): void =>
       setShowDragText(e.matches)
 
+    setShowDragText(mediaQueryList.matches)
     mediaQueryList.addEventListener('change', handleChange)
     return () => mediaQueryList.removeEventListener('change', handleChange)
   }, [])
