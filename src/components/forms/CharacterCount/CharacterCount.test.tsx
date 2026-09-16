@@ -401,6 +401,23 @@ describe('CharacterCount component', () => {
       expect(input).toBeValid()
     })
 
+    it('is valid when the initial value length equals the limit', () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+          defaultValue="abcde"
+        />
+      )
+
+      expect(getByRole('textbox')).not.toHaveClass('usa-input--error')
+      expect(getByTestId('characterCountSRMessage')).toHaveAttribute(
+        'aria-live',
+        'polite'
+      )
+    })
+
     it('adjusts message styles onChange', () => {
       const { getByRole, getByTestId } = render(
         <CharacterCount

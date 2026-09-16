@@ -77,7 +77,7 @@ export const CharacterCount = ({
   const [message, setMessage] = useState(() =>
     getMessage(initialCount, maxLength)
   )
-  const [isValid, setIsValid] = useState(initialCount < maxLength)
+  const [isValid, setIsValid] = useState(initialCount <= maxLength)
   const [srAnnouncement, setSrAnnouncement] = useState<{
     message: string
     delay: number
