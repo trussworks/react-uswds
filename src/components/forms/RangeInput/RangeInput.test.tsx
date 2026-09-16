@@ -27,6 +27,82 @@ describe('RangeInput component', () => {
     )
   })
 
+  it('renders with default hint', () => {
+    const { queryByTestId, queryByText } = render(
+      <RangeInput id="range-slider-id" name="rangeName" />
+    )
+
+    const hint = queryByText('Move the slider to change the value')
+    expect(hint).toBeInTheDocument()
+    expect(hint).toHaveClass('usa-hint')
+    expect(hint).toHaveAttribute('id', 'range-slider-id-hint')
+    expect(hint?.nextElementSibling).toBe(queryByTestId('range-wrapper'))
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-hint'
+    )
+  })
+
+  it('renders with custom hint', () => {
+    const { getByText, queryByText } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        hint={<a href="#top">Drag to adjust or use arrow keys</a>}
+      />
+    )
+
+    expect(
+      queryByText('Move the slider to change the value')
+    ).not.toBeInTheDocument()
+
+    const hint = getByText('Drag to adjust or use arrow keys')
+    expect(hint.parentElement).toHaveClass('usa-hint')
+    expect(hint.parentElement).toHaveAttribute('id', 'range-slider-id-hint')
+  })
+
+  it('renders without a hint', () => {
+    const { queryByTestId, queryByText } = render(
+      <RangeInput id="range-slider-id" name="rangeName" hint={null} />
+    )
+
+    expect(
+      queryByText('Move the slider to change the value')
+    ).not.toBeInTheDocument()
+    expect(queryByTestId('range')).not.toHaveAttribute('aria-describedby')
+  })
+
+  it('combines aria-describedby with the hint id', () => {
+    const { queryByTestId } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        aria-describedby="range-slider-id-error"
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-hint range-slider-id-error'
+    )
+  })
+
+  it('sets aria-describedby when no hint exists', () => {
+    const { queryByTestId } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        hint={null}
+        aria-describedby="range-slider-id-error"
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-error'
+    )
+  })
+
   it('renders with custom range values', () => {
     const min = -15
     const max = 60

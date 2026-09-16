@@ -153,10 +153,18 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
   delete divProps['aria-describedby']
 
   const initialFocus = () => {
-    const focusEl = modalEl.current?.querySelector('[data-focus]') as
-      HTMLElement | SVGElement
+    const focusEl =
+      modalEl.current?.querySelector<HTMLElement | SVGElement>(
+        '[data-focus]'
+      ) ||
+      modalEl.current?.querySelector<HTMLElement | SVGElement>(
+        '.usa-modal__footer button:not([disabled])'
+      ) ||
+      modalEl.current?.querySelector<HTMLElement | SVGElement>(
+        'button:not([disabled])'
+      )
 
-    return focusEl ? focusEl : modalEl.current || false
+    return focusEl || modalEl.current || false
   }
 
   const focusTrapOptions = {

@@ -4,6 +4,9 @@ import classnames from 'classnames'
 import { TextInput, TextInputProps } from '../TextInput/TextInput'
 import { Textarea, TextareaProps } from '../Textarea/Textarea'
 
+const SR_STATUS_DEBOUNCE_MS = 1200
+const AT_DEFER_MS = 100
+
 /* Defaults
   This is a fallback for character count and validation message.
   In many cases, though, props will be passed in by consumer 
@@ -74,7 +77,11 @@ export const CharacterCount = ({
   const [message, setMessage] = useState(() =>
     getMessage(initialCount, maxLength)
   )
-  const [isValid, setIsValid] = useState(initialCount < maxLength)
+  const [isValid, setIsValid] = useState(initialCount <= maxLength)
+  const [srAnnouncement, setSrAnnouncement] = useState<{
+    message: string
+    delay: number
+  } | null>(null)
   const srMessageRef = useRef<HTMLDivElement>(null)
 
   const classes = classnames(
@@ -88,19 +95,28 @@ export const CharacterCount = ({
 
   const [prevLength, setPrevLength] = useState(length)
   if (length !== prevLength) {
+    const isNowValid = length <= maxLength
+    const nextMessage = getMessage(length, maxLength)
     setPrevLength(length)
-    setMessage(getMessage(length, maxLength))
-    setIsValid(length <= maxLength)
+    setMessage(nextMessage)
+    setIsValid(isNowValid)
+    setSrAnnouncement({
+      message: `${isNowValid ? '' : 'Character limit exceeded. '}${nextMessage}`,
+      delay: !isValid && isNowValid ? AT_DEFER_MS : SR_STATUS_DEBOUNCE_MS,
+    })
   }
 
   useEffect(() => {
-    // Updates the character count status for screen readers after a 1000ms delay
+    // Announcing the initial message would interrupt screen readers on page load.
+    if (!srAnnouncement) return
+
     const timer = setTimeout(() => {
       // Setting the text directly for VoiceOver compatibility.
-      if (srMessageRef.current) srMessageRef.current.textContent = message
-    }, 1000)
+      if (srMessageRef.current)
+        srMessageRef.current.textContent = srAnnouncement.message
+    }, srAnnouncement.delay)
     return () => clearTimeout(timer)
-  }, [message])
+  }, [srAnnouncement])
 
   const handleBlur = (
     e:
@@ -184,7 +200,7 @@ export const CharacterCount = ({
       <div
         ref={srMessageRef}
         className="usa-character-count__sr-status usa-sr-only"
-        aria-live="polite"
+        aria-live={isValid ? 'polite' : 'assertive'}
         data-testid="characterCountSRMessage"
       />
     </>

@@ -4,7 +4,8 @@ import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb'
 
 export type BreadcrumbBarProps = {
   children: ReactElement<BreadcrumbProps> | ReactElement<BreadcrumbProps>[]
-  variant?: 'default' | 'wrap'
+  /** Wrap is the default behavior */
+  variant?: 'default' | 'wrap' | 'truncate'
   className?: string
   navProps?: JSX.IntrinsicElements['nav']
   listProps?: JSX.IntrinsicElements['ol']
@@ -20,7 +21,7 @@ export const BreadcrumbBar = ({
   const classes = classnames(
     'usa-breadcrumb',
     {
-      'usa-breadcrumb--wrap': variant === 'wrap',
+      'usa-breadcrumb--truncate': variant === 'truncate',
     },
     className
   )

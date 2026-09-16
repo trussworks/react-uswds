@@ -20,9 +20,7 @@ Source: https://designsystem.digital.gov/components/range-slider
   args: { id: 'range-slider', name: 'range' },
   render: (args) => (
     <>
-      <Label htmlFor="range-slider" hint=" (drag to adjust or use arrow keys)">
-        Slider input
-      </Label>
+      <Label htmlFor="range-slider">Range slider</Label>
       <RangeInput {...args} />
       {args.list && (
         <datalist id="range-list">
@@ -41,6 +39,24 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Basic: Story = {}
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+}
+
+export const AriaDisabled: Story = {
+  args: {
+    'aria-disabled': 'true',
+  },
+}
+
+export const NoHint: Story = {
+  args: {
+    hint: null,
+  },
+}
 
 export const CustomRange: Story = {
   args: {
