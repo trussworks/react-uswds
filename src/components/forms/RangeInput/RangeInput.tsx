@@ -51,6 +51,9 @@ export const RangeInput = ({
         : defaultVal
   const [value, setValue] = useState(rangeValue)
   const hintId = `${inputProps.id}-hint`
+  const ariaDescribedBy = [hint && hintId, inputProps['aria-describedby']]
+    .filter(Boolean)
+    .join(' ')
   const callout = `${value.toString()} ${rangeUnit} ${rangePreposition} ${rangeMax}`
 
   return (
@@ -63,12 +66,12 @@ export const RangeInput = ({
       <div data-testid="range-wrapper" className={wrapperClasses}>
         <input
           data-testid="range"
-          aria-describedby={hint ? hintId : undefined}
           aria-valuetext={callout}
           className={inputClasses}
           ref={inputRef}
           type="range"
           {...remainingInputProps}
+          aria-describedby={ariaDescribedBy || undefined}
           min={rangeMin}
           max={rangeMax}
           value={value}

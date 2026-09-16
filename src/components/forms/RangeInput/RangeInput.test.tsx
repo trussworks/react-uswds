@@ -72,6 +72,37 @@ describe('RangeInput component', () => {
     expect(queryByTestId('range')).not.toHaveAttribute('aria-describedby')
   })
 
+  it('combines aria-describedby with the hint id', () => {
+    const { queryByTestId } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        aria-describedby="range-slider-id-error"
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-hint range-slider-id-error'
+    )
+  })
+
+  it('sets aria-describedby when no hint exists', () => {
+    const { queryByTestId } = render(
+      <RangeInput
+        id="range-slider-id"
+        name="rangeName"
+        hint={null}
+        aria-describedby="range-slider-id-error"
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-error'
+    )
+  })
+
   it('renders with custom range values', () => {
     const min = -15
     const max = 60
