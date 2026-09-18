@@ -1,16 +1,16 @@
 import React from 'react'
-import { RangeInput } from './RangeInput'
+import { RangeSlider } from './RangeSlider'
 import { Label } from '../Label/Label'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'Components/Range slider',
-  component: RangeInput,
+  component: RangeSlider,
   parameters: {
     docs: {
       description: {
         component: `
-### USWDS 3.0 RangeInput component
+### USWDS 3.0 RangeSlider component
 
 Source: https://designsystem.digital.gov/components/range-slider
 `,
@@ -21,7 +21,7 @@ Source: https://designsystem.digital.gov/components/range-slider
   render: (args) => (
     <>
       <Label htmlFor="range-slider">Range slider</Label>
-      <RangeInput {...args} />
+      <RangeSlider {...args} />
       {args.list && (
         <datalist id="range-list">
           <option>0</option>
@@ -33,7 +33,7 @@ Source: https://designsystem.digital.gov/components/range-slider
       )}
     </>
   ),
-} satisfies Meta<typeof RangeInput>
+} satisfies Meta<typeof RangeSlider>
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -2,7 +2,7 @@ import React, { useState, type JSX } from 'react'
 import classnames from 'classnames'
 import { LegacyInputRef } from '../../../types/legacyInputRef'
 
-export type RangeInputProps = {
+export type RangeSliderProps = {
   id: string
   name: string
   min?: number
@@ -15,7 +15,7 @@ export type RangeInputProps = {
   wrapperClassName?: string
 } & JSX.IntrinsicElements['input']
 
-export const RangeInput = ({
+export const RangeSlider = ({
   className,
   wrapperClassName,
   inputRef,
@@ -23,7 +23,7 @@ export const RangeInput = ({
   textUnit,
   hint = 'Move the slider to change the value',
   ...inputProps
-}: RangeInputProps): JSX.Element => {
+}: RangeSliderProps): JSX.Element => {
   const inputClasses = classnames('usa-range', className)
   const wrapperClasses = classnames('usa-range__wrapper', wrapperClassName)
   // input range defaults to min = 0, max = 100, step = 1, and value = (max/2) if not specified.
@@ -88,4 +88,10 @@ export const RangeInput = ({
   )
 }
 
-export default RangeInput
+/** @deprecated Use `RangeSlider` instead. `RangeInput` will be removed in a future major version. */
+export const RangeInput = RangeSlider
+
+/** @deprecated Use `RangeSliderProps` instead. `RangeInputProps` will be removed in a future major version. */
+export type RangeInputProps = RangeSliderProps
+
+export default RangeSlider
