@@ -52,9 +52,9 @@ export const AriaDisabled: Story = {
   },
 }
 
-export const NoHint: Story = {
+export const WithHint: Story = {
   args: {
-    hint: null,
+    hint: 'Move the slider to change the value',
   },
 }
 

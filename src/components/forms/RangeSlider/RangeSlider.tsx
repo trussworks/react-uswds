@@ -9,7 +9,7 @@ export type RangeSliderProps = {
   max?: number
   textPreposition?: string
   textUnit?: string
-  /** Set to `null` to remove default hint */
+  /** Recommended text: "Move the slider to change the value" */
   hint?: React.ReactNode
   inputRef?: LegacyInputRef
   wrapperClassName?: string
@@ -21,7 +21,7 @@ export const RangeSlider = ({
   inputRef,
   textPreposition,
   textUnit,
-  hint = 'Move the slider to change the value',
+  hint,
   ...inputProps
 }: RangeSliderProps): JSX.Element => {
   const inputClasses = classnames('usa-range', className)

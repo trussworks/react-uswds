@@ -27,9 +27,22 @@ describe('RangeSlider component', () => {
     )
   })
 
-  it('renders with default hint', () => {
-    const { queryByTestId, queryByText } = render(
+  it('renders without a hint', () => {
+    const { container, queryByTestId } = render(
       <RangeSlider id="range-slider-id" name="rangeName" />
+    )
+
+    expect(container.querySelector('.usa-hint')).not.toBeInTheDocument()
+    expect(queryByTestId('range')).not.toHaveAttribute('aria-describedby')
+  })
+
+  it('renders with hint', () => {
+    const { queryByTestId, queryByText } = render(
+      <RangeSlider
+        id="range-slider-id"
+        name="rangeName"
+        hint="Move the slider to change the value"
+      />
     )
 
     const hint = queryByText('Move the slider to change the value')
@@ -43,8 +56,8 @@ describe('RangeSlider component', () => {
     )
   })
 
-  it('renders with custom hint', () => {
-    const { getByText, queryByText } = render(
+  it('renders with hint element', () => {
+    const { getByText } = render(
       <RangeSlider
         id="range-slider-id"
         name="rangeName"
@@ -52,24 +65,9 @@ describe('RangeSlider component', () => {
       />
     )
 
-    expect(
-      queryByText('Move the slider to change the value')
-    ).not.toBeInTheDocument()
-
     const hint = getByText('Drag to adjust or use arrow keys')
     expect(hint.parentElement).toHaveClass('usa-hint')
     expect(hint.parentElement).toHaveAttribute('id', 'range-slider-id-hint')
-  })
-
-  it('renders without a hint', () => {
-    const { queryByTestId, queryByText } = render(
-      <RangeSlider id="range-slider-id" name="rangeName" hint={null} />
-    )
-
-    expect(
-      queryByText('Move the slider to change the value')
-    ).not.toBeInTheDocument()
-    expect(queryByTestId('range')).not.toHaveAttribute('aria-describedby')
   })
 
   it('combines aria-describedby with the hint id', () => {
@@ -77,6 +75,7 @@ describe('RangeSlider component', () => {
       <RangeSlider
         id="range-slider-id"
         name="rangeName"
+        hint="Move the slider to change the value"
         aria-describedby="range-slider-id-error"
       />
     )
@@ -92,7 +91,6 @@ describe('RangeSlider component', () => {
       <RangeSlider
         id="range-slider-id"
         name="rangeName"
-        hint={null}
         aria-describedby="range-slider-id-error"
       />
     )
