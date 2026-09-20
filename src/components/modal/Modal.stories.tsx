@@ -39,6 +39,8 @@ Follow the [USWDS](https://designsystem.digital.gov/components/modal/) guidance 
 - Use the forceAction prop on the modal component if the user should be forced to take an action before closing the modal.
 
 You can also use the provided ModalToggleButton and/or ModalOpenLink components, which will adhere to the above guidelines for convenience.
+
+When a page provides an element with the ID \`modal-root\`, the Modal renders there and keeps that element exposed to assistive technology while the dialog is open.
 `,
       },
     },
