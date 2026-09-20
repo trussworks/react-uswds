@@ -248,6 +248,46 @@ describe('CharacterCount component', () => {
       expect(getByText('20 characters allowed')).toBeInTheDocument()
     })
 
+    it('treats an initial value at the character limit as valid', () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+          defaultValue="abcde"
+        />
+      )
+      const input = getByRole('textbox')
+
+      expect(input).not.toHaveClass('usa-input--error')
+      expect(getByTestId('characterCountMessage')).not.toHaveClass(
+        'usa-character-count__status--invalid'
+      )
+
+      fireEvent.blur(input)
+      expect(input).toBeValid()
+    })
+
+    it('treats an initial value over the character limit as invalid', () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+          defaultValue="abcdef"
+        />
+      )
+      const input = getByRole('textbox')
+
+      expect(input).toHaveClass('usa-input--error')
+      expect(getByTestId('characterCountMessage')).toHaveClass(
+        'usa-character-count__status--invalid'
+      )
+
+      fireEvent.blur(input)
+      expect(input).toBeInvalid()
+    })
+
     it('updates message text with characters left onChange', async () => {
       const { getByRole, getAllByText } = render(
         <CharacterCount
