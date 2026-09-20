@@ -29,7 +29,14 @@ export const ModalWrapperForwardRef: React.ForwardRefRenderFunction<
   /* eslint-disable jsx-a11y/click-events-have-key-events */
 
   return (
-    <div {...divProps} ref={ref} id={id} className={classes} role="dialog">
+    <div
+      {...divProps}
+      ref={ref}
+      id={id}
+      className={classes}
+      role="dialog"
+      aria-hidden={!isVisible || undefined}
+      aria-modal={isVisible || undefined}>
       <div
         data-testid="modalOverlay"
         className="usa-modal-overlay"

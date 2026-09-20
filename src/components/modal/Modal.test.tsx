@@ -46,7 +46,7 @@ const renderWithModalRoot = (ui: JSX.Element, options: RenderOptions = {}) => {
     baseElement: document.body,
   })
 
-  const modalWrapper = screen.getByRole('dialog')
+  const modalWrapper = screen.getByRole('dialog', { hidden: true })
   const modalWindow = screen.getByTestId('modalWindow')
 
   const queryForOpenButton = () =>
@@ -56,6 +56,7 @@ const renderWithModalRoot = (ui: JSX.Element, options: RenderOptions = {}) => {
   const queryForCloseButton = () =>
     screen.queryByRole('button', {
       name: 'Close this window',
+      hidden: true,
     })
   const queryForOverlay = () => screen.queryByTestId('modalOverlay')
 
@@ -249,12 +250,17 @@ describe('Modal component', () => {
       </Modal>
     )
 
+    expect(modalWrapper).toHaveAttribute('aria-hidden', 'true')
+    expect(modalWrapper).not.toHaveAttribute('aria-modal')
+
     handleOpen()
 
     await waitFor(() => expect(modalRef.current?.modalIsOpen).toBe(true))
 
     expect(modalWrapper).not.toHaveClass('is-hidden')
     expect(modalWrapper).toHaveClass('is-visible')
+    expect(modalWrapper).not.toHaveAttribute('aria-hidden')
+    expect(modalWrapper).toHaveAttribute('aria-modal', 'true')
   })
 
   it('can click on the close button to close', async () => {
@@ -525,12 +531,8 @@ describe('Modal component', () => {
       it('activates a focus trap', async () => {
         const user = userEvent.setup()
 
-        const {
-          modalWrapper,
-          modalWindow,
-          queryForOpenButton,
-          queryForCloseButton,
-        } = renderWithModalRoot(<ExampleModal />)
+        const { modalWrapper, queryForOpenButton, queryForCloseButton } =
+          renderWithModalRoot(<ExampleModal />)
 
         const openButton = queryForOpenButton()
         expect(openButton).toBeInTheDocument()
@@ -541,14 +543,11 @@ describe('Modal component', () => {
 
         await waitFor(() => {
           expect(modalWrapper).toHaveClass('is-visible')
-          expect(modalWindow).toHaveFocus()
+          expect(
+            screen.getByRole('button', { name: 'Continue without saving' })
+          ).toHaveFocus()
           expect(closeButton).toBeInTheDocument()
         })
-
-        await user.tab()
-        expect(
-          screen.getByRole('button', { name: 'Continue without saving' })
-        ).toHaveFocus()
 
         await user.tab()
         expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
@@ -566,42 +565,7 @@ describe('Modal component', () => {
       it('returns focus to the opener element on close', async () => {
         const user = userEvent.setup()
 
-        const {
-          modalWrapper,
-          modalWindow,
-          queryForOpenButton,
-          queryForCloseButton,
-        } = renderWithModalRoot(<ExampleModal />)
-
-        const openButton = queryForOpenButton()
-        expect(openButton).toBeInTheDocument()
-
-        await user.click(openButton!)
-
-        await waitFor(() => {
-          expect(modalWrapper).toHaveClass('is-visible')
-          expect(modalWindow).toHaveFocus()
-        })
-
-        const closeButton = queryForCloseButton()
-        expect(closeButton).toBeInTheDocument()
-
-        await user.tab()
-        expect(
-          screen.getByRole('button', {
-            name: 'Continue without saving',
-          })
-        ).toHaveFocus()
-
-        await user.click(closeButton!)
-
-        expect(openButton).toHaveFocus()
-      })
-
-      it('the escape key closes the modal', async () => {
-        const user = userEvent.setup()
-
-        const { modalWrapper, modalWindow, queryForOpenButton } =
+        const { modalWrapper, queryForOpenButton, queryForCloseButton } =
           renderWithModalRoot(<ExampleModal />)
 
         const openButton = queryForOpenButton()
@@ -611,7 +575,39 @@ describe('Modal component', () => {
 
         await waitFor(() => {
           expect(modalWrapper).toHaveClass('is-visible')
-          expect(modalWindow).toHaveFocus()
+          expect(
+            screen.getByRole('button', { name: 'Continue without saving' })
+          ).toHaveFocus()
+        })
+
+        const closeButton = queryForCloseButton()
+        expect(closeButton).toBeInTheDocument()
+
+        await user.tab()
+        expect(screen.getByRole('button', { name: 'Go back' })).toHaveFocus()
+
+        await user.click(closeButton!)
+
+        expect(openButton).toHaveFocus()
+      })
+
+      it('the escape key closes the modal', async () => {
+        const user = userEvent.setup()
+
+        const { modalWrapper, queryForOpenButton } = renderWithModalRoot(
+          <ExampleModal />
+        )
+
+        const openButton = queryForOpenButton()
+        expect(openButton).toBeInTheDocument()
+
+        await user.click(openButton!)
+
+        await waitFor(() => {
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(
+            screen.getByRole('button', { name: 'Continue without saving' })
+          ).toHaveFocus()
         })
 
         await user.keyboard('{escape}')
@@ -639,6 +635,25 @@ describe('Modal component', () => {
           expect(
             screen.getByRole('button', { name: 'Focus me first' })
           ).toHaveFocus()
+        })
+      })
+
+      it('focuses the close button when no other buttons', async () => {
+        const modalRef = createRef<ModalRef>()
+        const handleOpen = () => modalRef.current?.toggleModal(undefined, true)
+
+        const { modalWrapper, queryForCloseButton } = renderWithModalRoot(
+          <Modal id="testModal" ref={modalRef} modalRoot="#modal-root">
+            <p>Test modal</p>
+            <a href="#test">Focus target</a>
+          </Modal>
+        )
+
+        handleOpen()
+
+        await waitFor(() => {
+          expect(modalWrapper).toHaveClass('is-visible')
+          expect(queryForCloseButton()).toHaveFocus()
         })
       })
     })
@@ -702,8 +717,9 @@ describe('Modal component', () => {
       it('the escape key does not close the modal', async () => {
         const user = userEvent.setup()
 
-        const { modalWrapper, modalWindow, queryForOpenButton } =
-          renderWithModalRoot(<ExampleModal forceAction />)
+        const { modalWrapper, queryForOpenButton } = renderWithModalRoot(
+          <ExampleModal forceAction />
+        )
 
         const openButton = queryForOpenButton()
         expect(openButton).toBeInTheDocument()
@@ -712,14 +728,18 @@ describe('Modal component', () => {
 
         await waitFor(() => {
           expect(modalWrapper).toHaveClass('is-visible')
-          expect(modalWindow).toHaveFocus()
+          expect(
+            screen.getByRole('button', { name: 'Continue without saving' })
+          ).toHaveFocus()
         })
 
         await user.keyboard('{escape}')
 
         await waitFor(() => {
           expect(modalWrapper).toHaveClass('is-visible')
-          expect(modalWindow).toHaveFocus()
+          expect(
+            screen.getByRole('button', { name: 'Continue without saving' })
+          ).toHaveFocus()
         })
       })
     })
