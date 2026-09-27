@@ -11,6 +11,18 @@ import classnames from 'classnames'
 import { FilePreview } from './FilePreview'
 import { makeSafeForID } from './utils'
 
+const fileMatchesAccept = (file: File, acceptedType: string): boolean => {
+  const normalizedType = acceptedType.trim().toLowerCase()
+  const fileType = file.type.split(';')[0].trim().toLowerCase()
+  if (normalizedType.startsWith('.')) {
+    return file.name.toLowerCase().endsWith(normalizedType)
+  }
+  if (normalizedType.endsWith('/*')) {
+    return fileType.startsWith(normalizedType.slice(0, -1))
+  }
+  return fileType === normalizedType
+}
+
 export type FileInputProps = {
   id: string
   name: string
@@ -135,57 +147,41 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
         : `${filePreviews.length} ${defaultMultipleSelectedFileText}`
       : previewSingleSelectedFileText || defaultSingleSelectedFileText
 
-  const preventInvalidFiles = (e: React.DragEvent): void => {
+  const validateFiles = (selectedFiles: File[]): boolean => {
     setShowError(false)
 
     if (accept) {
-      const acceptedTypes = accept.split(',')
-      let allFilesAllowed = true
-      for (let i = 0; i < e.dataTransfer.files.length; i += 1) {
-        const file = e.dataTransfer.files[parseInt(`${i}`)]
-        if (allFilesAllowed) {
-          for (let j = 0; j < acceptedTypes.length; j += 1) {
-            const fileType = acceptedTypes[parseInt(`${j}`)]
-            allFilesAllowed =
-              file.name.indexOf(fileType) > 0 ||
-              file.type.includes(fileType.replace(/\*/g, ''))
-            if (allFilesAllowed) break
-          }
-        } else break
-      }
+      const acceptedTypes = accept.split(',').filter((type) => type.trim())
+      const allFilesAllowed = selectedFiles.every((file) =>
+        acceptedTypes.some((type) => fileMatchesAccept(file, type))
+      )
 
       if (!allFilesAllowed) {
         setFiles([])
         setShowError(true)
-        e.preventDefault()
-        e.stopPropagation()
+        if (internalRef.current) internalRef.current.value = ''
+        return false
       }
     }
+
+    return true
   }
 
   // Event handlers
   const handleDragOver = (): void => setIsDragging(true)
   const handleDragLeave = (): void => setIsDragging(false)
   const handleDrop = (e: React.DragEvent): void => {
-    preventInvalidFiles(e)
+    if (!validateFiles(Array.from(e.dataTransfer?.files ?? []))) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
     setIsDragging(false)
     if (onDrop) onDrop(e)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setShowError(false)
-
-    // Map input FileList to array of Files
-    const fileArr = []
-    if (e.target?.files?.length) {
-      const fileLength = e.target?.files?.length || 0
-
-      for (let i = 0; i < fileLength; i++) {
-        const file = e.target.files.item(i)
-        if (file) fileArr.push(file)
-      }
-    }
-    setFiles(fileArr)
+    const selectedFiles = Array.from(e.target.files || [])
+    if (validateFiles(selectedFiles)) setFiles(selectedFiles)
 
     if (onChange) onChange(e)
   }

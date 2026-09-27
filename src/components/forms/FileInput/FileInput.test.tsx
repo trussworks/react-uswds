@@ -141,6 +141,16 @@ describe('FileInput component', () => {
   })
 
   describe('drag and drop', () => {
+    it('handles a drop event without transferred files', () => {
+      const { getByTestId } = render(<FileInput {...testProps} />)
+      const targetEl = getByTestId('file-input-droptarget')
+
+      fireEvent.dragOver(targetEl)
+      fireEvent.drop(targetEl)
+
+      expect(targetEl).not.toHaveClass('usa-file-input--drag')
+    })
+
     it('toggles the drag class when dragging over and leaving the target element', () => {
       const { getByTestId } = render(<FileInput {...testProps} />)
       const targetEl = getByTestId('file-input-droptarget')
@@ -297,6 +307,91 @@ describe('FileInput component', () => {
       )
 
       expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
+    })
+
+    it.each([
+      ['whitespace around accepted types', '.pdf, .txt', TEST_TEXT_FILE],
+      ['an exact MIME type', 'application/pdf', TEST_PDF_FILE],
+      [
+        'case differences in file extensions',
+        '.pdf',
+        new File([], 'REPORT.PDF', { type: 'application/pdf' }),
+      ],
+    ])('accepts files with %s', (_case, accept, file) => {
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept={accept} />
+      )
+
+      fireEvent.drop(getByTestId('file-input-droptarget'), {
+        dataTransfer: { files: [file] },
+      })
+
+      expect(queryByTestId('file-input-error')).not.toBeInTheDocument()
+    })
+
+    it.each([
+      [
+        'partial extension and MIME type matches',
+        '.pdf,application/json',
+        new File([], 'report.pdf.exe', {
+          type: 'application/json-patch+json',
+        }),
+      ],
+      ['empty accepted types', '.pdf,', TEST_PNG_FILE],
+    ])('rejects files with %s', (_case, accept, file) => {
+      const { getByTestId } = render(
+        <FileInput {...testProps} accept={accept} />
+      )
+
+      fireEvent.drop(getByTestId('file-input-droptarget'), {
+        dataTransfer: { files: [file] },
+      })
+
+      expect(getByTestId('file-input-error')).toBeInTheDocument()
+    })
+
+    it('shows an error and clears an unaccepted picker selection before onChange', async () => {
+      const user = userEvent.setup({ applyAccept: false })
+      let selectedFileCount = -1
+      const onChange = vi.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+        selectedFileCount = event.target.files?.length ?? 0
+      })
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept=".pdf,.txt" onChange={onChange} />
+      )
+
+      const inputEl = getByTestId('file-input-input') as HTMLInputElement
+      await user.upload(inputEl, TEST_PNG_FILE)
+
+      expect(getByTestId('file-input-error')).toHaveTextContent(
+        'Error: This is not a valid file type.'
+      )
+      expect(getByTestId('file-input-droptarget')).toHaveClass(
+        'has-invalid-file'
+      )
+      expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
+      expect(inputEl.files).toHaveLength(0)
+      expect(inputEl).toHaveValue('')
+      expect(onChange).toHaveBeenCalledOnce()
+      expect(selectedFileCount).toBe(0)
+    })
+
+    it('clears a previous selection when any dropped file is unaccepted', async () => {
+      const { getByTestId, queryByTestId } = render(
+        <FileInput {...testProps} accept=".pdf,.txt" multiple />
+      )
+      const inputEl = getByTestId('file-input-input') as HTMLInputElement
+      const targetEl = getByTestId('file-input-droptarget')
+      await userEvent.upload(inputEl, TEST_PDF_FILE)
+
+      fireEvent.drop(targetEl, {
+        dataTransfer: { files: [TEST_TEXT_FILE, TEST_PNG_FILE] },
+      })
+
+      expect(getByTestId('file-input-error')).toBeInTheDocument()
+      expect(queryByTestId('file-input-preview')).not.toBeInTheDocument()
+      expect(inputEl.files).toHaveLength(0)
+      expect(inputEl).toHaveValue('')
     })
   })
 
