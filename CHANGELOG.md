@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.0.0](https://github.com/trussworks/react-uswds/compare/12.0.0...13.0.0) (2026-09-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to USWDS 3.14.0 ([#3634](https://github.com/trussworks/react-uswds/issues/3634))
+
+### Features
+
+* upgrade to USWDS 3.14.0 ([#3634](https://github.com/trussworks/react-uswds/issues/3634)) ([ecacbe9](https://github.com/trussworks/react-uswds/commit/ecacbe98f436f58c86b214817b71a2b9a0dca0e1))
+
 ## [12.0.0](https://github.com/trussworks/react-uswds/compare/11.2.0...12.0.0) (2026-08-09)
 
 
