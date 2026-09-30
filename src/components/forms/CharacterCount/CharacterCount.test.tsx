@@ -261,7 +261,7 @@ describe('CharacterCount component', () => {
         target: { value: 'a' },
       })
 
-      await new Promise((res) => setTimeout(res, 1000))
+      await new Promise((res) => setTimeout(res, 1300))
 
       expect(getAllByText('4 characters left')).toHaveLength(2)
       expect(getAllByText('4 characters left')[0]).toBeInTheDocument()
@@ -270,14 +270,14 @@ describe('CharacterCount component', () => {
         target: { value: 'abcd' },
       })
 
-      await new Promise((res) => setTimeout(res, 1000))
+      await new Promise((res) => setTimeout(res, 1300))
 
       expect(getAllByText('1 character left')).toHaveLength(2)
       expect(getAllByText('1 character left')[0]).toBeInTheDocument()
     })
 
     it('updates message text with characters over the limit when expected', async () => {
-      const { getByRole, getAllByText } = render(
+      const { getByRole, getByTestId } = render(
         <CharacterCount
           id="character-count-id"
           name="characterCount"
@@ -285,27 +285,93 @@ describe('CharacterCount component', () => {
         />
       )
       const input = getByRole('textbox')
+      const message = getByTestId('characterCountMessage')
+      const srMessage = getByTestId('characterCountSRMessage')
 
       fireEvent.change(input, {
         target: { value: 'abcdef' },
       })
 
-      await new Promise((res) => setTimeout(res, 1000))
+      await new Promise((res) => setTimeout(res, 1300))
 
-      expect(getAllByText('1 character over limit')).toHaveLength(2)
-      expect(getAllByText('1 character over limit')[0]).toBeInTheDocument()
-      expect(getAllByText('1 character over limit')[0]).toHaveClass(
-        'usa-character-count__status--invalid'
+      expect(message).toHaveTextContent('1 character over limit')
+      expect(message).toHaveClass('usa-character-count__status--invalid')
+      expect(srMessage).toHaveTextContent(
+        'Character limit exceeded. 1 character over limit'
       )
 
       fireEvent.change(input, {
         target: { value: 'abcdefg' },
       })
 
-      await new Promise((res) => setTimeout(res, 1000))
+      await new Promise((res) => setTimeout(res, 1300))
 
-      expect(getAllByText('2 characters over limit')).toHaveLength(2)
-      expect(getAllByText('2 characters over limit')[0]).toBeInTheDocument()
+      expect(message).toHaveTextContent('2 characters over limit')
+      expect(srMessage).toHaveTextContent(
+        'Character limit exceeded. 2 characters over limit'
+      )
+    })
+
+    it('does not announce the message on initial render', async () => {
+      const { getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+        />
+      )
+
+      await new Promise((res) => setTimeout(res, 1300))
+
+      expect(getByTestId('characterCountSRMessage')).toBeEmptyDOMElement()
+    })
+
+    it('announces assertively when over the limit', async () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+        />
+      )
+      const input = getByRole('textbox')
+      const srMessage = getByTestId('characterCountSRMessage')
+
+      fireEvent.change(input, {
+        target: { value: 'abcdef' },
+      })
+
+      expect(srMessage).toHaveAttribute('aria-live', 'assertive')
+
+      await new Promise((res) => setTimeout(res, 1300))
+
+      expect(srMessage).toHaveTextContent(
+        'Character limit exceeded. 1 character over limit'
+      )
+    })
+
+    it('announces promptly and politely when back under the limit', async () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+        />
+      )
+      const input = getByRole('textbox')
+      const srMessage = getByTestId('characterCountSRMessage')
+
+      fireEvent.change(input, {
+        target: { value: 'abcdef' },
+      })
+      fireEvent.change(input, {
+        target: { value: 'abcde' },
+      })
+
+      await new Promise((res) => setTimeout(res, 200))
+
+      expect(srMessage).toHaveAttribute('aria-live', 'polite')
+      expect(srMessage).toHaveTextContent('0 characters left')
     })
 
     it('updates input validity', () => {
@@ -333,6 +399,23 @@ describe('CharacterCount component', () => {
 
       expect(input).not.toHaveClass('usa-input--error')
       expect(input).toBeValid()
+    })
+
+    it('is valid when the initial value length equals the limit', () => {
+      const { getByRole, getByTestId } = render(
+        <CharacterCount
+          id="character-count-id"
+          name="characterCount"
+          maxLength={5}
+          defaultValue="abcde"
+        />
+      )
+
+      expect(getByRole('textbox')).not.toHaveClass('usa-input--error')
+      expect(getByTestId('characterCountSRMessage')).toHaveAttribute(
+        'aria-live',
+        'polite'
+      )
     })
 
     it('adjusts message styles onChange', () => {

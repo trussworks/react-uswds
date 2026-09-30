@@ -11,11 +11,14 @@ import classnames from 'classnames'
 import { FilePreview } from './FilePreview'
 import { makeSafeForID } from './utils'
 
+const FINE_POINTER_MEDIA_QUERY = '(hover: hover) and (pointer: fine)'
+
 export type FileInputProps = {
   id: string
   name: string
   dragText?: string
   chooseText?: string
+  chooseTextWithoutDrag?: string
   errorText?: string
   previewSingleSelectedFileText?: string
   previewMultipleSelectedFileText?: string
@@ -42,6 +45,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     id,
     dragText,
     chooseText,
+    chooseTextWithoutDrag,
     errorText,
     previewSingleSelectedFileText,
     previewMultipleSelectedFileText,
@@ -60,17 +64,19 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
   const [isDragging, setIsDragging] = useState(false)
   const [showError, setShowError] = useState(false)
   const [files, setFiles] = useState<File[]>([])
-  const [hideDragText, setHideDragText] = useState(false)
+  const [showDragText, setShowDragText] = useState(true)
 
   useEffect(() => {
-    if (typeof navigator === 'undefined') return
+    if (typeof window.matchMedia !== 'function') return
 
-    const hideDragText =
-      /rv:11.0/i.test(navigator?.userAgent) ||
-      /Edge\/\d./i.test(navigator?.userAgent)
+    const mediaQueryList = window.matchMedia(FINE_POINTER_MEDIA_QUERY)
+    const handleChange = (e: MediaQueryListEvent): void =>
+      setShowDragText(e.matches)
 
-    setHideDragText(hideDragText)
-  }, [typeof navigator])
+    setShowDragText(mediaQueryList.matches)
+    mediaQueryList.addEventListener('change', handleChange)
+    return () => mediaQueryList.removeEventListener('change', handleChange)
+  }, [])
 
   useImperativeHandle(
     ref,
@@ -104,6 +110,7 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
     ? 'Drag files here or '
     : 'Drag file here or '
   const defaultChooseText = 'choose from folder'
+  const defaultChooseTextWithoutDrag = 'Choose from folder'
   const defaultErrorText = 'Error: This is not a valid file type.'
   const defaultSingleSelectedFileText = 'Selected file'
   const defaultMultipleSelectedFileText = ' files selected'
@@ -134,6 +141,10 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
         ? `${filePreviews.length} ${previewMultipleSelectedFileText}`
         : `${filePreviews.length} ${defaultMultipleSelectedFileText}`
       : previewSingleSelectedFileText || defaultSingleSelectedFileText
+
+  const instructionChooseText = showDragText
+    ? chooseText || defaultChooseText
+    : chooseTextWithoutDrag || chooseText || defaultChooseTextWithoutDrag
 
   const preventInvalidFiles = (e: React.DragEvent): void => {
     setShowError(false)
@@ -216,13 +227,13 @@ export const FileInputForwardRef: React.ForwardRefRenderFunction<
           data-testid="file-input-instructions"
           className={instructionClasses}
           aria-hidden="true">
-          {!hideDragText && (
+          {showDragText && (
             <span className="usa-file-input__drag-text">
               {dragText || defaultDragText}
             </span>
           )}
           <span className="usa-file-input__choose">
-            {chooseText || defaultChooseText}
+            {instructionChooseText}
           </span>
         </div>
         {filePreviews}

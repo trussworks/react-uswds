@@ -1,16 +1,16 @@
 import React from 'react'
-import { RangeInput } from './RangeInput'
+import { RangeSlider } from './RangeSlider'
 import { Label } from '../Label/Label'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'Components/Range slider',
-  component: RangeInput,
+  component: RangeSlider,
   parameters: {
     docs: {
       description: {
         component: `
-### USWDS 3.0 RangeInput component
+### USWDS 3.0 RangeSlider component
 
 Source: https://designsystem.digital.gov/components/range-slider
 `,
@@ -20,10 +20,8 @@ Source: https://designsystem.digital.gov/components/range-slider
   args: { id: 'range-slider', name: 'range' },
   render: (args) => (
     <>
-      <Label htmlFor="range-slider" hint=" (drag to adjust or use arrow keys)">
-        Slider input
-      </Label>
-      <RangeInput {...args} />
+      <Label htmlFor="range-slider">Range slider</Label>
+      <RangeSlider {...args} />
       {args.list && (
         <datalist id="range-list">
           <option>0</option>
@@ -35,12 +33,30 @@ Source: https://designsystem.digital.gov/components/range-slider
       )}
     </>
   ),
-} satisfies Meta<typeof RangeInput>
+} satisfies Meta<typeof RangeSlider>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Basic: Story = {}
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+}
+
+export const AriaDisabled: Story = {
+  args: {
+    'aria-disabled': 'true',
+  },
+}
+
+export const WithHint: Story = {
+  args: {
+    hint: 'Move the slider to change the value',
+  },
+}
 
 export const CustomRange: Story = {
   args: {

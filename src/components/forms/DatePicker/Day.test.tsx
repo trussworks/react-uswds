@@ -43,6 +43,12 @@ describe('Day', () => {
     expect(button).toHaveAttribute('aria-selected', 'false')
   })
 
+  it('defaults to not being today', () => {
+    const { getByTestId } = render(<Day {...testProps} />)
+    const button = getByTestId('select-date')
+    expect(button).not.toHaveAttribute('aria-current')
+  })
+
   it('can be clicked to select the date', async () => {
     const mockSelectDate = vi.fn()
     const { getByTestId } = render(
@@ -129,9 +135,10 @@ describe('Day', () => {
   })
 
   describe('when is today’s date', () => {
-    it('has the today class', () => {
+    it('is today', () => {
       const { getByTestId } = render(<Day {...testProps} isToday />)
       const button = getByTestId('select-date')
+      expect(button).toHaveAttribute('aria-current', 'date')
       expect(button).toHaveClass('usa-date-picker__calendar__date--today')
     })
   })
