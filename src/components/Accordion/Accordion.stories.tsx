@@ -32,7 +32,7 @@ const testItems: AccordionItemProps[] = [
         assemble, and to petition the Government for a redress of grievances.
       </p>
     ),
-    expanded: false,
+    expanded: true,
     id: '123',
     headingLevel: 'h4',
   },
@@ -114,6 +114,14 @@ export const Bordered: Story = {
 
 export const Multiselectable: Story = {
   args: { items: testItems, multiselectable: true },
+}
+
+export const IconStart: Story = {
+  args: { items: testItems, iconPosition: 'start' },
+}
+
+export const IconEnd: Story = {
+  args: { items: testItems, iconPosition: 'end' },
 }
 
 const customTestItems: AccordionItemProps[] = [

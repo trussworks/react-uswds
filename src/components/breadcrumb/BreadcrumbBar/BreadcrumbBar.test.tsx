@@ -34,6 +34,41 @@ describe('BreadcrumbBar component', () => {
     expect(getByRole('list')).toHaveClass('usa-breadcrumb__list')
   })
 
+  it('renders with the truncate variant', () => {
+    const { getByRole } = render(
+      <BreadcrumbBar variant="truncate">
+        <Breadcrumb>{testParentPageName}</Breadcrumb>
+        <Breadcrumb current>{testPageName}</Breadcrumb>
+      </BreadcrumbBar>
+    )
+    expect(getByRole('navigation')).toHaveClass(
+      'usa-breadcrumb',
+      'usa-breadcrumb--truncate'
+    )
+  })
+
+  it('renders without modifier classes for the default and wrap variants', () => {
+    const { getByRole, rerender } = render(
+      <BreadcrumbBar>
+        <Breadcrumb>{testParentPageName}</Breadcrumb>
+        <Breadcrumb current>{testPageName}</Breadcrumb>
+      </BreadcrumbBar>
+    )
+    expect(getByRole('navigation')).toHaveClass('usa-breadcrumb', {
+      exact: true,
+    })
+
+    rerender(
+      <BreadcrumbBar variant="wrap">
+        <Breadcrumb>{testParentPageName}</Breadcrumb>
+        <Breadcrumb current>{testPageName}</Breadcrumb>
+      </BreadcrumbBar>
+    )
+    expect(getByRole('navigation')).toHaveClass('usa-breadcrumb', {
+      exact: true,
+    })
+  })
+
   it('renders properly with Breadcrumbs using custom elements', () => {
     type CustomLinkProps = React.PropsWithChildren<{
       to: string
