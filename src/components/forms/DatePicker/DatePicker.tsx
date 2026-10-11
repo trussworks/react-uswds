@@ -188,7 +188,7 @@ export const DatePicker = ({
 
   useEffect(() => {
     validateInput()
-  }, [externalValue, minDate, maxDate])
+  }, [externalValue, dateFormat, minDate, maxDate])
 
   const handleToggleClick = (): void => {
     if (isAriaDisabled) {
