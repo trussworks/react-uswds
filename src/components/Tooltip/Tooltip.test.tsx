@@ -154,6 +154,29 @@ describe('Tooltip component', () => {
         `usa-tooltip__body--bottom`
       )
     })
+
+    it('repositions a visible tooltip when the position prop changes', () => {
+      const { rerender } = render(
+        <Tooltip position="top" label="Click me">
+          My Tooltip
+        </Tooltip>
+      )
+
+      fireEvent.mouseEnter(screen.getByTestId('triggerElement'))
+      expect(screen.getByTestId('tooltipBody')).toHaveClass(
+        'usa-tooltip__body--top'
+      )
+
+      rerender(
+        <Tooltip position="bottom" label="Click me">
+          My Tooltip
+        </Tooltip>
+      )
+
+      expect(screen.getByTestId('tooltipBody')).toHaveClass(
+        'usa-tooltip__body--bottom'
+      )
+    })
   })
 
   describe('with a className prop', () => {
