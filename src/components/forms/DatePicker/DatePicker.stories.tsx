@@ -55,10 +55,11 @@ Source: https://designsystem.digital.gov/components/date-picker
 - typing the Enter key in the external text input
 - on focusout (blur) of the external text input
 
-Because this component uses the useEffect hook to trigger validation whenever the date value changes (regardless of how), the React DatePicker will validate when:
+Because this component uses the useEffect hook to trigger validation whenever the date value or its validation props change, the React DatePicker will validate when:
 - setting the initial value based on the default value passed in (same as above)
 - clicking on a date in the calendar UI (same as above)
 - on input (change) of the external text input
+- changing the \`dateFormat\` prop for the current input value
 
 It's also worth mentioning that validation in this case is just calling [setCustomValidity](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/setCustomValidity) on the external text input, and library users should be able to determine how & when they want invalid UI to display by inspecting the [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) of the external input.
 
