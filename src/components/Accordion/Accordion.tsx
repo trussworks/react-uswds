@@ -16,6 +16,7 @@ export type AccordionItemProps = {
 export type AccordionProps = {
   bordered?: boolean
   multiselectable?: boolean
+  iconPosition?: 'start' | 'end'
   items: AccordionItemProps[]
   className?: string
 } & JSX.IntrinsicElements['div']
@@ -86,6 +87,7 @@ export const Accordion = ({
   items,
   className,
   multiselectable = false,
+  iconPosition,
 }: AccordionProps): JSX.Element => {
   const [savedExpansions, setSavedExpansions] = useState(() =>
     buildExpansions(items, multiselectable)
@@ -104,6 +106,8 @@ export const Accordion = ({
     'usa-accordion',
     {
       'usa-accordion--bordered': bordered,
+      'usa-accordion--icon-start': iconPosition === 'start',
+      'usa-accordion--icon-end': iconPosition === 'end',
     },
     className
   )

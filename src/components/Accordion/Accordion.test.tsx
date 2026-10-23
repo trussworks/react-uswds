@@ -303,6 +303,29 @@ describe('Accordion component', () => {
     })
   })
 
+  describe('with an icon position', () => {
+    it('adds no modifier class by default', () => {
+      const { getByTestId } = render(<Accordion items={testItems} />)
+      const accordionEl = getByTestId('accordion')
+      expect(accordionEl).not.toHaveClass('usa-accordion--icon-start')
+      expect(accordionEl).not.toHaveClass('usa-accordion--icon-end')
+    })
+
+    it('adds the icon start class when set to start', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} iconPosition="start" />
+      )
+      expect(getByTestId('accordion')).toHaveClass('usa-accordion--icon-start')
+    })
+
+    it('adds the icon end class when set to end', () => {
+      const { getByTestId } = render(
+        <Accordion items={testItems} iconPosition="end" />
+      )
+      expect(getByTestId('accordion')).toHaveClass('usa-accordion--icon-end')
+    })
+  })
+
   describe('with a custom className', () => {
     it('passes the class onto the root Accordion element', () => {
       const { getByTestId } = render(

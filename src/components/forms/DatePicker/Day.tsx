@@ -102,6 +102,7 @@ const DayForwardRef: React.ForwardRefRenderFunction<
       data-value={formattedDate}
       aria-label={`${day} ${monthStr} ${year} ${dayStr}`}
       aria-selected={isSelected ? true : false}
+      aria-current={isToday ? 'date' : undefined}
       disabled={isDisabled}
       onKeyDown={handleKeyDown}
       onMouseMove={isFocusedMonth ? handleMouseMove : undefined}>

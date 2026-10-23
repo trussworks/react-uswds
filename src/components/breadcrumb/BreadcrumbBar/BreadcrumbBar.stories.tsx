@@ -45,7 +45,10 @@ export const DefaultBreadcrumb: Story = {
         </BreadcrumbLink>
       </Breadcrumb>
       <Breadcrumb current>
-        <span>Women-owned small business federal contracting program</span>
+        <span>
+          Economically disadvantaged women-owned small business federal
+          contracting program
+        </span>
       </Breadcrumb>
     </BreadcrumbBar>
   ),
@@ -94,7 +97,8 @@ export const BreadcrumbWithRdfaMetadata: Story = {
         <Breadcrumb current {...rdfaMetadata.li}>
           {/* eslint-disable-next-line react/no-unknown-property */}
           <span property="name">
-            Women-owned small business federal contracting program
+            Economically disadvantaged women-owned small business federal
+            contracting program
           </span>
           <meta property="position" content="4" />
         </Breadcrumb>
@@ -103,9 +107,9 @@ export const BreadcrumbWithRdfaMetadata: Story = {
   },
 }
 
-export const WrappingBreadcrumb: Story = {
+export const TruncatedBreadcrumb: Story = {
   render: () => (
-    <BreadcrumbBar variant="wrap">
+    <BreadcrumbBar variant="truncate">
       <Breadcrumb>
         <BreadcrumbLink href="#">
           <span>Home</span>
@@ -122,7 +126,10 @@ export const WrappingBreadcrumb: Story = {
         </BreadcrumbLink>
       </Breadcrumb>
       <Breadcrumb current>
-        <span>Women-owned small business federal contracting program</span>
+        <span>
+          Economically disadvantaged women-owned small business federal
+          contracting program
+        </span>
       </Breadcrumb>
     </BreadcrumbBar>
   ),
@@ -174,7 +181,8 @@ export const CustomBreadcrumbLinks: Story = {
           </BreadcrumbLink>
         </Breadcrumb>
         <Breadcrumb current>
-          Women-owned small business federal contracting program
+          Economically disadvantaged women-owned small business federal
+          contracting program
         </Breadcrumb>
       </BreadcrumbBar>
     )

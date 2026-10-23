@@ -25,3 +25,10 @@
     text-decoration: underline;
   }
 }
+
+// USWDS 3.14 (uswds/uswds#6661) restores the top border on borderless row header
+// cells. Sticky header tables use border-collapse: separate, so that border no
+// longer merges with the previous row's bottom border and renders as a doubled line.
+.usa-table--sticky-header.usa-table--borderless tbody [scope='row'] {
+  border-top: 0;
+}

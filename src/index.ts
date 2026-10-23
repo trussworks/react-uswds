@@ -138,8 +138,14 @@ export { LanguageSelectorButton } from './components/LanguageSelector/LanguageSe
 export type { LanguageSelectorButtonProps } from './components/LanguageSelector/LanguageSelectorButton'
 export { Radio } from './components/forms/Radio/Radio'
 export type { RadioProps } from './components/forms/Radio/Radio'
-export { RangeInput } from './components/forms/RangeInput/RangeInput'
-export type { RangeInputProps } from './components/forms/RangeInput/RangeInput'
+export {
+  RangeInput,
+  RangeSlider,
+} from './components/forms/RangeSlider/RangeSlider'
+export type {
+  RangeInputProps,
+  RangeSliderProps,
+} from './components/forms/RangeSlider/RangeSlider'
 export { Select } from './components/forms/Select/Select'
 export type { SelectProps } from './components/forms/Select/Select'
 export { Textarea } from './components/forms/Textarea/Textarea'

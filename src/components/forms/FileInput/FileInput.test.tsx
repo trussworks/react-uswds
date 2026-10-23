@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import { FileInput, FileInputRef } from './FileInput'
@@ -55,38 +55,6 @@ describe('FileInput component', () => {
     )
   })
 
-  it('does not display drag text if on IE11', () => {
-    vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(
-      () =>
-        'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
-    )
-    const { getByTestId } = render(<FileInput {...testProps} />)
-
-    expect(getByTestId('file-input-instructions')).not.toHaveTextContent(
-      /Drag file here or choose from folder/i
-    )
-    expect(getByTestId('file-input-instructions')).toHaveTextContent(
-      /choose from folder/i
-    )
-    vi.restoreAllMocks()
-  })
-
-  it('does not display drag text if on Edge', () => {
-    vi.spyOn(navigator, 'userAgent', 'get').mockImplementation(
-      () =>
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582'
-    )
-    const { getByTestId } = render(<FileInput {...testProps} />)
-
-    expect(getByTestId('file-input-instructions')).not.toHaveTextContent(
-      /Drag file here or choose from folder/i
-    )
-    expect(getByTestId('file-input-instructions')).toHaveTextContent(
-      /choose from folder/i
-    )
-    vi.restoreAllMocks()
-  })
-
   it('displays custom text when given', () => {
     const customProps = {
       ...testProps,
@@ -124,6 +92,92 @@ describe('FileInput component', () => {
     )
     expect(errorText).toBeInTheDocument()
     expect(errorText).toHaveClass('usa-file-input__accepted-files-message')
+  })
+
+  describe('pointer capability', () => {
+    const changeListeners = new Set<(event: MediaQueryListEvent) => void>()
+    let finePointer = false
+
+    beforeEach(() => {
+      // matchMedia isn't available in test environment
+      finePointer = false
+      const matchMediaMock = vi.fn((media: string) => ({
+        matches: finePointer,
+        media,
+        addEventListener: (
+          _type: string,
+          listener: (event: MediaQueryListEvent) => void
+        ): void => {
+          changeListeners.add(listener)
+        },
+        removeEventListener: (
+          _type: string,
+          listener: (event: MediaQueryListEvent) => void
+        ): void => {
+          changeListeners.delete(listener)
+        },
+      }))
+
+      vi.stubGlobal('matchMedia', matchMediaMock)
+    })
+
+    afterEach(() => {
+      changeListeners.clear()
+      vi.unstubAllGlobals()
+    })
+
+    it('does not display drag text when the pointer is not fine', () => {
+      const { getByTestId } = render(<FileInput {...testProps} />)
+
+      const instructions = getByTestId('file-input-instructions')
+      expect(instructions).not.toHaveTextContent(/drag/i)
+      expect(instructions).toHaveTextContent('Choose from folder')
+    })
+
+    it('displays custom text when the pointer is not fine', () => {
+      const { getByTestId } = render(
+        <FileInput
+          {...testProps}
+          chooseText="Custom chooseText"
+          chooseTextWithoutDrag="Custom chooseTextWithoutDrag"
+        />
+      )
+
+      const chooseText = within(
+        getByTestId('file-input-instructions')
+      ).getByText('Custom chooseTextWithoutDrag')
+      expect(chooseText).toBeInTheDocument()
+      expect(chooseText).toHaveClass('usa-file-input__choose')
+    })
+
+    it('falls back to chooseText when chooseTextWithoutDrag is not given', () => {
+      const { getByTestId } = render(
+        <FileInput {...testProps} chooseText="Custom chooseText" />
+      )
+
+      expect(getByTestId('file-input-instructions')).toHaveTextContent(
+        'Custom chooseText'
+      )
+    })
+
+    it('updates the instructions when the pointer capability changes', () => {
+      finePointer = true
+      const { getByTestId } = render(<FileInput {...testProps} />)
+
+      const instructions = getByTestId('file-input-instructions')
+      expect(instructions).toHaveTextContent(
+        /Drag file here or choose from folder/i
+      )
+
+      act(() => {
+        changeListeners.forEach((listener) =>
+          listener({ matches: false } as MediaQueryListEvent)
+        )
+      })
+
+      expect(instructions).not.toHaveTextContent(/drag/i)
+      expect(instructions).toHaveTextContent('Choose from folder')
+    })
   })
 
   describe('when disabled', () => {

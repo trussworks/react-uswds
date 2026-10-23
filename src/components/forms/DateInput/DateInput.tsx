@@ -12,6 +12,13 @@ export type DateInputProps = {
   unit: 'month' | 'day' | 'year'
   maxLength: number
   minLength?: number
+  /**
+   * Recommended text:
+   * - Month: "Select a month from the dropdown."
+   * - Day: "Enter 1 or 2 digits for the day."
+   * - Year: "Enter 4 digits for the year."
+   */
+  srHint?: string
 } & OptionalTextInputProps
 
 export const DateInput = ({
@@ -21,6 +28,7 @@ export const DateInput = ({
   unit,
   maxLength,
   minLength,
+  srHint,
   className,
   ...inputProps
 }: DateInputProps): JSX.Element => {
@@ -32,9 +40,19 @@ export const DateInput = ({
 
   const inputClasses = classnames(className)
 
+  const hintId = `${id}-hint`
+  const ariaDescribedBy = [srHint && hintId, inputProps['aria-describedby']]
+    .filter(Boolean)
+    .join(' ')
+
   return (
     <FormGroup className={formGroupClasses}>
       <Label htmlFor={id}>{label}</Label>
+      {srHint && (
+        <span className="usa-hint usa-sr-only" id={hintId}>
+          {srHint}
+        </span>
+      )}
       <TextInput
         {...inputProps}
         className={inputClasses}
@@ -45,6 +63,7 @@ export const DateInput = ({
         minLength={minLength}
         pattern="[0-9]*"
         inputMode="numeric"
+        aria-describedby={ariaDescribedBy || undefined}
       />
     </FormGroup>
   )

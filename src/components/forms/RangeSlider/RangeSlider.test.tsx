@@ -1,12 +1,12 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 
-import { RangeInput } from './RangeInput'
+import { RangeSlider } from './RangeSlider'
 
-describe('RangeInput component', () => {
+describe('RangeSlider component', () => {
   it('renders without errors', () => {
     const { queryByTestId } = render(
-      <RangeInput
+      <RangeSlider
         id="range-slider-id"
         name="rangeName"
         className="additional-class"
@@ -27,11 +27,85 @@ describe('RangeInput component', () => {
     )
   })
 
+  it('renders without a hint', () => {
+    const { container, queryByTestId } = render(
+      <RangeSlider id="range-slider-id" name="rangeName" />
+    )
+
+    expect(container.querySelector('.usa-hint')).not.toBeInTheDocument()
+    expect(queryByTestId('range')).not.toHaveAttribute('aria-describedby')
+  })
+
+  it('renders with hint', () => {
+    const { queryByTestId, queryByText } = render(
+      <RangeSlider
+        id="range-slider-id"
+        name="rangeName"
+        hint="Move the slider to change the value"
+      />
+    )
+
+    const hint = queryByText('Move the slider to change the value')
+    expect(hint).toBeInTheDocument()
+    expect(hint).toHaveClass('usa-hint')
+    expect(hint).toHaveAttribute('id', 'range-slider-id-hint')
+    expect(hint?.nextElementSibling).toBe(queryByTestId('range-wrapper'))
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-hint'
+    )
+  })
+
+  it('renders with hint element', () => {
+    const { getByText } = render(
+      <RangeSlider
+        id="range-slider-id"
+        name="rangeName"
+        hint={<a href="#top">Drag to adjust or use arrow keys</a>}
+      />
+    )
+
+    const hint = getByText('Drag to adjust or use arrow keys')
+    expect(hint.parentElement).toHaveClass('usa-hint')
+    expect(hint.parentElement).toHaveAttribute('id', 'range-slider-id-hint')
+  })
+
+  it('combines aria-describedby with the hint id', () => {
+    const { queryByTestId } = render(
+      <RangeSlider
+        id="range-slider-id"
+        name="rangeName"
+        hint="Move the slider to change the value"
+        aria-describedby="range-slider-id-error"
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-hint range-slider-id-error'
+    )
+  })
+
+  it('sets aria-describedby when no hint exists', () => {
+    const { queryByTestId } = render(
+      <RangeSlider
+        id="range-slider-id"
+        name="rangeName"
+        aria-describedby="range-slider-id-error"
+      />
+    )
+
+    expect(queryByTestId('range')).toHaveAttribute(
+      'aria-describedby',
+      'range-slider-id-error'
+    )
+  })
+
   it('renders with custom range values', () => {
     const min = -15
     const max = 60
     const { queryByTestId } = render(
-      <RangeInput
+      <RangeSlider
         id="range-slider-id"
         name="rangeName"
         min={min}
@@ -49,7 +123,7 @@ describe('RangeInput component', () => {
 
   it('renders with default value', () => {
     const { queryByTestId } = render(
-      <RangeInput id="range-slider-id" name="rangeName" defaultValue={75} />
+      <RangeSlider id="range-slider-id" name="rangeName" defaultValue={75} />
     )
 
     expect(queryByTestId('range')).toHaveAttribute('value', '75')
@@ -57,14 +131,14 @@ describe('RangeInput component', () => {
 
   it('renders with step attribute set to value any', () => {
     const { queryByTestId } = render(
-      <RangeInput id="range-slider-id" name="rangeName" step="any" />
+      <RangeSlider id="range-slider-id" name="rangeName" step="any" />
     )
     expect(queryByTestId('range')).toHaveAttribute('step', 'any')
   })
 
   it('renders with specified datalist attribute', () => {
     const { queryByTestId } = render(
-      <RangeInput
+      <RangeSlider
         id="range-slider-id"
         name="rangeName"
         list="some-datalist-id"
@@ -77,7 +151,7 @@ describe('RangeInput component', () => {
     const rangeRef = React.createRef<HTMLInputElement>()
 
     const { queryByTestId } = render(
-      <RangeInput id="range-slider-id" name="rangeName" inputRef={rangeRef} />
+      <RangeSlider id="range-slider-id" name="rangeName" inputRef={rangeRef} />
     )
     expect(queryByTestId('range')).toEqual(rangeRef.current)
   })
@@ -88,7 +162,7 @@ describe('RangeInput component', () => {
     const prep = 'de'
     const unit = 'por ciento'
     const { queryByTestId } = render(
-      <RangeInput
+      <RangeSlider
         id="range-slider-id"
         name="rangeName"
         defaultValue={val}
@@ -105,7 +179,7 @@ describe('RangeInput component', () => {
 
   it('updates visual callout', () => {
     const { queryByTestId } = render(
-      <RangeInput id="range-slider-id" name="rangeName" defaultValue={75} />
+      <RangeSlider id="range-slider-id" name="rangeName" defaultValue={75} />
     )
     expect(queryByTestId('range')).toHaveValue('75')
     expect(queryByTestId('range-visual')).toHaveTextContent('75')
