@@ -109,6 +109,7 @@ export const DatePicker = ({
 
     if (isInvalid && !externalInputEl?.current?.validationMessage) {
       externalInputEl?.current?.setCustomValidity(VALIDATION_MESSAGE)
+      externalInputEl?.current?.setAttribute('aria-invalid', 'true')
     }
 
     if (
@@ -116,7 +117,10 @@ export const DatePicker = ({
       externalInputEl?.current?.validationMessage === VALIDATION_MESSAGE
     ) {
       externalInputEl?.current?.setCustomValidity('')
+      externalInputEl?.current?.removeAttribute('aria-invalid')
     }
+
+    externalInputEl?.current?.reportValidity()
   }
 
   const handleSelectDate = (dateString: string, closeCalendar = true): void => {
@@ -185,10 +189,6 @@ export const DatePicker = ({
       }
     }
   }, [showCalendar])
-
-  useEffect(() => {
-    validateInput()
-  }, [externalValue, minDate, maxDate])
 
   const handleToggleClick = (): void => {
     if (isAriaDisabled) {
@@ -316,8 +316,14 @@ export const DatePicker = ({
             setFocusMode(FocusMode.Input)
           }}
           onBlur={(e): void => {
+            validateInput()
             setFocusMode(FocusMode.None)
             onBlur && onBlur(e)
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' ) {
+              externalInputEl.current?.blur()
+            }
           }}
         />
         <button
