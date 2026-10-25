@@ -39,6 +39,9 @@
   "overrides": {
     "@laynezh/vite-plugin-lib-assets": {
       "vite": "$vite"
+    },
+    "external-editor": {
+      "tmp": "^0.2.7"
     }
   },
   "scripts": {
