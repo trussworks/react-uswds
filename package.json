@@ -118,7 +118,7 @@
     "@vitejs/plugin-react": "^6.0.2",
     "@vitest/coverage-istanbul": "^4.0.8",
     "@vitest/eslint-plugin": "^1.1.44",
-    "all-contributors-cli": "^6.24.0",
+    "all-contributors-cli": "^7.0.0",
     "babel-loader": "^10.0.0",
     "classnames": "^2.3.2",
     "danger": "^14.0.5",
