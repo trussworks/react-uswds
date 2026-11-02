@@ -13,6 +13,7 @@ import { sampleLocalization } from './i18n'
 import { today } from './utils'
 import {
   DAY_OF_WEEK_LABELS,
+  INTERNAL_DATE_FORMAT,
   MONTH_LABELS,
   VALIDATION_MESSAGE,
 } from './constants'
@@ -599,6 +600,21 @@ describe('DatePicker component', () => {
   })
 
   describe('validation', () => {
+    it('revalidates the current value when dateFormat changes', async () => {
+      const { getByTestId, rerender } = renderDatePicker()
+      const externalInput = getByTestId(
+        'date-picker-external-input'
+      ) as HTMLInputElement
+
+      await userEvent.type(externalInput, '12/31/2024')
+      expect(externalInput).toBeValid()
+
+      rerender(<DatePicker {...testProps} dateFormat={INTERNAL_DATE_FORMAT} />)
+
+      expect(externalInput).toBeInvalid()
+      expect(externalInput.validationMessage).toEqual(VALIDATION_MESSAGE)
+    })
+
     it('entering an empty value is valid', async () => {
       const { getByTestId } = renderDatePicker()
       const externalInput = getByTestId(
