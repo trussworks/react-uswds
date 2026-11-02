@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.0.1](https://github.com/trussworks/react-uswds/compare/13.0.0...13.0.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* revalidate DatePicker format changes ([#3598](https://github.com/trussworks/react-uswds/issues/3598)) ([2ead6ce](https://github.com/trussworks/react-uswds/commit/2ead6ce2a69b3fd60018fdddfcf25401f5132be3))
+
 ## [13.0.0](https://github.com/trussworks/react-uswds/compare/12.0.0...13.0.0) (2026-10-04)
 
 
