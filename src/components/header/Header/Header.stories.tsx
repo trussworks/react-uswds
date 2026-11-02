@@ -21,6 +21,8 @@ const meta: Meta<typeof Header> = {
 ### USWDS 3.0 Header component
 
 Source: https://designsystem.digital.gov/components/header/
+
+Expanding the mobile navigation locks body scrolling until the navigation closes or unmounts.
 `,
       },
     },
