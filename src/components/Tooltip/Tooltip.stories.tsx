@@ -26,6 +26,8 @@ const meta: Meta<typeof Tooltip> = {
 ### USWDS 3.0 Tooltip component
 
 Source: https://designsystem.digital.gov/components/tooltip/
+
+Changing the \`position\` prop repositions a tooltip that is already visible.
 `,
       },
     },
