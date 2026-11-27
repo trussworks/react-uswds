@@ -192,7 +192,7 @@ export function Tooltip<
         }
       }
     }
-  }, [isVisible])
+  }, [isVisible, position])
 
   const showTooltip = useCallback((): void => {
     setVisible(true)
